@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageObject_knobSize (
        _ self_mRoot_knobSizeMultpliedByTen : Int?

@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardTrack_p1ConnectedToSomePad (
        _ self_mConnectorP1_isConnectedToSomePad : Bool?

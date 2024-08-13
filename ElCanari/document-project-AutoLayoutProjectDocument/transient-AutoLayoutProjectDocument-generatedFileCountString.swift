@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_generatedFileCountString (
        _ self_mDataController_sortedArray_count : Int

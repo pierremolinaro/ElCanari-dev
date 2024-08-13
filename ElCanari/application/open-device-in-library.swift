@@ -12,15 +12,15 @@ import AppKit
 
 final class OpenDeviceInLibrary : OpenInLibrary {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Dialog
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func openDeviceInLibrary (_ inSender : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Device in Library")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
     super.buildTableViewDataSource (extension: ElCanariDevice_EXTENSION, alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
@@ -33,19 +33,19 @@ final class OpenDeviceInLibrary : OpenInLibrary {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func noPartMessage () -> String {
     return "No selected device"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func partLibraryPathForPath (_ inPath : String) -> String {
     return deviceLibraryPathForPath (inPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

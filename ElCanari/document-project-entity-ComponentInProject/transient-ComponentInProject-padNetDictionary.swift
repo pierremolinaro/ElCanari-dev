@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_padNetDictionary (
        _ self_mSymbols_symbolInfo : [ComponentSymbolInProject_symbolInfo]

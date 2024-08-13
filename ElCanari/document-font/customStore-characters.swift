@@ -16,9 +16,9 @@ let KEY_FOR_FontCharacter_characters = "-characters-"
 
 final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_FontCharacter {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Read
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func initialize (fromDictionary inDictionary : [String : Any],
                             managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -28,7 +28,7 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
     if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
@@ -37,7 +37,7 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func customRead_FontCharacter_characters (fromString inString : String) -> EBReferenceArray <FontCharacter> {
     var result = EBReferenceArray <FontCharacter> ()
@@ -85,14 +85,14 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Store
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.key, self.mInternalArrayValue.count > 0 {
@@ -101,7 +101,7 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func appendValueTo (data ioData : inout Data) {
     let s = self.customStore_FontCharacter_characters ()
@@ -109,7 +109,7 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
     ioData += data
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func customStore_FontCharacter_characters () -> String {
     var s = ""
@@ -136,7 +136,7 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -171,7 +171,7 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
 
 extension Scanner {
 
-  //··················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -··················
 
   func myScanInt (_ ioOk : inout Bool) -> Int {
     var value = 0
@@ -180,20 +180,20 @@ extension Scanner {
     return value
   }
 
-  //··················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -··················
 
   func myCheckString (_ inString : String, _ ioOk : inout Bool) {
     let s = self.scanString (inString)
     ioOk = ioOk && (s != nil)
   }
 
-  //··················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -··················
 
   func myTestString (_ inString : String) -> Bool {
     return self.scanString (inString) != nil
   }
 
-  //··················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -··················
 
 }
 

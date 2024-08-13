@@ -11,25 +11,25 @@ import CoreGraphics
 
 extension NSPoint : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   /// The hash value.
   ///
   /// Hash values are not guaranteed to be equal across different executions of
   /// your program. Do not save hash values to use during a future execution.
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public func hash (into hasher: inout Hasher) {
     self.x.hash (into: &hasher)
     self.y.hash (into: &hasher)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func center (_ p1 : NSPoint, _ p2 : NSPoint) -> NSPoint {
     return NSPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func distance (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
     let dx = p1.x - p2.x
@@ -37,7 +37,7 @@ extension NSPoint : Hashable {
     return sqrt (dx * dx + dy * dy)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func aligned (onGrid inGrid : CGFloat) -> NSPoint {
     var p = self
@@ -46,7 +46,7 @@ extension NSPoint : Hashable {
     return p
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func product (_ p1 : NSPoint, _ p2 : NSPoint, _ p3 : NSPoint) -> CGFloat {
     let dx2 = p2.x - p1.x
@@ -56,7 +56,7 @@ extension NSPoint : Hashable {
     return dx2 * dy3 - dx3 * dy2
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func angleInRadian (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
     let width = p2.x - p1.x
@@ -68,20 +68,20 @@ extension NSPoint : Hashable {
     return angle
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func angleInDegrees (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
     return self.angleInRadian (p1, p2) * 180.0 / CGFloat.pi
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func point (fromCenter inCenter : NSPoint, atDistance inDistance : CGFloat, angleInDegrees inRotationInDegrees : CGFloat) -> NSPoint {
     let angleInRadian = inRotationInDegrees * .pi / 180.0
     return NSPoint (x: inCenter.x + inDistance * cos (angleInRadian), y: inCenter.y + inDistance * sin (angleInRadian))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func importGuiDefaultFileThenSESFile (fileBasePath inFileBasePath : String) {
     let filePath = inFileBasePath + "gui_defaults.par"
@@ -34,7 +34,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func importSESFile (fileBasePath inFileBasePath : String) {
     let filePath = inFileBasePath + "design.ses"
@@ -49,7 +49,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

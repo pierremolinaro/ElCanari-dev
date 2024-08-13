@@ -10,16 +10,16 @@ import AppKit
 
 final class EBModelNotifierEvent : EBObserverProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mClient : EBReadOnlyAbstractGenericRelationshipProperty? // SHOULD BE WEAK
   private let mRemoveSortObserversCallback : (EBModelNotifierEvent) -> Void
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inClient : EBReadOnlyAbstractGenericRelationshipProperty,
         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
@@ -30,26 +30,26 @@ final class EBModelNotifierEvent : EBObserverProtocol {
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removeSortObservers () {
     self.mRemoveSortObserversCallback (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func observedObjectDidChange () {
 //    super.observedObjectDidChange ()
     self.mClient?.notifyModelDidChange ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

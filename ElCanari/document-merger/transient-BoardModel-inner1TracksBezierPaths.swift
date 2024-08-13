@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_inner1TracksBezierPaths (
        _ self_inner1TracksSegments : MergerSegmentArray

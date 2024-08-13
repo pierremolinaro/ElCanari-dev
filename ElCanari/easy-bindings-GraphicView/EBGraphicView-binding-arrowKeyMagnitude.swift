@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_arrowKeyMagnitude (_ model : EBObservableProperty <Int>) {
     self.mArrowKeyMagnitudeController = EBObservablePropertyController (
@@ -19,14 +19,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_arrowKeyMagnitude () {
 //    self.mArrowKeyMagnitudeController?.unregister ()
 //    self.mArrowKeyMagnitudeController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateArrowKeyMagnitude (from model : EBObservableProperty <Int>) {
     switch model.selection {
@@ -39,7 +39,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

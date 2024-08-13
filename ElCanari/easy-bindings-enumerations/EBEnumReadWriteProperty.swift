@@ -10,11 +10,11 @@ import AppKit
 
 class EBEnumReadWriteProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>, EBEnumReadWriteObservableProtocol where T : Equatable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func setProp (_ inValue : T) { } // Abstract method
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setFrom (rawValue inRawValue : Int) {
     if let v = T.buildfromRawValue (rawValue: inRawValue) {
@@ -22,7 +22,7 @@ class EBEnumReadWriteProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>,
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

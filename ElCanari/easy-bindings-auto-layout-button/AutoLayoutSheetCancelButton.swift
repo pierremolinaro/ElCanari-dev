@@ -13,7 +13,7 @@ import AppKit
 
 final class AutoLayoutSheetCancelButton : NSButton {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title inTitle : String, size inSize : EBControlSize) {
     super.init (frame: .zero)
@@ -31,19 +31,19 @@ final class AutoLayoutSheetCancelButton : NSButton {
     self.keyEquivalent = "\u{1b}"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func dismissSheetAction (_ sender : Any?) {
     if let mySheet = self.window {
@@ -58,7 +58,7 @@ final class AutoLayoutSheetCancelButton : NSButton {
   }
 
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

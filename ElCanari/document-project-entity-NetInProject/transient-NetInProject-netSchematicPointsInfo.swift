@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetInProject_netSchematicPointsInfo (
        _ self_mPoints_netInfoForPoint : [PointInSchematic_netInfoForPoint]

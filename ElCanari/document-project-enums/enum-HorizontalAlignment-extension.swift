@@ -4,7 +4,7 @@ import AppKit
 
 extension HorizontalAlignment {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var ebTextShapeHorizontalAlignment : EBBezierPath.TextHorizontalAlignment {
     switch self {
@@ -17,7 +17,7 @@ extension HorizontalAlignment {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

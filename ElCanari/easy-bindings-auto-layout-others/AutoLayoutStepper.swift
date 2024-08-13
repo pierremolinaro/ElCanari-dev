@@ -14,7 +14,7 @@ import AppKit
 
 final class AutoLayoutStepper : ALB_NSStepper {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -29,22 +29,22 @@ final class AutoLayoutStepper : ALB_NSStepper {
     self.action = #selector (Self.stepperAction (_:))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func stepperAction (_ _ : AutoLayoutStepper) {
     let v = Int (self.doubleValue.rounded (.toNearestOrEven))
     self.mValueController?.updateModel (withValue: v)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $value binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateStepper (from inObject : EBObservableProperty <Int>) {
     switch inObject.selection {
@@ -56,11 +56,11 @@ final class AutoLayoutStepper : ALB_NSStepper {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_value (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     NSColorPanel.shared.showsAlpha = true
@@ -71,7 +71,7 @@ final class AutoLayoutStepper : ALB_NSStepper {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

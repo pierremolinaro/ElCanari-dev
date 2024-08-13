@@ -14,27 +14,27 @@ import AppKit
 
 final class AutoLayoutCanariBoardComponentPackagePopUpButton : ALB_NSPopUpButton {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (pullsDown: false, size: .small)
     self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: -
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mSelectedObjects : ReadOnlyArrayOf_ComponentInProject? = nil
   private var mObserver : EBOutletEvent? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func register (selectionController inSelectedObjects : ReadOnlyArrayOf_ComponentInProject) {
     self.mSelectedObjects = inSelectedObjects
@@ -46,7 +46,7 @@ final class AutoLayoutCanariBoardComponentPackagePopUpButton : ALB_NSPopUpButton
     inSelectedObjects.toMany_mPackages_StartsBeingObserved (by: observer)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildPopUpButton () {
     self.removeAllItems ()
@@ -92,7 +92,7 @@ final class AutoLayoutCanariBoardComponentPackagePopUpButton : ALB_NSPopUpButton
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func changePackageAction (_ inSender : NSMenuItem) {
     if let selectedComponents = self.mSelectedObjects?.propval, let package = inSender.representedObject as? DevicePackageInProject {
@@ -102,7 +102,7 @@ final class AutoLayoutCanariBoardComponentPackagePopUpButton : ALB_NSPopUpButton
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

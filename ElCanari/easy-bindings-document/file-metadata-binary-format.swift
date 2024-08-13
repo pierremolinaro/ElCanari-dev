@@ -45,7 +45,7 @@ func getBinaryFileMetadata (forFileHandle inFileHandle : FileHandle) -> EBFileMe
 
 fileprivate extension FileHandle {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func readAutosizedUnsignedInteger () -> UInt {
     var result : UInt = 0
@@ -61,14 +61,14 @@ fileprivate extension FileHandle {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func readAutosizedData () -> Data {
     let dataLength = self.readAutosizedUnsignedInteger ()
     return self.readData (ofLength: Int (dataLength))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

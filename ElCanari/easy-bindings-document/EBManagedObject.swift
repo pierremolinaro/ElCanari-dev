@@ -26,17 +26,22 @@ struct RawObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedObject : EBSignatureObserverProtocol {
+protocol AnySendableObject : AnyObject, Sendable {
+}
 
-  //································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var className : String { return String (describing: type (of: self)) }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak final var mUndoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var savingIndex : Int { return self.mSavingIndex }
 
@@ -46,36 +51,36 @@ class EBManagedObject : EBSignatureObserverProtocol {
     self.mSavingIndex = inIndex
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
     self.mUndoManager = inUndoManager
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var objectIndex : Int { return objectIntIdentifier (self) }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Getters
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var undoManager : UndoManager? {
     return self.mUndoManager
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Setup
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setUpProperties (withDictionary inDictionary : [String : Any],
                               managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -87,7 +92,7 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setUpPropertiesWithTextDictionary (_ inRangeDictionary : [String : NSRange],
                                                 _ inRawObjectArray : [RawObject],
@@ -102,9 +107,9 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   accessibleObjectsForSaveOperation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
@@ -115,9 +120,9 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Save
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func savePropertiesAndRelationshipsIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
@@ -131,7 +136,7 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func savePropertiesIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
@@ -145,9 +150,9 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   appendPropertyNamesTo(string:)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendPropertyNamesTo (string ioString : inout String) {
     let mirror = Mirror (reflecting: self)
@@ -158,9 +163,9 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   appendPropertyValuesTo(string:)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendPropertyValuesTo (data ioData : inout Data) {
     let mirror = Mirror (reflecting: self)
@@ -172,13 +177,13 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   setSignatureObserver
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -186,9 +191,9 @@ class EBManagedObject : EBSignatureObserverProtocol {
     inObserver?.clearSignatureCache ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   clearSignatureCache
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func clearSignatureCache () {
     if self.mSignature != nil {
@@ -197,13 +202,13 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   signature
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mSignature : UInt32? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func signature () -> UInt32 {
     if let s = self.mSignature {
@@ -215,13 +220,13 @@ class EBManagedObject : EBSignatureObserverProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func computeSignature () -> UInt32 {
     return 0
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

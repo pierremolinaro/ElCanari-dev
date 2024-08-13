@@ -15,12 +15,12 @@ import AppKit
 
 final class AutoLayoutImageObserverView : ALB_NSImageView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mControlSize : EBControlSize?
   private let mWidth : CGFloat?
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  override init () {
 //    self.mControlSize = nil
@@ -34,7 +34,7 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
 ////    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (width inWidth : CGFloat) {
     self.mControlSize = nil
@@ -48,7 +48,7 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
 //    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inControlSize : EBControlSize) {
     self.mControlSize = inControlSize
@@ -61,13 +61,13 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     self.frame.size = self.intrinsicContentSize
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     if let controlSize = self.mControlSize {
@@ -85,22 +85,22 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $enabled binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mEnabledBindingController : EnabledBindingController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     self.mEnabledBindingController = EnabledBindingController (inExpression, self)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  image binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateImage (_ inObjectSelection : EBSelection <NSImage>) {
     switch inObjectSelection {
@@ -113,11 +113,11 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mImageController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_image (_ inObject : EBObservableProperty <NSImage>) -> Self {
     self.mImageController = EBObservablePropertyController (
@@ -127,9 +127,9 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  tooltip binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateTooltip (_ inObjectSelection : EBSelection <String>) {
     switch inObjectSelection {
@@ -142,11 +142,11 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTooltipController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_tooltip (_ inObject : EBObservableProperty <String>) -> Self {
     self.mTooltipController = EBObservablePropertyController (
@@ -156,20 +156,20 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $hidden binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mHiddenBindingController : HiddenBindingController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     self.mHiddenBindingController = HiddenBindingController (inExpression, self)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

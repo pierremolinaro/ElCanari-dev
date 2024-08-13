@@ -13,36 +13,36 @@ import AppKit
 
 final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mFont : NSFont? = nil
   private var mWidth : CGFloat
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (width inWidth : Int, size inSize : EBControlSize) {
     self.mWidth = CGFloat (inWidth)
     super.init (title: "", size: inSize.cocoaControlSize)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.showFontManager ()
     return super.sendAction (action, to: to)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
   //  So we need to define intrinsicContentSize.width explicitly
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -50,7 +50,7 @@ final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func showFontManager () {
     if let font = self.mFont {
@@ -62,7 +62,7 @@ final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func changeFont (_ sender : Any?) {
     if let font = self.mFont, let fontManager = sender as? NSFontManager {
@@ -71,7 +71,7 @@ final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func mySetFont (font : NSFont) {
     self.mFont = font
@@ -80,9 +80,9 @@ final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
     self.toolTip = newTitle
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $fontValue binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateFont (_ object : EBObservableProperty <NSFont>) {
     switch object.selection {
@@ -95,11 +95,11 @@ final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValueController : EBGenericReadWritePropertyController <NSFont>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_fontValue (_ inObject : EBObservableMutableProperty <NSFont>) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <NSFont> (
@@ -109,7 +109,7 @@ final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

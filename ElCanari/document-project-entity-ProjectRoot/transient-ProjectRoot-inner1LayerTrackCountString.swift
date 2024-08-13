@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_inner1LayerTrackCountString (
        _ self_mBoardObjects_trackSide : [BoardObject_trackSide]

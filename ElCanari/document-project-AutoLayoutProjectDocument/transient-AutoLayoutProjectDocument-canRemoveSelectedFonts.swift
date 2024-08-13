@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_canRemoveSelectedFonts (
        _ self_projectFontController_selectedArray_all_canRemoveFont : [FontInProject_canRemoveFont]

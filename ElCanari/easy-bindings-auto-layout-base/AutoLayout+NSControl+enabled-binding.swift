@@ -12,7 +12,7 @@ import AppKit
 
 extension NSControl {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func enable (fromValueBinding inValue : Bool, _ inEnableBindingController : EnabledBindingController?) {
     if let controller = inEnableBindingController {
@@ -22,7 +22,7 @@ extension NSControl {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func enable (fromEnableBinding inValue : Bool, _ inEnableBindingController : EnabledBindingController?) {
     if let controller = inEnableBindingController {
@@ -32,7 +32,7 @@ extension NSControl {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -40,13 +40,13 @@ extension NSControl {
 
 final class EnabledBindingController : EBObservablePropertyController {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mControlOutlet : NSControl? = nil
   private var mIsEnabledFromValueBinding = true
   private var mIsEnabledFromEnabledBinding = true
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSControl) {
     self.mControlOutlet = inOutlet
@@ -59,7 +59,7 @@ final class EnabledBindingController : EBObservablePropertyController {
     self.mEventCallBack = { [weak self] in self?.updateEnableState (from: inExpression.compute ()) }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateEnableState (from inObject : EBSelection <Bool>) {
     switch inObject {
@@ -73,7 +73,7 @@ final class EnabledBindingController : EBObservablePropertyController {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func enable (fromEnableBinding inValue : Bool) {
     self.mIsEnabledFromEnabledBinding = inValue
@@ -86,7 +86,7 @@ final class EnabledBindingController : EBObservablePropertyController {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func enable (fromValueBinding inValue : Bool) {
     self.mIsEnabledFromValueBinding = inValue
@@ -99,7 +99,7 @@ final class EnabledBindingController : EBObservablePropertyController {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————

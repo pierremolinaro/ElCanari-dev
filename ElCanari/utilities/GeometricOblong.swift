@@ -20,9 +20,9 @@ struct GeometricOblong {
   let width : CGFloat
   let capStyle : TrackEndStyle
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Contains point
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (point p : NSPoint) -> Bool {
     switch self.capStyle {
@@ -44,7 +44,7 @@ struct GeometricOblong {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var bezierPath : EBBezierPath {
     var bp = EBBezierPath ()
@@ -60,7 +60,7 @@ struct GeometricOblong {
     return bp.pathToFillByStroking
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var bounds : NSRect {
     switch self.capStyle {
@@ -77,19 +77,19 @@ struct GeometricOblong {
      }
    }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var circle1 : GeometricCircle {
     return GeometricCircle (center: self.p1, radius: self.width / 2.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var circle2 : GeometricCircle {
     return GeometricCircle (center: self.p2, radius: self.width / 2.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var geometricRect : GeometricRect {
     switch self.capStyle {
@@ -105,7 +105,7 @@ struct GeometricOblong {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (circle inCircle : GeometricCircle) -> Bool {
     if !self.bounds.intersects (inCircle.bounds) {
@@ -121,7 +121,7 @@ struct GeometricOblong {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (rect inRect : GeometricRect) -> Bool {
     if !self.bounds.intersects (inRect.bounds) {
@@ -137,7 +137,7 @@ struct GeometricOblong {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (oblong inOther : GeometricOblong) -> Bool {
     if !self.bounds.intersects (inOther.bounds) {
@@ -165,13 +165,13 @@ struct GeometricOblong {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransfrom : AffineTransform) -> GeometricOblong {
     return GeometricOblong (p1: inAffineTransfrom.transform (self.p1), p2: inAffineTransfrom.transform (self.p2), width: self.width, capStyle: self.capStyle)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

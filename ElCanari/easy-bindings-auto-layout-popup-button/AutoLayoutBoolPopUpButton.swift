@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title0 inTitle0 : String, title1 inTitle1 : String) {
     super.init (pullsDown: false, size: .small)
@@ -20,13 +20,13 @@ final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
     self.addItem (withTitle: inTitle1)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateIndex (_ inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
@@ -38,20 +38,20 @@ final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mValueController?.updateModel (withValue: self.indexOfSelectedItem > 0)
     return super.sendAction (action, to: to)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $value binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValueController : EBGenericReadWritePropertyController <Bool>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_value (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <Bool> (
@@ -61,7 +61,7 @@ final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -54,9 +54,9 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 
 @MainActor fileprivate final class DebugAutoLayout {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mDebugAutoLayout = false
 
@@ -66,7 +66,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     keyEquivalent: ""
   )
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private(set) var mShowKeyResponderChain = false
 
@@ -76,7 +76,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     keyEquivalent: ""
   )
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private(set) var mShowViewCurrentValues = false
 
@@ -86,9 +86,9 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     keyEquivalent: ""
   )
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     self.menuItem.target = self
@@ -97,13 +97,13 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func toggleDebugAutoLayout (_ _ : Any?) {
     self.mDebugAutoLayout.toggle ()
@@ -115,7 +115,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func toggleShowKeyResponderChain (_ _ : Any?) {
     self.mShowKeyResponderChain.toggle ()
@@ -127,7 +127,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func toggleViewCurrentValues (_ _ : Any?) {
     self.mShowViewCurrentValues.toggle ()
@@ -139,7 +139,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate final func propagateNeedsDisplay (_ inView : NSView) {
     inView.needsDisplay = true
@@ -148,7 +148,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title inTitle : String, size inSize : EBControlSize) {
     super.init (pullsDown: true, size: inSize.cocoaControlSize)
@@ -20,17 +20,17 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings
     self.addItem (withTitle: inTitle)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mControllerArray = [EBObservablePropertyController] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
     self.addItem (withTitle: inMenuItemDescriptor.title)
@@ -49,7 +49,7 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func enable (itemIndex inIndex : Int, from inObject : EBMultipleBindingBooleanExpression) {
     let menuItem = self.item (at: inIndex)
@@ -61,13 +61,13 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $items binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mItemsController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_items (_ inObject : EBObservableProperty <StringArray>) -> Self {
     self.mItemsController = EBObservablePropertyController (
@@ -77,7 +77,7 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func update (from model : EBObservableProperty <StringArray>) {
     switch model.selection {
@@ -94,7 +94,7 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

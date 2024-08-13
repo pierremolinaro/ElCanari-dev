@@ -10,15 +10,15 @@ import AppKit
 
 struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mPathes = [EBBezierPath] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var array : [EBBezierPath] { return self.mPathes }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inBP : EBBezierPath) {
     if !inBP.isEmpty {
@@ -26,13 +26,13 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inBezierPathArray : BezierPathArray) {
     self.mPathes += inBezierPathArray.mPathes
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func < (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
     var inferior = lhs.mPathes.count < rhs.mPathes.count
@@ -49,7 +49,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     return inferior
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebHashValue () -> UInt32 {
     let archiver = NSKeyedArchiver (requiringSecureCoding: true)
@@ -58,7 +58,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     return archiver.encodedData.ebHashValue ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func convertToNSObject () -> NSObject {
     let archiver = NSKeyedArchiver (requiringSecureCoding: true)
@@ -71,7 +71,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     return archiver.encodedData as NSObject
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func convertFromNSObject (object : NSObject) -> BezierPathArray {
     let array = try! NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: object as! Data) as! [NSBezierPath]
@@ -82,7 +82,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     var first = true
@@ -96,7 +96,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BezierPathArray? {
     if let array = try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: inData [inRange.location ..< inRange.location + inRange.length]) as? [NSBezierPath] {
@@ -110,7 +110,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

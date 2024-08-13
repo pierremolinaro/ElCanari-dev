@@ -14,7 +14,7 @@ import AppKit
 
 final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title inTitle : String, size inSize : EBControlSize) {
     super.init (title: inTitle, size: inSize.cocoaControlSize)
@@ -25,18 +25,18 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mWidth : CGFloat? = nil
   private var mMaintainDisabled = false
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (width inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
@@ -45,14 +45,14 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (toolTip inToolTip : String) -> Self {
     self.toolTip = inToolTip
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (enabled inEnabled : Bool, checked inChecked : Bool) -> Self {
     self.isEnabled = inEnabled
@@ -60,7 +60,7 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (enabled inEnabled : Bool) -> Self {
     self.isEnabled = inEnabled
@@ -68,7 +68,7 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -78,16 +78,16 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mValueController?.updateModel (withValue: self.state == NSControl.StateValue.on)
     return super.sendAction (action, to: to)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  value binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateValue (from inObject : EBObservableProperty <Bool>) {
     let enableCheckbox : Bool
@@ -107,11 +107,11 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
     self.enable (fromValueBinding: enableCheckbox && !mMaintainDisabled, self.enabledBindingController)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mValueController : EBGenericReadWritePropertyController <Bool>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_value (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <Bool> (
@@ -121,7 +121,7 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————

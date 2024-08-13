@@ -5,7 +5,7 @@ import AppKit
 
 extension ApplicationDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func updateLibrary (_ inSender : AnyObject) {
     if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
@@ -18,7 +18,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

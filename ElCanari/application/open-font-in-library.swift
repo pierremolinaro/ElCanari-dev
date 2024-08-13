@@ -12,15 +12,15 @@ import AppKit
 
 final class OpenFontInLibrary : OpenInLibrary {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Dialog
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func openFontInLibrary (_ inSender : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Font in Library")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
     self.buildTableViewDataSource (extension: ElCanariFont_EXTENSION, alreadyLoadedDocuments: inNames, {
@@ -29,19 +29,19 @@ final class OpenFontInLibrary : OpenInLibrary {
     })
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func noPartMessage () -> String {
     return "No selected font"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func partLibraryPathForPath (_ inPath : String) -> String {
     return fontLibraryPathForPath (inPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

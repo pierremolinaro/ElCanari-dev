@@ -14,7 +14,7 @@ import AppKit
 
 final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, NSDraggingSource {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public struct DraggedObjectFactoryDescriptor {
     let graphicObject : EBGraphicManagedObject
@@ -30,7 +30,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (tooltip inToolTip : String) {
     super.init (title: "", size: .regular)
@@ -43,17 +43,17 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     self.imageScaling = .scaleProportionallyUpOrDown
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var isFlipped : Bool { return false } // REQUIRED for dragged image vertical position !!!
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (title inTitle : String, font inOptionalFont : NSFont?) {
     self.title = inTitle
@@ -63,35 +63,35 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (image inImage : NSImage?) {
     self.image = inImage
     self.imageScaling = .scaleProportionallyUpOrDown
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var fittingSize : NSSize {
     return NSSize (width: 23.0, height: 23.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     return NSSize (width: 23.0, height: 23.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Drag type and object type name
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
   private var mDraggedObjectFactory : Optional < () -> DraggedObjectFactoryDescriptor? > = nil
   private var mDraggedObjectImage : Optional < () -> EBShape? > = nil
   private weak var mScaleProvider : EBGraphicViewControllerProtocol? = nil // Should de WEAK
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectFactory : Optional < () -> DraggedObjectFactoryDescriptor? >,
@@ -102,7 +102,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     scaleProvider.addPasteBoardType (draggedType)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectImage : Optional < () -> EBShape? >,
@@ -113,9 +113,9 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     scaleProvider.addPasteBoardType (draggedType)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  image binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateValue (from inObject : EBObservableProperty <NSImage>) {
     switch inObject.selection {
@@ -131,11 +131,11 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mImageController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_image (_ inObject : EBObservableProperty <NSImage>) -> Self {
     self.mImageController = EBObservablePropertyController (
@@ -145,16 +145,16 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  NSDraggingSource protocol implementation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func draggingSession (_ session: NSDraggingSession,
                         sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
     return .generic
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseDown (with inEvent : NSEvent) {
     if let dragType = self.mDragType, self.isEnabled {
@@ -240,20 +240,20 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseUp (with inEvent : NSEvent) {
     self.mMouseIsInside = false
     super.mouseUp (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Hilite when mouse is within button
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTrackingArea : NSTrackingArea? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func updateTrackingAreas () { // This is required for receiving mouseEntered and mouseExited events
   //--- Remove current tracking area
@@ -273,7 +273,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     super.updateTrackingAreas ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mMouseIsInside = false {
     didSet {
@@ -283,7 +283,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseEntered (with inEvent : NSEvent) {
     if self.isEnabled {
@@ -292,7 +292,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     super.mouseEntered (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  override func mouseMoved (with inEvent : NSEvent) {
 //    if self.isEnabled {
@@ -302,16 +302,16 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
 //    super.mouseMoved (with: inEvent)
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseExited (with inEvent : NSEvent) {
     self.mMouseIsInside = false
     super.mouseExited (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   DRAW
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     if self.mMouseIsInside {
@@ -331,7 +331,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

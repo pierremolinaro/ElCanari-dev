@@ -12,12 +12,12 @@ import AppKit
 
 final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerticalStackView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
   private var mDataSource = [AssignedPadProxy] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -67,15 +67,15 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
     _ = self.appendView (self.mTableView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  selectedPadProxy
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var selectedPadProxy : AssignedPadProxy? {
     if self.mTableView.selectedRow >= 0 {
@@ -85,13 +85,13 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $assignedPadProxies binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_assignedPadProxies (_ inModel : EBObservableProperty <AssignedPadProxiesInDevice>) -> Self {
     self.mController = EBObservablePropertyController (
@@ -101,14 +101,14 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_assignedPadProxies () {
 //    self.mController?.unregister ()
 //    self.mController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateUnconnectedPadList (from inModel : EBObservableProperty <AssignedPadProxiesInDevice>) {
     switch inModel.selection {
@@ -121,7 +121,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

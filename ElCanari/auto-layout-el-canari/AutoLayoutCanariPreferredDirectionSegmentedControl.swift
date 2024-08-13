@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (equalWidth: true, size: .small)
@@ -24,13 +24,13 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
     self.setLabel ("⬇︎", forSegment: 3)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateTag (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
@@ -53,7 +53,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     if self.selectedSegment >= 0 {
@@ -63,13 +63,13 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
     return super.sendAction (action, to: to)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $angle binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_angle (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mAngleController = EBGenericReadWritePropertyController <Int> (
@@ -79,7 +79,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

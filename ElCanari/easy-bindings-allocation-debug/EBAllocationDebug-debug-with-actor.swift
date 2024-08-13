@@ -115,7 +115,7 @@ nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAY
   private var mLiveObjectCountByClass = [String : Int] ()
   private var mRefreshTriggered = false
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transmitPendingAllocations (_ inAllocations : [AnyObject.Type], _ inDeallocations : [AnyObject.Type]) {
     for t in inAllocations {
@@ -148,14 +148,14 @@ nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAY
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func getAllocations () -> ([String : Int], [String : Int]) {
     self.mRefreshTriggered = false
     return (self.mTotalAllocatedObjectCountByClass, self.mLiveObjectCountByClass)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -195,15 +195,15 @@ fileprivate struct EBAllocationItemDisplay {
 
 @MainActor final class EBAllocationDebug {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTotalAllocatedObjectCountByClass = [String : Int] ()
   private var mLiveObjectCountByClass = [String : Int] ()
   private var mSnapShotDictionary = [String : Int] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAllocationStatsDisplayFilterIndex = EBPreferenceProperty <Int> (
     defaultValue: 0,
@@ -254,9 +254,9 @@ fileprivate struct EBAllocationItemDisplay {
 
   fileprivate var mStatsTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //   @MainActor override init () {
 //     super.init ()
@@ -374,9 +374,9 @@ fileprivate struct EBAllocationItemDisplay {
      }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    noteObjectAllocation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  fileprivate func noteObjectAllocation (ofType inType : AnyObject.Type) {
 //    let className = String (describing: inType)
@@ -389,9 +389,9 @@ fileprivate struct EBAllocationItemDisplay {
 //    self.triggerRefreshDisplay ()
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    pmNoteObjectDeallocation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  fileprivate func noteObjectDeallocation (ofType inType : AnyObject.Type) {
 //    let className = String (describing: inType)
@@ -406,14 +406,14 @@ fileprivate struct EBAllocationItemDisplay {
 //    self.triggerRefreshDisplay ()
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAllocationStatsDataSource = [EBAllocationItemDisplay] ()
   private var mRefreshTriggered = false
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    triggerRefreshDisplay
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func triggerRefreshDisplay () {
     if !self.mRefreshTriggered {
@@ -427,30 +427,30 @@ fileprivate struct EBAllocationItemDisplay {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func allocationStatsDisplayFilterIndexDidChange () {
     self.triggerRefreshDisplay ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func showAllocationStatWindow (_ inSender : AnyObject) {
     self.mAllocationStatsWindow.makeKeyAndOrderFront (inSender)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    performSnapShotAction:
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performSnapShotAction () {
     self.mSnapShotDictionary = self.mLiveObjectCountByClass
     self.triggerRefreshDisplay ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    display
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func display (_ inTotalAllocatedObjectCountByClass : [String : Int], _ inLiveObjectCountByClass : [String : Int]) {
     self.mTotalAllocatedObjectCountByClass = inTotalAllocatedObjectCountByClass
@@ -458,9 +458,9 @@ fileprivate struct EBAllocationItemDisplay {
     self.displayAllocation ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    displayAllocation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func displayAllocation () {
     var liveObjectCount = 0
@@ -495,7 +495,7 @@ fileprivate struct EBAllocationItemDisplay {
     flushOutletEvents ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

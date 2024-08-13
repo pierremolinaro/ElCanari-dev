@@ -14,13 +14,13 @@ import AppKit
 
 final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  User information
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mTextFieldUserInfo : Any? = nil // Not used, freely available for user
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize.cocoaControlSize)
@@ -33,13 +33,13 @@ final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
     self.action = #selector (Self.ebAction(_:))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mTextDidChange : Optional < () -> Void>  = nil {
     didSet {
@@ -47,13 +47,13 @@ final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func ebAction (_ _ : Any?) {
     self.mValueController?.updateModel (withValue: self.stringValue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
@@ -63,9 +63,9 @@ final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  value binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateOutlet (_ inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -85,11 +85,11 @@ final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
     self.invalidateIntrinsicContentSize ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValueController : EBGenericReadWritePropertyController <String>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_value (_ inModel : EBObservableMutableProperty <String>, sendContinously inContinuous : Bool) -> Self {
     self.isContinuous = inContinuous
@@ -100,7 +100,7 @@ final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

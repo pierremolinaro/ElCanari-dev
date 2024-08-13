@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutSymbolDocument_addSolidOvalButtonImage (
        _ prefs_symbolColor : NSColor

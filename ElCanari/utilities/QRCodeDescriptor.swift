@@ -21,14 +21,14 @@ fileprivate let PRINT_PIXEL_RECT_COUNT = false
 
 struct QRCodeDescriptor : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct QRCodePoint {
     let x : Int
     let y : Int
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct QRCodeRectangle : Hashable {
     let x : Int
@@ -37,13 +37,13 @@ struct QRCodeDescriptor : Hashable {
     let height : Int
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let blackRectangles : [QRCodeRectangle]
   let imageWidth : Int
   let imageHeight : Int
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (string inString : String,
         errorCorrectionLevel inErrorCorrectionLevel : CIQRCodeDescriptor.ErrorCorrectionLevel,
@@ -115,7 +115,7 @@ struct QRCodeDescriptor : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate static func buildPixelAndRectArray (
                  from inBitMap : [[Bool]],
@@ -160,7 +160,7 @@ struct QRCodeDescriptor : Hashable {
     return (pixels, rects)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate static func groupVerticalPixels (from inSortedPixelArray : [QRCodePoint],
                                                _ ioRectArray : inout [QRCodeRectangle]) {
@@ -186,7 +186,7 @@ struct QRCodeDescriptor : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -194,7 +194,7 @@ struct QRCodeDescriptor : Hashable {
 
 fileprivate extension CIQRCodeDescriptor.ErrorCorrectionLevel {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var string : String {
     switch self {
@@ -206,7 +206,7 @@ fileprivate extension CIQRCodeDescriptor.ErrorCorrectionLevel {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

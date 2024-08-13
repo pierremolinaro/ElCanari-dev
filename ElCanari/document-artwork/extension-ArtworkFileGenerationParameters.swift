@@ -12,7 +12,7 @@ import Foundation
 
 extension ArtworkFileGenerationParameters {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var layerItems : ProductLayerSet {
     var items = ProductLayerSet ()
@@ -97,7 +97,7 @@ extension ArtworkFileGenerationParameters {
     return items
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

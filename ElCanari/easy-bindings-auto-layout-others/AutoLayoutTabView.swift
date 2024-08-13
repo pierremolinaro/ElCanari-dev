@@ -12,13 +12,13 @@ import AppKit
 
 final class AutoLayoutTabView : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDocumentView = MyTabDocumentView ()
   private var mPages = [NSView] ()
   private var mSegmentedControl : ALB_NSSegmentedControl
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     self.mSegmentedControl = ALB_NSSegmentedControl (equalWidth: false, size: inSize.cocoaControlSize)
@@ -42,15 +42,15 @@ final class AutoLayoutTabView : ALB_NSView {
     self.addConstraints (permanentConstraints)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // ADD TAB
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func addTab (title inTitle : String,
                      image inImage : NSImage? = nil,
@@ -68,12 +68,12 @@ final class AutoLayoutTabView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCurrentTabView : NSView? = nil
   private var mConstraints = [NSLayoutConstraint] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func selectTab (atIndex inIndex : Int) {
     if self.mSegmentedControl.segmentCount > 0 {
@@ -106,9 +106,9 @@ final class AutoLayoutTabView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // SELECTED TAB DID CHANGE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectedItemDidChange (_ inSender : Any?) {
     let idx = self.mSegmentedControl.selectedSegment
@@ -119,19 +119,19 @@ final class AutoLayoutTabView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var indexOfSelectedItem : Int {
     return self.mSegmentedControl.indexOfSelectedItem
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $selectedPage binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelectedTabIndexController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_selectedPage (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
@@ -141,7 +141,7 @@ final class AutoLayoutTabView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func update (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
@@ -154,7 +154,7 @@ final class AutoLayoutTabView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -162,7 +162,7 @@ final class AutoLayoutTabView : ALB_NSView {
 
 fileprivate final class MyTabDocumentView : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect: NSRect) {
     NSColor.windowBackgroundColor.setFill ()
@@ -170,7 +170,7 @@ fileprivate final class MyTabDocumentView : ALB_NSView {
     bp.fill ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init (pullsDown: false, size: inSize.cocoaControlSize)
@@ -27,13 +27,13 @@ final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton_enabled_hidden_b
     self.addItem (forUnit: CANARI_UNITS_PER_PC)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func addItem (forUnit inUnit : Int) {
     let unitString = unitStringFrom (displayUnit: inUnit)
@@ -41,7 +41,7 @@ final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton_enabled_hidden_b
     self.lastItem?.tag = inUnit
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateTag (from inObject : EBObservableMutableProperty <Int>?) {
     if let selection = inObject?.selection {
@@ -57,20 +57,20 @@ final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton_enabled_hidden_b
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mSelectedUnitController?.updateModel (withValue: self.selectedTag ())
     return super.sendAction (action, to: to)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $selectedUnit binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelectedUnitController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_unit (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mSelectedUnitController = EBGenericReadWritePropertyController <Int> (
@@ -80,7 +80,7 @@ final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton_enabled_hidden_b
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -5,7 +5,7 @@ import AppKit
 
 extension BoardModel {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func boardLimitsSegments () -> MergerSegmentArray {
     let left = self.modelLimitWidth / 2
@@ -22,7 +22,7 @@ extension BoardModel {
     return MergerSegmentArray (segments)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

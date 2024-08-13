@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutMergerDocumentSubClass {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildInsertModelInBoardMenuBuilder (_ mouseDownLocationInView : CanariPoint) -> NSMenu {
     let menu = NSMenu ()
@@ -32,7 +32,7 @@ extension AutoLayoutMergerDocumentSubClass {
     return menu
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func insertModelInBoardAction (_ inSender : NSMenuItem) {
     if let (boardModel, mouseDownLocationInView) = inSender.representedObject as? (BoardModel, CanariPoint) {
@@ -47,7 +47,7 @@ extension AutoLayoutMergerDocumentSubClass {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func insertArrayOfModelsInBoardAction (_ inSender : NSMenuItem) {
     if let mouseDownLocationInView = inSender.representedObject as? CanariPoint {
@@ -156,7 +156,7 @@ extension AutoLayoutMergerDocumentSubClass {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

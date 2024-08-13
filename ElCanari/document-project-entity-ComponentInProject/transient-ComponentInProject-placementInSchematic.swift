@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_placementInSchematic (
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic]

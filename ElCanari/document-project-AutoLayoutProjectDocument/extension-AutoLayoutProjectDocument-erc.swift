@@ -19,13 +19,13 @@ struct SideAndNetName : Hashable {
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func invalidateERC () {
     self.rootObject.mLastERCCheckingSignature = 0 
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performERCChecking () -> Bool {
     self.mERCLogTextViewArray.clear ()
@@ -78,7 +78,7 @@ extension AutoLayoutProjectDocument {
     return issues.isEmpty
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func checkVersusArtwork (_ ioIssues : inout [CanariIssue]) {
     if let artwork = self.rootObject.mArtwork {
@@ -120,7 +120,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkTracksLayer (_ ioIssues : inout [CanariIssue],
                                  artworkClearance inArtworkClearance : Int) {
@@ -220,7 +220,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func checkViasOARAndPHD (_ ioIssues : inout [CanariIssue],
                                        OAR inOAR : Int,
@@ -261,7 +261,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func checkPadsOARAndPHD (_ ioIssues : inout [CanariIssue],
                                        OAR inOAR : Int,
@@ -349,7 +349,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func buildPadNetDictionary (_ ioIssues : inout [CanariIssue],
                                           _ ioPadID : inout Int,
@@ -505,7 +505,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkPadInsulation (betweenArraies inPadArray : ([PadGeometryForERC], [PadGeometryForERC]),
                                    _ inLayerName : String,
@@ -523,7 +523,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkPadInsulation (inArray inPadArray : [PadGeometryForERC],
                                    _ inLayerName : String,
@@ -545,7 +545,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkPadConnectivity (_ ioIssues : inout [CanariIssue],
                                      _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, EBBezierPath)]],
@@ -590,7 +590,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkPadSizeVersusConnectedTracksSide (_ ioIssues : inout [CanariIssue],
                                                       _ inConnector : BoardConnector,
@@ -698,7 +698,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkNetConnectivity (_ ioIssues : inout [CanariIssue],
                                      _ inNetConnectorsDictionary : [String : [(BoardConnector, EBBezierPath)]]) {
@@ -748,7 +748,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkTrackInsulation (_ ioIssues : inout [CanariIssue],
                                      _ inPadNetDictionary : [SideAndNetName : [PadGeometryForERC]],
@@ -852,7 +852,7 @@ extension AutoLayoutProjectDocument {
     self.checkViaViaInsulation (&ioIssues, viaDictionary)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkViaViaInsulation (_ ioIssues : inout [CanariIssue],
                                       _ inViaDictionary : [String : [GeometricCircle]]) {
@@ -884,7 +884,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkTrackTrackInsulation (_ ioIssues : inout [CanariIssue],
                                           _ inSide : String,
@@ -917,7 +917,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkTrackPadInsulation (_ ioIssues : inout [CanariIssue],
                                         _ inSide : String,
@@ -952,7 +952,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   private func checkPadViaInsulation (_ ioIssues : inout [CanariIssue],
                                       _ inSide : String,
@@ -985,7 +985,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   private func checkTrackViaInsulation (_ ioIssues : inout [CanariIssue],
                                         _ inSide : String,
@@ -1018,7 +1018,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkTrackRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                  _ inSide : String,
@@ -1048,7 +1048,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkPadRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
@@ -1078,7 +1078,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkViaRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
@@ -1108,7 +1108,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -1116,7 +1116,7 @@ extension AutoLayoutProjectDocument {
 
 @MainActor extension EBWeakReferenceArray where Element == AutoLayoutTextObserverView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clear () {
     for outlet in self.values {
@@ -1124,7 +1124,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendMessage (_ inString : String) {
     for outlet in self.values {
@@ -1132,7 +1132,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendSuccess (_ inString : String) {
     for outlet in self.values {
@@ -1140,7 +1140,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendError (_ inString : String) {
     for outlet in self.values {
@@ -1148,7 +1148,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendWarning (_ inString : String) {
     for outlet in self.values {
@@ -1156,7 +1156,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

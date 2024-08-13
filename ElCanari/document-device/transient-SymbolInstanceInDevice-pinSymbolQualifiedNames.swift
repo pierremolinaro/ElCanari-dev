@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (
        _ self_mInstanceName : String,                                     

@@ -8,7 +8,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_foregroundImageData (_ model : EBObservableProperty <Data>) {
     self.mForegroundImageDataController = EBObservablePropertyController (
@@ -17,14 +17,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_foregroundImageData () {
 //    self.mForegroundImageDataController?.unregister ()
 //    self.mForegroundImageDataController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateForegroundImageData (from model : EBObservableProperty <Data>) {
     if self.mForegroundImage != nil {
@@ -44,7 +44,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_foregroundImageOpacity (_ model : EBObservableProperty <Double>) {
     self.mForegroundImageOpacityController = EBObservablePropertyController (
@@ -53,14 +53,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_foregroundImageOpacity () {
 //    self.mForegroundImageOpacityController?.unregister ()
 //    self.mForegroundImageOpacityController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateForegroundImageOpacity (from model : EBObservableProperty <Double>) {
     switch model.selection {
@@ -74,7 +74,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

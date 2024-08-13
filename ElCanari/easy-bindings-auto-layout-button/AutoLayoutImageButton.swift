@@ -12,12 +12,12 @@ import AppKit
 
 final class AutoLayoutImageButton : ALB_NSButton {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mWidth : CGFloat
   private var mHeight : CGFloat
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (imageName inImageName : String, tooltip inTooltip : String, width inWidth : Int, height inHeight : Int) {
     self.mWidth = CGFloat (inWidth)
@@ -35,19 +35,19 @@ final class AutoLayoutImageButton : ALB_NSButton {
     self.isBordered = false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     return NSSize (width: self.mWidth, height: self.mHeight)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

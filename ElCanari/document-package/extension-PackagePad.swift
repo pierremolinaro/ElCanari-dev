@@ -18,29 +18,29 @@ let VERY_LARGE_PAD_NUMBER = 1_000_000
 
 extension PackagePad {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Cursor
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func cursorForKnob_PackagePad (knob _ : Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Translation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackagePad  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptToTranslate_PackagePad (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_PackagePad (xBy inDx: Int,
                              yBy inDy: Int,
@@ -49,35 +49,35 @@ extension PackagePad {
     self.yCenter += inDy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  HORIZONTAL FLIP
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipHorizontally_PackagePad () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipHorizontally_PackagePad () -> Bool {
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  VERTICAL FLIP
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipVertically_PackagePad () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipVertically_PackagePad () -> Bool {
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Knob
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canMove_PackagePad (knob _ : Int,
                          proposedUnalignedAlignedTranslation _ : CanariPoint,
@@ -87,7 +87,7 @@ extension PackagePad {
     return inProposedAlignedTranslation
  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_PackagePad (knob _ : Int,
                         proposedDx _ : Int,
@@ -99,16 +99,16 @@ extension PackagePad {
                         shift _ : Bool) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Rotate 90°
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_PackagePad (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     accumulatedPoints.insertCanariPoint (x: self.xCenter, y: self.yCenter)
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90Clockwise_PackagePad (from inRotationCenter : CanariPoint,
                                      userSet _ : inout EBReferenceSet <EBManagedObject>) {
@@ -119,7 +119,7 @@ extension PackagePad {
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_PackagePad (from inRotationCenter : CanariPoint,
                                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
@@ -130,7 +130,7 @@ extension PackagePad {
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationAfterPasting_PackagePad (additionalDictionary _ : [String : Any],
                                          optionalDocument _ : EBAutoLayoutManagedDocument?,
@@ -139,16 +139,16 @@ extension PackagePad {
     return "" // Means ok
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Save into additional dictionary
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveIntoAdditionalDictionary_PackagePad (_ _ : inout [String : Any]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  SNAP TO GRID
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_PackagePad (_ inGrid : Int) -> Bool {
     var result = (self.xCenter % inGrid) != 0
@@ -158,14 +158,14 @@ extension PackagePad {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_PackagePad (_ inGrid : Int) {
     self.xCenter = ((self.xCenter + inGrid / 2) / inGrid) * inGrid
     self.yCenter = ((self.yCenter + inGrid / 2) / inGrid) * inGrid
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignmentPoints_PackagePad () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
@@ -173,23 +173,23 @@ extension PackagePad {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  operationBeforeRemoving
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationBeforeRemoving_PackagePad () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func angleInRadian (from inCanariPoint : CanariPoint, from inStartAngleInRadian : CGFloat) -> CGFloat {
     let a = CanariPoint.angleInRadian (inCanariPoint, CanariPoint (x: self.xCenter, y: self.yCenter))
     return (2.0 * CGFloat.pi + a - inStartAngleInRadian).truncatingRemainder (dividingBy: 2.0 * CGFloat.pi)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func program () -> String {
     var s = "pad "
@@ -218,7 +218,7 @@ extension PackagePad {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -226,7 +226,7 @@ extension PackagePad {
 
 extension EBBezierPath {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func pad (centerX inCenterX : Int,
                    centerY inCenterY : Int,
@@ -246,7 +246,7 @@ extension EBBezierPath {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -258,7 +258,7 @@ final class PadGeometryForERC {
   let rectangles : [GeometricRect]
   let bezierPath : EBBezierPath
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (padId inID : Int,
         centerX inCenterX : Int,
@@ -352,7 +352,7 @@ final class PadGeometryForERC {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private init (_ inID : Int,
                 _ inCircles : [GeometricCircle],
@@ -364,7 +364,7 @@ final class PadGeometryForERC {
     self.bezierPath = inBezierPath
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransform : AffineTransform) -> PadGeometryForERC {
     var c = [GeometricCircle] ()
@@ -378,7 +378,7 @@ final class PadGeometryForERC {
     return PadGeometryForERC (self.id, c, rects, self.bezierPath.transformed (by: inAffineTransform))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCachedBounds : NSRect? = nil
   var bounds : NSRect {
@@ -397,7 +397,7 @@ final class PadGeometryForERC {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (pad inOther : PadGeometryForERC) -> Bool {
     if !self.bounds.intersects (inOther.bounds) {
@@ -440,7 +440,7 @@ final class PadGeometryForERC {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (oblong inOblong : GeometricOblong) -> Bool {
     if !self.bounds.intersects (inOblong.bounds) {
@@ -460,7 +460,7 @@ final class PadGeometryForERC {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (rect inRect : GeometricRect) -> Bool {
     if !self.bounds.intersects (inRect.bounds) {
@@ -480,7 +480,7 @@ final class PadGeometryForERC {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (circle inCircle : GeometricCircle) -> Bool {
     if !self.bounds.intersects (inCircle.bounds) {
@@ -500,7 +500,7 @@ final class PadGeometryForERC {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -508,7 +508,7 @@ final class PadGeometryForERC {
 
 //extension Array where Element == PadGeometryForERC {
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  func bezierPathes () -> [EBBezierPath] {
 //    var result = [EBBezierPath] ()
@@ -518,7 +518,7 @@ final class PadGeometryForERC {
 //    return result
 //  }
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 

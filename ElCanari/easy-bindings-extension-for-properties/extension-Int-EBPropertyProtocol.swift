@@ -10,7 +10,7 @@ import AppKit
 
 extension Int : EBStoredPropertyProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebHashValue () -> UInt32 {
     var value = self.bigEndian
@@ -18,32 +18,32 @@ extension Int : EBStoredPropertyProtocol {
     return array.ebHashValue ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func convertFromNSObject (object : NSObject) -> Int {
     let number = object as! NSNumber
     return number.intValue
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     ioData.append (base62Encoded: self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Int? {
     return inData.base62EncodedInt (range: inRange)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

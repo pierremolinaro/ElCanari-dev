@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func updateOutlet (_ zoom : EBObservableProperty <Int>) {
     switch zoom.selection {
@@ -22,7 +22,7 @@ extension EBGraphicView {
     self.applyZoom ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_zoom (_ inObject : EBObservableMutableProperty <Int>) {
     self.mZoomController = EBGenericReadWritePropertyController <Int> (
@@ -31,14 +31,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_zoom () {
 //    self.mZoomController?.unregister ()
 //    self.mZoomController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -16,7 +16,7 @@ typealias PathApertureDictionary = [CGFloat : [EBLinePath]]
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildProductData () -> ProductData {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
@@ -64,7 +64,7 @@ extension AutoLayoutProjectDocument {
     )
   }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildBoardLimitPath () -> EBLinePath {
     var retainedBP = EBBezierPath ()
@@ -145,7 +145,7 @@ extension AutoLayoutProjectDocument {
     return retainedBP.linePathesByFlattening (withFlatness: 0.1) [0]
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func buildHoleDictionary () -> [CGFloat : [(NSPoint, NSPoint)]] {
     var result = [CGFloat : [(NSPoint, NSPoint)]] ()
@@ -209,7 +209,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildPackageLegend (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary) {
     var frontPackageLegends = PathApertureDictionary () // Aperture, path
@@ -238,7 +238,7 @@ extension AutoLayoutProjectDocument {
     return (frontPackageLegends, backPackageLegends)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildComponentNamePathes (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary) {
     var frontComponentNames = PathApertureDictionary () // Aperture, path
@@ -274,7 +274,7 @@ extension AutoLayoutProjectDocument {
     return (frontComponentNames, backComponentNames)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildComponentValuePathes (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary) {
     var frontComponentValues = PathApertureDictionary () // Aperture, path
@@ -310,7 +310,7 @@ extension AutoLayoutProjectDocument {
     return (frontComponentValues, backComponentValues)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildTextPathes (_ inCocoaBoardRect : NSRect) -> (PathApertureDictionary, PathApertureDictionary, PathApertureDictionary, PathApertureDictionary) {
     var legendFrontTexts = PathApertureDictionary () // Aperture, path
@@ -350,7 +350,7 @@ extension AutoLayoutProjectDocument {
     return (legendFrontTexts, layoutFrontTexts, layoutBackTexts, legendBackTexts)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildBoardImagesPathes () -> ([ProductRectangle], [ProductRectangle]) {
     var legendFront = [ProductRectangle] ()
@@ -377,7 +377,7 @@ extension AutoLayoutProjectDocument {
     return (legendFront, legendBack)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildQRCodePathes () -> ([ProductRectangle], [ProductRectangle]) {
     var legendFront = [ProductRectangle] ()
@@ -404,7 +404,7 @@ extension AutoLayoutProjectDocument {
     return (legendFront, legendBack)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildViaPads () -> [ProductCircle] { // Center, diameter
     var result = [ProductCircle] ()
@@ -418,7 +418,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildTracks () -> ([TrackSide : [ProductLine]], [ProductLine], [ProductLine]) {
     var frontTracksWithNoSilkScreen = [ProductLine] ()
@@ -443,7 +443,7 @@ extension AutoLayoutProjectDocument {
     return (tracks, frontTracksWithNoSilkScreen, backTracksWithNoSilkScreen)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildLines (_ inCocoaBoardRect : NSRect) -> ([ProductLine], [ProductLine]) {
     var frontLines = [ProductLine] ()
@@ -467,7 +467,7 @@ extension AutoLayoutProjectDocument {
     return (frontLines, backLines)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func buildCircularPads () -> [PadLayer : [ProductCircle]] {
     var circularPads = [PadLayer : [ProductCircle]] ()
@@ -520,7 +520,7 @@ extension AutoLayoutProjectDocument {
     return circularPads
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func buildOblongPads () -> [PadLayer : [ProductLine]] {
     var oblongPads = [PadLayer : [ProductLine]] ()
@@ -573,7 +573,7 @@ extension AutoLayoutProjectDocument {
     return oblongPads
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func buildPolygonPads () -> [PadLayer : [ProductPolygon]] {
     var polygonPads = [PadLayer : [ProductPolygon]] ()
@@ -626,7 +626,7 @@ extension AutoLayoutProjectDocument {
     return polygonPads
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -781,7 +781,7 @@ struct ProductPolygon { // All in Cocoa Unit
   let origin : NSPoint
   let points : [NSPoint]
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransform : AffineTransform) -> ProductPolygon {
     let to = inAffineTransform.transform (self.origin)
@@ -792,7 +792,7 @@ struct ProductPolygon { // All in Cocoa Unit
     return ProductPolygon (origin: to, points: tps)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -804,7 +804,7 @@ struct ProductRectangle : Hashable { // All in Cocoa Unit
   let p2 : NSPoint
   let p3 : NSPoint
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func transformed (by inAffineTransform : AffineTransform) -> ProductRectangle {
 //    let tp0 = inAffineTransform.transform (self.p0)
@@ -814,11 +814,11 @@ struct ProductRectangle : Hashable { // All in Cocoa Unit
 //    return ProductRectangle (p0: tp0, p1: tp1, p2: tp2, p3: tp3)
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var polygon : ProductPolygon { ProductPolygon (origin: self.p0, points: [self.p1, self.p2, self.p3]) }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -830,7 +830,7 @@ typealias MergerRectangleArray = [ProductRectangle]
 
 extension Array where Element == ProductRectangle {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var polygons : [ProductPolygon] {
     var result = [ProductPolygon] ()
@@ -840,7 +840,7 @@ extension Array where Element == ProductRectangle {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var bezierPathArray : [EBBezierPath] {
     var result = [EBBezierPath] ()
@@ -856,7 +856,7 @@ extension Array where Element == ProductRectangle {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func convertToCanari (cocoaPoint inPoint : NSPoint,
                                 dx inDx : Int,
@@ -884,7 +884,7 @@ extension Array where Element == ProductRectangle {
     return CanariPoint (x: x, y: y)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (toArchiveArray ioArchiveArray : inout [String],
             dx inDx : Int,
@@ -930,7 +930,7 @@ extension Array where Element == ProductRectangle {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addRectangles (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
                       dx inDx : Int,
@@ -987,7 +987,7 @@ extension Array where Element == ProductRectangle {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addPolygons (toPolygons ioPolygons : inout [[String]],
                     dx inDx : Int,
@@ -1045,7 +1045,7 @@ extension Array where Element == ProductRectangle {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

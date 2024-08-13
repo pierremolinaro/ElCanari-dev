@@ -201,7 +201,7 @@ struct SchematicSheetGeometry : Hashable {
   let horizontalDivisions : Int
   let verticalDivisions : Int
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct PointLocationInfo : Hashable {
     let row : Int
@@ -209,7 +209,7 @@ struct SchematicSheetGeometry : Hashable {
     let string : String
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func locationInfo (forPointInSheet inPoint : CanariPoint) -> PointLocationInfo {
     let gutterWidth = cocoaToCanariUnit (PAPER_GUTTER_WIDTH_COCOA_UNIT)
@@ -234,7 +234,7 @@ struct SchematicSheetGeometry : Hashable {
   }
 
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum PointInRowOrColumnHeader {
     case inColumHeader (Int)
@@ -243,7 +243,7 @@ struct SchematicSheetGeometry : Hashable {
     case outsideRowOrColumnHeader
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func pointInRowOrColumnHeader (_ inPoint : NSPoint) -> PointInRowOrColumnHeader {
     let cocoaSize = self.size.cocoaSize
@@ -274,7 +274,7 @@ struct SchematicSheetGeometry : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -284,13 +284,13 @@ struct SchematicSheetDescriptor : Hashable {
   let geometry : SchematicSheetGeometry
   let sheetIndex : Int
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func sheetLocationInfo (forPointInSheet inPoint : CanariPoint) -> SchematicSheetGeometry.PointLocationInfo {
     return self.geometry.locationInfo (forPointInSheet: inPoint)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -309,7 +309,7 @@ func + (lhs : QuadrantRotation, rhs : QuadrantRotation) -> QuadrantRotation {
 
 extension QuadrantRotation {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func rotateClockwise () {
     switch self {
@@ -324,7 +324,7 @@ extension QuadrantRotation {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func rotateCounterClockwise () {
     switch self {
@@ -339,7 +339,7 @@ extension QuadrantRotation {
     }
   }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -347,7 +347,7 @@ extension QuadrantRotation {
 
 struct BorderCurveDescriptor : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let p1 : CanariPoint
   let p2 : CanariPoint
@@ -355,7 +355,7 @@ struct BorderCurveDescriptor : Hashable {
   let cp2 : CanariPoint
   let shape : BorderCurveShape
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -375,7 +375,7 @@ struct BoardFontCharacter : Hashable {
   let advancement : Int
   let segments : [BoardCharSegment]
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
@@ -389,7 +389,7 @@ struct BoardFontCharacter : Hashable {
     return crc
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -403,7 +403,7 @@ struct BoardFontDescriptor : Hashable {
   let nominalSize : Int
   let dictionary :  BoardFontDictionary
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
@@ -415,7 +415,7 @@ struct BoardFontDescriptor : Hashable {
     return crc
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -427,7 +427,7 @@ typealias PackageMasterPadDictionary = [String : MasterPadDescriptor] // Pad nam
 
 extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var padsRect : CanariRect {
     var points = [CanariPoint] ()
@@ -440,7 +440,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     return CanariRect (points: points)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -448,7 +448,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
 @MainActor struct MasterPadDescriptor : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let name : String
   let center : CanariPoint
@@ -458,7 +458,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
   let style : PadStyle
   let slavePads : [SlavePadDescriptor]
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func bezierPath (index inIndex : Int, extraWidth : Int = 0) -> EBBezierPath {
     if inIndex == 0 {
@@ -481,7 +481,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
@@ -549,7 +549,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -557,7 +557,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
 @MainActor struct SlavePadDescriptor : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let center : CanariPoint
   let padSize : CanariSize
@@ -565,7 +565,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
   let shape : PadShape
   let style : SlavePadStyle
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
@@ -629,7 +629,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

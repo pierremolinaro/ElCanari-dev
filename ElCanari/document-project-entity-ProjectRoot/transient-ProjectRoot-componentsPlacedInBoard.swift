@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_componentsPlacedInBoard (
        _ self_mComponents_mNamePrefix : [ComponentInProject_mNamePrefix],

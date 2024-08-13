@@ -12,9 +12,9 @@ import AppKit
 
 @objc(AutoLayoutProjectDocumentSubClass) final class AutoLayoutProjectDocumentSubClass : AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -56,7 +56,7 @@ import AppKit
     self.undoManager?.enableUndoRegistration ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func ebBuildUserInterface () {
     super.ebBuildUserInterface ()
@@ -69,9 +69,9 @@ import AppKit
     self.rootObject.removeUnusedDevices ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Schematic mouse down interception
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func schematicMouseDownInterception (_ inUnalignedPoint : NSPoint) -> Bool {
     var result = false
@@ -107,27 +107,27 @@ import AppKit
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Property for print operations (schematic and board)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mPrintOperation : NSPrintOperation? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Property for dragging symbol in schematics
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mPossibleDraggedSymbol : ComponentSymbolInProject? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Property for dragging package in board
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mPossibleDraggedComponent : ComponentInProject? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
                        forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
@@ -218,7 +218,7 @@ import AppKit
     return (resultImage, resultOffset)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  override func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
 //                                  with inDragRows : IndexSet,
@@ -321,7 +321,7 @@ import AppKit
 //    return resultImage
 //  }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   override func performDragOperation (_ sender : NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     if DEBUG_DRAG_AND_DROP {
@@ -372,7 +372,7 @@ import AppKit
     return ok
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddSymbolDragOperation (_ inSymbol : ComponentSymbolInProject, _ inDraggingLocationInDestinationView : NSPoint) {
   //--- Fix symbol location
@@ -398,7 +398,7 @@ import AppKit
     _ = self.windowForSheet?.makeFirstResponder (self.mSchematicsView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddCommentDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
@@ -410,7 +410,7 @@ import AppKit
     _ = self.windowForSheet?.makeFirstResponder (self.mSchematicsView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddRestrictRectangleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
@@ -432,7 +432,7 @@ import AppKit
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardTextDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
@@ -446,7 +446,7 @@ import AppKit
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardImageDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
@@ -464,7 +464,7 @@ import AppKit
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardQRCodeDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
@@ -477,7 +477,7 @@ import AppKit
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardPackageDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     if let component = self.mPossibleDraggedComponent {
@@ -501,7 +501,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardLineDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
@@ -526,7 +526,7 @@ import AppKit
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

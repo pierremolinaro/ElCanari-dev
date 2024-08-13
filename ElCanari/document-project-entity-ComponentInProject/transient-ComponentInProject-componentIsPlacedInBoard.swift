@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_componentIsPlacedInBoard (
        _ self_BoardObject_isPlacedInBoard : Bool

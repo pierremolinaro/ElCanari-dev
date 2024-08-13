@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutFontDocument {
   final func configure_fontGraphicView (_ inOutlet : AutoLayoutCanariFontCharacterView) {

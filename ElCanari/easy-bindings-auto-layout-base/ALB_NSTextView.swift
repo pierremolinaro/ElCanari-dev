@@ -15,7 +15,7 @@ import AppKit
 
 final class ALB_NSTextView : NSTextView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     let textContainer = NSTextContainer (size: NSSize (width: 300, height: 300))
@@ -27,7 +27,7 @@ final class ALB_NSTextView : NSTextView {
  //   self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var mTextDidChangeCallBack : Optional < () -> Void > = nil
 
@@ -35,27 +35,27 @@ final class ALB_NSTextView : NSTextView {
   private final let mTextStorage = NSTextStorage () // Subclassing NSTextStorage requires defining string, …
   private final let mLayoutManager = EmbeddedLayoutManager ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init (frame : NSRect, textContainer : NSTextContainer?) { // Required, otherwise run time error
     fatalError ("init(frame:textContainer:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final var intrinsicContentSize : NSSize {
     let textContainer = self.textContainer!
@@ -64,7 +64,7 @@ final class ALB_NSTextView : NSTextView {
     return layoutManager.usedRect (for: textContainer).size
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final func didChangeText () {
     super.didChangeText ()
@@ -72,7 +72,7 @@ final class ALB_NSTextView : NSTextView {
     self.mTextDidChangeCallBack? ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -80,26 +80,26 @@ final class ALB_NSTextView : NSTextView {
 
 fileprivate final class EmbeddedLayoutManager : NSLayoutManager {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

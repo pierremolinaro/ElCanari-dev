@@ -8,7 +8,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setIssue (_ inBezierPathes : [EBBezierPath], _ issueKind : CanariIssue.Kind) {
     if self.mIssueBezierPathes != inBezierPathes {
@@ -23,7 +23,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

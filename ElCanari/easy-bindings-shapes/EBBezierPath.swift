@@ -14,34 +14,34 @@ import AppKit
 
 struct EBBezierPath : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     self.mPath = NSBezierPath ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (rect inRect : NSRect) {
     self.mPath = NSBezierPath (rect: inRect)
 //    self.mPath.appendRect (inRect)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (ovalIn inRect : NSRect) {
     self.mPath = NSBezierPath (ovalIn: inRect)
 //    self.mPath.appendOval (in: inRect)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (roundedRect rect : NSRect, xRadius inXRadius : CGFloat, yRadius inYRadius : CGFloat) {
     self.mPath = NSBezierPath (roundedRect: rect, xRadius: inXRadius, yRadius: inYRadius)
 //    self.mPath.appendRoundedRect (rect, xRadius: xRadius, yRadius: yRadius)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inBezierPath : NSBezierPath) {
     self.mPath = inBezierPath.copy () as! NSBezierPath
@@ -52,7 +52,7 @@ struct EBBezierPath : Hashable {
 //    self.mPath.lineJoinStyle = inBezierPath.lineJoinStyle
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (withString inString : String,
         at inOrigin : NSPoint,
@@ -113,37 +113,37 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mPath : NSBezierPath
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var nsBezierPath : NSBezierPath {
     return self.mPath.copy () as! NSBezierPath
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   nonisolated static func == (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
     return ObjectIdentifier (lhs.mPath) == ObjectIdentifier (rhs.mPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func >= (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
     return ObjectIdentifier (lhs.mPath) >= ObjectIdentifier (rhs.mPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Hashable Protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   nonisolated func hash (into hasher: inout Hasher) {
     ObjectIdentifier (self.mPath).hash (into: &hasher)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var lineWidth : CGFloat {
     get {
@@ -157,7 +157,7 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var lineCapStyle : NSBezierPath.LineCapStyle {
     get {
@@ -171,7 +171,7 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var lineJoinStyle : NSBezierPath.LineJoinStyle {
     get {
@@ -185,7 +185,7 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var windingRule : NSBezierPath.WindingRule {
     get {
@@ -199,7 +199,7 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendRect (_ inRect : NSRect) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -208,7 +208,7 @@ struct EBBezierPath : Hashable {
     self.mPath.appendRect (inRect)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendOval (in inRect : NSRect) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -217,7 +217,7 @@ struct EBBezierPath : Hashable {
     self.mPath.appendOval (in: inRect)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func move (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -226,7 +226,7 @@ struct EBBezierPath : Hashable {
     self.mPath.move (to: inPoint)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func relativeMove (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -235,7 +235,7 @@ struct EBBezierPath : Hashable {
     self.mPath.relativeMove (to: inPoint)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func line (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -244,7 +244,7 @@ struct EBBezierPath : Hashable {
     self.mPath.line (to: inPoint)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func curve (to inPoint : NSPoint, controlPoint1 inCP1 : NSPoint, controlPoint2 inCP2 : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -253,7 +253,7 @@ struct EBBezierPath : Hashable {
     self.mPath.curve (to: inPoint, controlPoint1: inCP1, controlPoint2: inCP2)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func close () {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -262,7 +262,7 @@ struct EBBezierPath : Hashable {
     self.mPath.close ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func relativeLine (to inPoint : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -271,7 +271,7 @@ struct EBBezierPath : Hashable {
     self.mPath.relativeLine (to: inPoint)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func transform (using transform: AffineTransform) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -280,7 +280,7 @@ struct EBBezierPath : Hashable {
     self.mPath.transform (using: transform)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by transform: AffineTransform) -> EBBezierPath {
     var result = self
@@ -288,31 +288,31 @@ struct EBBezierPath : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func stroke () {
     self.mPath.stroke ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func fill () {
     self.mPath.fill ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addClip () {
     self.mPath.addClip ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (_ point: NSPoint) -> Bool {
     return self.mPath.contains (point)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var bounds : NSRect {
     if self.mPath.isEmpty {
@@ -322,13 +322,13 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var isEmpty : Bool {
     return self.mPath.isEmpty
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inBezierPath : NSBezierPath) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -337,7 +337,7 @@ struct EBBezierPath : Hashable {
     self.mPath.append (inBezierPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inBezierPath : EBBezierPath) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -346,7 +346,7 @@ struct EBBezierPath : Hashable {
     self.mPath.append (inBezierPath.nsBezierPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (rect inRect : NSRect) -> Bool {
     var intersect = self.bounds.intersects (inRect)
@@ -392,7 +392,7 @@ struct EBBezierPath : Hashable {
     return intersect
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var pathToFillByStroking : EBBezierPath {
     let lineCap : CGLineCap
@@ -430,7 +430,7 @@ struct EBBezierPath : Hashable {
     return path
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (arcWithTangentFromCenter inCenter : NSPoint,
         radius inRadius : CGFloat,
@@ -487,7 +487,7 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (oblongInRect inRect : NSRect) {
     self.init ()
@@ -502,7 +502,7 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendOblong (in inRect : NSRect) {
     if !isKnownUniquelyReferenced (&self.mPath) {
@@ -519,7 +519,7 @@ struct EBBezierPath : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (octogonInRect inRect : NSRect) {
     self.init ()
@@ -540,7 +540,7 @@ struct EBBezierPath : Hashable {
     self.mPath.close ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var reversed : EBBezierPath {
     var result = EBBezierPath ()
@@ -548,7 +548,7 @@ struct EBBezierPath : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func linePathesByFlattening (withFlatness inFlatness : CGFloat) -> [EBLinePath] { // Array of pathes
     let savedDefaultFlatness = NSBezierPath.defaultFlatness
@@ -595,7 +595,7 @@ struct EBBezierPath : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func productSegments (withFlatness inFlatness : CGFloat,
                         transformedBy inAffineTransform : AffineTransform,
@@ -622,7 +622,7 @@ struct EBBezierPath : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum TextHorizontalAlignment {
     case onTheRight
@@ -630,7 +630,7 @@ struct EBBezierPath : Hashable {
     case onTheLeft
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum TextVerticalAlignment {
     case above
@@ -639,7 +639,7 @@ struct EBBezierPath : Hashable {
     case below
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -649,9 +649,9 @@ struct EBBezierPath : Hashable {
 
 extension NSBezierPath {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // https://stackoverflow.com/questions/1815568/how-can-i-convert-nsbezierpath-to-cgpath
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public var cgPath : CGPath {
     let path = CGMutablePath ()
@@ -678,7 +678,7 @@ extension NSBezierPath {
     return path
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -719,7 +719,7 @@ private func pathByStrokingCallback (_ inInfo : UnsafeMutableRawPointer?, _ inEl
 
 extension Array where Element == EBBezierPath {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var boundingBox : NSRect {
    var r = NSRect.null
@@ -731,7 +731,7 @@ extension Array where Element == EBBezierPath {
    return r
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

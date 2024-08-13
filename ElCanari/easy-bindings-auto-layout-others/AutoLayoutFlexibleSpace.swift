@@ -8,7 +8,7 @@ import AppKit
 
 final class AutoLayoutFlexibleSpace : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -16,13 +16,13 @@ final class AutoLayoutFlexibleSpace : ALB_NSView {
     self.setContentHuggingPriority (.defaultLow, for: .vertical)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
@@ -36,7 +36,7 @@ final class AutoLayoutFlexibleSpace : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

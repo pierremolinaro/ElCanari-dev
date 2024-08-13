@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_horizontalFlip (_ model : EBObservableProperty <Bool>) {
     self.mHorizontalFlipController = EBObservablePropertyController (
@@ -19,14 +19,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_horizontalFlip () {
 //    self.mHorizontalFlipController?.unregister ()
 //    self.mHorizontalFlipController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateHorizontalFlip (from model : EBObservableProperty <Bool>) {
     var horizontalFlip = false
@@ -39,7 +39,7 @@ extension EBGraphicView {
     self.set (horizontalFlip: horizontalFlip)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

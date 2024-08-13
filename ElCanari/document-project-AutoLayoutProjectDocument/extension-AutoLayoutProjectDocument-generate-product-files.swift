@@ -13,7 +13,7 @@ import Compression
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func generateProductFiles () {
     if self.fileURL != nil {
@@ -31,7 +31,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func testERCandGenerateProductFiles () {
     if self.rootObject.mLastERCCheckingSignature == self.rootObject.signatureForERCChecking {
@@ -50,7 +50,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkERCAndGenerate () {
      if self.rootObject.mLastERCCheckingIsSuccess {
@@ -68,7 +68,7 @@ extension AutoLayoutProjectDocument {
      }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performProductFilesGeneration () {
     self.mProductFileGenerationLogTextView?.clear ()
@@ -81,7 +81,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performProductFilesGeneration (atPath inDocumentFilePathWithoutExtension : String,
                                               _ inArtwork : ArtworkRoot) throws {
@@ -153,7 +153,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func removeAndCreateDirectory (atURL inDirectoryURL : URL,
                                          create inCreate : Bool) throws {
@@ -172,9 +172,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Populate product representation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func populateProductRepresentation (to ioProduct : inout ProductRepresentation) {
   //--- Board limit path
@@ -214,7 +214,7 @@ extension AutoLayoutProjectDocument {
     self.appendTracks (to: &ioProduct)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendPackageLegends (to ioProduct : inout ProductRepresentation) {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
@@ -243,7 +243,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendComponentNamePathes (to ioProduct : inout ProductRepresentation) {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
@@ -284,7 +284,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendComponentValuePathes (to ioProduct : inout ProductRepresentation) {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
@@ -325,7 +325,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendTextPathes (to ioProduct : inout ProductRepresentation) {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
@@ -368,7 +368,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendLegendLines (to ioProduct : inout ProductRepresentation) {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
@@ -397,7 +397,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendVias (to ioProduct : inout ProductRepresentation) {
     for object in self.rootObject.mBoardObjects.values {
@@ -421,7 +421,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendPads (to ioProduct : inout ProductRepresentation) {
     for object in self.rootObject.mBoardObjects.values {
@@ -461,7 +461,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendPad (center inCenter : CanariPoint,
                           padSize inPadSize : CanariSize,
@@ -482,7 +482,7 @@ extension AutoLayoutProjectDocument {
     ioProduct.append (pad: p)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendPadHole (center inCenter : CanariPoint,
                               holeSize inHoleSize : CanariSize,
@@ -522,7 +522,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendQRCodePathes (to ioProduct : inout ProductRepresentation) {
     for object in self.rootObject.mBoardObjects.values {
@@ -550,7 +550,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendImagesPathes (to ioProduct : inout ProductRepresentation) {
     for object in self.rootObject.mBoardObjects.values {
@@ -578,7 +578,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendTracks (to ioProduct : inout ProductRepresentation) {
     for object in self.rootObject.mBoardObjects.values {
@@ -623,7 +623,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func buildBoardLimitFlattenedPath () -> [ProductPoint] {
     var result = [ProductPoint] ()
@@ -706,7 +706,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -714,7 +714,7 @@ extension AutoLayoutProjectDocument {
 
 fileprivate extension PadStyle {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
     switch self {
@@ -730,7 +730,7 @@ fileprivate extension PadStyle {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -738,7 +738,7 @@ fileprivate extension PadStyle {
 
 fileprivate extension SlavePadStyle {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func layers (_ inComponentSide : ComponentSide) -> ProductLayerSet {
     switch self {
@@ -761,7 +761,7 @@ fileprivate extension SlavePadStyle {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

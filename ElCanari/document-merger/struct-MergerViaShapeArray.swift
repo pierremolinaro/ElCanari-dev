@@ -14,11 +14,11 @@ import AppKit
 
 struct MergerViaShapeArray : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let viaShapeArray : [MergerViaShape]
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func shapeBezierPathes () -> BezierPathArray {
     var result = BezierPathArray ()
@@ -33,7 +33,7 @@ struct MergerViaShapeArray : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addPad (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
                dx inDx : Int,
@@ -69,7 +69,7 @@ struct MergerViaShapeArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func addHole (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
 //                dx inDx : Int,
@@ -105,7 +105,7 @@ struct MergerViaShapeArray : Hashable {
 //    }
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addPad (toApertures ioApertureDictionary : inout [String : [String]],
                dx inDx : Int,
@@ -146,7 +146,7 @@ struct MergerViaShapeArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutTableView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addColumn_AttributedString (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSAttributedString?,
                                    valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSAttributedString) -> Void >,
@@ -37,7 +37,7 @@ extension AutoLayoutTableView {
     self.appendTableColumn (column)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -47,14 +47,14 @@ extension AutoLayoutTableView {
 
 fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mValueGetterDelegate : (_ inRow : Int) -> NSAttributedString?
   private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSAttributedString) -> Void >
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : TextAlignment,
@@ -66,13 +66,13 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
     self.isEditable = inSetterDelegate != nil
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let textField = NSTextField (frame: NSRect ())
@@ -101,7 +101,7 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
     return textField
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor @objc private func setterAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField {
@@ -111,7 +111,7 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_pinPadAssignments (
        _ self_mDevice_pinPadAssignments : ThreeStringArray?

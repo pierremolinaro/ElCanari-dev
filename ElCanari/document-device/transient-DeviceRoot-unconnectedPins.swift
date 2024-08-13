@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_unconnectedPins (
        _ self_mSymbolInstances_unconnectedPins : [SymbolInstanceInDevice_unconnectedPins]

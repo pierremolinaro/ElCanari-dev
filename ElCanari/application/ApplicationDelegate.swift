@@ -39,36 +39,29 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 
 @MainActor @main final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation, Sendable {
 
-  //································································································
-
-//  static var mShared : ApplicationDelegate? = nil
-
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override init () {
+  @MainActor override init () {
     self.mOpenSymbolInLibrary = OpenSymbolInLibrary ()
     self.mOpenPackageInLibrary = OpenPackageInLibrary ()
     self.mOpenDeviceInLibrary = OpenDeviceInLibrary ()
     self.mOpenFontInLibrary = OpenFontInLibrary ()
     super.init ()
-    DispatchQueue.main.async {
-//      Self.mShared = self
-      gApplicationDelegate = self
-    }
+    gApplicationDelegate = self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Outlets
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBOutlet var mCheckNowForUpdateMenuItem : NSMenuItem? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : NSMenuItem? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Batch Window
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mBatchWindow : NSWindow? = nil
   var mMaintenanceLogTextView : AutoLayoutStaticTextView? = nil
@@ -80,9 +73,9 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   var mHandledFileCount = 0
   var mStartDate = Date ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Instanciate Batch Window
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func instanciatedBatchWindow () {
     if self.mBatchWindow == nil {
@@ -153,15 +146,15 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Sparkle 2.x
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mUpdaterController = Sparkle.SPUStandardUpdaterController (updaterDelegate: nil, userDriverDelegate: nil)
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Open xxx in library
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBOutlet var mOpenSymbolInLibraryMenuItem : NSMenuItem? = nil
   @IBOutlet var mOpenPackageInLibraryMenuItem : NSMenuItem? = nil
@@ -173,15 +166,15 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   let mOpenDeviceInLibrary : OpenDeviceInLibrary
   let mOpenFontInLibrary : OpenFontInLibrary
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   nonisolated func applicationShouldOpenUntitledFile (_ inApplication : NSApplication) -> Bool {
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func applicationWillFinishLaunching (_ inNotification : Notification) {
     self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
@@ -198,9 +191,9 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 //    self.addAutoLayoutUserInterfaceStyleObserver ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   SAVE ALL ACTION
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func saveAllAction (_ inSender : Any?) {
     for document in NSDocumentController.shared.documents {
@@ -208,9 +201,9 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Menu Events
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   nonisolated func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
@@ -248,19 +241,19 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
     return validate
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   FORMAT ACTIONS
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func setBinaryFormatAction (_ inSender : Any?) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func setTextualFormatAction (_ inSender : Any?) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

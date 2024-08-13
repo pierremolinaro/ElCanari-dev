@@ -17,7 +17,7 @@ struct EBLinePath {
   let lines : [NSPoint]
   let closed : Bool
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransform : AffineTransform) -> EBLinePath {
     let transformedOrigin = inAffineTransform.transform (self.origin)
@@ -28,7 +28,7 @@ struct EBLinePath {
     return EBLinePath (origin: transformedOrigin, lines: transformedLines, closed: self.closed)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func linePathClipped (by inRect : NSRect) -> [EBLinePath] {
     var segments = [(NSPoint, NSPoint)] ()
@@ -67,7 +67,7 @@ struct EBLinePath {
   }
 
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -75,7 +75,7 @@ struct EBLinePath {
 
 extension Array where Element == EBLinePath {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func linePathArrayClipped (by inRect : NSRect) -> [EBLinePath] {
     var result = [EBLinePath] ()
@@ -85,7 +85,7 @@ extension Array where Element == EBLinePath {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

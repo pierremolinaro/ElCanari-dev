@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardConnector_viaDefaultPadDiameter (
        _ self_mTracksP1_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter],

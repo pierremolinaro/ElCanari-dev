@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mInputIsValid = true {
     didSet {
@@ -22,7 +22,7 @@ final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bind
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init (optionalWidth: 72, bold: true, size: inSize.cocoaControlSize)
@@ -31,13 +31,13 @@ final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bind
     self.action = #selector (Self.valueDidChangeAction (_:))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
@@ -50,7 +50,7 @@ final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bind
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc fileprivate func valueDidChangeAction (_ _ : Any?) {
     let ok = self.mValueController?.performValidation (self.stringValue) ?? true
@@ -59,7 +59,7 @@ final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bind
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
@@ -69,19 +69,19 @@ final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bind
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  value binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateOutlet () {
     self.mValueController?.updateOutlet ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValueController : Controller_AutoLayoutCanariDimensionField_dimensionAndUnit? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_dimensionAndUnit (_ object : EBObservableMutableProperty <Int>,
                                     _ unit : EBObservableProperty <Int>) -> Self {
@@ -89,7 +89,7 @@ final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bind
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -103,7 +103,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
   private var mDimension : EBObservableMutableProperty <Int>
   private var mUnit : EBObservableProperty <Int>
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (dimension : EBObservableMutableProperty <Int>,
         unit : EBObservableProperty <Int>,
@@ -126,7 +126,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
     inOutlet.formatter = numberFormatter
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  override func unregister () {
 //    super.unregister ()
@@ -134,7 +134,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
 //    self.mOutlet.action = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateOutlet () {
     if let outlet = self.mOutlet {
@@ -156,7 +156,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func performValidation (_ inOptionalInputString : String?) -> Bool {
     switch self.mUnit.selection {
@@ -175,7 +175,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

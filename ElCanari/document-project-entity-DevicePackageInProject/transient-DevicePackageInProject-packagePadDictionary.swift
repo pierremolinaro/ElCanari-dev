@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DevicePackageInProject_packagePadDictionary (
        _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]

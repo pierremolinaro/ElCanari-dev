@@ -14,7 +14,7 @@ import AppKit
 
 extension AutoLayoutMergerDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func moveDown (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardHeight = self.rootObject.boardHeight!
@@ -59,7 +59,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func moveUp (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardHeight = self.rootObject.boardHeight!
@@ -103,7 +103,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func moveRight (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardWidth = self.rootObject.boardWidth!
@@ -147,7 +147,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func moveLeft (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardWidth = self.rootObject.boardWidth!
@@ -192,7 +192,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func stackDown (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.y < $1.y }
@@ -201,7 +201,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func stackLeft (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.x < $1.x }
@@ -210,7 +210,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func stackUp (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.y > $1.y }
@@ -219,7 +219,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func stackRight (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.x > $1.x }
@@ -228,7 +228,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func explodeSelection (objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let translation = self.rootObject.boardLimitWidth * (self.rootObject.overlapingArrangment ? 2 : 1)
@@ -250,7 +250,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

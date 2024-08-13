@@ -12,7 +12,7 @@ import AppKit
 
 @MainActor class OpenInLibrary : AutoLayoutTableViewDelegate, Sendable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final let mDialog : NSPanel
   private final let mOpenButton : AutoLayoutSheetDefaultOkButton
@@ -26,13 +26,13 @@ import AppKit
   private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
   private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  private final let mSegmentedControl = AutoLayoutEnumSegmentedControl (titles: ["Flat", "Hierarchical"], equalWidth: true, size: .regular)
 //  private final let mSegmentedControlIndex = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
 //  private final var mSegmentedControlIndexObserver : EBOutletEvent? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mTableViewDataSource = [OpenInLibraryDialogFlatItem] ()
   private final var mTableViewFilteredDataSource = [OpenInLibraryDialogFlatItem] ()
@@ -40,7 +40,7 @@ import AppKit
 //  private final var mOutlineViewDataSource = [OpenInLibraryDialogHierarchicalItem] ()
 //  private final var mOutlineViewFilteredDataSource = [OpenInLibraryDialogHierarchicalItem] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
   //--- Dialog
@@ -154,7 +154,7 @@ import AppKit
 //    )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func configureWith (alreadyLoadedDocuments inNames : Set <String>) {
     self.mNoSelectedPartTextField.stringValue = self.noPartMessage ()
@@ -167,9 +167,9 @@ import AppKit
 //    self.mOutlineView.sortAndReloadData ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Load document, displayed as sheet
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
                                       alreadyLoadedDocuments inNames : Set <String>,
@@ -197,9 +197,9 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Open document in library, displayed as dialog window
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func openDocumentInLibrary (windowTitle inTitle : String) {
   //--- Configure table view and outline view visibility
@@ -230,7 +230,7 @@ import AppKit
     _ = NSApplication.shared.runModal (for: self.mDialog)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func removeAllEntries () {
     self.mTableViewDataSource = []
@@ -239,7 +239,7 @@ import AppKit
 //    self.mOutlineView.sortAndReloadData ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func stopModalAndOpenDocumentAction () {
     NSApplication.shared.stopModal ()
@@ -256,24 +256,24 @@ import AppKit
     self.removeAllEntries ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) { // Abstract method
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func noPartMessage () -> String { // Abstract method
     return "?"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func partLibraryPathForPath (_ inPath : String) -> String {  // Abstract method
     return inPath
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func buildTableViewDataSource (extension inFileExtension : String,
                                        alreadyLoadedDocuments inNames : Set <String>,
@@ -321,9 +321,9 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   AutoLayoutOutlineViewDelegate protocol methods
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func outlineViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
 //    let selectedRow = self.mOutlineView.selectedRow
@@ -345,35 +345,35 @@ import AppKit
 //    }
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func outlineViewDelegate_indexesOfSelectedObjects () -> IndexSet {
 //    return .init ()
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func outlineViewDelegate_addEntry () {
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func outlineViewDelegate_removeSelectedEntries () {
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func outlineViewDelegate_beginSorting () {
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func outlineViewDelegate_endSorting () {
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   AutoLayoutTableViewDelegate protocol methods
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
     let selectedRow = self.mTableView.selectedRow
@@ -395,35 +395,35 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableViewDelegate_indexesOfSelectedObjects () -> IndexSet {
     return .init ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableViewDelegate_addEntry () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableViewDelegate_removeSelectedEntries () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableViewDelegate_beginSorting () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableViewDelegate_endSorting () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   SEARCH FIELD ACTION
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func searchFieldAction (_ _ : Any?) {
     let filter = self.mSearchField.stringValue.uppercased ()
@@ -443,7 +443,7 @@ import AppKit
 //    self.mOutlineView.sortAndReloadData ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -451,7 +451,7 @@ import AppKit
 
 @MainActor fileprivate final class OpenInLibraryDialogFlatItem {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mPartName : String
   let mIsDuplicated : Bool
@@ -461,7 +461,7 @@ import AppKit
   private var mObjectImage : NSImage? = nil
   private let mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> NSImage?
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inPartName : String,
         _ inFullPath : String,
@@ -476,13 +476,13 @@ import AppKit
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func statusString () -> String {
     if self.mFullPath.isEmpty {
@@ -509,7 +509,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func statusImage () -> NSImage? {
     if self.mFullPath.isEmpty {
@@ -534,7 +534,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func partStatus () throws -> MetadataStatus {
     if let s = self.mPartStatus {
@@ -549,7 +549,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func partStatusOk () -> Bool {
 //    if let s = try? self.partStatus () {
@@ -559,7 +559,7 @@ import AppKit
 //    }
 //  }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   var image : NSImage {
     if let image = self.mObjectImage {
@@ -571,7 +571,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildImage () -> NSImage {
     var image : NSImage? = nil
@@ -589,7 +589,7 @@ import AppKit
     return image ?? NSImage ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -597,7 +597,7 @@ import AppKit
 
 extension Array where Element == OpenInLibraryDialogFlatItem {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor fileprivate mutating func enterPart (
          _ inPathAsArray : [String],
@@ -614,7 +614,7 @@ extension Array where Element == OpenInLibraryDialogFlatItem {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

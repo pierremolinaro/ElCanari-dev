@@ -13,15 +13,15 @@ let SYMBOL_BEZIER_CURVE_CONTROL_2  = 4
 
 extension SymbolBezierCurve {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func cursorForKnob_SymbolBezierCurve (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  operationAfterPasting
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationAfterPasting_SymbolBezierCurve (additionalDictionary _ : [String : Any],
                                                 optionalDocument _ : EBAutoLayoutManagedDocument?,
@@ -29,22 +29,22 @@ extension SymbolBezierCurve {
     return ""
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Save into additional dictionary
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveIntoAdditionalDictionary_SymbolBezierCurve (_ _ : inout [String : Any]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Translation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptToTranslate_SymbolBezierCurve (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
@@ -60,7 +60,7 @@ extension SymbolBezierCurve {
 //      && (newCPX1 >= 0) && (newCPY1 >= 0) && (newCPX2 >= 0) && (newCPY2 >= 0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x1 += inDx
@@ -73,9 +73,9 @@ extension SymbolBezierCurve {
     self.cpy2 += inDy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Move
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canMove_SymbolBezierCurve (knob _ : Int,
                                   proposedUnalignedAlignedTranslation _ : CanariPoint,
@@ -85,7 +85,7 @@ extension SymbolBezierCurve {
     return inProposedAlignedTranslation
  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_SymbolBezierCurve (knob inKnobIndex: Int,
                                proposedDx inDx: Int,
@@ -110,15 +110,15 @@ extension SymbolBezierCurve {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Flip horizontally
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipHorizontally_SymbolBezierCurve () -> Bool {
     return min (self.x1, self.x2, self.cpx1, self.cpx2) != max (self.x1, self.x2, self.cpx1, self.cpx2)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipHorizontally_SymbolBezierCurve () {
     let v = min (self.x1, self.x2, self.cpx1, self.cpx2) + max (self.x1, self.x2, self.cpx1, self.cpx2)
@@ -128,15 +128,15 @@ extension SymbolBezierCurve {
     self.cpx2 = v - self.cpx2
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Flip vertically
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipVertically_SymbolBezierCurve () -> Bool {
     return min (self.y1, self.y2, self.cpy1, self.cpy2) != max (self.y1, self.y2, self.cpy1, self.cpy2)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipVertically_SymbolBezierCurve () {
     let v = min (self.y1, self.y2, self.cpy1, self.cpy2) + max (self.y1, self.y2, self.cpy1, self.cpy2)
@@ -146,9 +146,9 @@ extension SymbolBezierCurve {
     self.cpy2 = v - self.cpy2
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Rotate 90°
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_SymbolBezierCurve (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     accumulatedPoints.insertCanariPoint (x: self.x1, y: self.y1)
@@ -158,7 +158,7 @@ extension SymbolBezierCurve {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90Clockwise_SymbolBezierCurve (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
@@ -175,7 +175,7 @@ extension SymbolBezierCurve {
     self.cpy2 = cp2.y
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_SymbolBezierCurve (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
@@ -192,9 +192,9 @@ extension SymbolBezierCurve {
     self.cpy2 = cp2.y
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  SNAP TO GRID
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_SymbolBezierCurve (_ inGrid : Int) -> Bool {
     var result = (self.x1 % inGrid) != 0
@@ -222,7 +222,7 @@ extension SymbolBezierCurve {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_SymbolBezierCurve (_ inGrid : Int) {
     self.x1 = ((self.x1 + inGrid / 2) / inGrid) * inGrid
@@ -235,7 +235,7 @@ extension SymbolBezierCurve {
     self.cpy2 = ((self.cpy2 + inGrid / 2) / inGrid) * inGrid
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignmentPoints_SymbolBezierCurve () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
@@ -246,14 +246,14 @@ extension SymbolBezierCurve {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  operationBeforeRemoving
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationBeforeRemoving_SymbolBezierCurve () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mFrontLayerCheckBox = AutoLayoutCheckbox (title: "Front Layer", size: .small)
   private let mBackLayerCheckBox = AutoLayoutCheckbox (title: "Back Layer", size: .small)
@@ -22,13 +22,13 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
   private let mInner4LayerCheckBox = AutoLayoutCheckbox (title: "Inner4 Layer", size: .small)
   private var mModelObserver : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -40,7 +40,7 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
     _ = self.appendView (self.mInner4LayerCheckBox)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func bind_frontBackInner1Inner2Inner3Inner4 (_ inFrontModel : EBObservableMutableProperty <Bool>,
                                                _ inBackModel : EBObservableMutableProperty <Bool>,
@@ -74,7 +74,7 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mRegistered = false
 
@@ -85,7 +85,7 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateCheckboxes () {
     self.mRegistered = false
@@ -113,7 +113,7 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

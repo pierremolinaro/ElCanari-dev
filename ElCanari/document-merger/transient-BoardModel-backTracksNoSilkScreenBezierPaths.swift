@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_backTracksNoSilkScreenBezierPaths (
        _ self_backTrackSegmentsNoSilkScreen : MergerSegmentArray

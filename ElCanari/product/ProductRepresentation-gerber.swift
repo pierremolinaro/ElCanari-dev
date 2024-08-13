@@ -12,9 +12,9 @@ import AppKit
 
 extension ProductRepresentation {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Get Gerber representation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func gerber (items inItemSet : ProductLayerSet,
                mirror inMirror : ProductHorizontalMirror) -> GerberRepresentation {
@@ -65,10 +65,10 @@ extension ProductRepresentation {
     return gerber
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Get Excellon Drill String
   //     https://www.artwork.com/gerber/drl2laser/excellon/index.htm
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func excellonDrillString (unit inUnit : GerberUnit) -> String {
     var s = "M48\n" // indicates the start of the header, should always be the first line in the header
@@ -129,7 +129,7 @@ extension ProductRepresentation {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -137,7 +137,7 @@ extension ProductRepresentation {
 
 fileprivate extension ProductLength {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func excellonLengthString (_ inUnit : GerberUnit) -> String {
     switch inUnit {
@@ -148,7 +148,7 @@ fileprivate extension ProductLength {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -156,13 +156,13 @@ fileprivate extension ProductLength {
 
 fileprivate extension ProductPoint {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func excellonPointString (_ inUnit : GerberUnit) -> String {
     return "X\(self.x.excellonLengthString (inUnit))Y\(self.y.excellonLengthString (inUnit))"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

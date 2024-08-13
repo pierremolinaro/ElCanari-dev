@@ -8,7 +8,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_workingAreaColor (_ inModel : EBObservableProperty <NSColor>) {
     self.mWorkingAreaColorController = EBObservablePropertyController (
@@ -17,14 +17,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_WorkingAreaColor () {
 //    self.mWorkingAreaColorController?.unregister ()
 //    self.mWorkingAreaColorController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateWorkingAreaColor (from model : EBObservableProperty <NSColor>) {
     switch model.selection {
@@ -36,7 +36,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -6,7 +6,7 @@ import AppKit
 
 final class AutoLayoutSpinningProgressIndicator : ALB_NSProgressIndicator {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init ()
@@ -22,13 +22,13 @@ final class AutoLayoutSpinningProgressIndicator : ALB_NSProgressIndicator {
     self.startAnimation (nil)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

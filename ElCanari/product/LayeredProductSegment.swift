@@ -12,9 +12,9 @@ import Foundation
 
 struct LayeredProductSegment : Codable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let x1 : ProductLength
   let y1 : ProductLength
@@ -23,7 +23,7 @@ struct LayeredProductSegment : Codable {
   let width : ProductLength
   let layers : ProductLayerSet
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (p1 inP1 : ProductPoint,
         p2 inP2 : ProductPoint,
@@ -37,13 +37,13 @@ struct LayeredProductSegment : Codable {
     self.layers = inLayers
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var p1 : ProductPoint { ProductPoint (x: self.x1, y: self.y1) }
 
   var p2 : ProductPoint { ProductPoint (x: self.x2, y: self.y2) }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func gerberPolygon () -> (ProductPoint, [ProductPoint]) {
     let p1 = ProductPoint (x: self.x1, y: self.y1).cocoaPoint
@@ -69,7 +69,7 @@ struct LayeredProductSegment : Codable {
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

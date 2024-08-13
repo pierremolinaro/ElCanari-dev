@@ -12,7 +12,7 @@ import AppKit
 
 @MainActor fileprivate final class RenameContext {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mComponentCurrentIndex : Int
   let mComponentCurrentPrefix : String
@@ -24,7 +24,7 @@ import AppKit
   let mOkButton : AutoLayoutSheetDefaultOkButton
   let mDocument : AutoLayoutProjectDocument
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (component inComponent : ComponentInProject,
         document inDocument : AutoLayoutProjectDocument,
@@ -38,14 +38,14 @@ import AppKit
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func populatePrefixComboBox (_ currentPrefixSet : Set <String>) { // , _ currentNamePrefix : String) {
     self.mComboBox.removeAllItems ()
@@ -56,7 +56,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func renameComponentComboBoxAction () {
     let newPrefix = self.mComboBox.stringValue
@@ -77,7 +77,7 @@ import AppKit
     self.updateValidationButton ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateValidationButton () {
     if self.mComponentNewPrefix.isEmpty {
@@ -89,7 +89,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func populateIndexesPopupButton () {
     var sortedIndexArray = Array (self.mDocument.getComponentNameIndexes (forPrefix: self.mComponentNewPrefix)).sorted ()
@@ -109,7 +109,7 @@ import AppKit
     self.updateValidationButton ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func renameComponentIndexPopUpButtonAction (_ _ : Any?) {
     let newIndex = self.mIndexesPopUpButton.indexOfSelectedItem
@@ -117,7 +117,7 @@ import AppKit
     self.updateValidationButton ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func populatePrefixComboBox (_ currentPrefixSet : Set <String>, _ currentNamePrefix : String) {
 //    self.mComboBox.removeAllItems ()
@@ -129,7 +129,7 @@ import AppKit
 //    self.updateValidationButton ()
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -137,7 +137,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func renameComponentDialog (_ inComponent : ComponentInProject) {
     if let window = self.windowForSheet {
@@ -200,7 +200,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func getComponentNamePrefixes () -> Set <String> {
     var prefixSet = Set <String> ()
@@ -210,7 +210,7 @@ extension AutoLayoutProjectDocument {
     return prefixSet
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func getComponentNameIndexes (forPrefix inPrefix : String) -> Set <Int> {
     var indexes = Set <Int> ()
@@ -222,7 +222,7 @@ extension AutoLayoutProjectDocument {
     return indexes
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func performRenameComponent (component inComponent : ComponentInProject,
                                            renameContext inRenameContext : RenameContext) {
@@ -242,7 +242,7 @@ extension AutoLayoutProjectDocument {
     self.performNormalizeComponentNames ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performNormalizeComponentNames () {
     var allComponents = [String : [ComponentInProject]] ()
@@ -260,7 +260,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

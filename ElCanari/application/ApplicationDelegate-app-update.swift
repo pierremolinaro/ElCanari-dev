@@ -12,7 +12,7 @@ import AppKit
 
 extension ApplicationDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func awakeFromNib () {
     DispatchQueue.main.async {
@@ -21,13 +21,13 @@ extension ApplicationDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func checkForUpdatesAction (_ _ : Any?) {
     self.mUpdaterController.updater.checkForUpdates ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func sparkleVersionString () -> String {
     var result = "?"
@@ -42,7 +42,7 @@ extension ApplicationDelegate {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func configureAutomaticallyCheckForUpdatesButton (_ inOutlet : NSButton) {
     inOutlet.bind (
@@ -53,7 +53,7 @@ extension ApplicationDelegate {
     )
   }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   func configureCheckIntervalPopUpButton (_ inOutlet : NSPopUpButton) {
     let updater = self.mUpdaterController.updater
@@ -71,7 +71,7 @@ extension ApplicationDelegate {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

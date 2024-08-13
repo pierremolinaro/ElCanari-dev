@@ -12,11 +12,11 @@ import AppKit
 
 final class AutoLayoutStaticTextView : NSScrollView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate let mTextView = ALB_NSTextView ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (drawsBackground inDrawsBackground : Bool,
         horizontalScroller inHorizontalScroller : Bool,
@@ -51,40 +51,40 @@ final class AutoLayoutStaticTextView : NSScrollView {
     self.automaticallyAdjustsContentInsets = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (text inString : String) -> Self {
     appendMessageString (inString)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setRedTextColor () -> Self {
     self.mTextView.textColor = .red
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var string : String {
     get { return self.mTextView.string }
     set { self.mTextView.string = newValue }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clear () {
     if let ts = self.mTextView.layoutManager?.textStorage {
@@ -93,7 +93,7 @@ final class AutoLayoutStaticTextView : NSScrollView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendAttributedString (_ inAttributedString : NSAttributedString) {
     if let ts = self.mTextView.layoutManager?.textStorage {
@@ -103,7 +103,7 @@ final class AutoLayoutStaticTextView : NSScrollView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendMessageString (_ inString : String) {
     let attributes : [NSAttributedString.Key : NSObject] = [
@@ -114,7 +114,7 @@ final class AutoLayoutStaticTextView : NSScrollView {
     self.appendAttributedString (str)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendMessageString (_ inString : String, color : NSColor) {
     let attributes : [NSAttributedString.Key : NSObject] = [
@@ -125,7 +125,7 @@ final class AutoLayoutStaticTextView : NSScrollView {
     self.appendAttributedString (str)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendCodeString (_ inString : String, color : NSColor) {
     let font = NSFont.userFixedPitchFont (ofSize: NSFont.smallSystemFontSize) ?? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
@@ -137,25 +137,25 @@ final class AutoLayoutStaticTextView : NSScrollView {
     self.appendAttributedString (str)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendErrorString (_ inString : String) {
     self.appendMessageString (inString, color: .red)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendWarningString (_ inString : String) {
     self.appendMessageString (inString, color: .orange)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendSuccessString (_ inString : String) {
     self.appendMessageString (inString, color: .blue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

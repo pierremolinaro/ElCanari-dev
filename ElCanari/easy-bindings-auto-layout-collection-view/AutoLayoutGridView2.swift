@@ -14,19 +14,19 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
 
   private var mLastView = [NSView?] (repeating: nil, count: 2) // 0 -> left, 1 -> right
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func addFirstBaseLineAligned (left inLeftView : NSView, right inRightView : NSView) -> Self {
    return self.add ([inLeftView, inRightView], alignment: .firstBaseline)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func addCenterYAligned (left inLeftView : NSView, right inRightView : NSView) -> Self {
    return self.add ([inLeftView, inRightView], alignment: .centerY)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func add (_ inViews : [NSView],
                           alignment inAlignement : NSLayoutConstraint.Attribute) -> Self {
@@ -52,21 +52,21 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func add (single inView : NSView) -> Self {
     _ = self.appendView (inView)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func addSeparator () -> Self {
     self.appendHorizontalSeparator ()
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

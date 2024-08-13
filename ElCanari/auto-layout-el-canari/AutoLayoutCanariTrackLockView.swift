@@ -18,7 +18,7 @@ fileprivate let TEXT_OFFSET : CGFloat = 3.0
 
 final class AutoLayoutCanariTrackLockView : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mDirectionInDegrees : CGFloat = 0.0 {
     didSet {
@@ -84,13 +84,13 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -100,11 +100,11 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize: NSSize { return NSSize (width: 132.0, height: 64.0) }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func getPoints () -> (NSPoint, NSPoint) {
     let r = self.bounds
@@ -115,13 +115,13 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     return (p1, p2)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   TRACKING AREA
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var mTrackingArea : NSTrackingArea? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
   //--- Remove current tracking area
@@ -141,9 +141,9 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     super.updateTrackingAreas ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   DRAW
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func setFillColorAccordingPadConnection (padConnection inConnectedPad : Bool, manualLock inManualLock : Bool) {
     if inConnectedPad {
@@ -155,7 +155,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inRect : NSRect) {
   //--- Draw background and frame
@@ -235,15 +235,15 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   MOUSE DOWN
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseDown (with inEvent : NSEvent) {
     self.mMouseIsDown = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseDragged (with inEvent : NSEvent) {
   //--- Convert mouse dragged location in view coordinates
@@ -255,7 +255,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     self.mMouseInP2 = NSPoint.distance (p2, mouseLocation) <= KNOB_DIAMETER
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseUp (with inEvent : NSEvent) {
     self.mMouseIsDown = false
@@ -267,9 +267,9 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   MOUSE MOVED, EXITED
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseMoved (with inEvent : NSEvent) {
   //--- Convert mouse dragged location in view coordinates
@@ -282,7 +282,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     super.mouseMoved (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseExited (with inEvent : NSEvent) {
     self.mMouseInP1 = false
@@ -290,13 +290,13 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     super.mouseExited (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   ANGLE CONTROLLER
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAngleController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_angle (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mAngleController = EBObservablePropertyController (
@@ -306,7 +306,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateAngle (_ inObject : EBObservableProperty <Int>) {
     switch inObject.selection {
@@ -317,13 +317,13 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   MANUAL LOCK FOR P1 CONTROLLER
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mManualLockP1Controller : EBGenericReadWritePropertyController <Bool>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_manualLockP1 (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
     self.mManualLockP1Controller = EBGenericReadWritePropertyController <Bool> (
@@ -333,7 +333,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateLockP1 (_ inObject : EBObservableMutableProperty <Bool>) {
     switch inObject.selection {
@@ -344,13 +344,13 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   MANUAL LOCK FOR P2 CONTROLLER
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mManualLockP2Controller : EBGenericReadWritePropertyController <Bool>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_manualLockP2 (_ inObject : EBObservableMutableProperty <Bool>) -> Self {
     self.mManualLockP2Controller = EBGenericReadWritePropertyController <Bool> (
@@ -360,7 +360,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateLockP2 (_ inObject : EBObservableMutableProperty <Bool>) {
     switch inObject.selection {
@@ -371,13 +371,13 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   P1 CONNECTED TO PAD CONTROLLER
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mP1ConnectedToPadController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_p1ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) -> Self {
     self.mP1ConnectedToPadController = EBObservablePropertyController (
@@ -387,7 +387,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateP1ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
@@ -398,13 +398,13 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   P2 CONNECTED TO PAD CONTROLLER
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mP2ConnectedToPadController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_p2ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) -> Self {
     self.mP2ConnectedToPadController = EBObservablePropertyController (
@@ -414,7 +414,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateP2ConnectedToSomePad (_ inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
@@ -425,7 +425,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

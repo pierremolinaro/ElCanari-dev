@@ -12,11 +12,11 @@ import AppKit
 
 final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mEventMonitor : Any? = nil // For tracking option key change
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title inTitle : String,
         size inSize : EBControlSize,
@@ -44,19 +44,19 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  deinit {
 //    noteObjectDeallocation (self)
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func setDismissAction () -> Self {
     self.target = self
@@ -64,7 +64,7 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func dismissSheetAction (_ sender : Any?) {
     if let mySheet = self.window {
@@ -78,7 +78,7 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

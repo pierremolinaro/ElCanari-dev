@@ -12,14 +12,14 @@ import Foundation
 
 final class AutoLayoutMenuItemDescriptor {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let title : String
   let target : NSObject?
   let selector : Selector?
   let enableBinding : EBMultipleBindingBooleanExpression
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title inTitle : String,
         target inTarget : NSObject?,
@@ -32,13 +32,13 @@ final class AutoLayoutMenuItemDescriptor {
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

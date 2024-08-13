@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutPackageDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func makeSlavePad () -> AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor {
      var additionalDictionary = [String : Any] ()
@@ -31,7 +31,7 @@ extension AutoLayoutPackageDocument {
     return AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor (PackageSlavePad (nil), optionDictionary: additionalDictionary)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

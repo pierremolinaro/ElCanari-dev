@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_inconsistentSymbolNameSetMessage (
        _ self_mSymbolInstances_symbolQualifiedName : [SymbolInstanceInDevice_symbolQualifiedName],

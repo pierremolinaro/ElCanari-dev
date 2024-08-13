@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func populateContextualClickOnSchematics (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu? {
     let menu = NSMenu ()
@@ -43,9 +43,9 @@ extension AutoLayoutProjectDocument {
     return menu
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Exchange symbol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canExchangeSymbol (at inUnalignedMouseDownPoint : CanariPoint) -> ComponentSymbolInProject? {
     var result : ComponentSymbolInProject? = nil
@@ -67,7 +67,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendExchangeSymbolItemTo (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
     if let symbol = self.canExchangeSymbol (at: inUnalignedMouseDownPoint) {
@@ -81,7 +81,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func exchangeSymbolAction (_ inSender : NSMenuItem) {
     if let symbolUnderMouse = inSender.representedObject as? ComponentSymbolInProject {
@@ -89,7 +89,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func runExchangeDialog (forSymbol inSymbolUnderMouse : ComponentSymbolInProject) {
     var candidateSymbols = [ComponentSymbolInProject] ()
@@ -154,9 +154,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Add NC, Label to all unconnected pins
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canAddNCToSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
@@ -172,7 +172,7 @@ extension AutoLayoutProjectDocument {
     return connectableSymbols
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendNCToAllUnconnectedSymbolPins (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
     let symbols = self.canAddNCToSymbolPins (at: inUnalignedMouseDownPoint)
@@ -199,7 +199,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func addNCToUnconnectedSymbolPinsAction (_ inSender : NSMenuItem) {
     if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
@@ -207,7 +207,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func addLabelToUnconnectedSymbolPinsAction (_ inSender : NSMenuItem) {
     if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
@@ -215,7 +215,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addNCToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -227,7 +227,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addLabelToUnconnectedPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -239,9 +239,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Disconnect all pins of symbols
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canDisconnectAllSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
@@ -257,7 +257,7 @@ extension AutoLayoutProjectDocument {
     return disconnectableSymbols
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendDisconnectAllSymbolPins (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
     let symbols = self.canDisconnectAllSymbolPins (at: inUnalignedMouseDownPoint)
@@ -272,7 +272,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func disconnectAllSymbolPinsAction (_ inSender : NSMenuItem) {
     if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
@@ -280,7 +280,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func disconnectAllPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     for symbol in inSymbols {
@@ -291,9 +291,9 @@ extension AutoLayoutProjectDocument {
     self.updateSchematicPointsAndNets ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Connect all pins of symbols
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canConnectSymbolPins (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
@@ -312,7 +312,7 @@ extension AutoLayoutProjectDocument {
     return connectableSymbols
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func schematicSymbols (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     var result = [ComponentSymbolInProject] ()
@@ -328,7 +328,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendConnectSymbolPins (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
     let symbols = self.canConnectSymbolPins (at: inUnalignedMouseDownPoint)
@@ -343,7 +343,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func connectSymbolPinsAction (_ inSender : NSMenuItem) {
     if let symbols = inSender.representedObject as? [ComponentSymbolInProject] {
@@ -351,7 +351,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func connectPins (ofSymbols inSymbols : [ComponentSymbolInProject]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -368,9 +368,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Connect
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canConnect (points inPoints : [PointInSchematic], wires inWires : [WireInSchematic]) -> Bool {
     // Swift.print ("inPoints \(inPoints.count) inWires \(inWires.count)")
@@ -393,7 +393,7 @@ extension AutoLayoutProjectDocument {
     return canConnect
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendCreateConnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic], wires inWires : [WireInSchematic]) {
     if self.canConnect (points: inPoints, wires: inWires) {
@@ -422,7 +422,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func connectAction (_ inSender : NSMenuItem) {
     if let points = inSender.representedObject as? [PointInSchematic] {
@@ -430,7 +430,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func connectInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet,
@@ -444,9 +444,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Disconnect
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canDisconnect (points inPoints : [PointInSchematic]) -> Bool {
     var canDisconnect = false
@@ -471,7 +471,7 @@ extension AutoLayoutProjectDocument {
     return canDisconnect
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendDisconnectItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
     if self.canDisconnect (points: inPoints) {
@@ -482,7 +482,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func disconnectAction (_ inSender : NSMenuItem) {
     if let points = inSender.representedObject as? [PointInSchematic] {
@@ -490,7 +490,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func disconnectInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -499,9 +499,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Remove Point From Wire
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRemovePointFromWire (points inPoints : [PointInSchematic]) -> Bool {
     var canRemove = false
@@ -514,7 +514,7 @@ extension AutoLayoutProjectDocument {
     return canRemove
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendRemovePointFromWireItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
     if self.canRemovePointFromWire (points: inPoints) {
@@ -528,7 +528,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func removePointFromWireAction (_ inSender : NSMenuItem) {
     if let point = inSender.representedObject as? PointInSchematic {
@@ -536,7 +536,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removePointFromWireInSchematic (points inPoints : [PointInSchematic]) {
     if let selectedSheet = self.rootObject.mSelectedSheet, inPoints.count == 1 {
@@ -545,9 +545,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // NC
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canCreateNC (points inPoints : [PointInSchematic]) -> Bool {
     var canCreate = false
@@ -560,7 +560,7 @@ extension AutoLayoutProjectDocument {
     return canCreate
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendCreateNCItemTo (menu : NSMenu, points inPoints : [PointInSchematic]) {
     if self.canCreateNC (points: inPoints) {
@@ -574,7 +574,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func addNCToPinAction (_ inSender : NSMenuItem) {
     if let point = inSender.representedObject as? PointInSchematic, let selectedSheet = self.rootObject.mSelectedSheet {
@@ -585,15 +585,15 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Insert point into wire
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canCreateWirePoint (wires inWires : [WireInSchematic]) -> Bool {
     return inWires.count == 1
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendCreateWirePointItemTo (menu : NSMenu, _ inCanariAlignedMouseDownLocation : CanariPoint, wires inWires : [WireInSchematic]) {
     if self.canCreateWirePoint (wires: inWires) {
@@ -607,7 +607,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func addPointToWireAction (_ inSender : NSMenuItem) {
     if let (location, wire) = inSender.representedObject as? (CanariPoint, WireInSchematic) {
@@ -617,7 +617,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addPointToWireInSchematic (at inUnalignedLocation : CanariPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -625,9 +625,9 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Labels
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canCreateLabels (points inPoints : [PointInSchematic]) -> Bool {
   //--- Check points have no label, and are not "nc"
@@ -641,7 +641,7 @@ extension AutoLayoutProjectDocument {
     return canCreate
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendCreateLabelsItemTo (menu : NSMenu,
                                          mouseDownLocation inAlignedMouseDownPoint : CanariPoint,
@@ -673,7 +673,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func addLabelInSchematicAction (_ inSender : NSMenuItem) {
     if let alignedMouseDownPoint = inSender.representedObject as? CanariPoint {
@@ -692,7 +692,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addLabelInSchematic (at inLocation : CanariPoint, orientation inOrientation : QuadrantRotation) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
@@ -710,7 +710,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

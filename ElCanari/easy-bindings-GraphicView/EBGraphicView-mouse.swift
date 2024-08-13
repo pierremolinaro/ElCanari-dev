@@ -8,7 +8,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func mouseDown (with inEvent : NSEvent) {
     if let controller = self.mViewController {
@@ -58,7 +58,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
@@ -73,7 +73,7 @@ extension EBGraphicView {
     }
   }
 
-    //································································································
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     final override func mouseUp (with inEvent : NSEvent) {
       super.mouseUp (with: inEvent)
@@ -89,7 +89,7 @@ extension EBGraphicView {
       self.setNeedsDisplayAndUpdateViewBounds ()
     }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func dragObject (possibleKnob inPossibleKnobIndex : Int?,
                          objectIndex : Int,
@@ -129,7 +129,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func dragSelection (_ proposedTranslation: CanariPoint) {
     var dx = proposedTranslation.x
@@ -149,7 +149,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?) {
     var possibleObjectIndex : Int? = nil
@@ -181,7 +181,7 @@ extension EBGraphicView {
     return (possibleObjectIndex, possibleKnobIndex)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func knobIndex (ofSelectedObjectIndex inObjectIndex : Int, at inLocation : NSPoint) -> Int? {
     let selectedObjects = self.selectionShapes
@@ -192,7 +192,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
     var result = Set <Int> ()
@@ -206,7 +206,7 @@ extension EBGraphicView {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func flagsChanged (with inEvent : NSEvent) {
     let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
@@ -222,7 +222,7 @@ extension EBGraphicView {
     super.flagsChanged (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setCursorOnMouseMovedOrMouseUp (forLocationInView inLocation : NSPoint) {
     let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: inLocation)
@@ -245,7 +245,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ArtworkRoot_hasDataWarning (
        _ self_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData]

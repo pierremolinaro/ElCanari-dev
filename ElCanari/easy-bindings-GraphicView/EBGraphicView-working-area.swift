@@ -12,9 +12,9 @@ import AppKit
 
 @MainActor struct WorkingArea {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Private properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mArea = CanariRect (left: -CANARI_UNITS_PER_INCH / 2,
                                   bottom: -CANARI_UNITS_PER_INCH / 2,
@@ -29,23 +29,23 @@ import AppKit
 
   private let mHiliteSize = 1.0
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var rect : NSRect { return self.mArea.cocoaRect }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func union (withRect ioRect : inout NSRect) {
     ioRect = ioRect.union (self.mArea.cocoaRect.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func set (color inColor : NSColor) {
     self.mColor = inColor
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func set (rectString inString : String, _ inView : EBGraphicView) {
     let components = inString.components (separatedBy: ":")
@@ -61,19 +61,19 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rectString () -> String {
     return "\(self.mArea.origin.x):\(self.mArea.origin.y):\(self.mArea.size.width):\(self.mArea.size.height)"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func set (unalignedMouseDownLocation inUnalignedMouseDownLocation : NSPoint) {
     self.mCurrentMouseLocation = inUnalignedMouseDownLocation
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func resetCurrentZone (withView inView : NSView) {
     if self.mAreaCursorZone != .none {
@@ -82,7 +82,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func drawWorkingArea (lineWidth inLineWidth : CGFloat) {
     if !self.mArea.isEmpty {
@@ -101,7 +101,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func workingAreaCursor () -> NSCursor? {
     switch self.mAreaCursorZone {
@@ -111,7 +111,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func setZone (forLocationInView inLocation : NSPoint, withView inView : NSView) {
     var zone = WorkingAreaCursorZone.none
@@ -143,7 +143,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func rect (forZone inZone : WorkingAreaCursorZone) -> NSRect {
     if self.mArea.isEmpty {
@@ -162,7 +162,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func mouseDragged (mouseDraggedUnalignedLocation inUnalignedLocationInView : NSPoint,
                               handled ioHandled : inout Bool,
@@ -205,7 +205,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum WorkingAreaCursorZone {
     case none
@@ -219,7 +219,7 @@ import AppKit
 //    case bottomRight
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

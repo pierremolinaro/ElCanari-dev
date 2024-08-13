@@ -44,7 +44,7 @@ func getTextFileMetadata (forFileHandle inFileHandle : FileHandle) -> EBFileMeta
 
 fileprivate extension FileHandle {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func readBase62IntAndLineFeed () -> Int {
     var sign = 1
@@ -75,7 +75,7 @@ fileprivate extension FileHandle {
     return sign * r
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func readLine () -> Data {
     var data = Data ()
@@ -90,7 +90,7 @@ fileprivate extension FileHandle {
     return data
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

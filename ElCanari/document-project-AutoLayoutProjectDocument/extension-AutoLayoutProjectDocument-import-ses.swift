@@ -16,7 +16,7 @@ fileprivate let SQUARE_OF_CAPTURE_DISTANCE = 90.0 * 90.0 * 25.4 * 25.4 // Distan
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func handleSESFileContents (_ inFileContents : String) {
   //--- Build Panel
@@ -101,7 +101,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func extractTracksAndVias (_ inNetComponents : [String],
                                      _ inResolution : Int,
@@ -166,7 +166,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func extractsVias (_ netDescription : String,
                              _ inResolution : Int,
@@ -199,7 +199,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func findOrAddConnector (at inP : CanariPoint,
                                    _ inSide : TrackSide,
@@ -247,7 +247,7 @@ extension AutoLayoutProjectDocument {
     return newConnector
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func enterResults (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                              _ inRoutedViaArray : [(BoardConnector, NetInProject)],
@@ -372,7 +372,7 @@ extension AutoLayoutProjectDocument {
     self.sortBoardObjectsFollowingBoardLayersAction (nil)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

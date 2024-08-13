@@ -10,9 +10,9 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: -
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func draw (_ inDirtyRect : NSRect) {
     self.mBackColor.setFill ()
@@ -51,7 +51,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func drawGrid (_ inUnusedDirtyRect : NSRect) {
     let r = self.mWorkingArea?.rect ?? self.bounds
@@ -103,7 +103,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func drawIssue () {
     if !self.mIssueBezierPathes.isEmpty {
@@ -128,7 +128,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func drawGuideBezierPath () {
     if let bp = self.mGuideBezierPath, !bp.isEmpty {
@@ -137,7 +137,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func drawSelectionRectangle (_ inDirtyRect : NSRect) {
     if let r = self.mSelectionRectangle, !r.isEmpty, r.intersects (inDirtyRect) {
@@ -152,9 +152,9 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: -
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
     if inOldShape != inNewShape {
@@ -163,7 +163,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func noteInvalidRectangles (old inOldShapes : [EBShape], new inNewShapes : [EBShape]) {
     let minCount = min (inOldShapes.count, inNewShapes.count)
@@ -185,7 +185,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func scrollToVisibleObjectsOrToZero () {
 //    let box = self.contentsBoundingBox
@@ -196,7 +196,7 @@ extension EBGraphicView {
 //    }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

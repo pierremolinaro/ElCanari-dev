@@ -25,7 +25,7 @@ let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : CGFloat = 10.0
 
 extension ComponentInProject {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func cursorForKnob_ComponentInProject (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
@@ -41,30 +41,30 @@ extension ComponentInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Translation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_ComponentInProject (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptToTranslate_ComponentInProject (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_ComponentInProject (xBy inDx : Int, yBy inDy : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  operationAfterPasting
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationAfterPasting_ComponentInProject (additionalDictionary _ : [String : Any],
                                                  optionalDocument _ : EBAutoLayoutManagedDocument?,
@@ -72,42 +72,42 @@ extension ComponentInProject {
     return ""
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  HORIZONTAL FLIP
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipHorizontally_ComponentInProject () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipHorizontally_ComponentInProject () -> Bool {
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  VERTICAL FLIP
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipVertically_ComponentInProject () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipVertically_ComponentInProject () -> Bool {
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Save into additional dictionary
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveIntoAdditionalDictionary_ComponentInProject (_ _ : inout [String : Any]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Knob
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canMove_ComponentInProject (knob inKnobIndex : Int,
                                    proposedUnalignedAlignedTranslation _ : CanariPoint,
@@ -127,7 +127,7 @@ extension ComponentInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_ComponentInProject (knob inKnobIndex: Int,
                                 proposedDx inDx: Int,
@@ -154,9 +154,9 @@ extension ComponentInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   SNAP TO GRID
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_ComponentInProject (_ inGrid : Int) -> Bool {
     var isAligned = self.mX.isAlignedOnGrid (inGrid)
@@ -178,7 +178,7 @@ extension ComponentInProject {
     return !isAligned
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_ComponentInProject (_ inGrid : Int) {
     self.mX.align (onGrid: inGrid)
@@ -189,9 +189,9 @@ extension ComponentInProject {
     self.mYValue.align (onGrid: inGrid)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Rotate 90°
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_ComponentInProject (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     if let padRect = self.selectedPackagePadsRect () {
@@ -202,7 +202,7 @@ extension ComponentInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90Clockwise_ComponentInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
@@ -212,7 +212,7 @@ extension ComponentInProject {
     ioSet.insert (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_ComponentInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
@@ -222,9 +222,9 @@ extension ComponentInProject {
     ioSet.insert (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  REMOVING
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationBeforeRemoving_ComponentInProject () {
     for connector in self.mConnectors.values {
@@ -247,15 +247,15 @@ extension ComponentInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Alignment Points
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignmentPoints_ComponentInProject () -> Set <CanariPoint> {
     return Set <CanariPoint> ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func affineTransformFromPackage () -> AffineTransform {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
@@ -271,7 +271,7 @@ extension ComponentInProject {
     return af
   }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func packageToComponentAffineTransform () -> AffineTransform {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
@@ -287,7 +287,7 @@ extension ComponentInProject {
     return af
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func selectedPackagePadsRect () -> NSRect? {
     if let inBoard = self.isPlacedInBoard, inBoard, let padDictionary = self.packagePadDictionary {
@@ -305,7 +305,7 @@ extension ComponentInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 @MainActor final class AutoLayoutCanariBoardRectangleView : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mTopTextField : AutoLayoutLabel // = AutoLayoutLabel (bold: false, size: .small)
   private let mBottomTextField = AutoLayoutLabel (bold: false, size: .small)
@@ -20,7 +20,7 @@ import AppKit
   private let mRightTextField = AutoLayoutLabel (bold: false, size: .small)
   private let mUnitPopUpButton = AutoLayoutCanariUnitPopUpButton (size: .small)
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor override init () {
     self.mTopTextField = AutoLayoutLabel (bold: false, size: .small)
@@ -63,13 +63,13 @@ import AppKit
     self.addConstraints (constraints)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -77,7 +77,7 @@ import AppKit
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     let w = self.mTopTextField.frame.height / 2.0
@@ -88,13 +88,13 @@ import AppKit
     bp.stroke ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $top binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTopController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_top (_ inModel : EBObservableProperty <String>) -> Self {
     self.mTopController = EBObservablePropertyController (
@@ -104,7 +104,7 @@ import AppKit
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateTop (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -117,13 +117,13 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $bottom binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mBottomController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_bottom (_ inModel : EBObservableProperty <String>) -> Self {
     self.mBottomController = EBObservablePropertyController (
@@ -133,7 +133,7 @@ import AppKit
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateBottom (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -146,13 +146,13 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $left binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mLeftController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_left (_ inModel : EBObservableProperty <String>) -> Self {
     self.mLeftController = EBObservablePropertyController (
@@ -162,7 +162,7 @@ import AppKit
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateLeft (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -175,13 +175,13 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $right binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mRightController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_right (_ inModel : EBObservableProperty <String>) -> Self {
     self.mRightController = EBObservablePropertyController (
@@ -191,7 +191,7 @@ import AppKit
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateRight (from inModel : EBObservableProperty <String>) {
     switch inModel.selection {
@@ -204,16 +204,16 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $unit binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_unit (_ inModel : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mUnitPopUpButton.bind_unit (inModel)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

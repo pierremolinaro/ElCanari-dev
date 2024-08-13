@@ -10,11 +10,11 @@ import AppKit
 
 class EBObservablePropertyController : EBOutletEvent {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private var mPrivateObservedObjects = [WeakObservedObject] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (observedObjects inObservedObjects : [EBObservableObjectProtocol],
         callBack inCallBack : Optional <() -> Void>) {
@@ -28,7 +28,7 @@ class EBObservablePropertyController : EBOutletEvent {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func unregister () {
     for weakObject in self.mPrivateObservedObjects {
@@ -38,7 +38,7 @@ class EBObservablePropertyController : EBOutletEvent {
     self.mEventCallBack = nil
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -46,18 +46,18 @@ class EBObservablePropertyController : EBOutletEvent {
 
 fileprivate struct WeakObservedObject {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mWeakObservedObject : EBObservableObjectProtocol?
   var weakObservedObject : EBObservableObjectProtocol? { return self.mWeakObservedObject }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inObservedObject : EBObservableObjectProtocol) {
     self.mWeakObservedObject = inObservedObject
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

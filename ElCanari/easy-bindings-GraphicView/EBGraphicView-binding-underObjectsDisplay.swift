@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_underObjectsDisplay (_ model : EBObservableProperty <EBShape>) {
     self.mUnderObjectsDisplayController = EBObservablePropertyController (
@@ -19,14 +19,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_underObjectsDisplay () {
 //    self.mUnderObjectsDisplayController?.unregister ()
 //    self.mUnderObjectsDisplayController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateUnderObjectsDisplay (from model : EBObservableProperty <EBShape>) {
     switch model.selection {
@@ -37,7 +37,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -13,9 +13,9 @@ import AppKit
 
 extension AutoLayoutMergerDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Load from legacy property list archive
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func loadBoardModelLegacy_ELCanariArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
   //--- Load file, as plist
@@ -31,7 +31,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func parseBoardModelLegacyELCanariArchive (fromData inData : Data,
                                              named inName : String,
@@ -53,7 +53,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func internalCheckLegacyELCanariArchiveVersion (_ inBoardArchiveDict : [String : Any],
                                                            named inName : String,
@@ -75,7 +75,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func internalParseBoardModelLegacyELCanariArchive (_ inBoardArchiveDict : [String : Any],
                                                              version inVersion : Int,
@@ -649,7 +649,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

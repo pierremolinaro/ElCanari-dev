@@ -9,7 +9,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendDevice (_ inData : Data, _ inName : String) -> DeviceInProject? {
     var device : DeviceInProject? = nil
@@ -32,7 +32,7 @@ extension AutoLayoutProjectDocument {
     return device
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateDevices (_ inDevices : EBReferenceArray <DeviceInProject>, _ ioMessages : inout [String]) {
     for deviceInProject in inDevices.values {
@@ -70,7 +70,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateDeviceAction () {
     var messages = [String] ()
@@ -84,7 +84,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func testAndUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
                             from inCandidateDeviceRoot : DeviceRoot,
@@ -99,7 +99,7 @@ extension AutoLayoutProjectDocument {
     return errorMessage
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkCandidateDeviceSymbolInstances (_ inCurrentDeviceInProject : DeviceInProject,
                                                     _ inCandidateDeviceRoot : DeviceRoot) -> String {
@@ -154,7 +154,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkCandidateDevicePads (_ inCurrentDeviceInProject : DeviceInProject,
                                          _ inCandidateDeviceRoot : DeviceRoot) -> String {
@@ -182,7 +182,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkCandidateDeviceSymbolTypes (_ inCurrentDeviceInProject : DeviceInProject,
                                                 _ inCandidateDeviceRoot : DeviceRoot) -> String {
@@ -247,7 +247,7 @@ extension AutoLayoutProjectDocument {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
                             from inCandidateDeviceRoot : DeviceRoot,
@@ -358,7 +358,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

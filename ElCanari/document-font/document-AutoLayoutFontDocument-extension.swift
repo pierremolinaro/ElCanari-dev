@@ -12,9 +12,9 @@ import AppKit
 
 extension AutoLayoutFontDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Method called by CanariCharacterView, when segments of currently selected characters change
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func defineSegmentsForCurrentCharacter (_ inSegments : [FontCharacterSegment]) {
   //--- Search character
@@ -42,7 +42,7 @@ extension AutoLayoutFontDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

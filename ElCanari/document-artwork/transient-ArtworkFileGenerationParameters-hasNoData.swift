@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ArtworkFileGenerationParameters_hasNoData (
        _ self_mArtwork_layerConfiguration : LayerConfiguration?,     

@@ -10,11 +10,11 @@ import AppKit
 
 final class AutoLayoutDoubleSlider : ALB_NSSlider_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mWidth : Int
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (width inWidth : Int, min inMin : Int, max inMax : Int, ticks inTickCount : Int) {
     self.mWidth = inWidth
@@ -26,13 +26,13 @@ final class AutoLayoutDoubleSlider : ALB_NSSlider_enabled_hidden_bindings {
     self.allowsTickMarkValuesOnly = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mValueController?.updateModel (withValue: self.doubleValue)
@@ -41,7 +41,7 @@ final class AutoLayoutDoubleSlider : ALB_NSSlider_enabled_hidden_bindings {
     return r
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -51,9 +51,9 @@ final class AutoLayoutDoubleSlider : ALB_NSSlider_enabled_hidden_bindings {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  doubleValue binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func update (from object : EBObservableProperty <Double>) {
     switch object.selection {
@@ -66,11 +66,11 @@ final class AutoLayoutDoubleSlider : ALB_NSSlider_enabled_hidden_bindings {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValueController : EBGenericReadWritePropertyController <Double>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_value (_ object : EBObservableMutableProperty <Double>) -> Self {
     self.mValueController = EBGenericReadWritePropertyController <Double> (
@@ -80,14 +80,14 @@ final class AutoLayoutDoubleSlider : ALB_NSSlider_enabled_hidden_bindings {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_value () {
 //    self.mValueController?.unregister ()
 //    self.mValueController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

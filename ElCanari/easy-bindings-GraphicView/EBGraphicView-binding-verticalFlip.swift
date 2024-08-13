@@ -8,7 +8,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_verticalFlip (_ model : EBObservableProperty <Bool>) {
     self.mVerticalFlipController = EBObservablePropertyController (
@@ -17,14 +17,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_verticalFlip () {
 //    self.mVerticalFlipController?.unregister ()
 //    self.mVerticalFlipController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateVerticalFlip (from model : EBObservableProperty <Bool>) {
     switch model.selection {
@@ -37,7 +37,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

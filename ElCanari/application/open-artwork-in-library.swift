@@ -28,7 +28,7 @@ import AppKit
 
 @MainActor fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (windowForSheet inWindow : NSWindow?,
         validationButtonTitle inValidationButtonTitle : String,
@@ -207,13 +207,13 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTableViewSource = [ArtworkDialogEntry] ()
   private var mFilteredTableViewSource = [ArtworkDialogEntry] ()
@@ -228,9 +228,9 @@ import AppKit
   private var mTableView : AutoLayoutTableView
   private var mSelectedEntry : ArtworkDialogEntry? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // AutoLayoutTableViewDelegate delegate implementation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows: IndexSet) {
     if let entryIndex = inSelectedRows.first, inSelectedRows.count == 1 {
@@ -255,7 +255,7 @@ import AppKit
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableViewDelegate_indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
@@ -269,27 +269,27 @@ import AppKit
     return indexSet
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableViewDelegate_addEntry () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableViewDelegate_removeSelectedEntries () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableViewDelegate_beginSorting () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableViewDelegate_endSorting () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -297,7 +297,7 @@ import AppKit
 
 extension ApplicationDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func actionOpenArtworkInLibrary (_ inSender : Any?) {
     openArtworkPanelInLibrary (
@@ -310,7 +310,7 @@ extension ApplicationDelegate {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -318,7 +318,7 @@ extension ApplicationDelegate {
 
 @MainActor fileprivate final class ArtworkDialogEntry {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mPartName : String
   let mIsDuplicated : Bool
@@ -326,7 +326,7 @@ extension ApplicationDelegate {
   private var mPartStatus : MetadataStatus? = nil
   private var mArtworkRoot : ArtworkRoot? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inPartName : String,
         _ inFullPath : String,
@@ -337,14 +337,14 @@ extension ApplicationDelegate {
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
 //    self.mArtworkRoot?.removeRecursivelyAllRelationsShips ()
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func statusString () -> String {
     if self.mFullPath.isEmpty {
@@ -369,7 +369,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func statusImage () -> NSImage? {
     if self.mFullPath.isEmpty {
@@ -394,7 +394,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func partStatus () throws -> MetadataStatus {
     if let s = self.mPartStatus {
@@ -409,7 +409,7 @@ extension ApplicationDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func partStatusOk () -> Bool {
 //    if let s = try? self.partStatus () {
@@ -419,7 +419,7 @@ extension ApplicationDelegate {
 //    }
 //  }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  private func loadArtwork () {
    if self.mArtworkRoot == nil {
@@ -435,7 +435,7 @@ extension ApplicationDelegate {
    }
  }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  func artworkTitle () -> String {
    self.loadArtwork ()
@@ -445,7 +445,7 @@ extension ApplicationDelegate {
      return "?"
    }
  }
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  func artworkLayoutString () -> String {
    self.loadArtwork ()
@@ -460,7 +460,7 @@ extension ApplicationDelegate {
    }
  }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init (pullsDown: true, size: inSize.cocoaControlSize)
@@ -21,19 +21,19 @@ final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
     self.lastItem?.image = NSImage (named: NSImage.smartBadgeTemplateName)
  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mDocument : AutoLayoutProjectDocument? = nil
   private let mSelectComponentSubMenu = NSMenu ()
   private let mSelectNetTrackSubMenu = NSMenu ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func setDocument (_ inDocument : AutoLayoutProjectDocument) {
     self.mDocument = inDocument
@@ -144,13 +144,13 @@ final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
     self.lastItem?.action = #selector (AutoLayoutProjectDocument.sortBoardObjectsFollowingBoardLayersAction (_:))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  mSelectComponentController
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelectComponentController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func bind_componentsPlacedInBoardArray (_ inModel : EBTransientProperty <StringTagArray>) {
     self.mSelectComponentController = EBObservablePropertyController (
@@ -159,7 +159,7 @@ final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
     )
   }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateComponentsPlacedInBoard (_ inModel : EBTransientProperty <StringTagArray>) {
     self.mSelectComponentSubMenu.removeAllItems ()
@@ -191,13 +191,13 @@ final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  mUpdateNetNamesArrayController
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mUpdateNetNamesArrayController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func bind_netNamesArray (_ inModel : EBTransientProperty <StringArray>) {
     self.mUpdateNetNamesArrayController = EBObservablePropertyController (
@@ -206,7 +206,7 @@ final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateNetNamesArray (_ inModel : EBTransientProperty <StringArray>) {
     self.mSelectNetTrackSubMenu.removeAllItems ()
@@ -237,7 +237,7 @@ final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

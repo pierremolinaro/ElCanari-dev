@@ -48,12 +48,12 @@ private func knobRect (_ inX : Int, _ inY : Int) -> NSRect {
 
 final class AutoLayoutCanariFontCharacterView : NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mFontDocument : AutoLayoutFontDocument? =  nil
   private var mSelectionRectangle : NSRect? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (frame: .zero)
@@ -61,51 +61,51 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     self.setPasteboardPrivateObjectType ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (document inDocument : AutoLayoutFontDocument) {
     self.mFontDocument = inDocument
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  First responder
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var acceptsFirstResponder : Bool { return true }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Focus ring (https://developer.apple.com/library/content/qa/qa1785/_index.html)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var focusRingMaskBounds : NSRect { return self.bounds }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func drawFocusRingMask () {
     NSBezierPath.fill (self.bounds)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  isOpaque
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var isOpaque : Bool { return true }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  drawRect
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
   //--- Background
@@ -247,9 +247,9 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  advance binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateAdvance (_ object : EBObservableProperty <Int>) {
     switch object.selection {
@@ -260,11 +260,11 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAdvanceController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_advance (_ object : EBObservableProperty <Int>) -> Self {
     self.mAdvanceController = EBObservablePropertyController (
@@ -274,27 +274,27 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_advance () {
 //    self.mAdvanceController?.unregister ()
 //    self.mAdvanceController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mAdvancement = 0
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setAdvance (_ inAdvance : Int) {
     self.mAdvancement = inAdvance
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  characterSegmentList binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCharacterSegmentListController : EBObservablePropertyController? = nil
 
@@ -306,14 +306,14 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_characterSegmentList () {
 //    self.mCharacterSegmentListController?.unregister ()
 //    self.mCharacterSegmentListController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBObservableProperty <CharacterSegmentList>) {
     switch inSegments.selection {
@@ -337,9 +337,9 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  transparency binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateTransparency (_ object : EBObservableProperty <Double>) {
     switch object.selection {
@@ -350,7 +350,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTransparencyController : EBObservablePropertyController? = nil
 
@@ -362,27 +362,27 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_transparency () {
 //    self.mTransparencyController?.unregister ()
 //    self.mTransparencyController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mSegmentTransparency : CGFloat = 0.5
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func updateSegmentDrawingsFromTransparencyController (_ inSegmentTransparency : CGFloat) {
     self.mSegmentTransparency = inSegmentTransparency
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  display flow binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateDisplayFlow (_ object : EBObservableProperty <Bool>) {
     switch object.selection {
@@ -393,7 +393,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDisplayFlowController : EBObservablePropertyController? = nil
 
@@ -405,27 +405,27 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_displayFlow () {
 //    self.mDisplayFlowController?.unregister ()
 //    self.mDisplayFlowController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mDisplaySegmentFlow = true
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func updateSegmentDrawingsFromDisplayFlowController (_ inDisplaySegmentFlow : Bool) {
     self.mDisplaySegmentFlow = inDisplaySegmentFlow
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  index drawing binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateIndexDrawing (_ object : EBObservableProperty <Bool>) {
     switch object.selection {
@@ -436,7 +436,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDisplayDrawingIndexesController : EBObservablePropertyController? = nil
 
@@ -448,27 +448,27 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_displayDrawingIndexes () {
 //    self.mDisplayDrawingIndexesController?.unregister ()
 //    self.mDisplayDrawingIndexesController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mDrawGerberFlowIndex = true
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func updateSegmentDrawingsFromDisplayDrawingIndexesController (_ inDrawGerberFlowIndex : Bool) {
     self.mDrawGerberFlowIndex = inDrawGerberFlowIndex
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  selection
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendSegment () {
     var newSegmentArray = self.mSegmentList
@@ -477,21 +477,21 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     self.mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  selection
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelection = Set <FontCharacterSegment> ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Model
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mSegmentList = [FontCharacterSegment] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Menu actions
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func validateMenuItem (_ menuItem: NSMenuItem) -> Bool {
     let action = menuItem.action
@@ -518,20 +518,20 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func delete (_ sender : Any?) {
     deleteSelection ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func selectAll (_ sender : Any?) {
     self.mSelection = Set (self.mSegmentList)
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func bringForward (_ sender : Any?) {
     if self.mSelection.count == 0 {
@@ -550,7 +550,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func bringToFront (_ sender : Any?) {
     if self.mSelection.count == 0 {
@@ -569,7 +569,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func sendBackward (_ sender : Any?) {
     if self.mSelection.count == 0 {
@@ -588,7 +588,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func sendToBack (_ sender : Any?) {
     if self.mSelection.count == 0 {
@@ -607,9 +607,9 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Delete Selection
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func deleteSelection () {
     if self.mSelection.count == 0 {
@@ -626,9 +626,9 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Can move selection
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func canMoveSelectionFrom (knob : Int, byX : Int, byY : Int) -> Bool {
     var canMove = self.mSelection.count > 0
@@ -661,15 +661,15 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     return canMove
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func canMoveSelection (byX : Int, byY : Int) -> Bool {
     return self.canMoveSelectionFrom (knob: 0, byX: byX, byY: byY) && self.canMoveSelectionFrom (knob: 1, byX: byX, byY: byY)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Move selection
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func moveSelectionFrom (knob : Int, byX : Int, byY : Int) {
     if self.canMoveSelectionFrom (knob: knob, byX: byX, byY: byY) {
@@ -703,7 +703,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func moveSelection (byX : Int, byY : Int) {
     if self.canMoveSelection (byX: byX, byY: byY) {
@@ -731,19 +731,19 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   PASTEBOARD
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let FONT_SEGMENTS_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pierre.ElCanari.font.segments")
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func setPasteboardPrivateObjectType () {
     registerForDraggedTypes ([FONT_SEGMENTS_PASTEBOARD_TYPE])
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func paste (_ sender : Any?) {
   //--- Get General Pasteboard
@@ -776,7 +776,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func copy (_ sender : Any?) {
   //--- Declare pasteboard types
@@ -799,16 +799,16 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     pb.setData (data, forType: FONT_SEGMENTS_PASTEBOARD_TYPE)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func cut (_ sender : Any?) {
     self.copy (sender)
     deleteSelection ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Key down
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func keyDown (with event: NSEvent) {
     let shiftKeyOn = event.modifierFlags.contains (.shift)
@@ -832,13 +832,13 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Mouse down
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mMouseLocation : NSPoint?
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func mouseDown (with mouseDownEvent: NSEvent) {
     let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from: nil)
@@ -900,7 +900,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation : NSPoint) {
 //    Swift.print ("waitUntilMouseUpOnMouseDownOnSegment \(self.mSelection)")
@@ -925,7 +925,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func waitUntilMouseUpOnMouseDownAt (mouseDownLocation : NSPoint, for knob : Int) {
     var mouseLocation = mouseDownLocation
@@ -948,7 +948,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation : NSPoint) {
     var loop = true
@@ -972,7 +972,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation : NSPoint) {
     let selectionOnMouseDown = self.mSelection
@@ -998,7 +998,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -1008,7 +1008,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
 extension FontCharacterSegment {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func knobIndexFor (point p : NSPoint) -> Int? { // Return nil if point is outside a knob
     var result : Int? = nil
@@ -1027,7 +1027,7 @@ extension FontCharacterSegment {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (point p : NSPoint) -> Bool {
     let oblong = GeometricOblong (
@@ -1039,7 +1039,7 @@ extension FontCharacterSegment {
     return oblong.contains (point: p)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (rect r : GeometricRect) -> Bool {
     let oblong = GeometricOblong (
@@ -1051,7 +1051,7 @@ extension FontCharacterSegment {
     return oblong.intersects (rect: r)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

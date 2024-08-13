@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageRoot_masterPadObjectIndexArray (
        _ self_packagePads_masterPadObjectIndex : [PackagePad_masterPadObjectIndex]

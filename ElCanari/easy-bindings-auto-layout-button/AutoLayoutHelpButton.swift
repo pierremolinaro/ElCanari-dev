@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutHelpButton : ALB_NSButton {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init (title: "", size: inSize.cocoaControlSize)
@@ -20,13 +20,13 @@ final class AutoLayoutHelpButton : ALB_NSButton {
     self.bezelStyle = .helpButton
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -151,13 +151,13 @@ func millimeterToCanariUnit (_ inValue : CGFloat) -> Int {
   return Int ((inValue * CGFloat (CANARI_UNITS_PER_MM)).rounded ())
 }
 
-//······················································································································
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -······················
 
 func milsToCanariUnit (fromInt inValue : Int) -> Int {
   return inValue * CANARI_UNITS_PER_MIL
 }
 
-//······················································································································
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -······················
 
 func milsToCanariUnit (fromDouble inValue : Double) -> Int {
   return Int (inValue * Double (CANARI_UNITS_PER_MIL))

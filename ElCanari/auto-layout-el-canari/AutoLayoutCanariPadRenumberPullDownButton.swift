@@ -14,7 +14,7 @@ import AppKit
 
 final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
-   //································································································
+   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (pullsDown: true, size: .small)
@@ -23,32 +23,32 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: -
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mDocument : AutoLayoutPackageDocument? = nil // SHOULD BE WEAK
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func register (document inDocument : AutoLayoutPackageDocument) {
     self.mDocument = inDocument
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: -
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCurrentNumberController : EBObservablePropertyController? = nil
   private var mCurrentPadNumber = 0
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_currentNumber (_ model : EBObservableProperty <Int>) -> Self {
     self.mCurrentNumberController = EBObservablePropertyController (
@@ -58,7 +58,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
      return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func update (fromPadNumber model : EBObservableProperty <Int>) {
     switch model.selection {
@@ -70,7 +70,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildMenu () {
     self.enable (fromValueBinding: self.mDocument != nil, self.enabledBindingController)
@@ -102,7 +102,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func performRenumbering (_ inSender : NSMenuItem) {
    // Swift.print ("Exchange \(self.mCurrentPadNumber) <-> \(inSender.tag)")
@@ -118,14 +118,14 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: -
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCurrentZoneController : EBObservablePropertyController? = nil
   private var mCurrentZoneName = ""
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_currentZoneName (_ model : EBObservableProperty <String>) -> Self {
     self.mCurrentZoneController = EBObservablePropertyController (
@@ -135,7 +135,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
      return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func update (fromZoneName model : EBObservableProperty <String>) {
     switch model.selection {
@@ -147,7 +147,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

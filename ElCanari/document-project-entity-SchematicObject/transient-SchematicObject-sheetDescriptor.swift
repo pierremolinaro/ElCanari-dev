@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SchematicObject_sheetDescriptor (
        _ self_mSheet_sheetDescriptor : SchematicSheetDescriptor?

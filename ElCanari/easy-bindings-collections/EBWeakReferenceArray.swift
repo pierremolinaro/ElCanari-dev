@@ -12,17 +12,17 @@ import Foundation
 
 struct EBWeakReferenceArray <Element : AnyObject> {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mArray : [EBWeakElement <Element>]
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     self.mArray = [EBWeakElement <Element>] ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inObject : Element) {
   //--- Remove nil elements
@@ -37,7 +37,7 @@ struct EBWeakReferenceArray <Element : AnyObject> {
     self.mArray.append (EBWeakElement (inObject))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var values : [Element] {
     var result = [Element] ()
@@ -49,7 +49,7 @@ struct EBWeakReferenceArray <Element : AnyObject> {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (_ inElement : Element) -> Bool {
     for weakElement in self.mArray {
@@ -60,7 +60,7 @@ struct EBWeakReferenceArray <Element : AnyObject> {
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

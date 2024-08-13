@@ -14,7 +14,7 @@ import AppKit
 
 class ALB_NSPopUpButton : NSPopUpButton {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (pullsDown inPullsDown : Bool, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero, pullsDown: inPullsDown)
@@ -36,19 +36,19 @@ class ALB_NSPopUpButton : NSPopUpButton {
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (width inWidth : Int) -> Self {
     let c = NSLayoutConstraint (
@@ -64,34 +64,34 @@ class ALB_NSPopUpButton : NSPopUpButton {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $enabled binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  private final var mEnabledBindingController : EnabledBindingController? = nil
 //  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
 //    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
 //    return self
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $hidden binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  private final var mHiddenBindingController : HiddenBindingController? = nil
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
 //    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
 //    return self
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

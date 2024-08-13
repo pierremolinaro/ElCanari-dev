@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_gridDisplayFactor (_ model : EBObservableProperty <Int>) {
     self.mGridDisplayFactorController = EBObservablePropertyController (
@@ -19,14 +19,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_gridDisplayFactor () {
 //    self.mGridDisplayFactorController?.unregister ()
 //    self.mGridDisplayFactorController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateGridDisplayFactor (from model : EBObservableProperty <Int>) {
     switch model.selection {
@@ -37,7 +37,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

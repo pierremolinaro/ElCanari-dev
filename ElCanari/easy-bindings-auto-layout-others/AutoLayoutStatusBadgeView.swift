@@ -20,12 +20,12 @@ private let BADGE_WIDTH : CGFloat = 16.0
 
 final class AutoLayoutStatusBadgeView : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mWarningCount : Int = 0
   private var mErrorCount : Int = 0
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -33,20 +33,20 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     self.frame.size = self.intrinsicContentSize
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     return NSSize (width: BADGE_WIDTH * 2.0, height: BADGE_WIDTH * 2.0)
   }
 
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
   //--- Color and text
@@ -75,13 +75,13 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     str.draw (at: p, withAttributes: textAttributes)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $warningCount binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mWarningCountController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_warningCount (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mWarningCountController = EBObservablePropertyController (
@@ -91,7 +91,7 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateWarningCount (_ inObjectSelection : EBSelection <Int>) {
     switch inObjectSelection {
@@ -103,13 +103,13 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $errorCount binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mErrorCountController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_errorCount (_ inObject : EBObservableProperty <Int>) -> Self {
     self.mErrorCountController = EBObservablePropertyController (
@@ -119,7 +119,7 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateErrorCount (_ inObjectSelection : EBSelection <Int>) {
     switch inObjectSelection {
@@ -131,9 +131,9 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     self.needsDisplay = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  tooltip binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateTooltip (_ inObjectSelection : EBSelection <String>) {
     switch inObjectSelection {
@@ -144,11 +144,11 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTooltipController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_tooltip (_ inObject : EBObservableProperty <String>) -> Self {
     self.mTooltipController = EBObservablePropertyController (
@@ -158,7 +158,7 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

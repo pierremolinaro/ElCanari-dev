@@ -10,7 +10,7 @@ import AppKit
 
 extension Bool : EBStoredPropertyProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
@@ -18,27 +18,27 @@ extension Bool : EBStoredPropertyProtocol {
     return crc
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func convertFromNSObject (object : NSObject) -> Bool {
     let number = object as! NSNumber
     return number.boolValue
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     let v : ASCII = self ? .T : .F
     ioData.append (v.rawValue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Bool? {
     if inRange.length == 1 {
@@ -55,7 +55,7 @@ extension Bool : EBStoredPropertyProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension Preferences {
   final func configure_automaticallyCheckForUpdatesConfigurator (_ inOutlet : AutoLayoutCheckbox) {

@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolTypeInDevice_pinNameShape (
        _ self_mPinTypes_nameShape : [SymbolPinTypeInDevice_nameShape]

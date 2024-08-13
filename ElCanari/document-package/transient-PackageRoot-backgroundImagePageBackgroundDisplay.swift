@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageRoot_backgroundImagePageBackgroundDisplay (
        _ self_packageObjects_objectDisplay : [PackageObject_objectDisplay], 

@@ -12,7 +12,7 @@ import AppKit
 
 class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final let mScrollView = ALB_NSScrollView ()
   private final let mTableView : InternalAutoLayoutTableView
@@ -23,7 +23,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   private final var mTransmitSelectionChangeToDelegate = true
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize, addControlButtons inAddControlButtons : Bool) {
     self.mTableView = InternalAutoLayoutTableView (size: inSize)
@@ -68,15 +68,15 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Configure table view
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
@@ -89,17 +89,17 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mDelegate = inDelegate
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var selectedRow : Int { return self.mTableView.selectedRow }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func selectRowIndexes (_ inIndexes : IndexSet, byExtendingSelection extend : Bool) {
     self.mTableView.selectRowIndexes (inIndexes, byExtendingSelection: extend)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func noHeaderView () -> Self {
     self.mTableView.headerView = nil
@@ -107,14 +107,14 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setIntercellSpacing (horizontal inX : Int, vertical inY : Int) -> Self {
     self.mTableView.intercellSpacing = NSSize (width: inX, height: inY)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (hasHorizontalGrid inFlag : Bool) -> Self {
     if inFlag {
@@ -125,7 +125,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     return self
   }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (hasVerticalGrid inFlag : Bool) -> Self {
     if inFlag {
@@ -136,56 +136,56 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
     self.mTableView.usesAlternatingRowBackgroundColors = inFlag
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func beginUpdates () {
     self.mTableView.beginUpdates ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func endUpdates () {
     self.mTableView.endUpdates ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func addEntryAction (_ _ : Any?) {
     self.mDelegate?.tableViewDelegate_addEntry ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func removeSelectedEntriesAction (_ _ : Any?) {
     self.mDelegate?.tableViewDelegate_removeSelectedEntries ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var columnCount : Int {
     return self.mTableView.tableColumns.count
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var font : NSFont? {
     return self.mTableView.font
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var controlSize : NSControl.ControlSize {
     return self.mTableView.controlSize
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendTableColumn (_ inColumn : AutoLayoutTableColumn) {
   //--- Add Column
@@ -197,13 +197,13 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func scrollRowToVisible (row inRow : Int) {
     self.mTableView.scrollRowToVisible (inRow)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func sortAndReloadData () {
     // Swift.print ("AutoLayoutTableView reloads data")
@@ -252,17 +252,17 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   NSTableViewDataSource protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor final func numberOfRows (in tableView: NSTableView) -> Int {
     return self.mRowCountCallBack? () ?? 0
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   NSTableViewDelegate protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor final func tableView (_ tableView : NSTableView,
                                    viewFor inTableColumn : NSTableColumn?,
@@ -275,18 +275,18 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    tableView:sortDescriptorsDidChange: NSTableViewDataSource delegate
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableView (_ tableView : NSTableView,
                         sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.sortAndReloadData ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func tableViewSelectionDidChange (_ notification : Notification) {
     if mTransmitSelectionChangeToDelegate {
@@ -295,7 +295,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty, self.mTableView.enabledBindingController)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
             dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
@@ -303,7 +303,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mTableView.set (draggedTypes: inDraggedTypes, dragFilterCallBack: inFilterCallBack, dragConcludeCallBack: inCallBack)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -313,14 +313,14 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
 fileprivate final class InternalAutoLayoutTableView : NSTableView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
   private var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
@@ -331,21 +331,21 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
     self.controlSize = inSize.cocoaControlSize
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: Drag
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
             dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
@@ -355,7 +355,7 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
     self.mDragFilterCallBack = inFilterCallBack
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
     var dragOperation : NSDragOperation = []
@@ -366,30 +366,30 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
     return dragOperation
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
     return self.draggingEntered (inSender)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draggingExited (_ inSender : NSDraggingInfo?) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return self.draggingEntered (inSender) == .copy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
@@ -397,21 +397,21 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK:  $enabled binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mEnabledBindingController : EnabledBindingController? = nil
   var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     self.mEnabledBindingController = EnabledBindingController (inExpression, self)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

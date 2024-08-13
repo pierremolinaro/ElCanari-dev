@@ -20,11 +20,11 @@ final class OffscreenView : NSView {
   private let mShape : EBShape?
   private let mBackColor : NSColor?
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var isFlipped : Bool  { return false }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (frame inFrameRect : NSRect,
         strokeBezierPathes inStrokeBezierPathes : [NSBezierPath],
@@ -41,21 +41,21 @@ final class OffscreenView : NSView {
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Draw Rect
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
   //--- Back color
@@ -92,7 +92,7 @@ final class OffscreenView : NSView {
     self.mShape?.draw (inDirtyRect)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func drawGrid (_ inGridSizeInCocoaPoints : Double) {
     let subdivisionsBP = NSBezierPath ()
@@ -139,7 +139,7 @@ final class OffscreenView : NSView {
     divisionsBP.stroke ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func drawHorizontalMarks (_ inGridSizeInCocoaPoints : Double) {
     let attributes : [NSAttributedString.Key : Any] = [
@@ -157,7 +157,7 @@ final class OffscreenView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func drawVerticalMarks (_ inGridSizeInCocoaPoints : Double) {
     let attributes : [NSAttributedString.Key : Any] = [
@@ -175,7 +175,7 @@ final class OffscreenView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

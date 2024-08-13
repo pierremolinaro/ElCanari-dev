@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_pinPadAssignments (
        _ self_projectDeviceController_selectedArray_all_pinPadAssignments : [DeviceInProject_pinPadAssignments]

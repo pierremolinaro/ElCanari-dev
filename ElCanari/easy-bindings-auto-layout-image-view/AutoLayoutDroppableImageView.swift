@@ -14,12 +14,12 @@ import AppKit
 
 final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mImageView = AutoLayoutInternalDroppableImageView ()
   private let mRemoveButton : AutoLayoutButton?
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (removeButton inHasRemoveButton : Bool) {
     self.mRemoveButton = inHasRemoveButton
@@ -56,33 +56,33 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
     }
   }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (maxWidth inMaxWidth : Int) -> Self {
     self.mImageView.set (maxWidth: inMaxWidth)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (maxHeight inMaxHeight : Int) -> Self {
     self.mImageView.set (maxHeight: inMaxHeight)
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func removeImageAction (_ _ : Any?) {
     self.setModel (Data ())
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func copyImageAction (_ _ : Any?) {
     if let data = self.mModel?.optionalValue {
@@ -92,7 +92,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func pasteImageAction (_ _ : Any?) {
     if let pdfData = NSPasteboard.general.data (forType: .pdf) {
@@ -112,9 +112,9 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $imageData binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateImageData (_ object : EBObservableProperty <Data>) {
     switch object.selection {
@@ -127,18 +127,18 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mImageDataController : EBObservablePropertyController? = nil
   private weak var mModel : EBObservableMutableProperty <Data>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func setModel (_ inData : Data) {
     _ = self.mModel?.setProp (inData)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_imageData (_ inModel : EBObservableMutableProperty <Data>) -> Self {
     self.mModel = inModel
@@ -149,7 +149,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
      return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -157,13 +157,13 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
 fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mMaxWidth : CGFloat? = nil
   private var mMaxHeight : CGFloat? = nil
   weak var mDroppableImageView : AutoLayoutDroppableImageView? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -174,7 +174,7 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
     self.registerForDraggedTypes (myPasteboardImageTypes ())
   }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  override var intrinsicContentSize : NSSize {
    if let imageSize = self.image?.size {
@@ -191,29 +191,29 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
    }
  }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (maxWidth inMaxWidth : Int) {
     self.mMaxWidth = CGFloat (inMaxWidth)
     self.invalidateIntrinsicContentSize ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (maxHeight inMaxHeight : Int) {
     self.mMaxHeight = CGFloat (inMaxHeight)
     self.invalidateIntrinsicContentSize ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Drag destination
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //The six NSDraggingDestination methods are invoked in a distinct order:
   //
   // ① As the image is dragged into the destination’s boundaries, the destination is sent a draggingEntered: message.
@@ -228,7 +228,7 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
   //       recent invocation of draggingEntered: or draggingUpdated:.
   // ⑤  If the prepareForDragOperation: message returned YES, a performDragOperation: message is sent.
   // ⑥  Finally, if performDragOperation: returned YES, concludeDragOperation: is sent.
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
     var accepts = self.mDroppableImageView != nil
@@ -239,30 +239,30 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
     return accepts ? .copy : []
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draggingUpdated (_ sender : NSDraggingInfo) -> NSDragOperation {
     return .copy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draggingExited (_ sender : NSDraggingInfo?) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func prepareForDragOperation (_ sender : NSDraggingInfo) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func performDragOperation (_ sender : NSDraggingInfo) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
     if let pboard = inSender?.draggingPasteboard {
@@ -278,7 +278,7 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

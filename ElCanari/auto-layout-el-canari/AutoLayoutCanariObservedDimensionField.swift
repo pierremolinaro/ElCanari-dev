@@ -14,7 +14,7 @@ import AppKit
 
 final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init (optionalWidth: nil, bold: true, size: inSize.cocoaControlSize)
@@ -29,21 +29,21 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField_enabled_hid
     self.usesSingleLineMode = false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     return NSSize (width: 56.0, height: 19.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  value binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateOutlet (dimension : EBObservableProperty <Int>, unit : EBObservableProperty <Int>) {
     switch combine (dimension.selection, unit: unit.selection) {
@@ -62,11 +62,11 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField_enabled_hid
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mController : Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_dimensionAndUnit (_ object : EBObservableProperty <Int>,
                                     _ unit : EBObservableProperty <Int>) -> Self {
@@ -74,7 +74,7 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField_enabled_hid
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -87,7 +87,7 @@ final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit :
   private var mDimension : EBObservableProperty <Int>
   private var mUnit : EBObservableProperty <Int>
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (dimension : EBObservableProperty <Int>,
         unit : EBObservableProperty <Int>,
@@ -109,7 +109,7 @@ final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit :
     inOutlet.formatter = numberFormatter
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

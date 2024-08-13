@@ -13,9 +13,9 @@ import Compression
 
 extension AutoLayoutMergerDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Load from JSON archive
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func loadBoardModelELCanariBoardArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
   //--- Load file, as plist
@@ -31,7 +31,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func parseBoardModelELCanariBoardArchive (fromData inData : Data,
                                             named inName : String,
@@ -45,7 +45,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func internalLoadELCanariBoardArchive (_ inProduct : ProductRepresentation,
                                          named inName : String,
@@ -149,14 +149,14 @@ extension AutoLayoutMergerDocument {
     inCallBack (boardModel)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func registerBoardModelCallBack (_ inBoardModel : BoardModel) {
     self.rootObject.boardModels_property.add (inBoardModel)
     self.mBoardModelController.select (object: inBoardModel)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

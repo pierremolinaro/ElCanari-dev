@@ -14,7 +14,7 @@ import AppKit
 
 final class AutoLayoutStaticImageView : ALB_NSImageView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (name inImageName : String) {
     super.init ()
@@ -28,7 +28,7 @@ final class AutoLayoutStaticImageView : ALB_NSImageView {
     self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (image inImage : NSImage?) {
     super.init ()
@@ -40,13 +40,13 @@ final class AutoLayoutStaticImageView : ALB_NSImageView {
     self.frame.size = self.intrinsicContentSize
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

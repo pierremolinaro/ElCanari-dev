@@ -18,15 +18,15 @@ typealias GraphicViewTooltipArray = [GraphicViewTooltip]
 
 final class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let kind : CanariIssue.Kind
   let message : String
   let rect : NSRect
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (kind inKind : CanariIssue.Kind, message inMessage : String, rect inRect : NSRect) {
     self.kind = inKind
@@ -36,15 +36,15 @@ final class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  NSViewToolTipOwner Protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func view (_ view : NSView,
              stringForToolTip tag : NSView.ToolTipTag,
@@ -53,7 +53,7 @@ final class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
     return self.message
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

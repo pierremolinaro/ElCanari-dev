@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutProgressIndicator : ALB_NSProgressIndicator {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -20,13 +20,13 @@ final class AutoLayoutProgressIndicator : ALB_NSProgressIndicator {
     self.isIndeterminate = false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

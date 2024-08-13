@@ -7,7 +7,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
   private var mSelectionView : FontCharacterSelectView? = nil
   private var mDefinedCharacterSet = Set <Int> ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mSelectedCharacterCode : Int = 0x167 {
     didSet {
@@ -15,7 +15,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (title: "", size: .small)
@@ -25,20 +25,20 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     self.bezelStyle = .rounded
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setDefinedCharacterSet (_ inSet : Set <Int>) {
     self.mDefinedCharacterSet = inSet
     self.isEnabled = inSet.count > 0
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseDown (with inEvent : NSEvent) {
     let eventLocationInWindowCoordinates = inEvent.locationInWindow
@@ -61,7 +61,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     self.mCharacterSelectionPopover = popover
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseDragged (with inEvent : NSEvent) {
     if let unwWindow = self.window {
@@ -75,7 +75,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseUp (with inEvent : NSEvent) {
     if let selectionView = self.mSelectionView {
@@ -90,13 +90,13 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     self.mSelectionView = nil ;
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $codePoint binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCodePointController : EBGenericReadWritePropertyController <Int>?
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_codePoint (_ object : EBObservableMutableProperty <Int>) -> Self {
     self.mCodePointController = EBGenericReadWritePropertyController <Int> (
@@ -106,16 +106,16 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_codePoint () {
 //    self.mCodePointController?.unregister ()
 //    self.mCodePointController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $characters binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateCodePoint (_ object : EBObservableProperty <Int>) {
     switch object.selection {
@@ -131,13 +131,13 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $characters binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCharactersController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_characters (_ inModel : EBTransientProperty <DefinedCharactersInDevice>) -> Self {
     self.mCharactersController = EBObservablePropertyController (
@@ -154,14 +154,14 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_characters () {
 //    self.mCharactersController?.unregister ()
 //    self.mCharactersController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

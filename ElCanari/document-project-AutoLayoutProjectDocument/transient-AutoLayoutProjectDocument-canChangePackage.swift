@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_canChangePackage (
        _ self_componentController_selectedArray_all_availablePackages : [ComponentInProject_availablePackages]

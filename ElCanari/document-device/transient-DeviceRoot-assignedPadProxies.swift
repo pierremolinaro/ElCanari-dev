@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_assignedPadProxies (
        _ self_mPadProxies_mPadName : [PadProxyInDevice_mPadName],

@@ -12,7 +12,7 @@ import AppKit
 
 extension SheetInProject {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addLabelToPin (toPoint inPoint : PointInSchematic,
                       newNetCreator inNewNetCreator : @MainActor () -> NetInProject) -> LabelInSchematic? {
@@ -29,7 +29,7 @@ extension SheetInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addNCToPin (toPoint inPoint : PointInSchematic) -> NCInSchematic? {
     let isConnected = inPoint.isConnected ?? true
@@ -44,7 +44,7 @@ extension SheetInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func findPreferredNCOrientation (for inPoint : PointInSchematic) -> QuadrantRotation {
   //--- Find the rectangle of all pins of current symbol
@@ -71,7 +71,7 @@ extension SheetInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

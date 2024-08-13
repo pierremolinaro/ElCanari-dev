@@ -17,9 +17,9 @@ extension LayerConfiguration : Codable {}
 
 struct ProductRepresentation : Codable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private(set) var boardWidth : ProductLength
   private(set) var boardWidthUnit : Int // Canari Unit
@@ -35,9 +35,9 @@ struct ProductRepresentation : Codable {
   private(set) var componentPads = [LayeredProductComponentPad] ()
   private(set) var layerConfiguration : LayerConfiguration
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (boardWidth inBoardWidth : ProductLength,
         boardWidthUnit inBoardWidthUnit : Int, // Canari Unit
@@ -57,21 +57,21 @@ struct ProductRepresentation : Codable {
     self.layerConfiguration = inLayerConfiguration
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Populate
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (circle inCircle : LayeredProductCircle) {
     self.circles.append (inCircle)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (pad inPad : LayeredProductComponentPad) {
     self.componentPads.append (inPad)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (roundSegment inSegment : LayeredProductSegment) {
     if (inSegment.x1 != inSegment.x2) || (inSegment.y1 != inSegment.y2) {
@@ -79,7 +79,7 @@ struct ProductRepresentation : Codable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (squareSegment inSegment : LayeredProductSegment) {
     if (inSegment.x1 != inSegment.x2) || (inSegment.y1 != inSegment.y2) {
@@ -87,13 +87,13 @@ struct ProductRepresentation : Codable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (rectangle inRect : LayeredProductRectangle) {
     self.rectangles.append (inRect)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (flattenedStrokeBezierPath inBezierPath : EBBezierPath,
                         transformedBy inAT : AffineTransform,
@@ -111,9 +111,9 @@ struct ProductRepresentation : Codable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Insert a product (used by merger)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (_ inProduct : ProductRepresentation,
                      x inX : ProductLength,
@@ -183,9 +183,9 @@ struct ProductRepresentation : Codable {
     }
   }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Decoding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init? (fromJSONCompressedData inData : Data,
          using inAlgorithm : compression_algorithm) {
@@ -198,9 +198,9 @@ struct ProductRepresentation : Codable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Encoding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func encodedJSONData (prettyPrinted inPrettyPrinted : Bool) throws -> Data {
     let encoder = JSONEncoder ()
@@ -213,7 +213,7 @@ struct ProductRepresentation : Codable {
     return data
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func encodedJSONCompressedData (prettyPrinted inPrettyPrinted : Bool,
                                   using inAlgorithm : compression_algorithm) -> Data {
@@ -222,7 +222,7 @@ struct ProductRepresentation : Codable {
     return compressedJSONData
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func roundSegments (forLayers inLayers : ProductLayerSet) -> [LayeredProductSegment] {
     var result = [LayeredProductSegment] ()
@@ -234,7 +234,7 @@ struct ProductRepresentation : Codable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func circles (forLayers inLayers : ProductLayerSet) -> [LayeredProductCircle] {
     var result = [LayeredProductCircle] ()
@@ -246,7 +246,7 @@ struct ProductRepresentation : Codable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func segmentEntities (_ inUndoManager : UndoManager?,
                         forLayers inLayers : ProductLayerSet) -> EBReferenceArray <SegmentEntity> {
@@ -278,7 +278,7 @@ struct ProductRepresentation : Codable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func rectangleEntities (_ inUndoManager : UndoManager?,
                         forLayers inLayers : ProductLayerSet) -> EBReferenceArray <RectangleEntity> {
@@ -301,7 +301,7 @@ struct ProductRepresentation : Codable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func pads (_ inUndoManager : UndoManager?,
                         forLayers inLayers : ProductLayerSet) -> EBReferenceArray <BoardModelPad> {
@@ -324,7 +324,7 @@ struct ProductRepresentation : Codable {
     return padEntities
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -332,7 +332,7 @@ struct ProductRepresentation : Codable {
 
 fileprivate extension SegmentEntity {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   convenience init (_ inUndoManager : UndoManager?,
                     _ inProductSegment : LayeredProductSegment,
@@ -346,7 +346,7 @@ fileprivate extension SegmentEntity {
     self.endStyle = inEndStyle
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

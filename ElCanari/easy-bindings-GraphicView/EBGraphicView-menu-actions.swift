@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
@@ -49,21 +49,21 @@ extension EBGraphicView {
     return validate
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func cut (_ : Any?) {
     let translation = CanariPoint (x: self.mShiftArrowKeyMagnitude, y: self.mShiftArrowKeyMagnitude)
     self.mViewController?.cutSelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func copy (_ : Any?) {
     let translation = CanariPoint (x: self.mShiftArrowKeyMagnitude, y: self.mShiftArrowKeyMagnitude)
     self.mViewController?.copySelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func paste (_ : Any?) {
     if let windowForSheet = self.window {
@@ -71,85 +71,85 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func delete (_ : Any?) {
     self.deleteSelection ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func deleteSelection () {
     self.mViewController?.deleteSelectedObjects ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final func selectAll (_ : Any?) {
     self.mViewController?.selectAllObjects ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func bringForward () {
     self.mViewController?.bringForward ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func bringToFront (_ : Any?) {
     self.mViewController?.bringToFront ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func bringForward (_ : Any?) {
     self.mViewController?.bringForward ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func sendToBack (_ : Any?) {
     self.mViewController?.sendToBack ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func sendBackward (_ : Any?) {
     self.mViewController?.sendBackward ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func snapToGrid (_ : Any?) {
     self.mViewController?.snapToGrid (self.mArrowKeyMagnitude)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func flipHorizontally (_ : Any?) {
     self.mViewController?.flipHorizontally ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func flipVertically (_ : Any?) {
     self.mViewController?.flipVertically ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func rotate90Clockwise (_ : Any?) {
     self.mViewController?.rotate90Clockwise ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func rotate90CounterClockwise (_ : Any?) {
     self.mViewController?.rotate90CounterClockwise ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

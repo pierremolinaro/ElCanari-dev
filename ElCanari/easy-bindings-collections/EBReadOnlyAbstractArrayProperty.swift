@@ -43,30 +43,33 @@ fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBRefer
 //    EBReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyAbstractArrayProperty <T : AnyObject> : EBReadOnlyAbstractGenericRelationshipProperty {
+class EBReadOnlyAbstractArrayProperty <T : AnySendableObject> : EBReadOnlyAbstractGenericRelationshipProperty, Sendable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Abstract methods
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var selection : EBSelection < [T] > { return .empty }  // Abstract method
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var propval : EBReferenceArray <T> { return self.mInternalArrayValue }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var propset : EBReferenceSet <T> { return self.mInternalSetValue }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Internal value
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var internalSetValue : EBReferenceSet <T> { return self.mInternalSetValue }
 
   private final var mInternalSetValue = EBReferenceSet <T> ()
 
+  func setOldValue (_ inOldValue : EBReferenceArray <T>) {
+    self.mInternalArrayValue = inOldValue
+  }
   final var mInternalArrayValue = EBReferenceArray <T> () {
     didSet {
       let (equalModels, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
@@ -84,25 +87,25 @@ class EBReadOnlyAbstractArrayProperty <T : AnyObject> : EBReadOnlyAbstractGeneri
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <T>) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateObservers (removedSet inRemovedSet : EBReferenceSet <T>, addedSet inAddedSet : EBReferenceSet <T>) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  count property
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let count_property = EBTransientProperty <Int> ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -122,7 +125,7 @@ class EBReadOnlyAbstractArrayProperty <T : AnyObject> : EBReadOnlyAbstractGeneri
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

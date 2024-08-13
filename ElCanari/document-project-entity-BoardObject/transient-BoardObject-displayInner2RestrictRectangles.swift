@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardObject_displayInner2RestrictRectangles (
        _ self_mRoot_displayInner2RestrictRectangles : Bool?

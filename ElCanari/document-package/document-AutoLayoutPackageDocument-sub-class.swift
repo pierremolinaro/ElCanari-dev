@@ -15,20 +15,20 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
 @objc(AutoLayoutPackageDocumentSubClass) final class AutoLayoutPackageDocumentSubClass : AutoLayoutPackageDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func metadataStatusForSaving () -> UInt8 {
     return UInt8 (self.metadataStatus!.rawValue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMPackageVersion] = version
     metadataDictionary [PMPackageComment] = self.rootObject.comments
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
@@ -38,21 +38,21 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func windowDefaultSize () -> NSSize {
     return NSSize (width: 800, height: 600)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final func defaultDraftName () -> String {
     return "untitled"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    buildUserInterface: customization of interface
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func ebBuildUserInterface () {
   //--- Model image points
@@ -63,21 +63,21 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     super.ebBuildUserInterface () // Should be the last instruction
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Drag and drop destination
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draggingEntered (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     return .copy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     var ok = false
@@ -133,9 +133,9 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     return ok
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   MODEL IMAGE POINTS OBSERVERS
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mModelImageFirstPointLastX = 0
   private var mModelImageFirstPointXObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
@@ -149,7 +149,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   private var mModelImagePointsLastDy = 0
   private var mModelImagePointsDyObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func buildModelPoints () {
     super.buildModelPoints ()
@@ -159,7 +159,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     self.mModelImagePointsLastDy = self.rootObject.mModelImageSecondPointDy!
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func setupImagePointsAndTheirObservers () {
   //--- Add model observers
@@ -189,7 +189,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func modelImageFirstPointXDidChange () {
     if let newX = self.rootObject.mModelImageFirstPointX {
@@ -203,7 +203,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func modelImageFirstPointYDidChange () {
     if let newY = self.rootObject.mModelImageFirstPointY {
@@ -217,7 +217,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func modelImagePointsDxDidChange () {
     if let newX = self.rootObject.mModelImageSecondPointDx {
@@ -231,7 +231,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func modelImagePointsDyDidChange () {
     if let newY = self.rootObject.mModelImageSecondPointDy {
@@ -245,7 +245,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func modelImageSecondPointDidChange () {
     if self.rootObject.mPointsAreLocked {
@@ -263,7 +263,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func applyAffineTransformToModelImage () {
     if self.rootObject.mPointsAreLocked {
@@ -284,11 +284,11 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mPadNumberingObserver = EBOutletEvent () //§ EBModelEvent ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func addPadNumberingObservers () {
     self.mPadNumberingObserver.mEventCallBack = { [weak self] in self?.handlePadNumbering () }
@@ -301,7 +301,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     self.rootObject.counterClockNumberingStartAngle_property.startsBeingObserved (by: self.mPadNumberingObserver)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func handlePadNumbering () {
     var allPads = self.rootObject.packagePads_property.propval
@@ -344,7 +344,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performPadNumbering (_ inPadArray : [PackagePad],
                                     _ inNumberingPolicy : PadNumbering,
@@ -423,7 +423,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

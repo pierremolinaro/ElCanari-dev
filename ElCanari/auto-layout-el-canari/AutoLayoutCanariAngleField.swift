@@ -6,13 +6,13 @@ import AppKit
 
 final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mNumberFormatter = NumberFormatter ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate var mInputIsValid = true {
     didSet {
@@ -23,9 +23,9 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
   }
 
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (minWidth inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize.cocoaControlSize)
@@ -44,13 +44,13 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
     self.formatter = self.mNumberFormatter
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     if debugAutoLayout () {
@@ -67,7 +67,7 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
@@ -81,7 +81,7 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func valueDidChangeAction (_ sender : Any?) {
     if let outletValueNumber = self.mNumberFormatter.number (from: self.stringValue) {
@@ -93,13 +93,13 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $angle binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_angle (_ model : EBObservableMutableProperty <Int>) -> Self {
     self.mAngleController = EBGenericReadWritePropertyController <Int> (
@@ -109,7 +109,7 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func update (from model : EBObservableMutableProperty <Int>) {
     self.mInputIsValid = true
@@ -129,7 +129,7 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

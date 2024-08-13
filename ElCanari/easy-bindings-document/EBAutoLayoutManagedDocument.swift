@@ -15,22 +15,22 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
 @MainActor class EBAutoLayoutManagedDocument : NSDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mReadMetadataStatus : UInt8 = 0
   private final var mMetadataDictionary = [String : Any] ()
   private final var mSplashScreenWindow : CanariWindow? = nil
   private final var mSplashTextField : AutoLayoutLabel? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Root Object
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var mRootObject : EBManagedObject
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    init
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor override init () {
     self.mRootObject = EBManagedObject (nil) // Temporary object
@@ -43,32 +43,32 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     undoManager.enableUndoRegistration ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    rootEntityClassName
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rootEntityClassName () -> String {
     return ""
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
               forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
     return (NSImage (named: NSImage.Name ("exclamation"))!, NSPoint ())
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Drag destination
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // The six NSDraggingDestination methods are invoked in a distinct order:
   //
   // ① As the image is dragged into the destination’s boundaries, the destination is sent a draggingEntered: message.
@@ -84,48 +84,48 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   // ⑤  If the prepareForDragOperation: message returned YES, a performDragOperation: message is sent.
   // ⑥  Finally, if performDragOperation: returned YES, concludeDragOperation: is sent.
   //
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func draggingEntered (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingEntered")
     return .copy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func draggingUpdated (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingUpdated")
     return .copy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func draggingExited (_ _ : NSDraggingInfo?, _ _ : NSScrollView) {
     // NSLog ("draggingExited")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func prepareForDragOperation (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> Bool {
     // NSLog ("prepareForDragOperation")
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performDragOperation (_ sender: NSDraggingInfo, _ _ : NSScrollView) -> Bool {
     // NSLog ("performDragOperation")
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func concludeDragOperation (_ _ : NSDraggingInfo?, _ _ : NSScrollView) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Document File Format
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
     didSet {
@@ -135,20 +135,20 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //-  SAVE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func metadataStatusForSaving () -> UInt8 {
     return 0 ;
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final func data (ofType typeName : String) throws -> Data {
   //--- Update document version
@@ -183,9 +183,9 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     return try dataForSaveOperation (from: documentData)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    READ DOCUMENT FROM FILE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final func read (from inData : Data, ofType inTypeName : String) throws {
     DispatchQueue.main.async {
@@ -240,27 +240,27 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     return 0
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func windowDefaultSize () -> NSSize {
     return NSSize (width: 480, height: 320)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func windowStyleMask () -> NSWindow.StyleMask {
     return [.titled, .closable, .miniaturizable, .resizable]
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   makeWindowControllers
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func makeWindowControllers () {
     DispatchQueue.main.async {
@@ -303,46 +303,46 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebBuildUserInterface () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Signature observer
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mSignatureObserver = EBSignatureObserverEvent ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var signatureObserver_property : EBSignatureObserverEvent { return self.mSignatureObserver }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Version
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mVersion = EBStoredProperty_Int (defaultValue: 0, undoManager: nil, key: nil)
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var versionObserver_property : EBStoredProperty_Int { return self.mVersion }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Version observer
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mVersionShouldChangeObserver = EBVersionShouldChangeObserver ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var versionShouldChangeObserver_property : EBVersionShouldChangeObserver {
     return self.mVersionShouldChangeObserver
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Reset version and signature
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func resetVersionAndSignature () {
     self.undoManager?.registerUndo (
@@ -354,7 +354,7 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     self.mVersionShouldChangeObserver.clearStartUpSignature ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func performUndoVersionNumber (_ oldValue : NSNumber) {
     self.undoManager?.registerUndo (
@@ -365,9 +365,9 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     self.mVersion.setProp (oldValue.intValue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Menu Events
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
@@ -387,23 +387,23 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     return validate
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   FORMAT ACTIONS
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction final func setBinaryFormatAction (_ inSender : Any?) {
     self.mManagedDocumentFileFormat = .binary
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction final func setTextualFormatAction (_ inSender : Any?) {
     self.mManagedDocumentFileFormat = .textual
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   PRINT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc override func printDocument (_ inSender : Any?) {
     if let view = self.windowForSheet?.firstResponder as? EBGraphicView {
@@ -414,7 +414,7 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -424,13 +424,13 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
 final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignatureObserverProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mUndoManager : UndoManager? = nil // SOULD BE WEAK
   private weak var mSignatureObserver : EBSignatureObserverEvent? = nil // SOULD BE WEAK
   private var mSignatureAtStartUp : UInt32 = 0
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -443,7 +443,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent,
                                                  _ inUndoManager : UndoManager?) {
@@ -452,7 +452,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
     self.mSignatureAtStartUp = signatureObserver.signature ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func updateStartUpSignature () {
     if let signatureObserver = self.mSignatureObserver {
@@ -461,7 +461,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func signature () -> UInt32 {
     if let signatureObserver = self.mSignatureObserver {
@@ -471,15 +471,15 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clearSignatureCache () {
     self.observedObjectDidChange ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // clearStartUpSignature
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clearStartUpSignature () {
     self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
@@ -487,7 +487,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
     self.observedObjectDidChange ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func performUndo (_ oldValue : NSNumber) {
     self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
@@ -495,7 +495,7 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
     self.observedObjectDidChange ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -505,11 +505,11 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
 
 final class EBSignatureObserverEvent : EBTransientProperty <UInt32>, EBSignatureObserverProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mRootObject : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -522,13 +522,13 @@ final class EBSignatureObserverEvent : EBTransientProperty <UInt32>, EBSignature
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setRootObject (_ rootObject : EBSignatureObserverProtocol) {
     self.mRootObject = rootObject
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func signature () -> UInt32 {
     if let rootObject = self.mRootObject {
@@ -538,13 +538,13 @@ final class EBSignatureObserverEvent : EBTransientProperty <UInt32>, EBSignature
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clearSignatureCache () {
     self.observedObjectDidChange ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

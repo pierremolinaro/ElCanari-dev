@@ -6,23 +6,23 @@ import AppKit
 
 struct EBReferenceSet <T : AnyObject> {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDictionary : [ObjectIdentifier : T]
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     self.mDictionary = [ObjectIdentifier : T] ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (minimumCapacity inMinimumCapacity : Int) {
     self.mDictionary = [ObjectIdentifier : T] (minimumCapacity: inMinimumCapacity)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inObjects : [T]) {
     self.mDictionary = [ObjectIdentifier : T] (minimumCapacity: inObjects.count)
@@ -31,35 +31,35 @@ struct EBReferenceSet <T : AnyObject> {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inObject : T) {
     self.mDictionary = [ObjectIdentifier : T] ()
     self.insert (inObject)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func insert (_ inObject : T) {
     let address = ObjectIdentifier (inObject)
     _ = self.mDictionary.updateValue (inObject, forKey: address)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func remove (_ inObject : T) {
     let address = ObjectIdentifier (inObject)
     _ = self.mDictionary.removeValue (forKey: address)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (_ inObject : T) -> Bool {
     let address = ObjectIdentifier (inObject)
     return self.mDictionary [address] != nil
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func intersection (_ inOtherSet : EBReferenceSet <T>) -> EBReferenceSet <T> {
 //    var result = EBReferenceSet <T> ()
@@ -79,7 +79,7 @@ struct EBReferenceSet <T : AnyObject> {
 //    return result
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersection (_ inArray : [T]) -> EBReferenceSet <T> {
     var result = EBReferenceSet <T> ()
@@ -91,11 +91,11 @@ struct EBReferenceSet <T : AnyObject> {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var first : T? { return self.mDictionary.first?.value }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func removeFirst () -> T {
     let address = ObjectIdentifier (self.first!)
@@ -104,19 +104,19 @@ struct EBReferenceSet <T : AnyObject> {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var isEmpty : Bool { return self.mDictionary.isEmpty }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var count : Int { return self.mDictionary.count }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var values : Dictionary <ObjectIdentifier, T>.Values { return self.mDictionary.values }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func subtracting (_ inOtherSet : EBReferenceSet <T>) -> EBReferenceSet <T> {
      var result = self
@@ -126,7 +126,7 @@ struct EBReferenceSet <T : AnyObject> {
      return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func subtract (_ inOtherSet : EBReferenceSet <T>) {
      for key in inOtherSet.mDictionary.keys {
@@ -134,7 +134,7 @@ struct EBReferenceSet <T : AnyObject> {
      }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

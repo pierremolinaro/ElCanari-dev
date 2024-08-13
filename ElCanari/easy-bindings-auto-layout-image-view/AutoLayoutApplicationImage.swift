@@ -15,7 +15,7 @@ import AppKit
 
 final class AutoLayoutApplicationImage : ALB_NSImageView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
@@ -28,19 +28,19 @@ final class AutoLayoutApplicationImage : ALB_NSImageView {
     self.setContentHuggingPriority (.required, for: .vertical)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     return NSSize (width: 84.0, height: 84.0)
   }
 
-   //································································································
+   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

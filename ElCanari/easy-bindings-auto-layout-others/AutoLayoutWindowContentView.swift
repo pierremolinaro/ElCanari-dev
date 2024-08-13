@@ -12,9 +12,9 @@ import AppKit
 
 final class AutoLayoutWindowContentView : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (view inView : NSView) {
     super.init ()
@@ -42,17 +42,17 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     self.addConstraints (constraints)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mNextKeyViewSettingComputationHasBeenTriggered = false
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func triggerNextKeyViewSettingComputation () {
     if !self.mNextKeyViewSettingComputationHasBeenTriggered {
@@ -70,7 +70,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildAutoLayoutKeyViewChain (_ inView : NSView, _ ioCurrentNextKeyView : inout NSView?, _ outLastView : inout NSView?) {
     for view in inView.subviews.reversed () {
@@ -91,7 +91,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func setAutoLayoutFirstKeyViewInChain (_ inView : NSView, _ inLastView : NSView) -> Bool {
     for view in inView.subviews {
@@ -111,23 +111,23 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     return false
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   DISPLAY VIEW CURRENT SETTINGS
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mTrackingArea : NSTrackingArea? = nil
   var mCurrentTrackedView : NSView? = nil
   var mDisplayWindow : NSWindow? = nil
   var mDisplayViewCurrentSettings = showViewCurrentValues ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (displayViewCurrentSettings inFlag : Bool) {
     self.mDisplayViewCurrentSettings = inFlag
     self.updateTrackingAreas ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
   //--- Remove current tracking area
@@ -149,7 +149,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     super.updateTrackingAreas ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func findSubView (in inView: NSView, at inPoint : NSPoint) -> NSView? {
     for view in inView.subviews {
@@ -166,7 +166,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseMoved (with inEvent : NSEvent) {
     if self.mDisplayViewCurrentSettings {
@@ -190,7 +190,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     super.mouseMoved (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseExited (with inEvent : NSEvent) {
     self.mCurrentTrackedView = nil
@@ -199,7 +199,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     super.mouseExited (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildHelperWindow (forView inView : NSView) -> NSWindow {
     let window = NSPanel (
@@ -235,7 +235,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     return window
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendTextField (titled inString : String,
                                 toMainView inMainView : NSView,
@@ -264,7 +264,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -272,7 +272,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
 
 fileprivate final class HiliteView : NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (frame: .zero)
@@ -285,31 +285,31 @@ fileprivate final class HiliteView : NSView {
     self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var isOpaque : Bool { return false}
   override var acceptsFirstResponder : Bool { return false}
   override var canBecomeKeyView : Bool { return false}
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func hitTest (_ point: NSPoint) -> NSView? {
     return nil
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     if showKeyResponderChain () {
@@ -340,7 +340,7 @@ fileprivate final class HiliteView : NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

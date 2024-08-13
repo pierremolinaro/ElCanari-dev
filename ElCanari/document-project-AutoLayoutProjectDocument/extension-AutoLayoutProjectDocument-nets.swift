@@ -12,9 +12,9 @@ import AppKit
 
 extension AutoLayoutProjectDocument : NSTextFieldDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Remove unused nets
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removeUnusedNets () {
     for netClass in self.rootObject.mNetClasses.values {
@@ -44,9 +44,9 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Update Selected Net for Rasnet net display
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateSelectedNetForRastnetDisplay () {
     var netNameSet = Set <String> ()
@@ -62,9 +62,9 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Rename net dialog
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dialogForRenamingNet (named inNetName : String) {
 //    NSLog ("inNetName \(inNetName)")
@@ -83,7 +83,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dialogForRenaming (net inNet : NetInProject) {
     if let window = self.windowForSheet {
@@ -145,7 +145,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func newNameDidChange (_ inSender : NSTextField) {
     if let sender = inSender as? AutoLayoutTextField,
@@ -171,9 +171,9 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   DIALOG FOR MERGING SUBNET
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dialogForMergingSubnetFrom (point inPoint : PointInSchematic) {
     if let window = self.windowForSheet, let initialNetName = inPoint.mNet?.mNetName {
@@ -233,7 +233,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dialogForSelectingNetClassForNet (named inNetName : String) {
     if let window = self.windowForSheet {
@@ -294,7 +294,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

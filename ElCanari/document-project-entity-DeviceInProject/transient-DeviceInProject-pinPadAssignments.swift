@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceInProject_pinPadAssignments (
        _ self_mPadAssignments_pinPadAssignment : [DevicePadAssignmentInProject_pinPadAssignment]

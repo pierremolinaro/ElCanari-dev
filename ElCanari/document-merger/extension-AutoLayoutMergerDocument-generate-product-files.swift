@@ -14,7 +14,7 @@ import Compression
 
 extension AutoLayoutMergerDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func checkLayerConfigurationAndGenerateProductFiles () {
   //--- Layout layer configuration
@@ -68,7 +68,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func generateProductFiles () {
     do{
@@ -118,7 +118,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func removeAndCreateDirectory (atURL inDirectoryURL : URL,
                                          create inCreate : Bool) throws {
@@ -137,7 +137,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func generateProductRepresentation () -> ProductRepresentation {
     let boardLimitWidth = ProductLength  (valueInCanariUnit: self.rootObject.boardLimitWidth)
@@ -179,7 +179,7 @@ extension AutoLayoutMergerDocument {
     return product
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func generatePDFfiles (_ inProduct : ProductRepresentation,
                                      atPath inFilePath : String) throws {
@@ -200,7 +200,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func writePDFDrillFile (_ inProduct : ProductRepresentation,
                                       atPath inFilePath : String) throws {
@@ -217,7 +217,7 @@ extension AutoLayoutMergerDocument {
     self.mLogTextView?.appendSuccess (" Ok\n")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func generateGerberFiles (_ inProduct : ProductRepresentation, atURL inFileURL : URL) throws {
     for descriptor in self.rootObject.mArtwork?.fileGenerationParameterArray.values ?? [] {
@@ -244,7 +244,7 @@ extension AutoLayoutMergerDocument {
     self.mLogTextView?.appendSuccess (" Ok\n")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

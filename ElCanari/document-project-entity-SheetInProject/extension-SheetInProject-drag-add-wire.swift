@@ -12,7 +12,7 @@ import AppKit
 
 extension SheetInProject {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performAddWireDragOperation (_ inUnalignedDraggingLocation : NSPoint,
                                     newNetCreator inNewNetCreator : @MainActor () -> NetInProject) -> WireInSchematic? {
@@ -81,7 +81,7 @@ extension SheetInProject {
     return possibleWire
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

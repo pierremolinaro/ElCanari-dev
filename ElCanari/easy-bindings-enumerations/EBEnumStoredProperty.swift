@@ -10,16 +10,16 @@ import AppKit
 
 final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <T>, EBDocumentStorablePropertyProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   weak private var mUndoManager : UndoManager? = nil // SOULD BE WEAK
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mKey : String?
   var key : String? { return self.mKey }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (defaultValue inValue : T, undoManager inEBUndoManager : UndoManager?, key inKey : String?) {
     self.mValue = inValue
@@ -28,7 +28,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     super.init ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValue : T {
     didSet {
@@ -43,19 +43,19 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var selection : EBSelection <T> { return .single (mValue) }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var propval : T { return self.mValue }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func setProp (_ value : T) { self.mValue = value }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
@@ -64,7 +64,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func initialize (fromRange inRange : NSRange,
                    ofData inData : Data,
@@ -74,7 +74,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey {
@@ -82,25 +82,25 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendValueTo (data ioData : inout Data) {
     self.mValue.appendPropertyValueTo (&ioData)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    SIGNATURE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
   final private var mSignatureCache : UInt32? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
@@ -109,7 +109,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     self.clearSignatureCache ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func clearSignatureCache () {
     if self.mSignatureCache != nil {
@@ -118,7 +118,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
@@ -131,7 +131,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
     return computedSignature
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

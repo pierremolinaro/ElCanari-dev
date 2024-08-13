@@ -131,7 +131,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetClassInProject_netsDescription (
        _ self_mNets : [AnyObject],                           

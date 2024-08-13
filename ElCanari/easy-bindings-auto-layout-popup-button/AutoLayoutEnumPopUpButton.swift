@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (titles inTitles : [String], size inSize : EBControlSize) {
     super.init (pullsDown: false, size: inSize.cocoaControlSize)
@@ -21,13 +21,13 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateIndex (_ object : EBEnumReadWriteObservableProtocol) {
     if let v = object.rawValue () {
@@ -38,20 +38,20 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
     return super.sendAction (action, to: to)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $selectedIndex binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelectedIndexController : Controller_AutoLayoutEnumPopUpButton_Index? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_selectedIndex (_ inObject : EBEnumReadWriteObservableProtocol) -> Self {
     self.mSelectedIndexController = Controller_AutoLayoutEnumPopUpButton_Index (
@@ -61,7 +61,7 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -71,24 +71,24 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
 
 fileprivate final class Controller_AutoLayoutEnumPopUpButton_Index : EBObservablePropertyController {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mObject : EBEnumReadWriteObservableProtocol
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (object : EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutEnumPopUpButton) {
     self.mObject = object
     super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateIndex (object) } )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateModel (_ inValue : Int) {
     self.mObject.setFrom (rawValue: inValue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————

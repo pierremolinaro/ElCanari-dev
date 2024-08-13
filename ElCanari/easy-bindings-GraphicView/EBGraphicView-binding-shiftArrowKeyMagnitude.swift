@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
   final func bind_shiftArrowKeyMagnitude (_ model : EBObservableProperty <Int>) {
     self.mShiftArrowKeyMagnitudeController = EBObservablePropertyController (
@@ -19,14 +19,14 @@ extension EBGraphicView {
     )
   }
 
- //····················································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
 //  final func unbind_shiftArrowKeyMagnitude () {
 //    self.mShiftArrowKeyMagnitudeController?.unregister ()
 //    self.mShiftArrowKeyMagnitudeController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateShiftArrowKeyMagnitude (from model : EBObservableProperty <Int>) {
     switch model.selection {
@@ -39,7 +39,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

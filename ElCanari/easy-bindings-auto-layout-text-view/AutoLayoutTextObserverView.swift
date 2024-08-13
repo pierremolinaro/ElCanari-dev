@@ -12,12 +12,12 @@ import AppKit
 
 final class AutoLayoutTextObserverView : NSScrollView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate let mTextView = ALB_NSTextView ()
   private let mFontSize : CGFloat
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     switch inSize {
@@ -55,24 +55,24 @@ final class AutoLayoutTextObserverView : NSScrollView {
     self.automaticallyAdjustsContentInsets = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mHeight : Int? = nil
   private var mMaxWidth : CGFloat? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (height inHeight : Int) -> Self {
     self.mHeight = inHeight
@@ -80,7 +80,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (maxWidth inMaxWidth : Int) -> Self {
     self.mMaxWidth = CGFloat (inMaxWidth)
@@ -88,7 +88,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -101,44 +101,44 @@ final class AutoLayoutTextObserverView : NSScrollView {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setNoBackground () -> Self {
     self.mTextView.drawsBackground = false
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setNoVerticalScroller () -> Self {
     self.hasVerticalScroller = false
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setNoHorizontalScroller () -> Self {
     self.hasHorizontalScroller = false
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (font inFont : NSFont) -> Self {
     self.mTextView.font = inFont
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // setRedTextColor
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setRedTextColor () -> Self {
     self.mTextView.textColor = .red
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var string : String {
     get { return self.mTextView.string }
@@ -147,9 +147,9 @@ final class AutoLayoutTextObserverView : NSScrollView {
 
 //  var textStorage : NSTextStorage? { self.mTextView.textStorage }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  value binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func update (from inObject : EBObservableProperty <String>) {
     switch inObject.selection {
@@ -164,11 +164,11 @@ final class AutoLayoutTextObserverView : NSScrollView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mValueController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_observedValue (_ inObject : EBObservableProperty <String>) -> Self {
     self.mValueController = EBObservablePropertyController (
@@ -178,7 +178,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clear () {
     if let ts = self.mTextView.layoutManager?.textStorage {
@@ -188,7 +188,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendAttributedString (_ inAttributedString : NSAttributedString) {
     if let ts = self.mTextView.layoutManager?.textStorage {
@@ -199,7 +199,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendMessage (_ inString : String) {
     let attributes : [NSAttributedString.Key : NSObject] = [
@@ -210,7 +210,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     self.appendAttributedString (str)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendMessage (_ inString : String, color inColor : NSColor) {
     let attributes : [NSAttributedString.Key : NSObject] = [
@@ -221,7 +221,7 @@ final class AutoLayoutTextObserverView : NSScrollView {
     self.appendAttributedString (str)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendCodeString (_ inString : String, color inColor : NSColor) {
     let font = NSFont.userFixedPitchFont (ofSize: self.mFontSize) ?? NSFont.boldSystemFont (ofSize: self.mFontSize)
@@ -233,25 +233,25 @@ final class AutoLayoutTextObserverView : NSScrollView {
     self.appendAttributedString (str)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendError (_ inString : String) {
     self.appendMessage (inString, color: .red)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendWarning (_ inString : String) {
     self.appendMessage (inString, color: .orange)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendSuccess (_ inString : String) {
     self.appendMessage (inString, color: .blue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

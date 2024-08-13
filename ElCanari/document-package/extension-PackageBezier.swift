@@ -13,15 +13,15 @@ let PACKAGE_BEZIER_CURVE_CONTROL_2  = 4
 
 extension PackageBezier {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func cursorForKnob_PackageBezier (knob _ : Int) -> NSCursor? {
     return NSCursor.upDownRightLeftCursor
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  operationAfterPasting
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationAfterPasting_PackageBezier (additionalDictionary _ : [String : Any],
                                             optionalDocument _ : EBAutoLayoutManagedDocument?,
@@ -29,28 +29,28 @@ extension PackageBezier {
     return ""
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Save into additional dictionary
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveIntoAdditionalDictionary_PackageBezier (_ _ : inout [String : Any]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Translation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageBezier  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptToTranslate_PackageBezier (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_PackageBezier (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.x1 += inDx
@@ -63,9 +63,9 @@ extension PackageBezier {
     self.cpy2 += inDy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Move
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canMove_PackageBezier (knob _ : Int,
                               proposedUnalignedAlignedTranslation _ : CanariPoint,
@@ -75,7 +75,7 @@ extension PackageBezier {
     return inProposedAlignedTranslation
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_PackageBezier (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
@@ -100,15 +100,15 @@ extension PackageBezier {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Flip horizontally
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipHorizontally_PackageBezier () -> Bool {
     return min (self.x1, self.x2, self.cpx1, self.cpx2) != max (self.x1, self.x2, self.cpx1, self.cpx2)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipHorizontally_PackageBezier () {
     let v = min (self.x1, self.x2, self.cpx1, self.cpx2) + max (self.x1, self.x2, self.cpx1, self.cpx2)
@@ -118,15 +118,15 @@ extension PackageBezier {
     self.cpx2 = v - self.cpx2
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Flip vertically
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipVertically_PackageBezier () -> Bool {
     return min (self.y1, self.y2, self.cpy1, self.cpy2) != max (self.y1, self.y2, self.cpy1, self.cpy2)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipVertically_PackageBezier () {
     let v = min (self.y1, self.y2, self.cpy1, self.cpy2) + max (self.y1, self.y2, self.cpy1, self.cpy2)
@@ -136,9 +136,9 @@ extension PackageBezier {
     self.cpy2 = v - self.cpy2
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Rotate 90°
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_PackageBezier (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     accumulatedPoints.insertCanariPoint (x: self.x1, y: self.y1)
@@ -148,7 +148,7 @@ extension PackageBezier {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90Clockwise_PackageBezier (from inRotationCenter : CanariPoint,
                                          userSet _ : inout EBReferenceSet <EBManagedObject>) {
@@ -166,7 +166,7 @@ extension PackageBezier {
     self.cpy2 = cp2.y
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_PackageBezier (from inRotationCenter : CanariPoint,
                                                 userSet _ : inout EBReferenceSet <EBManagedObject>) {
@@ -184,9 +184,9 @@ extension PackageBezier {
     self.cpy2 = cp2.y
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  SNAP TO GRID
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_PackageBezier (_ inGrid : Int) -> Bool {
     var result = (self.x1 % inGrid) != 0
@@ -214,7 +214,7 @@ extension PackageBezier {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_PackageBezier (_ inGrid : Int) {
     self.x1 = ((self.x1 + inGrid / 2) / inGrid) * inGrid
@@ -227,7 +227,7 @@ extension PackageBezier {
     self.cpy2 = ((self.cpy2 + inGrid / 2) / inGrid) * inGrid
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignmentPoints_PackageBezier () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
@@ -238,14 +238,14 @@ extension PackageBezier {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  operationBeforeRemoving
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationBeforeRemoving_PackageBezier () {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func program () -> String {
     var s = "bezier "
@@ -268,7 +268,7 @@ extension PackageBezier {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

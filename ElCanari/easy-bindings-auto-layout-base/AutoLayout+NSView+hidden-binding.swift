@@ -14,11 +14,11 @@ import AppKit
 
 final class HiddenBindingController : EBObservablePropertyController {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private weak var mOutlet : NSView? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSView) {
     self.mOutlet = inOutlet
@@ -31,7 +31,7 @@ final class HiddenBindingController : EBObservablePropertyController {
     self.mEventCallBack = { [weak self] in self?.updateHiddenState (from: inExpression.compute ()) }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateHiddenState (from inObject : EBSelection <Bool>) {
     switch inObject {
@@ -45,7 +45,7 @@ final class HiddenBindingController : EBObservablePropertyController {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

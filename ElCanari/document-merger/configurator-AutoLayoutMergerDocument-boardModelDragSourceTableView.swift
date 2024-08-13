@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutMergerDocument {
   final func configure_boardModelDragSourceTableView (_ inOutlet : AutoLayoutCanariDragSourceTableView) {

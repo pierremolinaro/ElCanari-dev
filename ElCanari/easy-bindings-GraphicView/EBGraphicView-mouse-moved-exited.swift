@@ -8,7 +8,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
   //--- Remove current tracking area
@@ -28,7 +28,7 @@ extension EBGraphicView {
     super.updateTrackingAreas ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func mouseMoved (with inEvent : NSEvent) {
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
@@ -53,7 +53,7 @@ extension EBGraphicView {
     super.mouseMoved (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func mouseExited (with inEvent : NSEvent) {
     self.removeXYHelperWindow ()
@@ -65,7 +65,7 @@ extension EBGraphicView {
     super.mouseExited (with: inEvent)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

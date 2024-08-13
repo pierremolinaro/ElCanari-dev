@@ -21,7 +21,7 @@ let SYMBOL_IN_SCHEMATICS_ROTATION_KNOB = 3
 
 extension ComponentSymbolInProject {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func cursorForKnob_ComponentSymbolInProject (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
@@ -37,30 +37,30 @@ extension ComponentSymbolInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Translation
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptToTranslate_ComponentSymbolInProject (xBy _ : Int, yBy _ : Int) -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  operationAfterPasting
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationAfterPasting_ComponentSymbolInProject (additionalDictionary _ : [String : Any],
                                                        optionalDocument _ : EBAutoLayoutManagedDocument?,
@@ -68,16 +68,16 @@ extension ComponentSymbolInProject {
     return ""
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Save into additional dictionary
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveIntoAdditionalDictionary_ComponentSymbolInProject (_ _ : inout [String : Any]) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Move
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canMove_ComponentSymbolInProject (knob _ : Int,
                                          proposedUnalignedAlignedTranslation _ : CanariPoint,
@@ -87,7 +87,7 @@ extension ComponentSymbolInProject {
     return inProposedAlignedTranslation
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_ComponentSymbolInProject (knob inKnobIndex : Int,
                                       proposedDx inDx : Int,
@@ -124,29 +124,29 @@ extension ComponentSymbolInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Flip horizontally
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipHorizontally_ComponentSymbolInProject () -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipHorizontally_ComponentSymbolInProject () {
     self.mMirror = !self.mMirror
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Flip vertically
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canFlipVertically_ComponentSymbolInProject () -> Bool {
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func flipVertically_ComponentSymbolInProject () {
     self.mMirror = !self.mMirror
@@ -162,16 +162,16 @@ extension ComponentSymbolInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  ROTATE 90 CLOCKWISE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_ComponentSymbolInProject (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     accumulatedPoints.insertCanariPoint (x: self.mCenterX, y: self.mCenterY)
     return true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90Clockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
@@ -184,7 +184,7 @@ extension ComponentSymbolInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
@@ -197,9 +197,9 @@ extension ComponentSymbolInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  SNAP TO GRID
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_ComponentSymbolInProject (_ inGrid : Int) -> Bool {
     var result = (self.mCenterX % inGrid) != 0
@@ -221,7 +221,7 @@ extension ComponentSymbolInProject {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_ComponentSymbolInProject (_ inGrid : Int) {
     self.mCenterX = ((self.mCenterX + inGrid / 2) / inGrid) * inGrid
@@ -232,7 +232,7 @@ extension ComponentSymbolInProject {
     self.mDisplayComponentValueOffsetY = ((self.mDisplayComponentValueOffsetY + inGrid / 2) / inGrid) * inGrid
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignmentPoints_ComponentSymbolInProject () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
@@ -256,7 +256,7 @@ extension ComponentSymbolInProject {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationBeforeRemoving_ComponentSymbolInProject () {
   //--- Remove nc, and attached points in project if they are not connected to any wire
@@ -279,7 +279,7 @@ extension ComponentSymbolInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

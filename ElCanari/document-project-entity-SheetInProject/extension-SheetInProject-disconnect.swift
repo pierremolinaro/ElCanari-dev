@@ -12,7 +12,7 @@ import AppKit
 
 extension SheetInProject {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func disconnect (points inPoints : [PointInSchematic]) {
   //--- Perform disconnection
@@ -21,7 +21,7 @@ extension SheetInProject {
     self.updateConnections (pointSet: pointSet)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateConnections (pointSet inPointSet : EBReferenceSet <PointInSchematic>) {
     if let root = self.mRoot {
@@ -87,7 +87,7 @@ extension SheetInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func performDisconnection (points inPoints : [PointInSchematic]) -> EBReferenceSet <PointInSchematic> {
     var pointSet = EBReferenceSet <PointInSchematic> ()
@@ -134,7 +134,7 @@ extension SheetInProject {
     return pointSet
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

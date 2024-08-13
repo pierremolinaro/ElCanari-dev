@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_symbolTypeNames (
        _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName]

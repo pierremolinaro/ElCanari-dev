@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutPackageDocument {
   final func configure_addPackageDimension (_ inOutlet : AutoLayoutDragSourceButton) {

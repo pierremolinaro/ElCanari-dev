@@ -73,23 +73,23 @@ enum ZeroDouble: DefaultValueProviderProtocol {
 
 @propertyWrapper struct Default <Provider: DefaultValueProviderProtocol>: Codable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var wrappedValue : Provider.Value
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     self.wrappedValue = Provider.defaultValue
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (wrappedValue inWrappedValue : Provider.Value) {
     self.wrappedValue = inWrappedValue
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (from decoder : Decoder) throws {
     let container = try decoder.singleValueContainer ()
@@ -100,7 +100,7 @@ enum ZeroDouble: DefaultValueProviderProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -113,7 +113,7 @@ enum ZeroDouble: DefaultValueProviderProtocol {
 
 extension KeyedDecodingContainer {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func decode <P> (_ : Default<P>.Type, forKey inKey : Key) throws -> Default<P> {
     if let value = try decodeIfPresent (Default <P>.self, forKey: inKey) {
@@ -123,7 +123,7 @@ extension KeyedDecodingContainer {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -131,14 +131,14 @@ extension KeyedDecodingContainer {
 
 extension KeyedEncodingContainer {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func encode <P> (_ inValue : Default<P>, forKey inKey : Key) throws {
     guard inValue.wrappedValue != P.defaultValue else { return }
     try encode (inValue.wrappedValue, forKey: inKey)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

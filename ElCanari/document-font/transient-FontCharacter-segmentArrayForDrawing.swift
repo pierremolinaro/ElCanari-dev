@@ -10,7 +10,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_FontCharacter_segmentArrayForDrawing (
        _ self_segments_x1 : [SegmentForFontCharacter_x1],       

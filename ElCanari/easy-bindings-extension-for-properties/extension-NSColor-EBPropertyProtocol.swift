@@ -10,21 +10,21 @@ import AppKit
 
 extension NSColor : EBStoredPropertyProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func ebHashValue () -> UInt32 {
     let s = self.archiveToString ()
     return s.ebHashValue ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func convertToNSObject () -> NSObject {
     let s = self.archiveToString ()
     return s as NSString
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func convertFromNSObject (object inObject : NSObject) -> Self {
     if let string = inObject as? String {
@@ -40,7 +40,7 @@ extension NSColor : EBStoredPropertyProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func archiveToString () -> String {
     let rgbColor = self.usingColorSpace (.genericRGB)!
@@ -52,7 +52,7 @@ extension NSColor : EBStoredPropertyProtocol {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func unarchiveFromString (string : String) -> NSObject? {
     let scanner = Scanner (string: string)
@@ -66,13 +66,13 @@ extension NSColor : EBStoredPropertyProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     ioData.append (self.archiveToString ().data (using: .utf8)!)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Self? {
     let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
@@ -83,7 +83,7 @@ extension NSColor : EBStoredPropertyProtocol {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

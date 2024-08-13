@@ -14,7 +14,7 @@ import AppKit
 
 extension PointInSchematic {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func propagateNetToAccessiblePointsThroughtWires () {
     var reachedPointSet = EBReferenceSet <PointInSchematic> (self)
@@ -38,7 +38,7 @@ extension PointInSchematic {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

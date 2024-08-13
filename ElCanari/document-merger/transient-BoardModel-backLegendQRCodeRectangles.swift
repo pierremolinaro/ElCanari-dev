@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_backLegendQRCodeRectangles (
        _ self_legendBackQRCodes_p0x : [RectangleEntity_p0x],     

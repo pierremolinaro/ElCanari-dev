@@ -14,13 +14,13 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func removeAllViasAndTracksAction (_ _ : Any?) {
     self.removeAllViasAndTracks ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removeAllViasAndTracks () {
   //--- Remove all tracks, and connectors not linked to a component
@@ -44,7 +44,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func sortBoardObjectsFollowingBoardLayersAction (_ _ : Any?) {
     var backTracks = EBReferenceArray <BoardObject> ()
@@ -103,7 +103,7 @@ extension AutoLayoutProjectDocument {
     self.rootObject.mBoardObjects = array
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllComponentsAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
@@ -116,7 +116,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfFrontLayerAction (_ inSender : Any?) {
     self.rootObject.displayFrontLayoutForBoard_property.setProp (true)
@@ -132,7 +132,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfBackLayerAction (_ inSender : Any?) {
     self.rootObject.displayBackLayoutForBoard_property.setProp (true)
@@ -148,7 +148,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfInner1LayerAction (_ inSender : Any?) {
     self.rootObject.displayInner1LayoutForBoard_property.setProp (true)
@@ -164,7 +164,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfInner2LayerAction (_ inSender : Any?) {
     self.rootObject.displayInner2LayoutForBoard_property.setProp (true)
@@ -180,7 +180,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfInner3LayerAction (_ inSender : Any?) {
     self.rootObject.displayInner3LayoutForBoard_property.setProp (true)
@@ -196,7 +196,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfInner4LayerAction (_ inSender : Any?) {
     self.rootObject.displayInner4LayoutForBoard_property.setProp (true)
@@ -212,7 +212,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfVisibleLayersAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
@@ -242,7 +242,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllViasAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
@@ -255,7 +255,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllRestrictRectanglesAction (_ inSender : Any?) {
     var newSelection = [BoardObject] ()
@@ -268,7 +268,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func selectAllTracksOfSelectedTracksNetsAction (_ inSender : Any?) {
     var netSet = EBReferenceSet <NetInProject> ()
@@ -287,18 +287,18 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func renameComponentsLeftToRightUpwardsAction (_ inSender : Any?) {
     self.renameComponents (by: compareLefToRightUpwardsComponentLocation)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func renameComponentsLeftToRightDownwardsAction (_ inSender : Any?) {
     self.renameComponents (by: compareLefToRightDownwardsComponentLocation)
   }
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func renameComponents (by inSortFunction : (CenterAndComponent, CenterAndComponent) -> Bool) {
     var componentLocationArray = [CenterAndComponent] ()
@@ -320,7 +320,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func addComponentToSelection (_ inSender : NSMenuItem) {
      var objectsToSelect = [BoardObject] ()
@@ -333,7 +333,7 @@ extension AutoLayoutProjectDocument {
      _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func addTracksToSelection (_ inSender : NSMenuItem) {
     var objectsToSelect = [BoardObject] ()
@@ -346,7 +346,7 @@ extension AutoLayoutProjectDocument {
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_backgroundImageData (_ model : EBObservableProperty <Data>) {
     self.mBackgroundImageDataController = EBObservablePropertyController (
@@ -19,14 +19,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_backgroundImageData () {
 //    self.mBackgroundImageDataController?.unregister ()
 //    self.mBackgroundImageDataController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateBackgroundImageData (from model : EBObservableProperty <Data>) {
     if self.mBackgroundImage != nil {
@@ -46,7 +46,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func bind_backgroundImageOpacity (_ model : EBReadOnlyProperty_Double, file : String, line : Int) {
 //    self.mBackgroundImageOpacityController = EBObservablePropertyController (
@@ -55,14 +55,14 @@ extension EBGraphicView {
 //    )
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_backgroundImageOpacity () {
 //    self.mBackgroundImageOpacityController?.unregister ()
 //    self.mBackgroundImageOpacityController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final private func updateBackgroundImageOpacity (from model : EBReadOnlyProperty_Double) {
 //    switch model.selection {
@@ -76,7 +76,7 @@ extension EBGraphicView {
 //    }
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

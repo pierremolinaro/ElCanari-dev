@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutMergerDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateBoardModel () {
     let selectedModels = self.mBoardModelController.selectedArray
@@ -57,7 +57,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performUpdateModel (_ inModelToUpdate : BoardModel, with inLoadedModel : BoardModel) {
     inModelToUpdate.modelData = inLoadedModel.modelData
@@ -188,7 +188,7 @@ extension AutoLayoutMergerDocument {
     inModelToUpdate.legendBackQRCodes = inLoadedModel.legendBackQRCodes
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -200,15 +200,15 @@ extension AutoLayoutMergerDocument {
 
 fileprivate final class OpenPanelDelegateForUpdatingBoardModels : NSObject, NSOpenSavePanelDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   PROPERTIES
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mBoardModelName : String
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ boardModelName : String) {
     self.mBoardModelName = boardModelName
@@ -216,16 +216,16 @@ fileprivate final class OpenPanelDelegateForUpdatingBoardModels : NSObject, NSOp
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   DELEGATE METHOD
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func panel (_ sender : Any, shouldEnable url : URL) -> Bool {
     let path = url.path
@@ -235,7 +235,7 @@ fileprivate final class OpenPanelDelegateForUpdatingBoardModels : NSObject, NSOp
     return isDirectory.boolValue || (self.mBoardModelName == path.lastPathComponent.deletingPathExtension)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

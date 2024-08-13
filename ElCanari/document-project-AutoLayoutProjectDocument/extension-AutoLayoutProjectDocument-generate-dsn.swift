@@ -25,7 +25,7 @@ let DSN_SES_DIRECTORY_USER_DEFAULT_KEY = "dsn.ses.directory"
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func performGenerateDSNFile () {
     var hasTrack = false
@@ -63,7 +63,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dsnContents (_ inExportTracks : Bool) -> String {
   //--- Selecting DSN Unit
@@ -201,7 +201,7 @@ extension AutoLayoutProjectDocument {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildSignalPolygon (_ inConverter : CanariUnitToDSNUnitConverter) -> EBLinePath { // Points in DSN Unit
     switch self.rootObject.mBoardShape {
@@ -241,7 +241,7 @@ extension AutoLayoutProjectDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func exportTracksAndVias (_ ioString : inout String,
                                     _ inConverter : CanariUnitToDSNUnitConverter) {
@@ -289,7 +289,7 @@ extension AutoLayoutProjectDocument {
     ioString += "  )\n"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -301,11 +301,11 @@ enum DSNUnit { case millimeter, micrometer}
 
 struct CanariUnitToDSNUnitConverter {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let unit : DSNUnit
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var unitString : String {
     switch unit {
@@ -316,7 +316,7 @@ struct CanariUnitToDSNUnitConverter {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var resolution : Int {
     switch unit {
@@ -327,7 +327,7 @@ struct CanariUnitToDSNUnitConverter {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dsnUnitFromCanariUnit (_ inValue : Int ) -> Double {
     switch unit {
@@ -338,13 +338,13 @@ struct CanariUnitToDSNUnitConverter {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dsnPointFromCanariPoint (_ inP : CanariPoint) -> NSPoint {
     return NSPoint (x: self.dsnUnitFromCanariUnit (inP.x), y: self.dsnUnitFromCanariUnit (inP.y))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dsnRectFromCanariRect (_ inP : CanariRect) -> NSRect {
     return NSRect (
@@ -355,7 +355,7 @@ struct CanariUnitToDSNUnitConverter {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -474,17 +474,17 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
   let routeSlavePads : Bool
   let package : DevicePackageInProject
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Equatable Protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func == (lhs : PackageDictionaryKeyForDSNExport, rhs : PackageDictionaryKeyForDSNExport) -> Bool {
     return (lhs.device === rhs.device) && (lhs.routeSlavePads == rhs.routeSlavePads) && (lhs.package === rhs.package)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Hashable Protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
    func hash (into hasher: inout Hasher) {
     ObjectIdentifier (self.device).hash (into: &hasher)
@@ -492,7 +492,7 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
     ObjectIdentifier (self.package).hash (into: &hasher)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -558,7 +558,7 @@ fileprivate struct PadTypeForDSNExport {
   let onComponentSide : Bool
   let onBackSide  : Bool
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func padStringFor (side inSide : String,
                      _ inConverter : CanariUnitToDSNUnitConverter) -> String {
@@ -623,7 +623,7 @@ fileprivate struct PadTypeForDSNExport {
     return shapeString
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

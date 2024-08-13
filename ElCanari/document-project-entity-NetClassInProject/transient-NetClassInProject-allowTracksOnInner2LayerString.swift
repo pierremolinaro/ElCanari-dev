@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetClassInProject_allowTracksOnInner2LayerString (
        _ self_mAllowTracksOnInner2Layer : Bool

@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageZone_forbiddenPadArray (
        _ self_forbiddenPadNumbers_padNumber : [ForbiddenPadNumber_padNumber]

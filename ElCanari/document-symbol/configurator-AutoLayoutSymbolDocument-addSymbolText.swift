@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutSymbolDocument {
   final func configure_addSymbolText (_ inOutlet : AutoLayoutDragSourceButton) {

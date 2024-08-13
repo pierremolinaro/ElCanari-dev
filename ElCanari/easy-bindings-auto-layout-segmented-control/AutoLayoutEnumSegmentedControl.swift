@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (titles inTitles : [String], equalWidth inEqualWidth : Bool, size inSize : EBControlSize) {
     super.init (equalWidth: inEqualWidth, size: inSize.cocoaControlSize)
@@ -24,13 +24,13 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_bind
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateIndex (fromEnumeration inObject : EBEnumReadWriteObservableProtocol) {
     if let v = inObject.rawValue () {
@@ -41,7 +41,7 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_bind
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func setSelectedSegment (atIndex inIndex : Int) {
     if self.segmentCount > 0 {
@@ -56,27 +56,27 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_bind
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // SELECTED TAB DID CHANGE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func selectedSegmentDidChange (_ _ : Any?) {
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mSelectedSegmentController?.updateModel (self.indexOfSelectedItem)
     return super.sendAction (action, to: to)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $selectedSegment binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelectedSegmentController : Controller_AutoLayoutEnumSegmentedControl_Index? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_selectedSegment (_ inObject : EBEnumReadWriteObservableProtocol) -> Self {
     self.mSelectedSegmentController = Controller_AutoLayoutEnumSegmentedControl_Index (
@@ -86,13 +86,13 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_bind
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $selectedIndex binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  private var mSelectedIndexController : Controller_AutoLayoutSegmentedControl_Index? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func bind_selectedIndex (_ inObject : EBObservableMutableProperty <Int>) -> Self {
 //    self.mSelectedIndexController = Controller_AutoLayoutSegmentedControl_Index (
@@ -102,7 +102,7 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_bind
 //    return self
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -112,11 +112,11 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_bind
 
 fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObservablePropertyController {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mObject : EBEnumReadWriteObservableProtocol
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (object inObject : EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
     self.mObject = inObject
@@ -126,13 +126,13 @@ fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObse
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateModel (_ inValue : Int) {
     self.mObject.setFrom (rawValue: inValue)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -142,24 +142,24 @@ fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObse
 
 //fileprivate final class Controller_AutoLayoutSegmentedControl_Index : EBObservablePropertyController {
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  private let mObject : EBObservableMutableProperty <Int>
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  init (object inObject : EBObservableMutableProperty <Int>, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
 //    self.mObject = inObject
 //    super.init (observedObjects: [inObject], callBack: { [weak inOutlet] in inOutlet?.updateIndex (fromInteger: inObject) } )
 //  }
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //  func updateModel (_ inValue : Int) {
 //    self.mObject.setProp (inValue)
 //  }
 //
-//  //································································································
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
 //}
 

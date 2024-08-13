@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutPackageDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func buildModelPoints () { // @objc for making it overridable
     self.rootObject.mModelImageDoublePoint = nil
@@ -23,7 +23,7 @@ extension AutoLayoutPackageDocument {
     self.rootObject.mModelImageObjects = EBReferenceArray (pp)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -14,23 +14,23 @@ import AppKit
 
 struct MergerSegmentArray : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let segmentArray : [CanariSegment]
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inArray : [CanariSegment]) {
     self.segmentArray = inArray
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     self.segmentArray = []
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func bezierPathArray () -> BezierPathArray {
     var result = BezierPathArray ()
@@ -50,7 +50,7 @@ struct MergerSegmentArray : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (toArchiveArray : inout [String],
             dx inDx : Int,
@@ -95,7 +95,7 @@ struct MergerSegmentArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (toStrokeBezierPaths ioBezierPaths : inout [EBBezierPath],
             dx inDx : Int,
@@ -151,7 +151,7 @@ struct MergerSegmentArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [EBBezierPath],
                        dx inDx : Int,
@@ -199,7 +199,7 @@ struct MergerSegmentArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [EBBezierPath],
                        dx inDx : Int,
@@ -250,7 +250,7 @@ struct MergerSegmentArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (toApertures ioApertures : inout [String : [String]],
             dx inDx : Int,
@@ -315,7 +315,7 @@ struct MergerSegmentArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func enterDrills (array ioHoleDiameterArray : inout [Int : [(Int, Int, Int, Int)]],
                     dx inDx : Int,
@@ -350,7 +350,7 @@ struct MergerSegmentArray : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

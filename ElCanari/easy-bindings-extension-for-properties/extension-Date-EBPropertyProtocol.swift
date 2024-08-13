@@ -10,7 +10,7 @@ import AppKit
 
 extension Date : EBStoredPropertyProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebHashValue () -> UInt32 {
     let archiver = NSKeyedArchiver (requiringSecureCoding: true)
@@ -19,25 +19,25 @@ extension Date : EBStoredPropertyProtocol {
     return archiver.encodedData.ebHashValue ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func convertToNSObject () -> NSObject {
     return self as NSObject
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func convertFromNSObject (object : NSObject) -> Date {
     return (object as? Date) ?? Date ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     self.timeIntervalSince1970.appendPropertyValueTo (&ioData)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Date? {
     var result : Date? = nil
@@ -47,7 +47,7 @@ extension Date : EBStoredPropertyProtocol {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

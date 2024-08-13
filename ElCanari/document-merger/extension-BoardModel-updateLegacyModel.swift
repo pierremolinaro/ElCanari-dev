@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutMergerDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateLegacyModel (legacyBoardModels inLegacyBoardModels : [BoardModel]) {
   //--- Show update sheet
@@ -46,7 +46,7 @@ extension AutoLayoutMergerDocument {
     RunLoop.current.run (until: Date ())
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func internalUpdateLegacyModel (legacyBoardModel inLegacyBoardModel : BoardModel) {
     let boardLimitWidth = ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelLimitWidth)
@@ -110,7 +110,7 @@ extension AutoLayoutMergerDocument {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func appendRectangles (from inArray : EBReferenceArray <RectangleEntity>,
                                      layer inLayer : ProductLayerSet,
@@ -133,7 +133,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func appendSegments (from inArray : EBReferenceArray <SegmentEntity>,
                                    layer inLayer : ProductLayerSet,
@@ -165,7 +165,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func appendHoles (from inArray : EBReferenceArray <SegmentEntity>,
                                 to ioProduct : inout ProductRepresentation) {
@@ -192,7 +192,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func appendVias (from inArray : EBReferenceArray <BoardModelVia>,
                                to ioProduct : inout ProductRepresentation) {
@@ -208,7 +208,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
- //································································································
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func appendPads (from inArray : EBReferenceArray <BoardModelPad>,
                                layer inLayer : ProductLayerSet,
@@ -231,7 +231,7 @@ extension AutoLayoutMergerDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

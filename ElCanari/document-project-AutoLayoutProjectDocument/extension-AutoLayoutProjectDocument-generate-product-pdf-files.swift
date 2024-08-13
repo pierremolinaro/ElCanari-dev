@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writePDFDrillFile (atPath inPath : String,
                           _ inProductRepresentation : ProductRepresentation,
@@ -28,7 +28,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writePDFProductFile (atPath inPath : String,
                             _ inDescriptor : ArtworkFileGenerationParameters,
@@ -50,7 +50,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

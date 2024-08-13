@@ -15,28 +15,28 @@ struct ApertureKey : Hashable, Comparable {
   public let value : CGFloat
   public let shape : Shape
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func < (lhs: ApertureKey, rhs: ApertureKey) -> Bool {
     return (lhs.value < rhs.value)
       || ((lhs.value == rhs.value) && (lhs.shape < rhs.shape))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (circular inValue : CGFloat) {
     self.value = inValue
     self.shape = .circular
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (square inValue : CGFloat) {
     self.value = inValue
     self.shape = .square
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var gerberAperture : String {
     let a = String (format: "%.4f", cocoaToInch (self.value))
@@ -46,14 +46,14 @@ struct ApertureKey : Hashable, Comparable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum Shape : Comparable {
   case circular
   case square
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -61,7 +61,7 @@ struct ApertureKey : Hashable, Comparable {
 
 extension AutoLayoutProjectDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writeGerberDrillFile (atURL inURL : URL,
                              _ inProduct : ProductRepresentation,
@@ -72,7 +72,7 @@ extension AutoLayoutProjectDocument {
     try drillData?.write (to: inURL, options: .atomic)
   }
   
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writeGerberProductFile (atURL inURL : URL,
                                _ inDescriptor : ArtworkFileGenerationParameters,
@@ -227,7 +227,7 @@ extension AutoLayoutProjectDocument {
     self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -235,7 +235,7 @@ extension AutoLayoutProjectDocument {
 
 extension EBLinePath {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendGerberCodeTo (_ ioStringArray : inout [String], _ inAffineTransform : AffineTransform) {
     let to = inAffineTransform.transform (self.origin)
@@ -253,7 +253,7 @@ extension EBLinePath {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -262,13 +262,13 @@ extension EBLinePath {
 
 extension Dictionary where Key == ApertureKey, Value == [String] {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inStringArray : [String], for inAperture : ApertureKey) {
    self [inAperture] = self [inAperture, default: []] + inStringArray
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendCircular (_ inApertureDict : [CGFloat : [EBLinePath]], _ inAffineTransform : AffineTransform) {
     for (aperture, pathArray) in inApertureDict {
@@ -280,7 +280,7 @@ extension Dictionary where Key == ApertureKey, Value == [String] {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (productCircles inCircles : [ProductCircle]?,
                         _ inAffineTransform : AffineTransform) {
@@ -295,7 +295,7 @@ extension Dictionary where Key == ApertureKey, Value == [String] {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (oblongs inLines : [ProductLine]?, _ inAffineTransform : AffineTransform) {
     if let lines = inLines {
@@ -317,7 +317,7 @@ extension Dictionary where Key == ApertureKey, Value == [String] {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  mutating func append (tracks inTracks : [ProductLine]?, _ inAffineTransform : AffineTransform) {
 //    if let tracks = inTracks {
@@ -334,7 +334,7 @@ extension Dictionary where Key == ApertureKey, Value == [String] {
 //    }
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -342,7 +342,7 @@ extension Dictionary where Key == ApertureKey, Value == [String] {
 
 extension Array where Element == ProductPolygon {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransform : AffineTransform) -> [ProductPolygon] {
     var result = [ProductPolygon] ()
@@ -352,7 +352,7 @@ extension Array where Element == ProductPolygon {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

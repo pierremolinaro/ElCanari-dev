@@ -10,7 +10,7 @@ import AppKit
 
 extension EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func updateOutlet (_ inString : EBObservableProperty <String>) {
     switch inString.selection {
@@ -25,7 +25,7 @@ extension EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_workingAreaRectString (_ inObject : EBObservableMutableProperty <String>) {
     self.mWorkingAreaRectStringController = EBGenericReadWritePropertyController <String> (
@@ -34,14 +34,14 @@ extension EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_workingAreaRectString () {
 //    self.mWorkingAreaRectStringController?.unregister ()
 //    self.mWorkingAreaRectStringController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

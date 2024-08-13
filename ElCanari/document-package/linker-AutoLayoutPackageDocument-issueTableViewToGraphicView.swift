@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutPackageDocument {
   final func linker_issueTableViewToGraphicView (_ in_mPackageIssueTableView : AutoLayoutCanariIssueTableView?, _ in_mPackageGraphicView : AutoLayoutGraphicView?) {

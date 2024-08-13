@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolInstanceInDevice_objectDisplay (
        _ self_mType_mStrokeBezierPath : NSBezierPath?,          

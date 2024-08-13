@@ -10,12 +10,12 @@ import AppKit
 
 class EBTransientProperty <T : Equatable> : EBObservableProperty <T> {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mValueCache : EBSelection <T>? = nil
   final var mReadModelFunction : Optional <() -> EBSelection <T> > = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final var selection : EBSelection <T> {
     if let valueCache = self.mValueCache {
@@ -31,7 +31,7 @@ class EBTransientProperty <T : Equatable> : EBObservableProperty <T> {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override final func observedObjectDidChange () {
     if self.mValueCache != nil {
@@ -45,7 +45,7 @@ class EBTransientProperty <T : Equatable> : EBObservableProperty <T> {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

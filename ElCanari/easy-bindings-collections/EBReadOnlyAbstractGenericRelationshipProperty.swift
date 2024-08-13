@@ -10,26 +10,26 @@ import AppKit
 
 class EBReadOnlyAbstractGenericRelationshipProperty : EBObservedObserver {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Data clients
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final var mClients = EBWeakReferenceSet <EBReadOnlyAbstractGenericRelationshipProperty> ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func attachClient (_ inClient : EBReadOnlyAbstractGenericRelationshipProperty) {
     self.mClients.insert (inClient)
     inClient.notifyModelDidChange ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func detachClient (_ inClient : EBReadOnlyAbstractGenericRelationshipProperty) {
     self.mClients.remove (inClient)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func notifyModelDidChange () {
     for client in self.mClients.values () {
@@ -37,7 +37,7 @@ class EBReadOnlyAbstractGenericRelationshipProperty : EBObservedObserver {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

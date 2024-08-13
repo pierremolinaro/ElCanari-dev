@@ -12,26 +12,26 @@ import AppKit
 
 final class CanariChoiceMenu : NSMenu {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (title: "")
     noteObjectAllocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func enableItems (_ inValue : Bool) {
     for item in self.items {
@@ -39,7 +39,7 @@ final class CanariChoiceMenu : NSMenu {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func checkItemAtIndex (_ inIndex : Int) {
     var idx = 0
@@ -49,9 +49,9 @@ final class CanariChoiceMenu : NSMenu {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  selectedIndex binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor fileprivate func updateOutletFromSelectedIndexController (_ inObject : EBEnumReadWriteObservableProtocol) {
     if let v = inObject.rawValue () {
@@ -62,24 +62,24 @@ final class CanariChoiceMenu : NSMenu {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelectedIndexController : Controller_CanariChoiceMenu_selectedIndex? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor final func bind_selectedIndex (_ object : EBEnumReadWriteObservableProtocol) {
     self.mSelectedIndexController = Controller_CanariChoiceMenu_selectedIndex (object: object, outlet: self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_selectedIndex () {
 //    self.mSelectedIndexController?.unregister ()
 //    self.mSelectedIndexController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -89,11 +89,11 @@ final class CanariChoiceMenu : NSMenu {
 
 @MainActor final class Controller_CanariChoiceMenu_selectedIndex : EBObservablePropertyController {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mObject : EBEnumReadWriteObservableProtocol
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (object : EBEnumReadWriteObservableProtocol, outlet inOutlet : CanariChoiceMenu) {
     self.mObject = object
@@ -107,13 +107,13 @@ final class CanariChoiceMenu : NSMenu {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc fileprivate func updateModelAction (_ inSender : NSMenuItem) {
     self.mObject.setFrom (rawValue: inSender.tag)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

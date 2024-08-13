@@ -19,11 +19,11 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
 
 @MainActor final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTableView = NSTableView (frame: .zero)
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor init () {
     super.init (frame: .zero)
@@ -58,41 +58,41 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
 //   Swift.print ("Corner \(self.mTableView.cornerView)")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     return NSSize (width: NSView.noIntrinsicMetric, height: 100.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   NSTableViewDataSource protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func numberOfRows (in tableView: NSTableView) -> Int {
     return self.mDataSource.count
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.reloadDataSource (self.mDataSource)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   NSTableViewDelegate protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn : NSTableColumn?,
@@ -120,13 +120,13 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  DATA SOURCE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDataSource = StringArray ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func reloadDataSource (_ inDataSource : [String]) {
   //--- Note selected rows
@@ -170,7 +170,7 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     self.mTableView.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func update (from inModel : EBObservableProperty <StringArray>) {
     switch inModel.selection {
@@ -181,13 +181,13 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $array binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mController : EBObservablePropertyController? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_array (_ model : EBObservableProperty <StringArray>) -> Self {
     self.mController = EBObservablePropertyController (
@@ -197,16 +197,16 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_array () {
 //    self.mController?.unregister ()
 //    self.mController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  SELECTED TITLE
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var selectedItemTitle : String? {
     if self.mTableView.selectedRow >= 0 {
@@ -216,7 +216,7 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

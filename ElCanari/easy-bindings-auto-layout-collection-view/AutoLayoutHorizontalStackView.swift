@@ -6,9 +6,9 @@ import AppKit
 
 class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (orientation: .horizontal)
@@ -18,43 +18,43 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     self.setHuggingPriority (.defaultLow, for: .horizontal)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setFirstBaselineAlignment () -> Self {
     self.alignment = .firstBaseline
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setCenterYAlignment () -> Self {
     self.alignment = .centerY
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setTopAlignment () -> Self {
     self.alignment = .top
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func equalWidth () -> Self {
     self.distribution = .fillEqually
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Facilities
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
@@ -64,7 +64,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
 //    let hStack = AutoLayoutVerticalStackView ()
@@ -74,7 +74,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 //    return self
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
@@ -85,7 +85,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class final func viewFollowedByFlexibleSpace (_ inView : NSView) -> AutoLayoutHorizontalStackView {
     let hStack = AutoLayoutHorizontalStackView ()
@@ -94,11 +94,11 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     return hStack
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mConstraints = [NSLayoutConstraint] ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func updateConstraints () {
     self.removeConstraints (self.mConstraints)
@@ -125,7 +125,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     super.updateConstraints ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
@@ -147,7 +147,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,7 +12,7 @@ import AppKit
 
 final class AutoLayoutViewWithBackground : ALB_NSView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mBackGroundColor : NSColor? = nil {
     didSet {
@@ -20,7 +20,7 @@ final class AutoLayoutViewWithBackground : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     if let color = self.mBackGroundColor {
@@ -29,7 +29,7 @@ final class AutoLayoutViewWithBackground : ALB_NSView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

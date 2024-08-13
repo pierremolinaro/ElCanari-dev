@@ -12,7 +12,7 @@ import AppKit
 
 extension AutoLayoutTableView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addColumn_Int (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?,
                       valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
@@ -39,7 +39,7 @@ extension AutoLayoutTableView {
     self.appendTableColumn (column)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -49,15 +49,15 @@ extension AutoLayoutTableView {
 
 fileprivate final class InternalIntValueTableColumn : AutoLayoutTableColumn {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mValueGetterDelegate : (_ inRow : Int) -> Int?
   private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >
   private let mNumberFormatter = NumberFormatter ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : TextAlignment,
@@ -76,13 +76,13 @@ fileprivate final class InternalIntValueTableColumn : AutoLayoutTableColumn {
     self.mNumberFormatter.isLenient = true
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let textField = NSTextField (frame: .zero)
@@ -111,7 +111,7 @@ fileprivate final class InternalIntValueTableColumn : AutoLayoutTableColumn {
     return textField
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor @objc func setterAction (_ inSender : Any?) {
     if let textField = inSender as? NSTextField,
@@ -123,7 +123,7 @@ fileprivate final class InternalIntValueTableColumn : AutoLayoutTableColumn {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

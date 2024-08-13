@@ -6,9 +6,9 @@ import AppKit
 
 class AutoLayoutVerticalStackView : ALB_NSStackView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (orientation: .vertical)
@@ -17,15 +17,15 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     self.setHuggingPriority (.required, for: .horizontal)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Facilities
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
@@ -35,7 +35,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
@@ -45,7 +45,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
@@ -56,21 +56,21 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Flipped
   // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override var isFlipped : Bool { true }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // SET WIDTH
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mWidth : CGFloat? = nil
   private var mHeight : CGFloat? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (width inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
@@ -87,7 +87,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (minimumWidth inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
@@ -104,7 +104,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func set (height inHeight : Int) -> Self {
 //    self.mHeight = CGFloat (inHeight)
@@ -112,18 +112,18 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 //    return self
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   equalHeight
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func equalHeight () -> Self {
     self.distribution = .fillEqually
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   minWidth
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (minWidth inMinWidth : Int) -> Self {
     let c = NSLayoutConstraint (
@@ -139,7 +139,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
@@ -152,7 +152,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return s
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mConstraints = [NSLayoutConstraint] ()
 
@@ -175,7 +175,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     super.updateConstraints ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
@@ -197,7 +197,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

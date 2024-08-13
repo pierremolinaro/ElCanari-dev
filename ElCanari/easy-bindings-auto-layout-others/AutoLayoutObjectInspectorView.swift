@@ -6,9 +6,9 @@ import AppKit
 
 final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mDefaultInspectorView = AutoLayoutVerticalStackView ()
   private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .small, alignment: .center)
@@ -16,9 +16,9 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   private var mInspectors = [(EBManagedObject.Type, ALB_NSStackView)] ()
   private let mObserver = EBOutletEvent ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
   //--- Define default View
@@ -32,21 +32,21 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
     self.mObserver.mEventCallBack = { [weak self] in self?.selectionDidChange () }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // ADD INSPECTOR
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func addObjectInspector (forEntity inEntity : EBManagedObject.Type,
                                  inspectorView inInspectorView : ALB_NSStackView) -> Self {
@@ -54,9 +54,9 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Graphic Controller
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
     self.mGraphicController = inController
@@ -64,7 +64,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func selectionDidChange () {
     for view in self.subviews {
@@ -108,7 +108,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

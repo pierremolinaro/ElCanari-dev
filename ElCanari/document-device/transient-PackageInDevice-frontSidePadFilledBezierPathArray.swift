@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageInDevice_frontSidePadFilledBezierPathArray (
        _ self_mMasterPads_frontSideFilledBezierPathArray : [MasterPadInDevice_frontSideFilledBezierPathArray]

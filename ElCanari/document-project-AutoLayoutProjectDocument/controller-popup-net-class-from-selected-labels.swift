@@ -14,24 +14,24 @@ import AppKit
 
 final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletEvent {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Models
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mArrayModel : ReadWriteArrayOf_NetClassInProject? = nil
   private var mSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController? = nil
   private weak var mOutlet : NSPopUpButton? = nil
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
     self.mEventCallBack = { [weak self] in self?.modelDidChange () }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func register (_ inArrayModel : ReadWriteArrayOf_NetClassInProject,
                        _ inSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController,
@@ -44,9 +44,9 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
     self.modelDidChange ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  MODEL BINDING
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func bind_model (_ inArrayModel : ReadWriteArrayOf_NetClassInProject,
 //                         _ inSelection : SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController) {
@@ -57,7 +57,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
 //    self.modelDidChange ()
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_model () {
 //    self.mArrayModel?.removeEBObserverOf_mNetClassName (self)
@@ -66,16 +66,16 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
 //    self.mSelection = nil
 // }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  OUTLETS
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func attachPopUpButton (_ inPopUpButton : NSPopUpButton?) {
 //    self.mOutlet = inPopUpButton
 //    self.modelDidChange ()
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func modelDidChange () {
     if let popup = self.mOutlet {
@@ -102,7 +102,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func setNetClassAction (_ inSender : NSMenuItem) {
     if let netClass = inSender.representedObject as? NetClassInProject,
@@ -115,7 +115,7 @@ final class CanariPopUpButtonControllerForNetClassFromSelectedLabels : EBOutletE
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

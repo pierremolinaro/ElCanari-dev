@@ -17,7 +17,7 @@ let CohenSutherlandOutcodeTOP    : UInt8 = 8
 
 extension NSRect : Hashable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (point p1 : NSPoint, point p2 : NSPoint) {
     self.init ()
@@ -25,7 +25,7 @@ extension NSRect : Hashable {
     self.size = NSSize (width: abs (p1.x - p2.x), height: abs (p1.y - p2.y))
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (center inCenter : NSPoint, size inSize : NSSize) {
     self.init ()
@@ -33,7 +33,7 @@ extension NSRect : Hashable {
     self.size = inSize
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (points inPoints : [NSPoint]) {
     if inPoints.count == 0 {
@@ -61,9 +61,9 @@ extension NSRect : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Contains point
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func CohenSutherlandOutcode (x inX : CGFloat, y inY : CGFloat) -> UInt8 {
     var result : UInt8 = 0
@@ -80,7 +80,7 @@ extension NSRect : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // https://en.wikipedia.org/wiki/Cohen–Sutherland_algorithm
 
   func clippedSegment (p1 inP1 : NSPoint, p2 inP2 : NSPoint) -> (NSPoint, NSPoint)? {
@@ -128,7 +128,7 @@ extension NSRect : Hashable {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func intersectsStrokeBezierPath (_ inPath: NSBezierPath) -> Bool {
 //    var intersect = self.intersects (inPath.bounds)
@@ -163,7 +163,7 @@ extension NSRect : Hashable {
 //    return intersect
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func intersectsFilledBezierPath (_ inPath: NSBezierPath) -> Bool {
 //    var intersect = self.intersects (inPath.bounds)
@@ -209,22 +209,22 @@ extension NSRect : Hashable {
 //    return intersect
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var center : NSPoint {
     return NSPoint (x: self.origin.x + self.size.width / 2.0, y: self.origin.y + self.size.height / 2.0)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Protocol Hashable
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public func hash (into hasher : inout Hasher) {
     self.origin.hash (into: &hasher)
     self.size.hash (into: &hasher)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Relative location of a point from rectangle center
   //
   //    *---------------*
@@ -245,11 +245,11 @@ extension NSRect : Hashable {
   //    |/             \|
   //    *---------------*
   //
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum RelativeLocation { case right ; case above ; case left ; case below}
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func relativeLocation (of inPoint : NSPoint) -> RelativeLocation {
     if self.isEmpty {
@@ -280,7 +280,7 @@ extension NSRect : Hashable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

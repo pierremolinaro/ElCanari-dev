@@ -14,15 +14,15 @@ import AppKit
 
 final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayoutTableView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
     super.init (size: inSize, addControlButtons: false)
@@ -58,13 +58,13 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Table view data source protocol
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mModelArray = TwoStringArray ()
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func setModel (_ inModel : TwoStringArray) {
   //--- Assignment
@@ -73,9 +73,9 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
     self.sortAndReloadData ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    $array binding
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mArrayController : EBObservablePropertyController? = nil
 
@@ -87,14 +87,14 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
     return self
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_array () {
 //    self.mArrayController?.unregister ()
 //    self.mArrayController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func update (from model : EBObservableProperty <TwoStringArray>) {
     switch model.selection {
@@ -105,7 +105,7 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

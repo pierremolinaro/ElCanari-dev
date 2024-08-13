@@ -11,7 +11,7 @@ import AppKit
 
 extension AutoLayoutDeviceDocument {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
@@ -61,7 +61,7 @@ extension AutoLayoutDeviceDocument {
     return ok
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func resetSymbolsVersion () {
 //    for symbolType in self.rootObject.mSymbolTypes.values {
@@ -69,7 +69,7 @@ extension AutoLayoutDeviceDocument {
 //    }
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func performSymbolsUpdate (_ ioOkMessages : inout [String],
                                    _ ioErrorMessages : inout [String]) {
@@ -151,7 +151,7 @@ extension AutoLayoutDeviceDocument {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
@@ -192,7 +192,7 @@ extension AutoLayoutDeviceDocument {
     return ok
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func resetPackagesVersion () {
 //    for package in self.rootObject.mPackages.values {
@@ -200,7 +200,7 @@ extension AutoLayoutDeviceDocument {
 //    }
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func performPackagesUpdate (_ inPackages : EBReferenceArray <PackageInDevice>,
                                     _ ioOkMessages : inout [String],
@@ -255,7 +255,7 @@ extension AutoLayoutDeviceDocument {
     self.rootObject.updatePadProxies ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

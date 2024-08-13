@@ -12,9 +12,9 @@ import AppKit
 
 struct LayeredProductComponentPad : Codable {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Properties
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let width : ProductLength
   let height : ProductLength
@@ -22,9 +22,9 @@ struct LayeredProductComponentPad : Codable {
   let shape : PadShape
   let layers : ProductLayerSet
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Bezier Pathes (for PDF)
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func bezierPathes () -> (stroke: NSBezierPath?, filled: NSBezierPath?) {
     var strokeBezierPath : NSBezierPath? = nil
@@ -40,7 +40,7 @@ struct LayeredProductComponentPad : Codable {
     return (strokeBezierPath, filledBezierPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendRoundPad () -> (stroke: NSBezierPath?, filled: NSBezierPath?) {
     var strokeBezierPath : NSBezierPath? = nil
@@ -71,7 +71,7 @@ struct LayeredProductComponentPad : Codable {
     return (strokeBezierPath, filledBezierPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendRectPad () -> NSBezierPath {
     let w = self.width.value (in: .cocoa) / 2.0
@@ -85,7 +85,7 @@ struct LayeredProductComponentPad : Codable {
     return bp
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendOctoPad () -> NSBezierPath {
     let w = self.width.value (in: .cocoa) / 2.0
@@ -104,9 +104,9 @@ struct LayeredProductComponentPad : Codable {
     return bp
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Gerber
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addGerberFor (_ ioGerber : inout GerberRepresentation,
                      mirror inMirror : ProductHorizontalMirror) {
@@ -120,7 +120,7 @@ struct LayeredProductComponentPad : Codable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendRoundPadToGerber (_ ioGerber : inout GerberRepresentation,
                                        mirror inMirror : ProductHorizontalMirror) {
@@ -142,7 +142,7 @@ struct LayeredProductComponentPad : Codable {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendRectPadToGerber (_ ioGerber : inout GerberRepresentation,
                                       mirror inMirror : ProductHorizontalMirror) {
@@ -155,7 +155,7 @@ struct LayeredProductComponentPad : Codable {
     ioGerber.addPolygon (origin: p0, points: [p1, p2, p3])
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendOctoPadToGerber (_ ioGerber : inout GerberRepresentation,
                                       mirror inMirror : ProductHorizontalMirror) {
@@ -173,7 +173,7 @@ struct LayeredProductComponentPad : Codable {
     ioGerber.addPolygon (origin: p0, points: [p1, p2, p3, p4, p5, p6, p7])
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

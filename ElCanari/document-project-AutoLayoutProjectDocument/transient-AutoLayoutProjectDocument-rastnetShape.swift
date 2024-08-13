@@ -61,7 +61,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_rastnetShape (
        _ root_mRastnetDisplay : RastnetDisplay,                   

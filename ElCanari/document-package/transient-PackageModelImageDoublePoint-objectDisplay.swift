@@ -12,7 +12,7 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageModelImageDoublePoint_objectDisplay (
        _ self_mFirstX : Int,                                          

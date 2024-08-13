@@ -11,7 +11,7 @@ import AppKit
 
 //--- END OF USER ZONE 1
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_canRemoveSelectedDevices (
        _ self_projectDeviceController_selectedArray_all_canRemove : [DeviceInProject_canRemove]

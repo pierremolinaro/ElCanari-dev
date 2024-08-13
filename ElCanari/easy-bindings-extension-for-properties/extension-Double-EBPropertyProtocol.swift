@@ -10,7 +10,7 @@ import AppKit
 
 extension Double : EBStoredPropertyProtocol {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func ebHashValue () -> UInt32 {
     var value = self.bitPattern.bigEndian
@@ -18,27 +18,27 @@ extension Double : EBStoredPropertyProtocol {
     return array.ebHashValue ()
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func convertToNSObject () -> NSObject {
     return NSNumber (value: self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func convertFromNSObject (object : NSObject) -> Double {
     let number = object as! NSNumber
     return number.doubleValue
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendPropertyValueTo (_ ioData : inout Data) {
     let s = String (self.bitPattern, radix: 16)
     ioData.append (s.data (using: .utf8)!)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Double? {
     let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
@@ -49,7 +49,7 @@ extension Double : EBStoredPropertyProtocol {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

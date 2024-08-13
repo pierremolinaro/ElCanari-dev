@@ -12,7 +12,7 @@ import AppKit
 
 class ALB_NSSegmentedControl : NSSegmentedControl {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (equalWidth inEqualWidth : Bool, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
@@ -33,19 +33,19 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
     self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

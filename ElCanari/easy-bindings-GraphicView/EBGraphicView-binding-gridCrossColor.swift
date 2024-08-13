@@ -10,7 +10,7 @@ import AppKit
 
 extension  EBGraphicView {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_gridCrossColor (_ model: EBObservableProperty <NSColor>) {
     self.mGridCrossColorController = EBObservablePropertyController (
@@ -19,14 +19,14 @@ extension  EBGraphicView {
     )
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  final func unbind_gridCrossColor () {
 //    self.mGridCrossColorController?.unregister ()
 //    self.mGridCrossColorController = nil
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final private func updateGridColor (from model : EBObservableProperty <NSColor>) {
     switch model.selection {
@@ -37,7 +37,7 @@ extension  EBGraphicView {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

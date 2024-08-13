@@ -12,7 +12,7 @@ import AppKit
 
 extension SheetInProject {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  func netSetFor (points : [PointInSchematic]) -> EBReferenceSet <NetInProject> {
 //    var netSet = EBReferenceSet <NetInProject> ()
@@ -24,7 +24,7 @@ extension SheetInProject {
 //    return netSet
 //  }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removeUnusedSchematicsPoints (_ ioErrorList : inout [String]) {
   //--- Remove unused points
@@ -109,7 +109,7 @@ extension SheetInProject {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildSubnet (from inPoint : PointInSchematic) -> EBReferenceSet <PointInSchematic> {
     var exploreSet = EBReferenceSet (inPoint)
@@ -131,7 +131,7 @@ extension SheetInProject {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildSubnetsFrom (_ inPointSet : EBReferenceSet <PointInSchematic>) -> [EBReferenceSet <PointInSchematic>] {
     var result = [EBReferenceSet <PointInSchematic>] ()
@@ -144,7 +144,7 @@ extension SheetInProject {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildLabelArrayFromSubnet (_ inSubnet : EBReferenceSet <PointInSchematic>) -> [LabelInSchematic] {
     var result = [LabelInSchematic] ()
@@ -156,7 +156,7 @@ extension SheetInProject {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildSymbolArrayFromSubnet (_ inSubnet : EBReferenceSet <PointInSchematic>) -> [ComponentSymbolInProject] {
     var result = [ComponentSymbolInProject] ()
@@ -168,7 +168,7 @@ extension SheetInProject {
     return result
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -12,15 +12,15 @@ import AppKit
 
 final class OpenSymbolInLibrary : OpenInLibrary {
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Dialog
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func openSymbolInLibrary (_ inSender : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Symbol in Library")
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
     self.buildTableViewDataSource (extension: ElCanariSymbol_EXTENSION, alreadyLoadedDocuments: inNames) { (_ inRootObject : EBManagedObject?) -> NSImage? in
@@ -39,19 +39,19 @@ final class OpenSymbolInLibrary : OpenInLibrary {
     }
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func noPartMessage () -> String {
     return "No selected symbol"
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func partLibraryPathForPath (_ inPath : String) -> String {
     return symbolLibraryPathForPath (inPath)
   }
 
-  //································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
