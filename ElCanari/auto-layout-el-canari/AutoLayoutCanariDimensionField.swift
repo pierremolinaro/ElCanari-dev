@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutCanariDimensionField
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariDimensionField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutCanariDimensionField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -143,15 +143,15 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBObser
       case .empty :
         outlet.placeholderString = "No Selection"
         outlet.stringValue = ""
-        outlet.enable (fromValueBinding: false, outlet.enabledBindingController)
+        outlet.enable (fromValueBinding: false, outlet.enabledBindingController ())
       case .multiple :
         outlet.placeholderString = "Multiple Selection"
         outlet.stringValue = ""
-        outlet.enable (fromValueBinding: true, outlet.enabledBindingController)
+        outlet.enable (fromValueBinding: true, outlet.enabledBindingController ())
       case .single (let propertyValue) :
         outlet.placeholderString = nil
         outlet.doubleValue = propertyValue
-        outlet.enable (fromValueBinding: true, outlet.enabledBindingController)
+        outlet.enable (fromValueBinding: true, outlet.enabledBindingController ())
       }
     }
   }

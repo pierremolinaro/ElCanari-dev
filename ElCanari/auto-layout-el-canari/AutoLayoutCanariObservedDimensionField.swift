@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutCanariObservedDimensionField
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -50,15 +50,15 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField_enabled_hid
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.doubleValue = propertyValue
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 

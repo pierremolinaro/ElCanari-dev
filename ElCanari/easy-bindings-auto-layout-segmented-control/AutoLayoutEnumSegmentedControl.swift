@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
+final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -34,10 +34,10 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl_enabled_bind
 
   func updateIndex (fromEnumeration inObject : EBEnumReadWriteObservableProtocol) {
     if let v = inObject.rawValue () {
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.setSelectedSegment (atIndex: v)
     }else{
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     }
   }
 

@@ -289,7 +289,7 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
     if mTransmitSelectionChangeToDelegate {
       self.mDelegate?.outlineViewDelegate_selectionDidChange (selectedRows: self.mOutlineView.selectedRowIndexes)
     }
-    self.mRemoveButton?.enable (fromEnableBinding: !self.mOutlineView.selectedRowIndexes.isEmpty, self.mOutlineView.enabledBindingController)
+    self.mRemoveButton?.enable (fromEnableBinding: !self.mOutlineView.selectedRowIndexes.isEmpty, self.mOutlineView.enabledBindingController ())
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -398,15 +398,15 @@ fileprivate final class InternalAutoLayoutOutlineView : NSOutlineView {
   //MARK:  $enabled binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mEnabledBindingController : EnabledBindingController? = nil
-  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-    return self
-  }
+//  private var mEnabledBindingController : EnabledBindingController? = nil
+//  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

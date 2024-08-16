@@ -12,7 +12,7 @@ import AppKit
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, NSDraggingSource {
+final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -121,13 +121,13 @@ final class AutoLayoutDragSourceButton : ALB_NSButton_enabled_hidden_bindings, N
     switch inObject.selection {
     case .empty :
       self.image = nil
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .multiple :
       self.image = nil
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let v) :
       self.image = v
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 

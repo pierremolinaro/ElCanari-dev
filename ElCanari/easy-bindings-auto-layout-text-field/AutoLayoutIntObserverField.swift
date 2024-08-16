@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutIntObserverField
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutIntObserverField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutIntObserverField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -71,15 +71,15 @@ final class AutoLayoutIntObserverField : ALB_NSTextField_enabled_hidden_bindings
   private func update (from model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.placeholderString = "—"
       self.stringValue = ""
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.placeholderString = nil
       self.intValue = Int32 (v)
     case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

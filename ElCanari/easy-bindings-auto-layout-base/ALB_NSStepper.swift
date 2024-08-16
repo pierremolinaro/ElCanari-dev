@@ -35,7 +35,8 @@ class ALB_NSStepper : NSStepper {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinit ()
+    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

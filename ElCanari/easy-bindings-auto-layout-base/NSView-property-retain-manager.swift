@@ -16,7 +16,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-nonisolated func objectDidDeinit () {
+nonisolated func objectDidDeinitSoReleaseControllers () {
   DispatchQueue.main.async {
     if !gNeedToUpdateArray {
       gNeedToUpdateArray = true

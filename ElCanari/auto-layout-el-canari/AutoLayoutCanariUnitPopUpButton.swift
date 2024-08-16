@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -47,12 +47,12 @@ final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton_enabled_hidden_b
     if let selection = inObject?.selection {
       switch selection {
       case .single (let v) :
-        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.enable (fromValueBinding: true, self.enabledBindingController ())
         _ = self.selectItem (withTag: v)
       case .empty :
-        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.enable (fromValueBinding: false, self.enabledBindingController ())
       case .multiple :
-        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.enable (fromValueBinding: false, self.enabledBindingController ())
       }
     }
   }

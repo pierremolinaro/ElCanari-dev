@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -31,10 +31,10 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
 
   func updateIndex (_ object : EBEnumReadWriteObservableProtocol) {
     if let v = object.rawValue () {
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.selectItem (at: v)
     }else{
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     }
   }
 

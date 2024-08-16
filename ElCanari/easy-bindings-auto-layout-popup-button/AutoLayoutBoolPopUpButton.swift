@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -31,10 +31,10 @@ final class AutoLayoutBoolPopUpButton : ALB_NSPopUpButton_enabled_hidden_binding
   func updateIndex (_ inObject : EBObservableProperty <Bool>) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let v) :
       self.selectItem (at: v ? 1 : 0)
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 

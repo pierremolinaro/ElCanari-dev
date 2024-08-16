@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutTextField
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutTextField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  User information
@@ -72,15 +72,15 @@ final class AutoLayoutTextField : ALB_NSTextField_enabled_hidden_bindings {
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.stringValue = propertyValue
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
     self.invalidateIntrinsicContentSize ()
   }

@@ -32,7 +32,8 @@ class ALB_NSComboBox : NSComboBox, NSComboBoxDelegate {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinit ()
+    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

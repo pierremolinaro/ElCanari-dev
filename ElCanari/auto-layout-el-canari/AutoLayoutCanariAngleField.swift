@@ -4,7 +4,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutCanariAngleField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Properties
@@ -115,15 +115,15 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField_enabled_hidden_bindings
     self.mInputIsValid = true
     switch model.selection {
     case .empty :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.placeholderString = nil
       self.doubleValue = Double (v) / 1000.0
     case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

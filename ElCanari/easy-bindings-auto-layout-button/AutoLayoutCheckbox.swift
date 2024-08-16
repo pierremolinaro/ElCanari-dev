@@ -12,7 +12,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
+final class AutoLayoutCheckbox : ALB_NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -104,7 +104,7 @@ final class AutoLayoutCheckbox : ALB_NSButton_enabled_hidden_bindings {
       self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
       enableCheckbox = true
     }
-    self.enable (fromValueBinding: enableCheckbox && !mMaintainDisabled, self.enabledBindingController)
+    self.enable (fromValueBinding: enableCheckbox && !mMaintainDisabled, self.enabledBindingController ())
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -94,14 +94,14 @@ final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
   //  $enabled binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mEnabledBindingController : EnabledBindingController? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-    return self
-  }
+//  var mEnabledBindingController : EnabledBindingController? = nil
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  value binding
@@ -112,16 +112,16 @@ final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: false, self.mEnabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .multiple :
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
-      self.enable (fromValueBinding: true, self.mEnabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     case .single (let propertyValue) :
       self.placeholderString = nil
       self.stringValue = propertyValue
       self.mDelegate? (propertyValue)
-      self.enable (fromValueBinding: true, self.mEnabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 

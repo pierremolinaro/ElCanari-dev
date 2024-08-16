@@ -11,7 +11,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
+final class AutoLayoutFontButton : ALB_NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -87,10 +87,10 @@ final class AutoLayoutFontButton : ALB_NSButton_enabled_hidden_bindings {
   fileprivate func updateFont (_ object : EBObservableProperty <NSFont>) {
     switch object.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.title = "—"
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.mySetFont (font: v)
     }
   }

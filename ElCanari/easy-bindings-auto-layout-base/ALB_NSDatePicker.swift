@@ -32,7 +32,8 @@ final class ALB_NSDatePicker : NSDatePicker {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinit ()
+    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

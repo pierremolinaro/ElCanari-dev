@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariDimensionUnitSetterPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutCanariDimensionUnitSetterPullDownButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

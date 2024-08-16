@@ -32,7 +32,8 @@ class ALB_NSImageView : NSImageView {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinit ()
+    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

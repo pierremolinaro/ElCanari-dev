@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutCanariPadRenumberPullDownButton
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton {
 
    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -63,7 +63,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
   private func update (fromPadNumber model : EBObservableProperty <Int>) {
     switch model.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let v) :
       self.mCurrentPadNumber = v
       self.buildMenu ()
@@ -73,7 +73,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : ALB_NSPopUpButton_enable
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildMenu () {
-    self.enable (fromValueBinding: self.mDocument != nil, self.enabledBindingController)
+    self.enable (fromValueBinding: self.mDocument != nil, self.enabledBindingController ())
     self.removeAllItems ()
     self.autoenablesItems = false
     if let document = self.mDocument {

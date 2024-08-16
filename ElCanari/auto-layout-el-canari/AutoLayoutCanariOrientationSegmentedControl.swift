@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariOrientationSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
+final class AutoLayoutCanariOrientationSegmentedControl : ALB_NSSegmentedControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -37,12 +37,12 @@ final class AutoLayoutCanariOrientationSegmentedControl : ALB_NSSegmentedControl
   func updateTag (from inObject : EBReadWriteProperty_QuadrantRotation) {
     switch inObject.selection {
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.selectedSegment = v.rawValue
     case .empty :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     }
   }
 

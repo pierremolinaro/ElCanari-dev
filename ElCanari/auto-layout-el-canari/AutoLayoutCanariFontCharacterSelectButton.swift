@@ -2,7 +2,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hidden_bindings {
+final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton {
   private var mCharacterSelectionPopover : NSPopover? = nil
   private var mSelectionView : FontCharacterSelectView? = nil
   private var mDefinedCharacterSet = Set <Int> ()
@@ -120,13 +120,13 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
   fileprivate func updateCodePoint (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.title = ""
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.mSelectedCharacterCode = v
     case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.title = ""
     }
   }

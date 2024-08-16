@@ -14,7 +14,7 @@ import AppKit
 //   AutoLayoutLinearSlider
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutLinearSlider : ALB_NSSlider_enabled_hidden_bindings {
+final class AutoLayoutLinearSlider : ALB_NSSlider {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -57,10 +57,10 @@ final class AutoLayoutLinearSlider : ALB_NSSlider_enabled_hidden_bindings {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let propertyValue) :
       self.doubleValue = propertyValue
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 
@@ -87,10 +87,10 @@ final class AutoLayoutLinearSlider : ALB_NSSlider_enabled_hidden_bindings {
     switch object.selection {
     case .empty, .multiple :
       self.stringValue = "-"
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let propertyValue) :
       self.doubleValue = Double (propertyValue)
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 

@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutPullDownButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -82,9 +82,9 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton_enabled_hidden_bindings
   private func update (from model : EBObservableProperty <StringArray>) {
     switch model.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let titleArray) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       while self.numberOfItems > 1 {
         self.removeItem (at: self.numberOfItems - 1)
       }

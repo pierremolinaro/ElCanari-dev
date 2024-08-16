@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmentedControl_enabled_binding {
+final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmentedControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -35,7 +35,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
   func updateTag (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       switch v {
       case 0 :
         self.selectedSegment = 0
@@ -49,7 +49,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
         self.selectedSegment = -1
       }
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     }
   }
 

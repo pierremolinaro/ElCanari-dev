@@ -292,7 +292,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     if mTransmitSelectionChangeToDelegate {
       self.mDelegate?.tableViewDelegate_selectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
     }
-    self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty, self.mTableView.enabledBindingController)
+    self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty, self.mTableView.enabledBindingController ())
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -401,15 +401,15 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
   //MARK:  $enabled binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mEnabledBindingController : EnabledBindingController? = nil
-  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-    return self
-  }
+//  private var mEnabledBindingController : EnabledBindingController? = nil
+//  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

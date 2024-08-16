@@ -18,7 +18,7 @@ import AppKit
 //                  2700 -> knob at left
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutAngleCircularSlider : ALB_NSSlider_enabled_hidden_bindings {
+final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -68,11 +68,11 @@ final class AutoLayoutAngleCircularSlider : ALB_NSSlider_enabled_hidden_bindings
   fileprivate func updateAngleValue (_ object : EBObservableProperty <Int>) {
     switch object.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.doubleValue = 0.0
     case .single (let propertyValue) :
       self.doubleValue = Double ((90_000 + 360_000 - propertyValue) % 360_000) / 100.0
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 

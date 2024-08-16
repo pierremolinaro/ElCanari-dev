@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutIntField
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutIntField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutIntField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -135,15 +135,15 @@ final class AutoLayoutIntField : ALB_NSTextField_enabled_hidden_bindings {
       self.mInputIsValid = true
       switch selection {
       case .empty :
-        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.enable (fromValueBinding: false, self.enabledBindingController ())
         self.placeholderString = "No Selection"
         self.stringValue = ""
       case .single (let v) :
-        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.enable (fromValueBinding: true, self.enabledBindingController ())
         self.placeholderString = nil
         self.intValue = Int32 (v)
       case .multiple :
-        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.enable (fromValueBinding: false, self.enabledBindingController ())
         self.placeholderString = "Multiple Selection"
         self.stringValue = ""
       }

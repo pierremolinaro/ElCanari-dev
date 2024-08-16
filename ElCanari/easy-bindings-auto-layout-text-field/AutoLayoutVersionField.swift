@@ -4,7 +4,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutVersionField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutVersionField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -16,8 +16,6 @@ final class AutoLayoutVersionField : ALB_NSTextField_enabled_hidden_bindings {
     self.drawsBackground = false
     self.isBordered = false
     self.alignment = .center
-
-//    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
   }
 
@@ -54,10 +52,10 @@ final class AutoLayoutVersionField : ALB_NSTextField_enabled_hidden_bindings {
   private func updateVersion (from inObject : EBObservableProperty <Int>) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.stringValue = "—"
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.stringValue = String (v)
     }
   }

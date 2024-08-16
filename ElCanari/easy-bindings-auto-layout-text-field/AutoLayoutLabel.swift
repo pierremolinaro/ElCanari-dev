@@ -4,7 +4,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutLabel : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutLabel : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

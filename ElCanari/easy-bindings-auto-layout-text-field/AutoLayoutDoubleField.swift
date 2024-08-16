@@ -10,7 +10,7 @@ import AppKit
 //   AutoLayoutDoubleField
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutDoubleField : ALB_NSTextField_enabled_hidden_bindings {
+final class AutoLayoutDoubleField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -133,17 +133,17 @@ final class AutoLayoutDoubleField : ALB_NSTextField_enabled_hidden_bindings {
       switch selection {
       case .empty :
 //        Swift.print ("updateOutlet, empty")
-        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.enable (fromValueBinding: false, self.enabledBindingController ())
         self.placeholderString = "No Selection"
         self.stringValue = ""
       case .single (let v) :
 //        Swift.print ("updateOutlet, single \(v)")
-        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.enable (fromValueBinding: true, self.enabledBindingController ())
         self.placeholderString = nil
         self.doubleValue = CGFloat (v)
       case .multiple :
 //        Swift.print ("multiple, empty")
-        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.enable (fromValueBinding: true, self.enabledBindingController ())
         self.placeholderString = "Multiple Selection"
         self.stringValue = ""
       }

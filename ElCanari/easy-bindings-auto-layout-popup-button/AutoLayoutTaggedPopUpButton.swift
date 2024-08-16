@@ -4,7 +4,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutTaggedPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutTaggedPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -31,12 +31,12 @@ final class AutoLayoutTaggedPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindi
   func updateTag (from inObject : EBObservableMutableProperty <Int>) {
     switch inObject.selection {
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.selectItem (withTag: v)
     case .empty :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     }
   }
 

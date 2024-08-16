@@ -89,14 +89,14 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
   //  $enabled binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mEnabledBindingController : EnabledBindingController? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-    return self
-  }
+//  private var mEnabledBindingController : EnabledBindingController? = nil
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  image binding
@@ -106,10 +106,10 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     switch inObjectSelection {
     case .empty, .multiple :
       self.image = nil
-      self.enable (fromValueBinding: false, self.mEnabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let propertyValue) :
       self.image = propertyValue
-      self.enable (fromValueBinding: true, self.mEnabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 
@@ -135,10 +135,10 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     switch inObjectSelection {
     case .empty, .multiple :
       self.toolTip = nil
-      self.enable (fromValueBinding: false, self.mEnabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let propertyValue) :
       self.toolTip = propertyValue
-      self.enable (fromValueBinding: true, self.mEnabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 
@@ -155,19 +155,6 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
     )
     return self
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  $hidden binding
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  private var mHiddenBindingController : HiddenBindingController? = nil
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-//    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-//    return self
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariSelectionPopUpButton : ALB_NSPopUpButton_enabled_hidden_bindings {
+final class AutoLayoutCanariSelectionPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -51,10 +51,10 @@ final class AutoLayoutCanariSelectionPopUpButton : ALB_NSPopUpButton_enabled_hid
             self.select (self.lastItem)
           }
         }
-        self.enable (fromValueBinding: true, self.enabledBindingController)
+        self.enable (fromValueBinding: true, self.enabledBindingController ())
       default :
         self.removeAllItems ()
-        self.enable (fromValueBinding: false, self.enabledBindingController)
+        self.enable (fromValueBinding: false, self.enabledBindingController ())
       }
     }
   }
