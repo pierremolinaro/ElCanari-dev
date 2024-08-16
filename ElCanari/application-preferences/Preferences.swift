@@ -423,7 +423,7 @@ import AppKit
 
   override init () {
     super.init ()
-    DispatchQueue.main.async {
+ //   DispatchQueue.main.async {
       g_Preferences = self
     //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
@@ -536,7 +536,7 @@ import AppKit
     preferences_additionnalLibraryArray_property.toMany_mUses_StartsBeingObserved (by: preferences_mValueRevealInFinder_symbols_property)
     preferences_additionnalLibraryArray_property.toMany_mPath_StartsBeingObserved (by: preferences_mValueRevealInFinder_symbols_property)
     //--- Extern functions
-    }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
