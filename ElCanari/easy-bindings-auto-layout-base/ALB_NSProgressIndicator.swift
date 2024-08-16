@@ -30,6 +30,7 @@ class ALB_NSProgressIndicator : NSProgressIndicator {
 
   deinit {
     noteObjectDeallocation (self)
+    objectDidDeinit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

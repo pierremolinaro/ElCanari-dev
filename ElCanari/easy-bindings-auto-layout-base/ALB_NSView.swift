@@ -32,6 +32,7 @@ class ALB_NSView : NSView {
 
   deinit {
     noteObjectDeallocation (self)
+    objectDidDeinit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

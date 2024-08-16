@@ -39,6 +39,7 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
 
   deinit {
     noteObjectDeallocation (self)
+    objectDidDeinit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

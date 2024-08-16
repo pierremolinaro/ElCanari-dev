@@ -43,6 +43,7 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
 
   deinit {
     noteObjectDeallocation (self)
+    objectDidDeinit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

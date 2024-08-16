@@ -41,6 +41,7 @@ class ALB_NSButton : NSButton {
 
   deinit {
     noteObjectDeallocation (self)
+    objectDidDeinit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

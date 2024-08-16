@@ -30,14 +30,16 @@ class ALB_NSButton_enabled_hidden_bindings : ALB_NSButton {
   //  $hidden binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final var mHiddenBindingController : HiddenBindingController? = nil
+//  private final var mHiddenBindingController : HiddenBindingController? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-    return self
-  }
+//  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//  //  self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+//    let hiddenBindingController = HiddenBindingController (inExpression, self)
+//    performRetain (property: hiddenBindingController, forObject: self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -28,7 +28,6 @@ nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS 
   if gEnableObjectAllocationDebug {
     let objectType : AnyObject.Type = type (of: inObject)
     Task {
-     // await gPendingAllocationBufferActorClass.serializedNoteObjectAllocation (ofType: objectType)
       await serializedNoteObjectAllocation (ofType: objectType)
     }
   }
@@ -42,7 +41,6 @@ nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAY
   if gEnableObjectAllocationDebug {
     let objectType : AnyObject.Type = type (of: inObject)
     Task {
-//      await gPendingAllocationBufferActorClass.serializedNoteObjectDeallocation (ofType: objectType)
       await serializedNoteObjectDeallocation (ofType: objectType)
     }
   }

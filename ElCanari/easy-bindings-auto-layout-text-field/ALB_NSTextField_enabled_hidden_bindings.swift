@@ -30,14 +30,14 @@ class ALB_NSTextField_enabled_hidden_bindings : ALB_NSTextField {
   //MARK:  $hidden binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final var mHiddenBindingController : HiddenBindingController? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-    return self
-  }
+//  private final var mHiddenBindingController : HiddenBindingController? = nil
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

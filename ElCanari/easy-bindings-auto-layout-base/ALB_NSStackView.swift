@@ -29,6 +29,7 @@ class ALB_NSStackView : NSStackView {
 
   deinit {
     noteObjectDeallocation (self)
+    objectDidDeinit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,14 +161,14 @@ class ALB_NSStackView : NSStackView {
   //  $hidden binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final var mHiddenBindingController : HiddenBindingController? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-    return self
-  }
+//  private final var mHiddenBindingController : HiddenBindingController? = nil
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

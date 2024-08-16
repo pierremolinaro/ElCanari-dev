@@ -160,14 +160,14 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
   //  $hidden binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mHiddenBindingController : HiddenBindingController? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
-    return self
-  }
+//  private var mHiddenBindingController : HiddenBindingController? = nil
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mHiddenBindingController = HiddenBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
