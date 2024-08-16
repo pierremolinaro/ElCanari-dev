@@ -4,20 +4,20 @@
 //
 //  Created by Pierre Molinaro on 15/04/2023.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 // https://www.keyence.com/ss/products/auto_id/codereader/basic_2d/qr.jsp
 // https://developer.apple.com/library/archive/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIQRCodeGenerator
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate let QR_CODE_MARGIN = 3 // 4 modules are required, ci image provides one
 fileprivate let PRINT_BIT_MAP = false
 fileprivate let PRINT_PIXEL_RECT_COUNT = false
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 struct QRCodeDescriptor : Hashable {
 
@@ -190,7 +190,7 @@ struct QRCodeDescriptor : Hashable {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate extension CIQRCodeDescriptor.ErrorCorrectionLevel {
 
@@ -210,7 +210,7 @@ fileprivate extension CIQRCodeDescriptor.ErrorCorrectionLevel {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func bitMap (forImageRep inImageRep : NSCIImageRep) -> [[Bool]] {
   let w = inImageRep.pixelsWide
@@ -256,4 +256,4 @@ fileprivate func bitMap (forImageRep inImageRep : NSCIImageRep) -> [[Bool]] {
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

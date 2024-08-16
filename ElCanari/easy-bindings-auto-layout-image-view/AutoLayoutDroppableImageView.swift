@@ -4,13 +4,13 @@
 //
 //  Created by Pierre Molinaro on 29/06/2021.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 // https://stackoverflow.com/questions/44537356/swift-4-nsfilenamespboardtype-not-available-what-to-use-instead-for-registerfo
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
@@ -153,7 +153,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
 
@@ -282,10 +282,10 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 // https://forums.developer.apple.com/thread/79144
 // https://stackoverflow.com/questions/24343216/drag-and-drop-in-swift-issues-with-registering-for-dragged-types/39330243
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
   var result = [NSPasteboard.PasteboardType] ()
@@ -296,4 +296,4 @@ fileprivate func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

@@ -4,15 +4,15 @@
 //
 //  Created by Pierre Molinaro on 24/07/2019.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate let SQUARE_OF_CAPTURE_DISTANCE = 90.0 * 90.0 * 25.4 * 25.4 // Distance: 25.4 µm = 1 mil
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutProjectDocument {
 
@@ -376,7 +376,7 @@ extension AutoLayoutProjectDocument {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate struct RoutedTrackForSESImporting {
   let p1 : CanariPoint
@@ -387,7 +387,7 @@ fileprivate struct RoutedTrackForSESImporting {
   let preservedByRouter : Bool
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func enterSegments (_ inScanner : Scanner,
                                 _ inSide : TrackSide,
@@ -454,14 +454,14 @@ fileprivate func enterSegments (_ inScanner : Scanner,
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate struct PointAndNet : Hashable {
   let point : CanariPoint
   let netName : String
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                 _ inRoutedViaArray : [(BoardConnector, NetInProject)],
@@ -480,7 +480,7 @@ fileprivate struct PointAndNet : Hashable {
   return pointSet
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                              _ inRoutedViaArray : [(BoardConnector, NetInProject)],
@@ -509,7 +509,7 @@ fileprivate struct PointAndNet : Hashable {
   return trackArray
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func handleTeesAndCrossesFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                        _ inRoutedViaArray : [(BoardConnector, NetInProject)]) -> [RoutedTrackForSESImporting] { // Array of PMClassForConnectorInBoardEntity
@@ -520,4 +520,4 @@ fileprivate struct PointAndNet : Hashable {
   return trackArray
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hidden_bindings {
   private var mCharacterSelectionPopover : NSPopover? = nil
@@ -165,4 +165,4 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton_enabled_hid
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

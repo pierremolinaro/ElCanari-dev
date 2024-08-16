@@ -5,11 +5,11 @@
 //  Created by Pierre Molinaro on 21/06/2018.
 //
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutMergerDocument {
 
@@ -653,7 +653,7 @@ extension AutoLayoutMergerDocument {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func int (fromDict inDictionary : [String : Any],
                       key inKey : String,
@@ -670,7 +670,7 @@ fileprivate func int (fromDict inDictionary : [String : Any],
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func string (fromDict inDictionary : [String : Any],
                          key inKey : String,
@@ -687,7 +687,7 @@ fileprivate func string (fromDict inDictionary : [String : Any],
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func dictArray (fromDict inDictionary : [String : Any],
                             key inKey : String,
@@ -704,7 +704,7 @@ fileprivate func dictArray (fromDict inDictionary : [String : Any],
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func stringArray (fromDict inDictionary : [String : Any],
                               key inKey : String,
@@ -722,7 +722,7 @@ fileprivate func stringArray (fromDict inDictionary : [String : Any],
 }
 
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func optionalStringArray (fromDict inDictionary : [String : Any],
                                       key inKey : String,
@@ -737,7 +737,7 @@ fileprivate func optionalStringArray (fromDict inDictionary : [String : Any],
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func array3int (fromString inString : String,
                             _ inErrorLine : Int,
@@ -764,7 +764,7 @@ fileprivate func array3int (fromString inString : String,
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func array5int (fromString inString : String,
                             _ inErrorLine : Int,
@@ -791,7 +791,7 @@ fileprivate func array5int (fromString inString : String,
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate func array6int (fromString inString : String,
                             _ inErrorLine : Int,
@@ -818,7 +818,7 @@ fileprivate func array6int (fromString inString : String,
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func optionalRectArray (fromDict inBoardArchiveDict : [String : Any],
                                                key inKey : String,
@@ -852,4 +852,4 @@ fileprivate func array6int (fromString inString : String,
   return rectangleArray
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

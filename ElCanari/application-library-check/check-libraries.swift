@@ -4,11 +4,11 @@
 //
 //  Created by Pierre Molinaro on 30/06/2015.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func checkLibrary (windowForSheet inWindow : NSWindow,
                               logWindow inLogWindow : NSWindow) {
@@ -113,7 +113,7 @@ import AppKit
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutVerticalStackView {
 
@@ -155,7 +155,7 @@ extension AutoLayoutVerticalStackView {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate enum PartStatus {
   case partHasUnknownStatus
@@ -166,9 +166,9 @@ fileprivate enum PartStatus {
   case partIsValid
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   DEVICE
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate struct PMDeviceDictionaryEntry {
   let partStatus : PartStatus
@@ -179,7 +179,7 @@ fileprivate struct PMDeviceDictionaryEntry {
   let packageDictionary : [String : Int]
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkDeviceLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                                 atPath inDeviceFullPath : String,
@@ -263,7 +263,7 @@ fileprivate struct PMDeviceDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func performDeviceLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
                                 atPath inPackageLibraryPath : String,
@@ -282,7 +282,7 @@ fileprivate struct PMDeviceDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkDeviceLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                                 symbolDict inSymbolDict : [String : PMSymbolDictionaryEntry],
@@ -375,9 +375,9 @@ fileprivate struct PMDeviceDictionaryEntry {
   return (deviceDict.count, errorCount)
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   SYMBOL
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate struct PMSymbolDictionaryEntry {
   let partStatus : PartStatus
@@ -386,7 +386,7 @@ fileprivate struct PMSymbolDictionaryEntry {
   let pathArray : [String]
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkSymbolLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                           atPath inSymbolFullPath : String,
@@ -439,7 +439,7 @@ fileprivate struct PMSymbolDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func performSymbolLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
                                                   atPath inSymbolLibraryPath : String,
@@ -458,7 +458,7 @@ fileprivate struct PMSymbolDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkSymbolLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                                 symbolDict ioSymbolDict : inout [String : PMSymbolDictionaryEntry]) -> Int {
@@ -502,9 +502,9 @@ fileprivate struct PMSymbolDictionaryEntry {
   return errorCount
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   PACKAGE
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate struct PMPackageDictionaryEntry {
   let partStatus : PartStatus
@@ -513,7 +513,7 @@ fileprivate struct PMPackageDictionaryEntry {
   let pathArray : [String]
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkPackageLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                            atPath inPackageFullPath : String,
@@ -566,7 +566,7 @@ fileprivate struct PMPackageDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func performPackageLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
                                                    atPath inPackageLibraryPath : String,
@@ -585,7 +585,7 @@ fileprivate struct PMPackageDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkPackageLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                                  packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry]) -> Int {
@@ -629,9 +629,9 @@ fileprivate struct PMPackageDictionaryEntry {
   return errorCount
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   FONT
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate struct PMFontDictionaryEntry {
   let partStatus : PartStatus
@@ -640,7 +640,7 @@ fileprivate struct PMFontDictionaryEntry {
   let pathArray : [String]
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkFontLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                         atPath inFontFullPath : String,
@@ -693,7 +693,7 @@ fileprivate struct PMFontDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func performFontLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
                                                 atPath inFontLibraryPath : String,
@@ -712,7 +712,7 @@ fileprivate struct PMFontDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkFontLibrary (_ inStackView : AutoLayoutVerticalStackView) -> (Int, Int) {
   var fontDict : [String : PMFontDictionaryEntry] = [:]
@@ -756,9 +756,9 @@ fileprivate struct PMFontDictionaryEntry {
   return (fontDict.count, errorCount)
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   ARTWORK
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate struct PMArtworkDictionaryEntry {
   let partStatus : PartStatus
@@ -767,7 +767,7 @@ fileprivate struct PMArtworkDictionaryEntry {
   let pathArray : [String]
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkArtworkLibrary (_ inStackView : AutoLayoutVerticalStackView,
                                            atPath inArtworkFullPath : String,
@@ -811,7 +811,7 @@ fileprivate struct PMArtworkDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func performArtworkLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
                                                    atPath inArtworkLibraryPath : String,
@@ -830,7 +830,7 @@ fileprivate struct PMArtworkDictionaryEntry {
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate func checkArtworkLibrary (_ inStackView : AutoLayoutVerticalStackView) -> (Int, Int) {
   var artworkDict : [String : PMArtworkDictionaryEntry] = [:]
@@ -874,4 +874,4 @@ fileprivate struct PMArtworkDictionaryEntry {
   return (artworkDict.count, errorCount)
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

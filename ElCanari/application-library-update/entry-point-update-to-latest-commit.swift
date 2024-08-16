@@ -1,13 +1,13 @@
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 let CURL = "/usr/bin/curl"
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   LIBRARY UPDATE ENTRY POINT
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
@@ -88,14 +88,14 @@ let CURL = "/usr/bin/curl"
   preferences_mLastSystemLibraryCheckTime_property.setProp (Date ())
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func enableItemsAfterCompletion () {
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
   gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func getRemoteCurrentCommit (_ inLogTextView : AutoLayoutStaticTextView,
                                         _ ioPossibleAlert : inout NSAlert?,
@@ -114,4 +114,4 @@ let CURL = "/usr/bin/curl"
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

@@ -4,11 +4,11 @@
 //
 //  Created by Pierre Molinaro on 28/02/2019.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import Quartz
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 fileprivate let ZoomInToolbarIdentifier = NSToolbarItem.Identifier ("ZoomIn")
 fileprivate let ZoomOutToolbarIdentifier = NSToolbarItem.Identifier ("ZoomOut")
@@ -16,7 +16,7 @@ fileprivate let NextPageToolbarIdentifier = NSToolbarItem.Identifier ("NextPage"
 fileprivate let PreviousPageToolbarIdentifier = NSToolbarItem.Identifier ("PreviousPage")
 fileprivate let SaveAsToolbarIdentifier = NSToolbarItem.Identifier ("SaveAs")
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
 
@@ -144,4 +144,4 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 import Foundation
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 func partNameIsValid (_ inPartName : String) -> Bool {
   var valid = inPartName.unicodeScalars.count > 0
@@ -18,7 +18,7 @@ func partNameIsValid (_ inPartName : String) -> Bool {
   return valid
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func existingLibraryPathArray () -> [String] {
   let fm = FileManager ()
@@ -42,7 +42,7 @@ func partNameIsValid (_ inPartName : String) -> Bool {
   return result
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func userLibraryPath () -> String {
   let a = NSSearchPathForDirectoriesInDomains (
@@ -57,43 +57,43 @@ func partNameIsValid (_ inPartName : String) -> Bool {
 }
 
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 func systemLibraryPath () -> String {
   return NSHomeDirectory () + "/Library/Application Support/ElCanariLibrary"
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 func symbolLibraryPathForPath (_ inLibraryPath : String) -> String {
   return inLibraryPath + "/symbols"
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 func packageLibraryPathForPath (_ inLibraryPath : String) -> String {
   return inLibraryPath + "/packages"
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 func deviceLibraryPathForPath (_ inLibraryPath : String) -> String {
   return inLibraryPath + "/devices"
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 func artworkLibraryPathForPath (_ inLibraryPath : String) -> String {
   return inLibraryPath + "/artworks"
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 func fontLibraryPathForPath (_ inLibraryPath : String) -> String {
   return inLibraryPath + "/fonts"
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func symbolFilePathInLibraries (_ inSymbolNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
@@ -113,7 +113,7 @@ func fontLibraryPathForPath (_ inLibraryPath : String) -> String {
   return pathes
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func packageFilePathInLibraries (_ inPackageNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
@@ -133,7 +133,7 @@ func fontLibraryPathForPath (_ inLibraryPath : String) -> String {
   return pathes
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func deviceFilePathInLibraries (_ inDeviceNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
@@ -153,7 +153,7 @@ func fontLibraryPathForPath (_ inLibraryPath : String) -> String {
   return pathes
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 @MainActor func fontFilePathInLibraries (_ inFontNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
@@ -173,4 +173,4 @@ func fontLibraryPathForPath (_ inLibraryPath : String) -> String {
   return pathes
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
