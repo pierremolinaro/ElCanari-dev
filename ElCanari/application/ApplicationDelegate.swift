@@ -33,7 +33,11 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor var gApplicationDelegate : ApplicationDelegate? = nil
+// @MainActor var gApplicationDelegate : ApplicationDelegate? = nil
+
+@MainActor func appDelegate () -> ApplicationDelegate? {
+  return NSApplication.shared.delegate as? ApplicationDelegate
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -43,14 +47,14 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   //  init
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor override init () {
-    self.mOpenSymbolInLibrary = OpenSymbolInLibrary ()
-    self.mOpenPackageInLibrary = OpenPackageInLibrary ()
-    self.mOpenDeviceInLibrary = OpenDeviceInLibrary ()
-    self.mOpenFontInLibrary = OpenFontInLibrary ()
-    super.init ()
-    gApplicationDelegate = self
-  }
+//  @MainActor override init () {
+////    self.mOpenSymbolInLibrary = OpenSymbolInLibrary ()
+////    self.mOpenPackageInLibrary = OpenPackageInLibrary ()
+////    self.mOpenDeviceInLibrary = OpenDeviceInLibrary ()
+////    self.mOpenFontInLibrary = OpenFontInLibrary ()
+//    super.init ()
+//    gApplicationDelegate = self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Outlets
@@ -161,10 +165,10 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   @IBOutlet var mOpenDeviceInLibraryMenuItem : NSMenuItem? = nil
   @IBOutlet var mOpenFontInLibraryMenuItem : NSMenuItem? = nil
 
-  let mOpenSymbolInLibrary : OpenSymbolInLibrary
-  let mOpenPackageInLibrary : OpenPackageInLibrary
-  let mOpenDeviceInLibrary : OpenDeviceInLibrary
-  let mOpenFontInLibrary : OpenFontInLibrary
+//  let mOpenSymbolInLibrary : OpenSymbolInLibrary
+//  private let mOpenPackageInLibrary : OpenPackageInLibrary
+//  let mOpenDeviceInLibrary : OpenDeviceInLibrary
+//  let mOpenFontInLibrary : OpenFontInLibrary
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
@@ -177,13 +181,13 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func applicationWillFinishLaunching (_ inNotification : Notification) {
-    self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
+    self.mOpenSymbolInLibraryMenuItem?.target = gOpenSymbolInLibrary
     self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
-    self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
+    self.mOpenPackageInLibraryMenuItem?.target = gOpenPackageInLibrary
     self.mOpenPackageInLibraryMenuItem?.action = #selector (OpenPackageInLibrary.openPackageInLibrary (_:))
-    self.mOpenDeviceInLibraryMenuItem?.target = self.mOpenDeviceInLibrary
+    self.mOpenDeviceInLibraryMenuItem?.target = gOpenDeviceInLibrary
     self.mOpenDeviceInLibraryMenuItem?.action = #selector (OpenDeviceInLibrary.openDeviceInLibrary (_:))
-    self.mOpenFontInLibraryMenuItem?.target = self.mOpenFontInLibrary
+    self.mOpenFontInLibraryMenuItem?.target = gOpenFontInLibrary
     self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
   //---
     self.checkForLibraryUpdateAtLaunch ()
@@ -264,5 +268,12 @@ func ElCanariApplicationVersionString () -> String {
   let appVersion = Bundle.main.infoDictionary? ["CFBundleShortVersionString"] as? String
   return appVersion ?? "Unknown"
 }
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor let gOpenSymbolInLibrary = OpenSymbolInLibrary ()
+@MainActor let gOpenPackageInLibrary = OpenPackageInLibrary ()
+@MainActor let gOpenDeviceInLibrary = OpenDeviceInLibrary ()
+@MainActor let gOpenFontInLibrary = OpenFontInLibrary ()
 
 //--------------------------------------------------------------------------------------------------

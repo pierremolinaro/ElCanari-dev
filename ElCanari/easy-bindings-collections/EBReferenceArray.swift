@@ -4,7 +4,7 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-struct EBReferenceArray <T : AnyObject> {
+struct EBReferenceArray <T : AnySendableObject> : Sendable {
 
   private var mArray : [T]
 

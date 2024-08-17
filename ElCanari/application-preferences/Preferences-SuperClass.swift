@@ -33,7 +33,6 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var mLibraryConsistencyLogWindow : CanariWindow? = nil
-//  final var mLibraryConsistencyLogTextView : AutoLayoutStaticTextView? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

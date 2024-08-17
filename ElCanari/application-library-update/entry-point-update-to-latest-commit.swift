@@ -13,7 +13,7 @@ let CURL = "/usr/bin/curl"
   inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
-  gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+  appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
 //-------- Cleat log window
   inLogTextView.clear ()
 //-------- Show "Check for update" window
@@ -92,7 +92,7 @@ let CURL = "/usr/bin/curl"
 
 @MainActor func enableItemsAfterCompletion () {
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
-  gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
+  appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
 }
 
 //--------------------------------------------------------------------------------------------------

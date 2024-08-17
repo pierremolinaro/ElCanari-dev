@@ -22,7 +22,7 @@ extension Preferences {
         inOutlet.lastItem?.tag = 7 * 24 * 3600
         inOutlet.addItem (withTitle: "Monthly")
         inOutlet.lastItem?.tag = 30 * 24 * 3600
-        gApplicationDelegate?.configureCheckIntervalPopUpButton (inOutlet)
+        appDelegate ()?.configureCheckIntervalPopUpButton (inOutlet)
 //--- END OF USER ZONE 2
   }
 }

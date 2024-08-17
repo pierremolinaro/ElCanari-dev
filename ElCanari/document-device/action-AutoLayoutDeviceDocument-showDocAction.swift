@@ -1,17 +1,17 @@
 //--- START OF USER ZONE 1
 
-@MainActor fileprivate var gDocWindowSet = Set <CanariPDFWindow> ()
-
-extension ApplicationDelegate {
-
-  @MainActor @objc func closeHelperWindow (_ inNotification : Notification) {
-    if let window = inNotification.object as? CanariPDFWindow {
-      gDocWindowSet.remove (window)
-      // Swift.print ("Object \(window)")
-    }
-  }
-
-}
+//@MainActor fileprivate var gDocWindowSet = Set <CanariPDFWindow> ()
+//
+//extension ApplicationDelegate {
+//
+//  @MainActor @objc func closeHelperWindow (_ inNotification : Notification) {
+//    if let window = inNotification.object as? CanariPDFWindow {
+//      gDocWindowSet.remove (window)
+//      // Swift.print ("Object \(window)")
+//    }
+//  }
+//
+//}
 
 
 //--- END OF USER ZONE 1
@@ -31,13 +31,13 @@ extension AutoLayoutDeviceDocument {
       let selectedDoc = selectedDocArray [0]
       let window = CanariPDFWindow (fileName: selectedDoc.mFileName, pdfData: selectedDoc.mFileData)
       window.makeKeyAndOrderFront (nil)
-      gDocWindowSet.insert (window)
-      NotificationCenter.default.addObserver (
-        gApplicationDelegate!,
-        selector: #selector (ApplicationDelegate.closeHelperWindow(_:)),
-        name: NSWindow.willCloseNotification,
-        object: window
-      )
+//      gDocWindowSet.insert (window)
+//      NotificationCenter.default.addObserver (
+//        gApplicationDelegate!,
+//        selector: #selector (ApplicationDelegate.closeHelperWindow(_:)),
+//        name: NSWindow.willCloseNotification,
+//        object: window
+//      )
     }
 //--- END OF USER ZONE 2
   }

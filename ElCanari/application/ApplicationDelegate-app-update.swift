@@ -23,7 +23,7 @@ extension ApplicationDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func checkForUpdatesAction (_ _ : Any?) {
+  @objc func checkForUpdatesAction (_ inUnusedSender : Any?) {
     self.mUpdaterController.updater.checkForUpdates ()
   }
 

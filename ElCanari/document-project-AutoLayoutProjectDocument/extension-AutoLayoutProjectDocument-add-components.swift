@@ -16,7 +16,7 @@ extension AutoLayoutProjectDocument {
     for device in self.rootObject.mDevices_property.propval.values {
       currentDeviceNames.insert (device.mDeviceName)
     }
-     gApplicationDelegate?.mOpenDeviceInLibrary.loadDocumentFromLibrary (
+     gOpenDeviceInLibrary.loadDocumentFromLibrary (
        windowForSheet: self.windowForSheet!,
        alreadyLoadedDocuments: currentDeviceNames,
        callBack: self.addComponent,

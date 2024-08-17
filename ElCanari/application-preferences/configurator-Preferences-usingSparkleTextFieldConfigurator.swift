@@ -16,7 +16,7 @@ import AppKit
 extension Preferences {
   final func configure_usingSparkleTextFieldConfigurator (_ inOutlet : AutoLayoutStaticLabel) {
 //--- START OF USER ZONE 2
-        if let appUpdaterSettings = gApplicationDelegate {
+        if let appUpdaterSettings = appDelegate () {
           inOutlet.stringValue = "Using Sparkle " + appUpdaterSettings.sparkleVersionString ()
         }
 //--- END OF USER ZONE 2

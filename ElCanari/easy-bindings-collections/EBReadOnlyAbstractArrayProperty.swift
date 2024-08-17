@@ -70,6 +70,7 @@ class EBReadOnlyAbstractArrayProperty <T : AnySendableObject> : EBReadOnlyAbstra
   func setOldValue (_ inOldValue : EBReferenceArray <T>) {
     self.mInternalArrayValue = inOldValue
   }
+  
   final var mInternalArrayValue = EBReferenceArray <T> () {
     didSet {
       let (equalModels, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
@@ -89,7 +90,7 @@ class EBReadOnlyAbstractArrayProperty <T : AnySendableObject> : EBReadOnlyAbstra
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <T>) {
+  @MainActor func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <T>) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

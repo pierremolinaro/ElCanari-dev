@@ -16,7 +16,7 @@ extension AutoLayoutProjectDocument {
      for font in self.rootObject.mFonts.values {
         currentFontNames.insert (font.mFontName)
      }
-     gApplicationDelegate?.mOpenFontInLibrary.loadDocumentFromLibrary (
+     gOpenFontInLibrary.loadDocumentFromLibrary (
        windowForSheet: self.windowForSheet!,
        alreadyLoadedDocuments: currentFontNames,
        callBack: self.addFontFromLoadFontDialog,

@@ -12,7 +12,7 @@ import AppKit
 //   EBObservedObject
 //--------------------------------------------------------------------------------------------------
 
-@MainActor class EBObservedObject : EBObservableObjectProtocol {
+class EBObservedObject : EBObservableObjectProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

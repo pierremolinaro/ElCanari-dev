@@ -746,12 +746,11 @@ class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignat
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageInDevice>) {
   //--- Register old value in undo manager
-    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
-//    self.undoManager?.registerUndo < EBReferenceArray <PackageInDevice> > (withTarget: self) {
-//      DispatchQueue.main.async {
-//        $0.mInternalArrayValue = inOldValue
-//      }
-//    }
+    self.undoManager?.registerUndo (withTarget: self) { (inSelfObject) in
+      // DispatchQueue.main.async {
+        inSelfObject.mInternalArrayValue = inOldValue
+      // }
+    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

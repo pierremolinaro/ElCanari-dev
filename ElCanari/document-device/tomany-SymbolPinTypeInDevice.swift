@@ -548,12 +548,11 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SymbolPinTypeInDevice>) {
   //--- Register old value in undo manager
-    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
-//    self.undoManager?.registerUndo < EBReferenceArray <SymbolPinTypeInDevice> > (withTarget: self) {
-//      DispatchQueue.main.async {
-//        $0.mInternalArrayValue = inOldValue
-//      }
-//    }
+    self.undoManager?.registerUndo (withTarget: self) { (inSelfObject) in
+      // DispatchQueue.main.async {
+        inSelfObject.mInternalArrayValue = inOldValue
+      // }
+    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

@@ -10,77 +10,85 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
-  inLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
-//--- Disable update buttons
-  g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
-  gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
-//-------- Cleat log window
-  inLogTextView.clear ()
-//-------- ⓪ Get system proxy
-  inLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
-  let proxy = getSystemProxy (inLogTextView)
-//-------- ① We start by getting the list of all commits
-  inLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
-  var possibleAlert : NSAlert? = nil // If not nil, something goes wrong
-  let revisions = getRepositoryCommitList (&possibleAlert, proxy, inLogTextView)
-  let possibleStoredCurrentCommit = getStoredCurrentCommit ()
-  let possibleRemoteCurrentCommit : Int?
-  if possibleAlert == nil, let commitIndex = displayRepositoryCommitList (revisions) {
-    possibleRemoteCurrentCommit = commitIndex
-  }else{
-    possibleRemoteCurrentCommit = nil
-  }
-//-------- ② Now get remote file that describes this commit
-  let repositoryFileDictionary : [String : LibraryContentsDescriptor]
-  if possibleAlert == nil, let remoteCurrentCommit = possibleRemoteCurrentCommit {
-    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (possibleStoredCurrentCommit, remoteCurrentCommit, inLogTextView, proxy, &possibleAlert)
-  }else{
-    repositoryFileDictionary = [String : LibraryContentsDescriptor] ()
-  }
-//-------- ③ Read library descriptor file
-  let libraryDescriptorFileContents : [String : CanariLibraryFileDescriptor]
-  if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-    libraryDescriptorFileContents = phase3_readLibraryDescriptionFileContents (inLogTextView)
-  }else{
-    libraryDescriptorFileContents = [String : CanariLibraryFileDescriptor] ()
-  }
-//-------- ④ Repository contents has been successfully retrieved, then enumerate local system library
-  let localFileSet : Set <String>
-  if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-    localFileSet = phase4_appendLocalFilesToLibraryFileDictionary (inLogTextView, &possibleAlert)
-  }else{
-    localFileSet = Set <String> ()
-  }
-//-------- ⑤ Build library operations
-  let libraryOperations : [LibraryOperationElement]
-  let newLocalDescription : [String : CanariLibraryFileDescriptor]
-  if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-    (libraryOperations, newLocalDescription) = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
-  }else{
-    libraryOperations = [LibraryOperationElement] ()
-    newLocalDescription = [String : CanariLibraryFileDescriptor] ()
-  }
-//-------- ⑥ Display "up to date" message ?
-  if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-    inLogTextView.appendMessageString ("Phase 6: is the library up to date: ", color: NSColor.purple)
-    inLogTextView.appendMessageString ("\((libraryOperations.count == 0) ? "yes" : "no")\n")
-    if libraryOperations.count == 0 {
-      let alert = NSAlert ()
-      alert.messageText = "The library is up to date"
-      _ = alert.runModal ()
+// extension ApplicationDelegate {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
+    inLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
+  //--- Disable update buttons
+    g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
+    appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+  //-------- Cleat log window
+    inLogTextView.clear ()
+  //-------- ⓪ Get system proxy
+    inLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
+    let proxy = getSystemProxy (inLogTextView)
+  //-------- ① We start by getting the list of all commits
+    inLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
+    var possibleAlert : NSAlert? = nil // If not nil, something goes wrong
+    let revisions = getRepositoryCommitList (&possibleAlert, proxy, inLogTextView)
+    let possibleStoredCurrentCommit = getStoredCurrentCommit ()
+    let possibleRemoteCurrentCommit : Int?
+    if possibleAlert == nil, let commitIndex = displayRepositoryCommitList (revisions) {
+      possibleRemoteCurrentCommit = commitIndex
+    }else{
+      possibleRemoteCurrentCommit = nil
+    }
+  //-------- ② Now get remote file that describes this commit
+    let repositoryFileDictionary : [String : LibraryContentsDescriptor]
+    if possibleAlert == nil, let remoteCurrentCommit = possibleRemoteCurrentCommit {
+      repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (possibleStoredCurrentCommit, remoteCurrentCommit, inLogTextView, proxy, &possibleAlert)
+    }else{
+      repositoryFileDictionary = [String : LibraryContentsDescriptor] ()
+    }
+  //-------- ③ Read library descriptor file
+    let libraryDescriptorFileContents : [String : CanariLibraryFileDescriptor]
+    if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
+      libraryDescriptorFileContents = phase3_readLibraryDescriptionFileContents (inLogTextView)
+    }else{
+      libraryDescriptorFileContents = [String : CanariLibraryFileDescriptor] ()
+    }
+  //-------- ④ Repository contents has been successfully retrieved, then enumerate local system library
+    let localFileSet : Set <String>
+    if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
+      localFileSet = phase4_appendLocalFilesToLibraryFileDictionary (inLogTextView, &possibleAlert)
+    }else{
+      localFileSet = Set <String> ()
+    }
+  //-------- ⑤ Build library operations
+    let libraryOperations : [LibraryOperationElement]
+    let newLocalDescription : [String : CanariLibraryFileDescriptor]
+    if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
+      (libraryOperations, newLocalDescription) = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
+    }else{
+      libraryOperations = [LibraryOperationElement] ()
+      newLocalDescription = [String : CanariLibraryFileDescriptor] ()
+    }
+  //-------- ⑥ Display "up to date" message ?
+    if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
+      inLogTextView.appendMessageString ("Phase 6: is the library up to date: ", color: NSColor.purple)
+      inLogTextView.appendMessageString ("\((libraryOperations.count == 0) ? "yes" : "no")\n")
+      if libraryOperations.count == 0 {
+        let alert = NSAlert ()
+        alert.messageText = "The library is up to date"
+        _ = alert.runModal ()
+      }
+    }
+  //-------- ⑦ If ok and there are update operations, perform library update
+    if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) && (libraryOperations.count != 0) {
+      phase7_performLibraryOperations (libraryOperations, newLocalDescription, inLogTextView)
+    }else{
+      if let alert = possibleAlert {
+        _ = alert.runModal ()
+      }
+      enableItemsAfterCompletion ()
     }
   }
-//-------- ⑦ If ok and there are update operations, perform library update
-  if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) && (libraryOperations.count != 0) {
-    phase7_performLibraryOperations (libraryOperations, newLocalDescription, inLogTextView)
-  }else{
-    if let alert = possibleAlert {
-      _ = alert.runModal ()
-    }
-    enableItemsAfterCompletion ()
-  }
-}
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// }
 
 //--------------------------------------------------------------------------------------------------
 

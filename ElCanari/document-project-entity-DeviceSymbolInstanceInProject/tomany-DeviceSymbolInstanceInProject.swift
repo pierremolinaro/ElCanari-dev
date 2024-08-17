@@ -323,12 +323,11 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
   //--- Register old value in undo manager
-    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
-//    self.undoManager?.registerUndo < EBReferenceArray <DeviceSymbolInstanceInProject> > (withTarget: self) {
-//      DispatchQueue.main.async {
-//        $0.mInternalArrayValue = inOldValue
-//      }
-//    }
+    self.undoManager?.registerUndo (withTarget: self) { (inSelfObject) in
+      // DispatchQueue.main.async {
+        inSelfObject.mInternalArrayValue = inOldValue
+      // }
+    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

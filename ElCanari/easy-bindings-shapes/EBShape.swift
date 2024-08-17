@@ -324,7 +324,7 @@ fileprivate final class EBShapeObject {
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mElements : EBReferenceArray <EBShapeElement>
+  private var mElements : [EBShapeElement]
   private var mToolTips : [EBToolTip]
   private var mCachedBoundingBox : NSRect
 
@@ -333,7 +333,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
-    self.mElements = EBReferenceArray <EBShapeElement> ()
+    self.mElements = [EBShapeElement] ()
     self.mToolTips = [EBToolTip] ()
     self.mCachedBoundingBox = NSRect.null
     noteObjectAllocation (self)
@@ -359,7 +359,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (_ inShape : EBShapeObject) {
-    self.mElements.append (objects: inShape.mElements)
+    self.mElements += inShape.mElements
     self.mToolTips += inShape.mToolTips
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (inShape.mCachedBoundingBox)
   }
@@ -591,7 +591,7 @@ fileprivate final class EBShapeObject {
 
   func draw (_ inDirtyRect : NSRect) {
     if self.mCachedBoundingBox.intersects (inDirtyRect) {
-      for element in self.mElements.values {
+      for element in self.mElements {
         if element.boundingBox.intersects (inDirtyRect) {
           element.draw (inDirtyRect)
         }
@@ -613,7 +613,7 @@ fileprivate final class EBShapeObject {
 
   func intersects (rect inRect : NSRect) -> Bool {
     if self.mCachedBoundingBox.intersects (inRect) {
-      for element in self.mElements.values {
+      for element in self.mElements {
         if element.intersects (rect: inRect) {
           return true
         }
@@ -628,7 +628,7 @@ fileprivate final class EBShapeObject {
 
   func contains (point inPoint : NSPoint) -> Bool {
     if self.mCachedBoundingBox.contains (inPoint) {
-      for element in self.mElements.values {
+      for element in self.mElements {
         if element.contains (point: inPoint) {
           return true
         }
@@ -643,7 +643,7 @@ fileprivate final class EBShapeObject {
 
   func knobIndex (at inPoint : NSPoint) -> Int? {
     if self.mCachedBoundingBox.contains (inPoint) {
-      for element in self.mElements.values.reversed () {
+      for element in self.mElements.reversed () {
         if let idx = element.knobIndex (at: inPoint) {
           return idx
         }
@@ -658,7 +658,7 @@ fileprivate final class EBShapeObject {
 
   func transformed (by inAffineTransform : AffineTransform) -> EBShapeObject {
     let result = EBShapeObject ()
-    for element in self.mElements.values {
+    for element in self.mElements {
       let newElement = element.transformed (by: inAffineTransform)
       result.mElements.append (newElement)
       result.mCachedBoundingBox = result.mCachedBoundingBox.union (newElement.boundingBox)
@@ -690,7 +690,7 @@ fileprivate final class EBShapeObject {
 
    func alpha (withFraction inFraction : CGFloat) -> EBShapeObject {
     let result = EBShapeObject ()
-    for element in self.mElements.values {
+    for element in self.mElements {
       let newElement = element.alpha (withFraction: inFraction)
       result.mElements.append (newElement)
     }
