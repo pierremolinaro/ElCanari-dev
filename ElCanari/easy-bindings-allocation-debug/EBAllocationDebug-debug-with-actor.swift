@@ -256,8 +256,6 @@ fileprivate struct EBAllocationItemDisplay {
   //    init
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//   @MainActor override init () {
-//     super.init ()
    init () {
    //--- Bindings
      _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)
@@ -265,10 +263,8 @@ fileprivate struct EBAllocationItemDisplay {
      _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
      _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
      _ = self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
-//     _ = self.mPerformSnapShotButton.bind_run (target: self, selector: #selector (Self.performSnapShotAction (_:)))
      _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
        .setClosureAction { [weak self] in self?.allocationStatsDisplayFilterIndexDidChange () }
-//       .bind_run (target: self, selector: #selector (Self.allocationStatsDisplayFilterIndexDidChange (_:)))
   //--- Configure table view
     self.mStatsTableView.configure (
       allowsEmptySelection: false,
@@ -373,38 +369,6 @@ fileprivate struct EBAllocationItemDisplay {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    noteObjectAllocation
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  fileprivate func noteObjectAllocation (ofType inType : AnyObject.Type) {
-//    let className = String (describing: inType)
-//    let currentCount = self.mTotalAllocatedObjectCountByClass [className] ?? 0
-//    self.mTotalAllocatedObjectCountByClass [className] = currentCount + 1
-//  //---
-//    let liveCount = self.mLiveObjectCountByClass [className] ?? 0
-//    self.mLiveObjectCountByClass [className] = liveCount + 1
-//  //---
-//    self.triggerRefreshDisplay ()
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    pmNoteObjectDeallocation
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  fileprivate func noteObjectDeallocation (ofType inType : AnyObject.Type) {
-//    let className = String (describing: inType)
-//    if let n = self.mLiveObjectCountByClass [className] {
-//      if n > 1 {
-//        self.mLiveObjectCountByClass [className] = n - 1
-//      }else{
-//        self.mLiveObjectCountByClass [className] = nil
-//      }
-//    }
-//  //---
-//    self.triggerRefreshDisplay ()
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAllocationStatsDataSource = [EBAllocationItemDisplay] ()
   private var mRefreshTriggered = false
@@ -416,8 +380,7 @@ fileprivate struct EBAllocationItemDisplay {
   private func triggerRefreshDisplay () {
     if !self.mRefreshTriggered {
       self.mRefreshTriggered = true
-      let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 500_000_000)
- //     let deadline = DispatchTime.now ().advanced (by: .milliseconds (500)) // Available in 10.15
+      let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 100_000_000)
       DispatchQueue.main.asyncAfter (deadline: deadline) {
         self.mRefreshTriggered = false
         self.displayAllocation ()
