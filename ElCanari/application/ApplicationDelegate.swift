@@ -188,7 +188,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   //---
     self.checkForLibraryUpdateAtLaunch ()
     instanciateDebugMenuVisibilityObjectOnWillFinishLaunchingNotification ()
-//    self.addAutoLayoutUserInterfaceStyleObserver ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -208,13 +207,14 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   nonisolated func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
-    if action == #selector (Self.setBinaryFormatAction (_:)) {
-      validate = false
-      inMenuItem.state = .off
-    }else if action == #selector (Self.setTextualFormatAction (_:)) {
-      validate = false
-      inMenuItem.state = .off
-    }else if action == #selector (Self.actionNewProjectDocument (_:)) {
+//    if action == #selector (Self.setBinaryFormatAction (_:)) {
+//      validate = false
+//      inMenuItem.state = .off
+//    }else if action == #selector (Self.setTextualFormatAction (_:)) {
+//      validate = false
+//      inMenuItem.state = .off
+//    }else
+    if action == #selector (Self.actionNewProjectDocument (_:)) {
       validate = true
     }else if action == #selector (Self.actionNewMergerDocument (_:)) {
       validate = true
@@ -237,7 +237,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
     }else{
       validate = false
     }
-    // NSLog ("VALIDATE \(action) -> \(validate)")
     return validate
   }
 
@@ -245,13 +244,13 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   //   FORMAT ACTIONS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func setBinaryFormatAction (_ inSender : Any?) {
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @objc func setTextualFormatAction (_ inSender : Any?) {
-  }
+//  @objc func setBinaryFormatAction (_ inSender : Any?) {
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  @objc func setTextualFormatAction (_ inSender : Any?) {
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

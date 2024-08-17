@@ -383,7 +383,6 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
     }else{
       validate = super.validateMenuItem (inMenuItem)
     }
-    // NSLog ("VALIDATE \(action) -> \(validate)")
     return validate
   }
 
