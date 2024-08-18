@@ -13,11 +13,10 @@ extension Preferences {
 
   func phase2_readOrDownloadLibraryFileDictionary (_ inPossibleStoredCurrentCommit : Int?,
                                                    _ inRemoteCurrentCommit : Int,
-                                                   _ inLogTextView : AutoLayoutStaticTextView,
                                                    _ inProxy : [String],
                                                    _ ioPossibleAlert : inout NSAlert?) -> [String : LibraryContentsDescriptor] {
     var libraryFileDictionary = [String : LibraryContentsDescriptor] ()
-    inLogTextView.appendMessageString ("Phase 2: get repository commit file\n", color: NSColor.purple)
+    self.mLibraryUpdateLogTextView.appendMessageString ("Phase 2: get repository commit file\n", color: NSColor.purple)
   //--- Use local description file ?
     var needsToDowloadDescriptionFile = true
     if let storedCurrentCommit = inPossibleStoredCurrentCommit, storedCurrentCommit == inRemoteCurrentCommit {
@@ -37,10 +36,10 @@ extension Preferences {
       }
     }
     if !needsToDowloadDescriptionFile {
-      inLogTextView.appendMessageString ("  Using '\(REPOSITORY_DESCRIPTION_PLIST_FILE_NAME)' local file\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("  Using '\(REPOSITORY_DESCRIPTION_PLIST_FILE_NAME)' local file\n")
     }
   //--- Download from repository
-    if needsToDowloadDescriptionFile, let data = getRemoteFileData ("contents/contents-\(inRemoteCurrentCommit).plist", &ioPossibleAlert, inLogTextView, inProxy) {
+    if needsToDowloadDescriptionFile, let data = self.getRemoteFileData ("contents/contents-\(inRemoteCurrentCommit).plist", &ioPossibleAlert, inProxy) {
       libraryFileDictionary = [String : LibraryContentsDescriptor] ()
       let possibleDictArray = try? PropertyListSerialization.propertyList (from: data, format: nil)
       if let dictArray = possibleDictArray as? [[String : Any]] {
@@ -48,23 +47,23 @@ extension Preferences {
           if let entry = LibraryContentsDescriptor (withDictionary: dictionary) {
             libraryFileDictionary [entry.mRelativePath] = entry
           }else{
-            inLogTextView.appendErrorString ("  Contents file has an invalid structure.\n")
+            self.mLibraryUpdateLogTextView.appendErrorString ("  Contents file has an invalid structure.\n")
             ioPossibleAlert = NSAlert ()
             ioPossibleAlert?.messageText = "Internal error"
             ioPossibleAlert?.informativeText = "Contents file has an invalid structure."
           }
         }
       }else{
-        inLogTextView.appendErrorString ("  Contents file has an invalid structure.\n")
+        self.mLibraryUpdateLogTextView.appendErrorString ("  Contents file has an invalid structure.\n")
         ioPossibleAlert = NSAlert ()
         ioPossibleAlert?.messageText = "Internal error"
         ioPossibleAlert?.informativeText = "Contents file has an invalid structure."
       }
     }
   //--- Print
-    inLogTextView.appendMessageString ("  Repository contents [path — commit — size — sha]:\n")
+    self.mLibraryUpdateLogTextView.appendMessageString ("  Repository contents [path — commit — size — sha]:\n")
     for (path, value) in libraryFileDictionary {
-      inLogTextView.appendMessageString ("    [\(path) — \(value.mCommit) — \(value.mSize) — \(value.mSHA)]\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("    [\(path) — \(value.mCommit) — \(value.mSize) — \(value.mSHA)]\n")
     }
     return libraryFileDictionary
   }

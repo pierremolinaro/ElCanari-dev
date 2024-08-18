@@ -12,8 +12,8 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func phase3_readLibraryDescriptionFileContents (_ inLogTextView : AutoLayoutStaticTextView) -> [String : CanariLibraryFileDescriptor] {
-    inLogTextView.appendMessageString ("Phase 3: enumerate local files\n", color: NSColor.purple)
+  func phase3_readLibraryDescriptionFileContents () -> [String : CanariLibraryFileDescriptor] {
+    self.mLibraryUpdateLogTextView.appendMessageString ("Phase 3: enumerate local files\n", color: NSColor.purple)
     var libraryFileDictionary = [String : CanariLibraryFileDescriptor] ()
     if let propertyList = libraryDescriptionFileContents () {
       for entry in propertyList {
@@ -31,20 +31,19 @@ extension Preferences {
       }
     }
   //--- Print
-    inLogTextView.appendMessageString ("  Local contents, from description file [path — commit — size — sha]:\n")
+    self.mLibraryUpdateLogTextView.appendMessageString ("  Local contents, from description file [path — commit — size — sha]:\n")
     for (path, value) in libraryFileDictionary {
-      inLogTextView.appendMessageString ("    [\(path) — \(value.commit) — \(value.size) — \(value.sha)]\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("    [\(path) — \(value.commit) — \(value.size) — \(value.sha)]\n")
     }
     return libraryFileDictionary
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func writeLibraryDescriptionPlistFile (_ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor],
-                                                  _ inLogTextView : AutoLayoutStaticTextView) throws {
-    inLogTextView.appendMessageString ("  Write Library Description Plist File [path — repositorySHA — size]\n")
+  func writeLibraryDescriptionPlistFile (_ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor]) throws {
+    self.mLibraryUpdateLogTextView.appendMessageString ("  Write Library Description Plist File [path — repositorySHA — size]\n")
     for (path, value) in inRepositoryFileDictionary {
-      inLogTextView.appendMessageString ("    [\(path) — \(value.sha) — \(value.size)]\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("    [\(path) — \(value.sha) — \(value.size)]\n")
     }
   //--- Write plist file
     var dictionaryArray = [[String : Any]] ()

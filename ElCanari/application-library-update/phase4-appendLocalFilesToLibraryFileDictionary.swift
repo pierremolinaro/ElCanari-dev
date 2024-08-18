@@ -18,12 +18,11 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func phase4_appendLocalFilesToLibraryFileDictionary (_ inLogTextView : AutoLayoutStaticTextView,
-                                                       _ ioPossibleAlert : inout NSAlert?) -> Set <String> {
+  func phase4_appendLocalFilesToLibraryFileDictionary (_ ioPossibleAlert : inout NSAlert?) -> Set <String> {
     var libraryFileDictionary = Set <String> ()
-    inLogTextView.appendMessageString ("Phase 4: enumerate local system library\n", color: NSColor.purple)
+    self.mLibraryUpdateLogTextView.appendMessageString ("Phase 4: enumerate local system library\n", color: NSColor.purple)
     do{
-      inLogTextView.appendMessageString ("  System Library path is \(systemLibraryPath ())\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("  System Library path is \(systemLibraryPath ())\n")
       let fm = FileManager ()
       if fm.fileExists (atPath: systemLibraryPath ()) {
         let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
@@ -41,15 +40,15 @@ extension Preferences {
             libraryFileDictionary.insert (filePath)
           }
         }
-        inLogTextView.appendMessageString ("  System Library directory contents [file path]:\n")
+        self.mLibraryUpdateLogTextView.appendMessageString ("  System Library directory contents [file path]:\n")
         for descriptor in libraryFileDictionary {
-          inLogTextView.appendMessageString ("    [\(descriptor)]\n")
+          self.mLibraryUpdateLogTextView.appendMessageString ("    [\(descriptor)]\n")
         }
       }else{
-        inLogTextView.appendWarningString ("  System Library directory does not exist\n")
+        self.mLibraryUpdateLogTextView.appendWarningString ("  System Library directory does not exist\n")
       }
     }catch let error {
-      inLogTextView.appendErrorString ("  Switch exception \(error)\n")
+      self.mLibraryUpdateLogTextView.appendErrorString ("  Switch exception \(error)\n")
       ioPossibleAlert = NSAlert (error: error)
     }
     return libraryFileDictionary

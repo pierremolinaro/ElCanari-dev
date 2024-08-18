@@ -14,7 +14,7 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     noteObjectAllocation (self)
   }
@@ -28,7 +28,10 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var mLibraryUpdateLogWindow : CanariWindow? = nil
-  final var mLibraryUpdateLogTextView : AutoLayoutStaticTextView? = nil
+  final let mLibraryUpdateLogTextView =
+    AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: true, verticalScroller: true)
+        .expandableWidth ()
+        .expandableHeight ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -50,11 +53,7 @@ import AppKit
       _ = window.setFrameAutosaveName ("LibraryUpdateLogWindowSettings")
       window.title = "Library Update Log"
       window.isReleasedWhenClosed = false
-      let textView = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: true, verticalScroller: true)
-        .expandableWidth ()
-        .expandableHeight ()
-      self.mLibraryUpdateLogTextView = textView
-      window.contentView = textView
+      window.contentView = self.mLibraryUpdateLogTextView
       return window
     }
   }

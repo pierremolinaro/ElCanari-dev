@@ -22,7 +22,7 @@ private let parallelDownloadCount = 3
 
   private let mActionArray : [LibraryOperationElement]
   private let mNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]
-  private let mLogTextView : AutoLayoutStaticTextView
+//  private let mLogTextView : AutoLayoutStaticTextView
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Properties
@@ -41,13 +41,13 @@ private let parallelDownloadCount = 3
 
   init (_ inActionArray : [LibraryOperationElement],
         _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : AutoLayoutStaticTextView,
+ //       _ inLogTextView : AutoLayoutStaticTextView,
         _ inProgressMaxValue : Double,
         _ inInformativeText : String) {
     self.mCurrentActionArray = inActionArray
     self.mActionArray = inActionArray
     self.mNewRepositoryFileDictionary = inNewLocalDescriptionDictionary
-    self.mLogTextView = inLogTextView
+//    self.mLogTextView = inLogTextView
   //--- Build Panel
     self.mLibraryUpdatePanel = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 800, height: 400),
@@ -193,7 +193,7 @@ private let parallelDownloadCount = 3
       DispatchQueue.main.async { action.beginAction (self) }
     }else if self.mCurrentParallelActionCount == 0 { // Last download did end
       DispatchQueue.main.async {
-        appDelegate()?.commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView)
+        appDelegate()?.commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary)
       }
     }
   }

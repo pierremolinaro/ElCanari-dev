@@ -10,30 +10,37 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func getRemoteFileData (_ inRelativeFilePath : String,
-                                   _ ioPossibleAlert : inout NSAlert?,
-                                   _ inLogTextView : AutoLayoutStaticTextView,
-                                   _ inProxy : [String]) -> Data? {
-  let arguments = [
-    "-s", // Silent mode, do not show download progress
-    "-k", // Turn off curl's verification of certificate
-    "-L", // Follow
-    "https://www.pcmolinaro.name/CanariLibrary/" + inRelativeFilePath
-  ] + inProxy
-  let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, logTextView: inLogTextView)
-  switch responseCode {
-  case .error (let errorCode) :
-    ioPossibleAlert = NSAlert ()
-    ioPossibleAlert?.messageText = "Cannot get file from repository."
-    if errorCode == 6 { // See man curl --> Couldn't resolve host. The given remote host was not resolved.
-      ioPossibleAlert?.informativeText = "Cannot connect to server."
-    }else{
-      ioPossibleAlert?.informativeText = "The server returns error \(errorCode) on reading '\(inRelativeFilePath)' file."
+extension Preferences {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func getRemoteFileData (_ inRelativeFilePath : String,
+                          _ ioPossibleAlert : inout NSAlert?,
+                          _ inProxy : [String]) -> Data? {
+    let arguments = [
+      "-s", // Silent mode, do not show download progress
+      "-k", // Turn off curl's verification of certificate
+      "-L", // Follow
+      "https://www.pcmolinaro.name/CanariLibrary/" + inRelativeFilePath
+    ] + inProxy
+    let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, logTextView: self.mLibraryUpdateLogTextView)
+    switch responseCode {
+    case .error (let errorCode) :
+      ioPossibleAlert = NSAlert ()
+      ioPossibleAlert?.messageText = "Cannot get file from repository."
+      if errorCode == 6 { // See man curl --> Couldn't resolve host. The given remote host was not resolved.
+        ioPossibleAlert?.informativeText = "Cannot connect to server."
+      }else{
+        ioPossibleAlert?.informativeText = "The server returns error \(errorCode) on reading '\(inRelativeFilePath)' file."
+      }
+      return nil
+    case .ok (let data) :
+      return data
     }
-    return nil
-  case .ok (let data) :
-    return data
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

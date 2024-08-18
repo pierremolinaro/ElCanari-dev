@@ -19,9 +19,8 @@ extension Preferences {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationElement],
-                                        _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
-                                        _ inLogTextView : AutoLayoutStaticTextView) {
-    inLogTextView.appendMessageString ("Phase 7: Display Update Dialog and perform operation\n", color: NSColor.purple)
+                                        _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor]) {
+    self.mLibraryUpdateLogTextView.appendMessageString ("Phase 7: Display Update Dialog and perform operation\n", color: NSColor.purple)
   //--- Perform library update in main thread
     DispatchQueue.main.async {
     //--- Configure informative text in library update window
@@ -39,7 +38,6 @@ extension Preferences {
       gCanariLibraryUpdateController = CanariLibraryUpdateController (
         inLibraryOperations,
         inNewLocalDescriptionDictionary,
-        inLogTextView,
         progressMaxValue,
         inInformativeText
       )
@@ -51,8 +49,7 @@ extension Preferences {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func commitAllActions (_ inActionArray : [LibraryOperationElement],
-                         _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
-                         _ inLogTextView : AutoLayoutStaticTextView) {
+                         _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]) {
   //--- Commit change only if all actions has been successdully completed
     var newRepositoryFileDictionary = inNewRepositoryFileDictionary
     var performCommit = true
@@ -74,18 +71,18 @@ extension Preferences {
   //--- Perform commit
     if !performCommit {
       gCanariLibraryUpdateController?.orderOutLibraryUpdatePanel ()
-      enableItemsAfterCompletion ()
+      self.enableItemsAfterCompletion ()
     }else if let window = gCanariLibraryUpdateController?.panelForSheet () {
       do{
         for action in inActionArray {
           try action.performCommit ()
         }
       //--- Delete orphean directories
-        try deleteOrphanDirectories (inLogTextView)
+        try self.deleteOrphanDirectories ()
       //--- Write library description plist file
-        try writeLibraryDescriptionPlistFile (newRepositoryFileDictionary, inLogTextView)
+        try self.writeLibraryDescriptionPlistFile (newRepositoryFileDictionary)
       //--- Completed!
-        inLogTextView.appendSuccessString ("Done.")
+        self.mLibraryUpdateLogTextView.appendSuccessString ("Done.")
         let alert = NSAlert ()
         alert.messageText = "Update completed, the library is up to date"
         alert.beginSheetModal (
@@ -111,7 +108,7 @@ extension Preferences {
   //    deleteOrphanDirectories
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func deleteOrphanDirectories (_ inLogTextView : AutoLayoutStaticTextView) throws {
+  private func deleteOrphanDirectories () throws {
     let fm = FileManager ()
     let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
     var directoryArray = [String] ()
@@ -139,7 +136,7 @@ extension Preferences {
         j += 1
       }
       if (currentDirectoryContents.count == 0) {
-        inLogTextView.appendMessageString ("  Delete orphean directory at '\(fullPath)\n")
+        self.mLibraryUpdateLogTextView.appendMessageString ("  Delete orphean directory at '\(fullPath)\n")
         try fm.removeItem (atPath: fullPath)
       }
       i -= 1

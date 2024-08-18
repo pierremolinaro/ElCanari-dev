@@ -8,13 +8,11 @@ extension ApplicationDelegate {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func updateLibrary (_ inSender : AnyObject) {
-    if let logTextView = self.mLibraryUpdateLogTextView {
-      let optionKey : Bool = NSApplication.shared.currentEvent?.modifierFlags.contains (.option) ?? false
-      if optionKey {
-        startLibraryRevisionListOperation (logTextView)
-      }else{
-        startLibraryUpdateOperation (showProgressWindow: true, logTextView)
-      }
+    let optionKey : Bool = NSApplication.shared.currentEvent?.modifierFlags.contains (.option) ?? false
+    if optionKey {
+      self.startLibraryRevisionListOperation ()
+    }else{
+      startLibraryUpdateOperation (showProgressWindow: true)
     }
   }
 

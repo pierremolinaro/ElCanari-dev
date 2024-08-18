@@ -14,20 +14,20 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
-    inLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
+  func startLibraryRevisionListOperation () {
+    self.mLibraryUpdateLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
   //--- Disable update buttons
     self.mCheckForLibraryUpdatesButton?.isEnabled = false
     appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
   //-------- Cleat log window
-    inLogTextView.clear ()
+    self.mLibraryUpdateLogTextView.clear ()
   //-------- ⓪ Get system proxy
-    inLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
-    let proxy = getSystemProxy (inLogTextView)
+    self.mLibraryUpdateLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
+    let proxy = self.getSystemProxy ()
   //-------- ① We start by getting the list of all commits
-    inLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
+    self.mLibraryUpdateLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
     var possibleAlert : NSAlert? = nil // If not nil, something goes wrong
-    let revisions = getRepositoryCommitList (&possibleAlert, proxy, inLogTextView)
+    let revisions = self.getRepositoryCommitList (&possibleAlert, proxy)
     let possibleStoredCurrentCommit = getStoredCurrentCommit ()
     let possibleRemoteCurrentCommit : Int?
     if possibleAlert == nil, let commitIndex = displayRepositoryCommitList (revisions) {
@@ -38,21 +38,21 @@ extension Preferences {
   //-------- ② Now get remote file that describes this commit
     let repositoryFileDictionary : [String : LibraryContentsDescriptor]
     if possibleAlert == nil, let remoteCurrentCommit = possibleRemoteCurrentCommit {
-      repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (possibleStoredCurrentCommit, remoteCurrentCommit, inLogTextView, proxy, &possibleAlert)
+      repositoryFileDictionary = self.phase2_readOrDownloadLibraryFileDictionary (possibleStoredCurrentCommit, remoteCurrentCommit, proxy, &possibleAlert)
     }else{
       repositoryFileDictionary = [String : LibraryContentsDescriptor] ()
     }
   //-------- ③ Read library descriptor file
     let libraryDescriptorFileContents : [String : CanariLibraryFileDescriptor]
     if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-      libraryDescriptorFileContents = phase3_readLibraryDescriptionFileContents (inLogTextView)
+      libraryDescriptorFileContents = self.phase3_readLibraryDescriptionFileContents ()
     }else{
       libraryDescriptorFileContents = [String : CanariLibraryFileDescriptor] ()
     }
   //-------- ④ Repository contents has been successfully retrieved, then enumerate local system library
     let localFileSet : Set <String>
     if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-      localFileSet = phase4_appendLocalFilesToLibraryFileDictionary (inLogTextView, &possibleAlert)
+      localFileSet = self.phase4_appendLocalFilesToLibraryFileDictionary (&possibleAlert)
     }else{
       localFileSet = Set <String> ()
     }
@@ -60,15 +60,15 @@ extension Preferences {
     let libraryOperations : [LibraryOperationElement]
     let newLocalDescription : [String : CanariLibraryFileDescriptor]
     if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-      (libraryOperations, newLocalDescription) = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
+      (libraryOperations, newLocalDescription) = self.phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, proxy)
     }else{
       libraryOperations = [LibraryOperationElement] ()
       newLocalDescription = [String : CanariLibraryFileDescriptor] ()
     }
   //-------- ⑥ Display "up to date" message ?
     if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) {
-      inLogTextView.appendMessageString ("Phase 6: is the library up to date: ", color: NSColor.purple)
-      inLogTextView.appendMessageString ("\((libraryOperations.count == 0) ? "yes" : "no")\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("Phase 6: is the library up to date: ", color: NSColor.purple)
+      self.mLibraryUpdateLogTextView.appendMessageString ("\((libraryOperations.count == 0) ? "yes" : "no")\n")
       if libraryOperations.count == 0 {
         let alert = NSAlert ()
         alert.messageText = "The library is up to date"
@@ -77,27 +77,26 @@ extension Preferences {
     }
   //-------- ⑦ If ok and there are update operations, perform library update
     if (possibleAlert == nil) && (possibleRemoteCurrentCommit != nil) && (libraryOperations.count != 0) {
-      phase7_performLibraryOperations (libraryOperations, newLocalDescription, inLogTextView)
+      self.phase7_performLibraryOperations (libraryOperations, newLocalDescription)
     }else{
       if let alert = possibleAlert {
         _ = alert.runModal ()
       }
-      enableItemsAfterCompletion ()
+      self.enableItemsAfterCompletion ()
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func getRepositoryCommitList (_ ioPossibleAlert : inout NSAlert?,
-                                        _ inProxy : [String],
-                                        _ inLogTextView : AutoLayoutStaticTextView) -> [LibraryRevisionDescriptor] {
+                                        _ inProxy : [String]) -> [LibraryRevisionDescriptor] {
     var revisions = [LibraryRevisionDescriptor] ()
   //--- Get lastest commit
-    let possibleRemoteCurrentCommit = getRemoteCurrentCommit (inLogTextView, &ioPossibleAlert, inProxy)
+    let possibleRemoteCurrentCommit = self.getRemoteCurrentCommit (&ioPossibleAlert, inProxy)
     if let remoteCurrentCommit = possibleRemoteCurrentCommit {
     //--- Loop for getting commit description
       for i in 1 ... remoteCurrentCommit {
-        if let data = getRemoteFileData ("commits/commit-\(i).plist", &ioPossibleAlert, inLogTextView, inProxy) {
+        if let data = self.getRemoteFileData ("commits/commit-\(i).plist", &ioPossibleAlert, inProxy) {
           if let possibleDict = try? PropertyListSerialization.propertyList (from: data, format: nil),
              let dict = possibleDict as? [String : Any],
              let commitDate = dict ["date"] as? Date,

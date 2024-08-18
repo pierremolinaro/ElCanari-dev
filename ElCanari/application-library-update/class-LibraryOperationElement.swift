@@ -38,7 +38,6 @@ enum LibraryOperation {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  private let mFileSHA : String
   private let mLogTextView : AutoLayoutStaticTextView
   private let mProxy : [String]
 
@@ -52,7 +51,6 @@ enum LibraryOperation {
   init (relativePath inRelativePath : String,
         commit : Int,
         sizeInRepository inSizeInRepository : Int,
-//        fileSHA inFileSHA : String,
         operation inOperation : LibraryOperation,
         logTextView inLogTextView: AutoLayoutStaticTextView,
         proxy inProxy: [String]) {
@@ -60,7 +58,6 @@ enum LibraryOperation {
     self.commit = commit
     self.mOperation = inOperation
     self.sizeInRepository = inSizeInRepository
-//    self.mFileSHA = inFileSHA
     self.mLogTextView = inLogTextView
     self.mProxy = inProxy
     noteObjectAllocation (self)
@@ -158,7 +155,6 @@ enum LibraryOperation {
             self.mOperation = .downloading (newDownloadPerCent)
             if (newDownloadPerCent / 10) != (previousDownloadPerCent / 10) {
               DispatchQueue.main.async {
-                // Swift.print ("\(newDownloadPerCent)% of \(self.relativePath)")
                 inController.updateProgressIndicator ()
               }
             }

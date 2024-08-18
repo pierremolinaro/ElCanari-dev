@@ -48,13 +48,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   @IBOutlet var mCheckNowForUpdateMenuItem : NSMenuItem? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : NSMenuItem? = nil
 
-//  @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
-//  @IBOutlet var mMenuRevealInFinder_devices : CanariMenu? = nil
-//  @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
-//  @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
-//  @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
-
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Batch Window
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,19 +161,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor func applicationWillFinishLaunching (_ inNotification : Notification) {
-//      checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
-//      checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
-//      checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
-//      checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
-//      checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
-//    //--------------------------- Install bindings
-//      self.mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
-//      self.mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)
-//      self.mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
-//      self.mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
-//      self.mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
-
-
     self.mOpenSymbolInLibraryMenuItem?.target = gOpenSymbolInLibrary
     self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
     self.mOpenPackageInLibraryMenuItem?.target = gOpenPackageInLibrary

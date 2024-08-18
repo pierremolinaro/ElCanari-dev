@@ -17,7 +17,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   func getSystemProxy (_ inLogTextView : AutoLayoutStaticTextView) -> [String] {
+   func getSystemProxy () -> [String] {
     var proxyOption = [String] ()
     if let proxies : [String : Any] = SCDynamicStoreCopyProxies (nil) as? [String : Any] {
       let possibleHTTPSProxy = proxies ["HTTPSProxy"]
@@ -31,9 +31,9 @@ extension Preferences {
         proxyOption = ["--proxy", proxySetting]
       }
     }else{
-      inLogTextView.appendWarningString ("  SCDynamicStoreCopyProxies returns nil\n")
+      self.mLibraryUpdateLogTextView.appendWarningString ("  SCDynamicStoreCopyProxies returns nil\n")
     }
-    inLogTextView.appendSuccessString ("  Proxy \(proxyOption)\n")
+    self.mLibraryUpdateLogTextView.appendSuccessString ("  Proxy \(proxyOption)\n")
     return proxyOption
   }
 

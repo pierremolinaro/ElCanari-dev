@@ -17,13 +17,12 @@ extension Preferences {
   func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : LibraryContentsDescriptor],
                                       _ inLocalFileSet : Set <String>,
                                       _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
-                                      _ inLogTextView : AutoLayoutStaticTextView,
                                       _ inProxy : [String])
                                       -> ([LibraryOperationElement], [String : CanariLibraryFileDescriptor] ) {
-    inLogTextView.appendMessageString ("Phase 5: build operation list\n", color: NSColor.purple)
-    inLogTextView.appendMessageString ("  Repository File Dictionary has \(inRepositoryFileDictionary.count) entries\n")
-    inLogTextView.appendMessageString ("  Local files: \(inLocalFileSet.count)\n")
-    inLogTextView.appendMessageString ("  Library File Dictionary has \(inLibraryFileDictionary.count) entries\n")
+    self.mLibraryUpdateLogTextView.appendMessageString ("Phase 5: build operation list\n", color: NSColor.purple)
+    self.mLibraryUpdateLogTextView.appendMessageString ("  Repository File Dictionary has \(inRepositoryFileDictionary.count) entries\n")
+    self.mLibraryUpdateLogTextView.appendMessageString ("  Local files: \(inLocalFileSet.count)\n")
+    self.mLibraryUpdateLogTextView.appendMessageString ("  Library File Dictionary has \(inLibraryFileDictionary.count) entries\n")
   //--- Build all path set
     var allPaths = inLocalFileSet
     allPaths.formUnion (inRepositoryFileDictionary.keys)
@@ -40,9 +39,8 @@ extension Preferences {
           relativePath: path,
           commit: repositoryDescriptor.mCommit,
           sizeInRepository: repositoryDescriptor.mSize,
-  //        fileSHA: repositoryDescriptor.mSHA,
           operation: .download,
-          logTextView: inLogTextView,
+          logTextView: self.mLibraryUpdateLogTextView,
           proxy: inProxy
         )
         operations.append (element)
@@ -51,9 +49,8 @@ extension Preferences {
           relativePath: path,
           commit: repositoryDescriptor.mCommit,
           sizeInRepository: repositoryDescriptor.mSize,
-  //        fileSHA: repositoryDescriptor.mSHA,
           operation: .update,
-          logTextView: inLogTextView,
+          logTextView: self.mLibraryUpdateLogTextView,
           proxy: inProxy
         )
         operations.append (element)
@@ -62,9 +59,8 @@ extension Preferences {
           relativePath: path,
           commit: 0,
           sizeInRepository: 0,
-  //        fileSHA: "",
           operation: .delete,
-          logTextView: inLogTextView,
+          logTextView: self.mLibraryUpdateLogTextView,
           proxy: inProxy
         )
         operations.append (element)
@@ -90,9 +86,8 @@ extension Preferences {
             relativePath: path,
             commit: repositoryDescriptor.mCommit,
             sizeInRepository: repositoryDescriptor.mSize,
-  //          fileSHA: repositoryDescriptor.mSHA,
             operation: .update,
-            logTextView: inLogTextView,
+            logTextView: self.mLibraryUpdateLogTextView,
             proxy: inProxy
           )
           operations.append (element)
@@ -100,11 +95,11 @@ extension Preferences {
       }
     }
     if operations.count == 0 {
-      inLogTextView.appendMessageString ("  No operation\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("  No operation\n")
     }else{
-      inLogTextView.appendMessageString ("  Library operations [operation — file path — size in repository)\n")
+      self.mLibraryUpdateLogTextView.appendMessageString ("  Library operations [operation — file path — size in repository)\n")
       for op in operations {
-        inLogTextView.appendMessageString ("    [\(op.operation) — \(op.relativePath) — \(op.sizeInRepository)]\n")
+        self.mLibraryUpdateLogTextView.appendMessageString ("    [\(op.operation) — \(op.relativePath) — \(op.sizeInRepository)]\n")
       }
     }
     return (operations, newRepositoryFileDictionary)

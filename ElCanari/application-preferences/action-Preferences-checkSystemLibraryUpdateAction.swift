@@ -13,14 +13,11 @@ import AppKit
 extension Preferences {
   @objc func checkSystemLibraryUpdateAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let logTextView = self.mLibraryUpdateLogTextView {
-      let optionKey : Bool = NSApplication.shared.currentEvent?.modifierFlags.contains (.option) ?? false
-      // Swift.print ("optionKey \(optionKey)")
-      if optionKey {
-        startLibraryRevisionListOperation (logTextView)
-      }else{
-        startLibraryUpdateOperation (showProgressWindow: true, logTextView)
-      }
+    let optionKey : Bool = NSApplication.shared.currentEvent?.modifierFlags.contains (.option) ?? false
+    if optionKey {
+      self.startLibraryRevisionListOperation ()
+    }else{
+      self.startLibraryUpdateOperation (showProgressWindow: true)
     }
 //--- END OF USER ZONE 2
   }
