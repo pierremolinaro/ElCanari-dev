@@ -558,6 +558,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     //--------------------------- Extern functions
       self.setupForLibrary ()
     }
+    super.awakeFromNib ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

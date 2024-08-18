@@ -193,7 +193,9 @@ private let parallelDownloadCount = 3
       DispatchQueue.main.async { action.beginAction (self) }
     }else if self.mCurrentParallelActionCount == 0 { // Last download did end
       DispatchQueue.main.async {
-        appDelegate()?.commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary)
+        if let appDelegate = NSApplication.shared.delegate as? ApplicationDelegate {
+          appDelegate.commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary)
+        }
       }
     }
   }

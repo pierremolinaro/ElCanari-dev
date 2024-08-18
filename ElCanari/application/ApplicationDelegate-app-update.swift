@@ -10,22 +10,13 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-extension ApplicationDelegate {
+extension Preferences_SuperClass {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func awakeFromNib () {
-    DispatchQueue.main.async {
-      self.mCheckNowForUpdateMenuItem?.target = self
-      self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @objc func checkForUpdatesAction (_ inUnusedSender : Any?) {
-    self.mUpdaterController.updater.checkForUpdates ()
-  }
+//  @objc func checkForUpdatesAction () {
+//    self.mUpdaterController.updater.checkForUpdates ()
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

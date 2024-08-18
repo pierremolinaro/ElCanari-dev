@@ -7,7 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
-import Sparkle
 
 //--------------------------------------------------------------------------------------------------
 
@@ -33,20 +32,7 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func appDelegate () -> ApplicationDelegate? {
-  return NSApplication.shared.delegate as? ApplicationDelegate
-}
-
-//--------------------------------------------------------------------------------------------------
-
 @MainActor @main final class ApplicationDelegate : Preferences, NSApplicationDelegate, NSMenuItemValidation, Sendable {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Outlets
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @IBOutlet var mCheckNowForUpdateMenuItem : NSMenuItem? = nil
-  @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : NSMenuItem? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Batch Window
@@ -134,12 +120,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
       self.mBatchWindow = batchWindow
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Sparkle 2.x
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  let mUpdaterController = Sparkle.SPUStandardUpdaterController (updaterDelegate: nil, userDriverDelegate: nil)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Open xxx in library

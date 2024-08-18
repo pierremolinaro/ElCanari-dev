@@ -17,7 +17,7 @@ extension Preferences {
     self.mLibraryUpdateLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
   //--- Disable update buttons
     self.mCheckForLibraryUpdatesButton?.isEnabled = false
-    appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+    self.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
   //-------- Cleat log window
     self.mLibraryUpdateLogTextView.clear ()
   //-------- Show "Check for update" window
@@ -96,7 +96,7 @@ extension Preferences {
 
   func enableItemsAfterCompletion () {
     self.mCheckForLibraryUpdatesButton?.isEnabled = true
-    appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
+    self.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

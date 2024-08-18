@@ -7,10 +7,18 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import Sparkle
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor class Preferences_SuperClass : NSObject {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Outlets
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBOutlet var mCheckNowForUpdateMenuItem : NSMenuItem? = nil
+  @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : NSMenuItem? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -24,6 +32,22 @@ import AppKit
   deinit {
     noteObjectDeallocation (self)
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func awakeFromNib () {
+    DispatchQueue.main.async {
+      self.mCheckNowForUpdateMenuItem?.target = self
+      self.mCheckNowForUpdateMenuItem?.action = #selector (Self.checkForUpdatesAction (_:))
+    }
+    super.awakeFromNib ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Sparkle 2.x
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  let mUpdaterController = Sparkle.SPUStandardUpdaterController (updaterDelegate: nil, userDriverDelegate: nil)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

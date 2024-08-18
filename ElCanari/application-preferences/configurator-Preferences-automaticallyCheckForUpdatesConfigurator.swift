@@ -16,7 +16,7 @@ import AppKit
 extension Preferences {
   final func configure_automaticallyCheckForUpdatesConfigurator (_ inOutlet : AutoLayoutCheckbox) {
 //--- START OF USER ZONE 2
-        appDelegate ()?.configureAutomaticallyCheckForUpdatesButton (inOutlet)
+        self.configureAutomaticallyCheckForUpdatesButton (inOutlet)
 //--- END OF USER ZONE 2
   }
 }

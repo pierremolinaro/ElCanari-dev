@@ -18,7 +18,7 @@ extension Preferences {
     self.mLibraryUpdateLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
   //--- Disable update buttons
     self.mCheckForLibraryUpdatesButton?.isEnabled = false
-    appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+    self.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
   //-------- Cleat log window
     self.mLibraryUpdateLogTextView.clear ()
   //-------- ⓪ Get system proxy
