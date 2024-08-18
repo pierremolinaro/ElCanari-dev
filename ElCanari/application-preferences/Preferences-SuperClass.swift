@@ -44,6 +44,12 @@ import Sparkle
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc func checkForUpdatesAction (_ inUnusedSender : Any?) {
+    self.mUpdaterController.updater.checkForUpdates ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Sparkle 2.x
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

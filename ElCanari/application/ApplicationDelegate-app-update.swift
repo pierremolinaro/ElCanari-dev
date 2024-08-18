@@ -14,12 +14,6 @@ extension Preferences_SuperClass {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  @objc func checkForUpdatesAction () {
-//    self.mUpdaterController.updater.checkForUpdates ()
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func sparkleVersionString () -> String {
     var result = "?"
     if let frameworkURL = Bundle.main.privateFrameworksURL {
