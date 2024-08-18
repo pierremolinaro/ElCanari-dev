@@ -12,11 +12,11 @@ import AppKit
 //   AutoLayoutCanariSlavePadAssignPopUpButton
 //--------------------------------------------------------------------------------------------------
 
-@MainActor final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
+final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero, pullsDown: false)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false

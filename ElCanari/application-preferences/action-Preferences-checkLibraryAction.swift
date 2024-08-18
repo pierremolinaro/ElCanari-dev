@@ -15,7 +15,7 @@ extension Preferences {
 //--- START OF USER ZONE 2
     let logWindow = self.buildLibraryConsistencyLogWindow ()
     if let button = inSender as? NSButton, let myWindow = button.window {
-      checkLibrary (windowForSheet: myWindow, logWindow: logWindow)
+      self.checkLibrary (windowForSheet: myWindow, logWindow: logWindow)
     }
 //--- END OF USER ZONE 2
   }

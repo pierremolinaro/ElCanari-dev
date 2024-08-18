@@ -28,7 +28,7 @@ extension Preferences {
       let button = AutoLayoutButton (title: "Check Library", size: .regular)
         .expandableWidth ()
       _ = button.setClosureAction {
-        checkLibrary (windowForSheet: window, logWindow: window)
+        self.checkLibrary (windowForSheet: window, logWindow: window)
       }
     //---------- Tab View
       let label = AutoLayoutStaticLabel (

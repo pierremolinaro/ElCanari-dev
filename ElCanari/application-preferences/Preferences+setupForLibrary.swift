@@ -65,13 +65,13 @@ extension Preferences {
   func updateForLibrary () {
     let fm = FileManager ()
   //--- System Library
-    do{
+ //   do{
       let path = systemLibraryPath ()
       let pathExists = fm.fileExists (atPath: path)
       self.mRevealInFinderSystemLibraryButton?.toolTip = path
       self.mRevealInFinderSystemLibraryButton?.title = path
       self.mRevealInFinderSystemLibraryButton?.isEnabled = pathExists
-    }
+//    }
   //--- User Library
 //    do{
 //      let path = userLibraryPath ()

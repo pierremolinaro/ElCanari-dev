@@ -12,34 +12,6 @@ import Foundation
 // ETAG
 //--------------------------------------------------------------------------------------------------
 
-//private let REPOSITORY_CONTENTS_FOR_COMMIT_KEY = "repository-contents-for-commit"
-
-//--------------------------------------------------------------------------------------------------
-
-//func getRepositoryContentsForCommitCache () -> (String, [[String : Any]])? {
-//  if let dict = UserDefaults ().value (forKey: REPOSITORY_CONTENTS_FOR_COMMIT_KEY) as? [String : Any],
-//     let sha = dict ["sha"] as? String,
-//     let array = dict ["data"] as? [[String : Any]] {
-//    return (sha, array)
-//  }else{
-//    return nil
-//  }
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//func storeRepositoryContentsForCommitCache (_ inCommitSHA : String, _ inArray : [[String : Any]]) {
-//  let dict : [String : Any] = [
-//    "sha" : inCommitSHA,
-//    "data" : inArray
-//  ]
-//  UserDefaults ().set (dict, forKey: REPOSITORY_CONTENTS_FOR_COMMIT_KEY)
-//}
-
-//--------------------------------------------------------------------------------------------------
-// ETAG
-//--------------------------------------------------------------------------------------------------
-
 private let LIBRARY_REPOSITORY_LAST_COMMIT_KEY = "library-repository-current-version"
 
 //--------------------------------------------------------------------------------------------------
@@ -61,28 +33,6 @@ func storeRepositoryCurrentCommit (_ inCommit : Int) {
 
 //--------------------------------------------------------------------------------------------------
 // SHA corresponding to current repository commit
-//--------------------------------------------------------------------------------------------------
-
-//private let LIBRARY_REPOSITORY_COMMIT_SHA_KEY = "library-repository-commit-sha"
-
-//--------------------------------------------------------------------------------------------------
-
-//func getRepositoryCommitSHA () -> String? { // Returns nil if no current commit
-//  return UserDefaults ().string (forKey: LIBRARY_REPOSITORY_COMMIT_SHA_KEY)
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//func storeRepositoryCommitSHA (_ inSHA : String) {
-//  UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA_KEY)
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//func storeRepositoryCommitSHA_removeETAG (_ inSHA : String) {
-//  UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA_KEY)
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 func storeRepositoryFileSHA (_ inSHA : String) {

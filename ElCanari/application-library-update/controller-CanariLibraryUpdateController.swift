@@ -192,7 +192,9 @@ private let parallelDownloadCount = 3
       let action = self.mActionArray [self.mNextActionIndex - 1]
       DispatchQueue.main.async { action.beginAction (self) }
     }else if self.mCurrentParallelActionCount == 0 { // Last download did end
-      DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView) }
+      DispatchQueue.main.async {
+        appDelegate()?.commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView)
+      }
     }
   }
 

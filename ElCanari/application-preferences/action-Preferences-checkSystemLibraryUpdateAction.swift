@@ -11,6 +11,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension Preferences {
+
   @objc func checkSystemLibraryUpdateAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let logTextView = self.mLibraryUpdateLogTextView {

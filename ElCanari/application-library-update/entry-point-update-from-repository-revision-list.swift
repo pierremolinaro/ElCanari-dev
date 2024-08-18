@@ -10,14 +10,14 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-//extension Preferences {
+extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
+  func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
     inLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
   //--- Disable update buttons
-    g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
+    self.mCheckForLibraryUpdatesButton?.isEnabled = false
     appDelegate ()?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
   //-------- Cleat log window
     inLogTextView.clear ()
@@ -88,57 +88,43 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor private func getRepositoryCommitList (_ ioPossibleAlert : inout NSAlert?,
-                                                 _ inProxy : [String],
-                                                 _ inLogTextView : AutoLayoutStaticTextView) -> [LibraryRevisionDescriptor] {
-  var revisions = [LibraryRevisionDescriptor] ()
-//--- Get lastest commit
-  let possibleRemoteCurrentCommit = getRemoteCurrentCommit (inLogTextView, &ioPossibleAlert, inProxy)
-  if let remoteCurrentCommit = possibleRemoteCurrentCommit {
-  //--- Loop for getting commit description
-    for i in 1 ... remoteCurrentCommit {
-      if let data = getRemoteFileData ("commits/commit-\(i).plist", &ioPossibleAlert, inLogTextView, inProxy) {
-        if let possibleDict = try? PropertyListSerialization.propertyList (from: data, format: nil),
-           let dict = possibleDict as? [String : Any],
-           let commitDate = dict ["date"] as? Date,
-           let commitMessage = dict ["message"] as? String {
-          revisions.append (LibraryRevisionDescriptor (commitDate, i, commitMessage))
+  private func getRepositoryCommitList (_ ioPossibleAlert : inout NSAlert?,
+                                        _ inProxy : [String],
+                                        _ inLogTextView : AutoLayoutStaticTextView) -> [LibraryRevisionDescriptor] {
+    var revisions = [LibraryRevisionDescriptor] ()
+  //--- Get lastest commit
+    let possibleRemoteCurrentCommit = getRemoteCurrentCommit (inLogTextView, &ioPossibleAlert, inProxy)
+    if let remoteCurrentCommit = possibleRemoteCurrentCommit {
+    //--- Loop for getting commit description
+      for i in 1 ... remoteCurrentCommit {
+        if let data = getRemoteFileData ("commits/commit-\(i).plist", &ioPossibleAlert, inLogTextView, inProxy) {
+          if let possibleDict = try? PropertyListSerialization.propertyList (from: data, format: nil),
+             let dict = possibleDict as? [String : Any],
+             let commitDate = dict ["date"] as? Date,
+             let commitMessage = dict ["message"] as? String {
+            revisions.append (LibraryRevisionDescriptor (commitDate, i, commitMessage))
+          }else{
+            ioPossibleAlert = NSAlert ()
+            ioPossibleAlert?.messageText = "Invalid response format for commit \(i)"
+            break ;
+          }
         }else{
-          ioPossibleAlert = NSAlert ()
-          ioPossibleAlert?.messageText = "Invalid response format for commit \(i)"
           break ;
         }
-      }else{
-        break ;
       }
     }
+  //---
+    if ioPossibleAlert == nil {
+      revisions.reverse () // So last commit becomes the first one
+    }else{
+      revisions.removeAll ()
+    }
+    return revisions
   }
-//---
-  if ioPossibleAlert == nil {
-    revisions.reverse () // So last commit becomes the first one
-  }else{
-    revisions.removeAll ()
-  }
-  return revisions
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
-
-//--------------------------------------------------------------------------------------------------
-//https://stackoverflow.com/questions/39433852/parsing-a-iso8601-string-to-date-in-swift
-//--------------------------------------------------------------------------------------------------
-
-//private func iso8601StringToDate (_ inString : String?) -> Date? {
-//  var date : Date? = nil
-//  if let str = inString {
-//    let dateFormatter = DateFormatter ()
-//    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-//    date = dateFormatter.date (from: str)
-//  }
-//  return date
-//}
 
 //--------------------------------------------------------------------------------------------------
 

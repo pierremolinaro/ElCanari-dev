@@ -13,24 +13,32 @@ import SystemConfiguration
 // https://stackoverflow.com/questions/13276195/mac-osx-how-can-i-grab-proxy-configuration-using-cocoa-or-even-pure-c-function
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func getSystemProxy (_ inLogTextView : AutoLayoutStaticTextView) -> [String] {
-  var proxyOption = [String] ()
-  if let proxies : [String : Any] = SCDynamicStoreCopyProxies (nil) as? [String : Any] {
-    let possibleHTTPSProxy = proxies ["HTTPSProxy"]
-    let possibleHTTPSEnable = proxies ["HTTPSEnable"]
-    let possibleHTTPSPort = proxies ["HTTPSPort"]
-    if let HTTPSEnable : Int = possibleHTTPSEnable as? Int, HTTPSEnable == 1, let HTTPSProxy = possibleHTTPSProxy {
-      var proxySetting : String = "\(HTTPSProxy)"
-      if let HTTPSPort = possibleHTTPSPort {
-        proxySetting += ":" + "\(HTTPSPort)"
+extension Preferences {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+   func getSystemProxy (_ inLogTextView : AutoLayoutStaticTextView) -> [String] {
+    var proxyOption = [String] ()
+    if let proxies : [String : Any] = SCDynamicStoreCopyProxies (nil) as? [String : Any] {
+      let possibleHTTPSProxy = proxies ["HTTPSProxy"]
+      let possibleHTTPSEnable = proxies ["HTTPSEnable"]
+      let possibleHTTPSPort = proxies ["HTTPSPort"]
+      if let HTTPSEnable : Int = possibleHTTPSEnable as? Int, HTTPSEnable == 1, let HTTPSProxy = possibleHTTPSProxy {
+        var proxySetting : String = "\(HTTPSProxy)"
+        if let HTTPSPort = possibleHTTPSPort {
+          proxySetting += ":" + "\(HTTPSPort)"
+        }
+        proxyOption = ["--proxy", proxySetting]
       }
-      proxyOption = ["--proxy", proxySetting]
+    }else{
+      inLogTextView.appendWarningString ("  SCDynamicStoreCopyProxies returns nil\n")
     }
-  }else{
-    inLogTextView.appendWarningString ("  SCDynamicStoreCopyProxies returns nil\n")
+    inLogTextView.appendSuccessString ("  Proxy \(proxyOption)\n")
+    return proxyOption
   }
-  inLogTextView.appendSuccessString ("  Proxy \(proxyOption)\n")
-  return proxyOption
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

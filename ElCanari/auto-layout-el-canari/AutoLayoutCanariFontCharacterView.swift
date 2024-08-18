@@ -55,7 +55,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.setPasteboardPrivateObjectType ()
