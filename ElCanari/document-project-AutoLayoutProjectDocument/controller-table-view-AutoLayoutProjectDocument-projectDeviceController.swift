@@ -139,7 +139,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
   //    sorted array observer
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
+  private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

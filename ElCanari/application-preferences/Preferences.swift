@@ -381,6 +381,16 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   weak final var mRevealInFinderSystemLibraryButton : AutoLayoutButton? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //    Outlets (EX)
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil
+  @IBOutlet var mMenuRevealInFinder_devices : CanariMenu? = nil
+  @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
+  @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
+  @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Multiple bindings controllers
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -409,7 +419,8 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   override init () {
     super.init ()
-    DispatchQueue.main.async {
+ //   DispatchQueue.main.async {
+      // g_Preferences = self
     //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
     preferences_additionnalLibraryArray_property.undoManager = self.undoManager
@@ -521,7 +532,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     preferences_additionnalLibraryArray_property.toMany_mUses_StartsBeingObserved (by: preferences_mValueRevealInFinder_symbols_property)
     preferences_additionnalLibraryArray_property.toMany_mPath_StartsBeingObserved (by: preferences_mValueRevealInFinder_symbols_property)
     //--- Extern functions
-    }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -530,6 +541,21 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   override func awakeFromNib () {
     DispatchQueue.main.async {
+      checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
+      checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
+    //--------------------------- Install bindings
+      self.mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)
+      self.mMenuRevealInFinder_packages?.bind_populateSubmenus (preferences_mValueRevealInFinder_packages_property)
+      self.mMenuRevealInFinder_devices?.bind_populateSubmenus (preferences_mValueRevealInFinder_devices_property)
+      self.mMenuRevealInFinder_fonts?.bind_populateSubmenus (preferences_mValueRevealInFinder_fonts_property)
+      self.mMenuRevealInFinder_artworks?.bind_populateSubmenus (preferences_mValueRevealInFinder_artworks_property)
+    //--------------------------- Install multiple bindings
+    //--------------------------- Array controller
+    //--------------------------- Set targets / actions
+    //--------------------------- Extern functions
       self.setupForLibrary ()
     }
   }

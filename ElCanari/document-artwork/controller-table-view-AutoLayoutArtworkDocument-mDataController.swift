@@ -133,7 +133,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : NSObject, Aut
   //    sorted array observer
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor private var mSortedArrayValuesObserver = EBOutletEvent ()
+  private var mSortedArrayValuesObserver = EBOutletEvent ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
