@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23090" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23090"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EBApplication">
@@ -466,6 +466,11 @@
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate" customModule="ElCanari" customModuleProvider="target">
             <connections>
                 <outlet property="mCheckNowForUpdateMenuItem" destination="1186" id="yVp-G6-p2r"/>
+                <outlet property="mMenuRevealInFinder_artworks" destination="1469" id="vFh-R2-eM9"/>
+                <outlet property="mMenuRevealInFinder_devices" destination="1462" id="mfg-v0-2Aj"/>
+                <outlet property="mMenuRevealInFinder_fonts" destination="1465" id="GGh-nV-QrA"/>
+                <outlet property="mMenuRevealInFinder_packages" destination="1459" id="Z6l-I9-I2H"/>
+                <outlet property="mMenuRevealInFinder_symbols" destination="1456" id="Nta-tZ-dR7"/>
                 <outlet property="mOpenDeviceInLibraryMenuItem" destination="1323" id="mQ2-0a-dRS"/>
                 <outlet property="mOpenFontInLibraryMenuItem" destination="1325" id="Ela-ch-ewc"/>
                 <outlet property="mOpenPackageInLibraryMenuItem" destination="1321" id="5c9-al-3DV"/>
@@ -473,14 +478,6 @@
                 <outlet property="mUpDateLibraryMenuItemInCanariMenu" destination="tfP-CB-tqy" id="JtM-EN-e4x"/>
             </connections>
         </customObject>
-        <customObject id="lAs-GB-mIJ" userLabel="Preferences" customClass="Preferences" customModule="ElCanari" customModuleProvider="target">
-            <connections>
-                <outlet property="mMenuRevealInFinder_artworks" destination="1469" id="0Ra-8e-L6n"/>
-                <outlet property="mMenuRevealInFinder_devices" destination="1462" id="sbT-Ii-sGw"/>
-                <outlet property="mMenuRevealInFinder_fonts" destination="1465" id="WRU-dg-RSi"/>
-                <outlet property="mMenuRevealInFinder_packages" destination="1459" id="Ent-eb-dy6"/>
-                <outlet property="mMenuRevealInFinder_symbols" destination="1456" id="Kmo-7E-H9s"/>
-            </connections>
-        </customObject>
+        <customObject id="lAs-GB-mIJ" userLabel="Preferences" customClass="Preferences" customModule="ElCanari" customModuleProvider="target"/>
     </objects>
 </document>
