@@ -33,8 +33,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 
 //--------------------------------------------------------------------------------------------------
 
-// @MainActor var gApplicationDelegate : ApplicationDelegate? = nil
-
 @MainActor func appDelegate () -> ApplicationDelegate? {
   return NSApplication.shared.delegate as? ApplicationDelegate
 }
@@ -42,19 +40,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 //--------------------------------------------------------------------------------------------------
 
 @MainActor @main final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation, Sendable {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  init
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @MainActor override init () {
-////    self.mOpenSymbolInLibrary = OpenSymbolInLibrary ()
-////    self.mOpenPackageInLibrary = OpenPackageInLibrary ()
-////    self.mOpenDeviceInLibrary = OpenDeviceInLibrary ()
-////    self.mOpenFontInLibrary = OpenFontInLibrary ()
-//    super.init ()
-//    gApplicationDelegate = self
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Outlets
@@ -165,11 +150,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   @IBOutlet var mOpenDeviceInLibraryMenuItem : NSMenuItem? = nil
   @IBOutlet var mOpenFontInLibraryMenuItem : NSMenuItem? = nil
 
-//  let mOpenSymbolInLibrary : OpenSymbolInLibrary
-//  private let mOpenPackageInLibrary : OpenPackageInLibrary
-//  let mOpenDeviceInLibrary : OpenDeviceInLibrary
-//  let mOpenFontInLibrary : OpenFontInLibrary
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -211,13 +191,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   nonisolated func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
-//    if action == #selector (Self.setBinaryFormatAction (_:)) {
-//      validate = false
-//      inMenuItem.state = .off
-//    }else if action == #selector (Self.setTextualFormatAction (_:)) {
-//      validate = false
-//      inMenuItem.state = .off
-//    }else
     if action == #selector (Self.actionNewProjectDocument (_:)) {
       validate = true
     }else if action == #selector (Self.actionNewMergerDocument (_:)) {
@@ -245,18 +218,6 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   FORMAT ACTIONS
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc func setBinaryFormatAction (_ inSender : Any?) {
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  @objc func setTextualFormatAction (_ inSender : Any?) {
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
@@ -268,12 +229,5 @@ func ElCanariApplicationVersionString () -> String {
   let appVersion = Bundle.main.infoDictionary? ["CFBundleShortVersionString"] as? String
   return appVersion ?? "Unknown"
 }
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor let gOpenSymbolInLibrary = OpenSymbolInLibrary ()
-@MainActor let gOpenPackageInLibrary = OpenPackageInLibrary ()
-@MainActor let gOpenDeviceInLibrary = OpenDeviceInLibrary ()
-@MainActor let gOpenFontInLibrary = OpenFontInLibrary ()
 
 //--------------------------------------------------------------------------------------------------

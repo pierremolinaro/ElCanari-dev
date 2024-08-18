@@ -13,7 +13,7 @@ import AppKit
 extension Preferences {
   @objc func checkSystemLibraryUpdateAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
+    if let logTextView = self.mLibraryUpdateLogTextView {
       let optionKey : Bool = NSApplication.shared.currentEvent?.modifierFlags.contains (.option) ?? false
       // Swift.print ("optionKey \(optionKey)")
       if optionKey {

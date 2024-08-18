@@ -18,7 +18,6 @@ extension ApplicationDelegate {
     if preferences_checkForSystemLibraryAtStartUp_property.propval {
       _ = g_Preferences?.setUpLibraryUpdateLogWindow ()
       if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
-        // NSLog ("g_Preferences?.mLastSystemLibraryCheckTime \(g_Preferences?.mLastSystemLibraryCheckTime)")
         let lastCheckDate = preferences_mLastSystemLibraryCheckTime_property.propval
         var nextInterval = 24.0 * 3600.0  // One day
         let tag = preferences_systemLibraryCheckTimeInterval_property.propval

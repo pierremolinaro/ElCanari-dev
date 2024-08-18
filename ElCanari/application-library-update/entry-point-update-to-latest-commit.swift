@@ -9,7 +9,8 @@ let CURL = "/usr/bin/curl"
 //   LIBRARY UPDATE ENTRY POINT
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLogTextView : AutoLayoutStaticTextView) {
+@MainActor func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool,
+                                             _ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
