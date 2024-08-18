@@ -38,7 +38,7 @@
                             </menuItem>
                             <menuItem title="Preferences…" keyEquivalent="," id="5402">
                                 <connections>
-                                    <action selector="showPreferencesWindowAction:" target="lAs-GB-mIJ" id="4SQ-5M-cIt"/>
+                                    <action selector="showPreferencesWindowAction:" target="212" id="uf6-Vb-FZQ"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="143">
@@ -478,6 +478,5 @@
                 <outlet property="mUpDateLibraryMenuItemInCanariMenu" destination="tfP-CB-tqy" id="JtM-EN-e4x"/>
             </connections>
         </customObject>
-        <customObject id="lAs-GB-mIJ" userLabel="Preferences" customClass="Preferences" customModule="ElCanari" customModuleProvider="target"/>
     </objects>
 </document>

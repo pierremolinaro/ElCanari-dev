@@ -39,7 +39,7 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor @main final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation, Sendable {
+@MainActor @main final class ApplicationDelegate : Preferences, NSApplicationDelegate, NSMenuItemValidation, Sendable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Outlets
