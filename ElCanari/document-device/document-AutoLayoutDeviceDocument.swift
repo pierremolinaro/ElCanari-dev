@@ -321,8 +321,6 @@ import AppKit
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
       let view_1_0 = AutoLayoutDroppableImageView (removeButton: true)
-        .set (maxWidth: 400)
-        .set (maxHeight: 400)
         .bind_imageData (self.rootObject.mImageData_property)
       _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()

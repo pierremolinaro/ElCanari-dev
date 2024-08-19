@@ -174,10 +174,24 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
     self.registerForDraggedTypes (myPasteboardImageTypes ())
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func set (maxWidth inMaxWidth : Int) {
+    self.mMaxWidth = CGFloat (inMaxWidth)
+    self.invalidateIntrinsicContentSize ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func set (maxHeight inMaxHeight : Int) {
+    self.mMaxHeight = CGFloat (inMaxHeight)
+    self.invalidateIntrinsicContentSize ()
+  }
+
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  override var intrinsicContentSize : NSSize {
-   if let imageSize = self.image?.size {
+   if let imageSize = self.image?.size, (self.mMaxWidth != nil) || (self.mMaxHeight != nil) {
      var s = imageSize
      if let maxWidth = self.mMaxWidth, s.width > maxWidth {
        s = NSSize (width: maxWidth, height: s.height * maxWidth / s.width)
@@ -195,20 +209,6 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func set (maxWidth inMaxWidth : Int) {
-    self.mMaxWidth = CGFloat (inMaxWidth)
-    self.invalidateIntrinsicContentSize ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func set (maxHeight inMaxHeight : Int) {
-    self.mMaxHeight = CGFloat (inMaxHeight)
-    self.invalidateIntrinsicContentSize ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
