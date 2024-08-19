@@ -122,6 +122,11 @@ extern autolayout class StatusBadgeView () {
   $warningCount transient Int
 }
 
+extern autolayout class StatusView () {
+  $tooltip transient String
+  $status transient Int
+}
+
 extern autolayout class FlexibleSpace {
 }
 

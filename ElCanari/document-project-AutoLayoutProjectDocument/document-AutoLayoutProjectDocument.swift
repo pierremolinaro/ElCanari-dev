@@ -666,9 +666,9 @@ import AppKit
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
-            .bind_image (self.rootObject.ercStatusImage_property)
+          let view_0_4_0_1 = AutoLayoutStatusView ()
             .bind_tooltip (self.rootObject.ercStatusMessage_property)
+            .bind_status (self.rootObject.ercStatusValue_property)
           _ = view_0_4_0.appendView (view_0_4_0_1)
           let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
           _ = view_0_4_0.appendView (view_0_4_0_2)

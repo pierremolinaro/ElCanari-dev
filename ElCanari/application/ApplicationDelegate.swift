@@ -152,6 +152,7 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   //---
     self.checkForLibraryUpdateAtLaunch ()
     instanciateDebugMenuVisibilityObjectOnWillFinishLaunchingNotification ()
+    // self.createDemosWindows ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

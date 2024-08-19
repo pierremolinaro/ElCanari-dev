@@ -62,8 +62,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       vStack {
         hStack {
           space
-          ImageObserverView (size : .regular) {
-            $image root.ercStatusImage $tooltip root.ercStatusMessage
+//          ImageObserverView (size : .regular) {
+//            $tooltip root.ercStatusMessage
+//            $image root.ercStatusImage
+//          }
+          StatusView () {
+            $tooltip root.ercStatusMessage
+            $status root.ercStatusValue
           }
           space
         }

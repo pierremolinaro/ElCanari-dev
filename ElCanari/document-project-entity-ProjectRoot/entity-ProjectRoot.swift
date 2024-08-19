@@ -1547,18 +1547,6 @@ final class ProjectRoot : EBManagedObject {
   }
 
   //································································································
-  //   Transient property: ercStatusImage
-  //································································································
-
-  final let ercStatusImage_property = EBTransientProperty <NSImage> ()
-
-  //································································································
-
-  final var ercStatusImage : NSImage? {
-    return self.ercStatusImage_property.optionalValue
-  }
-
-  //································································································
   //   Transient property: ercStatusImageOrNoneOnSuccess
   //································································································
 
@@ -1580,6 +1568,18 @@ final class ProjectRoot : EBManagedObject {
 
   final var ercStatusMessage : String? {
     return self.ercStatusMessage_property.optionalValue
+  }
+
+  //································································································
+  //   Transient property: ercStatusValue
+  //································································································
+
+  final let ercStatusValue_property = EBTransientProperty <Int> ()
+
+  //································································································
+
+  final var ercStatusValue : Int? {
+    return self.ercStatusValue_property.optionalValue
   }
 
   //································································································
@@ -2855,31 +2855,6 @@ final class ProjectRoot : EBManagedObject {
     }
     self.mBoardObjects_property.toMany_signatureForERCChecking_StartsBeingObserved (by: self.signatureForERCChecking_property)
     self.mArtwork_property.signatureForERCChecking_property.startsBeingObserved (by: self.signatureForERCChecking_property)
-  //--- Atomic property: ercStatusImage
-    self.ercStatusImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mLastERCCheckingIsSuccess_property.selection
-        let s1 = unwSelf.mLastERCCheckingSignature_property.selection
-        let s2 = unwSelf.signatureForERCChecking_property.selection
-        switch (s0, s1, s2) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2)) :
-          return .single (transient_ProjectRoot_ercStatusImage (v0, v1, v2))
-        case (.multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.ercStatusImage_property)
-    self.mLastERCCheckingSignature_property.startsBeingObserved (by: self.ercStatusImage_property)
-    self.signatureForERCChecking_property.startsBeingObserved (by: self.ercStatusImage_property)
   //--- Atomic property: ercStatusImageOrNoneOnSuccess
     self.ercStatusImageOrNoneOnSuccess_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2930,6 +2905,31 @@ final class ProjectRoot : EBManagedObject {
     self.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.ercStatusMessage_property)
     self.mLastERCCheckingSignature_property.startsBeingObserved (by: self.ercStatusMessage_property)
     self.signatureForERCChecking_property.startsBeingObserved (by: self.ercStatusMessage_property)
+  //--- Atomic property: ercStatusValue
+    self.ercStatusValue_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mLastERCCheckingIsSuccess_property.selection
+        let s1 = unwSelf.mLastERCCheckingSignature_property.selection
+        let s2 = unwSelf.signatureForERCChecking_property.selection
+        switch (s0, s1, s2) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
+          return .single (transient_ProjectRoot_ercStatusValue (v0, v1, v2))
+        case (.multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.ercStatusValue_property)
+    self.mLastERCCheckingSignature_property.startsBeingObserved (by: self.ercStatusValue_property)
+    self.signatureForERCChecking_property.startsBeingObserved (by: self.ercStatusValue_property)
   //--- Atomic property: viaCountString
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

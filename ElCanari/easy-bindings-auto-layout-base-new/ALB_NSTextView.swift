@@ -32,7 +32,8 @@ final class ALB_NSTextView : NSTextView {
     self.mLayoutManager.addTextContainer (textContainer)
 
     super.init (frame: .zero, textContainer: textContainer)
-//    noteObjectAllocation (self)
+    noteObjectAllocation (self)
+//    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,9 +50,9 @@ final class ALB_NSTextView : NSTextView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
@@ -84,7 +85,7 @@ fileprivate final class EmbeddedLayoutManager : NSLayoutManager {
 
   override init () {
     super.init ()
-//    noteObjectAllocation (self)
+    noteObjectAllocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,9 +96,9 @@ fileprivate final class EmbeddedLayoutManager : NSLayoutManager {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

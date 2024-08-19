@@ -19,7 +19,9 @@ import AppKit
 //   AutoLayoutCanariIssueTableView
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView,
+                                             NSTableViewDataSource,
+                                             NSTableViewDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -39,9 +41,9 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   init (hasHideIssueButton inHasHideIssueButton : Bool) {
     super.init ()
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+//    self.setContentHuggingPriority (.defaultLow, for: .vertical)
 
     if inHasHideIssueButton {
       let button = AutoLayoutButton (title: "Hide Issue", size: .small).expandableWidth ()
@@ -242,6 +244,7 @@ fileprivate final class EmbeddedAutoLayoutScrollView : NSScrollView {
   @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

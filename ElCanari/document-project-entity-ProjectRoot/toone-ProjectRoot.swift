@@ -136,9 +136,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.boardIssues_property.stopsBeingObserved (by: self.boardIssues_property) // Transient property
       oldValue.hasSixLayers_property.stopsBeingObserved (by: self.hasSixLayers_property) // Transient property
       oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
-      oldValue.ercStatusImage_property.stopsBeingObserved (by: self.ercStatusImage_property) // Transient property
       oldValue.ercStatusImageOrNoneOnSuccess_property.stopsBeingObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
       oldValue.ercStatusMessage_property.stopsBeingObserved (by: self.ercStatusMessage_property) // Transient property
+      oldValue.ercStatusValue_property.stopsBeingObserved (by: self.ercStatusValue_property) // Transient property
       oldValue.viaCountString_property.stopsBeingObserved (by: self.viaCountString_property) // Transient property
       oldValue.topSideTrackCountString_property.stopsBeingObserved (by: self.topSideTrackCountString_property) // Transient property
       oldValue.backSideTrackCountString_property.stopsBeingObserved (by: self.backSideTrackCountString_property) // Transient property
@@ -326,9 +326,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.boardIssues_property.startsBeingObserved (by: self.boardIssues_property) // Transient property
       newValue.hasSixLayers_property.startsBeingObserved (by: self.hasSixLayers_property) // Transient property
       newValue.signatureForERCChecking_property.startsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
-      newValue.ercStatusImage_property.startsBeingObserved (by: self.ercStatusImage_property) // Transient property
       newValue.ercStatusImageOrNoneOnSuccess_property.startsBeingObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
       newValue.ercStatusMessage_property.startsBeingObserved (by: self.ercStatusMessage_property) // Transient property
+      newValue.ercStatusValue_property.startsBeingObserved (by: self.ercStatusValue_property) // Transient property
       newValue.viaCountString_property.startsBeingObserved (by: self.viaCountString_property) // Transient property
       newValue.topSideTrackCountString_property.startsBeingObserved (by: self.topSideTrackCountString_property) // Transient property
       newValue.backSideTrackCountString_property.startsBeingObserved (by: self.backSideTrackCountString_property) // Transient property
@@ -1117,12 +1117,6 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   final let signatureForERCChecking_property = EBTransientProperty <UInt32?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'ercStatusImage' transient property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final let ercStatusImage_property = EBTransientProperty <NSImage?> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'ercStatusImageOrNoneOnSuccess' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1133,6 +1127,12 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let ercStatusMessage_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'ercStatusValue' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let ercStatusValue_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'viaCountString' transient property
@@ -2060,10 +2060,6 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.signatureForERCChecking_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure ercStatusImage transient property
-    self.ercStatusImage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.ercStatusImage_property.optionalSelection ?? .single (nil)
-    }
   //--- Configure ercStatusImageOrNoneOnSuccess transient property
     self.ercStatusImageOrNoneOnSuccess_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ercStatusImageOrNoneOnSuccess_property.optionalSelection ?? .single (nil)
@@ -2071,6 +2067,10 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure ercStatusMessage transient property
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ercStatusMessage_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure ercStatusValue transient property
+    self.ercStatusValue_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.ercStatusValue_property.optionalSelection ?? .single (nil)
     }
   //--- Configure viaCountString transient property
     self.viaCountString_property.mReadModelFunction = { [weak self] in

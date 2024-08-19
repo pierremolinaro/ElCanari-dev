@@ -86,19 +86,6 @@ final class AutoLayoutImageObserverView : ALB_NSImageView {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  $enabled binding
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  private var mEnabledBindingController : EnabledBindingController? = nil
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-//    return self
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  image binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

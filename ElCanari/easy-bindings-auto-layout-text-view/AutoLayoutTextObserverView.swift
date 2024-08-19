@@ -43,10 +43,12 @@ final class AutoLayoutTextObserverView : NSScrollView {
     self.mTextView.allowsImageEditing = false
 
     let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
-    self.mTextView.minSize = NSSize (width: 0.0, height: 100.0) //self.contentSize.height)
+    self.mTextView.minSize = NSSize (width: 0.0, height: self.contentSize.height)
     self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
     self.mTextView.textContainer?.containerSize = NSSize (width: self.contentSize.width, height: MAX_SIZE)
     self.mTextView.textContainer?.widthTracksTextView = true
+    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
 
     self.drawsBackground = false
     self.documentView = self.mTextView

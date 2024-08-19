@@ -29,7 +29,8 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
+    self.translatesAutoresizingMaskIntoConstraints = false
+
     let leftColumn = NSTableColumn ()
     leftColumn.minWidth = 20.0
     leftColumn.maxWidth = 400.0

@@ -47,11 +47,11 @@ handlingOpposite entity ProjectRoot {
   transient UInt32 signatureForERCChecking dependsFrom
     self.mBoardObjects.all.signatureForERCChecking, self.mArtwork.one.signatureForERCChecking ;
  
-  transient NSImage ercStatusImage dependsFrom
-     self.mLastERCCheckingIsSuccess,
-     self.mLastERCCheckingSignature,
-     self.signatureForERCChecking
-  ;
+//  transient NSImage ercStatusImage dependsFrom
+//     self.mLastERCCheckingIsSuccess,
+//     self.mLastERCCheckingSignature,
+//     self.signatureForERCChecking
+//  ;
 
   transient NSImage ercStatusImageOrNoneOnSuccess dependsFrom
      self.mLastERCCheckingIsSuccess,
@@ -60,6 +60,12 @@ handlingOpposite entity ProjectRoot {
   ;
 
   transient String ercStatusMessage dependsFrom
+     self.mLastERCCheckingIsSuccess,
+     self.mLastERCCheckingSignature,
+     self.signatureForERCChecking
+  ;
+
+  transient Int ercStatusValue dependsFrom
      self.mLastERCCheckingIsSuccess,
      self.mLastERCCheckingSignature,
      self.signatureForERCChecking

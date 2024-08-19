@@ -21,6 +21,7 @@ final class EBScrollView : NSScrollView {
   init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
     self.wantsLayer = true
   }
 
@@ -28,6 +29,7 @@ final class EBScrollView : NSScrollView {
 
   deinit {
     noteObjectDeallocation (self)
+    objectDidDeinitSoReleaseHiddenControllers ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
