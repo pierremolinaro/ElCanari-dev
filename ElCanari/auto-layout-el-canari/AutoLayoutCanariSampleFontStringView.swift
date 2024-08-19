@@ -17,6 +17,7 @@ final class AutoLayoutCanariSampleFontStringView : ALB_NSView {
   override init () {
     super.init ()
     self.setContentHuggingPriority (.required, for: .vertical)
+    self.clipsToBounds = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
