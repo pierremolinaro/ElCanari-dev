@@ -28,7 +28,10 @@ final class AutoLayoutDragSourceButtonWithMenus : ALB_NSView {
     constraints.add (topOf: self, equalToTopOf: self.mDragSourceButton)
     constraints.add (leftOf: self, equalToLeftOf: self.mDragSourceButton)
     constraints.add (rightOf: self, equalToRightOf: self.mDragSourceButton)
-    constraints.add (bottomOf: self.mDragSourceButton, equalToBottomOf: self, plus: AutoLayoutMenuButton.size)
+    constraints.add (bottomOf: self.mDragSourceButton,
+                     equalToBottomOf: self,
+                     plus: AutoLayoutMenuButton.size,
+                     withCompressionResistancePriorityOf: .firstView)
     self.addConstraints (constraints)
   }
 

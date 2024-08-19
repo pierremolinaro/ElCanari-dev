@@ -311,7 +311,7 @@ extension Preferences {
     var deviceToUpdateSet = Set <String> ()
     for (deviceName, entry) in deviceDict {
       if entry.partStatus != .partIsValid {
-        inStackView.appendHorizontalSeparator ()
+        _ = inStackView.appendHorizontalSeparator ()
       }
       switch entry.partStatus {
       case .partIsDuplicated :
@@ -336,7 +336,7 @@ extension Preferences {
           if inSymbolDict [importedSymbolName] == nil {
             if !deviceHasError {
               deviceHasError = true
-              inStackView.appendHorizontalSeparator ()
+              _ = inStackView.appendHorizontalSeparator ()
             }
             var message = "  Error; '"
             message += deviceName
@@ -354,7 +354,7 @@ extension Preferences {
           if inPackageDict [importedPackageName] == nil {
             if !deviceHasError {
               deviceHasError = true
-              inStackView.appendHorizontalSeparator ()
+              _ = inStackView.appendHorizontalSeparator ()
             }
             var message = "  Error; '"
             message += deviceName

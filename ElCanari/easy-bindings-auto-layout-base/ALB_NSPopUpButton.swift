@@ -46,7 +46,7 @@ class ALB_NSPopUpButton : NSPopUpButton {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseHiddenControllers ()
     objectDidDeinitSoReleaseEnabledBindingController ()
   }
 

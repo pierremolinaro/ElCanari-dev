@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutComboBox
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutComboBox : ALB_NSComboBox {
+final class AutoLayoutComboBox : ALB_NSComboBox, NSComboBoxDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -56,12 +56,6 @@ final class AutoLayoutComboBox : ALB_NSComboBox {
     self.mTextDidChange? (self)
   }
 
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func controlTextDidEndEditing (_ notification : Notification) {
-//    self.mTextDidChange? (self)
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // NSComboBoxDelegate functions

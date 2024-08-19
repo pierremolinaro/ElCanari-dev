@@ -11,10 +11,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension Preferences {
-  @objc func checkForAppUpdateAction (_ inUnusedSender : NSObject?) {
+  @objc func checkForAppUpdateAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.mUpdaterController.updater.checkForUpdates ()
-//        self.checkForUpdatesAction (inSender)
 //--- END OF USER ZONE 2
   }
 }

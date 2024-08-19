@@ -33,7 +33,7 @@ class ALB_NSColorWell : NSColorWell {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseHiddenControllers ()
     objectDidDeinitSoReleaseEnabledBindingController ()
   }
 

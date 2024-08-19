@@ -1,8 +1,8 @@
 //
-//  ALB_NSDatePicker.swift
+//  ALB_NSScrollView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 11/12/2021.
+//  Created by Pierre Molinaro on 12/12/2021.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10,16 +10,15 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class ALB_NSDatePicker : NSDatePicker {
+class ALB_NSScrollView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (size inSize : NSControl.ControlSize) {
-    super.init (frame: .zero)
+  init () {
+    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
+//    self.translatesAutoresizingMaskIntoConstraints = false
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = inSize
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -381,7 +381,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   weak final var mRevealInFinderSystemLibraryButton : AutoLayoutButton? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    Outlets (EX)
+  //    Outlets
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBOutlet var mMenuRevealInFinder_artworks : CanariMenu? = nil

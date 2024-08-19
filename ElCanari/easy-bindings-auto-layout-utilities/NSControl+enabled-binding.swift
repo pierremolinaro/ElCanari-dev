@@ -14,7 +14,8 @@ extension NSControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func enable (fromValueBinding inValue : Bool, _ inEnableBindingController : EnabledBindingController?) {
+  final func enable (fromValueBinding inValue : Bool,
+                     _ inEnableBindingController : EnabledBindingController?) {
     if let controller = inEnableBindingController {
       controller.enable (fromValueBinding: inValue)
     }else{
@@ -24,12 +25,30 @@ extension NSControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func enable (fromEnableBinding inValue : Bool, _ inEnableBindingController : EnabledBindingController?) {
+  final func enable (fromEnableBinding inValue : Bool,
+                     _ inEnableBindingController : EnabledBindingController?) {
     if let controller = inEnableBindingController {
       controller.enable (fromEnableBinding: inValue)
     }else{
       self.isEnabled = inValue
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  $enabled binding
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func enabledBindingController () -> EnabledBindingController? {
+    let key = Key (self)
+    return gDictionary [key]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    let enabledBindingController = EnabledBindingController (inExpression, self)
+    performRetain (enabledBindingController: enabledBindingController, forObject: self)
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -61,7 +80,7 @@ final class EnabledBindingController : EBObservablePropertyController {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func updateEnableState (from inObject : EBSelection <Bool>) {
+  func updateEnableState (from inObject : EBSelection <Bool>) {
     switch inObject {
     case .empty, .multiple :
       self.enable (fromEnableBinding: false)
@@ -100,6 +119,50 @@ final class EnabledBindingController : EBObservablePropertyController {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor fileprivate func performRetain (enabledBindingController inController : EnabledBindingController,
+                                           forObject inObject : NSControl) {
+  let key = Key (inObject)
+  gDictionary [key] = inController
+}
+
+//--------------------------------------------------------------------------------------------------
+
+nonisolated func objectDidDeinitSoReleaseEnabledBindingController () {
+  DispatchQueue.main.async {
+    if !gNeedToUpdateDictionary {
+      gNeedToUpdateDictionary = true
+      DispatchQueue.main.async {
+        gNeedToUpdateDictionary = false
+        var newDict = [Key : EnabledBindingController] ()
+        for (key, controller) in gDictionary {
+          if key.mObject != nil {
+            newDict [key] = controller
+          }
+        }
+        gDictionary = newDict
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate struct Key : Hashable {
+  weak var mObject : NSControl?
+
+  init (_ inObject : NSControl) {
+    self.mObject = inObject
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor fileprivate var gNeedToUpdateDictionary = false
+@MainActor fileprivate var gDictionary = [Key : EnabledBindingController] ()
 
 //--------------------------------------------------------------------------------------------------

@@ -30,14 +30,14 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     constraints.add (leftOf: self, equalToLeftOf: inView)
     constraints.add (topOf: self, equalToTopOf: inView)
     constraints.add (rightOf: self, equalToRightOf: inView)
-    constraints.add (bottomOf: self, equalToBottomOf: inView)
+    constraints.add (bottomOf: self, equalToBottomOf: inView, withCompressionResistancePriorityOf: .secondView)
 
     let hiliteWiew = HiliteView ()
     self.addSubview (hiliteWiew)
     constraints.add (leftOf: self, equalToLeftOf: hiliteWiew)
     constraints.add (topOf: self, equalToTopOf: hiliteWiew)
     constraints.add (rightOf: self, equalToRightOf: hiliteWiew)
-    constraints.add (bottomOf: self, equalToBottomOf: hiliteWiew)
+    constraints.add (bottomOf: self, equalToBottomOf: hiliteWiew, withCompressionResistancePriorityOf: .secondView)
 
     self.addConstraints (constraints)
   }
@@ -228,7 +228,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)", toMainView: mainView, &constraints)
     self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)", toMainView: mainView, &constraints)
     if let lastView = mainView.subviews.last {
-      constraints.add (bottomOf: lastView, equalToBottomOf: mainView, plus: 8.0)
+      constraints.add (bottomOf: lastView, equalToBottomOf: mainView, plus: 8.0, withCompressionResistancePriorityOf: .firstView)
     }
     mainView.addConstraints (constraints)
     window.contentView = mainView
@@ -251,7 +251,7 @@ final class AutoLayoutWindowContentView : ALB_NSView {
     view.font = NSFont.systemFont (ofSize: NSFont.systemFontSize)
     view.stringValue = inString
     let s = view.intrinsicContentSize
-    ioConstraints.add (widthOf: view, greaterThanOrEqualTo: s.width)
+    ioConstraints.add (widthOf: view, greaterThanOrEqualToConstant: s.width)
     ioConstraints.add (heightOf: view, equalTo: s.height)
     let optionalLastView = inMainView.subviews.last
     inMainView.addSubview (view)

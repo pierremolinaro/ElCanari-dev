@@ -1,8 +1,8 @@
 //
-//  NSView-hidden-binding.swift
+//  AutoLayout+NSView+expandableHeight.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 16/08/2024.
+//  Created by Pierre Molinaro on 15/01/2022.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -13,12 +13,9 @@ import AppKit
 extension NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  $hidden binding
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-    let hiddenBindingController = HiddenBindingController (inExpression, self)
-    performRetain (property: hiddenBindingController, forObject: self)
+  final func expandableHeight () -> Self {
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
     return self
   }
 

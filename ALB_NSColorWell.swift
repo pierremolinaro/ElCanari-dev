@@ -1,8 +1,8 @@
 //
-//  ALB_NSDatePicker.swift
+//  ALB_NSColorWell.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 11/12/2021.
+//  Created by Pierre Molinaro on 28/04/2024.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10,21 +10,23 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class ALB_NSDatePicker : NSDatePicker {
+class ALB_NSColorWell : NSColorWell {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (size inSize : NSControl.ControlSize) {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = inSize
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 

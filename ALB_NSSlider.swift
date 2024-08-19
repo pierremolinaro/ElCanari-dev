@@ -1,25 +1,30 @@
 //
-//  ALB_NSDatePicker.swift
+//  ALB_NSSlider.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 11/12/2021.
+//  Created by Pierre Molinaro on 30/12/2021.
 //
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+//   ALB_NSSlider
+//--------------------------------------------------------------------------------------------------
 
-final class ALB_NSDatePicker : NSDatePicker {
+class ALB_NSSlider : NSSlider {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (size inSize : NSControl.ControlSize) {
+  init (min inMin : Int, max inMax : Int, ticks inMarkCount : Int) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.controlSize = inSize
+    self.minValue = Double (inMin)
+    self.maxValue = Double (inMax)
+    self.numberOfTickMarks = inMarkCount
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

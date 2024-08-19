@@ -1,8 +1,8 @@
 //
-//  ALB_NSButton.swift
+//  ALB_NSStepper.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 20/06/2021.
+//  Created by Pierre Molinaro on 30/12/2021.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -10,25 +10,20 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-class ALB_NSButton : NSButton {
+class ALB_NSStepper : NSStepper {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (title inTitle : String, size inSize : NSControl.ControlSize) {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.title = inTitle
-    self.controlSize = inSize
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.bezelStyle = .rounded
-    self.lineBreakMode = .byTruncatingTail
-
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+//    self.setContentHuggingPriority (.required, for: .horizontal)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -46,25 +41,18 @@ class ALB_NSButton : NSButton {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Closure action
+  //  $enabled binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private var mClosureAction : Optional < () -> Void > = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
-    self.mClosureAction = inClosureAction
-    self.target = self
-    self.action = #selector (Self.runClosureAction (_:))
-    return self
-  }
+  private final var mEnabledBindingController : EnabledBindingController? = nil
+  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   @objc private final func runClosureAction (_ _ : Any?) {
-     self.mClosureAction? ()
-  }
+//  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

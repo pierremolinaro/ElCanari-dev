@@ -36,7 +36,7 @@ class ALB_NSSlider : NSSlider {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseHiddenControllers ()
     objectDidDeinitSoReleaseEnabledBindingController ()
   }
 

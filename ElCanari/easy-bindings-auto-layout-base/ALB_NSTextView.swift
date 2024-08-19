@@ -97,7 +97,7 @@ fileprivate final class EmbeddedLayoutManager : NSLayoutManager {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseHiddenControllers ()
     objectDidDeinitSoReleaseEnabledBindingController ()
   }
 

@@ -1,34 +1,33 @@
 //
-//  ALB_NSButton.swift
+//  AutoLayoutBase_WebView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 20/06/2021.
+//  Created by Pierre Molinaro on 26/01/2022.
 //
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import WebKit
 
 //--------------------------------------------------------------------------------------------------
+//   AutoLayoutBase_WebView
+//--------------------------------------------------------------------------------------------------
 
-class ALB_NSButton : NSButton {
+final class AutoLayoutWebView : WKWebView, WKUIDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (title inTitle : String, size inSize : NSControl.ControlSize) {
-    super.init (frame: .zero)
+  init (url inURL : String) {
+    let webConfiguration = WKWebViewConfiguration ()
+    super.init (frame: .zero, configuration: webConfiguration)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
+//    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.title = inTitle
-    self.controlSize = inSize
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.bezelStyle = .rounded
-    self.lineBreakMode = .byTruncatingTail
-
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
+    if let url = URL (string: inURL) {
+      let myRequest = URLRequest (url: url)
+      _ = self.load (myRequest)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -42,28 +41,27 @@ class ALB_NSButton : NSButton {
   deinit {
     noteObjectDeallocation (self)
     objectDidDeinitSoReleaseHiddenControllers ()
-    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Closure action
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private var mClosureAction : Optional < () -> Void > = nil
+  private var mMinHeight : CGFloat? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
-    self.mClosureAction = inClosureAction
-    self.target = self
-    self.action = #selector (Self.runClosureAction (_:))
+  func set (minHeight inMinHeight : Int) -> Self {
+    self.mMinHeight = CGFloat (inMinHeight)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   @objc private final func runClosureAction (_ _ : Any?) {
-     self.mClosureAction? ()
+  override var intrinsicContentSize: NSSize {
+    var s = super.intrinsicContentSize
+    if let h = self.mMinHeight, s.height < h {
+      s.height = h
+    }
+    return s
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

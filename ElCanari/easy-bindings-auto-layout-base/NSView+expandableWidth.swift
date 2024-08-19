@@ -1,9 +1,8 @@
 //
-//  enum-ControlSize-extension.swift
+//  AutoLayout-extension-NSView-.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 15/07/2021.
-//
+//  Created by Pierre Molinaro on 30/06/2021.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11,17 +10,20 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-extension EBControlSize {
+extension NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var cocoaControlSize : NSControl.ControlSize {
-//    return self
-    switch self {
-    case .mini : return .mini
-    case .small : return .small
-    case .regular : return .regular
-    }
+  final func expandableWidth () -> Self {
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func notExpandableWidth () -> Self {
+    self.setContentHuggingPriority (.required, for: .horizontal)
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -12,7 +12,7 @@ import AppKit
 //   ALB_NSComboBox
 //--------------------------------------------------------------------------------------------------
 
-class ALB_NSComboBox : NSComboBox, NSComboBoxDelegate {
+class ALB_NSComboBox : NSComboBox {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -32,7 +32,7 @@ class ALB_NSComboBox : NSComboBox, NSComboBoxDelegate {
 
   deinit {
     noteObjectDeallocation (self)
-    objectDidDeinitSoReleaseControllers ()
+    objectDidDeinitSoReleaseHiddenControllers ()
     objectDidDeinitSoReleaseEnabledBindingController ()
   }
 

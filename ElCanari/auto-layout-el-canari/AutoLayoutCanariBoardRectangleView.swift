@@ -54,7 +54,9 @@ import AppKit
     constraints.add (topOf: self, equalToTopOf: self.mTopTextField)
     constraints.add (centerXOf: self, equalToCenterXOf: self.mTopTextField)
   //--- Bottom
-    constraints.add (bottomOf: self, equalToBottomOf: self.mBottomTextField)
+    constraints.add (bottomOf: self,
+                     equalToBottomOf: self.mBottomTextField,
+                     withCompressionResistancePriorityOf: .secondView)
     constraints.add (centerXOf: self, equalToCenterXOf: self.mBottomTextField)
   //--- Unit pop up
     constraints.add (centerYOf: self, equalToCenterYOf: self.mUnitPopUpButton)

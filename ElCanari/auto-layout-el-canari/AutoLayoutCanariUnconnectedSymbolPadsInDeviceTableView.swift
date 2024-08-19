@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutVerticalStackView { // , AutoLayoutTableViewDelegate {
+final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

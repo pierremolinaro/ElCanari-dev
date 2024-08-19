@@ -1,5 +1,5 @@
 //
-//  ALB_NSButton.swift
+//  ALB_NSPopUpButton.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 20/06/2021.
@@ -9,31 +9,37 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+//   ALB_NSPopUpButton
+//--------------------------------------------------------------------------------------------------
 
-class ALB_NSButton : NSButton {
+class ALB_NSPopUpButton : NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (title inTitle : String, size inSize : NSControl.ControlSize) {
-    super.init (frame: .zero)
+  init (pullsDown inPullsDown : Bool, size inSize : NSControl.ControlSize) {
+    super.init (frame: .zero, pullsDown: inPullsDown)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//   self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.title = inTitle
+    self.autoenablesItems = false
+    if let cell = self.cell as? NSPopUpButtonCell {
+      cell.arrowPosition = .arrowAtBottom
+    }
+
     self.controlSize = inSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = .rounded
-    self.lineBreakMode = .byTruncatingTail
 
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+//    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  required init? (coder inCoder : NSCoder) {
+  required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -46,24 +52,19 @@ class ALB_NSButton : NSButton {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Closure action
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private var mClosureAction : Optional < () -> Void > = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
-    self.mClosureAction = inClosureAction
-    self.target = self
-    self.action = #selector (Self.runClosureAction (_:))
+  final func set (width inWidth : Int) -> Self {
+    let c = NSLayoutConstraint (
+      item: self,
+      attribute: .width,
+      relatedBy: .equal,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: CGFloat (inWidth)
+    )
+    self.addConstraint (c)
     return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-   @objc private final func runClosureAction (_ _ : Any?) {
-     self.mClosureAction? ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

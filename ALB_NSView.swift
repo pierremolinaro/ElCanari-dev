@@ -1,25 +1,26 @@
 //
-//  ALB_NSDatePicker.swift
+//  ALB_NSView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 11/12/2021.
+//  Created by Pierre Molinaro on 20/12/2021.
 //
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+//   ALB_NSView
+//--------------------------------------------------------------------------------------------------
 
-final class ALB_NSDatePicker : NSDatePicker {
+class ALB_NSView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (size inSize : NSControl.ControlSize) {
+  @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = inSize
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

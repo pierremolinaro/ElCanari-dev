@@ -1,25 +1,26 @@
 //
-//  ALB_NSDatePicker.swift
+//  ALB_NSComboBox.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 11/12/2021.
+//  Created by Pierre Molinaro on 28/04/2024.
 //
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+//   ALB_NSComboBox
+//--------------------------------------------------------------------------------------------------
 
-final class ALB_NSDatePicker : NSDatePicker {
+class ALB_NSComboBox : NSComboBox {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (size inSize : NSControl.ControlSize) {
+  init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.controlSize = inSize
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -41,3 +42,4 @@ final class ALB_NSDatePicker : NSDatePicker {
 }
 
 //--------------------------------------------------------------------------------------------------
+

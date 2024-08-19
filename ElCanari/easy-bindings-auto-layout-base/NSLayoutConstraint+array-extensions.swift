@@ -52,7 +52,7 @@ extension Array where Element == NSLayoutConstraint {
   //--------------------------------------------------------------------------------------------------------------------
 
   mutating func add (widthOf inView1 : NSView,
-                     greaterThanOrEqualTo inWidth : CGFloat) {
+                     greaterThanOrEqualToConstant inWidth : CGFloat) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .width,
@@ -216,7 +216,8 @@ extension Array where Element == NSLayoutConstraint {
 
   mutating func add (bottomOf inView1 : NSView,
                      equalToBottomOf inView2 : NSView,
-                     plus inOffset : CGFloat = 0.0) {
+                     plus inOffset : CGFloat = 0.0,
+                     withCompressionResistancePriorityOf inSelectedView : PMViewForApplyingPriority) {
     let c = NSLayoutConstraint (
       item: inView1,
       attribute: .bottom,
@@ -283,6 +284,13 @@ extension Array where Element == NSLayoutConstraint {
 
   //--------------------------------------------------------------------------------------------------------------------
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum PMViewForApplyingPriority {
+  case firstView
+  case secondView
 }
 
 //--------------------------------------------------------------------------------------------------
