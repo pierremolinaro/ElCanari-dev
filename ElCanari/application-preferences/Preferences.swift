@@ -46,7 +46,6 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   final func mPrefsMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
       .set (topMargin: .large)
     let prefsPageView = self.PrefsPageView ()
     let prefsUserInterfacePage = self.PrefsUserInterfacePage ()
@@ -75,10 +74,9 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   //    VIEW PrefsPageView
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func PrefsPageView () -> AutoLayoutVerticalStackView {
-    let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
-    return vStackView
+  final func PrefsPageView () -> AutoLayoutHorizontalStackView {
+    let hStackView = AutoLayoutHorizontalStackView ()
+    return hStackView
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -129,7 +127,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     }
     _ = vStackView.appendView (view_3)
     let view_4 = AutoLayoutWebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
-      .set (minHeight: 500)
+      .set (minHeight: 200)
     _ = vStackView.appendView (view_4)
     return vStackView
   }
@@ -157,6 +155,8 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
       _ = view_0.appendView (view_0_2)
     }
     _ = vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    _ = vStackView.appendView (view_1)
     return vStackView
   }
 

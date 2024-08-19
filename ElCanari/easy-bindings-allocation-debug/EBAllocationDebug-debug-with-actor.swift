@@ -325,41 +325,38 @@ fileprivate struct EBAllocationItemDisplay {
      self.mAllocationStatsWindow.title = "Allocation Stats"
      self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
    //--- Build window contents
-      let mainVStack = AutoLayoutVerticalStackView ()
-      do {
-        let hStack = AutoLayoutGridView2 ().set (margins: .large).set (bottomMargin: .large)
-          .addFirstBaseLineAligned (
-            left: self.mEnableAllocationDebugCheckbox,
-            right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
-              .expandableWidth ()
-          )
-          .addSeparator ()
-        _ = mainVStack.appendView (hStack)
-      }
-      do {
-        let hStack = AutoLayoutGridView2 ().set (margins: .large).set (topMargin: .large)
-          .addFirstBaseLineAligned (
-            left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
-              .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
-              .appendFlexibleSpace (),
-            right: AutoLayoutHorizontalStackView ()
-              .appendFlexibleSpace ()
-              .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small, alignment: .center))
-              .appendView (self.mTotalAllocatedLabel)
-          )
-          .addFirstBaseLineAligned (
-            left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
-              .appendView (self.mPerformSnapShotButton)
-              .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small, alignment: .center))
-              .appendView (self.mFilterPopUpButton),
-            right: AutoLayoutHorizontalStackView ()
-              .appendFlexibleSpace ()
-              .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
-              .appendView (self.mCurrentlyAllocatedLabel)
-          )
-          .add (single: self.mStatsTableView)
-        _ = mainVStack.appendView (hStack)
-      }
+    let mainVStack = AutoLayoutVerticalStackView ()
+      let hStack = AutoLayoutGridView2 ().set (margins: .large).set (bottomMargin: .large)
+        .addFirstBaseLineAligned (
+          left: self.mEnableAllocationDebugCheckbox,
+          right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
+            .expandableWidth ()
+        )
+     //   .addSeparator ()
+      _ = mainVStack.appendView (hStack)
+      mainVStack.appendHorizontalSeparator ()
+      let gridView = AutoLayoutGridView2 ().set (margins: .large).set (topMargin: .large).set (spacing: .regular)
+        .addFirstBaseLineAligned (
+          left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
+            .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
+            .appendFlexibleSpace (),
+          right: AutoLayoutHorizontalStackView ()
+            .appendFlexibleSpace ()
+            .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small, alignment: .center))
+            .appendView (self.mTotalAllocatedLabel)
+        )
+        .addFirstBaseLineAligned (
+          left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
+            .appendView (self.mPerformSnapShotButton)
+            .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small, alignment: .center))
+            .appendView (self.mFilterPopUpButton),
+          right: AutoLayoutHorizontalStackView ()
+            .appendFlexibleSpace ()
+            .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
+            .appendView (self.mCurrentlyAllocatedLabel)
+        )
+        .add (single: self.mStatsTableView)
+      _ = mainVStack.appendView (gridView)
     //--- Assign main view to window
       self.mAllocationStatsWindow.contentView = AutoLayoutWindowContentView (view: mainVStack)
    //--- Show Window at Launch

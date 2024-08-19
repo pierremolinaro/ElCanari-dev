@@ -6,7 +6,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   stackView \PageMasterView vStack { }
 
-  stackView \DocumentMainView vStack set (spacing: .zero) {
+  stackView \DocumentMainView vStack {
     newView pageMasterView = \PageMasterView ()
     newView modelPage = \ModelPage ()
     newView boardPage = \BoardPage ()
@@ -89,7 +89,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //     Model Page
   //············································································
 
-  stackView \ModelPage hStack set (spacing: .zero)  {
+  stackView \ModelPage hStack  {
     newView settingsView = \SettingsView ()
     view settingsView
     vStack set (margins: .regular) set (width: 250) $hidden root.showDisplaySettingView {
@@ -206,7 +206,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //     Settings View
   //············································································
 
-  stackView \SettingsView hStack set (spacing: .zero) {
+  stackView \SettingsView hStack {
     vStack set (bottomMargin: .regular) set (width: 250) $hidden !root.showDisplaySettingView {
       VerticalScrollView (content: 
         GridView2 {
@@ -464,7 +464,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   stackView \BoardBaseInspectorView vStack { }
 
-  stackView \BoardPage hStack set (spacing: .zero) {
+  stackView \BoardPage hStack {
     newView boardBaseInspectorView = \BoardBaseInspectorView ()
     newView boardSettingsPage = \BoardSettingsPage ()
     newView boardIssuesPage = \BoardIssuesPage ()
@@ -609,7 +609,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
             Button (title: "Explode All", size : .small) { $run explodeAllAction }
             space
           }
-          vStack set (margins: .zero) {
+          vStack {
             StaticLabel (title: "Stack All", bold: yes, size : .small, alignment: .center)
             hStack {
               space
@@ -642,8 +642,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           }
         }
         separator
-        hStack set (margins: .zero) equalWidth () {
-          vStack set (margins: .zero) {
+        hStack equalWidth () {
+          vStack {
             StaticLabel (title: "Move Selection", bold: yes, size : .small, alignment: .center)
             hStack {
               space
@@ -678,7 +678,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
               space
             }
           }
-          vStack set (margins: .zero) {
+          vStack {
             StaticLabel (title: "Stack Selection", bold: yes, size : .small, alignment: .center)
             hStack {
               space
@@ -861,7 +861,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   //············································································
 
-  stackView \ArtworkDataPage vStack set (spacing: .zero) {
+  stackView \ArtworkDataPage vStack {
     hStack set (margins: .regular) {
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)

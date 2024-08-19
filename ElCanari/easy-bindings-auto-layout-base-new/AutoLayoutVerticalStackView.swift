@@ -95,7 +95,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
         optionalLastView = view
       }
     }
-  //--- Add right constraint for last view
+  //--- Add bottom constraint for last view
     if let lastView = optionalLastView {
       self.mConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: self.mBottomMargin)
     }

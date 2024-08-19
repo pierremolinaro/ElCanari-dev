@@ -62,6 +62,14 @@ enum PMViewForApplyingPriority {
   //--------------------------------------------------------------------------------------------------------------------
 
   mutating func add (heightOf inView : NSView,
+                     greaterThanOrEqualToConstant inConstant : CGFloat) {
+    let c = inView.heightAnchor.constraint (greaterThanOrEqualToConstant: inConstant)
+    self.append (c)
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+
+  mutating func add (heightOf inView : NSView,
                      equalTo inHeight : CGFloat,
                      priority inPriority : PMLayoutCompressionConstraintPriority = .highest) {
     let c = inView.heightAnchor.constraint (equalToConstant: inHeight)
@@ -195,6 +203,7 @@ enum PMViewForApplyingPriority {
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
     let c = inView1.bottomAnchor.constraint (equalTo: inView2.bottomAnchor, constant: -inOffset)
+//    c.priority = .required
     self.append (c)
   }
 
@@ -204,7 +213,6 @@ enum PMViewForApplyingPriority {
                      greaterThanOrEqualToBottomOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
-//    let c = inView1.bottomAnchor.constraint (lessThanOrEqualTo: inView2.bottomAnchor, constant: -inOffset)
     let c = inView2.bottomAnchor.constraint (greaterThanOrEqualTo: inView1.bottomAnchor, constant: inOffset)
     self.append (c)
   }

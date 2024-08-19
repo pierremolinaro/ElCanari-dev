@@ -13,8 +13,10 @@ import AppKit
 let DEBUG_FLEXIBLE_SPACE_FILL_COLOR       = NSColor.systemGreen.withAlphaComponent (0.25)
 let DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR = NSColor.systemPurple.withAlphaComponent (0.5)
 let DEBUG_VERTICAL_SEPARATOR_FILL_COLOR   = NSColor.systemPink.withAlphaComponent (0.25)
-let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.black
 let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
+let DEBUG_MARGIN_COLOR                    = NSColor.systemYellow.withAlphaComponent (0.25)
+
+let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.black
 
 fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 

@@ -6,7 +6,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \pageMasterView vStack { }
 
-  stackView \DocumentMainView vStack set (spacing: .zero) {
+  stackView \DocumentMainView vStack {
     newView pageMasterView = \pageMasterView ()
     newView componentsPage = \componentsPage ()
     newView libraryPage = \libraryPage ()
@@ -209,7 +209,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       space
     }
-    hStack set (spacing: .zero) {
+    hStack {
       TableView (size : .regular, addControlButtons: no) {
         expandableWidth ()
         set (minimumWidth: 400)
@@ -218,14 +218,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       divider
       vStack {
         StaticLabel (title: "Selected Device", bold: no, size: .regular, alignment: .center)
-        hStack set (spacing: .zero) {
+        hStack {
           CanariProjectDeviceTableView (size : .regular) {
             expandableWidth ()
             set (minimumWidth: 150)
             $array self.selectedDeviceNames
           }
           divider
-          vStack set (spacing: .zero) {
+          vStack {
             CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
               expandableWidth ()
               set (minimumWidth: 150)
@@ -404,7 +404,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       space
     }
-    hStack set (spacing: .zero) {
+    hStack {
       CanariNetDescriptionTableView [outlet mNetInfoTableView configurator netDescriptionTableViewConfigurator] {
         $netInfo root.netsDescription
       }
@@ -468,14 +468,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action appendNewSchematicDisplayInspectorAction ;
   action appendNewSchematicSheetInspectorAction ;
   
-  stackView \schematicsLateralBar vStack set (width: 250) set (spacing: .zero) {
+  stackView \schematicsLateralBar vStack set (width: 250) {
     newView selectedSchematicElementInspectorView = \selectedSchematicElementInspectorView ()
     newView schematicsInspectorView = \schematicsInspectorView ()
     newView schematicHotKeysInspectorView = \schematicsHotKeysInspectorView ()
     newView insertSymbolInSchematicView = \schematicsInsertSymbolInSchematicView ()
     newView schematicsDisplayInspectorView = \schematicsDisplayInspectorView ()
     newView schematicsSheetInspectorView = \schematicsSheetInspectorView ()
-    hStack set (spacing: .zero) set (margins: .regular) {
+    hStack set (margins: .regular) {
 //      space
 //      PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
 //        add (item: menuItem "Select all Connected Elements"
@@ -1013,7 +1013,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action renameComponentFromSelectedSymbolAction ;
 
 //----------------- Board outline tab
-  stackView \boardOutlinePage hStack set (spacing: .zero) {
+  stackView \boardOutlinePage hStack {
     VerticalScrollView (content:
       vStack set (margins: .regular) set (width: 250) {
         newView boardShapeBaseView = \BoardShapeBaseView ()
@@ -1276,15 +1276,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient NSImage unplacedPackagesSegmentImage dependsFrom self.unplacedPackageCount ;
   transient String unplacedPackagesMessageString dependsFrom self.unplacedPackageCount ;
 
-  stackView \boardContentsPage hStack set (spacing: .zero) {
+  stackView \boardContentsPage hStack {
     newView boardInspectorView = \BoardInspectorView ()
     newView selectedElementInspectorView = \selectedElementInspectorView ()
     newView insertComponentInBoardView = \insertComponentInBoardView ()
     newView boardDisplayInspectorView = \boardDisplayInspectorView ()
     newView boardRouterInspectorView = \boardRouterInspectorView ()
     newView boardERCInspectorView = \boardERCInspectorView ()
-    vStack set (width: 250) set (spacing: .zero) {
-      hStack set (spacing: .zero) set (margins: .regular) {
+    vStack set (width: 250) {
+      hStack set (margins: .regular) {
         DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.") [configurator addBoardImageButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.") [configurator addQRCodeButton]
@@ -1729,7 +1729,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $value root.mCheckClearanceBetweenPadsOfSameNet
     }
     Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
-    vStack set (spacing: .zero) {
+    vStack {
       TextObserverView (size: .small) [outletArray mERCLogTextViewArray]
       divider
       CanariIssueTableView (hasHideIssueButton : yes) [
@@ -2060,7 +2060,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \BoardImageInspectorView vStack {
     StaticLabel (title: "Image Inspector", bold: yes, size: .small, alignment: .center)
-    hStack set (margins: .zero) {
+    hStack {
       StaticLabel (title: "Display", bold: no, size: .small, alignment: .right)
       EnumPopUpButton (titles: enum BoardImageDisplay.popupTitles, size: .small) {
         $selectedIndex #boardImageSelectionController.mImageDisplay
@@ -2604,7 +2604,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \ArtworkDataPage hStack set (margins: .large) {
     space
-    vStack set (margins: .zero) {
+    vStack {
       hStack set (margins: .regular) {
         hStack setFirstBaselineAlignment ()  {
           StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)

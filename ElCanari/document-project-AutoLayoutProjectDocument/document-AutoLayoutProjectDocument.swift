@@ -588,7 +588,6 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     let pageMasterView = self.pageMasterView ()
     let componentsPage = self.componentsPage ()
     let libraryPage = self.libraryPage ()
@@ -884,7 +883,6 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     do{
       let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
         .expandableWidth ()
@@ -898,7 +896,6 @@ import AppKit
         let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular, alignment: .center)
         _ = view_1_2.appendView (view_1_2_0)
         let view_1_2_1 = AutoLayoutHorizontalStackView ()
-          .set (spacing: .zero)
         do{
           let view_1_2_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
             .expandableWidth ()
@@ -908,7 +905,6 @@ import AppKit
           let view_1_2_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
           _ = view_1_2_1.appendView (view_1_2_1_1)
           let view_1_2_1_2 = AutoLayoutVerticalStackView ()
-            .set (spacing: .zero)
           do{
             let view_1_2_1_2_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
               .expandableWidth ()
@@ -1077,7 +1073,6 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     do{
       let view_1_0 = AutoLayoutCanariNetDescriptionTableView ()
         .bind_netInfo (self.rootObject.netsDescription_property)
@@ -1140,7 +1135,6 @@ import AppKit
   final func schematicsLateralBar () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (spacing: .zero)
     let selectedSchematicElementInspectorView = self.selectedSchematicElementInspectorView ()
     let schematicsInspectorView = self.schematicsInspectorView ()
     let schematicHotKeysInspectorView = self.schematicsHotKeysInspectorView ()
@@ -1148,7 +1142,6 @@ import AppKit
     let schematicsDisplayInspectorView = self.schematicsDisplayInspectorView ()
     let schematicsSheetInspectorView = self.schematicsSheetInspectorView ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
       .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
@@ -1771,7 +1764,6 @@ import AppKit
 
   final func boardOutlinePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     let view_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_80 ())
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -1854,7 +1846,6 @@ import AppKit
 
   final func boardContentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     let boardInspectorView = self.BoardInspectorView ()
     let selectedElementInspectorView = self.selectedElementInspectorView ()
     let insertComponentInBoardView = self.insertComponentInBoardView ()
@@ -1863,10 +1854,8 @@ import AppKit
     let boardERCInspectorView = self.boardERCInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (spacing: .zero)
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
-        .set (spacing: .zero)
         .set (margins: .regular)
       do{
         let view_0_0_0 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.")
@@ -2092,7 +2081,6 @@ import AppKit
       )
     _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     do{
       let view_3_0 = AutoLayoutTextObserverView (size: .small)
       self.mERCLogTextViewArray.append (view_3_0) // Outlet Array
@@ -2254,7 +2242,6 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Image Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (margins: .zero)
     do{
       let view_1_0 = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
       _ = view_1.appendView (view_1_0)
@@ -2556,7 +2543,6 @@ import AppKit
     let view_0 = AutoLayoutFlexibleSpace ()
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
-      .set (margins: .zero)
     do{
       let view_1_0 = AutoLayoutHorizontalStackView ()
         .set (margins: .regular)

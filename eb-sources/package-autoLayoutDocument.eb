@@ -10,7 +10,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
  
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack set (spacing: .zero) {
+  stackView \DocumentMainView vStack {
     newView pageMasterView = \PageMasterView ()
     newView modelImagePage = \ModelImagePage ()
     newView packagePage = \PackagePage ()
@@ -75,7 +75,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
   action resetModelImagePointsAction ;
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
-  stackView \ModelImagePage hStack set (spacing: .zero) {
+  stackView \ModelImagePage hStack {
     vStack {
       GridView2 {
         set (width: 250) 
@@ -239,7 +239,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \PackagePageInspectorMasterView vStack { }
   
-  stackView \PackagePage hStack set (margins: .zero) set (spacing: .zero) {
+  stackView \PackagePage hStack {
     newView packagePageInspectorMasterView = \PackagePageInspectorMasterView ()
     newView selectedObjectsInspectorView = \SelectedObjectsInspectorView ()
     newView gridZoomInspectorView = \GridZoomInspectorView ()
@@ -247,7 +247,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     newView issuesInspectorView = \IssuesInspectorView ()
     vStack set (width: 250) {
       vStack set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) set (spacing: .large) {
-        hStack set (spacing: .zero) {
+        hStack {
           DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
           space
           DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }

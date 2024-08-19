@@ -11,7 +11,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
 
   stackView \PageMasterView vStack { }
 
-  stackView \DocumentMainView vStack set (spacing: .zero) {
+  stackView \DocumentMainView vStack {
     newView pageMasterView = \PageMasterView ()
     newView fontPage = \FontPage ()
     newView infoPage = \InfoPage ()

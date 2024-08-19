@@ -10,7 +10,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
 
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack set (spacing: .zero) {
+  stackView \DocumentMainView vStack {
     newView pageMasterView = \PageMasterView ()
     newView descriptionPage = \DescriptionPage ()
     newView symbolsPage = \SymbolsPage ()
@@ -78,7 +78,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       set (alignment: .left)
       $value root.mTitle (sendContinously: yes)
     }
-    hStack set (spacing: .zero) {
+    hStack {
       DroppableImageView (removeButton : yes) {
         set (maxWidth: 400)
         set (maxHeight: 400)
@@ -151,7 +151,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   
   stackView \SymbolPageInspectorView hStack { }
   
-  stackView \SymbolPageOperationView vStack set (margins: .zero) {
+  stackView \SymbolPageOperationView vStack {
     StaticLabel (title: "Add Symbol From", bold: yes, size : .small, alignment: .center)
     Button (title: "File Library…", size : .small) { expandableWidth () $run addSymbolFromLibraryAction }
     CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
@@ -181,7 +181,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   action addSymbolFromLibraryAction ;
 
   
-  stackView \SymbolGridZoomInspectorView vStack set (margins: .zero) {
+  stackView \SymbolGridZoomInspectorView vStack {
     StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       addCenterYAligned (
@@ -299,7 +299,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     }
   }
 
-  stackView \PackagePageOperationView vStack set (margins: .zero) {
+  stackView \PackagePageOperationView vStack {
     Button (title: "Add Package From File Library…", size : .small) {
       expandableWidth ()
       $run addPackageFromLibraryAction
@@ -480,7 +480,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
 //······················································································································
 
   stackView \AssignmentsPage hStack set (margins: .regular) {
-    hStack set (spacing: .zero) $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
+    hStack $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
       vStack set (minWidth: 100) {
         StaticLabel (title: "Unassigned Pads", bold: yes, size : .regular, alignment: .center)
         CanariUnconnectedSymbolPadsInDeviceTableView [outlet mUnconnectedPadsInDeviceTableView] {

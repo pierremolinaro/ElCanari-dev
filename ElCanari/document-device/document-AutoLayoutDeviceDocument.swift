@@ -231,7 +231,6 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let descriptionPage = self.DescriptionPage ()
     let symbolsPage = self.SymbolsPage ()
@@ -320,7 +319,6 @@ import AppKit
       .bind_value (self.rootObject.mTitle_property, sendContinously:true)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     do{
       let view_1_0 = AutoLayoutDroppableImageView (removeButton: true)
         .set (maxWidth: 400)
@@ -432,7 +430,6 @@ import AppKit
 
   final func SymbolPageOperationView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: .zero)
     let view_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutButton (title: "File Library…", size: .small)
@@ -479,7 +476,6 @@ import AppKit
 
   final func SymbolGridZoomInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: .zero)
     let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
@@ -582,7 +578,6 @@ import AppKit
 
   final func PackagePageOperationView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: .zero)
     let view_0 = AutoLayoutButton (title: "Add Package From File Library…", size: .small)
       .expandableWidth ()
       .bind_run (
@@ -752,7 +747,6 @@ import AppKit
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
       .bind_hidden (.boolcmp (.not (.prop (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.prop (self.rootObject.symbolNameAreConsistent_property))))
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()

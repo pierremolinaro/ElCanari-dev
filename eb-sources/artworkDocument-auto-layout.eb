@@ -17,7 +17,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack set (spacing: .zero) {
+  stackView \DocumentMainView vStack {
     newView pageMasterView = \PageMasterView ()
     newView descriptionPage = \DescriptionPage ()
     newView minimaPage = \MinimaPage ()
@@ -168,7 +168,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
 
-  stackView \DataPage vStack set (spacing: .zero) {
+  stackView \DataPage vStack {
     hStack set (margins: .regular) {
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)

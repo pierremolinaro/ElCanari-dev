@@ -2,7 +2,7 @@
 //! Main View
 
 prefs {
-  stackView \mPrefsMainView vStack set (spacing: .zero) set (topMargin: .large) {
+  stackView \mPrefsMainView vStack set (topMargin: .large) {
     newView prefsPageView = \PrefsPageView ()
     newView prefsUserInterfacePage = \PrefsUserInterfacePage ()
     newView prefsAppUpdatePage = \PrefsAppUpdatePage ()
@@ -10,9 +10,18 @@ prefs {
     hStack {
       space
       SegmentedControlWithPages (documentView: view prefsPageView, equalWidth: yes, size : .regular) {
-        addPage (image: "settings", title: "User Interface", tooltip: "User Interface", pageView: view prefsUserInterfacePage)
-        addPage (image: "update", title: "Application Update", tooltip: "Application Update", pageView: view prefsAppUpdatePage)
-        addPage (image: "library", title: "Library", tooltip: "Library", pageView: view prefsLibraryPage)
+        addPage (image: "settings",
+                 title: "User Interface",
+                 tooltip: "User Interface",
+                 pageView: view prefsUserInterfacePage)
+        addPage (image: "update",
+                 title: "Application Update",
+                 tooltip: "Application Update",
+                 pageView: view prefsAppUpdatePage)
+        addPage (image: "library",
+                 title: "Library",
+                 tooltip: "Library",
+                 pageView: view prefsLibraryPage)
         $selectedPage prefs.mSelectedPrefsPage
       }
       space
@@ -20,7 +29,7 @@ prefs {
     view prefsPageView
   }
   
-  stackView \PrefsPageView vStack set (spacing: .zero) {
+  stackView \PrefsPageView hStack {
   }
 
   property Int mSelectedPrefsPage default 0 ;
@@ -42,21 +51,24 @@ prefs {
     StaticLabel (title: "Application Update", bold: yes, size: .regular, alignment: .center)
     hStack {
       Button (title: "Check for Application Updates…", size: .regular) { $run checkForAppUpdateAction }
-      StaticLabel (title: "Using…", bold: no, size: .regular, alignment: .center) [configurator usingSparkleTextFieldConfigurator]
+      StaticLabel (title: "Using…", bold: no, size: .regular, alignment: .center)
+         [configurator usingSparkleTextFieldConfigurator]
       space
     }
     hStack {
-      Checkbox (title: "Automatically Check for Updates", size: .regular) [configurator automaticallyCheckForUpdatesConfigurator]
+      Checkbox (title: "Automatically Check for Updates", size: .regular)
+         [configurator automaticallyCheckForUpdatesConfigurator]
       PopUpButton (size: .regular) [configurator updateCheckIntervalPopUpButtonConfigurator]
       space
     }
     hStack {
       StaticLabel (title: "Last Check Time", bold: no, size: .regular, alignment: .center)
-      StaticLabel (title: "?", bold: no, size: .regular, alignment: .center) [configurator sparkleLastCheckTimeTextFieldConfigurator]
+      StaticLabel (title: "?", bold: no, size: .regular, alignment: .center)
+         [configurator sparkleLastCheckTimeTextFieldConfigurator]
       space
     }
     WebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html") {
-      set (minHeight: 500)
+      set (minHeight: 200)
     }
   }
 
@@ -70,7 +82,7 @@ prefs {
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
   
   stackView \PrefsUserInterfacePage vStack set (margins: .large) {
-    hStack {
+    hStack{
       space
       GridView2 {
         add (single:
@@ -104,8 +116,8 @@ prefs {
       }
       space
     }
+    space
   }
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————

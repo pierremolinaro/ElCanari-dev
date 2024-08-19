@@ -279,7 +279,6 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let symbolPage = self.SymbolPage ()
     let infosPage = self.InfosPage ()
@@ -361,8 +360,6 @@ import AppKit
 
   final func SymbolPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: .zero)
-      .set (spacing: .zero)
     let symbolPageInspectorMasterView = self.SymbolPageInspectorMasterView ()
     let selectedObjectsInspectorView = self.SelectedObjectsInspectorView ()
     let gridZoomInspectorView = self.GridZoomInspectorView ()
@@ -378,7 +375,6 @@ import AppKit
         .set (spacing: .large)
       do{
         let view_0_0_0 = AutoLayoutHorizontalStackView ()
-          .set (spacing: .zero)
         do{
           let view_0_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
             .bind_image (self.addSegmentButtonImage_property)

@@ -276,7 +276,6 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let modelPage = self.ModelPage ()
     let boardPage = self.BoardPage ()
@@ -342,7 +341,6 @@ import AppKit
 
   final func ModelPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     let settingsView = self.SettingsView ()
     let view_0 = settingsView
     _ = hStackView.appendView (view_0)
@@ -441,7 +439,6 @@ import AppKit
 
   final func SettingsView () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     let view_0 = AutoLayoutVerticalStackView ()
       .set (bottomMargin: .regular)
       .set (width: 250)
@@ -484,7 +481,6 @@ import AppKit
 
   final func BoardPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: .zero)
     let boardBaseInspectorView = self.BoardBaseInspectorView ()
     let boardSettingsPage = self.BoardSettingsPage ()
     let boardIssuesPage = self.BoardIssuesPage ()
@@ -732,7 +728,6 @@ import AppKit
 
   final func ArtworkDataPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: .regular)
     do{
@@ -2465,7 +2460,6 @@ import AppKit
         }
         _ = view_4.appendView (view_4_0)
         let view_4_1 = AutoLayoutVerticalStackView ()
-          .set (margins: .zero)
         do{
           let view_4_1_0 = AutoLayoutStaticLabel (title: "Stack All", bold: true, size: .small, alignment: .center)
           _ = view_4_1.appendView (view_4_1_0)
@@ -2528,11 +2522,9 @@ import AppKit
       let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view.appendView (view_5)
       let view_6 = AutoLayoutHorizontalStackView ()
-        .set (margins: .zero)
         .equalWidth ()
       do{
         let view_6_0 = AutoLayoutVerticalStackView ()
-          .set (margins: .zero)
         do{
           let view_6_0_0 = AutoLayoutStaticLabel (title: "Move Selection", bold: true, size: .small, alignment: .center)
           _ = view_6_0.appendView (view_6_0_0)
@@ -2595,7 +2587,6 @@ import AppKit
         }
         _ = view_6.appendView (view_6_0)
         let view_6_1 = AutoLayoutVerticalStackView ()
-          .set (margins: .zero)
         do{
           let view_6_1_0 = AutoLayoutStaticLabel (title: "Stack Selection", bold: true, size: .small, alignment: .center)
           _ = view_6_1.appendView (view_6_1_0)

@@ -78,12 +78,13 @@ class ALB_NSStackView : NSView {
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  override var intrinsicContentSize : NSSize { NSSize (width: 1, height: 1) }
+//  override var intrinsicContentSize : NSSize { NSSize (width: 1, height: 1) }
 
   //--------------------------------------------------------------------------------------------------------------------
 
   func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
@@ -91,6 +92,7 @@ class ALB_NSStackView : NSView {
 
   func prependView (_ inView : NSView) -> Self {
     self.addSubview (inView, positioned: .below, relativeTo: nil)
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
@@ -98,17 +100,19 @@ class ALB_NSStackView : NSView {
 
   final func appendFlexibleSpace () -> Self {
     self.addSubview (AutoLayoutFlexibleSpace ())
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
   //--------------------------------------------------------------------------------------------------------------------
 
   final func removeView (_ inView : NSView) {
-     for view in self.subviews {
-       if view === inView {
-         inView.removeFromSuperview ()
-       }
-     }
+    for view in self.subviews {
+      if view === inView {
+        inView.removeFromSuperview ()
+      }
+    }
+    self.invalidateIntrinsicContentSize ()
   }
 
   //····················································································································
@@ -119,7 +123,7 @@ class ALB_NSStackView : NSView {
   private(set) var mRightMargin : CGFloat = 0.0
   private(set) var mTopMargin : CGFloat = 0.0
   private(set) var mBottomMargin : CGFloat = 0.0
-  private(set) var mSpacing : CGFloat = 0.0
+  private(set) var mSpacing : CGFloat = MarginSize.regular.floatValue
 
   //····················································································································
 
@@ -180,6 +184,31 @@ class ALB_NSStackView : NSView {
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
     if debugAutoLayout () && !self.bounds.isEmpty {
+    //--- Top margin
+      DEBUG_MARGIN_COLOR.setFill ()
+      if self.mBottomMargin > 0.0 {
+        var r = self.bounds
+        r.origin.y += r.size.height - self.mBottomMargin
+        r.size.height = self.mBottomMargin
+        NSBezierPath.fill (r)
+      }
+      if self.mTopMargin > 0.0 {
+        var r = self.bounds
+        r.size.height = self.mTopMargin
+        NSBezierPath.fill (r)
+      }
+      if self.mLeftMargin > 0.0 {
+        var r = self.bounds
+        r.size.width = self.mLeftMargin
+        NSBezierPath.fill (r)
+      }
+      if self.mRightMargin > 0.0 {
+        var r = self.bounds
+        r.origin.x += r.size.width - self.mRightMargin
+        r.size.width = self.mRightMargin
+        NSBezierPath.fill (r)
+      }
+    //--- Frame
       let bp = NSBezierPath (rect: self.bounds)
       bp.lineWidth = 1.0
       bp.lineJoinStyle = .round

@@ -162,7 +162,6 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let descriptionPage = self.DescriptionPage ()
     let minimaPage = self.MinimaPage ()
@@ -348,7 +347,6 @@ import AppKit
 
   final func DataPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: .regular)
     do{

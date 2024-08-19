@@ -51,18 +51,39 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
 
   func set (minHeight inMinHeight : Int) -> Self {
     self.mMinHeight = CGFloat (inMinHeight)
+    self.invalidateIntrinsicContentSize ()
     return self
+  }
+
+ //--------------------------------------------------------------------------------------------------------------------
+
+  private var mConstraints = [NSLayoutConstraint] ()
+
+  //--------------------------------------------------------------------------------------------------------------------
+
+  override func updateConstraints () {
+  //--- Remove all constraints
+    self.removeConstraints (self.mConstraints)
+    self.mConstraints.removeAll (keepingCapacity: true)
+  //--- Build constraints
+    if let minHeight = self.mMinHeight {
+      self.mConstraints.add (heightOf: self, greaterThanOrEqualToConstant: minHeight)
+    }
+  //--- Apply constaints
+    self.addConstraints (self.mConstraints)
+  //--- This should the last instruction: call super method
+    super.updateConstraints ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var intrinsicContentSize: NSSize {
-    var s = super.intrinsicContentSize
-    if let h = self.mMinHeight, s.height < h {
-      s.height = h
-    }
-    return s
-  }
+//  override var intrinsicContentSize: NSSize {
+//    var s = super.intrinsicContentSize
+//    if let h = self.mMinHeight, s.height < h {
+//      s.height = h
+//    }
+//    return s
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
