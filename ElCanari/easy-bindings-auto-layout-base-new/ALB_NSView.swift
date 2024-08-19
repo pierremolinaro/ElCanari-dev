@@ -19,7 +19,7 @@ class ALB_NSView : NSView {
   @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
 //    self.translatesAutoresizingMaskIntoConstraints = false
   }
 

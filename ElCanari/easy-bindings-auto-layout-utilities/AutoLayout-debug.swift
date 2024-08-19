@@ -16,6 +16,8 @@ let DEBUG_VERTICAL_SEPARATOR_FILL_COLOR   = NSColor.systemPink.withAlphaComponen
 let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.black
 let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 
+fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
+
 //--------------------------------------------------------------------------------------------------
 //   Public functions
 //--------------------------------------------------------------------------------------------------
@@ -29,7 +31,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func debugAutoLayout () -> Bool {
-  return true // gDebugAutoLayout.mDebugAutoLayout
+  return gDebugAutoLayout.mDebugAutoLayout
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,7 +60,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mDebugAutoLayout = false
+  var mDebugAutoLayout = UserDefaults.standard.bool (forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
 
   let menuItem = NSMenuItem (
     title: "Debug Auto Layout",
@@ -105,8 +107,9 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func toggleDebugAutoLayout (_ _ : Any?) {
+  @objc func toggleDebugAutoLayout (_ inUnusedSender : Any?) {
     self.mDebugAutoLayout.toggle ()
+    UserDefaults.standard.setValue (self.mDebugAutoLayout, forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
     self.menuItem.state = self.mDebugAutoLayout ? .on : .off
     for window in NSApplication.shared.windows {
       if let mainView = window.contentView {
