@@ -106,7 +106,7 @@ class ALB_NSStackView : NSView {
   //--------------------------------------------------------------------------------------------------------------------
 
   final func appendFlexibleSpace () -> Self {
-    self.addSubview (PMFlexibleSpace ())
+    self.addSubview (AutoLayoutFlexibleSpace ())
     return self
   }
 
@@ -128,12 +128,20 @@ class ALB_NSStackView : NSView {
   private(set) var mRightMargin : CGFloat = 0.0
   private(set) var mTopMargin : CGFloat = 0.0
   private(set) var mBottomMargin : CGFloat = 0.0
-  private(set) var mSpacing : CGFloat = 4.0
+  private(set) var mSpacing : CGFloat = 8.0
 
   //····················································································································
 
   final func set (spacing inValue : Int) -> Self {
     self.mSpacing = CGFloat (inValue)
+    self.invalidateIntrinsicContentSize ()
+    return self
+  }
+
+  //····················································································································
+
+  final func set (spacing inValue : MarginSize) -> Self {
+    self.mSpacing = CGFloat (inValue.rawValue)
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -226,73 +234,25 @@ class ALB_NSStackView : NSView {
     return self
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
   // Draw
-  //--------------------------------------------------------------------------------------------------------------------
+  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-//  override func draw (_ inDirtyRect : NSRect) {
-//    var flag = true
-//    var v : NSView? = self.superview
-//    while let superview = v?.superview {
-//      v = superview
-//      flag.toggle ()
-//    }
-//    let color = flag ? NSColor.orange : NSColor.yellow
-//    color.setFill ()
-//    inDirtyRect.fill ()
-//    super.draw (inDirtyRect)
-//  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-
-  final func isFlexibleSpace (_ inView : NSView) -> Bool {
-    return inView is PMFlexibleSpace
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if debugAutoLayout () && !self.bounds.isEmpty {
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
+    }
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-  @MainActor private class PMFlexibleSpace : NSView {
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    @MainActor init () {
-      super.init (frame: .zero)
-      self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
-    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    required init? (coder: NSCoder) {
-      fatalError ("init(coder:) has not been implemented")
-    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-//    override var intrinsicContentSize : NSSize { NSSize () }
-    
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
-      vLayoutInHorizontalContainer: .weakFill,
-      hLayoutInVerticalContainer: .weakFill
-    )
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    override var pmLayoutSettings : AutoLayoutViewSettings { Self.mFlexibleSpaceLayoutSettings }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    override func draw (_ inDirtyRect : NSRect) {
-      super.draw (inDirtyRect)
-      if !self.bounds.isEmpty {
-        NSColor.orange.setFill ()
-        self.bounds.fill ()
-      }
-    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
+  final func isFlexibleSpace (_ inView : NSView) -> Bool {
+    return inView is AutoLayoutFlexibleSpace
   }
 
   //--------------------------------------------------------------------------------------------------------------------

@@ -30,9 +30,9 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     super.init ()
 
   // §§  self.setHuggingPriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.required, for: .horizontal)
+//    self.setContentHuggingPriority (.required, for: .horizontal)
   // §§  self.setHuggingPriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.required, for: .vertical)
 
   //--- Configure table view
     self.mTableView.controlSize = inSize.cocoaControlSize

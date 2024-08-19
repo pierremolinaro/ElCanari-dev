@@ -29,7 +29,7 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func debugAutoLayout () -> Bool {
-  return gDebugAutoLayout.mDebugAutoLayout
+  return true // gDebugAutoLayout.mDebugAutoLayout
 }
 
 //--------------------------------------------------------------------------------------------------

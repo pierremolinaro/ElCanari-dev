@@ -34,7 +34,6 @@ class ALB_NSView : NSView {
   deinit {
     noteObjectDeallocation (self)
     objectDidDeinitSoReleaseHiddenControllers ()
-    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

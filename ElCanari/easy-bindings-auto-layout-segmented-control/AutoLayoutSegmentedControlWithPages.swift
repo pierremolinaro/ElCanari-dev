@@ -104,6 +104,25 @@ final class AutoLayoutSegmentedControlWithPages : ALB_NSSegmentedControl {
     self.mSelectedSegmentController?.updateModel ()
   }
 
+  //--------------------------------------------------------------------------------------------------------------------
+  //  Constraints
+  //--------------------------------------------------------------------------------------------------------------------
+
+//  private var mConstraints = [NSLayoutConstraint] ()
+//
+//  //--------------------------------------------------------------------------------------------------------------------
+//
+//  override func updateConstraints () {
+//  //--- Remove all constraints
+//    self.removeConstraints (self.mConstraints)
+//    self.mConstraints.removeAll (keepingCapacity: true)
+//  //---
+//    let currentPage = self.mPages [self.selectedSegment]
+//    self.mConstraints.add (rightOf: self, equalToRightOf: currentPage)
+//  //---
+//    super.updateConstraints ()
+//  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $selectedPage binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

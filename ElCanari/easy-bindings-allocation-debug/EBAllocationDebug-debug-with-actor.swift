@@ -327,17 +327,17 @@ fileprivate struct EBAllocationItemDisplay {
    //--- Build window contents
       let mainVStack = AutoLayoutVerticalStackView ()
       do {
-        let hStack = AutoLayoutGridView2 ().set (margins: 20).set (bottomMargin: 0)
+        let hStack = AutoLayoutGridView2 ().set (margins: 12).set (bottomMargin: 12)
           .addFirstBaseLineAligned (
             left: self.mEnableAllocationDebugCheckbox,
-            right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .center)
-              .set (alignment: .left).expandableWidth ()
+            right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
+              .expandableWidth ()
           )
           .addSeparator ()
         _ = mainVStack.appendView (hStack)
       }
       do {
-        let hStack = AutoLayoutGridView2 ().set (margins: 20).set (topMargin: 0)
+        let hStack = AutoLayoutGridView2 ().set (margins: 12).set (topMargin: 12)
           .addFirstBaseLineAligned (
             left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
               .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
@@ -357,7 +357,7 @@ fileprivate struct EBAllocationItemDisplay {
               .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
               .appendView (self.mCurrentlyAllocatedLabel)
           )
-//          .add (single: self.mStatsTableView)
+          .add (single: self.mStatsTableView)
         _ = mainVStack.appendView (hStack)
       }
     //--- Assign main view to window
