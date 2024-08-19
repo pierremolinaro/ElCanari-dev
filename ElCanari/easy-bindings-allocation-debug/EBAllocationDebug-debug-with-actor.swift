@@ -357,7 +357,7 @@ fileprivate struct EBAllocationItemDisplay {
               .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
               .appendView (self.mCurrentlyAllocatedLabel)
           )
-          .add (single: self.mStatsTableView)
+//          .add (single: self.mStatsTableView)
         _ = mainVStack.appendView (hStack)
       }
     //--- Assign main view to window
