@@ -203,12 +203,12 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
         self.mSplashTextField = textField
         textField.stringValue = "Loading File…"
         let hStackView = AutoLayoutHorizontalStackView ()
-          .set (margins: 0)
+          .set (margins: .zero)
           .appendView (AutoLayoutFlexibleSpace ())
           .appendView (AutoLayoutSpinningProgressIndicator (size: .small))
           .appendView (AutoLayoutFlexibleSpace ())
         let vStackView = AutoLayoutVerticalStackView ()
-          .set (margins: 16)
+          .set (margins: .large)
           .appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
           .appendView (textField)
           .appendView (hStackView)

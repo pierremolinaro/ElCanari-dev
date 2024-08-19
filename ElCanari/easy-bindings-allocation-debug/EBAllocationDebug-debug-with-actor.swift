@@ -327,7 +327,7 @@ fileprivate struct EBAllocationItemDisplay {
    //--- Build window contents
       let mainVStack = AutoLayoutVerticalStackView ()
       do {
-        let hStack = AutoLayoutGridView2 ().set (margins: 12).set (bottomMargin: 12)
+        let hStack = AutoLayoutGridView2 ().set (margins: .large).set (bottomMargin: .large)
           .addFirstBaseLineAligned (
             left: self.mEnableAllocationDebugCheckbox,
             right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
@@ -337,7 +337,7 @@ fileprivate struct EBAllocationItemDisplay {
         _ = mainVStack.appendView (hStack)
       }
       do {
-        let hStack = AutoLayoutGridView2 ().set (margins: 12).set (topMargin: 12)
+        let hStack = AutoLayoutGridView2 ().set (margins: .large).set (topMargin: .large)
           .addFirstBaseLineAligned (
             left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
               .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)

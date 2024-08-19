@@ -25,7 +25,7 @@ extension AutoLayoutProjectDocument {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Move Selected Element to Sheet", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()

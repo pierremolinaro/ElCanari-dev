@@ -17,12 +17,12 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView descriptionPage = \DescriptionPage ()
     newView minimaPage = \MinimaPage ()
     newView dataPage = \DataPage ()
-    hStack set (margins: 8) {
+    hStack set (margins: .regular) {
       vStack {
         SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Description", tooltip: "Artwork Description", pageView: view descriptionPage)
@@ -89,7 +89,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 
   action resetVersionAndSignatureAction ;
 
-  stackView \DescriptionPage vStack set (margins: 8) {
+  stackView \DescriptionPage vStack set (margins: .regular) {
     TextField (minWidth: 56, size : .regular) { expandableWidth () set (alignment: .left) $value root.title (sendContinously: yes) }
     hStack {
       space
@@ -108,7 +108,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 //  Minima Page
 //------------------------------------------------------------------------------
 
-  stackView \MinimaPage vStack set (margins: 8) {
+  stackView \MinimaPage vStack set (margins: .regular) {
     space
     hStack {
       space
@@ -131,7 +131,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
     hStack {
       space
       GridView2 {
-        set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
+        set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular)
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
           right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
@@ -168,8 +168,8 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
 
-  stackView \DataPage vStack set (spacing: 0) {
-    hStack set (margins: 8) {
+  stackView \DataPage vStack set (spacing: .zero) {
+    hStack set (margins: .regular) {
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
         TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
@@ -178,14 +178,14 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
       space
     }
     separator
-    hStack set (leftMargin: 8) set (rightMargin: 8) {
-      vStack set (topMargin: 8) {
+    hStack set (leftMargin: .regular) set (rightMargin: .regular) {
+      vStack set (topMargin: .regular) {
         Label (bold: yes, size : .small) { $title self.generatedFileCountString }
         TableView (size : .small, addControlButtons: yes) { $tableValue #mDataController }
         space
       }
       separator
-      vStack set (topMargin: 8) {
+      vStack set (topMargin: .regular) {
         hStack {
           hStack setFirstBaselineAlignment () {
             StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
@@ -199,7 +199,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
-            set (leftMargin: 20)
+            set (leftMargin: .large)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Front Side Images", size : .small) {
                 $value #mDataSelection.drawImagesTopSide
@@ -223,23 +223,23 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           }
           space
         }
-        hStack set (leftMargin: 20) {
+        hStack set (leftMargin: .large) {
           Checkbox (title: "Front Side Component Names", size : .small) {
             $value #mDataSelection.drawComponentNamesTopSide
           }
           space
         }
-        hStack set (leftMargin: 20) {
+        hStack set (leftMargin: .large) {
           Checkbox (title: "Front Side Component Values", size : .small) {
             $value #mDataSelection.drawComponentValuesTopSide
           }
           space
         }
-        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
         StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
-            set (leftMargin: 20)
+            set (leftMargin: .large)
             addFirstBaseLineAligned (
               left:  Checkbox (title: "Traversing Pads", size : .small) { $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements },
               right: space
@@ -270,7 +270,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
-            set (leftMargin: 20)
+            set (leftMargin: .large)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Back Side Images", size : .small) {
                 $value #mDataSelection.drawImagesBottomSide
@@ -294,24 +294,24 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           }
           space
         }
-        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
-        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
-        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
         StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .left)
-        hStack set (leftMargin: 20) {
+        hStack set (leftMargin: .large) {
           Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
           space
           Checkbox (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits }
           space
           Checkbox (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits }
         }
-//        hStack set (leftMargin: 20) setFirstBaselineAlignment () {
+//        hStack set (leftMargin: .large) setFirstBaselineAlignment () {
 //          Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
 //          space
 //          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
 //        }
         StaticLabel (title: "Option", bold: yes, size : .small, alignment: .left)
-        hStack set (leftMargin: 20) {
+        hStack set (leftMargin: .large) {
           Checkbox (title: "Horizontal Mirror", size : .small) {
             $value #mDataSelection.horizontalMirror
           }

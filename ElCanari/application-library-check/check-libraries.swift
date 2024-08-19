@@ -36,9 +36,9 @@ extension Preferences {
     let tabView = AutoLayoutTabView (size: .regular)
       .expandableWidth ()
       .expandableHeight ()
-    inLogWindow.contentView = AutoLayoutVerticalStackView ().set (margins: 12).appendView (button).appendView (tabView)
+    inLogWindow.contentView = AutoLayoutVerticalStackView ().set (margins: .large).appendView (button).appendView (tabView)
   //---------- Checking Symbols
-    let symbolTabContents = AutoLayoutVerticalStackView ().set (margins: 12)
+    let symbolTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     var symbolDict : [String : PMSymbolDictionaryEntry] = [:]
     let symbolErrorCount = self.checkSymbolLibrary (symbolTabContents, symbolDict: &symbolDict)
     errorCount += symbolErrorCount
@@ -49,7 +49,7 @@ extension Preferences {
       contentView: symbolTabContents.appendFlexibleSpace ()
     )
   //---------- Checking Packages
-    let packageTabContents = AutoLayoutVerticalStackView ().set (margins: 12)
+    let packageTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     var packageDict : [String : PMPackageDictionaryEntry] = [:]
     let packageErrorCount = checkPackageLibrary (packageTabContents, packageDict: &packageDict)
     errorCount += packageErrorCount
@@ -61,7 +61,7 @@ extension Preferences {
     )
   //---------- Checking Devices
   //  var deviceToUpdateSet = Set <String> ()
-    let deviceTabContents = AutoLayoutVerticalStackView ().set (margins: 12)
+    let deviceTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     let (deviceCount, deviceErrorCount) = self.checkDeviceLibrary (
         deviceTabContents,
         symbolDict: symbolDict,
@@ -75,7 +75,7 @@ extension Preferences {
       contentView: deviceTabContents.appendFlexibleSpace ()
     )
   //--------- Checking Fonts
-    let fontTabContents = AutoLayoutVerticalStackView ().set (margins: 12)
+    let fontTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     let (fontCount, fontErrorCount) = checkFontLibrary (fontTabContents)
     errorCount += fontErrorCount
     _ = tabView.addTab (
@@ -85,7 +85,7 @@ extension Preferences {
       contentView: fontTabContents.appendFlexibleSpace ()
     )
   //--------- Checking Artworks
-    let artworkTabContents = AutoLayoutVerticalStackView ().set (margins: 12)
+    let artworkTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     let (arworkCount, artworkErrorCount) = checkArtworkLibrary (artworkTabContents)
     errorCount += artworkErrorCount
     _ = tabView.addTab (

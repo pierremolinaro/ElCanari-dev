@@ -365,14 +365,14 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let modelImagePage = self.ModelImagePage ()
     let packagePage = self.PackagePage ()
     let programPage = self.ProgramPage ()
     let infosPage = self.InfosPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
@@ -443,14 +443,14 @@ import AppKit
 
   final func ModelImagePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let view_0 = AutoLayoutVerticalStackView ()
     do{
       let view_0_0 = AutoLayoutGridView2 ()
         .set (width: 250)
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (topMargin: 8)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (topMargin: .regular)
         .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
@@ -460,16 +460,16 @@ import AppKit
       let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutGridView2 ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
         .addFirstBaseLineAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutGridView2 ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
         .addFirstBaseLineAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
         .add (single: self.computeImplicitView_16 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_17 (), right: self.computeImplicitView_18 ())
@@ -523,8 +523,8 @@ import AppKit
 
   final func PackagePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 0)
-      .set (spacing: 0)
+      .set (margins: .zero)
+      .set (spacing: .zero)
     let packagePageInspectorMasterView = self.PackagePageInspectorMasterView ()
     let selectedObjectsInspectorView = self.SelectedObjectsInspectorView ()
     let gridZoomInspectorView = self.GridZoomInspectorView ()
@@ -534,13 +534,13 @@ import AppKit
       .set (width: 250)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (topMargin: 8)
-        .set (spacing: 12)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (topMargin: .regular)
+        .set (spacing: .large)
       do{
         let view_0_0_0 = AutoLayoutHorizontalStackView ()
-          .set (spacing: 0)
+          .set (spacing: .zero)
         do{
           let view_0_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
             .bind_image (self.addSegmentButtonImage_property)
@@ -607,8 +607,8 @@ import AppKit
       let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
       do{
         let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: packagePageInspectorMasterView, equalWidth: true, size: .small)
           .expandableWidth ()
@@ -624,9 +624,9 @@ import AppKit
       }
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (spacing: 12)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (spacing: .large)
       do{
         let view_0_3_0 = packagePageInspectorMasterView
         _ = view_0_3.appendView (view_0_3_0)
@@ -1042,10 +1042,10 @@ import AppKit
 
   final func ProgramPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (leftMargin: 20)
-      .set (rightMargin: 20)
-      .set (bottomMargin: 20)
-      .set (topMargin: 8)
+      .set (leftMargin: .large)
+      .set (rightMargin: .large)
+      .set (bottomMargin: .large)
+      .set (topMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Load from Design", size: .small)
@@ -1093,10 +1093,10 @@ import AppKit
 
   final func InfosPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (leftMargin: 20)
-      .set (rightMargin: 20)
-      .set (bottomMargin: 20)
-      .set (topMargin: 8)
+      .set (leftMargin: .large)
+      .set (rightMargin: .large)
+      .set (bottomMargin: .large)
+      .set (topMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Reset Version and Signature", size: .small)

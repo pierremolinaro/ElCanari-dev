@@ -108,7 +108,7 @@ extension AutoLayoutProjectDocument {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
     //---
       let currentSymbolName = inSymbolUnderMouse.componentName! + ":" + inSymbolUnderMouse.mSymbolInstanceName
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Exchange '\(currentSymbolName)' symbol with…", bold: true, size: .regular, alignment: .center))

@@ -37,7 +37,7 @@ extension Preferences {
         size: .regular,
         alignment: .center
       ).expandableWidth ().expandableHeight ()
-      window.contentView = AutoLayoutVerticalStackView ().set (margins: 12).appendView (button).appendView (label)
+      window.contentView = AutoLayoutVerticalStackView ().set (margins: .large).appendView (button).appendView (label)
       self.mLibraryConsistencyLogWindow = window
       _ = window.setFrameAutosaveName ("LibraryConsistencyLogWindowSettings")
       window.title = "Library Consistency Log"

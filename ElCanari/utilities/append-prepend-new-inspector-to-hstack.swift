@@ -17,7 +17,7 @@ import AppKit
   let closeButton = AutoLayoutButton (title: "✖︎", size: .regular)
   closeButton.bezelStyle = .circular
   let header = AutoLayoutHorizontalStackView ()
-    .set (margins: 8)
+    .set (margins: .regular)
     .appendView (closeButton)
     .appendFlexibleSpace ()
   let verticalSeparator = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -42,7 +42,7 @@ import AppKit
   let closeButton = AutoLayoutButton (title: "✖︎", size: .regular)
   closeButton.bezelStyle = .circular
   let header = AutoLayoutHorizontalStackView ()
-    .set (margins: 8)
+    .set (margins: .regular)
     .appendView (closeButton)
     .appendFlexibleSpace ()
   let verticalSeparator = AutoLayoutHorizontalStackView.VerticalSeparator ()

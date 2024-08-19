@@ -176,12 +176,12 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let fontPage = self.FontPage ()
     let infoPage = self.InfoPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
@@ -258,7 +258,7 @@ import AppKit
 
   final func FontPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let fontPageInspectorMasterView = self.FontPageInspectorMasterView ()
     let selectedCharacterInspectorView = self.SelectedCharacterInspectorView ()
     let sampleStringInspectorView = self.SampleStringInspectorView ()
@@ -292,10 +292,10 @@ import AppKit
         self.mFontInspectorSegmentedControl = view_2_0_0 // Outlet
         _ = view_2_0.appendView (view_2_0_0)
         let view_2_0_1 = AutoLayoutVerticalStackView ()
-          .set (leftMargin: 20)
-          .set (rightMargin: 20)
-          .set (bottomMargin: 20)
-          .set (spacing: 12)
+          .set (leftMargin: .large)
+          .set (rightMargin: .large)
+          .set (bottomMargin: .large)
+          .set (spacing: .large)
         do{
           let view_2_0_1_0 = fontPageInspectorMasterView
           _ = view_2_0_1.appendView (view_2_0_1_0)
@@ -525,7 +525,7 @@ import AppKit
 
   final func InfoPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
       .setTopAlignment ()
     do{

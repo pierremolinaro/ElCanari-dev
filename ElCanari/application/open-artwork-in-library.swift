@@ -99,7 +99,7 @@ import AppKit
     panel.title = "Open Artwork in Library"
     panel.hasShadow = true
   //--- Main view
-    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+    let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
     let twoColumns = AutoLayoutHorizontalStackView ()
     _ = mainView.appendView (twoColumns)
   //--- Left column

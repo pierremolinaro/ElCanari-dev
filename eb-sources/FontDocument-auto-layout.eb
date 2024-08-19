@@ -11,11 +11,11 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
 
   stackView \PageMasterView vStack { }
 
-  stackView \DocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView fontPage = \FontPage ()
     newView infoPage = \InfoPage ()
-    hStack set (margins: 8) {
+    hStack set (margins: .regular) {
       vStack {
         SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Font", tooltip: "Characters Definition", pageView: view fontPage)
@@ -67,7 +67,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
 
   stackView \FontPageInspectorMasterView vStack {}
 
-  stackView \FontPage vStack set (margins: 8) {
+  stackView \FontPage vStack set (margins: .regular) {
     newView fontPageInspectorMasterView = \FontPageInspectorMasterView ()
     newView selectedCharacterInspectorView = \SelectedCharacterInspectorView ()
     newView sampleStringInspectorView = \SampleStringInspectorView ()
@@ -90,7 +90,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
           $segmentImage self.statusImage (segmentIndex : 2)
           $segmentTitle self.statusTitle (segmentIndex : 2)
         }
-        vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+        vStack set (leftMargin: .large) set (rightMargin: .large) set (bottomMargin: .large) set (spacing: .large) {
           view fontPageInspectorMasterView
         }
       }
@@ -222,7 +222,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
 
   action resetVersionAndSignatureAction ;
 
-  stackView \InfoPage vStack set (margins: 8) {
+  stackView \InfoPage vStack set (margins: .regular) {
     hStack setTopAlignment () {
       StaticLabel (title: "Description", bold: no, size : .regular, alignment: .center)
       TextView { $value root.comments }

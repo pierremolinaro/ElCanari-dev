@@ -279,12 +279,12 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let symbolPage = self.SymbolPage ()
     let infosPage = self.InfosPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
@@ -361,8 +361,8 @@ import AppKit
 
   final func SymbolPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 0)
-      .set (spacing: 0)
+      .set (margins: .zero)
+      .set (spacing: .zero)
     let symbolPageInspectorMasterView = self.SymbolPageInspectorMasterView ()
     let selectedObjectsInspectorView = self.SelectedObjectsInspectorView ()
     let gridZoomInspectorView = self.GridZoomInspectorView ()
@@ -372,13 +372,13 @@ import AppKit
       .set (width: 250)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (topMargin: 8)
-        .set (spacing: 12)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (topMargin: .regular)
+        .set (spacing: .large)
       do{
         let view_0_0_0 = AutoLayoutHorizontalStackView ()
-          .set (spacing: 0)
+          .set (spacing: .zero)
         do{
           let view_0_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
             .bind_image (self.addSegmentButtonImage_property)
@@ -427,8 +427,8 @@ import AppKit
       let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
       do{
         let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: symbolPageInspectorMasterView, equalWidth: true, size: .small)
           .expandableWidth ()
@@ -445,10 +445,10 @@ import AppKit
       }
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (bottomMargin: 20)
-        .set (spacing: 12)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (bottomMargin: .large)
+        .set (spacing: .large)
       do{
         let view_0_3_0 = symbolPageInspectorMasterView
         _ = view_0_3.appendView (view_0_3_0)
@@ -599,10 +599,10 @@ import AppKit
 
   final func InfosPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (leftMargin: 20)
-      .set (rightMargin: 20)
-      .set (bottomMargin: 20)
-      .set (topMargin: 8)
+      .set (leftMargin: .large)
+      .set (rightMargin: .large)
+      .set (bottomMargin: .large)
+      .set (topMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Reset Version and Signature", size: .small)

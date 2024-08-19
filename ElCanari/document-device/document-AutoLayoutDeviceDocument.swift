@@ -231,7 +231,7 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let descriptionPage = self.DescriptionPage ()
     let symbolsPage = self.SymbolsPage ()
@@ -240,7 +240,7 @@ import AppKit
     let libraryPage = self.LibraryPage ()
     let infosPage = self.InfosPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
@@ -312,15 +312,15 @@ import AppKit
 
   final func DescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 16)
-      .set (spacing: 12)
+      .set (margins: .large)
+      .set (spacing: .large)
     let view_0 = AutoLayoutTextField (minWidth: 70, size: .regular)
       .expandableWidth ()
       .set (alignment: .left)
       .bind_value (self.rootObject.mTitle_property, sendContinously:true)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     do{
       let view_1_0 = AutoLayoutDroppableImageView (removeButton: true)
         .set (maxWidth: 400)
@@ -383,7 +383,7 @@ import AppKit
     let symbolGridZoomInspectorView = self.SymbolGridZoomInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: symbolPageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
@@ -392,10 +392,10 @@ import AppKit
         .bind_selectedPage (self.rootObject.mSelectedSymbolInspectorIndex_property)
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (bottomMargin: 20)
-        .set (spacing: 12)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (bottomMargin: .large)
+        .set (spacing: .large)
       do{
         let view_0_1_0 = symbolPageInspectorView
         _ = view_0_1.appendView (view_0_1_0)
@@ -432,7 +432,7 @@ import AppKit
 
   final func SymbolPageOperationView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 0)
+      .set (margins: .zero)
     let view_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutButton (title: "File Library…", size: .small)
@@ -479,7 +479,7 @@ import AppKit
 
   final func SymbolGridZoomInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 0)
+      .set (margins: .zero)
     let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
@@ -508,7 +508,7 @@ import AppKit
     let packageGridZoomInspectorView = self.PackageGridZoomInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: packagePageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
@@ -517,10 +517,10 @@ import AppKit
         .bind_selectedPage (self.rootObject.mSelectedPackageInspectorIndex_property)
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (bottomMargin: 20)
-        .set (spacing: 12)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (bottomMargin: .large)
+        .set (spacing: .large)
       do{
         let view_0_1_0 = packagePageInspectorView
         _ = view_0_1.appendView (view_0_1_0)
@@ -582,7 +582,7 @@ import AppKit
 
   final func PackagePageOperationView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 0)
+      .set (margins: .zero)
     let view_0 = AutoLayoutButton (title: "Add Package From File Library…", size: .small)
       .expandableWidth ()
       .bind_run (
@@ -613,7 +613,7 @@ import AppKit
 
   final func LibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 20)
+      .set (margins: .large)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Reset Symbols and Packages Version and Signature", size: .small)
@@ -750,9 +750,9 @@ import AppKit
 
   final func AssignmentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
       .bind_hidden (.boolcmp (.not (.prop (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.prop (self.rootObject.symbolNameAreConsistent_property))))
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
@@ -873,10 +873,10 @@ import AppKit
 
   final func InfosPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (leftMargin: 20)
-      .set (rightMargin: 20)
-      .set (bottomMargin: 20)
-      .set (topMargin: 8)
+      .set (leftMargin: .large)
+      .set (rightMargin: .large)
+      .set (bottomMargin: .large)
+      .set (topMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{

@@ -94,7 +94,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
       let gridView = AutoLayoutGridView2 ()
     //---
@@ -184,7 +184,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
       let gridView = AutoLayoutGridView2 ()
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular, alignment: .center))
@@ -244,7 +244,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular, alignment: .center))
     //---

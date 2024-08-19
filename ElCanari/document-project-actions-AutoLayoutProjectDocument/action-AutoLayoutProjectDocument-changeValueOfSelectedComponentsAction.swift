@@ -31,7 +31,7 @@ extension AutoLayoutProjectDocument {
             defer: false
           )
         //---
-          let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+          let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
           let gridView = AutoLayoutGridView2 ()
         //---
           _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Value", bold: true, size: .regular, alignment: .center))

@@ -63,7 +63,7 @@ extension AutoLayoutPackageDocument {
         }
       )
     //---
-      let mainVStack = AutoLayoutVerticalStackView ().set (margins: 20)
+      let mainVStack = AutoLayoutVerticalStackView ().set (margins: .large)
     //--- Title
       do{
         let hStack = AutoLayoutHorizontalStackView ()

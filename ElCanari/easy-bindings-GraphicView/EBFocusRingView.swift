@@ -6,7 +6,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-let FOCUS_RING_MARGIN : Int = 5
+let FOCUS_RING_MARGIN : MarginSize = .small
 private let RING_COLOR = NSColor (calibratedRed: 130.0 / 255.0, green: 171.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
 
 //--------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ final class EBFocusRingView : AutoLayoutHorizontalStackView {
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
     if self.mHasFocusRing {
-      let w = (CGFloat (FOCUS_RING_MARGIN) - 1.0) / 2.0
+      let w = (FOCUS_RING_MARGIN.floatValue - 1.0) / 2.0
       let r = self.bounds.insetBy (dx: w, dy: w)
       let bp = NSBezierPath (roundedRect: r, xRadius: w / 2.0, yRadius: w / 2.0)
       bp.lineWidth = w * 2.0

@@ -21,7 +21,7 @@ extension AutoLayoutProjectDocument {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
     //---
       _ = layoutView.appendView (AutoLayoutStaticLabel (title: "Set Date and Time", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()

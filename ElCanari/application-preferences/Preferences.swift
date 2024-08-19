@@ -46,8 +46,8 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   final func mPrefsMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
-      .set (topMargin: 12)
+      .set (spacing: .zero)
+      .set (topMargin: .large)
     let prefsPageView = self.PrefsPageView ()
     let prefsUserInterfacePage = self.PrefsUserInterfacePage ()
     let prefsAppUpdatePage = self.PrefsAppUpdatePage ()
@@ -77,7 +77,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   final func PrefsPageView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     return vStackView
   }
 
@@ -87,7 +87,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   final func PrefsAppUpdatePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 12)
+      .set (margins: .large)
     let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
@@ -140,7 +140,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   final func PrefsUserInterfacePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 12)
+      .set (margins: .large)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
@@ -166,7 +166,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   final func PrefsLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 12)
+      .set (margins: .large)
     let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()

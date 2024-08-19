@@ -2,7 +2,7 @@
 //! Main View
 
 prefs {
-  stackView \mPrefsMainView vStack set (spacing: 0) set (topMargin: 12) {
+  stackView \mPrefsMainView vStack set (spacing: .zero) set (topMargin: .large) {
     newView prefsPageView = \PrefsPageView ()
     newView prefsUserInterfacePage = \PrefsUserInterfacePage ()
     newView prefsAppUpdatePage = \PrefsAppUpdatePage ()
@@ -20,7 +20,7 @@ prefs {
     view prefsPageView
   }
   
-  stackView \PrefsPageView vStack set (spacing: 0) {
+  stackView \PrefsPageView vStack set (spacing: .zero) {
   }
 
   property Int mSelectedPrefsPage default 0 ;
@@ -38,7 +38,7 @@ prefs {
 //! Application Update
 
 prefs {
-  stackView \PrefsAppUpdatePage vStack set (margins: 12) {
+  stackView \PrefsAppUpdatePage vStack set (margins: .large) {
     StaticLabel (title: "Application Update", bold: yes, size: .regular, alignment: .center)
     hStack {
       Button (title: "Check for Application Updates…", size: .regular) { $run checkForAppUpdateAction }
@@ -69,7 +69,7 @@ prefs {
   property NSColor selectionHiliteColor default cyan;
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
   
-  stackView \PrefsUserInterfacePage vStack set (margins: 12) {
+  stackView \PrefsUserInterfacePage vStack set (margins: .large) {
     hStack {
       space
       GridView2 {
@@ -364,7 +364,7 @@ prefs {
 //! Library
 
 prefs {
-  stackView \PrefsLibraryPage vStack set (margins: 12) {
+  stackView \PrefsLibraryPage vStack set (margins: .large) {
     StaticLabel (title: "System Library", bold: yes, size: .regular, alignment: .left)
     hStack {
       Button (title: "", size: .regular) [

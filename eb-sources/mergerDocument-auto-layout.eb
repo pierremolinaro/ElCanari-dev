@@ -6,12 +6,12 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   stackView \PageMasterView vStack { }
 
-  stackView \DocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView modelPage = \ModelPage ()
     newView boardPage = \BoardPage ()
     newView productPage = \ProductPage ()
-    hStack set (margins: 8) {
+    hStack set (margins: .regular) {
       vStack {
         SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Model", tooltip: "Model Description", pageView: view modelPage)
@@ -89,10 +89,10 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //     Model Page
   //············································································
 
-  stackView \ModelPage hStack set (spacing: 0)  {
+  stackView \ModelPage hStack set (spacing: .zero)  {
     newView settingsView = \SettingsView ()
     view settingsView
-    vStack set (margins: 8) set (width: 250) $hidden root.showDisplaySettingView {
+    vStack set (margins: .regular) set (width: 250) $hidden root.showDisplaySettingView {
       hStack {
         Button (title: "+", size : .small) {
           set (width: 40)
@@ -206,11 +206,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //     Settings View
   //············································································
 
-  stackView \SettingsView hStack set (spacing: 0) {
-    vStack set (bottomMargin: 8) set (width: 250) $hidden !root.showDisplaySettingView {
+  stackView \SettingsView hStack set (spacing: .zero) {
+    vStack set (bottomMargin: .regular) set (width: 250) $hidden !root.showDisplaySettingView {
       VerticalScrollView (content: 
         GridView2 {
-          set (margins: 8)
+          set (margins: .regular)
           addCenterYAligned (
             left: space,
             right: StaticLabels (left: "Model", right: "Board", bold: yes, size: .small)
@@ -454,7 +454,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         }
       )
       space
-      hStack set (rightMargin: 8) { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
+      hStack set (rightMargin: .regular) { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
     }
   }
 
@@ -464,13 +464,13 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   stackView \BoardBaseInspectorView vStack { }
 
-  stackView \BoardPage hStack set (spacing: 0) {
+  stackView \BoardPage hStack set (spacing: .zero) {
     newView boardBaseInspectorView = \BoardBaseInspectorView ()
     newView boardSettingsPage = \BoardSettingsPage ()
     newView boardIssuesPage = \BoardIssuesPage ()
     newView settingsView = \SettingsView ()
     view settingsView
-    vStack set (margins: 8) set (width: 250) $hidden root.showDisplaySettingView {
+    vStack set (margins: .regular) set (width: 250) $hidden root.showDisplaySettingView {
       SegmentedControlWithPages (documentView: view boardBaseInspectorView, equalWidth: yes, size : .regular)
         [outlet mBoardInspectorSegmentedControl configurator boardPageSegmentedControl] {
         expandableWidth ()
@@ -609,7 +609,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
             Button (title: "Explode All", size : .small) { $run explodeAllAction }
             space
           }
-          vStack set (margins: 0) {
+          vStack set (margins: .zero) {
             StaticLabel (title: "Stack All", bold: yes, size : .small, alignment: .center)
             hStack {
               space
@@ -642,8 +642,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           }
         }
         separator
-        hStack set (margins: 0) equalWidth () {
-          vStack set (margins: 0) {
+        hStack set (margins: .zero) equalWidth () {
+          vStack set (margins: .zero) {
             StaticLabel (title: "Move Selection", bold: yes, size : .small, alignment: .center)
             hStack {
               space
@@ -678,7 +678,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
               space
             }
           }
-          vStack set (margins: 0) {
+          vStack set (margins: .zero) {
             StaticLabel (title: "Stack Selection", bold: yes, size : .small, alignment: .center)
             hStack {
               space
@@ -753,7 +753,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //     Product Page
   //············································································
 
-  stackView \ProductPage vStack set (margins: 8) {
+  stackView \ProductPage vStack set (margins: .regular) {
     newView productMasterView = \ProductMasterView ()
     newView artworkDescriptionPage = \ArtworkDescriptionPage ()
     newView artworkMinimaPage = \ArtworkMinimaPage ()
@@ -861,8 +861,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   //············································································
 
-  stackView \ArtworkDataPage vStack set (spacing: 0) {
-    hStack set (margins: 8) {
+  stackView \ArtworkDataPage vStack set (spacing: .zero) {
+    hStack set (margins: .regular) {
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
         TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
@@ -870,13 +870,13 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
       ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
       space
     }
-    hStack set (leftMargin: 8) set (rightMargin: 8) {
-      vStack set (topMargin: 8) {
+    hStack set (leftMargin: .regular) set (rightMargin: .regular) {
+      vStack set (topMargin: .regular) {
         Label (bold: yes, size : .small) { $title self.generatedFileCountString }
         TableView (size : .small, addControlButtons: yes) { $tableValue #mDataController }
       }
       separator
-      vStack set (topMargin: 8) {
+      vStack set (topMargin: .regular) {
         hStack {
           hStack setFirstBaselineAlignment () {
             StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
@@ -890,7 +890,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
-            set (leftMargin: 20)
+            set (leftMargin: .large)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Front Side Images", size : .small) {
                 set (enabled: no)
@@ -912,13 +912,13 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           }
           space
         }
-        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
-        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
-        hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
         StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
-            set (leftMargin: 20)
+            set (leftMargin: .large)
             addFirstBaseLineAligned (
               left:  Checkbox (title: "Traversing Pads", size : .small) { $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements },
               right: space
@@ -949,7 +949,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
-            set (leftMargin: 20)
+            set (leftMargin: .large)
             addFirstBaseLineAligned (
               left: Checkbox (title: "Back Side Images", size : .small) {
                 set (enabled: no)
@@ -971,17 +971,17 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           }
           space
         }
-        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
-        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
-        hStack set (leftMargin: 20) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
         StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .center)
-        hStack set (leftMargin: 20) {
+        hStack set (leftMargin: .large) {
           Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
           Checkbox (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits }
           Checkbox (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits }
           space
         }
-//        hStack set (leftMargin: 20) setFirstBaselineAlignment () {
+//        hStack set (leftMargin: .large) setFirstBaselineAlignment () {
 //          Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) {
 //            $value #mDataSelection.drawPadHolesInPDF
 //          }
@@ -994,7 +994,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 //          space
 //        }
         StaticLabel (title: "Option", bold: yes, size : .small, alignment: .left)
-        hStack set (leftMargin: 20) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
+        hStack set (leftMargin: .large) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
         space
       }
     }
@@ -1035,7 +1035,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     hStack {
       space
       GridView2 {
-        set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
+        set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular)
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
@@ -1060,16 +1060,16 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   //············································································
 
-  stackView \PDFSettingsPage hStack set (margins: 20) {
+  stackView \PDFSettingsPage hStack set (margins: .large) {
     vStack {
       StaticLabel (title: "Gerber Settings", bold: yes, size: .regular, alignment: .left)
-      vStack set (leftMargin: 12) {
+      vStack set (leftMargin: .large) {
         EnumPopUpButton (titles: enum GerberUnit.popupTitles, size: .regular) {
           $selectedIndex root.mGerberProductUnit
         }
       }
       StaticLabel (title: "PDF Settings", bold: yes, size: .regular, alignment: .left)
-      vStack set (leftMargin: 12) {
+      vStack set (leftMargin: .large) {
         hStack setFirstBaselineAlignment () {
           ColorWell { $color root.mPDFBoardBackgroundColor }
           StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)

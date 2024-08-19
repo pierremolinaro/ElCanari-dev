@@ -37,7 +37,7 @@ extension AutoLayoutProjectDocument {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular, alignment: .center))

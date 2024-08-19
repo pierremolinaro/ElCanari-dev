@@ -31,7 +31,7 @@ extension AutoLayoutProjectDocument {
         defer: false
       )
       panel.hasShadow = true
-      let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
+      let mainView = AutoLayoutHorizontalStackView ().set (margins: .large)
       _ = mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
       let rightColumn = AutoLayoutVerticalStackView ()
       let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, size: .regular, alignment: .center)

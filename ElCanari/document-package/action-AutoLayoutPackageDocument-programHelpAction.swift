@@ -20,7 +20,7 @@ extension AutoLayoutPackageDocument {
       sheet.styleMask = mask
       sheet.setContentSize (NSSize (width: 600.0, height: 500.0))
     //---
-      let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
+      let vStack = AutoLayoutVerticalStackView ().set (margins: .large)
       _ = vStack.appendView (AutoLayoutFlexibleSpace ())
     //--- Text
       let textView = AutoLayoutRTFTextView (editable: false)

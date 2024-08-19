@@ -65,7 +65,7 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
       batchWindow.setFrameAutosaveName ("BatchWindowFrame")
       batchWindow.hasShadow = true
     //--- Main view
-      let mainView = AutoLayoutHorizontalStackView ().set (margins: 20)
+      let mainView = AutoLayoutHorizontalStackView ().set (margins: .large)
     //--- First Column
       let firstColumn = AutoLayoutVerticalStackView ()
       _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Open All…", bold: true, size: .regular, alignment: .left))

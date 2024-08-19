@@ -74,7 +74,7 @@ import AppKit
     self.mWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
     _ = self.mWindow.setFrameAutosaveName ("Document.Operation.Window.Frame")
   //--- Build window contents
-    let vStack = AutoLayoutVerticalStackView ().set (margins: 8)
+    let vStack = AutoLayoutVerticalStackView ().set (margins: .regular)
     _ = vStack.appendView (self.mTextView)
     let button = AutoLayoutButton (title: "Clear", size: .small)
       .bind_run (target: self, selector: #selector (Self.clearTextAction(_:)))

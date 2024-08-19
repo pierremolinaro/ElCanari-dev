@@ -21,7 +21,7 @@ final class AutoLayoutStaticLabels : AutoLayoutHorizontalStackView {
     _ = self.appendView (AutoLayoutStaticLabel (title: inLeft, bold: inBold, size: inSize, alignment: .left).notExpandableWidth ())
     _ = self.appendView (AutoLayoutFlexibleSpace ())
     _ = self.appendView (AutoLayoutStaticLabel (title: inRight, bold: inBold, size: inSize, alignment: .right).notExpandableWidth ())
-    _ = self.set (spacing: 0)
+    _ = self.set (spacing: .zero)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

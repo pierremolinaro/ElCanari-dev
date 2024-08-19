@@ -239,7 +239,7 @@ extension Preferences {
     panel.title = "Library Update"
     panel.hasShadow = true
   //--- Main view
-    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+    let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
   //--- Informative text
     let informativeText = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .center).expandableWidth ()
     informativeText.stringValue = "Select Library Revision"

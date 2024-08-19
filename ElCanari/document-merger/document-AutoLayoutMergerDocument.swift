@@ -276,13 +276,13 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let modelPage = self.ModelPage ()
     let boardPage = self.BoardPage ()
     let productPage = self.ProductPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
@@ -342,12 +342,12 @@ import AppKit
 
   final func ModelPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let settingsView = self.SettingsView ()
     let view_0 = settingsView
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
       .set (width: 250)
       .bind_hidden (.prop (self.rootObject.showDisplaySettingView_property))
     do{
@@ -441,9 +441,9 @@ import AppKit
 
   final func SettingsView () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let view_0 = AutoLayoutVerticalStackView ()
-      .set (bottomMargin: 8)
+      .set (bottomMargin: .regular)
       .set (width: 250)
       .bind_hidden (.not (.prop (self.rootObject.showDisplaySettingView_property)))
     do{
@@ -452,7 +452,7 @@ import AppKit
       let view_0_1 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutHorizontalStackView ()
-        .set (rightMargin: 8)
+        .set (rightMargin: .regular)
       do{
         let view_0_2_0 = AutoLayoutFlexibleSpace ()
         _ = view_0_2.appendView (view_0_2_0)
@@ -484,7 +484,7 @@ import AppKit
 
   final func BoardPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let boardBaseInspectorView = self.BoardBaseInspectorView ()
     let boardSettingsPage = self.BoardSettingsPage ()
     let boardIssuesPage = self.BoardIssuesPage ()
@@ -492,7 +492,7 @@ import AppKit
     let view_0 = settingsView
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
       .set (width: 250)
       .bind_hidden (.prop (self.rootObject.showDisplaySettingView_property))
     do{
@@ -586,7 +586,7 @@ import AppKit
 
   final func ProductPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let productMasterView = self.ProductMasterView ()
     let artworkDescriptionPage = self.ArtworkDescriptionPage ()
     let artworkMinimaPage = self.ArtworkMinimaPage ()
@@ -732,9 +732,9 @@ import AppKit
 
   final func ArtworkDataPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
         .setFirstBaselineAlignment ()
@@ -754,11 +754,11 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (leftMargin: 8)
-      .set (rightMargin: 8)
+      .set (leftMargin: .regular)
+      .set (rightMargin: .regular)
     do{
       let view_1_0 = AutoLayoutVerticalStackView ()
-        .set (topMargin: 8)
+        .set (topMargin: .regular)
       do{
         let view_1_0_0 = AutoLayoutLabel (bold: true, size: .small)
           .bind_title (self.generatedFileCountString_property)
@@ -771,7 +771,7 @@ import AppKit
       let view_1_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
       _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutVerticalStackView ()
-        .set (topMargin: 8)
+        .set (topMargin: .regular)
       do{
         let view_1_2_0 = AutoLayoutHorizontalStackView ()
         do{
@@ -803,7 +803,7 @@ import AppKit
         let view_1_2_3 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_2_3_0 = AutoLayoutGridView2 ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
             .addFirstBaseLineAligned (left: self.computeImplicitView_102 (), right: self.computeImplicitView_103 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_104 (), right: self.computeImplicitView_105 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_106 (), right: self.computeImplicitView_107 ())
@@ -813,7 +813,7 @@ import AppKit
         }
         _ = view_1_2.appendView (view_1_2_3)
         let view_1_2_4 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_4_0 = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
             .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
@@ -823,7 +823,7 @@ import AppKit
         }
         _ = view_1_2.appendView (view_1_2_4)
         let view_1_2_5 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_5_0 = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
             .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
@@ -833,7 +833,7 @@ import AppKit
         }
         _ = view_1_2.appendView (view_1_2_5)
         let view_1_2_6 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_6_0 = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
             .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
@@ -847,7 +847,7 @@ import AppKit
         let view_1_2_8 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_2_8_0 = AutoLayoutGridView2 ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
             .addFirstBaseLineAligned (left: self.computeImplicitView_108 (), right: self.computeImplicitView_109 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_110 (), right: self.computeImplicitView_111 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_112 (), right: self.computeImplicitView_113 ())
@@ -864,7 +864,7 @@ import AppKit
         let view_1_2_10 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_2_10_0 = AutoLayoutGridView2 ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
             .addFirstBaseLineAligned (left: self.computeImplicitView_120 (), right: self.computeImplicitView_121 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_122 (), right: self.computeImplicitView_123 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_124 (), right: self.computeImplicitView_125 ())
@@ -874,7 +874,7 @@ import AppKit
         }
         _ = view_1_2.appendView (view_1_2_10)
         let view_1_2_11 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_11_0 = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
             .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
@@ -884,7 +884,7 @@ import AppKit
         }
         _ = view_1_2.appendView (view_1_2_11)
         let view_1_2_12 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_12_0 = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
             .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
@@ -894,7 +894,7 @@ import AppKit
         }
         _ = view_1_2.appendView (view_1_2_12)
         let view_1_2_13 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_13_0 = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
             .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
@@ -906,7 +906,7 @@ import AppKit
         let view_1_2_14 = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small, alignment: .center)
         _ = view_1_2.appendView (view_1_2_14)
         let view_1_2_15 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_15_0 = AutoLayoutCheckbox (title: "Vias", size: .small)
             .bind_value (self.mDataSelection.drawVias_property)
@@ -924,7 +924,7 @@ import AppKit
         let view_1_2_16 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small, alignment: .left)
         _ = view_1_2.appendView (view_1_2_16)
         let view_1_2_17 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 20)
+          .set (leftMargin: .large)
         do{
           let view_1_2_17_0 = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
             .bind_value (self.mDataSelection.horizontalMirror_property)
@@ -991,9 +991,9 @@ import AppKit
       let view_3_0 = AutoLayoutFlexibleSpace ()
       _ = view_3.appendView (view_3_0)
       let view_3_1 = AutoLayoutGridView2 ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (topMargin: 8)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (topMargin: .regular)
         .addFirstBaseLineAligned (left: self.computeImplicitView_126 (), right: self.computeImplicitView_127 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_128 (), right: self.computeImplicitView_129 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_130 (), right: self.computeImplicitView_131 ())
@@ -1014,13 +1014,13 @@ import AppKit
 
   final func PDFSettingsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 20)
+      .set (margins: .large)
     let view_0 = AutoLayoutVerticalStackView ()
     do{
       let view_0_0 = AutoLayoutStaticLabel (title: "Gerber Settings", bold: true, size: .regular, alignment: .left)
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 12)
+        .set (leftMargin: .large)
       do{
         let view_0_1_0 = AutoLayoutEnumPopUpButton (titles: GerberUnit.popupTitles (), size: .regular)
           .bind_selectedIndex (self.rootObject.mGerberProductUnit_property)
@@ -1030,7 +1030,7 @@ import AppKit
       let view_0_2 = AutoLayoutStaticLabel (title: "PDF Settings", bold: true, size: .regular, alignment: .left)
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 12)
+        .set (leftMargin: .large)
       do{
         let view_0_3_0 = AutoLayoutHorizontalStackView ()
           .setFirstBaselineAlignment ()
@@ -2225,7 +2225,7 @@ import AppKit
 
   private final func computeImplicitView_80 () -> NSView {
     let view = AutoLayoutGridView2 ()
-      .set (margins: 8)
+      .set (margins: .regular)
       .addCenterYAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
       .addCenterYAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
       .addCenterYAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
@@ -2465,7 +2465,7 @@ import AppKit
         }
         _ = view_4.appendView (view_4_0)
         let view_4_1 = AutoLayoutVerticalStackView ()
-          .set (margins: 0)
+          .set (margins: .zero)
         do{
           let view_4_1_0 = AutoLayoutStaticLabel (title: "Stack All", bold: true, size: .small, alignment: .center)
           _ = view_4_1.appendView (view_4_1_0)
@@ -2528,11 +2528,11 @@ import AppKit
       let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view.appendView (view_5)
       let view_6 = AutoLayoutHorizontalStackView ()
-        .set (margins: 0)
+        .set (margins: .zero)
         .equalWidth ()
       do{
         let view_6_0 = AutoLayoutVerticalStackView ()
-          .set (margins: 0)
+          .set (margins: .zero)
         do{
           let view_6_0_0 = AutoLayoutStaticLabel (title: "Move Selection", bold: true, size: .small, alignment: .center)
           _ = view_6_0.appendView (view_6_0_0)
@@ -2595,7 +2595,7 @@ import AppKit
         }
         _ = view_6.appendView (view_6_0)
         let view_6_1 = AutoLayoutVerticalStackView ()
-          .set (margins: 0)
+          .set (margins: .zero)
         do{
           let view_6_1_0 = AutoLayoutStaticLabel (title: "Stack Selection", bold: true, size: .small, alignment: .center)
           _ = view_6_1.appendView (view_6_1_0)

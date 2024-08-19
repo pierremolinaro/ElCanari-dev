@@ -63,7 +63,7 @@ import AppKit
       sheet: self.mLibraryUploadWindow
     )
   //--- Main view
-    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+    let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
   //--- Grid view
     let gridView = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.mSetLibraryRepositoryButton, right: self.mLibraryRepositoryTextField)

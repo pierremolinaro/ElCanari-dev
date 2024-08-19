@@ -26,12 +26,12 @@ extension AutoLayoutMergerDocument {
     let textField = AutoLayoutLabel (bold: false, size: .small).set (alignment: .center)
     textField.stringValue = "Updating…"
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 0)
+      .set (margins: .zero)
       .appendView (AutoLayoutFlexibleSpace ())
       .appendView (AutoLayoutSpinningProgressIndicator (size: .small))
       .appendView (AutoLayoutFlexibleSpace ())
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 16)
+      .set (margins: .large)
       .appendView (textField)
       .appendView (hStackView)
     updateSheet.contentView = vStackView

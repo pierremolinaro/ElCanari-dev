@@ -2,24 +2,24 @@
 //  Auto Layout classes
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-vStack func set (spacing: Int) ;
-vStack func set (margins: Int) ;
-vStack func set (leftMargin: Int) ;
-vStack func set (rightMargin: Int) ;
-vStack func set (topMargin: Int) ;
-vStack func set (bottomMargin: Int) ;
+vStack func set (spacing: MarginSize) ;
+vStack func set (margins: MarginSize) ;
+vStack func set (leftMargin: MarginSize) ;
+vStack func set (rightMargin: MarginSize) ;
+vStack func set (topMargin: MarginSize) ;
+vStack func set (bottomMargin: MarginSize) ;
 vStack func set (width: Int) ;
 vStack func set (minWidth: Int) ;
 vStack func equalHeight () ;
 vStack func expandableWidth () ;
  
-hStack func set (spacing: Int) ;
+hStack func set (spacing: MarginSize) ;
 hStack func equalWidth () ;
-hStack func set (margins: Int) ;
-hStack func set (leftMargin: Int) ;
-hStack func set (rightMargin: Int) ;
-hStack func set (topMargin: Int) ;
-hStack func set (bottomMargin: Int) ;
+hStack func set (margins: MarginSize) ;
+hStack func set (leftMargin: MarginSize) ;
+hStack func set (rightMargin: MarginSize) ;
+hStack func set (topMargin: MarginSize) ;
+hStack func set (bottomMargin: MarginSize) ;
 hStack func set (height: Int) ;
 hStack func setFirstBaselineAlignment () ;
 hStack func setCenterYAlignment () ;
@@ -32,11 +32,11 @@ func enum GridStyle.popupTitles {
 }
 
 extern autolayout class GridView2 $hidden {
-  func set (spacing: Int)
-  func set (margins: Int)
-  func set (leftMargin: Int)
-  func set (rightMargin: Int)
-  func set (topMargin: Int)
+  func set (spacing: MarginSize)
+  func set (margins: MarginSize)
+  func set (leftMargin: MarginSize)
+  func set (rightMargin: MarginSize)
+  func set (topMargin: MarginSize)
   func set (bottomMargin: Int)
   func set (width: Int)
   func addFirstBaseLineAligned (left : view, right: view)

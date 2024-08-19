@@ -51,7 +51,7 @@ import AppKit
       defer: false
     )
 //    _ = self.mSegmentedControl.bind_selectedIndex (self.mSegmentedControlIndex)
-    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+    let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
   //--- First column
 //    let tableHStack = AutoLayoutHorizontalStackView ()
 //          .appendView (self.mTableView)

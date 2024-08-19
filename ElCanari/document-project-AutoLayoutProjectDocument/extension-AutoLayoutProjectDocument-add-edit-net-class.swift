@@ -25,7 +25,7 @@ extension AutoLayoutProjectDocument {
         defer: false
       )
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
       let gridView = AutoLayoutGridView2 ()
     //---
       let panelTitle = inCreation ? "Create Net Class" : "Edit Net Class"

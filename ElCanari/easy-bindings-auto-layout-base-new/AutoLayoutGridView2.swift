@@ -59,11 +59,11 @@ class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  private var mHorizontalSpacing : Int = 12
+  private var mHorizontalSpacing : MarginSize = .large
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  final func set (horizontalSpacing inSpacing : Int) -> Self {
+  final func set (horizontalSpacing inSpacing : MarginSize) -> Self {
     self.mHorizontalSpacing = inSpacing
     self.invalidateIntrinsicContentSize ()
     return self

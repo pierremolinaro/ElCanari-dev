@@ -588,7 +588,7 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let pageMasterView = self.pageMasterView ()
     let componentsPage = self.componentsPage ()
     let libraryPage = self.libraryPage ()
@@ -599,7 +599,7 @@ import AppKit
     let boardContentsPage = self.boardContentsPage ()
     let productPage = self.productPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
@@ -694,7 +694,7 @@ import AppKit
 
   final func componentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutVerticalStackView ()
     do{
       let view_0_0 = AutoLayoutLabel (bold: true, size: .small)
@@ -797,7 +797,7 @@ import AppKit
 
   final func libraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let devicesInLibraryPage = self.DevicesInLibraryPage ()
     let fontsInLibraryPage = self.FontsInLibraryPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -843,7 +843,7 @@ import AppKit
 
   final func DevicesInLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
       .expandableWidth ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -884,7 +884,7 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     do{
       let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
         .expandableWidth ()
@@ -898,7 +898,7 @@ import AppKit
         let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular, alignment: .center)
         _ = view_1_2.appendView (view_1_2_0)
         let view_1_2_1 = AutoLayoutHorizontalStackView ()
-          .set (spacing: 0)
+          .set (spacing: .zero)
         do{
           let view_1_2_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
             .expandableWidth ()
@@ -908,7 +908,7 @@ import AppKit
           let view_1_2_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
           _ = view_1_2_1.appendView (view_1_2_1_1)
           let view_1_2_1_2 = AutoLayoutVerticalStackView ()
-            .set (spacing: 0)
+            .set (spacing: .zero)
           do{
             let view_1_2_1_2_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
               .expandableWidth ()
@@ -945,7 +945,7 @@ import AppKit
 
   final func FontsInLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Add Font…", size: .regular)
@@ -1003,7 +1003,7 @@ import AppKit
 
   final func netClassesPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "New Net Class", size: .regular)
@@ -1043,7 +1043,7 @@ import AppKit
 
   final func netListPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutLabel (bold: true, size: .regular)
@@ -1077,7 +1077,7 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     do{
       let view_1_0 = AutoLayoutCanariNetDescriptionTableView ()
         .bind_netInfo (self.rootObject.netsDescription_property)
@@ -1140,7 +1140,7 @@ import AppKit
   final func schematicsLateralBar () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let selectedSchematicElementInspectorView = self.selectedSchematicElementInspectorView ()
     let schematicsInspectorView = self.schematicsInspectorView ()
     let schematicHotKeysInspectorView = self.schematicsHotKeysInspectorView ()
@@ -1148,8 +1148,8 @@ import AppKit
     let schematicsDisplayInspectorView = self.schematicsDisplayInspectorView ()
     let schematicsSheetInspectorView = self.schematicsSheetInspectorView ()
     let view_0 = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
-      .set (margins: 8)
+      .set (spacing: .zero)
+      .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_0)
@@ -1166,8 +1166,8 @@ import AppKit
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
-      .set (leftMargin: 8)
-      .set (rightMargin: 8)
+      .set (leftMargin: .regular)
+      .set (rightMargin: .regular)
     do{
       let view_1_0 = AutoLayoutCheckbox (title: "Enable Line Column Hilite", size: .small)
         .bind_value (self.rootObject.mSchematicEnableHiliteColumnAndRow_property)
@@ -1201,8 +1201,8 @@ import AppKit
 
   final func schematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
-      .set (bottomMargin: 8)
+      .set (topMargin: .regular)
+      .set (bottomMargin: .regular)
     return vStackView
   }
 
@@ -1212,8 +1212,8 @@ import AppKit
 
   final func schematicsHotKeysInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
-      .set (bottomMargin: 8)
+      .set (topMargin: .regular)
+      .set (bottomMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1292,8 +1292,8 @@ import AppKit
 
   final func schematicsInsertSymbolInSchematicView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
-      .set (bottomMargin: 8)
+      .set (topMargin: .regular)
+      .set (bottomMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1330,8 +1330,8 @@ import AppKit
 
   final func schematicsDisplayInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
-      .set (bottomMargin: 8)
+      .set (topMargin: .regular)
+      .set (bottomMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1369,8 +1369,8 @@ import AppKit
 
   final func schematicsSheetInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
-      .set (bottomMargin: 8)
+      .set (topMargin: .regular)
+      .set (bottomMargin: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -1473,8 +1473,8 @@ import AppKit
 
   final func selectedSchematicElementInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
-      .set (bottomMargin: 8)
+      .set (topMargin: .regular)
+      .set (bottomMargin: .regular)
     let schematicsWireInspectorView = self.schematicsWireInspectorView ()
     let ncInSchematicsInspectorView = self.ncInSchematicsInspectorView ()
     let schematicsLabelInspectorView = self.schematicsLabelInspectorView ()
@@ -1771,7 +1771,7 @@ import AppKit
 
   final func boardOutlinePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let view_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_80 ())
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -1854,7 +1854,7 @@ import AppKit
 
   final func boardContentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     let boardInspectorView = self.BoardInspectorView ()
     let selectedElementInspectorView = self.selectedElementInspectorView ()
     let insertComponentInBoardView = self.insertComponentInBoardView ()
@@ -1863,11 +1863,11 @@ import AppKit
     let boardERCInspectorView = self.boardERCInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (spacing: 0)
+      .set (spacing: .zero)
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
-        .set (spacing: 0)
-        .set (margins: 8)
+        .set (spacing: .zero)
+        .set (margins: .regular)
       do{
         let view_0_0_0 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.")
         self.configure_addBoardImageButton (view_0_0_0) // Configurator
@@ -1902,8 +1902,8 @@ import AppKit
       let view_0_1 = AutoLayoutVerticalStackView ()
       do{
         let view_0_1_0 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: 8)
-          .set (rightMargin: 8)
+          .set (leftMargin: .regular)
+          .set (rightMargin: .regular)
         do{
           let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: boardInspectorView, equalWidth: false, size: .small)
             .expandableWidth ()
@@ -1969,7 +1969,7 @@ import AppKit
 
   final func insertComponentInBoardView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -2007,8 +2007,8 @@ import AppKit
 
   final func boardDisplayInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
-      .set (rightMargin: 0)
+      .set (margins: .regular)
+      .set (rightMargin: .zero)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -2044,7 +2044,7 @@ import AppKit
 
   final func boardRouterInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
@@ -2078,7 +2078,7 @@ import AppKit
 
   final func boardERCInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let view_0 = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCheckbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small)
@@ -2092,7 +2092,7 @@ import AppKit
       )
     _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutVerticalStackView ()
-      .set (spacing: 0)
+      .set (spacing: .zero)
     do{
       let view_3_0 = AutoLayoutTextObserverView (size: .small)
       self.mERCLogTextViewArray.append (view_3_0) // Outlet Array
@@ -2114,7 +2114,7 @@ import AppKit
 
   final func selectedElementInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let boardTrackInspectorView = self.BoardTrackInspectorView ()
     let boardConnectorInspectorView = self.BoardConnectorInspectorView ()
     let boardLineInspectorView = self.BoardLineInspectorView ()
@@ -2254,7 +2254,7 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Image Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .set (margins: 0)
+      .set (margins: .zero)
     do{
       let view_1_0 = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
       _ = view_1.appendView (view_1_0)
@@ -2414,7 +2414,7 @@ import AppKit
 
   final func productPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     let artworkDescriptionPage = self.ArtworkDescriptionPage ()
     let artworkMinimaPage = self.ArtworkMinimaPage ()
     let artworkDataPage = self.ArtworkDataPage ()
@@ -2552,14 +2552,14 @@ import AppKit
 
   final func ArtworkDataPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 20)
+      .set (margins: .large)
     let view_0 = AutoLayoutFlexibleSpace ()
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
-      .set (margins: 0)
+      .set (margins: .zero)
     do{
       let view_1_0 = AutoLayoutHorizontalStackView ()
-        .set (margins: 8)
+        .set (margins: .regular)
       do{
         let view_1_0_0 = AutoLayoutHorizontalStackView ()
           .setFirstBaselineAlignment ()
@@ -2579,11 +2579,11 @@ import AppKit
       }
       _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 8)
-        .set (rightMargin: 8)
+        .set (leftMargin: .regular)
+        .set (rightMargin: .regular)
       do{
         let view_1_1_0 = AutoLayoutVerticalStackView ()
-          .set (topMargin: 8)
+          .set (topMargin: .regular)
         do{
           let view_1_1_0_0 = AutoLayoutLabel (bold: true, size: .small)
             .bind_title (self.generatedFileCountString_property)
@@ -2596,7 +2596,7 @@ import AppKit
         let view_1_1_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
         _ = view_1_1.appendView (view_1_1_1)
         let view_1_1_2 = AutoLayoutVerticalStackView ()
-          .set (topMargin: 8)
+          .set (topMargin: .regular)
         do{
           let view_1_1_2_0 = AutoLayoutHorizontalStackView ()
           do{
@@ -2626,7 +2626,7 @@ import AppKit
           let view_1_1_2_2 = AutoLayoutHorizontalStackView ()
           do{
             let view_1_1_2_2_0 = AutoLayoutGridView2 ()
-              .set (leftMargin: 20)
+              .set (leftMargin: .large)
               .addFirstBaseLineAligned (left: self.computeImplicitView_404 (), right: self.computeImplicitView_405 ())
               .addFirstBaseLineAligned (left: self.computeImplicitView_406 (), right: self.computeImplicitView_407 ())
               .addFirstBaseLineAligned (left: self.computeImplicitView_408 (), right: self.computeImplicitView_409 ())
@@ -2636,7 +2636,7 @@ import AppKit
           }
           _ = view_1_1_2.appendView (view_1_1_2_2)
           let view_1_1_2_3 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_3_0 = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
               .set (enabled: false)
@@ -2647,7 +2647,7 @@ import AppKit
           }
           _ = view_1_1_2.appendView (view_1_1_2_3)
           let view_1_1_2_4 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_4_0 = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
               .set (enabled: false)
@@ -2658,7 +2658,7 @@ import AppKit
           }
           _ = view_1_1_2.appendView (view_1_1_2_4)
           let view_1_1_2_5 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_5_0 = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
               .set (enabled: false)
@@ -2673,7 +2673,7 @@ import AppKit
           let view_1_1_2_7 = AutoLayoutHorizontalStackView ()
           do{
             let view_1_1_2_7_0 = AutoLayoutGridView2 ()
-              .set (leftMargin: 20)
+              .set (leftMargin: .large)
               .addFirstBaseLineAligned (left: self.computeImplicitView_410 (), right: self.computeImplicitView_411 ())
               .addFirstBaseLineAligned (left: self.computeImplicitView_412 (), right: self.computeImplicitView_413 ())
               .addFirstBaseLineAligned (left: self.computeImplicitView_414 (), right: self.computeImplicitView_415 ())
@@ -2690,7 +2690,7 @@ import AppKit
           let view_1_1_2_9 = AutoLayoutHorizontalStackView ()
           do{
             let view_1_1_2_9_0 = AutoLayoutGridView2 ()
-              .set (leftMargin: 20)
+              .set (leftMargin: .large)
               .addFirstBaseLineAligned (left: self.computeImplicitView_422 (), right: self.computeImplicitView_423 ())
               .addFirstBaseLineAligned (left: self.computeImplicitView_424 (), right: self.computeImplicitView_425 ())
               .addFirstBaseLineAligned (left: self.computeImplicitView_426 (), right: self.computeImplicitView_427 ())
@@ -2700,7 +2700,7 @@ import AppKit
           }
           _ = view_1_1_2.appendView (view_1_1_2_9)
           let view_1_1_2_10 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_10_0 = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
               .set (enabled: false)
@@ -2711,7 +2711,7 @@ import AppKit
           }
           _ = view_1_1_2.appendView (view_1_1_2_10)
           let view_1_1_2_11 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_11_0 = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
               .set (enabled: false)
@@ -2722,7 +2722,7 @@ import AppKit
           }
           _ = view_1_1_2.appendView (view_1_1_2_11)
           let view_1_1_2_12 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_12_0 = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
               .set (enabled: false)
@@ -2735,7 +2735,7 @@ import AppKit
           let view_1_1_2_13 = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small, alignment: .left)
           _ = view_1_1_2.appendView (view_1_1_2_13)
           let view_1_1_2_14 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_14_0 = AutoLayoutCheckbox (title: "Vias", size: .small)
               .set (enabled: false)
@@ -2756,7 +2756,7 @@ import AppKit
           let view_1_1_2_15 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small, alignment: .left)
           _ = view_1_1_2.appendView (view_1_1_2_15)
           let view_1_1_2_16 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: 20)
+            .set (leftMargin: .large)
           do{
             let view_1_1_2_16_0 = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
               .set (enabled: false)
@@ -2787,7 +2787,7 @@ import AppKit
 
   final func ArtworkMinimaPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 20)
+      .set (margins: .large)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
@@ -2825,9 +2825,9 @@ import AppKit
       let view_1_0 = AutoLayoutFlexibleSpace ()
       _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutGridView2 ()
-        .set (leftMargin: 20)
-        .set (rightMargin: 20)
-        .set (topMargin: 8)
+        .set (leftMargin: .large)
+        .set (rightMargin: .large)
+        .set (topMargin: .regular)
         .addFirstBaseLineAligned (left: self.computeImplicitView_428 (), right: self.computeImplicitView_429 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_430 (), right: self.computeImplicitView_431 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_432 (), right: self.computeImplicitView_433 ())
@@ -2848,13 +2848,13 @@ import AppKit
 
   final func PDFSettingsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: 20)
+      .set (margins: .large)
     let view_0 = AutoLayoutVerticalStackView ()
     do{
       let view_0_0 = AutoLayoutStaticLabel (title: "Gerber Settings", bold: true, size: .regular, alignment: .left)
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 12)
+        .set (leftMargin: .large)
       do{
         let view_0_1_0 = AutoLayoutEnumPopUpButton (titles: GerberUnit.popupTitles (), size: .regular)
           .bind_selectedIndex (self.rootObject.mGerberProductUnit_property)
@@ -2864,7 +2864,7 @@ import AppKit
       let view_0_2 = AutoLayoutStaticLabel (title: "PDF Settings", bold: true, size: .regular, alignment: .left)
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: 12)
+        .set (leftMargin: .large)
       do{
         let view_0_3_0 = AutoLayoutHorizontalStackView ()
           .setFirstBaselineAlignment ()
@@ -2898,7 +2898,7 @@ import AppKit
 
   final func GenerationLogPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 20)
+      .set (margins: .large)
     let view_0 = AutoLayoutTextObserverView (size: .regular)
     self.mProductFileGenerationLogTextView = view_0 // Outlet
     _ = vStackView.appendView (view_0)
@@ -2911,7 +2911,7 @@ import AppKit
 
   private final func computeImplicitView_0 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
     do{
     }
     return view
@@ -3097,7 +3097,7 @@ import AppKit
 
   private final func computeImplicitView_17 () -> NSView {
     let view = AutoLayoutGridView2 ()
-      .set (margins: 8)
+      .set (margins: .regular)
       .addFirstBaseLineAligned (left: self.computeImplicitView_3 (), right: self.computeImplicitView_4 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_5 (), right: self.computeImplicitView_6 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_7 (), right: self.computeImplicitView_8 ())
@@ -3357,7 +3357,7 @@ import AppKit
 
   private final func computeImplicitView_41 () -> NSView {
     let view = AutoLayoutGridView2 ()
-      .set (margins: 8)
+      .set (margins: .regular)
       .addFirstBaseLineAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
       .add (single: self.computeImplicitView_22 ())
@@ -3780,7 +3780,7 @@ import AppKit
 
   private final func computeImplicitView_80 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
-      .set (margins: 8)
+      .set (margins: .regular)
       .set (width: 250)
     let boardShapeBaseView = self.BoardShapeBaseView ()
     let boardRectangularOutlineView = self.BoardRectangularOutlineView ()
@@ -5285,7 +5285,7 @@ import AppKit
 
   private final func computeImplicitView_192 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
-      .set (margins: 12)
+      .set (margins: .large)
     do{
       let view_0 = AutoLayoutCheckbox (title: "Export Tracks and Vias", size: .small)
         .expandableWidth ()
@@ -5329,7 +5329,7 @@ import AppKit
 
   private final func computeImplicitView_193 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
-      .set (margins: 12)
+      .set (margins: .large)
     do{
       let view_0 = AutoLayoutCheckbox (title: "Export Tracks and Vias", size: .small)
         .expandableWidth ()

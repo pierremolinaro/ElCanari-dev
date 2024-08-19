@@ -8,6 +8,10 @@ enum TextAlignment {
   left, right, center
 }
 
+enum MarginSize {
+  zero, small, regular, large
+}
+
 enum QRCodeCorrectionLevel {
   low, medium, quality, high
 }

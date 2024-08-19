@@ -84,16 +84,16 @@ class ALB_NSStackView : NSStackView {
   //  MARGINS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (spacing inValue : Int) -> Self {
-    let v = CGFloat (inValue)
+  final func set (spacing inValue : MarginSize) -> Self {
+    let v = inValue.floatValue
     self.spacing = v
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (margins inValue : Int) -> Self {
-    let v = CGFloat (inValue)
+  final func set (margins inValue : MarginSize) -> Self {
+    let v = inValue.floatValue
     self.edgeInsets.left   = v
     self.edgeInsets.top    = v
     self.edgeInsets.right  = v
@@ -103,29 +103,29 @@ class ALB_NSStackView : NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (topMargin inValue : Int) -> Self {
-    self.edgeInsets.top = CGFloat (inValue)
+  final func set (topMargin inValue : MarginSize) -> Self {
+    self.edgeInsets.top = inValue.floatValue
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (bottomMargin inValue : Int) -> Self {
-    self.edgeInsets.bottom = CGFloat (inValue)
+  final func set (bottomMargin inValue : MarginSize) -> Self {
+    self.edgeInsets.bottom = inValue.floatValue
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (leftMargin inValue : Int) -> Self {
-    self.edgeInsets.left = CGFloat (inValue)
+  final func set (leftMargin inValue : MarginSize) -> Self {
+    self.edgeInsets.left = inValue.floatValue
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (rightMargin inValue : Int) -> Self {
-    self.edgeInsets.right = CGFloat (inValue)
+  final func set (rightMargin inValue : MarginSize) -> Self {
+    self.edgeInsets.right = inValue.floatValue
     return self
   }
 

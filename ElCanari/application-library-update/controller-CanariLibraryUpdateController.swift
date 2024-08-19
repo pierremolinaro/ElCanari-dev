@@ -58,7 +58,7 @@ private let parallelDownloadCount = 3
     self.mLibraryUpdatePanel.title = "Library Update"
     self.mLibraryUpdatePanel.hasShadow = true
   //--- Main view
-    let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
+    let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
   //--- Informative text
     self.mInformativeText = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .left).expandableWidth ()
     self.mInformativeText.stringValue = inInformativeText

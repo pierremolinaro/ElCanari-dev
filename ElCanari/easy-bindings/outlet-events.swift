@@ -195,13 +195,13 @@ class EBOutletEvent : EBObserverProtocol {
       )
       self.mTransientEventExplorerWindow.title = "Transient Event Log"
       self.mTransientEventExplorerWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-      let mainVStack = AutoLayoutVerticalStackView ().set (topMargin: 8)
+      let mainVStack = AutoLayoutVerticalStackView ().set (topMargin: .regular)
       let hStack = AutoLayoutHorizontalStackView ()
       let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", size: .regular)
       _ = clearTransientEventLogButton.setClosureAction ({ self.mTransientEventExplorerTextView.string = "" })
       _ = hStack.appendView (clearTransientEventLogButton)
                 .appendFlexibleSpace ()
-                .set (leftMargin: 8)
+                .set (leftMargin: .regular)
       _ = mainVStack.appendView (hStack)
                     .appendView (self.mTransientEventExplorerTextView)
     //--- Assign main view to window

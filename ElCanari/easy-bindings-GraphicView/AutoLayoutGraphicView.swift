@@ -29,7 +29,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   init (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) {
     super.init ()
   //---
-    _ = self.set (spacing: 0)
+    _ = self.set (spacing: .zero)
   //---
   // §  self.mTopHStack.alignment = .firstBaseline
     _ = self.appendView (self.mTopHStack)

@@ -6,7 +6,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \pageMasterView vStack { }
 
-  stackView \DocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \pageMasterView ()
     newView componentsPage = \componentsPage ()
     newView libraryPage = \libraryPage ()
@@ -16,7 +16,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardOutlinePage = \boardOutlinePage ()
     newView boardContentsPage = \boardContentsPage ()
     newView productPage = \productPage ()
-    hStack set (margins: 8) {
+    hStack set (margins: .regular) {
       vStack {
         SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Components", tooltip: "", pageView: view componentsPage)
@@ -76,7 +76,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Components Tab
 
-  stackView \componentsPage hStack set (margins: 8) {
+  stackView \componentsPage hStack set (margins: .regular) {
     vStack {
       Label (bold: yes, size : .small) { expandableWidth () set (alignment: .center) $title self.componentCount }
       separator
@@ -157,7 +157,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Library Tab
 
-  stackView \libraryPage vStack set (margins: 8) {
+  stackView \libraryPage vStack set (margins: .regular) {
 //    newView libraryContentView = \LibraryContentView ()
     newView devicesInLibraryPage = \DevicesInLibraryPage ()
     newView fontsInLibraryPage = \FontsInLibraryPage ()
@@ -185,7 +185,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
     
-  stackView \DevicesInLibraryPage vStack set (margins: 8) expandableWidth () {
+  stackView \DevicesInLibraryPage vStack set (margins: .regular) expandableWidth () {
      hStack {
       Button (title: "Edit Selected Device", size: .regular) {
         set (shiftCommandKeyEquivalent: "e")
@@ -209,7 +209,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       space
     }
-    hStack set (spacing: 0) {
+    hStack set (spacing: .zero) {
       TableView (size : .regular, addControlButtons: no) {
         expandableWidth ()
         set (minimumWidth: 400)
@@ -218,14 +218,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       divider
       vStack {
         StaticLabel (title: "Selected Device", bold: no, size: .regular, alignment: .center)
-        hStack set (spacing: 0) {
+        hStack set (spacing: .zero) {
           CanariProjectDeviceTableView (size : .regular) {
             expandableWidth ()
             set (minimumWidth: 150)
             $array self.selectedDeviceNames
           }
           divider
-          vStack set (spacing: 0) {
+          vStack set (spacing: .zero) {
             CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
               expandableWidth ()
               set (minimumWidth: 150)
@@ -248,7 +248,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
 
-  stackView \FontsInLibraryPage vStack set (margins: 8) {
+  stackView \FontsInLibraryPage vStack set (margins: .regular) {
     hStack {
       Button (title: "Add Font…", size: .regular) {
         set (shiftCommandKeyEquivalent: "a")
@@ -332,7 +332,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Net Class Tab
 
-  stackView \netClassesPage vStack set (margins: 8) {
+  stackView \netClassesPage vStack set (margins: .regular) {
     hStack {
       Button (title: "New Net Class", size: .regular) {
         $run addNetClassAction
@@ -384,7 +384,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Net Tab
 
-  stackView \netListPage vStack set (margins: 8) {
+  stackView \netListPage vStack set (margins: .regular) {
     hStack {
       Label (bold: yes, size: .regular) { $title self.netCountString }
       Button (title: "Rename Net…", size: .regular) {
@@ -404,7 +404,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       space
     }
-    hStack set (spacing: 0) {
+    hStack set (spacing: .zero) {
       CanariNetDescriptionTableView [outlet mNetInfoTableView configurator netDescriptionTableViewConfigurator] {
         $netInfo root.netsDescription
       }
@@ -412,7 +412,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       vStack {
         StaticLabel (title: "Selected Net Inspector", bold: yes, size: .small, alignment: .center) { set (minWidth: 300) }
         VerticalScrollView (content:
-          vStack set (margins: 8) {
+          vStack set (margins: .regular) {
           }
         ) [configurator selectedNetVerticalScrollViewConfigurator]
       }
@@ -468,14 +468,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action appendNewSchematicDisplayInspectorAction ;
   action appendNewSchematicSheetInspectorAction ;
   
-  stackView \schematicsLateralBar vStack set (width: 250) set (spacing: 0) {
+  stackView \schematicsLateralBar vStack set (width: 250) set (spacing: .zero) {
     newView selectedSchematicElementInspectorView = \selectedSchematicElementInspectorView ()
     newView schematicsInspectorView = \schematicsInspectorView ()
     newView schematicHotKeysInspectorView = \schematicsHotKeysInspectorView ()
     newView insertSymbolInSchematicView = \schematicsInsertSymbolInSchematicView ()
     newView schematicsDisplayInspectorView = \schematicsDisplayInspectorView ()
     newView schematicsSheetInspectorView = \schematicsSheetInspectorView ()
-    hStack set (spacing: 0) set (margins: 8) {
+    hStack set (spacing: .zero) set (margins: .regular) {
 //      space
 //      PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
 //        add (item: menuItem "Select all Connected Elements"
@@ -489,7 +489,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       DragSourceButtonWithMenus (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
       space
     }
-    vStack set (leftMargin: 8) set (rightMargin: 8) {
+    vStack set (leftMargin: .regular) set (rightMargin: .regular) {
      Checkbox (title: "Enable Line Column Hilite", size : .small) { $value root.mSchematicEnableHiliteColumnAndRow }
      hStack {
         SegmentedControlWithPages (documentView: view schematicsInspectorView, equalWidth: no, size : .small) {
@@ -513,11 +513,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
   transient NSImage unplacedSymbolsSegmentImage dependsFrom self.unplacedSymbolsCount ;
 
-  stackView \schematicsInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
+  stackView \schematicsInspectorView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
   }  
   
 //--- Hot keys inspector
-  stackView \schematicsHotKeysInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
+  stackView \schematicsHotKeysInspectorView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicHotKeysInspectorAction }
       space
@@ -559,7 +559,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Unplaced symbols inspector
-  stackView \schematicsInsertSymbolInSchematicView vStack set (topMargin: 8) set (bottomMargin: 8) {
+  stackView \schematicsInsertSymbolInSchematicView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicInsertSymbolInspectorAction }
       space
@@ -574,7 +574,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
   
 //--- Grid and Flip inspector
-  stackView \schematicsDisplayInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
+  stackView \schematicsDisplayInspectorView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicDisplayInspectorAction }
       space
@@ -585,7 +585,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     TabView (size: .small) {
       addTab (title: "Grid, Flip", tooltip: "Grid and Flip", contentView : 
         GridView2 {
-          set (margins: 8)
+          set (margins: .regular)
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .center),
             right: StaticLabel (title: "50 mils", bold: yes, size : .small, alignment: .center)
@@ -626,7 +626,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addTab (title: "Colors, Font", tooltip: "Colors and Font", contentView:
         GridView2 {
-          set (margins: 8)
+          set (margins: .regular)
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForUnplacedComponentsForSchematic } 
@@ -694,7 +694,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Sheet inspector
-  stackView \schematicsSheetInspectorView  vStack set (topMargin: 8) set (bottomMargin: 8) {
+  stackView \schematicsSheetInspectorView  vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicSheetInspectorAction }
       space
@@ -782,7 +782,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //   Schematic selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView \selectedSchematicElementInspectorView vStack set (topMargin: 8) set (bottomMargin: 8) {
+  stackView \selectedSchematicElementInspectorView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     newView schematicsWireInspectorView = \schematicsWireInspectorView ()
     newView ncInSchematicsInspectorView = \ncInSchematicsInspectorView ()
     newView schematicsLabelInspectorView = \schematicsLabelInspectorView ()
@@ -1013,9 +1013,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action renameComponentFromSelectedSymbolAction ;
 
 //----------------- Board outline tab
-  stackView \boardOutlinePage hStack set (spacing: 0) {
+  stackView \boardOutlinePage hStack set (spacing: .zero) {
     VerticalScrollView (content:
-      vStack set (margins: 8) set (width: 250) {
+      vStack set (margins: .regular) set (width: 250) {
         newView boardShapeBaseView = \BoardShapeBaseView ()
         newView boardRectangularOutlineView = \BoardRectangularOutlineView ()
         newView boardBezierPathOutlineView = \BoardBezierPathOutlineView ()
@@ -1276,15 +1276,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient NSImage unplacedPackagesSegmentImage dependsFrom self.unplacedPackageCount ;
   transient String unplacedPackagesMessageString dependsFrom self.unplacedPackageCount ;
 
-  stackView \boardContentsPage hStack set (spacing: 0) {
+  stackView \boardContentsPage hStack set (spacing: .zero) {
     newView boardInspectorView = \BoardInspectorView ()
     newView selectedElementInspectorView = \selectedElementInspectorView ()
     newView insertComponentInBoardView = \insertComponentInBoardView ()
     newView boardDisplayInspectorView = \boardDisplayInspectorView ()
     newView boardRouterInspectorView = \boardRouterInspectorView ()
     newView boardERCInspectorView = \boardERCInspectorView ()
-    vStack set (width: 250) set (spacing: 0) {
-      hStack set (spacing: 0) set (margins: 8) {
+    vStack set (width: 250) set (spacing: .zero) {
+      hStack set (spacing: .zero) set (margins: .regular) {
         DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.") [configurator addBoardImageButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.") [configurator addQRCodeButton]
@@ -1298,7 +1298,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
       }
       vStack {
-        hStack set (leftMargin: 8) set (rightMargin: 8) {
+        hStack set (leftMargin: .regular) set (rightMargin: .regular) {
           SegmentedControlWithPages (documentView: view boardInspectorView, equalWidth: no, size : .small) {
             expandableWidth ()
             addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: view selectedElementInspectorView)
@@ -1345,7 +1345,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action appendNewInsertComponentInBoardInspectorAction ;
   action prependNewInsertComponentInBoardInspectorAction ;
   
-  stackView \insertComponentInBoardView vStack set (margins: 8) {
+  stackView \insertComponentInBoardView vStack set (margins: .regular) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewInsertComponentInBoardInspectorAction }
       space
@@ -1364,7 +1364,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action prependNewBoardDisplayInspectorAction ;
   action appendNewBoardDisplayInspectorAction ;
 
-  stackView \boardDisplayInspectorView vStack set (margins: 8) set (rightMargin: 0) {
+  stackView \boardDisplayInspectorView vStack set (margins: .regular) set (rightMargin: .zero) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewBoardDisplayInspectorAction }
       space
@@ -1566,7 +1566,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action prependNewBoardSettingsInspectorAction ;
   action appendNewBoardSettingsInspectorAction ;
   
-  stackView \boardRouterInspectorView vStack set (margins: 8) {
+  stackView \boardRouterInspectorView vStack set (margins: .regular) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewBoardSettingsInspectorAction }
       space
@@ -1618,7 +1618,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         add (single:
           TabView (size: .small) {
             addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
-              vStack set (margins: 12) {
+              vStack set (margins: .large) {
                 Checkbox (title: "Export Tracks and Vias", size: .small) {
                   expandableWidth () $value root.mExportExistingTracksAndVias
                 }
@@ -1637,7 +1637,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
               }
             )
             addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
-              vStack set (margins: 12) {
+              vStack set (margins: .large) {
                 Checkbox (title: "Export Tracks and Vias", size: .small) {
                   expandableWidth () $value root.mExportExistingTracksAndVias
                 }
@@ -1722,14 +1722,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action prependNewBoardERCCheckingInspectorAction ;
   action appendNewBoardERCCheckingInspectorAction ;
   
-  stackView \boardERCInspectorView vStack set (margins: 8) {
+  stackView \boardERCInspectorView vStack set (margins: .regular) {
     StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
     Checkbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small) {
       set (width: 200)
       $value root.mCheckClearanceBetweenPadsOfSameNet
     }
     Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
-    vStack set (spacing: 0) {
+    vStack set (spacing: .zero) {
       TextObserverView (size: .small) [outletArray mERCLogTextViewArray]
       divider
       CanariIssueTableView (hasHideIssueButton : yes) [
@@ -1744,7 +1744,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //   Board selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView \selectedElementInspectorView vStack set (margins: 8) {
+  stackView \selectedElementInspectorView vStack set (margins: .regular) {
     newView boardTrackInspectorView = \BoardTrackInspectorView ()
     newView boardConnectorInspectorView = \BoardConnectorInspectorView ()
     newView boardLineInspectorView = \BoardLineInspectorView ()
@@ -2060,7 +2060,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \BoardImageInspectorView vStack {
     StaticLabel (title: "Image Inspector", bold: yes, size: .small, alignment: .center)
-    hStack set (margins: 0) {
+    hStack set (margins: .zero) {
       StaticLabel (title: "Display", bold: no, size: .small, alignment: .right)
       EnumPopUpButton (titles: enum BoardImageDisplay.popupTitles, size: .small) {
         $selectedIndex #boardImageSelectionController.mImageDisplay
@@ -2498,7 +2498,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   //     Product Page
   //············································································
 
-  stackView \productPage vStack set (margins: 8) {
+  stackView \productPage vStack set (margins: .regular) {
     newView artworkDescriptionPage = \ArtworkDescriptionPage ()
     newView artworkMinimaPage = \ArtworkMinimaPage ()
     newView artworkDataPage = \ArtworkDataPage ()
@@ -2602,10 +2602,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView \ArtworkDataPage hStack set (margins: 20) {
+  stackView \ArtworkDataPage hStack set (margins: .large) {
     space
-    vStack set (margins: 0) {
-      hStack set (margins: 8) {
+    vStack set (margins: .zero) {
+      hStack set (margins: .regular) {
         hStack setFirstBaselineAlignment ()  {
           StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
           Label (bold: yes, size : .small) { $title root.drillDataFileExtension }
@@ -2613,13 +2613,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
         space
       }
-      hStack set (leftMargin: 8) set (rightMargin: 8) {
-        vStack set (topMargin: 8) {
+      hStack set (leftMargin: .regular) set (rightMargin: .regular) {
+        vStack set (topMargin: .regular) {
           Label (bold: yes, size : .small) { $title self.generatedFileCountString }
           TableView (size : .small, addControlButtons: no) { $tableValue #mDataController }
         }
         separator
-        vStack set (topMargin: 8) {
+        vStack set (topMargin: .regular) {
           hStack {
             hStack setFirstBaselineAlignment () {
               StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
@@ -2634,7 +2634,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .left)
           hStack {
             GridView2 {
-              set (leftMargin: 20)
+              set (leftMargin: .large)
               addFirstBaseLineAligned (
                 left: Checkbox (title: "Front Side Images", size : .small) {
                   set (enabled: no)
@@ -2668,20 +2668,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
             space
           }
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Front Side Component Names", size : .small) {
               set (enabled: no)
               $value #mDataSelection.drawComponentNamesTopSide
             } space
           }
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Front Side Component Values", size : .small) {
               set (enabled: no)
               $value #mDataSelection.drawComponentValuesTopSide
             }
             space
           }
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Front Side Package Legends", size : .small) {
               set (enabled: no)
               $value #mDataSelection.drawPackageLegendTopSide
@@ -2691,7 +2691,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
           hStack {
             GridView2 {
-              set (leftMargin: 20)
+              set (leftMargin: .large)
               addFirstBaseLineAligned (
                 left:  Checkbox (title: "Traversing Pads", size : .small) {
                   set (enabled: no)
@@ -2759,7 +2759,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .left)
           hStack {
             GridView2 {
-              set (leftMargin: 20)
+              set (leftMargin: .large)
               addFirstBaseLineAligned (
                 left: Checkbox (title: "Back Side Images", size : .small) {
                   set (enabled: no)
@@ -2793,26 +2793,26 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
             space
           }
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Back Side Component Names", size : .small) {
               set (enabled: no)
               $value #mDataSelection.drawComponentNamesBottomSide
             } space
           }
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Back Side Component Values", size : .small) {
               set (enabled: no)
               $value #mDataSelection.drawComponentValuesBottomSide
             } space
           }
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Back Side Package Legends", size : .small) {
               set (enabled: no)
               $value #mDataSelection.drawPackageLegendBottomSide
              } space
           }
           StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .left)
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Vias", size : .small) {
               set (enabled: no)
               $value #mDataSelection.drawVias
@@ -2827,7 +2827,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
             space
           }
-//          hStack set (leftMargin: 20) setFirstBaselineAlignment () {
+//          hStack set (leftMargin: .large) setFirstBaselineAlignment () {
 //            Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) {
 //              set (enabled: no)
 //              $value #mDataSelection.drawPadHolesInPDF
@@ -2837,7 +2837,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //            }
 //          }
           StaticLabel (title: "Option", bold: yes, size : .small, alignment: .left)
-          hStack set (leftMargin: 20) {
+          hStack set (leftMargin: .large) {
             Checkbox (title: "Horizontal Mirror", size : .small) {
               set (enabled: no)
               $value #mDataSelection.horizontalMirror
@@ -2864,7 +2864,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView \ArtworkMinimaPage vStack set (margins: 20) {
+  stackView \ArtworkMinimaPage vStack set (margins: .large) {
     hStack {
       space
       vStack {
@@ -2884,7 +2884,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       space
       GridView2 {
-        set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
+        set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular)
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
@@ -2911,16 +2911,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView \PDFSettingsPage hStack set (margins: 20) {
+  stackView \PDFSettingsPage hStack set (margins: .large) {
     vStack {
       StaticLabel (title: "Gerber Settings", bold: yes, size: .regular, alignment: .left)
-      vStack set (leftMargin: 12) {
+      vStack set (leftMargin: .large) {
         EnumPopUpButton (titles: enum GerberUnit.popupTitles, size: .regular) {
           $selectedIndex root.mGerberProductUnit
         }
       }
       StaticLabel (title: "PDF Settings", bold: yes, size: .regular, alignment: .left)
-      vStack set (leftMargin: 12) {
+      vStack set (leftMargin: .large) {
         hStack setFirstBaselineAlignment () {
           ColorWell { $color root.mPDFBoardBackgroundColor }
           StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)
@@ -2937,7 +2937,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView \GenerationLogPage vStack set (margins: 20) {
+  stackView \GenerationLogPage vStack set (margins: .large) {
     TextObserverView (size: .regular) [outlet mProductFileGenerationLogTextView]
   }
 

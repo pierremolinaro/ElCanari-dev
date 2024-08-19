@@ -8,11 +8,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
  
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView symbolPage = \SymbolPage ()
     newView infosPage = \InfosPage ()
-    hStack set (margins: 8) {
+    hStack set (margins: .regular) {
       vStack {
         SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size: .regular) {
           addPage (title: "Symbol", tooltip: "Symbol Editor", pageView: view symbolPage)
@@ -73,15 +73,15 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   stackView \SymbolPageInspectorMasterView vStack {}
 
-  stackView \SymbolPage hStack set (margins: 0) set (spacing: 0) {
+  stackView \SymbolPage hStack set (margins: .zero) set (spacing: .zero) {
     newView symbolPageInspectorMasterView = \SymbolPageInspectorMasterView ()
     newView selectedObjectsInspectorView = \SelectedObjectsInspectorView ()
     newView gridZoomInspectorView = \GridZoomInspectorView ()
     newView displayInspectorView = \DisplayInspectorView ()
     newView issuesInspectorView = \IssuesInspectorView ()
     vStack set (width: 250) {
-      vStack set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8) set (spacing: 12) {
-        hStack set (spacing: 0) {
+      vStack set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) set (spacing: .large) {
+        hStack set (spacing: .zero) {
           DragSourceButton (tooltip: "Add Segment") [configurator addSymbolSegment] { $image self.addSegmentButtonImage }
           space
           DragSourceButton (tooltip: "Add Bezier") [configurator addSymbolBezier] { $image self.addBezierButtonImage }
@@ -98,7 +98,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
         }
      }
      separator
-     vStack set (leftMargin: 20) set (rightMargin: 20) {
+     vStack set (leftMargin: .large) set (rightMargin: .large) {
        SegmentedControlWithPages (documentView: view symbolPageInspectorMasterView, equalWidth: yes, size: .small)
           [outlet mSymbolInspectorSegmentedControl configurator symbolPageSegmentedControl] {
           expandableWidth ()
@@ -111,7 +111,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
           $segmentTitle self.segmentedControlSegmentIssueString (segmentIndex : 3)
          }
       }
-      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+      vStack set (leftMargin: .large) set (rightMargin: .large) set (bottomMargin: .large) set (spacing: .large) {
         view symbolPageInspectorMasterView
       }
     }
@@ -303,7 +303,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 //   PAGE   INFOS
 //----------------------------------------------------------------------------------------------------------------------
 
- stackView \InfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
+ stackView \InfosPage vStack set (leftMargin: .large) set (rightMargin: .large) set (bottomMargin: .large) set (topMargin: .regular) {
     hStack {
       Button (title: "Reset Version and Signature", size: .small) { $run resetVersionAction }
       space

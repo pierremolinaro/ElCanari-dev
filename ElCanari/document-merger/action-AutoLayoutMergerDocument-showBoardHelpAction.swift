@@ -20,7 +20,7 @@ extension AutoLayoutMergerDocument {
       defer: false
     )
     panel.hasShadow = true
-    let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
+    let mainView = AutoLayoutHorizontalStackView ().set (margins: .large)
     _ = mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
     let rightColumn = AutoLayoutVerticalStackView ()
     let text = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: false, verticalScroller: false)

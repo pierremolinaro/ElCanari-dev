@@ -37,15 +37,6 @@ class ALB_NSStackView : NSView {
 
   //--------------------------------------------------------------------------------------------------------------------
 
-  enum MarginSize : Int {
-    case none = 0
-    case small = 4
-    case regular = 8
-    case large = 12
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-
   enum HorizontalLayoutInVerticalCollectionView {
     case center
     case weakFill
@@ -128,20 +119,12 @@ class ALB_NSStackView : NSView {
   private(set) var mRightMargin : CGFloat = 0.0
   private(set) var mTopMargin : CGFloat = 0.0
   private(set) var mBottomMargin : CGFloat = 0.0
-  private(set) var mSpacing : CGFloat = 8.0
-
-  //····················································································································
-
-  final func set (spacing inValue : Int) -> Self {
-    self.mSpacing = CGFloat (inValue)
-    self.invalidateIntrinsicContentSize ()
-    return self
-  }
+  private(set) var mSpacing : CGFloat = 0.0
 
   //····················································································································
 
   final func set (spacing inValue : MarginSize) -> Self {
-    self.mSpacing = CGFloat (inValue.rawValue)
+    self.mSpacing = inValue.floatValue
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -149,7 +132,7 @@ class ALB_NSStackView : NSView {
   //····················································································································
 
   final func set (margins inValue : MarginSize) -> Self {
-    let v = CGFloat (inValue.rawValue)
+    let v = inValue.floatValue
     self.mLeftMargin   = v
     self.mBottomMargin = v
     self.mTopMargin    = v
@@ -161,7 +144,7 @@ class ALB_NSStackView : NSView {
   //····················································································································
 
   final func set (topMargin inValue : MarginSize) -> Self {
-    self.mTopMargin = CGFloat (inValue.rawValue)
+    self.mTopMargin = inValue.floatValue
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -169,7 +152,7 @@ class ALB_NSStackView : NSView {
   //····················································································································
 
   final func set (bottomMargin inValue : MarginSize) -> Self {
-    self.mBottomMargin = CGFloat (inValue.rawValue)
+    self.mBottomMargin = inValue.floatValue
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -177,7 +160,7 @@ class ALB_NSStackView : NSView {
   //····················································································································
 
   final func set (leftMargin inValue : MarginSize) -> Self {
-    self.mLeftMargin = CGFloat (inValue.rawValue)
+    self.mLeftMargin = inValue.floatValue
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -185,51 +168,7 @@ class ALB_NSStackView : NSView {
   //····················································································································
 
   final func set (rightMargin inValue : MarginSize) -> Self {
-    self.mRightMargin = CGFloat (inValue.rawValue)
-    self.invalidateIntrinsicContentSize ()
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (margins inValue : Int) -> Self {
-    let v = CGFloat (inValue)
-    self.mTopMargin    = v
-    self.mLeftMargin   = v
-    self.mBottomMargin = v
-    self.mRightMargin  = v
-    self.invalidateIntrinsicContentSize ()
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (topMargin inValue : Int) -> Self {
-    self.mTopMargin = CGFloat (inValue)
-    self.invalidateIntrinsicContentSize ()
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (bottomMargin inValue : Int) -> Self {
-    self.mBottomMargin = CGFloat (inValue)
-    self.invalidateIntrinsicContentSize ()
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (leftMargin inValue : Int) -> Self {
-    self.mLeftMargin = CGFloat (inValue)
-    self.invalidateIntrinsicContentSize ()
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (rightMargin inValue : Int) -> Self {
-    self.mRightMargin = CGFloat (inValue)
+    self.mRightMargin = inValue.floatValue
     self.invalidateIntrinsicContentSize ()
     return self
   }

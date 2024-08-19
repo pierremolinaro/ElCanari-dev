@@ -151,7 +151,7 @@ extension AutoLayoutProjectDocument {
       let renameContext = RenameContext (component: inComponent, document: self, panel: panel)
       let currentPrefixSet = self.getComponentNamePrefixes ()
     //---
-      let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
+      let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
     //---
       _ = layoutView.appendView (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()

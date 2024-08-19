@@ -1,5 +1,5 @@
 //
-//  PMLayoutCompressionConstraintPriority.swift
+//  PMLayoutCompressionConstraintPriorities.swift
 //  essai-gridview
 //
 //  Created by Pierre Molinaro on 01/11/2023.

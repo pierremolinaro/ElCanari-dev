@@ -26,7 +26,7 @@ extension AutoLayoutFontDocument {
         size: .regular,
         sheet: panel
       )
-      let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
+      let mainView = AutoLayoutHorizontalStackView ().set (margins: .large)
       let leftColumn = AutoLayoutVerticalStackView ()
       _ = leftColumn.appendFlexibleSpace ()
       _ = leftColumn.appendView (AutoLayoutApplicationImage ())
