@@ -332,7 +332,6 @@ fileprivate struct EBAllocationItemDisplay {
           right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
             .expandableWidth ()
         )
-     //   .addSeparator ()
       _ = mainVStack.appendView (hStack)
       mainVStack.appendHorizontalSeparator ()
       let gridView = AutoLayoutGridView2 ().set (margins: .large).set (topMargin: .large).set (spacing: .regular)

@@ -25,7 +25,7 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func appendDebugAutoLayoutMenuItem (_ inMenu : NSMenu) {
-  inMenu.addItem (gDebugAutoLayout.menuItem)
+  inMenu.addItem (gDebugAutoLayout.mDebugMenuItem)
   inMenu.addItem (gDebugAutoLayout.responderKeyChainItem)
   inMenu.addItem (gDebugAutoLayout.showViewCurrentValuesItem)
 }
@@ -64,7 +64,7 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 
   var mDebugAutoLayout = UserDefaults.standard.bool (forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
 
-  let menuItem = NSMenuItem (
+  let mDebugMenuItem = NSMenuItem (
     title: "Debug Auto Layout",
     action: #selector (Self.toggleDebugAutoLayout (_:)),
     keyEquivalent: ""
@@ -95,7 +95,8 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
-    self.menuItem.target = self
+    self.mDebugMenuItem.target = self
+    self.mDebugMenuItem.state = self.mDebugAutoLayout ? .on : .off
     self.responderKeyChainItem.target = self
     self.showViewCurrentValuesItem.target = self
     noteObjectAllocation (self)
@@ -112,7 +113,7 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
   @objc func toggleDebugAutoLayout (_ inUnusedSender : Any?) {
     self.mDebugAutoLayout.toggle ()
     UserDefaults.standard.setValue (self.mDebugAutoLayout, forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
-    self.menuItem.state = self.mDebugAutoLayout ? .on : .off
+    self.mDebugMenuItem.state = self.mDebugAutoLayout ? .on : .off
     for window in NSApplication.shared.windows {
       if let mainView = window.contentView {
         self.propagateNeedsDisplay (mainView)

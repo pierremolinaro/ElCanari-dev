@@ -4,17 +4,17 @@
 //
 //  Created by Pierre Molinaro on 01/11/2023.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 // http://marginalfutility.net/2018/07/01/alignment-rects/
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 class ALB_NSStackView : NSView {
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     self.mHorizontalDisposition = .fill
@@ -24,7 +24,7 @@ class ALB_NSStackView : NSView {
     self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (horizontal inHorizontalDisposition : HorizontalLayoutInVerticalCollectionView,
         vertical inVerticalDisposition : VerticalLayoutInHorizontalCollectionView) {
@@ -35,7 +35,7 @@ class ALB_NSStackView : NSView {
     self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum HorizontalLayoutInVerticalCollectionView {
     case center
@@ -46,7 +46,7 @@ class ALB_NSStackView : NSView {
     case right
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   enum VerticalLayoutInHorizontalCollectionView {
     case center
@@ -58,12 +58,12 @@ class ALB_NSStackView : NSView {
     case bottom
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mHorizontalDisposition : HorizontalLayoutInVerticalCollectionView
   let mVerticalDisposition : VerticalLayoutInHorizontalCollectionView
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init?(coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
@@ -76,11 +76,11 @@ class ALB_NSStackView : NSView {
     objectDidDeinitSoReleaseHiddenControllers ()
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 //  override var intrinsicContentSize : NSSize { NSSize (width: 1, height: 1) }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
@@ -88,7 +88,7 @@ class ALB_NSStackView : NSView {
     return self
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func prependView (_ inView : NSView) -> Self {
     self.addSubview (inView, positioned: .below, relativeTo: nil)
@@ -96,7 +96,7 @@ class ALB_NSStackView : NSView {
     return self
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendFlexibleSpace () -> Self {
     self.addSubview (AutoLayoutFlexibleSpace ())
@@ -104,7 +104,7 @@ class ALB_NSStackView : NSView {
     return self
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func removeView (_ inView : NSView) {
     for view in self.subviews {
@@ -223,8 +223,8 @@ class ALB_NSStackView : NSView {
     return inView is AutoLayoutFlexibleSpace
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
