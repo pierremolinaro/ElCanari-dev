@@ -78,10 +78,6 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override var intrinsicContentSize : NSSize { NSSize (width: 1, height: 1) }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
     self.invalidateIntrinsicContentSize ()
@@ -99,7 +95,8 @@ class ALB_NSStackView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendFlexibleSpace () -> Self {
-    self.addSubview (AutoLayoutFlexibleSpace ())
+    let view = AutoLayoutFlexibleSpace ()
+    self.addSubview (view)
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -179,7 +176,7 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var isFlipped : Bool { return false }
+//  override var isFlipped : Bool { return false }
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
   // Draw
@@ -188,19 +185,18 @@ class ALB_NSStackView : NSView {
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
     if debugAutoLayout () && !self.bounds.isEmpty {
-    //--- Top margin
       DEBUG_MARGIN_COLOR.setFill ()
       if self.mBottomMargin > 0.0 {
         var r = self.bounds
-//        r.origin.y += r.size.height - self.mBottomMargin
+        r.origin.y += r.size.height - self.mBottomMargin
         r.size.height = self.mBottomMargin
         NSBezierPath.fill (r)
       }
-//      if self.mTopMargin > 0.0 {
-//        var r = self.bounds
-//        r.size.height = self.mTopMargin
-//        NSBezierPath.fill (r)
-//      }
+      if self.mTopMargin > 0.0 {
+        var r = self.bounds
+        r.size.height = self.mTopMargin
+        NSBezierPath.fill (r)
+      }
       if self.mLeftMargin > 0.0 {
         var r = self.bounds
         r.size.width = self.mLeftMargin
@@ -225,26 +221,6 @@ class ALB_NSStackView : NSView {
 
   final func isFlexibleSpace (_ inView : NSView) -> Bool {
     return inView is AutoLayoutFlexibleSpace
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override final func observeValue (forKeyPath inKeyPath : String?,
-                                    of inObject :  Any?,
-                                    change inChange : [NSKeyValueChangeKey : Any]?,
-                                    context inContext : UnsafeMutableRawPointer?) {
-    if inKeyPath == "hidden" {
-      var allAreHidden = true
-      for view in self.subviews {
-        if !view.isHidden && !(view is AutoLayoutFlexibleSpace) {
-          allAreHidden = false
-        }
-      }
-      if self.isHidden != allAreHidden {
-        self.isHidden = allAreHidden
-      }
-    }
-    super.observeValue (forKeyPath: inKeyPath, of: inObject, change: inChange, context: inContext)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
