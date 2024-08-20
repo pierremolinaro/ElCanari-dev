@@ -1,8 +1,8 @@
 //
-//  AutoLayoutVerticalStackView-horizontal-divider.swift
-//  ElCanari
+//  AutoLayoutVerticalStackView-divider.swift
+//  essai-gridview
 //
-//  Created by Pierre Molinaro on 08/10/2023.
+//  Created by Pierre Molinaro on 30/10/2023.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -13,27 +13,44 @@ import AppKit
 extension AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // appendVerticalDivider
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendHorizontalDivider () -> Self {
-    let divider = Self.HorizontalDivider ()
-    _ = self.appendView (divider)
+  final func appendHorizontalDivider (drawFrame inDrawFrame : Bool,
+                                      canResizeWindow inFlag : Bool) -> Self {
+    let divider = Self.HorizontalDivider (drawFrame: inDrawFrame, canResizeWindow: inFlag)
+    self.addSubview (divider)
     return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func isHorizontalDivider (_ inView : NSView) -> Bool {
+    return inView is HorizontalDivider
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // HorizontalDivider internal class
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   final class HorizontalDivider : ALB_NSView {
+  final class HorizontalDivider : NSView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    override init () {
-      super.init ()
-      self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
-      self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-      self.setContentCompressionResistancePriority (.required, for: .vertical)
-      self.setContentHuggingPriority (.required, for: .vertical)
+    override var isFlipped : Bool { true }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    private let mDrawFrame : Bool
+    private let mCanResizeWindow : Bool
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    init (drawFrame inDrawFrame : Bool = true, canResizeWindow inFlag : Bool = false) {
+      self.mDrawFrame = inDrawFrame
+      self.mCanResizeWindow = inFlag
+      super.init (frame: .zero)
+      self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .highest)
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -44,16 +61,36 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    override var intrinsicContentSize : NSSize { return NSSize (width: 0.0, height: 10.0) }
+    override var intrinsicContentSize: NSSize { return NSSize (width: 1.0, height: 10.0) }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    private static let mLayoutSettings = AutoLayoutViewSettings (
+      vLayoutInHorizontalContainer: .weakFill,
+      hLayoutInVerticalContainer: .weakFillIgnoringMargins
+    )
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override var pmLayoutSettings : AutoLayoutViewSettings { Self.mLayoutSettings }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func draw (_ inDirtyRect : NSRect) {
+      if self.mDrawFrame {
+        let r = self.bounds.insetBy (dx: 0.5, dy: 0.5)
+        if !r.isEmpty {
+          NSColor.separatorColor.setStroke ()
+          NSBezierPath.stroke (r)
+        }
+      }
       let s : CGFloat = 6.0
       let r = NSRect (x: NSMidX (self.bounds) - s / 2.0, y: NSMidY (self.bounds) - s / 2.0, width: s, height: s)
-      NSColor.separatorColor.setFill ()
-      let bp = NSBezierPath (ovalIn: r)
-      bp.fill ()
+      if !r.isEmpty {
+        NSColor.separatorColor.setFill ()
+        let bp = NSBezierPath (ovalIn: r)
+        bp.fill ()
+      }
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -102,10 +139,9 @@ extension AutoLayoutVerticalStackView {
       if let vStack = self.superview as? AutoLayoutVerticalStackView {
         vStack.removeConstraints (self.mDividerConstraints)
         self.mDividerConstraints.removeAll (keepingCapacity: true)
-        let priority = NSLayoutConstraint.Priority.dragThatCannotResizeWindow
+        let priority : PMLayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
         let dY = self.mCurrentMouseDraggedLocationY - self.mInitialMouseDownLocationY
         let newTop = self.mDividerInitialTopLocationY + (vStack.isFlipped ? dY : -dY)
-        //Swift.print ("newBottom \(newBottom), dY \(dY)")
         self.mDividerConstraints.add (topOf: vStack, equalToTopOf: self, plus: newTop, priority: priority)
         vStack.addConstraints (self.mDividerConstraints)
       }
@@ -113,7 +149,7 @@ extension AutoLayoutVerticalStackView {
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-    // Mouse moved events, cursor display
+    // Tracking mouse moved events
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     var mTrackingArea : NSTrackingArea? = nil
@@ -140,19 +176,8 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-//    private func updateCursor () {
-//      if self.constraintIsSatisfied () {
-//        NSCursor.resizeUpDown.set ()
-//      }else{
-//        NSCursor.resizeDown.set ()
-//      }
-//    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
     override func mouseEntered (with inEvent : NSEvent) {
       NSCursor.resizeUpDown.set ()
-//      self.updateCursor ()
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -160,20 +185,6 @@ extension AutoLayoutVerticalStackView {
     override func mouseExited (with inEvent : NSEvent) {
       NSCursor.arrow.set ()
     }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-//    private func constraintIsSatisfied () -> Bool {
-//       if let constraint = self.mDividerConstraint, let vStack = self.superview as? AutoLayoutVerticalStackView {
-//         let p = vStack.convert (NSPoint (), from: self)
-//         let constant = constraint.constant
-//         let satisfied = (constant + p.y) > 0.0
-//         // Swift.print ("\(constant), p.y \(p.y) satisfied \(satisfied)")
-//         return satisfied
-//       }else{
-//         return true
-//       }
-//    }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

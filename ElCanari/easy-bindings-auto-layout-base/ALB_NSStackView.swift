@@ -1,27 +1,71 @@
+//
+//  PMAbstractStackView.swift
+//  essai-gridview
+//
+//  Created by Pierre Molinaro on 01/11/2023.
+//
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+// http://marginalfutility.net/2018/07/01/alignment-rects/
+//--------------------------------------------------------------------------------------------------
 
-class ALB_NSStackView : NSStackView {
+class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   INIT
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (orientation inOrientation : NSUserInterfaceLayoutOrientation) {
+  init () {
+    self.mHorizontalDisposition = .fill
+    self.mVerticalDisposition = .fill
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.orientation = inOrientation
-    self.distribution = .fill
+    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  required init? (coder : NSCoder) {
+  init (horizontal inHorizontalDisposition : HorizontalLayoutInVerticalCollectionView,
+        vertical inVerticalDisposition : VerticalLayoutInHorizontalCollectionView) {
+    self.mHorizontalDisposition = inHorizontalDisposition
+    self.mVerticalDisposition = inVerticalDisposition
+    super.init (frame: .zero)
+    noteObjectAllocation (self)
+    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  enum HorizontalLayoutInVerticalCollectionView {
+    case center
+    case weakFill
+    case weakFillIgnoringMargins
+    case fill
+    case left
+    case right
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  enum VerticalLayoutInHorizontalCollectionView {
+    case center
+    case weakFill
+    case weakFillIgnoringMargins
+    case fill
+    case lastBaseline
+    case top
+    case bottom
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  let mHorizontalDisposition : HorizontalLayoutInVerticalCollectionView
+  let mVerticalDisposition : VerticalLayoutInHorizontalCollectionView
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  required init?(coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -30,132 +74,153 @@ class ALB_NSStackView : NSStackView {
   deinit {
     noteObjectDeallocation (self)
     objectDidDeinitSoReleaseHiddenControllers ()
-    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func prependView (_ inView : NSView) -> Self {
-    self.insertView (inView, at: 0, in: .leading)
+//  override var intrinsicContentSize : NSSize { NSSize (width: 1, height: 1) }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func appendView (_ inView : NSView) -> Self {
+    self.addSubview (inView)
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendView (_ inView : NSView) -> Self {
-    self.addView (inView, in: .leading)
+  func prependView (_ inView : NSView) -> Self {
+    self.addSubview (inView, positioned: .below, relativeTo: nil)
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendFlexibleSpace () -> Self {
-    self.addView (AutoLayoutFlexibleSpace (), in: .leading)
+    self.addSubview (AutoLayoutFlexibleSpace ())
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   DRAW
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draw (_ inDirtyRect : NSRect) {
-    if debugAutoLayout () {
-      var r = self.bounds
-      r.origin.x += self.edgeInsets.left
-      r.origin.y += self.edgeInsets.bottom
-      r.size.width -= self.edgeInsets.left + self.edgeInsets.right
-      r.size.height -= self.edgeInsets.top + self.edgeInsets.bottom
-      var bp = NSBezierPath (rect: r)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      let array : [CGFloat] = [1.0, 1.0]
-      bp.setLineDash (array, count: array.count, phase: 0.0)
-      bp.stroke ()
-      bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      bp.stroke ()
+  final func removeView (_ inView : NSView) {
+    for view in self.subviews {
+      if view === inView {
+        inView.removeFromSuperview ()
+      }
     }
-    super.draw (inDirtyRect)
+    self.invalidateIntrinsicContentSize ()
   }
-  
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  //····················································································································
   //  MARGINS
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //····················································································································
+
+  private(set) var mLeftMargin : CGFloat = 0.0
+  private(set) var mRightMargin : CGFloat = 0.0
+  private(set) var mTopMargin : CGFloat = 0.0
+  private(set) var mBottomMargin : CGFloat = 0.0
+  private(set) var mSpacing : CGFloat = MarginSize.regular.floatValue
+
+  //····················································································································
 
   final func set (spacing inValue : MarginSize) -> Self {
-    let v = inValue.floatValue
-    self.spacing = v
+    self.mSpacing = inValue.floatValue
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //····················································································································
 
   final func set (margins inValue : MarginSize) -> Self {
     let v = inValue.floatValue
-    self.edgeInsets.left   = v
-    self.edgeInsets.top    = v
-    self.edgeInsets.right  = v
-    self.edgeInsets.bottom = v
+    self.mLeftMargin   = v
+    self.mBottomMargin = v
+    self.mTopMargin    = v
+    self.mRightMargin  = v
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //····················································································································
 
   final func set (topMargin inValue : MarginSize) -> Self {
-    self.edgeInsets.top = inValue.floatValue
+    self.mTopMargin = inValue.floatValue
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //····················································································································
 
   final func set (bottomMargin inValue : MarginSize) -> Self {
-    self.edgeInsets.bottom = inValue.floatValue
+    self.mBottomMargin = inValue.floatValue
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //····················································································································
 
   final func set (leftMargin inValue : MarginSize) -> Self {
-    self.edgeInsets.left = inValue.floatValue
+    self.mLeftMargin = inValue.floatValue
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //····················································································································
 
   final func set (rightMargin inValue : MarginSize) -> Self {
-    self.edgeInsets.right = inValue.floatValue
+    self.mRightMargin = inValue.floatValue
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+  // Draw
+  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-  override final func observeValue (forKeyPath inKeyPath : String?,
-                                    of inObject :  Any?,
-                                    change inChange : [NSKeyValueChangeKey : Any]?,
-                                    context inContext : UnsafeMutableRawPointer?) {
-    if inKeyPath == "hidden" {
-      var allAreHidden = true
-      for view in self.subviews {
-        if !view.isHidden && !(view is AutoLayoutFlexibleSpace) {
-          allAreHidden = false
-        }
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if debugAutoLayout () && !self.bounds.isEmpty {
+    //--- Top margin
+      DEBUG_MARGIN_COLOR.setFill ()
+      if self.mBottomMargin > 0.0 {
+        var r = self.bounds
+        r.origin.y += r.size.height - self.mBottomMargin
+        r.size.height = self.mBottomMargin
+        NSBezierPath.fill (r)
       }
-      if self.isHidden != allAreHidden {
-        self.isHidden = allAreHidden
+      if self.mTopMargin > 0.0 {
+        var r = self.bounds
+        r.size.height = self.mTopMargin
+        NSBezierPath.fill (r)
       }
+      if self.mLeftMargin > 0.0 {
+        var r = self.bounds
+        r.size.width = self.mLeftMargin
+        NSBezierPath.fill (r)
+      }
+      if self.mRightMargin > 0.0 {
+        var r = self.bounds
+        r.origin.x += r.size.width - self.mRightMargin
+        r.size.width = self.mRightMargin
+        NSBezierPath.fill (r)
+      }
+    //--- Frame
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
     }
-    super.observeValue (forKeyPath: inKeyPath, of: inObject, change: inChange, context: inContext)
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-  override func updateConstraints () {
-    super.updateConstraints ()
-    if let windowContentView = self.window?.contentView as? AutoLayoutWindowContentView {
-      windowContentView.triggerNextKeyViewSettingComputation ()
-    }
+  final func isFlexibleSpace (_ inView : NSView) -> Bool {
+    return inView is AutoLayoutFlexibleSpace
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

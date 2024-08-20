@@ -17,12 +17,13 @@ class ALB_NSStepper : NSStepper {
   @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.required, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+//    self.setContentHuggingPriority (.required, for: .horizontal)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

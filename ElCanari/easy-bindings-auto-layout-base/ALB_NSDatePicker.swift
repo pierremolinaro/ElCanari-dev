@@ -17,7 +17,8 @@ final class ALB_NSDatePicker : NSDatePicker {
   init (size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = inSize
   }

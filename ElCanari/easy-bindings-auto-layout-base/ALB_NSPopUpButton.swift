@@ -19,7 +19,8 @@ class ALB_NSPopUpButton : NSPopUpButton {
   init (pullsDown inPullsDown : Bool, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero, pullsDown: inPullsDown)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//   self.translatesAutoresizingMaskIntoConstraints = false
 
     self.autoenablesItems = false
     if let cell = self.cell as? NSPopUpButtonCell {
@@ -30,10 +31,10 @@ class ALB_NSPopUpButton : NSPopUpButton {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = .rounded
 
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+//    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

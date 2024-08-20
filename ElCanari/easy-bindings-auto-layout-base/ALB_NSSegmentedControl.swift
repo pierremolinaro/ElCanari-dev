@@ -17,8 +17,9 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
   init (equalWidth inEqualWidth : Bool, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
 
-    self.translatesAutoresizingMaskIntoConstraints = false
+//    self.translatesAutoresizingMaskIntoConstraints = false
     self.segmentStyle = .rounded
 
     self.controlSize = inSize
@@ -27,10 +28,10 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
     if inEqualWidth {
       self.segmentDistribution = .fillEqually
     }
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
+//    self.setContentHuggingPriority (.required, for: .vertical)
+//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
+//    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

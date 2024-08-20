@@ -17,7 +17,8 @@ class ALB_NSProgressIndicator : NSProgressIndicator {
   init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

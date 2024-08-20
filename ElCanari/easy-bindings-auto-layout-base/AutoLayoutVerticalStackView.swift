@@ -1,3 +1,9 @@
+//
+//  AutoLayoutVerticalStackView.swift
+//  essai-gridview
+//
+//  Created by Pierre Molinaro on 30/10/2023.
+//
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
@@ -7,73 +13,123 @@ import AppKit
 class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   INIT
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
-    super.init (orientation: .vertical)
-    self.alignment = .width
-
-    self.setHuggingPriority (.required, for: .horizontal)
+  override var pmLayoutSettings : AutoLayoutViewSettings {
+    return AutoLayoutViewSettings (
+      vLayoutInHorizontalContainer: self.mVerticalDisposition,
+      hLayoutInVerticalContainer: self.mHorizontalDisposition
+    )
   }
 
+  //····················································································································
+  // Flipped
+  // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
+  //····················································································································
+
+  final override var isFlipped : Bool { true }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Last Baseline representative view
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Facilities
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendFlexibleSpace ()
-      .appendView (inView)
-    self.addView (hStack, in: .leading)
-    return self
-  }
+  private var mLastBaselineRepresentativeView : NSView? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-    _ = hStack.appendView (inView)
-    _ = hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
-    return self
+  override var pmLastBaselineRepresentativeView : NSView? { self.mLastBaselineRepresentativeView }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Constraints
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mConstraints = [NSLayoutConstraint] ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func updateConstraints () {
+  //--- Remove all constraints
+    self.removeConstraints (self.mConstraints)
+    self.mConstraints.removeAll (keepingCapacity: true)
+  //--- Build constraints
+    self.mLastBaselineRepresentativeView = nil
+    var optionalLastView : NSView? = nil
+    var optionalLastFlexibleSpace : NSView? = nil
+    for view in self.subviews {
+      if !view.isHidden {
+      //--- Horizontal constraints
+        switch view.pmLayoutSettings.hLayoutInVerticalContainer {
+        case .center :
+          self.mConstraints.add (centerXOf: view, equalToCenterXOf: self)
+        case .fill, .weakFill :
+          self.mConstraints.add (leftOf: view, equalToLeftOf: self, plus: self.mLeftMargin)
+          self.mConstraints.add (rightOf: self, equalToRightOf: view, plus: self.mRightMargin)
+        case .weakFillIgnoringMargins :
+          self.mConstraints.add (leftOf: view, equalToLeftOf: self)
+          self.mConstraints.add (rightOf: self, equalToRightOf: view)
+        case .left :
+          self.mConstraints.add (leftOf: view, equalToLeftOf: self, plus: self.mLeftMargin)
+        case .right :
+          self.mConstraints.add (rightOf: self, equalToRightOf: view, plus: self.mRightMargin)
+        }
+      //--- Vertical constraints
+        if let lastView = optionalLastView {
+          let spacing = self.isFlexibleSpace (view) ? 0.0 : self.mSpacing
+          self.mConstraints.add (bottomOf: lastView, equalToTopOf: view, plus: spacing)
+        }else{
+          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
+        }
+        if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
+          self.mLastBaselineRepresentativeView = viewLastBaselineRepresentativeView
+        }
+      //--- Handle height constraint for views with lower hugging priority
+        if self.isFlexibleSpace (view) {
+          if let refView = optionalLastFlexibleSpace {
+            self.mConstraints.add (heightOf: refView, equalToHeightOf: view)
+          }
+          optionalLastFlexibleSpace = view
+        }
+        if self.isHorizontalDivider (view) {
+          optionalLastFlexibleSpace = nil
+        }
+      //---
+        optionalLastView = view
+      }
+    }
+  //--- Add bottom constraint for last view
+    if let lastView = optionalLastView {
+      self.mConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: self.mBottomMargin)
+    }
+  //--- Apply constaints
+    self.addConstraints (self.mConstraints)
+  //--- This should the last instruction: call super method
+    super.updateConstraints ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
-    _ = hStack.appendFlexibleSpace ()
-    _ = hStack.appendView (inView)
-    _ = hStack.appendFlexibleSpace ()
-    self.addView (hStack, in: .leading)
+      .appendFlexibleSpace ()
+      .appendView (inView)
+      .appendFlexibleSpace ()
+    self.addSubview (hStack)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Flipped
-  // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override var isFlipped : Bool { true }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // SET WIDTH
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private var mWidth : CGFloat? = nil
-  private var mHeight : CGFloat? = nil
+  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+      .appendFlexibleSpace ()
+      .appendView (inView)
+    self.addSubview (hStack)
+    return self
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (width inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
+//    self.mWidth = CGFloat (inWidth)
     let c = NSLayoutConstraint (
       item: self,
       attribute: .width,
@@ -89,8 +145,8 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (minimumWidth inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
+  final func set (minWidth inWidth : Int) -> Self {
+//    self.mWidth = CGFloat (inWidth)
     let c = NSLayoutConstraint (
       item: self,
       attribute: .width,
@@ -106,95 +162,41 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  final func set (height inHeight : Int) -> Self {
-//    self.mHeight = CGFloat (inHeight)
-//    self.needsUpdateConstraints = true
-//    return self
+  final func set (minimumWidth inWidth : Int) -> Self { // §
+    return self
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Draw
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override func draw (_ inDirtyRect : NSRect) {
+//    let r = NSRect (
+//      x: self.mLeftMargin,
+//      y: self.mBottomMargin,
+//      width: self.bounds.size.width - self.mLeftMargin - self.mRightMargin,
+//      height: self.bounds.size.height - self.mBottomMargin - self.mTopMargin
+//    )
+//    NSColor.yellow.setFill ()
+//    r.fill ()
+////    NSColor.lightGray.setFill ()
+////    var x : CGFloat = self.subviews.first?.frame.origin.x ?? 0.0
+////    for view in self.subviews {
+////      let f = view.frame
+////      if f.origin.x > x {
+////        NSRect (x: x, y: self.mBottomMargin, width: f.origin.x - x, height: self.bounds.size.height - self.mBottomMargin - self.mTopMargin).fill ()
+////      }
+////      x = NSMaxX (f)
+////    }
+//    super.draw (inDirtyRect)
+////    NSColor.black.setStroke ()
+////    NSBezierPath.stroke (self.bounds.insetBy (dx: 0.5, dy: 0.5))
 //  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   equalHeight
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func equalHeight () -> Self {
-    self.distribution = .fillEqually
+  final func equalHeight () -> Self { // §
     return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   minWidth
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (minWidth inMinWidth : Int) -> Self {
-    let c = NSLayoutConstraint (
-      item: self,
-      attribute: .width,
-      relatedBy: .greaterThanOrEqual,
-      toItem: nil,
-      attribute: .notAnAttribute,
-      multiplier: 1.0,
-      constant: CGFloat (inMinWidth)
-    )
-    self.addConstraint (c)
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var intrinsicContentSize : NSSize {
-    var s = super.intrinsicContentSize
-    if let w = self.mWidth {
-      s.width = w
-    }
-    if let h = self.mHeight {
-      s.height = h
-    }
-    return s
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private var mConstraints = [NSLayoutConstraint] ()
-
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-    var spaceViewArray = [AutoLayoutFlexibleSpace] ()
-    for view in self.subviews {
-      if let spaceView = view as? AutoLayoutFlexibleSpace {
-        spaceViewArray.append (spaceView)
-      }
-    }
-    if let oneSpaceView = spaceViewArray.popLast () {
-      for spaceView in spaceViewArray {
-        let c = NSLayoutConstraint (item: oneSpaceView, attribute: .height, relatedBy: .equal, toItem: spaceView, attribute: .height, multiplier: 1.0, constant: 0.0)
-        self.mConstraints.append (c)
-      }
-      self.addConstraints (self.mConstraints)
-    }
-    super.updateConstraints ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func draw (_ inDirtyRect : NSRect) {
-    super.draw (inDirtyRect)
-    if debugAutoLayout () {
-      DEBUG_VERTICAL_SEPARATOR_FILL_COLOR.setFill ()
-      let bounds = self.bounds
-      var optionalLastView : NSView? = nil
-      for view in self.subviews {
-        if !view.isHidden {
-          if let lastView = optionalLastView {
-            let top = lastView.frame.minY
-            let bottom = view.frame.maxY
-            let r = NSRect (x: bounds.origin.x, y: bottom, width: bounds.size.width, height: top - bottom)
-            NSBezierPath.fill (r)
-          }
-          optionalLastView = view
-        }
-      }
-    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,8 +1,8 @@
 //
-//  ALB_NSButton.swift
-//  ElCanari
+//  PMButton.swift
+//  essai-gridview
 //
-//  Created by Pierre Molinaro on 20/06/2021.
+//  Created by Pierre Molinaro on 03/11/2023.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -17,23 +17,18 @@ class ALB_NSButton : NSButton {
   init (title inTitle : String, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
 
-    self.title = inTitle
     self.controlSize = inSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = .rounded
+    self.title = inTitle
     self.lineBreakMode = .byTruncatingTail
-
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
-    self.setContentHuggingPriority (.required, for: .vertical)
-    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //--------------------------------------------------------------------------------------------------------------------
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -53,11 +48,10 @@ class ALB_NSButton : NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
+  final func setClosureAction (_ inClosureAction : @escaping () -> Void) {
     self.mClosureAction = inClosureAction
     self.target = self
     self.action = #selector (Self.runClosureAction (_:))
-    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

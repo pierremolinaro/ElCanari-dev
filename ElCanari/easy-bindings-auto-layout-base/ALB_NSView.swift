@@ -19,7 +19,8 @@ class ALB_NSView : NSView {
   @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
+//    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -33,7 +34,6 @@ class ALB_NSView : NSView {
   deinit {
     noteObjectDeallocation (self)
     objectDidDeinitSoReleaseHiddenControllers ()
-    objectDidDeinitSoReleaseEnabledBindingController ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

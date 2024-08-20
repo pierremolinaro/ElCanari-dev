@@ -1,8 +1,8 @@
 //
-//  AutoLayoutHorizontalStackView-separator.swift
-//  ElCanari
+//  PMHorizontalStackView-separator.swift
+//  essai-gridview
 //
-//  Created by Pierre Molinaro on 08/10/2023.
+//  Created by Pierre Molinaro on 01/11/2023.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -14,16 +14,16 @@ extension AutoLayoutHorizontalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendVerticalSeparator () {
-    let separator = Self.VerticalSeparator ()
-    _ = self.appendView (separator)
+  final func appendVerticalSeparator (ignoreVerticalMargins inFlag : Bool = true) -> Self{
+    let separator = Self.VerticalSeparator (ignoreVerticalMargins: inFlag)
+    return self.appendView (separator)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func prependVerticalSeparator () {
-    let separator = Self.VerticalSeparator ()
-    _ = self.prependView (separator)
+  final func prependVerticalSeparator (ignoreVerticalMargins inFlag : Bool = true) -> Self {
+    let separator = Self.VerticalSeparator (ignoreVerticalMargins: inFlag)
+    return self.prependView (separator)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,11 +34,16 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    init () {
-      let s = NSSize (width: 0, height: 10) // width == 0, height > 0 means vertical separator
+    let mIgnoreVerticalMargins : Bool
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    init (ignoreVerticalMargins inFlag : Bool = true) {
+      self.mIgnoreVerticalMargins = inFlag
+      let s = NSSize (width: 0, height: 10) // width < height means vertical separator
       super.init (frame: NSRect (origin: NSPoint (), size: s))
-      noteObjectAllocation (self)
-      self.translatesAutoresizingMaskIntoConstraints = false
+      self.pmConfigureForAutolayout (hStretchingResistance: .highest, vStrechingResistance: .lowest)
+
       self.boxType = .separator
     }
 
@@ -50,8 +55,15 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    deinit {
-      noteObjectDeallocation (self)
+    override var intrinsicContentSize : NSSize { NSSize (width: 1, height: 10) }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    override var pmLayoutSettings : AutoLayoutViewSettings {
+      return AutoLayoutViewSettings (
+        vLayoutInHorizontalContainer: self.mIgnoreVerticalMargins ? .weakFillIgnoringMargins : .weakFill,
+        hLayoutInVerticalContainer: .weakFill // non significant, as vertical separator cannot be inside a vertical stack view
+      )
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·

@@ -34,9 +34,10 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
     }
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.setContentCompressionResistancePriority (.required, for: .vertical)
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.setContentCompressionResistancePriority (.required, for: .vertical)
 
     self.delegate = self
 

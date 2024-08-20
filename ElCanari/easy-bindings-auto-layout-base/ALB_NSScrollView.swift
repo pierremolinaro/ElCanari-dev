@@ -16,8 +16,9 @@ class ALB_NSScrollView : NSScrollView {
 
   init () {
     super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
-    self.translatesAutoresizingMaskIntoConstraints = false
+//    self.translatesAutoresizingMaskIntoConstraints = false
     noteObjectAllocation (self)
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
