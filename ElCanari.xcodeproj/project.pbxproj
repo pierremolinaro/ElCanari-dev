@@ -5271,6 +5271,7 @@
 				CF730B4221F87D7B00944B3E /* Application — Library Update */,
 				CF34A0AD2200CFC900DEA8EF /* Application — Library Upload */,
 				CF62175227A19E1F00D02368 /* Application — Preferences */,
+				CF7EF0972C728894009FB0D4 /* Auto Layout — Base */,
 				CFB4C02D279465B000C509A9 /* Auto Layout — Button */,
 				CFDD6D2E26A1B0B30050CB78 /* Auto Layout — El Canari */,
 				CFC5791C2BDEE360005CA3F0 /* Auto Layout — ImageView */,
@@ -5283,7 +5284,6 @@
 				CFB4C0B02794672700C509A9 /* Auto Layout — TextField */,
 				CFB4C0DD2794675100C509A9 /* Auto Layout — TextView */,
 				CF7EF0962C7286CD009FB0D4 /* Auto Layout — Utilities */,
-				CF7EF0972C728894009FB0D4 /* Auto Layout — Base */,
 				CFE979F321ABFCA3002E5716 /* Common Classes */,
 				CF76FB6F20F005F100EFD18D /* Common Entities */,
 				CFAFA53E24F26EB9002D48BE /* Cursors */,
@@ -5301,6 +5301,7 @@
 				CF26AE082AD1784F0041763B /* EB — extensions for handling properties */,
 				CF3DAD0F2AD09694003830F4 /* EB — property generic classes */,
 				CFD1B75221B2E90400F6F9EA /* EB — shapes */,
+				CF7AB9E42C735CD700BA9590 /* ElCanari-Debug copy-Info.plist */,
 				CF747FC81B3C41BB00140C49 /* Frameworks */,
 				CF8B9D282AD1842B002169DC /* Managed Object Factory */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
@@ -5343,7 +5344,6 @@
 				CF61726E1B3C4CB600F3CA82 /* Resources */,
 				CF35A54121A8257D00A0E500 /* Swift Extensions */,
 				CF5CEFB81DD8C4E000A70419 /* utilities */,
-				CF7AB9E42C735CD700BA9590 /* ElCanari-Debug copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

@@ -4,22 +4,22 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutSignatureField : NSTextField {
+final class AutoLayoutSignatureField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (optionalWidth: nil, bold: false, size: .small) //inSize.cocoaControlSize)
 
+//    self.stringValue = "??"
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
-    self.alignment = .center
+//    self.frame.size = self.intrinsicContentSize
+ //   self.maximumNumberOfLines = 1
 
-    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
+//    self.sizeToFit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -30,15 +30,9 @@ final class AutoLayoutSignatureField : NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var intrinsicContentSize : NSSize {  // Required by ElCapitan
-    return NSSize (width: 83, height: 19)
-  }
+//  override var intrinsicContentSize : NSSize {  // Required by ElCapitan
+//    return NSSize (width: 83, height: 19)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $signature binding

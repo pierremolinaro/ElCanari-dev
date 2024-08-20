@@ -177,6 +177,10 @@ class ALB_NSStackView : NSView {
     return self
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override var isFlipped : Bool { return false }
+
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
   // Draw
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -188,15 +192,15 @@ class ALB_NSStackView : NSView {
       DEBUG_MARGIN_COLOR.setFill ()
       if self.mBottomMargin > 0.0 {
         var r = self.bounds
-        r.origin.y += r.size.height - self.mBottomMargin
+//        r.origin.y += r.size.height - self.mBottomMargin
         r.size.height = self.mBottomMargin
         NSBezierPath.fill (r)
       }
-      if self.mTopMargin > 0.0 {
-        var r = self.bounds
-        r.size.height = self.mTopMargin
-        NSBezierPath.fill (r)
-      }
+//      if self.mTopMargin > 0.0 {
+//        var r = self.bounds
+//        r.size.height = self.mTopMargin
+//        NSBezierPath.fill (r)
+//      }
       if self.mLeftMargin > 0.0 {
         var r = self.bounds
         r.size.width = self.mLeftMargin

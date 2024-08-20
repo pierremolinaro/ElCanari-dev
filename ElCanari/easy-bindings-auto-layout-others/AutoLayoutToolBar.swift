@@ -24,7 +24,13 @@ final class AutoLayoutToolBar : ALB_NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (title inTitle : String, item inView : NSView) -> Self {
-    let label = AutoLayoutStaticLabel (title: inTitle, bold: false, size: .small, alignment: .center)
+    let label = AutoLayoutStaticLabel (
+      title: inTitle,
+      bold: false,
+      size: .small,
+      alignment: .center
+    )
+    inView.setContentHuggingPriority (.defaultHigh, for: .vertical) // §
     self.mItemArray.append (Entry (item: inView, label: label))
     self.addSubview (label)
     self.addSubview (inView)
@@ -58,14 +64,23 @@ final class AutoLayoutToolBar : ALB_NSView {
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Build constraints
     var optionalLastEntry : Entry? = nil
+    var optionalLastBaseLineView : NSView? = nil
     for entry in self.mItemArray {
     //--- Vertical constraints
       self.mConstraints.add (bottomOf: entry.label, equalToBottomOf: self, plus: self.mMargins)
       self.mConstraints.add (bottomOf: entry.item, equalToTopOf: entry.label, plus: self.mSpacing)
       self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
-    //--- Horizontal constraints
       if let lastEntry = optionalLastEntry {
         self.mConstraints.add (topOf: entry.label, equalToTopOf: lastEntry.label)
+        if let entryBaselineView = entry.item.pmLastBaselineRepresentativeView {
+          if let lastBaseLineView = optionalLastBaseLineView {
+            self.mConstraints.add (lastBaselineOf: entryBaselineView, equalToLastBaselineOf: lastBaseLineView)
+          }
+          optionalLastBaseLineView = entryBaselineView
+        }
+      }
+    //--- Horizontal constraints
+      if let lastEntry = optionalLastEntry {
         self.mConstraints.add (leftOf: entry.label, equalToRightOf: lastEntry.label, plus: self.mSpacing)
         self.mConstraints.add (leftOf: entry.item, equalToRightOf: lastEntry.item, plus: self.mSpacing)
         self.mConstraints.add (leftOf: entry.item, equalToLeftOf: entry.label)
@@ -76,7 +91,7 @@ final class AutoLayoutToolBar : ALB_NSView {
       }
       optionalLastEntry = entry
     }
-  //--- Add right constraint for last view
+  //--- Add right constraints for last view
     if let lastEntry = optionalLastEntry {
       self.mConstraints.add (rightOf: self, equalToRightOf: lastEntry.label, plus: self.mMargins)
       self.mConstraints.add (rightOf: self, equalToRightOf: lastEntry.item, plus: self.mMargins)

@@ -10,7 +10,10 @@ final class AutoLayoutStaticLabel : ALB_NSTextField {
   // INIT
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize, alignment inAlignment : TextAlignment) {
+  init (title inTitle : String,
+        bold inBold : Bool,
+        size inSize : EBControlSize,
+        alignment inAlignment : TextAlignment) {
     super.init (optionalWidth: nil, bold: inBold, size: inSize.cocoaControlSize)
 
     self.stringValue = inTitle
@@ -28,19 +31,6 @@ final class AutoLayoutStaticLabel : ALB_NSTextField {
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func draw (_ inDirtyRect : NSRect) {
-    if debugAutoLayout () {
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
-    super.draw (inDirtyRect)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

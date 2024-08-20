@@ -19,7 +19,6 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
 
-//    self.translatesAutoresizingMaskIntoConstraints = false
     self.segmentStyle = .rounded
 
     self.controlSize = inSize
@@ -28,10 +27,6 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
     if inEqualWidth {
       self.segmentDistribution = .fillEqually
     }
-//    self.setContentCompressionResistancePriority (.required, for: .vertical)
-//    self.setContentHuggingPriority (.required, for: .vertical)
-//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-//    self.setContentHuggingPriority (.defaultHigh, for: .horizontal)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -47,6 +42,39 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
     objectDidDeinitSoReleaseHiddenControllers ()
     objectDidDeinitSoReleaseEnabledBindingController ()
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override var isFlipped : Bool { return false }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if debugAutoLayout () && !self.bounds.isEmpty {
+      var bp = NSBezierPath ()
+//      let r = self.alignmentRect (forFrame: self.bounds)
+//      let r = self.frame (forAlignmentRect: self.bounds)
+      let r = self.bounds
+      let p = NSPoint (
+        x: r.origin.x,
+        y: r.origin.y + self.lastBaselineOffsetFromBottom
+      )
+      bp.move (to: p)
+      bp.relativeLine (to: NSPoint (x: r.size.width, y: 0.0))
+      DEBUG_LAST_BASELINE_COLOR.setStroke ()
+      bp.stroke ()
+      bp = NSBezierPath (rect: r)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc override var pmLastBaselineRepresentativeView : NSView? { self }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

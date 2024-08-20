@@ -49,44 +49,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
         }
       )
     }
-
-
-
-//    hStack set (margins: .regular) {
-//      vStack {
-//        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
-//          addPage (title: "Description", tooltip: "Device Description", pageView: view descriptionPage)
-//          addPage (title: "Symbols", tooltip: "Device Symbols", pageView: view symbolsPage)
-//          addPage (title: "Packages", tooltip: "Device Available Packages", pageView: view packagesPage)
-//          addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: view assignmentsPage)
-//          addPage (title: "Library", tooltip: "Device Embedded Library", pageView: view libraryPage)
-//          addPage (title: "Infos", tooltip: "Device Informations", pageView: view infosPage)
-//          $selectedPage root.mSelectedPageIndex
-//        }
-//        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
-//      }
-//      vStack {
-//        SignatureField (size : .regular) { $signature signature }
-//        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
-//      }
-//      vStack {
-//        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-//        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
-//      }
-//      space
-//      vStack {
-//        hStack {
-//          space
-//          StatusBadgeView () {
-//            $tooltip self.statusMessage
-//            $errorCount self.statusErrorCount
-//            $warningCount self.statusWarningCount
-//          }
-//          space
-//        }
-//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-//      }
-//    }
     separator
     view pageMasterView
   }

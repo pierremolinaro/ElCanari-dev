@@ -41,7 +41,7 @@ extension ApplicationDelegate {
 
     let stack = AutoLayoutVerticalStackView (horizontal: .fill, vertical: .fill)
       .set (margins: .regular)
-      .appendView (ALB_NSTextView ())
+      .appendView (ALB_NSTextView (drawsBackground: true, horizontalScroller: true, verticalScroller: true))
     window.contentView = stack
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)

@@ -35,9 +35,6 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.setContentCompressionResistancePriority (.required, for: .vertical)
 
     self.delegate = self
 
@@ -152,6 +149,36 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
       return true
     }else{
       return false
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc override var pmLastBaselineRepresentativeView : NSView? { self }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override var isFlipped : Bool { return false }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func draw (_ inDirtyRect : NSRect) {
+    super.draw (inDirtyRect)
+    if debugAutoLayout () && !self.bounds.isEmpty {
+      var bp = NSBezierPath ()
+      let p = NSPoint (
+        x: self.bounds.origin.x,
+        y: self.bounds.origin.y + self.lastBaselineOffsetFromBottom
+      )
+      bp.move (to: p)
+      bp.relativeLine (to: NSPoint (x: self.bounds.size.width, y: 0.0))
+      DEBUG_LAST_BASELINE_COLOR.setStroke ()
+      bp.stroke ()
+      bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
     }
   }
 
