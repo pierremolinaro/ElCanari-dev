@@ -21,10 +21,11 @@ class AutoLayoutVerticalScrollView : ALB_NSScrollView {
 
   init (content inDocumentView : NSView) {
     super.init ()
+//    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
 //    noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.contentView = MyFlippedClipView () // So is aligned to top (instead of bottom)
+    self.contentView = InternalFlippedClipView () // So is aligned to top (instead of bottom)
     self.drawsBackground = false
     self.documentView = inDocumentView
     self.hasHorizontalScroller = false
@@ -32,18 +33,18 @@ class AutoLayoutVerticalScrollView : ALB_NSScrollView {
     self.automaticallyAdjustsContentInsets = true
 
   //  Swift.print ("Vertical Scroller \(self.verticalScroller)")
-    if let verticalScroller = self.verticalScroller {
-      let c = NSLayoutConstraint (
-        item: self,
-        attribute: .width,
-        relatedBy: .equal,
-        toItem: inDocumentView,
-        attribute: .width,
-        multiplier: 1.0,
-        constant: verticalScroller.frame.size.width
-      )
-      self.addConstraint (c)
-    }
+//    if let verticalScroller = self.verticalScroller {
+//      let c = NSLayoutConstraint (
+//        item: self,
+//        attribute: .width,
+//        relatedBy: .equal,
+//        toItem: inDocumentView,
+//        attribute: .width,
+//        multiplier: 1.0,
+//        constant: verticalScroller.frame.size.width
+//      )
+//      self.addConstraint (c)
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,13 +65,14 @@ class AutoLayoutVerticalScrollView : ALB_NSScrollView {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate final class MyFlippedClipView : NSClipView {
+fileprivate final class InternalFlippedClipView : NSClipView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

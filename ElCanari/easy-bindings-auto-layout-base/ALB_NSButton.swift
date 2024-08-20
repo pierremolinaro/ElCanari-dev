@@ -62,7 +62,7 @@ class ALB_NSButton : NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var isFlipped : Bool { return false }
+//  override var isFlipped : Bool { return false }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

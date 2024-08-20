@@ -31,7 +31,6 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //---
     _ = self.set (spacing: .zero)
   //---
-  // §  self.mTopHStack.alignment = .firstBaseline
     _ = self.appendView (self.mTopHStack)
   //--- Build popup button
     let zoomPopUp = buildZoomPopUpButton (minZoom: inMinZoom, maxZoom: inMaxZoom)

@@ -26,7 +26,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
   //····················································································································
 
-  final override var isFlipped : Bool { true }
+ final override var isFlipped : Bool { true }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Last Baseline representative view
