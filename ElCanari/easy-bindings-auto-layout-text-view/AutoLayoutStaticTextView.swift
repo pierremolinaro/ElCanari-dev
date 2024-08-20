@@ -10,58 +10,54 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutStaticTextView : NSScrollView {
+final class AutoLayoutStaticTextView : ALB_NSTextView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate let mTextView = ALB_NSTextView ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (drawsBackground inDrawsBackground : Bool,
-        horizontalScroller inHorizontalScroller : Bool,
-        verticalScroller inVerticalScroller : Bool) {
-    super.init (frame: .zero) //  NSRect (x: 0, y: 0, width: 100, height: 100))
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.mTextView.isEditable = false
-    self.mTextView.isSelectable = true
-    self.mTextView.isVerticallyResizable = true
-    self.mTextView.isHorizontallyResizable = true
-    self.mTextView.isRichText = false
-    self.mTextView.importsGraphics = false
-    self.mTextView.allowsImageEditing = false
-    self.mTextView.drawsBackground = inDrawsBackground
-    self.mTextView.string = ""
-
-    let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
-    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
-    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
-    self.mTextView.textContainer?.widthTracksTextView = true
-
-    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
-
-    self.drawsBackground = false
-    self.documentView = self.mTextView
-    self.hasHorizontalScroller = inHorizontalScroller
-    self.hasVerticalScroller = inVerticalScroller
-    self.automaticallyAdjustsContentInsets = true
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  init (drawsBackground inDrawsBackground : Bool,
+//        horizontalScroller inHorizontalScroller : Bool,
+//        verticalScroller inVerticalScroller : Bool) {
+//    super.init (frame: .zero) //  NSRect (x: 0, y: 0, width: 100, height: 100))
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.mTextView.isEditable = false
+//    self.mTextView.isSelectable = true
+//    self.mTextView.isVerticallyResizable = true
+//    self.mTextView.isHorizontallyResizable = true
+//    self.mTextView.isRichText = false
+//    self.mTextView.importsGraphics = false
+//    self.mTextView.allowsImageEditing = false
+//    self.mTextView.drawsBackground = inDrawsBackground
+//    self.mTextView.string = ""
+//
+//    let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
+//    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
+//    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
+//    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
+//    self.mTextView.textContainer?.widthTracksTextView = true
+//
+//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
+//
+//    self.drawsBackground = false
+//    self.documentView = self.mTextView
+//    self.hasHorizontalScroller = inHorizontalScroller
+//    self.hasVerticalScroller = inVerticalScroller
+//    self.automaticallyAdjustsContentInsets = true
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  required init? (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -79,10 +75,10 @@ final class AutoLayoutStaticTextView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var string : String {
-    get { return self.mTextView.string }
-    set { self.mTextView.string = newValue }
-  }
+//  var string : String {
+//    get { return self.mTextView.string }
+//    set { self.mTextView.string = newValue }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

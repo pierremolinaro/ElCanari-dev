@@ -4,52 +4,44 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutRTFTextView : NSScrollView {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  fileprivate let mTextView = ALB_NSTextView ()
+final class AutoLayoutRTFTextView : ALB_NSTextView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (editable inIsEditable : Bool) {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (
+      drawsBackground: true,
+      horizontalScroller: true,
+      verticalScroller: true
+    )
 
     self.mTextView.isEditable = inIsEditable
-    self.mTextView.isSelectable = true
-    self.mTextView.isVerticallyResizable = true
-    self.mTextView.isHorizontallyResizable = true
-    self.mTextView.isRichText = true
-    self.mTextView.importsGraphics = false
-    self.mTextView.allowsImageEditing = false
+//    self.mTextView.isSelectable = true
+//    self.mTextView.isVerticallyResizable = true
+//    self.mTextView.isHorizontallyResizable = true
+//    self.mTextView.isRichText = true
+//    self.mTextView.importsGraphics = false
+//    self.mTextView.allowsImageEditing = false
     self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
 
-    let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
-    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
-    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
-    self.mTextView.textContainer?.widthTracksTextView = true
-    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
-
-    self.drawsBackground = false
-    self.documentView = self.mTextView
-    self.hasHorizontalScroller = true
-    self.hasVerticalScroller = true
+//    let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
+//    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
+//    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
+//    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
+//    self.mTextView.textContainer?.widthTracksTextView = true
+//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
+//
+//    self.drawsBackground = false
+//    self.documentView = self.mTextView
+//    self.hasHorizontalScroller = true
+//    self.hasVerticalScroller = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,16 +55,9 @@ final class AutoLayoutRTFTextView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var string : String {
-    get { return self.mTextView.string }
-    set { self.mTextView.string = newValue }
-  }
-
-//  var textStorage : NSTextStorage? { self.mTextView.textStorage }
-
-//  var isEditable : Bool {
-//    get { return self.mTextView.isEditable }
-//    set { self.mTextView.isEditable = newValue }
+//  var string : String {
+//    get { return self.mTextView.string }
+//    set { self.mTextView.string = newValue }
 //  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

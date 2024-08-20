@@ -174,6 +174,8 @@
 		CF217C1525016A46003E322E /* file-format-binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217C1325016A46003E322E /* file-format-binary.swift */; };
 		CF217C1A25017D6B003E322E /* file-format-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217C1925017D6B003E322E /* file-format-utilities.swift */; };
 		CF217C1B25017D6B003E322E /* file-format-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217C1925017D6B003E322E /* file-format-utilities.swift */; };
+		CF21D88B2C7476B70012AD5F /* ALB_NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF21D88A2C7476B70012AD5F /* ALB_NSTextView.swift */; };
+		CF21D88C2C7476B70012AD5F /* ALB_NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF21D88A2C7476B70012AD5F /* ALB_NSTextView.swift */; };
 		CF223CB82C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF223CB72C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift */; };
 		CF223CB92C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF223CB72C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift */; };
 		CF223CBA2C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF223CB72C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift */; };
@@ -201,7 +203,6 @@
 		CF223CD42C73DCF700FFF7E7 /* ALB_NSDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C52C734F3800BA9590 /* ALB_NSDatePicker.swift */; };
 		CF223CD52C73DCF700FFF7E7 /* ALB_NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2D02C734F3800BA9590 /* ALB_NSView.swift */; };
 		CF223CD62C73DCF700FFF7E7 /* ALB_NSProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2CF2C734F3800BA9590 /* ALB_NSProgressIndicator.swift */; };
-		CF223CD72C73DCF700FFF7E7 /* ALB_NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2D72C734F3900BA9590 /* ALB_NSTextView.swift */; };
 		CF223CD82C73DCF700FFF7E7 /* AutoLayoutFlexibleSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */; };
 		CF223CD92C73DCF700FFF7E7 /* AutoLayoutVerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2D42C734F3900BA9590 /* AutoLayoutVerticalStackView.swift */; };
 		CF223CDA2C73DCF700FFF7E7 /* AutoLayoutVerticalStackView+separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2D62C734F3900BA9590 /* AutoLayoutVerticalStackView+separator.swift */; };
@@ -3525,7 +3526,6 @@
 		CF7AB9E52C735D2700BA9590 /* AutoLayoutFlexibleSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */; };
 		CF7AB9E62C735D2700BA9590 /* ALB_NSStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2BF2C734F3700BA9590 /* ALB_NSStepper.swift */; };
 		CF7AB9E72C735D2700BA9590 /* ALB_NSDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C52C734F3800BA9590 /* ALB_NSDatePicker.swift */; };
-		CF7AB9E82C735D2700BA9590 /* ALB_NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2D72C734F3900BA9590 /* ALB_NSTextView.swift */; };
 		CF7AB9E92C735D2700BA9590 /* AutoLayoutHorizontalStackView+separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C22C734F3700BA9590 /* AutoLayoutHorizontalStackView+separator.swift */; };
 		CF7AB9EA2C735D2700BA9590 /* NSView+expandableHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C62C734F3800BA9590 /* NSView+expandableHeight.swift */; };
 		CF7AB9EB2C735D2700BA9590 /* ALB_NSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C92C734F3800BA9590 /* ALB_NSButton.swift */; };
@@ -5339,6 +5339,7 @@
 		CF217C0F250165BD003E322E /* file-format-text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-format-text.swift"; sourceTree = "<group>"; };
 		CF217C1325016A46003E322E /* file-format-binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-format-binary.swift"; sourceTree = "<group>"; };
 		CF217C1925017D6B003E322E /* file-format-utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-format-utilities.swift"; sourceTree = "<group>"; };
+		CF21D88A2C7476B70012AD5F /* ALB_NSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALB_NSTextView.swift; sourceTree = "<group>"; };
 		CF223CB32C73A85F00FFF7E7 /* ApplicationDelegate+layout-demos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate+layout-demos.swift"; sourceTree = "<group>"; };
 		CF223CB72C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-ercStatusValue.swift"; sourceTree = "<group>"; };
 		CF223CBB2C73B14F00FFF7E7 /* AutoLayoutStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutStatusView.swift; sourceTree = "<group>"; };
@@ -6088,7 +6089,7 @@
 		CF7AB2D42C734F3900BA9590 /* AutoLayoutVerticalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutVerticalStackView.swift; sourceTree = "<group>"; };
 		CF7AB2D52C734F3900BA9590 /* ALB_NSImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALB_NSImageView.swift; sourceTree = "<group>"; };
 		CF7AB2D62C734F3900BA9590 /* AutoLayoutVerticalStackView+separator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLayoutVerticalStackView+separator.swift"; sourceTree = "<group>"; };
-		CF7AB2D72C734F3900BA9590 /* ALB_NSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALB_NSTextView.swift; sourceTree = "<group>"; };
+		CF7AB2D72C734F3900BA9590 /* ALB_NSTextView_EX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALB_NSTextView_EX.swift; sourceTree = "<group>"; };
 		CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutFlexibleSpace.swift; sourceTree = "<group>"; };
 		CF7AB9E32C735CD700BA9590 /* ElCanari-Debug-new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Debug-new.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7AB9E42C735CD700BA9590 /* ElCanari-Debug copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ElCanari-Debug copy-Info.plist"; path = "/Volumes/dev-git/ElCanari-dev/ElCanari-Debug copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -8046,7 +8047,8 @@
 				CF7AB2CA2C734F3800BA9590 /* ALB_NSStackView.swift */,
 				CF7AB2BF2C734F3700BA9590 /* ALB_NSStepper.swift */,
 				CF7AB2C82C734F3800BA9590 /* ALB_NSTextField.swift */,
-				CF7AB2D72C734F3900BA9590 /* ALB_NSTextView.swift */,
+				CF7AB2D72C734F3900BA9590 /* ALB_NSTextView_EX.swift */,
+				CF21D88A2C7476B70012AD5F /* ALB_NSTextView.swift */,
 				CF7AB2D02C734F3800BA9590 /* ALB_NSView.swift */,
 				CF7AB2CB2C734F3800BA9590 /* ALB_WKWebView.swift */,
 				CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */,
@@ -12032,6 +12034,7 @@
 				CFEB7BD2233A27CB0060A97A /* transient-LabelInSchematic-netClassName.swift in Sources */,
 				CFDDD4E221BB1529007D2F14 /* EBGraphicView-magnify-and-zoom.swift in Sources */,
 				CF62177A27A19E4E00D02368 /* action-Preferences-addLibraryEntryAction.swift in Sources */,
+				CF21D88B2C7476B70012AD5F /* ALB_NSTextView.swift in Sources */,
 				CFD1EA74274EE23A000AED8E /* transient-FontCharacter-gerberCode.swift in Sources */,
 				CF22F1EA275A73ED009C6FAC /* transient-MergerBoardInstance-instanceRect.swift in Sources */,
 				CFA1AA1E223271770023928C /* transient-SymbolTypeInDevice-pinNameShape.swift in Sources */,
@@ -12942,7 +12945,6 @@
 				CF223CD42C73DCF700FFF7E7 /* ALB_NSDatePicker.swift in Sources */,
 				CF223CD52C73DCF700FFF7E7 /* ALB_NSView.swift in Sources */,
 				CF223CD62C73DCF700FFF7E7 /* ALB_NSProgressIndicator.swift in Sources */,
-				CF223CD72C73DCF700FFF7E7 /* ALB_NSTextView.swift in Sources */,
 				CF223CD82C73DCF700FFF7E7 /* AutoLayoutFlexibleSpace.swift in Sources */,
 				CF223CD92C73DCF700FFF7E7 /* AutoLayoutVerticalStackView.swift in Sources */,
 				CF223CDA2C73DCF700FFF7E7 /* AutoLayoutVerticalStackView+separator.swift in Sources */,
@@ -13557,6 +13559,7 @@
 				CF7AB4A22C735CD700BA9590 /* property-ThreeStrings.swift in Sources */,
 				CF7AB4A32C735CD700BA9590 /* extension-PackageBezier.swift in Sources */,
 				CF7AB4A42C735CD700BA9590 /* transient-AutoLayoutDeviceDocument-assignmentInhibitionMessage.swift in Sources */,
+				CF21D88C2C7476B70012AD5F /* ALB_NSTextView.swift in Sources */,
 				CF7AB4A52C735CD700BA9590 /* selectionController-AutoLayoutMergerDocument-mBoardModelSelection.swift in Sources */,
 				CF7AB4A62C735CD700BA9590 /* transient-BoardConnector-side.swift in Sources */,
 				CF7AB4A72C735CD700BA9590 /* transient-PackagePad-annularRing.swift in Sources */,
@@ -14412,7 +14415,6 @@
 				CF7AB9E52C735D2700BA9590 /* AutoLayoutFlexibleSpace.swift in Sources */,
 				CF7AB9E62C735D2700BA9590 /* ALB_NSStepper.swift in Sources */,
 				CF7AB9E72C735D2700BA9590 /* ALB_NSDatePicker.swift in Sources */,
-				CF7AB9E82C735D2700BA9590 /* ALB_NSTextView.swift in Sources */,
 				CF7AB9E92C735D2700BA9590 /* AutoLayoutHorizontalStackView+separator.swift in Sources */,
 				CF7AB9EA2C735D2700BA9590 /* NSView+expandableHeight.swift in Sources */,
 				CF7AB9EB2C735D2700BA9590 /* ALB_NSButton.swift in Sources */,

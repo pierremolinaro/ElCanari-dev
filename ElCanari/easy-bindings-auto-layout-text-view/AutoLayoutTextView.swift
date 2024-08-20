@@ -4,26 +4,21 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutTextView : NSScrollView {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  fileprivate let mTextView = ALB_NSTextView ()
+final class AutoLayoutTextView : ALB_NSTextView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
+    super.init (drawsBackground: true,
+                horizontalScroller: true,
+                verticalScroller: true)
     self.mTextView.isEditable = true
-    self.mTextView.isSelectable = true
-    self.mTextView.isVerticallyResizable = true
-    self.mTextView.isHorizontallyResizable = true
-    self.mTextView.isRichText = false
-    self.mTextView.importsGraphics = false
-    self.mTextView.allowsImageEditing = false
+//    self.mTextView.isSelectable = true
+//    self.mTextView.isVerticallyResizable = true
+//    self.mTextView.isHorizontallyResizable = true
+//    self.mTextView.isRichText = false
+//    self.mTextView.importsGraphics = false
+//    self.mTextView.allowsImageEditing = false
     self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
 //    self.mTextView.backgroundColor = .yellow
 //    self.mTextView.drawsBackground = true
@@ -31,18 +26,18 @@ final class AutoLayoutTextView : NSScrollView {
 //    Swift.print ("min size \(self.mTextView.minSize)")
 //    Swift.print ("max size \(self.mTextView.maxSize)")
 
-    let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
-    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
-    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
-    self.mTextView.textContainer?.widthTracksTextView = true
-
-    self.drawsBackground = false
-    self.documentView = self.mTextView
-    self.hasHorizontalScroller = true
-    self.hasVerticalScroller = true
-//    Swift.print ("self.automaticallyAdjustsContentInsets \(self.automaticallyAdjustsContentInsets)")
-    self.automaticallyAdjustsContentInsets = true
+//    let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
+//    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
+//    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
+//    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
+//    self.mTextView.textContainer?.widthTracksTextView = true
+//
+//    self.drawsBackground = false
+//    self.documentView = self.mTextView
+//    self.hasHorizontalScroller = true
+//    self.hasVerticalScroller = true
+////    Swift.print ("self.automaticallyAdjustsContentInsets \(self.automaticallyAdjustsContentInsets)")
+//    self.automaticallyAdjustsContentInsets = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -50,23 +45,6 @@ final class AutoLayoutTextView : NSScrollView {
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var string : String {
-    get { return self.mTextView.string }
-    set { self.mTextView.string = newValue }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var textStorage : NSTextStorage? { self.mTextView.textStorage }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
