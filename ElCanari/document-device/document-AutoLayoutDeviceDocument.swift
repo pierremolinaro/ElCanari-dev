@@ -238,65 +238,29 @@ import AppKit
     let assignmentsPage = self.AssignmentsPage ()
     let libraryPage = self.LibraryPage ()
     let infosPage = self.InfosPage ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: .regular)
-    do{
-      let view_0_0 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
-          .addPage (title: "Description", tooltip: "Device Description", pageView: descriptionPage)
-          .addPage (title: "Symbols", tooltip: "Device Symbols", pageView: symbolsPage)
-          .addPage (title: "Packages", tooltip: "Device Available Packages", pageView: packagesPage)
-          .addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: assignmentsPage)
-          .addPage (title: "Library", tooltip: "Device Embedded Library", pageView: libraryPage)
-          .addPage (title: "Infos", tooltip: "Device Informations", pageView: infosPage)
-          .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
-        _ = view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
-        _ = view_0_0.appendView (view_0_0_1)
-      }
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_1_0 = AutoLayoutSignatureField (size: .regular)
-          .bind_signature (self.signatureObserver_property)
-        _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .small, alignment: .center)
-        _ = view_0_1.appendView (view_0_1_1)
-      }
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_2_0 = AutoLayoutVersionField (size: .regular)
-          .bind_version (self.versionObserver_property)
-          .bind_versionShouldChange (self.versionShouldChangeObserver_property)
-        _ = view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .center)
-        _ = view_0_2.appendView (view_0_2_1)
-      }
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_4_0 = AutoLayoutHorizontalStackView ()
-        do{
-          let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
-          _ = view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutStatusBadgeView ()
-            .bind_tooltip (self.statusMessage_property)
-            .bind_errorCount (self.statusErrorCount_property)
-            .bind_warningCount (self.statusWarningCount_property)
-          _ = view_0_4_0.appendView (view_0_4_0_1)
-          let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
-          _ = view_0_4_0.appendView (view_0_4_0_2)
-        }
-        _ = view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small, alignment: .center)
-        _ = view_0_4.appendView (view_0_4_1)
-      }
-      _ = view_0.appendView (view_0_4)
-    }
+    let view_0 = AutoLayoutToolBar ()
+      .add (title: "Page", item: { () -> NSView in let item = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
+  .addPage (title: "Description", tooltip: "Device Description", pageView: descriptionPage)
+  .addPage (title: "Symbols", tooltip: "Device Symbols", pageView: symbolsPage)
+  .addPage (title: "Packages", tooltip: "Device Available Packages", pageView: packagesPage)
+  .addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: assignmentsPage)
+  .addPage (title: "Library", tooltip: "Device Embedded Library", pageView: libraryPage)
+  .addPage (title: "Infos", tooltip: "Device Informations", pageView: infosPage)
+  .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
+ ; return item } ())
+      .add (title: "Signature", item: { () -> NSView in let item = AutoLayoutSignatureField (size: .regular)
+  .bind_signature (self.signatureObserver_property)
+ ; return item } ())
+      .add (title: "Version", item: { () -> NSView in let item = AutoLayoutVersionField (size: .regular)
+  .bind_version (self.versionObserver_property)
+  .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+ ; return item } ())
+      .addFlexibleSpace ()
+      .add (title: "Status", item: { () -> NSView in let item = AutoLayoutStatusBadgeView ()
+  .bind_tooltip (self.statusMessage_property)
+  .bind_errorCount (self.statusErrorCount_property)
+  .bind_warningCount (self.statusWarningCount_property)
+ ; return item } ())
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
@@ -477,16 +441,57 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addCenterYAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
-      .addCenterYAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
-      .add (single: self.computeImplicitView_8 ())
-      .add (single: self.computeImplicitView_9 ())
-      .add (single: self.computeImplicitView_10 ())
-      .add (single: self.computeImplicitView_11 ())
-      .add (single: self.computeImplicitView_12 ())
-      .add (single: self.computeImplicitView_13 ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
+do{
+  let right_0 = AutoLayoutColorWell ()
+    .set (toolTip: "Stored in Preferences")
+    .bind_color (preferences_mSymbolBackColorForDevice_property)
+  _ = right.appendView (right_0)
+  let right_1 = AutoLayoutFlexibleSpace ()
+  _ = right.appendView (right_1)
+}
+ ; return right } ())
+      .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+  .bind_value (preferences_mSymbolHorizontalFlipForDevice_property)
+ ; return right } ())
+      .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutFlexibleSpace ()
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Vertical", size: .small)
+  .bind_value (preferences_mSymbolVerticalFlipForDevice_property)
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Symbol Color", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
+do{
+  let right_0 = AutoLayoutColorWell ()
+    .set (toolTip: "Stored in Preferences")
+    .bind_color (preferences_mSymbolColorForDevice_property)
+  _ = right.appendView (right_0)
+  let right_1 = AutoLayoutFlexibleSpace ()
+  _ = right.appendView (right_1)
+}
+ ; return right } ())
+      .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "Symbol Width", bold: false, size: .small, alignment: .left)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutTaggedPopUpButton (size: .small)
+  .expandableWidth ()
+  .add (title: "0.5 Point", withTag: 5)
+  .add (title: "1.0 Point", withTag: 10)
+  .add (title: "1.5 Point", withTag: 15)
+  .add (title: "2.0 Points", withTag: 20)
+  .add (title: "2.5 Points", withTag: 25)
+  .bind_selectedTag (preferences_symbolDrawingWidthForDeviceMultipliedByTen_property)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "Symbol Name Font", bold: false, size: .small, alignment: .left)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutFontButton (width: 125, size: .small)
+  .bind_fontValue (preferences_mSymbolNameFontForDevice_property)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "Pin Name Font", bold: false, size: .small, alignment: .left)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutFontButton (width: 125, size: .small)
+  .bind_fontValue (preferences_mPinNameFontForDevice_property)
+ ; return single } ())
     _ = vStackView.appendView (view_1)
     return vStackView
   }
@@ -554,18 +559,88 @@ import AppKit
     let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addCenterYAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
-      .addCenterYAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
-      .addCenterYAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
-      .addCenterYAligned (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
-      .addCenterYAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
-      .addCenterYAligned (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
-      .add (single: self.computeImplicitView_30 ())
-      .add (single: self.computeImplicitView_31 ())
-      .add (single: self.computeImplicitView_32 ())
-      .add (single: self.computeImplicitView_33 ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
+do{
+  let right_0 = AutoLayoutColorWell ()
+    .set (toolTip: "Stored in Preferences")
+    .bind_color (preferences_mPackageBackColorForDevice_property)
+  _ = right.appendView (right_0)
+  let right_1 = AutoLayoutFlexibleSpace ()
+  _ = right.appendView (right_1)
+}
+ ; return right } ())
+      .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+  .bind_value (preferences_mPackageHorizontalFlipForDevice_property)
+ ; return right } ())
+      .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutFlexibleSpace ()
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Vertical", size: .small)
+  .bind_value (preferences_mPackageVerticalFlipForDevice_property)
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Package", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
+do{
+  let right_0 = AutoLayoutColorWell ()
+    .set (toolTip: "Stored in Preferences")
+    .bind_color (preferences_mPackageColorForDevice_property)
+  _ = right.appendView (right_0)
+  let right_1 = AutoLayoutFlexibleSpace ()
+  _ = right.appendView (right_1)
+}
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Package Width", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutTaggedPopUpButton (size: .small)
+  .add (title: "0.5 Point", withTag: 5)
+  .add (title: "1.0 Point", withTag: 10)
+  .add (title: "1.5 Point", withTag: 15)
+  .add (title: "2.0 Points", withTag: 20)
+  .add (title: "2.5 Points", withTag: 25)
+  .bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Front Side Pad", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
+do{
+  let right_0 = AutoLayoutColorWell ()
+    .set (toolTip: "Stored in Preferences")
+    .bind_color (preferences_mFrontSidePadColorForDevice_property)
+  _ = right.appendView (right_0)
+  let right_1 = AutoLayoutFlexibleSpace ()
+  _ = right.appendView (right_1)
+}
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Back Side Pad", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
+do{
+  let right_0 = AutoLayoutColorWell ()
+    .set (toolTip: "Stored in Preferences")
+    .bind_color (preferences_mBottomSidePadColorForDevice_property)
+  _ = right.appendView (right_0)
+  let right_1 = AutoLayoutFlexibleSpace ()
+  _ = right.appendView (right_1)
+}
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Pad Number", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
+do{
+  let right_0 = AutoLayoutColorWell ()
+    .set (toolTip: "Stored in Preferences")
+    .bind_color (preferences_mPadNumberColorForDevice_property)
+  _ = right.appendView (right_0)
+  let right_1 = AutoLayoutFlexibleSpace ()
+  _ = right.appendView (right_1)
+}
+ ; return right } ())
+      .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "Pad Number Font", bold: false, size: .small, alignment: .left)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutFontButton (width: 125, size: .small)
+  .bind_fontValue (preferences_mPadNumberFontForDevice_property)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "Package Name Font", bold: false, size: .small, alignment: .left)
+ ; return single } ())
+      .add (single: { () -> NSView in let single = AutoLayoutFontButton (width: 125, size: .small)
+  .bind_fontValue (preferences_mPackageNameFontForDevice_property)
+ ; return single } ())
     _ = vStackView.appendView (view_1)
     return vStackView
   }
@@ -592,10 +667,38 @@ import AppKit
       .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
     _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutGridView2 ()
-      .addCenterYAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
-      .addCenterYAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
-      .addCenterYAligned (left: self.computeImplicitView_38 (), right: self.computeImplicitView_39 ())
-      .addCenterYAligned (left: self.computeImplicitView_40 (), right: self.computeImplicitView_41 ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutColorWell ()
+  .expandableHeight ()
+  .set (toolTip: "Stored in Preferences")
+  .bind_color (preferences_packageColor_property)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Display Packages", size: .small)
+  .expandableWidth ()
+  .bind_value (self.rootObject.mShowPackages_property)
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutColorWell ()
+  .expandableHeight ()
+  .set (toolTip: "Stored in Preferences")
+  .bind_color (preferences_padNumberColor_property)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Display Pad Numbers", size: .small)
+  .expandableWidth ()
+  .bind_value (self.rootObject.mShowPackagePadNumbers_property)
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutColorWell ()
+  .expandableHeight ()
+  .set (toolTip: "Stored in Preferences")
+  .bind_color (preferences_frontSidePadColor_property)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Display Front Side Pads", size: .small)
+  .expandableWidth ()
+  .bind_value (self.rootObject.mShowPackageFrontPads_property)
+ ; return right } ())
+      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutColorWell ()
+  .expandableHeight ()
+  .set (toolTip: "Stored in Preferences")
+  .bind_color (preferences_backSidePadColor_property)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Display Back Side Pads", size: .small)
+  .expandableWidth ()
+  .bind_value (self.rootObject.mShowPackageBackPads_property)
+ ; return right } ())
     _ = vStackView.appendView (view_3)
     return vStackView
   }
@@ -928,481 +1031,6 @@ import AppKit
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 0
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 1
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mSymbolBackColorForDevice_property)
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 2
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 3
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_3 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-      .bind_value (preferences_mSymbolHorizontalFlipForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 4
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 5
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_5 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
-      .bind_value (preferences_mSymbolVerticalFlipForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 6
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_6 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Symbol Color", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 7
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_7 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mSymbolColorForDevice_property)
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 8
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_8 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Symbol Width", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 9
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_9 () -> NSView {
-    let view = AutoLayoutTaggedPopUpButton (size: .small)
-      .expandableWidth ()
-      .add (title: "0.5 Point", withTag: 5)
-      .add (title: "1.0 Point", withTag: 10)
-      .add (title: "1.5 Point", withTag: 15)
-      .add (title: "2.0 Points", withTag: 20)
-      .add (title: "2.5 Points", withTag: 25)
-      .bind_selectedTag (preferences_symbolDrawingWidthForDeviceMultipliedByTen_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 10
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_10 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Symbol Name Font", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 11
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_11 () -> NSView {
-    let view = AutoLayoutFontButton (width: 125, size: .small)
-      .bind_fontValue (preferences_mSymbolNameFontForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 12
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_12 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pin Name Font", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 13
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_13 () -> NSView {
-    let view = AutoLayoutFontButton (width: 125, size: .small)
-      .bind_fontValue (preferences_mPinNameFontForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 14
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_14 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 15
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_15 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mPackageBackColorForDevice_property)
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 16
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_16 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 17
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_17 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-      .bind_value (preferences_mPackageHorizontalFlipForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 18
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_18 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 19
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_19 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
-      .bind_value (preferences_mPackageVerticalFlipForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 20
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_20 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Package", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 21
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_21 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mPackageColorForDevice_property)
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 22
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_22 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Package Width", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 23
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_23 () -> NSView {
-    let view = AutoLayoutTaggedPopUpButton (size: .small)
-      .add (title: "0.5 Point", withTag: 5)
-      .add (title: "1.0 Point", withTag: 10)
-      .add (title: "1.5 Point", withTag: 15)
-      .add (title: "2.0 Points", withTag: 20)
-      .add (title: "2.5 Points", withTag: 25)
-      .bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 24
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_24 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Front Side Pad", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 25
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_25 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mFrontSidePadColorForDevice_property)
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 26
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_26 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Back Side Pad", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 27
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_27 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mBottomSidePadColorForDevice_property)
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 28
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_28 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 29
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_29 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutColorWell ()
-        .set (toolTip: "Stored in Preferences")
-        .bind_color (preferences_mPadNumberColorForDevice_property)
-      _ = view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      _ = view.appendView (view_1)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 30
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_30 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pad Number Font", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 31
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_31 () -> NSView {
-    let view = AutoLayoutFontButton (width: 125, size: .small)
-      .bind_fontValue (preferences_mPadNumberFontForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 32
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_32 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Package Name Font", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 33
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_33 () -> NSView {
-    let view = AutoLayoutFontButton (width: 125, size: .small)
-      .bind_fontValue (preferences_mPackageNameFontForDevice_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 34
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_34 () -> NSView {
-    let view = AutoLayoutColorWell ()
-      .expandableHeight ()
-      .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_packageColor_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 35
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_35 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Display Packages", size: .small)
-      .expandableWidth ()
-      .bind_value (self.rootObject.mShowPackages_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 36
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_36 () -> NSView {
-    let view = AutoLayoutColorWell ()
-      .expandableHeight ()
-      .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_padNumberColor_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 37
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_37 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Display Pad Numbers", size: .small)
-      .expandableWidth ()
-      .bind_value (self.rootObject.mShowPackagePadNumbers_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 38
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_38 () -> NSView {
-    let view = AutoLayoutColorWell ()
-      .expandableHeight ()
-      .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_frontSidePadColor_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 39
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_39 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Display Front Side Pads", size: .small)
-      .expandableWidth ()
-      .bind_value (self.rootObject.mShowPackageFrontPads_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 40
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_40 () -> NSView {
-    let view = AutoLayoutColorWell ()
-      .expandableHeight ()
-      .set (toolTip: "Stored in Preferences")
-      .bind_color (preferences_backSidePadColor_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 41
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_41 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Display Back Side Pads", size: .small)
-      .expandableWidth ()
-      .bind_value (self.rootObject.mShowPackageBackPads_property)
-    return view
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

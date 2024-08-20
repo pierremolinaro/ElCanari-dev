@@ -28,20 +28,6 @@ final class AutoLayoutStatusView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override init () {
-//    super.init ()
-//
-// //   self.frame.size = self.intrinsicContentSize
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  required init? (coder : NSCoder) {
-//    fatalError ("init(coder:) has not been implemented")
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override var intrinsicContentSize : NSSize {
     return NSSize (width: BADGE_WIDTH * 2.0, height: BADGE_WIDTH * 2.0)
   }
@@ -65,6 +51,14 @@ final class AutoLayoutStatusView : ALB_NSView {
     )
     let bp = NSBezierPath (ovalIn: r)
     bp.fill ()
+  //---
+    if debugAutoLayout () && !self.bounds.isEmpty {
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

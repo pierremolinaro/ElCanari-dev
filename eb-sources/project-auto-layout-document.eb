@@ -16,9 +16,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardOutlinePage = \boardOutlinePage ()
     newView boardContentsPage = \boardContentsPage ()
     newView productPage = \productPage ()
-    hStack set (margins: .regular) {
-      vStack {
-        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+    ToolBar () {
+      add (
+        title: "Page",
+        item : SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Components", tooltip: "", pageView: view componentsPage)
           addPage (title: "Library", tooltip: "", pageView: view libraryPage)
           addPage (title: "Schematic", tooltip: "", pageView: view schematicPage)
@@ -32,44 +33,31 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $segmentImage root.segmentedControlNetListIssueImage (segmentIndex : 4)
           $segmentImage root.segmentedControlBoardIssueImage (segmentIndex : 6)
         }
-        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
-      }
-      space
-      vStack {
-        hStack {
-          space
-          StatusBadgeView () {
-            $tooltip root.schematicStatusMessage
-            $errorCount root.schematicErrorCount
-            $warningCount root.schematicWarningCount
-          }
-          space
+      )
+      addFlexibleSpace ()
+      add (
+        title: "Schematic",
+        item : StatusBadgeView () {
+          $tooltip root.schematicStatusMessage
+          $errorCount root.schematicErrorCount
+          $warningCount root.schematicWarningCount
         }
-        StaticLabel (title: "Schematic", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        hStack {
-          space
-          StatusBadgeView () {
-            $tooltip root.boardStatusMessage
-            $errorCount root.boardStatusErrorCount
-            $warningCount root.boardStatusWarningCount
-          }
-          space
+      )
+      add (
+        title: "Board",
+        item : StatusBadgeView () {
+          $tooltip root.boardStatusMessage
+          $errorCount root.boardStatusErrorCount
+          $warningCount root.boardStatusWarningCount
         }
-        StaticLabel (title: "Board", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        hStack {
-          space
-          StatusView () {
-            $tooltip root.ercStatusMessage
-            $status root.ercStatusValue
-          }
-          space
+      )
+      add (
+        title: "ERC",
+        item : StatusView () {
+          $tooltip root.ercStatusMessage
+          $status root.ercStatusValue
         }
-        StaticLabel (title: "ERC", bold: no, size : .small, alignment: .center)
-      }
+      )
     }
     separator
     view pageMasterView

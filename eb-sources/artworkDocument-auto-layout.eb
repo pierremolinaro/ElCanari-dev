@@ -22,38 +22,34 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
     newView descriptionPage = \DescriptionPage ()
     newView minimaPage = \MinimaPage ()
     newView dataPage = \DataPage ()
-    hStack set (margins: .regular) {
-      vStack {
-        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+    ToolBar () {
+      add (
+        title: "Page",
+        item : SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Description", tooltip: "Artwork Description", pageView: view descriptionPage)
           addPage (title: "Minima", tooltip: "Minima Editor", pageView: view minimaPage)
           addPage (title: "Data", tooltip: "Data Editor", pageView: view dataPage)
           $selectedPage root.selectedTab
           $segmentImage self.segmentedControlDataIssueImage (segmentIndex : 2)
         }
-        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        SignatureField (size : .regular) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
-      }
-      space
-      vStack {
-        hStack {
-          space
-          StatusBadgeView () {
-            $tooltip self.statusMessage
-            $errorCount self.statusErrorCount
-            $warningCount self.statusWarningCount
-          }
-          space
+      )
+      add (
+        title: "Signature",
+        item : SignatureField (size : .regular) { $signature signature }
+      )
+      add (
+        title: "Version",
+        item : VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+      )
+      addFlexibleSpace ()
+      add (
+        title: "Status",
+        item : StatusBadgeView () {
+          $tooltip self.statusMessage
+          $errorCount self.statusErrorCount
+          $warningCount self.statusWarningCount
         }
-        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-      }
+      )
     }
     separator
     view pageMasterView

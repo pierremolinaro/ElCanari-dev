@@ -41,7 +41,7 @@ class ALB_NSTextView : NSScrollView {
     self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
     self.mTextView.textContainer?.widthTracksTextView = true
 
-    self.drawsBackground = inDrawsBackground
+    self.drawsBackground = false // Scroll view has no background
     self.documentView = self.mTextView
     self.hasHorizontalScroller = inHorizontalScroller
     self.hasVerticalScroller = inVerticalScroller

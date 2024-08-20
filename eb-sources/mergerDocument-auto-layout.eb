@@ -11,37 +11,68 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     newView modelPage = \ModelPage ()
     newView boardPage = \BoardPage ()
     newView productPage = \ProductPage ()
-    hStack set (margins: .regular) {
-      vStack {
-        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+    ToolBar () {
+      add (
+        title: "Page",
+        item : SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Model", tooltip: "Model Description", pageView: view modelPage)
           addPage (title: "Board", tooltip: "Board Description", pageView: view boardPage)
           addPage (title: "Product", tooltip: "Product Description", pageView: view productPage)
           $selectedPage root.selectedPageIndex
         }
-        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        Checkbox (title: "Show Display Settings", size : .regular) {
+      )
+      add (
+        title: "for Model and Board Views",
+        item : Checkbox (title: "Show Display Settings", size : .regular) {
           $enabled root.selectedPageIndex <= 1
           $value root.showDisplaySettingView
         }
-        StaticLabel (title: "for Model and Board Views", bold: no, size : .small, alignment: .center)
-      }
-      space
-      vStack {
-        hStack {
-          space
-          StatusBadgeView () {
-            $tooltip self.statusMessage
-            $errorCount self.statusErrorCount
-            $warningCount self.statusWarningCount
-          }
-          space
+      )
+      addFlexibleSpace ()
+      add (
+        title: "Status",
+        item : StatusBadgeView () {
+          $tooltip self.statusMessage
+          $errorCount self.statusErrorCount
+          $warningCount self.statusWarningCount
         }
-        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-      }
+      )
     }
+//
+//
+//
+//
+//    hStack set (margins: .regular) {
+//      vStack {
+//        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+//          addPage (title: "Model", tooltip: "Model Description", pageView: view modelPage)
+//          addPage (title: "Board", tooltip: "Board Description", pageView: view boardPage)
+//          addPage (title: "Product", tooltip: "Product Description", pageView: view productPage)
+//          $selectedPage root.selectedPageIndex
+//        }
+//        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
+//      }
+//      vStack {
+//        Checkbox (title: "Show Display Settings", size : .regular) {
+//          $enabled root.selectedPageIndex <= 1
+//          $value root.showDisplaySettingView
+//        }
+//        StaticLabel (title: "for Model and Board Views", bold: no, size : .small, alignment: .center)
+//      }
+//      space
+//      vStack {
+//        hStack {
+//          space
+//          StatusBadgeView () {
+//            $tooltip self.statusMessage
+//            $errorCount self.statusErrorCount
+//            $warningCount self.statusWarningCount
+//          }
+//          space
+//        }
+//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
+//      }
+//    }
     separator
     view pageMasterView
   }

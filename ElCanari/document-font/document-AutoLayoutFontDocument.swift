@@ -179,61 +179,25 @@ import AppKit
     let pageMasterView = self.PageMasterView ()
     let fontPage = self.FontPage ()
     let infoPage = self.InfoPage ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: .regular)
-    do{
-      let view_0_0 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
-          .addPage (title: "Font", tooltip: "Characters Definition", pageView: fontPage)
-          .addPage (title: "Infos", tooltip: "Document Infos", pageView: infoPage)
-          .bind_selectedPage (self.rootObject.selectedTab_property)
-        _ = view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
-        _ = view_0_0.appendView (view_0_0_1)
-      }
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_1_0 = AutoLayoutSignatureField (size: .regular)
-          .bind_signature (self.signatureObserver_property)
-        _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .small, alignment: .center)
-        _ = view_0_1.appendView (view_0_1_1)
-      }
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_2_0 = AutoLayoutVersionField (size: .regular)
-          .bind_version (self.versionObserver_property)
-          .bind_versionShouldChange (self.versionShouldChangeObserver_property)
-        _ = view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .center)
-        _ = view_0_2.appendView (view_0_2_1)
-      }
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_4_0 = AutoLayoutHorizontalStackView ()
-        do{
-          let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
-          _ = view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutStatusBadgeView ()
-            .bind_tooltip (self.statusMessage_property)
-            .bind_errorCount (self.statusErrorCount_property)
-            .bind_warningCount (self.statusWarningCount_property)
-          _ = view_0_4_0.appendView (view_0_4_0_1)
-          let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
-          _ = view_0_4_0.appendView (view_0_4_0_2)
-        }
-        _ = view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small, alignment: .center)
-        _ = view_0_4.appendView (view_0_4_1)
-      }
-      _ = view_0.appendView (view_0_4)
-    }
+    let view_0 = AutoLayoutToolBar ()
+      .add (title: "Page", item: { () -> NSView in let item = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
+  .addPage (title: "Font", tooltip: "Characters Definition", pageView: fontPage)
+  .addPage (title: "Infos", tooltip: "Document Infos", pageView: infoPage)
+  .bind_selectedPage (self.rootObject.selectedTab_property)
+ ; return item } ())
+      .add (title: "Signature", item: { () -> NSView in let item = AutoLayoutSignatureField (size: .regular)
+  .bind_signature (self.signatureObserver_property)
+ ; return item } ())
+      .add (title: "Version", item: { () -> NSView in let item = AutoLayoutVersionField (size: .regular)
+  .bind_version (self.versionObserver_property)
+  .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+ ; return item } ())
+      .addFlexibleSpace ()
+      .add (title: "Status", item: { () -> NSView in let item = AutoLayoutStatusBadgeView ()
+  .bind_tooltip (self.statusMessage_property)
+  .bind_errorCount (self.statusErrorCount_property)
+  .bind_warningCount (self.statusWarningCount_property)
+ ; return item } ())
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
@@ -357,10 +321,22 @@ import AppKit
       let view_3_0 = AutoLayoutFlexibleSpace ()
       _ = view_3.appendView (view_3_0)
       let view_3_1 = AutoLayoutGridView2 ()
-        .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
+        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutDoubleField (width: 64, size: .small)
+  .bind_value (preferences_sampleStringSize_property, sendContinously:true)
+ ; return right } ())
+        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .small)
+  .bind_title (self.rootObject.sampleStringBezierPathWidth_property)
+ ; return right } ())
+        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Ascenders", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .small)
+  .bind_title (self.rootObject.sampleStringBezierPathAscent_property)
+ ; return right } ())
+        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Descenders", bold: false, size: .small, alignment: .center)
+ ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .small)
+  .bind_title (self.rootObject.sampleStringBezierPathDescent_property)
+ ; return right } ())
       _ = view_3.appendView (view_3_1)
       let view_3_2 = AutoLayoutFlexibleSpace ()
       _ = view_3.appendView (view_3_2)
@@ -548,82 +524,6 @@ import AppKit
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 0
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 1
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutDoubleField (width: 64, size: .small)
-      .bind_value (preferences_sampleStringSize_property, sendContinously:true)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 2
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 3
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_3 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.sampleStringBezierPathWidth_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 4
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Ascenders", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 5
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_5 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.sampleStringBezierPathAscent_property)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 6
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_6 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Descenders", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 7
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_7 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.sampleStringBezierPathDescent_property)
-    return view
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -18,9 +18,10 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     newView assignmentsPage = \AssignmentsPage ()
     newView libraryPage = \LibraryPage ()
     newView infosPage = \InfosPage ()
-    hStack set (margins: .regular) {
-      vStack {
-        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+    ToolBar () {
+      add (
+        title: "Page",
+        item : SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Description", tooltip: "Device Description", pageView: view descriptionPage)
           addPage (title: "Symbols", tooltip: "Device Symbols", pageView: view symbolsPage)
           addPage (title: "Packages", tooltip: "Device Available Packages", pageView: view packagesPage)
@@ -29,40 +30,68 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           addPage (title: "Infos", tooltip: "Device Informations", pageView: view infosPage)
           $selectedPage root.mSelectedPageIndex
         }
-        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        SignatureField (size : .regular) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
-      }
-      space
-      vStack {
-        hStack {
-          space
-          StatusBadgeView () {
-            $tooltip self.statusMessage
-            $errorCount self.statusErrorCount
-            $warningCount self.statusWarningCount
-          }
-          space
+      )
+      add (
+        title: "Signature",
+        item : SignatureField (size : .regular) { $signature signature }
+      )
+      add (
+        title: "Version",
+        item : VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+      )
+      addFlexibleSpace ()
+      add (
+        title: "Status",
+        item : StatusBadgeView () {
+          $tooltip self.statusMessage
+          $errorCount self.statusErrorCount
+          $warningCount self.statusWarningCount
         }
-        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-      }
+      )
+    }
+
+
+
+//    hStack set (margins: .regular) {
 //      vStack {
-//        hStack { space ImageObserverView (size : .regular) { $image self.mStatusImage $tooltip self.statusMessage } space }
+//        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+//          addPage (title: "Description", tooltip: "Device Description", pageView: view descriptionPage)
+//          addPage (title: "Symbols", tooltip: "Device Symbols", pageView: view symbolsPage)
+//          addPage (title: "Packages", tooltip: "Device Available Packages", pageView: view packagesPage)
+//          addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: view assignmentsPage)
+//          addPage (title: "Library", tooltip: "Device Embedded Library", pageView: view libraryPage)
+//          addPage (title: "Infos", tooltip: "Device Informations", pageView: view infosPage)
+//          $selectedPage root.mSelectedPageIndex
+//        }
+//        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
+//      }
+//      vStack {
+//        SignatureField (size : .regular) { $signature signature }
+//        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
+//      }
+//      vStack {
+//        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+//        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
+//      }
+//      space
+//      vStack {
+//        hStack {
+//          space
+//          StatusBadgeView () {
+//            $tooltip self.statusMessage
+//            $errorCount self.statusErrorCount
+//            $warningCount self.statusWarningCount
+//          }
+//          space
+//        }
 //        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
 //      }
-    }
+//    }
     separator
     view pageMasterView
   }
 
   transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
-//  transient NSImage mStatusImage dependsFrom self.issues ;
   transient Int statusWarningCount dependsFrom self.issues ;
   transient Int statusErrorCount dependsFrom self.issues ;
   transient String statusMessage dependsFrom self.issues ;

@@ -15,37 +15,64 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
     newView pageMasterView = \PageMasterView ()
     newView fontPage = \FontPage ()
     newView infoPage = \InfoPage ()
-    hStack set (margins: .regular) {
-      vStack {
-        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+    ToolBar () {
+      add (
+        title: "Page",
+        item : SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Font", tooltip: "Characters Definition", pageView: view fontPage)
           addPage (title: "Infos", tooltip: "Document Infos", pageView: view infoPage)
           $selectedPage root.selectedTab
         }
-        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        SignatureField (size : .regular) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
-      }
-      vStack {
-        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
-      }
-      space
-      vStack {
-        hStack {
-          space
-          StatusBadgeView () {
-            $tooltip self.statusMessage
-            $errorCount self.statusErrorCount
-            $warningCount self.statusWarningCount
-          }
-          space
+      )
+      add (
+        title: "Signature",
+        item : SignatureField (size : .regular) { $signature signature }
+      )
+      add (
+        title: "Version",
+        item : VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+      )
+      addFlexibleSpace ()
+      add (
+        title: "Status",
+        item : StatusBadgeView () {
+          $tooltip self.statusMessage
+          $errorCount self.statusErrorCount
+          $warningCount self.statusWarningCount
         }
-        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
-      }
+      )
     }
+//    hStack set (margins: .regular) {
+//      vStack {
+//        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+//          addPage (title: "Font", tooltip: "Characters Definition", pageView: view fontPage)
+//          addPage (title: "Infos", tooltip: "Document Infos", pageView: view infoPage)
+//          $selectedPage root.selectedTab
+//        }
+//        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
+//      }
+//      vStack {
+//        SignatureField (size : .regular) { $signature signature }
+//        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
+//      }
+//      vStack {
+//        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+//        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
+//      }
+//      space
+//      vStack {
+//        hStack {
+//          space
+//          StatusBadgeView () {
+//            $tooltip self.statusMessage
+//            $errorCount self.statusErrorCount
+//            $warningCount self.statusWarningCount
+//          }
+//          space
+//        }
+//        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
+//      }
+//    }
     separator
     view pageMasterView
   }
