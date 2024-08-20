@@ -49,9 +49,9 @@ final class AutoLayoutStepper : ALB_NSStepper {
   fileprivate func updateStepper (from inObject : EBObservableProperty <Int>) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.doubleValue = Double (v)
     }
   }

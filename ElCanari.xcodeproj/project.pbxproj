@@ -5283,7 +5283,6 @@
 				CFB82C0A276B897A00BAD56E /* Auto Layout — TableView */,
 				CFB4C0B02794672700C509A9 /* Auto Layout — TextField */,
 				CFB4C0DD2794675100C509A9 /* Auto Layout — TextView */,
-				CF7EF0962C7286CD009FB0D4 /* Auto Layout — Utilities */,
 				CFE979F321ABFCA3002E5716 /* Common Classes */,
 				CF76FB6F20F005F100EFD18D /* Common Entities */,
 				CFAFA53E24F26EB9002D48BE /* Cursors */,
@@ -6239,24 +6238,6 @@
 			path = "ElCanari/application-library-check";
 			sourceTree = "<group>";
 		};
-		CF7EF0962C7286CD009FB0D4 /* Auto Layout — Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				CFCC545325D2F937009C186D /* AutoLayout-debug.swift */,
-				CF4990EE28D8C9400099F871 /* enum-EBControlSize.swift */,
-				CF4990F828D8C9420099F871 /* enum-EBControlSize+extension.swift */,
-				CF7ABA912C73747400BA9590 /* enum-MarginSize.swift */,
-				CF4990E728D8C93F0099F871 /* enum-TextAlignment.swift */,
-				CF4990F428D8C9410099F871 /* enum-TextAlignment+extension.swift */,
-				CF625BB925D003EF00072462 /* NSControl+enabled-binding.swift */,
-				CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */,
-				CF625ACF25CFFF2700072462 /* NSView+hidden-binding.swift */,
-				CF7ABA952C7374A800BA9590 /* enum-MarginSize+extension.swift */,
-			);
-			name = "Auto Layout — Utilities";
-			path = "ElCanari/easy-bindings-auto-layout-utilities";
-			sourceTree = "<group>";
-		};
 		CF7EF0972C728894009FB0D4 /* Auto Layout — Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -6276,6 +6257,7 @@
 				CF21D88A2C7476B70012AD5F /* ALB_NSTextView.swift */,
 				CF7AB2D02C734F3800BA9590 /* ALB_NSView.swift */,
 				CF7AB2CB2C734F3800BA9590 /* ALB_WKWebView.swift */,
+				CFCC545325D2F937009C186D /* AutoLayout-debug.swift */,
 				CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */,
 				CF7AB2C32C734F3700BA9590 /* AutoLayoutGridView2.swift */,
 				CF7AB2BD2C734F3700BA9590 /* AutoLayoutHorizontalStackView.swift */,
@@ -6285,12 +6267,21 @@
 				CF7AB2CC2C734F3800BA9590 /* AutoLayoutVerticalStackView+divider.swift */,
 				CF7AB2D62C734F3900BA9590 /* AutoLayoutVerticalStackView+separator.swift */,
 				CF7AB2D22C734F3900BA9590 /* AutoLayoutViewSettings.swift */,
+				CF4990EE28D8C9400099F871 /* enum-EBControlSize.swift */,
+				CF4990F828D8C9420099F871 /* enum-EBControlSize+extension.swift */,
+				CF7ABA912C73747400BA9590 /* enum-MarginSize.swift */,
+				CF7ABA952C7374A800BA9590 /* enum-MarginSize+extension.swift */,
+				CF4990E728D8C93F0099F871 /* enum-TextAlignment.swift */,
+				CF4990F428D8C9410099F871 /* enum-TextAlignment+extension.swift */,
 				CF7AB2C42C734F3700BA9590 /* layout-compression-stretching-priorities.swift */,
 				CF7AB2BC2C734F3700BA9590 /* NSControl+autolayout-settings.swift */,
+				CF625BB925D003EF00072462 /* NSControl+enabled-binding.swift */,
+				CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */,
 				CF7AB2C02C734F3700BA9590 /* NSLayoutConstraint+array-extension.swift */,
 				CF7AB2CE2C734F3800BA9590 /* NSView+autolayout-settings.swift */,
 				CF7AB2C62C734F3800BA9590 /* NSView+expandableHeight.swift */,
 				CF7AB2D12C734F3900BA9590 /* NSView+expandableWidth.swift */,
+				CF625ACF25CFFF2700072462 /* NSView+hidden-binding.swift */,
 			);
 			name = "Auto Layout — Base";
 			path = "ElCanari/easy-bindings-auto-layout-base";

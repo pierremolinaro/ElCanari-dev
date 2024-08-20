@@ -229,6 +229,26 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  override final func observeValue (forKeyPath inKeyPath : String?,
+                                    of inObject :  Any?,
+                                    change inChange : [NSKeyValueChangeKey : Any]?,
+                                    context inContext : UnsafeMutableRawPointer?) {
+    if inKeyPath == "hidden" {
+      var allAreHidden = true
+      for view in self.subviews {
+        if !view.isHidden && !(view is AutoLayoutFlexibleSpace) {
+          allAreHidden = false
+        }
+      }
+      if self.isHidden != allAreHidden {
+        self.isHidden = allAreHidden
+      }
+    }
+    super.observeValue (forKeyPath: inKeyPath, of: inObject, change: inChange, context: inContext)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

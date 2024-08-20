@@ -44,8 +44,8 @@ class ALB_NSStepper : NSStepper {
   //  $enabled binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final var mEnabledBindingController : EnabledBindingController? = nil
-  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+//  private final var mEnabledBindingController : EnabledBindingController? = nil
+//  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
