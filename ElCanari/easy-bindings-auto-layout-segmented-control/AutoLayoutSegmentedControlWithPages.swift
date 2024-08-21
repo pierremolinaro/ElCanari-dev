@@ -58,9 +58,9 @@ final class AutoLayoutSegmentedControlWithPages : ALB_NSSegmentedControl {
                       pageView inPageView : ALB_NSStackView) -> Self {
     let n = self.segmentCount
     self.segmentCount += 1
+    self.setImageScaling (.scaleProportionallyUpOrDown, forSegment: n)
     self.setImage (NSImage (named: inImageName), forSegment: n)
     self.setLabel (inTitle, forSegment: n)
-    self.setImageScaling (.scaleProportionallyUpOrDown, forSegment: n)
 
     self.setToolTip (inTooltipString, forSegment: n)
     if let segmentedCell = self.cell as? NSSegmentedCell {

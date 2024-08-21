@@ -87,22 +87,6 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  $selectedIndex binding
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  private var mSelectedIndexController : Controller_AutoLayoutSegmentedControl_Index? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  final func bind_selectedIndex (_ inObject : EBObservableMutableProperty <Int>) -> Self {
-//    self.mSelectedIndexController = Controller_AutoLayoutSegmentedControl_Index (
-//      object: inObject,
-//      outlet: self
-//    )
-//    return self
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

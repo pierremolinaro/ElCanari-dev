@@ -9,6 +9,8 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+// https://developer.apple.com/library/archive/releasenotes/UserExperience/RNAutomaticLayout/index.html#//apple_ref/doc/uid/TP40010631
+//--------------------------------------------------------------------------------------------------
 
 enum PMViewForApplyingPriority {
   case firstView

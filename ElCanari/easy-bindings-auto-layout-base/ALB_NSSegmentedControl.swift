@@ -17,9 +17,9 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
   init (equalWidth inEqualWidth : Bool, size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .highest)
 
-    self.segmentStyle = .rounded
+//    self.segmentStyle = .rounded
 
     self.controlSize = inSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
