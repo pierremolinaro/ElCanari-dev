@@ -19,7 +19,7 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .highest)
 
-//    self.segmentStyle = .rounded
+//    self.segmentStyle = .automatic
 
     self.controlSize = inSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
@@ -48,27 +48,29 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
   override var isFlipped : Bool { return false }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // DO NOT override draw, otherwise segment images are not scaled !!!!!
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draw (_ inDirtyRect : NSRect) {
-    super.draw (inDirtyRect)
-    if debugAutoLayout () && !self.bounds.isEmpty {
-      var bp = NSBezierPath ()
-      let r = self.bounds
-      let p = NSPoint (
-        x: r.origin.x,
-        y: r.origin.y + self.lastBaselineOffsetFromBottom
-      )
-      bp.move (to: p)
-      bp.relativeLine (to: NSPoint (x: r.size.width, y: 0.0))
-      DEBUG_LAST_BASELINE_COLOR.setStroke ()
-      bp.stroke ()
-      bp = NSBezierPath (rect: r)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
-  }
+//  override final func draw (_ inDirtyRect : NSRect) {
+//    super.draw (inDirtyRect)
+//    if debugAutoLayout () && !self.bounds.isEmpty {
+//      var bp = NSBezierPath ()
+//      let r = self.bounds
+//      let p = NSPoint (
+//        x: r.origin.x,
+//        y: r.origin.y + self.lastBaselineOffsetFromBottom
+//      )
+//      bp.move (to: p)
+//      bp.relativeLine (to: NSPoint (x: r.size.width, y: 0.0))
+//      DEBUG_LAST_BASELINE_COLOR.setStroke ()
+//      bp.stroke ()
+//      bp = NSBezierPath (rect: r)
+//      bp.lineWidth = 1.0
+//      bp.lineJoinStyle = .round
+//      DEBUG_STROKE_COLOR.setStroke ()
+//      bp.stroke ()
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
