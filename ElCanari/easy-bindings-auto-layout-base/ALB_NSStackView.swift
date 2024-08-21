@@ -176,6 +176,38 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final func set (minWidth inWidth : Int) -> Self {
+    let c = NSLayoutConstraint (
+      item: self,
+      attribute: .width,
+      relatedBy: .greaterThanOrEqual,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: CGFloat (inWidth)
+    )
+    self.addConstraint (c)
+    return self
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func set (minHeight inHeight : Int) -> Self {
+    let c = NSLayoutConstraint (
+      item: self,
+      attribute: .height,
+      relatedBy: .greaterThanOrEqual,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: CGFloat (inHeight)
+    )
+    self.addConstraint (c)
+    return self
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 //  override var isFlipped : Bool { return false }
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·

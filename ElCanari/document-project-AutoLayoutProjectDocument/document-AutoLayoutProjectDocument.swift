@@ -834,7 +834,7 @@ import AppKit
     do{
       let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
         .expandableWidth ()
-        .set (minimumWidth: 400)
+        .set (minWidth: 400)
       self.projectDeviceController.bind_tableView (view_1_0)
       _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
@@ -847,7 +847,7 @@ import AppKit
         do{
           let view_1_2_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
             .expandableWidth ()
-            .set (minimumWidth: 150)
+            .set (minWidth: 150)
             .bind_array (self.selectedDeviceNames_property)
           _ = view_1_2_1.appendView (view_1_2_1_0)
           let view_1_2_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
@@ -856,12 +856,14 @@ import AppKit
           do{
             let view_1_2_1_2_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
               .expandableWidth ()
-              .set (minimumWidth: 150)
+              .set (minWidth: 150)
+              .set (minHeight: 150)
               .bind_array (self.selectedDeviceSymbolNames_property)
             _ = view_1_2_1_2.appendView (view_1_2_1_2_0)
             let view_1_2_1_2_1 = AutoLayoutVerticalStackView.HorizontalDivider ()
             _ = view_1_2_1_2.appendView (view_1_2_1_2_1)
             let view_1_2_1_2_2 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
+              .set (minHeight: 150)
               .expandableWidth ()
               .bind_array (self.selectedDevicePackageNames_property)
             _ = view_1_2_1_2.appendView (view_1_2_1_2_2)
@@ -871,7 +873,7 @@ import AppKit
           _ = view_1_2_1.appendView (view_1_2_1_3)
           let view_1_2_1_4 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
             .expandableWidth ()
-            .set (minimumWidth: 200)
+            .set (minWidth: 200)
             .bind_array (self.pinPadAssignments_property)
           _ = view_1_2_1.appendView (view_1_2_1_4)
         }
@@ -2333,6 +2335,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
     let view_3 = AutoLayoutVerticalStackView ()
     do{
       let view_3_0 = AutoLayoutTextObserverView (size: .small)
+        .set (minHeight: 100)
       self.mERCLogTextViewArray.append (view_3_0) // Outlet Array
       _ = view_3.appendView (view_3_0)
       let view_3_1 = AutoLayoutVerticalStackView.HorizontalDivider ()

@@ -4349,7 +4349,6 @@
 		CF7AB2D52C734F3900BA9590 /* ALB_NSImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALB_NSImageView.swift; sourceTree = "<group>"; };
 		CF7AB2D62C734F3900BA9590 /* AutoLayoutVerticalStackView+separator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLayoutVerticalStackView+separator.swift"; sourceTree = "<group>"; };
 		CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutFlexibleSpace.swift; sourceTree = "<group>"; };
-		CF7AB9E42C735CD700BA9590 /* ElCanari-Debug copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ElCanari-Debug copy-Info.plist"; path = "/Volumes/dev-git/ElCanari-dev/ElCanari-Debug copy-Info.plist"; sourceTree = "<absolute>"; };
 		CF7ABA912C73747400BA9590 /* enum-MarginSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-MarginSize.swift"; sourceTree = "<group>"; };
 		CF7ABA952C7374A800BA9590 /* enum-MarginSize+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-MarginSize+extension.swift"; sourceTree = "<group>"; };
 		CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotationCursor.png; sourceTree = "<group>"; };
@@ -5300,7 +5299,6 @@
 				CF26AE082AD1784F0041763B /* EB — extensions for handling properties */,
 				CF3DAD0F2AD09694003830F4 /* EB — property generic classes */,
 				CFD1B75221B2E90400F6F9EA /* EB — shapes */,
-				CF7AB9E42C735CD700BA9590 /* ElCanari-Debug copy-Info.plist */,
 				CF747FC81B3C41BB00140C49 /* Frameworks */,
 				CF8B9D282AD1842B002169DC /* Managed Object Factory */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,

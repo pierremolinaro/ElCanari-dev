@@ -201,7 +201,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       TableView (size : .regular, addControlButtons: no) {
         expandableWidth ()
-        set (minimumWidth: 400)
+        set (minWidth: 400)
         $tableValue #projectDeviceController
       }
       divider
@@ -210,18 +210,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         hStack {
           CanariProjectDeviceTableView (size : .regular) {
             expandableWidth ()
-            set (minimumWidth: 150)
+            set (minWidth: 150)
             $array self.selectedDeviceNames
           }
           divider
           vStack {
             CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
               expandableWidth ()
-              set (minimumWidth: 150)
+              set (minWidth: 150)
+              set (minHeight: 150)
               $array self.selectedDeviceSymbolNames
             }
             divider
             CanariProjectDevicePackageTableView (size : .regular) {
+              set (minHeight: 150)
               expandableWidth ()
               $array self.selectedDevicePackageNames
             }
@@ -229,7 +231,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           divider
           CanariProjectPinPadAssignmentTableView (size : .regular) {
             expandableWidth ()
-            set (minimumWidth: 200)
+            set (minWidth: 200)
             $array self.pinPadAssignments
           }
         }
@@ -1719,7 +1721,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
     vStack {
-      TextObserverView (size: .small) [outletArray mERCLogTextViewArray]
+      TextObserverView (size: .small) [outletArray mERCLogTextViewArray] { set (minHeight: 100) }
       divider
       CanariIssueTableView (hasHideIssueButton : yes) [
         outletArray mERCIssueTableViewArray configurator ercIssueTableViewConfigurator

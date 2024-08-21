@@ -53,8 +53,6 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
     super.draw (inDirtyRect)
     if debugAutoLayout () && !self.bounds.isEmpty {
       var bp = NSBezierPath ()
-//      let r = self.alignmentRect (forFrame: self.bounds)
-//      let r = self.frame (forAlignmentRect: self.bounds)
       let r = self.bounds
       let p = NSPoint (
         x: r.origin.x,

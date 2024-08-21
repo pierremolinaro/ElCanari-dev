@@ -129,7 +129,6 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func set (width inWidth : Int) -> Self {
-//    self.mWidth = CGFloat (inWidth)
     let c = NSLayoutConstraint (
       item: self,
       attribute: .width,
@@ -143,29 +142,6 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return self
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (minWidth inWidth : Int) -> Self {
-//    self.mWidth = CGFloat (inWidth)
-    let c = NSLayoutConstraint (
-      item: self,
-      attribute: .width,
-      relatedBy: .greaterThanOrEqual,
-      toItem: nil,
-      attribute: .notAnAttribute,
-      multiplier: 1.0,
-      constant: CGFloat (inWidth)
-    )
-    self.addConstraint (c)
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func set (minimumWidth inWidth : Int) -> Self { // §
-    return self
-  }
-  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Draw
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

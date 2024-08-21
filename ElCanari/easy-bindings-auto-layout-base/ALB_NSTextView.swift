@@ -73,6 +73,22 @@ class ALB_NSTextView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final func set (minHeight inHeight : Int) -> Self {
+    let c = NSLayoutConstraint (
+      item: self,
+      attribute: .height,
+      relatedBy: .greaterThanOrEqual,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: CGFloat (inHeight)
+    )
+    self.addConstraint (c)
+    return self
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
