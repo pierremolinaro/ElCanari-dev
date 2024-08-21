@@ -21,10 +21,6 @@ final class AutoLayoutWindowContentView : NSView {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    self.setContentHuggingPriority (.defaultLow, for: .vertical)
-    self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
-    self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
 
     var constraints = [NSLayoutConstraint] ()
 
@@ -34,7 +30,12 @@ final class AutoLayoutWindowContentView : NSView {
     constraints.add (rightOf: self, equalToRightOf: inView)
     constraints.add (bottomOf: self, equalToBottomOf: inView, withCompressionResistancePriorityOf: .secondView)
 
-    let hiliteWiew = HiliteView ()
+    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .horizontal), for: .horizontal)
+    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .vertical), for: .vertical)
+    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .horizontal), for: .horizontal)
+    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .vertical), for: .vertical)
+
+    let hiliteWiew = FilePrivateHiliteView ()
     self.addSubview (hiliteWiew)
     constraints.add (leftOf: self, equalToLeftOf: hiliteWiew)
     constraints.add (topOf: self, equalToTopOf: hiliteWiew)
@@ -212,42 +213,51 @@ final class AutoLayoutWindowContentView : NSView {
   private func buildHelperWindow (forView inView : NSView) -> NSWindow {
     let window = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 10, height: 10),
-      styleMask: [.utilityWindow, .borderless],
+      styleMask: [.utilityWindow, .borderless, .resizable],
       backing: .buffered,
       defer: false,
       screen: self.window?.screen
     )
- //   Swift.print ("Screen \(self.window?.screen?.visibleFrame)")
     window.backgroundColor = NSColor.white
     window.isOpaque = true
     window.isExcludedFromWindowsMenu = true
-    let mainView = NSView ()
-    mainView.translatesAutoresizingMaskIntoConstraints = false
-    mainView.setContentHuggingPriority (.defaultLow, for: .horizontal)
-    mainView.setContentHuggingPriority (.defaultLow, for: .vertical)
-    mainView.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
-    mainView.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
-    var constraints = [NSLayoutConstraint] ()
-    self.appendTextField (titled: "Class: \(inView.className)", toMainView: mainView, &constraints)
-    self.appendTextField (titled: "Bounds: \(inView.bounds)", toMainView: mainView, &constraints)
-    self.appendTextField (titled: "Frame: \(inView.frame)", toMainView: mainView, &constraints)
-    self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)", toMainView: mainView, &constraints)
-    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)", toMainView: mainView, &constraints)
-    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)", toMainView: mainView, &constraints)
-    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)", toMainView: mainView, &constraints)
-    if let lastView = mainView.subviews.last {
-      constraints.add (bottomOf: lastView, equalToBottomOf: mainView, plus: 8.0, withCompressionResistancePriorityOf: .firstView)
-    }
-    mainView.addConstraints (constraints)
+    let mainView = FilePrivateHelperView ()
+    mainView.configure (forView: inView)
     window.contentView = mainView
+    window.updateConstraintsIfNeeded ()
     return window
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func appendTextField (titled inString : String,
-                                toMainView inMainView : NSView,
-                                _ ioConstraints : inout [NSLayoutConstraint]) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate final class FilePrivateHelperView : ALB_NSView {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func configure (forView inView : NSView) {
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
+    self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
+    self.appendTextField (titled: "Class: \(inView.className)")
+    self.appendTextField (titled: "Bounds: \(inView.bounds)")
+    self.appendTextField (titled: "Frame: \(inView.frame)")
+    self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)")
+    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)")
+    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)")
+    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)")
+    if let lastView = self.subviews.last {
+      self.mNewConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: 8.0, withCompressionResistancePriorityOf: .firstView)
+    }
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendTextField (titled inString : String) {
     let view = NSTextField (frame: .zero)
     view.translatesAutoresizingMaskIntoConstraints = false
     view.isBezeled = false
@@ -259,17 +269,37 @@ final class AutoLayoutWindowContentView : NSView {
     view.font = NSFont.systemFont (ofSize: NSFont.systemFontSize)
     view.stringValue = inString
     let s = view.intrinsicContentSize
-    ioConstraints.add (widthOf: view, greaterThanOrEqualToConstant: s.width)
-    ioConstraints.add (heightOf: view, equalTo: s.height)
-    let optionalLastView = inMainView.subviews.last
-    inMainView.addSubview (view)
-    ioConstraints.add (leftOf: view, equalToLeftOf: inMainView, plus: 8.0)
-    ioConstraints.add (rightOf: inMainView, equalToRightOf: view, plus: 8.0)
+    self.mNewConstraints.add (widthOf: view, greaterThanOrEqualToConstant: s.width)
+    self.mNewConstraints.add (heightOf: view, equalTo: s.height)
+    let optionalLastView = self.subviews.last
+    self.addSubview (view)
+    self.mNewConstraints.add (leftOf: view, equalToLeftOf: self, plus: 8.0)
+    self.mNewConstraints.add (rightOf: self, equalToRightOf: view, plus: 8.0)
     if let lastView = optionalLastView {
-      ioConstraints.add (bottomOf: lastView, equalToTopOf: view, plus: 4.0)
+      self.mNewConstraints.add (bottomOf: lastView, equalToTopOf: view, plus: 4.0)
     }else{
-      ioConstraints.add (topOf: inMainView, equalToTopOf: view, plus: 8.0)
+      self.mNewConstraints.add (topOf: self, equalToTopOf: view, plus: 8.0)
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Constraints
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mNewConstraints = [NSLayoutConstraint] ()
+  private var mCurrentConstraints = [NSLayoutConstraint] ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func updateConstraints () {
+  //--- Remove all constraints
+    self.removeConstraints (self.mCurrentConstraints)
+  //--- Build constraints
+    self.mCurrentConstraints = self.mNewConstraints
+  //--- Apply constaints
+    self.addConstraints (self.mCurrentConstraints)
+  //--- This should the last instruction: call super method
+    super.updateConstraints ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -278,7 +308,7 @@ final class AutoLayoutWindowContentView : NSView {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate final class HiliteView : NSView {
+fileprivate final class FilePrivateHiliteView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
