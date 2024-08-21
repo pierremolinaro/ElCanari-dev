@@ -34,6 +34,27 @@ class ALB_NSScrollView : NSScrollView {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Changing isHidden does not invalidate constraints !!!!
+  // So we perform this operation manually
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func viewDidHide () {
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
+    }
+    super.viewDidHide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func viewDidUnhide () {
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
+    }
+    super.viewDidUnhide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

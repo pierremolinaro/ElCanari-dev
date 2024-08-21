@@ -41,18 +41,25 @@ class ALB_NSStepper : NSStepper {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  $enabled binding
+  // Changing isHidden does not invalidate constraints !!!!
+  // So we perform this operation manually
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  private final var mEnabledBindingController : EnabledBindingController? = nil
-//  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+  override func viewDidHide () {
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
+    }
+    super.viewDidHide ()
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-//    return self
-//  }
+  override func viewDidUnhide () {
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
+    }
+    super.viewDidUnhide ()
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

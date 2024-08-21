@@ -17,7 +17,7 @@ extension Preferences {
   final func configure_configureFreeRoutingPath (_ inOutlet : AutoLayoutButton) {
 //--- START OF USER ZONE 2
       inOutlet.title = FREEROUTING_DIR
-      _ = inOutlet.setClosureAction {
+      inOutlet.setClosureAction {
         let ws = NSWorkspace.shared
         let ok = ws.open (URL (fileURLWithPath: FREEROUTING_DIR))
         if !ok {

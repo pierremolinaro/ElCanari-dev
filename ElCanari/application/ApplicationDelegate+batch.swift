@@ -100,7 +100,6 @@ extension ApplicationDelegate {
                     withContentsOf: URL (fileURLWithPath: fullPath),
                     display: true
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                    _ = RunLoop.main.run (mode: .default, before: Date ())
                     if document != nil {
                       count += 1
                       let message = (count > 1)
@@ -110,6 +109,7 @@ extension ApplicationDelegate {
                     }else{
                       maintenanceLogTextView?.appendErrorString ("Cannot open \(fullPath)")
                     }
+                    _ = RunLoop.main.run (mode: .default, before: Date ())
                   }
                 }
               }

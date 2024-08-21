@@ -224,8 +224,7 @@ import AppKit
   //--- Configure
     self.mDialog.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
-    // _ = self.mOpenButton.bind_run (target: self, selector: #selector (Self.stopModalAndOpenDocumentAction (_:)))
-    _ = self.mOpenButton.setClosureAction { [weak self] in self?.stopModalAndOpenDocumentAction () }
+    self.mOpenButton.setClosureAction { [weak self] in self?.stopModalAndOpenDocumentAction () }
   //--- Dialog
     _ = NSApplication.shared.runModal (for: self.mDialog)
   }

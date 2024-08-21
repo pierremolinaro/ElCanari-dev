@@ -29,7 +29,7 @@ extension Preferences {
   //---------- Check library button
     let button = AutoLayoutButton (title: "Check Library", size: .regular)
       .expandableWidth ()
-    _ = button.setClosureAction {
+    button.setClosureAction {
       self.checkLibrary (windowForSheet: inLogWindow, logWindow: inLogWindow)
     }
   //---------- Tab View
@@ -149,7 +149,7 @@ extension AutoLayoutVerticalStackView {
     let button = AutoLayoutButton (title: inDocumentPath, size: .regular).expandableWidth ()
     let fm = FileManager ()
     if fm.fileExists (atPath: inDocumentPath) {
-      _ = button.setClosureAction {
+      button.setClosureAction {
         let ws = NSWorkspace.shared
         ws.open (URL (fileURLWithPath: inDocumentPath))
       }
@@ -311,7 +311,7 @@ extension Preferences {
     var deviceToUpdateSet = Set <String> ()
     for (deviceName, entry) in deviceDict {
       if entry.partStatus != .partIsValid {
-        _ = inStackView.appendHorizontalSeparator ()
+        inStackView.appendHorizontalSeparator ()
       }
       switch entry.partStatus {
       case .partIsDuplicated :
@@ -336,7 +336,7 @@ extension Preferences {
           if inSymbolDict [importedSymbolName] == nil {
             if !deviceHasError {
               deviceHasError = true
-              _ = inStackView.appendHorizontalSeparator ()
+              inStackView.appendHorizontalSeparator ()
             }
             var message = "  Error; '"
             message += deviceName
@@ -354,7 +354,7 @@ extension Preferences {
           if inPackageDict [importedPackageName] == nil {
             if !deviceHasError {
               deviceHasError = true
-              _ = inStackView.appendHorizontalSeparator ()
+              inStackView.appendHorizontalSeparator ()
             }
             var message = "  Error; '"
             message += deviceName

@@ -262,7 +262,7 @@ fileprivate struct EBAllocationItemDisplay {
      _ = self.mEnableAllocationDebugCheckbox.bind_value (self.mEnableAllocationDebug)
      _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
      _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
-     _ = self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
+     self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
      _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
        .setClosureAction { [weak self] in self?.allocationStatsDisplayFilterIndexDidChange () }
   //--- Configure table view

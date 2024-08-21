@@ -76,14 +76,25 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Changing isHidden does not invalidate constraints !!!!
+  // So we perform this operation manually
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override var intrinsicContentSize: NSSize {
-//    var s = super.intrinsicContentSize
-//    if let h = self.mMinHeight, s.height < h {
-//      s.height = h
-//    }
-//    return s
-//  }
+  override func viewDidHide () {
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
+    }
+    super.viewDidHide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func viewDidUnhide () {
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
+    }
+    super.viewDidUnhide ()
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
