@@ -48,13 +48,13 @@ final class AutoLayoutMenuButton : ALB_NSView {
   override func draw (_ inDirtyRect : NSRect) {
     super.draw (inDirtyRect)
   //--- Debug
-    if debugAutoLayout () {
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
+//    if debugAutoLayout () {
+//      let bp = NSBezierPath (rect: self.bounds)
+//      bp.lineWidth = 1.0
+//      bp.lineJoinStyle = .round
+//      DEBUG_STROKE_COLOR.setStroke ()
+//      bp.stroke ()
+//    }
   //--- Background
     if self.mMouseWithin {
 //      let x : CGFloat = 0.75

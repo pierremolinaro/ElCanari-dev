@@ -322,13 +322,13 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
       NSBezierPath.fill (self.bounds)
     }
     super.draw (inDirtyRect)
-    if debugAutoLayout () {
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
+//    if debugAutoLayout () {
+//      let bp = NSBezierPath (rect: self.bounds)
+//      bp.lineWidth = 1.0
+//      bp.lineJoinStyle = .round
+//      DEBUG_STROKE_COLOR.setStroke ()
+//      bp.stroke ()
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

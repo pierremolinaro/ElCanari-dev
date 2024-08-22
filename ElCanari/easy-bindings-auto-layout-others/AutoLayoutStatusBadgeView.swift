@@ -77,13 +77,13 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
     let p = NSPoint (x: self.bounds.center.x - size.width / 2.0, y: self.bounds.center.y - size.height / 2.0)
     str.draw (at: p, withAttributes: textAttributes)
   //---
-    if debugAutoLayout () && !self.bounds.isEmpty {
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
+//    if debugAutoLayout () && !self.bounds.isEmpty {
+//      let bp = NSBezierPath (rect: self.bounds)
+//      bp.lineWidth = 1.0
+//      bp.lineJoinStyle = .round
+//      DEBUG_STROKE_COLOR.setStroke ()
+//      bp.stroke ()
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

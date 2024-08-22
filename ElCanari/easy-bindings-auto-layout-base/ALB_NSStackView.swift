@@ -214,40 +214,40 @@ class ALB_NSStackView : NSView {
   // Draw
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-  override func draw (_ inDirtyRect : NSRect) {
-    super.draw (inDirtyRect)
-    if debugAutoLayout () && !self.bounds.isEmpty {
-      DEBUG_MARGIN_COLOR.setFill ()
-      if self.mBottomMargin > 0.0 {
-        var r = self.bounds
-        r.origin.y += r.size.height - self.mBottomMargin
-        r.size.height = self.mBottomMargin
-        NSBezierPath.fill (r)
-      }
-      if self.mTopMargin > 0.0 {
-        var r = self.bounds
-        r.size.height = self.mTopMargin
-        NSBezierPath.fill (r)
-      }
-      if self.mLeftMargin > 0.0 {
-        var r = self.bounds
-        r.size.width = self.mLeftMargin
-        NSBezierPath.fill (r)
-      }
-      if self.mRightMargin > 0.0 {
-        var r = self.bounds
-        r.origin.x += r.size.width - self.mRightMargin
-        r.size.width = self.mRightMargin
-        NSBezierPath.fill (r)
-      }
-    //--- Frame
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
-  }
+//  override func draw (_ inDirtyRect : NSRect) {
+//    super.draw (inDirtyRect)
+//    if debugAutoLayout () && !self.bounds.isEmpty {
+//      DEBUG_MARGIN_COLOR.setFill ()
+//      if self.mBottomMargin > 0.0 {
+//        var r = self.bounds
+//        r.origin.y += r.size.height - self.mBottomMargin
+//        r.size.height = self.mBottomMargin
+//        NSBezierPath.fill (r)
+//      }
+//      if self.mTopMargin > 0.0 {
+//        var r = self.bounds
+//        r.size.height = self.mTopMargin
+//        NSBezierPath.fill (r)
+//      }
+//      if self.mLeftMargin > 0.0 {
+//        var r = self.bounds
+//        r.size.width = self.mLeftMargin
+//        NSBezierPath.fill (r)
+//      }
+//      if self.mRightMargin > 0.0 {
+//        var r = self.bounds
+//        r.origin.x += r.size.width - self.mRightMargin
+//        r.size.width = self.mRightMargin
+//        NSBezierPath.fill (r)
+//      }
+//    //--- Frame
+//      let bp = NSBezierPath (rect: self.bounds)
+//      bp.lineWidth = 1.0
+//      bp.lineJoinStyle = .round
+//      DEBUG_STROKE_COLOR.setStroke ()
+//      bp.stroke ()
+//    }
+//  }
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

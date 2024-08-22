@@ -37,16 +37,16 @@ final class AutoLayoutLabel : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draw (_ inDirtyRect : NSRect) {
-    if debugAutoLayout () {
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
-    super.draw (inDirtyRect)
-  }
+//  override func draw (_ inDirtyRect : NSRect) {
+//    if debugAutoLayout () {
+//      let bp = NSBezierPath (rect: self.bounds)
+//      bp.lineWidth = 1.0
+//      bp.lineJoinStyle = .round
+//      DEBUG_STROKE_COLOR.setStroke ()
+//      bp.stroke ()
+//    }
+//    super.draw (inDirtyRect)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // SET TEXT color

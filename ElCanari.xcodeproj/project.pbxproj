@@ -6265,6 +6265,7 @@
 				CF7AB2CC2C734F3800BA9590 /* AutoLayoutVerticalStackView+divider.swift */,
 				CF7AB2D62C734F3900BA9590 /* AutoLayoutVerticalStackView+separator.swift */,
 				CF7AB2D22C734F3900BA9590 /* AutoLayoutViewSettings.swift */,
+				CFC579412BDEEA54005CA3F0 /* AutoLayoutWindowContentView.swift */,
 				CF4990EE28D8C9400099F871 /* enum-EBControlSize.swift */,
 				CF4990F828D8C9420099F871 /* enum-EBControlSize+extension.swift */,
 				CF7ABA912C73747400BA9590 /* enum-MarginSize.swift */,
@@ -6770,7 +6771,6 @@
 				CF2804982BE14206006758CC /* AutoLayoutVerticalScrollView.swift */,
 				CF2804942BE14206006758CC /* AutoLayoutViewByPrefixingAppIcon.swift */,
 				CFC579442BDEEAAF005CA3F0 /* AutoLayoutViewWithBackground.swift */,
-				CFC579412BDEEA54005CA3F0 /* AutoLayoutWindowContentView.swift */,
 			);
 			name = "Auto Layout — Others";
 			path = "ElCanari/easy-bindings-auto-layout-others";

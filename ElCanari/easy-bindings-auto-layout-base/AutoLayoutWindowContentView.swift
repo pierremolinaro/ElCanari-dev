@@ -13,14 +13,18 @@ import AppKit
 final class AutoLayoutWindowContentView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private let mHiliteView : FilePrivateHiliteView
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // INIT
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (view inView : NSView) {
+    self.mHiliteView = FilePrivateHiliteView (rootView: inView)
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
-
 
     var constraints = [NSLayoutConstraint] ()
 
@@ -35,14 +39,21 @@ final class AutoLayoutWindowContentView : NSView {
     self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .horizontal), for: .horizontal)
     self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .vertical), for: .vertical)
 
-    let hiliteWiew = FilePrivateHiliteView ()
-    self.addSubview (hiliteWiew)
-    constraints.add (leftOf: self, equalToLeftOf: hiliteWiew)
-    constraints.add (topOf: self, equalToTopOf: hiliteWiew)
-    constraints.add (rightOf: self, equalToRightOf: hiliteWiew)
-    constraints.add (bottomOf: self, equalToBottomOf: hiliteWiew, withCompressionResistancePriorityOf: .secondView)
+    self.addSubview (self.mHiliteView)
+    constraints.add (leftOf: self, equalToLeftOf: self.mHiliteView)
+    constraints.add (topOf: self, equalToTopOf: self.mHiliteView)
+    constraints.add (rightOf: self, equalToRightOf: self.mHiliteView)
+    constraints.add (bottomOf: self, equalToBottomOf: self.mHiliteView, withCompressionResistancePriorityOf: .secondView)
 
     self.addConstraints (constraints)
+
+    self.updateTrackingAreas ()
+
+    if debugAutoLayout () {
+      DispatchQueue.main.async {
+        self.mHiliteView.needsDisplay = true
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -74,7 +85,7 @@ final class AutoLayoutWindowContentView : NSView {
         if let lastView = optionalLastView {
           _ = self.setAutoLayoutFirstKeyViewInChain (self, lastView)
         }
-        self.subviews [1].needsDisplay = true
+        self.mHiliteView.needsDisplay = true
       }
     }
   }
@@ -144,7 +155,7 @@ final class AutoLayoutWindowContentView : NSView {
       self.removeTrackingArea (trackingArea)
     }
   //--- Add Updated tracking area (.activeInKeyWindow is required, otherwise crash)
-    if self.mDisplayViewCurrentSettings {
+    if self.mDisplayViewCurrentSettings || debugAutoLayout () {
       let trackingArea = NSTrackingArea (
         rect: self.bounds,
         options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
@@ -178,6 +189,9 @@ final class AutoLayoutWindowContentView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseMoved (with inEvent : NSEvent) {
+    if debugAutoLayout () {
+      self.mHiliteView.needsDisplay = true
+    }
     if self.mDisplayViewCurrentSettings {
       let windowContentView = self.subviews [0]
       let mouseLocation = windowContentView.convert (inEvent.locationInWindow, from: nil)
@@ -312,7 +326,12 @@ fileprivate final class FilePrivateHiliteView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
+  private let mRootView : NSView
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (rootView inRootView : NSView) {
+    self.mRootView = inRootView
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -338,6 +357,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var isOpaque : Bool { return false}
+  override var isFlipped : Bool { false } // Y axis is ascending
   override var acceptsFirstResponder : Bool { return false}
   override var canBecomeKeyView : Bool { return false}
 
@@ -376,8 +396,92 @@ fileprivate final class FilePrivateHiliteView : NSView {
       DEBUG_KEY_CHAIN_STROKE_COLOR.setFill ()
       filledBP.fill ()
     }
+    if debugAutoLayout () {
+      self.drawViewRects (self.mRootView)
+    }
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func drawViewRects (_ inView : NSView) {
+    if !inView.frame.isEmpty, !inView.isHidden {
+      let viewFrame = self.convert (inView.alignmentRect (forFrame: inView.bounds), from: inView)
+      var exploreSubviews = true
+      if let stackView = inView as? ALB_NSStackView { // Draw margins
+        DEBUG_MARGIN_COLOR.setFill ()
+        if stackView.mBottomMargin > 0.0 {
+          var r = viewFrame
+          r.size.height = stackView.mBottomMargin
+          NSBezierPath.fill (r)
+        }
+        if stackView.mTopMargin > 0.0 {
+          var r = viewFrame
+          r.origin.y += r.size.height - stackView.mTopMargin
+          r.size.height = stackView.mTopMargin
+          NSBezierPath.fill (r)
+        }
+        if stackView.mLeftMargin > 0.0 {
+          var r = viewFrame
+          r.size.width = stackView.mLeftMargin
+          NSBezierPath.fill (r)
+        }
+        if stackView.mRightMargin > 0.0 {
+          var r = viewFrame
+          r.origin.x += r.size.width - stackView.mRightMargin
+          r.size.width = stackView.mRightMargin
+          NSBezierPath.fill (r)
+        }
+      }else if inView is AutoLayoutFlexibleSpace {
+        DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
+        NSBezierPath.fill (viewFrame)
+      }else if inView is AutoLayoutHorizontalStackView.VerticalSeparator { // Do not frame
+        exploreSubviews = false
+      }else if inView is AutoLayoutVerticalStackView.HorizontalSeparator { // Do not frame
+        exploreSubviews = false
+      }else{ // Frame
+        let bp = NSBezierPath (rect: viewFrame)
+        bp.lineWidth = 1.0
+        bp.lineJoinStyle = .round
+        DEBUG_STROKE_COLOR.setStroke ()
+        bp.stroke ()
+      }
+    //--- Last baseline
+      if let representativeView = inView.pmLastBaselineRepresentativeView {
+        let bp = NSBezierPath ()
+        let p = NSPoint (
+          x: viewFrame.origin.x,
+          y: viewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
+        )
+        bp.move (to: p)
+        bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
+        if inView is ALB_NSStackView {
+          DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
+        }else{
+          DEBUG_LAST_BASELINE_COLOR.setStroke ()
+        }
+        bp.stroke ()
+      }
+    //--- Explore subviews
+      if exploreSubviews {
+        exploreSubviews = !(inView is NSSegmentedControl)
+      }
+      if exploreSubviews {
+        exploreSubviews = !(inView is NSTableView)
+      }
+      if exploreSubviews {
+        exploreSubviews = !(inView is NSPopUpButton)
+      }
+      if exploreSubviews {
+        exploreSubviews = !(inView is NSButton)
+      }
+      if exploreSubviews {
+        for view in inView.subviews {
+          self.drawViewRects (view)
+        }
+      }
+    }
+  }
+  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
