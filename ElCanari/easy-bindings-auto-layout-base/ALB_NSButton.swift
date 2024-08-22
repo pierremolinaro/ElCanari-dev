@@ -72,6 +72,7 @@ class ALB_NSButton : NSButton {
   override func viewDidHide () {
     if let superview = self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
+      buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
   }
@@ -87,6 +88,12 @@ class ALB_NSButton : NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  override func removeFromSuperview () {
+    buildResponderKeyChainForWindowThatContainsView (self)
+    super.removeFromSuperview ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
 
 //--------------------------------------------------------------------------------------------------

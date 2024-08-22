@@ -397,14 +397,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack {
       CanariNetDescriptionTableView [outlet mNetInfoTableView configurator netDescriptionTableViewConfigurator] {
+        set (minWidth: 300)
         $netInfo root.netsDescription
       }
       divider
       vStack {
-        StaticLabel (title: "Selected Net Inspector", bold: yes, size: .small, alignment: .center) { set (minWidth: 300) }
-        VerticalScrollView (content:
-          vStack set (margins: .regular) {
-          }
+        StaticLabel (title: "Selected Net Inspector", bold: yes, size: .small, alignment: .center)
+        VerticalScrollView (content: vStack set (margins: .regular) set (width: 300) { }
         ) [configurator selectedNetVerticalScrollViewConfigurator]
       }
     }

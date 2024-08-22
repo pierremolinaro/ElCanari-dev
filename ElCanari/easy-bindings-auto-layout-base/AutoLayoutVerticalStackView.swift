@@ -128,19 +128,19 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func set (width inWidth : Int) -> Self {
-    let c = NSLayoutConstraint (
-      item: self,
-      attribute: .width,
-      relatedBy: .equal,
-      toItem: nil,
-      attribute: .notAnAttribute,
-      multiplier: 1.0,
-      constant: CGFloat (inWidth)
-    )
-    self.addConstraint (c)
-    return self
-  }
+//  final func set (width inWidth : Int) -> Self {
+//    let c = NSLayoutConstraint (
+//      item: self,
+//      attribute: .width,
+//      relatedBy: .equal,
+//      toItem: nil,
+//      attribute: .notAnAttribute,
+//      multiplier: 1.0,
+//      constant: CGFloat (inWidth)
+//    )
+//    self.addConstraint (c)
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Draw

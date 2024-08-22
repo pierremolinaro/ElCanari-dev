@@ -45,6 +45,7 @@ class ALB_NSImageView : NSImageView {
   override func viewDidHide () {
     if let superview = self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
+      buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
   }
@@ -56,6 +57,13 @@ class ALB_NSImageView : NSImageView {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func removeFromSuperview () {
+    super.removeFromSuperview ()
+    buildResponderKeyChainForWindowThatContainsView (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

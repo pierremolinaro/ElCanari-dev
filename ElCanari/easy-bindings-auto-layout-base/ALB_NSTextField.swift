@@ -72,6 +72,22 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final func set (width inWidth : Int) -> Self {
+    let c = NSLayoutConstraint (
+      item: self,
+      attribute: .width,
+      relatedBy: .equal,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1.0,
+      constant: CGFloat (inWidth)
+    )
+    self.addConstraint (c)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final func set (minWidth inWidth : Int) -> Self {
     let c = NSLayoutConstraint (
       item: self,
@@ -168,6 +184,7 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
   override func viewDidHide () {
     if let superview = self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
+      buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
   }
@@ -179,6 +196,13 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func removeFromSuperview () {
+    buildResponderKeyChainForWindowThatContainsView (self)
+    super.removeFromSuperview ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

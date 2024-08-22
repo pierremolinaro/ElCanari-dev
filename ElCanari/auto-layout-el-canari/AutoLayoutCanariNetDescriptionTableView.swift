@@ -268,7 +268,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
     //--- If one selected net, add description views
       if inSelectedRows.count == 1 {
         let selectedNetInfo : NetInfo = self.mDataSource [inSelectedRows.first!]
-        _ = vStack.appendView (AutoLayoutStaticLabel (title: selectedNetInfo.netName, bold: true, size: .small, alignment: .center).notExpandableWidth ())
+        _ = vStack.appendView (AutoLayoutStaticLabel (title: selectedNetInfo.netName, bold: true, size: .small, alignment: .center).expandableWidth ())
         for subnet : SubnetDescriptor in selectedNetInfo.subnets {
           let optionalImage : NSImage?
           switch subnet.status {

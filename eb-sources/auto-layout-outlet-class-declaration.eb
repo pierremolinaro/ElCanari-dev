@@ -47,6 +47,7 @@ extern autolayout class GridView2 $hidden {
 }
 
 extern autolayout class VerticalScrollView (content: view) {
+  func set (width: Int)
 }
 
 extern autolayout class CanariOrientationSegmentedControl (size: EBControlSize) $enabled $hidden {
@@ -59,6 +60,7 @@ extern autolayout class StaticLabel (title : String,
                                      size: EBControlSize,
                                      alignment: TextAlignment) $enabled $hidden {
   func set (minWidth: Int)
+  func set (width: Int)
   func expandableHeight ()
   func notExpandableWidth ()
   func setOrangeTextColor ()
@@ -455,7 +457,6 @@ extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize
 
 extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
   func set (minWidth: Int)
-//  func set (height: Int)
   func expandableWidth ()
   $array transient StringArray
 }
@@ -464,6 +465,7 @@ extern autolayout class WarningImageView $hidden {
 }
 
 extern autolayout class CanariNetDescriptionTableView {
+  func set (minWidth: Int)
   $netInfo transient NetInfoArray
 }
 

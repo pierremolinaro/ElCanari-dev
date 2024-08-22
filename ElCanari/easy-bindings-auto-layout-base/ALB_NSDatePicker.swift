@@ -45,6 +45,7 @@ final class ALB_NSDatePicker : NSDatePicker {
   override func viewDidHide () {
     if let superview = self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
+      buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
   }
@@ -56,6 +57,13 @@ final class ALB_NSDatePicker : NSDatePicker {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func removeFromSuperview () {
+    super.removeFromSuperview ()
+    buildResponderKeyChainForWindowThatContainsView (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

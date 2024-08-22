@@ -68,6 +68,7 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
   override func viewDidHide () {
     if let superview = self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
+      buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
   }
@@ -79,6 +80,13 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func removeFromSuperview () {
+    buildResponderKeyChainForWindowThatContainsView (self)
+    super.removeFromSuperview ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

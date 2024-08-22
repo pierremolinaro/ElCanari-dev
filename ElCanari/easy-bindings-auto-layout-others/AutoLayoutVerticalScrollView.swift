@@ -21,16 +21,19 @@ class AutoLayoutVerticalScrollView : ALB_NSScrollView {
 
   init (content inDocumentView : NSView) {
     super.init ()
-//    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.contentView = InternalFlippedClipView () // So is aligned to top (instead of bottom)
+ //   self.contentView = InternalFlippedClipView () // So is aligned to top (instead of bottom)
     self.drawsBackground = false
     self.documentView = inDocumentView
     self.hasHorizontalScroller = false
     self.hasVerticalScroller = true
     self.automaticallyAdjustsContentInsets = true
+//    inDocumentView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+
+//    var constraintArray = [NSLayoutConstraint] ()
+//    constraintArray.add (rightOf: self.contentView, equalToRightOf: inDocumentView)
+//
+//    self.addConstraints (constraintArray)
 
   //  Swift.print ("Vertical Scroller \(self.verticalScroller)")
 //    if let verticalScroller = self.verticalScroller {
@@ -55,44 +58,54 @@ class AutoLayoutVerticalScrollView : ALB_NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  deinit {
-//    noteObjectDeallocation (self)
+//  final func set (width inWidth : Int) -> Self {
+//    let c = NSLayoutConstraint (
+//      item: self,
+//      attribute: .width,
+//      relatedBy: .equal,
+//      toItem: nil,
+//      attribute: .notAnAttribute,
+//      multiplier: 1.0,
+//      constant: CGFloat (inWidth)
+//    )
+//    self.addConstraint (c)
+//    return self
 //  }
-
+  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate final class InternalFlippedClipView : NSClipView {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init () {
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var isFlipped : Bool { return true }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//fileprivate final class InternalFlippedClipView : NSClipView {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  init () {
+//    super.init (frame: .zero)
+//    noteObjectAllocation (self)
+//    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  required init? (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+////  override var isFlipped : Bool { return true }  // So is aligned to top (instead of bottom)
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------

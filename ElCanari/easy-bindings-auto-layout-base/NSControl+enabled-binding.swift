@@ -87,9 +87,7 @@ final class EnabledBindingController : EBObservablePropertyController {
     case .single (let v) :
       self.enable (fromEnableBinding: v)
     }
-    if let windowContentView = self.mControlOutlet?.window?.contentView as? AutoLayoutWindowContentView {
-      windowContentView.triggerNextKeyViewSettingComputation ()
-    }
+    buildResponderKeyChainForWindowThatContainsView (self.mControlOutlet)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,9 +98,7 @@ final class EnabledBindingController : EBObservablePropertyController {
     if let outlet = self.mControlOutlet as? NSTextField {
       outlet.isEditable = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
     }
-    if let windowContentView = self.mControlOutlet?.window?.contentView as? AutoLayoutWindowContentView {
-      windowContentView.triggerNextKeyViewSettingComputation ()
-    }
+    buildResponderKeyChainForWindowThatContainsView (self.mControlOutlet)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -113,9 +109,7 @@ final class EnabledBindingController : EBObservablePropertyController {
     if let outlet = self.mControlOutlet as? NSTextField {
       outlet.isEditable = self.mIsEnabledFromValueBinding && self.mIsEnabledFromEnabledBinding
     }
-    if let windowContentView = self.mControlOutlet?.window?.contentView as? AutoLayoutWindowContentView {
-      windowContentView.triggerNextKeyViewSettingComputation ()
-    }
+    buildResponderKeyChainForWindowThatContainsView (self.mControlOutlet)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

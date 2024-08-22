@@ -1025,6 +1025,7 @@ import AppKit
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
       let view_1_0 = AutoLayoutCanariNetDescriptionTableView ()
+        .set (minWidth: 300)
         .bind_netInfo (self.rootObject.netsDescription_property)
       self.mNetInfoTableView = view_1_0 // Outlet
       self.configure_netDescriptionTableViewConfigurator (view_1_0) // Configurator
@@ -1034,7 +1035,6 @@ import AppKit
       let view_1_2 = AutoLayoutVerticalStackView ()
       do{
         let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Net Inspector", bold: true, size: .small, alignment: .center)
-          .set (minWidth: 300)
         _ = view_1_2.appendView (view_1_2_0)
         let view_1_2_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_0 ())
         self.configure_selectedNetVerticalScrollViewConfigurator (view_1_2_1) // Configurator
@@ -3508,6 +3508,7 @@ do{
   private final func computeImplicitView_0 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
+      .set (width: 300)
     do{
     }
     return view

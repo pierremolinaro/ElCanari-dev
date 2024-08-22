@@ -48,6 +48,7 @@ class ALB_NSStepper : NSStepper {
   override func viewDidHide () {
     if let superview = self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
+      buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
   }
@@ -59,6 +60,13 @@ class ALB_NSStepper : NSStepper {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func removeFromSuperview () {
+    buildResponderKeyChainForWindowThatContainsView (self)
+    super.removeFromSuperview ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

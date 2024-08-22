@@ -15,14 +15,13 @@ fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemPink
 fileprivate let DEBUG_LAST_BASELINE_COLOR            = NSColor.systemBlue
 fileprivate let DEBUG_STROKE_COLOR                   = NSColor.systemOrange
 fileprivate let DEBUG_MARGIN_COLOR                   = NSColor.systemYellow.withAlphaComponent (0.25)
-
-fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.black
+fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.systemPurple
 
 //--------------------------------------------------------------------------------------------------
 //  Show view current settings
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let SHOW_VIEW_SETTINGS_PREFERENCES_KEY = "debug.responder.chain"
+fileprivate let SHOW_VIEW_SETTINGS_PREFERENCES_KEY = "debug.show.view.settings"
 
 @MainActor fileprivate var gShowViewCurrentSettings = UserDefaults.standard.bool (forKey: SHOW_VIEW_SETTINGS_PREFERENCES_KEY)
 
@@ -40,7 +39,6 @@ fileprivate let SHOW_VIEW_SETTINGS_PREFERENCES_KEY = "debug.responder.chain"
     UserDefaults.standard.setValue (inFlag, forKey: SHOW_VIEW_SETTINGS_PREFERENCES_KEY)
     for window in NSApplication.shared.windows {
       if let mainView = window.contentView as? AutoLayoutWindowContentView {
-//        mainView.set (displayViewCurrentSettings: inFlag)
         mainView.updateTrackingAreas ()
       }
     }
@@ -114,6 +112,14 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor func buildResponderKeyChainForWindowThatContainsView (_ inView : NSView?) {
+  if let windowContentView = inView?.window?.contentView as? AutoLayoutWindowContentView {
+    windowContentView.triggerNextKeyViewSettingComputation ()
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 final class AutoLayoutWindowContentView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -150,6 +156,8 @@ final class AutoLayoutWindowContentView : NSView {
     constraints.add (bottomOf: self, equalToBottomOf: self.mHiliteView, withCompressionResistancePriorityOf: .secondView)
 
     self.addConstraints (constraints)
+
+    self.triggerNextKeyViewSettingComputation ()
 
     self.updateTrackingAreas ()
 
@@ -196,15 +204,17 @@ final class AutoLayoutWindowContentView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func buildAutoLayoutKeyViewChain (_ inView : NSView, _ ioCurrentNextKeyView : inout NSView?, _ outLastView : inout NSView?) {
+  private func buildAutoLayoutKeyViewChain (_ inView : NSView,
+                                            _ ioCurrentNextKeyView : inout NSView?,
+                                            _ outLastView : inout NSView?) {
     for view in inView.subviews.reversed () {
       if !view.isHidden {
-        if view.canBecomeKeyView {
+        if view.canBecomeKeyView && view.acceptsFirstResponder {
           if outLastView == nil {
+            // Swift.print ("Last Key View: \(view.className)")
             outLastView = view
           }
           view.nextKeyView = ioCurrentNextKeyView
-          // Swift.print ("Responder of \(view) is \(ioCurrentNextKeyView)")
           ioCurrentNextKeyView = view
         }else{
           self.buildAutoLayoutKeyViewChain (view, &ioCurrentNextKeyView, &outLastView)
@@ -220,7 +230,7 @@ final class AutoLayoutWindowContentView : NSView {
   fileprivate func setAutoLayoutFirstKeyViewInChain (_ inView : NSView, _ inLastView : NSView) -> Bool {
     for view in inView.subviews {
       if !view.isHidden {
-        if view.canBecomeKeyView {
+        if view.canBecomeKeyView && view.acceptsFirstResponder {
           inLastView.nextKeyView = view
           self.window?.initialFirstResponder = view
           return true
@@ -353,13 +363,19 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.setContentHuggingPriority (.defaultLow, for: .vertical)
     self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
     self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
-    self.appendTextField (titled: "Class: \(inView.className)")
-    self.appendTextField (titled: "Bounds: \(inView.bounds)")
+    self.appendTextField (titled: "Class: \(String (describing: type (of: inView)))")
+//    self.appendTextField (titled: "Bounds: \(inView.bounds)")
     self.appendTextField (titled: "Frame: \(inView.frame)")
     self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)")
-    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)")
-    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)")
-    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)")
+//    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)")
+//    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)")
+//    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)")
+//    self.appendTextField (titled: "acceptsFirstResponder: \(inView.acceptsFirstResponder)")
+//    self.appendTextField (titled: "canBecomeKeyView: \(inView.canBecomeKeyView)")
+    self.appendTextField (titled: "h Compression Resistance: \(inView.contentCompressionResistancePriority (for: .horizontal).rawValue)")
+    self.appendTextField (titled: "v Compression Resistance: \(inView.contentCompressionResistancePriority (for: .vertical).rawValue)")
+    self.appendTextField (titled: "h Stretching Resistance: \(inView.contentHuggingPriority (for: .horizontal).rawValue)")
+    self.appendTextField (titled: "v Stretching Resistance: \(inView.contentHuggingPriority (for: .vertical).rawValue)")
     if let lastView = self.subviews.last {
       self.mNewConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: 8.0, withCompressionResistancePriorityOf: .firstView)
     }
@@ -454,24 +470,28 @@ fileprivate final class FilePrivateHiliteView : NSView {
 
   override var isOpaque : Bool { return false}
   override var isFlipped : Bool { false } // Y axis is ascending
-  override var acceptsFirstResponder : Bool { return false}
-  override var canBecomeKeyView : Bool { return false}
+  override var acceptsFirstResponder : Bool { false }
+  override var canBecomeKeyView : Bool { false }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func hitTest (_ point: NSPoint) -> NSView? {
+  override func hitTest (_ inUnusedPoint : NSPoint) -> NSView? {
     return nil
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
+    if getDebugAutoLayout () {
+      self.drawViewRects (self.mRootView)
+    }
     if getDebugResponderChain () {
       let strokeBP = NSBezierPath ()
       let filledBP = NSBezierPath ()
       var optionalResponder = self.window?.initialFirstResponder
       var loop = true
       while let responder = optionalResponder, loop {
+//        Swift.print ("\(responder.className)")
         let r = responder.convert (responder.bounds, to: self)
         strokeBP.appendRect (r)
         let optionalNextResponder = responder.nextKeyView
@@ -483,17 +503,14 @@ fileprivate final class FilePrivateHiliteView : NSView {
         optionalResponder = optionalNextResponder
         loop = optionalResponder !== self.window?.initialFirstResponder
       }
-      NSColor.yellow.setStroke ()
-      strokeBP.lineWidth = 7.0
+      DEBUG_KEY_CHAIN_STROKE_COLOR.withAlphaComponent (0.125).setStroke ()
+      strokeBP.lineWidth = 11.0
       strokeBP.stroke ()
       DEBUG_KEY_CHAIN_STROKE_COLOR.setStroke ()
       strokeBP.lineWidth = 1.0
       strokeBP.stroke ()
       DEBUG_KEY_CHAIN_STROKE_COLOR.setFill ()
       filledBP.fill ()
-    }
-    if getDebugAutoLayout () {
-      self.drawViewRects (self.mRootView)
     }
   }
 
