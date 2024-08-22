@@ -74,11 +74,11 @@ import AppKit
     _ = mainView.appendView (topView)
   //--- Grid view: status and path
     let gridView = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (
+      .add (
         left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular, alignment: .center).notExpandableWidth (),
         right: self.mStatusTextField
       )
-      .addFirstBaseLineAligned (
+      .add (
         left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular, alignment: .center),
         right: self.mFullPathTextField
       )

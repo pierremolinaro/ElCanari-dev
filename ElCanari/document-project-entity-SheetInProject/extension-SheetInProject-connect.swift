@@ -173,7 +173,7 @@ extension SheetInProject {
     }
     do{
       let left = AutoLayoutStaticLabel (title: "Resulting Net", bold: false, size: .regular, alignment: .right)
-      _ = gridView.addFirstBaseLineAligned (left: left, right: popupButton)
+      _ = gridView.add (left: left, right: popupButton)
     }
     _ = layoutView.appendView (gridView)
     _ = layoutView.appendFlexibleSpace ()

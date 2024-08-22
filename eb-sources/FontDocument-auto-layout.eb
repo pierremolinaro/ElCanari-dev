@@ -151,19 +151,19 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
     hStack {
       space
       GridView2 {
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .center),
           right: DoubleField (width: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .center),
           right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathWidth }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Ascenders", bold: no, size: .small, alignment: .center),
           right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathAscent }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Descenders", bold: no, size: .small, alignment: .center),
           right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathDescent }
         )
@@ -250,7 +250,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
   action resetVersionAndSignatureAction ;
 
   stackView \InfoPage vStack set (margins: .regular) {
-    hStack setTopAlignment () {
+    hStack {
       StaticLabel (title: "Description", bold: no, size : .regular, alignment: .center)
       TextView { $value root.comments }
     }

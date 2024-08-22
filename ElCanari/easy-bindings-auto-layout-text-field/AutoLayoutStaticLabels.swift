@@ -19,9 +19,9 @@ final class AutoLayoutStaticLabels : AutoLayoutHorizontalStackView {
   init (left inLeft : String, right inRight : String, bold inBold : Bool, size inSize : EBControlSize) {
     super.init ()
     _ = self.appendView (AutoLayoutStaticLabel (title: inLeft, bold: inBold, size: inSize, alignment: .left).notExpandableWidth ())
-    _ = self.appendView (AutoLayoutFlexibleSpace ())
-    _ = self.appendView (AutoLayoutStaticLabel (title: inRight, bold: inBold, size: inSize, alignment: .right).notExpandableWidth ())
-    _ = self.set (spacing: .zero)
+      .appendView (AutoLayoutFlexibleSpace ())
+      .appendView (AutoLayoutStaticLabel (title: inRight, bold: inBold, size: inSize, alignment: .right).notExpandableWidth ())
+      .set (spacing: .zero)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

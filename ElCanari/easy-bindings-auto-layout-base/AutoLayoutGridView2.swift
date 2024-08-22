@@ -16,25 +16,10 @@ class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
 
   private var mRows = [(NSView, NSView)] () // left, right
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // OBSOLETE FUNCTION
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func addFirstBaseLineAligned (left inLeftView : NSView, right inRightView : NSView) -> Self { // §
-   return self.append (left: inLeftView, right: inRightView)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func addCenterYAligned (left inLeftView : NSView, right inRightView : NSView) -> Self { // §
-   return self.append (left: inLeftView, right: inRightView)
-//   return self.add ([inLeftView, inRightView], alignment: .centerY)
-  }
-
   //····················································································································
 
-  final func append (left inLeftView : NSView, right inRightView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView (horizontal: .fill, vertical: .fill)
+  final func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
+    let hStack = AutoLayoutHorizontalStackView () // horizontal: .fill, vertical2: .lastBaseline)
       .set (spacing: self.mHorizontalSpacing)
       .appendView (inLeftView)
       .appendView (inRightView)
@@ -89,6 +74,9 @@ class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
         self.mConstraints.add (widthOf: lastRow.1, equalToWidthOf: row.1)
       }
       optionalLastRow = row
+      if let v0 = row.0.pmLastBaselineRepresentativeView, let v1 = row.1.pmLastBaselineRepresentativeView {
+        self.mConstraints.add (lastBaselineOf: v0, equalToLastBaselineOf: v1)
+      }
     }
   //--- Apply constaints
     self.addConstraints (self.mConstraints)

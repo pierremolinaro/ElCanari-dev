@@ -88,11 +88,11 @@ prefs {
         add (single:
           StaticLabel (title: "User Interface", bold: yes, size: .regular, alignment: .left)
         )
-        addCenterYAligned (
+        add (
           left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .right),
           right: hStack { ColorWell { $color prefs.selectionHiliteColor } space }
         )
-        addCenterYAligned (
+        add (
           left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .right),
           right: TaggedPopUpButton (size: .regular) {
             add (title: "0.5 Point", withTag:  5)
@@ -103,7 +103,7 @@ prefs {
             $selectedTag prefs.hiliteWidthMultipliedByTen
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: space,
           right: Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
         )

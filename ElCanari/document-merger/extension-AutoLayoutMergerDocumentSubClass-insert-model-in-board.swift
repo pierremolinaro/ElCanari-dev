@@ -80,25 +80,25 @@ extension AutoLayoutMergerDocumentSubClass {
       _ = rightColumn.appendFlexibleSpace ()
 
       let grid = AutoLayoutGridView2 ()
-      _ = grid.addFirstBaseLineAligned (
+      _ = grid.add (
         left: AutoLayoutStaticLabel (title: "Model", bold: false, size: .small, alignment: .center),
         right: modelPopUpButton
       )
       let hStackXCount = AutoLayoutHorizontalStackView ()
       _ = hStackXCount.appendView (xCountTextField)
       _ = hStackXCount.appendFlexibleSpace ()
-      _ = grid.addFirstBaseLineAligned (
+      _ = grid.add (
         left: AutoLayoutStaticLabel (title: "X Count", bold: false, size: .small, alignment: .center),
         right: hStackXCount
       )
       let hStackYCount = AutoLayoutHorizontalStackView ()
       _ = hStackYCount.appendView (yCountTextField)
       _ = hStackYCount.appendFlexibleSpace ()
-      _ = grid.addFirstBaseLineAligned (
+      _ = grid.add (
         left: AutoLayoutStaticLabel (title: "Y Count", bold: false, size: .small, alignment: .center),
         right: hStackYCount
       )
-      _ = grid.addFirstBaseLineAligned (
+      _ = grid.add (
         left: AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center),
         right: orientationSegmentedControl
       )

@@ -327,7 +327,7 @@ fileprivate struct EBAllocationItemDisplay {
    //--- Build window contents
     let mainVStack = AutoLayoutVerticalStackView ()
       let hStack = AutoLayoutGridView2 ().set (margins: .large).set (bottomMargin: .large)
-        .addFirstBaseLineAligned (
+        .add (
           left: self.mEnableAllocationDebugCheckbox,
           right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
             .expandableWidth ()
@@ -335,8 +335,8 @@ fileprivate struct EBAllocationItemDisplay {
       _ = mainVStack.appendView (hStack)
       mainVStack.appendHorizontalSeparator ()
       let gridView = AutoLayoutGridView2 ().set (margins: .large).set (topMargin: .large).set (spacing: .regular)
-        .addFirstBaseLineAligned (
-          left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
+        .add (
+          left: AutoLayoutHorizontalStackView ()
             .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
             .appendFlexibleSpace (),
           right: AutoLayoutHorizontalStackView ()
@@ -344,8 +344,8 @@ fileprivate struct EBAllocationItemDisplay {
             .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small, alignment: .center))
             .appendView (self.mTotalAllocatedLabel)
         )
-        .addFirstBaseLineAligned (
-          left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
+        .add (
+          left: AutoLayoutHorizontalStackView ()
             .appendView (self.mPerformSnapShotButton)
             .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small, alignment: .center))
             .appendView (self.mFilterPopUpButton),

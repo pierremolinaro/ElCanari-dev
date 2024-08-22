@@ -11,8 +11,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 fileprivate let DEBUG_FLEXIBLE_SPACE_FILL_COLOR      = NSColor.systemGreen.withAlphaComponent (0.25)
-fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemPink
-fileprivate let DEBUG_LAST_BASELINE_COLOR            = NSColor.systemBlue
+fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemBlue //systemPink
+//fileprivate let DEBUG_LAST_BASELINE_COLOR            = NSColor.systemBlue
 fileprivate let DEBUG_STROKE_COLOR                   = NSColor.systemOrange
 fileprivate let DEBUG_MARGIN_COLOR                   = NSColor.systemYellow.withAlphaComponent (0.25)
 fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.systemPurple
@@ -559,7 +559,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
         bp.stroke ()
       }
     //--- Last baseline
-      if let representativeView = inView.pmLastBaselineRepresentativeView {
+      if inView is ALB_NSStackView, let representativeView = inView.pmLastBaselineRepresentativeView {
         let bp = NSBezierPath ()
         let p = NSPoint (
           x: viewFrame.origin.x,
@@ -567,11 +567,11 @@ fileprivate final class FilePrivateHiliteView : NSView {
         )
         bp.move (to: p)
         bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
-        if inView is ALB_NSStackView {
+//        if inView is ALB_NSStackView {
           DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
-        }else{
-          DEBUG_LAST_BASELINE_COLOR.setStroke ()
-        }
+//        }else{
+//          DEBUG_LAST_BASELINE_COLOR.setStroke ()
+//        }
         bp.stroke ()
       }
     //--- Explore subviews

@@ -175,19 +175,19 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   stackView \SymbolGridZoomInspectorView vStack {
     StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolBackColorForDevice } space }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
         right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mSymbolHorizontalFlipForDevice }
       )
-      addFirstBaseLineAligned (
+      add (
         left: space,
         right: Checkbox (title: "Vertical", size : .small) { $value prefs.mSymbolVerticalFlipForDevice }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Symbol Color", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolColorForDevice } space }
       )
@@ -244,23 +244,23 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   stackView \PackageGridZoomInspectorView vStack {
     StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageBackColorForDevice } space }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
         right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mPackageHorizontalFlipForDevice }
       )
-      addFirstBaseLineAligned (
+      add (
         left: space,
         right: Checkbox (title: "Vertical", size : .small) { $value prefs.mPackageVerticalFlipForDevice }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Package", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageColorForDevice } space }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Package Width", bold: no, size: .small, alignment: .center),
         right: TaggedPopUpButton (size: .small) {
           add (title: "0.5 Point", withTag: 5)
@@ -271,15 +271,15 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           $selectedTag prefs.packageDrawingWidthForDeviceMultipliedByTen
         }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Front Side Pad", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mFrontSidePadColorForDevice } space }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Back Side Pad", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mBottomSidePadColorForDevice } space }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Pad Number", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPadNumberColorForDevice } space }
       )
@@ -304,7 +304,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       $value root.mPackageDisplayHorizontalFlip
     }
     GridView2 {
-      addCenterYAligned (
+      add (
         left: ColorWell {
           expandableHeight ()
           set (toolTip: "Stored in Preferences")
@@ -312,7 +312,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
         },
         right: Checkbox (title: "Display Packages", size : .small) { expandableWidth () $value root.mShowPackages }
       )
-      addCenterYAligned (
+      add (
         left: ColorWell {
           expandableHeight ()
           set (toolTip: "Stored in Preferences")
@@ -323,7 +323,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           $value root.mShowPackagePadNumbers
         }
       )
-      addCenterYAligned (
+      add (
         left: ColorWell {
           expandableHeight ()
           set (toolTip: "Stored in Preferences")
@@ -334,7 +334,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           $value root.mShowPackageFrontPads
         }
       )
-      addCenterYAligned (
+      add (
         left: ColorWell {
           expandableHeight ()
           set (toolTip: "Stored in Preferences")
@@ -552,7 +552,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
 //······················································································································
 
   stackView \InfosPage vStack set (leftMargin: .large) set (rightMargin: .large) set (bottomMargin: .large) set (topMargin: .regular) {
-    hStack setFirstBaselineAlignment () {
+    hStack {
       StaticLabel (title: "Device Prefix", bold: no, size : .small, alignment: .center) { set (minWidth: 84) }
       TextField (minWidth: 56, size : .small) { $value root.mPrefix (sendContinously : yes) }
       StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, size : .small, alignment: .center)

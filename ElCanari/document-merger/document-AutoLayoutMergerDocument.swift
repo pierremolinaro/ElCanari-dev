@@ -353,31 +353,31 @@ import AppKit
       let view_1_2 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view_1.appendView (view_1_2)
       let view_1_3 = AutoLayoutGridView2 ()
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Artwork Name", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Artwork Name", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .small)
   .set (alignment: .left)
   .bind_title (self.mBoardModelSelection.artworkName_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .small)
   .set (alignment: .left)
   .bind_title (self.mBoardModelSelection.layerConfigurationString_property)
  ; return right } ())
         .addSeparator ()
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model Width", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model Width", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model Height", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model Height", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.mBoardModelSelection.modelLimitWidth_property, self.mBoardModelSelection.modelLimitWidthUnit_property)
  ; return right } ())
         .addSeparator ()
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Archive Version", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Archive Version", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutIntObserverField (bold: true, size: .small)
   .set (alignment: .left)
   .bind_observedValue (self.mBoardModelSelection.modelVersion_property)
@@ -395,7 +395,7 @@ import AppKit
   .bind_hidden (.prop (self.mBoardModelSelection.errorArchiveVersionMessageIsHidden_property))
  ; return single } ())
         .addSeparator ()
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Board Count", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Board Count", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutIntObserverField (bold: true, size: .small)
   .set (alignment: .left)
   .bind_observedValue (self.mBoardModelSelection.instanceCount_property)
@@ -720,19 +720,19 @@ import AppKit
   final func ArtworkDescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .regular)
   .set (alignment: .left)
   .expandableWidth ()
   .bind_title (self.rootObject.layerConfigurationString_property)
  ; return right } ())
-      .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutIntObserverField (bold: true, size: .regular)
   .set (alignment: .left)
   .expandableWidth ()
   .bind_observedValue (self.rootObject.mArtworkVersion_property)
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutVerticalStackView ()
+      .add (left: { () -> NSView in let left = AutoLayoutVerticalStackView ()
 do{
   let left_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular, alignment: .right)
   _ = left.appendView (left_0)
@@ -757,7 +757,6 @@ do{
       .set (margins: .regular)
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
-        .setFirstBaselineAlignment ()
       do{
         let view_0_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
         _ = view_0_0.appendView (view_0_0_0)
@@ -796,7 +795,6 @@ do{
         let view_1_2_0 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_2_0_0 = AutoLayoutHorizontalStackView ()
-            .setFirstBaselineAlignment ()
           do{
             let view_1_2_0_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small, alignment: .center)
             _ = view_1_2_0_0.appendView (view_1_2_0_0_0)
@@ -824,19 +822,19 @@ do{
         do{
           let view_1_2_3_0 = AutoLayoutGridView2 ()
             .set (leftMargin: .large)
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Front Side Images", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Front Side Images", size: .small)
   .set (enabled: false)
   .bind_value (self.mDataSelection.drawImagesTopSide_property)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Front Side QRCodes", size: .small)
   .set (enabled: false)
   .bind_value (self.mDataSelection.drawQRCodesTopSide_property)
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
   .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
   .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
   .bind_value (self.mDataSelection.drawTracksTopSide_property)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
   .bind_value (self.mDataSelection.drawPadsTopSide_property)
@@ -882,38 +880,38 @@ do{
         do{
           let view_1_2_8_0 = AutoLayoutGridView2 ()
             .set (leftMargin: .large)
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
   .bind_value (self.mDataSelection.drawTraversingPads_property)
   .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
  ; return left } (), right: { () -> NSView in let right = AutoLayoutFlexibleSpace ()
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
   .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
   .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
  ; return left } (), right: { () -> NSView in let right = AutoLayoutFlexibleSpace ()
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
   .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
   .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
   .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
   .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
   .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
   .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
   .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
   .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
   .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
   .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
   .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
   .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
   .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
   .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
@@ -931,19 +929,19 @@ do{
         do{
           let view_1_2_10_0 = AutoLayoutGridView2 ()
             .set (leftMargin: .large)
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Back Side Images", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Back Side Images", size: .small)
   .set (enabled: false)
   .bind_value (self.mDataSelection.drawImagesBottomSide_property)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Back Side QRCodes", size: .small)
   .set (enabled: false)
   .bind_value (self.mDataSelection.drawQRCodesBottomSide_property)
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
   .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
   .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
  ; return right } ())
-            .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
+            .add (left: { () -> NSView in let left = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
   .bind_value (self.mDataSelection.drawTracksBottomSide_property)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
   .bind_value (self.mDataSelection.drawPadsBottomSide_property)
@@ -1074,19 +1072,19 @@ do{
         .set (leftMargin: .large)
         .set (rightMargin: .large)
         .set (topMargin: .regular)
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular, alignment: .center)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular, alignment: .center)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular, alignment: .center)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular, alignment: .center)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular, alignment: .center)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular, alignment: .center)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular, alignment: .center)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular, alignment: .center)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
  ; return right } ())
@@ -1125,7 +1123,6 @@ do{
         .set (leftMargin: .large)
       do{
         let view_0_3_0 = AutoLayoutHorizontalStackView ()
-          .setFirstBaselineAlignment ()
         do{
           let view_0_3_0_0 = AutoLayoutColorWell ()
             .bind_color (self.rootObject.mPDFBoardBackgroundColor_property)
@@ -1169,10 +1166,10 @@ do{
   private final func computeImplicitView_0 () -> NSView {
     let view = AutoLayoutGridView2 ()
       .set (margins: .regular)
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutFlexibleSpace ()
+      .add (left: { () -> NSView in let left = AutoLayoutFlexibleSpace ()
  ; return left } (), right: { () -> NSView in let right = AutoLayoutStaticLabels (left: "Model", right: "Board", bold: true, size: .small)
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Horizontal Flip", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Horizontal Flip", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
@@ -1185,7 +1182,7 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Vertical Flip", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Vertical Flip", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
@@ -1198,9 +1195,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Holes", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Holes", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1216,9 +1212,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Vias", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Vias", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1234,9 +1229,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Board Limits", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Board Limits", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1252,9 +1246,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model Board Limits", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model Board Limits", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1270,9 +1263,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1288,12 +1280,11 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Front", bold: true, size: .small, alignment: .left)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Front", bold: true, size: .small, alignment: .left)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutFlexibleSpace ()
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Pads", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Pads", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1309,9 +1300,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Names", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Names", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1327,9 +1317,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Values", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Values", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1345,9 +1334,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Packages", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Packages", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1363,9 +1351,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Texts", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Texts", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1381,9 +1368,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Lines", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Lines", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1399,9 +1385,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layout Texts", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layout Texts", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1417,9 +1402,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Tracks", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Tracks", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1435,12 +1419,11 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner", bold: true, size: .small, alignment: .left)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner", bold: true, size: .small, alignment: .left)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutFlexibleSpace ()
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Traversing Pads", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Traversing Pads", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1456,9 +1439,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 1 Tracks", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 1 Tracks", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1474,9 +1456,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 2 Tracks", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 2 Tracks", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1492,9 +1473,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 3 Tracks", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 3 Tracks", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1510,9 +1490,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 4 Tracks", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Inner 4 Tracks", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1528,12 +1507,11 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Back", bold: true, size: .small, alignment: .left)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Back", bold: true, size: .small, alignment: .left)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutFlexibleSpace ()
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Pads", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Pads", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1549,9 +1527,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Names", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Names", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1567,9 +1544,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Values", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Component Values", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1585,9 +1561,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Packages", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Packages", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1603,9 +1578,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Texts", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Texts", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1621,9 +1595,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Lines", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Legend Lines", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1639,9 +1612,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layout Texts", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layout Texts", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1657,9 +1629,8 @@ do{
   _ = right.appendView (right_2)
 }
  ; return right } ())
-      .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Tracks", bold: false, size: .small, alignment: .right)
+      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Tracks", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-  .setCenterYAlignment ()
 do{
   let right_0 = AutoLayoutCheckbox (title: "", size: .small)
     .expandableHeight ()
@@ -1701,7 +1672,7 @@ do{
       }
       _ = view.appendView (view_1)
       let view_2 = AutoLayoutGridView2 ()
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutVerticalStackView ()
 do{
   let right_0 = AutoLayoutCanariDimensionAndPopUp (size: .small)
@@ -1714,7 +1685,7 @@ do{
   _ = right.appendView (right_1)
 }
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutVerticalStackView ()
 do{
   let right_0 = AutoLayoutCanariDimensionAndPopUp (size: .small)
@@ -1727,22 +1698,22 @@ do{
   _ = right.appendView (right_1)
 }
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.rootObject.boardLimitWidth_property, self.rootObject.boardLimitWidthUnit_property)
  ; return right } ())
         .addSeparator ()
         .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "Selected Element", bold: true, size: .small, alignment: .left)
  ; return single } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Model", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .small)
   .bind_title (self.mBoardInstanceSelection.modelName_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Right", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Right", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.mBoardInstanceSelection.x_property, self.rootObject.selectedBoardXUnit_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Bottom", bold: false, size: .small, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Bottom", bold: false, size: .small, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCanariDimensionAndPopUp (size: .small)
   .bind_dimensionAndUnit (self.mBoardInstanceSelection.y_property, self.rootObject.selectedBoardYUnit_property)
  ; return right } ())
@@ -1832,7 +1803,6 @@ do{
       let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
       _ = view.appendView (view_5)
       let view_6 = AutoLayoutHorizontalStackView ()
-        .equalWidth ()
       do{
         let view_6_0 = AutoLayoutVerticalStackView ()
         do{

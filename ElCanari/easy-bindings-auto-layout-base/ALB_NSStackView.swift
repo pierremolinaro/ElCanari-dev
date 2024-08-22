@@ -18,7 +18,7 @@ class ALB_NSStackView : NSView {
 
   init () {
     self.mHorizontalDisposition = .fill
-    self.mVerticalDisposition = .fill
+    self.mVerticalDisposition = .lastBaseline
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
@@ -26,14 +26,14 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (horizontal inHorizontalDisposition : HorizontalLayoutInVerticalCollectionView,
-        vertical inVerticalDisposition : VerticalLayoutInHorizontalCollectionView) {
-    self.mHorizontalDisposition = inHorizontalDisposition
-    self.mVerticalDisposition = inVerticalDisposition
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
-  }
+//  init (horizontal inHorizontalDisposition : HorizontalLayoutInVerticalCollectionView,
+//        vertical2 inVerticalDisposition : VerticalLayoutInHorizontalCollectionView) {
+//    self.mHorizontalDisposition = inHorizontalDisposition
+//    self.mVerticalDisposition = inVerticalDisposition
+//    super.init (frame: .zero)
+//    noteObjectAllocation (self)
+//    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

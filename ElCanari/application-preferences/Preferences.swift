@@ -146,7 +146,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
       let view_0_1 = AutoLayoutGridView2 ()
         .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .left)
  ; return single } ())
-        .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
 do{
   let right_0 = AutoLayoutColorWell ()
@@ -156,7 +156,7 @@ do{
   _ = right.appendView (right_1)
 }
  ; return right } ())
-        .addCenterYAligned (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
+        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
  ; return left } (), right: { () -> NSView in let right = AutoLayoutTaggedPopUpButton (size: .regular)
   .add (title: "0.5 Point", withTag: 5)
   .add (title: "1.0 Point", withTag: 10)
@@ -165,7 +165,7 @@ do{
   .add (title: "2.5 Points", withTag: 25)
   .bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
  ; return right } ())
-        .addFirstBaseLineAligned (left: { () -> NSView in let left = AutoLayoutFlexibleSpace ()
+        .add (left: { () -> NSView in let left = AutoLayoutFlexibleSpace ()
  ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
   .bind_value (preferences_showDebugMenu_property)
  ; return right } ())

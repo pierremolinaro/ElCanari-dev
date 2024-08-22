@@ -66,11 +66,11 @@ import AppKit
     let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
   //--- Grid view
     let gridView = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.mSetLibraryRepositoryButton, right: self.mLibraryRepositoryTextField)
-      .addFirstBaseLineAligned (left: self.mSetUserAndPasswordButton, right: self.mUserAndPasswordTextField)
+      .add (left: self.mSetLibraryRepositoryButton, right: self.mLibraryRepositoryTextField)
+      .add (left: self.mSetUserAndPasswordButton, right: self.mUserAndPasswordTextField)
       .addSeparator ()
-      .addFirstBaseLineAligned (left: self.mLibraryRepositoryLoadCurrentReleaseButton, right: self.mLibraryRepositoryCurrentReleaseTextField)
-      .addFirstBaseLineAligned (left: self.mLibraryRepositoryStatusButton, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (self.mLibraryRepositoryCommitButton))
+      .add (left: self.mLibraryRepositoryLoadCurrentReleaseButton, right: self.mLibraryRepositoryCurrentReleaseTextField)
+      .add (left: self.mLibraryRepositoryStatusButton, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (self.mLibraryRepositoryCommitButton))
     _ = mainView.appendView (gridView)
   //--- Log Text View
     _ = mainView.appendView (self.mLibraryRepositoryLogTextView)

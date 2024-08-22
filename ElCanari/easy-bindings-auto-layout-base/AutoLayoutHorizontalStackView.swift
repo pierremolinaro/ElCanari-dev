@@ -25,9 +25,21 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   //  Last Baseline representative view
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mLastBaselineRepresentativeView : NSView? = nil
-
-  override var pmLastBaselineRepresentativeView : NSView? { self.mLastBaselineRepresentativeView }
+  override var pmLastBaselineRepresentativeView : NSView? {
+    for view in self.subviews {
+      if !view.isHidden {
+        switch view.pmLayoutSettings.vLayoutInHorizontalContainer {
+        case .center, .fill, .weakFill, .weakFillIgnoringMargins, .bottom, .top :
+          ()
+        case .lastBaseline :
+          if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
+            return viewLastBaselineRepresentativeView
+          }
+        }
+      }
+    }
+    return nil
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Constraints
@@ -42,7 +54,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Build constraints
-    self.mLastBaselineRepresentativeView = nil
+    var optionalLastBaselineRepresentativeView : NSView? = nil
     var optionalLastView : NSView? = nil
     var optionalLastFlexibleSpace : NSView? = nil
     for view in self.subviews {
@@ -68,13 +80,13 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
         case .lastBaseline :
           if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
             self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
-            self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
+            self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mBottomMargin)
             self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin, withCompressionResistancePriorityOf: .secondView)
             self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mTopMargin, withCompressionResistancePriorityOf: .firstView)
-            if let lastBaselineRepresentativeView = self.mLastBaselineRepresentativeView {
+            if let lastBaselineRepresentativeView = optionalLastBaselineRepresentativeView {
               self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
             }else{
-              self.mLastBaselineRepresentativeView = view
+              optionalLastBaselineRepresentativeView = viewLastBaselineRepresentativeView
             }
           }else{
             self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
@@ -138,49 +150,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class final func viewFollowedByFlexibleSpace (_ inView : NSView) -> AutoLayoutHorizontalStackView {
-    let hStack = AutoLayoutHorizontalStackView ()
-    _ = hStack.appendView (inView)
-    _ = hStack.appendFlexibleSpace ()
-    return hStack
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override func draw (_ inDirtyRect : NSRect) {
-//    super.draw (inDirtyRect)
-//    let r = self.bounds.insetBy (dx: 0.5, dy: 0.5)
-//    if !r.isEmpty {
-//      let bp = NSBezierPath (rect: r)
-//      bp.lineWidth = 1.0
-//      NSColor.black.setStroke ()
-//      bp.stroke ()
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // OBSOLETE
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setFirstBaselineAlignment () -> Self { // §
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setTopAlignment () -> Self { // §
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func equalWidth () -> Self { // §
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setCenterYAlignment () -> Self { // §
-    return self
+    return AutoLayoutHorizontalStackView ().appendView (inView).appendFlexibleSpace ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -576,15 +576,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addTab (title: "Grid, Flip", tooltip: "Grid and Flip", contentView : 
         GridView2 {
           set (margins: .regular)
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .center),
             right: StaticLabel (title: "50 mils", bold: yes, size : .small, alignment: .center)
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .center),
             right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mSchematicGridStyle }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Every", bold: no, size : .small, alignment: .center),
             right: TaggedPopUpButton (size: .small) {
               add (title: "1 Step",   withTag:  1)
@@ -596,19 +596,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
               $selectedTag root. mSchematicGridDisplayFactor
             }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .center),
             right: Checkbox (title: "Horizontal", size : .small) { $value root.mSchematicHorizontalFlip }
           )
-          addFirstBaseLineAligned (
+          add (
             left: FlexibleSpace,
             right: Checkbox (title: "Vertical", size : .small) { $value root.mSchematicVerticalFlip }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Cross Grid Color", bold: no, size : .small, alignment: .center),
             right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.dotColorGridForSchematic } space }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Line Grid Color", bold: no, size : .small, alignment: .center),
             right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForSchematic } space }
           )
@@ -617,11 +617,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addTab (title: "Colors, Font", tooltip: "Colors and Font", contentView:
         GridView2 {
           set (margins: .regular)
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForUnplacedComponentsForSchematic } 
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Symbols, placed Component", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForSchematic } 
           )
@@ -640,40 +640,40 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
           )
           addSeparator ()
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Component Name", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentNameColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentNameFontForSchematic })
           addSeparator ()
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Component Value", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentValueColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentValueFontForSchematic })
           addSeparator ()
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Pin Name", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNameColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNameFontForSchematic })
           addSeparator ()
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Pin Number", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNumberColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNumberFontForSchematic })
           addSeparator ()
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Connection", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.connectionColorForSchematic } 
           )
           addSeparator ()
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Background Color", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicBackColor }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Frame Color", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicFrameColor }
           )
@@ -718,17 +718,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
     separator
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Title", bold: no, size: .small, alignment: .right)
           { expandableHeight () },
         right: TextField (minWidth: 150, size: .small)
           { automaticallyAdjustHeight (maxWidth: 150) $value root.mSchematicTitle (sendContinously : yes) }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Version", bold: no, size: .small, alignment: .right),
         right: TextField (minWidth: 150, size: .small) { $value root.mSchematicVersion (sendContinously : yes) }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Date", bold: no, size: .small, alignment: .right),
         right: hStack {
           Button (title: "Set…", size: .small) { $run openSetDateDialogAction }
@@ -737,12 +737,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addSeparator ()     
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
         right: EnumSegmentedControl (titles: enum SchematicSheetOrientation.popupTitles, equalWidth: no, size: .small)
         [configurator sheetOrientationSegmentedControlConfigurator] { $selectedSegment root.mSchematicSheetOrientation }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .center)
           { $hidden !self.schematicSheetOrientationIsCustom },
         right: CanariDimensionAndPopUp (size : .small) {
@@ -750,7 +750,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $hidden !self.schematicSheetOrientationIsCustom
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Height", bold: no, size: .small, alignment: .center)
           { $hidden !self.schematicSheetOrientationIsCustom },
         right: CanariDimensionAndPopUp (size : .small) {
@@ -908,21 +908,21 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     Checkbox (title: "Bold", size : .small) { $value #commentInSchematicSelectionController.mBold }
     GridView2 {
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Color", bold: yes, size: .small, alignment: .left),
         right: ColorWell { $color #commentInSchematicSelectionController.mColor }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Rotation", bold: yes, size: .small, alignment: .left),
         right: CanariPreferredDirectionSegmentedControl { $angle #commentInSchematicSelectionController.mRotation }
       )
-      addFirstBaseLineAligned (
+      add (
         left: space, // StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #commentInSchematicSelectionController.mRotation }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Size", bold: yes, size: .small, alignment: .left),
         right: DoubleField (width: 64, size: .small) { $value #commentInSchematicSelectionController.mSize (sendContinously:yes) }
       )
@@ -945,13 +945,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView \componentSymbolInspectorView vStack {
     StaticLabel (title: "Symbol Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Orientation", bold: no, size: .small, alignment: .center),
         right: EnumSegmentedControl (titles: enum QuadrantRotation.degreesTitles, equalWidth: no, size: .small) {
           $selectedSegment #componentSymbolSelectionController.mRotation
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: space,
         right: Checkbox (title: "Mirror", size : .small) { $value #componentSymbolSelectionController.mMirror }
       )
@@ -1019,13 +1019,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         separator
         StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
         GridView2 {
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right),
             right: CanariDimensionAndPopUp (size : .small) {
               $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
             }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right),
             right: CanariDimensionAndPopUp (size : .small) {
               $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
@@ -1053,20 +1053,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         separator
         StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
         GridView2 {
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
             right: CanariDimensionAndPopUp (size : .small) {
               $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
             }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right),
             right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) {
               expandableWidth ()
               $selectedIndex root.mBoardLimitsGridStyle
             }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right),
             right: TaggedPopUpButton (size: .small) {
               expandableWidth ()
@@ -1079,11 +1079,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
               $selectedTag root.mBoardLimitsGridDisplayFactor
             }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
             right: Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
           )
-          addFirstBaseLineAligned (
+          add (
             left: FlexibleSpace,
             right: Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
           )
@@ -1126,13 +1126,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   stackView \BoardRectangularOutlineView vStack {
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Board Width", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Board Height", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
@@ -1151,47 +1151,47 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     GridView2 {
       add (single: StaticLabel (title: "Selected Board Limit Element", bold: yes, size : .small, alignment: .center))
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Shape", bold: yes, size : .small, alignment: .left),
         right: EnumPopUpButton (titles: enum BorderCurveShape.popupTitles, size: .small) {
           $selectedIndex #boardCurveSelectionController.mShape
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "End Points", bold: yes, size : .small, alignment: .left),
         right: CanariUnitPopUpButton (size: .small) {
           $unit root.mBoardSelectedCurveDisplayUnit
         }
       )
-      addFirstBaseLineAligned (
-        left: hStack setFirstBaselineAlignment () {
+      add (
+        left: hStack {
           StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
           CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
           }
         },
-        right: hStack setFirstBaselineAlignment () {
+        right: hStack {
           StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
           CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
           }
         }
       )
-      addFirstBaseLineAligned (
-        left: hStack setFirstBaselineAlignment () {
+      add (
+        left: hStack {
           StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
           DoubleObserverField (width: 72, bold: yes, size: .small) {
             $observedValue #boardCurveSelectionController.p2Xvalue
           }
         },
-        right: hStack setFirstBaselineAlignment () {
+        right: hStack {
           StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
           DoubleObserverField (width: 72, bold: yes, size: .small) {
             $observedValue #boardCurveSelectionController.p2Yvalue
           }
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Control Points", bold: yes, size : .small, alignment: .left) {
           $hidden #boardCurveSelectionController.isLine
         },
@@ -1200,8 +1200,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $unit root.mBoardLimitControlPointsDisplayUnit
         }
       )
-      addFirstBaseLineAligned (
-        left: hStack setFirstBaselineAlignment () {
+      add (
+        left: hStack {
           space
           StaticLabel (title: "X", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
@@ -1211,7 +1211,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
           }
         },
-        right: hStack setFirstBaselineAlignment () {
+        right: hStack {
           space
           StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
@@ -1222,8 +1222,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         }
       )
-      addFirstBaseLineAligned (
-        left: hStack setFirstBaselineAlignment () {
+      add (
+        left: hStack {
           space
           StaticLabel (title: "X", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
@@ -1233,7 +1233,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
           }
         },
-        right: hStack setFirstBaselineAlignment () {
+        right: hStack {
           space
           StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) {
             $hidden #boardCurveSelectionController.isLine
@@ -1368,15 +1368,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           add (
             single: StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
             right: CanariDimensionAndPopUp (size : .small)  { $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Display", bold: no, size: .small, alignment: .right),
             right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  { $selectedIndex root.mBoardGridStyle }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Every", bold: no, size: .small, alignment: .right),
             right: TaggedPopUpButton (size: .small) {
               add (title: "1 Step",   withTag:  1)
@@ -1388,19 +1388,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
               $selectedTag root.mBoardGridDisplayFactor
             }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
             right: Checkbox (title: "Horizontal", size : .small)  { set (width: 125) $value root.mBoardHorizontalFlip}
           )
-          addFirstBaseLineAligned (
+          add (
             left: space,
             right: Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right),
             right: ColorWell { expandableWidth ()  set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right),
             right: ColorWell { expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard }
           )
@@ -1445,105 +1445,105 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
         GridView2 {
           add (single: StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left))
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard } },
             right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayFrontPadsForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard } },
             right: Checkbox (title: "Component + Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard } },
             right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayFrontLayoutForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard } },
             right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayFrontRestrictRectangles }
           )
           add (single: StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left))
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard } },
             right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayBackPadsForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard } },
             right: Checkbox (title: "Component + Legend", size : .small)  { expandableHeight  () $value root.displayBackLegendForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard } },
             right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayBackLayoutForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard } },
             right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayBackRestrictRectangles }
           )
           add (single: StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left))
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1LayoutColorForBoard } },
             right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner1LayoutForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1SideRestrictRectangleColorForBoard } },
             right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner1RestrictRectangles }
           )
           add (single: StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left))
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard } },
             right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner2LayoutForBoard }
           )
-           addFirstBaseLineAligned (
+           add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard } },
             right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner2RestrictRectangles }
           )
           add (single: StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left))
-         addFirstBaseLineAligned (
+         add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard } },
             right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner3LayoutForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard } },
             right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner3RestrictRectangles }
           )
           add (single: StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left))
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4LayoutColorForBoard } },
             right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner4LayoutForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard } },
             right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner4RestrictRectangles }
           )
           add (single: StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left))
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard } },
             right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value root.displayPadNumbersForBoard }
           )
-          addCenterYAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard } },
             right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
           )
-          addCenterYAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard } },
             right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
           )
-          addCenterYAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard } },
             right: StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left)
           )
-          addCenterYAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard } },
             right: StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left)
           )
-          addCenterYAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard } },
             right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard } },
             right: Checkbox (title: "Error Background", size : .small)  { expandableHeight  () $value root.drawErrorBackgroundForBoard }
           )
-          addFirstBaseLineAligned (
+          add (
             left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard } },
             right: Checkbox (title: "Warning Background", size : .small)  { expandableHeight  () $value prefs.drawWarningBackgroundForBoard }
           )
@@ -1566,14 +1566,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     VerticalScrollView (content:
       GridView2 {
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right),
           right: EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
             $selectedIndex root.mLayerConfiguration
             $run changeLayerConfigurationAction
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right),
           right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
         )
@@ -1656,35 +1656,35 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         add (
           single: StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Total", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.trackCountString }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right),
           right: hStack {
             Label (bold: yes, size : .small) { $title root.trackLengthString }
@@ -1692,7 +1692,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             space
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right),
           right: Label (bold: yes, size : .small) { $title root.viaCountString }
         )
@@ -1764,7 +1764,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView \BoardTrackInspectorView vStack {
     StaticLabel (title: "Board Track", bold: yes, size: .small, alignment: .center)
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .left),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
@@ -1772,7 +1772,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $title #boardTrackSelectionController.netName
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .left),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
@@ -1780,7 +1780,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $title #boardTrackSelectionController.netClassName
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .left),
         right: EnumPopUpButton (titles: enum TrackSide.popupTitles, size: .small) {
           $selectedIndex #boardTrackSelectionController.mSide
@@ -1805,13 +1805,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "On Knob Dragging", bold: no, size: .small, alignment: .left),
         right: EnumPopUpButton (titles: enum TrackLockDirection.popupTitles, size: .small) {
           $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left),
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
           $angle #boardTrackSelectionController.trackDirectionInDegrees
@@ -1827,53 +1827,53 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Track Width", bold: no, size: .small, alignment: .left),
         right: Checkbox (title: "Use Custom", size: .small) { $value #boardTrackSelectionController.mUsesCustomTrackWidth }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .left) { $hidden #boardTrackSelectionController.mUsesCustomTrackWidth } ,
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
           $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left) { $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth },
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
           $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "End Style", bold: no, size: .small, alignment: .left),
         right: EnumPopUpButton (titles: enum TrackEndStyle.popupTitles, size: .small) {
           $selectedIndex #boardTrackSelectionController.mEndStyle
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabels (left: "P1", right: "X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
           $enabled #boardTrackSelectionController.p1CanMove
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
           $enabled #boardTrackSelectionController.p1CanMove
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabels (left: "P2", right: "X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
           $enabled #boardTrackSelectionController.p2CanMove
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
@@ -1892,7 +1892,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView \BoardConnectorInspectorView vStack {
     StaticLabel (title: "Via Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .center),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
@@ -1900,7 +1900,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $title #boardConnectorSelectionController.netNameFromTracks
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .center),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
@@ -1909,18 +1909,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Hole Diameter", bold: no, size: .small, alignment: .left),
         right: Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomHoleDiameter }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center) { $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter } ,
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardConnectorSelectionController.viaDefaultHoleDiameter, #boardConnectorSelectionController.mDefaultHoleDiameterUnit
           $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center) { $hidden ! #boardConnectorSelectionController.mUsesCustomHoleDiameter },
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardConnectorSelectionController.mCustomHoleDiameter, #boardConnectorSelectionController.mCustomHoleDiameterUnit
@@ -1928,18 +1928,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Pad Diameter", bold: no, size: .small, alignment: .left),
         right: Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomPadDiameter }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center) { $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter } ,
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardConnectorSelectionController.viaDefaultPadDiameter, #boardConnectorSelectionController.mDefaultPadDiameterUnit
           $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center) { $hidden ! #boardConnectorSelectionController.mUsesCustomPadDiameter },
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardConnectorSelectionController.mCustomPadDiameter, #boardConnectorSelectionController.mCustomPadDiameterUnit
@@ -1958,36 +1958,36 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView \BoardLineInspectorView vStack {
     StaticLabel (title: "Line Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardLineSelectionController.mWidth, #boardLineSelectionController.mWidthUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum BoardLineLayer.popupTitles, size: .small) { $selectedIndex #boardLineSelectionController.mLayer }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabels (left: "P1", right: "X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardLineSelectionController.mX1, #boardLineSelectionController.mX1Unit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardLineSelectionController.mY1, #boardLineSelectionController.mY1Unit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabels (left: "P2", right: "X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardLineSelectionController.mX2, #boardLineSelectionController.mX2Unit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardLineSelectionController.mY2, #boardLineSelectionController.mY2Unit
@@ -2015,25 +2015,25 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       #restrictRectSelController.mWidthUnit, #restrictRectSelController.mHeightUnit
     }
     GridView2 {
-     addFirstBaseLineAligned (
+     add (
         left: StaticLabel (title: "Left", bold: no, size: .small, alignment: .left),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #restrictRectSelController.mX, #restrictRectSelController.mXUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Bottom", bold: no, size: .small, alignment: .left),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #restrictRectSelController.mY, #restrictRectSelController.mYUnit
         }
       )
-     addFirstBaseLineAligned (
+     add (
         left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .left),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #restrictRectSelController.mWidth, #restrictRectSelController.mWidthUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Height", bold: no, size: .small, alignment: .left),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #restrictRectSelController.mHeight, #restrictRectSelController.mHeightUnit
@@ -2062,21 +2062,21 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $imageData #boardImageSelectionController.computedDataImage
     }
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Image Data", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
           $title #boardImageSelectionController.imageDataByteCount
         } 
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Image Width", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
           $title #boardImageSelectionController.boardOriginalImageWidth
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Image Height", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
@@ -2084,18 +2084,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Scale", bold: no, size: .small, alignment: .right),
         right: DoubleField (width: 64, size: .small) { $value #boardImageSelectionController.mScale (sendContinously: no) }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Scaled Image Width", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
           $title #boardImageSelectionController.boardScaledImageWidth
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Scaled Image Height", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size: .small) {
           set (alignment: .left)
@@ -2103,59 +2103,59 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Threshold", bold: no, size: .small, alignment: .right),
         right: LinearSlider (min: 0, max: 255, ticks: 9) { $intValue #boardImageSelectionController.mThreshold (sendContinously:yes) }
       )
-      addFirstBaseLineAligned (
+      add (
         left: space,
         right: Checkbox (title: "Invert", size: .small) { $value #boardImageSelectionController.mInvert }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
         right: Checkbox (title: "Horizontal", size: .small) { $value #boardImageSelectionController.mHorizontalFlip }
       )
-      addFirstBaseLineAligned (
+      add (
         left: space,
         right: Checkbox (title: "Vertical", size: .small) { $value #boardImageSelectionController.mVerticalFlip }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Pixel Size", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardImageSelectionController.mPixelSize, #boardImageSelectionController.mPixelSizeUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Actual Image Width", bold: no, size: .small, alignment: .right),
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardImageSelectionController.boardActualImageWidth, #boardImageSelectionController.mActualWidthUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Actual Image Height", bold: no, size: .small, alignment: .right),
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardImageSelectionController.boardActualImageHeight, #boardImageSelectionController.mActualHeightUnit
         }
       )
      addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) {
           $selectedIndex #boardImageSelectionController.mLayer
         } 
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardImageSelectionController.mRotation }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardImageSelectionController.mCenterX, #boardImageSelectionController.mXUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardImageSelectionController.mCenterY, #boardImageSelectionController.mYUnit
@@ -2178,50 +2178,50 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $value #boardQRCodeSelectionController.mText (sendContinously : yes)
     }
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Correction Level", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum QRCodeCorrectionLevel.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mCorrectionLevel } 
       )
-      addFirstBaseLineAligned (
+      add (
         left: space,
         right: Checkbox (title: "Draw Frame", size: .small) { $value #boardQRCodeSelectionController.mDrawFrame }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Module Count", bold: no, size: .small, alignment: .right),
         right: IntObserverField (bold: yes, size: .small) {
           $observedValue #boardQRCodeSelectionController.moduleCount
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Module Size", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardQRCodeSelectionController.mModuleSize, #boardQRCodeSelectionController.mModuleSizeUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Actual Image Size", bold: no, size: .small, alignment: .right),
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardQRCodeSelectionController.actualImageSize, #boardQRCodeSelectionController.mActualSizeUnit
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mLayer } 
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardQRCodeSelectionController.mRotation }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardQRCodeSelectionController.mCenterX, #boardQRCodeSelectionController.mXUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardQRCodeSelectionController.mCenterY, #boardQRCodeSelectionController.mYUnit
@@ -2244,20 +2244,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     GridView2 {
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabels (left: "Origin", right:"X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTextSelectionController.mX, #boardTextSelectionController.mXUnit
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTextSelectionController.mY, #boardTextSelectionController.mYUnit
         }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
         right: CanariBoardFontPopUpButton {
           $currentFontName #boardTextSelectionController.fontName
@@ -2265,37 +2265,37 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $run setBoardTextFontAction
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
         right: DoubleField (width: 64, size: .small) {
           $value #boardTextSelectionController.mFontSize (sendContinously: yes)
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Weight", bold: no, size: .small, alignment: .right),
         right: DoubleField (width: 64, size: .small) {
           $value #boardTextSelectionController.mWeight (sendContinously: yes)
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: space,
         right: Checkbox (title: "Oblique", size: .small) { $value #boardTextSelectionController.mOblique }
       ) 
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Horizontal", bold: no, size: .small, alignment: .right),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mHorizontalAlignment }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Vertical", bold: no, size: .small, alignment: .right),
         right: CanariVerticalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mVerticalAlignment }
       )
       addSeparator ()
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardTextSelectionController.mRotation }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum BoardTextLayer.popupTitles, size: .small) { $selectedIndex #boardTextSelectionController.mLayer } 
       )
@@ -2352,54 +2352,54 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     VerticalScrollView (content:
       GridView2 {
         add (single: StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left))
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabels (left: "Center", right:"X", bold: no, size: .small),
           right: CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
           right: CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
           }
         )
         add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
           right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
         )
-        addFirstBaseLineAligned (
+        add (
           left: space,
           right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
             $angle #componentInBoardSelectionController.mRotation
           }
         )
         addSeparator ()
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left),
           right: Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
           right: CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
           right: CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
           right: DoubleField (width: 64, size: .small) {
             $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
             // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
           right: CanariBoardFontPopUpButton {
             $currentFontName #componentInBoardSelectionController.componentNameFontName
@@ -2407,11 +2407,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             $run setComponentNameFontAction
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
           right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
         )
-        addFirstBaseLineAligned (
+        add (
           left: space,
           right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
             $angle #componentInBoardSelectionController.mNameRotation
@@ -2419,7 +2419,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         )
         addSeparator ()
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left),
           right: TextField (minWidth: 150, size: .small) {
             automaticallyAdjustHeight (maxWidth: 150)
@@ -2427,25 +2427,25 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
           right: CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
           right: CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
           right: DoubleField (width: 64, size: .small) {
             $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
           right: CanariBoardFontPopUpButton {
             $currentFontName #componentInBoardSelectionController.componentValueFontName
@@ -2453,11 +2453,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             $run setComponentValueFontAction
           }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
           right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
         )
-        addFirstBaseLineAligned (
+        add (
           left: space,
           right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
             $angle #componentInBoardSelectionController.mValueRotation
@@ -2465,7 +2465,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         )
         addSeparator ()
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Slave Pads", bold: yes, size: .small, alignment: .left),
           right: BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
             $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
@@ -2473,7 +2473,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         )
         addSeparator ()
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left),
           right: EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) { $selectedIndex #componentInBoardSelectionController.mSide }
         )
@@ -2567,7 +2567,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \ArtworkDescriptionPage vStack {
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .center),
         right: Label (bold: yes, size: .regular) {
           set (alignment: .left)
@@ -2575,7 +2575,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $title root.layerConfigurationString
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .center),
         right: IntObserverField (bold: yes, size: .regular) {
           set (alignment: .left)
@@ -2583,7 +2583,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $observedValue root.mArtworkVersion
         }
       )
-      addCenterYAligned (
+      add (
         left: vStack { StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .center) space},
         right: TextObserverView (size: .small) { expandableWidth () $observedValue root.artworkComments }
       )
@@ -2596,7 +2596,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     space
     vStack {
       hStack set (margins: .regular) {
-        hStack setFirstBaselineAlignment ()  {
+        hStack {
           StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
           Label (bold: yes, size : .small) { $title root.drillDataFileExtension }
         }
@@ -2611,7 +2611,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         separator
         vStack set (topMargin: .regular) {
           hStack {
-            hStack setFirstBaselineAlignment () {
+            hStack {
               StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
               Label (bold: yes, size : .small) { $title #mDataSelection.fileExtension }
             }
@@ -2625,7 +2625,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           hStack {
             GridView2 {
               set (leftMargin: .large)
-              addFirstBaseLineAligned (
+              add (
                 left: Checkbox (title: "Front Side Images", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawImagesTopSide
@@ -2635,7 +2635,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                   $value #mDataSelection.drawQRCodesTopSide
                 }
               )
-              addFirstBaseLineAligned (
+              add (
                 left: Checkbox (title: "Legend Front Side Texts", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTextsLegendTopSide
@@ -2645,7 +2645,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                   $value #mDataSelection.drawTextsLayoutTopSide
                 }
               )
-              addFirstBaseLineAligned (
+              add (
                 left: Checkbox (title: "Front Side Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksTopSide
@@ -2682,14 +2682,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           hStack {
             GridView2 {
               set (leftMargin: .large)
-              addFirstBaseLineAligned (
+              add (
                 left:  Checkbox (title: "Traversing Pads", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements
                 },
                 right: space
               )
-              addFirstBaseLineAligned (
+              add (
                 left:  Checkbox (title: "Traversing Pads", size : .small) {
                   set (enabled: no)
 //                  $enabled root.hasInnerElements
@@ -2697,7 +2697,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                 },
                 right: space
               )
-             addFirstBaseLineAligned (
+             add (
                 left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksInner1Layer $hidden !root.hasInnerElements
@@ -2707,7 +2707,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                   $value #mDataSelection.drawTracksInner2Layer $hidden !root.hasInnerElements
                 }
               )
-              addFirstBaseLineAligned (  // Always disabled items
+              add (  // Always disabled items
                 left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
                   set (enabled: no)
 //                  $enabled root.hasInnerElements
@@ -2719,7 +2719,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                   $hidden root.hasInnerElements
                 }
               )
-              addFirstBaseLineAligned (
+              add (
                 left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksInner3Layer
@@ -2731,7 +2731,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                   $hidden !root.hasSixLayers
                 }
               )
-              addFirstBaseLineAligned ( // Always disabled items
+              add ( // Always disabled items
                 left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
                   set (enabled: no)
 //                  $enabled root.hasSixLayers
@@ -2750,7 +2750,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           hStack {
             GridView2 {
               set (leftMargin: .large)
-              addFirstBaseLineAligned (
+              add (
                 left: Checkbox (title: "Back Side Images", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawImagesBottomSide
@@ -2760,7 +2760,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                   $value #mDataSelection.drawQRCodesBottomSide
                 }
               )
-              addFirstBaseLineAligned (
+              add (
                 left: Checkbox (title: "Legend Back Side Texts", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTextsLegendBottomSide
@@ -2770,7 +2770,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                   $value #mDataSelection.drawTextsLayoutBottomSide
                 }
               )
-              addFirstBaseLineAligned (
+              add (
                 left: Checkbox (title: "Back Side Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksBottomSide
@@ -2817,15 +2817,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
             space
           }
-//          hStack set (leftMargin: .large) setFirstBaselineAlignment () {
-//            Checkbox (title: "Pad Holes in PDF file, with diameter", size : .small) {
-//              set (enabled: no)
-//              $value #mDataSelection.drawPadHolesInPDF
-//            }
-//            CanariObservedDimensionAndPopUp (size : .small) {
-//              $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF
-//            }
-//          }
           StaticLabel (title: "Option", bold: yes, size : .small, alignment: .left)
           hStack set (leftMargin: .large) {
             Checkbox (title: "Horizontal Mirror", size : .small) {
@@ -2875,19 +2866,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
       GridView2 {
         set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular)
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
         )
-        addFirstBaseLineAligned (
+        add (
           left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
@@ -2911,7 +2902,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       StaticLabel (title: "PDF Settings", bold: yes, size: .regular, alignment: .left)
       vStack set (leftMargin: .large) {
-        hStack setFirstBaselineAlignment () {
+        hStack {
           ColorWell { $color root.mPDFBoardBackgroundColor }
           StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)
           space

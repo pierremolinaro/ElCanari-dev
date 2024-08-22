@@ -181,11 +181,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
   stackView \SymbolTextInspectorView vStack {
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Pin Name", bold: no, size: .small, alignment: .center),
         right: TextField (minWidth: 56, size: .small) { expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Alignment", bold: no, size: .small, alignment: .center),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) { expandableWidth () $alignment #mSymbolTextSelectionController.horizontalAlignment}
       )
@@ -199,7 +199,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
   stackView \SymbolPinInspectorView vStack {
     StaticLabel (title: "Pin Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Value", bold: no, size: .small, alignment: .right) {
           expandableHeight ()
         },
@@ -208,14 +208,14 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
           $value #mSymbolPinSelectionController.name (sendContinously : yes)
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Name Alignment", bold: no, size: .small, alignment: .right),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
           expandableWidth ()
           $alignment #mSymbolPinSelectionController.nameHorizontalAlignment
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Number Alignment", bold: no, size: .small, alignment: .right),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
           expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment
@@ -235,11 +235,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
   stackView \GridZoomInspectorView vStack {
     StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Grid Style", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Grid Display", bold: no, size: .small, alignment: .right),
         right:  TaggedPopUpButton (size: .small) {
           add (title: "1 Step", withTag: 1)
@@ -251,23 +251,23 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
           $selectedTag root.gridDisplay
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
         right: StaticLabel (title: "25 mils", bold: yes, size: .small, alignment: .left)
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
         right: Checkbox (title: "Horizontal", size: .small) { $value root.horizontalFlip }
       )
-      addFirstBaseLineAligned (
+      add (
         left: FlexibleSpace,
         right: Checkbox (title: "Vertical", size: .small) { $value root.verticalFlip }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabels (left: "Placard", right: "X", bold: no, size: .small),
         right: CanariUnitPopUpButton (size: .small) { $unit root.xPlacardUnit }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariUnitPopUpButton(size: .small) { $unit root.yPlacardUnit }
       )
@@ -282,23 +282,23 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
   stackView \DisplayInspectorView vStack {
     StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Symbol", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColor } space }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolBackgroundColor } space }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfSymbolGrid } space }
       )
-      addCenterYAligned (
+      add (
         left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfSymbolGrid } space }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Line Width", bold: no, size: .small, alignment: .center),
         right: TaggedPopUpButton (size: .small) {
           add (title: "0.5 Point", withTag: 5)
@@ -309,7 +309,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
           $selectedTag prefs.symbolDrawingWidthMultipliedByTen
         }
       )
-      addFirstBaseLineAligned (
+      add (
         left: StaticLabel (title: "Pin Font", bold: no, size: .small, alignment: .center),
         right: FontButton (width: 125, size: .small) {$fontValue prefs.pinNameFont}
       )

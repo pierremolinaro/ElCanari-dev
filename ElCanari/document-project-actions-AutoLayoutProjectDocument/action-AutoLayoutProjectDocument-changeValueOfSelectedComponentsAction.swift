@@ -41,13 +41,13 @@ extension AutoLayoutProjectDocument {
             let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular, alignment: .center)
             let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular, alignment: .center)
                   .set (alignment: .left).expandableWidth ()
-            _ = gridView.addFirstBaseLineAligned (left: left, right: right)
+            _ = gridView.add (left: left, right: right)
           }
         //---
           let comboBox = AutoLayoutComboBox (width: 120).expandableWidth ()
           do{
             let left = AutoLayoutStaticLabel (title: "New Value", bold: false, size: .regular, alignment: .center)
-            _ = gridView.addFirstBaseLineAligned (left: left, right: comboBox)
+            _ = gridView.add (left: left, right: comboBox)
           }
         //---
           _ = layoutView.appendView (gridView)

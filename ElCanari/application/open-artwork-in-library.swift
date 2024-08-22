@@ -170,11 +170,11 @@ import AppKit
     _ = twoColumns.appendView (self.mArtworkDetailView)
   //--- Grid view (status, path)
     let gridView = AutoLayoutGridView2 ()
-    _ = gridView.addFirstBaseLineAligned (
+    _ = gridView.add (
       left: AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular, alignment: .left),
       right: self.mArtworkStatus
     )
-    _ = gridView.addFirstBaseLineAligned (
+    _ = gridView.add (
       left: AutoLayoutStaticLabel (title: "Path", bold: false, size: .regular, alignment: .left),
       right: self.mArtworkPath
     )
