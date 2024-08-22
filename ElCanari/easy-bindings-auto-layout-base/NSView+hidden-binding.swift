@@ -58,9 +58,9 @@ final class HiddenBindingController : EBObservablePropertyController {
     case .single (let v) :
       self.mOutlet?.isHidden = v
     }
-    if let windowContentView = self.mOutlet?.window?.contentView as? AutoLayoutWindowContentView {
-      windowContentView.triggerNextKeyViewSettingComputation ()
-    }
+//    if let windowContentView = self.mOutlet?.window?.contentView as? AutoLayoutWindowContentView {
+//      windowContentView.triggerNextKeyViewSettingComputation ()
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -99,7 +99,7 @@ nonisolated func objectDidDeinitSoReleaseHiddenControllers () {
 
 fileprivate struct Entry {
   weak var mObject : NSView? // SHOULD BE WEAK
-  let mController : AnyObject
+  let mController : HiddenBindingController
 
   init (_ inObject : NSView, _ inController : HiddenBindingController) {
     self.mObject = inObject

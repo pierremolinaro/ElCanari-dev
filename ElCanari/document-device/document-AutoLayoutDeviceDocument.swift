@@ -731,7 +731,6 @@ do{
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
-      .equalHeight ()
     do{
       let view_1_0 = AutoLayoutVerticalStackView ()
       do{
@@ -994,7 +993,6 @@ do{
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
-      .equalHeight ()
     do{
       let view_1_0 = AutoLayoutHorizontalStackView ()
       do{

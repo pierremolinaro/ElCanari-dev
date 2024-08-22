@@ -138,6 +138,10 @@ final class InternalTextView : NSTextView {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override var acceptsFirstResponder : Bool { self.isEditable }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

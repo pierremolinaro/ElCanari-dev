@@ -386,7 +386,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       }
       space
     }
-    vStack equalHeight () {
+    vStack {
       vStack {
         StaticLabel (title: "Embedded Symbols", bold: yes, size : .small, alignment: .center)
         hStack {
@@ -559,7 +559,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       space
       Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAction }
     }
-    vStack equalHeight () {
+    vStack {
       hStack {
         vStack set (width: 84) { StaticLabel (title: "Status", bold: no, size : .small, alignment: .center) space }
         TextObserverView (size: .small) { $observedValue self.statusMessage }

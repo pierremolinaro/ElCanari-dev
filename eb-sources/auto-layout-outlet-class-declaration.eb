@@ -10,7 +10,7 @@ vStack func set (topMargin: MarginSize) ;
 vStack func set (bottomMargin: MarginSize) ;
 vStack func set (width: Int) ;
 vStack func set (minWidth: Int) ;
-vStack func equalHeight () ;
+//vStack func equalHeight () ;
 vStack func expandableWidth () ;
  
 hStack func set (spacing: MarginSize) ;

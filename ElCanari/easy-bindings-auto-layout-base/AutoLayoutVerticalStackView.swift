@@ -26,7 +26,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
   //····················································································································
 
- final override var isFlipped : Bool { true }
+  final override var isFlipped : Bool { true }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Last Baseline representative view
@@ -123,55 +123,6 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
       .appendFlexibleSpace ()
       .appendView (inView)
     self.addSubview (hStack)
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  final func set (width inWidth : Int) -> Self {
-//    let c = NSLayoutConstraint (
-//      item: self,
-//      attribute: .width,
-//      relatedBy: .equal,
-//      toItem: nil,
-//      attribute: .notAnAttribute,
-//      multiplier: 1.0,
-//      constant: CGFloat (inWidth)
-//    )
-//    self.addConstraint (c)
-//    return self
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Draw
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override func draw (_ inDirtyRect : NSRect) {
-//    let r = NSRect (
-//      x: self.mLeftMargin,
-//      y: self.mBottomMargin,
-//      width: self.bounds.size.width - self.mLeftMargin - self.mRightMargin,
-//      height: self.bounds.size.height - self.mBottomMargin - self.mTopMargin
-//    )
-//    NSColor.yellow.setFill ()
-//    r.fill ()
-////    NSColor.lightGray.setFill ()
-////    var x : CGFloat = self.subviews.first?.frame.origin.x ?? 0.0
-////    for view in self.subviews {
-////      let f = view.frame
-////      if f.origin.x > x {
-////        NSRect (x: x, y: self.mBottomMargin, width: f.origin.x - x, height: self.bounds.size.height - self.mBottomMargin - self.mTopMargin).fill ()
-////      }
-////      x = NSMaxX (f)
-////    }
-//    super.draw (inDirtyRect)
-////    NSColor.black.setStroke ()
-////    NSBezierPath.stroke (self.bounds.insetBy (dx: 0.5, dy: 0.5))
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func equalHeight () -> Self { // §
     return self
   }
 
