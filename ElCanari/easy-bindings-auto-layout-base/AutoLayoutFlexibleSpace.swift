@@ -50,21 +50,6 @@ import AppKit
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-//  override func draw (_ inDirtyRect : NSRect) {
-//    super.draw (inDirtyRect)
-//    if debugAutoLayout () && !self.bounds.isEmpty {
-//      DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
-//      NSBezierPath.fill (self.bounds)
-//      let bp = NSBezierPath (rect: self.bounds)
-//      bp.lineWidth = 1.0
-//      bp.lineJoinStyle = .round
-//      DEBUG_STROKE_COLOR.setStroke ()
-//      bp.stroke ()
-//    }
-//  }
-
-  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
 }
 
 //--------------------------------------------------------------------------------------------------------------------

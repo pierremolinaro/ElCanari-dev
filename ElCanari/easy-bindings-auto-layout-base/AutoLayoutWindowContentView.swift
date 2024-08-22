@@ -10,6 +10,110 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+fileprivate let DEBUG_FLEXIBLE_SPACE_FILL_COLOR      = NSColor.systemGreen.withAlphaComponent (0.25)
+fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemPink
+fileprivate let DEBUG_LAST_BASELINE_COLOR            = NSColor.systemBlue
+fileprivate let DEBUG_STROKE_COLOR                   = NSColor.systemOrange
+fileprivate let DEBUG_MARGIN_COLOR                   = NSColor.systemYellow.withAlphaComponent (0.25)
+
+fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.black
+
+//--------------------------------------------------------------------------------------------------
+//  Show view current settings
+//--------------------------------------------------------------------------------------------------
+
+fileprivate let SHOW_VIEW_SETTINGS_PREFERENCES_KEY = "debug.responder.chain"
+
+@MainActor fileprivate var gShowViewCurrentSettings = UserDefaults.standard.bool (forKey: SHOW_VIEW_SETTINGS_PREFERENCES_KEY)
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@MainActor func getShowViewCurrentSettings () -> Bool {
+  return gShowViewCurrentSettings
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@MainActor func setShowViewCurrentSettings (_ inFlag : Bool) {
+  if gShowViewCurrentSettings != inFlag {
+    gShowViewCurrentSettings = inFlag
+    UserDefaults.standard.setValue (inFlag, forKey: SHOW_VIEW_SETTINGS_PREFERENCES_KEY)
+    for window in NSApplication.shared.windows {
+      if let mainView = window.contentView as? AutoLayoutWindowContentView {
+//        mainView.set (displayViewCurrentSettings: inFlag)
+        mainView.updateTrackingAreas ()
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Debug Responder Chain
+//--------------------------------------------------------------------------------------------------
+
+fileprivate let DEBUG_RESPONDER_CHAIN_PREFERENCES_KEY = "debug.responder.chain"
+
+@MainActor fileprivate var gDebugResponderChain = UserDefaults.standard.bool (forKey: DEBUG_RESPONDER_CHAIN_PREFERENCES_KEY)
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@MainActor func getDebugResponderChain () -> Bool {
+  return gDebugResponderChain
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@MainActor func setDebugResponderChain (_ inFlag : Bool) {
+  if gDebugResponderChain != inFlag {
+    gDebugResponderChain = inFlag
+    UserDefaults.standard.setValue (inFlag, forKey: DEBUG_RESPONDER_CHAIN_PREFERENCES_KEY)
+    for window in NSApplication.shared.windows {
+      if let mainView = window.contentView {
+        propagateNeedsDisplay (mainView)
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Debug Autolayout
+//--------------------------------------------------------------------------------------------------
+
+fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
+
+@MainActor fileprivate var gDebugAutoLayout = UserDefaults.standard.bool (forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@MainActor func getDebugAutoLayout () -> Bool {
+  return gDebugAutoLayout
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@MainActor func setDebugAutoLayout (_ inFlag : Bool) {
+  if gDebugAutoLayout != inFlag {
+    gDebugAutoLayout = inFlag
+    UserDefaults.standard.setValue (inFlag, forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
+    for window in NSApplication.shared.windows {
+      if let mainView = window.contentView {
+        propagateNeedsDisplay (mainView)
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor fileprivate func propagateNeedsDisplay (_ inView : NSView) {
+  inView.needsDisplay = true
+  for view in inView.subviews {
+    propagateNeedsDisplay (view)
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 final class AutoLayoutWindowContentView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,7 +153,7 @@ final class AutoLayoutWindowContentView : NSView {
 
     self.updateTrackingAreas ()
 
-    if debugAutoLayout () {
+    if getDebugAutoLayout () {
       DispatchQueue.main.async {
         self.mHiliteView.needsDisplay = true
       }
@@ -138,14 +242,6 @@ final class AutoLayoutWindowContentView : NSView {
   var mTrackingArea : NSTrackingArea? = nil
   var mCurrentTrackedView : NSView? = nil
   var mDisplayWindow : NSWindow? = nil
-  var mDisplayViewCurrentSettings = showViewCurrentValues ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func set (displayViewCurrentSettings inFlag : Bool) {
-    self.mDisplayViewCurrentSettings = inFlag
-    self.updateTrackingAreas ()
-  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -155,7 +251,7 @@ final class AutoLayoutWindowContentView : NSView {
       self.removeTrackingArea (trackingArea)
     }
   //--- Add Updated tracking area (.activeInKeyWindow is required, otherwise crash)
-    if self.mDisplayViewCurrentSettings || debugAutoLayout () {
+    if getShowViewCurrentSettings () || getDebugAutoLayout () {
       let trackingArea = NSTrackingArea (
         rect: self.bounds,
         options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
@@ -189,10 +285,10 @@ final class AutoLayoutWindowContentView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseMoved (with inEvent : NSEvent) {
-    if debugAutoLayout () {
+    if getDebugAutoLayout () {
       self.mHiliteView.needsDisplay = true
     }
-    if self.mDisplayViewCurrentSettings {
+    if getShowViewCurrentSettings () {
       let windowContentView = self.subviews [0]
       let mouseLocation = windowContentView.convert (inEvent.locationInWindow, from: nil)
       let optionalView = self.findSubView (in: windowContentView, at: mouseLocation)
@@ -370,7 +466,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func draw (_ inDirtyRect : NSRect) {
-    if showKeyResponderChain () {
+    if getDebugResponderChain () {
       let strokeBP = NSBezierPath ()
       let filledBP = NSBezierPath ()
       var optionalResponder = self.window?.initialFirstResponder
@@ -396,7 +492,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
       DEBUG_KEY_CHAIN_STROKE_COLOR.setFill ()
       filledBP.fill ()
     }
-    if debugAutoLayout () {
+    if getDebugAutoLayout () {
       self.drawViewRects (self.mRootView)
     }
   }

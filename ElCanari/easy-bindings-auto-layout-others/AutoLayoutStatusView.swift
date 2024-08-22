@@ -51,14 +51,6 @@ final class AutoLayoutStatusView : ALB_NSView {
     )
     let bp = NSBezierPath (ovalIn: r)
     bp.fill ()
-  //---
-//    if debugAutoLayout () && !self.bounds.isEmpty {
-//      let bp = NSBezierPath (rect: self.bounds)
-//      bp.lineWidth = 1.0
-//      bp.lineJoinStyle = .round
-//      DEBUG_STROKE_COLOR.setStroke ()
-//      bp.stroke ()
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

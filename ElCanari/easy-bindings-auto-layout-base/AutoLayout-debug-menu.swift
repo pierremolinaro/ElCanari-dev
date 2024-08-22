@@ -9,20 +9,6 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
-
-let DEBUG_FLEXIBLE_SPACE_FILL_COLOR       = NSColor.systemGreen.withAlphaComponent (0.25)
-let DEBUG_HORIZONTAL_SEPARATOR_FILL_COLOR = NSColor.systemPurple.withAlphaComponent (0.5)
-let DEBUG_VERTICAL_SEPARATOR_FILL_COLOR   = NSColor.systemPink.withAlphaComponent (0.25)
-let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR  = NSColor.systemBlue.withAlphaComponent (0.5)
-let DEBUG_LAST_BASELINE_COLOR             = NSColor.systemBlue
-let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
-let DEBUG_MARGIN_COLOR                    = NSColor.systemYellow.withAlphaComponent (0.25)
-
-let DEBUG_KEY_CHAIN_STROKE_COLOR          = NSColor.black
-
-fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
-
-//--------------------------------------------------------------------------------------------------
 //   Public functions
 //--------------------------------------------------------------------------------------------------
 
@@ -30,24 +16,6 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
   inMenu.addItem (gDebugAutoLayout.mDebugMenuItem)
   inMenu.addItem (gDebugAutoLayout.responderKeyChainItem)
   inMenu.addItem (gDebugAutoLayout.showViewCurrentValuesItem)
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor func debugAutoLayout () -> Bool {
-  return gDebugAutoLayout.mDebugAutoLayout
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor func showKeyResponderChain () -> Bool {
-  return gDebugAutoLayout.mShowKeyResponderChain
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor func showViewCurrentValues () -> Bool {
-  return gDebugAutoLayout.mShowViewCurrentValues
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -64,8 +32,6 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mDebugAutoLayout = UserDefaults.standard.bool (forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
-
   let mDebugMenuItem = NSMenuItem (
     title: "Debug Auto Layout",
     action: #selector (Self.toggleDebugAutoLayout (_:)),
@@ -74,8 +40,6 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var mShowKeyResponderChain = false
-
   fileprivate let responderKeyChainItem = NSMenuItem (
     title: "Show Responder Key Chain",
     action: #selector (Self.toggleShowKeyResponderChain (_:)),
@@ -83,8 +47,6 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
   )
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private(set) var mShowViewCurrentValues = false
 
   fileprivate let showViewCurrentValuesItem = NSMenuItem (
     title: "Show View Current Settings",
@@ -98,9 +60,11 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 
   init () {
     self.mDebugMenuItem.target = self
-    self.mDebugMenuItem.state = self.mDebugAutoLayout ? .on : .off
+    self.mDebugMenuItem.state = getDebugAutoLayout () ? .on : .off
     self.responderKeyChainItem.target = self
+    self.responderKeyChainItem.state = getDebugResponderChain () ? .on : .off
     self.showViewCurrentValuesItem.target = self
+    self.showViewCurrentValuesItem.state = getShowViewCurrentSettings () ? .on : .off
     noteObjectAllocation (self)
   }
 
@@ -113,47 +77,22 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func toggleDebugAutoLayout (_ inUnusedSender : Any?) {
-    self.mDebugAutoLayout.toggle ()
-    UserDefaults.standard.setValue (self.mDebugAutoLayout, forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
-    self.mDebugMenuItem.state = self.mDebugAutoLayout ? .on : .off
-    for window in NSApplication.shared.windows {
-      if let mainView = window.contentView {
-        self.propagateNeedsDisplay (mainView)
-      }
-    }
+    setDebugAutoLayout (!getDebugAutoLayout ())
+    self.mDebugMenuItem.state = getDebugAutoLayout () ? .on : .off
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func toggleShowKeyResponderChain (_ _ : Any?) {
-    self.mShowKeyResponderChain.toggle ()
-    self.responderKeyChainItem.state = self.mShowKeyResponderChain ? .on : .off
-    for window in NSApplication.shared.windows {
-      if let mainView = window.contentView {
-        self.propagateNeedsDisplay (mainView)
-      }
-    }
+  @objc func toggleShowKeyResponderChain (_ inUnusedSender : Any?) {
+    setDebugResponderChain (!getDebugResponderChain ())
+    self.responderKeyChainItem.state = getDebugResponderChain () ? .on : .off
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func toggleViewCurrentValues (_ _ : Any?) {
-    self.mShowViewCurrentValues.toggle ()
-    self.showViewCurrentValuesItem.state = self.mShowViewCurrentValues ? .on : .off
-    for window in NSApplication.shared.windows {
-      if let mainView = window.contentView as? AutoLayoutWindowContentView {
-        mainView.set (displayViewCurrentSettings: self.mShowViewCurrentValues)
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  fileprivate final func propagateNeedsDisplay (_ inView : NSView) {
-    inView.needsDisplay = true
-    for view in inView.subviews {
-      self.propagateNeedsDisplay (view)
-    }
+  @objc func toggleViewCurrentValues (_ inUnusedSender : Any?) {
+    setShowViewCurrentSettings (!getShowViewCurrentSettings ())
+    self.showViewCurrentValuesItem.state = getShowViewCurrentSettings () ? .on : .off
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
