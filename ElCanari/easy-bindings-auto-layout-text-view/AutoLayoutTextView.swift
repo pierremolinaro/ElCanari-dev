@@ -9,35 +9,14 @@ final class AutoLayoutTextView : ALB_NSTextView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
-    super.init (drawsBackground: true,
-                horizontalScroller: true,
-                verticalScroller: true)
-    self.mTextView.isEditable = true
-//    self.mTextView.isSelectable = true
-//    self.mTextView.isVerticallyResizable = true
-//    self.mTextView.isHorizontallyResizable = true
-//    self.mTextView.isRichText = false
-//    self.mTextView.importsGraphics = false
-//    self.mTextView.allowsImageEditing = false
+    super.init (
+      drawsBackground: true,
+      horizontalScroller: true,
+      verticalScroller: true,
+      editable: true
+    )
+
     self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
-//    self.mTextView.backgroundColor = .yellow
-//    self.mTextView.drawsBackground = true
-
-//    Swift.print ("min size \(self.mTextView.minSize)")
-//    Swift.print ("max size \(self.mTextView.maxSize)")
-
-//    let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
-//    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
-//    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-//    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
-//    self.mTextView.textContainer?.widthTracksTextView = true
-//
-//    self.drawsBackground = false
-//    self.documentView = self.mTextView
-//    self.hasHorizontalScroller = true
-//    self.hasVerticalScroller = true
-////    Swift.print ("self.automaticallyAdjustsContentInsets \(self.automaticallyAdjustsContentInsets)")
-//    self.automaticallyAdjustsContentInsets = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

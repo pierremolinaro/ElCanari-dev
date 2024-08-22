@@ -20,12 +20,13 @@ class ALB_NSTextView : NSScrollView {
 
   init (drawsBackground inDrawsBackground : Bool,
         horizontalScroller inHorizontalScroller : Bool,
-        verticalScroller inVerticalScroller : Bool) {
+        verticalScroller inVerticalScroller : Bool,
+        editable inEditable : Bool) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
 
-    self.mTextView.isEditable = false
+    self.mTextView.isEditable = inEditable
     self.mTextView.isSelectable = true
     self.mTextView.isVerticallyResizable = true
     self.mTextView.isHorizontallyResizable = true

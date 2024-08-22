@@ -30,34 +30,9 @@ final class AutoLayoutTextObserverView : ALB_NSTextView {
     super.init (
       drawsBackground: true,
       horizontalScroller: true,
-      verticalScroller: true
+      verticalScroller: true,
+      editable: false
     )
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//    self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
-//    self.mTextView.setContentCompressionResistancePriority (.dragThatCannotResizeWindow, for: .vertical)
-
-//    self.mTextView.isEditable = false
-//    self.mTextView.isSelectable = true
-//    self.mTextView.isVerticallyResizable = true
-//    self.mTextView.isHorizontallyResizable = true
-//    self.mTextView.isRichText = false
-//    self.mTextView.importsGraphics = false
-//    self.mTextView.allowsImageEditing = false
-//
-//    let MAX_SIZE : CGFloat = CGFloat.greatestFiniteMagnitude
-//    self.mTextView.minSize = NSSize (width: 0.0, height: self.contentSize.height)
-//    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-//    self.mTextView.textContainer?.containerSize = NSSize (width: self.contentSize.width, height: MAX_SIZE)
-//    self.mTextView.textContainer?.widthTracksTextView = true
-//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
-//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
-//
-//    self.drawsBackground = false
-//    self.documentView = self.mTextView
-//    self.hasHorizontalScroller = true
-//    self.hasVerticalScroller = true
-//    self.automaticallyAdjustsContentInsets = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -65,12 +40,6 @@ final class AutoLayoutTextObserverView : ALB_NSTextView {
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -12,30 +12,11 @@ final class AutoLayoutRTFTextView : ALB_NSTextView {
     super.init (
       drawsBackground: true,
       horizontalScroller: true,
-      verticalScroller: true
+      verticalScroller: true,
+      editable: inIsEditable
     )
 
-    self.mTextView.isEditable = inIsEditable
-//    self.mTextView.isSelectable = true
-//    self.mTextView.isVerticallyResizable = true
-//    self.mTextView.isHorizontallyResizable = true
-//    self.mTextView.isRichText = true
-//    self.mTextView.importsGraphics = false
-//    self.mTextView.allowsImageEditing = false
     self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
-
-//    let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
-//    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
-//    self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-//    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
-//    self.mTextView.textContainer?.widthTracksTextView = true
-//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .horizontal)
-//    self.mTextView.setContentHuggingPriority (.defaultLow, for: .vertical)
-//
-//    self.drawsBackground = false
-//    self.documentView = self.mTextView
-//    self.hasHorizontalScroller = true
-//    self.hasVerticalScroller = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
