@@ -10,9 +10,16 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+extension NSWindow {
+  @MainActor func setContentView (_ inContentView : NSView) {
+    self.contentView = AutoLayoutWindowContentView (view: inContentView)
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 fileprivate let DEBUG_FLEXIBLE_SPACE_FILL_COLOR      = NSColor.systemGreen.withAlphaComponent (0.25)
 fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemBlue //systemPink
-//fileprivate let DEBUG_LAST_BASELINE_COLOR            = NSColor.systemBlue
 fileprivate let DEBUG_STROKE_COLOR                   = NSColor.systemOrange
 fileprivate let DEBUG_MARGIN_COLOR                   = NSColor.systemYellow.withAlphaComponent (0.25)
 fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.systemPurple
@@ -120,7 +127,7 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutWindowContentView : NSView {
+final fileprivate class AutoLayoutWindowContentView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

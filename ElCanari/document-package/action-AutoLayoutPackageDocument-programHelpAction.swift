@@ -32,10 +32,8 @@ extension AutoLayoutPackageDocument {
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: sheet)
       _ = vStack.appendView (okButton)
     //---
-      sheet.contentView = AutoLayoutWindowContentView (view: vStack)
-//      if let cell = okButton.cell as? NSButtonCell {
-//        sheet.defaultButtonCell = cell
-//      }
+      sheet.setContentView (vStack)
+//      sheet.contentView = AutoLayoutWindowContentView (view: vStack)
       window.beginSheet (sheet, completionHandler: nil)
     }
 //--- END OF USER ZONE 2

@@ -718,7 +718,7 @@ do{
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mSymbolIssueTableView, self.mSymbolGraphicView)
   //--- Assign main view to window
-    self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)
+    self.windowForSheet?.setContentView (mainView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

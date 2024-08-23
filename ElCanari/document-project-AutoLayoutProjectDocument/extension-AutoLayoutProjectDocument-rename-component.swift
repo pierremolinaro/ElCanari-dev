@@ -191,7 +191,7 @@ extension AutoLayoutProjectDocument {
         _ = layoutView.appendView (hStack)
       }
     //---
-      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
+      panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop {
           self.performRenameComponent (component: inComponent, renameContext: renameContext)

@@ -357,7 +357,8 @@ fileprivate struct EBAllocationItemDisplay {
         .add (single: self.mStatsTableView)
       _ = mainVStack.appendView (gridView)
     //--- Assign main view to window
-      self.mAllocationStatsWindow.contentView = AutoLayoutWindowContentView (view: mainVStack)
+      self.mAllocationStatsWindow.setContentView (mainVStack)
+//      self.mAllocationStatsWindow.contentView = AutoLayoutWindowContentView (view: mainVStack)
    //--- Show Window at Launch
      if self.mAllocationStatsWindowVisibleAtLaunch.propval {
        self.mAllocationStatsWindow.makeKeyAndOrderFront (nil)

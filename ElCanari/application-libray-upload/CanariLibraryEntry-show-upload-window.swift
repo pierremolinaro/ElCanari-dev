@@ -80,7 +80,7 @@ import AppKit
     _ = lastLine.appendView (self.mLibraryRepositoryCloseButton)
     _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
-    self.mLibraryUploadWindow.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
+    self.mLibraryUploadWindow.setContentView (mainView)
     noteObjectAllocation (self)
   }
 

@@ -187,7 +187,7 @@ extension SheetInProject {
       _ = layoutView.appendView (hStack)
     }
   //---
-    panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
+    panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
     inWindow.beginSheet (panel) { inResponse in
       if inResponse == .stop, let net = popupButton.selectedItem?.representedObject as? NetInProject {
         self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)

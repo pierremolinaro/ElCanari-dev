@@ -31,7 +31,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
       window.setFrameAutosaveName ("PrefsWindowSettings")
       window.title = "Preferences"
       window.isReleasedWhenClosed = false
-      window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView ())
+      window.setContentView (self.mPrefsMainView ())
     //--- Contrôler le comportement en plein écran
       window.collectionBehavior = [.fullScreenAuxiliary, .fullScreenNone]
       let zoomButton = window.standardWindowButton (.zoomButton)

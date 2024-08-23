@@ -81,7 +81,7 @@ private let parallelDownloadCount = 3
     _ = lastLine.appendView (self.mUpDateButton)
     _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
-    self.mLibraryUpdatePanel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
+    self.mLibraryUpdatePanel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: mainView))
   //--- Configure tableview
     self.mTableView.configure (
       allowsEmptySelection: false,

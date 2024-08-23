@@ -48,7 +48,7 @@ extension AutoLayoutProjectDocument {
       )
       _ = rightColumn.appendViewPreceededByFlexibleSpace (okButton)
       _ = mainView.appendView (rightColumn)
-      panel.contentView = AutoLayoutWindowContentView (view: mainView)
+      panel.setContentView (mainView)
       let message = errorList.joined (separator: "\n")
       text.string = message
       window.beginSheet (panel) { [weak self] (inModalResponse) in self?.undoManager?.undo () }

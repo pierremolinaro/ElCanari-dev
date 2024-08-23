@@ -610,7 +610,7 @@ import AppKit
     let mainView = self.DocumentMainView ()
   //--- Call outlet linkers
   //--- Assign main view to window
-    self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)
+    self.windowForSheet?.setContentView (mainView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

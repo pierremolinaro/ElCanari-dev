@@ -105,7 +105,7 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
       self.mMaintenanceLogTextField = maintenanceLogTextField
       _ = mainView.appendView (secondColumn)
     //--- Set autolayout view to window
-      batchWindow.contentView = AutoLayoutWindowContentView (view: mainView)
+      batchWindow.setContentView (mainView)
     //---
       _ = openAllSymbolsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllSymbolsInDirectory (_:)))
       _ = openAllPackagesInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllPackagesInDirectory (_:)))

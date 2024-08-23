@@ -45,7 +45,7 @@ extension AutoLayoutProjectDocument {
     let importSESProgressIndicator = AutoLayoutProgressIndicator ().expandableWidth ()
     _ = rightColumn.appendView (importSESProgressIndicator)
     _ = mainView.appendView (rightColumn)
-    panel.contentView = AutoLayoutWindowContentView (view: mainView)
+    panel.setContentView (mainView)
   //--- Display sheet
     importSESTextField.stringValue = "Extracting Tracks…"
     importSESProgressIndicator.minValue = 0.0

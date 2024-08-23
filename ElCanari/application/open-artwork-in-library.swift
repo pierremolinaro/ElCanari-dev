@@ -187,7 +187,8 @@ import AppKit
     _ = lastLine.appendView (self.mOkButton)
     _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
-    panel.contentView = AutoLayoutWindowContentView (view: mainView)
+    panel.setContentView (mainView)
+//    panel.contentView = AutoLayoutWindowContentView (view: mainView)
   //--- Sheet or dialog ?
     if let window = inWindow {
       window.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in

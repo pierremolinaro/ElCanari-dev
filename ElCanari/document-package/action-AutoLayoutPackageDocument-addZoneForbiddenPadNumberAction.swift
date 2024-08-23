@@ -108,7 +108,7 @@ extension AutoLayoutPackageDocument {
         }
       }
       panel.setContentSize (mainVStack.fittingSize)
-      panel.contentView = AutoLayoutWindowContentView (view: mainVStack)
+      panel.setContentView (mainVStack)
    //-------------------------- Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         observer.unregister ()

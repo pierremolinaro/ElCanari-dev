@@ -1960,7 +1960,7 @@ do{
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mBoardIssueTableView, self.mComposedBoardGraphicView)
   //--- Assign main view to window
-    self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)
+    self.windowForSheet?.setContentView (mainView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

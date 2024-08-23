@@ -52,7 +52,7 @@ extension AutoLayoutProjectDocument {
         _ = layoutView.appendView (hStack)
       }
     //---
-      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
+      panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { inResponse in
         if inResponse == .stop,
             let sheet = popUpButton.selectedItem?.representedObject as? SheetInProject {

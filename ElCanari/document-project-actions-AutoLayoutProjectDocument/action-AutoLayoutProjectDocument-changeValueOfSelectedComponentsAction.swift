@@ -65,7 +65,7 @@ extension AutoLayoutProjectDocument {
            comboBox.selectItem (at: 0)
            comboBox.mTextDidChange = { (_ inOutlet : AutoLayoutComboBox) in okButton.title = "Change to " + inOutlet.stringValue }
         //---
-           panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
+           panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
            window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
              if inResponse == .stop {
                let newValue = comboBox.stringValue

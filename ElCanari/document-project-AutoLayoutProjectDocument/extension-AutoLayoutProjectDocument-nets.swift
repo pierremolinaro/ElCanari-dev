@@ -133,7 +133,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       okButton.isEnabled = true
       okButton.title = "Rename as '\(inNet.mNetName)'"
     //---
-      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
+      panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { inResponse in
         newNameTextField.mTextFieldUserInfo = nil
         newNameTextField.mTextDidChange = nil // Required for breaking retain cycle
@@ -209,19 +209,18 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         let left = AutoLayoutStaticLabel (title: "Resulting Net Name", bold: false, size: .regular, alignment: .right)
         _ = gridView.add (left: left, right: popUpButton)
       }
-      _ = layoutView.appendView (gridView)
-      _ = layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (gridView).appendFlexibleSpace ()
     //---
       do{
-        let hStack = AutoLayoutHorizontalStackView ()
-        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        _ = hStack.appendFlexibleSpace ()
         let okButton = AutoLayoutSheetDefaultOkButton (title: "Merge", size: .regular, sheet: panel)
-        _ = hStack.appendView (okButton)
+        let hStack = AutoLayoutHorizontalStackView ()
+          .appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+          .appendFlexibleSpace ()
+          .appendView (okButton)
         _ = layoutView.appendView (hStack)
       }
     //---
-      panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
+      panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       _ = panel.makeFirstResponder (popUpButton)
       window.beginSheet (panel) { inResponse in
         if inResponse == .stop, let net = popUpButton.selectedItem?.representedObject as? NetInProject {
@@ -275,15 +274,15 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         }
       //---
         do{
-          let hStack = AutoLayoutHorizontalStackView ()
-          _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-          _ = hStack.appendFlexibleSpace ()
           let okButton = AutoLayoutSheetDefaultOkButton (title: "Select", size: .regular, sheet: panel)
-          _ = hStack.appendView (okButton)
+          let hStack = AutoLayoutHorizontalStackView ()
+            .appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+            .appendFlexibleSpace ()
+            .appendView (okButton)
           _ = layoutView.appendView (hStack)
         }
       //---
-        panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
+        panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       //--- Dialog
         window.beginSheet (panel) { inResponse in
           if inResponse == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {

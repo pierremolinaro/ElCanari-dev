@@ -255,7 +255,8 @@ extension Preferences {
     _ = lastLine.appendView (upDateButton)
     _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
-    panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
+    panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: mainView))
+//    panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
   //--- Run modal
     DispatchQueue.main.async { self.mTableView.scrollRowToVisible (row: 0) }
     let response = NSApplication.shared.runModal (for: panel)

@@ -113,7 +113,7 @@ extension AutoLayoutMergerDocumentSubClass {
       _ = lastLine.appendView (okButton)
       _ = rightColumn.appendView (lastLine)
       _ = mainView.appendViewPreceededByFlexibleSpace (rightColumn)
-      panel.contentView = AutoLayoutWindowContentView (view: mainView)
+      panel.setContentView (mainView)
       self.windowForSheet?.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
         flushOutletEvents ()
         if inResponse == .stop, let boardModel = modelPopUpButton.selectedItem?.representedObject as? BoardModel {
