@@ -81,8 +81,8 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
           if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
             self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
             self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mBottomMargin)
-            self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin, withCompressionResistancePriorityOf: .secondView)
-            self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mTopMargin, withCompressionResistancePriorityOf: .firstView)
+            self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin, withStretchingResistancePriorityOf: .secondView)
+            self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mTopMargin, withStretchingResistancePriorityOf: .firstView)
             if let lastBaselineRepresentativeView = optionalLastBaselineRepresentativeView {
               self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
             }else{
@@ -92,6 +92,9 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
             self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
             self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
           }
+        }
+        if (view is VerticalSeparator) || (view is VerticalDivider) {
+          optionalLastBaselineRepresentativeView = nil
         }
       //--- Horizontal constraints
         if let lastView = optionalLastView {

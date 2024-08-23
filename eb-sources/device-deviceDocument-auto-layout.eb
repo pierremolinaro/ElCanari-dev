@@ -10,7 +10,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
 
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView descriptionPage = \DescriptionPage ()
     newView symbolsPage = \SymbolsPage ()

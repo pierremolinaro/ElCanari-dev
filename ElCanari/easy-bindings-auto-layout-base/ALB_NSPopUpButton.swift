@@ -20,7 +20,6 @@ class ALB_NSPopUpButton : NSPopUpButton {
     super.init (frame: .zero, pullsDown: inPullsDown)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
-//   self.translatesAutoresizingMaskIntoConstraints = false
 
     self.autoenablesItems = false
     if let cell = self.cell as? NSPopUpButtonCell {

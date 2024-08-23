@@ -174,7 +174,7 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var isFlipped : Bool { return false }
+//  override var isFlipped : Bool { return true }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!

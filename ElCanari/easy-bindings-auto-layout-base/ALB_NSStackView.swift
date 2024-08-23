@@ -21,7 +21,7 @@ class ALB_NSStackView : NSView {
     self.mVerticalDisposition = .lastBaseline
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
+    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .high)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

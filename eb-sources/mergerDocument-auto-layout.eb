@@ -6,7 +6,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
 
   stackView \PageMasterView vStack { }
 
-  stackView \DocumentMainView vStack {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView modelPage = \ModelPage ()
     newView boardPage = \BoardPage ()

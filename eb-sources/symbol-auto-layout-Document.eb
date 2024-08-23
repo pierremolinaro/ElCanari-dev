@@ -8,7 +8,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
  
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView symbolPage = \SymbolPage ()
     newView infosPage = \InfosPage ()

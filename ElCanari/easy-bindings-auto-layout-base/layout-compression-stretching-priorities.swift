@@ -76,14 +76,14 @@ enum PMLayoutStrechingConstraintPriority : Comparable {
 
   var cocoaPriority : NSLayoutConstraint.Priority {
     switch self {
-    case .lowest : NSLayoutConstraint.Priority (99.0)
-    case .lower : NSLayoutConstraint.Priority (249.0)
-    case .low : NSLayoutConstraint.Priority (399.0)
-    case .cannotResizeWindow : NSLayoutConstraint.Priority (489.0)
-    case .canResizeWindow : NSLayoutConstraint.Priority (509.0)
-    case .high : NSLayoutConstraint.Priority (599.0)
-    case .higher : NSLayoutConstraint.Priority (749.0)
-    case .highest : NSLayoutConstraint.Priority (899.0)
+    case .lowest : NSLayoutConstraint.Priority (98.0)
+    case .lower : NSLayoutConstraint.Priority (248.0)
+    case .low : NSLayoutConstraint.Priority (398.0)
+    case .cannotResizeWindow : NSLayoutConstraint.Priority (488.0)
+    case .canResizeWindow : NSLayoutConstraint.Priority (500.0)
+    case .high : NSLayoutConstraint.Priority (598.0)
+    case .higher : NSLayoutConstraint.Priority (748.0)
+    case .highest : NSLayoutConstraint.Priority (898.0)
     }
   }
 

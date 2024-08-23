@@ -12,18 +12,18 @@ import AppKit
 // https://developer.apple.com/library/archive/releasenotes/UserExperience/RNAutomaticLayout/index.html#//apple_ref/doc/uid/TP40010631
 //--------------------------------------------------------------------------------------------------
 
-enum PMViewForApplyingPriority {
-  case firstView
-  case secondView
-}
-
-//--------------------------------------------------------------------------------------------------
-
 @MainActor extension Array where Element == NSLayoutConstraint {
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  enum PriorityViewSelection {
+    case firstView
+    case secondView
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Width
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (widthOf inView1 : NSView,
                      equalToWidthOf inView2 : NSView,
@@ -32,7 +32,7 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (widthOf inView1 : NSView,
                      greaterThanOrEqualToConstant inConstant : CGFloat) {
@@ -40,7 +40,7 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (widthOf inView : NSView,
                      equalTo inWidth : CGFloat,
@@ -50,9 +50,9 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Height
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (heightOf inView1 : NSView,
                      equalToHeightOf inView2 : NSView,
@@ -61,7 +61,7 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (heightOf inView : NSView,
                      greaterThanOrEqualToConstant inConstant : CGFloat) {
@@ -69,7 +69,7 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (heightOf inView : NSView,
                      equalTo inHeight : CGFloat,
@@ -79,9 +79,9 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Left
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (leftOf inView1 : NSView,
                      equalToLeftOf inView2 : NSView,
@@ -101,7 +101,7 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (leftOf inView1 : NSView,
                      equalToRightOf inView2 : NSView,
@@ -110,9 +110,9 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Right
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (rightOf inView1 : NSView,
                      equalToRightOf inView2 : NSView,
@@ -122,24 +122,27 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Top
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (topOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0,
-                     withCompressionResistancePriorityOf inSelectedView : PMViewForApplyingPriority) {
+                     withStretchingResistancePriorityOf inSelectedView : PriorityViewSelection) {
   // Vertical Axis is from to top to bottom
     let c = inView1.topAnchor.constraint (equalTo: inView2.topAnchor, constant: -inOffset)
+    var p : NSLayoutConstraint.Priority
     switch inSelectedView {
-    case .firstView  : c.priority = inView2.contentCompressionResistancePriority (for: .vertical)
-    case .secondView : c.priority = inView1.contentCompressionResistancePriority (for: .vertical)
+    case .firstView  : p = inView2.contentHuggingPriority (for: .vertical)
+    case .secondView : p = inView1.contentHuggingPriority (for: .vertical)
     }
+    p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
+    c.priority = p
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (topOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
@@ -149,7 +152,7 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (topOf inView1 : NSView,
                      greaterThanOrEqualToTopOf inView2 : NSView,
@@ -159,7 +162,7 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (topOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
@@ -171,9 +174,9 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Bottom
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (bottomOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
@@ -183,33 +186,35 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (bottomOf inView1 : NSView,
                      equalToBottomOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0,
-                     withCompressionResistancePriorityOf inSelectedView : PMViewForApplyingPriority) {
+                     withStretchingResistancePriorityOf inSelectedView : PriorityViewSelection) {
   // Vertical Axis is from to top to bottom
     let c = inView1.bottomAnchor.constraint (equalTo: inView2.bottomAnchor, constant: -inOffset)
+    var p : NSLayoutConstraint.Priority
     switch inSelectedView {
-    case .firstView  : c.priority = inView2.contentCompressionResistancePriority (for: .vertical)
-    case .secondView : c.priority = inView1.contentCompressionResistancePriority (for: .vertical)
+    case .firstView  : p = inView2.contentHuggingPriority (for: .vertical)
+    case .secondView : p = inView1.contentHuggingPriority (for: .vertical)
     }
+    p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
+    c.priority = p
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (bottomOf inView1 : NSView,
                      equalToBottomOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
     let c = inView1.bottomAnchor.constraint (equalTo: inView2.bottomAnchor, constant: -inOffset)
-//    c.priority = .required
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (bottomOf inView1 : NSView,
                      greaterThanOrEqualToBottomOf inView2 : NSView,
@@ -220,9 +225,9 @@ enum PMViewForApplyingPriority {
   }
 
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Last Baseline
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (lastBaselineOf inView1 : NSView,
                      equalToLastBaselineOf inView2 : NSView) {
@@ -230,25 +235,25 @@ enum PMViewForApplyingPriority {
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Center X
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (centerXOf inView1 : NSView, equalToCenterXOf inView2 : NSView) {
     let c = inView1.centerXAnchor.constraint (equalTo: inView2.centerXAnchor)
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Center Y
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (centerYOf inView1 : NSView, equalToCenterYOf inView2 : NSView) {
     let c = inView1.centerYAnchor.constraint (equalTo: inView2.centerYAnchor)
     self.append (c)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

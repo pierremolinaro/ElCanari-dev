@@ -23,6 +23,8 @@ final class EBGraphicView : NSView {
   init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
+    pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
+
     DispatchQueue.main.async { self.configureGraphicView () }
  }
 

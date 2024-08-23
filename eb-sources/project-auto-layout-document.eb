@@ -6,7 +6,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \pageMasterView vStack { }
 
-  stackView \DocumentMainView vStack {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \pageMasterView ()
     newView componentsPage = \componentsPage ()
     newView libraryPage = \libraryPage ()

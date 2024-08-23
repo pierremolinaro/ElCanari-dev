@@ -32,6 +32,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     _ = self.set (spacing: .zero)
   //---
     _ = self.appendView (self.mTopHStack)
+//    self.mTopHStack.setContentHuggingPriority (.defaultHigh, for: .vertical)
   //--- Build popup button
     let zoomPopUp = buildZoomPopUpButton (minZoom: inMinZoom, maxZoom: inMaxZoom)
     _ = self.mTopHStack.appendView (zoomPopUp)
@@ -93,7 +94,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     scrollView.documentView = self.mGraphicView
     scrollView.drawsBackground = false
     scrollView.contentView.drawsBackground = false
-//    Swift.print ("drawsBackground -> \(scrollView.drawsBackground)")
+    scrollView.verticalScroller?.setContentHuggingPriority (.defaultLow, for: .vertical)
     return scrollView
   }
 

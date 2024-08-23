@@ -67,20 +67,41 @@ final class AutoLayoutToolBar : ALB_NSView {
     var optionalLastBaseLineView : NSView? = nil
     for entry in self.mItemArray {
     //--- Vertical constraints
-      self.mConstraints.add (bottomOf: entry.label, equalToBottomOf: self, plus: self.mMargins)
-      self.mConstraints.add (bottomOf: entry.item, equalToTopOf: entry.label, plus: self.mSpacing)
-      self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
-      if let lastEntry = optionalLastEntry {
-        self.mConstraints.add (topOf: entry.label, equalToTopOf: lastEntry.label)
-        if let entryBaselineView = entry.item.pmLastBaselineRepresentativeView {
-          if let lastBaseLineView = optionalLastBaseLineView {
-            self.mConstraints.add (lastBaselineOf: entryBaselineView, equalToLastBaselineOf: lastBaseLineView)
+      switch entry.item.pmLayoutSettings.vLayoutInHorizontalContainer {
+      case .center :
+        self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: entry.item, plus: self.mMargins)
+        self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: self, plus: self.mMargins)
+        self.mConstraints.add (centerYOf: entry.item, equalToCenterYOf: self)
+      case .fill, .weakFill :
+        self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
+        self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins)
+      case .weakFillIgnoringMargins :
+        self.mConstraints.add (topOf: self, equalToTopOf: entry.item)
+        self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self)
+      case .bottom :
+        self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: entry.item, plus: self.mMargins)
+        self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins)
+      case .top :
+        self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
+        self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: self, plus: self.mMargins)
+      case .lastBaseline :
+        if let viewLastBaselineRepresentativeView = entry.item.pmLastBaselineRepresentativeView {
+          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: entry.item, plus: self.mMargins)
+          self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: self, plus: self.mMargins)
+          self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins, withStretchingResistancePriorityOf: .secondView)
+          self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins, withStretchingResistancePriorityOf: .firstView)
+          if let lastBaselineRepresentativeView = optionalLastBaseLineView {
+            self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
+          }else{
+            optionalLastBaseLineView = viewLastBaselineRepresentativeView
           }
-          optionalLastBaseLineView = entryBaselineView
+        }else{
+          self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
+          self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins)
         }
       }
     //--- Horizontal constraints
-      if let lastEntry = optionalLastEntry {
+     if let lastEntry = optionalLastEntry {
         self.mConstraints.add (leftOf: entry.label, equalToRightOf: lastEntry.label, plus: self.mSpacing)
         self.mConstraints.add (leftOf: entry.item, equalToRightOf: lastEntry.item, plus: self.mSpacing)
         self.mConstraints.add (leftOf: entry.item, equalToLeftOf: entry.label)

@@ -25,6 +25,7 @@ final class AutoLayoutLabel : ALB_NSTextField {
     self.isEnabled = true
     self.isEditable = false
     self.controlSize = inSize.cocoaControlSize
+  //  self.usesSingleLineMode = true
     let fontSize = NSFont.systemFontSize (for: self.controlSize)
     self.font = inBold ? NSFont.boldSystemFont (ofSize: fontSize) : NSFont.systemFont (ofSize: fontSize)
   }

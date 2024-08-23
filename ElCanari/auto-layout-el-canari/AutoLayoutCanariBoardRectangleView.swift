@@ -14,7 +14,7 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mTopTextField : AutoLayoutLabel // = AutoLayoutLabel (bold: false, size: .small)
+  private let mTopTextField : AutoLayoutLabel
   private let mBottomTextField = AutoLayoutLabel (bold: false, size: .small)
   private let mLeftTextField = AutoLayoutLabel (bold: false, size: .small)
   private let mRightTextField = AutoLayoutLabel (bold: false, size: .small)
@@ -56,7 +56,7 @@ import AppKit
   //--- Bottom
     constraints.add (bottomOf: self,
                      equalToBottomOf: self.mBottomTextField,
-                     withCompressionResistancePriorityOf: .secondView)
+                     withStretchingResistancePriorityOf: .secondView)
     constraints.add (centerXOf: self, equalToCenterXOf: self.mBottomTextField)
   //--- Unit pop up
     constraints.add (centerYOf: self, equalToCenterYOf: self.mUnitPopUpButton)

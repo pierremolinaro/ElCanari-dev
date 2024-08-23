@@ -365,6 +365,7 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let modelImagePage = self.ModelImagePage ()
     let packagePage = self.PackagePage ()

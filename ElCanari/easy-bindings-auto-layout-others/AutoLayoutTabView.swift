@@ -36,7 +36,7 @@ final class AutoLayoutTabView : ALB_NSView {
     permanentConstraints.add (centerXOf: self, equalToCenterXOf: self.mSegmentedControl)
     let c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
     permanentConstraints.append (c)
-    permanentConstraints.add (bottomOf: self, equalToBottomOf: self.mDocumentView, withCompressionResistancePriorityOf: .secondView)
+    permanentConstraints.add (bottomOf: self, equalToBottomOf: self.mDocumentView, withStretchingResistancePriorityOf: .secondView)
     permanentConstraints.add (leftOf: self, equalToLeftOf: self.mDocumentView)
     permanentConstraints.add (rightOf: self, equalToRightOf: self.mDocumentView)
     self.addConstraints (permanentConstraints)

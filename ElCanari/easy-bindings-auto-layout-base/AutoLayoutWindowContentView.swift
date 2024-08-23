@@ -19,7 +19,8 @@ extension NSWindow {
 //--------------------------------------------------------------------------------------------------
 
 fileprivate let DEBUG_FLEXIBLE_SPACE_FILL_COLOR      = NSColor.systemGreen.withAlphaComponent (0.25)
-fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemBlue //systemPink
+fileprivate let DEBUG_LAST_BASELINE_COLOR            = NSColor.systemPink
+fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemBlue
 fileprivate let DEBUG_STROKE_COLOR                   = NSColor.systemOrange
 fileprivate let DEBUG_MARGIN_COLOR                   = NSColor.systemYellow.withAlphaComponent (0.25)
 fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.systemPurple
@@ -149,24 +150,26 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     constraints.add (leftOf: self, equalToLeftOf: inView)
     constraints.add (topOf: self, equalToTopOf: inView)
     constraints.add (rightOf: self, equalToRightOf: inView)
-    constraints.add (bottomOf: self, equalToBottomOf: inView, withCompressionResistancePriorityOf: .secondView)
+    constraints.add (bottomOf: self, equalToBottomOf: inView)
 
-    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .horizontal), for: .horizontal)
-    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .vertical), for: .vertical)
-    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .horizontal), for: .horizontal)
-    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .vertical), for: .vertical)
+//    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .horizontal), for: .horizontal)
+//    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .vertical), for: .vertical)
+//    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .horizontal), for: .horizontal)
+//    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .vertical), for: .vertical)
 
     self.addSubview (self.mHiliteView)
     constraints.add (leftOf: self, equalToLeftOf: self.mHiliteView)
     constraints.add (topOf: self, equalToTopOf: self.mHiliteView)
     constraints.add (rightOf: self, equalToRightOf: self.mHiliteView)
-    constraints.add (bottomOf: self, equalToBottomOf: self.mHiliteView, withCompressionResistancePriorityOf: .secondView)
+    constraints.add (bottomOf: self, equalToBottomOf: self.mHiliteView, withStretchingResistancePriorityOf: .secondView)
 
     self.addConstraints (constraints)
 
     self.triggerNextKeyViewSettingComputation ()
 
     self.updateTrackingAreas ()
+
+    checkAutoLayoutAdoption (self, [])
 
     if getDebugAutoLayout () {
       DispatchQueue.main.async {
@@ -285,19 +288,42 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func findSubView (in inView: NSView, at inPoint : NSPoint) -> NSView? {
-    for view in inView.subviews {
+    for view in inView.subviews.reversed () {
      let p = view.convert (inPoint, from: inView)
-     let v = self.findSubView (in: view, at: p) ;
+     let v = self.findSubView (in: view, at: p)
       if v != nil {
         return v
       }
     }
-    if inView.bounds.contains (inPoint) {
+    if inView.self.bounds.contains (inPoint) {
       return inView
     }else{
       return nil
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func wantsForwardedScrollEvents (for axis: NSEvent.GestureAxis) -> Bool {
+    if getDebugAutoLayout () {
+      self.mHiliteView.needsDisplay = true
+    }
+    return super.wantsForwardedScrollEvents (for: axis)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override func trackSwipeEvent (options: NSEvent.SwipeTrackingOptions = [],
+//      dampenAmountThresholdMin minDampenThreshold: CGFloat,
+//      max maxDampenThreshold: CGFloat,
+//      usingHandler trackingHandler: @escaping (CGFloat, NSEvent.Phase, Bool, UnsafeMutablePointer<ObjCBool>) -> Void)) {
+//   super.trackSwipeEvent (
+//      options: options,
+//      dampenAmountThresholdMin: minDampenThreshold,
+//      max: maxDampenThreshold,
+//      usingHandler: trackingHandler
+//    )
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -348,10 +374,9 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     window.backgroundColor = NSColor.white
     window.isOpaque = true
     window.isExcludedFromWindowsMenu = true
-    let mainView = FilePrivateHelperView ()
-    mainView.configure (forView: inView)
+    let mainView = FilePrivateHelperView (configuredWithView: inView)
     window.contentView = mainView
-    window.updateConstraintsIfNeeded ()
+//    window.updateConstraintsIfNeeded ()
     return window
   }
 
@@ -365,7 +390,8 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func configure (forView inView : NSView) {
+  init (configuredWithView inView : NSView) {
+    super.init ()
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)
     self.setContentHuggingPriority (.defaultLow, for: .vertical)
     self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
@@ -376,7 +402,7 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)")
 //    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)")
 //    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)")
-//    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)")
+    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)")
 //    self.appendTextField (titled: "acceptsFirstResponder: \(inView.acceptsFirstResponder)")
 //    self.appendTextField (titled: "canBecomeKeyView: \(inView.canBecomeKeyView)")
     self.appendTextField (titled: "h Compression Resistance: \(inView.contentCompressionResistancePriority (for: .horizontal).rawValue)")
@@ -384,8 +410,14 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.appendTextField (titled: "h Stretching Resistance: \(inView.contentHuggingPriority (for: .horizontal).rawValue)")
     self.appendTextField (titled: "v Stretching Resistance: \(inView.contentHuggingPriority (for: .vertical).rawValue)")
     if let lastView = self.subviews.last {
-      self.mNewConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: 8.0, withCompressionResistancePriorityOf: .firstView)
+      self.mNewConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: 8.0)
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  required init? (coder inCoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -393,6 +425,8 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
   private func appendTextField (titled inString : String) {
     let view = NSTextField (frame: .zero)
     view.translatesAutoresizingMaskIntoConstraints = false
+    view.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
+    view.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
     view.isBezeled = false
     view.isBordered = false
     view.drawsBackground = true
@@ -401,11 +435,11 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     view.alignment = .left
     view.font = NSFont.systemFont (ofSize: NSFont.systemFontSize)
     view.stringValue = inString
+    let optionalLastView = self.subviews.last
+    self.addSubview (view)
     let s = view.intrinsicContentSize
     self.mNewConstraints.add (widthOf: view, greaterThanOrEqualToConstant: s.width)
     self.mNewConstraints.add (heightOf: view, equalTo: s.height)
-    let optionalLastView = self.subviews.last
-    self.addSubview (view)
     self.mNewConstraints.add (leftOf: view, equalToLeftOf: self, plus: 8.0)
     self.mNewConstraints.add (rightOf: self, equalToRightOf: view, plus: 8.0)
     if let lastView = optionalLastView {
@@ -524,7 +558,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func drawViewRects (_ inView : NSView) {
-    if !inView.frame.isEmpty, !inView.isHidden {
+    if !inView.frame.isEmpty {
       let viewFrame = self.convert (inView.alignmentRect (forFrame: inView.bounds), from: inView)
       var exploreSubviews = true
       if let stackView = inView as? ALB_NSStackView { // Draw margins
@@ -566,19 +600,20 @@ fileprivate final class FilePrivateHiliteView : NSView {
         bp.stroke ()
       }
     //--- Last baseline
-      if inView is ALB_NSStackView, let representativeView = inView.pmLastBaselineRepresentativeView {
+      if let representativeView = inView.pmLastBaselineRepresentativeView {
+        let representativeViewFrame = self.convert (representativeView.alignmentRect (forFrame: representativeView.bounds), from: representativeView)
         let bp = NSBezierPath ()
         let p = NSPoint (
           x: viewFrame.origin.x,
-          y: viewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
+          y: representativeViewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
         )
         bp.move (to: p)
         bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
-//        if inView is ALB_NSStackView {
+        if (inView is ALB_NSStackView) || (inView is AutoLayoutToolBar) {
           DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
-//        }else{
-//          DEBUG_LAST_BASELINE_COLOR.setStroke ()
-//        }
+        }else{
+          DEBUG_LAST_BASELINE_COLOR.setStroke ()
+        }
         bp.stroke ()
       }
     //--- Explore subviews
@@ -604,6 +639,28 @@ fileprivate final class FilePrivateHiliteView : NSView {
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor private func checkAutoLayoutAdoption (_ inView : NSView, _ inHierarchy : [NSView]) {
+  if inView.translatesAutoresizingMaskIntoConstraints {
+    var s = ""
+    for view in inHierarchy {
+      s += String (describing: type (of: view)) + "/"
+    }
+    s += String (describing: type (of: inView))
+    presentErrorWindow (#file, #line, s)
+  }
+  var examineSubviews = !(inView is NSControl)
+  if examineSubviews {
+    examineSubviews = !(inView is NSScrollView)
+  }
+  if examineSubviews {
+    for view in inView.subviews {
+      checkAutoLayoutAdoption (view, inHierarchy + [view])
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

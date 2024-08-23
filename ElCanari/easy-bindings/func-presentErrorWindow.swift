@@ -20,7 +20,7 @@ import AppKit
   var message = "File: \(file)\n"
   message += "Line: \(line)\n"
   message += "Message: \(errorMessage)\n"
-  let r = NSRect (origin: gOrigin, size: NSSize (width: 300.0, height: 200.0))
+  let r = NSRect (origin: gOrigin, size: NSSize (width: 400.0, height: 400.0))
   gOrigin.x += 20.0
   gOrigin.y += 20.0
   let window = NSWindow (

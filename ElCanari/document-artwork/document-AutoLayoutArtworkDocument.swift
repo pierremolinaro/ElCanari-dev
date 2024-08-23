@@ -162,6 +162,7 @@ import AppKit
 
   final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (spacing: .zero)
     let pageMasterView = self.PageMasterView ()
     let descriptionPage = self.DescriptionPage ()
     let minimaPage = self.MinimaPage ()
@@ -323,23 +324,20 @@ import AppKit
 
   final func DataPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (spacing: .zero)
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: .regular)
     do{
-      let view_0_0 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_0_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
-        _ = view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutTextField (minWidth: 56, size: .small)
-          .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
-        _ = view_0_0.appendView (view_0_0_1)
-      }
+      let view_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutImageObserverView (size: .small)
-        .bind_image (self.emptyDrillFileExtensionImage_property)
+      let view_0_1 = AutoLayoutTextField (minWidth: 112, size: .small)
+        .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
       _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
+      let view_0_2 = AutoLayoutImageObserverView (size: .small)
+        .bind_image (self.emptyDrillFileExtensionImage_property)
       _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_3)
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()

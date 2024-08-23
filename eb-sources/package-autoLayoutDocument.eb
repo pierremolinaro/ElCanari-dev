@@ -10,7 +10,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
  
   stackView \PageMasterView vStack { }
  
-  stackView \DocumentMainView vStack {
+  stackView \DocumentMainView vStack set (spacing: .zero) {
     newView pageMasterView = \PageMasterView ()
     newView modelImagePage = \ModelImagePage ()
     newView packagePage = \PackagePage ()
