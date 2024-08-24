@@ -14,7 +14,7 @@ class ALB_NSTextView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let mTextView = InternalTextView ()
+  final let mTextView = InternalTextView ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -67,7 +67,7 @@ class ALB_NSTextView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var string : String {
+  final var string : String {
     get { return self.mTextView.string }
     set { self.mTextView.string = newValue }
   }
@@ -100,11 +100,11 @@ final class InternalTextView : NSTextView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final var mTextDidChangeCallBack : Optional < () -> Void > = nil
+  var mTextDidChangeCallBack : Optional < () -> Void > = nil
 
   //--- REQUIRED!!! Declaring theses properties ensures they are retained (required for ElCapitan)
-  private final let mTextStorage = NSTextStorage () // Subclassing NSTextStorage requires defining string, …
-  private final let mLayoutManager = EmbeddedLayoutManager ()
+  private let mTextStorage = NSTextStorage () // Subclassing NSTextStorage requires defining string, …
+  private let mLayoutManager = EmbeddedLayoutManager ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TextSystemArchitecture/ArchitectureOverview.html#//apple_ref/doc/uid/TP40009459-CH7-CJBJHGAG
@@ -146,7 +146,7 @@ final class InternalTextView : NSTextView {
   // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override final var intrinsicContentSize : NSSize {
+  override var intrinsicContentSize : NSSize {
     let textContainer = self.textContainer!
     let layoutManager = self.layoutManager!
     layoutManager.ensureLayout (for: textContainer)
@@ -155,7 +155,7 @@ final class InternalTextView : NSTextView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override final func didChangeText () {
+  override func didChangeText () {
     super.didChangeText ()
     self.invalidateIntrinsicContentSize ()
     self.mTextDidChangeCallBack? ()

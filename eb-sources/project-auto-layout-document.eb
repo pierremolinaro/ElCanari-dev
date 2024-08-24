@@ -2592,18 +2592,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView \ArtworkDataPage hStack set (margins: .large) {
+  stackView \ArtworkDataPage hStack set (margins: .zero) {
     space
-    vStack {
+    vStack set (spacing: .zero) set (margins: .zero) {
       hStack set (margins: .regular) {
-        hStack {
-          StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
-          Label (bold: yes, size : .small) { $title root.drillDataFileExtension }
-        }
-        ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
+        StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
+        Label (bold: yes, size : .small) { $title root.drillDataFileExtension }
+        ImageObserverView (size: .mini) { $image self.emptyDrillFileExtensionImage }
         space
       }
-      hStack set (leftMargin: .regular) set (rightMargin: .regular) {
+      hStack set (leftMargin: .regular) set (rightMargin: .regular) set (topMargin: .zero) {
         vStack set (topMargin: .regular) {
           Label (bold: yes, size : .small) { $title self.generatedFileCountString }
           TableView (size : .small, addControlButtons: no) { $tableValue #mDataController }
@@ -2611,11 +2609,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         separator
         vStack set (topMargin: .regular) {
           hStack {
-            hStack {
+            hStack set (topMargin: .zero) {
               StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
               Label (bold: yes, size : .small) { $title #mDataSelection.fileExtension }
             }
-            ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
+            ImageObserverView (size: .mini) { $image #mDataSelection.emptyFileExtensionImage }
             space
             StaticLabel (title: "Empty Data File", bold: yes, size : .small, alignment: .center) {
               setOrangeTextColor () $hidden !#mDataSelection.hasNoData

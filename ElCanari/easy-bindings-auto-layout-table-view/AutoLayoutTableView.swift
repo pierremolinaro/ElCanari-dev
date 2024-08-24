@@ -29,11 +29,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mTableView = InternalAutoLayoutTableView (size: inSize)
     super.init ()
 
-  // §§  self.setHuggingPriority (.required, for: .horizontal)
-//    self.setContentHuggingPriority (.required, for: .horizontal)
-  // §§  self.setHuggingPriority (.required, for: .vertical)
-//    self.setContentHuggingPriority (.required, for: .vertical)
-
   //--- Configure table view
     self.mTableView.controlSize = inSize.cocoaControlSize
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
@@ -189,7 +184,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   final func appendTableColumn (_ inColumn : AutoLayoutTableColumn) {
   //--- Add Column
-//    inColumn.identifier = NSUserInterfaceItemIdentifier (rawValue: "\(self.columnCount)")
     self.mTableView.addTableColumn (inColumn)
   //--- Update table view sort descriptors
     if let s = inColumn.sortDescriptorPrototype {
@@ -206,10 +200,8 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func sortAndReloadData () {
-    // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
-    // Swift.print ("currentSelectedRow \(currentSelectedRow)")
   //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
     self.mTransmitSelectionChangeToDelegate = false
     self.mDelegate?.tableViewDelegate_beginSorting ()
@@ -323,11 +315,12 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
-    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
+    super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    self.pmConfigureForAutolayout(hStretchingResistance: .low, vStrechingResistance: .low)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.setContentHuggingPriority (.defaultLow, for: .vertical)
     self.controlSize = inSize.cocoaControlSize
   }
 

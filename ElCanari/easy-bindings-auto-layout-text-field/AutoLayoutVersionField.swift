@@ -12,10 +12,9 @@ final class AutoLayoutVersionField : ALB_NSTextField {
     super.init (optionalWidth: nil, bold: false, size: inSize.cocoaControlSize)
 
     self.isEditable = false
-    self.isEnabled = true
     self.drawsBackground = false
     self.isBordered = false
-    self.alignment = .center
+
     self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
   }
 
@@ -23,12 +22,6 @@ final class AutoLayoutVersionField : ALB_NSTextField {
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var intrinsicContentSize : NSSize { // Required by ElCapitan
-    return NSSize (width: 42, height: 19)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

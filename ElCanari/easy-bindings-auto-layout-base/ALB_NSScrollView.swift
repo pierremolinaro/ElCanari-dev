@@ -15,9 +15,9 @@ class ALB_NSScrollView : NSScrollView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
-    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
+    super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

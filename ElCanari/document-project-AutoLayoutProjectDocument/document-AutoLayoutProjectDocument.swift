@@ -3057,33 +3057,32 @@ do{
 
   final func ArtworkDataPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-      .set (margins: .large)
+      .set (margins: .zero)
     let view_0 = AutoLayoutFlexibleSpace ()
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
+      .set (spacing: .zero)
+      .set (margins: .zero)
     do{
       let view_1_0 = AutoLayoutHorizontalStackView ()
         .set (margins: .regular)
       do{
-        let view_1_0_0 = AutoLayoutHorizontalStackView ()
-        do{
-          let view_1_0_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
-          _ = view_1_0_0.appendView (view_1_0_0_0)
-          let view_1_0_0_1 = AutoLayoutLabel (bold: true, size: .small)
-            .bind_title (self.rootObject.drillDataFileExtension_property)
-          _ = view_1_0_0.appendView (view_1_0_0_1)
-        }
+        let view_1_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
         _ = view_1_0.appendView (view_1_0_0)
-        let view_1_0_1 = AutoLayoutImageObserverView (size: .small)
-          .bind_image (self.emptyDrillFileExtensionImage_property)
+        let view_1_0_1 = AutoLayoutLabel (bold: true, size: .small)
+          .bind_title (self.rootObject.drillDataFileExtension_property)
         _ = view_1_0.appendView (view_1_0_1)
-        let view_1_0_2 = AutoLayoutFlexibleSpace ()
+        let view_1_0_2 = AutoLayoutImageObserverView (size: .mini)
+          .bind_image (self.emptyDrillFileExtensionImage_property)
         _ = view_1_0.appendView (view_1_0_2)
+        let view_1_0_3 = AutoLayoutFlexibleSpace ()
+        _ = view_1_0.appendView (view_1_0_3)
       }
       _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: .regular)
         .set (rightMargin: .regular)
+        .set (topMargin: .zero)
       do{
         let view_1_1_0 = AutoLayoutVerticalStackView ()
           .set (topMargin: .regular)
@@ -3104,6 +3103,7 @@ do{
           let view_1_1_2_0 = AutoLayoutHorizontalStackView ()
           do{
             let view_1_1_2_0_0 = AutoLayoutHorizontalStackView ()
+              .set (topMargin: .zero)
             do{
               let view_1_1_2_0_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small, alignment: .center)
               _ = view_1_1_2_0_0.appendView (view_1_1_2_0_0_0)
@@ -3112,7 +3112,7 @@ do{
               _ = view_1_1_2_0_0.appendView (view_1_1_2_0_0_1)
             }
             _ = view_1_1_2_0.appendView (view_1_1_2_0_0)
-            let view_1_1_2_0_1 = AutoLayoutImageObserverView (size: .small)
+            let view_1_1_2_0_1 = AutoLayoutImageObserverView (size: .mini)
               .bind_image (self.mDataSelection.emptyFileExtensionImage_property)
             _ = view_1_1_2_0.appendView (view_1_1_2_0_1)
             let view_1_1_2_0_2 = AutoLayoutFlexibleSpace ()

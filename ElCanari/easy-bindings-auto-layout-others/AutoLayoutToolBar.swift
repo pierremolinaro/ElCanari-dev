@@ -43,8 +43,7 @@ final class AutoLayoutToolBar : ALB_NSView {
       size: .small,
       alignment: .center
     )
-//    inView.setContentHuggingPriority (.defaultHigh, for: .vertical)
-    label.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
+//    label.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
     self.mItemArray.append (Entry (item: inView, label: label))
     self.addSubview (label)
     self.addSubview (inView)
@@ -93,8 +92,8 @@ final class AutoLayoutToolBar : ALB_NSView {
       self.mConstraints.add (
         verticalConstraintsOf: entry.item,
         inHorizontalContainer: self.mTopRow,
-        topMargin: self.mMargins,
-        bottomMargin : self.mMargins,
+        topMargin: 0.0,
+        bottomMargin : 0.0,
         optionalLastBaseLineView: &optionalLastBaseLineView
       )
     //--- Vertical label vertical constraints

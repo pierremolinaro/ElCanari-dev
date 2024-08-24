@@ -429,9 +429,9 @@ extension ApplicationDelegate {
      case .ok (let documentData) :
        if let root = documentData.documentRootObject as? ArtworkRoot {
          self.mArtworkRoot = root
-       } // §
+       }
      case .readError (_) :
-       () // §
+       ()
      }
    }
  }

@@ -121,7 +121,7 @@ import AppKit
 
   mutating private func add (topOf inView : NSView,
                              closeToTopOfContainer inContainer : NSView,
-                             topMargin inTopMargin : CGFloat = 0.0) {
+                             topMargin inTopMargin : CGFloat) {
   // Vertical Axis is from to top to bottom
   //--- >= Constraint
     var c = inView.topAnchor.constraint (greaterThanOrEqualTo: inContainer.topAnchor, constant: inTopMargin)
@@ -172,7 +172,7 @@ import AppKit
 
   mutating private func add (bottomOf inView : NSView,
                              closeToBottomOfContainer inContainer : NSView,
-                             bottomMargin inBottomMargin : CGFloat = 0.0) {
+                             bottomMargin inBottomMargin : CGFloat) {
   // Vertical Axis is from to top to bottom
   //--- >= constraint
     var c = inContainer.bottomAnchor.constraint (greaterThanOrEqualTo: inView.bottomAnchor, constant: inBottomMargin)
@@ -261,8 +261,8 @@ import AppKit
       self.add (topOf: inContainer, equalToTopOf: inView, plus: inTopMargin)
       self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
     case .lastBaseline :
-      self.add (topOf: inView, closeToTopOfContainer: inContainer)
-      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer)
+      self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
+      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
       if let viewLastBaselineRepresentativeView = inView.pmLastBaselineRepresentativeView {
         if let lastBaselineRepresentativeView = ioOptionalLastBaseLineView {
           self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)

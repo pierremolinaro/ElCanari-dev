@@ -402,7 +402,13 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)")
 //    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)")
 //    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)")
-    self.appendTextField (titled: "baselineOffsetFromBottom: \(inView.baselineOffsetFromBottom)")
+    let baseline : String
+    if let view = inView.pmLastBaselineRepresentativeView {
+      baseline = String (describing: type (of: view))
+    }else{
+      baseline = "nil"
+    }
+    self.appendTextField (titled: "Baseline View: " + baseline)
 //    self.appendTextField (titled: "acceptsFirstResponder: \(inView.acceptsFirstResponder)")
 //    self.appendTextField (titled: "canBecomeKeyView: \(inView.canBecomeKeyView)")
     self.appendTextField (titled: "h Compression Resistance: \(inView.contentCompressionResistancePriority (for: .horizontal).rawValue)")
@@ -425,8 +431,6 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
   private func appendTextField (titled inString : String) {
     let view = NSTextField (frame: .zero)
     view.translatesAutoresizingMaskIntoConstraints = false
-    view.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
-    view.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
     view.isBezeled = false
     view.isBordered = false
     view.drawsBackground = true
@@ -437,9 +441,6 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     view.stringValue = inString
     let optionalLastView = self.subviews.last
     self.addSubview (view)
-//    let s = view.intrinsicContentSize
-//    self.mNewConstraints.add (widthOf: view, greaterThanOrEqualToConstant: s.width)
-//    self.mNewConstraints.add (heightOf: view, equalToHeightOf: s.height)
     self.mNewConstraints.add (leftOf: view, equalToLeftOf: self, plus: 8.0)
     self.mNewConstraints.add (rightOf: self, equalToRightOf: view, plus: 8.0)
     if let lastView = optionalLastView {

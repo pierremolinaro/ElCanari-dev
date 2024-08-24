@@ -34,7 +34,7 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
     }
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+    self.pmConfigureForAutolayout (hStretchingResistance: .higher, vStrechingResistance: .higher)
 
     self.delegate = self
 
@@ -171,10 +171,6 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc override var pmLastBaselineRepresentativeView : NSView? { self }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override var isFlipped : Bool { return true }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!

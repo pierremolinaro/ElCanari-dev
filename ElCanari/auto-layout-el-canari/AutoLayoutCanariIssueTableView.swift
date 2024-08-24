@@ -41,9 +41,6 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView,
 
   init (hasHideIssueButton inHasHideIssueButton : Bool) {
     super.init ()
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
-//    self.setContentHuggingPriority (.defaultLow, for: .vertical)
 
     if inHasHideIssueButton {
       let button = AutoLayoutButton (title: "Hide Issue", size: .small).expandableWidth ()
@@ -59,20 +56,18 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView,
     self.mTableView.gridStyleMask = .dashedHorizontalGridLineMask
     self.mTableView.controlSize = .small
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
-    self.mTableView.usesAutomaticRowHeights = true // #available(macOS 10.13
+    self.mTableView.usesAutomaticRowHeights = true
 
     let leftColumn = NSTableColumn (identifier: LEFT_COLUMN_IDENTIFIER)
     leftColumn.minWidth = 20.0
     leftColumn.maxWidth = 20.0
     leftColumn.isEditable = false
-//    leftColumn.resizingMask = [] // Not resizable
     self.mTableView.addTableColumn (leftColumn)
 
     let rightColumn = NSTableColumn (identifier: RIGHT_COLUMN_IDENTIFIER)
     rightColumn.minWidth = 100.0
     rightColumn.maxWidth = 1000.0
     rightColumn.isEditable = false
-  //  rightColumn.resizingMask = .autoresizingMask
     self.mTableView.addTableColumn (rightColumn)
 
     self.mTableView.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
@@ -81,12 +76,6 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView,
     self.mScrollView.hasHorizontalScroller = false
     self.mScrollView.hasVerticalScroller = true
     _ = self.appendView (self.mScrollView)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: 200.0, height: 50.0)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -244,7 +233,7 @@ fileprivate final class EmbeddedAutoLayoutScrollView : NSScrollView {
   @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -272,6 +261,7 @@ fileprivate final class EmbeddedAutoLayoutTableView : NSTableView {
   @MainActor init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
+    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

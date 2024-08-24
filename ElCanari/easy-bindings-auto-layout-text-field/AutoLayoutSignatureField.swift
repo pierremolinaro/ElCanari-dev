@@ -9,17 +9,13 @@ final class AutoLayoutSignatureField : ALB_NSTextField {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, bold: false, size: .small) //inSize.cocoaControlSize)
+    super.init (optionalWidth: nil, bold: false, size: .regular)
 
-//    self.stringValue = "??"
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
-//    self.frame.size = self.intrinsicContentSize
- //   self.maximumNumberOfLines = 1
 
     self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
-//    self.sizeToFit ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -27,12 +23,6 @@ final class AutoLayoutSignatureField : ALB_NSTextField {
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override var intrinsicContentSize : NSSize {  // Required by ElCapitan
-//    return NSSize (width: 83, height: 19)
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $signature binding
