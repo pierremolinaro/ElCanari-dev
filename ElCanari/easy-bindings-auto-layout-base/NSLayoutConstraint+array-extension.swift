@@ -121,13 +121,13 @@ import AppKit
 
   mutating func add (topOf inView : NSView,
                      closeToTopOfContainer inContainer : NSView,
-                     topMargin inOffset : CGFloat = 0.0) {
+                     topMargin inTopMargin : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
   //--- >= Constraint
-    var c = inContainer.topAnchor.constraint (greaterThanOrEqualTo: inView.topAnchor, constant: inOffset)
+    var c = inContainer.topAnchor.constraint (greaterThanOrEqualTo: inView.topAnchor, constant: -inTopMargin)
     self.append (c)
   //--- == Constraint
-    c = inView.topAnchor.constraint (equalTo: inContainer.topAnchor, constant: -inOffset)
+    c = inContainer.topAnchor.constraint (equalTo: inView.topAnchor, constant: -inTopMargin)
     var p = inView.contentHuggingPriority (for: .vertical)
     p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
     c.priority = p
@@ -172,13 +172,13 @@ import AppKit
 
   mutating func add (bottomOf inView : NSView,
                      closeToBottomOfContainer inContainer : NSView,
-                     bottomMargin inOffset : CGFloat = 0.0) {
+                     bottomMargin inBottomMargin : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
   //--- >= constraint
-    var c = inContainer.bottomAnchor.constraint (greaterThanOrEqualTo: inView.bottomAnchor, constant: inOffset)
+    var c = inContainer.bottomAnchor.constraint (greaterThanOrEqualTo: inView.bottomAnchor, constant: inBottomMargin)
     self.append (c)
   //--- == constraint
-    c = inView.bottomAnchor.constraint (equalTo: inContainer.bottomAnchor, constant: -inOffset)
+    c = inView.bottomAnchor.constraint (equalTo: inContainer.bottomAnchor, constant: -inBottomMargin)
     var p = inView.contentHuggingPriority (for: .vertical)
     p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
     c.priority = p
