@@ -161,7 +161,7 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     constraints.add (leftOf: self, equalToLeftOf: self.mHiliteView)
     constraints.add (topOf: self, equalToTopOf: self.mHiliteView)
     constraints.add (rightOf: self, equalToRightOf: self.mHiliteView)
-    constraints.add (bottomOf: self, equalToBottomOf: self.mHiliteView, withStretchingResistancePriorityOf: .secondView)
+    constraints.add (bottomOf: self, equalToBottomOf: self.mHiliteView)
 
     self.addConstraints (constraints)
 
@@ -437,9 +437,9 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     view.stringValue = inString
     let optionalLastView = self.subviews.last
     self.addSubview (view)
-    let s = view.intrinsicContentSize
-    self.mNewConstraints.add (widthOf: view, greaterThanOrEqualToConstant: s.width)
-    self.mNewConstraints.add (heightOf: view, equalTo: s.height)
+//    let s = view.intrinsicContentSize
+//    self.mNewConstraints.add (widthOf: view, greaterThanOrEqualToConstant: s.width)
+//    self.mNewConstraints.add (heightOf: view, equalToHeightOf: s.height)
     self.mNewConstraints.add (leftOf: view, equalToLeftOf: self, plus: 8.0)
     self.mNewConstraints.add (rightOf: self, equalToRightOf: view, plus: 8.0)
     if let lastView = optionalLastView {

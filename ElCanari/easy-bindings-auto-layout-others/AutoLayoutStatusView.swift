@@ -29,7 +29,7 @@ final class AutoLayoutStatusView : ALB_NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: BADGE_WIDTH * 2.0, height: BADGE_WIDTH * 2.0)
+    return NSSize (width: BADGE_WIDTH, height: BADGE_WIDTH)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

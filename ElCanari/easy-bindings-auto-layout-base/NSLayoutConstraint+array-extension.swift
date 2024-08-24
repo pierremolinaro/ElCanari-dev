@@ -15,13 +15,6 @@ import AppKit
 @MainActor extension Array where Element == NSLayoutConstraint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  enum PriorityViewSelection {
-    case firstView
-    case secondView
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Width
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -41,16 +34,6 @@ import AppKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  mutating func add (widthOf inView : NSView,
-                     equalTo inWidth : CGFloat,
-                     priority inPriority : PMLayoutCompressionConstraintPriority = .highest) {
-    let c = inView.widthAnchor.constraint (equalToConstant: inWidth)
-    c.priority = inPriority.cocoaPriority
-    self.append (c)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Height
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -66,16 +49,6 @@ import AppKit
   mutating func add (heightOf inView : NSView,
                      greaterThanOrEqualToConstant inConstant : CGFloat) {
     let c = inView.heightAnchor.constraint (greaterThanOrEqualToConstant: inConstant)
-    self.append (c)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  mutating func add (heightOf inView : NSView,
-                     equalTo inHeight : CGFloat,
-                     priority inPriority : PMLayoutCompressionConstraintPriority = .highest) {
-    let c = inView.heightAnchor.constraint (equalToConstant: inHeight)
-    c.priority = inPriority.cocoaPriority
     self.append (c)
   }
 
@@ -128,24 +101,6 @@ import AppKit
 
   mutating func add (topOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
-                     plus inOffset : CGFloat = 0.0,
-                     withStretchingResistancePriorityOf inSelectedView : PriorityViewSelection) {
-  // Vertical Axis is from to top to bottom
-    let c = inView1.topAnchor.constraint (equalTo: inView2.topAnchor, constant: -inOffset)
-    var p : NSLayoutConstraint.Priority
-    switch inSelectedView {
-    case .firstView  : p = inView2.contentHuggingPriority (for: .vertical)
-    case .secondView : p = inView1.contentHuggingPriority (for: .vertical)
-    }
-    p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
-    c.priority = p
-    self.append (c)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  mutating func add (topOf inView1 : NSView,
-                     equalToTopOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
     let c = inView1.topAnchor.constraint (equalTo: inView2.topAnchor, constant: -inOffset)
@@ -159,6 +114,23 @@ import AppKit
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
     let c = inView2.topAnchor.constraint (greaterThanOrEqualTo: inView1.topAnchor, constant: inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (topOf inView : NSView,
+                     closeToTopOfContainer inContainer : NSView,
+                     topMargin inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+  //--- >= Constraint
+    var c = inContainer.topAnchor.constraint (greaterThanOrEqualTo: inView.topAnchor, constant: inOffset)
+    self.append (c)
+  //--- == Constraint
+    c = inView.topAnchor.constraint (equalTo: inContainer.topAnchor, constant: -inOffset)
+    var p = inView.contentHuggingPriority (for: .vertical)
+    p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
+    c.priority = p
     self.append (c)
   }
 
@@ -179,6 +151,16 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (bottomOf inView1 : NSView,
+                     equalToBottomOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+    let c = inView1.bottomAnchor.constraint (equalTo: inView2.bottomAnchor, constant: -inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (bottomOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
@@ -188,17 +170,16 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func add (bottomOf inView1 : NSView,
-                     equalToBottomOf inView2 : NSView,
-                     plus inOffset : CGFloat = 0.0,
-                     withStretchingResistancePriorityOf inSelectedView : PriorityViewSelection) {
+  mutating func add (bottomOf inView : NSView,
+                     closeToBottomOfContainer inContainer : NSView,
+                     bottomMargin inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
-    let c = inView1.bottomAnchor.constraint (equalTo: inView2.bottomAnchor, constant: -inOffset)
-    var p : NSLayoutConstraint.Priority
-    switch inSelectedView {
-    case .firstView  : p = inView2.contentHuggingPriority (for: .vertical)
-    case .secondView : p = inView1.contentHuggingPriority (for: .vertical)
-    }
+  //--- >= constraint
+    var c = inContainer.bottomAnchor.constraint (greaterThanOrEqualTo: inView.bottomAnchor, constant: inOffset)
+    self.append (c)
+  //--- == constraint
+    c = inView.bottomAnchor.constraint (equalTo: inContainer.bottomAnchor, constant: -inOffset)
+    var p = inView.contentHuggingPriority (for: .vertical)
     p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
     c.priority = p
     self.append (c)
@@ -207,10 +188,10 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (bottomOf inView1 : NSView,
-                     equalToBottomOf inView2 : NSView,
+                     greaterThanOrEqualToTopOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
-    let c = inView1.bottomAnchor.constraint (equalTo: inView2.bottomAnchor, constant: -inOffset)
+    let c = inView1.bottomAnchor.constraint (greaterThanOrEqualTo: inView2.topAnchor, constant: -inOffset)
     self.append (c)
   }
 

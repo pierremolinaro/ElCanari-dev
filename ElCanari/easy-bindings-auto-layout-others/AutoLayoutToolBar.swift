@@ -15,12 +15,25 @@ final class AutoLayoutToolBar : ALB_NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mMargins : CGFloat = 8.0
-  private let mSpacing : CGFloat = 8.0
+  private let mSpacing : CGFloat = 4.0
+  private let mTopRow = ALB_NSView ()
+  private let mBottomRow = ALB_NSView ()
+  private var mItemArray = [Entry] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mItemArray = [Entry] ()
+  override init () {
+    super.init ()
+    self.addSubview (self.mTopRow)
+    self.addSubview (self.mBottomRow)
+  }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  required init?(coder inCoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (title inTitle : String, item inView : NSView) -> Self {
@@ -30,7 +43,8 @@ final class AutoLayoutToolBar : ALB_NSView {
       size: .small,
       alignment: .center
     )
-    inView.setContentHuggingPriority (.defaultHigh, for: .vertical) // §
+//    inView.setContentHuggingPriority (.defaultHigh, for: .vertical)
+    label.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
     self.mItemArray.append (Entry (item: inView, label: label))
     self.addSubview (label)
     self.addSubview (inView)
@@ -62,60 +76,70 @@ final class AutoLayoutToolBar : ALB_NSView {
   //--- Remove all constraints
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll (keepingCapacity: true)
+  //--- Build row vertical constraints
+    self.mConstraints.add (topOf: self, equalToTopOf: self.mTopRow, plus: self.mMargins)
+    self.mConstraints.add (bottomOf: self.mTopRow, equalToTopOf: self.mBottomRow, plus: self.mSpacing)
+    self.mConstraints.add (bottomOf: self.mBottomRow, equalToBottomOf: self, plus: self.mMargins)
+  //--- Build row horizontal constraints
+    self.mConstraints.add (leftOf: self.mTopRow, equalToLeftOf: self, plus: self.mMargins)
+    self.mConstraints.add (rightOf: self, equalToRightOf: self.mTopRow, plus: self.mMargins)
+    self.mConstraints.add (leftOf: self.mBottomRow, equalToLeftOf: self, plus: self.mMargins)
+    self.mConstraints.add (rightOf: self, equalToRightOf: self.mBottomRow, plus: self.mMargins)
   //--- Build constraints
     var optionalLastEntry : Entry? = nil
     var optionalLastBaseLineView : NSView? = nil
     for entry in self.mItemArray {
-    //--- Vertical constraints
+    //--- Vertical item vertical constraints
       switch entry.item.pmLayoutSettings.vLayoutInHorizontalContainer {
       case .center :
         self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: entry.item, plus: self.mMargins)
-        self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: self, plus: self.mMargins)
+        self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: entry.label, plus: self.mMargins)
         self.mConstraints.add (centerYOf: entry.item, equalToCenterYOf: self)
       case .fill, .weakFill :
-        self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
-        self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins)
+        self.mConstraints.add (topOf: self.mTopRow, equalToTopOf: entry.item)
+        self.mConstraints.add (bottomOf: self.mTopRow, equalToBottomOf: entry.item)
       case .weakFillIgnoringMargins :
         self.mConstraints.add (topOf: self, equalToTopOf: entry.item)
-        self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self)
+        self.mConstraints.add (bottomOf: entry.item, equalToTopOf: entry.label)
       case .bottom :
         self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: entry.item, plus: self.mMargins)
         self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins)
       case .top :
         self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
-        self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: self, plus: self.mMargins)
+        self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: entry.label, plus: self.mMargins)
       case .lastBaseline :
         if let viewLastBaselineRepresentativeView = entry.item.pmLastBaselineRepresentativeView {
-          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: entry.item, plus: self.mMargins)
-          self.mConstraints.add (bottomOf: entry.item, greaterThanOrEqualToBottomOf: self, plus: self.mMargins)
-          self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins, withStretchingResistancePriorityOf: .secondView)
-          self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins, withStretchingResistancePriorityOf: .firstView)
+          self.mConstraints.add (topOf: entry.item, closeToTopOfContainer: self.mTopRow)
+          self.mConstraints.add (bottomOf: entry.item, closeToBottomOfContainer: self.mTopRow)
           if let lastBaselineRepresentativeView = optionalLastBaseLineView {
             self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
           }else{
             optionalLastBaseLineView = viewLastBaselineRepresentativeView
           }
         }else{
-          self.mConstraints.add (topOf: self, equalToTopOf: entry.item, plus: self.mMargins)
-          self.mConstraints.add (bottomOf: entry.item, equalToBottomOf: self, plus: self.mMargins)
+          self.mConstraints.add (topOf: self.mTopRow, equalToTopOf: entry.item)
+          self.mConstraints.add (bottomOf: self.mTopRow, equalToBottomOf: entry.item)
         }
       }
-    //--- Horizontal constraints
+    //--- Vertical label vertical constraints
+      self.mConstraints.add (topOf: self.mBottomRow, equalToTopOf: entry.label)
+      self.mConstraints.add (bottomOf: self.mBottomRow, equalToBottomOf: entry.label)
+   //--- Horizontal constraints
      if let lastEntry = optionalLastEntry {
-        self.mConstraints.add (leftOf: entry.label, equalToRightOf: lastEntry.label, plus: self.mSpacing)
         self.mConstraints.add (leftOf: entry.item, equalToRightOf: lastEntry.item, plus: self.mSpacing)
+        self.mConstraints.add (leftOf: entry.label, equalToRightOf: lastEntry.label, plus: self.mSpacing)
         self.mConstraints.add (leftOf: entry.item, equalToLeftOf: entry.label)
         self.mConstraints.add (rightOf: lastEntry.item, equalToRightOf: lastEntry.label)
-     }else{
-        self.mConstraints.add (leftOf: entry.label, equalToLeftOf: self, plus: self.mMargins)
-        self.mConstraints.add (leftOf: entry.item, equalToLeftOf: self, plus: self.mMargins)
+      }else{
+        self.mConstraints.add (leftOf: entry.item, equalToLeftOf: self.mTopRow)
+        self.mConstraints.add (leftOf: entry.label, equalToLeftOf: self.mBottomRow)
       }
       optionalLastEntry = entry
     }
   //--- Add right constraints for last view
     if let lastEntry = optionalLastEntry {
-      self.mConstraints.add (rightOf: self, equalToRightOf: lastEntry.label, plus: self.mMargins)
-      self.mConstraints.add (rightOf: self, equalToRightOf: lastEntry.item, plus: self.mMargins)
+      self.mConstraints.add (rightOf: self.mBottomRow, equalToRightOf: lastEntry.label)
+      self.mConstraints.add (rightOf: self.mTopRow, equalToRightOf: lastEntry.item)
     }
   //--- Apply constaints
     self.addConstraints (self.mConstraints)

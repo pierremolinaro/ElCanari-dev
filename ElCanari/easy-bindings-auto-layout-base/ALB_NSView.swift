@@ -20,7 +20,6 @@ class ALB_NSView : NSView {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
-//    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

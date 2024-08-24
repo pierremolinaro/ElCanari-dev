@@ -79,10 +79,8 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
           self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
         case .lastBaseline :
           if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
-            self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
-            self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mBottomMargin)
-            self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin, withStretchingResistancePriorityOf: .secondView)
-            self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mTopMargin, withStretchingResistancePriorityOf: .firstView)
+            self.mConstraints.add (topOf: view, closeToTopOfContainer: self, topMargin: self.mTopMargin)
+            self.mConstraints.add (bottomOf: view, closeToBottomOfContainer: self, bottomMargin: self.mBottomMargin)
             if let lastBaselineRepresentativeView = optionalLastBaselineRepresentativeView {
               self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
             }else{

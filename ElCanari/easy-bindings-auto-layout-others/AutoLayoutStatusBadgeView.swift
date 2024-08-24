@@ -27,22 +27,8 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override init () {
-//    super.init ()
-//
-//    self.frame.size = self.intrinsicContentSize
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  required init? (coder : NSCoder) {
-//    fatalError ("init(coder:) has not been implemented")
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: BADGE_WIDTH * 2.0, height: BADGE_WIDTH * 2.0)
+    return NSSize (width: BADGE_WIDTH, height: BADGE_WIDTH)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
