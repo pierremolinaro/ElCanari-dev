@@ -63,8 +63,8 @@ extension AutoLayoutHorizontalStackView {
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     private static let mLayoutSettings = AutoLayoutViewSettings (
-      vLayoutInHorizontalContainer: .weakFillIgnoringMargins,
-      hLayoutInVerticalContainer: .weakFill
+      vLayoutInHorizontalContainer: .fillIgnoringMargins,
+      hLayoutInVerticalContainer: .fill
     )
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -132,7 +132,7 @@ extension AutoLayoutHorizontalStackView {
       if let hStack = self.superview as? AutoLayoutHorizontalStackView {
         hStack.removeConstraints (self.mDividerConstraints)
         self.mDividerConstraints.removeAll (keepingCapacity: true)
-        let priority : PMLayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
+        let priority : LayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
         let dX = self.mCurrentMouseDraggedLocationX - self.mInitialMouseDownLocationX
         let newLeft = self.mDividerInitialLeftLocationX + dX
         self.mDividerConstraints.add (leftOf: self, equalToLeftOf: hStack, plus: newLeft, priority: priority)

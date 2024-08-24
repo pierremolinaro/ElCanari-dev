@@ -64,8 +64,8 @@ extension AutoLayoutVerticalStackView {
 
     override var pmLayoutSettings : AutoLayoutViewSettings {
       return AutoLayoutViewSettings (
-        vLayoutInHorizontalContainer: .weakFill, // non significant, as vertical separator cannot be inside a vertical stack view
-        hLayoutInVerticalContainer: self.mIgnoreHorizontalMargins ? .weakFillIgnoringMargins : .weakFill
+        vLayoutInHorizontalContainer: .fill, // non significant, as vertical separator cannot be inside a vertical stack view
+        hLayoutInVerticalContainer: self.mIgnoreHorizontalMargins ? .fillIgnoringMargins : .fill
       )
     }
 

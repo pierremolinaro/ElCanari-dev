@@ -66,8 +66,8 @@ extension AutoLayoutVerticalStackView {
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     private static let mLayoutSettings = AutoLayoutViewSettings (
-      vLayoutInHorizontalContainer: .weakFill,
-      hLayoutInVerticalContainer: .weakFillIgnoringMargins
+      vLayoutInHorizontalContainer: .fill,
+      hLayoutInVerticalContainer: .fillIgnoringMargins
     )
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
@@ -139,7 +139,7 @@ extension AutoLayoutVerticalStackView {
       if let vStack = self.superview as? AutoLayoutVerticalStackView {
         vStack.removeConstraints (self.mDividerConstraints)
         self.mDividerConstraints.removeAll (keepingCapacity: true)
-        let priority : PMLayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
+        let priority : LayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
         let dY = self.mCurrentMouseDraggedLocationY - self.mInitialMouseDownLocationY
         let newTop = self.mDividerInitialTopLocationY + (vStack.isFlipped ? dY : -dY)
         self.mDividerConstraints.add (topOf: vStack, equalToTopOf: self, plus: newTop, priority: priority)

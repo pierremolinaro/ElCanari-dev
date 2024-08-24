@@ -40,8 +40,8 @@ import AppKit
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
   private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
-    vLayoutInHorizontalContainer: .weakFill,
-    hLayoutInVerticalContainer: .weakFill
+    vLayoutInHorizontalContainer: .fill,
+    hLayoutInVerticalContainer: .fill
   )
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·

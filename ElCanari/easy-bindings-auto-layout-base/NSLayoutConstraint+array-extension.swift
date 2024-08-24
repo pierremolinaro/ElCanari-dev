@@ -68,7 +68,7 @@ import AppKit
   mutating func add (leftOf inView1 : NSView,
                      equalToLeftOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0,
-                     priority inPriority : PMLayoutCompressionConstraintPriority = .highest) {
+                     priority inPriority : LayoutCompressionConstraintPriority = .highest) {
     let c = inView1.leftAnchor.constraint (equalTo: inView2.leftAnchor, constant: inOffset)
     c.priority = inPriority.cocoaPriority
     self.append (c)
@@ -91,7 +91,7 @@ import AppKit
                      equalToRightOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0) {
     let c = inView1.rightAnchor.constraint (equalTo: inView2.rightAnchor, constant: inOffset)
-    c.priority = PMLayoutCompressionConstraintPriority.highest.cocoaPriority
+    c.priority = LayoutCompressionConstraintPriority.highest.cocoaPriority
     self.append (c)
   }
 
@@ -119,15 +119,15 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func add (topOf inView : NSView,
-                     closeToTopOfContainer inContainer : NSView,
-                     topMargin inTopMargin : CGFloat = 0.0) {
+  mutating private func add (topOf inView : NSView,
+                             closeToTopOfContainer inContainer : NSView,
+                             topMargin inTopMargin : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
   //--- >= Constraint
-    var c = inContainer.topAnchor.constraint (greaterThanOrEqualTo: inView.topAnchor, constant: -inTopMargin)
+    var c = inView.topAnchor.constraint (greaterThanOrEqualTo: inContainer.topAnchor, constant: inTopMargin)
     self.append (c)
   //--- == Constraint
-    c = inContainer.topAnchor.constraint (equalTo: inView.topAnchor, constant: -inTopMargin)
+    c = inView.topAnchor.constraint (equalTo: inContainer.topAnchor, constant: inTopMargin)
     var p = inView.contentHuggingPriority (for: .vertical)
     p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
     c.priority = p
@@ -139,7 +139,7 @@ import AppKit
   mutating func add (topOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0,
-                     priority inPriority : PMLayoutCompressionConstraintPriority = .highest) {
+                     priority inPriority : LayoutCompressionConstraintPriority = .highest) {
   // Vertical Axis is from to top to bottom
     let c = inView1.topAnchor.constraint (equalTo: inView2.topAnchor, constant: -inOffset)
     c.priority = inPriority.cocoaPriority
@@ -170,15 +170,15 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func add (bottomOf inView : NSView,
-                     closeToBottomOfContainer inContainer : NSView,
-                     bottomMargin inBottomMargin : CGFloat = 0.0) {
+  mutating private func add (bottomOf inView : NSView,
+                             closeToBottomOfContainer inContainer : NSView,
+                             bottomMargin inBottomMargin : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
   //--- >= constraint
     var c = inContainer.bottomAnchor.constraint (greaterThanOrEqualTo: inView.bottomAnchor, constant: inBottomMargin)
     self.append (c)
   //--- == constraint
-    c = inView.bottomAnchor.constraint (equalTo: inContainer.bottomAnchor, constant: -inBottomMargin)
+    c = inContainer.bottomAnchor.constraint (equalTo: inView.bottomAnchor, constant: inBottomMargin)
     var p = inView.contentHuggingPriority (for: .vertical)
     p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
     c.priority = p
@@ -232,6 +232,45 @@ import AppKit
   mutating func add (centerYOf inView1 : NSView, equalToCenterYOf inView2 : NSView) {
     let c = inView1.centerYAnchor.constraint (equalTo: inView2.centerYAnchor)
     self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Vertical constraint in horizontal container
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (verticalConstraintsOf inView : NSView,
+                     inHorizontalContainer inContainer : NSView,
+                     topMargin inTopMargin : CGFloat,
+                     bottomMargin inBottomMargin : CGFloat,
+                     optionalLastBaseLineView ioOptionalLastBaseLineView : inout NSView?) {
+    switch inView.pmLayoutSettings.vLayoutInHorizontalContainer {
+    case .center :
+      self.add (centerYOf: inView, equalToCenterYOf: inContainer)
+      self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
+      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
+    case .fill :
+      self.add (topOf: inContainer, equalToTopOf: inView, plus: inTopMargin)
+      self.add (bottomOf: inView, equalToBottomOf: inContainer, plus: inBottomMargin)
+    case .fillIgnoringMargins :
+      self.add (topOf: inContainer, equalToTopOf: inView)
+      self.add (bottomOf: inView, equalToBottomOf: inContainer)
+    case .bottom :
+      self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
+      self.add (bottomOf: inView, equalToBottomOf: inContainer, plus: inBottomMargin)
+    case .top :
+      self.add (topOf: inContainer, equalToTopOf: inView, plus: inTopMargin)
+      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
+    case .lastBaseline :
+      self.add (topOf: inView, closeToTopOfContainer: inContainer)
+      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer)
+      if let viewLastBaselineRepresentativeView = inView.pmLastBaselineRepresentativeView {
+        if let lastBaselineRepresentativeView = ioOptionalLastBaseLineView {
+          self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
+        }else{
+          ioOptionalLastBaseLineView = viewLastBaselineRepresentativeView
+        }
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -21,12 +21,12 @@ import AppKit
 //
 // Quand on instancie une NSView ou une héritière, la méthode pmConfigureForAutolayout doit être appelée :
 //   - elle fixe translatesAutoresizingMaskIntoConstraints à false
-//   - fixe la résistance à la compression à la valeur la plus forte (1000.0)
-//   - fixe la résistance à l'étirement à la valeur la plus faible (1.0)
+//   - fixe la résistance à la compression à la valeur la plus forte
+//   - fixe la résistance à l'étirement à la valeur la plus faible
 //
 //--------------------------------------------------------------------------------------------------
 
-enum PMLayoutCompressionConstraintPriority : Comparable {
+enum LayoutCompressionConstraintPriority {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -59,7 +59,7 @@ enum PMLayoutCompressionConstraintPriority : Comparable {
 
 //--------------------------------------------------------------------------------------------------
 
-enum PMLayoutStrechingConstraintPriority : Comparable {
+enum LayoutStrechingConstraintPriority {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

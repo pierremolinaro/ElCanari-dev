@@ -14,8 +14,8 @@ extension NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func pmConfigureForAutolayout (hStretchingResistance inHorizontalStrechingResistance : PMLayoutStrechingConstraintPriority,
-                                       vStrechingResistance inVerticalStrechingResistance : PMLayoutStrechingConstraintPriority) {
+  final func pmConfigureForAutolayout (hStretchingResistance inHorizontalStrechingResistance : LayoutStrechingConstraintPriority,
+                                       vStrechingResistance inVerticalStrechingResistance : LayoutStrechingConstraintPriority) {
     self.translatesAutoresizingMaskIntoConstraints = false
     self.setContentHuggingPriority (inHorizontalStrechingResistance.cocoaPriority, for: .horizontal)
     self.setContentHuggingPriority (inVerticalStrechingResistance.cocoaPriority, for: .vertical)

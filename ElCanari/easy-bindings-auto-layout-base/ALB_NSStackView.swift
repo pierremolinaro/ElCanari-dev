@@ -39,8 +39,7 @@ class ALB_NSStackView : NSView {
 
   enum HorizontalLayoutInVerticalCollectionView {
     case center
-    case weakFill
-    case weakFillIgnoringMargins
+    case fillIgnoringMargins
     case fill
     case left
     case right
@@ -50,8 +49,7 @@ class ALB_NSStackView : NSView {
 
   enum VerticalLayoutInHorizontalCollectionView {
     case center
-    case weakFill
-    case weakFillIgnoringMargins
+    case fillIgnoringMargins
     case fill
     case lastBaseline
     case top

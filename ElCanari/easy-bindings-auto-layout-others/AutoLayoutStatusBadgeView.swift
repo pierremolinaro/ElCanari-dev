@@ -33,6 +33,15 @@ final class AutoLayoutStatusBadgeView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  override var pmLayoutSettings : AutoLayoutViewSettings {
+    AutoLayoutViewSettings (
+      vLayoutInHorizontalContainer: .center,
+      hLayoutInVerticalContainer: .center
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func draw (_ inDirtyRect : NSRect) {
   //--- Color and text
     let color : NSColor

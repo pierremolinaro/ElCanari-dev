@@ -60,10 +60,10 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
         switch view.pmLayoutSettings.hLayoutInVerticalContainer {
         case .center :
           self.mConstraints.add (centerXOf: view, equalToCenterXOf: self)
-        case .fill, .weakFill :
+        case .fill :
           self.mConstraints.add (leftOf: view, equalToLeftOf: self, plus: self.mLeftMargin)
           self.mConstraints.add (rightOf: self, equalToRightOf: view, plus: self.mRightMargin)
-        case .weakFillIgnoringMargins :
+        case .fillIgnoringMargins :
           self.mConstraints.add (leftOf: view, equalToLeftOf: self)
           self.mConstraints.add (rightOf: self, equalToRightOf: view)
         case .left :

@@ -29,7 +29,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     for view in self.subviews {
       if !view.isHidden {
         switch view.pmLayoutSettings.vLayoutInHorizontalContainer {
-        case .center, .fill, .weakFill, .weakFillIgnoringMargins, .bottom, .top :
+        case .center, .fill, .fillIgnoringMargins, .bottom, .top :
           ()
         case .lastBaseline :
           if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
@@ -60,37 +60,44 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     for view in self.subviews {
       if !view.isHidden {
       //--- Vertical constraints
-        switch view.pmLayoutSettings.vLayoutInHorizontalContainer {
-        case .center :
-          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
-          self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
-          self.mConstraints.add (centerYOf: view, equalToCenterYOf: self)
-        case .fill, .weakFill :
-          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
-          self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
-        case .weakFillIgnoringMargins :
-          self.mConstraints.add (topOf: self, equalToTopOf: view)
-          self.mConstraints.add (bottomOf: view, equalToBottomOf: self)
-        case .bottom :
-          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
-          self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
-        case .top :
-          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
-          self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
-        case .lastBaseline :
-          if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
-            self.mConstraints.add (topOf: view, closeToTopOfContainer: self, topMargin: self.mTopMargin)
-            self.mConstraints.add (bottomOf: view, closeToBottomOfContainer: self, bottomMargin: self.mBottomMargin)
-            if let lastBaselineRepresentativeView = optionalLastBaselineRepresentativeView {
-              self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
-            }else{
-              optionalLastBaselineRepresentativeView = viewLastBaselineRepresentativeView
-            }
-          }else{
-            self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
-            self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
-          }
-        }
+        self.mConstraints.add (
+          verticalConstraintsOf: view,
+          inHorizontalContainer: self,
+          topMargin: self.mTopMargin,
+          bottomMargin : self.mBottomMargin,
+          optionalLastBaseLineView: &optionalLastBaselineRepresentativeView
+        )
+//        switch view.pmLayoutSettings.vLayoutInHorizontalContainer {
+//        case .center :
+//          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
+//          self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
+//          self.mConstraints.add (centerYOf: view, equalToCenterYOf: self)
+//        case .fill :
+//          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
+//          self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
+//        case .fillIgnoringMargins :
+//          self.mConstraints.add (topOf: self, equalToTopOf: view)
+//          self.mConstraints.add (bottomOf: view, equalToBottomOf: self)
+//        case .bottom :
+//          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
+//          self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
+//        case .top :
+//          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
+//          self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
+//        case .lastBaseline :
+//          if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
+//            self.mConstraints.add (topOf: view, closeToTopOfContainer: self, topMargin: self.mTopMargin)
+//            self.mConstraints.add (bottomOf: view, closeToBottomOfContainer: self, bottomMargin: self.mBottomMargin)
+//            if let lastBaselineRepresentativeView = optionalLastBaselineRepresentativeView {
+//              self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
+//            }else{
+//              optionalLastBaselineRepresentativeView = viewLastBaselineRepresentativeView
+//            }
+//          }else{
+//            self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
+//            self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
+//          }
+//        }
         if (view is VerticalSeparator) || (view is VerticalDivider) {
           optionalLastBaselineRepresentativeView = nil
         }
