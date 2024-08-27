@@ -85,6 +85,48 @@ final class ProjectRoot : EBManagedObject {
   }
 
   //································································································
+  //   Atomic property: mExpandInner1BoardSettings
+  //································································································
+
+  final let mExpandInner1BoardSettings_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mExpandInner2BoardSettings
+  //································································································
+
+  final let mExpandInner2BoardSettings_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mExpandInner3BoardSettings
+  //································································································
+
+  final let mExpandInner3BoardSettings_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mExpandInner4BoardSettings
+  //································································································
+
+  final let mExpandInner4BoardSettings_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mExpandOtherBoardSettings
+  //································································································
+
+  final let mExpandOtherBoardSettings_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mExpandFrontSideBoardSettings
+  //································································································
+
+  final let mExpandFrontSideBoardSettings_property : EBStoredProperty_Bool
+
+  //································································································
+  //   Atomic property: mExpandBackSideBoardSettings
+  //································································································
+
+  final let mExpandBackSideBoardSettings_property : EBStoredProperty_Bool
+
+  //································································································
   //   Atomic property: mCheckClearanceBetweenPadsOfSameNet
   //································································································
 
@@ -2111,6 +2153,13 @@ final class ProjectRoot : EBManagedObject {
     self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
     self.mPDFProductGrid_property = EBStoredProperty_PDFProductGrid (defaultValue: PDFProductGrid.noGrid, undoManager: inUndoManager, key: "mPDFProductGrid")
     self.mGerberProductUnit_property = EBStoredProperty_GerberUnit (defaultValue: GerberUnit.metric, undoManager: inUndoManager, key: "mGerberProductUnit")
+    self.mExpandInner1BoardSettings_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExpandInner1BoardSettings")
+    self.mExpandInner2BoardSettings_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExpandInner2BoardSettings")
+    self.mExpandInner3BoardSettings_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExpandInner3BoardSettings")
+    self.mExpandInner4BoardSettings_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExpandInner4BoardSettings")
+    self.mExpandOtherBoardSettings_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mExpandOtherBoardSettings")
+    self.mExpandFrontSideBoardSettings_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mExpandFrontSideBoardSettings")
+    self.mExpandBackSideBoardSettings_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mExpandBackSideBoardSettings")
     self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mCheckClearanceBetweenPadsOfSameNet")
     self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mLastERCCheckingIsSuccess")
     self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: inUndoManager, key: "mLastERCCheckingSignature")

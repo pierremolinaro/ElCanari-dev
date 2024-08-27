@@ -19,7 +19,7 @@ class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
   //····················································································································
 
   final func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView () // horizontal: .fill, vertical2: .lastBaseline)
+    let hStack = AutoLayoutHorizontalStackView ()
       .set (spacing: self.mHorizontalSpacing)
       .appendView (inLeftView)
       .appendView (inRightView)
@@ -69,14 +69,16 @@ class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
   //--- Constraints for colum alignment
     var optionalLastRow : (NSView, NSView)? = nil
     for row in self.mRows {
-      if let lastRow = optionalLastRow {
-        self.mConstraints.add (widthOf: lastRow.0, equalToWidthOf: row.0)
-        self.mConstraints.add (widthOf: lastRow.1, equalToWidthOf: row.1)
-      }
-      optionalLastRow = row
-      if let v0 = row.0.pmLastBaselineRepresentativeView, let v1 = row.1.pmLastBaselineRepresentativeView {
-        self.mConstraints.add (lastBaselineOf: v0, equalToLastBaselineOf: v1)
-      }
+//      if !row.0.isHidden || !row.1.isHidden {
+        if let lastRow = optionalLastRow {
+          self.mConstraints.add (widthOf: lastRow.0, equalToWidthOf: row.0)
+          self.mConstraints.add (widthOf: lastRow.1, equalToWidthOf: row.1)
+        }
+        optionalLastRow = row
+        if let v0 = row.0.pmLastBaselineRepresentativeView, let v1 = row.1.pmLastBaselineRepresentativeView {
+          self.mConstraints.add (lastBaselineOf: v0, equalToLastBaselineOf: v1)
+        }
+//      }
     }
   //--- Apply constaints
     self.addConstraints (self.mConstraints)

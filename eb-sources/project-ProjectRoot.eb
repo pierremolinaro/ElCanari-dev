@@ -38,6 +38,14 @@ handlingOpposite entity ProjectRoot {
   property PDFProductGrid mPDFProductGrid default noGrid ;
   property @generateDirectRead GerberUnit mGerberProductUnit default metric ;
 
+//--- Display disclosure triangles
+  property Bool mExpandInner1BoardSettings default no ;
+  property Bool mExpandInner2BoardSettings default no ;
+  property Bool mExpandInner3BoardSettings default no ;
+  property Bool mExpandInner4BoardSettings default no ;
+  property Bool mExpandOtherBoardSettings default yes ;
+  property Bool mExpandFrontSideBoardSettings default yes ;
+  property Bool mExpandBackSideBoardSettings default yes ;
   
 //--- ERC Status
   property @generateDirectRead Bool mCheckClearanceBetweenPadsOfSameNet default yes ;
@@ -46,12 +54,6 @@ handlingOpposite entity ProjectRoot {
 
   transient UInt32 signatureForERCChecking dependsFrom
     self.mBoardObjects.all.signatureForERCChecking, self.mArtwork.one.signatureForERCChecking ;
- 
-//  transient NSImage ercStatusImage dependsFrom
-//     self.mLastERCCheckingIsSuccess,
-//     self.mLastERCCheckingSignature,
-//     self.signatureForERCChecking
-//  ;
 
   transient NSImage ercStatusImageOrNoneOnSuccess dependsFrom
      self.mLastERCCheckingIsSuccess,

@@ -577,15 +577,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         GridView2 {
           set (margins: .regular)
           add (
-            left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .center),
-            right: StaticLabel (title: "50 mils", bold: yes, size : .small, alignment: .center)
+            left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
+            right: StaticLabel (title: "50 mils", bold: yes, size : .small, alignment: .left)
           )
           add (
-            left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right),
             right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mSchematicGridStyle }
           )
           add (
-            left: StaticLabel (title: "Every", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Every", bold: no, size : .small, alignment: .right),
             right: TaggedPopUpButton (size: .small) {
               add (title: "1 Step",   withTag:  1)
               add (title: "2 Steps",  withTag:  2)
@@ -597,7 +597,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
           )
           add (
-            left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
             right: Checkbox (title: "Horizontal", size : .small) { $value root.mSchematicHorizontalFlip }
           )
           add (
@@ -605,11 +605,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             right: Checkbox (title: "Vertical", size : .small) { $value root.mSchematicVerticalFlip }
           )
           add (
-            left: StaticLabel (title: "Cross Grid Color", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Cross Grid Color", bold: no, size : .small, alignment: .right),
             right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.dotColorGridForSchematic } space }
           )
           add (
-            left: StaticLabel (title: "Line Grid Color", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Line Grid Color", bold: no, size : .small, alignment: .right),
             right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForSchematic } space }
           )
         }
@@ -618,17 +618,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         GridView2 {
           set (margins: .regular)
           add (
-            left: StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForUnplacedComponentsForSchematic } 
           )
           add (
-            left: StaticLabel (title: "Symbols, placed Component", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Symbols, placed Component", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForSchematic } 
           )
           add (single:
             hStack {
               space
-              StaticLabel (title: "Symbols Drawing Width", bold: no, size : .small, alignment: .center)
+              StaticLabel (title: "Symbols Drawing Width", bold: no, size : .small, alignment: .right)
               TaggedPopUpButton (size: .small) {
                 add (title: "0.5 Point",   withTag:  5)
                 add (title: "1.0 Point",  withTag:  10)
@@ -641,40 +641,40 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           )
           addSeparator ()
           add (
-            left: StaticLabel (title: "Component Name", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Component Name", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentNameColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentNameFontForSchematic })
           addSeparator ()
           add (
-            left: StaticLabel (title: "Component Value", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Component Value", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentValueColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentValueFontForSchematic })
           addSeparator ()
           add (
-            left: StaticLabel (title: "Pin Name", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Pin Name", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNameColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNameFontForSchematic })
           addSeparator ()
           add (
-            left: StaticLabel (title: "Pin Number", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Pin Number", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNumberColorForSchematic } 
           )
           add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNumberFontForSchematic })
           addSeparator ()
           add (
-            left: StaticLabel (title: "Connection", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Connection", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.connectionColorForSchematic } 
           )
           addSeparator ()
           add (
-            left: StaticLabel (title: "Background Color", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Background Color", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicBackColor }
           )
           add (
-            left: StaticLabel (title: "Frame Color", bold: no, size : .small, alignment: .center),
+            left: StaticLabel (title: "Frame Color", bold: no, size : .small, alignment: .right),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicFrameColor }
           )
         }
@@ -1444,108 +1444,285 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           )
         }
         GridView2 {
-          add (single: StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left))
-          add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard } },
-            right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayFrontPadsForBoard }
+          add (single:
+            hStack set (margins: .zero) {
+              DisclosureTriangle (size: .small) { $expanded root.mExpandFrontSideBoardSettings }
+              StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left)
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard } },
-            right: Checkbox (title: "Component + Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard }
+            },
+            right: Checkbox (title: "Pads", size : .small)  {
+              $hidden !root.mExpandFrontSideBoardSettings
+              $value root.displayFrontPadsForBoard
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard } },
-            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayFrontLayoutForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard }
+            },
+            right: Checkbox (title: "Component + Legend", size : .small)  {
+              $hidden !root.mExpandFrontSideBoardSettings
+              $value root.displayFrontLegendForBoard
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard } },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayFrontRestrictRectangles }
-          )
-          add (single: StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left))
-          add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard } },
-            right: Checkbox (title: "Pads", size : .small)  { expandableHeight  () $value root.displayBackPadsForBoard }
-          )
-          add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard } },
-            right: Checkbox (title: "Component + Legend", size : .small)  { expandableHeight  () $value root.displayBackLegendForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard }
+            },
+            right: Checkbox (title: "Layout", size : .small)  {
+              $hidden !root.mExpandFrontSideBoardSettings
+              $value root.displayFrontLayoutForBoard
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard } },
-            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayBackLayoutForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard }
+            },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
+              $hidden !root.mExpandFrontSideBoardSettings
+              $value root.displayFrontRestrictRectangles
+            }
+          )
+          add (single:
+            hStack set (margins: .zero) {
+              DisclosureTriangle (size: .small) { $expanded root.mExpandBackSideBoardSettings }
+              StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left)
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard } },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayBackRestrictRectangles }
+            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard }
+            },
+            right: Checkbox (title: "Pads", size : .small)  {
+              $hidden !root.mExpandBackSideBoardSettings
+              $value root.displayBackPadsForBoard
+            }
           )
-          add (single: StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left))
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1LayoutColorForBoard } },
-            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner1LayoutForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard }
+            },
+            right: Checkbox (title: "Component + Legend", size : .small)  {
+              $hidden !root.mExpandBackSideBoardSettings
+              $value root.displayBackLegendForBoard
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner1SideRestrictRectangleColorForBoard } },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner1RestrictRectangles }
+            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard }
+            },
+            right: Checkbox (title: "Layout", size : .small)  {
+              $hidden !root.mExpandBackSideBoardSettings
+              $value root.displayBackLayoutForBoard 
+            }
           )
-          add (single: StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left))
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard } },
-            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner2LayoutForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard }
+            },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
+              $hidden !root.mExpandBackSideBoardSettings
+              $value root.displayBackRestrictRectangles
+            }
+          )
+          add (single:
+            hStack set (margins: .zero) {
+              DisclosureTriangle (size: .small) { $expanded root.mExpandInner1BoardSettings }
+              StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left)
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner1BoardSettings {
+               space
+               ColorWell {
+                 set (toolTip: "Stored in Preferences")
+                 $color prefs.inner1LayoutColorForBoard
+               }
+             },
+            right: Checkbox (title: "Layout", size : .small)  {
+               $value root.displayInner1LayoutForBoard
+               $hidden !root.mExpandInner1BoardSettings
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner1BoardSettings {
+              space ColorWell {
+                set (toolTip: "Stored in Preferences")
+                $color prefs.inner1SideRestrictRectangleColorForBoard
+              }
+            },
+            right: Checkbox (title: "Restrict Rectangle", size : .small) {
+              $value root.displayInner1RestrictRectangles
+              $hidden !root.mExpandInner1BoardSettings
+            }
+          )
+          add (single:
+            hStack set (margins: .zero) {
+              DisclosureTriangle (size: .small) { $expanded root.mExpandInner2BoardSettings }
+              StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left)
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner2BoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard }
+            },
+            right: Checkbox (title: "Layout", size : .small) {
+              $value root.displayInner2LayoutForBoard
+              $hidden !root.mExpandInner2BoardSettings
+            }
           )
            add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard } },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner2RestrictRectangles }
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner2BoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard }
+            },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
+              $value root.displayInner2RestrictRectangles
+              $hidden !root.mExpandInner2BoardSettings
+            }
           )
-          add (single: StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left))
-         add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard } },
-            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner3LayoutForBoard }
-          )
-          add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard } },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner3RestrictRectangles }
-          )
-          add (single: StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left))
-          add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4LayoutColorForBoard } },
-            right: Checkbox (title: "Layout", size : .small)  { expandableHeight  () $value root.displayInner4LayoutForBoard }
+          add (single:
+            hStack set (margins: .zero) {
+              DisclosureTriangle (size: .small) { $expanded root.mExpandInner3BoardSettings }
+              StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left)
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard } },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  { expandableHeight  () $value root.displayInner4RestrictRectangles }
-          )
-          add (single: StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left))
-          add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard } },
-            right: Checkbox (title: "Pad Numbers", size : .small)  { expandableHeight  () $value root.displayPadNumbersForBoard }
-          )
-          add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard } },
-            right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner3BoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard }
+            },
+            right: Checkbox (title: "Layout", size : .small)  {
+              $hidden !root.mExpandInner3BoardSettings
+              $value root.displayInner3LayoutForBoard
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard } },
-            right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner3BoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard }
+            },
+            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
+              $hidden !root.mExpandInner3BoardSettings
+              $value root.displayInner3RestrictRectangles
+            }
+          )
+          add (single:
+            hStack set (margins: .zero) {
+              DisclosureTriangle (size: .small) { $expanded root.mExpandInner4BoardSettings }
+              StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left)
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard } },
-            right: StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left)
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner4BoardSettings {
+              space ColorWell { set (toolTip: "Stored in Preferences") }
+            },
+            right: Checkbox (title: "Layout", size : .small) {
+              $hidden !root.mExpandInner4BoardSettings
+              $value root.displayInner4LayoutForBoard
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard } },
-            right: StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left)
+            left: hStack set (margins: .zero) $hidden !root.mExpandInner4BoardSettings {
+              space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard }
+            },
+            right: Checkbox (title: "Restrict Rectangle", size : .small) {
+              $hidden !root.mExpandInner4BoardSettings
+              $value root.displayInner4RestrictRectangles
+            }
+          )
+          add (single: 
+            hStack set (margins: .zero) {
+              DisclosureTriangle (size: .small) { $expanded root.mExpandOtherBoardSettings }
+              StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left)
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard } },
-            right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard }
+            },
+            right: Checkbox (title: "Pad Numbers", size : .small)  {
+              $hidden !root.mExpandOtherBoardSettings
+              $value root.displayPadNumbersForBoard 
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard } },
-            right: Checkbox (title: "Error Background", size : .small)  { expandableHeight  () $value root.drawErrorBackgroundForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard }
+            },
+            right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left) {
+              $hidden !root.mExpandOtherBoardSettings
+            }
           )
           add (
-            left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard } },
-            right: Checkbox (title: "Warning Background", size : .small)  { expandableHeight  () $value prefs.drawWarningBackgroundForBoard }
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard }
+            },
+            right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left) {
+              $hidden !root.mExpandOtherBoardSettings
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard }
+            },
+            right: StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left) {
+              $hidden !root.mExpandOtherBoardSettings
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard }
+            },
+            right: StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left) {
+              $hidden !root.mExpandOtherBoardSettings
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard }
+            },
+            right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .left) {
+              $hidden !root.mExpandOtherBoardSettings
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard }
+            },
+            right: Checkbox (title: "Error Background", size : .small)  {
+              $hidden !root.mExpandOtherBoardSettings
+              $value root.drawErrorBackgroundForBoard
+            }
+          )
+          add (
+            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
+              space
+              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard }
+            },
+            right: Checkbox (title: "Warning Background", size : .small)  {
+              $hidden !root.mExpandOtherBoardSettings
+              $value prefs.drawWarningBackgroundForBoard
+            }
           )
         }
       }

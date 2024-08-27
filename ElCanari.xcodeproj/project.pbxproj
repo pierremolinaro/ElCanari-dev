@@ -164,6 +164,8 @@
 		CF20416D29C5D622007F6ADF /* transient-BoardModel-errorArchiveLabelSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20416B29C5D622007F6ADF /* transient-BoardModel-errorArchiveLabelSize.swift */; };
 		CF20417029C5D933007F6ADF /* transient-BoardModel-errorArchiveLabelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20416F29C5D933007F6ADF /* transient-BoardModel-errorArchiveLabelColor.swift */; };
 		CF20417129C5D933007F6ADF /* transient-BoardModel-errorArchiveLabelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20416F29C5D933007F6ADF /* transient-BoardModel-errorArchiveLabelColor.swift */; };
+		CF20D4312C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20D4302C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift */; };
+		CF20D4322C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20D4302C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift */; };
 		CF21549322B65E4C0068354E /* text-in-symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = CF21549222B65E4C0068354E /* text-in-symbol.png */; };
 		CF21549422B65E4C0068354E /* text-in-symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = CF21549222B65E4C0068354E /* text-in-symbol.png */; };
 		CF217C0D25015FF2003E322E /* file-operations-facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217C0C25015FF2003E322E /* file-operations-facade.swift */; };
@@ -3599,6 +3601,7 @@
 		CF1D9C8921BBFD7900FFF459 /* EBGraphicView-mouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-mouse.swift"; sourceTree = "<group>"; };
 		CF20416B29C5D622007F6ADF /* transient-BoardModel-errorArchiveLabelSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-errorArchiveLabelSize.swift"; sourceTree = "<group>"; };
 		CF20416F29C5D933007F6ADF /* transient-BoardModel-errorArchiveLabelColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-errorArchiveLabelColor.swift"; sourceTree = "<group>"; };
+		CF20D4302C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutDisclosureTriangle.swift; sourceTree = "<group>"; };
 		CF21549222B65E4C0068354E /* text-in-symbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-in-symbol.png"; sourceTree = "<group>"; };
 		CF217C0C25015FF2003E322E /* file-operations-facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-operations-facade.swift"; sourceTree = "<group>"; };
 		CF217C0F250165BD003E322E /* file-format-text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-format-text.swift"; sourceTree = "<group>"; };
@@ -6662,6 +6665,7 @@
 				CFB4C038279465E700C509A9 /* AutoLayoutMenuButton.swift */,
 				CFB4C036279465E700C509A9 /* AutoLayoutSheetCancelButton.swift */,
 				CFB4C02E279465E500C509A9 /* AutoLayoutSheetDefaultOkButton.swift */,
+				CF20D4302C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift */,
 			);
 			name = "Auto Layout — Button";
 			path = "ElCanari/easy-bindings-auto-layout-button";
@@ -8894,6 +8898,7 @@
 				CF21D88D2C747F700012AD5F /* NSView+expandableHeight.swift in Sources */,
 				CF21D88E2C747F700012AD5F /* ALB_NSButton.swift in Sources */,
 				CF21D88F2C747F700012AD5F /* ALB_NSStepper.swift in Sources */,
+				CF20D4312C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift in Sources */,
 				CF21D8902C747F700012AD5F /* ALB_NSScrollView.swift in Sources */,
 				CF21D8912C747F700012AD5F /* NSView+expandableWidth.swift in Sources */,
 				CF21D8922C747F700012AD5F /* layout-compression-stretching-priorities.swift in Sources */,
@@ -9852,6 +9857,7 @@
 				CF355948279D9F3B000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift in Sources */,
 				CF22F184275A73EC009C6FAC /* entity-MergerBoardInstance.swift in Sources */,
 				CFE85A9E21A5C91300991A66 /* transient-SymbolSolidRect-objectDisplay.swift in Sources */,
+				CF20D4322C7CE9840082A019 /* AutoLayoutDisclosureTriangle.swift in Sources */,
 				CFCEE4792233C75500C397CE /* transient-DeviceRoot-unconnectedPads.swift in Sources */,
 				CFEB7B9A233A26D00060A97A /* transient-DevicePadAssignmentInProject-descriptor.swift in Sources */,
 				CF22F205275A73ED009C6FAC /* transient-BoardModel-internalBoardsLimitsSegments.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  AutoLayoutCanariIssueTableView.swift
-//  ElCanari-Debug-temporary
+//  ElCanari
 //
 //  Created by Pierre Molinaro on 26/02/2021.
 //

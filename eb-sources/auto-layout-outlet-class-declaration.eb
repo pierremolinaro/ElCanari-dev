@@ -44,6 +44,11 @@ extern autolayout class VerticalScrollView (content: view) {
   func set (width: Int)
 }
 
+
+extern autolayout class DisclosureTriangle (size: EBControlSize) {
+  $expanded property Bool
+}
+
 extern autolayout class CanariOrientationSegmentedControl (size: EBControlSize) $enabled $hidden {
   func expandableWidth ()
   $orientation property QuadrantRotation
@@ -275,7 +280,7 @@ extern autolayout class DoubleObserverField (width: Int, bold: Bool, size: EBCon
 }
 
 
-extern autolayout class ColorWell {
+extern autolayout class ColorWell $hidden {
   func expandableWidth ()
   func expandableHeight ()
   func set (toolTip : String)

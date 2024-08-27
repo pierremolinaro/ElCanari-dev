@@ -24,6 +24,13 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mGenerateGerberAndPDF_property.stopsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       oldValue.mPDFProductGrid_property.stopsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
       oldValue.mGerberProductUnit_property.stopsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
+      oldValue.mExpandInner1BoardSettings_property.stopsBeingObserved (by: self.mExpandInner1BoardSettings_property) // Stored property
+      oldValue.mExpandInner2BoardSettings_property.stopsBeingObserved (by: self.mExpandInner2BoardSettings_property) // Stored property
+      oldValue.mExpandInner3BoardSettings_property.stopsBeingObserved (by: self.mExpandInner3BoardSettings_property) // Stored property
+      oldValue.mExpandInner4BoardSettings_property.stopsBeingObserved (by: self.mExpandInner4BoardSettings_property) // Stored property
+      oldValue.mExpandOtherBoardSettings_property.stopsBeingObserved (by: self.mExpandOtherBoardSettings_property) // Stored property
+      oldValue.mExpandFrontSideBoardSettings_property.stopsBeingObserved (by: self.mExpandFrontSideBoardSettings_property) // Stored property
+      oldValue.mExpandBackSideBoardSettings_property.stopsBeingObserved (by: self.mExpandBackSideBoardSettings_property) // Stored property
       oldValue.mCheckClearanceBetweenPadsOfSameNet_property.stopsBeingObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       oldValue.mLastERCCheckingIsSuccess_property.stopsBeingObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
       oldValue.mLastERCCheckingSignature_property.stopsBeingObserved (by: self.mLastERCCheckingSignature_property) // Stored property
@@ -214,6 +221,13 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mGenerateGerberAndPDF_property.startsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       newValue.mPDFProductGrid_property.startsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
       newValue.mGerberProductUnit_property.startsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
+      newValue.mExpandInner1BoardSettings_property.startsBeingObserved (by: self.mExpandInner1BoardSettings_property) // Stored property
+      newValue.mExpandInner2BoardSettings_property.startsBeingObserved (by: self.mExpandInner2BoardSettings_property) // Stored property
+      newValue.mExpandInner3BoardSettings_property.startsBeingObserved (by: self.mExpandInner3BoardSettings_property) // Stored property
+      newValue.mExpandInner4BoardSettings_property.startsBeingObserved (by: self.mExpandInner4BoardSettings_property) // Stored property
+      newValue.mExpandOtherBoardSettings_property.startsBeingObserved (by: self.mExpandOtherBoardSettings_property) // Stored property
+      newValue.mExpandFrontSideBoardSettings_property.startsBeingObserved (by: self.mExpandFrontSideBoardSettings_property) // Stored property
+      newValue.mExpandBackSideBoardSettings_property.startsBeingObserved (by: self.mExpandBackSideBoardSettings_property) // Stored property
       newValue.mCheckClearanceBetweenPadsOfSameNet_property.startsBeingObserved (by: self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       newValue.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.mLastERCCheckingIsSuccess_property) // Stored property
       newValue.mLastERCCheckingSignature_property.startsBeingObserved (by: self.mLastERCCheckingSignature_property) // Stored property
@@ -443,6 +457,48 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let mGerberProductUnit_property = EBTransientProperty <GerberUnit?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExpandInner1BoardSettings' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mExpandInner1BoardSettings_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExpandInner2BoardSettings' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mExpandInner2BoardSettings_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExpandInner3BoardSettings' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mExpandInner3BoardSettings_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExpandInner4BoardSettings' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mExpandInner4BoardSettings_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExpandOtherBoardSettings' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mExpandOtherBoardSettings_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExpandFrontSideBoardSettings' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mExpandFrontSideBoardSettings_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExpandBackSideBoardSettings' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mExpandBackSideBoardSettings_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
@@ -1611,6 +1667,34 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure mGerberProductUnit simple stored property
     self.mGerberProductUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mGerberProductUnit_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mExpandInner1BoardSettings simple stored property
+    self.mExpandInner1BoardSettings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mExpandInner1BoardSettings_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mExpandInner2BoardSettings simple stored property
+    self.mExpandInner2BoardSettings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mExpandInner2BoardSettings_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mExpandInner3BoardSettings simple stored property
+    self.mExpandInner3BoardSettings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mExpandInner3BoardSettings_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mExpandInner4BoardSettings simple stored property
+    self.mExpandInner4BoardSettings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mExpandInner4BoardSettings_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mExpandOtherBoardSettings simple stored property
+    self.mExpandOtherBoardSettings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mExpandOtherBoardSettings_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mExpandFrontSideBoardSettings simple stored property
+    self.mExpandFrontSideBoardSettings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mExpandFrontSideBoardSettings_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mExpandBackSideBoardSettings simple stored property
+    self.mExpandBackSideBoardSettings_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mExpandBackSideBoardSettings_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mCheckClearanceBetweenPadsOfSameNet simple stored property
     self.mCheckClearanceBetweenPadsOfSameNet_property.mReadModelFunction = { [weak self] in
