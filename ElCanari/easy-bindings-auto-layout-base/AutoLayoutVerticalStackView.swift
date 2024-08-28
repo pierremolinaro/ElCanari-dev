@@ -54,6 +54,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     self.mLastBaselineRepresentativeView = nil
     var optionalLastView : NSView? = nil
     var optionalLastFlexibleSpace : NSView? = nil
+    var optionalGutterArray : [AutoLayoutHorizontalStackView.GutterSeparator]? = nil
     for view in self.subviews {
       if !view.isHidden {
       //--- Horizontal constraints
@@ -91,7 +92,30 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
         if self.isHorizontalDivider (view) {
           optionalLastFlexibleSpace = nil
         }
-      //---
+      //--- Gutter ?
+        if let hStack = view as? AutoLayoutHorizontalStackView {
+          var gutterArray = [AutoLayoutHorizontalStackView.GutterSeparator] ()
+          for hStackSubView in hStack.subviews {
+            if !hStackSubView.isHidden, let gutter = hStackSubView as? AutoLayoutHorizontalStackView.GutterSeparator {
+              gutterArray.append (gutter)
+            }
+          }
+          if !gutterArray.isEmpty {
+            if let previousGutterArray = optionalGutterArray {
+              let n = min (previousGutterArray.count, gutterArray.count)
+              for i in 0 ..< n {
+                self.mConstraints.add (leftOf: previousGutterArray [i], equalToLeftOf: gutterArray [i])
+                self.mConstraints.add (rightOf: previousGutterArray [i], equalToRightOf: gutterArray [i])
+              }
+              if previousGutterArray.count < gutterArray.count {
+                optionalGutterArray = gutterArray
+              }
+            }else{
+              optionalGutterArray = gutterArray
+            }
+          }
+        }
+     //---
         optionalLastView = view
       }
     }

@@ -150,23 +150,27 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainV
     StaticLabel (title: "Sample String Metrics", bold: yes, size: .small, alignment: .center)
     hStack {
       space
-      GridView2 {
-        add (
-          left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .center),
-          right: DoubleField (width: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }
-        )
-        add (
-          left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .center),
-          right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathWidth }
-        )
-        add (
-          left: StaticLabel (title: "Ascenders", bold: no, size: .small, alignment: .center),
-          right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathAscent }
-        )
-        add (
-          left: StaticLabel (title: "Descenders", bold: no, size: .small, alignment: .center),
-          right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathDescent }
-        )
+      vStack {
+        hStack {
+          StaticLabel (title: "Size", bold: no, size: .small, alignment: .center)
+          gutter
+          DoubleField (width: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }
+        }
+        hStack {
+          StaticLabel (title: "Width", bold: no, size: .small, alignment: .center)
+          gutter
+          Label (bold: yes, size: .small) { $title root.sampleStringBezierPathWidth }
+        }
+        hStack {
+          StaticLabel (title: "Ascenders", bold: no, size: .small, alignment: .center)
+          gutter
+          Label (bold: yes, size: .small) { $title root.sampleStringBezierPathAscent }
+        }
+        hStack {
+          StaticLabel (title: "Descenders", bold: no, size: .small, alignment: .center)
+          gutter
+          Label (bold: yes, size: .small) { $title root.sampleStringBezierPathDescent }
+        }
       }
       space
     }

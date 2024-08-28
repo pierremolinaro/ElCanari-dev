@@ -714,8 +714,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     separator
     StaticLabel (title: "Selected Sheet Name", bold: no, size: .small, alignment: .left)
-    TextField (minWidth: 150, size: .small)
-      { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
+    TextField (minWidth: 150, size: .small) {
+       automaticallyAdjustHeight (maxWidth: 150)
+       $value root.selectedSheetTitle (sendContinously : yes)
+    }
     separator
     GridView2 {
       add (
@@ -2147,42 +2149,50 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \BoardLineInspectorView vStack {
     StaticLabel (title: "Line Inspector", bold: yes, size: .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardLineSelectionController.mWidth, #boardLineSelectionController.mWidthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum BoardLineLayer.popupTitles, size: .small) { $selectedIndex #boardLineSelectionController.mLayer }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabels (left: "P1", right: "X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardLineSelectionController.mX1, #boardLineSelectionController.mX1Unit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardLineSelectionController.mY1, #boardLineSelectionController.mY1Unit
-        }
-      )
-      add (
-        left: StaticLabels (left: "P2", right: "X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardLineSelectionController.mX2, #boardLineSelectionController.mX2Unit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardLineSelectionController.mY2, #boardLineSelectionController.mY2Unit
-        }
-      )
+    hStack {
+      space
+      StaticLabel (title: "Width", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardLineSelectionController.mWidth, #boardLineSelectionController.mWidthUnit
+      }
+    }
+    hStack {
+      space
+      StaticLabel (title: "Side", bold: no, size: .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum BoardLineLayer.popupTitles, size: .small) {
+        $selectedIndex #boardLineSelectionController.mLayer
+      }
+    }
+    separator
+    hStack {
+      StaticLabels (left: "P1", right: "X", bold: no, size: .small)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardLineSelectionController.mX1, #boardLineSelectionController.mX1Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardLineSelectionController.mY1, #boardLineSelectionController.mY1Unit
+      }
+    }
+    hStack {
+      StaticLabels (left: "P2", right: "X", bold: no, size: .small)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardLineSelectionController.mX2, #boardLineSelectionController.mX2Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardLineSelectionController.mY2, #boardLineSelectionController.mY2Unit
+      }
     }
     space
   }
@@ -2204,31 +2214,33 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       #restrictRectSelController.mXUnit, #restrictRectSelController.mYUnit,
       #restrictRectSelController.mWidthUnit, #restrictRectSelController.mHeightUnit
     }
-    GridView2 {
-     add (
-        left: StaticLabel (title: "Left", bold: no, size: .small, alignment: .left),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #restrictRectSelController.mX, #restrictRectSelController.mXUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Bottom", bold: no, size: .small, alignment: .left),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #restrictRectSelController.mY, #restrictRectSelController.mYUnit
-        }
-      )
-     add (
-        left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .left),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #restrictRectSelController.mWidth, #restrictRectSelController.mWidthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Height", bold: no, size: .small, alignment: .left),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #restrictRectSelController.mHeight, #restrictRectSelController.mHeightUnit
-        }
-      )
+    hStack {
+      StaticLabel (title: "Left", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #restrictRectSelController.mX, #restrictRectSelController.mXUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Bottom", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #restrictRectSelController.mY, #restrictRectSelController.mYUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Width", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #restrictRectSelController.mWidth, #restrictRectSelController.mWidthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Height", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #restrictRectSelController.mHeight, #restrictRectSelController.mHeightUnit
+      }
     }
     space
   }
@@ -2251,106 +2263,131 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       set (maxHeight: 350)
       $imageData #boardImageSelectionController.computedDataImage
     }
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Image Data", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          $title #boardImageSelectionController.imageDataByteCount
-        } 
-      )
-      add (
-        left: StaticLabel (title: "Image Width", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          $title #boardImageSelectionController.boardOriginalImageWidth
-        }
-      )
-      add (
-        left: StaticLabel (title: "Image Height", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          $title #boardImageSelectionController.boardOriginalImageHeight
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Scale", bold: no, size: .small, alignment: .right),
-        right: DoubleField (width: 64, size: .small) { $value #boardImageSelectionController.mScale (sendContinously: no) }
-      )
-      add (
-        left: StaticLabel (title: "Scaled Image Width", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          $title #boardImageSelectionController.boardScaledImageWidth
-        }
-      )
-      add (
-        left: StaticLabel (title: "Scaled Image Height", bold: no, size: .small, alignment: .right),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          $title #boardImageSelectionController.boardScaledImageHeight
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Threshold", bold: no, size: .small, alignment: .right),
-        right: LinearSlider (min: 0, max: 255, ticks: 9) { $intValue #boardImageSelectionController.mThreshold (sendContinously:yes) }
-      )
-      add (
-        left: space,
-        right: Checkbox (title: "Invert", size: .small) { $value #boardImageSelectionController.mInvert }
-      )
-      add (
-        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
-        right: Checkbox (title: "Horizontal", size: .small) { $value #boardImageSelectionController.mHorizontalFlip }
-      )
-      add (
-        left: space,
-        right: Checkbox (title: "Vertical", size: .small) { $value #boardImageSelectionController.mVerticalFlip }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Pixel Size", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardImageSelectionController.mPixelSize, #boardImageSelectionController.mPixelSizeUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Actual Image Width", bold: no, size: .small, alignment: .right),
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardImageSelectionController.boardActualImageWidth, #boardImageSelectionController.mActualWidthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Actual Image Height", bold: no, size: .small, alignment: .right),
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardImageSelectionController.boardActualImageHeight, #boardImageSelectionController.mActualHeightUnit
-        }
-      )
-     addSeparator ()
-      add (
-        left: StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) {
-          $selectedIndex #boardImageSelectionController.mLayer
-        } 
-      )
-      add (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardImageSelectionController.mRotation }
-      )
-      add (
-        left: StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardImageSelectionController.mCenterX, #boardImageSelectionController.mXUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardImageSelectionController.mCenterY, #boardImageSelectionController.mYUnit
-        }
-      )
+    hStack {
+      StaticLabel (title: "Image Data", bold: no, size: .small, alignment: .right)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        $title #boardImageSelectionController.imageDataByteCount
+      } 
+    }
+    hStack {
+      StaticLabel (title: "Image Width", bold: no, size: .small, alignment: .right)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        $title #boardImageSelectionController.boardOriginalImageWidth
+      }
+    }
+    hStack {
+      StaticLabel (title: "Image Height", bold: no, size: .small, alignment: .right)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        $title #boardImageSelectionController.boardOriginalImageHeight
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Scale", bold: no, size: .small, alignment: .right)
+      gutter
+      DoubleField (width: 64, size: .small) {
+        $value #boardImageSelectionController.mScale (sendContinously: no)
+      }
+    }
+    hStack {
+      StaticLabel (title: "Scaled Image Width", bold: no, size: .small, alignment: .right)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        $title #boardImageSelectionController.boardScaledImageWidth
+      }
+    }
+    hStack {
+      StaticLabel (title: "Scaled Image Height", bold: no, size: .small, alignment: .right)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        $title #boardImageSelectionController.boardScaledImageHeight
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Threshold", bold: no, size: .small, alignment: .right)
+      gutter
+      LinearSlider (min: 0, max: 255, ticks: 9) {
+        $intValue #boardImageSelectionController.mThreshold (sendContinously:yes)
+      }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Invert", size: .small) { $value #boardImageSelectionController.mInvert }
+    }
+    hStack {
+      StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right)
+      gutter
+      Checkbox (title: "Horizontal", size: .small) {
+        $value #boardImageSelectionController.mHorizontalFlip
+      }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Vertical", size: .small) {
+        $value #boardImageSelectionController.mVerticalFlip
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Pixel Size", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardImageSelectionController.mPixelSize, #boardImageSelectionController.mPixelSizeUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Actual Image Width", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariObservedDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardImageSelectionController.boardActualImageWidth, #boardImageSelectionController.mActualWidthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Actual Image Height", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariObservedDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardImageSelectionController.boardActualImageHeight, #boardImageSelectionController.mActualHeightUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) {
+        $selectedIndex #boardImageSelectionController.mLayer
+      } 
+    }
+    hStack {
+      StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        $angle #boardImageSelectionController.mRotation
+      }
+    }
+    hStack {
+      StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardImageSelectionController.mCenterX, #boardImageSelectionController.mXUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardImageSelectionController.mCenterY, #boardImageSelectionController.mYUnit
+      }
     }
     space
   }
@@ -2367,56 +2404,69 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       automaticallyAdjustHeight (maxWidth: 150)
       $value #boardQRCodeSelectionController.mText (sendContinously : yes)
     }
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Correction Level", bold: no, size: .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum QRCodeCorrectionLevel.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mCorrectionLevel } 
-      )
-      add (
-        left: space,
-        right: Checkbox (title: "Draw Frame", size: .small) { $value #boardQRCodeSelectionController.mDrawFrame }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Module Count", bold: no, size: .small, alignment: .right),
-        right: IntObserverField (bold: yes, size: .small) {
-          $observedValue #boardQRCodeSelectionController.moduleCount
-        }
-      )
-      add (
-        left: StaticLabel (title: "Module Size", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardQRCodeSelectionController.mModuleSize, #boardQRCodeSelectionController.mModuleSizeUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Actual Image Size", bold: no, size: .small, alignment: .right),
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardQRCodeSelectionController.actualImageSize, #boardQRCodeSelectionController.mActualSizeUnit
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) { $selectedIndex #boardQRCodeSelectionController.mLayer } 
-      )
-      add (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardQRCodeSelectionController.mRotation }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardQRCodeSelectionController.mCenterX, #boardQRCodeSelectionController.mXUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardQRCodeSelectionController.mCenterY, #boardQRCodeSelectionController.mYUnit
-        }
-      )
+    hStack {
+      StaticLabel (title: "Correction Level", bold: no, size: .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum QRCodeCorrectionLevel.popupTitles, size: .small) {
+        $selectedIndex #boardQRCodeSelectionController.mCorrectionLevel
+      } 
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Draw Frame", size: .small) { $value #boardQRCodeSelectionController.mDrawFrame }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Module Count", bold: no, size: .small, alignment: .right)
+      gutter
+      IntObserverField (bold: yes, size: .small) {
+        $observedValue #boardQRCodeSelectionController.moduleCount
+      }
+    }
+    hStack {
+      StaticLabel (title: "Module Size", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardQRCodeSelectionController.mModuleSize, #boardQRCodeSelectionController.mModuleSizeUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Actual Image Size", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariObservedDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardQRCodeSelectionController.actualImageSize, #boardQRCodeSelectionController.mActualSizeUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Layer", bold: no, size: .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum BoardQRCodeLayer.popupTitles, size: .small) {
+        $selectedIndex #boardQRCodeSelectionController.mLayer
+      } 
+    }
+    hStack {
+      StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        $angle #boardQRCodeSelectionController.mRotation
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardQRCodeSelectionController.mCenterX, #boardQRCodeSelectionController.mXUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardQRCodeSelectionController.mCenterY, #boardQRCodeSelectionController.mYUnit
+      }
     }
     space
   }

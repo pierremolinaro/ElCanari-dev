@@ -24,6 +24,7 @@ fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemBlue
 fileprivate let DEBUG_STROKE_COLOR                   = NSColor.systemOrange
 fileprivate let DEBUG_MARGIN_COLOR                   = NSColor.systemYellow.withAlphaComponent (0.25)
 fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.systemPurple
+fileprivate let GUTTER_FILL_COLOR                    = NSColor.systemBrown
 
 //--------------------------------------------------------------------------------------------------
 //  Show view current settings
@@ -588,6 +589,9 @@ fileprivate final class FilePrivateHiliteView : NSView {
         }
       }else if inView is AutoLayoutFlexibleSpace {
         DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
+        NSBezierPath.fill (viewFrame)
+      }else if inView is AutoLayoutHorizontalStackView.GutterSeparator {
+        GUTTER_FILL_COLOR.setFill ()
         NSBezierPath.fill (viewFrame)
       }else if inView is AutoLayoutHorizontalStackView.VerticalSeparator { // Do not frame
         exploreSubviews = false

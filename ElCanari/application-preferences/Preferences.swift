@@ -136,52 +136,65 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   //    VIEW PrefsUserInterfacePage
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func PrefsUserInterfacePage () -> AutoLayoutVerticalStackView {
-    let vStackView = AutoLayoutVerticalStackView ()
+  final func PrefsUserInterfacePage () -> AutoLayoutHorizontalStackView {
+    let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: .large)
-    let view_0 = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutFlexibleSpace ()
+    _ = hStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView ()
     do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutGridView2 ()
-        .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .left)
- ; return single } ())
-        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
- ; return left } (), right: { () -> NSView in let right = AutoLayoutHorizontalStackView ()
-do{
-  let right_0 = AutoLayoutColorWell ()
-    .bind_color (preferences_selectionHiliteColor_property)
-  _ = right.appendView (right_0)
-  let right_1 = AutoLayoutFlexibleSpace ()
-  _ = right.appendView (right_1)
-}
- ; return right } ())
-        .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
- ; return left } (), right: { () -> NSView in let right = AutoLayoutTaggedPopUpButton (size: .regular)
-  .add (title: "0.5 Point", withTag: 5)
-  .add (title: "1.0 Point", withTag: 10)
-  .add (title: "1.5 Point", withTag: 15)
-  .add (title: "2.0 Points", withTag: 20)
-  .add (title: "2.5 Points", withTag: 25)
-  .bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
- ; return right } ())
-        .add (left: { () -> NSView in let left = AutoLayoutFlexibleSpace ()
- ; return left } (), right: { () -> NSView in let right = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
-  .bind_value (preferences_showDebugMenu_property)
- ; return right } ())
-        .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "FreeRouting Application Directory", bold: true, size: .regular, alignment: .left)
- ; return single } ())
-        .add (single: { () -> NSView in let single = AutoLayoutButton (title: "", size: .small)
-self.configure_configureFreeRoutingPath (single) // Configurator
- ; return single } ())
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_2)
+      let view_1_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .left)
+      _ = view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
+        _ = view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
+        _ = view_1_1.appendView (view_1_1_1)
+        let view_1_1_2 = AutoLayoutColorWell ()
+          .bind_color (preferences_selectionHiliteColor_property)
+        _ = view_1_1.appendView (view_1_1_2)
+        let view_1_1_3 = AutoLayoutFlexibleSpace ()
+        _ = view_1_1.appendView (view_1_1_3)
+      }
+      _ = view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_1_2_0 = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
+        _ = view_1_2.appendView (view_1_2_0)
+        let view_1_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
+        _ = view_1_2.appendView (view_1_2_1)
+        let view_1_2_2 = AutoLayoutTaggedPopUpButton (size: .regular)
+          .add (title: "0.5 Point", withTag: 5)
+          .add (title: "1.0 Point", withTag: 10)
+          .add (title: "1.5 Point", withTag: 15)
+          .add (title: "2.0 Points", withTag: 20)
+          .add (title: "2.5 Points", withTag: 25)
+          .bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
+        _ = view_1_2.appendView (view_1_2_2)
+      }
+      _ = view_1.appendView (view_1_2)
+      let view_1_3 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_1_3_0 = AutoLayoutFlexibleSpace ()
+        _ = view_1_3.appendView (view_1_3_0)
+        let view_1_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
+        _ = view_1_3.appendView (view_1_3_1)
+        let view_1_3_2 = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
+          .bind_value (preferences_showDebugMenu_property)
+        _ = view_1_3.appendView (view_1_3_2)
+      }
+      _ = view_1.appendView (view_1_3)
+      let view_1_4 = AutoLayoutStaticLabel (title: "FreeRouting Application Directory", bold: true, size: .regular, alignment: .left)
+      _ = view_1.appendView (view_1_4)
+      let view_1_5 = AutoLayoutButton (title: "", size: .regular)
+      self.configure_configureFreeRoutingPath (view_1_5) // Configurator
+      _ = view_1.appendView (view_1_5)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_1)
-    return vStackView
+    _ = hStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    _ = hStackView.appendView (view_2)
+    return hStackView
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
