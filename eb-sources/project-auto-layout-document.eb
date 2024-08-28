@@ -768,9 +768,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action setDateToNowAction ;
   action openSetDateDialogAction ;
   
-//----------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 //   Schematic selected objects inspector
-//----------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
   stackView \selectedSchematicElementInspectorView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     newView schematicsWireInspectorView = \schematicsWireInspectorView ()
@@ -1363,18 +1363,22 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       Button (title: "+▶︎", size: .regular) { $run appendNewBoardDisplayInspectorAction }
     }
     VerticalScrollView (content:
-      vStack {
+      vStack set (rightMargin: .regular) {
         GridView2 {
           add (
             single: StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
           )
           add (
             left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size : .small)  { $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit }
+            right: CanariDimensionAndPopUp (size : .small)  {
+              $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
+            }
           )
           add (
             left: StaticLabel (title: "Display", bold: no, size: .small, alignment: .right),
-            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  { $selectedIndex root.mBoardGridStyle }
+            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  {
+              $selectedIndex root.mBoardGridStyle
+            }
           )
           add (
             left: StaticLabel (title: "Every", bold: no, size: .small, alignment: .right),
@@ -1970,7 +1974,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       add (
-        single: Checkbox (title: "Is Preserved by Auto Router", size : .small) { $value #boardTrackSelectionController.mIsPreservedByAutoRouter }
+        single: Checkbox (title: "Is Preserved by Auto Router", size : .small) {
+          $value #boardTrackSelectionController.mIsPreservedByAutoRouter
+        }
       )
       addSeparator ()
       add (single:
@@ -2000,23 +2006,30 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
           #boardTrackSelectionController.mP1XUnit, #boardTrackSelectionController.mP1YUnit,
           #boardTrackSelectionController.mP2XUnit, #boardTrackSelectionController.mP2YUnit,
-          #boardTrackSelectionController.mDefaultTrackWidthUnit, #boardTrackSelectionController.mCustomTrackWidthUnit
+          #boardTrackSelectionController.mDefaultTrackWidthUnit, 
+          #boardTrackSelectionController.mCustomTrackWidthUnit
         }
       )
       addSeparator ()
       add (
         left: StaticLabel (title: "Track Width", bold: no, size: .small, alignment: .left),
-        right: Checkbox (title: "Use Custom", size: .small) { $value #boardTrackSelectionController.mUsesCustomTrackWidth }
+        right: Checkbox (title: "Use Custom", size: .small) {
+          $value #boardTrackSelectionController.mUsesCustomTrackWidth
+        }
       )
       add (
-        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .left) { $hidden #boardTrackSelectionController.mUsesCustomTrackWidth } ,
+        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .left) {
+          $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
+        },
         right: CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
           $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
         }
       )
       add (
-        left: StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left) { $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth },
+        left: StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left) {
+          $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
+        },
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
           $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth

@@ -31,7 +31,6 @@ extension AutoLayoutProjectDocument {
        helper: { [weak self] (inModifierFlags) in self?.helperStringForTrackCreation (inModifierFlags) },
        stop: { [weak self] (inUnalignedMouseLocation) in self?.stopTrackCreationOnOptionMouseUp (at: inUnalignedMouseLocation) ?? false }
      )
-     // inOutlet.mGraphicView.mDrawFrameIssue = false
   //--- Contextual menu
      inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnBoard ($0) }
   //----

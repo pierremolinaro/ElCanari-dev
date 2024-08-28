@@ -3616,6 +3616,7 @@ do{
 
   private final func computeImplicitView_2 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
+      .set (rightMargin: .regular)
     do{
       let view_0 = AutoLayoutGridView2 ()
         .add (single: { () -> NSView in let single = AutoLayoutStaticLabel (title: "Grid and Flip", bold: true, size: .small, alignment: .left)

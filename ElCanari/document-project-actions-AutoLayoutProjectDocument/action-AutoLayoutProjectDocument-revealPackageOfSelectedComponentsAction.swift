@@ -22,8 +22,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.addToSelection (objects: componentToSelect)
-//    self.mBoardView?.scrollToVisible (r)
-    NSSound.beep ()
+//    NSSound.beep ()
     self.rootObject.mSelectedPageIndex = 6
 //--- END OF USER ZONE 2
   }
