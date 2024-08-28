@@ -174,39 +174,42 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   
   stackView \SymbolGridZoomInspectorView vStack {
     StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolBackColorForDevice } space }
-      )
-      add (
-        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
-        right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mSymbolHorizontalFlipForDevice }
-      )
-      add (
-        left: space,
-        right: Checkbox (title: "Vertical", size : .small) { $value prefs.mSymbolVerticalFlipForDevice }
-      )
-      add (
-        left: StaticLabel (title: "Symbol Color", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolColorForDevice } space }
-      )
-      add (single: StaticLabel (title: "Symbol Width", bold: no, size: .small, alignment: .left) )
-      add (single: TaggedPopUpButton (size: .small) {
-          expandableWidth ()
-          add (title: "0.5 Point", withTag: 5)
-          add (title: "1.0 Point", withTag: 10)
-          add (title: "1.5 Point", withTag: 15)
-          add (title: "2.0 Points", withTag: 20)
-          add (title: "2.5 Points", withTag: 25)
-          $selectedTag prefs.symbolDrawingWidthForDeviceMultipliedByTen
-        }
-      )
-      add (single: StaticLabel (title: "Symbol Name Font", bold: no, size: .small, alignment: .left))
-      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mSymbolNameFontForDevice } )
-      add (single: StaticLabel (title: "Pin Name Font", bold: no, size: .small, alignment: .left) )
-      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mPinNameFontForDevice } )
+    hStack { 
+      StaticLabel (title: "Background", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolBackColorForDevice }
+      space
     }
+    hStack { 
+      StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center)
+      gutter
+      Checkbox (title: "Horizontal", size : .small) { $value prefs.mSymbolHorizontalFlipForDevice }
+    }
+    hStack { 
+      space
+      gutter
+      Checkbox (title: "Vertical", size : .small) { $value prefs.mSymbolVerticalFlipForDevice }
+    }
+    hStack { 
+      StaticLabel (title: "Symbol Color", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolColorForDevice }
+      space
+    }
+    StaticLabel (title: "Symbol Width", bold: no, size: .small, alignment: .left)
+    TaggedPopUpButton (size: .small) {
+      expandableWidth ()
+      add (title: "0.5 Point", withTag: 5)
+      add (title: "1.0 Point", withTag: 10)
+      add (title: "1.5 Point", withTag: 15)
+      add (title: "2.0 Points", withTag: 20)
+      add (title: "2.5 Points", withTag: 25)
+      $selectedTag prefs.symbolDrawingWidthForDeviceMultipliedByTen
+    }
+    StaticLabel (title: "Symbol Name Font", bold: no, size: .small, alignment: .left)
+    FontButton (width: 125, size: .small) { $fontValue prefs.mSymbolNameFontForDevice }
+    StaticLabel (title: "Pin Name Font", bold: no, size: .small, alignment: .left)
+    FontButton (width: 125, size: .small) { $fontValue prefs.mPinNameFontForDevice }
   }
 
 //······················································································································

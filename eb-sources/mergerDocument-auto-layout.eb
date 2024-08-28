@@ -788,27 +788,28 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   //············································································
 
   stackView \ArtworkDescriptionPage vStack {
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .right),
-        right: Label (bold: yes, size: .regular) {
-          set (alignment: .left)
-          expandableWidth ()
-          $title root.layerConfigurationString
-        }
-      )
-      add (
-        left: StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .right),
-        right: IntObserverField (bold: yes, size: .regular) {
-          set (alignment: .left)
-          expandableWidth ()
-          $observedValue root.mArtworkVersion
-        }
-      )
-      add (
-        left: vStack {StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .right) space },
-        right: TextObserverView (size: .small) { expandableWidth () $observedValue root.comments }
-      )
+    hStack { 
+      StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .right)
+      gutter
+      Label (bold: yes, size: .regular) {
+        set (alignment: .left)
+        expandableWidth ()
+        $title root.layerConfigurationString
+      }
+    }
+    hStack { 
+      StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .right)
+      gutter
+      IntObserverField (bold: yes, size: .regular) {
+        set (alignment: .left)
+        expandableWidth ()
+        $observedValue root.mArtworkVersion
+      }
+    }
+    hStack { 
+      vStack {StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .right) space }
+      gutter
+      TextObserverView (size: .small) { expandableWidth () $observedValue root.comments }
     }
   }
 

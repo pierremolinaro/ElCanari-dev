@@ -770,31 +770,50 @@ import AppKit
 
   final func ArtworkDescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutGridView2 ()
-      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .right)
- ; return left } (), right: { () -> NSView in let right = AutoLayoutLabel (bold: true, size: .regular)
-  .set (alignment: .left)
-  .expandableWidth ()
-  .bind_title (self.rootObject.layerConfigurationString_property)
- ; return right } ())
-      .add (left: { () -> NSView in let left = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .right)
- ; return left } (), right: { () -> NSView in let right = AutoLayoutIntObserverField (bold: true, size: .regular)
-  .set (alignment: .left)
-  .expandableWidth ()
-  .bind_observedValue (self.rootObject.mArtworkVersion_property)
- ; return right } ())
-      .add (left: { () -> NSView in let left = AutoLayoutVerticalStackView ()
-do{
-  let left_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular, alignment: .right)
-  _ = left.appendView (left_0)
-  let left_1 = AutoLayoutFlexibleSpace ()
-  _ = left.appendView (left_1)
-}
- ; return left } (), right: { () -> NSView in let right = AutoLayoutTextObserverView (size: .small)
-  .expandableWidth ()
-  .bind_observedValue (self.rootObject.comments_property)
- ; return right } ())
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .right)
+      _ = view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
+      _ = view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutLabel (bold: true, size: .regular)
+        .set (alignment: .left)
+        .expandableWidth ()
+        .bind_title (self.rootObject.layerConfigurationString_property)
+      _ = view_0.appendView (view_0_2)
+    }
     _ = vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_1_0 = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .right)
+      _ = view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
+      _ = view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutIntObserverField (bold: true, size: .regular)
+        .set (alignment: .left)
+        .expandableWidth ()
+        .bind_observedValue (self.rootObject.mArtworkVersion_property)
+      _ = view_1.appendView (view_1_2)
+    }
+    _ = vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_2_0_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular, alignment: .right)
+        _ = view_2_0.appendView (view_2_0_0)
+        let view_2_0_1 = AutoLayoutFlexibleSpace ()
+        _ = view_2_0.appendView (view_2_0_1)
+      }
+      _ = view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
+      _ = view_2.appendView (view_2_1)
+      let view_2_2 = AutoLayoutTextObserverView (size: .small)
+        .expandableWidth ()
+        .bind_observedValue (self.rootObject.comments_property)
+      _ = view_2.appendView (view_2_2)
+    }
+    _ = vStackView.appendView (view_2)
     return vStackView
   }
 

@@ -180,15 +180,19 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   stackView \SymbolTextInspectorView vStack {
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Pin Name", bold: no, size: .small, alignment: .center),
-        right: TextField (minWidth: 56, size: .small) { expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
-      )
-      add (
-        left: StaticLabel (title: "Alignment", bold: no, size: .small, alignment: .center),
-        right: CanariHorizontalAlignmentSegmentedControl (size: .small) { expandableWidth () $alignment #mSymbolTextSelectionController.horizontalAlignment}
-      )
+    hStack { 
+      StaticLabel (title: "Pin Name", bold: no, size: .small, alignment: .center)
+      gutter
+      TextField (minWidth: 56, size: .small) {
+         expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes)
+      }
+    }
+    hStack { 
+      StaticLabel (title: "Alignment", bold: no, size: .small, alignment: .center)
+      gutter
+      CanariHorizontalAlignmentSegmentedControl (size: .small) {
+         expandableWidth () $alignment #mSymbolTextSelectionController.horizontalAlignment
+      }
     }
   }
 
@@ -198,33 +202,34 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   stackView \SymbolPinInspectorView vStack {
     StaticLabel (title: "Pin Inspector", bold: yes, size: .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Value", bold: no, size: .small, alignment: .right) {
-          expandableHeight ()
-        },
-        right: TextField (minWidth: 56, size: .small) {
-          automaticallyAdjustHeight (maxWidth: 100)
-          $value #mSymbolPinSelectionController.name (sendContinously : yes)
-        }
-      )
-      add (
-        left: StaticLabel (title: "Name Alignment", bold: no, size: .small, alignment: .right),
-        right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
-          expandableWidth ()
-          $alignment #mSymbolPinSelectionController.nameHorizontalAlignment
-        }
-      )
-      add (
-        left: StaticLabel (title: "Number Alignment", bold: no, size: .small, alignment: .right),
-        right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
-          expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment
-        }
-      )
-      add (single: hStack {
-        Checkbox (title : "Pin is visible in schematics", size: .small) { $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics}
-        space
-      })
+    hStack { 
+      StaticLabel (title: "Value", bold: no, size: .small, alignment: .right)
+      gutter
+      TextField (minWidth: 56, size: .small) {
+        automaticallyAdjustHeight (maxWidth: 100)
+        $value #mSymbolPinSelectionController.name (sendContinously : yes)
+      }
+    }
+    hStack { 
+      StaticLabel (title: "Name Alignment", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariHorizontalAlignmentSegmentedControl (size: .small) {
+        expandableWidth ()
+        $alignment #mSymbolPinSelectionController.nameHorizontalAlignment
+      }
+    }
+    hStack { 
+      StaticLabel (title: "Number Alignment", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariHorizontalAlignmentSegmentedControl (size: .small) {
+        expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment
+      }
+    }
+    hStack { 
+      Checkbox (title : "Pin is visible in schematics", size: .small) {
+        $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics
+      }
+      space
     }
   }
 
@@ -234,43 +239,48 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   stackView \GridZoomInspectorView vStack {
     StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Grid Style", bold: no, size: .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
-      )
-      add (
-        left: StaticLabel (title: "Grid Display", bold: no, size: .small, alignment: .right),
-        right:  TaggedPopUpButton (size: .small) {
-          add (title: "1 Step", withTag: 1)
-          add (title: "2 Steps", withTag: 2)
-          add (title: "4 Steps", withTag: 4)
-          add (title: "5 Steps", withTag: 5)
-          add (title: "8 Steps", withTag: 8)
-          add (title: "10 Steps", withTag: 10)
-          $selectedTag root.gridDisplay
-        }
-      )
-      add (
-        left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
-        right: StaticLabel (title: "25 mils", bold: yes, size: .small, alignment: .left)
-      )
-      add (
-        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
-        right: Checkbox (title: "Horizontal", size: .small) { $value root.horizontalFlip }
-      )
-      add (
-        left: FlexibleSpace,
-        right: Checkbox (title: "Vertical", size: .small) { $value root.verticalFlip }
-      )
-      add (
-        left: StaticLabels (left: "Placard", right: "X", bold: no, size: .small),
-        right: CanariUnitPopUpButton (size: .small) { $unit root.xPlacardUnit }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariUnitPopUpButton(size: .small) { $unit root.yPlacardUnit }
-      )
+    hStack { 
+      StaticLabel (title: "Grid Style", bold: no, size: .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
+    }
+    hStack { 
+      StaticLabel (title: "Grid Display", bold: no, size: .small, alignment: .right)
+      gutter
+      TaggedPopUpButton (size: .small) {
+        add (title: "1 Step", withTag: 1)
+        add (title: "2 Steps", withTag: 2)
+        add (title: "4 Steps", withTag: 4)
+        add (title: "5 Steps", withTag: 5)
+        add (title: "8 Steps", withTag: 8)
+        add (title: "10 Steps", withTag: 10)
+        $selectedTag root.gridDisplay
+      }
+    }
+    hStack { 
+      StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right)
+      gutter
+      StaticLabel (title: "25 mils", bold: yes, size: .small, alignment: .left)
+    }
+    hStack { 
+      StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right)
+      gutter
+      Checkbox (title: "Horizontal", size: .small) { $value root.horizontalFlip }
+    }
+    hStack { 
+      space
+      gutter
+      Checkbox (title: "Vertical", size: .small) { $value root.verticalFlip }
+    }
+    hStack { 
+      StaticLabels (left: "Placard", right: "X", bold: no, size: .small)
+      gutter
+      CanariUnitPopUpButton (size: .small) { $unit root.xPlacardUnit }
+    }
+    hStack { 
+      StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariUnitPopUpButton(size: .small) { $unit root.yPlacardUnit }
     }
     space
   }
@@ -281,38 +291,46 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   stackView \DisplayInspectorView vStack {
     StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Symbol", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColor } space }
-      )
-      add (
-        left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolBackgroundColor } space }
-      )
-      add (
-        left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfSymbolGrid } space }
-      )
-      add (
-        left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfSymbolGrid } space }
-      )
-      add (
-        left: StaticLabel (title: "Line Width", bold: no, size: .small, alignment: .center),
-        right: TaggedPopUpButton (size: .small) {
-          add (title: "0.5 Point", withTag: 5)
-          add (title: "1.0 Point", withTag: 10)
-          add (title: "1.5 Point", withTag: 15)
-          add (title: "2.0 Points", withTag: 20)
-          add (title: "2.5 Points", withTag: 25)
-          $selectedTag prefs.symbolDrawingWidthMultipliedByTen
-        }
-      )
-      add (
-        left: StaticLabel (title: "Pin Font", bold: no, size: .small, alignment: .center),
-        right: FontButton (width: 125, size: .small) {$fontValue prefs.pinNameFont}
-      )
+    hStack { 
+      StaticLabel (title: "Symbol", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColor }
+      space
+    }
+    hStack { 
+      StaticLabel (title: "Background", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolBackgroundColor } 
+      space 
+    }
+    hStack { 
+      StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfSymbolGrid }
+      space
+    }
+    hStack { 
+      StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfSymbolGrid }
+      space
+    }
+    hStack { 
+      StaticLabel (title: "Line Width", bold: no, size: .small, alignment: .center)
+      gutter
+      TaggedPopUpButton (size: .small) {
+        add (title: "0.5 Point", withTag: 5)
+        add (title: "1.0 Point", withTag: 10)
+        add (title: "1.5 Point", withTag: 15)
+        add (title: "2.0 Points", withTag: 20)
+        add (title: "2.5 Points", withTag: 25)
+        $selectedTag prefs.symbolDrawingWidthMultipliedByTen
+      }
+    }
+    hStack { 
+      StaticLabel (title: "Pin Font", bold: no, size: .small, alignment: .center)
+      gutter
+      FontButton (width: 125, size: .small) {$fontValue prefs.pinNameFont}
     }
     space
   }
