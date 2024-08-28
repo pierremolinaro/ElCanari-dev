@@ -1366,370 +1366,315 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     VerticalScrollView (content:
       vStack set (rightMargin: .regular) {
-        GridView2 {
-          add (
-            single: StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
-          )
-          add (
-            left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size : .small)  {
-              $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
-            }
-          )
-          add (
-            left: StaticLabel (title: "Display", bold: no, size: .small, alignment: .right),
-            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  {
-              $selectedIndex root.mBoardGridStyle
-            }
-          )
-          add (
-            left: StaticLabel (title: "Every", bold: no, size: .small, alignment: .right),
-            right: TaggedPopUpButton (size: .small) {
-              add (title: "1 Step",   withTag:  1)
-              add (title: "2 Steps",  withTag:  2)
-              add (title: "4 Steps",  withTag:  4)
-              add (title: "5 Steps",  withTag:  5)
-              add (title: "8 Steps",  withTag:  8)
-              add (title: "10 Steps", withTag: 10)
-              $selectedTag root.mBoardGridDisplayFactor
-            }
-          )
-          add (
-            left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
-            right: Checkbox (title: "Horizontal", size : .small)  { set (width: 125) $value root.mBoardHorizontalFlip}
-          )
-          add (
-            left: space,
-            right: Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
-          )
-          add (
-            left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right),
-            right: ColorWell { expandableWidth ()  set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard }
-          )
-          add (
-            left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right),
-            right: ColorWell { expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard }
-          )
-          add (single: StaticLabel (title: "Rastnet", bold: yes, size: .small, alignment: .left) )
-          add (single: EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) { $selectedIndex root.mRastnetDisplay } )
-          add (
-            single: CanariSelectionPopUpButton (size: .small) {
-              $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
-              $hidden !self.rastnetDisplayOneNet
-            }
-          )
-          add (
-            single: CanariSelectionPopUpButton (size: .small) {
-              $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
-              $hidden !self.rastnetDisplayComponentNet
-            }
-          )
-          add (
-            single: StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .center)
-          )
-          add (
-            single: LinearSlider (min: 0, max: 24, ticks: 13) { $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes) }
-          )
-          add (
-            single: StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .center)
-          )
-          add (
-            single: LinearSlider (min: 10, max: 200, ticks: 10) { $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) }
-          )
-          add (single: StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left) )
-          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard } )
-          add (single: StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left) )
-          add (single: TaggedPopUpButton (size: .small) {
-              add (title: "0.5 Point",   withTag:  5)
-              add (title: "1.0 Point",  withTag:  10)
-              add (title: "1.5 Point",  withTag:  15)
-              add (title: "2.0 Point",  withTag:  20)
-              add (title: "2.5 Point",  withTag:  25)
-              $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
-            }
-          )
+        StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
+        hStack {
+          StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size : .small)  {
+            $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
+          }
         }
-        GridView2 {
-          add (single:
-            hStack set (margins: .zero) {
-              DisclosureTriangle (size: .small) { $expanded root.mExpandFrontSideBoardSettings }
-              StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left)
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard }
-            },
-            right: Checkbox (title: "Pads", size : .small)  {
-              $hidden !root.mExpandFrontSideBoardSettings
-              $value root.displayFrontPadsForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard }
-            },
-            right: Checkbox (title: "Component + Legend", size : .small)  {
-              $hidden !root.mExpandFrontSideBoardSettings
-              $value root.displayFrontLegendForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard }
-            },
-            right: Checkbox (title: "Layout", size : .small)  {
-              $hidden !root.mExpandFrontSideBoardSettings
-              $value root.displayFrontLayoutForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandFrontSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard }
-            },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
-              $hidden !root.mExpandFrontSideBoardSettings
-              $value root.displayFrontRestrictRectangles
-            }
-          )
-          add (single:
-            hStack set (margins: .zero) {
-              DisclosureTriangle (size: .small) { $expanded root.mExpandBackSideBoardSettings }
-              StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left)
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard }
-            },
-            right: Checkbox (title: "Pads", size : .small)  {
-              $hidden !root.mExpandBackSideBoardSettings
-              $value root.displayBackPadsForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard }
-            },
-            right: Checkbox (title: "Component + Legend", size : .small)  {
-              $hidden !root.mExpandBackSideBoardSettings
-              $value root.displayBackLegendForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard }
-            },
-            right: Checkbox (title: "Layout", size : .small)  {
-              $hidden !root.mExpandBackSideBoardSettings
-              $value root.displayBackLayoutForBoard 
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandBackSideBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard }
-            },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
-              $hidden !root.mExpandBackSideBoardSettings
-              $value root.displayBackRestrictRectangles
-            }
-          )
-          add (single:
-            hStack set (margins: .zero) {
-              DisclosureTriangle (size: .small) { $expanded root.mExpandInner1BoardSettings }
-              StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left)
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner1BoardSettings {
-               space
-               ColorWell {
-                 set (toolTip: "Stored in Preferences")
-                 $color prefs.inner1LayoutColorForBoard
-               }
-             },
-            right: Checkbox (title: "Layout", size : .small)  {
-               $value root.displayInner1LayoutForBoard
-               $hidden !root.mExpandInner1BoardSettings
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner1BoardSettings {
-              space ColorWell {
-                set (toolTip: "Stored in Preferences")
-                $color prefs.inner1SideRestrictRectangleColorForBoard
-              }
-            },
-            right: Checkbox (title: "Restrict Rectangle", size : .small) {
-              $value root.displayInner1RestrictRectangles
-              $hidden !root.mExpandInner1BoardSettings
-            }
-          )
-          add (single:
-            hStack set (margins: .zero) {
-              DisclosureTriangle (size: .small) { $expanded root.mExpandInner2BoardSettings }
-              StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left)
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner2BoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard }
-            },
-            right: Checkbox (title: "Layout", size : .small) {
-              $value root.displayInner2LayoutForBoard
-              $hidden !root.mExpandInner2BoardSettings
-            }
-          )
-           add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner2BoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard }
-            },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
-              $value root.displayInner2RestrictRectangles
-              $hidden !root.mExpandInner2BoardSettings
-            }
-          )
-          add (single:
-            hStack set (margins: .zero) {
-              DisclosureTriangle (size: .small) { $expanded root.mExpandInner3BoardSettings }
-              StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left)
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner3BoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard }
-            },
-            right: Checkbox (title: "Layout", size : .small)  {
-              $hidden !root.mExpandInner3BoardSettings
-              $value root.displayInner3LayoutForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner3BoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard }
-            },
-            right: Checkbox (title: "Restrict Rectangle", size : .small)  {
-              $hidden !root.mExpandInner3BoardSettings
-              $value root.displayInner3RestrictRectangles
-            }
-          )
-          add (single:
-            hStack set (margins: .zero) {
-              DisclosureTriangle (size: .small) { $expanded root.mExpandInner4BoardSettings }
-              StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left)
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner4BoardSettings {
-              space ColorWell { set (toolTip: "Stored in Preferences") }
-            },
-            right: Checkbox (title: "Layout", size : .small) {
-              $hidden !root.mExpandInner4BoardSettings
-              $value root.displayInner4LayoutForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandInner4BoardSettings {
-              space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard }
-            },
-            right: Checkbox (title: "Restrict Rectangle", size : .small) {
-              $hidden !root.mExpandInner4BoardSettings
-              $value root.displayInner4RestrictRectangles
-            }
-          )
-          add (single: 
-            hStack set (margins: .zero) {
-              DisclosureTriangle (size: .small) { $expanded root.mExpandOtherBoardSettings }
-              StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left)
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard }
-            },
-            right: Checkbox (title: "Pad Numbers", size : .small)  {
-              $hidden !root.mExpandOtherBoardSettings
-              $value root.displayPadNumbersForBoard 
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard }
-            },
-            right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left) {
-              $hidden !root.mExpandOtherBoardSettings
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard }
-            },
-            right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left) {
-              $hidden !root.mExpandOtherBoardSettings
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard }
-            },
-            right: StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left) {
-              $hidden !root.mExpandOtherBoardSettings
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard }
-            },
-            right: StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left) {
-              $hidden !root.mExpandOtherBoardSettings
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard }
-            },
-            right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .left) {
-              $hidden !root.mExpandOtherBoardSettings
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard }
-            },
-            right: Checkbox (title: "Error Background", size : .small)  {
-              $hidden !root.mExpandOtherBoardSettings
-              $value root.drawErrorBackgroundForBoard
-            }
-          )
-          add (
-            left: hStack set (margins: .zero) $hidden !root.mExpandOtherBoardSettings {
-              space
-              ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard }
-            },
-            right: Checkbox (title: "Warning Background", size : .small)  {
-              $hidden !root.mExpandOtherBoardSettings
-              $value prefs.drawWarningBackgroundForBoard
-            }
-          )
+        hStack {
+          StaticLabel (title: "Display", bold: no, size: .small, alignment: .right)
+          gutter
+          EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  {
+            $selectedIndex root.mBoardGridStyle
+          }
+        }
+        hStack {
+          StaticLabel (title: "Every", bold: no, size: .small, alignment: .right)
+          gutter
+          TaggedPopUpButton (size: .small) {
+            add (title: "1 Step",   withTag:  1)
+            add (title: "2 Steps",  withTag:  2)
+            add (title: "4 Steps",  withTag:  4)
+            add (title: "5 Steps",  withTag:  5)
+            add (title: "8 Steps",  withTag:  8)
+            add (title: "10 Steps", withTag: 10)
+            $selectedTag root.mBoardGridDisplayFactor
+          }
+        }
+        hStack {
+          StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right)
+          gutter
+          Checkbox (title: "Horizontal", size : .small)  { set (width: 125) $value root.mBoardHorizontalFlip}
+        }
+        hStack {
+          space
+          gutter
+          Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
+        }
+        hStack {
+          StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right)
+          gutter
+          ColorWell {
+            expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard
+          }
+        }
+        hStack {
+          StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right)
+          gutter
+          ColorWell {
+             expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard
+          }
+        }
+        StaticLabel (title: "Rastnet", bold: yes, size: .small, alignment: .left)
+        EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) {
+          $selectedIndex root.mRastnetDisplay
+        }
+        CanariSelectionPopUpButton (size: .small) {
+          $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
+          $hidden !self.rastnetDisplayOneNet
+        }
+        CanariSelectionPopUpButton (size: .small) {
+          $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
+          $hidden !self.rastnetDisplayComponentNet
+        }
+        StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .center)
+        LinearSlider (min: 0, max: 24, ticks: 13) {
+           $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes)
+        }
+        StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .center)
+        LinearSlider (min: 10, max: 200, ticks: 10) {
+          $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes)
+        }
+        StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left)
+        FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard }
+        StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left)
+        TaggedPopUpButton (size: .small) {
+          add (title: "0.5 Point",   withTag:  5)
+          add (title: "1.0 Point",  withTag:  10)
+          add (title: "1.5 Point",  withTag:  15)
+          add (title: "2.0 Point",  withTag:  20)
+          add (title: "2.5 Point",  withTag:  25)
+          $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
+        }
+        hStack {
+          DisclosureTriangle (size: .small) { $expanded root.mExpandFrontSideBoardSettings }
+          StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left)
+          space
+        }
+        hStack $hidden !root.mExpandFrontSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard }
+          gutter
+          Checkbox (title: "Pads", size : .small)  {
+            $value root.displayFrontPadsForBoard
+          }
+        }
+        hStack $hidden !root.mExpandFrontSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard }
+          gutter
+          Checkbox (title: "Component + Legend", size : .small)  {
+            $value root.displayFrontLegendForBoard
+          }
+        }
+        hStack $hidden !root.mExpandFrontSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard }
+          gutter
+          Checkbox (title: "Layout", size : .small)  {
+            $hidden !root.mExpandFrontSideBoardSettings
+            $value root.displayFrontLayoutForBoard
+          }
+        }
+        hStack $hidden !root.mExpandFrontSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard }
+          gutter
+          Checkbox (title: "Restrict Rectangle", size : .small) {
+            $hidden !root.mExpandFrontSideBoardSettings
+            $value root.displayFrontRestrictRectangles
+          }
+        }
+        hStack {
+          DisclosureTriangle (size: .small) { $expanded root.mExpandBackSideBoardSettings }
+          StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left)
+          space
+        }
+        hStack $hidden !root.mExpandBackSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard }
+          gutter
+          Checkbox (title: "Pads", size : .small)  {
+            $value root.displayBackPadsForBoard
+          }
+        }
+        hStack $hidden !root.mExpandBackSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard }
+          gutter
+          Checkbox (title: "Component + Legend", size : .small)  {
+            $value root.displayBackLegendForBoard
+          }
+        }
+        hStack $hidden !root.mExpandBackSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard }
+          gutter
+          Checkbox (title: "Layout", size : .small)  {
+            $value root.displayBackLayoutForBoard 
+          }
+        }
+        hStack $hidden !root.mExpandBackSideBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard }
+          gutter
+          Checkbox (title: "Restrict Rectangle", size : .small)  {
+            $value root.displayBackRestrictRectangles
+          }
+        }
+        hStack {
+          DisclosureTriangle (size: .small) { $expanded root.mExpandInner1BoardSettings }
+          StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left)
+          space
+        }
+        hStack $hidden !root.mExpandInner1BoardSettings {
+          space
+          ColorWell {
+            set (toolTip: "Stored in Preferences")
+            $color prefs.inner1LayoutColorForBoard
+          }
+          gutter
+          Checkbox (title: "Layout", size : .small)  {
+             $value root.displayInner1LayoutForBoard
+          }
+        }
+        hStack $hidden !root.mExpandInner1BoardSettings {
+          space
+          ColorWell {
+            set (toolTip: "Stored in Preferences")
+            $color prefs.inner1SideRestrictRectangleColorForBoard
+          }
+          gutter
+          Checkbox (title: "Restrict Rectangle", size : .small) {
+            $value root.displayInner1RestrictRectangles
+          }
+        }
+        hStack {
+          DisclosureTriangle (size: .small) { $expanded root.mExpandInner2BoardSettings }
+          StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left)
+          space
+        }
+        hStack $hidden !root.mExpandInner2BoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard }
+          gutter
+          Checkbox (title: "Layout", size : .small) {
+            $value root.displayInner2LayoutForBoard
+          }
+        }
+        hStack $hidden !root.mExpandInner2BoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard }
+          gutter
+          Checkbox (title: "Restrict Rectangle", size : .small)  {
+            $value root.displayInner2RestrictRectangles
+          }
+        }
+        hStack {
+          DisclosureTriangle (size: .small) { $expanded root.mExpandInner3BoardSettings }
+          StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left)
+          space
+        }
+        hStack $hidden !root.mExpandInner3BoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard }
+          gutter
+          Checkbox (title: "Layout", size : .small)  {
+            $value root.displayInner3LayoutForBoard
+          }
+        }
+        hStack $hidden !root.mExpandInner3BoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard }
+          gutter
+          Checkbox (title: "Restrict Rectangle", size : .small)  {
+            $value root.displayInner3RestrictRectangles
+          }
+        }
+        hStack {
+          DisclosureTriangle (size: .small) { $expanded root.mExpandInner4BoardSettings }
+          StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left)
+          space
+        }
+        hStack $hidden !root.mExpandInner4BoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") }
+          gutter
+          Checkbox (title: "Layout", size : .small) {
+            $hidden !root.mExpandInner4BoardSettings
+            $value root.displayInner4LayoutForBoard
+          }
+        }
+        hStack $hidden !root.mExpandInner4BoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard }
+          gutter
+          Checkbox (title: "Restrict Rectangle", size : .small) {
+            $hidden !root.mExpandInner4BoardSettings
+            $value root.displayInner4RestrictRectangles
+          }
+        }
+        hStack {
+          DisclosureTriangle (size: .small) { $expanded root.mExpandOtherBoardSettings }
+          StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left)
+          space
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard }
+          gutter
+          Checkbox (title: "Pad Numbers", size : .small)  {
+            $value root.displayPadNumbersForBoard 
+          }
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard }
+          gutter
+          StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard }
+          gutter
+          StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard }
+          gutter
+          StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left)
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard }
+          gutter
+          StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left)
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard }
+          gutter
+          StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard }
+          gutter
+          Checkbox (title: "Error Background", size : .small)  {
+            $value root.drawErrorBackgroundForBoard
+          }
+        }
+        hStack $hidden !root.mExpandOtherBoardSettings {
+          space
+          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard }
+          gutter
+          Checkbox (title: "Warning Background", size : .small)  {
+            $value prefs.drawWarningBackgroundForBoard
+          }
         }
       }
     )
