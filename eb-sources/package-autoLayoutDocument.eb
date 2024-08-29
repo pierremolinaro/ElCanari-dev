@@ -108,128 +108,141 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
   stackView \ModelImagePage hStack {
-    vStack {
-      GridView2 {
-        set (width: 250) 
-        set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular)
-        add (
-          left: StaticLabel (title: "Grid Style", bold: no, size : .small, alignment: .right),
-          right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mModelImagePageGridStyle}
-        )
-        add (
-          left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right),
-          right:
-            TaggedPopUpButton (size: .small) {
-              add (title: "1 Step", withTag: 1)
-              add (title: "2 Steps", withTag: 2)
-              add (title: "4 Steps", withTag: 4)
-              add (title: "5 Steps", withTag: 5)
-              add (title: "8 Steps", withTag: 8)
-              add (title: "10 Steps", withTag: 10)
-              add (title: "12 Steps", withTag: 12)
-              add (title: "15 Steps", withTag: 15)
-              add (title: "20 Steps", withTag: 20)
-              add (title: "25 Steps", withTag: 25)
-              add (title: "50 Steps", withTag: 50)
-              add (title: "100 Steps", withTag: 100)
-              add (title: "200 Steps", withTag: 200)
-              $selectedTag root.mModelImagePageGridDisplayFactor
-            }
-        )
-        add (
-          left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
-          right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit }
-        )
-        add (
-          left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
-          right: Checkbox (title: "Horizontal", size : .small) {
-            expandableWidth ()
-            $value root.mModelImagePageHorizontalFlip
-          }
-        )
-        add (
-          left: FlexibleSpace,
-          right: Checkbox (title: "Vertical", size : .small) {
-            expandableWidth () 
-            $value root.mModelImagePageVerticalFlip
-          }
-        )
+    vStack set (width: 250) set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) {
+      hStack {
+        StaticLabel (title: "Grid Style", bold: no, size : .small, alignment: .right)
+        gutter
+        EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mModelImagePageGridStyle}
+      }
+      hStack {
+        StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right)
+        gutter
+        TaggedPopUpButton (size: .small) {
+          add (title: "1 Step", withTag: 1)
+          add (title: "2 Steps", withTag: 2)
+          add (title: "4 Steps", withTag: 4)
+          add (title: "5 Steps", withTag: 5)
+          add (title: "8 Steps", withTag: 8)
+          add (title: "10 Steps", withTag: 10)
+          add (title: "12 Steps", withTag: 12)
+          add (title: "15 Steps", withTag: 15)
+          add (title: "20 Steps", withTag: 20)
+          add (title: "25 Steps", withTag: 25)
+          add (title: "50 Steps", withTag: 50)
+          add (title: "100 Steps", withTag: 100)
+          add (title: "200 Steps", withTag: 200)
+          $selectedTag root.mModelImagePageGridDisplayFactor
+        }
+      }
+      hStack {
+        StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
+        }
+      }
+      hStack {
+        StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right)
+        gutter
+        Checkbox (title: "Horizontal", size : .small) {
+          expandableWidth ()
+          $value root.mModelImagePageHorizontalFlip
+        }
+      }
+      hStack {
+        space
+        gutter
+        Checkbox (title: "Vertical", size : .small) {
+          expandableWidth () 
+          $value root.mModelImagePageVerticalFlip
+        }
       }
       separator
-      GridView2 {
-        set (leftMargin: .large) set (rightMargin: .large)
-        add (
-          left: StaticLabels (left: "Placard", right: "X", bold: no, size : .small),
-          right: CanariUnitPopUpButton (size : .small) { $unit root.mModelImagePageXPlacardUnit }
-        )
-        add (
-          left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-          right: CanariUnitPopUpButton (size : .small) { $unit root.mModelImagePageYPlacardUnit }
-        )
+      hStack {
+        StaticLabels (left: "Placard", right: "X", bold: no, size : .small)
+        gutter
+        CanariUnitPopUpButton (size : .small) { $unit root.mModelImagePageXPlacardUnit }
+      }
+      hStack {
+        StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariUnitPopUpButton (size : .small) { $unit root.mModelImagePageYPlacardUnit }
       }
       separator
-      GridView2 {
-        set (leftMargin: .large) set (rightMargin: .large)
-        add (
-          left: PullDownButton (title: "Action", size : .small) {
-            add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction $enabled !root.hasModelImage)
-            add (item: menuItem "Load DIL16 Embedded Model Image" $run loadDIL16ModelImageFromResourcesAction $enabled !root.hasModelImage)
-            add (item: menuItem "Copy Model Image" $run copyModelImageAction $enabled root.hasModelImage)
-            add (item: menuItem "Remove Model Image" $run removeModelImageAction $enabled root.hasModelImage)
-            add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction $enabled root.hasModelImage)
-          },
-          right: Label (bold: no, size : .small) { $title root.modelImageSizeString }
-        )
-        add (single: CanariDimensionUnitSetterPullDownButton (size : .small) {
-           expandableWidth ()
-           $hidden !root.hasModelImage
-           $setter6 root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
-             root.mDimensionUnitSecondModelPointDx, root.mDimensionUnitSecondModelPointDy,
-             root.mModelImageSecondPointXUnit, root.mModelImageSecondPointYUnit
-          }
-        )
-        add (
-          left: StaticLabels (left: "Green", right: "X", bold: no, size : .small) { $hidden !root.hasModelImage },
-          right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX }
-        )
-        add (
-          left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
-          right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY }
-        )
-        add (
-          left: StaticLabel (title: "∆X", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
-          right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
-        )
-        add (
-          left: StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
-          right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy }
-        )
-        add (
-          left: StaticLabels (left: "Brown", right: "X", bold: no, size : .small) { $hidden !root.hasModelImage },
-          right: CanariObservedDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit }
-        )
-        add (
-          left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
-          right: CanariObservedDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointYUnit }
-        )
-        add (
-          left: StaticLabel (title: "PointSize", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
-          right: LinearSlider (min:1, max:61, ticks: 19) {
-            $intValue root.mModelPointsCircleRadius (sendContinously : yes)
-            $hidden !root.hasModelImage
-          }
-        )
-        add (single:
-          hStack {
-            Button (title: "Lock Points to Model Image", size : .small) {
-              $enabled !root.mPointsAreLocked & root.hasModelImage
-              $run lockImagePointsAction
-              $hidden !root.hasModelImage
-            }
-            space
-            ImageObserverView (size : .small) { $hidden !root.hasModelImage $image root.lockImageView }
-          }
-        )
+      hStack {
+        PullDownButton (title: "Action", size : .small) {
+          add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction $enabled !root.hasModelImage)
+          add (item: menuItem "Load DIL16 Embedded Model Image" $run loadDIL16ModelImageFromResourcesAction $enabled !root.hasModelImage)
+          add (item: menuItem "Copy Model Image" $run copyModelImageAction $enabled root.hasModelImage)
+          add (item: menuItem "Remove Model Image" $run removeModelImageAction $enabled root.hasModelImage)
+          add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction $enabled root.hasModelImage)
+        }
+        gutter
+        Label (bold: no, size : .small) { $title root.modelImageSizeString }
+      }
+      CanariDimensionUnitSetterPullDownButton (size : .small) {
+        expandableWidth ()
+        $hidden !root.hasModelImage
+        $setter6 root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
+          root.mDimensionUnitSecondModelPointDx, root.mDimensionUnitSecondModelPointDy,
+          root.mModelImageSecondPointXUnit, root.mModelImageSecondPointYUnit
+      }
+      hStack $hidden !root.hasModelImage {
+        StaticLabels (left: "Green", right: "X", bold: no, size : .small)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX
+        }
+      }
+      hStack $hidden !root.hasModelImage {
+        StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY
+        }
+      }
+      hStack $hidden !root.hasModelImage {
+        StaticLabel (title: "∆X", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx
+        }
+      }
+      hStack $hidden !root.hasModelImage {
+        StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy
+        }
+      }
+      hStack $hidden !root.hasModelImage {
+        StaticLabels (left: "Brown", right: "X", bold: no, size : .small)
+        gutter
+        CanariObservedDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
+        }
+      }
+      hStack $hidden !root.hasModelImage {
+        StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariObservedDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointYUnit
+        }
+      }
+      hStack $hidden !root.hasModelImage {
+        StaticLabel (title: "PointSize", bold: no, size : .small, alignment: .right)
+        gutter
+        LinearSlider (min:1, max:61, ticks: 19) {
+          $intValue root.mModelPointsCircleRadius (sendContinously : yes)
+        }
+      }
+      hStack $hidden !root.hasModelImage {
+        Button (title: "Lock Points to Model Image", size : .small) {
+          $enabled !root.mPointsAreLocked & root.hasModelImage
+          $run lockImagePointsAction
+        }
+        space
+        ImageObserverView (size : .small) { $image root.lockImageView }
       }
       space
     }

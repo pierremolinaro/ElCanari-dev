@@ -126,24 +126,33 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
     space
     hStack {
       space
-      GridView2 {
-        set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular)
-        add (
-          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
-          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
-        )
-        add (
-          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center),
-          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
-        )
-        add (
-          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center),
-          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
-        )
-        add (
-          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center),
-          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit }
-        )
+      vStack set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) {
+        hStack {
+          StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+        }
+        hStack {
+          StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariDimensionAndPopUp(size : .small) {
+            $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
+          }
+        }
+        hStack {
+          StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariDimensionAndPopUp(size : .small) {
+            $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
+          }
+        }
+        hStack {
+          StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariDimensionAndPopUp(size : .small) {
+            $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
+          }
+        }
       }
       space
     }
@@ -192,28 +201,30 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         space
         StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
-          GridView2 {
-            set (leftMargin: .large)
-            add (
-              left: Checkbox (title: "Front Side Images", size : .small) {
+          vStack set (leftMargin: .large) {
+            hStack {
+              Checkbox (title: "Front Side Images", size : .small) {
                 $value #mDataSelection.drawImagesTopSide
-              },
-              right: Checkbox (title: "Front Side QRCodes", size : .small) {
+              }
+              gutter
+              Checkbox (title: "Front Side QRCodes", size : .small) {
                 $value #mDataSelection.drawQRCodesTopSide
               }
-            )
-            add (
-              left: Checkbox (title: "Legend Front Side Texts", size : .small) {
+            }
+            hStack {
+              Checkbox (title: "Legend Front Side Texts", size : .small) {
                 $value #mDataSelection.drawTextsLegendTopSide
-              },
-              right: Checkbox (title: "Layout Front Side Texts", size : .small) {
+              }
+              gutter
+              Checkbox (title: "Layout Front Side Texts", size : .small) {
                 $value #mDataSelection.drawTextsLayoutTopSide
               }
-            )
-            add (
-              left: Checkbox (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide },
-              right: Checkbox (title: "Front Side Pads", size : .small) { $value #mDataSelection.drawPadsTopSide }
-            )
+            }
+            hStack {
+              Checkbox (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide }
+              gutter
+              Checkbox (title: "Front Side Pads", size : .small) { $value #mDataSelection.drawPadsTopSide }
+            }
           }
           space
         }
@@ -229,68 +240,115 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           }
           space
         }
-        hStack set (leftMargin: .large) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
+        hStack set (leftMargin: .large) {
+          Checkbox (title: "Front Side Package Legends", size : .small) {
+            $value #mDataSelection.drawPackageLegendTopSide
+          }
+          space
+        }
         StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
         hStack {
-          GridView2 {
-            set (leftMargin: .large)
-            add (
-              left:  Checkbox (title: "Traversing Pads", size : .small) { $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements },
-              right: space
-            )
-            add (  // Always disabled items
-              left:  Checkbox (title: "Traversing Pads", size : .small) { $enabled root.hasInnerElements $hidden root.hasInnerElements },
-              right: space
-            )
-           add (
-              left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner1Layer $hidden !root.hasInnerElements },
-              right: Checkbox (title: "Inner 2 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner2Layer $hidden !root.hasInnerElements }
-            )
-            add (  // Always disabled items
-              left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) { $enabled root.hasInnerElements $hidden root.hasInnerElements },
-              right: Checkbox (title: "Inner 2 Layer Tracks", size : .small) { $enabled root.hasInnerElements $hidden root.hasInnerElements }
-            )
-            add (
-              left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner3Layer $hidden !root.hasSixLayers },
-              right: Checkbox (title: "Inner 4 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner4Layer $hidden !root.hasSixLayers }
-            )
-            add ( // Always disabled items
-              left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) { $enabled root.hasSixLayers $hidden root.hasSixLayers },
-              right: Checkbox (title: "Inner 4 Layer Tracks", size : .small) { $enabled root.hasSixLayers $hidden root.hasSixLayers }
-            )
+          vStack set (leftMargin: .large) {
+            hStack $hidden !root.hasInnerElements {
+              Checkbox (title: "Traversing Pads", size : .small) {
+                $value #mDataSelection.drawTraversingPads
+              }
+              gutter
+              space
+            }
+            hStack $hidden root.hasInnerElements {
+              Checkbox (title: "Traversing Pads", size : .small) {
+                $enabled root.hasInnerElements  
+              }
+              gutter
+              space
+            }
+            hStack $hidden !root.hasInnerElements {
+              Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
+                $value #mDataSelection.drawTracksInner1Layer
+              }
+              gutter
+              Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
+                $value #mDataSelection.drawTracksInner2Layer
+              }
+            }
+            hStack $hidden root.hasInnerElements {
+              Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
+                $enabled root.hasInnerElements
+              }
+              gutter
+              Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
+                $enabled root.hasInnerElements
+              }
+            }
+            hStack $hidden !root.hasSixLayers {
+              Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
+                $value #mDataSelection.drawTracksInner3Layer
+              }
+              gutter
+              Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
+                $value #mDataSelection.drawTracksInner4Layer
+              }
+            }
+            hStack $hidden root.hasSixLayers {
+              Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
+                $enabled root.hasSixLayers
+              }
+              gutter
+              Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
+                $enabled root.hasSixLayers
+              }
+            }
           }
           space
         }
         StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
-          GridView2 {
-            set (leftMargin: .large)
-            add (
-              left: Checkbox (title: "Back Side Images", size : .small) {
+          vStack set (leftMargin: .large) {
+            hStack {
+              Checkbox (title: "Back Side Images", size : .small) {
                 $value #mDataSelection.drawImagesBottomSide
-              },
-              right: Checkbox (title: "Back Side QRCodes", size : .small) {
+              }
+              gutter
+              Checkbox (title: "Back Side QRCodes", size : .small) {
                 $value #mDataSelection.drawQRCodesBottomSide
               }
-            )
-            add (
-              left: Checkbox (title: "Legend Back Side Texts", size : .small) {
+            }
+            hStack {
+              Checkbox (title: "Legend Back Side Texts", size : .small) {
                 $value #mDataSelection.drawTextsLegendBottomSide
-              },
-              right: Checkbox (title: "Layout Back Side Texts", size : .small) {
+              }
+              gutter
+              Checkbox (title: "Layout Back Side Texts", size : .small) {
                 $value #mDataSelection.drawTextsLayoutBottomSide
               }
-            )
-            add (
-              left: Checkbox (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide },
-              right: Checkbox (title: "Back Side Pads", size : .small) { $value #mDataSelection.drawPadsBottomSide }
-            )
+            }
+            hStack {
+              Checkbox (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide }
+              gutter
+              Checkbox (title: "Back Side Pads", size : .small) { $value #mDataSelection.drawPadsBottomSide }
+            }
           }
           space
         }
-        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
-        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
-        hStack set (leftMargin: .large) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
+        hStack set (leftMargin: .large) {
+          Checkbox (title: "Back Side Component Names", size : .small) {
+            $value #mDataSelection.drawComponentNamesBottomSide
+          }
+          space
+        }
+        hStack set (leftMargin: .large) {
+          Checkbox (title: "Back Side Component Values", size : .small) {
+            $value #mDataSelection.drawComponentValuesBottomSide
+          }
+          space
+        }
+        hStack set (leftMargin: .large) {
+          Checkbox (title: "Back Side Package Legends", size : .small) {
+            $value #mDataSelection.drawPackageLegendBottomSide
+          }
+          space
+        }
         StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .left)
         hStack set (leftMargin: .large) {
           Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }

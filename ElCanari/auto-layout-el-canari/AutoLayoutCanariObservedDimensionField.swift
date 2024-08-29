@@ -19,8 +19,6 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
   init (size inSize : EBControlSize) {
     super.init (optionalWidth: nil, bold: true, size: inSize.cocoaControlSize)
 
-//    self.controlSize = inSize.cocoaControlSize
-//    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
     self.isEditable = false
     self.drawsBackground = false
@@ -38,7 +36,7 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: 56.0, height: 19.0)
+    return NSSize (width: 56.0, height: -1.0)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
