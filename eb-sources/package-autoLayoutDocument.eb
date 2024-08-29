@@ -290,71 +290,64 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     newView gridZoomInspectorView = \GridZoomInspectorView ()
     newView displayInspectorView = \DisplayInspectorView ()
     newView issuesInspectorView = \IssuesInspectorView ()
-    vStack set (width: 250) {
-      vStack set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) set (spacing: .large) {
-        hStack {
-          DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
-          space
-          DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }
-          space
-          DragSourceButton (tooltip: "Add Oval") [configurator addPackageOval] { $image self.addOvalButtonImage }
-          space
-          DragSourceButton (tooltip: "Add Arc") [configurator addPackageArc] { $image self.addArcButtonImage }
-          space
-          DragSourceButton (tooltip: "Add Master Pad") [configurator addPackageMasterPad] { $image self.addMasterPadButtonImage }
-          space
-          DragSourceButton (tooltip: "Add Slave Pad") [configurator addPackageSlavePad] { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
-          space
-          DragSourceButton (tooltip: "Add Zone") [configurator addPackageZone] { $image self.addZoneButtonImage }
-          space
-          DragSourceButton (tooltip: "Add Guide") [configurator addPackageGuide] { $image self.addGuideButtonImage }
-          space
-          DragSourceButton (tooltip: "Add Dimension") [configurator addPackageDimension] { $image self.addDimensionButtonImage }
+    vStack set (width: 250) set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) set (spacing: .large) {
+      hStack {
+        DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
+        space
+        DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }
+        space
+        DragSourceButton (tooltip: "Add Oval") [configurator addPackageOval] { $image self.addOvalButtonImage }
+        space
+        DragSourceButton (tooltip: "Add Arc") [configurator addPackageArc] { $image self.addArcButtonImage }
+        space
+        DragSourceButton (tooltip: "Add Master Pad") [configurator addPackageMasterPad] { $image self.addMasterPadButtonImage }
+        space
+        DragSourceButton (tooltip: "Add Slave Pad") [configurator addPackageSlavePad] { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
+        space
+        DragSourceButton (tooltip: "Add Zone") [configurator addPackageZone] { $image self.addZoneButtonImage }
+        space
+        DragSourceButton (tooltip: "Add Guide") [configurator addPackageGuide] { $image self.addGuideButtonImage }
+        space
+        DragSourceButton (tooltip: "Add Dimension") [configurator addPackageDimension] { $image self.addDimensionButtonImage }
+      }
+      hStack {
+        StaticLabel (title: "Model Image Opacity", bold: no, size : .small, alignment: .left)
+        gutter
+        LinearSlider (min:0, max:1, ticks: 11) {
+          $doubleValue root.mModelImageOpacity (sendContinously:yes)
+          $enabled root.hasModelImage
         }
-        GridView2 {
-          add (
-            left: StaticLabel (title: "Model Image Opacity", bold: no, size : .small, alignment: .center),
-            right: LinearSlider (min:0, max:1, ticks: 11) {
-              $doubleValue root.mModelImageOpacity (sendContinously:yes)
-              $enabled root.hasModelImage
-            }
-          )
-          add (
-            left: StaticLabel (title: "Auto Numbering", bold: no, size : .small, alignment: .center),
-            right: EnumPopUpButton (titles: enum PadNumbering.popupTitles, size: .small) {$selectedIndex root.padNumbering}
-          ) 
-          add (
-            left: space,
-            right: hStack {
-               StaticLabel (title: "From", bold: no, size : .small, alignment: .center) { $hidden !root.counterClockNumbering}
-               IntField (minWidth: 45, size : .small) {
-                 set (min: 0)
-                 set (max: 360)
-                 set (format: "##0°")
-                 $value root.counterClockNumberingStartAngle (sendContinously : yes)
-                 $hidden !root.counterClockNumbering
-               }
-            }
-          ) 
+      }
+      hStack {
+        StaticLabel (title: "Auto Numbering", bold: no, size : .small, alignment: .left)
+        gutter
+        EnumPopUpButton (titles: enum PadNumbering.popupTitles, size: .small) {$selectedIndex root.padNumbering}
+      }
+      hStack $hidden !root.counterClockNumbering {
+        space
+        gutter
+        StaticLabel (title: "From", bold: no, size : .small, alignment: .center)
+        IntField (minWidth: 45, size : .small) {
+          set (min: 0)
+          set (max: 360)
+          set (format: "##0°")
+          $value root.counterClockNumberingStartAngle (sendContinously : yes)
         }
       }
       separator
-      vStack set (leftMargin: .large) set (rightMargin: .large) {
-       SegmentedControlWithPages (documentView: view packagePageInspectorMasterView, equalWidth: yes, size : .small)
-          [configurator packagePageSegmentedControl] {
-          expandableWidth ()
-          addPage (title: "🛠", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
-          addPage (title: "🔍", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
-          addPage (title: "🔍P", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
-          addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
-          $selectedPage root.selectedInspector
-          $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)
-          $segmentTitle self.segmentedControlSegmentIssueString (segmentIndex : 3)
-        }
+      SegmentedControlWithPages (documentView: view packagePageInspectorMasterView, equalWidth: yes, size : .small)
+        [configurator packagePageSegmentedControl] {
+        expandableWidth ()
+        addPage (title: "🛠", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
+        addPage (title: "🔍", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
+        addPage (title: "🔍P", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
+        addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
+        $selectedPage root.selectedInspector
+        $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)
+        $segmentTitle self.segmentedControlSegmentIssueString (segmentIndex : 3)
       }
-      vStack set (leftMargin: .large) set (rightMargin: .large) set (spacing: .large) {
-        view packagePageInspectorMasterView
-      }
+      view packagePageInspectorMasterView
+      space
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 12_000) [outlet mPackageGraphicView configurator packageGraphicView]{
@@ -429,35 +422,45 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \SegmentInspectorView vStack {
     StaticLabel (title: "Segment Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
-         #mPackageSegmentSelectionController.x1Unit, #mPackageSegmentSelectionController.y1Unit,
-         #mPackageSegmentSelectionController.x2Unit, #mPackageSegmentSelectionController.y2Unit,
-         #mPackageSegmentSelectionController.lengthUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "First", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageSegmentSelectionController.x1, #mPackageSegmentSelectionController.x1Unit }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageSegmentSelectionController.y1, #mPackageSegmentSelectionController.y1Unit }
-      )
-      add (
-        left: StaticLabels (left: "Second", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageSegmentSelectionController.x2, #mPackageSegmentSelectionController.x2Unit }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageSegmentSelectionController.y2, #mPackageSegmentSelectionController.y2Unit }
-      )
-      add (
-        left: StaticLabel (title: "Length", bold: no, size : .small, alignment: .right),
-        right: CanariObservedDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageSegmentSelectionController.lengthInCanariUnit, #mPackageSegmentSelectionController.lengthUnit
-         }
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
+      #mPackageSegmentSelectionController.x1Unit, #mPackageSegmentSelectionController.y1Unit,
+      #mPackageSegmentSelectionController.x2Unit, #mPackageSegmentSelectionController.y2Unit,
+      #mPackageSegmentSelectionController.lengthUnit
+    }
+    hStack {
+      StaticLabels (left: "First", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSegmentSelectionController.x1, #mPackageSegmentSelectionController.x1Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSegmentSelectionController.y1, #mPackageSegmentSelectionController.y1Unit
+      }
+    }
+    hStack {
+      StaticLabels (left: "Second", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSegmentSelectionController.x2, #mPackageSegmentSelectionController.x2Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSegmentSelectionController.y2, #mPackageSegmentSelectionController.y2Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Length", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariObservedDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSegmentSelectionController.lengthInCanariUnit, #mPackageSegmentSelectionController.lengthUnit
+       }
     }
   }
 
@@ -466,62 +469,67 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \BezierCurveInspectorView vStack {
     StaticLabel (title: "Bezier Curve Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter8
-         #mPackageBezierCurveSelectionController.x1Unit, #mPackageBezierCurveSelectionController.y1Unit,
-         #mPackageBezierCurveSelectionController.x2Unit, #mPackageBezierCurveSelectionController.y2Unit,
-         #mPackageBezierCurveSelectionController.cpx1Unit, #mPackageBezierCurveSelectionController.cpy1Unit,
-         #mPackageBezierCurveSelectionController.cpx2Unit, #mPackageBezierCurveSelectionController.cpy2Unit
-        }
-      )
-      add (
-        left: StaticLabels (left: "First", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.x1, #mPackageBezierCurveSelectionController.x1Unit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.y1, #mPackageBezierCurveSelectionController.y1Unit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Second", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.x2, #mPackageBezierCurveSelectionController.x2Unit
-         }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.y2, #mPackageBezierCurveSelectionController.y2Unit
-        }
-      )
-      add (
-        left: StaticLabels (left: "First Ctrl", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx1, #mPackageBezierCurveSelectionController.cpx1Unit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy1, #mPackageBezierCurveSelectionController.cpy1Unit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Second Ctrl", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx2, #mPackageBezierCurveSelectionController.cpx2Unit
-         }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy2, #mPackageBezierCurveSelectionController.cpy2Unit
-        }
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter8
+      #mPackageBezierCurveSelectionController.x1Unit, #mPackageBezierCurveSelectionController.y1Unit,
+      #mPackageBezierCurveSelectionController.x2Unit, #mPackageBezierCurveSelectionController.y2Unit,
+      #mPackageBezierCurveSelectionController.cpx1Unit, #mPackageBezierCurveSelectionController.cpy1Unit,
+      #mPackageBezierCurveSelectionController.cpx2Unit, #mPackageBezierCurveSelectionController.cpy2Unit
+    }
+    hStack {
+      StaticLabels (left: "First", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.x1, #mPackageBezierCurveSelectionController.x1Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.y1, #mPackageBezierCurveSelectionController.y1Unit
+      }
+    }
+    hStack {
+      StaticLabels (left: "Second", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.x2, #mPackageBezierCurveSelectionController.x2Unit
+       }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.y2, #mPackageBezierCurveSelectionController.y2Unit
+      }
+    }
+    hStack {
+      StaticLabels (left: "First Ctrl", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx1, #mPackageBezierCurveSelectionController.cpx1Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy1, #mPackageBezierCurveSelectionController.cpy1Unit
+      }
+    }
+    hStack {
+      StaticLabels (left: "Second Ctrl", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx2, #mPackageBezierCurveSelectionController.cpx2Unit
+       }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy2, #mPackageBezierCurveSelectionController.cpy2Unit
+      }
     }
   }
 
@@ -530,36 +538,37 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \OvalInspectorView vStack {
     StaticLabel (title: "Oval Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
-         #mPackageOvalSelectionController.xUnit, #mPackageOvalSelectionController.yUnit,
-         #mPackageOvalSelectionController.widthUnit, #mPackageOvalSelectionController.heightUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Bottom Left", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small){
-          $dimensionAndUnit #mPackageOvalSelectionController.x, #mPackageOvalSelectionController.xUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageOvalSelectionController.y, #mPackageOvalSelectionController.yUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageOvalSelectionController.width, #mPackageOvalSelectionController.widthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageOvalSelectionController.height, #mPackageOvalSelectionController.heightUnit
-        }
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
+      #mPackageOvalSelectionController.xUnit, #mPackageOvalSelectionController.yUnit,
+      #mPackageOvalSelectionController.widthUnit, #mPackageOvalSelectionController.heightUnit
+    }
+    hStack {
+      StaticLabels (left: "Bottom Left", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageOvalSelectionController.x, #mPackageOvalSelectionController.xUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageOvalSelectionController.y, #mPackageOvalSelectionController.yUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageOvalSelectionController.width, #mPackageOvalSelectionController.widthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Height", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageOvalSelectionController.height, #mPackageOvalSelectionController.heightUnit
+      }
     }
   }
 
@@ -568,57 +577,66 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \ArcInspectorView vStack {
     StaticLabel (title: "Arc Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
-         #mPackageArcSelectionController.xCenterUnit, #mPackageArcSelectionController.yCenterUnit,
-         #mPackageArcSelectionController.radiusUnit, #mPackageArcSelectionController.startTangentUnit,
-         #mPackageArcSelectionController.endTangentUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Center", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackageArcSelectionController.xCenter, #mPackageArcSelectionController.xCenterUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageArcSelectionController.yCenter, #mPackageArcSelectionController.yCenterUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Radius", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageArcSelectionController.radius, #mPackageArcSelectionController.radiusUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Start Angle", bold: no, size : .small, alignment: .right),
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-          $angle #mPackageArcSelectionController.startAngle
-        }
-      )
-      add (
-        left: StaticLabel (title: "Angle", bold: no, size : .small, alignment: .right),
-        right: CanariAngleField (minWidth: 64, size: .small) {
-          $angle #mPackageArcSelectionController.arcAngle
-        }
-      )
-      add (
-        left: StaticLabel (title: "Start Tangent", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageArcSelectionController.startTangent, #mPackageArcSelectionController.startTangentUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "End Tangent", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackageArcSelectionController.endTangent, #mPackageArcSelectionController.endTangentUnit
-        }
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
+      #mPackageArcSelectionController.xCenterUnit, #mPackageArcSelectionController.yCenterUnit,
+      #mPackageArcSelectionController.radiusUnit, #mPackageArcSelectionController.startTangentUnit,
+      #mPackageArcSelectionController.endTangentUnit
     }
-    hStack { Checkbox (title: "Path is Closed", size : .small) { $value #mPackageArcSelectionController.pathIsClosed } space }
+    hStack {
+      StaticLabels (left: "Center", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackageArcSelectionController.xCenter, #mPackageArcSelectionController.xCenterUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageArcSelectionController.yCenter, #mPackageArcSelectionController.yCenterUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Radius", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageArcSelectionController.radius, #mPackageArcSelectionController.radiusUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Start Angle", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        $angle #mPackageArcSelectionController.startAngle
+      }
+    }
+    hStack {
+      StaticLabel (title: "Angle", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariAngleField (minWidth: 64, size: .small) {
+        $angle #mPackageArcSelectionController.arcAngle
+      }
+    }
+    hStack {
+      StaticLabel (title: "Start Tangent", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageArcSelectionController.startTangent, #mPackageArcSelectionController.startTangentUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "End Tangent", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackageArcSelectionController.endTangent, #mPackageArcSelectionController.endTangentUnit
+      }
+    }
+    hStack {
+      Checkbox (title: "Path is Closed", size : .small) {
+        $value #mPackageArcSelectionController.pathIsClosed
+      }
+      space
+    }
   }
 
 
@@ -627,28 +645,37 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \GuideInspectorView vStack {
     StaticLabel (title: "Guide Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
-         #mPackageGuideSelectionController.x1Unit, #mPackageGuideSelectionController.y1Unit,
-         #mPackageGuideSelectionController.x2Unit, #mPackageGuideSelectionController.y2Unit
-        }
-      )
-      add (
-        left: StaticLabels (left: "First", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageGuideSelectionController.x1, #mPackageGuideSelectionController.x1Unit }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageGuideSelectionController.y1, #mPackageGuideSelectionController.y1Unit }
-      )
-      add (
-        left: StaticLabels (left: "Second", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageGuideSelectionController.x2, #mPackageGuideSelectionController.x2Unit }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mPackageGuideSelectionController.y2, #mPackageGuideSelectionController.y2Unit }
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
+      #mPackageGuideSelectionController.x1Unit, #mPackageGuideSelectionController.y1Unit,
+      #mPackageGuideSelectionController.x2Unit, #mPackageGuideSelectionController.y2Unit
+    }
+    hStack {
+      StaticLabels (left: "First", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageGuideSelectionController.x1, #mPackageGuideSelectionController.x1Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageGuideSelectionController.y1, #mPackageGuideSelectionController.y1Unit
+      }
+    }
+    hStack {
+      StaticLabels (left: "Second", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageGuideSelectionController.x2, #mPackageGuideSelectionController.x2Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageGuideSelectionController.y2, #mPackageGuideSelectionController.y2Unit
+      }
     }
   }
 //------- Dimension inspector
@@ -656,66 +683,71 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \DimensionInspectorView vStack {
     StaticLabel (title: "Dimension Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
-         #mPackageDimensionSelectionController.x1Unit, #mPackageDimensionSelectionController.y1Unit,
-         #mPackageDimensionSelectionController.x2Unit, #mPackageDimensionSelectionController.y2Unit,
-         #mPackageDimensionSelectionController.distanceUnit, #mPackageDimensionSelectionController.xDimensionUnit,
-         #mPackageDimensionSelectionController.yDimensionUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "First", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageDimensionSelectionController.x1, #mPackageDimensionSelectionController.x1Unit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageDimensionSelectionController.y1, #mPackageDimensionSelectionController.y1Unit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Second", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageDimensionSelectionController.x2, #mPackageDimensionSelectionController.x2Unit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageDimensionSelectionController.y2, #mPackageDimensionSelectionController.y2Unit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Distance", bold: no, size : .small, alignment: .right),
-        right: CanariObservedDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabels (left: "Label", right: "∆X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageDimensionSelectionController.xDimension, #mPackageDimensionSelectionController.xDimensionUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
-        }
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
+      #mPackageDimensionSelectionController.x1Unit, #mPackageDimensionSelectionController.y1Unit,
+      #mPackageDimensionSelectionController.x2Unit, #mPackageDimensionSelectionController.y2Unit,
+      #mPackageDimensionSelectionController.distanceUnit, #mPackageDimensionSelectionController.xDimensionUnit,
+      #mPackageDimensionSelectionController.yDimensionUnit
     }
     hStack {
-      Checkbox (title: "Draw Label Background", size : .small) { $value #mPackageDimensionSelectionController.drawDimensionBackground }
+      StaticLabels (left: "First", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageDimensionSelectionController.x1, #mPackageDimensionSelectionController.x1Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageDimensionSelectionController.y1, #mPackageDimensionSelectionController.y1Unit
+      }
+    }
+    hStack {
+      StaticLabels (left: "Second", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageDimensionSelectionController.x2, #mPackageDimensionSelectionController.x2Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageDimensionSelectionController.y2, #mPackageDimensionSelectionController.y2Unit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Distance", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariObservedDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabels (left: "Label", right: "∆X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageDimensionSelectionController.xDimension, #mPackageDimensionSelectionController.xDimensionUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
+      }
+    }
+    hStack {
+      Checkbox (title: "Draw Label Background", size : .small) {
+        $value #mPackageDimensionSelectionController.drawDimensionBackground
+      }
       space
     }
     Button (title: "Set Label at Mid X", size : .small) { expandableWidth () $run setDimensionTextOriginAtMidXAction }
     Button (title: "Set Label at Mid Y", size : .small) { expandableWidth () $run setDimensionTextOriginAtMidYAction }
   }
-
 
   action setDimensionTextOriginAtMidXAction ;
   action setDimensionTextOriginAtMidYAction ;
@@ -725,77 +757,78 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \ZoneInspectorView vStack {
     StaticLabel (title: "Zone Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
-         #mPackageZoneSelectionController.xUnit, #mPackageZoneSelectionController.yUnit,
-         #mPackageZoneSelectionController.widthUnit, #mPackageZoneSelectionController.heightUnit,
-         #mPackageZoneSelectionController.xNameUnit, #mPackageZoneSelectionController.yNameUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Bottom Left", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageZoneSelectionController.x, #mPackageZoneSelectionController.xUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageZoneSelectionController.y, #mPackageZoneSelectionController.yUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageZoneSelectionController.width, #mPackageZoneSelectionController.widthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageZoneSelectionController.height, #mPackageZoneSelectionController.heightUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Label", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageZoneSelectionController.xName, #mPackageZoneSelectionController.xNameUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Name", bold: no, size : .small, alignment: .right),
-        right: TextField (minWidth: 56, size : .small) {
-          $value #mPackageZoneSelectionController.zoneName (sendContinously: yes)
-        }
-      )
-      add (
-        single: Checkbox (title: "Show Zone Name", size : .small) {
-          expandableWidth ()
-          $value #mPackageZoneSelectionController.displayZoneName
-        }
-      )
-      add (
-        single: Checkbox (title: "Show Zone Name with Pad Numbers", size : .small) {
-          expandableWidth ()
-          $value #mPackageZoneSelectionController.displayZoneNameWithPadNumbers
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Auto Numbering", bold: no, size : .small, alignment: .center),
-        right: EnumPopUpButton (titles: enum PadNumbering.popupTitles, size: .small) {
-          $selectedIndex #mPackageZoneSelectionController.zoneNumbering
-        }
-      )
-      addSeparator ()
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
+      #mPackageZoneSelectionController.xUnit, #mPackageZoneSelectionController.yUnit,
+      #mPackageZoneSelectionController.widthUnit, #mPackageZoneSelectionController.heightUnit,
+      #mPackageZoneSelectionController.xNameUnit, #mPackageZoneSelectionController.yNameUnit
     }
+    hStack {
+      StaticLabels (left: "Bottom Left", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageZoneSelectionController.x, #mPackageZoneSelectionController.xUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageZoneSelectionController.y, #mPackageZoneSelectionController.yUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageZoneSelectionController.width, #mPackageZoneSelectionController.widthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Height", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageZoneSelectionController.height, #mPackageZoneSelectionController.heightUnit
+      }
+    }
+    hStack {
+      StaticLabels (left: "Label", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageZoneSelectionController.xName, #mPackageZoneSelectionController.xNameUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Name", bold: no, size : .small, alignment: .right)
+      gutter
+      TextField (minWidth: 56, size : .small) {
+        $value #mPackageZoneSelectionController.zoneName (sendContinously: yes)
+      }
+    }
+    Checkbox (title: "Show Zone Name", size : .small) {
+      expandableWidth ()
+      $value #mPackageZoneSelectionController.displayZoneName
+    }
+    Checkbox (title: "Show Zone Name with Pad Numbers", size : .small) {
+      expandableWidth ()
+      $value #mPackageZoneSelectionController.displayZoneNameWithPadNumbers
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Auto Numbering", bold: no, size : .small, alignment: .center)
+      gutter
+      EnumPopUpButton (titles: enum PadNumbering.popupTitles, size: .small) {
+        $selectedIndex #mPackageZoneSelectionController.zoneNumbering
+      }
+    }
+    separator
     hStack {
       vStack {
         Button (title: "+", size : .small) { set (width: 32) $run addZoneForbiddenPadNumberAction }
@@ -806,7 +839,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
         }
         space
       }
-      OneStringArrayTableView [outlet mZoneForbiddenPadNumberTableView] { $array #mPackageZoneSelectionController.forbiddenPadArray }
+      OneStringArrayTableView [outlet mZoneForbiddenPadNumberTableView] {
+        $array #mPackageZoneSelectionController.forbiddenPadArray
+      }
     }
   }
 
@@ -818,92 +853,96 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \MasterPadInspectorView vStack {
     StaticLabel (title: "Master Pad Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
-         #mPackagePadSelectionController.xCenterUnit, #mPackagePadSelectionController.yCenterUnit,
-         #mPackagePadSelectionController.widthUnit, #mPackagePadSelectionController.heightUnit,
-         #mPackagePadSelectionController.holeWidthUnit, #mPackagePadSelectionController.holeHeightUnit,
-         #mPackagePadSelectionController.annularRingUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Center", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackagePadSelectionController.xCenter, #mPackagePadSelectionController.xCenterUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Shape", bold: no, size : .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
-          $selectedIndex #mPackagePadSelectionController.padShape
-        }
-      )
-      add (
-        left: StaticLabel (title: "Style", bold: no, size : .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum PadStyle.popupTitles, size: .small) {
-          $selectedIndex #mPackagePadSelectionController.padStyle
-        }
-      )
-      add (
-        left: StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .right) { $hidden !#mPackagePadSelectionController.padIsTraversing },
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
-          $hidden !#mPackagePadSelectionController.padIsTraversing
-        }
-      )
-      add (
-        left: StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .right) { $hidden !#mPackagePadSelectionController.padIsTraversing },
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
-          $hidden !#mPackagePadSelectionController.padIsTraversing
-        }
-      )
-      add (
-        left: StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right) { $hidden !#mPackagePadSelectionController.padIsTraversing },
-        right: CanariObservedDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
-          $hidden !#mPackagePadSelectionController.padIsTraversing
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Zone", bold: no, size : .small, alignment: .right),
-        right: Label (bold: yes, size : .small) { $title #mPackagePadSelectionController.zoneName }
-      )
-      add (
-        left: StaticLabel (title: "Pad Number", bold: no, size : .small, alignment: .right),
-        right: IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.padNumber }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Slave Pads", bold: no, size : .small, alignment: .right),
-        right: IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.slavePadCount }
-      )
-      add (
-        single : CanariPadRenumberPullDownButton [configurator configurePadRenumberPullDownButton] {
-          $currentNumber #mPackagePadSelectionController.padNumber
-          $currentZoneName #mPackagePadSelectionController.zoneName
-          $enabled (#mPackagePadSelectionController.noZone & root.freePadNumbering) | #mPackagePadSelectionController.zoneAllowsManualRenumbering
-        } 
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
+      #mPackagePadSelectionController.xCenterUnit, #mPackagePadSelectionController.yCenterUnit,
+      #mPackagePadSelectionController.widthUnit, #mPackagePadSelectionController.heightUnit,
+      #mPackagePadSelectionController.holeWidthUnit, #mPackagePadSelectionController.holeHeightUnit,
+      #mPackagePadSelectionController.annularRingUnit
+    }
+    hStack {
+      StaticLabels (left: "Center", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackagePadSelectionController.xCenter, #mPackagePadSelectionController.xCenterUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Height", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Shape", bold: no, size : .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
+        $selectedIndex #mPackagePadSelectionController.padShape
+      }
+    }
+    hStack {
+      StaticLabel (title: "Style", bold: no, size : .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum PadStyle.popupTitles, size: .small) {
+        $selectedIndex #mPackagePadSelectionController.padStyle
+      }
+    }
+    hStack $hidden !#mPackagePadSelectionController.padIsTraversing {
+      StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
+      }
+    }
+    hStack $hidden !#mPackagePadSelectionController.padIsTraversing {
+      StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
+      }
+    }
+    hStack $hidden !#mPackagePadSelectionController.padIsTraversing {
+      StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariObservedDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Zone", bold: no, size : .small, alignment: .right)
+      gutter
+      Label (bold: yes, size : .small) { $title #mPackagePadSelectionController.zoneName }
+    }
+    hStack {
+      StaticLabel (title: "Pad Number", bold: no, size : .small, alignment: .right)
+      gutter
+      IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.padNumber }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Slave Pads", bold: no, size : .small, alignment: .right)
+      gutter
+      IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.slavePadCount }
+    }
+    CanariPadRenumberPullDownButton [configurator configurePadRenumberPullDownButton] {
+      $currentNumber #mPackagePadSelectionController.padNumber
+      $currentZoneName #mPackagePadSelectionController.zoneName
+      $enabled (#mPackagePadSelectionController.noZone & root.freePadNumbering) | #mPackagePadSelectionController.zoneAllowsManualRenumbering
     }
   }
 
@@ -913,79 +952,83 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \SlavePadInspectorView vStack {
     StaticLabel (title: "Slave Pad Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
-         #mPackageSlavePadSelectionController.xCenterUnit, #mPackageSlavePadSelectionController.yCenterUnit,
-         #mPackageSlavePadSelectionController.widthUnit, #mPackageSlavePadSelectionController.heightUnit,
-         #mPackageSlavePadSelectionController.holeWidthUnit, #mPackageSlavePadSelectionController.holeHeightUnit,
-         #mPackageSlavePadSelectionController.annularRingUnit
-        }
-      )
-      add (
-        left: StaticLabels (left: "Center", right: "X", bold: no, size : .small),
-        right: CanariDimensionAndPopUp(size : .small) {
-          $dimensionAndUnit #mPackageSlavePadSelectionController.xCenter, #mPackageSlavePadSelectionController.xCenterUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageSlavePadSelectionController.yCenter, #mPackageSlavePadSelectionController.yCenterUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageSlavePadSelectionController.width, #mPackageSlavePadSelectionController.widthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageSlavePadSelectionController.height, #mPackageSlavePadSelectionController.heightUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Shape", bold: no, size : .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
-          $selectedIndex #mPackageSlavePadSelectionController.padShape
-        }
-      )
-      add (
-        left: StaticLabel (title: "Style", bold: no, size : .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum SlavePadStyle.popupTitles, size: .small) {
-          $selectedIndex #mPackageSlavePadSelectionController.padStyle
-        }
-      )
-      add (
-        left: StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .right) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageSlavePadSelectionController.holeWidth, #mPackageSlavePadSelectionController.holeWidthUnit
-          $hidden !#mPackageSlavePadSelectionController.padIsTraversing
-        }
-      )
-      add (
-        left: StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .right) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageSlavePadSelectionController.holeHeight, #mPackageSlavePadSelectionController.holeHeightUnit
-          $hidden !#mPackageSlavePadSelectionController.padIsTraversing
-        }
-      )
-      add (
-        left: StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
-        right: CanariObservedDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
-          $hidden !#mPackageSlavePadSelectionController.padIsTraversing
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Linked to Pad", bold: no, size : .small, alignment: .right),
-        right: CanariSlavePadAssignPopUpButton [configurator configureSlavePadAssignPopUpButton] {
-          $masterPadName #mPackageSlavePadSelectionController.masterPadNameWithZoneName
-          $masterPadObjectIndexArray root.masterPadObjectIndexArray
-        }
-      )
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
+      #mPackageSlavePadSelectionController.xCenterUnit, #mPackageSlavePadSelectionController.yCenterUnit,
+      #mPackageSlavePadSelectionController.widthUnit, #mPackageSlavePadSelectionController.heightUnit,
+      #mPackageSlavePadSelectionController.holeWidthUnit, #mPackageSlavePadSelectionController.holeHeightUnit,
+      #mPackageSlavePadSelectionController.annularRingUnit
+    }
+    hStack {
+      StaticLabels (left: "Center", right: "X", bold: no, size : .small)
+      gutter
+      CanariDimensionAndPopUp(size : .small) {
+        $dimensionAndUnit #mPackageSlavePadSelectionController.xCenter, #mPackageSlavePadSelectionController.xCenterUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSlavePadSelectionController.yCenter, #mPackageSlavePadSelectionController.yCenterUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSlavePadSelectionController.width, #mPackageSlavePadSelectionController.widthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Height", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSlavePadSelectionController.height, #mPackageSlavePadSelectionController.heightUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Shape", bold: no, size : .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
+        $selectedIndex #mPackageSlavePadSelectionController.padShape
+      }
+    }
+    hStack {
+      StaticLabel (title: "Style", bold: no, size : .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum SlavePadStyle.popupTitles, size: .small) {
+        $selectedIndex #mPackageSlavePadSelectionController.padStyle
+      }
+    }
+    hStack $hidden !#mPackageSlavePadSelectionController.padIsTraversing {
+      StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSlavePadSelectionController.holeWidth, #mPackageSlavePadSelectionController.holeWidthUnit
+      }
+    }
+    hStack $hidden !#mPackageSlavePadSelectionController.padIsTraversing {
+      StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSlavePadSelectionController.holeHeight, #mPackageSlavePadSelectionController.holeHeightUnit
+      }
+    }
+    hStack $hidden !#mPackageSlavePadSelectionController.padIsTraversing {
+      StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariObservedDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Linked to Pad", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariSlavePadAssignPopUpButton [configurator configureSlavePadAssignPopUpButton] {
+        $masterPadName #mPackageSlavePadSelectionController.masterPadNameWithZoneName
+        $masterPadObjectIndexArray root.masterPadObjectIndexArray
+      }
     }
   }
 
@@ -995,50 +1038,56 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \GridZoomInspectorView vStack {
     StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Grid Style", bold: no, size : .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
-      )
-      add (
-        left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right),
-        right:  TaggedPopUpButton (size: .small) {
-          add (title: "1 Step", withTag: 1)
-          add (title: "2 Steps", withTag: 2)
-          add (title: "4 Steps", withTag: 4)
-          add (title: "5 Steps", withTag: 5)
-          add (title: "8 Steps", withTag: 8)
-          add (title: "10 Steps", withTag: 10)
-          $selectedTag root.gridDisplayFactor
-        }
-      )
-      add (
-        left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.gridStep, root.gridStepUnit }
-      )
-      add (
-        left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
-        right: Checkbox (title: "Horizontal", size : .small) { expandableWidth ()  $value root.horizontalFlip }
-      )
-      add (
-        left: FlexibleSpace,
-        right: Checkbox (title: "Vertical", size : .small) { expandableWidth ()  $value root.verticalFlip }
-      )
-      add (
-        left: StaticLabels (left: "Placard", right: "X", bold: no, size : .small),
-        right: CanariUnitPopUpButton (size : .small) { $unit root.xPlacardUnit }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
-        right: CanariUnitPopUpButton(size : .small) { $unit root.yPlacardUnit }
-      )
-      add (
-        left: StaticLabel (title: "Knob Size", bold: no, size : .small, alignment: .right),
-        right: LinearSlider (min:7, max:41, ticks: 18) {
-          expandableWidth ()
-          $intValue root.knobSizeMultpliedByTen (sendContinously : yes)
-        }
-      )
+    hStack {
+      StaticLabel (title: "Grid Style", bold: no, size : .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
+    }
+    hStack {
+      StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right)
+      gutter
+      TaggedPopUpButton (size: .small) {
+        add (title: "1 Step", withTag: 1)
+        add (title: "2 Steps", withTag: 2)
+        add (title: "4 Steps", withTag: 4)
+        add (title: "5 Steps", withTag: 5)
+        add (title: "8 Steps", withTag: 8)
+        add (title: "10 Steps", withTag: 10)
+        $selectedTag root.gridDisplayFactor
+      }
+    }
+    hStack {
+      StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.gridStep, root.gridStepUnit }
+    }
+    hStack {
+      StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right)
+      gutter
+      Checkbox (title: "Horizontal", size : .small) { expandableWidth ()  $value root.horizontalFlip }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Vertical", size : .small) { expandableWidth ()  $value root.verticalFlip }
+    }
+    hStack {
+      StaticLabels (left: "Placard", right: "X", bold: no, size : .small)
+      gutter
+      CanariUnitPopUpButton (size : .small) { $unit root.xPlacardUnit }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariUnitPopUpButton(size : .small) { $unit root.yPlacardUnit }
+    }
+    hStack {
+      StaticLabel (title: "Knob Size", bold: no, size : .small, alignment: .right)
+      gutter
+      LinearSlider (min:7, max:41, ticks: 18) {
+        expandableWidth ()
+        $intValue root.knobSizeMultpliedByTen (sendContinously : yes)
+      }
     }
     space
   }
@@ -1047,81 +1096,88 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
 
   stackView \DisplayInspectorView vStack {
     StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Background", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageBackgroundColor } space }
-      )
-      add (
-        left: StaticLabel (title: "Cross Grid", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfPackageGrid } space }
-      )
-      add (
-        left: StaticLabel (title: "Line Grid", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfPackageGrid } space }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Package", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageColor } space }
-      )
-      add (
-        left: StaticLabel (title: "Line Width", bold: no, size : .small, alignment: .center),
-        right: TaggedPopUpButton (size: .small) {
-          add (title: "0.5 Point", withTag: 5)
-          add (title: "1.0 Point", withTag: 10)
-          add (title: "1.5 Point", withTag: 15)
-          add (title: "2.0 Points", withTag: 20)
-          add (title: "2.5 Points", withTag: 25)
-          $selectedTag prefs.packageDrawingWidthMultipliedByTen
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Pad Numbering", bold: no, size : .small, alignment: .center),
-        right: hStack {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColor }
-          Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.showPadNumber }
-          space
-        }
-      )
-      add (single: StaticLabel (title: "Pad Font", bold: no, size : .small, alignment: .left) )
-      add (single: FontButton (width: 125, size : .small) { $fontValue prefs.padNumberFont } )
-      add (
-        left: StaticLabel (title: "Top Side Pads", bold: no, size : .small, alignment: .center),
-        right: hStack {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColor }
-          Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageFrontSidePads }
-          space
-        }
-      )
-      add (
-        left: StaticLabel (title: "Back Side Pads", bold: no, size : .small, alignment: .center),
-        right: hStack {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColor }
-          Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageBackSidePads }
-          space
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Guide Color", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageGuideColor } space }
-      )
-      add (
-        left: StaticLabel (title: "Dimension Color", bold: no, size : .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageDimensionColor } space }
-      )
-      add (single: StaticLabel (title: "Dimension Font", bold: no, size : .small, alignment: .left) )
-      add (single: FontButton (width: 125, size : .small) {$fontValue prefs.dimensionFont})
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Zone Color", bold: no, size : .small, alignment: .center),
-        right: hStack {
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padZoneColor }
-          space
-        }
-      )
+    hStack {
+      StaticLabel (title: "Background", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageBackgroundColor }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Cross Grid", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfPackageGrid }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Line Grid", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfPackageGrid }
+      space
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Package", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageColor }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Line Width", bold: no, size : .small, alignment: .center)
+      gutter
+      TaggedPopUpButton (size: .small) {
+        add (title: "0.5 Point", withTag: 5)
+        add (title: "1.0 Point", withTag: 10)
+        add (title: "1.5 Point", withTag: 15)
+        add (title: "2.0 Points", withTag: 20)
+        add (title: "2.5 Points", withTag: 25)
+        $selectedTag prefs.packageDrawingWidthMultipliedByTen
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Pad Numbering", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColor }
+      Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.showPadNumber }
+      space
+    }
+    StaticLabel (title: "Pad Font", bold: no, size : .small, alignment: .left)
+    FontButton (width: 125, size : .small) { $fontValue prefs.padNumberFont }
+    hStack {
+      StaticLabel (title: "Top Side Pads", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColor }
+      Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageFrontSidePads }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Back Side Pads", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColor }
+      Checkbox (title: "Show", size : .small) { expandableHeight () $value prefs.displayPackageBackSidePads }
+      space
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Guide Color", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageGuideColor }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Dimension Color", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageDimensionColor }
+      space
+    }
+    StaticLabel (title: "Dimension Font", bold: no, size : .small, alignment: .left)
+    FontButton (width: 125, size : .small) {$fontValue prefs.dimensionFont}
+    separator
+    hStack {
+      StaticLabel (title: "Zone Color", bold: no, size : .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padZoneColor }
+      space
     }
     space
   }
