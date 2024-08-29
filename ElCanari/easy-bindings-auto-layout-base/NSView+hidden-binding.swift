@@ -58,9 +58,6 @@ final class HiddenBindingController : EBObservablePropertyController {
     case .single (let v) :
       self.mOutlet?.isHidden = v
     }
-//    if let windowContentView = self.mOutlet?.window?.contentView as? AutoLayoutWindowContentView {
-//      windowContentView.triggerNextKeyViewSettingComputation ()
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

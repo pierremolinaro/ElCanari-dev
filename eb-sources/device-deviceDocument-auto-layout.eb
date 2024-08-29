@@ -246,51 +246,62 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
 
   stackView \PackageGridZoomInspectorView vStack {
     StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageBackColorForDevice } space }
-      )
-      add (
-        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
-        right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mPackageHorizontalFlipForDevice }
-      )
-      add (
-        left: space,
-        right: Checkbox (title: "Vertical", size : .small) { $value prefs.mPackageVerticalFlipForDevice }
-      )
-      add (
-        left: StaticLabel (title: "Package", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageColorForDevice } space }
-      )
-      add (
-        left: StaticLabel (title: "Package Width", bold: no, size: .small, alignment: .center),
-        right: TaggedPopUpButton (size: .small) {
-          add (title: "0.5 Point", withTag: 5)
-          add (title: "1.0 Point", withTag: 10)
-          add (title: "1.5 Point", withTag: 15)
-          add (title: "2.0 Points", withTag: 20)
-          add (title: "2.5 Points", withTag: 25)
-          $selectedTag prefs.packageDrawingWidthForDeviceMultipliedByTen
-        }
-      )
-      add (
-        left: StaticLabel (title: "Front Side Pad", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mFrontSidePadColorForDevice } space }
-      )
-      add (
-        left: StaticLabel (title: "Back Side Pad", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mBottomSidePadColorForDevice } space }
-      )
-      add (
-        left: StaticLabel (title: "Pad Number", bold: no, size: .small, alignment: .center),
-        right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPadNumberColorForDevice } space }
-      )
-      add (single: StaticLabel (title: "Pad Number Font", bold: no, size: .small, alignment: .left))
-      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mPadNumberFontForDevice } )
-      add (single: StaticLabel (title: "Package Name Font", bold: no, size: .small, alignment: .left))
-      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mPackageNameFontForDevice } )
+    hStack {
+      StaticLabel (title: "Background", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageBackColorForDevice }
+      space
     }
+    hStack {
+      StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center)
+      gutter
+      Checkbox (title: "Horizontal", size : .small) { $value prefs.mPackageHorizontalFlipForDevice }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Vertical", size : .small) { $value prefs.mPackageVerticalFlipForDevice }
+    }
+    hStack {
+      StaticLabel (title: "Package", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageColorForDevice }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Package Width", bold: no, size: .small, alignment: .center)
+      gutter
+      TaggedPopUpButton (size: .small) {
+        add (title: "0.5 Point", withTag: 5)
+        add (title: "1.0 Point", withTag: 10)
+        add (title: "1.5 Point", withTag: 15)
+        add (title: "2.0 Points", withTag: 20)
+        add (title: "2.5 Points", withTag: 25)
+        $selectedTag prefs.packageDrawingWidthForDeviceMultipliedByTen
+      }
+    }
+    hStack {
+      StaticLabel (title: "Front Side Pad", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mFrontSidePadColorForDevice }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Back Side Pad", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mBottomSidePadColorForDevice }
+      space
+    }
+    hStack {
+      StaticLabel (title: "Pad Number", bold: no, size: .small, alignment: .center)
+      gutter
+      ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPadNumberColorForDevice }
+      space
+    }
+    StaticLabel (title: "Pad Number Font", bold: no, size: .small, alignment: .left)
+    FontButton (width: 125, size: .small) { $fontValue prefs.mPadNumberFontForDevice }
+    StaticLabel (title: "Package Name Font", bold: no, size: .small, alignment: .left)
+    FontButton (width: 125, size: .small) { $fontValue prefs.mPackageNameFontForDevice }
   }
 
   stackView \PackagePageOperationView vStack {
@@ -306,48 +317,50 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       expandableWidth ()
       $value root.mPackageDisplayHorizontalFlip
     }
-    GridView2 {
-      add (
-        left: ColorWell {
-          expandableHeight ()
-          set (toolTip: "Stored in Preferences")
-          $color prefs.packageColor
-        },
-        right: Checkbox (title: "Display Packages", size : .small) { expandableWidth () $value root.mShowPackages }
-      )
-      add (
-        left: ColorWell {
-          expandableHeight ()
-          set (toolTip: "Stored in Preferences")
-          $color prefs.padNumberColor
-        },
-        right: Checkbox (title: "Display Pad Numbers", size : .small) {
-          expandableWidth ()
-          $value root.mShowPackagePadNumbers
-        }
-      )
-      add (
-        left: ColorWell {
-          expandableHeight ()
-          set (toolTip: "Stored in Preferences")
-          $color prefs.frontSidePadColor
-        },
-        right: Checkbox (title: "Display Front Side Pads", size : .small) {
-          expandableWidth ()
-          $value root.mShowPackageFrontPads
-        }
-      )
-      add (
-        left: ColorWell {
-          expandableHeight ()
-          set (toolTip: "Stored in Preferences")
-          $color prefs.backSidePadColor
-        },
-        right: Checkbox (title: "Display Back Side Pads", size : .small) {
-          expandableWidth ()
-          $value root.mShowPackageBackPads
-        }
-      )
+    hStack {
+      ColorWell {
+        expandableHeight ()
+        set (toolTip: "Stored in Preferences")
+        $color prefs.packageColor
+      }
+      gutter
+      Checkbox (title: "Display Packages", size : .small) { expandableWidth () $value root.mShowPackages }
+    }
+    hStack {
+      ColorWell {
+        expandableHeight ()
+        set (toolTip: "Stored in Preferences")
+        $color prefs.padNumberColor
+      }
+      gutter
+      Checkbox (title: "Display Pad Numbers", size : .small) {
+        expandableWidth ()
+        $value root.mShowPackagePadNumbers
+      }
+    }
+    hStack {
+      ColorWell {
+        expandableHeight ()
+        set (toolTip: "Stored in Preferences")
+        $color prefs.frontSidePadColor
+      }
+      gutter
+      Checkbox (title: "Display Front Side Pads", size : .small) {
+        expandableWidth ()
+        $value root.mShowPackageFrontPads
+      }
+    }
+    hStack {
+      ColorWell {
+        expandableHeight ()
+        set (toolTip: "Stored in Preferences")
+        $color prefs.backSidePadColor
+      }
+      gutter
+      Checkbox (title: "Display Back Side Pads", size : .small) {
+        expandableWidth ()
+        $value root.mShowPackageBackPads
+      }
     }
   }    
 

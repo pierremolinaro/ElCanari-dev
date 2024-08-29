@@ -496,64 +496,61 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
             $value root.overlapingArrangment
           }
         }
-        GridView2 {
-          add (
-            left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
-            right: vStack {
-              CanariDimensionAndPopUp (size: .small) {
-                $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
-                $hidden root.automaticBoardSize
-              }
-              CanariObservedDimensionAndPopUp (size: .small) {
-                $dimensionAndUnit root.boardWidth, root.boardWidthUnit
-                $hidden !root.automaticBoardSize
-              }
-            }
-          )
-          add (
-            left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
-            right: vStack {
-              CanariDimensionAndPopUp (size: .small) {
-                $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
-                $hidden root.automaticBoardSize
-              }
-              CanariObservedDimensionAndPopUp (size: .small) {
-                $dimensionAndUnit root.boardHeight, root.boardHeightUnit
-                $hidden !root.automaticBoardSize
-              }
-            }
-          )
-          add (
-            left: StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size: .small) {
-              $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
-            }
-          )
-          addSeparator ()
-          add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small, alignment: .left)
-          )
-          add (
-            left: StaticLabel (title: "Model", bold: no, size : .small, alignment: .right),
-            right: Label (bold: yes, size: .small) { $title #mBoardInstanceSelection.modelName }
-          )
-          add (
-            left: StaticLabel (title: "Right", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size: .small) {
-              $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
-            }
-          )
-          add (
-            left: StaticLabel (title: "Bottom", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size: .small) {
-              $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
-            }
-          )
-          add (single:
-            CanariOrientationSegmentedControl (size : .small) {
-              expandableWidth ()
-              $orientation #mBoardInstanceSelection.instanceRotation
-            }
-          )
+        hStack {
+          StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
+            $hidden root.automaticBoardSize
+          }
+          CanariObservedDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardWidth, root.boardWidthUnit
+            $hidden !root.automaticBoardSize
+          }
+        }
+        hStack {
+          StaticLabel (title: "Height", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
+            $hidden root.automaticBoardSize
+          }
+          CanariObservedDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardHeight, root.boardHeightUnit
+            $hidden !root.automaticBoardSize
+          }
+        }
+        hStack {
+          StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
+          }
+        }
+        separator
+        StaticLabel (title: "Selected Element", bold: yes, size : .small, alignment: .left)
+        hStack {
+          StaticLabel (title: "Model", bold: no, size : .small, alignment: .right)
+          gutter
+          Label (bold: yes, size: .small) { $title #mBoardInstanceSelection.modelName }
+        }
+        hStack {
+          StaticLabel (title: "Right", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
+          }
+        }
+        hStack {
+          StaticLabel (title: "Bottom", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
+            $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
+          }
+        }
+        CanariOrientationSegmentedControl (size : .small) {
+          expandableWidth ()
+          $orientation #mBoardInstanceSelection.instanceRotation
         }
         separator
         hStack {

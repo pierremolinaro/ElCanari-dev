@@ -1054,41 +1054,44 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
         separator
         StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
-        GridView2 {
-          add (
-            left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size : .small) {
-              $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
-            }
-          )
-          add (
-            left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right),
-            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) {
-              expandableWidth ()
-              $selectedIndex root.mBoardLimitsGridStyle
-            }
-          )
-          add (
-            left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right),
-            right: TaggedPopUpButton (size: .small) {
-              expandableWidth ()
-              add (title: "1 Step",   withTag:  1)
-              add (title: "2 Steps",  withTag:  2)
-              add (title: "4 Steps",  withTag:  4)
-              add (title: "5 Steps",  withTag:  5)
-              add (title: "8 Steps",  withTag:  8)
-              add (title: "10 Steps", withTag: 10)
-              $selectedTag root.mBoardLimitsGridDisplayFactor
-            }
-          )
-          add (
-            left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
-            right: Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
-          )
-          add (
-            left: FlexibleSpace,
-            right: Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
-          )
+        hStack {
+          StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size : .small) {
+            $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
+          }
+        }
+        hStack {
+          StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right)
+          gutter
+          EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) {
+            expandableWidth ()
+            $selectedIndex root.mBoardLimitsGridStyle
+          }
+        }
+        hStack {
+          StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right)
+          gutter
+          TaggedPopUpButton (size: .small) {
+            expandableWidth ()
+            add (title: "1 Step",   withTag:  1)
+            add (title: "2 Steps",  withTag:  2)
+            add (title: "4 Steps",  withTag:  4)
+            add (title: "5 Steps",  withTag:  5)
+            add (title: "8 Steps",  withTag:  8)
+            add (title: "10 Steps", withTag: 10)
+            $selectedTag root.mBoardLimitsGridDisplayFactor
+          }
+        }
+        hStack {
+          StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right)
+          gutter
+          Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
+        }
+        hStack {
+          space
+          gutter
+          Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
         }
         separator
         StaticLabel (title: "Board Contents Opacity", bold: yes, size: .small, alignment: .center)
@@ -1127,19 +1130,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView \BoardShapeBaseView vStack {}
   
   stackView \BoardRectangularOutlineView vStack {
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Board Width", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Board Height", bold: no, size : .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
-        }
-      )
+    hStack {
+      StaticLabel (title: "Board Width", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Board Height", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
+      }
     }
   }
   
@@ -1151,102 +1154,77 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
                  alignment: .center) {
       expandableHeight ()
     }
-    GridView2 {
-      add (single: StaticLabel (title: "Selected Board Limit Element", bold: yes, size : .small, alignment: .center))
-      add (
-        left: StaticLabel (title: "Shape", bold: yes, size : .small, alignment: .left),
-        right: EnumPopUpButton (titles: enum BorderCurveShape.popupTitles, size: .small) {
-          $selectedIndex #boardCurveSelectionController.mShape
-        }
-      )
-      add (
-        left: StaticLabel (title: "End Points", bold: yes, size : .small, alignment: .left),
-        right: CanariUnitPopUpButton (size: .small) {
-          $unit root.mBoardSelectedCurveDisplayUnit
-        }
-      )
-      add (
-        left: hStack {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
-          CanariDimensionField (size: .small) {
-            $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
-          }
-        },
-        right: hStack {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
-          CanariDimensionField (size: .small) {
-            $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
-          }
-        }
-      )
-      add (
-        left: hStack {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
-          DoubleObserverField (width: 72, bold: yes, size: .small) {
-            $observedValue #boardCurveSelectionController.p2Xvalue
-          }
-        },
-        right: hStack {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
-          DoubleObserverField (width: 72, bold: yes, size: .small) {
-            $observedValue #boardCurveSelectionController.p2Yvalue
-          }
-        }
-      )
-      add (
-        left: StaticLabel (title: "Control Points", bold: yes, size : .small, alignment: .left) {
-          $hidden #boardCurveSelectionController.isLine
-        },
-        right: CanariUnitPopUpButton (size: .small) {
-          $hidden #boardCurveSelectionController.isLine
-          $unit root.mBoardLimitControlPointsDisplayUnit
-        }
-      )
-      add (
-        left: hStack {
-          space
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .right) {
-            $hidden #boardCurveSelectionController.isLine
-          }
-          CanariDimensionField (size: .small) {
-            $hidden #boardCurveSelectionController.isLine
-            $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
-          }
-        },
-        right: hStack {
-          space
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) {
-            $hidden #boardCurveSelectionController.isLine
-          }
-          CanariDimensionField (size: .small) {
-            $hidden #boardCurveSelectionController.isLine
-            $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
-          }
-        }
-      )
-      add (
-        left: hStack {
-          space
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .right) {
-            $hidden #boardCurveSelectionController.isLine
-          }
-          CanariDimensionField (size: .small) {
-            $hidden #boardCurveSelectionController.isLine
-            $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
-          }
-        },
-        right: hStack {
-          space
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) {
-            $hidden #boardCurveSelectionController.isLine
-          }
-          CanariDimensionField (size: .small) {
-            $hidden #boardCurveSelectionController.isLine
-            $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
-          }
-        }
-      )
+    StaticLabel (title: "Selected Board Limit Element", bold: yes, size : .small, alignment: .center) {
       $hidden #boardCurveObjectsController.selectedArray.count == 0
+    }
+    hStack $hidden #boardCurveObjectsController.selectedArray.count == 0 {
+      StaticLabel (title: "Shape", bold: yes, size : .small, alignment: .left)
+      gutter
+      EnumPopUpButton (titles: enum BorderCurveShape.popupTitles, size: .small) {
+        $selectedIndex #boardCurveSelectionController.mShape
+      }
+    }
+    hStack $hidden #boardCurveObjectsController.selectedArray.count == 0 {
+      StaticLabel (title: "End Points", bold: yes, size : .small, alignment: .left)
+      gutter
+      CanariUnitPopUpButton (size: .small) {
+        $unit root.mBoardSelectedCurveDisplayUnit
+      }
+    }
+    hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | !#boardCurveSelectionController.isLine {
+      StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
+      CanariDimensionField (size: .small) {
+        $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
+      }
+      gutter
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      CanariDimensionField (size: .small) {
+        $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
+      }
+    }
+    hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | #boardCurveSelectionController.isLine {
+      StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
+      DoubleObserverField (width: 72, bold: yes, size: .small) {
+        $observedValue #boardCurveSelectionController.p2Xvalue
+      }
+      gutter
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      DoubleObserverField (width: 72, bold: yes, size: .small) {
+        $observedValue #boardCurveSelectionController.p2Yvalue
+      }
+    }
+    hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | #boardCurveSelectionController.isLine {
+      StaticLabel (title: "Control Points", bold: yes, size : .small, alignment: .left)
+      gutter
+      CanariUnitPopUpButton (size: .small) {
+        $unit root.mBoardLimitControlPointsDisplayUnit
+      }
+    }
+    hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | #boardCurveSelectionController.isLine {
+      space
+      StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
+      CanariDimensionField (size: .small) {
+        $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
+      }
+      gutter
+      space
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      CanariDimensionField (size: .small) {
+        $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
+      }
+    }
+    hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | #boardCurveSelectionController.isLine {
+      space
+      StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
+      CanariDimensionField (size: .small) {
+        $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
+      }
+      gutter
+      space
+      StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
+      CanariDimensionField (size: .small) {
+        $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
+      }
     }
   }
 
