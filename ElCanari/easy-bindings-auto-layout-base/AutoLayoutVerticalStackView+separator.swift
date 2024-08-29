@@ -44,7 +44,7 @@ extension AutoLayoutVerticalStackView {
       self.mIgnoreHorizontalMargins = inFlag
       let s = NSSize (width: 10, height: 1) // width > height means horizontal separator
       super.init (frame: NSRect (origin: NSPoint (), size: s))
-
+      noteObjectAllocation (self)
       self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .highest)
 
       self.boxType = .separator
@@ -54,6 +54,12 @@ extension AutoLayoutVerticalStackView {
 
     required init? (coder inCoder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    deinit {
+      noteObjectDeallocation (self)
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·

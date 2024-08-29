@@ -57,6 +57,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     var optionalLastBaselineRepresentativeView : NSView? = nil
     var optionalLastView : NSView? = nil
     var optionalLastFlexibleSpace : NSView? = nil
+    var referenceGutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
     for view in self.subviews {
       if !view.isHidden {
       //--- Vertical constraints
@@ -67,37 +68,6 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
           bottomMargin : self.mBottomMargin,
           optionalLastBaseLineView: &optionalLastBaselineRepresentativeView
         )
-//        switch view.pmLayoutSettings.vLayoutInHorizontalContainer {
-//        case .center :
-//          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
-//          self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
-//          self.mConstraints.add (centerYOf: view, equalToCenterYOf: self)
-//        case .fill :
-//          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
-//          self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
-//        case .fillIgnoringMargins :
-//          self.mConstraints.add (topOf: self, equalToTopOf: view)
-//          self.mConstraints.add (bottomOf: view, equalToBottomOf: self)
-//        case .bottom :
-//          self.mConstraints.add (topOf: self, greaterThanOrEqualToTopOf: view, plus: self.mTopMargin)
-//          self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
-//        case .top :
-//          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
-//          self.mConstraints.add (bottomOf: view, greaterThanOrEqualToBottomOf: self, plus: self.mTopMargin)
-//        case .lastBaseline :
-//          if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
-//            self.mConstraints.add (topOf: view, closeToTopOfContainer: self, topMargin: self.mTopMargin)
-//            self.mConstraints.add (bottomOf: view, closeToBottomOfContainer: self, bottomMargin: self.mBottomMargin)
-//            if let lastBaselineRepresentativeView = optionalLastBaselineRepresentativeView {
-//              self.mConstraints.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
-//            }else{
-//              optionalLastBaselineRepresentativeView = viewLastBaselineRepresentativeView
-//            }
-//          }else{
-//            self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
-//            self.mConstraints.add (bottomOf: view, equalToBottomOf: self, plus: self.mBottomMargin)
-//          }
-//        }
         if (view is VerticalSeparator) || (view is VerticalDivider) {
           optionalLastBaselineRepresentativeView = nil
         }
@@ -117,6 +87,25 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
         }
         if self.isVerticalDivider (view) {
           optionalLastFlexibleSpace = nil
+        }
+      //--- Gutter ?
+        if let vStack = view as? AutoLayoutVerticalStackView {
+          var gutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
+          for vStackSubView in vStack.subviews {
+            if !vStackSubView.isHidden, let gutter = vStackSubView as? AutoLayoutVerticalStackView.GutterSeparator {
+              gutterArray.append (gutter)
+            }
+          }
+          let n = min (referenceGutterArray.count, gutterArray.count)
+          if n > 0 {
+            for i in 0 ..< n {
+              self.mConstraints.add (topOf: referenceGutterArray [i], equalToTopOf: gutterArray [i])
+              self.mConstraints.add (bottomOf: referenceGutterArray [i], equalToBottomOf: gutterArray [i])
+            }
+          }
+          if referenceGutterArray.count < gutterArray.count {
+            referenceGutterArray = gutterArray
+          }
         }
       //---
         optionalLastView = view

@@ -11,32 +11,35 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     newView modelPage = \ModelPage ()
     newView boardPage = \BoardPage ()
     newView productPage = \ProductPage ()
-    ToolBar () {
-      add (
-        title: "Page",
-        item : SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+    hStack set (margins: .regular) {
+      vStack set (spacing: .zero) {
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Model", tooltip: "Model Description", pageView: view modelPage)
           addPage (title: "Board", tooltip: "Board Description", pageView: view boardPage)
           addPage (title: "Product", tooltip: "Product Description", pageView: view productPage)
           $selectedPage root.selectedPageIndex
         }
-      )
-      add (
-        title: "for Model and Board Views",
-        item : Checkbox (title: "Show Display Settings", size : .regular) {
+        gutter
+        StaticLabel (title: "Page", bold: no, size : .regular, alignment: .center)
+      }
+      vStack set (spacing: .zero) {
+        Checkbox (title: "Show", size : .regular) {
           $enabled root.selectedPageIndex <= 1
           $value root.showDisplaySettingView
         }
-      )
-      addFlexibleSpace ()
-      add (
-        title: "Status",
-        item : StatusBadgeView () {
+        gutter
+        StaticLabel (title: "Display Settings", bold: no, size : .regular, alignment: .center)
+      }
+      space
+      vStack set (spacing: .zero) {
+        StatusBadgeView () {
           $tooltip self.statusMessage
           $errorCount self.statusErrorCount
           $warningCount self.statusWarningCount
         }
-      )
+        gutter
+        StaticLabel (title: "Status", bold: no, size : .regular, alignment: .center)
+      }
     }
     separator
     view pageMasterView

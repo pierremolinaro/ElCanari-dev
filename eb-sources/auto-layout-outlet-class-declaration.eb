@@ -114,11 +114,6 @@ extern autolayout class StatusView () {
   $status transient Int
 }
 
-extern autolayout class ToolBar () {
-  func add (title: String, item : view)
-  func addFlexibleSpace ()
-}
-
 extern autolayout class FlexibleSpace {
 }
 

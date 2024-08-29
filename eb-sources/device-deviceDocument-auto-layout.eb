@@ -18,10 +18,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     newView assignmentsPage = \AssignmentsPage ()
     newView libraryPage = \LibraryPage ()
     newView infosPage = \InfosPage ()
-    ToolBar () {
-      add (
-        title: "Page",
-        item : SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+     hStack set (margins: .regular) {
+      vStack set (spacing: .zero) {
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Description", tooltip: "Device Description", pageView: view descriptionPage)
           addPage (title: "Symbols", tooltip: "Device Symbols", pageView: view symbolsPage)
           addPage (title: "Packages", tooltip: "Device Available Packages", pageView: view packagesPage)
@@ -30,24 +29,29 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           addPage (title: "Infos", tooltip: "Device Informations", pageView: view infosPage)
           $selectedPage root.mSelectedPageIndex
         }
-      )
-      add (
-        title: "Signature",
-        item : SignatureField (size : .regular) { $signature signature }
-      )
-      add (
-        title: "Version",
-        item : VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-      )
-      addFlexibleSpace ()
-      add (
-        title: "Status",
-        item : StatusBadgeView () {
+        gutter
+        StaticLabel (title: "Page", bold: no, size : .regular, alignment: .center)
+      }
+      vStack set (spacing: .zero) {
+        SignatureField (size : .regular) { $signature signature }
+        gutter
+        StaticLabel (title: "Signature", bold: no, size : .regular, alignment: .center)
+      }
+      vStack set (spacing: .zero) {
+        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+        gutter
+        StaticLabel (title: "Version", bold: no, size : .regular, alignment: .center)
+      }
+      space
+      vStack set (spacing: .zero) {
+        StatusBadgeView () {
           $tooltip self.statusMessage
           $errorCount self.statusErrorCount
           $warningCount self.statusWarningCount
         }
-      )
+        gutter
+        StaticLabel (title: "Status", bold: no, size : .regular, alignment: .center)
+      }
     }
     separator
     view pageMasterView

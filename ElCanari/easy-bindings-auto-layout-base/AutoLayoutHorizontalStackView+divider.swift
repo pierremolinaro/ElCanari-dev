@@ -46,7 +46,7 @@ extension AutoLayoutHorizontalStackView {
       self.mDrawFrame = inDrawFrame
       self.mCanResizeWindow = inFlag
       super.init (frame: .zero)
-
+      noteObjectAllocation (self)
       self.pmConfigureForAutolayout (hStretchingResistance: .highest, vStrechingResistance: .lowest)
     }
 
@@ -54,6 +54,12 @@ extension AutoLayoutHorizontalStackView {
 
     required init? (coder inCoder : NSCoder) {
       fatalError ("init(coder:) has not been implemented")
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    deinit {
+      noteObjectDeallocation (self)
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·

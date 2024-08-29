@@ -50,6 +50,7 @@ extension AutoLayoutVerticalStackView {
       self.mDrawFrame = inDrawFrame
       self.mCanResizeWindow = inFlag
       super.init (frame: .zero)
+      noteObjectAllocation (self)
       self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .highest)
     }
 
@@ -57,6 +58,12 @@ extension AutoLayoutVerticalStackView {
 
     required init? (coder inCoder : NSCoder) {
       fatalError ("init(coder:) has not been implemented")
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    deinit {
+      noteObjectDeallocation (self)
     }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·

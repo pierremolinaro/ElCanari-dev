@@ -614,7 +614,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
         )
         bp.move (to: p)
         bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
-        if (inView is ALB_NSStackView) || (inView is AutoLayoutToolBar) {
+        if inView is ALB_NSStackView {
           DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
         }else{
           DEBUG_LAST_BASELINE_COLOR.setStroke ()
