@@ -36,7 +36,7 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: 56.0, height: -1.0)
+    return NSSize (width: 56.0, height: NSView.noIntrinsicMetric)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

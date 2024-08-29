@@ -230,7 +230,7 @@ fileprivate final class EmbeddedAutoLayoutScrollView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor init () {
+  init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
@@ -258,7 +258,7 @@ fileprivate final class EmbeddedAutoLayoutTableView : NSTableView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor init () {
+  init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)

@@ -16,7 +16,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor init () {
+  init () {
     super.init (frame: .zero, pullsDown: false)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false

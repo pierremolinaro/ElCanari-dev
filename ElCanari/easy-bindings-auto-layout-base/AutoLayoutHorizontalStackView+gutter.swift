@@ -24,7 +24,7 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    override var intrinsicContentSize : NSSize { NSSize (width: GUTTER_WIDTH, height: -1.0) }
+    override var intrinsicContentSize : NSSize { NSSize (width: GUTTER_WIDTH, height: NSView.noIntrinsicMetric) }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

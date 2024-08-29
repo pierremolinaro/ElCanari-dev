@@ -68,7 +68,7 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    override var intrinsicContentSize: NSSize { return NSSize (width: 1.0, height: 10.0) }
+    override var intrinsicContentSize: NSSize { return NSSize (width: NSView.noIntrinsicMetric, height: 10.0) }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

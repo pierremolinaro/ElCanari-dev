@@ -25,7 +25,7 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor init () {
+  init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false
@@ -43,19 +43,11 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     column.headerCell.alignment = .center
     self.mTableView.addTableColumn (column)
 
- //   self.mTableView.tile ()
-//    Swift.print ("fittingSize \(self.mTableView.cornerView?.fittingSize)")
-//    Swift.print ("intrinsicContentSize \(self.mTableView.cornerView?.intrinsicContentSize)")
-//    self.mTableView.cornerView = nil
-
 //--- Configure Scroll view
     self.borderType = .bezelBorder // .noBorder
     self.hasHorizontalScroller = false
     self.hasVerticalScroller = true
     self.documentView = self.mTableView
-//    self.drawsBackground = true
-//    self.backgroundColor = .yellow
-//   Swift.print ("Corner \(self.mTableView.cornerView)")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

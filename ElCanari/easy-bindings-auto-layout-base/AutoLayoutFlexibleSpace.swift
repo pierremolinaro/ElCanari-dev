@@ -14,7 +14,7 @@ import AppKit
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-  @MainActor init () {
+  init () {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
@@ -32,10 +32,6 @@ import AppKit
     noteObjectDeallocation (self)
     objectDidDeinitSoReleaseHiddenControllers ()
   }
-
-  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-//    override var intrinsicContentSize : NSSize { NSSize () }
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

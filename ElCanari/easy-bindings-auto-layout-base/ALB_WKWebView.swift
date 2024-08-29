@@ -22,7 +22,6 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
     super.init (frame: .zero, configuration: webConfiguration)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
-//    self.translatesAutoresizingMaskIntoConstraints = false
 
     if let url = URL (string: inURL) {
       let myRequest = URLRequest (url: url)

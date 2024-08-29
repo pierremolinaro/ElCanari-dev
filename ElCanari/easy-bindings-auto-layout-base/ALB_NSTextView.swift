@@ -110,7 +110,7 @@ final class InternalTextView : NSTextView {
   // https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TextSystemArchitecture/ArchitectureOverview.html#//apple_ref/doc/uid/TP40009459-CH7-CJBJHGAG
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor init () {
+  init () {
     let textContainer = NSTextContainer (size: NSSize (width: 300, height: 300))
     self.mTextStorage.addLayoutManager (self.mLayoutManager)
     self.mLayoutManager.addTextContainer (textContainer)
