@@ -574,19 +574,21 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     TabView (size: .small) {
       addTab (title: "Grid, Flip", tooltip: "Grid and Flip", contentView : 
-        GridView2 {
-          set (margins: .regular)
-          add (
-            left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
-            right: StaticLabel (title: "50 mils", bold: yes, size : .small, alignment: .left)
-          )
-          add (
-            left: StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right),
-            right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mSchematicGridStyle }
-          )
-          add (
-            left: StaticLabel (title: "Every", bold: no, size : .small, alignment: .right),
-            right: TaggedPopUpButton (size: .small) {
+        vStack set (margins: .regular) {
+          hStack {
+            StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
+            gutter
+            StaticLabel (title: "50 mils", bold: yes, size : .small, alignment: .left)
+          }
+          hStack {
+            StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right)
+            gutter
+            EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mSchematicGridStyle }
+          }
+          hStack {
+            StaticLabel (title: "Every", bold: no, size : .small, alignment: .right)
+            gutter
+            TaggedPopUpButton (size: .small) {
               add (title: "1 Step",   withTag:  1)
               add (title: "2 Steps",  withTag:  2)
               add (title: "4 Steps",  withTag:  4)
@@ -595,88 +597,100 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
               add (title: "10 Steps", withTag: 10)
               $selectedTag root. mSchematicGridDisplayFactor
             }
-          )
-          add (
-            left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
-            right: Checkbox (title: "Horizontal", size : .small) { $value root.mSchematicHorizontalFlip }
-          )
-          add (
-            left: FlexibleSpace,
-            right: Checkbox (title: "Vertical", size : .small) { $value root.mSchematicVerticalFlip }
-          )
-          add (
-            left: StaticLabel (title: "Cross Grid Color", bold: no, size : .small, alignment: .right),
-            right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.dotColorGridForSchematic } space }
-          )
-          add (
-            left: StaticLabel (title: "Line Grid Color", bold: no, size : .small, alignment: .right),
-            right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForSchematic } space }
-          )
+          }
+          hStack {
+            StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right)
+            gutter
+            Checkbox (title: "Horizontal", size : .small) { $value root.mSchematicHorizontalFlip }
+          }
+          hStack {
+            space
+            gutter
+            Checkbox (title: "Vertical", size : .small) { $value root.mSchematicVerticalFlip }
+          }
+          hStack {
+            StaticLabel (title: "Cross Grid Color", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.dotColorGridForSchematic }
+            space
+          }
+          hStack {
+            StaticLabel (title: "Line Grid Color", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForSchematic }
+            space
+          }
         }
       )
       addTab (title: "Colors, Font", tooltip: "Colors and Font", contentView:
-        GridView2 {
-          set (margins: .regular)
-          add (
-            left: StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForUnplacedComponentsForSchematic } 
-          )
-          add (
-            left: StaticLabel (title: "Symbols, placed Component", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForSchematic } 
-          )
-          add (single:
-            hStack {
-              space
-              StaticLabel (title: "Symbols Drawing Width", bold: no, size : .small, alignment: .right)
-              TaggedPopUpButton (size: .small) {
-                add (title: "0.5 Point",   withTag:  5)
-                add (title: "1.0 Point",  withTag:  10)
-                add (title: "1.5 Point",  withTag:  15)
-                add (title: "2.0 Point",  withTag:  20)
-                add (title: "2.5 Point",  withTag:  25)
-                $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic
-              }
+        vStack set (margins: .regular) {
+          hStack {
+            StaticLabel (title: "Symbols, unplaced Component", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForUnplacedComponentsForSchematic } 
+          }
+          hStack {
+            StaticLabel (title: "Symbols, placed Component", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColorForSchematic }
+          } 
+          hStack {
+            space
+            StaticLabel (title: "Symbols Drawing Width", bold: no, size : .small, alignment: .right)
+            TaggedPopUpButton (size: .small) {
+              add (title: "0.5 Point",   withTag:  5)
+              add (title: "1.0 Point",  withTag:  10)
+              add (title: "1.5 Point",  withTag:  15)
+              add (title: "2.0 Point",  withTag:  20)
+              add (title: "2.5 Point",  withTag:  25)
+              $selectedTag prefs.symbolDrawingWidthMultipliedByTenForSchematic
             }
-          )
-          addSeparator ()
-          add (
-            left: StaticLabel (title: "Component Name", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentNameColorForSchematic } 
-          )
-          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentNameFontForSchematic })
-          addSeparator ()
-          add (
-            left: StaticLabel (title: "Component Value", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentValueColorForSchematic } 
-          )
-          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentValueFontForSchematic })
-          addSeparator ()
-          add (
-            left: StaticLabel (title: "Pin Name", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNameColorForSchematic } 
-          )
-          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNameFontForSchematic })
-          addSeparator ()
-          add (
-            left: StaticLabel (title: "Pin Number", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNumberColorForSchematic } 
-          )
-          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNumberFontForSchematic })
-          addSeparator ()
-          add (
-            left: StaticLabel (title: "Connection", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.connectionColorForSchematic } 
-          )
-          addSeparator ()
-          add (
-            left: StaticLabel (title: "Background Color", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicBackColor }
-          )
-          add (
-            left: StaticLabel (title: "Frame Color", bold: no, size : .small, alignment: .right),
-            right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicFrameColor }
-          )
+          }
+          separator
+          hStack {
+            StaticLabel (title: "Component Name", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentNameColorForSchematic } 
+          }
+          FontButton (width: 125, size: .small) { $fontValue prefs.componentNameFontForSchematic }
+          separator
+          hStack {
+            StaticLabel (title: "Component Value", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentValueColorForSchematic } 
+          }
+          FontButton (width: 125, size: .small) { $fontValue prefs.componentValueFontForSchematic }
+          separator
+          hStack {
+            StaticLabel (title: "Pin Name", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNameColorForSchematic } 
+          }
+          FontButton (width: 125, size: .small) { $fontValue prefs.pinNameFontForSchematic }
+          separator
+          hStack {
+            StaticLabel (title: "Pin Number", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNumberColorForSchematic } 
+          }
+          FontButton (width: 125, size: .small) { $fontValue prefs.pinNumberFontForSchematic }
+          separator
+          hStack {
+            StaticLabel (title: "Connection", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.connectionColorForSchematic } 
+          }
+          separator
+          hStack {
+            StaticLabel (title: "Background Color", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicBackColor }
+          }
+          hStack {
+            StaticLabel (title: "Frame Color", bold: no, size : .small, alignment: .right)
+            gutter
+            ColorWell { set (toolTip: "Stored in Preferences") $color prefs.schematicFrameColor }
+          }
         }
       )
     }
@@ -684,7 +698,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Sheet inspector
-  stackView \schematicsSheetInspectorView  vStack set (topMargin: .regular) set (bottomMargin: .regular) {
+  stackView \schematicsSheetInspectorView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     hStack {
       Button (title: "◀︎+", size: .regular) { $run prependNewSchematicSheetInspectorAction }
       space
@@ -719,47 +733,45 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
        $value root.selectedSheetTitle (sendContinously : yes)
     }
     separator
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Title", bold: no, size: .small, alignment: .right)
-          { expandableHeight () },
-        right: TextField (minWidth: 150, size: .small)
-          { automaticallyAdjustHeight (maxWidth: 150) $value root.mSchematicTitle (sendContinously : yes) }
-      )
-      add (
-        left: StaticLabel (title: "Version", bold: no, size: .small, alignment: .right),
-        right: TextField (minWidth: 150, size: .small) { $value root.mSchematicVersion (sendContinously : yes) }
-      )
-      add (
-        left: StaticLabel (title: "Date", bold: no, size: .small, alignment: .right),
-        right: hStack {
-          Button (title: "Set…", size: .small) { $run openSetDateDialogAction }
-          space 
-          Button (title: "Set to Now", size: .small) { $run setDateToNowAction }
-        }
-      )
-      addSeparator ()     
-      add (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: EnumSegmentedControl (titles: enum SchematicSheetOrientation.popupTitles, equalWidth: no, size: .small)
+    hStack {
+      StaticLabel (title: "Title", bold: no, size: .small, alignment: .right) { expandableHeight () }
+      gutter
+      TextField (minWidth: 150, size: .small) {
+        automaticallyAdjustHeight (maxWidth: 150) $value root.mSchematicTitle (sendContinously : yes)
+      }
+    }
+    hStack {
+      StaticLabel (title: "Version", bold: no, size: .small, alignment: .right)
+      gutter
+      TextField (minWidth: 150, size: .small) { $value root.mSchematicVersion (sendContinously : yes) }
+    }
+    hStack {
+      StaticLabel (title: "Date", bold: no, size: .small, alignment: .right)
+      gutter
+      Button (title: "Set…", size: .small) { $run openSetDateDialogAction }
+      space 
+      Button (title: "Set to Now", size: .small) { $run setDateToNowAction }
+    }
+    separator   
+    hStack {
+      StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
+      gutter
+      EnumSegmentedControl (titles: enum SchematicSheetOrientation.popupTitles, equalWidth: no, size: .small)
         [configurator sheetOrientationSegmentedControlConfigurator] { $selectedSegment root.mSchematicSheetOrientation }
-      )
-      add (
-        left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .center)
-          { $hidden !self.schematicSheetOrientationIsCustom },
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mSchematicCustomWidth, root.mSchematicCustomWidthUnit
-          $hidden !self.schematicSheetOrientationIsCustom
-        }
-      )
-      add (
-        left: StaticLabel (title: "Height", bold: no, size: .small, alignment: .center)
-          { $hidden !self.schematicSheetOrientationIsCustom },
-        right: CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mSchematicCustomHeight, root.mSchematicCustomHeightUnit
-          $hidden !self.schematicSheetOrientationIsCustom
-        }
-      )
+    }
+    hStack $hidden !self.schematicSheetOrientationIsCustom {
+      StaticLabel (title: "Width", bold: no, size: .small, alignment: .center)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit root.mSchematicCustomWidth, root.mSchematicCustomWidthUnit
+      }
+    }
+    hStack $hidden !self.schematicSheetOrientationIsCustom {
+      StaticLabel (title: "Height", bold: no, size: .small, alignment: .center)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit root.mSchematicCustomHeight, root.mSchematicCustomHeightUnit
+      }
     }
     space
   }  
@@ -908,26 +920,28 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $value #commentInSchematicSelectionController.mComment (sendContinously : yes)
     }
     Checkbox (title: "Bold", size : .small) { $value #commentInSchematicSelectionController.mBold }
-    GridView2 {
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Color", bold: yes, size: .small, alignment: .left),
-        right: ColorWell { $color #commentInSchematicSelectionController.mColor }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Rotation", bold: yes, size: .small, alignment: .left),
-        right: CanariPreferredDirectionSegmentedControl { $angle #commentInSchematicSelectionController.mRotation }
-      )
-      add (
-        left: space, // StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #commentInSchematicSelectionController.mRotation }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Size", bold: yes, size: .small, alignment: .left),
-        right: DoubleField (width: 64, size: .small) { $value #commentInSchematicSelectionController.mSize (sendContinously:yes) }
-      )
+    separator
+    hStack {
+      StaticLabel (title: "Color", bold: yes, size: .small, alignment: .left)
+      gutter
+      ColorWell { $color #commentInSchematicSelectionController.mColor }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Rotation", bold: yes, size: .small, alignment: .left)
+      gutter
+      CanariPreferredDirectionSegmentedControl { $angle #commentInSchematicSelectionController.mRotation }
+    }
+    hStack {
+      space
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #commentInSchematicSelectionController.mRotation }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Size", bold: yes, size: .small, alignment: .left)
+      gutter
+      DoubleField (width: 64, size: .small) { $value #commentInSchematicSelectionController.mSize (sendContinously:yes) }
     }
     LinearSlider (min: 4, max: 20, ticks: 17) { setAllowsTickMarkValuesOnly () $doubleValue #commentInSchematicSelectionController.mSize (sendContinously:yes) }
     separator
@@ -946,17 +960,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   ;
   stackView \componentSymbolInspectorView vStack {
     StaticLabel (title: "Symbol Inspector", bold: yes, size: .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Orientation", bold: no, size: .small, alignment: .center),
-        right: EnumSegmentedControl (titles: enum QuadrantRotation.degreesTitles, equalWidth: no, size: .small) {
-          $selectedSegment #componentSymbolSelectionController.mRotation
-        }
-      )
-      add (
-        left: space,
-        right: Checkbox (title: "Mirror", size : .small) { $value #componentSymbolSelectionController.mMirror }
-      )
+    hStack {
+      StaticLabel (title: "Orientation", bold: no, size: .small, alignment: .center)
+      gutter
+      EnumSegmentedControl (titles: enum QuadrantRotation.degreesTitles, equalWidth: no, size: .small) {
+        $selectedSegment #componentSymbolSelectionController.mRotation
+      }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Mirror", size : .small) { $value #componentSymbolSelectionController.mMirror }
     }
     separator
     hStack {
@@ -1020,19 +1034,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         view boardShapeBaseView
         separator
         StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
-        GridView2 {
-          add (
-            left: StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size : .small) {
-              $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
-            }
-          )
-          add (
-            left: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right),
-            right: CanariDimensionAndPopUp (size : .small) {
-              $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
-            }
-          )
+        hStack {
+          StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size : .small) {
+            $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
+          }
+        }
+        hStack {
+          StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size : .small) {
+            $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
+          }
         }
         separator
         StaticLabel (title: "Interior Bounding Box", bold: yes, size : .small, alignment: .center)
@@ -1453,7 +1467,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard }
           gutter
           Checkbox (title: "Layout", size : .small)  {
-            $hidden !root.mExpandFrontSideBoardSettings
             $value root.displayFrontLayoutForBoard
           }
         }
@@ -1462,7 +1475,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard }
           gutter
           Checkbox (title: "Restrict Rectangle", size : .small) {
-            $hidden !root.mExpandFrontSideBoardSettings
             $value root.displayFrontRestrictRectangles
           }
         }
@@ -1582,7 +1594,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           ColorWell { set (toolTip: "Stored in Preferences") }
           gutter
           Checkbox (title: "Layout", size : .small) {
-            $hidden !root.mExpandInner4BoardSettings
             $value root.displayInner4LayoutForBoard
           }
         }
@@ -1591,7 +1602,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard }
           gutter
           Checkbox (title: "Restrict Rectangle", size : .small) {
-            $hidden !root.mExpandInner4BoardSettings
             $value root.displayInner4RestrictRectangles
           }
         }
@@ -1671,140 +1681,135 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       Button (title: "+▶︎", size: .regular) { $run appendNewBoardSettingsInspectorAction }
     }
     VerticalScrollView (content:
-      GridView2 {
-        add (
-          left: StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right),
-          right: EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
+      vStack {
+        hStack {
+          StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right)
+          gutter
+          EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
             $selectedIndex root.mLayerConfiguration
             $run changeLayerConfigurationAction
           }
-        )
-        add (
-          left: StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right),
-          right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
-        )
-        add (
-          single: EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
-            $selectedIndex root.mAutoRouterPreferredDirections
+        }
+        hStack {
+          StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
+        }
+        EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
+          $selectedIndex root.mAutoRouterPreferredDirections
+        }
+        EnumPopUpButton (titles: enum AutorouterSnapAngle.popupTitles, size: .small) {
+          $selectedIndex root.mAutorouterSnapAngle
+        }
+        hStack {
+          StaticLabel (title: "Route", bold: no, size: .small, alignment: .center)
+          space
+          EnumPopUpButton (titles: enum RouteDirection.popupTitles, size: .small) {
+            $selectedIndex root.mRouteDirection
           }
-        )
-        add (
-          single: EnumPopUpButton (titles: enum AutorouterSnapAngle.popupTitles, size: .small) {
-            $selectedIndex root.mAutorouterSnapAngle
+          space
+          EnumPopUpButton (titles: enum RouteOrigin.popupTitles, size: .small) {
+            $selectedIndex root.mRouteOrigin
           }
-        )
-        add (
-          single: hStack {
-            StaticLabel (title: "Route", bold: no, size: .small, alignment: .center)
-            space
-            EnumPopUpButton (titles: enum RouteDirection.popupTitles, size: .small) {
-              $selectedIndex root.mRouteDirection
-            }
-            space
-            EnumPopUpButton (titles: enum RouteOrigin.popupTitles, size: .small) {
-              $selectedIndex root.mRouteOrigin
-            }
-          }
-        )
-        add (single:
-          Checkbox (title: "Allow Via at SMD", size: .small) {
-            expandableWidth () $value root.mAllowViaAtSMD
-          }
-        )
-        add (single:
-          TabView (size: .small) {
-            addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
-              vStack set (margins: .large) {
-                Checkbox (title: "Export Tracks and Vias", size: .small) {
-                  expandableWidth () $value root.mExportExistingTracksAndVias
-                }
-                hStack {
-                  space
-                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
-                    $run launchFreeRouterWithRouterDocument
-                  }
-                  space
-                }
-                hStack {
-                  space
-                  Button (title: "Import SES File", size: .small) { $run importSESFromBasicTabAction }
-                  space
-                }
+        }
+        Checkbox (title: "Allow Via at SMD", size: .small) {
+          expandableWidth () $value root.mAllowViaAtSMD
+        }
+        TabView (size: .small) {
+          addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
+            vStack set (margins: .large) {
+              Checkbox (title: "Export Tracks and Vias", size: .small) {
+                expandableWidth () $value root.mExportExistingTracksAndVias
               }
-            )
-            addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
-              vStack set (margins: .large) {
-                Checkbox (title: "Export Tracks and Vias", size: .small) {
-                  expandableWidth () $value root.mExportExistingTracksAndVias
+              hStack {
+                space
+                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
+                  $run launchFreeRouterWithRouterDocument
                 }
-                hStack {
-                  space
-                  Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }
-                  space
-                }
-                hStack {
-                  space
-                  ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
-                    $run launchFreeRouterWithoutAnyDocument
-                  }
-                  space
-                }
-                hStack {
-                  space
-                  Button (title: "Import SES File…", size: .small) { $run importSESFromExtendedTabAction }
-                  space
-                }
+                space
               }
-            )
-            $selectedPage root.mAutorouterInterfaceMode
-          }
-        )
-        add (
-          single: StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
-        )
-        add (
-          left: StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
-        )
-        add (
-          left: StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
-        )
-        add (
-          left: StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
-        )
-        add (
-          left: StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
-        )
-        add (
-          left: StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
-        )
-        add (
-          left: StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
-        )
-        add (
-          left: StaticLabel (title: "Total", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.trackCountString }
-        )
-        add (
-          left: StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right),
-          right: hStack {
-            Label (bold: yes, size : .small) { $title root.trackLengthString }
-            CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
-            space
-          }
-        )
-        add (
-          left: StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right),
-          right: Label (bold: yes, size : .small) { $title root.viaCountString }
-        )
-        add (
-          single: Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
-        )
+              hStack {
+                space
+                Button (title: "Import SES File", size: .small) { $run importSESFromBasicTabAction }
+                space
+              }
+            }
+          )
+          addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
+            vStack set (margins: .large) {
+              Checkbox (title: "Export Tracks and Vias", size: .small) {
+                expandableWidth () $value root.mExportExistingTracksAndVias
+              }
+              hStack {
+                space
+                Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }
+                space
+              }
+              hStack {
+                space
+                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
+                  $run launchFreeRouterWithoutAnyDocument
+                }
+                space
+              }
+              hStack {
+                space
+                Button (title: "Import SES File…", size: .small) { $run importSESFromExtendedTabAction }
+                space
+              }
+            }
+          )
+          $selectedPage root.mAutorouterInterfaceMode
+        }
+        StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
+        hStack {
+          StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
+        }
+        hStack {
+          StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
+        }
+        hStack {
+          StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
+        }
+        hStack {
+          StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
+        }
+        hStack {
+          StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
+        }
+        hStack {
+          StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
+        }
+        hStack {
+          StaticLabel (title: "Total", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.trackCountString }
+        }
+        hStack {
+          StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.trackLengthString }
+          CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
+          space
+        }
+        hStack {
+          StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right)
+          gutter
+          Label (bold: yes, size : .small) { $title root.viaCountString }
+        }
+        Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
       }
     )
   }
@@ -1869,132 +1874,129 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \BoardTrackInspectorView vStack {
     StaticLabel (title: "Board Track", bold: yes, size: .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .left),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          expandableWidth ()
-          $title #boardTrackSelectionController.netName
-        }
-      )
-      add (
-        left: StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .left),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          expandableWidth ()
-          $title #boardTrackSelectionController.netClassName
-        }
-      )
-      add (
-        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .left),
-        right: EnumPopUpButton (titles: enum TrackSide.popupTitles, size: .small) {
-          $selectedIndex #boardTrackSelectionController.mSide
-        }
-      )
-      add (
-        single: Checkbox (title: "Expose Copper (as Pad)", size : .small) {
-          $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
-          $value #boardTrackSelectionController.mAddedToSolderMask
-        }
-      )
-      add (
-        single: Checkbox (title: "Is Preserved by Auto Router", size : .small) {
-          $value #boardTrackSelectionController.mIsPreservedByAutoRouter
-        }
-      )
-      addSeparator ()
-      add (single:
-        CanariTrackLockView {
-          $angle #boardTrackSelectionController.trackDirectionInDegrees
-          $manualLockP1 #boardTrackSelectionController.mManualLockP1
-          $manualLockP2 #boardTrackSelectionController.mManualLockP2
-          $p1ConnectedToSomePad #boardTrackSelectionController.p1ConnectedToSomePad
-          $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
-        }
-      )
-      add (
-        left: StaticLabel (title: "On Knob Dragging", bold: no, size: .small, alignment: .left),
-        right: EnumPopUpButton (titles: enum TrackLockDirection.popupTitles, size: .small) {
-          $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
-        }
-      )
-      add (
-        left: StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left),
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-          $angle #boardTrackSelectionController.trackDirectionInDegrees
-          $enabled #boardTrackSelectionController.trackCanRotate
-        }
-      )
-      addSeparator ()
-      add (
-        single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
-          #boardTrackSelectionController.mP1XUnit, #boardTrackSelectionController.mP1YUnit,
-          #boardTrackSelectionController.mP2XUnit, #boardTrackSelectionController.mP2YUnit,
-          #boardTrackSelectionController.mDefaultTrackWidthUnit, 
-          #boardTrackSelectionController.mCustomTrackWidthUnit
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Track Width", bold: no, size: .small, alignment: .left),
-        right: Checkbox (title: "Use Custom", size: .small) {
-          $value #boardTrackSelectionController.mUsesCustomTrackWidth
-        }
-      )
-      add (
-        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .left) {
-          $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
-        },
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
-          $hidden #boardTrackSelectionController.mUsesCustomTrackWidth
-        }
-      )
-      add (
-        left: StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left) {
-          $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
-        },
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
-          $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth
-        }
-      )
-      add (
-        left: StaticLabel (title: "End Style", bold: no, size: .small, alignment: .left),
-        right: EnumPopUpButton (titles: enum TrackEndStyle.popupTitles, size: .small) {
-          $selectedIndex #boardTrackSelectionController.mEndStyle
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabels (left: "P1", right: "X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
-          $enabled #boardTrackSelectionController.p1CanMove
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
-          $enabled #boardTrackSelectionController.p1CanMove
-        }
-      )
-      add (
-        left: StaticLabels (left: "P2", right: "X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
-          $enabled #boardTrackSelectionController.p2CanMove
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
-          $enabled #boardTrackSelectionController.p2CanMove
-        }
-      )
+    hStack {
+      StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .left)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        expandableWidth ()
+        $title #boardTrackSelectionController.netName
+      }
+    }
+    hStack {
+      StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .left)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        expandableWidth ()
+        $title #boardTrackSelectionController.netClassName
+      }
+    }
+    hStack {
+      StaticLabel (title: "Side", bold: no, size: .small, alignment: .left)
+      gutter
+      EnumPopUpButton (titles: enum TrackSide.popupTitles, size: .small) {
+        $selectedIndex #boardTrackSelectionController.mSide
+      }
+    }
+    Checkbox (title: "Expose Copper (as Pad)", size : .small) {
+      $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
+      $value #boardTrackSelectionController.mAddedToSolderMask
+    }
+    Checkbox (title: "Is Preserved by Auto Router", size : .small) {
+      $value #boardTrackSelectionController.mIsPreservedByAutoRouter
+    }
+    separator 
+    CanariTrackLockView {
+      $angle #boardTrackSelectionController.trackDirectionInDegrees
+      $manualLockP1 #boardTrackSelectionController.mManualLockP1
+      $manualLockP2 #boardTrackSelectionController.mManualLockP2
+      $p1ConnectedToSomePad #boardTrackSelectionController.p1ConnectedToSomePad
+      $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
+    }
+    hStack {
+      StaticLabel (title: "On Knob Dragging", bold: no, size: .small, alignment: .left)
+      gutter
+      EnumPopUpButton (titles: enum TrackLockDirection.popupTitles, size: .small) {
+        $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
+      }
+    }
+    hStack {
+      StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        $angle #boardTrackSelectionController.trackDirectionInDegrees
+        $enabled #boardTrackSelectionController.trackCanRotate
+      }
+    }
+    separator
+    CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
+      #boardTrackSelectionController.mP1XUnit, #boardTrackSelectionController.mP1YUnit,
+      #boardTrackSelectionController.mP2XUnit, #boardTrackSelectionController.mP2YUnit,
+      #boardTrackSelectionController.mDefaultTrackWidthUnit, 
+      #boardTrackSelectionController.mCustomTrackWidthUnit
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Track Width", bold: no, size: .small, alignment: .left)
+      gutter
+      Checkbox (title: "Use Custom", size: .small) {
+        $value #boardTrackSelectionController.mUsesCustomTrackWidth
+      }
+    }
+    hStack $hidden #boardTrackSelectionController.mUsesCustomTrackWidth {
+      StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariObservedDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
+      }
+    }
+    hStack $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth {
+      StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "End Style", bold: no, size: .small, alignment: .left)
+      gutter
+      EnumPopUpButton (titles: enum TrackEndStyle.popupTitles, size: .small) {
+        $selectedIndex #boardTrackSelectionController.mEndStyle
+      }
+    }
+    separator
+    hStack {
+      StaticLabels (left: "P1", right: "X", bold: no, size: .small)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
+        $enabled #boardTrackSelectionController.p1CanMove
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
+        $enabled #boardTrackSelectionController.p1CanMove
+      }
+    }
+    hStack {
+      StaticLabels (left: "P2", right: "X", bold: no, size: .small)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
+        $enabled #boardTrackSelectionController.p2CanMove
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
+        $enabled #boardTrackSelectionController.p2CanMove
+      }
     }
     space
   }
@@ -2006,61 +2008,63 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \BoardConnectorInspectorView vStack {
     StaticLabel (title: "Via Inspector", bold: yes, size: .small, alignment: .center)
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .center),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          expandableWidth ()
-          $title #boardConnectorSelectionController.netNameFromTracks
-        }
-      )
-      add (
-        left: StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .center),
-        right: Label (bold: yes, size: .small) {
-          set (alignment: .left)
-          expandableWidth ()
-          $title #boardConnectorSelectionController.netClassName
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Hole Diameter", bold: no, size: .small, alignment: .left),
-        right: Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomHoleDiameter }
-      )
-      add (
-        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center) { $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter } ,
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardConnectorSelectionController.viaDefaultHoleDiameter, #boardConnectorSelectionController.mDefaultHoleDiameterUnit
-          $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter
-        }
-      )
-      add (
-        left: StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center) { $hidden ! #boardConnectorSelectionController.mUsesCustomHoleDiameter },
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardConnectorSelectionController.mCustomHoleDiameter, #boardConnectorSelectionController.mCustomHoleDiameterUnit
-          $hidden ! #boardConnectorSelectionController.mUsesCustomHoleDiameter
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Pad Diameter", bold: no, size: .small, alignment: .left),
-        right: Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomPadDiameter }
-      )
-      add (
-        left: StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center) { $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter } ,
-        right: CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardConnectorSelectionController.viaDefaultPadDiameter, #boardConnectorSelectionController.mDefaultPadDiameterUnit
-          $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter
-        }
-      )
-      add (
-        left: StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center) { $hidden ! #boardConnectorSelectionController.mUsesCustomPadDiameter },
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardConnectorSelectionController.mCustomPadDiameter, #boardConnectorSelectionController.mCustomPadDiameterUnit
-          $hidden ! #boardConnectorSelectionController.mUsesCustomPadDiameter
-        }
-      )     
+    hStack {
+      StaticLabel (title: "Net Name", bold: no, size: .small, alignment: .center)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        expandableWidth ()
+        $title #boardConnectorSelectionController.netNameFromTracks
+      }
+    }
+    hStack {
+      StaticLabel (title: "Net Class Name", bold: no, size: .small, alignment: .center)
+      gutter
+      Label (bold: yes, size: .small) {
+        set (alignment: .left)
+        expandableWidth ()
+        $title #boardConnectorSelectionController.netClassName
+      }
+    }
+    separator 
+    hStack {
+      StaticLabel (title: "Hole Diameter", bold: no, size: .small, alignment: .left)
+      gutter
+      Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomHoleDiameter }
+    }
+    hStack $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter {
+      StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center)
+      gutter
+      CanariObservedDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardConnectorSelectionController.viaDefaultHoleDiameter, #boardConnectorSelectionController.mDefaultHoleDiameterUnit
+      }
+    }
+    hStack $hidden !#boardConnectorSelectionController.mUsesCustomHoleDiameter {
+      StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardConnectorSelectionController.mCustomHoleDiameter, #boardConnectorSelectionController.mCustomHoleDiameterUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Pad Diameter", bold: no, size: .small, alignment: .left)
+      gutter
+      Checkbox (title: "Use Custom", size: .small) { $value #boardConnectorSelectionController.mUsesCustomPadDiameter }
+    }
+    hStack $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter {
+      StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center)
+      gutter
+      CanariObservedDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardConnectorSelectionController.viaDefaultPadDiameter, #boardConnectorSelectionController.mDefaultPadDiameterUnit
+      }
+    }
+    hStack $hidden !#boardConnectorSelectionController.mUsesCustomPadDiameter {
+      StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardConnectorSelectionController.mCustomPadDiameter, #boardConnectorSelectionController.mCustomPadDiameterUnit
+      }
     }
     space
   }
@@ -2405,67 +2409,75 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       automaticallyAdjustHeight (maxWidth: 150)
       $value #boardTextSelectionController.mText (sendContinously : yes)
     }
-    GridView2 {
-      addSeparator ()
-      add (
-        left: StaticLabels (left: "Origin", right:"X", bold: no, size: .small),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTextSelectionController.mX, #boardTextSelectionController.mXUnit
-        }
-      )
-      add (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-        right: CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #boardTextSelectionController.mY, #boardTextSelectionController.mYUnit
-        }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
-        right: CanariBoardFontPopUpButton {
-          $currentFontName #boardTextSelectionController.fontName
-          $fontNames root.fontNameArray
-          $run setBoardTextFontAction
-        }
-      )
-      add (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (width: 64, size: .small) {
-          $value #boardTextSelectionController.mFontSize (sendContinously: yes)
-        }
-      )
-      add (
-        left: StaticLabel (title: "Weight", bold: no, size: .small, alignment: .right),
-        right: DoubleField (width: 64, size: .small) {
-          $value #boardTextSelectionController.mWeight (sendContinously: yes)
-        }
-      )
-      add (
-        left: space,
-        right: Checkbox (title: "Oblique", size: .small) { $value #boardTextSelectionController.mOblique }
-      ) 
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Horizontal", bold: no, size: .small, alignment: .right),
-        right: CanariHorizontalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mHorizontalAlignment }
-      )
-      add (
-        left: StaticLabel (title: "Vertical", bold: no, size: .small, alignment: .right),
-        right: CanariVerticalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mVerticalAlignment }
-      )
-      addSeparator ()
-      add (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-        right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardTextSelectionController.mRotation }
-      )
-      add (
-        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),
-        right: EnumPopUpButton (titles: enum BoardTextLayer.popupTitles, size: .small) { $selectedIndex #boardTextSelectionController.mLayer } 
-      )
-      add (single: Checkbox (title: "Show Rotation Knob", size: .small) {
-        set (toolTip: "Common to all texts, stored in Preferences")
-        $value prefs.mShowTextRotationKnobInBoard }
-      )
+    separator
+    hStack {
+      StaticLabels (left: "Origin", right:"X", bold: no, size: .small)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTextSelectionController.mX, #boardTextSelectionController.mXUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardTextSelectionController.mY, #boardTextSelectionController.mYUnit
+      }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Font", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariBoardFontPopUpButton {
+        $currentFontName #boardTextSelectionController.fontName
+        $fontNames root.fontNameArray
+        $run setBoardTextFontAction
+      }
+    }
+    hStack {
+      StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
+      gutter
+      DoubleField (width: 64, size: .small) {
+        $value #boardTextSelectionController.mFontSize (sendContinously: yes)
+      }
+    }
+    hStack {
+      StaticLabel (title: "Weight", bold: no, size: .small, alignment: .right)
+      gutter
+      DoubleField (width: 64, size: .small) {
+        $value #boardTextSelectionController.mWeight (sendContinously: yes)
+      }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Oblique", size: .small) { $value #boardTextSelectionController.mOblique }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Horizontal", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariHorizontalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mHorizontalAlignment }
+    }
+    hStack {
+      StaticLabel (title: "Vertical", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariVerticalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mVerticalAlignment }
+    }
+    separator
+    hStack {
+      StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardTextSelectionController.mRotation }
+    }
+    hStack {
+      StaticLabel (title: "Side", bold: no, size: .small, alignment: .right)
+      gutter
+      EnumPopUpButton (titles: enum BoardTextLayer.popupTitles, size: .small) { $selectedIndex #boardTextSelectionController.mLayer } 
+    }
+    Checkbox (title: "Show Rotation Knob", size: .small) {
+      set (toolTip: "Common to all texts, stored in Preferences")
+      $value prefs.mShowTextRotationKnobInBoard
     }
     space
   }
@@ -2513,133 +2525,154 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     separator
     VerticalScrollView (content:
-      GridView2 {
-        add (single: StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left))
-        add (
-          left: StaticLabels (left: "Center", right:"X", bold: no, size: .small),
-          right: CanariDimensionAndPopUp (size: .small) {
+      vStack {
+        StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left)
+        hStack {
+          StaticLabels (left: "Center", right:"X", bold: no, size: .small)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
           }
-        )
-        add (
-          left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
-          right: CanariDimensionAndPopUp (size: .small) {
+        }
+        hStack {
+          StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
           }
-        )
-        add (single: CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator])
-        add (
-          left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-          right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
-        )
-        add (
-          left: space,
-          right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        }
+        CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator]
+        hStack {
+          StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
+        }
+        hStack {
+          space
+          gutter
+          CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
             $angle #componentInBoardSelectionController.mRotation
           }
-        )
-        addSeparator ()
-        add (
-          left: StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left),
-          right: Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
-        )
-        add (
-          left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
-          right: CanariDimensionAndPopUp (size: .small) {
+        }
+        separator
+        hStack {
+          StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left)
+          gutter
+          Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
+        }
+        hStack {
+          StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
           }
-        )
-        add (
-          left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
-          right: CanariDimensionAndPopUp (size: .small) {
+        }
+        hStack {
+          StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
           }
-        )
-        add (
-          left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-          right: DoubleField (width: 64, size: .small) {
+        }
+        hStack {
+          StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
+          gutter
+          DoubleField (width: 64, size: .small) {
             $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
             // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
           }
-        )
-        add (
-          left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
-          right: CanariBoardFontPopUpButton {
+        }
+        hStack {
+          StaticLabel (title: "Font", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariBoardFontPopUpButton {
             $currentFontName #componentInBoardSelectionController.componentNameFontName
             $fontNames root.fontNameArray
             $run setComponentNameFontAction
           }
-        )
-        add (
-          left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-          right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
-        )
-        add (
-          left: space,
-          right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        }
+        hStack {
+          StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+          CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
+        }
+        hStack {
+          space
+          gutter
+          CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
             $angle #componentInBoardSelectionController.mNameRotation
             $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
           }
-        )
-        addSeparator ()
-        add (
-          left: StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left),
-          right: TextField (minWidth: 150, size: .small) {
+        }
+        separator
+        hStack {
+          StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left)
+          gutter
+          TextField (minWidth: 150, size: .small) {
             automaticallyAdjustHeight (maxWidth: 150)
             $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
       //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
           }
-        )
-        add (
-          left: StaticLabels (left: "Center", right:"∆X", bold: no, size: .small),
-          right: CanariDimensionAndPopUp (size: .small) {
+        }
+        hStack {
+          StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
           }
-        )
-        add (
-          left: StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right),
-          right: CanariDimensionAndPopUp (size: .small) {
+        }
+        hStack {
+          StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
           }
-        )
-        add (
-          left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-          right: DoubleField (width: 64, size: .small) {
+        }
+        hStack {
+          StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
+          gutter
+          DoubleField (width: 64, size: .small) {
             $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
           }
-        )
-        add (
-          left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
-          right: CanariBoardFontPopUpButton {
+        }
+        hStack {
+          StaticLabel (title: "Font", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariBoardFontPopUpButton {
             $currentFontName #componentInBoardSelectionController.componentValueFontName
             $fontNames root.fontNameArray
             $run setComponentValueFontAction
           }
-        )
-        add (
-          left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
-          right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
-        )
-        add (
-          left: space,
-          right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        }
+        hStack {
+          StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+          gutter
+          CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
+        }
+        hStack {
+          space
+          gutter
+          CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
             $angle #componentInBoardSelectionController.mValueRotation
             $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
           }
-        )
-        addSeparator ()
-        add (
-          left: StaticLabel (title: "Slave Pads", bold: yes, size: .small, alignment: .left),
-          right: BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
+        }
+        separator
+        hStack {
+          StaticLabel (title: "Slave Pads", bold: yes, size: .small, alignment: .left)
+          gutter
+          BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
             $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
             $enabled #componentInBoardSelectionController.hasSlavePads
           }
-        )
-        addSeparator ()
-        add (
-          left: StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left),
-          right: EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) { $selectedIndex #componentInBoardSelectionController.mSide }
-        )
+        }
+        separator
+        hStack {
+          StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left)
+          gutter
+          EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) {
+            $selectedIndex #componentInBoardSelectionController.mSide
+          }
+        }
       }
     )
   }
@@ -2729,27 +2762,28 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   //············································································
 
   stackView \ArtworkDescriptionPage vStack {
-    GridView2 {
-      add (
-        left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .center),
-        right: Label (bold: yes, size: .regular) {
-          set (alignment: .left)
-          expandableWidth ()
-          $title root.layerConfigurationString
-        }
-      )
-      add (
-        left: StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .center),
-        right: IntObserverField (bold: yes, size: .regular) {
-          set (alignment: .left)
-          expandableWidth ()
-          $observedValue root.mArtworkVersion
-        }
-      )
-      add (
-        left: vStack { StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .center) space},
-        right: TextObserverView (size: .small) { expandableWidth () $observedValue root.artworkComments }
-      )
+    hStack {
+      StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .center)
+      gutter
+      Label (bold: yes, size: .regular) {
+        set (alignment: .left)
+        expandableWidth ()
+        $title root.layerConfigurationString
+      }
+    }
+    hStack {
+      StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .center)
+      gutter
+      IntObserverField (bold: yes, size: .regular) {
+        set (alignment: .left)
+        expandableWidth ()
+        $observedValue root.mArtworkVersion
+      }
+    }
+    hStack {
+      StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .left)
+      gutter
+      TextObserverView (size: .small) { expandableWidth () $observedValue root.artworkComments }
     }
   }
 
@@ -2784,38 +2818,40 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
           StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .left)
           hStack {
-            GridView2 {
-              set (leftMargin: .large)
-              add (
-                left: Checkbox (title: "Front Side Images", size : .small) {
+            vStack set (leftMargin: .large) {
+              hStack {
+                Checkbox (title: "Front Side Images", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawImagesTopSide
-                },
-                right: Checkbox (title: "Front Side QRCodes", size : .small) {
+                }
+                gutter
+                Checkbox (title: "Front Side QRCodes", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawQRCodesTopSide
                 }
-              )
-              add (
-                left: Checkbox (title: "Legend Front Side Texts", size : .small) {
+              }
+              hStack {
+                Checkbox (title: "Legend Front Side Texts", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTextsLegendTopSide
-                },
-                right: Checkbox (title: "Layout Front Side Texts", size : .small) {
+                }
+                gutter
+                Checkbox (title: "Layout Front Side Texts", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTextsLayoutTopSide
                 }
-              )
-              add (
-                left: Checkbox (title: "Front Side Tracks", size : .small) {
+              }
+              hStack {
+                Checkbox (title: "Front Side Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksTopSide
-                },
-                right: Checkbox (title: "Front Side Pads", size : .small) {
+                }
+                gutter
+                Checkbox (title: "Front Side Pads", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawPadsTopSide
                 }
-              )
+              }
             }
             space
           }
@@ -2841,106 +2877,101 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
           StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
           hStack {
-            GridView2 {
-              set (leftMargin: .large)
-              add (
-                left:  Checkbox (title: "Traversing Pads", size : .small) {
+           vStack set (leftMargin: .large) {
+              hStack $hidden !root.hasInnerElements {
+                Checkbox (title: "Traversing Pads", size : .small) {
                   set (enabled: no)
-                  $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements
-                },
-                right: space
-              )
-              add (
-                left:  Checkbox (title: "Traversing Pads", size : .small) {
-                  set (enabled: no)
-//                  $enabled root.hasInnerElements
-                  $hidden root.hasInnerElements
-                },
-                right: space
-              )
-             add (
-                left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
-                  set (enabled: no)
-                  $value #mDataSelection.drawTracksInner1Layer $hidden !root.hasInnerElements
-                },
-                right: Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
-                  set (enabled: no)
-                  $value #mDataSelection.drawTracksInner2Layer $hidden !root.hasInnerElements
+                  $value #mDataSelection.drawTraversingPads
                 }
-              )
-              add (  // Always disabled items
-                left:  Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
+                gutter
+                space
+              }
+              hStack $hidden root.hasInnerElements {
+                Checkbox (title: "Traversing Pads", size : .small) {
                   set (enabled: no)
-//                  $enabled root.hasInnerElements
-                  $hidden root.hasInnerElements
-                },
-                right: Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
-                  set (enabled: no)
-//                  $enabled root.hasInnerElements
-                  $hidden root.hasInnerElements
                 }
-              )
-              add (
-                left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
+                gutter
+                space
+              }
+              hStack $hidden !root.hasInnerElements {
+                Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
+                  set (enabled: no)
+                  $value #mDataSelection.drawTracksInner1Layer
+                }
+                gutter
+                Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
+                  set (enabled: no)
+                  $value #mDataSelection.drawTracksInner2Layer
+                }
+              }
+              hStack $hidden root.hasInnerElements {
+                Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
+                  set (enabled: no)
+                }
+                gutter
+                Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
+                  set (enabled: no)
+                }
+              }
+              hStack $hidden !root.hasSixLayers {
+                Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksInner3Layer
-                  $hidden !root.hasSixLayers
-                },
-                right: Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
+                }
+                gutter
+                Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksInner4Layer
-                  $hidden !root.hasSixLayers
                 }
-              )
-              add ( // Always disabled items
-                left:  Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
+              }
+              hStack $hidden root.hasSixLayers {
+                Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
                   set (enabled: no)
-//                  $enabled root.hasSixLayers
-                  $hidden root.hasSixLayers
-                },
-                right: Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
-                  set (enabled: no)
-//                  $enabled root.hasSixLayers
-                  $hidden root.hasSixLayers
                 }
-              )
+                gutter
+                Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
+                  set (enabled: no)
+                }
+              }
             }
             space
           }
           StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .left)
           hStack {
-            GridView2 {
-              set (leftMargin: .large)
-              add (
-                left: Checkbox (title: "Back Side Images", size : .small) {
+            vStack set (leftMargin: .large) {
+              hStack {
+                Checkbox (title: "Back Side Images", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawImagesBottomSide
-                },
-                right: Checkbox (title: "Back Side QRCodes", size : .small) {
+                }
+                gutter
+                Checkbox (title: "Back Side QRCodes", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawQRCodesBottomSide
                 }
-              )
-              add (
-                left: Checkbox (title: "Legend Back Side Texts", size : .small) {
+              }
+              hStack {
+                Checkbox (title: "Legend Back Side Texts", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTextsLegendBottomSide
-                },
-                right: Checkbox (title: "Layout Back Side Texts", size : .small) {
+                }
+                gutter
+                Checkbox (title: "Layout Back Side Texts", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTextsLayoutBottomSide
                 }
-              )
-              add (
-                left: Checkbox (title: "Back Side Tracks", size : .small) {
+              }
+              hStack {
+                Checkbox (title: "Back Side Tracks", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawTracksBottomSide
-                },
-                right: Checkbox (title: "Back Side Pads", size : .small) {
+                }
+                gutter
+                Checkbox (title: "Back Side Pads", size : .small) {
                   set (enabled: no)
                   $value #mDataSelection.drawPadsBottomSide
                 }
-              )
+              }
             }
             space
           }
@@ -3025,26 +3056,29 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack {
       space
-      GridView2 {
-        set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular)
-        add (
-          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
-          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
-        )
-        add (
-          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center),
-          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
-        )
-        add (
-          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center),
-          right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
-        )
-        add (
-          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center),
-          right: CanariObservedDimensionAndPopUp (size : .small) {
+      vStack set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) {
+        hStack {
+          StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+        }
+        hStack {
+          StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
+        }
+        hStack {
+          StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
+        }
+        hStack {
+          StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center)
+          gutter
+          CanariObservedDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
           }
-        )
+        }
       }
       space
     }

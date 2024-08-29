@@ -26,20 +26,6 @@ func enum GridStyle.popupTitles {
   line : "Line Grid" ;
 }
 
-extern autolayout class GridView2 $hidden {
-  func set (spacing: MarginSize)
-  func set (margins: MarginSize)
-  func set (leftMargin: MarginSize)
-  func set (rightMargin: MarginSize)
-  func set (topMargin: MarginSize)
-  func set (bottomMargin: Int)
-  func set (width: Int)
-  func add (left : view, right: view)
-  func add (single : view)
-  func flexibleSpace ()
-  func addSeparator ()
-}
-
 extern autolayout class VerticalScrollView (content: view) {
   func set (width: Int)
 }
