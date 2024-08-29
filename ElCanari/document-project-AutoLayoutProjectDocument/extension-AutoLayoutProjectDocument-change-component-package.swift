@@ -42,13 +42,13 @@ extension AutoLayoutProjectDocument {
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
-      let gridView = AutoLayoutGridView2 ()
+      let gridView = AutoLayoutVerticalStackView ()
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular, alignment: .right)
         let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular, alignment: .center)
           .expandableWidth().set (alignment: .left)
-        _ = gridView.add (left: left, right: right)
+        _ = gridView.append (left: left, right: right)
       }
       let popupButton = ALB_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       let stringAttributes : [NSAttributedString.Key : Any] = [
@@ -69,10 +69,9 @@ extension AutoLayoutProjectDocument {
       }
       do{
         let left = AutoLayoutStaticLabel (title: "Package", bold: false, size: .regular, alignment: .right)
-        _ = gridView.add (left: left, right: popupButton)
+        _ = gridView.append (left: left, right: popupButton)
       }
-      _ = layoutView.appendView (gridView)
-      _ = layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (gridView).appendFlexibleSpace ()
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()

@@ -65,12 +65,12 @@ import AppKit
   //--- Main view
     let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
   //--- Grid view
-    let gridView = AutoLayoutGridView2 ()
-      .add (left: self.mSetLibraryRepositoryButton, right: self.mLibraryRepositoryTextField)
-      .add (left: self.mSetUserAndPasswordButton, right: self.mUserAndPasswordTextField)
-      .addSeparator ()
-      .add (left: self.mLibraryRepositoryLoadCurrentReleaseButton, right: self.mLibraryRepositoryCurrentReleaseTextField)
-      .add (left: self.mLibraryRepositoryStatusButton, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (self.mLibraryRepositoryCommitButton))
+    let gridView = AutoLayoutVerticalStackView ()
+      .append (left: self.mSetLibraryRepositoryButton, right: self.mLibraryRepositoryTextField)
+      .append (left: self.mSetUserAndPasswordButton, right: self.mUserAndPasswordTextField)
+      .appendView (AutoLayoutVerticalStackView.HorizontalSeparator ())
+      .append (left: self.mLibraryRepositoryLoadCurrentReleaseButton, right: self.mLibraryRepositoryCurrentReleaseTextField)
+      .append (left: self.mLibraryRepositoryStatusButton, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (self.mLibraryRepositoryCommitButton))
     _ = mainView.appendView (gridView)
   //--- Log Text View
     _ = mainView.appendView (self.mLibraryRepositoryLogTextView)

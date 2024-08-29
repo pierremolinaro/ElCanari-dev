@@ -206,7 +206,6 @@
 		CF21D8A72C747F700012AD5F /* AutoLayoutHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2BD2C734F3700BA9590 /* AutoLayoutHorizontalStackView.swift */; };
 		CF21D8A82C747F700012AD5F /* AutoLayoutVerticalStackView+separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2D62C734F3900BA9590 /* AutoLayoutVerticalStackView+separator.swift */; };
 		CF21D8A92C747F700012AD5F /* AutoLayoutFlexibleSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */; };
-		CF21D8AA2C747F700012AD5F /* AutoLayoutGridView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C32C734F3700BA9590 /* AutoLayoutGridView2.swift */; };
 		CF21D8AB2C747F700012AD5F /* NSControl+autolayout-settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2BC2C734F3700BA9590 /* NSControl+autolayout-settings.swift */; };
 		CF223CB82C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF223CB72C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift */; };
 		CF223CB92C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF223CB72C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift */; };
@@ -225,7 +224,6 @@
 		CF223CCD2C73DCF700FFF7E7 /* ALB_NSScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2BA2C734F3700BA9590 /* ALB_NSScrollView.swift */; };
 		CF223CCE2C73DCF700FFF7E7 /* ALB_NSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C92C734F3800BA9590 /* ALB_NSButton.swift */; };
 		CF223CCF2C73DCF700FFF7E7 /* ALB_NSSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2BE2C734F3700BA9590 /* ALB_NSSlider.swift */; };
-		CF223CD02C73DCF700FFF7E7 /* AutoLayoutGridView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C32C734F3700BA9590 /* AutoLayoutGridView2.swift */; };
 		CF223CD12C73DCF700FFF7E7 /* NSLayoutConstraint+array-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C02C734F3700BA9590 /* NSLayoutConstraint+array-extension.swift */; };
 		CF223CD22C73DCF700FFF7E7 /* AutoLayoutVerticalStackView+divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2CC2C734F3800BA9590 /* AutoLayoutVerticalStackView+divider.swift */; };
 		CF223CD32C73DCF700FFF7E7 /* layout-compression-stretching-priorities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7AB2C42C734F3700BA9590 /* layout-compression-stretching-priorities.swift */; };
@@ -4334,7 +4332,6 @@
 		CF7AB2C02C734F3700BA9590 /* NSLayoutConstraint+array-extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+array-extension.swift"; sourceTree = "<group>"; };
 		CF7AB2C12C734F3700BA9590 /* ALB_NSSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALB_NSSegmentedControl.swift; sourceTree = "<group>"; };
 		CF7AB2C22C734F3700BA9590 /* AutoLayoutHorizontalStackView+separator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLayoutHorizontalStackView+separator.swift"; sourceTree = "<group>"; };
-		CF7AB2C32C734F3700BA9590 /* AutoLayoutGridView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutGridView2.swift; sourceTree = "<group>"; };
 		CF7AB2C42C734F3700BA9590 /* layout-compression-stretching-priorities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "layout-compression-stretching-priorities.swift"; sourceTree = "<group>"; };
 		CF7AB2C52C734F3800BA9590 /* ALB_NSDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALB_NSDatePicker.swift; sourceTree = "<group>"; };
 		CF7AB2C62C734F3800BA9590 /* NSView+expandableHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+expandableHeight.swift"; sourceTree = "<group>"; };
@@ -6263,7 +6260,6 @@
 				CF7AB2CB2C734F3800BA9590 /* ALB_WKWebView.swift */,
 				CFCC545325D2F937009C186D /* AutoLayout-debug-menu.swift */,
 				CF7AB2F62C7353A100BA9590 /* AutoLayoutFlexibleSpace.swift */,
-				CF7AB2C32C734F3700BA9590 /* AutoLayoutGridView2.swift */,
 				CF7AB2BD2C734F3700BA9590 /* AutoLayoutHorizontalStackView.swift */,
 				CF7AB2D32C734F3900BA9590 /* AutoLayoutHorizontalStackView+divider.swift */,
 				CF541E6F2C7F9D9400189071 /* AutoLayoutHorizontalStackView+gutter.swift */,
@@ -8929,7 +8925,6 @@
 				CF21D8A72C747F700012AD5F /* AutoLayoutHorizontalStackView.swift in Sources */,
 				CF21D8A82C747F700012AD5F /* AutoLayoutVerticalStackView+separator.swift in Sources */,
 				CF21D8A92C747F700012AD5F /* AutoLayoutFlexibleSpace.swift in Sources */,
-				CF21D8AA2C747F700012AD5F /* AutoLayoutGridView2.swift in Sources */,
 				CF21D8AB2C747F700012AD5F /* NSControl+autolayout-settings.swift in Sources */,
 				CF861AA31B3F04460006BE63 /* library-utilities.swift in Sources */,
 				CFAA052F22F1D4F300030A0C /* EBLinePath.swift in Sources */,
@@ -11068,7 +11063,6 @@
 				CF223CCD2C73DCF700FFF7E7 /* ALB_NSScrollView.swift in Sources */,
 				CF223CCE2C73DCF700FFF7E7 /* ALB_NSButton.swift in Sources */,
 				CF223CCF2C73DCF700FFF7E7 /* ALB_NSSlider.swift in Sources */,
-				CF223CD02C73DCF700FFF7E7 /* AutoLayoutGridView2.swift in Sources */,
 				CF223CD12C73DCF700FFF7E7 /* NSLayoutConstraint+array-extension.swift in Sources */,
 				CF223CD22C73DCF700FFF7E7 /* AutoLayoutVerticalStackView+divider.swift in Sources */,
 				CF223CD32C73DCF700FFF7E7 /* layout-compression-stretching-priorities.swift in Sources */,

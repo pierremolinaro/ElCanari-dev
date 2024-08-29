@@ -128,7 +128,7 @@ extension ApplicationDelegate {
     window.title = inTitle
     window.isReleasedWhenClosed = false
 
-    let stack = AutoLayoutGridView2 (horizontal: .fill, vertical: .fill)
+    let stack = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
       .set (horizontalSpacing: .large)
       .append (left: ALB_NSButton (title: "Button 0", size: .regular), right: ALB_NSButton (title: "Button 1", size: .regular))

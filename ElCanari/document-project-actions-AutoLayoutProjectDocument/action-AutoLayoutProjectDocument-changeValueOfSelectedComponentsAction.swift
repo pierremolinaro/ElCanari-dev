@@ -32,7 +32,7 @@ extension AutoLayoutProjectDocument {
           )
         //---
           let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
-          let gridView = AutoLayoutGridView2 ()
+          let gridView = AutoLayoutVerticalStackView ()
         //---
           _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Value", bold: true, size: .regular, alignment: .center))
           _ = layoutView.appendFlexibleSpace ()
@@ -41,13 +41,13 @@ extension AutoLayoutProjectDocument {
             let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular, alignment: .center)
             let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular, alignment: .center)
                   .set (alignment: .left).expandableWidth ()
-            _ = gridView.add (left: left, right: right)
+            _ = gridView.append (left: left, right: right)
           }
         //---
           let comboBox = AutoLayoutComboBox (width: 120).expandableWidth ()
           do{
             let left = AutoLayoutStaticLabel (title: "New Value", bold: false, size: .regular, alignment: .center)
-            _ = gridView.add (left: left, right: comboBox)
+            _ = gridView.append (left: left, right: comboBox)
           }
         //---
           _ = layoutView.appendView (gridView)

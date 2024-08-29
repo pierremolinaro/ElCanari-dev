@@ -79,26 +79,26 @@ extension AutoLayoutMergerDocumentSubClass {
       _ = rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular, alignment: .center))
       _ = rightColumn.appendFlexibleSpace ()
 
-      let grid = AutoLayoutGridView2 ()
-      _ = grid.add (
+      let grid = AutoLayoutVerticalStackView ()
+      _ = grid.append (
         left: AutoLayoutStaticLabel (title: "Model", bold: false, size: .small, alignment: .center),
         right: modelPopUpButton
       )
       let hStackXCount = AutoLayoutHorizontalStackView ()
       _ = hStackXCount.appendView (xCountTextField)
       _ = hStackXCount.appendFlexibleSpace ()
-      _ = grid.add (
+      _ = grid.append (
         left: AutoLayoutStaticLabel (title: "X Count", bold: false, size: .small, alignment: .center),
         right: hStackXCount
       )
       let hStackYCount = AutoLayoutHorizontalStackView ()
       _ = hStackYCount.appendView (yCountTextField)
       _ = hStackYCount.appendFlexibleSpace ()
-      _ = grid.add (
+      _ = grid.append (
         left: AutoLayoutStaticLabel (title: "Y Count", bold: false, size: .small, alignment: .center),
         right: hStackYCount
       )
-      _ = grid.add (
+      _ = grid.append (
         left: AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center),
         right: orientationSegmentedControl
       )

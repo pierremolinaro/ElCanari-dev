@@ -96,7 +96,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
-      let gridView = AutoLayoutGridView2 ()
+      let gridView = AutoLayoutVerticalStackView ()
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
@@ -104,16 +104,16 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       do{
         let left = AutoLayoutStaticLabel (title: "Current Net Name", bold: false, size: .regular, alignment: .right)
         let right = AutoLayoutStaticLabel (title: inNet.mNetName, bold: true, size: .regular, alignment: .left)
-        _ = gridView.add (left: left, right: right)
+        _ = gridView.append (left: left, right: right)
       }
       let newNameTextField = AutoLayoutTextField (minWidth: 200, size: .regular).set (alignment: .left)
       do{
         let left = AutoLayoutStaticLabel (title: "New Net Name", bold: false, size: .regular, alignment: .right)
-        _ = gridView.add (left: left, right: newNameTextField)
+        _ = gridView.append (left: left, right: newNameTextField)
       }
       let errorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .right)
          .setRedTextColor ().expandableWidth()
-      _ = gridView.add (single: errorLabel)
+      _ = gridView.appendView (errorLabel)
       _ = layoutView.appendView (gridView)
       _ = layoutView.appendFlexibleSpace ()
     //---
@@ -185,7 +185,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       )
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
-      let gridView = AutoLayoutGridView2 ()
+      let gridView = AutoLayoutVerticalStackView ()
     //---
       _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
@@ -207,7 +207,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       }
       do{
         let left = AutoLayoutStaticLabel (title: "Resulting Net Name", bold: false, size: .regular, alignment: .right)
-        _ = gridView.add (left: left, right: popUpButton)
+        _ = gridView.append (left: left, right: popUpButton)
       }
       _ = layoutView.appendView (gridView).appendFlexibleSpace ()
     //---

@@ -169,12 +169,12 @@ import AppKit
     _ = twoColumns.appendView (self.mNoSelectedArtworkMessage)
     _ = twoColumns.appendView (self.mArtworkDetailView)
   //--- Grid view (status, path)
-    let gridView = AutoLayoutGridView2 ()
-    _ = gridView.add (
+    let gridView = AutoLayoutVerticalStackView ()
+    _ = gridView.append (
       left: AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular, alignment: .left),
       right: self.mArtworkStatus
     )
-    _ = gridView.add (
+    _ = gridView.append (
       left: AutoLayoutStaticLabel (title: "Path", bold: false, size: .regular, alignment: .left),
       right: self.mArtworkPath
     )

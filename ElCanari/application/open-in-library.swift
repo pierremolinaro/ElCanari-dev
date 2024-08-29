@@ -73,12 +73,12 @@ import AppKit
   //--- Add view
     _ = mainView.appendView (topView)
   //--- Grid view: status and path
-    let gridView = AutoLayoutGridView2 ()
-      .add (
+    let gridView = AutoLayoutVerticalStackView ()
+      .append (
         left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular, alignment: .center).notExpandableWidth (),
         right: self.mStatusTextField
       )
-      .add (
+      .append (
         left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular, alignment: .center),
         right: self.mFullPathTextField
       )

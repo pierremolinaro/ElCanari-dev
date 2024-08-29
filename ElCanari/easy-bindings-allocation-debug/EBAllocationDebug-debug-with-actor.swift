@@ -326,16 +326,16 @@ fileprivate struct EBAllocationItemDisplay {
      self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
    //--- Build window contents
     let mainVStack = AutoLayoutVerticalStackView ()
-      let hStack = AutoLayoutGridView2 ().set (margins: .large).set (bottomMargin: .large)
-        .add (
-          left: self.mEnableAllocationDebugCheckbox,
-          right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
+      let hStack = AutoLayoutHorizontalStackView ().set (margins: .large).set (bottomMargin: .large)
+        .appendView (self.mEnableAllocationDebugCheckbox)
+        .appendFlexibleSpace ()
+        .appendView (AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
             .expandableWidth ()
         )
       _ = mainVStack.appendView (hStack)
       mainVStack.appendHorizontalSeparator ()
-      let gridView = AutoLayoutGridView2 ().set (margins: .large).set (topMargin: .large).set (spacing: .regular)
-        .add (
+      let gridView = AutoLayoutVerticalStackView ().set (margins: .large).set (topMargin: .large).set (spacing: .regular)
+        .append (
           left: AutoLayoutHorizontalStackView ()
             .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
             .appendFlexibleSpace (),
@@ -344,7 +344,7 @@ fileprivate struct EBAllocationItemDisplay {
             .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small, alignment: .center))
             .appendView (self.mTotalAllocatedLabel)
         )
-        .add (
+        .append (
           left: AutoLayoutHorizontalStackView ()
             .appendView (self.mPerformSnapShotButton)
             .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small, alignment: .center))
@@ -354,7 +354,7 @@ fileprivate struct EBAllocationItemDisplay {
             .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
             .appendView (self.mCurrentlyAllocatedLabel)
         )
-        .add (single: self.mStatsTableView)
+        .appendView (self.mStatsTableView)
       _ = mainVStack.appendView (gridView)
     //--- Assign main view to window
       self.mAllocationStatsWindow.setContentView (mainVStack)

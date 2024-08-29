@@ -156,29 +156,29 @@ extension AutoLayoutProjectDocument {
       _ = layoutView.appendView (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
     //---
-      let gridView = AutoLayoutGridView2 ()
+      let gridView = AutoLayoutVerticalStackView ()
       do{
         let left = AutoLayoutStaticLabel (title: "Current Component Name", bold: false, size: .regular, alignment: .right)
         let currentComponentName = renameContext.mComponentCurrentPrefix + "\(renameContext.mComponentCurrentIndex)"
         let right = AutoLayoutStaticLabel (title: currentComponentName, bold: true, size: .regular, alignment: .center)
-        _ = gridView.add (left: left, right: right)
+        _ = gridView.append (left: left, right: right)
       }
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "New Prefix (only letters)", bold: false, size: .regular, alignment: .right)
         renameContext.populatePrefixComboBox (currentPrefixSet)
         renameContext.mComboBox.mTextDidChange = { [weak renameContext] (_ inOutlet : AutoLayoutComboBox) in renameContext?.renameComponentComboBoxAction () }
-        _ = gridView.add (left: left, right: renameContext.mComboBox)
+        _ = gridView.append (left: left, right: renameContext.mComboBox)
       }
     //---
-      _ = gridView.add (single: renameContext.mErrorLabel)
+      _ = gridView.appendView (renameContext.mErrorLabel)
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular, alignment: .right)
         renameContext.populateIndexesPopupButton ()
         renameContext.mIndexesPopUpButton.target = renameContext
         renameContext.mIndexesPopUpButton.action = #selector (RenameContext.renameComponentIndexPopUpButtonAction (_:))
-        _ = gridView.add (left: left, right: renameContext.mIndexesPopUpButton)
+        _ = gridView.append (left: left, right: renameContext.mIndexesPopUpButton)
       }
       _ = layoutView.appendView (gridView)
       _ = layoutView.appendFlexibleSpace ()

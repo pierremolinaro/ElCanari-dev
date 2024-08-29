@@ -162,7 +162,7 @@ extension SheetInProject {
     )
   //---
     let layoutView = AutoLayoutVerticalStackView ().set (margins: .large)
-    let gridView = AutoLayoutGridView2 ()
+    let gridView = AutoLayoutVerticalStackView ()
   //---
     _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Performing Connection will Merge Several Subnets.", bold: true, size: .regular, alignment: .center))
     _ = layoutView.appendFlexibleSpace ()
@@ -173,7 +173,7 @@ extension SheetInProject {
     }
     do{
       let left = AutoLayoutStaticLabel (title: "Resulting Net", bold: false, size: .regular, alignment: .right)
-      _ = gridView.add (left: left, right: popupButton)
+      _ = gridView.append (left: left, right: popupButton)
     }
     _ = layoutView.appendView (gridView)
     _ = layoutView.appendFlexibleSpace ()

@@ -39,6 +39,18 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   override var pmLastBaselineRepresentativeView : NSView? { self.mLastBaselineRepresentativeView }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Add rom with two columns
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func append (left inLeftView : NSView, right inRightView : NSView) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+      .appendView (inLeftView)
+      .appendView (AutoLayoutHorizontalStackView.GutterSeparator ())
+      .appendView (inRightView)
+    return self.appendView (hStack)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Constraints
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
