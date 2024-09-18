@@ -383,29 +383,35 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override final var selection : EBSelection < [PadProxyInDevice] > { return .single (self.mInternalArrayValue.values) }
+  override final var selection : EBSelection < [PadProxyInDevice] > {
+    return .single (self.mInternalArrayValue.values)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func setProp (_ inValue : EBReferenceArray <PadProxyInDevice>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <PadProxyInDevice>) {
+    self.mInternalArrayValue = inValue
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override var propval : EBReferenceArray <PadProxyInDevice> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <PadProxyInDevice> {
+    return self.mInternalArrayValue
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func remove (_ object : PadProxyInDevice) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+  final func remove (_ inObject : PadProxyInDevice) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
       self.mInternalArrayValue.remove (at: idx)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func add (_ object : PadProxyInDevice) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
+  final func add (_ inObject : PadProxyInDevice) {
+    if !self.internalSetValue.contains (inObject) {
+      self.mInternalArrayValue.append (inObject)
     }
   }
 
@@ -421,10 +427,10 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = observer
-    observer?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
     self.clearSignatureCache ()
  }
 

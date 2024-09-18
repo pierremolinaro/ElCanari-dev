@@ -453,29 +453,35 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override final var selection : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue.values) }
+  override final var selection : EBSelection < [SheetInProject] > {
+    return .single (self.mInternalArrayValue.values)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func setProp (_ inValue : EBReferenceArray <SheetInProject>) { self.mInternalArrayValue = inValue }
+  override func setProp (_ inValue : EBReferenceArray <SheetInProject>) {
+    self.mInternalArrayValue = inValue
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override var propval : EBReferenceArray <SheetInProject> { return self.mInternalArrayValue }
+  final override var propval : EBReferenceArray <SheetInProject> {
+    return self.mInternalArrayValue
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func remove (_ object : SheetInProject) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
+  final func remove (_ inObject : SheetInProject) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
       self.mInternalArrayValue.remove (at: idx)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func add (_ object : SheetInProject) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
+  final func add (_ inObject : SheetInProject) {
+    if !self.internalSetValue.contains (inObject) {
+      self.mInternalArrayValue.append (inObject)
     }
   }
 
@@ -491,10 +497,10 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = observer
-    observer?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
     self.clearSignatureCache ()
  }
 

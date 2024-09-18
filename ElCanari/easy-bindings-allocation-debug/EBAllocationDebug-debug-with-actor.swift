@@ -75,7 +75,7 @@ nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAY
 //--------------------------------------------------------------------------------------------------
 
 @PendingAllocationBufferActor fileprivate func triggerTransmit () {
-  if (!gTransmitEventTriggered) {
+  if !gTransmitEventTriggered {
     gTransmitEventTriggered = true
     Task.detached {
       try? await Task.sleep (nanoseconds: 100_000_000)
@@ -203,54 +203,54 @@ fileprivate struct EBAllocationItemDisplay {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mAllocationStatsDisplayFilterIndex = EBPreferenceProperty <Int> (
+  private let mAllocationStatsDisplayFilterIndex = EBPreferenceProperty <Int> (
     defaultValue: 0,
     prefKey: prefsEnableObjectAllocationStatsDisplayFilter
   )
 
-  private var mAllocationStatsWindowVisibleAtLaunch = EBPreferenceProperty <Bool> (
+  private let mAllocationStatsWindowVisibleAtLaunch = EBPreferenceProperty <Bool> (
     defaultValue: false,
     prefKey: prefsEnableObjectAllocationStatsWindowVisible
   )
 
-  private var mEnableAllocationDebug = EBPreferenceProperty <Bool> (
+  private let mEnableAllocationDebug = EBPreferenceProperty <Bool> (
     defaultValue: false,
     prefKey: prefsEnableObjectAllocationDebugString
   )
 
-  private var mTotalAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
+  private let mTotalAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
 
-  private var mCurrentlyAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
+  private let mCurrentlyAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
 
-  fileprivate var mAllocationStatsWindow = NSWindow (
+  fileprivate let mAllocationStatsWindow = NSWindow (
     contentRect: NSRect(x: 0.0, y: 0.0, width: 600.0, height: 400.0),
     styleMask: [.titled, .closable, .miniaturizable],
     backing: .buffered,
     defer: true
   )
 
-  fileprivate var mAllocationStatsWindowVisibleAtLaunchCheckbox = AutoLayoutCheckbox (
+  fileprivate let mAllocationStatsWindowVisibleAtLaunchCheckbox = AutoLayoutCheckbox (
     title: "Visible At Launch",
     size: .small
   )
 
-  fileprivate var mEnableAllocationDebugCheckbox = AutoLayoutCheckbox (
+  fileprivate let mEnableAllocationDebugCheckbox = AutoLayoutCheckbox (
     title: "Enable Allocation Debug",
     size: .small
   )
 
-  fileprivate var mTotalAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
+  fileprivate let mTotalAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
 
-  fileprivate var mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
+  fileprivate let mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
 
-  fileprivate var mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", size: .small)
+  fileprivate let mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", size: .small)
 
-  fileprivate var mFilterPopUpButton = AutoLayoutTaggedPopUpButton (size: .small)
+  fileprivate let mFilterPopUpButton = AutoLayoutTaggedPopUpButton (size: .small)
     .add (title: "All Classes", withTag: 0)
     .add (title: "Allocated Classes", withTag: 1)
     .add (title: "Differences with Snap Shot", withTag: 2)
 
-  fileprivate var mStatsTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
+  fileprivate let mStatsTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    init
@@ -358,7 +358,6 @@ fileprivate struct EBAllocationItemDisplay {
       _ = mainVStack.appendView (gridView)
     //--- Assign main view to window
       self.mAllocationStatsWindow.setContentView (mainVStack)
-//      self.mAllocationStatsWindow.contentView = AutoLayoutWindowContentView (view: mainVStack)
    //--- Show Window at Launch
      if self.mAllocationStatsWindowVisibleAtLaunch.propval {
        self.mAllocationStatsWindow.makeKeyAndOrderFront (nil)
@@ -398,7 +397,7 @@ fileprivate struct EBAllocationItemDisplay {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    performSnapShotAction:
+  //    performSnapShotAction
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performSnapShotAction () {

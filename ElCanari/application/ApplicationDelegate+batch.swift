@@ -94,17 +94,17 @@ extension ApplicationDelegate {
                 let maintenanceLogTextView = self.mMaintenanceLogTextView
                 let maintenanceLogTextField = self.mMaintenanceLogTextField
                 maintenanceLogTextView?.appendMessageString (message)
-                var count = 0
+                self.mCount = 0
                 for fullPath in retainedFiles {
                   dc.openDocument (
                     withContentsOf: URL (fileURLWithPath: fullPath),
                     display: true
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
                     if document != nil {
-                      count += 1
-                      let message = (count > 1)
-                        ? "\(count) \(inTitle)s have been opened"
-                        : "\(count) \(inTitle) has been opened"
+                      self.mCount += 1
+                      let message = (self.mCount > 1)
+                        ? "\(self.mCount) \(inTitle)s have been opened"
+                        : "\(self.mCount) \(inTitle) has been opened"
                       maintenanceLogTextField?.stringValue = message
                     }else{
                       maintenanceLogTextView?.appendErrorString ("Cannot open \(fullPath)")

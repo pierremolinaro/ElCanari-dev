@@ -1,0 +1,5 @@
+Merge 2 tracks
+
+Sélection des 2 pistes dans Board -> inspecteurs désativés ?
+
+Sélecionner une piste pour placement octolinear

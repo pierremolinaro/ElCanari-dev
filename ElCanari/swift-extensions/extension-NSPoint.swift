@@ -9,7 +9,7 @@ import CoreGraphics
 //   EXTENSION NSPoint
 //--------------------------------------------------------------------------------------------------
 
-extension NSPoint : Hashable {
+extension NSPoint : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   /// The hash value.

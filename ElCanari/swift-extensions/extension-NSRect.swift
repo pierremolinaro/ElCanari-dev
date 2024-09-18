@@ -15,7 +15,7 @@ let CohenSutherlandOutcodeTOP    : UInt8 = 8
 //   EXTENSION NSRect
 //--------------------------------------------------------------------------------------------------
 
-extension NSRect : Hashable {
+extension NSRect : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

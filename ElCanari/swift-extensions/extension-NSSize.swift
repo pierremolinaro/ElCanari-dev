@@ -9,7 +9,7 @@ import CoreGraphics
 //   EXTENSION NSSize
 //--------------------------------------------------------------------------------------------------
 
-extension NSSize : Hashable {
+extension NSSize : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   /// The hash value.
