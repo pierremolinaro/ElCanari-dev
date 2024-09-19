@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_canRemoveSelectedDevices (
-       _ self_projectDeviceController_selectedArray_all_canRemove : [DeviceInProject_canRemove]
+       _ self_projectDeviceController_selectedArray_all_canRemove : [any DeviceInProject_canRemove]
 ) -> Bool {
 //--- START OF USER ZONE 2
         if self_projectDeviceController_selectedArray_all_canRemove.count == 0 {

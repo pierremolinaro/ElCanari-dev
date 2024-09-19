@@ -22,7 +22,7 @@ import AppKit
        _ self_mHoleHeight : Int,                                           
        _ self_mShape : PadShape,                                           
        _ self_mStyle : PadStyle,                                           
-       _ self_mSlavePads_backSideFilledBezierPath : [SlavePadInDevice_backSideFilledBezierPath]
+       _ self_mSlavePads_backSideFilledBezierPath : [any SlavePadInDevice_backSideFilledBezierPath]
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_mCenterX)

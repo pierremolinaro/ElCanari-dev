@@ -55,7 +55,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
   //    Drag and drop destination
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func prepareForDragOperation (_ inSender : NSDraggingInfo,
+  override func prepareForDragOperation (_ inSender : any NSDraggingInfo,
                                          _ inDestinationScrollView : NSScrollView) -> Bool {
     if DEBUG_DRAG_AND_DROP {
       Swift.print (self.className + "." + #function)
@@ -65,7 +65,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func performDragOperation (_ inSender : NSDraggingInfo,
+  override func performDragOperation (_ inSender : any NSDraggingInfo,
                                       _ inDestinationScrollView : NSScrollView) -> Bool {
     if DEBUG_DRAG_AND_DROP {
       Swift.print (self.className + "." + #function)

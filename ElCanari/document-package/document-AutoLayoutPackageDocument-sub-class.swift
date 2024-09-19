@@ -67,19 +67,19 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //    Drag and drop destination
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingEntered (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
+  override func draggingEntered (_ _ : any NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func prepareForDragOperation (_ sender: any NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func performDragOperation (_ sender: any NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     var ok = false
     if let documentView = destinationScrollView.documentView {
       let pointInWindow = sender.draggingLocation

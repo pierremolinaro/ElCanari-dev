@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_borderOutlineBackground (
-       _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
+       _ self_mBorderCurves_descriptor : [any BorderCurve_descriptor],
        _ self_mBoardShape : BoardShape,                        
        _ self_mRectangularBoardWidth : Int,                    
        _ self_mRectangularBoardHeight : Int,                   

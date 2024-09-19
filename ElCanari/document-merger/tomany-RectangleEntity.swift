@@ -79,7 +79,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p0y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p0y_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p0y {
       relay = r
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p0y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p0y_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p0y?.stopsBeingObserved (by: inObserver)
   }
 
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p1x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p1x_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p1x {
       relay = r
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p1x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p1x_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p1x?.stopsBeingObserved (by: inObserver)
   }
 
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p1y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p1y_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p1y {
       relay = r
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p1y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p1y_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p1y?.stopsBeingObserved (by: inObserver)
   }
 
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p2x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p2x_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p2x {
       relay = r
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p2x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p2x_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p2x?.stopsBeingObserved (by: inObserver)
   }
 
@@ -195,7 +195,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p2y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p2y_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p2y {
       relay = r
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p2y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p2y_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p2y?.stopsBeingObserved (by: inObserver)
   }
 
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p3x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p3x_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p3x {
       relay = r
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p3x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p3x_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p3x?.stopsBeingObserved (by: inObserver)
   }
 
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p3y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p3y_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p3y {
       relay = r
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p3y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p3y_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p3y?.stopsBeingObserved (by: inObserver)
   }
 
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p0x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p0x_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_p0x {
       relay = r
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_RectangleEntity : EBReadOnlyAbstractArrayProperty <Rectang
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_p0x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_p0x_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_p0x?.stopsBeingObserved (by: inObserver)
   }
 
@@ -507,7 +507,7 @@ class StoredArrayOf_RectangleEntity : ReadWriteArrayOf_RectangleEntity, EBSignat
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -515,7 +515,7 @@ class StoredArrayOf_RectangleEntity : ReadWriteArrayOf_RectangleEntity, EBSignat
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

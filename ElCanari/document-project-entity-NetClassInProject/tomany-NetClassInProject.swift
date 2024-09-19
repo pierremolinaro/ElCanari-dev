@@ -193,7 +193,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetClassName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClassName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetClassName {
       relay = r
@@ -210,7 +210,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetClassName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClassName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mNetClassName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetClassColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClassColor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetClassColor {
       relay = r
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetClassColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClassColor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mNetClassColor?.stopsBeingObserved (by: inObserver)
   }
 
@@ -251,7 +251,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTrackWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTrackWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTrackWidth {
       relay = r
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTrackWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mTrackWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTrackWidthUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTrackWidthUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTrackWidthUnit {
       relay = r
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTrackWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTrackWidthUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mTrackWidthUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -309,7 +309,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaHoleDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaHoleDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaHoleDiameter {
       relay = r
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaHoleDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaHoleDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mViaHoleDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaHoleDiameterUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaHoleDiameterUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaHoleDiameterUnit {
       relay = r
@@ -355,7 +355,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaHoleDiameterUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaHoleDiameterUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mViaHoleDiameterUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -367,7 +367,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaPadDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaPadDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaPadDiameter {
       relay = r
@@ -384,7 +384,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaPadDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaPadDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mViaPadDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -396,7 +396,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaPadDiameterUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaPadDiameterUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mViaPadDiameterUnit {
       relay = r
@@ -413,7 +413,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mViaPadDiameterUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mViaPadDiameterUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mViaPadDiameterUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -425,7 +425,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnFrontSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnFrontSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnFrontSide {
       relay = r
@@ -442,7 +442,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnFrontSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnFrontSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mAllowTracksOnFrontSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -454,7 +454,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnBackSide_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnBackSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnBackSide {
       relay = r
@@ -471,7 +471,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnBackSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnBackSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mAllowTracksOnBackSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -483,7 +483,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner1Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner1Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner1Layer {
       relay = r
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner1Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner1Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mAllowTracksOnInner1Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner2Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner2Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner2Layer {
       relay = r
@@ -529,7 +529,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner2Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner2Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mAllowTracksOnInner2Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -541,7 +541,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner3Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner3Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner3Layer {
       relay = r
@@ -558,7 +558,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner3Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner3Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mAllowTracksOnInner3Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner4Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner4Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mAllowTracksOnInner4Layer {
       relay = r
@@ -587,7 +587,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mAllowTracksOnInner4Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mAllowTracksOnInner4Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mAllowTracksOnInner4Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -599,7 +599,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackWidthString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_trackWidthString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_trackWidthString {
       relay = r
@@ -616,7 +616,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackWidthString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_trackWidthString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_trackWidthString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_viaHoleDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_viaHoleDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_viaHoleDiameter {
       relay = r
@@ -645,7 +645,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_viaHoleDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_viaHoleDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_viaHoleDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -657,7 +657,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_viaPadDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_viaPadDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_viaPadDiameter {
       relay = r
@@ -674,7 +674,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_viaPadDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_viaPadDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_viaPadDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -686,7 +686,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnFrontSideString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnFrontSideString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnFrontSideString {
       relay = r
@@ -703,7 +703,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnFrontSideString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnFrontSideString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_allowTracksOnFrontSideString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -715,7 +715,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnBackSideString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnBackSideString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnBackSideString {
       relay = r
@@ -732,7 +732,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnBackSideString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnBackSideString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_allowTracksOnBackSideString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -744,7 +744,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner1LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner1LayerString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner1LayerString {
       relay = r
@@ -761,7 +761,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner1LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner1LayerString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_allowTracksOnInner1LayerString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -773,7 +773,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner2LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner2LayerString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner2LayerString {
       relay = r
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner2LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner2LayerString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_allowTracksOnInner2LayerString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -802,7 +802,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner3LayerString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner3LayerString {
       relay = r
@@ -819,7 +819,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner3LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner3LayerString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_allowTracksOnInner3LayerString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -831,7 +831,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner4LayerString_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner4LayerString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_allowTracksOnInner4LayerString {
       relay = r
@@ -848,7 +848,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_allowTracksOnInner4LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_allowTracksOnInner4LayerString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_allowTracksOnInner4LayerString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -860,7 +860,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_canRemove_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_canRemove_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_canRemove {
       relay = r
@@ -877,7 +877,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_canRemove_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_canRemove_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_canRemove?.stopsBeingObserved (by: inObserver)
   }
 
@@ -889,7 +889,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netUsage_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netUsage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netUsage {
       relay = r
@@ -906,7 +906,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netUsage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netUsage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_netUsage?.stopsBeingObserved (by: inObserver)
   }
 
@@ -918,7 +918,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netsDescription_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netsDescription_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netsDescription {
       relay = r
@@ -935,7 +935,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netsDescription_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netsDescription_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_netsDescription?.stopsBeingObserved (by: inObserver)
   }
 
@@ -947,7 +947,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netWarningCount_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netWarningCount_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netWarningCount {
       relay = r
@@ -964,7 +964,7 @@ class ReadOnlyArrayOf_NetClassInProject : EBReadOnlyAbstractArrayProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netWarningCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netWarningCount_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_netWarningCount?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1317,7 +1317,7 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1325,7 +1325,7 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

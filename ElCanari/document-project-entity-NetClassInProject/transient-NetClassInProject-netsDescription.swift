@@ -135,10 +135,10 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
 
 @MainActor func transient_NetClassInProject_netsDescription (
        _ self_mNets : [AnyObject],                           
-       _ self_mNets_trackCount : [NetInProject_trackCount],  
-       _ self_mNets_mNetName : [NetInProject_mNetName],      
-       _ self_mNets_netSchematicPointsInfo : [NetInProject_netSchematicPointsInfo],
-       _ self_mNets_mWarnsExactlyOneLabel : [NetInProject_mWarnsExactlyOneLabel],
+       _ self_mNets_trackCount : [any NetInProject_trackCount],
+       _ self_mNets_mNetName : [any NetInProject_mNetName],  
+       _ self_mNets_netSchematicPointsInfo : [any NetInProject_netSchematicPointsInfo],
+       _ self_mNets_mWarnsExactlyOneLabel : [any NetInProject_mWarnsExactlyOneLabel],
        _ self_mNetClassName : String
 ) -> NetInfoArray {
 //--- START OF USER ZONE 2

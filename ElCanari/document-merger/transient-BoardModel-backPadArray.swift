@@ -14,12 +14,12 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_backPadArray (
-       _ self_backPads_x : [BoardModelPad_x],      
-       _ self_backPads_y : [BoardModelPad_y],      
-       _ self_backPads_width : [BoardModelPad_width],
-       _ self_backPads_height : [BoardModelPad_height],
-       _ self_backPads_shape : [BoardModelPad_shape],
-       _ self_backPads_rotation : [BoardModelPad_rotation]
+       _ self_backPads_x : [any BoardModelPad_x],  
+       _ self_backPads_y : [any BoardModelPad_y],  
+       _ self_backPads_width : [any BoardModelPad_width],
+       _ self_backPads_height : [any BoardModelPad_height],
+       _ self_backPads_shape : [any BoardModelPad_shape],
+       _ self_backPads_rotation : [any BoardModelPad_rotation]
 ) -> MergerPadArray {
 //--- START OF USER ZONE 2
   var padArray = [MergerPad] ()

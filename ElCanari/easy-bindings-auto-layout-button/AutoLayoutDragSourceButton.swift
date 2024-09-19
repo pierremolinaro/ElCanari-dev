@@ -89,13 +89,13 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
   private var mDragType : NSPasteboard.PasteboardType? = nil
   private var mDraggedObjectFactory : Optional < () -> DraggedObjectFactoryDescriptor? > = nil
   private var mDraggedObjectImage : Optional < () -> EBShape? > = nil
-  private weak var mScaleProvider : EBGraphicViewControllerProtocol? = nil // Should de WEAK
+  private weak var mScaleProvider : (any EBGraphicViewControllerProtocol)? = nil // Should de WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectFactory : Optional < () -> DraggedObjectFactoryDescriptor? >,
-                 scaleProvider : EBGraphicViewControllerProtocol) {
+                 scaleProvider : any EBGraphicViewControllerProtocol) {
     self.mDragType = draggedType
     self.mDraggedObjectFactory = draggedObjectFactory
     self.mScaleProvider = scaleProvider
@@ -106,7 +106,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectImage : Optional < () -> EBShape? >,
-                 scaleProvider : EBGraphicViewControllerProtocol) {
+                 scaleProvider : any EBGraphicViewControllerProtocol) {
     self.mDragType = draggedType
     self.mDraggedObjectImage = draggedObjectImage
     self.mScaleProvider = scaleProvider

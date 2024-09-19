@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageRoot_masterPadObjectIndexArray (
-       _ self_packagePads_masterPadObjectIndex : [PackagePad_masterPadObjectIndex]
+       _ self_packagePads_masterPadObjectIndex : [any PackagePad_masterPadObjectIndex]
 ) -> IntArray {
 //--- START OF USER ZONE 2
         var result = IntArray ()

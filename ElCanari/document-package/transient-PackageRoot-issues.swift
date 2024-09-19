@@ -14,11 +14,11 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageRoot_issues (
-       _ self_packageObjects_issues : [PackageObject_issues],
-       _ self_packageZones_rect : [PackageZone_rect],
-       _ self_packageZones_zoneName : [PackageZone_zoneName],
-       _ self_packageZones_xName : [PackageZone_xName],
-       _ self_packageZones_yName : [PackageZone_yName],
+       _ self_packageObjects_issues : [any PackageObject_issues],
+       _ self_packageZones_rect : [any PackageZone_rect],
+       _ self_packageZones_zoneName : [any PackageZone_zoneName],
+       _ self_packageZones_xName : [any PackageZone_xName],
+       _ self_packageZones_yName : [any PackageZone_yName],
        _ prefs_padZoneFont : NSFont
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

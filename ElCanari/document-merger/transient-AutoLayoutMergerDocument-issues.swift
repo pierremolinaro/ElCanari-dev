@@ -17,8 +17,8 @@ import AppKit
        _ root_overlapingArrangment : Bool,                 
        _ root_boardRect : CanariRect,                      
        _ root_boardLimitWidth : Int,                       
-       _ root_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
-       _ root_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
+       _ root_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect],
+       _ root_boardInstances_boardLimitWidth : [any MergerBoardInstance_boardLimitWidth]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
       var array = [CanariIssue] ()

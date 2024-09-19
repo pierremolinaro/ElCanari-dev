@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DevicePackageInProject_packagePadDictionary (
-       _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]
+       _ self_mMasterPads_descriptor : [any DeviceMasterPadInProject_descriptor]
 ) -> PackageMasterPadDictionary {
 //--- START OF USER ZONE 2
         var result = PackageMasterPadDictionary ()

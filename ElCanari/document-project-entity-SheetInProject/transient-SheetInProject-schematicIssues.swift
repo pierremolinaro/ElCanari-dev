@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SheetInProject_schematicIssues (
-       _ self_mPoints_status : [PointInSchematic_status], 
-       _ self_mObjects_wires : [SchematicObject_wires],   
+       _ self_mPoints_status : [any PointInSchematic_status],
+       _ self_mObjects_wires : [any SchematicObject_wires],
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int
 ) -> GraphicViewTooltipArray {
 //--- START OF USER ZONE 2

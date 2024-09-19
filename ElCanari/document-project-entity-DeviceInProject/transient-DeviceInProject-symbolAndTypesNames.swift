@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceInProject_symbolAndTypesNames (
-       _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName]
+       _ self_mSymbols_symbolAndTypeName : [any DeviceSymbolInstanceInProject_symbolAndTypeName]
 ) -> SymbolInProjectIdentifierArray {
 //--- START OF USER ZONE 2
         var result = SymbolInProjectIdentifierArray ()

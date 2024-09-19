@@ -48,7 +48,7 @@ final class MouseDownOutsideAnyObjectBehaviour : DefaultBehaviourOnMouseDown { /
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inUnalignedLocation : NSPoint, _ inViewController : EBGraphicViewControllerProtocol) {
+  init (_ inUnalignedLocation : NSPoint, _ inViewController : any EBGraphicViewControllerProtocol) {
     self.mMouseDownUnalignedLocation = inUnalignedLocation
     self.mOperationInProgress = true
     inViewController.clearSelection ()
@@ -109,7 +109,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
         objectIndex inObjectIndex : Int,
         possibleKnobIndex inPossibleKnobIndex : Int?,
         _ inGraphicView : EBGraphicView,
-        _ inViewController : EBGraphicViewControllerProtocol) {
+        _ inViewController : any EBGraphicViewControllerProtocol) {
     self.mLastMouseDraggedUnalignedLocation = inUnalignedLocation
     self.mLastMouseDraggedAlignedLocation = inUnalignedLocation.canariPointAligned (onCanariGrid: inGraphicView.mMouseGridInCanariUnit)
     self.mObjectIndex = inObjectIndex
@@ -184,7 +184,9 @@ final class ShiftMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse dow
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inUnalignedLocation : NSPoint, _ inPossibleObjectIndex : Int?, _ inViewController : EBGraphicViewControllerProtocol) {
+  init (_ inUnalignedLocation : NSPoint,
+        _ inPossibleObjectIndex : Int?,
+        _ inViewController : any EBGraphicViewControllerProtocol) {
     self.mMouseDownUnalignedLocation = inUnalignedLocation
     self.mSelectedObjectIndexSet = inViewController.selectedIndexesSet
     if let objectIndex = inPossibleObjectIndex {
@@ -227,7 +229,7 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
 
   init (_ inUnalignedLocation : NSPoint,
         _ inGraphicView : EBGraphicView,
-        _ inViewController : EBGraphicViewControllerProtocol) {
+        _ inViewController : any EBGraphicViewControllerProtocol) {
     inViewController.undoManager?.beginUndoGrouping ()
     self.mOperationInProgress = inGraphicView.mStartOptionMouseDownCallback? (inUnalignedLocation) ?? false
     if !self.mOperationInProgress {
@@ -299,7 +301,8 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inUnalignedLocation : NSPoint, _ _ : EBGraphicViewControllerProtocol) {
+  init (_ inUnalignedLocation : NSPoint,
+        _ _ : any EBGraphicViewControllerProtocol) {
     self.mMouseDownUnalignedLocation = inUnalignedLocation
     self.mOperationInProgress = true
   }

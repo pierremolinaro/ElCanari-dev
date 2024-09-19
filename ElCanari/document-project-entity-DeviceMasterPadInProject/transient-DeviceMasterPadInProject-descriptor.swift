@@ -23,7 +23,7 @@ import AppKit
        _ self_mHoleHeight : Int,                               
        _ self_mShape : PadShape,                               
        _ self_mStyle : PadStyle,                               
-       _ self_mSlavePads_descriptor : [DeviceSlavePadInProject_descriptor]
+       _ self_mSlavePads_descriptor : [any DeviceSlavePadInProject_descriptor]
 ) -> MasterPadDescriptor {
 //--- START OF USER ZONE 2
         var slavePads = [SlavePadDescriptor] ()

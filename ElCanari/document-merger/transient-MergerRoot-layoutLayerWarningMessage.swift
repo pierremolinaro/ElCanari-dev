@@ -15,7 +15,7 @@ import AppKit
 
 @MainActor func transient_MergerRoot_layoutLayerWarningMessage (
        _ self_mArtwork_layerConfiguration : LayerConfiguration?,
-       _ self_boardModels_layerConfiguration : [BoardModel_layerConfiguration]
+       _ self_boardModels_layerConfiguration : [any BoardModel_layerConfiguration]
 ) -> String {
 //--- START OF USER ZONE 2
         var layerSet = Set <LayerConfiguration> ()

@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageZone_forbiddenPadArray (
-       _ self_forbiddenPadNumbers_padNumber : [ForbiddenPadNumber_padNumber]
+       _ self_forbiddenPadNumbers_padNumber : [any ForbiddenPadNumber_padNumber]
 ) -> StringArray {
 //--- START OF USER ZONE 2
     var padNumberSet = Set <Int> ()

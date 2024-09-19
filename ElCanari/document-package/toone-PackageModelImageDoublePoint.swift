@@ -291,7 +291,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageMo
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -299,7 +299,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageMo
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

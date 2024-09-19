@@ -16,7 +16,7 @@ class EBObservablePropertyController : EBOutletEvent {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (observedObjects inObservedObjects : [EBObservableObjectProtocol],
+  init (observedObjects inObservedObjects : [any EBObservableObjectProtocol],
         callBack inCallBack : Optional <() -> Void>) {
     for object in inObservedObjects {
       self.mPrivateObservedObjects.append (WeakObservedObject (object))
@@ -48,12 +48,12 @@ fileprivate struct WeakObservedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mWeakObservedObject : EBObservableObjectProtocol?
-  var weakObservedObject : EBObservableObjectProtocol? { return self.mWeakObservedObject }
+  private weak var mWeakObservedObject : (any EBObservableObjectProtocol)?
+  var weakObservedObject : (any EBObservableObjectProtocol)? { return self.mWeakObservedObject }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inObservedObject : EBObservableObjectProtocol) {
+  init (_ inObservedObject : any EBObservableObjectProtocol) {
     self.mWeakObservedObject = inObservedObject
   }
 

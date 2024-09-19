@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mInstanceName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mInstanceName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mInstanceName {
       relay = r
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mInstanceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mInstanceName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mInstanceName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -114,7 +114,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
@@ -131,7 +131,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
@@ -143,7 +143,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolQualifiedName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_symbolQualifiedName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolQualifiedName {
       relay = r
@@ -189,7 +189,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolQualifiedName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_symbolQualifiedName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_symbolQualifiedName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolTypeName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_symbolTypeName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolTypeName {
       relay = r
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolTypeName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_symbolTypeName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_symbolTypeName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_pinSymbolQualifiedNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_pinSymbolQualifiedNames_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_pinSymbolQualifiedNames {
       relay = r
@@ -247,7 +247,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_pinSymbolQualifiedNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_pinSymbolQualifiedNames_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_pinSymbolQualifiedNames?.stopsBeingObserved (by: inObserver)
   }
 
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_unconnectedPins_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_unconnectedPins_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_unconnectedPins {
       relay = r
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_unconnectedPins_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_unconnectedPins_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_unconnectedPins?.stopsBeingObserved (by: inObserver)
   }
 
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -305,7 +305,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -317,7 +317,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -559,7 +559,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -567,7 +567,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

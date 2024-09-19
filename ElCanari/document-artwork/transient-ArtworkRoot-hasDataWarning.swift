@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ArtworkRoot_hasDataWarning (
-       _ self_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData]
+       _ self_fileGenerationParameterArray_hasNoData : [any ArtworkFileGenerationParameters_hasNoData]
 ) -> Bool {
 //--- START OF USER ZONE 2
          for parameter in self_fileGenerationParameterArray_hasNoData {

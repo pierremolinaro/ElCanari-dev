@@ -15,8 +15,8 @@ import AppKit
 
 @MainActor func transient_PackageRoot_padNumberDisplay (
        _ prefs_showPadNumber : Bool,                    
-       _ self_packagePads_padNumberDisplay : [PackagePad_padNumberDisplay],
-       _ self_packageSlavePads_padNumberDisplay : [PackageSlavePad_padNumberDisplay]
+       _ self_packagePads_padNumberDisplay : [any PackagePad_padNumberDisplay],
+       _ self_packageSlavePads_padNumberDisplay : [any PackageSlavePad_padNumberDisplay]
 ) -> EBShape {
 //--- START OF USER ZONE 2
    var shape = EBShape ()

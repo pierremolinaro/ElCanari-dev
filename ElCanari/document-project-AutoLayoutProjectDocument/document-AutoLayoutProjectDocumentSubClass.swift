@@ -220,7 +220,7 @@ import AppKit
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
-  override func performDragOperation (_ sender : NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func performDragOperation (_ sender : any NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     if DEBUG_DRAG_AND_DROP {
       Swift.print (self.className + "." + #function)
     }

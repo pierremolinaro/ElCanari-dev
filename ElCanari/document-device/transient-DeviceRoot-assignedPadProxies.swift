@@ -14,10 +14,10 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_assignedPadProxies (
-       _ self_mPadProxies_mPadName : [PadProxyInDevice_mPadName],
-       _ self_mPadProxies_symbolName : [PadProxyInDevice_symbolName],
-       _ self_mPadProxies_mPinInstanceName : [PadProxyInDevice_mPinInstanceName],
-       _ self_mPadProxies_isConnected : [PadProxyInDevice_isConnected]
+       _ self_mPadProxies_mPadName : [any PadProxyInDevice_mPadName],
+       _ self_mPadProxies_symbolName : [any PadProxyInDevice_symbolName],
+       _ self_mPadProxies_mPinInstanceName : [any PadProxyInDevice_mPinInstanceName],
+       _ self_mPadProxies_isConnected : [any PadProxyInDevice_isConnected]
 ) -> AssignedPadProxiesInDevice {
 //--- START OF USER ZONE 2
         var array = [AssignedPadProxy] ()

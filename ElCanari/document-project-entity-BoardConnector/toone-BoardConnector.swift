@@ -274,7 +274,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTracksP2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP2 {
       relay = r
@@ -288,7 +288,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTracksP2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mTracksP2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -300,7 +300,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTracksP1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP1 {
       relay = r
@@ -314,7 +314,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTracksP1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mTracksP1?.stopsBeingObserved (by: inObserver)
   }
 
@@ -607,7 +607,7 @@ final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSigna
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -615,7 +615,7 @@ final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSigna
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

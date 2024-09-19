@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardConnector_viaDefaultPadDiameter (
-       _ self_mTracksP1_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter],
-       _ self_mTracksP2_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter]
+       _ self_mTracksP1_netClassViaPadDiameter : [any BoardTrack_netClassViaPadDiameter],
+       _ self_mTracksP2_netClassViaPadDiameter : [any BoardTrack_netClassViaPadDiameter]
 ) -> Int {
 //--- START OF USER ZONE 2
         var holes = Set <Int> ()

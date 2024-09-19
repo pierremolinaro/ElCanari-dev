@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_unplacedSymbols (
-       _ self_mComponents_unplacedSymbols : [ComponentInProject_unplacedSymbols]
+       _ self_mComponents_unplacedSymbols : [any ComponentInProject_unplacedSymbols]
 ) -> StringTagArray {
 //--- START OF USER ZONE 2
         var result = StringTagArray ()

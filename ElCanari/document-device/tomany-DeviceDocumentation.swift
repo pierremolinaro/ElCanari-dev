@@ -49,7 +49,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : EBReadOnlyAbstractArrayProperty <Dev
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFileName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileName {
       relay = r
@@ -66,7 +66,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : EBReadOnlyAbstractArrayProperty <Dev
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFileName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mFileName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -78,7 +78,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : EBReadOnlyAbstractArrayProperty <Dev
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileData_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFileData_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileData {
       relay = r
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : EBReadOnlyAbstractArrayProperty <Dev
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileData_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFileData_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mFileData?.stopsBeingObserved (by: inObserver)
   }
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : EBReadOnlyAbstractArrayProperty <Dev
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileSize_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_fileSize_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_fileSize {
       relay = r
@@ -124,7 +124,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : EBReadOnlyAbstractArrayProperty <Dev
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_fileSize_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_fileSize?.stopsBeingObserved (by: inObserver)
   }
 
@@ -460,7 +460,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -468,7 +468,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

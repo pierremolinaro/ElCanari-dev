@@ -79,7 +79,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFirstX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFirstX_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFirstX {
       relay = r
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFirstX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFirstX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mFirstX?.stopsBeingObserved (by: inObserver)
   }
 
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFirstY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFirstY_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFirstY {
       relay = r
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFirstY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFirstY_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mFirstY?.stopsBeingObserved (by: inObserver)
   }
 
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFirstColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFirstColor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFirstColor {
       relay = r
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFirstColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFirstColor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mFirstColor?.stopsBeingObserved (by: inObserver)
   }
 
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSecondDx_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSecondDx_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSecondDx {
       relay = r
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSecondDx_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSecondDx_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mSecondDx?.stopsBeingObserved (by: inObserver)
   }
 
@@ -195,7 +195,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSecondDy_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSecondDy_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSecondDy {
       relay = r
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSecondDy_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSecondDy_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mSecondDy?.stopsBeingObserved (by: inObserver)
   }
 
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSecondColor_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSecondColor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSecondColor {
       relay = r
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSecondColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSecondColor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mSecondColor?.stopsBeingObserved (by: inObserver)
   }
 
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -524,7 +524,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -532,7 +532,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

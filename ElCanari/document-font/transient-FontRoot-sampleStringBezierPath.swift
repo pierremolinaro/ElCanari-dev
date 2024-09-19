@@ -15,8 +15,8 @@ import AppKit
 
 @MainActor func transient_FontRoot_sampleStringBezierPath (
        _ self_nominalSize : Int,                           
-       _ self_characters_segmentArrayForDrawing : [FontCharacter_segmentArrayForDrawing],
-       _ self_characters_advance : [FontCharacter_advance],
+       _ self_characters_segmentArrayForDrawing : [any FontCharacter_segmentArrayForDrawing],
+       _ self_characters_advance : [any FontCharacter_advance],
        _ prefs_sampleString : String,                      
        _ prefs_sampleStringSize : Double
 ) -> NSBezierPath {
@@ -31,7 +31,7 @@ import AppKit
   for unicodeCharacter in sampleStringAsMacRomanData { // sampleStringASUnicodeArray {
     let characterIndex = Int (unicodeCharacter) - 32
     if characterIndex >= 0, characterIndex < self_characters_segmentArrayForDrawing.count {
-      let segmentArrayDescriptor : FontCharacter_segmentArrayForDrawing = self_characters_segmentArrayForDrawing [characterIndex]
+      let segmentArrayDescriptor : any FontCharacter_segmentArrayForDrawing = self_characters_segmentArrayForDrawing [characterIndex]
       if let segmentArray = segmentArrayDescriptor.segmentArrayForDrawing {
         for segment in segmentArray.code {
           path.move (to: NSPoint (x: currentX + toCocoa (segment.x1), y: toCocoa (segment.y1)))

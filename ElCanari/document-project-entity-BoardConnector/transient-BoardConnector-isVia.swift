@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardConnector_isVia (
-       _ self_mTracksP1_mSide : [BoardTrack_mSide],
-       _ self_mTracksP2_mSide : [BoardTrack_mSide],
+       _ self_mTracksP1_mSide : [any BoardTrack_mSide],
+       _ self_mTracksP2_mSide : [any BoardTrack_mSide],
        _ self_mComponent_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

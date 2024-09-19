@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_placementInSchematic (
-       _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic]
+       _ self_mSymbols_symbolInSchematic : [any ComponentSymbolInProject_symbolInSchematic]
 ) -> String {
 //--- START OF USER ZONE 2
         var placedCount = 0

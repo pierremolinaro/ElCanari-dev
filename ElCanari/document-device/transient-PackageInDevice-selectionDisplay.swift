@@ -15,7 +15,7 @@ import AppKit
 
 @MainActor func transient_PackageInDevice_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,              
-       _ self_mMasterPads_padNumberDisplay : [MasterPadInDevice_padNumberDisplay],
+       _ self_mMasterPads_padNumberDisplay : [any MasterPadInDevice_padNumberDisplay],
        _ self_mRoot_mShowPackagePadNumbers : Bool?,         
        _ self_mRoot_mShowPackages : Bool?,                  
        _ self_mRoot_mShowPackageFrontPads : Bool?,          

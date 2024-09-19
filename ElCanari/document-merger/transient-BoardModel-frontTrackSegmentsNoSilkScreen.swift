@@ -14,12 +14,12 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_frontTrackSegmentsNoSilkScreen (
-       _ self_frontTracksNoSilkScreen_x1 : [SegmentEntity_x1],       
-       _ self_frontTracksNoSilkScreen_y1 : [SegmentEntity_y1],       
-       _ self_frontTracksNoSilkScreen_x2 : [SegmentEntity_x2],       
-       _ self_frontTracksNoSilkScreen_y2 : [SegmentEntity_y2],       
-       _ self_frontTracksNoSilkScreen_width : [SegmentEntity_width], 
-       _ self_frontTracksNoSilkScreen_endStyle : [SegmentEntity_endStyle]
+       _ self_frontTracksNoSilkScreen_x1 : [any SegmentEntity_x1],   
+       _ self_frontTracksNoSilkScreen_y1 : [any SegmentEntity_y1],   
+       _ self_frontTracksNoSilkScreen_x2 : [any SegmentEntity_x2],   
+       _ self_frontTracksNoSilkScreen_y2 : [any SegmentEntity_y2],   
+       _ self_frontTracksNoSilkScreen_width : [any SegmentEntity_width],
+       _ self_frontTracksNoSilkScreen_endStyle : [any SegmentEntity_endStyle]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
   var segmentArray = [CanariSegment] ()

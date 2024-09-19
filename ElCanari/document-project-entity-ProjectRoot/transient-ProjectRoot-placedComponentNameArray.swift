@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_placedComponentNameArray (
-       _ self_mComponents_componentName : [ComponentInProject_componentName],
-       _ self_mComponents_componentIsPlacedInBoard : [ComponentInProject_componentIsPlacedInBoard]
+       _ self_mComponents_componentName : [any ComponentInProject_componentName],
+       _ self_mComponents_componentIsPlacedInBoard : [any ComponentInProject_componentIsPlacedInBoard]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var result = StringArray ()

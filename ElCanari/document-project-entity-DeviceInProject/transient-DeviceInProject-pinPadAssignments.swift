@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceInProject_pinPadAssignments (
-       _ self_mPadAssignments_pinPadAssignment : [DevicePadAssignmentInProject_pinPadAssignment]
+       _ self_mPadAssignments_pinPadAssignment : [any DevicePadAssignmentInProject_pinPadAssignment]
 ) -> ThreeStringArray {
 //--- START OF USER ZONE 2
         var result = ThreeStringArray ()

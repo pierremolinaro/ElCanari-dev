@@ -15,8 +15,8 @@ import AppKit
 
 @MainActor func transient_ProjectRoot_segmentedControlSchematicIssueImage (
        _ self_unplacedSymbols : StringTagArray,                            
-       _ self_mSheets_schematicConnexionWarnings : [SheetInProject_schematicConnexionWarnings],
-       _ self_mSheets_schematicConnexionErrors : [SheetInProject_schematicConnexionErrors]
+       _ self_mSheets_schematicConnexionWarnings : [any SheetInProject_schematicConnexionWarnings],
+       _ self_mSheets_schematicConnexionErrors : [any SheetInProject_schematicConnexionErrors]
 ) -> NSImage {
 //--- START OF USER ZONE 2
           var hasError = false

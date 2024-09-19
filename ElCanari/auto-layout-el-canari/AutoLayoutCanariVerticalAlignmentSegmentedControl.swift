@@ -63,7 +63,7 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : ALB_NSSegmentedC
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAlignmentController : EBObservablePropertyController? = nil
-  private var mObject : EBEnumReadWriteObservableProtocol? = nil
+  private var mObject : (any EBEnumReadWriteObservableProtocol)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

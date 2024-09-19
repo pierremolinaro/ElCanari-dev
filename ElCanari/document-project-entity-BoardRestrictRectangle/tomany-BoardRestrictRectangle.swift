@@ -133,7 +133,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mXUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mXUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mXUnit {
       relay = r
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mXUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mXUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mXUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
@@ -179,7 +179,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
@@ -191,7 +191,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mYUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mYUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mYUnit {
       relay = r
@@ -208,7 +208,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mYUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mYUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mYUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -220,7 +220,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidth {
       relay = r
@@ -237,7 +237,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -249,7 +249,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidthUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidthUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidthUnit {
       relay = r
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidthUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mWidthUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeight_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mHeight_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHeight {
       relay = r
@@ -295,7 +295,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeight_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mHeight_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mHeight?.stopsBeingObserved (by: inObserver)
   }
 
@@ -307,7 +307,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeightUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mHeightUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHeightUnit {
       relay = r
@@ -324,7 +324,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeightUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mHeightUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mHeightUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -336,7 +336,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInFrontLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInFrontLayer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInFrontLayer {
       relay = r
@@ -353,7 +353,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInFrontLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInFrontLayer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mIsInFrontLayer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInBackLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInBackLayer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInBackLayer {
       relay = r
@@ -382,7 +382,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInBackLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInBackLayer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mIsInBackLayer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner1Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner1Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner1Layer {
       relay = r
@@ -411,7 +411,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner1Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner1Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mIsInInner1Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -423,7 +423,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner2Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner2Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner2Layer {
       relay = r
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner2Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner2Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mIsInInner2Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -452,7 +452,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner3Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner3Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner3Layer {
       relay = r
@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner3Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner3Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mIsInInner3Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -481,7 +481,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner4Layer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner4Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsInInner4Layer {
       relay = r
@@ -498,7 +498,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsInInner4Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mIsInInner4Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mIsInInner4Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
@@ -527,7 +527,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -556,7 +556,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -568,7 +568,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -597,7 +597,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
@@ -614,7 +614,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_signatureForERCChecking?.stopsBeingObserved (by: inObserver)
   }
 

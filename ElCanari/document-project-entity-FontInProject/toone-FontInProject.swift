@@ -136,7 +136,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTexts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTexts_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTexts {
       relay = r
@@ -150,7 +150,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mTexts_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mTexts?.stopsBeingObserved (by: inObserver)
   }
 
@@ -162,7 +162,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentNames_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponentNames_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentNames {
       relay = r
@@ -176,7 +176,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponentNames_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mComponentNames?.stopsBeingObserved (by: inObserver)
   }
 
@@ -188,7 +188,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentValues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponentValues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentValues {
       relay = r
@@ -202,7 +202,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponentValues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mComponentValues?.stopsBeingObserved (by: inObserver)
   }
 
@@ -423,7 +423,7 @@ final class StoredObject_FontInProject : ReadOnlyObject_FontInProject, EBSignatu
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -431,7 +431,7 @@ final class StoredObject_FontInProject : ReadOnlyObject_FontInProject, EBSignatu
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

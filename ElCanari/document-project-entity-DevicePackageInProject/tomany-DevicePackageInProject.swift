@@ -49,7 +49,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPackageName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPackageName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPackageName {
       relay = r
@@ -66,7 +66,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPackageName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPackageName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mPackageName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -78,7 +78,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mStrokeBezierPath_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mStrokeBezierPath_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mStrokeBezierPath {
       relay = r
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mStrokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mStrokeBezierPath_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mStrokeBezierPath?.stopsBeingObserved (by: inObserver)
   }
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packagePadDictionary_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_packagePadDictionary_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packagePadDictionary {
       relay = r
@@ -124,7 +124,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : EBReadOnlyAbstractArrayProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packagePadDictionary_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_packagePadDictionary_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_packagePadDictionary?.stopsBeingObserved (by: inObserver)
   }
 
@@ -401,7 +401,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -409,7 +409,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

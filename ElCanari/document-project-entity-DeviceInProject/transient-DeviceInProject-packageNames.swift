@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceInProject_packageNames (
-       _ self_mPackages_mPackageName : [DevicePackageInProject_mPackageName]
+       _ self_mPackages_mPackageName : [any DevicePackageInProject_mPackageName]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var result = [String] ()

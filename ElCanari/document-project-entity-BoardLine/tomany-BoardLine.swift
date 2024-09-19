@@ -109,7 +109,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidthUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidthUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidthUnit {
       relay = r
@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidthUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mWidthUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX1 {
       relay = r
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mX1?.stopsBeingObserved (by: inObserver)
   }
 
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX1Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX1Unit {
       relay = r
@@ -184,7 +184,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX1Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mX1Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -196,7 +196,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY1 {
       relay = r
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mY1?.stopsBeingObserved (by: inObserver)
   }
 
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY1Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY1Unit {
       relay = r
@@ -242,7 +242,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY1Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mY1Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -254,7 +254,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX2 {
       relay = r
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mX2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX2Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX2Unit {
       relay = r
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mX2Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mX2Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -312,7 +312,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY2 {
       relay = r
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mY2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY2Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY2Unit {
       relay = r
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mY2Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mY2Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -370,7 +370,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mLayer_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mLayer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mLayer {
       relay = r
@@ -387,7 +387,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mLayer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mLayer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidth {
       relay = r
@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -428,7 +428,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -445,7 +445,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -474,7 +474,7 @@ class ReadOnlyArrayOf_BoardLine : EBReadOnlyAbstractArrayProperty <BoardLine> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 

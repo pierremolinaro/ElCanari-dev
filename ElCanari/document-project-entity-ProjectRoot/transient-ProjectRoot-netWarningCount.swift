@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_netWarningCount (
-       _ self_mNetClasses_netWarningCount : [NetClassInProject_netWarningCount]
+       _ self_mNetClasses_netWarningCount : [any NetClassInProject_netWarningCount]
 ) -> Int {
 //--- START OF USER ZONE 2
         var warningCount = 0

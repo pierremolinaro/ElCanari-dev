@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_unconnectedPads (
-       _ self_mPadProxies_mPadName : [PadProxyInDevice_mPadName],
-       _ self_mPadProxies_isConnected : [PadProxyInDevice_isConnected]
+       _ self_mPadProxies_mPadName : [any PadProxyInDevice_mPadName],
+       _ self_mPadProxies_isConnected : [any PadProxyInDevice_isConnected]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var array = [String] ()

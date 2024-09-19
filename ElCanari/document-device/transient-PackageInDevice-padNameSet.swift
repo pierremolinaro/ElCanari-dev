@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageInDevice_padNameSet (
-       _ self_mMasterPads_mName : [MasterPadInDevice_mName]
+       _ self_mMasterPads_mName : [any MasterPadInDevice_mName]
 ) -> StringSet {
 //--- START OF USER ZONE 2
    var result = StringSet ()

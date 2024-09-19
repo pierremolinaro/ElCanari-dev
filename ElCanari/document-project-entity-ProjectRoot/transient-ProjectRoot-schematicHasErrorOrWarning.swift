@@ -16,8 +16,8 @@ import AppKit
 @MainActor func transient_ProjectRoot_schematicHasErrorOrWarning (
        _ self_unplacedSymbols : StringTagArray,                   
        _ self_netWarningCount : Int,                              
-       _ self_mSheets_schematicConnexionWarnings : [SheetInProject_schematicConnexionWarnings],
-       _ self_mSheets_schematicConnexionErrors : [SheetInProject_schematicConnexionErrors]
+       _ self_mSheets_schematicConnexionWarnings : [any SheetInProject_schematicConnexionWarnings],
+       _ self_mSheets_schematicConnexionErrors : [any SheetInProject_schematicConnexionErrors]
 ) -> Bool {
 //--- START OF USER ZONE 2
        if (self_unplacedSymbols.count > 0) || (self_netWarningCount > 0) {

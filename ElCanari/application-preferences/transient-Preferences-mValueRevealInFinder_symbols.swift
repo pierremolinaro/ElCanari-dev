@@ -15,8 +15,8 @@ import AppKit
 
 @MainActor func transient_Preferences_mValueRevealInFinder_symbols (
        _ self_usesUserLibrary : Bool,                               
-       _ self_additionnalLibraryArray_mUses : [CanariLibraryEntry_mUses],
-       _ self_additionnalLibraryArray_mPath : [CanariLibraryEntry_mPath]
+       _ self_additionnalLibraryArray_mUses : [any CanariLibraryEntry_mUses],
+       _ self_additionnalLibraryArray_mPath : [any CanariLibraryEntry_mPath]
 ) -> StringArray {
 //--- START OF USER ZONE 2
   var items = StringArray ()

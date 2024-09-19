@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_boardIssues (
-       _ self_mBoardObjects_issues : [BoardObject_issues]
+       _ self_mBoardObjects_issues : [any BoardObject_issues]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
         var issues = CanariIssueArray ()

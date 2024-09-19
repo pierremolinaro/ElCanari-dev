@@ -230,11 +230,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) weak var mViewController : EBGraphicViewControllerProtocol? = nil // SOULD BE WEAK
+  private(set) weak var mViewController : (any EBGraphicViewControllerProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func set (controller inController : EBGraphicViewControllerProtocol?) {
+  func set (controller inController : (any EBGraphicViewControllerProtocol)?) {
     self.mViewController = inController
   }
 

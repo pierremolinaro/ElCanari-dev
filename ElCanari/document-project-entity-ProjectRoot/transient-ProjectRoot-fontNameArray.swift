@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_fontNameArray (
-       _ self_mFonts_mFontName : [FontInProject_mFontName]
+       _ self_mFonts_mFontName : [any FontInProject_mFontName]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var result = StringArray ()

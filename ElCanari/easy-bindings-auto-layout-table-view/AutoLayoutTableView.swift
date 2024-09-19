@@ -18,7 +18,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   private final let mTableView : InternalAutoLayoutTableView
   private final var mAddButton : AutoLayoutButton? = nil
   private final var mRemoveButton : AutoLayoutButton? = nil
-  private final weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
+  private final weak var mDelegate : (any AutoLayoutTableViewDelegate)? = nil // SHOULD BE WEAK
   private final var mRowCountCallBack : Optional < () -> Int > = nil
 
   private final var mTransmitSelectionChangeToDelegate = true
@@ -76,7 +76,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
                         rowCountCallBack inRowCountCallBack : @escaping () -> Int,
-                        delegate inDelegate : AutoLayoutTableViewDelegate?) {
+                        delegate inDelegate : (any AutoLayoutTableViewDelegate)?) {
     // Swift.print ("inAllowsEmptySelection \(inAllowsEmptySelection) inAllowsMultipleSelection \(inAllowsMultipleSelection)")
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
@@ -350,7 +350,7 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  override func draggingEntered (_ inSender : any NSDraggingInfo) -> NSDragOperation {
     var dragOperation : NSDragOperation = []
     if let array = inSender.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL],
       let ok = self.mDragFilterCallBack? (array) {
@@ -361,30 +361,30 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  override func draggingUpdated (_ inSender : any NSDraggingInfo) -> NSDragOperation {
     return self.draggingEntered (inSender)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingExited (_ inSender : NSDraggingInfo?) {
+  override func draggingExited (_ inSender : (any NSDraggingInfo)?) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  override func prepareForDragOperation (_ inSender : any NSDraggingInfo) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  override func performDragOperation (_ inSender : any NSDraggingInfo) -> Bool {
     return self.draggingEntered (inSender) == .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
+  override func concludeDragOperation (_ inSender : (any NSDraggingInfo)?) {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
       self.mDragConcludeCallBack? (array)
     }

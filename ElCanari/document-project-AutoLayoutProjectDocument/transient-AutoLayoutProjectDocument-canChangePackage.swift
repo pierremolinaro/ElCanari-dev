@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_canChangePackage (
-       _ self_componentController_selectedArray_all_availablePackages : [ComponentInProject_availablePackages]
+       _ self_componentController_selectedArray_all_availablePackages : [any ComponentInProject_availablePackages]
 ) -> Bool {
 //--- START OF USER ZONE 2
         var result = false

@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (
-       _ self_mPackages_padNameSet : [PackageInDevice_padNameSet],          
-       _ self_mPackages_mName : [PackageInDevice_mName]
+       _ self_mPackages_padNameSet : [any PackageInDevice_padNameSet],      
+       _ self_mPackages_mName : [any PackageInDevice_mName]
 ) -> String {
 //--- START OF USER ZONE 2
    var message = [String] ()

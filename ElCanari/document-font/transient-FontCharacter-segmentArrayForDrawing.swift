@@ -13,10 +13,10 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_FontCharacter_segmentArrayForDrawing (
-       _ self_segments_x1 : [SegmentForFontCharacter_x1],       
-       _ self_segments_y1 : [SegmentForFontCharacter_y1],       
-       _ self_segments_x2 : [SegmentForFontCharacter_x2],       
-       _ self_segments_y2 : [SegmentForFontCharacter_y2]
+       _ self_segments_x1 : [any SegmentForFontCharacter_x1],   
+       _ self_segments_y1 : [any SegmentForFontCharacter_y1],   
+       _ self_segments_x2 : [any SegmentForFontCharacter_x2],   
+       _ self_segments_y2 : [any SegmentForFontCharacter_y2]
 ) -> CharacterSegmentList {
 //--- START OF USER ZONE 2
       var result = [FontCharacterSegment] ()

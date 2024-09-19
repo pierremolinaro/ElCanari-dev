@@ -79,7 +79,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x {
       relay = r
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x?.stopsBeingObserved (by: inObserver)
   }
 
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y {
       relay = r
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y?.stopsBeingObserved (by: inObserver)
   }
 
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_instanceRotation_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_instanceRotation_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_instanceRotation {
       relay = r
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_instanceRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_instanceRotation_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_instanceRotation?.stopsBeingObserved (by: inObserver)
   }
 
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_instanceRect_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_instanceRect_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_instanceRect {
       relay = r
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_instanceRect_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_instanceRect_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_instanceRect?.stopsBeingObserved (by: inObserver)
   }
 
@@ -195,7 +195,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_modelName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_modelName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_modelName {
       relay = r
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_modelName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_modelName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_modelName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_boardLimitWidth_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardLimitWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardLimitWidth {
       relay = r
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_boardLimitWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardLimitWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_boardLimitWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -524,7 +524,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -532,7 +532,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

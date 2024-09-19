@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_viaCountString (
-       _ self_mBoardObjects_isVia : [BoardObject_isVia]
+       _ self_mBoardObjects_isVia : [any BoardObject_isVia]
 ) -> String {
 //--- START OF USER ZONE 2
         var viaCount = 0

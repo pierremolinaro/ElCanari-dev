@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_selectedDevicePackageNames (
-       _ self_projectDeviceController_selectedArray_all_packageNames : [DeviceInProject_packageNames]
+       _ self_projectDeviceController_selectedArray_all_packageNames : [any DeviceInProject_packageNames]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var result = [String] ()

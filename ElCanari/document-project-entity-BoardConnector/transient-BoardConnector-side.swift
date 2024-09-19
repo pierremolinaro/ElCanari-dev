@@ -17,8 +17,8 @@ import AppKit
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
        _ self_mComponentPadName : String,      
        _ self_mPadIndex : Int,                 
-       _ self_mTracksP1_mSide : [BoardTrack_mSide],
-       _ self_mTracksP2_mSide : [BoardTrack_mSide]
+       _ self_mTracksP1_mSide : [any BoardTrack_mSide],
+       _ self_mTracksP2_mSide : [any BoardTrack_mSide]
 ) -> ConnectorSide {
 //--- START OF USER ZONE 2
         var padSideSet = Set <TrackSide> ()

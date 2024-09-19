@@ -97,12 +97,12 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
   //    SIGNATURE
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  final private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
   final private var mSignatureCache : UInt32? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

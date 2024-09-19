@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetInProject_netSchematicPointsInfo (
-       _ self_mPoints_netInfoForPoint : [PointInSchematic_netInfoForPoint]
+       _ self_mPoints_netInfoForPoint : [any PointInSchematic_netInfoForPoint]
 ) -> NetInfoPointArray {
 //--- START OF USER ZONE 2
         var pointArray = NetInfoPointArray ()

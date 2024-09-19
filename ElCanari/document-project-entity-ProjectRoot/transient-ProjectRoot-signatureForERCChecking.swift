@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_signatureForERCChecking (
-       _ self_mBoardObjects_signatureForERCChecking : [BoardObject_signatureForERCChecking],
+       _ self_mBoardObjects_signatureForERCChecking : [any BoardObject_signatureForERCChecking],
        _ self_mArtwork_signatureForERCChecking : UInt32?
 ) -> UInt32 {
 //--- START OF USER ZONE 2

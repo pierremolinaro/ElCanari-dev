@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_unconnectedPins (
-       _ self_mSymbolInstances_unconnectedPins : [SymbolInstanceInDevice_unconnectedPins]
+       _ self_mSymbolInstances_unconnectedPins : [any SymbolInstanceInDevice_unconnectedPins]
 ) -> UnconnectedSymbolPinsInDevice {
 //--- START OF USER ZONE 2
         var usp = UnconnectedSymbolPinsInDevice ()

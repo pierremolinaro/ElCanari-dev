@@ -14,9 +14,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_viaShapes (
-       _ self_vias_x : [BoardModelVia_x],       
-       _ self_vias_y : [BoardModelVia_y],       
-       _ self_vias_padDiameter : [BoardModelVia_padDiameter]
+       _ self_vias_x : [any BoardModelVia_x],   
+       _ self_vias_y : [any BoardModelVia_y],   
+       _ self_vias_padDiameter : [any BoardModelVia_padDiameter]
 ) -> MergerViaShapeArray {
 //--- START OF USER ZONE 2
   var array = [MergerViaShape] ()

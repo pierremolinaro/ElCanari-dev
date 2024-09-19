@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_FontRoot_definedCharacters (
-       _ self_characters_codePoint : [FontCharacter_codePoint]
+       _ self_characters_codePoint : [any FontCharacter_codePoint]
 ) -> DefinedCharactersInDevice {
 //--- START OF USER ZONE 2
    var definedCharacterSet = Set <Int> ()

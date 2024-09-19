@@ -48,7 +48,7 @@ enum MultipleBindingIntegerOperation {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+  func addModelsTo (_ ioModelArray : inout [any EBObservableObjectProtocol]) {
     switch self {
     case .alwaysTrue :
       ()
@@ -143,7 +143,7 @@ enum MultipleBindingIntegerOperation {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
+  func addModelsTo (_ ioModelArray : inout [any EBObservableObjectProtocol]) {
     switch self {
     case .literalInt :
       ()

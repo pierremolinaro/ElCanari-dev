@@ -14,9 +14,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutMergerDocument_modelVersionErrorMessage (
-       _ root_boardModels_name : [BoardModel_name],                          
-       _ root_boardModels_modelVersion : [BoardModel_modelVersion],          
-       _ root_boardModels_ignoreModelVersionError : [BoardModel_ignoreModelVersionError]
+       _ root_boardModels_name : [any BoardModel_name],                      
+       _ root_boardModels_modelVersion : [any BoardModel_modelVersion],      
+       _ root_boardModels_ignoreModelVersionError : [any BoardModel_ignoreModelVersionError]
 ) -> String {
 //--- START OF USER ZONE 2
       var s = ""

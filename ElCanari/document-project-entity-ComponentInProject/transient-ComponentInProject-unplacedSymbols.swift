@@ -16,9 +16,9 @@ import AppKit
 @MainActor func transient_ComponentInProject_unplacedSymbols (
        _ self_componentName : String,                         
        _ self_mSymbols : [AnyObject],                         
-       _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic],
-       _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
-       _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName],
+       _ self_mSymbols_symbolInSchematic : [any ComponentSymbolInProject_symbolInSchematic],
+       _ self_mSymbols_mSymbolInstanceName : [any ComponentSymbolInProject_mSymbolInstanceName],
+       _ self_mSymbols_mSymbolTypeName : [any ComponentSymbolInProject_mSymbolTypeName],
        _ self_mComponentValue : String
 ) -> StringTagArray {
 //--- START OF USER ZONE 2

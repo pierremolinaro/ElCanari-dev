@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_inconsistentSymbolNameSetMessage (
-       _ self_mSymbolInstances_symbolQualifiedName : [SymbolInstanceInDevice_symbolQualifiedName],
-       _ self_mSymbolInstances_pinSymbolQualifiedNames : [SymbolInstanceInDevice_pinSymbolQualifiedNames]
+       _ self_mSymbolInstances_symbolQualifiedName : [any SymbolInstanceInDevice_symbolQualifiedName],
+       _ self_mSymbolInstances_pinSymbolQualifiedNames : [any SymbolInstanceInDevice_pinSymbolQualifiedNames]
 ) -> String {
 //--- START OF USER ZONE 2
         var message = [String] ()

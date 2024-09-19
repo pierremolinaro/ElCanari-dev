@@ -69,7 +69,7 @@ final class EnabledBindingController : EBObservablePropertyController {
 
   init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSControl) {
     self.mControlOutlet = inOutlet
-    var modelArray = [EBObservableObjectProtocol] ()
+    var modelArray = [any EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
     super.init (
       observedObjects: modelArray,

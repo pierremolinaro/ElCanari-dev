@@ -79,7 +79,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_codePoint_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_codePoint_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_codePoint {
       relay = r
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_codePoint_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_codePoint_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_codePoint?.stopsBeingObserved (by: inObserver)
   }
 
@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_advance_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_advance_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_advance {
       relay = r
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_advance_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_advance_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_advance?.stopsBeingObserved (by: inObserver)
   }
 
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWarnsWhenNoSegment_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWarnsWhenNoSegment_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsWhenNoSegment {
       relay = r
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWarnsWhenNoSegment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWarnsWhenNoSegment_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mWarnsWhenNoSegment?.stopsBeingObserved (by: inObserver)
   }
 
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWarnsWhenAdvanceIsZero_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWarnsWhenAdvanceIsZero_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsWhenAdvanceIsZero {
       relay = r
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWarnsWhenAdvanceIsZero_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mWarnsWhenAdvanceIsZero_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mWarnsWhenAdvanceIsZero?.stopsBeingObserved (by: inObserver)
   }
 
@@ -195,7 +195,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_segmentArrayForDrawing_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_segmentArrayForDrawing_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_segmentArrayForDrawing {
       relay = r
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_segmentArrayForDrawing_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_segmentArrayForDrawing_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_segmentArrayForDrawing?.stopsBeingObserved (by: inObserver)
   }
 
@@ -224,7 +224,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_gerberCode_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_gerberCode_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_gerberCode {
       relay = r
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_gerberCode_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_gerberCode_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_gerberCode?.stopsBeingObserved (by: inObserver)
   }
 
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_gerberCodeInstructionCountMessage_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_gerberCodeInstructionCountMessage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_gerberCodeInstructionCountMessage {
       relay = r
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_gerberCodeInstructionCountMessage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_gerberCodeInstructionCountMessage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_gerberCodeInstructionCountMessage?.stopsBeingObserved (by: inObserver)
   }
 
@@ -282,7 +282,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_FontCharacter : EBReadOnlyAbstractArrayProperty <FontChara
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
@@ -635,7 +635,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -643,7 +643,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

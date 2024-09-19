@@ -77,19 +77,19 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
   //    Drag and drop destination
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
+  override func draggingEntered (_ sender: any NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func prepareForDragOperation (_ sender: any NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func performDragOperation (_ sender: any NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
     var ok = false
     if let documentView = destinationScrollView.documentView {
       let pointInWindow = sender.draggingLocation

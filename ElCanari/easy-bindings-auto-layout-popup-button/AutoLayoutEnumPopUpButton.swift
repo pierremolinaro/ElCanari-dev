@@ -29,7 +29,7 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func updateIndex (_ object : EBEnumReadWriteObservableProtocol) {
+  func updateIndex (_ object : any EBEnumReadWriteObservableProtocol) {
     if let v = object.rawValue () {
       self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.selectItem (at: v)
@@ -53,7 +53,7 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_selectedIndex (_ inObject : EBEnumReadWriteObservableProtocol) -> Self {
+  final func bind_selectedIndex (_ inObject : any EBEnumReadWriteObservableProtocol) -> Self {
     self.mSelectedIndexController = Controller_AutoLayoutEnumPopUpButton_Index (
       object: inObject,
       outlet: self
@@ -73,11 +73,11 @@ fileprivate final class Controller_AutoLayoutEnumPopUpButton_Index : EBObservabl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mObject : EBEnumReadWriteObservableProtocol
+  private let mObject : any EBEnumReadWriteObservableProtocol
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (object : EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutEnumPopUpButton) {
+  init (object : any EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutEnumPopUpButton) {
     self.mObject = object
     super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateIndex (object) } )
   }

@@ -47,7 +47,7 @@ struct EBDocumentData {
 
 enum EBDocumentReadData {
   case ok (documentData : EBDocumentData)
-  case readError (error : Error)
+  case readError (error : any Error)
 }
 
 //--------------------------------------------------------------------------------------------------

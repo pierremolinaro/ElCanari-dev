@@ -1456,7 +1456,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSheets_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSheets_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSheets {
       relay = r
@@ -1470,7 +1470,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSheets_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSheets_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mSheets?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1482,7 +1482,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFonts_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFonts_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFonts {
       relay = r
@@ -1496,7 +1496,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFonts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mFonts_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mFonts?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1508,7 +1508,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mDevices_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDevices_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDevices {
       relay = r
@@ -1522,7 +1522,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mDevices_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mDevices_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mDevices?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1534,7 +1534,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetClasses_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClasses_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetClasses {
       relay = r
@@ -1548,7 +1548,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetClasses_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mNetClasses_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mNetClasses?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1560,7 +1560,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mBorderCurves_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mBorderCurves_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mBorderCurves {
       relay = r
@@ -1574,7 +1574,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mBorderCurves_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mBorderCurves_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mBorderCurves?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1586,7 +1586,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mBoardObjects_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mBoardObjects_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mBoardObjects {
       relay = r
@@ -1600,7 +1600,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mBoardObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mBoardObjects_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mBoardObjects?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1612,7 +1612,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponents_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponents_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponents {
       relay = r
@@ -1626,7 +1626,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponents_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mComponents_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mComponents?.stopsBeingObserved (by: inObserver)
   }
 
@@ -2495,7 +2495,7 @@ final class StoredObject_ProjectRoot : ReadOnlyObject_ProjectRoot, EBSignatureOb
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -2503,7 +2503,7 @@ final class StoredObject_ProjectRoot : ReadOnlyObject_ProjectRoot, EBSignatureOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

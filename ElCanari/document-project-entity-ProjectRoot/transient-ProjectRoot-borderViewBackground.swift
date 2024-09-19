@@ -15,7 +15,7 @@ import AppKit
 
 @MainActor func transient_ProjectRoot_borderViewBackground (
        _ self_borderOutlineBackground : EBShape,            
-       _ self_mBoardObjects_objectDisplay : [BoardObject_objectDisplay],
+       _ self_mBoardObjects_objectDisplay : [any BoardObject_objectDisplay],
        _ self_boardBoundBox : CanariRect,                   
        _ prefs_boardLimitsColorForBoard : NSColor,          
        _ self_mContentOpacityInBoardOutline : Double

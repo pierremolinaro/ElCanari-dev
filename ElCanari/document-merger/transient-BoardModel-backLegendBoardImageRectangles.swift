@@ -14,14 +14,14 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_backLegendBoardImageRectangles (
-       _ self_legendBackImages_p0x : [RectangleEntity_p0x],          
-       _ self_legendBackImages_p0y : [RectangleEntity_p0y],          
-       _ self_legendBackImages_p1x : [RectangleEntity_p1x],          
-       _ self_legendBackImages_p1y : [RectangleEntity_p1y],          
-       _ self_legendBackImages_p2x : [RectangleEntity_p2x],          
-       _ self_legendBackImages_p2y : [RectangleEntity_p2y],          
-       _ self_legendBackImages_p3x : [RectangleEntity_p3x],          
-       _ self_legendBackImages_p3y : [RectangleEntity_p3y]
+       _ self_legendBackImages_p0x : [any RectangleEntity_p0x],      
+       _ self_legendBackImages_p0y : [any RectangleEntity_p0y],      
+       _ self_legendBackImages_p1x : [any RectangleEntity_p1x],      
+       _ self_legendBackImages_p1y : [any RectangleEntity_p1y],      
+       _ self_legendBackImages_p2x : [any RectangleEntity_p2x],      
+       _ self_legendBackImages_p2y : [any RectangleEntity_p2y],      
+       _ self_legendBackImages_p3x : [any RectangleEntity_p3x],      
+       _ self_legendBackImages_p3y : [any RectangleEntity_p3y]
 ) -> MergerRectangleArray {
 //--- START OF USER ZONE 2
         var result = MergerRectangleArray ()

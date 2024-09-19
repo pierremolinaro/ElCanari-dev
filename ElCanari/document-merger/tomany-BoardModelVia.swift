@@ -49,7 +49,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y {
       relay = r
@@ -66,7 +66,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y?.stopsBeingObserved (by: inObserver)
   }
 
@@ -78,7 +78,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padDiameter_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_padDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_padDiameter {
       relay = r
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_padDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_padDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x {
       relay = r
@@ -124,7 +124,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x?.stopsBeingObserved (by: inObserver)
   }
 
@@ -332,7 +332,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -340,7 +340,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

@@ -61,7 +61,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPath_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPath_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPath {
       relay = r
@@ -78,7 +78,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPath_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mPath?.stopsBeingObserved (by: inObserver)
   }
 
@@ -90,7 +90,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mUses_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mUses_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mUses {
       relay = r
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mUses_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mUses_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mUses?.stopsBeingObserved (by: inObserver)
   }
 
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mLibraryRepositoryURL_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mLibraryRepositoryURL_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mLibraryRepositoryURL {
       relay = r
@@ -136,7 +136,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mLibraryRepositoryURL_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mLibraryRepositoryURL_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mLibraryRepositoryURL?.stopsBeingObserved (by: inObserver)
   }
 
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mUserAndPasswordTag_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mUserAndPasswordTag_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mUserAndPasswordTag {
       relay = r
@@ -165,7 +165,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mUserAndPasswordTag_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mUserAndPasswordTag_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mUserAndPasswordTag?.stopsBeingObserved (by: inObserver)
   }
 
@@ -177,7 +177,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mStatusImage_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mStatusImage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mStatusImage {
       relay = r
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : EBReadOnlyAbstractArrayProperty <Cana
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mStatusImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mStatusImage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mStatusImage?.stopsBeingObserved (by: inObserver)
   }
 
@@ -530,7 +530,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -538,7 +538,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

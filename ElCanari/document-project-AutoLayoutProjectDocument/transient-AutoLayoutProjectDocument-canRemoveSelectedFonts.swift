@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_canRemoveSelectedFonts (
-       _ self_projectFontController_selectedArray_all_canRemoveFont : [FontInProject_canRemoveFont]
+       _ self_projectFontController_selectedArray_all_canRemoveFont : [any FontInProject_canRemoveFont]
 ) -> Bool {
 //--- START OF USER ZONE 2
          for font in self_projectFontController_selectedArray_all_canRemoveFont {

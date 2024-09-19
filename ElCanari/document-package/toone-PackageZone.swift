@@ -212,7 +212,7 @@ class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_forbiddenPadNumbers_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_forbiddenPadNumbers_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_forbiddenPadNumbers {
       relay = r
@@ -226,7 +226,7 @@ class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_forbiddenPadNumbers_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_forbiddenPadNumbers_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers?.stopsBeingObserved (by: inObserver)
   }
 
@@ -474,7 +474,7 @@ final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureOb
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -482,7 +482,7 @@ final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

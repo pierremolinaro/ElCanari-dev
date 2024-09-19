@@ -213,7 +213,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableView (_ inTableView : NSTableView,
-                  pasteboardWriterForRow inRowIndex : Int) -> NSPasteboardWriting? {
+                  pasteboardWriterForRow inRowIndex : Int) -> (any NSPasteboardWriting)? {
     if DEBUG_DRAG_AND_DROP {
       Swift.print (self.className + "." + #function)
     }

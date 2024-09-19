@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_symbolTypeNames (
-       _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName]
+       _ self_mSymbolTypes_mTypeName : [any SymbolTypeInDevice_mTypeName]
 ) -> StringArray {
 //--- START OF USER ZONE 2
        var array = [String] ()

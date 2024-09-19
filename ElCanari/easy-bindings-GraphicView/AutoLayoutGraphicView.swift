@@ -330,7 +330,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
+  final func bind_graphic_controller (_ inController : any EBGraphicViewControllerProtocol) -> Self {
     inController.bind_ebView (self.mGraphicView)
     return self
   }

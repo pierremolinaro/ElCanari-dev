@@ -53,7 +53,7 @@ final class CanariChoiceMenu : NSMenu {
   //  selectedIndex binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor fileprivate func updateOutletFromSelectedIndexController (_ inObject : EBEnumReadWriteObservableProtocol) {
+  @MainActor fileprivate func updateOutletFromSelectedIndexController (_ inObject : any EBEnumReadWriteObservableProtocol) {
     if let v = inObject.rawValue () {
       self.enableItems (true)
       self.checkItemAtIndex (v)
@@ -68,7 +68,7 @@ final class CanariChoiceMenu : NSMenu {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor final func bind_selectedIndex (_ object : EBEnumReadWriteObservableProtocol) {
+  @MainActor final func bind_selectedIndex (_ object : any EBEnumReadWriteObservableProtocol) {
     self.mSelectedIndexController = Controller_CanariChoiceMenu_selectedIndex (object: object, outlet: self)
   }
 
@@ -91,11 +91,12 @@ final class CanariChoiceMenu : NSMenu {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mObject : EBEnumReadWriteObservableProtocol
+  private let mObject : any EBEnumReadWriteObservableProtocol
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (object : EBEnumReadWriteObservableProtocol, outlet inOutlet : CanariChoiceMenu) {
+  init (object : any EBEnumReadWriteObservableProtocol,
+        outlet inOutlet : CanariChoiceMenu) {
     self.mObject = object
     super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateOutletFromSelectedIndexController (object) } )
     var idx = 0

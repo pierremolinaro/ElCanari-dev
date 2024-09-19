@@ -67,7 +67,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -84,7 +84,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netName {
       relay = r
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_netName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassName_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netClassName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
@@ -142,7 +142,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_netClassName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_netClassName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_hasNet_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_hasNet_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_hasNet {
       relay = r
@@ -171,7 +171,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_hasNet_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_hasNet_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_hasNet?.stopsBeingObserved (by: inObserver)
   }
 
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_wires_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_wires_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_wires {
       relay = r
@@ -200,7 +200,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_wires_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_wires_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_wires?.stopsBeingObserved (by: inObserver)
   }
 
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_WireInSchematic : EBReadOnlyAbstractArrayProperty <WireInS
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -551,7 +551,7 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -559,7 +559,7 @@ class StoredArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic, EBSignat
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

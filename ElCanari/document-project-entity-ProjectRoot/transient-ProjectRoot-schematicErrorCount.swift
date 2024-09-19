@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_schematicErrorCount (
-       _ self_mSheets_schematicConnexionErrors : [SheetInProject_schematicConnexionErrors]
+       _ self_mSheets_schematicConnexionErrors : [any SheetInProject_schematicConnexionErrors]
 ) -> Int {
 //--- START OF USER ZONE 2
         var errorCount = 0

@@ -180,7 +180,7 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPoints_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
@@ -194,7 +194,7 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mPoints?.stopsBeingObserved (by: inObserver)
   }
 
@@ -443,7 +443,7 @@ final class StoredObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymb
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -451,7 +451,7 @@ final class StoredObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

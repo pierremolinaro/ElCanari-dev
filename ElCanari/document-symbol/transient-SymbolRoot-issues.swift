@@ -14,11 +14,11 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolRoot_issues (
-       _ self_symbolObjects_issues : [SymbolObject_issues],
-       _ self_symbolPins_name : [SymbolPin_name],
-       _ self_symbolPins_nameRect : [SymbolPin_nameRect],
-       _ self_symbolPins_xPin : [SymbolPin_xPin],
-       _ self_symbolPins_yPin : [SymbolPin_yPin]
+       _ self_symbolObjects_issues : [any SymbolObject_issues],
+       _ self_symbolPins_name : [any SymbolPin_name],
+       _ self_symbolPins_nameRect : [any SymbolPin_nameRect],
+       _ self_symbolPins_xPin : [any SymbolPin_xPin],
+       _ self_symbolPins_yPin : [any SymbolPin_yPin]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
     //--- Inventory of all pin locations, with their occurrence count

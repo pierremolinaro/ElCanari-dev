@@ -20,11 +20,11 @@ import AppKit
        _ self_inconsistentSymbolNameSetMessage : String,
        _ self_unconnectedPins : UnconnectedSymbolPinsInDevice,
        _ self_unconnectedPads : StringArray, 
-       _ self_mPackages_mVersion : [PackageInDevice_mVersion],
-       _ self_mPackages_mName : [PackageInDevice_mName],
-       _ self_mSymbolTypes_mVersion : [SymbolTypeInDevice_mVersion],
-       _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName],
-       _ self_mSymbolTypes_instanceCount : [SymbolTypeInDevice_instanceCount]
+       _ self_mPackages_mVersion : [any PackageInDevice_mVersion],
+       _ self_mPackages_mName : [any PackageInDevice_mName],
+       _ self_mSymbolTypes_mVersion : [any SymbolTypeInDevice_mVersion],
+       _ self_mSymbolTypes_mTypeName : [any SymbolTypeInDevice_mTypeName],
+       _ self_mSymbolTypes_instanceCount : [any SymbolTypeInDevice_instanceCount]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()

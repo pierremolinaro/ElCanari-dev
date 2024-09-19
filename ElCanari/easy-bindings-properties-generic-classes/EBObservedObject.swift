@@ -36,7 +36,7 @@ class EBObservedObject : EBObservableObjectProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func startsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func startsBeingObserved (by inObserver : any EBObserverProtocol) {
     let key = ObjectIdentifier (inObserver)
     self.mDictionary [key] = EBWeakObserverSetElement (observer: inObserver)
     inObserver.observedObjectDidChange ()
@@ -44,7 +44,7 @@ class EBObservedObject : EBObservableObjectProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func stopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func stopsBeingObserved (by inObserver : any EBObserverProtocol) {
     let key = ObjectIdentifier (inObserver)
     self.mDictionary [key] = nil
     inObserver.observedObjectDidChange ()
@@ -74,15 +74,15 @@ fileprivate struct EBWeakObserverSetElement {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mObserver : EBObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mObserver : (any EBObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var possibleObserver : EBObserverProtocol? { return self.mObserver }
+  var possibleObserver : (any EBObserverProtocol)? { return self.mObserver }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (observer inObserver : EBObserverProtocol) {
+  init (observer inObserver : any EBObserverProtocol) {
     self.mObserver = inObserver
   }
 

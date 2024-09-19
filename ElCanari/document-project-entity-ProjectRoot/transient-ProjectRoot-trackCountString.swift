@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_trackCountString (
-       _ self_mBoardObjects_trackLengthInCanariUnit : [BoardObject_trackLengthInCanariUnit]
+       _ self_mBoardObjects_trackLengthInCanariUnit : [any BoardObject_trackLengthInCanariUnit]
 ) -> String {
 //--- START OF USER ZONE 2
         var trackCount = 0

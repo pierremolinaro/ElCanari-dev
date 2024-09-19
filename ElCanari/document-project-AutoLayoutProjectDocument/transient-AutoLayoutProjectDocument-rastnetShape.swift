@@ -67,9 +67,9 @@ import AppKit
        _ root_mRastnetDisplay : RastnetDisplay,                   
        _ root_mRastnetDisplayedNetName : String,                  
        _ root_mRastnetDisplayedComponentName : String,            
-       _ root_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation],
+       _ root_mBoardObjects_netNameAndPadLocation : [any BoardObject_netNameAndPadLocation],
        _ prefs_rastnetColorForBoard : NSColor,                    
-       _ self_boardObjectsController_selectedArray_all_componentName : [BoardObject_componentName]
+       _ self_boardObjectsController_selectedArray_all_componentName : [any BoardObject_componentName]
 ) -> EBShape {
 //--- START OF USER ZONE 2
       switch root_mRastnetDisplay {

@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolTypeInDevice_pinNameShape (
-       _ self_mPinTypes_nameShape : [SymbolPinTypeInDevice_nameShape]
+       _ self_mPinTypes_nameShape : [any SymbolPinTypeInDevice_nameShape]
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()

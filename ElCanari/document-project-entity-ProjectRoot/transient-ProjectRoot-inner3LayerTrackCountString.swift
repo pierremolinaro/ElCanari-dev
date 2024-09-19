@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_inner3LayerTrackCountString (
-       _ self_mBoardObjects_trackSide : [BoardObject_trackSide]
+       _ self_mBoardObjects_trackSide : [any BoardObject_trackSide]
 ) -> String {
 //--- START OF USER ZONE 2
         var n = 0

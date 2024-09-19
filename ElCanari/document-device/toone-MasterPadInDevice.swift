@@ -132,7 +132,7 @@ class ReadOnlyObject_MasterPadInDevice : EBReadOnlyAbstractObjectProperty <Maste
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSlavePads_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSlavePads_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSlavePads {
       relay = r
@@ -146,7 +146,7 @@ class ReadOnlyObject_MasterPadInDevice : EBReadOnlyAbstractObjectProperty <Maste
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSlavePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_mSlavePads_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mSlavePads?.stopsBeingObserved (by: inObserver)
   }
 
@@ -371,7 +371,7 @@ final class StoredObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice, E
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -379,7 +379,7 @@ final class StoredObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice, E
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

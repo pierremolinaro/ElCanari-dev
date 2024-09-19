@@ -14,10 +14,10 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceInProject_deviceSymbolDictionary (
-       _ self_mPadAssignments_descriptor : [DevicePadAssignmentInProject_descriptor],
-       _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName],
-       _ self_mSymbols_filledBezierPath : [DeviceSymbolInstanceInProject_filledBezierPath],
-       _ self_mSymbols_strokeBezierPath : [DeviceSymbolInstanceInProject_strokeBezierPath]
+       _ self_mPadAssignments_descriptor : [any DevicePadAssignmentInProject_descriptor],
+       _ self_mSymbols_symbolAndTypeName : [any DeviceSymbolInstanceInProject_symbolAndTypeName],
+       _ self_mSymbols_filledBezierPath : [any DeviceSymbolInstanceInProject_filledBezierPath],
+       _ self_mSymbols_strokeBezierPath : [any DeviceSymbolInstanceInProject_strokeBezierPath]
 ) -> DeviceSymbolDictionary {
 //--- START OF USER ZONE 2
         var pinPadDescriptorArray = [PinPadAssignmentInProject] ()

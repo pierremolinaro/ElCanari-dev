@@ -67,7 +67,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y1 {
       relay = r
@@ -84,7 +84,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y1?.stopsBeingObserved (by: inObserver)
   }
 
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x2 {
       relay = r
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y2 {
       relay = r
@@ -142,7 +142,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_width_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_width_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_width {
       relay = r
@@ -171,7 +171,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_width_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_width_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_width?.stopsBeingObserved (by: inObserver)
   }
 
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_endStyle_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_endStyle_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_endStyle {
       relay = r
@@ -200,7 +200,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_endStyle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_endStyle_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_endStyle?.stopsBeingObserved (by: inObserver)
   }
 
@@ -212,7 +212,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x1 {
       relay = r
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_SegmentEntity : EBReadOnlyAbstractArrayProperty <SegmentEn
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x1?.stopsBeingObserved (by: inObserver)
   }
 
@@ -437,7 +437,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -445,7 +445,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

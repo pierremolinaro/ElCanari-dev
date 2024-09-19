@@ -12,7 +12,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
   private let mDefaultInspectorView = AutoLayoutVerticalStackView ()
   private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .small, alignment: .center)
-  private var mGraphicController : EBGraphicViewControllerProtocol? = nil
+  private var mGraphicController : (any EBGraphicViewControllerProtocol)? = nil
   private var mInspectors = [(EBManagedObject.Type, ALB_NSStackView)] ()
   private let mObserver = EBOutletEvent ()
 
@@ -58,7 +58,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   // Graphic Controller
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
+  final func bind_graphic_controller (_ inController : any EBGraphicViewControllerProtocol) -> Self {
     self.mGraphicController = inController
     inController.selectedArrayDidChange_property.startsBeingObserved (by: self.mObserver)
     return self

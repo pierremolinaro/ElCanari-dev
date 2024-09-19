@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_pinPadAssignments (
-       _ self_projectDeviceController_selectedArray_all_pinPadAssignments : [DeviceInProject_pinPadAssignments]
+       _ self_projectDeviceController_selectedArray_all_pinPadAssignments : [any DeviceInProject_pinPadAssignments]
 ) -> ThreeStringArray {
 //--- START OF USER ZONE 2
         if self_projectDeviceController_selectedArray_all_pinPadAssignments.count == 1 {

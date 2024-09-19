@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_packagePadNameSetsAreConsistent (
-       _ self_mPackages_padNameSet : [PackageInDevice_padNameSet]
+       _ self_mPackages_padNameSet : [any PackageInDevice_padNameSet]
 ) -> Bool {
 //--- START OF USER ZONE 2
    var ok = true

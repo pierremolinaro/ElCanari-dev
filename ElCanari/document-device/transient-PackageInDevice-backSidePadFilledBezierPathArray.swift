@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageInDevice_backSidePadFilledBezierPathArray (
-       _ self_mMasterPads_backSideFilledBezierPathArray : [MasterPadInDevice_backSideFilledBezierPathArray]
+       _ self_mMasterPads_backSideFilledBezierPathArray : [any MasterPadInDevice_backSideFilledBezierPathArray]
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2
    var result = BezierPathArray ()

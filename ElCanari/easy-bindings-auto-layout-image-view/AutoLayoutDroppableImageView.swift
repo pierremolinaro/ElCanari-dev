@@ -230,7 +230,7 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
   // ⑥  Finally, if performDragOperation: returned YES, concludeDragOperation: is sent.
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  override func draggingEntered (_ inSender : any NSDraggingInfo) -> NSDragOperation {
     var accepts = self.mDroppableImageView != nil
     if accepts {
       let draggingPasteboard = inSender.draggingPasteboard
@@ -241,30 +241,30 @@ fileprivate final class AutoLayoutInternalDroppableImageView : ALB_NSImageView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingUpdated (_ sender : NSDraggingInfo) -> NSDragOperation {
+  override func draggingUpdated (_ sender : any NSDraggingInfo) -> NSDragOperation {
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func draggingExited (_ sender : NSDraggingInfo?) {
+  override func draggingExited (_ sender : (any NSDraggingInfo)?) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func prepareForDragOperation (_ sender : NSDraggingInfo) -> Bool {
+  override func prepareForDragOperation (_ sender : any NSDraggingInfo) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func performDragOperation (_ sender : NSDraggingInfo) -> Bool {
+  override func performDragOperation (_ sender : any NSDraggingInfo) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
+  override func concludeDragOperation (_ inSender : (any NSDraggingInfo)?) {
     if let pboard = inSender?.draggingPasteboard {
       if let pdfData = pboard.data (forType: .pdf) {
         self.mDroppableImageView?.setModel (pdfData)

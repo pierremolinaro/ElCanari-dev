@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_allClassNames (
-       _ self_mNetClasses_mNetClassName : [NetClassInProject_mNetClassName]
+       _ self_mNetClasses_mNetClassName : [any NetClassInProject_mNetClassName]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var array = [String] ()

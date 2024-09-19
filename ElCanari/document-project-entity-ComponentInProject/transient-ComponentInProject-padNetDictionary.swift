@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_padNetDictionary (
-       _ self_mSymbols_symbolInfo : [ComponentSymbolInProject_symbolInfo]
+       _ self_mSymbols_symbolInfo : [any ComponentSymbolInProject_symbolInfo]
 ) -> PadNetDictionary {
 //--- START OF USER ZONE 2
         var padNetDictionary = PadNetDictionary () // Pad name, net net name

@@ -15,7 +15,7 @@ import AppKit
 
 @MainActor func transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (
        _ self_mInstanceName : String,                                     
-       _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName]
+       _ self_mPinInstances_pinName : [any SymbolPinInstanceInDevice_pinName]
 ) -> StringArray {
 //--- START OF USER ZONE 2
        var result = StringArray ()

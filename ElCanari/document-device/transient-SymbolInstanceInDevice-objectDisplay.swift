@@ -17,7 +17,7 @@ import AppKit
        _ self_mType_mStrokeBezierPath : NSBezierPath?,          
        _ self_mType_mFilledBezierPath : NSBezierPath?,          
        _ self_mType_pinNameShape : EBShape?,                    
-       _ self_mPinInstances_numberShape : [SymbolPinInstanceInDevice_numberShape],
+       _ self_mPinInstances_numberShape : [any SymbolPinInstanceInDevice_numberShape],
        _ self_symbolQualifiedName : String,                     
        _ self_mX : Int,                                         
        _ self_mY : Int,                                         

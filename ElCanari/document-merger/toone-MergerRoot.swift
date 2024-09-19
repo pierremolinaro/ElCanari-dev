@@ -298,7 +298,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_boardModels_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardModels_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardModels {
       relay = r
@@ -312,7 +312,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_boardModels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardModels_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_boardModels?.stopsBeingObserved (by: inObserver)
   }
 
@@ -324,7 +324,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_boardInstances_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardInstances_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_boardInstances {
       relay = r
@@ -338,7 +338,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_boardInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_boardInstances_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_boardInstances?.stopsBeingObserved (by: inObserver)
   }
 
@@ -643,7 +643,7 @@ final class StoredObject_MergerRoot : ReadOnlyObject_MergerRoot, EBSignatureObse
   //   signature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -651,7 +651,7 @@ final class StoredObject_MergerRoot : ReadOnlyObject_MergerRoot, EBSignatureObse
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()

@@ -44,7 +44,7 @@ final class AutoLayoutDragSourceButtonWithMenus : ALB_NSView {
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectFactory : Optional < () -> AutoLayoutDragSourceButton.DraggedObjectFactoryDescriptor? >,
-                 scaleProvider : EBGraphicViewControllerProtocol) {
+                 scaleProvider : any EBGraphicViewControllerProtocol) {
     self.mDragSourceButton.register (
       draggedType: draggedType,
       draggedObjectFactory: draggedObjectFactory,
@@ -56,7 +56,7 @@ final class AutoLayoutDragSourceButtonWithMenus : ALB_NSView {
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  draggedObjectImage : Optional < () -> EBShape? >,
-                 scaleProvider : EBGraphicViewControllerProtocol) {
+                 scaleProvider : any EBGraphicViewControllerProtocol) {
     self.mDragSourceButton.register (
       draggedType: draggedType,
       draggedObjectImage: draggedObjectImage,

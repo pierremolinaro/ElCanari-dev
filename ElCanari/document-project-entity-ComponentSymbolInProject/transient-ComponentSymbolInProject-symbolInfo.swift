@@ -27,7 +27,7 @@ import AppKit
        _ self_mSymbolTypeName : String,                        
        _ self_mCenterX : Int,                                  
        _ self_mCenterY : Int,                                  
-       _ self_mPoints_symbolNameNetName : [PointInSchematic_symbolNameNetName]
+       _ self_mPoints_symbolNameNetName : [any PointInSchematic_symbolNameNetName]
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2
       //--- Symbol pin name - net dictionary

@@ -139,7 +139,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y1 {
       relay = r
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y1?.stopsBeingObserved (by: inObserver)
   }
 
@@ -168,7 +168,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x2 {
       relay = r
@@ -185,7 +185,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -197,7 +197,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y2_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y2 {
       relay = r
@@ -214,7 +214,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -226,7 +226,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_xDimension_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xDimension_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_xDimension {
       relay = r
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_xDimension_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xDimension_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_xDimension?.stopsBeingObserved (by: inObserver)
   }
 
@@ -255,7 +255,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_yDimension_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yDimension_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_yDimension {
       relay = r
@@ -272,7 +272,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_yDimension_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yDimension_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_yDimension?.stopsBeingObserved (by: inObserver)
   }
 
@@ -284,7 +284,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x1Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x1Unit {
       relay = r
@@ -301,7 +301,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x1Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x1Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -313,7 +313,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y1Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y1Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y1Unit {
       relay = r
@@ -330,7 +330,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y1Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y1Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x2Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x2Unit {
       relay = r
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x2Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x2Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -371,7 +371,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y2Unit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y2Unit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y2Unit {
       relay = r
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_y2Unit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_y2Unit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_xDimensionUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xDimensionUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_xDimensionUnit {
       relay = r
@@ -417,7 +417,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_xDimensionUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_xDimensionUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_xDimensionUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -429,7 +429,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_yDimensionUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yDimensionUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_yDimensionUnit {
       relay = r
@@ -446,7 +446,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_yDimensionUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_yDimensionUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_yDimensionUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -458,7 +458,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_distanceUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_distanceUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_distanceUnit {
       relay = r
@@ -475,7 +475,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_distanceUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_distanceUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_distanceUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -487,7 +487,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawDimensionBackground_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_drawDimensionBackground_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawDimensionBackground {
       relay = r
@@ -504,7 +504,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawDimensionBackground_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_drawDimensionBackground_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_drawDimensionBackground?.stopsBeingObserved (by: inObserver)
   }
 
@@ -516,7 +516,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x1_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x1 {
       relay = r
@@ -533,7 +533,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_x1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_x1?.stopsBeingObserved (by: inObserver)
   }
 
@@ -545,7 +545,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_distanceInCanariUnit_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_distanceInCanariUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_distanceInCanariUnit {
       relay = r
@@ -562,7 +562,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_distanceInCanariUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_distanceInCanariUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_distanceInCanariUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -574,7 +574,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -591,7 +591,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -603,7 +603,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -620,7 +620,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -632,7 +632,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StartsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
@@ -649,7 +649,7 @@ class ReadOnlyArrayOf_PackageDimension : EBReadOnlyAbstractArrayProperty <Packag
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+  final func toMany_issues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 

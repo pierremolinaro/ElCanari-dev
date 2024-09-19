@@ -117,7 +117,7 @@ final class EBScrollView : NSScrollView {
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  final override func draggingEntered (_ inSender : any NSDraggingInfo) -> NSDragOperation {
     if let graphicView = self.documentView as? EBGraphicView {
       graphicView.setHelperTextField ("Dragging moves duplicated objects; ESC cancels operation")
     }
@@ -126,37 +126,37 @@ final class EBScrollView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  final override func draggingUpdated (_ inSender : any NSDraggingInfo) -> NSDragOperation {
     return self.mDocument?.draggingUpdated (inSender, self) ?? .generic
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func draggingExited (_ inSender : NSDraggingInfo?) {
+  final override func draggingExited (_ inSender : (any NSDraggingInfo)?) {
     self.mDocument?.draggingExited (inSender, self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  final override func prepareForDragOperation (_ inSender : any NSDraggingInfo) -> Bool {
     return self.mDocument?.prepareForDragOperation (inSender, self) ?? false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  final override func performDragOperation (_ inSender : any NSDraggingInfo) -> Bool {
     return self.mDocument?.performDragOperation (inSender, self) ?? false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
+  final override func concludeDragOperation (_ inSender : (any NSDraggingInfo)?) {
     self.mDocument?.concludeDragOperation (inSender, self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func draggingEnded (_ inSender : NSDraggingInfo) {
+  final override func draggingEnded (_ inSender : any NSDraggingInfo) {
     if let graphicView = self.documentView as? EBGraphicView {
       graphicView.setHelperTextField ("Drag and drop ended")
     }

@@ -14,11 +14,11 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_backLegendLinesSegments (
-       _ self_backLegendLines_x1 : [SegmentEntity_x1],        
-       _ self_backLegendLines_y1 : [SegmentEntity_y1],        
-       _ self_backLegendLines_x2 : [SegmentEntity_x2],        
-       _ self_backLegendLines_y2 : [SegmentEntity_y2],        
-       _ self_backLegendLines_width : [SegmentEntity_width]
+       _ self_backLegendLines_x1 : [any SegmentEntity_x1],    
+       _ self_backLegendLines_y1 : [any SegmentEntity_y1],    
+       _ self_backLegendLines_x2 : [any SegmentEntity_x2],    
+       _ self_backLegendLines_y2 : [any SegmentEntity_y2],    
+       _ self_backLegendLines_width : [any SegmentEntity_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
   var segmentArray = [CanariSegment] ()

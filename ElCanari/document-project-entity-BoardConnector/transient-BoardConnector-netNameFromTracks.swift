@@ -14,8 +14,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardConnector_netNameFromTracks (
-       _ self_mTracksP1_netName : [BoardTrack_netName],     
-       _ self_mTracksP2_netName : [BoardTrack_netName]
+       _ self_mTracksP1_netName : [any BoardTrack_netName], 
+       _ self_mTracksP2_netName : [any BoardTrack_netName]
 ) -> String {
 //--- START OF USER ZONE 2
         var names = Set <String> ()

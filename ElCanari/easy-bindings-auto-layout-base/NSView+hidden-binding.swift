@@ -40,7 +40,7 @@ final class HiddenBindingController : EBObservablePropertyController {
 
   init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSView) {
     self.mOutlet = inOutlet
-    var modelArray = [EBObservableObjectProtocol] ()
+    var modelArray = [any EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
     super.init (
       observedObjects: modelArray,

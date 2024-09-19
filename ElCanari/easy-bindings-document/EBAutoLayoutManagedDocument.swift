@@ -86,41 +86,41 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingEntered (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
+  func draggingEntered (_ _ : any NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingEntered")
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingUpdated (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
+  func draggingUpdated (_ _ : any NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingUpdated")
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingExited (_ _ : NSDraggingInfo?, _ _ : NSScrollView) {
+  func draggingExited (_ _ : (any NSDraggingInfo)?, _ _ : NSScrollView) {
     // NSLog ("draggingExited")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func prepareForDragOperation (_ _ : NSDraggingInfo, _ _ : NSScrollView) -> Bool {
+  func prepareForDragOperation (_ _ : any NSDraggingInfo, _ _ : NSScrollView) -> Bool {
     // NSLog ("prepareForDragOperation")
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performDragOperation (_ sender: NSDraggingInfo, _ _ : NSScrollView) -> Bool {
+  func performDragOperation (_ sender: any NSDraggingInfo, _ _ : NSScrollView) -> Bool {
     // NSLog ("performDragOperation")
     return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func concludeDragOperation (_ _ : NSDraggingInfo?, _ _ : NSScrollView) {
+  func concludeDragOperation (_ _ : (any NSDraggingInfo)?, _ _ : NSScrollView) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -506,7 +506,7 @@ final class EBSignatureObserverEvent : EBTransientProperty <UInt32>, EBSignature
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mRootObject : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak var mRootObject : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -523,7 +523,7 @@ final class EBSignatureObserverEvent : EBTransientProperty <UInt32>, EBSignature
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setRootObject (_ rootObject : EBSignatureObserverProtocol) {
+  final func setRootObject (_ rootObject : any EBSignatureObserverProtocol) {
     self.mRootObject = rootObject
   }
 

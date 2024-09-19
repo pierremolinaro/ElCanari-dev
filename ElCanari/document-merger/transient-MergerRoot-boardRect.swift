@@ -18,8 +18,8 @@ import AppKit
        _ self_boardLimitWidth : Int,            
        _ self_boardManualWidth : Int,           
        _ self_boardManualHeight : Int,          
-       _ self_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
-       _ self_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
+       _ self_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect],
+       _ self_boardInstances_boardLimitWidth : [any MergerBoardInstance_boardLimitWidth]
 ) -> CanariRect {
 //--- START OF USER ZONE 2
     if self_automaticBoardSize {

@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutProjectDocument_selectedDeviceSymbolNames (
-       _ self_projectDeviceController_selectedArray_all_symbolAndTypesNames : [DeviceInProject_symbolAndTypesNames]
+       _ self_projectDeviceController_selectedArray_all_symbolAndTypesNames : [any DeviceInProject_symbolAndTypesNames]
 ) -> TwoStringArray {
 //--- START OF USER ZONE 2
         var result = [TwoStrings] ()

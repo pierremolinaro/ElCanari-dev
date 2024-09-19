@@ -15,7 +15,7 @@ import AppKit
 
 @MainActor func transient_AutoLayoutProjectDocument_canRemoveNetClasses (
        _ root_mNetClasses_count : Int,                                   
-       _ self_netClassController_selectedArray_all_canRemove : [NetClassInProject_canRemove]
+       _ self_netClassController_selectedArray_all_canRemove : [any NetClassInProject_canRemove]
 ) -> Bool {
 //--- START OF USER ZONE 2
        var canRemove = self_netClassController_selectedArray_all_canRemove.count > 0
