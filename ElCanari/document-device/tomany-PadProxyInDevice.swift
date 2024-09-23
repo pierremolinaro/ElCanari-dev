@@ -336,13 +336,34 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private final class MyPrivateUndoer : NSObject { // For Swift 6
+    let mOldValue : EBReferenceArray <PadProxyInDevice>
+
+    init (_ inOldValue : EBReferenceArray <PadProxyInDevice>) {
+      self.mOldValue = inOldValue
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+    self.mInternalArrayValue = inObject.mOldValue
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PadProxyInDevice>) {
   //--- Register old value in undo manager
-    self.undoManager?.registerUndo (withTarget: self) { (inSelfObject) in
-      // DispatchQueue.main.async {
-        inSelfObject.mInternalArrayValue = inOldValue
-      // }
-    }
+     self.undoManager?.registerUndo (  // For Swift 6
+      withTarget: self,
+      selector: #selector (Self.myPerformUndo (_:)),
+      object: MyPrivateUndoer (inOldValue)
+    )
+//    self.undoManager?.registerUndo (withTarget: self) { (inSelfObject) in
+//      // DispatchQueue.main.async {
+//        inSelfObject.mInternalArrayValue = inOldValue
+//      // }
+//    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

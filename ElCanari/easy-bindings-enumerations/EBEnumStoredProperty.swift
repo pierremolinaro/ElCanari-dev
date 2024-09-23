@@ -5,10 +5,10 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
-//   EBEnumStoredProperty <T>
+//   EBEnumStoredProperty <TYPE>
 //--------------------------------------------------------------------------------------------------
 
-final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <T>, EBDocumentStorablePropertyProtocol {
+final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWriteProperty <TYPE>, EBDocumentStorablePropertyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -21,7 +21,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (defaultValue inValue : T, undoManager inEBUndoManager : UndoManager?, key inKey : String?) {
+  init (defaultValue inValue : TYPE, undoManager inEBUndoManager : UndoManager?, key inKey : String?) {
     self.mValue = inValue
     self.mKey = inKey
     self.mUndoManager = inEBUndoManager
@@ -30,7 +30,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mValue : T {
+  private var mValue : TYPE {
     didSet {
       if self.mValue != oldValue {
         self.mUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
@@ -45,22 +45,22 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var selection : EBSelection <T> { return .single (mValue) }
+  override var selection : EBSelection <TYPE> { return .single (mValue) }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var propval : T { return self.mValue }
+  var propval : TYPE { return self.mValue }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func setProp (_ value : T) { self.mValue = value }
+  override func setProp (_ value : TYPE) { self.mValue = value }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let value = inDictionary [key] as? NSObject {
-      self.setProp (T.convertFromNSObject (object: value))
+      self.setProp (TYPE.convertFromNSObject (object: value))
     }
   }
 
@@ -69,7 +69,7 @@ final class EBEnumStoredProperty <T : EBEnumPropertyProtocol> : EBEnumReadWriteP
   func initialize (fromRange inRange : NSRange,
                    ofData inData : Data,
                    _ inManagedObjectArray : [RawObject]) {
-    if let value = T.unarchiveFromDataRange (inData, inRange) {
+    if let value = TYPE.unarchiveFromDataRange (inData, inRange) {
       self.setProp (value)
     }
   }

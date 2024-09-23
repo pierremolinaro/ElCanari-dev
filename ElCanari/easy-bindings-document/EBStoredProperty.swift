@@ -5,10 +5,10 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
-//   EBStoredProperty <T>
+//   EBStoredProperty <TYPE>
 //--------------------------------------------------------------------------------------------------
 
-final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, EBDocumentStorablePropertyProtocol {
+final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMutableProperty <TYPE>, EBDocumentStorablePropertyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -21,7 +21,7 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (defaultValue inValue : T, undoManager inUndoManager : UndoManager?, key inKey : String?) {
+  init (defaultValue inValue : TYPE, undoManager inUndoManager : UndoManager?, key inKey : String?) {
     self.mValue = inValue
     self.mUndoManager = inUndoManager
     self.mKey = inKey
@@ -30,7 +30,7 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mValue : T {
+  private var mValue : TYPE {
     didSet {
       if self.mValue != oldValue {
         self.mUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
@@ -45,15 +45,15 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var selection : EBSelection <T> { return .single (self.mValue) }
+  override var selection : EBSelection <TYPE> { return .single (self.mValue) }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var propval : T { return self.mValue }
+  var propval : TYPE { return self.mValue }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func setProp (_ inValue : T) { self.mValue = inValue }
+  override func setProp (_ inValue : TYPE) { self.mValue = inValue }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -79,14 +79,14 @@ final class EBStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutabl
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let value = inDictionary [key] as? NSObject {
-      self.setProp (T.convertFromNSObject (object: value))
+      self.setProp (TYPE.convertFromNSObject (object: value))
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject]) {
-    if let value = T.unarchiveFromDataRange (inData, inRange) {
+    if let value = TYPE.unarchiveFromDataRange (inData, inRange) {
       self.setProp (value)
     }
   }

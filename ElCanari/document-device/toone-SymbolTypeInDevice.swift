@@ -300,9 +300,30 @@ final class StoredObject_SymbolTypeInDevice : ReadOnlyObject_SymbolTypeInDevice,
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private final class MyPrivateUndoer : NSObject { // For Swift 6
+    let mOldValue : SymbolTypeInDevice?
+
+    init (_ inOldValue : SymbolTypeInDevice?) {
+      self.mOldValue = inOldValue
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+    self.mWeakInternalValue = inObject.mOldValue
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolTypeInDevice?) {
   //--- Register old value in undo manager
-    self.undoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
+     self.undoManager?.registerUndo (  // For Swift 6
+      withTarget: self,
+      selector: #selector (Self.myPerformUndo (_:)),
+      object: MyPrivateUndoer (inOldValue)
+    )
+//    self.undoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {

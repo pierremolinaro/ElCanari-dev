@@ -29,10 +29,13 @@ final class EBUndoManager : UndoManager {
   //    registerUndoWithTarget
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor override func registerUndo (withTarget target : Any, selector : Selector, object anObject : Any?) {
+  override func registerUndo (withTarget target : Any, selector : Selector, object anObject : Any?) {
     super.registerUndo (withTarget: target, selector: selector, object: anObject)
-    if logEvents () {
-      appendToTransientEventLog ("registerUndoWithTarget (\(isUndoRegistrationEnabled), target \(target), selector \"\(selector)\", object \"\(String(describing: anObject))\"\n")
+    let s = "registerUndoWithTarget (\(self.isUndoRegistrationEnabled), target \(target), selector \"\(selector)\", object \"\(String(describing: anObject))\"\n"
+    DispatchQueue.main.async {
+      if logEvents () {
+        appendToTransientEventLog (s)
+      }
     }
   }
 
@@ -40,9 +43,11 @@ final class EBUndoManager : UndoManager {
   //    beginUndoGrouping
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor override func beginUndoGrouping () {
-    if logEvents () {
-      appendToTransientEventLog ("beginUndoGrouping\n")
+  override func beginUndoGrouping () {
+    DispatchQueue.main.async {
+      if logEvents () {
+        appendToTransientEventLog ("beginUndoGrouping\n")
+      }
     }
     super.beginUndoGrouping ()
   }
@@ -51,9 +56,11 @@ final class EBUndoManager : UndoManager {
   //    endUndoGrouping
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor override func endUndoGrouping () {
-    if logEvents () {
-      appendToTransientEventLog ("endUndoGrouping\n")
+  override func endUndoGrouping () {
+    DispatchQueue.main.async {
+      if logEvents () {
+        appendToTransientEventLog ("endUndoGrouping\n")
+      }
     }
     super.endUndoGrouping ()
   }
@@ -62,9 +69,11 @@ final class EBUndoManager : UndoManager {
   //    disableUndoRegistration
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor override func disableUndoRegistration () {
-    if logEvents () {
-      appendToTransientEventLog ("disableUndoRegistration\n")
+  override func disableUndoRegistration () {
+    DispatchQueue.main.async {
+      if logEvents () {
+        appendToTransientEventLog ("disableUndoRegistration\n")
+      }
     }
     super.disableUndoRegistration ()
   }
@@ -73,9 +82,11 @@ final class EBUndoManager : UndoManager {
   //    enableUndoRegistration
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor override func enableUndoRegistration () {
-    if logEvents () {
-      appendToTransientEventLog ("enableUndoRegistration\n")
+  override func enableUndoRegistration () {
+    DispatchQueue.main.async {
+      if logEvents () {
+        appendToTransientEventLog ("enableUndoRegistration\n")
+      }
     }
     super.enableUndoRegistration ()
   }

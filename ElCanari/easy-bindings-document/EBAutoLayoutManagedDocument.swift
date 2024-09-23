@@ -86,51 +86,72 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingEntered (_ _ : any NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
+  func draggingEntered (_ _ : any NSDraggingInfo, _ inScrollView : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingEntered")
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingUpdated (_ _ : any NSDraggingInfo, _ _ : NSScrollView) -> NSDragOperation {
+  func draggingUpdated (_ _ : any NSDraggingInfo, _ inScrollView : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingUpdated")
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingExited (_ _ : (any NSDraggingInfo)?, _ _ : NSScrollView) {
+  func draggingExited (_ _ : (any NSDraggingInfo)?, _ inScrollView : NSScrollView) {
     // NSLog ("draggingExited")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func prepareForDragOperation (_ _ : any NSDraggingInfo, _ _ : NSScrollView) -> Bool {
+  func prepareForDragOperation (_ _ : any NSDraggingInfo, _ inScrollView : NSScrollView) -> Bool {
     // NSLog ("prepareForDragOperation")
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performDragOperation (_ sender: any NSDraggingInfo, _ _ : NSScrollView) -> Bool {
+  func performDragOperation (_ sender : any NSDraggingInfo, _ inScrollView : NSScrollView) -> Bool {
     // NSLog ("performDragOperation")
     return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func concludeDragOperation (_ _ : (any NSDraggingInfo)?, _ _ : NSScrollView) {
+  func concludeDragOperation (_ _ : (any NSDraggingInfo)?, _ inScrollView : NSScrollView) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Document File Format
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private final class MyPrivateUndoer : NSObject { // For Swift 6
+    let mOldValue : EBManagedDocumentFileFormat
+
+    init (_ inOldValue : EBManagedDocumentFileFormat) {
+      self.mOldValue = inOldValue
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+    self.mManagedDocumentFileFormat = inObject.mOldValue
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
     didSet {
       if self.mManagedDocumentFileFormat != oldValue {
-        self.undoManager?.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
+         self.undoManager?.registerUndo (  // For Swift 6
+          withTarget: self,
+          selector: #selector (Self.myPerformUndo (_:)),
+          object: MyPrivateUndoer (oldValue)
+        )
+//        self.undoManager?.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
       }
     }
   }
