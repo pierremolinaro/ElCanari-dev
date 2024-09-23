@@ -340,14 +340,14 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   //    Undo Manager
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mUndoManager = EBUndoManager ()
+  private var mUndoManager = UndoManager ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var undoManager : UndoManager { return self.mUndoManager }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // The preferences window should register this object as delegate (do it in Interface Builder)
+  // The preferences window should register this object as delegate
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func windowWillReturnUndoManager (_ window: NSWindow) -> UndoManager? {
