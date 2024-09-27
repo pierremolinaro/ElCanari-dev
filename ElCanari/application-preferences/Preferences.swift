@@ -51,22 +51,21 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     let prefsUserInterfacePage = self.PrefsUserInterfacePage ()
     let prefsAppUpdatePage = self.PrefsAppUpdatePage ()
     let prefsLibraryPage = self.PrefsLibraryPage ()
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutSegmentedControlWithPages (documentView: prefsPageView, equalWidth: true, size: .regular)
-        .addPage (image: "settings", title: "User Interface", tooltip: "User Interface", pageView: prefsUserInterfacePage)
-        .addPage (image: "update", title: "Application Update", tooltip: "Application Update", pageView: prefsAppUpdatePage)
-        .addPage (image: "library", title: "Library", tooltip: "Library", pageView: prefsLibraryPage)
-        .bind_selectedPage (preferences_mSelectedPrefsPage_property)
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutSegmentedControlWithPages (documentView: prefsPageView, equalWidth: true, size: .regular)
+          .addPage (image: "settings", title: "User Interface", tooltip: "User Interface", pageView: prefsUserInterfacePage)
+          .addPage (image: "update", title: "Application Update", tooltip: "Application Update", pageView: prefsAppUpdatePage)
+          .addPage (image: "library", title: "Library", tooltip: "Library", pageView: prefsLibraryPage)
+          .bind_selectedPage (preferences_mSelectedPrefsPage_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = prefsPageView
-    _ = vStackView.appendView (view_1)
+    _ = vStackView.appendView (prefsPageView)
     return vStackView
   }
 
@@ -86,49 +85,62 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   final func PrefsAppUpdatePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .large)
-    let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutButton (title: "Check for Application Updates…", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.checkForAppUpdateAction (_:))
-        )
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutStaticLabel (title: "Using…", bold: false, size: .regular, alignment: .center)
-      self.configure_usingSparkleTextFieldConfigurator (view_1_1) // Configurator
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_2_0 = AutoLayoutCheckbox (title: "Automatically Check for Updates", size: .regular)
-      self.configure_automaticallyCheckForUpdatesConfigurator (view_2_0) // Configurator
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutPopUpButton (size: .regular)
-      self.configure_updateCheckIntervalPopUpButtonConfigurator (view_2_1) // Configurator
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutFlexibleSpace ()
-      _ = view_2.appendView (view_2_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Check for Application Updates…", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.checkForAppUpdateAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Using…", bold: false, size: .regular, alignment: .center)
+        self.configure_usingSparkleTextFieldConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Last Check Time", bold: false, size: .regular, alignment: .center)
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutStaticLabel (title: "?", bold: false, size: .regular, alignment: .center)
-      self.configure_sparkleLastCheckTimeTextFieldConfigurator (view_3_1) // Configurator
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutFlexibleSpace ()
-      _ = view_3.appendView (view_3_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Automatically Check for Updates", size: .regular)
+        self.configure_automaticallyCheckForUpdatesConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutPopUpButton (size: .regular)
+        self.configure_updateCheckIntervalPopUpButtonConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutWebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
-      .set (minHeight: 200)
-    _ = vStackView.appendView (view_4)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Last Check Time", bold: false, size: .regular, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "?", bold: false, size: .regular, alignment: .center)
+        self.configure_sparkleLastCheckTimeTextFieldConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutWebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
+        .set (minHeight: 200)
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -139,61 +151,70 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   final func PrefsUserInterfacePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: .large)
-    let view_0 = AutoLayoutFlexibleSpace ()
-    _ = hStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView ()
+    _ = hStackView.appendFlexibleSpace ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .left)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView ()
+      let hStackView_view = AutoLayoutVerticalStackView ()
       do{
-        let view_1_1_0 = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
-        _ = view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-        _ = view_1_1.appendView (view_1_1_1)
-        let view_1_1_2 = AutoLayoutColorWell ()
-          .bind_color (preferences_selectionHiliteColor_property)
-        _ = view_1_1.appendView (view_1_1_2)
-        let view_1_1_3 = AutoLayoutFlexibleSpace ()
-        _ = view_1_1.appendView (view_1_1_3)
-      }
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutHorizontalStackView ()
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .left)
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
       do{
-        let view_1_2_0 = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
-        _ = view_1_2.appendView (view_1_2_0)
-        let view_1_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-        _ = view_1_2.appendView (view_1_2_1)
-        let view_1_2_2 = AutoLayoutTaggedPopUpButton (size: .regular)
-          .add (title: "0.5 Point", withTag: 5)
-          .add (title: "1.0 Point", withTag: 10)
-          .add (title: "1.5 Point", withTag: 15)
-          .add (title: "2.0 Points", withTag: 20)
-          .add (title: "2.5 Points", withTag: 25)
-          .bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
-        _ = view_1_2.appendView (view_1_2_2)
+        let hStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        hStackView_view_view.appendGutter ()
+        do{
+          let hStackView_view_view_view = AutoLayoutColorWell ()
+            .bind_color (preferences_selectionHiliteColor_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = view_1.appendView (view_1_2)
-      let view_1_3 = AutoLayoutHorizontalStackView ()
       do{
-        let view_1_3_0 = AutoLayoutFlexibleSpace ()
-        _ = view_1_3.appendView (view_1_3_0)
-        let view_1_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-        _ = view_1_3.appendView (view_1_3_1)
-        let view_1_3_2 = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
-          .bind_value (preferences_showDebugMenu_property)
-        _ = view_1_3.appendView (view_1_3_2)
+        let hStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        hStackView_view_view.appendGutter ()
+        do{
+          let hStackView_view_view_view = AutoLayoutTaggedPopUpButton (size: .regular)
+            .add (title: "0.5 Point", withTag: 5)
+            .add (title: "1.0 Point", withTag: 10)
+            .add (title: "1.5 Point", withTag: 15)
+            .add (title: "2.0 Points", withTag: 20)
+            .add (title: "2.5 Points", withTag: 25)
+            .bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = view_1.appendView (view_1_3)
-      let view_1_4 = AutoLayoutStaticLabel (title: "FreeRouting Application Directory", bold: true, size: .regular, alignment: .left)
-      _ = view_1.appendView (view_1_4)
-      let view_1_5 = AutoLayoutButton (title: "", size: .regular)
-      self.configure_configureFreeRoutingPath (view_1_5) // Configurator
-      _ = view_1.appendView (view_1_5)
+      do{
+        let hStackView_view_view = AutoLayoutHorizontalStackView ()
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        hStackView_view_view.appendGutter ()
+        do{
+          let hStackView_view_view_view = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
+            .bind_value (preferences_showDebugMenu_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view .appendView (hStackView_view_view)
+      }
+      do{
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "FreeRouting Application Directory", bold: true, size: .regular, alignment: .left)
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "", size: .regular)
+        self.configure_configureFreeRoutingPath (hStackView_view_view) // Configurator
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    _ = hStackView.appendView (view_2)
+    _ = hStackView.appendFlexibleSpace ()
     return hStackView
   }
 
@@ -204,113 +225,142 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
   final func PrefsLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .large)
-    let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutButton (title: "", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.revealUserLibraryInFinderAction (_:))
-        )
-      self.mRevealInFinderSystemLibraryButton = view_1_0 // Outlet
-      self.configure_revealInFinderSystemLibraryButtonConfigurator (view_1_0) // Configurator
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutCheckbox (title: "Uses", size: .regular)
-        .bind_value (preferences_usesUserLibrary_property)
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_2_0 = AutoLayoutButton (title: "Check for System Library Updates…", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.checkSystemLibraryUpdateAction (_:))
-        )
-      self.mCheckForLibraryUpdatesButton = view_2_0 // Outlet
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutCheckbox (title: "At Start Up", size: .regular)
-        .bind_value (preferences_checkForSystemLibraryAtStartUp_property)
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutPopUpButton (size: .regular)
-        .bind_enabled (.prop (preferences_checkForSystemLibraryAtStartUp_property))
-      self.configure_lastSystemLibraryCheckTimeButtonConfigurator (view_2_2) // Configurator
-      _ = view_2.appendView (view_2_2)
-      let view_2_3 = AutoLayoutFlexibleSpace ()
-      _ = view_2.appendView (view_2_3)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.revealUserLibraryInFinderAction (_:))
+          )
+        self.mRevealInFinderSystemLibraryButton = vStackView_view_view // Outlet
+        self.configure_revealInFinderSystemLibraryButtonConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Uses", size: .regular)
+          .bind_value (preferences_usesUserLibrary_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutButton (title: "Show Library Update Log Window", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.showSystemLibraryLogAction (_:))
-        )
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutStaticLabel (title: "Last Check", bold: false, size: .regular, alignment: .left)
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutDateLabel (bold: false, size: .regular)
-        .bind_date (preferences_mLastSystemLibraryCheckTime_property)
-      _ = view_3.appendView (view_3_2)
-      let view_3_3 = AutoLayoutFlexibleSpace ()
-      _ = view_3.appendView (view_3_3)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Check for System Library Updates…", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.checkSystemLibraryUpdateAction (_:))
+          )
+        self.mCheckForLibraryUpdatesButton = vStackView_view_view // Outlet
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "At Start Up", size: .regular)
+          .bind_value (preferences_checkForSystemLibraryAtStartUp_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutPopUpButton (size: .regular)
+          .bind_enabled (.prop (preferences_checkForSystemLibraryAtStartUp_property))
+        self.configure_lastSystemLibraryCheckTimeButtonConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular, alignment: .left)
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutTableView (size: .small, addControlButtons: false)
-    preferences_userLibraryArrayController.bind_tableView (view_5)
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
     do{
-      let view_6_0 = AutoLayoutButton (title: "+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.addLibraryEntryAction (_:))
-        )
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutButton (title: "Reveal in Finder", size: .regular)
-        .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .eq, .literalInt (1)))
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.revealInFinderLibraryFolderAction (_:))
-        )
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutButton (title: "-", size: .regular)
-        .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.removeLibraryEntryAction (_:))
-        )
-      _ = view_6.appendView (view_6_2)
-      let view_6_3 = AutoLayoutFlexibleSpace ()
-      _ = view_6.appendView (view_6_3)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Show Library Update Log Window", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.showSystemLibraryLogAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Last Check", bold: false, size: .regular, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutDateLabel (bold: false, size: .regular)
+          .bind_date (preferences_mLastSystemLibraryCheckTime_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular, alignment: .left)
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
     do{
-      let view_8_0 = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.checkLibraryAction (_:))
-        )
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
-        )
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutFlexibleSpace ()
-      _ = view_8.appendView (view_8_2)
+      let vStackView_view = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular, alignment: .left)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutTableView (size: .small, addControlButtons: false)
+      preferences_userLibraryArrayController.bind_tableView (vStackView_view)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.addLibraryEntryAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Reveal in Finder", size: .regular)
+          .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .eq, .literalInt (1)))
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.revealInFinderLibraryFolderAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "-", size: .regular)
+          .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.removeLibraryEntryAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_8)
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular, alignment: .left)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.checkLibraryAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
+    }
     return vStackView
   }
 

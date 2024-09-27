@@ -58,7 +58,9 @@ class ALB_NSSegmentedControl : NSSegmentedControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc override var pmLastBaselineRepresentativeView : NSView? { self }
+  @objc override var lastBaselineRepresentativeViewArray : OptionalViewArray {
+    OptionalViewArray (self)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!

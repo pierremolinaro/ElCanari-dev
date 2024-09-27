@@ -120,6 +120,22 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating private func add (topOf inView : NSView,
+                             closeToBottomOfGutter inGutter : AutoLayoutVerticalStackView.GutterSeparator) {
+  // Vertical Axis is from to top to bottom
+  //--- >= Constraint
+    var c = inView.topAnchor.constraint (greaterThanOrEqualTo: inGutter.bottomAnchor)
+    self.append (c)
+  //--- == Constraint
+    c = inView.topAnchor.constraint (equalTo: inGutter.bottomAnchor)
+    var p = inView.contentHuggingPriority (for: .vertical)
+    p = NSLayoutConstraint.Priority (rawValue: p.rawValue - 1.0)
+    c.priority = p
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating private func add (topOf inView : NSView,
                              closeToTopOfContainer inContainer : NSView,
                              topMargin inTopMargin : CGFloat) {
   // Vertical Axis is from to top to bottom
@@ -240,9 +256,10 @@ import AppKit
 
   mutating func add (verticalConstraintsOf inView : NSView,
                      inHorizontalContainer inContainer : NSView,
+                     currentGutter inOptionalCurrentGutter : AutoLayoutVerticalStackView.GutterSeparator?,
                      topMargin inTopMargin : CGFloat,
                      bottomMargin inBottomMargin : CGFloat,
-                     optionalLastBaseLineView ioOptionalLastBaseLineView : inout NSView?) {
+                     optionalLastBaseLineView ioOptionalLastBaseLineViewArray : inout [NSView?]) {
     switch inView.pmLayoutSettings.vLayoutInHorizontalContainer {
     case .center :
       self.add (centerYOf: inView, equalToCenterYOf: inContainer)
@@ -261,15 +278,34 @@ import AppKit
       self.add (topOf: inContainer, equalToTopOf: inView, plus: inTopMargin)
       self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
     case .lastBaseline :
-      self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
-      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
-      if let viewLastBaselineRepresentativeView = inView.pmLastBaselineRepresentativeView {
-        if let lastBaselineRepresentativeView = ioOptionalLastBaseLineView {
-          self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
-        }else{
-          ioOptionalLastBaseLineView = viewLastBaselineRepresentativeView
+      if let gutter = inOptionalCurrentGutter {
+        self.add (topOf: inView, closeToBottomOfGutter: gutter)
+        self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
+      }else{
+        self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
+        self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
+      }
+      let n = Swift.min (inView.lastBaselineRepresentativeViewArray.count, ioOptionalLastBaseLineViewArray.count)
+      for i in 0 ..< n {
+        if let viewLastBaselineRepresentativeView = inView.lastBaselineRepresentativeViewArray [i] { // §§
+          if let lastBaselineRepresentativeView = ioOptionalLastBaseLineViewArray [i] {
+//            Swift.print (lastBaselineRepresentativeView, viewLastBaselineRepresentativeView)
+//            self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
+          }else{
+            ioOptionalLastBaseLineViewArray [i] = viewLastBaselineRepresentativeView
+          }
         }
       }
+      for i in n ..< inView.lastBaselineRepresentativeViewArray.count {
+        ioOptionalLastBaseLineViewArray.append (inView.lastBaselineRepresentativeViewArray [i])
+      }
+//      if let viewLastBaselineRepresentativeView = inView.pmLastBaselineRepresentativeView { // §§
+//        if let lastBaselineRepresentativeView = ioOptionalLastBaseLineViewArray {
+//          self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
+//        }else{
+//          ioOptionalLastBaseLineViewArray = viewLastBaselineRepresentativeView
+//        }
+//      }
     }
   }
 

@@ -8,7 +8,7 @@ import AppKit
 //    extension NSFont : EBStoredPropertyProtocol
 //--------------------------------------------------------------------------------------------------
 
-extension NSFont : EBStoredPropertyProtocol {
+extension NSFont : EBStoredPropertyProtocol, @unchecked @retroactive Sendable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

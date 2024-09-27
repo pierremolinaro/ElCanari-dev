@@ -170,7 +170,9 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc override var pmLastBaselineRepresentativeView : NSView? { self }
+  @objc override var lastBaselineRepresentativeViewArray : OptionalViewArray {
+    OptionalViewArray (self)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!

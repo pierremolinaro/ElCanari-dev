@@ -8,7 +8,7 @@ import AppKit
 //   Protocol EBStoredPropertyProtocol
 //--------------------------------------------------------------------------------------------------
 
-protocol EBStoredPropertyProtocol : Equatable {
+protocol EBStoredPropertyProtocol : Equatable, Sendable {
 
   func ebHashValue () -> UInt32
 

@@ -8,7 +8,7 @@ import AppKit
 //    extension NSBezierPath : EBStoredPropertyProtocol
 //--------------------------------------------------------------------------------------------------
 
-extension NSBezierPath : EBStoredPropertyProtocol {
+extension NSBezierPath : EBStoredPropertyProtocol, @unchecked @retroactive Sendable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

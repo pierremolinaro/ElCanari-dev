@@ -14,6 +14,24 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final func appendGutter () {
+    _ = self.appendView (AutoLayoutHorizontalStackView.GutterSeparator ())
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func appendDivider () -> Self {
+    return self.appendView (AutoLayoutHorizontalStackView.VerticalDivider ())
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func appendFlexibleSpace () -> Self {
+    return self.appendView (AutoLayoutFlexibleSpace ())
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override var pmLayoutSettings : AutoLayoutViewSettings {
     return AutoLayoutViewSettings (
       vLayoutInHorizontalContainer: self.mVerticalDisposition,
@@ -25,20 +43,20 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   //  Last Baseline representative view
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var pmLastBaselineRepresentativeView : NSView? {
+  override var lastBaselineRepresentativeViewArray : OptionalViewArray { // §§
     for view in self.subviews {
       if !view.isHidden {
         switch view.pmLayoutSettings.vLayoutInHorizontalContainer {
         case .center, .fill, .fillIgnoringMargins, .bottom, .top :
           ()
         case .lastBaseline :
-          if let viewLastBaselineRepresentativeView = view.pmLastBaselineRepresentativeView {
-            return viewLastBaselineRepresentativeView
+          if let viewLastBaselineRepresentativeView = view.lastBaselineRepresentativeViewArray.last {
+            return OptionalViewArray (viewLastBaselineRepresentativeView)
           }
         }
       }
     }
-    return nil
+    return OptionalViewArray ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -54,22 +72,24 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Build constraints
-    var optionalLastBaselineRepresentativeView : NSView? = nil
+    var optionalLastBaselineRepresentativeView : [NSView?] = []
     var optionalLastView : NSView? = nil
     var optionalLastFlexibleSpace : NSView? = nil
     var referenceGutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
+    var optionalCurrentGutter : AutoLayoutVerticalStackView.GutterSeparator? = nil
     for view in self.subviews {
       if !view.isHidden {
       //--- Vertical constraints
         self.mConstraints.add (
           verticalConstraintsOf: view,
           inHorizontalContainer: self,
+          currentGutter: optionalCurrentGutter,
           topMargin: self.mTopMargin,
-          bottomMargin : self.mBottomMargin,
+          bottomMargin: self.mBottomMargin,
           optionalLastBaseLineView: &optionalLastBaselineRepresentativeView
         )
         if (view is VerticalSeparator) || (view is VerticalDivider) {
-          optionalLastBaselineRepresentativeView = nil
+          optionalLastBaselineRepresentativeView = []
         }
       //--- Horizontal constraints
         if let lastView = optionalLastView {
@@ -88,23 +108,35 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
         if self.isVerticalDivider (view) {
           optionalLastFlexibleSpace = nil
         }
-      //--- Gutter ?
+        if let v = view as? AutoLayoutVerticalStackView.GutterSeparator {
+          optionalCurrentGutter = v
+        }
+      //--- current is a vertical stack view ? enumerate its gutters
         if let vStack = view as? AutoLayoutVerticalStackView {
           var gutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
+          var currentOptionalLastBaselineRepresentativeViewArray = [NSView?] ()
+          var currentOptionalLastBaselineRepresentativeView : NSView? = nil
           for vStackSubView in vStack.subviews {
-            if !vStackSubView.isHidden, let gutter = vStackSubView as? AutoLayoutVerticalStackView.GutterSeparator {
-              gutterArray.append (gutter)
+            if !vStackSubView.isHidden {
+              if let v = vStackSubView.lastBaselineRepresentativeViewArray.last {
+                currentOptionalLastBaselineRepresentativeView = v
+              }
+              if let gutter = vStackSubView as? AutoLayoutVerticalStackView.GutterSeparator {
+                gutterArray.append (gutter)
+                currentOptionalLastBaselineRepresentativeViewArray.append (currentOptionalLastBaselineRepresentativeView)
+                currentOptionalLastBaselineRepresentativeView = nil
+              }
             }
           }
+          currentOptionalLastBaselineRepresentativeViewArray.append (currentOptionalLastBaselineRepresentativeView)
           let n = min (referenceGutterArray.count, gutterArray.count)
-          if n > 0 {
-            for i in 0 ..< n {
-              self.mConstraints.add (topOf: referenceGutterArray [i], equalToTopOf: gutterArray [i])
-              self.mConstraints.add (bottomOf: referenceGutterArray [i], equalToBottomOf: gutterArray [i])
-            }
+          for i in 0 ..< n {
+            self.mConstraints.add (topOf: referenceGutterArray [i], equalToTopOf: gutterArray [i])
+            self.mConstraints.add (bottomOf: referenceGutterArray [i], equalToBottomOf: gutterArray [i])
           }
           if referenceGutterArray.count < gutterArray.count {
             referenceGutterArray = gutterArray
+            optionalLastBaselineRepresentativeView = currentOptionalLastBaselineRepresentativeViewArray
           }
         }
       //---

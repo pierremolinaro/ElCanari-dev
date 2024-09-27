@@ -26,17 +26,6 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  init (horizontal inHorizontalDisposition : HorizontalLayoutInVerticalCollectionView,
-//        vertical2 inVerticalDisposition : VerticalLayoutInHorizontalCollectionView) {
-//    self.mHorizontalDisposition = inHorizontalDisposition
-//    self.mVerticalDisposition = inVerticalDisposition
-//    super.init (frame: .zero)
-//    noteObjectAllocation (self)
-//    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   enum HorizontalLayoutInVerticalCollectionView {
     case center
     case fillIgnoringMargins
@@ -92,12 +81,12 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendFlexibleSpace () -> Self {
-    let view = AutoLayoutFlexibleSpace ()
-    self.addSubview (view)
-    self.invalidateIntrinsicContentSize ()
-    return self
-  }
+//  final func appendFlexibleSpace () -> Self {
+//    let view = AutoLayoutFlexibleSpace ()
+//    self.addSubview (view)
+//    self.invalidateIntrinsicContentSize ()
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

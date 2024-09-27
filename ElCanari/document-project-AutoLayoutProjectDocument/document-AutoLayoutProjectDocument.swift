@@ -598,81 +598,90 @@ import AppKit
     let boardOutlinePage = self.boardOutlinePage ()
     let boardContentsPage = self.boardContentsPage ()
     let productPage = self.productPage ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: .regular)
     do{
-      let view_0_0 = AutoLayoutVerticalStackView ()
-        .set (spacing: .zero)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .set (margins: .regular)
       do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
-          .addPage (title: "Components", tooltip: "", pageView: componentsPage)
-          .addPage (title: "Library", tooltip: "", pageView: libraryPage)
-          .addPage (title: "Schematic", tooltip: "", pageView: schematicPage)
-          .addPage (title: "Net Classes", tooltip: "", pageView: netClassesPage)
-          .addPage (title: "Net List", tooltip: "", pageView: netListPage)
-          .addPage (title: "Board Outline", tooltip: "", pageView: boardOutlinePage)
-          .addPage (title: "Board Contents", tooltip: "", pageView: boardContentsPage)
-          .addPage (title: "Product", tooltip: "", pageView: productPage)
-          .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
-          .bind_segmentImage (self.rootObject.segmentedControlSchematicIssueImage_property, segmentIndex:2)
-          .bind_segmentImage (self.rootObject.segmentedControlNetListIssueImage_property, segmentIndex:4)
-          .bind_segmentImage (self.rootObject.segmentedControlBoardIssueImage_property, segmentIndex:6)
-        _ = view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutVerticalStackView.GutterSeparator ()
-        _ = view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .regular, alignment: .center)
-        _ = view_0_0.appendView (view_0_0_2)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (spacing: .zero)
+        do{
+          let vStackView_view_view_view = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
+            .addPage (title: "Components", tooltip: "", pageView: componentsPage)
+            .addPage (title: "Library", tooltip: "", pageView: libraryPage)
+            .addPage (title: "Schematic", tooltip: "", pageView: schematicPage)
+            .addPage (title: "Net Classes", tooltip: "", pageView: netClassesPage)
+            .addPage (title: "Net List", tooltip: "", pageView: netListPage)
+            .addPage (title: "Board Outline", tooltip: "", pageView: boardOutlinePage)
+            .addPage (title: "Board Contents", tooltip: "", pageView: boardContentsPage)
+            .addPage (title: "Product", tooltip: "", pageView: productPage)
+            .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
+            .bind_segmentImage (self.rootObject.segmentedControlSchematicIssueImage_property, segmentIndex:2)
+            .bind_segmentImage (self.rootObject.segmentedControlNetListIssueImage_property, segmentIndex:4)
+            .bind_segmentImage (self.rootObject.segmentedControlBoardIssueImage_property, segmentIndex:6)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Page", bold: false, size: .regular, alignment: .center)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutVerticalStackView ()
-        .set (spacing: .zero)
+      _ = vStackView_view.appendFlexibleSpace ()
       do{
-        let view_0_2_0 = AutoLayoutStatusBadgeView ()
-          .bind_tooltip (self.rootObject.schematicStatusMessage_property)
-          .bind_errorCount (self.rootObject.schematicErrorCount_property)
-          .bind_warningCount (self.rootObject.schematicWarningCount_property)
-        _ = view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutVerticalStackView.GutterSeparator ()
-        _ = view_0_2.appendView (view_0_2_1)
-        let view_0_2_2 = AutoLayoutStaticLabel (title: "Schematic", bold: false, size: .regular, alignment: .center)
-        _ = view_0_2.appendView (view_0_2_2)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (spacing: .zero)
+        do{
+          let vStackView_view_view_view = AutoLayoutStatusBadgeView ()
+            .bind_tooltip (self.rootObject.schematicStatusMessage_property)
+            .bind_errorCount (self.rootObject.schematicErrorCount_property)
+            .bind_warningCount (self.rootObject.schematicWarningCount_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Schematic", bold: false, size: .regular, alignment: .center)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutVerticalStackView ()
-        .set (spacing: .zero)
       do{
-        let view_0_3_0 = AutoLayoutStatusBadgeView ()
-          .bind_tooltip (self.rootObject.boardStatusMessage_property)
-          .bind_errorCount (self.rootObject.boardStatusErrorCount_property)
-          .bind_warningCount (self.rootObject.boardStatusWarningCount_property)
-        _ = view_0_3.appendView (view_0_3_0)
-        let view_0_3_1 = AutoLayoutVerticalStackView.GutterSeparator ()
-        _ = view_0_3.appendView (view_0_3_1)
-        let view_0_3_2 = AutoLayoutStaticLabel (title: "Board", bold: false, size: .regular, alignment: .center)
-        _ = view_0_3.appendView (view_0_3_2)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (spacing: .zero)
+        do{
+          let vStackView_view_view_view = AutoLayoutStatusBadgeView ()
+            .bind_tooltip (self.rootObject.boardStatusMessage_property)
+            .bind_errorCount (self.rootObject.boardStatusErrorCount_property)
+            .bind_warningCount (self.rootObject.boardStatusWarningCount_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Board", bold: false, size: .regular, alignment: .center)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutVerticalStackView ()
-        .set (spacing: .zero)
       do{
-        let view_0_4_0 = AutoLayoutStatusView ()
-          .bind_tooltip (self.rootObject.ercStatusMessage_property)
-          .bind_status (self.rootObject.ercStatusValue_property)
-        _ = view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutVerticalStackView.GutterSeparator ()
-        _ = view_0_4.appendView (view_0_4_1)
-        let view_0_4_2 = AutoLayoutStaticLabel (title: "ERC", bold: false, size: .regular, alignment: .center)
-        _ = view_0_4.appendView (view_0_4_2)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (spacing: .zero)
+        do{
+          let vStackView_view_view_view = AutoLayoutStatusView ()
+            .bind_tooltip (self.rootObject.ercStatusMessage_property)
+            .bind_status (self.rootObject.ercStatusValue_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "ERC", bold: false, size: .regular, alignment: .center)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_0.appendView (view_0_4)
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_1)
-    let view_2 = pageMasterView
-    _ = vStackView.appendView (view_2)
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendView (pageMasterView)
     return vStackView
   }
 
@@ -683,99 +692,119 @@ import AppKit
   final func componentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: .regular)
-    let view_0 = AutoLayoutVerticalStackView ()
     do{
-      let view_0_0 = AutoLayoutLabel (bold: true, size: .small)
-        .expandableWidth ()
-        .set (alignment: .center)
-        .bind_title (self.componentCount_property)
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Add Component from:", bold: true, size: .small, alignment: .left)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutButton (title: "File Library…", size: .small)
-        .expandableWidth ()
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.addComponentFromFileLibraryAction (_:))
-        )
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutPullDownButton (title: "Embedded Library…", size: .small)
-        .expandableWidth ()
-        .bind_items (self.rootObject.deviceNames_property)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.addComponentFromEmbeddedLibraryAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-      _ = view_0.appendView (view_0_5)
-      let view_0_6 = AutoLayoutStaticLabel (title: "On Selected Components", bold: true, size: .small, alignment: .left)
-      _ = view_0.appendView (view_0_6)
-      let view_0_7 = AutoLayoutButton (title: "Duplicate", size: .small)
-        .set (commandKeyEquivalent: "d")
-        .expandableWidth ()
-        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.duplicateSelectedComponentsAction (_:))
-        )
-      _ = view_0.appendView (view_0_7)
-      let view_0_8 = AutoLayoutButton (title: "Rename…", size: .small)
-        .expandableWidth ()
-        .set (commandKeyEquivalent: "r")
-        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.renameSelectedComponentsAction (_:))
-        )
-      _ = view_0.appendView (view_0_8)
-      let view_0_9 = AutoLayoutButton (title: "Remove", size: .small)
-        .expandableWidth ()
-        .setDeleteKeyAsKeyEquivalent ()
-        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.removeSelectedComponentsAction (_:))
-        )
-      _ = view_0.appendView (view_0_9)
-      let view_0_10 = AutoLayoutButton (title: "Change Package…", size: .small)
-        .expandableWidth ()
-        .set (controlCommandKeyEquivalent: "c")
-        .bind_enabled (.prop (self.canChangePackage_property))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.changePackageOfSelectedComponentsAction (_:))
-        )
-      _ = view_0.appendView (view_0_10)
-      let view_0_11 = AutoLayoutButton (title: "Change Value…", size: .small)
-        .expandableWidth ()
-        .set (controlCommandKeyEquivalent: "v")
-        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.changeValueOfSelectedComponentsAction (_:))
-        )
-      _ = view_0.appendView (view_0_11)
-      let view_0_12 = AutoLayoutButton (title: "Reveal in Board", size: .small)
-        .expandableWidth ()
-        .set (controlCommandKeyEquivalent: "b")
-        .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.revealPackageOfSelectedComponentsAction (_:))
-        )
-      _ = view_0.appendView (view_0_12)
-      let view_0_13 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-      _ = view_0.appendView (view_0_13)
-      let view_0_14 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_14)
+      let hStackView_view = AutoLayoutVerticalStackView ()
+      do{
+        let hStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .expandableWidth ()
+          .set (alignment: .center)
+          .bind_title (self.componentCount_property)
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+      do{
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "Add Component from:", bold: true, size: .small, alignment: .left)
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "File Library…", size: .small)
+          .expandableWidth ()
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.addComponentFromFileLibraryAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutPullDownButton (title: "Embedded Library…", size: .small)
+          .expandableWidth ()
+          .bind_items (self.rootObject.deviceNames_property)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.addComponentFromEmbeddedLibraryAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+      do{
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "On Selected Components", bold: true, size: .small, alignment: .left)
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "Duplicate", size: .small)
+          .set (commandKeyEquivalent: "d")
+          .expandableWidth ()
+          .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.duplicateSelectedComponentsAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "Rename…", size: .small)
+          .expandableWidth ()
+          .set (commandKeyEquivalent: "r")
+          .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.renameSelectedComponentsAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "Remove", size: .small)
+          .expandableWidth ()
+          .setDeleteKeyAsKeyEquivalent ()
+          .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.removeSelectedComponentsAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "Change Package…", size: .small)
+          .expandableWidth ()
+          .set (controlCommandKeyEquivalent: "c")
+          .bind_enabled (.prop (self.canChangePackage_property))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.changePackageOfSelectedComponentsAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "Change Value…", size: .small)
+          .expandableWidth ()
+          .set (controlCommandKeyEquivalent: "v")
+          .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.changeValueOfSelectedComponentsAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutButton (title: "Reveal in Board", size: .small)
+          .expandableWidth ()
+          .set (controlCommandKeyEquivalent: "b")
+          .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.revealPackageOfSelectedComponentsAction (_:))
+          )
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+      _ = hStackView_view.appendFlexibleSpace ()
+      _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (view_0)
-    let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-    self.componentController.bind_tableView (view_1)
-    _ = hStackView.appendView (view_1)
+    do{
+      let hStackView_view = AutoLayoutTableView (size: .regular, addControlButtons: false)
+      self.componentController.bind_tableView (hStackView_view)
+      _ = hStackView .appendView (hStackView_view)
+}
     return hStackView
   }
 
@@ -788,40 +817,47 @@ import AppKit
       .set (margins: .regular)
     let devicesInLibraryPage = self.DevicesInLibraryPage ()
     let fontsInLibraryPage = self.FontsInLibraryPage ()
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
-        .set (controlCommandKeyEquivalent: "r")
-        .bind_enabled (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.removeEmbeddedDevicesAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutButton (title: "Reset Device and Font Versions", size: .regular)
-        .set (controlCommandKeyEquivalent: "v")
-        .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.resetDevicesAndFontsVersionAction (_:))
-        )
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutButton (title: "Update Devices and Fonts", size: .regular)
-        .set (controlCommandKeyEquivalent: "u")
-        .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.updateDevicesAndFontsAction (_:))
-        )
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
+          .set (controlCommandKeyEquivalent: "r")
+          .bind_enabled (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.removeEmbeddedDevicesAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Reset Device and Font Versions", size: .regular)
+          .set (controlCommandKeyEquivalent: "v")
+          .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.resetDevicesAndFontsVersionAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Update Devices and Fonts", size: .regular)
+          .set (controlCommandKeyEquivalent: "u")
+          .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.updateDevicesAndFontsAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTabView (size: .regular)
-      .addTab (title: "Devices", tooltip: "", contentView: devicesInLibraryPage)
-      .addTab (title: "Fonts", tooltip: "", contentView: fontsInLibraryPage)
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutTabView (size: .regular)
+        .addTab (title: "Devices", tooltip: "", contentView: devicesInLibraryPage)
+        .addTab (title: "Fonts", tooltip: "", contentView: fontsInLibraryPage)
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -833,96 +869,111 @@ import AppKit
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
       .expandableWidth ()
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
-        .set (shiftCommandKeyEquivalent: "e")
-        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.editSelectedDeviceAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutButton (title: "Reset Selected Device Version", size: .regular)
-        .set (shiftCommandKeyEquivalent: "r")
-        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.resetSelectedDeviceVersionAction (_:))
-        )
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
-        .set (shiftCommandKeyEquivalent: "x")
-        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.exportSelectedDeviceAction (_:))
-        )
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
-        .set (shiftCommandKeyEquivalent: "u")
-        .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.updateSelectedDeviceAction (_:))
-        )
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_4)
-    }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_1_0 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-        .expandableWidth ()
-        .set (minWidth: 400)
-      self.projectDeviceController.bind_tableView (view_1_0)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutVerticalStackView ()
+      let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular, alignment: .center)
-        _ = view_1_2.appendView (view_1_2_0)
-        let view_1_2_1 = AutoLayoutHorizontalStackView ()
+        let vStackView_view_view = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
+          .set (shiftCommandKeyEquivalent: "e")
+          .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.editSelectedDeviceAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Reset Selected Device Version", size: .regular)
+          .set (shiftCommandKeyEquivalent: "r")
+          .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.resetSelectedDeviceVersionAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Export Selected Device", size: .regular)
+          .set (shiftCommandKeyEquivalent: "x")
+          .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.exportSelectedDeviceAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
+          .set (shiftCommandKeyEquivalent: "u")
+          .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.updateSelectedDeviceAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutTableView (size: .regular, addControlButtons: false)
+          .expandableWidth ()
+          .set (minWidth: 400)
+        self.projectDeviceController.bind_tableView (vStackView_view_view)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendDivider ()
+      do{
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
         do{
-          let view_1_2_1_0 = AutoLayoutCanariProjectDeviceTableView (size: .regular)
-            .expandableWidth ()
-            .set (minWidth: 150)
-            .bind_array (self.selectedDeviceNames_property)
-          _ = view_1_2_1.appendView (view_1_2_1_0)
-          let view_1_2_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
-          _ = view_1_2_1.appendView (view_1_2_1_1)
-          let view_1_2_1_2 = AutoLayoutVerticalStackView ()
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular, alignment: .center)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
           do{
-            let view_1_2_1_2_0 = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
+            let vStackView_view_view_view_view = AutoLayoutCanariProjectDeviceTableView (size: .regular)
               .expandableWidth ()
               .set (minWidth: 150)
-              .set (minHeight: 150)
-              .bind_array (self.selectedDeviceSymbolNames_property)
-            _ = view_1_2_1_2.appendView (view_1_2_1_2_0)
-            let view_1_2_1_2_1 = AutoLayoutVerticalStackView.HorizontalDivider ()
-            _ = view_1_2_1_2.appendView (view_1_2_1_2_1)
-            let view_1_2_1_2_2 = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
-              .set (minHeight: 150)
-              .expandableWidth ()
-              .bind_array (self.selectedDevicePackageNames_property)
-            _ = view_1_2_1_2.appendView (view_1_2_1_2_2)
+              .bind_array (self.selectedDeviceNames_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          _ = vStackView_view_view_view.appendDivider ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutVerticalStackView ()
+            do{
+              let vStackView_view_view_view_view_view = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
+                .expandableWidth ()
+                .set (minWidth: 150)
+                .set (minHeight: 150)
+                .bind_array (self.selectedDeviceSymbolNames_property)
+              _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
+}
+            _ = vStackView_view_view_view_view.appendDivider ()
+            do{
+              let vStackView_view_view_view_view_view = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
+                .set (minHeight: 150)
+                .expandableWidth ()
+                .bind_array (self.selectedDevicePackageNames_property)
+              _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
+}
+            _ = vStackView_view_view_view.appendView (vStackView_view_view_view_view)
           }
-          _ = view_1_2_1.appendView (view_1_2_1_2)
-          let view_1_2_1_3 = AutoLayoutHorizontalStackView.VerticalDivider ()
-          _ = view_1_2_1.appendView (view_1_2_1_3)
-          let view_1_2_1_4 = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
-            .expandableWidth ()
-            .set (minWidth: 200)
-            .bind_array (self.pinPadAssignments_property)
-          _ = view_1_2_1.appendView (view_1_2_1_4)
+          _ = vStackView_view_view_view.appendDivider ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
+              .expandableWidth ()
+              .set (minWidth: 200)
+              .bind_array (self.pinPadAssignments_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = view_1_2.appendView (view_1_2_1)
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_1.appendView (view_1_2)
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
     return vStackView
   }
 
@@ -933,54 +984,65 @@ import AppKit
   final func FontsInLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "Add Font…", size: .regular)
-        .set (shiftCommandKeyEquivalent: "a")
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.addFontAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutButton (title: "Edit Selected Font", size: .regular)
-        .set (shiftCommandKeyEquivalent: "e")
-        .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.editFontAction (_:))
-        )
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutButton (title: "Reset Selected Font Version", size: .regular)
-        .set (shiftCommandKeyEquivalent: "r")
-        .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.resetFontVersionAction (_:))
-        )
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutButton (title: "Update Selected Fonts", size: .regular)
-        .set (shiftCommandKeyEquivalent: "u")
-        .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.updateFontAction (_:))
-        )
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
-        .setDeleteKeyAsKeyEquivalent ()
-        .bind_enabled (.boolcmp (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .prop (self.canRemoveSelectedFonts_property)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.removeFontAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_5)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Add Font…", size: .regular)
+          .set (shiftCommandKeyEquivalent: "a")
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.addFontAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Edit Selected Font", size: .regular)
+          .set (shiftCommandKeyEquivalent: "e")
+          .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.editFontAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Reset Selected Font Version", size: .regular)
+          .set (shiftCommandKeyEquivalent: "r")
+          .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.resetFontVersionAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Update Selected Fonts", size: .regular)
+          .set (shiftCommandKeyEquivalent: "u")
+          .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.updateFontAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
+          .setDeleteKeyAsKeyEquivalent ()
+          .bind_enabled (.boolcmp (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .prop (self.canRemoveSelectedFonts_property)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.removeFontAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-    self.projectFontController.bind_tableView (view_1)
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutTableView (size: .regular, addControlButtons: false)
+      self.projectFontController.bind_tableView (vStackView_view)
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -991,36 +1053,43 @@ import AppKit
   final func netClassesPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "New Net Class", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.addNetClassAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutButton (title: "Edit Selected Net Class", size: .regular)
-        .bind_enabled (.intcmp (.prop (self.netClassController.selectedArray_property.count_property), .eq, .literalInt (1)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.editNetClassAction (_:))
-        )
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutButton (title: "Remove Selected Net Class", size: .regular)
-        .setDeleteKeyAsKeyEquivalent ()
-        .bind_enabled (.prop (self.canRemoveNetClasses_property))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.removeNetClassAction (_:))
-        )
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "New Net Class", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.addNetClassAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Edit Selected Net Class", size: .regular)
+          .bind_enabled (.intcmp (.prop (self.netClassController.selectedArray_property.count_property), .eq, .literalInt (1)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.editNetClassAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Remove Selected Net Class", size: .regular)
+          .setDeleteKeyAsKeyEquivalent ()
+          .bind_enabled (.prop (self.canRemoveNetClasses_property))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.removeNetClassAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
-    self.netClassController.bind_tableView (view_1)
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutTableView (size: .regular, addControlButtons: false)
+      self.netClassController.bind_tableView (vStackView_view)
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -1031,59 +1100,73 @@ import AppKit
   final func netListPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutLabel (bold: true, size: .regular)
-        .bind_title (self.netCountString_property)
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutButton (title: "Rename Net…", size: .regular)
-        .set (commandKeyEquivalent: "r")
-        .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.renameNetAction (_:))
-        )
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutButton (title: "Select Net Class…", size: .regular)
-        .set (commandKeyEquivalent: "k")
-        .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.selectNetClassAction (_:))
-        )
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutWarningImageView ()
-        .bind_hidden (.intcmp (.prop (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutIntObserverField (bold: true, size: .regular)
-        .bind_observedValue (self.rootObject.netWarningCount_property)
-        .bind_hidden (.intcmp (.prop (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
-      _ = view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_5)
-    }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_1_0 = AutoLayoutCanariNetDescriptionTableView ()
-        .set (minWidth: 300)
-        .bind_netInfo (self.rootObject.netsDescription_property)
-      self.mNetInfoTableView = view_1_0 // Outlet
-      self.configure_netDescriptionTableViewConfigurator (view_1_0) // Configurator
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.VerticalDivider ()
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutVerticalStackView ()
+      let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let view_1_2_0 = AutoLayoutStaticLabel (title: "Selected Net Inspector", bold: true, size: .small, alignment: .center)
-        _ = view_1_2.appendView (view_1_2_0)
-        let view_1_2_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_0 ())
-        self.configure_selectedNetVerticalScrollViewConfigurator (view_1_2_1) // Configurator
-        _ = view_1_2.appendView (view_1_2_1)
-      }
-      _ = view_1.appendView (view_1_2)
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .regular)
+          .bind_title (self.netCountString_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Rename Net…", size: .regular)
+          .set (commandKeyEquivalent: "r")
+          .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.renameNetAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Select Net Class…", size: .regular)
+          .set (commandKeyEquivalent: "k")
+          .bind_enabled (.intcmp (.prop (self.netCount_property), .gt, .literalInt (0)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.selectNetClassAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutWarningImageView ()
+          .bind_hidden (.intcmp (.prop (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutIntObserverField (bold: true, size: .regular)
+          .bind_observedValue (self.rootObject.netWarningCount_property)
+          .bind_hidden (.intcmp (.prop (self.rootObject.netWarningCount_property), .eq, .literalInt (0)))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariNetDescriptionTableView ()
+          .set (minWidth: 300)
+          .bind_netInfo (self.rootObject.netsDescription_property)
+        self.mNetInfoTableView = vStackView_view_view // Outlet
+        self.configure_netDescriptionTableViewConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendDivider ()
+      do{
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Selected Net Inspector", bold: true, size: .small, alignment: .center)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_0 ())
+          self.configure_selectedNetVerticalScrollViewConfigurator (vStackView_view_view_view) // Configurator
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view.appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
     return vStackView
   }
 
@@ -1094,34 +1177,34 @@ import AppKit
   final func schematicsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
     let schematicLateralBar = self.schematicsLateralBar ()
-    let view_0 = schematicLateralBar
-    _ = hStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-    _ = hStackView.appendView (view_1)
-    let view_2 = AutoLayoutGraphicView (minZoom: 50, maxZoom: 1000)
-      .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutPullDownButton (title: "", size: .small)
+    _ = hStackView.appendView (schematicLateralBar)
+    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    do{
+      let hStackView_view = AutoLayoutGraphicView (minZoom: 50, maxZoom: 1000)
+        .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutPullDownButton (title: "", size: .small)
   .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), enableBinding: .alwaysTrue))
   .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), enableBinding: .alwaysTrue))
 self.configure_schematicPullDownButtonConfigurator (toTopHStack) // Configurator
  ; return toTopHStack } ())
-      .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutPopUpButton (size: .small)
+        .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutPopUpButton (size: .small)
 self.configure_sheetPopUpButtonConfigurator2 (toTopHStack) // Configurator
  ; return toTopHStack } ())
-      .bind_underObjectsDisplay (self.rootObject.schematicBackgroundDisplay_property)
-      .bind_overObjectsDisplay (self.rootObject.schematicOverDisplay_property)
-      .bind_tooltips (self.rootObject.schematicTooltips_property)
-      .bind_horizontalFlip (self.rootObject.mSchematicHorizontalFlip_property)
-      .bind_verticalFlip (self.rootObject.mSchematicVerticalFlip_property)
-      .bind_gridStyle (self.rootObject.mSchematicGridStyle_property)
-      .bind_gridDisplayFactor (self.rootObject.mSchematicGridDisplayFactor_property)
-      .bind_gridLineColor (preferences_lineColorGridForSchematic_property)
-      .bind_gridCrossColor (preferences_dotColorGridForSchematic_property)
-      .bind_zoom (self.rootObject.mSchematicZoom_property)
-      .bind_backColor (preferences_schematicBackColor_property)
-      .bind_graphic_controller (self.schematicObjectsController)
-    self.mSchematicsView = view_2 // Outlet
-    self.configure_schematicView (view_2) // Configurator
-    _ = hStackView.appendView (view_2)
+        .bind_underObjectsDisplay (self.rootObject.schematicBackgroundDisplay_property)
+        .bind_overObjectsDisplay (self.rootObject.schematicOverDisplay_property)
+        .bind_tooltips (self.rootObject.schematicTooltips_property)
+        .bind_horizontalFlip (self.rootObject.mSchematicHorizontalFlip_property)
+        .bind_verticalFlip (self.rootObject.mSchematicVerticalFlip_property)
+        .bind_gridStyle (self.rootObject.mSchematicGridStyle_property)
+        .bind_gridDisplayFactor (self.rootObject.mSchematicGridDisplayFactor_property)
+        .bind_gridLineColor (preferences_lineColorGridForSchematic_property)
+        .bind_gridCrossColor (preferences_dotColorGridForSchematic_property)
+        .bind_zoom (self.rootObject.mSchematicZoom_property)
+        .bind_backColor (preferences_schematicBackColor_property)
+        .bind_graphic_controller (self.schematicObjectsController)
+      self.mSchematicsView = hStackView_view // Outlet
+      self.configure_schematicView (hStackView_view) // Configurator
+      _ = hStackView .appendView (hStackView_view)
+}
     return hStackView
   }
 
@@ -1138,50 +1221,54 @@ self.configure_sheetPopUpButtonConfigurator2 (toTopHStack) // Configurator
     let insertSymbolInSchematicView = self.schematicsInsertSymbolInSchematicView ()
     let schematicsDisplayInspectorView = self.schematicsDisplayInspectorView ()
     let schematicsSheetInspectorView = self.schematicsSheetInspectorView ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-      .set (margins: .regular)
     do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
-      self.configure_addWireInschematicsButton (view_0_1) // Configurator
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Comment")
-      self.configure_addCommentInSchematicsButton (view_0_3) // Configurator
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_4)
-    }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView ()
-      .set (leftMargin: .regular)
-      .set (rightMargin: .regular)
-    do{
-      let view_1_0 = AutoLayoutCheckbox (title: "Enable Line Column Hilite", size: .small)
-        .bind_value (self.rootObject.mSchematicEnableHiliteColumnAndRow_property)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .set (margins: .regular)
+      _ = vStackView_view.appendFlexibleSpace ()
       do{
-        let view_1_1_0 = AutoLayoutSegmentedControlWithPages (documentView: schematicsInspectorView, equalWidth: false, size: .small)
-          .expandableWidth ()
-          .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedSchematicElementInspectorView)
-          .addPage (title: "🄰", tooltip: "Hot Keys", pageView: schematicHotKeysInspectorView)
-          .addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: insertSymbolInSchematicView)
-          .addPage (title: "🔍", tooltip: "Display Inspector", pageView: schematicsDisplayInspectorView)
-          .addPage (title: "Sheets", tooltip: "Sheet Inspector", pageView: schematicsSheetInspectorView)
-          .bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property)
-          .bind_segmentTitle (self.unplacedSymbolsCountString_property, segmentIndex:2)
-          .bind_segmentImage (self.unplacedSymbolsSegmentImage_property, segmentIndex:2)
-          .bind_segmentImage (self.rootObject.segmentedControlSheetIssueImage_property, segmentIndex:4)
-        _ = view_1_1.appendView (view_1_1_0)
-      }
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = schematicsInspectorView
-      _ = view_1.appendView (view_1_2)
+        let vStackView_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
+        self.configure_addWireInschematicsButton (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Comment")
+        self.configure_addCommentInSchematicsButton (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutVerticalStackView ()
+        .set (leftMargin: .regular)
+        .set (rightMargin: .regular)
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Enable Line Column Hilite", size: .small)
+          .bind_value (self.rootObject.mSchematicEnableHiliteColumnAndRow_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutSegmentedControlWithPages (documentView: schematicsInspectorView, equalWidth: false, size: .small)
+            .expandableWidth ()
+            .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedSchematicElementInspectorView)
+            .addPage (title: "🄰", tooltip: "Hot Keys", pageView: schematicHotKeysInspectorView)
+            .addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: insertSymbolInSchematicView)
+            .addPage (title: "🔍", tooltip: "Display Inspector", pageView: schematicsDisplayInspectorView)
+            .addPage (title: "Sheets", tooltip: "Sheet Inspector", pageView: schematicsSheetInspectorView)
+            .bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property)
+            .bind_segmentTitle (self.unplacedSymbolsCountString_property, segmentIndex:2)
+            .bind_segmentImage (self.unplacedSymbolsSegmentImage_property, segmentIndex:2)
+            .bind_segmentImage (self.rootObject.segmentedControlSheetIssueImage_property, segmentIndex:4)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendView (schematicsInspectorView)
+      _ = vStackView.appendView (vStackView_view)
+    }
     return vStackView
   }
 
@@ -1204,75 +1291,108 @@ self.configure_sheetPopUpButtonConfigurator2 (toTopHStack) // Configurator
     let vStackView = AutoLayoutVerticalStackView ()
       .set (topMargin: .regular)
       .set (bottomMargin: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicHotKeysInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Hot Keys", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicHotKeysInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "◀︎+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.prependNewSchematicHotKeysInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Hot Keys", bold: true, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+▶︎", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.appendNewSchematicHotKeysInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutStaticLabel (title: "[A] Connect all Symbol Pins", bold: false, size: .small, alignment: .left)
-    self.mConnectAllSymbolPinsSchematicHotKeyTextField.append (view_1) // Outlet Array
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutStaticLabel (title: "[B] Add Bottom Label", bold: false, size: .small, alignment: .left)
-    self.mAddBottomSchematicHotKeyTextField.append (view_2) // Outlet Array
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutStaticLabel (title: "[C] Connect", bold: false, size: .small, alignment: .left)
-    self.mConnectSchematicHotKeyTextField.append (view_3) // Outlet Array
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutStaticLabel (title: "[D] Disconnect", bold: false, size: .small, alignment: .left)
-    self.mDisconnectSchematicHotKeyTextField.append (view_4) // Outlet Array
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutStaticLabel (title: "[E] Disconnect All Symbol Pins", bold: false, size: .small, alignment: .left)
-    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField.append (view_5) // Outlet Array
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutStaticLabel (title: "[F] Add Label to Symbol Pins", bold: false, size: .small, alignment: .left)
-    self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField.append (view_6) // Outlet Array
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutStaticLabel (title: "[L] Add Left Label", bold: false, size: .small, alignment: .left)
-    self.mAddLeftLabelSchematicHotKeyTextField.append (view_7) // Outlet Array
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutStaticLabel (title: "[M] Set NC to Symbol Pins", bold: false, size: .small, alignment: .left)
-    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField.append (view_8) // Outlet Array
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutStaticLabel (title: "[N] Set NC", bold: false, size: .small, alignment: .left)
-    self.mAddNCSchematicHotKeyTextField.append (view_9) // Outlet Array
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutStaticLabel (title: "[P] Remove Wire Point", bold: false, size: .small, alignment: .left)
-    self.mRemoveWirePointSchematicHotKeyTextField.append (view_10) // Outlet Array
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutStaticLabel (title: "[R] Add Right Label", bold: false, size: .small, alignment: .left)
-    self.mAddRightLabelSchematicHotKeyTextField.append (view_11) // Outlet Array
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutStaticLabel (title: "[T] Add Top Label", bold: false, size: .small, alignment: .left)
-    self.mAddTopLabelSchematicHotKeyTextField.append (view_12) // Outlet Array
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutStaticLabel (title: "[V] Show / Hide Component Value", bold: false, size: .small, alignment: .left)
-    self.mShowHideSymbolValueSchematicHotKeyTextField.append (view_13) // Outlet Array
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutStaticLabel (title: "[X] Exchange Symbol…", bold: false, size: .small, alignment: .left)
-    self.mExchangeSymbolSchematicHotKeyTextField.append (view_14) // Outlet Array
-    _ = vStackView.appendView (view_14)
-    let view_15 = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small, alignment: .left)
-    self.mAddWirePointSchematicHotKeyTextField.append (view_15) // Outlet Array
-    _ = vStackView.appendView (view_15)
-    let view_16 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_16)
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[A] Connect all Symbol Pins", bold: false, size: .small, alignment: .left)
+      self.mConnectAllSymbolPinsSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[B] Add Bottom Label", bold: false, size: .small, alignment: .left)
+      self.mAddBottomSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[C] Connect", bold: false, size: .small, alignment: .left)
+      self.mConnectSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[D] Disconnect", bold: false, size: .small, alignment: .left)
+      self.mDisconnectSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[E] Disconnect All Symbol Pins", bold: false, size: .small, alignment: .left)
+      self.mDisconnectAllSymbolPinsSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[F] Add Label to Symbol Pins", bold: false, size: .small, alignment: .left)
+      self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[L] Add Left Label", bold: false, size: .small, alignment: .left)
+      self.mAddLeftLabelSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[M] Set NC to Symbol Pins", bold: false, size: .small, alignment: .left)
+      self.mAddNCToAllSymbolPinsSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[N] Set NC", bold: false, size: .small, alignment: .left)
+      self.mAddNCSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[P] Remove Wire Point", bold: false, size: .small, alignment: .left)
+      self.mRemoveWirePointSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[R] Add Right Label", bold: false, size: .small, alignment: .left)
+      self.mAddRightLabelSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[T] Add Top Label", bold: false, size: .small, alignment: .left)
+      self.mAddTopLabelSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[V] Show / Hide Component Value", bold: false, size: .small, alignment: .left)
+      self.mShowHideSymbolValueSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[X] Exchange Symbol…", bold: false, size: .small, alignment: .left)
+      self.mExchangeSymbolSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small, alignment: .left)
+      self.mAddWirePointSchematicHotKeyTextField.append (vStackView_view) // Outlet Array
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -1284,33 +1404,39 @@ self.configure_sheetPopUpButtonConfigurator2 (toTopHStack) // Configurator
     let vStackView = AutoLayoutVerticalStackView ()
       .set (topMargin: .regular)
       .set (bottomMargin: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicInsertSymbolInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Insert Symbol Inspector", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicInsertSymbolInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "◀︎+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.prependNewSchematicInsertSymbolInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Insert Symbol Inspector", bold: true, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+▶︎", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.appendNewSchematicInsertSymbolInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutCanariDragSourceTableView ()
-      .bind_models (self.rootObject.unplacedSymbols_property)
-    self.mUnplacedSymbolsTableViewArray.append (view_1) // Outlet Array
-    self.configure_symbolDragSourceTableViewConfigurator (view_1) // Configurator
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutCanariDragSourceTableView ()
+        .bind_models (self.rootObject.unplacedSymbols_property)
+      self.mUnplacedSymbolsTableViewArray.append (vStackView_view) // Outlet Array
+      self.configure_symbolDragSourceTableViewConfigurator (vStackView_view) // Configurator
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -1322,30 +1448,35 @@ self.configure_sheetPopUpButtonConfigurator2 (toTopHStack) // Configurator
     let vStackView = AutoLayoutVerticalStackView ()
       .set (topMargin: .regular)
       .set (bottomMargin: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicDisplayInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicDisplayInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "◀︎+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.prependNewSchematicDisplayInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+▶︎", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.appendNewSchematicDisplayInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTabView (size: .small)
-      .addTab (title: "Grid, Flip", tooltip: "Grid and Flip", contentView: { () -> NSView in let contentView = AutoLayoutVerticalStackView ()
+    do{
+      let vStackView_view = AutoLayoutTabView (size: .small)
+        .addTab (title: "Grid, Flip", tooltip: "Grid and Flip", contentView: { () -> NSView in let contentView = AutoLayoutVerticalStackView ()
   .set (margins: .regular)
 do{
   let contentView_0 = AutoLayoutHorizontalStackView ()
@@ -1438,7 +1569,7 @@ do{
   _ = contentView.appendView (contentView_6)
 }
  ; return contentView } ())
-      .addTab (title: "Colors, Font", tooltip: "Colors and Font", contentView: { () -> NSView in let contentView = AutoLayoutVerticalStackView ()
+        .addTab (title: "Colors, Font", tooltip: "Colors and Font", contentView: { () -> NSView in let contentView = AutoLayoutVerticalStackView ()
   .set (margins: .regular)
 do{
   let contentView_0 = AutoLayoutHorizontalStackView ()
@@ -1591,9 +1722,9 @@ do{
   _ = contentView.appendView (contentView_19)
 }
  ; return contentView } ())
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_2)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -1605,174 +1736,208 @@ do{
     let vStackView = AutoLayoutVerticalStackView ()
       .set (topMargin: .regular)
       .set (bottomMargin: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicSheetInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Sheet Inspector", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicSheetInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
-    }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_1_0 = AutoLayoutPopUpButton (size: .small)
-      self.configure_sheetPopUpButtonConfigurator (view_1_0) // Configurator
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutImageObserverView (size: .small)
-        .bind_image (self.rootObject.segmentedControlSchematicIssueImage_property)
-        .bind_hidden (.not (.prop (self.rootObject.hasSchematicIssue_property)))
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutStepper ()
-      self.configure_sheetStepperConfigurator (view_1_2) // Configurator
-      _ = view_1.appendView (view_1_2)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_3_0 = AutoLayoutButton (title: "New Sheet", size: .small)
-        .expandableHeight ()
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.newSheetAction (_:))
-        )
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutFlexibleSpace ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutVerticalStackView ()
+      let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let view_3_2_0 = AutoLayoutButton (title: "Up", size: .small)
-          .expandableWidth ()
-        self.configure_moveSheetUp (view_3_2_0) // Configurator
-        _ = view_3_2.appendView (view_3_2_0)
-        let view_3_2_1 = AutoLayoutButton (title: "Down", size: .small)
-        self.configure_moveSheetDown (view_3_2_1) // Configurator
-        _ = view_3_2.appendView (view_3_2_1)
+        let vStackView_view_view = AutoLayoutButton (title: "◀︎+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.prependNewSchematicSheetInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Sheet Inspector", bold: true, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+▶︎", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.appendNewSchematicSheetInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutPopUpButton (size: .small)
+        self.configure_sheetPopUpButtonConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutImageObserverView (size: .small)
+          .bind_image (self.rootObject.segmentedControlSchematicIssueImage_property)
+          .bind_hidden (.not (.prop (self.rootObject.hasSchematicIssue_property)))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutStepper ()
+        self.configure_sheetStepperConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "New Sheet", size: .small)
+          .expandableHeight ()
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.newSheetAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutButton (title: "Up", size: .small)
+            .expandableWidth ()
+          self.configure_moveSheetUp (vStackView_view_view_view) // Configurator
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutButton (title: "Down", size: .small)
+          self.configure_moveSheetDown (vStackView_view_view_view) // Configurator
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_3.appendView (view_3_2)
-      let view_3_3 = AutoLayoutFlexibleSpace ()
-      _ = view_3.appendView (view_3_3)
-      let view_3_4 = AutoLayoutButton (title: "Delete Sheet", size: .small)
-        .expandableHeight ()
-        .bind_enabled (.intcmp (.prop (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.deleteSheetAction (_:))
-        )
-      _ = view_3.appendView (view_3_4)
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Delete Sheet", size: .small)
+          .expandableHeight ()
+          .bind_enabled (.intcmp (.prop (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.deleteSheetAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutStaticLabel (title: "Selected Sheet Name", bold: false, size: .small, alignment: .left)
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutTextField (minWidth: 150, size: .small)
-      .automaticallyAdjustHeight (maxWidth: 150)
-      .bind_value (self.rootObject.selectedSheetTitle_property, sendContinously:true)
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_8_0 = AutoLayoutStaticLabel (title: "Title", bold: false, size: .small, alignment: .right)
-        .expandableHeight ()
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutTextField (minWidth: 150, size: .small)
+      let vStackView_view = AutoLayoutStaticLabel (title: "Selected Sheet Name", bold: false, size: .small, alignment: .left)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutTextField (minWidth: 150, size: .small)
         .automaticallyAdjustHeight (maxWidth: 150)
-        .bind_value (self.rootObject.mSchematicTitle_property, sendContinously:true)
-      _ = view_8.appendView (view_8_2)
-    }
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutHorizontalStackView ()
+        .bind_value (self.rootObject.selectedSheetTitle_property, sendContinously:true)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_9_0 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .right)
-      _ = view_9.appendView (view_9_0)
-      let view_9_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_9.appendView (view_9_1)
-      let view_9_2 = AutoLayoutTextField (minWidth: 150, size: .small)
-        .bind_value (self.rootObject.mSchematicVersion_property, sendContinously:true)
-      _ = view_9.appendView (view_9_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Title", bold: false, size: .small, alignment: .right)
+          .expandableHeight ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutTextField (minWidth: 150, size: .small)
+          .automaticallyAdjustHeight (maxWidth: 150)
+          .bind_value (self.rootObject.mSchematicTitle_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutHorizontalStackView ()
     do{
-      let view_10_0 = AutoLayoutStaticLabel (title: "Date", bold: false, size: .small, alignment: .right)
-      _ = view_10.appendView (view_10_0)
-      let view_10_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_10.appendView (view_10_1)
-      let view_10_2 = AutoLayoutButton (title: "Set…", size: .small)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.openSetDateDialogAction (_:))
-        )
-      _ = view_10.appendView (view_10_2)
-      let view_10_3 = AutoLayoutFlexibleSpace ()
-      _ = view_10.appendView (view_10_3)
-      let view_10_4 = AutoLayoutButton (title: "Set to Now", size: .small)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.setDateToNowAction (_:))
-        )
-      _ = view_10.appendView (view_10_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutTextField (minWidth: 150, size: .small)
+          .bind_value (self.rootObject.mSchematicVersion_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutHorizontalStackView ()
     do{
-      let view_12_0 = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
-      _ = view_12.appendView (view_12_0)
-      let view_12_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_12.appendView (view_12_1)
-      let view_12_2 = AutoLayoutEnumSegmentedControl (titles: SchematicSheetOrientation.popupTitles (), equalWidth: false, size: .small)
-        .bind_selectedSegment (self.rootObject.mSchematicSheetOrientation_property)
-      self.configure_sheetOrientationSegmentedControlConfigurator (view_12_2) // Configurator
-      _ = view_12.appendView (view_12_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Date", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Set…", size: .small)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.openSetDateDialogAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Set to Now", size: .small)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.setDateToNowAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_13_0 = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
-      _ = view_13.appendView (view_13_0)
-      let view_13_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_13.appendView (view_13_1)
-      let view_13_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.rootObject.mSchematicCustomWidth_property, self.rootObject.mSchematicCustomWidthUnit_property)
-      _ = view_13.appendView (view_13_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumSegmentedControl (titles: SchematicSheetOrientation.popupTitles (), equalWidth: false, size: .small)
+          .bind_selectedSegment (self.rootObject.mSchematicSheetOrientation_property)
+        self.configure_sheetOrientationSegmentedControlConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
     do{
-      let view_14_0 = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
-      _ = view_14.appendView (view_14_0)
-      let view_14_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_14.appendView (view_14_1)
-      let view_14_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.rootObject.mSchematicCustomHeight_property, self.rootObject.mSchematicCustomHeightUnit_property)
-      _ = view_14.appendView (view_14_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.rootObject.mSchematicCustomWidth_property, self.rootObject.mSchematicCustomWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_14)
-    let view_15 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_15)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.not (.prop (self.schematicSheetOrientationIsCustom_property)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.rootObject.mSchematicCustomHeight_property, self.rootObject.mSchematicCustomHeightUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -1789,16 +1954,17 @@ do{
     let schematicsLabelInspectorView = self.schematicsLabelInspectorView ()
     let commentInSchematicsInspectorView = self.commentInSchematicsInspectorView ()
     let componentSymbolInspectorView = self.componentSymbolInspectorView ()
-    let view_0 = AutoLayoutObjectInspectorView ()
-      .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: schematicsWireInspectorView)
-      .addObjectInspector (forEntity: NCInSchematic.self, inspectorView: ncInSchematicsInspectorView)
-      .addObjectInspector (forEntity: LabelInSchematic.self, inspectorView: schematicsLabelInspectorView)
-      .addObjectInspector (forEntity: CommentInSchematic.self, inspectorView: commentInSchematicsInspectorView)
-      .addObjectInspector (forEntity: ComponentSymbolInProject.self, inspectorView: componentSymbolInspectorView)
-      .bind_graphic_controller (self.schematicObjectsController)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutObjectInspectorView ()
+        .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: schematicsWireInspectorView)
+        .addObjectInspector (forEntity: NCInSchematic.self, inspectorView: ncInSchematicsInspectorView)
+        .addObjectInspector (forEntity: LabelInSchematic.self, inspectorView: schematicsLabelInspectorView)
+        .addObjectInspector (forEntity: CommentInSchematic.self, inspectorView: commentInSchematicsInspectorView)
+        .addObjectInspector (forEntity: ComponentSymbolInProject.self, inspectorView: componentSymbolInspectorView)
+        .bind_graphic_controller (self.schematicObjectsController)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -1808,65 +1974,82 @@ do{
 
   final func schematicsWireInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Wire Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small, alignment: .right)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutLabel (bold: true, size: .small)
-        .expandableWidth ()
-        .set (alignment: .left)
-        .bind_title (self.wireInSchematicSelectionController.netName_property)
-      _ = view_1.appendView (view_1_1)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutButton (title: "Rename Net…", size: .small)
-      .expandableWidth ()
-      .set (commandKeyEquivalent: "r")
-      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
-      )
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
-      .expandableWidth ()
-      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
-      )
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Wire Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .right)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutPopUpButton (size: .small)
-        .expandableWidth ()
-      self.configure_selectedWireNetPopUpButtonConfigurator (view_4_1) // Configurator
-      _ = view_4.appendView (view_4_1)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .expandableWidth ()
+          .set (alignment: .left)
+          .bind_title (self.wireInSchematicSelectionController.netName_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutButton (title: "Merge Subnet into Existing Net…", size: .small)
-      .expandableWidth ()
-      .set (commandKeyEquivalent: "m")
-      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedWireAction (_:))
-      )
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
-      .expandableWidth ()
-      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedWireAction (_:))
-      )
-    _ = vStackView.appendView (view_7)
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Rename Net…", size: .small)
+        .expandableWidth ()
+        .set (commandKeyEquivalent: "r")
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutPopUpButton (size: .small)
+          .expandableWidth ()
+        self.configure_selectedWireNetPopUpButtonConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Merge Subnet into Existing Net…", size: .small)
+        .expandableWidth ()
+        .set (commandKeyEquivalent: "m")
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedWireAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedWireAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -1876,11 +2059,15 @@ do{
 
   final func ncInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "NC Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.directionTitles (), equalWidth: true, size: .small)
-      .bind_selectedSegment (self.ncInSchematicSelectionController.mOrientation_property)
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "NC Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.directionTitles (), equalWidth: true, size: .small)
+        .bind_selectedSegment (self.ncInSchematicSelectionController.mOrientation_property)
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -1890,69 +2077,88 @@ do{
 
   final func schematicsLabelInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Label Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.directionTitles (), equalWidth: true, size: .small)
-      .bind_selectedSegment (self.schematicLabelSelectionController.mOrientation_property)
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small, alignment: .center)
-        .notExpandableWidth ()
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutLabel (bold: true, size: .small)
-        .expandableWidth ()
-        .set (alignment: .left)
-        .bind_title (self.schematicLabelSelectionController.netName_property)
-      _ = view_2.appendView (view_2_1)
-    }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutButton (title: "Rename Net…", size: .small)
-      .expandableWidth ()
-      .set (commandKeyEquivalent: "r")
-      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameSchematicLabelNetAction (_:))
-      )
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
-      .expandableWidth ()
-      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameLabelNetWithNewAutomaticNameAction (_:))
-      )
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Label Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .right)
-      _ = view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutPopUpButton (size: .small)
-        .expandableWidth ()
-      self.configure_selectedLabelNetPopUpButtonConfigurator (view_5_1) // Configurator
-      _ = view_5.appendView (view_5_1)
+      let vStackView_view = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.directionTitles (), equalWidth: true, size: .small)
+        .bind_selectedSegment (self.schematicLabelSelectionController.mOrientation_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small, alignment: .center)
+          .notExpandableWidth ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .expandableWidth ()
+          .set (alignment: .left)
+          .bind_title (self.schematicLabelSelectionController.netName_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutButton (title: "Merge Subnet into Existing Net…", size: .small)
-      .expandableWidth ()
-      .set (commandKeyEquivalent: "m")
-      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedLabelAction (_:))
-      )
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
-      .expandableWidth ()
-      .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedLabelAction (_:))
-      )
-    _ = vStackView.appendView (view_8)
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Rename Net…", size: .small)
+        .expandableWidth ()
+        .set (commandKeyEquivalent: "r")
+        .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.renameSchematicLabelNetAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.renameLabelNetWithNewAutomaticNameAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutPopUpButton (size: .small)
+          .expandableWidth ()
+        self.configure_selectedLabelNetPopUpButtonConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Merge Subnet into Existing Net…", size: .small)
+        .expandableWidth ()
+        .set (commandKeyEquivalent: "m")
+        .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedLabelAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
+        .expandableWidth ()
+        .bind_enabled (.intcmp (.prop (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedLabelAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -1962,81 +2168,100 @@ do{
 
   final func commentInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Comment Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTextField (minWidth: 210, size: .small)
-      .automaticallyAdjustHeight (maxWidth: 210)
-      .bind_value (self.commentInSchematicSelectionController.mComment_property, sendContinously:true)
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutCheckbox (title: "Bold", size: .small)
-      .bind_value (self.commentInSchematicSelectionController.mBold_property)
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Color", bold: true, size: .small, alignment: .left)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutColorWell ()
-        .bind_color (self.commentInSchematicSelectionController.mColor_property)
-      _ = view_4.appendView (view_4_2)
-    }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Comment Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_6_0 = AutoLayoutStaticLabel (title: "Rotation", bold: true, size: .small, alignment: .left)
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutCanariPreferredDirectionSegmentedControl ()
-        .bind_angle (self.commentInSchematicSelectionController.mRotation_property)
-      _ = view_6.appendView (view_6_2)
-    }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutTextField (minWidth: 210, size: .small)
+        .automaticallyAdjustHeight (maxWidth: 210)
+        .bind_value (self.commentInSchematicSelectionController.mComment_property, sendContinously:true)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_7_0 = AutoLayoutFlexibleSpace ()
-      _ = view_7.appendView (view_7_0)
-      let view_7_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_7.appendView (view_7_1)
-      let view_7_2 = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-        .bind_angle (self.commentInSchematicSelectionController.mRotation_property)
-      _ = view_7.appendView (view_7_2)
-    }
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutCheckbox (title: "Bold", size: .small)
+        .bind_value (self.commentInSchematicSelectionController.mBold_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_9_0 = AutoLayoutStaticLabel (title: "Size", bold: true, size: .small, alignment: .left)
-      _ = view_9.appendView (view_9_0)
-      let view_9_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_9.appendView (view_9_1)
-      let view_9_2 = AutoLayoutDoubleField (width: 64, size: .small)
-        .bind_value (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
-      _ = view_9.appendView (view_9_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Color", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutColorWell ()
+          .bind_color (self.commentInSchematicSelectionController.mColor_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutLinearSlider (min: 4, max: 20, ticks: 17)
-      .setAllowsTickMarkValuesOnly ()
-      .bind_doubleValue (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutStaticLabel (title: "Alignment", bold: true, size: .small, alignment: .left)
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutEnumSegmentedControl (titles: HorizontalAlignment.popupTitles (), equalWidth: true, size: .small)
-      .bind_selectedSegment (self.commentInSchematicSelectionController.mHorizontalAlignment_property)
-    self.configure_labelHAlignmentSegmendControlConfigurator (view_13) // Configurator
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutEnumSegmentedControl (titles: VerticalAlignment.popupTitles (), equalWidth: true, size: .small)
-      .bind_selectedSegment (self.commentInSchematicSelectionController.mVerticalAlignment_property)
-    self.configure_labelVAlignmentSegmendControlConfigurator (view_14) // Configurator
-    _ = vStackView.appendView (view_14)
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Rotation", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariPreferredDirectionSegmentedControl ()
+          .bind_angle (self.commentInSchematicSelectionController.mRotation_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          .bind_angle (self.commentInSchematicSelectionController.mRotation_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Size", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutDoubleField (width: 64, size: .small)
+          .bind_value (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutLinearSlider (min: 4, max: 20, ticks: 17)
+        .setAllowsTickMarkValuesOnly ()
+        .bind_doubleValue (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "Alignment", bold: true, size: .small, alignment: .left)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutEnumSegmentedControl (titles: HorizontalAlignment.popupTitles (), equalWidth: true, size: .small)
+        .bind_selectedSegment (self.commentInSchematicSelectionController.mHorizontalAlignment_property)
+      self.configure_labelHAlignmentSegmendControlConfigurator (vStackView_view) // Configurator
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutEnumSegmentedControl (titles: VerticalAlignment.popupTitles (), equalWidth: true, size: .small)
+        .bind_selectedSegment (self.commentInSchematicSelectionController.mVerticalAlignment_property)
+      self.configure_labelVAlignmentSegmendControlConfigurator (vStackView_view) // Configurator
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -2046,90 +2271,114 @@ do{
 
   final func componentSymbolInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Symbol Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.degreesTitles (), equalWidth: false, size: .small)
-        .bind_selectedSegment (self.componentSymbolSelectionController.mRotation_property)
-      _ = view_1.appendView (view_1_2)
+      let vStackView_view = AutoLayoutStaticLabel (title: "Symbol Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.degreesTitles (), equalWidth: false, size: .small)
+          .bind_selectedSegment (self.componentSymbolSelectionController.mRotation_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutFlexibleSpace ()
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutCheckbox (title: "Mirror", size: .small)
-        .bind_value (self.componentSymbolSelectionController.mMirror_property)
-      _ = view_2.appendView (view_2_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Mirror", size: .small)
+          .bind_value (self.componentSymbolSelectionController.mMirror_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Component Name", bold: false, size: .small, alignment: .center)
-        .notExpandableWidth ()
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutLabel (bold: true, size: .small)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Component Name", bold: false, size: .small, alignment: .center)
+          .notExpandableWidth ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .expandableWidth ()
+          .set (alignment: .left)
+          .bind_title (self.componentSymbolSelectionController.componentName_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Rename Component…", size: .small)
         .expandableWidth ()
-        .set (alignment: .left)
-        .bind_title (self.componentSymbolSelectionController.componentName_property)
-      _ = view_4.appendView (view_4_1)
-    }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutButton (title: "Rename Component…", size: .small)
-      .expandableWidth ()
-      .bind_enabled (.intcmp (.prop (self.schematicObjectsController.selectedArray_property.count_property), .eq, .literalInt (1)))
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.renameComponentFromSelectedSymbolAction (_:))
-      )
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutStaticLabel (title: "Component Value", bold: false, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutCheckbox (title: "Show Component Value", size: .small)
-      .bind_value (self.componentSymbolSelectionController.mDisplayComponentValue_property)
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutTextField (minWidth: 100, size: .small)
-      .expandableWidth ()
-      .bind_value (self.componentSymbolSelectionController.componentValueProxy_property, sendContinously:true)
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutStaticLabel (title: "Symbol Instance Name", bold: false, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutLabel (bold: true, size: .small)
-      .expandableWidth ()
-      .set (alignment: .center)
-      .bind_title (self.componentSymbolSelectionController.mSymbolInstanceName_property)
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutStaticLabel (title: "Symbol Type Name", bold: false, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_14)
-    let view_15 = AutoLayoutLabel (bold: true, size: .small)
-      .expandableWidth ()
-      .set (alignment: .center)
-      .bind_title (self.componentSymbolSelectionController.mSymbolTypeName_property)
-    _ = vStackView.appendView (view_15)
-    let view_16 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_16)
-    let view_17 = AutoLayoutStaticLabel (title: "Device Name", bold: false, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_17)
-    let view_18 = AutoLayoutLabel (bold: true, size: .small)
-      .expandableWidth ()
-      .set (alignment: .center)
-      .bind_title (self.componentSymbolSelectionController.deviceName_property)
-    _ = vStackView.appendView (view_18)
+        .bind_enabled (.intcmp (.prop (self.schematicObjectsController.selectedArray_property.count_property), .eq, .literalInt (1)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.renameComponentFromSelectedSymbolAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "Component Value", bold: false, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutCheckbox (title: "Show Component Value", size: .small)
+        .bind_value (self.componentSymbolSelectionController.mDisplayComponentValue_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutTextField (minWidth: 100, size: .small)
+        .expandableWidth ()
+        .bind_value (self.componentSymbolSelectionController.componentValueProxy_property, sendContinously:true)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "Symbol Instance Name", bold: false, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutLabel (bold: true, size: .small)
+        .expandableWidth ()
+        .set (alignment: .center)
+        .bind_title (self.componentSymbolSelectionController.mSymbolInstanceName_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "Symbol Type Name", bold: false, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutLabel (bold: true, size: .small)
+        .expandableWidth ()
+        .set (alignment: .center)
+        .bind_title (self.componentSymbolSelectionController.mSymbolTypeName_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "Device Name", bold: false, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutLabel (bold: true, size: .small)
+        .expandableWidth ()
+        .set (alignment: .center)
+        .bind_title (self.componentSymbolSelectionController.deviceName_property)
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -2139,31 +2388,34 @@ do{
 
   final func boardOutlinePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-    let view_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_1 ())
-    _ = hStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-    _ = hStackView.appendView (view_1)
-    let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 20000)
-      .bind_underObjectsDisplay (self.rootObject.borderViewBackground_property)
-      .bind_horizontalFlip (self.rootObject.mBoardLimitsHorizontalFlip_property)
-      .bind_verticalFlip (self.rootObject.mBoardLimitsVerticalFlip_property)
-      .bind_gridStyle (self.rootObject.mBoardLimitsGridStyle_property)
-      .bind_gridDisplayFactor (self.rootObject.mBoardLimitsGridDisplayFactor_property)
-      .bind_gridLineColor (preferences_lineColorGridForBoard_property)
-      .bind_gridCrossColor (preferences_crossColorGridForBoard_property)
-      .bind_workingAreaColor (preferences_workingAreaColorForBoard_property)
-      .bind_workingAreaRectString (self.rootObject.mWorkingAreaRectString_property)
-      .bind_zoom (self.rootObject.mBoardLimitsZoom_property)
-      .bind_backColor (preferences_boardBackgroundColorForBoard_property)
-      .bind_mouseGrid (self.rootObject.mBoardLimitsGridStep_property)
-      .bind_gridStep (self.rootObject.mBoardLimitsGridStep_property)
-      .bind_arrowKeyMagnitude (self.rootObject.mBoardLimitsGridStep_property)
-      .bind_shiftArrowKeyMagnitude (self.rootObject.boardLimitsGridStepMultipliedByDisplayFactor_property)
-      .bind_xPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property)
-      .bind_yPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property)
-      .bind_graphic_controller (self.boardCurveObjectsController)
-    self.configure_boardOutlineView (view_2) // Configurator
-    _ = hStackView.appendView (view_2)
+    do{
+      let hStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_1 ())
+      _ = hStackView .appendView (hStackView_view)
+}
+    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    do{
+      let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 20000)
+        .bind_underObjectsDisplay (self.rootObject.borderViewBackground_property)
+        .bind_horizontalFlip (self.rootObject.mBoardLimitsHorizontalFlip_property)
+        .bind_verticalFlip (self.rootObject.mBoardLimitsVerticalFlip_property)
+        .bind_gridStyle (self.rootObject.mBoardLimitsGridStyle_property)
+        .bind_gridDisplayFactor (self.rootObject.mBoardLimitsGridDisplayFactor_property)
+        .bind_gridLineColor (preferences_lineColorGridForBoard_property)
+        .bind_gridCrossColor (preferences_crossColorGridForBoard_property)
+        .bind_workingAreaColor (preferences_workingAreaColorForBoard_property)
+        .bind_workingAreaRectString (self.rootObject.mWorkingAreaRectString_property)
+        .bind_zoom (self.rootObject.mBoardLimitsZoom_property)
+        .bind_backColor (preferences_boardBackgroundColorForBoard_property)
+        .bind_mouseGrid (self.rootObject.mBoardLimitsGridStep_property)
+        .bind_gridStep (self.rootObject.mBoardLimitsGridStep_property)
+        .bind_arrowKeyMagnitude (self.rootObject.mBoardLimitsGridStep_property)
+        .bind_shiftArrowKeyMagnitude (self.rootObject.boardLimitsGridStepMultipliedByDisplayFactor_property)
+        .bind_xPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property)
+        .bind_yPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property)
+        .bind_graphic_controller (self.boardCurveObjectsController)
+      self.configure_boardOutlineView (hStackView_view) // Configurator
+      _ = hStackView .appendView (hStackView_view)
+}
     return hStackView
   }
 
@@ -2182,28 +2434,34 @@ do{
 
   final func BoardRectangularOutlineView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Board Width", bold: false, size: .small, alignment: .right)
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.rootObject.mRectangularBoardWidth_property, self.rootObject.mRectangularBoardWidthUnit_property)
-      _ = view_0.appendView (view_0_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Board Width", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.rootObject.mRectangularBoardWidth_property, self.rootObject.mRectangularBoardWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Board Height", bold: false, size: .small, alignment: .right)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.rootObject.mRectangularBoardHeight_property, self.rootObject.mRectangularBoardHeightUnit_property)
-      _ = view_1.appendView (view_1_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Board Height", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.rootObject.mRectangularBoardHeight_property, self.rootObject.mRectangularBoardHeightUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
     return vStackView
   }
 
@@ -2213,127 +2471,166 @@ do{
 
   final func BoardBezierPathOutlineView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.rootObject.borderElementCountString_property)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutStaticLabel (title: "For editing Board limits, click on a line, use contextual click on a line.", bold: false, size: .small, alignment: .center)
-      .expandableHeight ()
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutStaticLabel (title: "Selected Board Limit Element", bold: true, size: .small, alignment: .center)
-      .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
     do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Shape", bold: true, size: .small, alignment: .left)
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutEnumPopUpButton (titles: BorderCurveShape.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardCurveSelectionController.mShape_property)
-      _ = view_3.appendView (view_3_2)
-    }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
+      let vStackView_view = AutoLayoutLabel (bold: true, size: .small)
+        .bind_title (self.rootObject.borderElementCountString_property)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "End Points", bold: true, size: .small, alignment: .left)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutCanariUnitPopUpButton (size: .small)
-        .bind_unit (self.rootObject.mBoardSelectedCurveDisplayUnit_property)
-      _ = view_4.appendView (view_4_2)
-    }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .not (.prop (self.boardCurveSelectionController.isLine_property))))
+      let vStackView_view = AutoLayoutStaticLabel (title: "For editing Board limits, click on a line, use contextual click on a line.", bold: false, size: .small, alignment: .center)
+        .expandableHeight ()
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
-      _ = view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutCanariDimensionField (size: .small)
-        .bind_dimensionAndUnit (self.boardCurveSelectionController.mX_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
-      _ = view_5.appendView (view_5_1)
-      let view_5_2 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_5.appendView (view_5_2)
-      let view_5_3 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_5.appendView (view_5_3)
-      let view_5_4 = AutoLayoutCanariDimensionField (size: .small)
-        .bind_dimensionAndUnit (self.boardCurveSelectionController.mY_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
-      _ = view_5.appendView (view_5_4)
-    }
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
+      let vStackView_view = AutoLayoutStaticLabel (title: "Selected Board Limit Element", bold: true, size: .small, alignment: .center)
+        .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_6_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutDoubleObserverField (width: 72, bold: true, size: .small)
-        .bind_observedValue (self.boardCurveSelectionController.p2Xvalue_property)
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_6.appendView (view_6_2)
-      let view_6_3 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_6.appendView (view_6_3)
-      let view_6_4 = AutoLayoutDoubleObserverField (width: 72, bold: true, size: .small)
-        .bind_observedValue (self.boardCurveSelectionController.p2Yvalue_property)
-      _ = view_6.appendView (view_6_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Shape", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: BorderCurveShape.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardCurveSelectionController.mShape_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
     do{
-      let view_7_0 = AutoLayoutStaticLabel (title: "Control Points", bold: true, size: .small, alignment: .left)
-      _ = view_7.appendView (view_7_0)
-      let view_7_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_7.appendView (view_7_1)
-      let view_7_2 = AutoLayoutCanariUnitPopUpButton (size: .small)
-        .bind_unit (self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-      _ = view_7.appendView (view_7_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "End Points", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
+          .bind_unit (self.rootObject.mBoardSelectedCurveDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
     do{
-      let view_8_0 = AutoLayoutFlexibleSpace ()
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutCanariDimensionField (size: .small)
-        .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-      _ = view_8.appendView (view_8_2)
-      let view_8_3 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_8.appendView (view_8_3)
-      let view_8_4 = AutoLayoutFlexibleSpace ()
-      _ = view_8.appendView (view_8_4)
-      let view_8_5 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_8.appendView (view_8_5)
-      let view_8_6 = AutoLayoutCanariDimensionField (size: .small)
-        .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-      _ = view_8.appendView (view_8_6)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .not (.prop (self.boardCurveSelectionController.isLine_property))))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionField (size: .small)
+          .bind_dimensionAndUnit (self.boardCurveSelectionController.mX_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionField (size: .small)
+          .bind_dimensionAndUnit (self.boardCurveSelectionController.mY_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
     do{
-      let view_9_0 = AutoLayoutFlexibleSpace ()
-      _ = view_9.appendView (view_9_0)
-      let view_9_1 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
-      _ = view_9.appendView (view_9_1)
-      let view_9_2 = AutoLayoutCanariDimensionField (size: .small)
-        .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-      _ = view_9.appendView (view_9_2)
-      let view_9_3 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_9.appendView (view_9_3)
-      let view_9_4 = AutoLayoutFlexibleSpace ()
-      _ = view_9.appendView (view_9_4)
-      let view_9_5 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_9.appendView (view_9_5)
-      let view_9_6 = AutoLayoutCanariDimensionField (size: .small)
-        .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
-      _ = view_9.appendView (view_9_6)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutDoubleObserverField (width: 72, bold: true, size: .small)
+          .bind_observedValue (self.boardCurveSelectionController.p2Xvalue_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutDoubleObserverField (width: 72, bold: true, size: .small)
+          .bind_observedValue (self.boardCurveSelectionController.p2Yvalue_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_9)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Control Points", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
+          .bind_unit (self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionField (size: .small)
+          .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionField (size: .small)
+          .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY1_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.boolcmp (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)), .or, .prop (self.boardCurveSelectionController.isLine_property)))
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionField (size: .small)
+          .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPX2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionField (size: .small)
+          .bind_dimensionAndUnit (self.boardCurveSelectionController.mCPY2_property, self.rootObject.mBoardLimitControlPointsDisplayUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
     return vStackView
   }
 
@@ -2349,96 +2646,105 @@ do{
     let boardDisplayInspectorView = self.boardDisplayInspectorView ()
     let boardRouterInspectorView = self.boardRouterInspectorView ()
     let boardERCInspectorView = self.boardERCInspectorView ()
-    let view_0 = AutoLayoutVerticalStackView ()
-      .set (width: 250)
     do{
-      let view_0_0 = AutoLayoutHorizontalStackView ()
-        .set (margins: .regular)
+      let hStackView_view = AutoLayoutVerticalStackView ()
+        .set (width: 250)
       do{
-        let view_0_0_0 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.")
-        self.configure_addBoardImageButton (view_0_0_0) // Configurator
-        _ = view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutFlexibleSpace ()
-        _ = view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.")
-        self.configure_addQRCodeButton (view_0_0_2) // Configurator
-        _ = view_0_0.appendView (view_0_0_2)
-        let view_0_0_3 = AutoLayoutFlexibleSpace ()
-        _ = view_0_0.appendView (view_0_0_3)
-        let view_0_0_4 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.")
-        self.configure_addRestrictRectangleButton (view_0_0_4) // Configurator
-        _ = view_0_0.appendView (view_0_0_4)
-        let view_0_0_5 = AutoLayoutFlexibleSpace ()
-        _ = view_0_0.appendView (view_0_0_5)
-        let view_0_0_6 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Line;  the layer is set by the contextual menu.")
-        self.configure_addLineButton (view_0_0_6) // Configurator
-        _ = view_0_0.appendView (view_0_0_6)
-        let view_0_0_7 = AutoLayoutFlexibleSpace ()
-        _ = view_0_0.appendView (view_0_0_7)
-        let view_0_0_8 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Text; the layer is set by the contextual menu.")
-        self.configure_addTextButton (view_0_0_8) // Configurator
-        _ = view_0_0.appendView (view_0_0_8)
-        let view_0_0_9 = AutoLayoutFlexibleSpace ()
-        _ = view_0_0.appendView (view_0_0_9)
-        let view_0_0_10 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.")
-        self.configure_addTrackButton (view_0_0_10) // Configurator
-        _ = view_0_0.appendView (view_0_0_10)
-      }
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView ()
-      do{
-        let view_0_1_0 = AutoLayoutHorizontalStackView ()
-          .set (leftMargin: .regular)
-          .set (rightMargin: .regular)
+        let hStackView_view_view = AutoLayoutHorizontalStackView ()
+          .set (margins: .regular)
         do{
-          let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: boardInspectorView, equalWidth: false, size: .small)
-            .expandableWidth ()
-            .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedElementInspectorView)
-            .addPage (title: "", tooltip: "Insert Component in Board", pageView: insertComponentInBoardView)
-            .addPage (title: "🔍", tooltip: "Display Inspector", pageView: boardDisplayInspectorView)
-            .addPage (image: "autorouter", title: "", tooltip: "Router Inspector", pageView: boardRouterInspectorView)
-            .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: boardERCInspectorView)
-            .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
-            .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
-            .bind_segmentImage (self.unplacedPackagesSegmentImage_property, segmentIndex:1)
-            .bind_segmentImage (self.rootObject.ercStatusImageOrNoneOnSuccess_property, segmentIndex:4)
-          _ = view_0_1_0.appendView (view_0_1_0_0)
-        }
-        _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = boardInspectorView
-        _ = view_0_1.appendView (view_0_1_1)
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.")
+          self.configure_addBoardImageButton (hStackView_view_view_view) // Configurator
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        do{
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.")
+          self.configure_addQRCodeButton (hStackView_view_view_view) // Configurator
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        do{
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.")
+          self.configure_addRestrictRectangleButton (hStackView_view_view_view) // Configurator
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        do{
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Line;  the layer is set by the contextual menu.")
+          self.configure_addLineButton (hStackView_view_view_view) // Configurator
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        do{
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Text; the layer is set by the contextual menu.")
+          self.configure_addTextButton (hStackView_view_view_view) // Configurator
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        do{
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.")
+          self.configure_addTrackButton (hStackView_view_view_view) // Configurator
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = view_0.appendView (view_0_1)
+      do{
+        let hStackView_view_view = AutoLayoutVerticalStackView ()
+        do{
+          let hStackView_view_view_view = AutoLayoutHorizontalStackView ()
+            .set (leftMargin: .regular)
+            .set (rightMargin: .regular)
+          do{
+            let hStackView_view_view_view_view = AutoLayoutSegmentedControlWithPages (documentView: boardInspectorView, equalWidth: false, size: .small)
+              .expandableWidth ()
+              .addPage (title: "🛠", tooltip: "Selected Element Inspector", pageView: selectedElementInspectorView)
+              .addPage (title: "", tooltip: "Insert Component in Board", pageView: insertComponentInBoardView)
+              .addPage (title: "🔍", tooltip: "Display Inspector", pageView: boardDisplayInspectorView)
+              .addPage (image: "autorouter", title: "", tooltip: "Router Inspector", pageView: boardRouterInspectorView)
+              .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: boardERCInspectorView)
+              .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
+              .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
+              .bind_segmentImage (self.unplacedPackagesSegmentImage_property, segmentIndex:1)
+              .bind_segmentImage (self.rootObject.ercStatusImageOrNoneOnSuccess_property, segmentIndex:4)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+        }
+        _ = hStackView_view_view.appendView (boardInspectorView)
+        _ = hStackView_view.appendView (hStackView_view_view)
+      }
+      _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-    _ = hStackView.appendView (view_1)
-    let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 20000)
-      .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutCanariBoardOperationPullDownButton (size: .small)
+    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    do{
+      let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 20000)
+        .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutCanariBoardOperationPullDownButton (size: .small)
 self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configurator
  ; return toTopHStack } ())
-      .bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property)
-      .bind_overObjectsDisplay (self.boardOutlineOverDisplay_property)
-      .bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property)
-      .bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property)
-      .bind_gridStyle (self.rootObject.mBoardGridStyle_property)
-      .bind_gridDisplayFactor (self.rootObject.mBoardGridDisplayFactor_property)
-      .bind_gridLineColor (preferences_lineColorGridForBoard_property)
-      .bind_gridCrossColor (preferences_crossColorGridForBoard_property)
-      .bind_workingAreaColor (preferences_workingAreaColorForBoard_property)
-      .bind_workingAreaRectString (self.rootObject.mWorkingAreaRectString_property)
-      .bind_zoom (self.rootObject.mBoardZoom_property)
-      .bind_backColor (preferences_boardBackgroundColorForBoard_property)
-      .bind_mouseGrid (self.rootObject.mBoardGridStep_property)
-      .bind_gridStep (self.rootObject.mBoardGridStep_property)
-      .bind_arrowKeyMagnitude (self.rootObject.mBoardGridStep_property)
-      .bind_shiftArrowKeyMagnitude (self.rootObject.boardGridStepMultipliedByDisplayFactor_property)
-      .bind_xPlacardUnit (self.rootObject.mBoardGridStepUnit_property)
-      .bind_yPlacardUnit (self.rootObject.mBoardGridStepUnit_property)
-      .bind_graphic_controller (self.boardObjectsController)
-    self.mBoardView = view_2 // Outlet
-    self.configure_boardView (view_2) // Configurator
-    _ = hStackView.appendView (view_2)
+        .bind_underObjectsDisplay (self.rootObject.borderOutlineBackground_property)
+        .bind_overObjectsDisplay (self.boardOutlineOverDisplay_property)
+        .bind_horizontalFlip (self.rootObject.mBoardHorizontalFlip_property)
+        .bind_verticalFlip (self.rootObject.mBoardVerticalFlip_property)
+        .bind_gridStyle (self.rootObject.mBoardGridStyle_property)
+        .bind_gridDisplayFactor (self.rootObject.mBoardGridDisplayFactor_property)
+        .bind_gridLineColor (preferences_lineColorGridForBoard_property)
+        .bind_gridCrossColor (preferences_crossColorGridForBoard_property)
+        .bind_workingAreaColor (preferences_workingAreaColorForBoard_property)
+        .bind_workingAreaRectString (self.rootObject.mWorkingAreaRectString_property)
+        .bind_zoom (self.rootObject.mBoardZoom_property)
+        .bind_backColor (preferences_boardBackgroundColorForBoard_property)
+        .bind_mouseGrid (self.rootObject.mBoardGridStep_property)
+        .bind_gridStep (self.rootObject.mBoardGridStep_property)
+        .bind_arrowKeyMagnitude (self.rootObject.mBoardGridStep_property)
+        .bind_shiftArrowKeyMagnitude (self.rootObject.boardGridStepMultipliedByDisplayFactor_property)
+        .bind_xPlacardUnit (self.rootObject.mBoardGridStepUnit_property)
+        .bind_yPlacardUnit (self.rootObject.mBoardGridStepUnit_property)
+        .bind_graphic_controller (self.boardObjectsController)
+      self.mBoardView = hStackView_view // Outlet
+      self.configure_boardView (hStackView_view) // Configurator
+      _ = hStackView .appendView (hStackView_view)
+}
     return hStackView
   }
 
@@ -2458,34 +2764,40 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
   final func insertComponentInBoardView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewInsertComponentInBoardInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutLabel (bold: true, size: .small)
-        .bind_title (self.unplacedPackagesMessageString_property)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewInsertComponentInBoardInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "◀︎+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.prependNewInsertComponentInBoardInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .bind_title (self.unplacedPackagesMessageString_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+▶︎", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.appendNewInsertComponentInBoardInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutCanariDragSourceTableView ()
-      .bind_models (self.rootObject.unplacedPackages_property)
-    self.mUnplacedPackageTableViewArray.append (view_1) // Outlet Array
-    self.configure_packageDragSourceTableViewConfigurator (view_1) // Configurator
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutCanariDragSourceTableView ()
+        .bind_models (self.rootObject.unplacedPackages_property)
+      self.mUnplacedPackageTableViewArray.append (vStackView_view) // Outlet Array
+      self.configure_packageDragSourceTableViewConfigurator (vStackView_view) // Configurator
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -2497,32 +2809,37 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
       .set (rightMargin: .zero)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewBoardDisplayInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Board Display", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewBoardDisplayInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "◀︎+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.prependNewBoardDisplayInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Board Display", bold: true, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+▶︎", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.appendNewBoardDisplayInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_2 ())
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_2)
+    do{
+      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_2 ())
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -2533,30 +2850,36 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
   final func boardRouterInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewBoardSettingsInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Autorouter Settings", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewBoardSettingsInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "◀︎+", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.prependNewBoardSettingsInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Autorouter Settings", bold: true, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "+▶︎", size: .regular)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.appendNewBoardSettingsInspectorAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_3 ())
-    _ = vStackView.appendView (view_1)
+    do{
+      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_3 ())
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -2567,32 +2890,41 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
   final func boardERCInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-    let view_0 = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutCheckbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small)
-      .set (width: 200)
-      .bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property)
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutButton (title: "Design Rule Check", size: .small)
-      .bind_run (
-        target: self,
-        selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
-      )
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalStackView ()
     do{
-      let view_3_0 = AutoLayoutTextObserverView (size: .small)
-        .set (minHeight: 100)
-      self.mERCLogTextViewArray.append (view_3_0) // Outlet Array
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutVerticalStackView.HorizontalDivider ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
-      self.mERCIssueTableViewArray.append (view_3_2) // Outlet Array
-      self.configure_ercIssueTableViewConfigurator (view_3_2) // Configurator
-      _ = view_3.appendView (view_3_2)
+      let vStackView_view = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutCheckbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small)
+        .set (width: 200)
+        .bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutButton (title: "Design Rule Check", size: .small)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
+        )
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutVerticalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutTextObserverView (size: .small)
+          .set (minHeight: 100)
+        self.mERCLogTextViewArray.append (vStackView_view_view) // Outlet Array
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendDivider ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
+        self.mERCIssueTableViewArray.append (vStackView_view_view) // Outlet Array
+        self.configure_ercIssueTableViewConfigurator (vStackView_view_view) // Configurator
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView.appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_3)
     return vStackView
   }
 
@@ -2611,17 +2943,19 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
     let boardQRCodeInspectorView = self.BoardQRCodeInspectorView ()
     let boardImageInspectorView = self.BoardImageInspectorView ()
     let componentInBoardInspectorView = self.ComponentInBoardInspectorView ()
-    let view_0 = AutoLayoutObjectInspectorView ()
-      .addObjectInspector (forEntity: BoardTrack.self, inspectorView: boardTrackInspectorView)
-      .addObjectInspector (forEntity: BoardConnector.self, inspectorView: boardConnectorInspectorView)
-      .addObjectInspector (forEntity: BoardLine.self, inspectorView: boardLineInspectorView)
-      .addObjectInspector (forEntity: BoardRestrictRectangle.self, inspectorView: restrictRectangleInspectorView)
-      .addObjectInspector (forEntity: BoardText.self, inspectorView: boardTextInspectorView)
-      .addObjectInspector (forEntity: BoardQRCode.self, inspectorView: boardQRCodeInspectorView)
-      .addObjectInspector (forEntity: BoardImage.self, inspectorView: boardImageInspectorView)
-      .addObjectInspector (forEntity: ComponentInProject.self, inspectorView: componentInBoardInspectorView)
-      .bind_graphic_controller (self.boardObjectsController)
-    _ = vStackView.appendView (view_0)
+    do{
+      let vStackView_view = AutoLayoutObjectInspectorView ()
+        .addObjectInspector (forEntity: BoardTrack.self, inspectorView: boardTrackInspectorView)
+        .addObjectInspector (forEntity: BoardConnector.self, inspectorView: boardConnectorInspectorView)
+        .addObjectInspector (forEntity: BoardLine.self, inspectorView: boardLineInspectorView)
+        .addObjectInspector (forEntity: BoardRestrictRectangle.self, inspectorView: restrictRectangleInspectorView)
+        .addObjectInspector (forEntity: BoardText.self, inspectorView: boardTextInspectorView)
+        .addObjectInspector (forEntity: BoardQRCode.self, inspectorView: boardQRCodeInspectorView)
+        .addObjectInspector (forEntity: BoardImage.self, inspectorView: boardImageInspectorView)
+        .addObjectInspector (forEntity: ComponentInProject.self, inspectorView: componentInBoardInspectorView)
+        .bind_graphic_controller (self.boardObjectsController)
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -2631,189 +2965,233 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func BoardTrackInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Board Track", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .left)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
-        .bind_title (self.boardTrackSelectionController.netName_property)
-      _ = view_1.appendView (view_1_2)
+      let vStackView_view = AutoLayoutStaticLabel (title: "Board Track", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+          .bind_title (self.boardTrackSelectionController.netName_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .left)
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
-        .bind_title (self.boardTrackSelectionController.netClassName_property)
-      _ = view_2.appendView (view_2_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+          .bind_title (self.boardTrackSelectionController.netClassName_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .left)
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutEnumPopUpButton (titles: TrackSide.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardTrackSelectionController.mSide_property)
-      _ = view_3.appendView (view_3_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: TrackSide.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardTrackSelectionController.mSide_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutCheckbox (title: "Expose Copper (as Pad)", size: .small)
-      .bind_value (self.boardTrackSelectionController.mAddedToSolderMask_property)
-      .bind_enabled (.prop (self.boardTrackSelectionController.trackIsOnFrontOrBackLayer_property))
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
-      .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutCanariTrackLockView ()
-      .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
-      .bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property)
-      .bind_manualLockP2 (self.boardTrackSelectionController.mManualLockP2_property)
-      .bind_p1ConnectedToSomePad (self.boardTrackSelectionController.p1ConnectedToSomePad_property)
-      .bind_p2ConnectedToSomePad (self.boardTrackSelectionController.p2ConnectedToSomePad_property)
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
     do{
-      let view_8_0 = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
-      _ = view_8.appendView (view_8_2)
-    }
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutCheckbox (title: "Expose Copper (as Pad)", size: .small)
+        .bind_value (self.boardTrackSelectionController.mAddedToSolderMask_property)
+        .bind_enabled (.prop (self.boardTrackSelectionController.trackIsOnFrontOrBackLayer_property))
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_9_0 = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
-      _ = view_9.appendView (view_9_0)
-      let view_9_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_9.appendView (view_9_1)
-      let view_9_2 = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      let vStackView_view = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
+        .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutCanariTrackLockView ()
         .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
-        .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
-      _ = view_9.appendView (view_9_2)
-    }
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter6 (self.boardTrackSelectionController.mP1XUnit_property, self.boardTrackSelectionController.mP1YUnit_property, self.boardTrackSelectionController.mP2XUnit_property, self.boardTrackSelectionController.mP2YUnit_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutHorizontalStackView ()
+        .bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property)
+        .bind_manualLockP2 (self.boardTrackSelectionController.mManualLockP2_property)
+        .bind_p1ConnectedToSomePad (self.boardTrackSelectionController.p1ConnectedToSomePad_property)
+        .bind_p2ConnectedToSomePad (self.boardTrackSelectionController.p2ConnectedToSomePad_property)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_13_0 = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .small, alignment: .left)
-      _ = view_13.appendView (view_13_0)
-      let view_13_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_13.appendView (view_13_1)
-      let view_13_2 = AutoLayoutCheckbox (title: "Use Custom", size: .small)
-        .bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)
-      _ = view_13.appendView (view_13_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
     do{
-      let view_14_0 = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .left)
-      _ = view_14.appendView (view_14_0)
-      let view_14_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_14.appendView (view_14_1)
-      let view_14_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property)
-      _ = view_14.appendView (view_14_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
+          .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_14)
-    let view_15 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_15_0 = AutoLayoutStaticLabel (title: "Custom Width", bold: false, size: .small, alignment: .left)
-      _ = view_15.appendView (view_15_0)
-      let view_15_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_15.appendView (view_15_1)
-      let view_15_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
-      _ = view_15.appendView (view_15_2)
-    }
-    _ = vStackView.appendView (view_15)
-    let view_16 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+        .bind_setter6 (self.boardTrackSelectionController.mP1XUnit_property, self.boardTrackSelectionController.mP1YUnit_property, self.boardTrackSelectionController.mP2XUnit_property, self.boardTrackSelectionController.mP2YUnit_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_16_0 = AutoLayoutStaticLabel (title: "End Style", bold: false, size: .small, alignment: .left)
-      _ = view_16.appendView (view_16_0)
-      let view_16_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_16.appendView (view_16_1)
-      let view_16_2 = AutoLayoutEnumPopUpButton (titles: TrackEndStyle.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardTrackSelectionController.mEndStyle_property)
-      _ = view_16.appendView (view_16_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
+          .bind_value (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_16)
-    let view_17 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_17)
-    let view_18 = AutoLayoutHorizontalStackView ()
     do{
-      let view_18_0 = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
-      _ = view_18.appendView (view_18_0)
-      let view_18_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_18.appendView (view_18_1)
-      let view_18_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1X_property, self.boardTrackSelectionController.mP1XUnit_property)
-        .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
-      _ = view_18.appendView (view_18_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTrackSelectionController.netClassTrackWidth_property, self.boardTrackSelectionController.mDefaultTrackWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_18)
-    let view_19 = AutoLayoutHorizontalStackView ()
     do{
-      let view_19_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_19.appendView (view_19_0)
-      let view_19_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_19.appendView (view_19_1)
-      let view_19_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1Y_property, self.boardTrackSelectionController.mP1YUnit_property)
-        .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
-      _ = view_19.appendView (view_19_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.not (.prop (self.boardTrackSelectionController.mUsesCustomTrackWidth_property)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Custom Width", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTrackSelectionController.mCustomTrackWidth_property, self.boardTrackSelectionController.mCustomTrackWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_19)
-    let view_20 = AutoLayoutHorizontalStackView ()
     do{
-      let view_20_0 = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
-      _ = view_20.appendView (view_20_0)
-      let view_20_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_20.appendView (view_20_1)
-      let view_20_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2X_property, self.boardTrackSelectionController.mP2XUnit_property)
-        .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
-      _ = view_20.appendView (view_20_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "End Style", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: TrackEndStyle.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardTrackSelectionController.mEndStyle_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_20)
-    let view_21 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_21_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_21.appendView (view_21_0)
-      let view_21_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_21.appendView (view_21_1)
-      let view_21_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2Y_property, self.boardTrackSelectionController.mP2YUnit_property)
-        .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
-      _ = view_21.appendView (view_21_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1X_property, self.boardTrackSelectionController.mP1XUnit_property)
+          .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_21)
-    let view_22 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_22)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP1Y_property, self.boardTrackSelectionController.mP1YUnit_property)
+          .bind_enabled (.prop (self.boardTrackSelectionController.p1CanMove_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2X_property, self.boardTrackSelectionController.mP2XUnit_property)
+          .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2Y_property, self.boardTrackSelectionController.mP2YUnit_property)
+          .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -2823,110 +3201,133 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func BoardConnectorInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Via Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .center)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
-        .bind_title (self.boardConnectorSelectionController.netNameFromTracks_property)
-      _ = view_1.appendView (view_1_2)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Via Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_2_0 = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .center)
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .expandableWidth ()
-        .bind_title (self.boardConnectorSelectionController.netClassName_property)
-      _ = view_2.appendView (view_2_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net Name", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+          .bind_title (self.boardConnectorSelectionController.netNameFromTracks_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Hole Diameter", bold: false, size: .small, alignment: .left)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutCheckbox (title: "Use Custom", size: .small)
-        .bind_value (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)
-      _ = view_4.appendView (view_4_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Net Class Name", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .expandableWidth ()
+          .bind_title (self.boardConnectorSelectionController.netClassName_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
-      _ = view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_5.appendView (view_5_1)
-      let view_5_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultHoleDiameter_property, self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property)
-      _ = view_5.appendView (view_5_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Hole Diameter", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
+          .bind_value (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
     do{
-      let view_6_0 = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomHoleDiameter_property, self.boardConnectorSelectionController.mCustomHoleDiameterUnit_property)
-      _ = view_6.appendView (view_6_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultHoleDiameter_property, self.boardConnectorSelectionController.mDefaultHoleDiameterUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
     do{
-      let view_8_0 = AutoLayoutStaticLabel (title: "Pad Diameter", bold: false, size: .small, alignment: .left)
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutCheckbox (title: "Use Custom", size: .small)
-        .bind_value (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)
-      _ = view_8.appendView (view_8_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomHoleDiameter_property)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomHoleDiameter_property, self.boardConnectorSelectionController.mCustomHoleDiameterUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_9_0 = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
-      _ = view_9.appendView (view_9_0)
-      let view_9_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_9.appendView (view_9_1)
-      let view_9_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultPadDiameter_property, self.boardConnectorSelectionController.mDefaultPadDiameterUnit_property)
-      _ = view_9.appendView (view_9_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Pad Diameter", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Use Custom", size: .small)
+          .bind_value (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
     do{
-      let view_10_0 = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
-      _ = view_10.appendView (view_10_0)
-      let view_10_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_10.appendView (view_10_1)
-      let view_10_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomPadDiameter_property, self.boardConnectorSelectionController.mCustomPadDiameterUnit_property)
-      _ = view_10.appendView (view_10_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "From Net Class", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardConnectorSelectionController.viaDefaultPadDiameter_property, self.boardConnectorSelectionController.mDefaultPadDiameterUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_11)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.not (.prop (self.boardConnectorSelectionController.mUsesCustomPadDiameter_property)))
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Custom", bold: false, size: .small, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardConnectorSelectionController.mCustomPadDiameter_property, self.boardConnectorSelectionController.mCustomPadDiameterUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -2936,82 +3337,98 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func BoardLineInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Line Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_1.appendView (view_1_2)
-      let view_1_3 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property)
-      _ = view_1.appendView (view_1_3)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Line Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_2_0 = AutoLayoutFlexibleSpace ()
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_2.appendView (view_2_2)
-      let view_2_3 = AutoLayoutEnumPopUpButton (titles: BoardLineLayer.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardLineSelectionController.mLayer_property)
-      _ = view_2.appendView (view_2_3)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardLineSelectionController.mWidth_property, self.boardLineSelectionController.mWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
     do{
-      let view_4_0 = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardLineSelectionController.mX1_property, self.boardLineSelectionController.mX1Unit_property)
-      _ = view_4.appendView (view_4_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: BoardLineLayer.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardLineSelectionController.mLayer_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_5.appendView (view_5_1)
-      let view_5_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardLineSelectionController.mY1_property, self.boardLineSelectionController.mY1Unit_property)
-      _ = view_5.appendView (view_5_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardLineSelectionController.mX1_property, self.boardLineSelectionController.mX1Unit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
     do{
-      let view_6_0 = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardLineSelectionController.mX2_property, self.boardLineSelectionController.mX2Unit_property)
-      _ = view_6.appendView (view_6_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardLineSelectionController.mY1_property, self.boardLineSelectionController.mY1Unit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutHorizontalStackView ()
     do{
-      let view_7_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_7.appendView (view_7_0)
-      let view_7_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_7.appendView (view_7_1)
-      let view_7_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardLineSelectionController.mY2_property, self.boardLineSelectionController.mY2Unit_property)
-      _ = view_7.appendView (view_7_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardLineSelectionController.mX2_property, self.boardLineSelectionController.mX2Unit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_8)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardLineSelectionController.mY2_property, self.boardLineSelectionController.mY2Unit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -3021,60 +3438,77 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func RestrictRectangleInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Restrict Rectangle Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutCanariRestrictRectangleView ()
-      .bind_frontBackInner1Inner2Inner3Inner4 (self.restrictRectSelController.mIsInFrontLayer_property, self.restrictRectSelController.mIsInBackLayer_property, self.restrictRectSelController.mIsInInner1Layer_property, self.restrictRectSelController.mIsInInner2Layer_property, self.restrictRectSelController.mIsInInner3Layer_property, self.restrictRectSelController.mIsInInner4Layer_property)
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter4 (self.restrictRectSelController.mXUnit_property, self.restrictRectSelController.mYUnit_property, self.restrictRectSelController.mWidthUnit_property, self.restrictRectSelController.mHeightUnit_property)
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Left", bold: false, size: .small, alignment: .left)
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.restrictRectSelController.mX_property, self.restrictRectSelController.mXUnit_property)
-      _ = view_3.appendView (view_3_2)
-    }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Restrict Rectangle Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Bottom", bold: false, size: .small, alignment: .left)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.restrictRectSelController.mY_property, self.restrictRectSelController.mYUnit_property)
-      _ = view_4.appendView (view_4_2)
-    }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutCanariRestrictRectangleView ()
+        .bind_frontBackInner1Inner2Inner3Inner4 (self.restrictRectSelController.mIsInFrontLayer_property, self.restrictRectSelController.mIsInBackLayer_property, self.restrictRectSelController.mIsInInner1Layer_property, self.restrictRectSelController.mIsInInner2Layer_property, self.restrictRectSelController.mIsInInner3Layer_property, self.restrictRectSelController.mIsInInner4Layer_property)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .left)
-      _ = view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_5.appendView (view_5_1)
-      let view_5_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.restrictRectSelController.mWidth_property, self.restrictRectSelController.mWidthUnit_property)
-      _ = view_5.appendView (view_5_2)
-    }
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+        .bind_setter4 (self.restrictRectSelController.mXUnit_property, self.restrictRectSelController.mYUnit_property, self.restrictRectSelController.mWidthUnit_property, self.restrictRectSelController.mHeightUnit_property)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_6_0 = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .left)
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.restrictRectSelController.mHeight_property, self.restrictRectSelController.mHeightUnit_property)
-      _ = view_6.appendView (view_6_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Left", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.restrictRectSelController.mX_property, self.restrictRectSelController.mXUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_7)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Bottom", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.restrictRectSelController.mY_property, self.restrictRectSelController.mYUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.restrictRectSelController.mWidth_property, self.restrictRectSelController.mWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.restrictRectSelController.mHeight_property, self.restrictRectSelController.mHeightUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -3084,224 +3518,272 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func BoardImageInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Image Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutEnumPopUpButton (titles: BoardImageDisplay.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardImageSelectionController.mImageDisplay_property)
-      _ = view_1.appendView (view_1_1)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutDroppableImageView (removeButton: false)
-      .set (maxWidth: 220)
-      .set (maxHeight: 350)
-      .bind_imageData (self.boardImageSelectionController.computedDataImage_property)
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Image Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Image Data", bold: false, size: .small, alignment: .right)
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .bind_title (self.boardImageSelectionController.imageDataByteCount_property)
-      _ = view_3.appendView (view_3_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: BoardImageDisplay.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardImageSelectionController.mImageDisplay_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Image Width", bold: false, size: .small, alignment: .right)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .bind_title (self.boardImageSelectionController.boardOriginalImageWidth_property)
-      _ = view_4.appendView (view_4_2)
-    }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutDroppableImageView (removeButton: false)
+        .set (maxWidth: 220)
+        .set (maxHeight: 350)
+        .bind_imageData (self.boardImageSelectionController.computedDataImage_property)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "Image Height", bold: false, size: .small, alignment: .right)
-      _ = view_5.appendView (view_5_0)
-      let view_5_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_5.appendView (view_5_1)
-      let view_5_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .bind_title (self.boardImageSelectionController.boardOriginalImageHeight_property)
-      _ = view_5.appendView (view_5_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Image Data", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .bind_title (self.boardImageSelectionController.imageDataByteCount_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutHorizontalStackView ()
     do{
-      let view_7_0 = AutoLayoutStaticLabel (title: "Scale", bold: false, size: .small, alignment: .right)
-      _ = view_7.appendView (view_7_0)
-      let view_7_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_7.appendView (view_7_1)
-      let view_7_2 = AutoLayoutDoubleField (width: 64, size: .small)
-        .bind_value (self.boardImageSelectionController.mScale_property, sendContinously:false)
-      _ = view_7.appendView (view_7_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Image Width", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .bind_title (self.boardImageSelectionController.boardOriginalImageWidth_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
     do{
-      let view_8_0 = AutoLayoutStaticLabel (title: "Scaled Image Width", bold: false, size: .small, alignment: .right)
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .bind_title (self.boardImageSelectionController.boardScaledImageWidth_property)
-      _ = view_8.appendView (view_8_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Image Height", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .bind_title (self.boardImageSelectionController.boardOriginalImageHeight_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_9_0 = AutoLayoutStaticLabel (title: "Scaled Image Height", bold: false, size: .small, alignment: .right)
-      _ = view_9.appendView (view_9_0)
-      let view_9_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_9.appendView (view_9_1)
-      let view_9_2 = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .left)
-        .bind_title (self.boardImageSelectionController.boardScaledImageHeight_property)
-      _ = view_9.appendView (view_9_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Scale", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutDoubleField (width: 64, size: .small)
+          .bind_value (self.boardImageSelectionController.mScale_property, sendContinously:false)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutHorizontalStackView ()
     do{
-      let view_11_0 = AutoLayoutStaticLabel (title: "Threshold", bold: false, size: .small, alignment: .right)
-      _ = view_11.appendView (view_11_0)
-      let view_11_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_11.appendView (view_11_1)
-      let view_11_2 = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 9)
-        .bind_intValue (self.boardImageSelectionController.mThreshold_property, sendContinously:true)
-      _ = view_11.appendView (view_11_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Scaled Image Width", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .bind_title (self.boardImageSelectionController.boardScaledImageWidth_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutHorizontalStackView ()
     do{
-      let view_12_0 = AutoLayoutFlexibleSpace ()
-      _ = view_12.appendView (view_12_0)
-      let view_12_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_12.appendView (view_12_1)
-      let view_12_2 = AutoLayoutCheckbox (title: "Invert", size: .small)
-        .bind_value (self.boardImageSelectionController.mInvert_property)
-      _ = view_12.appendView (view_12_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Scaled Image Height", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
+          .set (alignment: .left)
+          .bind_title (self.boardImageSelectionController.boardScaledImageHeight_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_13_0 = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
-      _ = view_13.appendView (view_13_0)
-      let view_13_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_13.appendView (view_13_1)
-      let view_13_2 = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-        .bind_value (self.boardImageSelectionController.mHorizontalFlip_property)
-      _ = view_13.appendView (view_13_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Threshold", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLinearSlider (min: 0, max: 255, ticks: 9)
+          .bind_intValue (self.boardImageSelectionController.mThreshold_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutHorizontalStackView ()
     do{
-      let view_14_0 = AutoLayoutFlexibleSpace ()
-      _ = view_14.appendView (view_14_0)
-      let view_14_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_14.appendView (view_14_1)
-      let view_14_2 = AutoLayoutCheckbox (title: "Vertical", size: .small)
-        .bind_value (self.boardImageSelectionController.mVerticalFlip_property)
-      _ = view_14.appendView (view_14_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Invert", size: .small)
+          .bind_value (self.boardImageSelectionController.mInvert_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_14)
-    let view_15 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_15)
-    let view_16 = AutoLayoutHorizontalStackView ()
     do{
-      let view_16_0 = AutoLayoutStaticLabel (title: "Pixel Size", bold: false, size: .small, alignment: .right)
-      _ = view_16.appendView (view_16_0)
-      let view_16_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_16.appendView (view_16_1)
-      let view_16_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardImageSelectionController.mPixelSize_property, self.boardImageSelectionController.mPixelSizeUnit_property)
-      _ = view_16.appendView (view_16_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+          .bind_value (self.boardImageSelectionController.mHorizontalFlip_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_16)
-    let view_17 = AutoLayoutHorizontalStackView ()
     do{
-      let view_17_0 = AutoLayoutStaticLabel (title: "Actual Image Width", bold: false, size: .small, alignment: .right)
-      _ = view_17.appendView (view_17_0)
-      let view_17_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_17.appendView (view_17_1)
-      let view_17_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageWidth_property, self.boardImageSelectionController.mActualWidthUnit_property)
-      _ = view_17.appendView (view_17_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+          .bind_value (self.boardImageSelectionController.mVerticalFlip_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_17)
-    let view_18 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_18_0 = AutoLayoutStaticLabel (title: "Actual Image Height", bold: false, size: .small, alignment: .right)
-      _ = view_18.appendView (view_18_0)
-      let view_18_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_18.appendView (view_18_1)
-      let view_18_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageHeight_property, self.boardImageSelectionController.mActualHeightUnit_property)
-      _ = view_18.appendView (view_18_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Pixel Size", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardImageSelectionController.mPixelSize_property, self.boardImageSelectionController.mPixelSizeUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_18)
-    let view_19 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_19)
-    let view_20 = AutoLayoutHorizontalStackView ()
     do{
-      let view_20_0 = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
-      _ = view_20.appendView (view_20_0)
-      let view_20_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_20.appendView (view_20_1)
-      let view_20_2 = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardImageSelectionController.mLayer_property)
-      _ = view_20.appendView (view_20_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Actual Image Width", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageWidth_property, self.boardImageSelectionController.mActualWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_20)
-    let view_21 = AutoLayoutHorizontalStackView ()
     do{
-      let view_21_0 = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
-      _ = view_21.appendView (view_21_0)
-      let view_21_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_21.appendView (view_21_1)
-      let view_21_2 = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-        .bind_angle (self.boardImageSelectionController.mRotation_property)
-      _ = view_21.appendView (view_21_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Actual Image Height", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardImageSelectionController.boardActualImageHeight_property, self.boardImageSelectionController.mActualHeightUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_21)
-    let view_22 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_22_0 = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
-      _ = view_22.appendView (view_22_0)
-      let view_22_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_22.appendView (view_22_1)
-      let view_22_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterX_property, self.boardImageSelectionController.mXUnit_property)
-      _ = view_22.appendView (view_22_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardImageSelectionController.mLayer_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_22)
-    let view_23 = AutoLayoutHorizontalStackView ()
     do{
-      let view_23_0 = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
-      _ = view_23.appendView (view_23_0)
-      let view_23_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_23.appendView (view_23_1)
-      let view_23_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterY_property, self.boardImageSelectionController.mYUnit_property)
-      _ = view_23.appendView (view_23_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          .bind_angle (self.boardImageSelectionController.mRotation_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_23)
-    let view_24 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_24)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterX_property, self.boardImageSelectionController.mXUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardImageSelectionController.mCenterY_property, self.boardImageSelectionController.mYUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -3311,121 +3793,147 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func BoardQRCodeInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "QRCode Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutStaticLabel (title: "Contents", bold: false, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutTextField (minWidth: 150, size: .small)
-      .automaticallyAdjustHeight (maxWidth: 150)
-      .bind_value (self.boardQRCodeSelectionController.mText_property, sendContinously:true)
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Correction Level", bold: false, size: .small, alignment: .right)
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutEnumPopUpButton (titles: QRCodeCorrectionLevel.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardQRCodeSelectionController.mCorrectionLevel_property)
-      _ = view_3.appendView (view_3_2)
-    }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "QRCode Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_4_0 = AutoLayoutFlexibleSpace ()
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutCheckbox (title: "Draw Frame", size: .small)
-        .bind_value (self.boardQRCodeSelectionController.mDrawFrame_property)
-      _ = view_4.appendView (view_4_2)
-    }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Contents", bold: false, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_6_0 = AutoLayoutStaticLabel (title: "Module Count", bold: false, size: .small, alignment: .right)
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutIntObserverField (bold: true, size: .small)
-        .bind_observedValue (self.boardQRCodeSelectionController.moduleCount_property)
-      _ = view_6.appendView (view_6_2)
-    }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutTextField (minWidth: 150, size: .small)
+        .automaticallyAdjustHeight (maxWidth: 150)
+        .bind_value (self.boardQRCodeSelectionController.mText_property, sendContinously:true)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_7_0 = AutoLayoutStaticLabel (title: "Module Size", bold: false, size: .small, alignment: .right)
-      _ = view_7.appendView (view_7_0)
-      let view_7_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_7.appendView (view_7_1)
-      let view_7_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mModuleSize_property, self.boardQRCodeSelectionController.mModuleSizeUnit_property)
-      _ = view_7.appendView (view_7_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Correction Level", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: QRCodeCorrectionLevel.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardQRCodeSelectionController.mCorrectionLevel_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
     do{
-      let view_8_0 = AutoLayoutStaticLabel (title: "Actual Image Size", bold: false, size: .small, alignment: .right)
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardQRCodeSelectionController.actualImageSize_property, self.boardQRCodeSelectionController.mActualSizeUnit_property)
-      _ = view_8.appendView (view_8_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Draw Frame", size: .small)
+          .bind_value (self.boardQRCodeSelectionController.mDrawFrame_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_10_0 = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
-      _ = view_10.appendView (view_10_0)
-      let view_10_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_10.appendView (view_10_1)
-      let view_10_2 = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardQRCodeSelectionController.mLayer_property)
-      _ = view_10.appendView (view_10_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Module Count", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutIntObserverField (bold: true, size: .small)
+          .bind_observedValue (self.boardQRCodeSelectionController.moduleCount_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutHorizontalStackView ()
     do{
-      let view_11_0 = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
-      _ = view_11.appendView (view_11_0)
-      let view_11_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_11.appendView (view_11_1)
-      let view_11_2 = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-        .bind_angle (self.boardQRCodeSelectionController.mRotation_property)
-      _ = view_11.appendView (view_11_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Module Size", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mModuleSize_property, self.boardQRCodeSelectionController.mModuleSizeUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutHorizontalStackView ()
     do{
-      let view_13_0 = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
-      _ = view_13.appendView (view_13_0)
-      let view_13_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_13.appendView (view_13_1)
-      let view_13_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterX_property, self.boardQRCodeSelectionController.mXUnit_property)
-      _ = view_13.appendView (view_13_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Actual Image Size", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardQRCodeSelectionController.actualImageSize_property, self.boardQRCodeSelectionController.mActualSizeUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_14_0 = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
-      _ = view_14.appendView (view_14_0)
-      let view_14_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_14.appendView (view_14_1)
-      let view_14_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterY_property, self.boardQRCodeSelectionController.mYUnit_property)
-      _ = view_14.appendView (view_14_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Layer", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: BoardQRCodeLayer.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardQRCodeSelectionController.mLayer_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_14)
-    let view_15 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_15)
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          .bind_angle (self.boardQRCodeSelectionController.mRotation_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterX_property, self.boardQRCodeSelectionController.mXUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterY_property, self.boardQRCodeSelectionController.mYUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -3435,141 +3943,169 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func BoardTextInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTextField (minWidth: 150, size: .small)
-      .automaticallyAdjustHeight (maxWidth: 150)
-      .bind_value (self.boardTextSelectionController.mText_property, sendContinously:true)
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutStaticLabels (left: "Origin", right: "X", bold: false, size: .small)
-      _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_3.appendView (view_3_1)
-      let view_3_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTextSelectionController.mX_property, self.boardTextSelectionController.mXUnit_property)
-      _ = view_3.appendView (view_3_2)
-    }
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
-      _ = view_4.appendView (view_4_0)
-      let view_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-        .bind_dimensionAndUnit (self.boardTextSelectionController.mY_property, self.boardTextSelectionController.mYUnit_property)
-      _ = view_4.appendView (view_4_2)
-    }
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_5)
-    let view_6 = AutoLayoutHorizontalStackView ()
+      let vStackView_view = AutoLayoutTextField (minWidth: 150, size: .small)
+        .automaticallyAdjustHeight (maxWidth: 150)
+        .bind_value (self.boardTextSelectionController.mText_property, sendContinously:true)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_6_0 = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
-      _ = view_6.appendView (view_6_0)
-      let view_6_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutCanariBoardFontPopUpButton ()
-        .bind_currentFontName (self.boardTextSelectionController.fontName_property)
-        .bind_fontNames (self.rootObject.fontNameArray_property)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.setBoardTextFontAction (_:))
-        )
-      _ = view_6.appendView (view_6_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabels (left: "Origin", right: "X", bold: false, size: .small)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTextSelectionController.mX_property, self.boardTextSelectionController.mXUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_6)
-    let view_7 = AutoLayoutHorizontalStackView ()
     do{
-      let view_7_0 = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
-      _ = view_7.appendView (view_7_0)
-      let view_7_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_7.appendView (view_7_1)
-      let view_7_2 = AutoLayoutDoubleField (width: 64, size: .small)
-        .bind_value (self.boardTextSelectionController.mFontSize_property, sendContinously:true)
-      _ = view_7.appendView (view_7_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardTextSelectionController.mY_property, self.boardTextSelectionController.mYUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_7)
-    let view_8 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_8_0 = AutoLayoutStaticLabel (title: "Weight", bold: false, size: .small, alignment: .right)
-      _ = view_8.appendView (view_8_0)
-      let view_8_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_8.appendView (view_8_1)
-      let view_8_2 = AutoLayoutDoubleField (width: 64, size: .small)
-        .bind_value (self.boardTextSelectionController.mWeight_property, sendContinously:true)
-      _ = view_8.appendView (view_8_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariBoardFontPopUpButton ()
+          .bind_currentFontName (self.boardTextSelectionController.fontName_property)
+          .bind_fontNames (self.rootObject.fontNameArray_property)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.setBoardTextFontAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_8)
-    let view_9 = AutoLayoutHorizontalStackView ()
     do{
-      let view_9_0 = AutoLayoutFlexibleSpace ()
-      _ = view_9.appendView (view_9_0)
-      let view_9_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_9.appendView (view_9_1)
-      let view_9_2 = AutoLayoutCheckbox (title: "Oblique", size: .small)
-        .bind_value (self.boardTextSelectionController.mOblique_property)
-      _ = view_9.appendView (view_9_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutDoubleField (width: 64, size: .small)
+          .bind_value (self.boardTextSelectionController.mFontSize_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_10)
-    let view_11 = AutoLayoutHorizontalStackView ()
     do{
-      let view_11_0 = AutoLayoutStaticLabel (title: "Horizontal", bold: false, size: .small, alignment: .right)
-      _ = view_11.appendView (view_11_0)
-      let view_11_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_11.appendView (view_11_1)
-      let view_11_2 = AutoLayoutCanariHorizontalAlignmentSegmentedControl (size: .small)
-        .bind_alignment (self.boardTextSelectionController.mHorizontalAlignment_property)
-      _ = view_11.appendView (view_11_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Weight", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutDoubleField (width: 64, size: .small)
+          .bind_value (self.boardTextSelectionController.mWeight_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_11)
-    let view_12 = AutoLayoutHorizontalStackView ()
     do{
-      let view_12_0 = AutoLayoutStaticLabel (title: "Vertical", bold: false, size: .small, alignment: .right)
-      _ = view_12.appendView (view_12_0)
-      let view_12_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_12.appendView (view_12_1)
-      let view_12_2 = AutoLayoutCanariVerticalAlignmentSegmentedControl (size: .small)
-        .bind_alignment (self.boardTextSelectionController.mVerticalAlignment_property)
-      _ = view_12.appendView (view_12_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Oblique", size: .small)
+          .bind_value (self.boardTextSelectionController.mOblique_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutHorizontalStackView ()
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
-      let view_14_0 = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
-      _ = view_14.appendView (view_14_0)
-      let view_14_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_14.appendView (view_14_1)
-      let view_14_2 = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-        .bind_angle (self.boardTextSelectionController.mRotation_property)
-      _ = view_14.appendView (view_14_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Horizontal", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (size: .small)
+          .bind_alignment (self.boardTextSelectionController.mHorizontalAlignment_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_14)
-    let view_15 = AutoLayoutHorizontalStackView ()
     do{
-      let view_15_0 = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
-      _ = view_15.appendView (view_15_0)
-      let view_15_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_15.appendView (view_15_1)
-      let view_15_2 = AutoLayoutEnumPopUpButton (titles: BoardTextLayer.popupTitles (), size: .small)
-        .bind_selectedIndex (self.boardTextSelectionController.mLayer_property)
-      _ = view_15.appendView (view_15_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Vertical", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariVerticalAlignmentSegmentedControl (size: .small)
+          .bind_alignment (self.boardTextSelectionController.mVerticalAlignment_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_15)
-    let view_16 = AutoLayoutCheckbox (title: "Show Rotation Knob", size: .small)
-      .set (toolTip: "Common to all texts, stored in Preferences")
-      .bind_value (preferences_mShowTextRotationKnobInBoard_property)
-    _ = vStackView.appendView (view_16)
-    let view_17 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_17)
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          .bind_angle (self.boardTextSelectionController.mRotation_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: BoardTextLayer.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardTextSelectionController.mLayer_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutCheckbox (title: "Show Rotation Knob", size: .small)
+        .set (toolTip: "Common to all texts, stored in Preferences")
+        .bind_value (preferences_mShowTextRotationKnobInBoard_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -3579,42 +4115,57 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func ComponentInBoardInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutStaticLabel (title: "Component Inspector", bold: true, size: .small, alignment: .center)
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutVerticalStackView ()
+      let vStackView_view = AutoLayoutStaticLabel (title: "Component Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let view_1_0_0 = AutoLayoutCheckbox (title: "Display Name", size: .small)
-          .expandableWidth ()
-          .bind_value (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property)
-        _ = view_1_0.appendView (view_1_0_0)
-        let view_1_0_1 = AutoLayoutCheckbox (title: "Display Value", size: .small)
-          .expandableWidth ()
-          .bind_value (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property)
-        _ = view_1_0.appendView (view_1_0_1)
-        let view_1_0_2 = AutoLayoutCheckbox (title: "Display Legend", size: .small)
-          .expandableWidth ()
-          .bind_value (self.componentInBoardSelectionController.mDisplayLegend_property)
-        _ = view_1_0.appendView (view_1_0_2)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Display Name", size: .small)
+            .expandableWidth ()
+            .bind_value (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Display Value", size: .small)
+            .expandableWidth ()
+            .bind_value (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Display Legend", size: .small)
+            .expandableWidth ()
+            .bind_value (self.componentInBoardSelectionController.mDisplayLegend_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutStaticLabel (title: "Name, value and legend are actually displayed if \"Component + Legend\" check box is checked (see 🔍 inspector).", bold: false, size: .mini, alignment: .left)
-      _ = view_1.appendView (view_1_1)
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Name, value and legend are actually displayed if \"Component + Legend\" check box is checked (see 🔍 inspector).", bold: false, size: .mini, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutCheckbox (title: "Show Rotation Knob", size: .small)
-      .expandableWidth ()
-      .set (toolTip: "Common to all packages, stored in Preferences")
-      .bind_value (preferences_mShowComponentRotationKnobInBoard_property)
-    _ = vStackView.appendView (view_2)
-    let view_3 = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter6 (self.componentInBoardSelectionController.mXUnit_property, self.componentInBoardSelectionController.mYUnit_property, self.componentInBoardSelectionController.mXNameUnit_property, self.componentInBoardSelectionController.mYNameUnit_property, self.componentInBoardSelectionController.mXValueUnit_property, self.componentInBoardSelectionController.mYValueUnit_property)
-    _ = vStackView.appendView (view_3)
-    let view_4 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    _ = vStackView.appendView (view_4)
-    let view_5 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_4 ())
-    _ = vStackView.appendView (view_5)
+    do{
+      let vStackView_view = AutoLayoutCheckbox (title: "Show Rotation Knob", size: .small)
+        .expandableWidth ()
+        .set (toolTip: "Common to all packages, stored in Preferences")
+        .bind_value (preferences_mShowComponentRotationKnobInBoard_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    do{
+      let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+        .bind_setter6 (self.componentInBoardSelectionController.mXUnit_property, self.componentInBoardSelectionController.mYUnit_property, self.componentInBoardSelectionController.mXNameUnit_property, self.componentInBoardSelectionController.mYNameUnit_property, self.componentInBoardSelectionController.mXValueUnit_property, self.componentInBoardSelectionController.mYValueUnit_property)
+      _ = vStackView .appendView (vStackView_view)
+}
+    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    do{
+      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_4 ())
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 
@@ -3630,106 +4181,123 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
     let artworkDataPage = self.ArtworkDataPage ()
     let pdfSettingsPage = self.PDFSettingsPage ()
     let generationLogPage = self.GenerationLogPage ()
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutVerticalStackView ()
+      let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutButton (title: "Import Artwork…", size: .regular)
-          .expandableWidth ()
-          .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.importArtworkAction (_:))
-          )
-        _ = view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutButton (title: "Detach Artwork", size: .regular)
-          .expandableWidth ()
-          .bind_hidden (.prop (self.rootObject.mArtwork_none))
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.detachArtworkAction (_:))
-          )
-        _ = view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutLabel (bold: true, size: .regular)
-          .expandableWidth ()
-          .set (alignment: .center)
-          .bind_title (self.rootObject.mArtworkName_property)
-        _ = view_0_0.appendView (view_0_0_2)
-        let view_0_0_3 = AutoLayoutHorizontalStackView ()
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
         do{
-          let view_0_0_3_0 = AutoLayoutCheckbox (title: "Merger Archive", size: .regular)
-            .bind_value (self.rootObject.mGenerateMergerArchive_property)
-          _ = view_0_0_3.appendView (view_0_0_3_0)
-          let view_0_0_3_1 = AutoLayoutCheckbox (title: "Gerber, PDF", size: .regular)
-            .bind_value (self.rootObject.mGenerateGerberAndPDF_property)
-          _ = view_0_0_3.appendView (view_0_0_3_1)
-          let view_0_0_3_2 = AutoLayoutCheckbox (title: "BOM", size: .regular)
-            .bind_value (self.rootObject.mGenerateBOM_property)
-          _ = view_0_0_3.appendView (view_0_0_3_2)
-          let view_0_0_3_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
+          let vStackView_view_view_view = AutoLayoutButton (title: "Import Artwork…", size: .regular)
             .expandableWidth ()
-            .bind_enabled (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .not (.prop (self.documentIsUnnamed_property))))
+            .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
             .bind_run (
               target: self,
-              selector: #selector (AutoLayoutProjectDocument.generateProductFilesAction (_:))
+              selector: #selector (AutoLayoutProjectDocument.importArtworkAction (_:))
             )
-          _ = view_0_0_3.appendView (view_0_0_3_3)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutButton (title: "Detach Artwork", size: .regular)
+            .expandableWidth ()
+            .bind_hidden (.prop (self.rootObject.mArtwork_none))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutProjectDocument.detachArtworkAction (_:))
+            )
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
+            .expandableWidth ()
+            .set (alignment: .center)
+            .bind_title (self.rootObject.mArtworkName_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Merger Archive", size: .regular)
+              .bind_value (self.rootObject.mGenerateMergerArchive_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Gerber, PDF", size: .regular)
+              .bind_value (self.rootObject.mGenerateGerberAndPDF_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "BOM", size: .regular)
+              .bind_value (self.rootObject.mGenerateBOM_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          do{
+            let vStackView_view_view_view_view = AutoLayoutButton (title: "Generate Files", size: .regular)
+              .expandableWidth ()
+              .bind_enabled (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .not (.prop (self.documentIsUnnamed_property))))
+              .bind_run (
+                target: self,
+                selector: #selector (AutoLayoutProjectDocument.generateProductFilesAction (_:))
+              )
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = view_0_0.appendView (view_0_0_3)
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_1_0 = AutoLayoutLabel (bold: true, size: .regular)
-          .set (alignment: .left)
-          .expandableWidth ()
-          .bind_title (self.documentFileShouldBeRenamedErrorMessage_property)
-        _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutTextObserverView (size: .small)
-          .expandableWidth ()
-          .setNoBackground ()
-          .setNoVerticalScroller ()
-          .setNoHorizontalScroller ()
-          .bind_observedValue (self.incorrectDocumentFileDetailedErrorMessage_property)
-        _ = view_0_1.appendView (view_0_1_1)
-        let view_0_1_2 = AutoLayoutFlexibleSpace ()
-        _ = view_0_1.appendView (view_0_1_2)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
+            .set (alignment: .left)
+            .expandableWidth ()
+            .bind_title (self.documentFileShouldBeRenamedErrorMessage_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutTextObserverView (size: .small)
+            .expandableWidth ()
+            .setNoBackground ()
+            .setNoVerticalScroller ()
+            .setNoHorizontalScroller ()
+            .bind_observedValue (self.incorrectDocumentFileDetailedErrorMessage_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_0.appendView (view_0_1)
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
     do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutVerticalStackView ()
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+        .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
+      _ = vStackView_view.appendFlexibleSpace ()
       do{
-        let view_1_1_0 = AutoLayoutFlexibleSpace ()
-        _ = view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular, alignment: .center)
-        _ = view_1_1.appendView (view_1_1_1)
-        let view_1_1_2 = AutoLayoutFlexibleSpace ()
-        _ = view_1_1.appendView (view_1_1_2)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular, alignment: .center)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutVerticalStackView ()
-      .bind_hidden (.prop (self.rootObject.mArtwork_none))
     do{
-      let view_2_0 = AutoLayoutTabView (size: .regular)
-        .addTab (title: "Gerber and PDF Settings", tooltip: "", contentView: pdfSettingsPage)
-        .addTab (title: "Artwork Description", tooltip: "", contentView: artworkDescriptionPage)
-        .addTab (title: "Artwork Minima", tooltip: "", contentView: artworkMinimaPage)
-        .addTab (title: "Artwork Data", tooltip: "", contentView: artworkDataPage)
-        .addTab (title: "Generation Log", tooltip: "", contentView: generationLogPage)
-      self.mProductPageSegmentedControl = view_2_0 // Outlet
-      _ = view_2.appendView (view_2_0)
+      let vStackView_view = AutoLayoutVerticalStackView ()
+        .bind_hidden (.prop (self.rootObject.mArtwork_none))
+      do{
+        let vStackView_view_view = AutoLayoutTabView (size: .regular)
+          .addTab (title: "Gerber and PDF Settings", tooltip: "", contentView: pdfSettingsPage)
+          .addTab (title: "Artwork Description", tooltip: "", contentView: artworkDescriptionPage)
+          .addTab (title: "Artwork Minima", tooltip: "", contentView: artworkMinimaPage)
+          .addTab (title: "Artwork Data", tooltip: "", contentView: artworkDataPage)
+          .addTab (title: "Generation Log", tooltip: "", contentView: generationLogPage)
+        self.mProductPageSegmentedControl = vStackView_view_view // Outlet
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView.appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
     return vStackView
   }
 
@@ -3748,44 +4316,53 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   final func ArtworkDescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .center)
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutLabel (bold: true, size: .regular)
-        .set (alignment: .left)
-        .expandableWidth ()
-        .bind_title (self.rootObject.layerConfigurationString_property)
-      _ = view_0.appendView (view_0_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Layer Description", bold: false, size: .regular, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutLabel (bold: true, size: .regular)
+          .set (alignment: .left)
+          .expandableWidth ()
+          .bind_title (self.rootObject.layerConfigurationString_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .center)
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutIntObserverField (bold: true, size: .regular)
-        .set (alignment: .left)
-        .expandableWidth ()
-        .bind_observedValue (self.rootObject.mArtworkVersion_property)
-      _ = view_1.appendView (view_1_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Artwork Version", bold: false, size: .regular, alignment: .center)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutIntObserverField (bold: true, size: .regular)
+          .set (alignment: .left)
+          .expandableWidth ()
+          .bind_observedValue (self.rootObject.mArtworkVersion_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular, alignment: .left)
-      _ = view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-      _ = view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutTextObserverView (size: .small)
-        .expandableWidth ()
-        .bind_observedValue (self.rootObject.artworkComments_property)
-      _ = view_2.appendView (view_2_2)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutTextObserverView (size: .small)
+          .expandableWidth ()
+          .bind_observedValue (self.rootObject.artworkComments_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_2)
     return vStackView
   }
 
@@ -3796,387 +4373,447 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
   final func ArtworkDataPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: .zero)
-    let view_0 = AutoLayoutFlexibleSpace ()
-    _ = hStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView ()
-      .set (spacing: .zero)
-      .set (margins: .zero)
+    _ = hStackView.appendFlexibleSpace ()
     do{
-      let view_1_0 = AutoLayoutHorizontalStackView ()
-        .set (margins: .regular)
+      let hStackView_view = AutoLayoutVerticalStackView ()
+        .set (spacing: .zero)
+        .set (margins: .zero)
       do{
-        let view_1_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
-        _ = view_1_0.appendView (view_1_0_0)
-        let view_1_0_1 = AutoLayoutLabel (bold: true, size: .small)
-          .bind_title (self.rootObject.drillDataFileExtension_property)
-        _ = view_1_0.appendView (view_1_0_1)
-        let view_1_0_2 = AutoLayoutImageObserverView (size: .mini)
-          .bind_image (self.emptyDrillFileExtensionImage_property)
-        _ = view_1_0.appendView (view_1_0_2)
-        let view_1_0_3 = AutoLayoutFlexibleSpace ()
-        _ = view_1_0.appendView (view_1_0_3)
+        let hStackView_view_view = AutoLayoutHorizontalStackView ()
+          .set (margins: .regular)
+        do{
+          let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        do{
+          let hStackView_view_view_view = AutoLayoutLabel (bold: true, size: .small)
+            .bind_title (self.rootObject.drillDataFileExtension_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        do{
+          let hStackView_view_view_view = AutoLayoutImageObserverView (size: .mini)
+            .bind_image (self.emptyDrillFileExtensionImage_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: .regular)
-        .set (rightMargin: .regular)
-        .set (topMargin: .zero)
       do{
-        let view_1_1_0 = AutoLayoutVerticalStackView ()
-          .set (topMargin: .regular)
+        let hStackView_view_view = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: .regular)
+          .set (rightMargin: .regular)
+          .set (topMargin: .zero)
         do{
-          let view_1_1_0_0 = AutoLayoutLabel (bold: true, size: .small)
-            .bind_title (self.generatedFileCountString_property)
-          _ = view_1_1_0.appendView (view_1_1_0_0)
-          let view_1_1_0_1 = AutoLayoutTableView (size: .small, addControlButtons: false)
-          self.mDataController.bind_tableView (view_1_1_0_1)
-          _ = view_1_1_0.appendView (view_1_1_0_1)
+          let hStackView_view_view_view = AutoLayoutVerticalStackView ()
+            .set (topMargin: .regular)
+          do{
+            let hStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .small)
+              .bind_title (self.generatedFileCountString_property)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          do{
+            let hStackView_view_view_view_view = AutoLayoutTableView (size: .small, addControlButtons: false)
+            self.mDataController.bind_tableView (hStackView_view_view_view_view)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          _ = hStackView_view_view.appendView (hStackView_view_view_view)
         }
-        _ = view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-        _ = view_1_1.appendView (view_1_1_1)
-        let view_1_1_2 = AutoLayoutVerticalStackView ()
-          .set (topMargin: .regular)
+        _ = hStackView_view_view.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
         do{
-          let view_1_1_2_0 = AutoLayoutHorizontalStackView ()
+          let hStackView_view_view_view = AutoLayoutVerticalStackView ()
+            .set (topMargin: .regular)
           do{
-            let view_1_1_2_0_0 = AutoLayoutHorizontalStackView ()
-              .set (topMargin: .zero)
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
             do{
-              let view_1_1_2_0_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small, alignment: .center)
-              _ = view_1_1_2_0_0.appendView (view_1_1_2_0_0_0)
-              let view_1_1_2_0_0_1 = AutoLayoutLabel (bold: true, size: .small)
-                .bind_title (self.mDataSelection.fileExtension_property)
-              _ = view_1_1_2_0_0.appendView (view_1_1_2_0_0_1)
+              let hStackView_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                .set (topMargin: .zero)
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small, alignment: .center)
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+}
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutLabel (bold: true, size: .small)
+                  .bind_title (self.mDataSelection.fileExtension_property)
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+}
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
             }
-            _ = view_1_1_2_0.appendView (view_1_1_2_0_0)
-            let view_1_1_2_0_1 = AutoLayoutImageObserverView (size: .mini)
-              .bind_image (self.mDataSelection.emptyFileExtensionImage_property)
-            _ = view_1_1_2_0.appendView (view_1_1_2_0_1)
-            let view_1_1_2_0_2 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_0.appendView (view_1_1_2_0_2)
-            let view_1_1_2_0_3 = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small, alignment: .center)
-              .setOrangeTextColor ()
-              .bind_hidden (.not (.prop (self.mDataSelection.hasNoData_property)))
-            _ = view_1_1_2_0.appendView (view_1_1_2_0_3)
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutImageObserverView (size: .mini)
+                .bind_image (self.mDataSelection.emptyFileExtensionImage_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small, alignment: .center)
+                .setOrangeTextColor ()
+                .bind_hidden (.not (.prop (self.mDataSelection.hasNoData_property)))
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_0)
-          let view_1_1_2_1 = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small, alignment: .left)
-          _ = view_1_1_2.appendView (view_1_1_2_1)
-          let view_1_1_2_2 = AutoLayoutHorizontalStackView ()
           do{
-            let view_1_1_2_2_0 = AutoLayoutVerticalStackView ()
+            let hStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small, alignment: .left)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          do{
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutVerticalStackView ()
+                .set (leftMargin: .large)
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Images", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawImagesTopSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side QRCodes", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawQRCodesTopSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTracksTopSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawPadsTopSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              _ = hStackView_view_view_view_view.appendView (hStackView_view_view_view_view_view)
+            }
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+          }
+          do{
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
               .set (leftMargin: .large)
             do{
-              let view_1_1_2_2_0_0 = AutoLayoutHorizontalStackView ()
-              do{
-                let view_1_1_2_2_0_0_0 = AutoLayoutCheckbox (title: "Front Side Images", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawImagesTopSide_property)
-                _ = view_1_1_2_2_0_0.appendView (view_1_1_2_2_0_0_0)
-                let view_1_1_2_2_0_0_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_2_0_0.appendView (view_1_1_2_2_0_0_1)
-                let view_1_1_2_2_0_0_2 = AutoLayoutCheckbox (title: "Front Side QRCodes", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawQRCodesTopSide_property)
-                _ = view_1_1_2_2_0_0.appendView (view_1_1_2_2_0_0_2)
-              }
-              _ = view_1_1_2_2_0.appendView (view_1_1_2_2_0_0)
-              let view_1_1_2_2_0_1 = AutoLayoutHorizontalStackView ()
-              do{
-                let view_1_1_2_2_0_1_0 = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
-                _ = view_1_1_2_2_0_1.appendView (view_1_1_2_2_0_1_0)
-                let view_1_1_2_2_0_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_2_0_1.appendView (view_1_1_2_2_0_1_1)
-                let view_1_1_2_2_0_1_2 = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
-                _ = view_1_1_2_2_0_1.appendView (view_1_1_2_2_0_1_2)
-              }
-              _ = view_1_1_2_2_0.appendView (view_1_1_2_2_0_1)
-              let view_1_1_2_2_0_2 = AutoLayoutHorizontalStackView ()
-              do{
-                let view_1_1_2_2_0_2_0 = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTracksTopSide_property)
-                _ = view_1_1_2_2_0_2.appendView (view_1_1_2_2_0_2_0)
-                let view_1_1_2_2_0_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_2_0_2.appendView (view_1_1_2_2_0_2_1)
-                let view_1_1_2_2_0_2_2 = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawPadsTopSide_property)
-                _ = view_1_1_2_2_0_2.appendView (view_1_1_2_2_0_2_2)
-              }
-              _ = view_1_1_2_2_0.appendView (view_1_1_2_2_0_2)
-            }
-            _ = view_1_1_2_2.appendView (view_1_1_2_2_0)
-            let view_1_1_2_2_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_2.appendView (view_1_1_2_2_1)
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_2)
-          let view_1_1_2_3 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
           do{
-            let view_1_1_2_3_0 = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
-            _ = view_1_1_2_3.appendView (view_1_1_2_3_0)
-            let view_1_1_2_3_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_3.appendView (view_1_1_2_3_1)
-          }
-          _ = view_1_1_2.appendView (view_1_1_2_3)
-          let view_1_1_2_4 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
-          do{
-            let view_1_1_2_4_0 = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
-            _ = view_1_1_2_4.appendView (view_1_1_2_4_0)
-            let view_1_1_2_4_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_4.appendView (view_1_1_2_4_1)
-          }
-          _ = view_1_1_2.appendView (view_1_1_2_4)
-          let view_1_1_2_5 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
-          do{
-            let view_1_1_2_5_0 = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
-            _ = view_1_1_2_5.appendView (view_1_1_2_5_0)
-            let view_1_1_2_5_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_5.appendView (view_1_1_2_5_1)
-          }
-          _ = view_1_1_2.appendView (view_1_1_2_5)
-          let view_1_1_2_6 = AutoLayoutStaticLabel (title: "Inner Elements", bold: true, size: .small, alignment: .left)
-          _ = view_1_1_2.appendView (view_1_1_2_6)
-          let view_1_1_2_7 = AutoLayoutHorizontalStackView ()
-          do{
-            let view_1_1_2_7_0 = AutoLayoutVerticalStackView ()
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
               .set (leftMargin: .large)
             do{
-              let view_1_1_2_7_0_0 = AutoLayoutHorizontalStackView ()
-                .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
-              do{
-                let view_1_1_2_7_0_0_0 = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTraversingPads_property)
-                _ = view_1_1_2_7_0_0.appendView (view_1_1_2_7_0_0_0)
-                let view_1_1_2_7_0_0_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_7_0_0.appendView (view_1_1_2_7_0_0_1)
-                let view_1_1_2_7_0_0_2 = AutoLayoutFlexibleSpace ()
-                _ = view_1_1_2_7_0_0.appendView (view_1_1_2_7_0_0_2)
-              }
-              _ = view_1_1_2_7_0.appendView (view_1_1_2_7_0_0)
-              let view_1_1_2_7_0_1 = AutoLayoutHorizontalStackView ()
-                .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
-              do{
-                let view_1_1_2_7_0_1_0 = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
-                  .set (enabled: false)
-                _ = view_1_1_2_7_0_1.appendView (view_1_1_2_7_0_1_0)
-                let view_1_1_2_7_0_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_7_0_1.appendView (view_1_1_2_7_0_1_1)
-                let view_1_1_2_7_0_1_2 = AutoLayoutFlexibleSpace ()
-                _ = view_1_1_2_7_0_1.appendView (view_1_1_2_7_0_1_2)
-              }
-              _ = view_1_1_2_7_0.appendView (view_1_1_2_7_0_1)
-              let view_1_1_2_7_0_2 = AutoLayoutHorizontalStackView ()
-                .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
-              do{
-                let view_1_1_2_7_0_2_0 = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
-                _ = view_1_1_2_7_0_2.appendView (view_1_1_2_7_0_2_0)
-                let view_1_1_2_7_0_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_7_0_2.appendView (view_1_1_2_7_0_2_1)
-                let view_1_1_2_7_0_2_2 = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-                _ = view_1_1_2_7_0_2.appendView (view_1_1_2_7_0_2_2)
-              }
-              _ = view_1_1_2_7_0.appendView (view_1_1_2_7_0_2)
-              let view_1_1_2_7_0_3 = AutoLayoutHorizontalStackView ()
-                .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
-              do{
-                let view_1_1_2_7_0_3_0 = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                _ = view_1_1_2_7_0_3.appendView (view_1_1_2_7_0_3_0)
-                let view_1_1_2_7_0_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_7_0_3.appendView (view_1_1_2_7_0_3_1)
-                let view_1_1_2_7_0_3_2 = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                _ = view_1_1_2_7_0_3.appendView (view_1_1_2_7_0_3_2)
-              }
-              _ = view_1_1_2_7_0.appendView (view_1_1_2_7_0_3)
-              let view_1_1_2_7_0_4 = AutoLayoutHorizontalStackView ()
-                .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
-              do{
-                let view_1_1_2_7_0_4_0 = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
-                _ = view_1_1_2_7_0_4.appendView (view_1_1_2_7_0_4_0)
-                let view_1_1_2_7_0_4_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_7_0_4.appendView (view_1_1_2_7_0_4_1)
-                let view_1_1_2_7_0_4_2 = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
-                _ = view_1_1_2_7_0_4.appendView (view_1_1_2_7_0_4_2)
-              }
-              _ = view_1_1_2_7_0.appendView (view_1_1_2_7_0_4)
-              let view_1_1_2_7_0_5 = AutoLayoutHorizontalStackView ()
-                .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
-              do{
-                let view_1_1_2_7_0_5_0 = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                _ = view_1_1_2_7_0_5.appendView (view_1_1_2_7_0_5_0)
-                let view_1_1_2_7_0_5_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_7_0_5.appendView (view_1_1_2_7_0_5_1)
-                let view_1_1_2_7_0_5_2 = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
-                  .set (enabled: false)
-                _ = view_1_1_2_7_0_5.appendView (view_1_1_2_7_0_5_2)
-              }
-              _ = view_1_1_2_7_0.appendView (view_1_1_2_7_0_5)
-            }
-            _ = view_1_1_2_7.appendView (view_1_1_2_7_0)
-            let view_1_1_2_7_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_7.appendView (view_1_1_2_7_1)
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_7)
-          let view_1_1_2_8 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small, alignment: .left)
-          _ = view_1_1_2.appendView (view_1_1_2_8)
-          let view_1_1_2_9 = AutoLayoutHorizontalStackView ()
           do{
-            let view_1_1_2_9_0 = AutoLayoutVerticalStackView ()
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
               .set (leftMargin: .large)
             do{
-              let view_1_1_2_9_0_0 = AutoLayoutHorizontalStackView ()
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+          }
+          do{
+            let hStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Inner Elements", bold: true, size: .small, alignment: .left)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          do{
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutVerticalStackView ()
+                .set (leftMargin: .large)
               do{
-                let view_1_1_2_9_0_0_0 = AutoLayoutCheckbox (title: "Back Side Images", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawImagesBottomSide_property)
-                _ = view_1_1_2_9_0_0.appendView (view_1_1_2_9_0_0_0)
-                let view_1_1_2_9_0_0_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_9_0_0.appendView (view_1_1_2_9_0_0_1)
-                let view_1_1_2_9_0_0_2 = AutoLayoutCheckbox (title: "Back Side QRCodes", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawQRCodesBottomSide_property)
-                _ = view_1_1_2_9_0_0.appendView (view_1_1_2_9_0_0_2)
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                  .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTraversingPads_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                _ = hStackView_view_view_view_view_view_view.appendFlexibleSpace ()
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
               }
-              _ = view_1_1_2_9_0.appendView (view_1_1_2_9_0_0)
-              let view_1_1_2_9_0_1 = AutoLayoutHorizontalStackView ()
               do{
-                let view_1_1_2_9_0_1_0 = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
-                _ = view_1_1_2_9_0_1.appendView (view_1_1_2_9_0_1_0)
-                let view_1_1_2_9_0_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_9_0_1.appendView (view_1_1_2_9_0_1_1)
-                let view_1_1_2_9_0_1_2 = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
-                _ = view_1_1_2_9_0_1.appendView (view_1_1_2_9_0_1_2)
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                  .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
+                    .set (enabled: false)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                _ = hStackView_view_view_view_view_view_view.appendFlexibleSpace ()
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
               }
-              _ = view_1_1_2_9_0.appendView (view_1_1_2_9_0_1)
-              let view_1_1_2_9_0_2 = AutoLayoutHorizontalStackView ()
               do{
-                let view_1_1_2_9_0_2_0 = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawTracksBottomSide_property)
-                _ = view_1_1_2_9_0_2.appendView (view_1_1_2_9_0_2_0)
-                let view_1_1_2_9_0_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-                _ = view_1_1_2_9_0_2.appendView (view_1_1_2_9_0_2_1)
-                let view_1_1_2_9_0_2_2 = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
-                  .set (enabled: false)
-                  .bind_value (self.mDataSelection.drawPadsBottomSide_property)
-                _ = view_1_1_2_9_0_2.appendView (view_1_1_2_9_0_2_2)
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                  .bind_hidden (.not (.prop (self.rootObject.hasInnerElements_property)))
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
               }
-              _ = view_1_1_2_9_0.appendView (view_1_1_2_9_0_2)
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                  .bind_hidden (.prop (self.rootObject.hasInnerElements_property))
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                  .bind_hidden (.not (.prop (self.rootObject.hasSixLayers_property)))
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                  .bind_hidden (.prop (self.rootObject.hasSixLayers_property))
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
+                    .set (enabled: false)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              _ = hStackView_view_view_view_view.appendView (hStackView_view_view_view_view_view)
             }
-            _ = view_1_1_2_9.appendView (view_1_1_2_9_0)
-            let view_1_1_2_9_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_9.appendView (view_1_1_2_9_1)
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_9)
-          let view_1_1_2_10 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
           do{
-            let view_1_1_2_10_0 = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
-            _ = view_1_1_2_10.appendView (view_1_1_2_10_0)
-            let view_1_1_2_10_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_10.appendView (view_1_1_2_10_1)
-          }
-          _ = view_1_1_2.appendView (view_1_1_2_10)
-          let view_1_1_2_11 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
+            let hStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small, alignment: .left)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
           do{
-            let view_1_1_2_11_0 = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
-            _ = view_1_1_2_11.appendView (view_1_1_2_11_0)
-            let view_1_1_2_11_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_11.appendView (view_1_1_2_11_1)
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutVerticalStackView ()
+                .set (leftMargin: .large)
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Images", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawImagesBottomSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side QRCodes", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawQRCodesBottomSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              do{
+                let hStackView_view_view_view_view_view_view = AutoLayoutHorizontalStackView ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawTracksBottomSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                hStackView_view_view_view_view_view_view.appendGutter ()
+                do{
+                  let hStackView_view_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
+                    .set (enabled: false)
+                    .bind_value (self.mDataSelection.drawPadsBottomSide_property)
+                  _ = hStackView_view_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view_view)
+}
+                _ = hStackView_view_view_view_view_view .appendView (hStackView_view_view_view_view_view_view)
+              }
+              _ = hStackView_view_view_view_view.appendView (hStackView_view_view_view_view_view)
+            }
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_11)
-          let view_1_1_2_12 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
           do{
-            let view_1_1_2_12_0 = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
-            _ = view_1_1_2_12.appendView (view_1_1_2_12_0)
-            let view_1_1_2_12_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_12.appendView (view_1_1_2_12_1)
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+              .set (leftMargin: .large)
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_12)
-          let view_1_1_2_13 = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small, alignment: .left)
-          _ = view_1_1_2.appendView (view_1_1_2_13)
-          let view_1_1_2_14 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
           do{
-            let view_1_1_2_14_0 = AutoLayoutCheckbox (title: "Vias", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawVias_property)
-            _ = view_1_1_2_14.appendView (view_1_1_2_14_0)
-            let view_1_1_2_14_1 = AutoLayoutCheckbox (title: "Internal Board Limits", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
-            _ = view_1_1_2_14.appendView (view_1_1_2_14_1)
-            let view_1_1_2_14_2 = AutoLayoutCheckbox (title: "Board Limits", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.drawBoardLimits_property)
-            _ = view_1_1_2_14.appendView (view_1_1_2_14_2)
-            let view_1_1_2_14_3 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_14.appendView (view_1_1_2_14_3)
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+              .set (leftMargin: .large)
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_14)
-          let view_1_1_2_15 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small, alignment: .left)
-          _ = view_1_1_2.appendView (view_1_1_2_15)
-          let view_1_1_2_16 = AutoLayoutHorizontalStackView ()
-            .set (leftMargin: .large)
           do{
-            let view_1_1_2_16_0 = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
-              .set (enabled: false)
-              .bind_value (self.mDataSelection.horizontalMirror_property)
-            _ = view_1_1_2_16.appendView (view_1_1_2_16_0)
-            let view_1_1_2_16_1 = AutoLayoutFlexibleSpace ()
-            _ = view_1_1_2_16.appendView (view_1_1_2_16_1)
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+              .set (leftMargin: .large)
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
-          _ = view_1_1_2.appendView (view_1_1_2_16)
+          do{
+            let hStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small, alignment: .left)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          do{
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+              .set (leftMargin: .large)
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Vias", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawVias_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Internal Board Limits", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Board Limits", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.drawBoardLimits_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+          }
+          do{
+            let hStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small, alignment: .left)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          do{
+            let hStackView_view_view_view_view = AutoLayoutHorizontalStackView ()
+              .set (leftMargin: .large)
+            do{
+              let hStackView_view_view_view_view_view = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
+                .set (enabled: false)
+                .bind_value (self.mDataSelection.horizontalMirror_property)
+              _ = hStackView_view_view_view_view .appendView (hStackView_view_view_view_view_view)
+}
+            _ = hStackView_view_view_view_view.appendFlexibleSpace ()
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+          }
+          _ = hStackView_view_view.appendView (hStackView_view_view_view)
         }
-        _ = view_1_1.appendView (view_1_1_2)
-        let view_1_1_3 = AutoLayoutFlexibleSpace ()
-        _ = view_1_1.appendView (view_1_1_3)
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
+      _ = hStackView_view.appendFlexibleSpace ()
+      _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    _ = hStackView.appendView (view_2)
+    _ = hStackView.appendFlexibleSpace ()
     return hStackView
   }
 
@@ -4187,99 +4824,120 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
   final func ArtworkMinimaPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .large)
-    let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView ()
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
       do{
-        let view_0_1_0 = AutoLayoutFlexibleSpace ()
-        _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "PP: Pad to Pad Distance", bold: false, size: .small, alignment: .left)
-        _ = view_0_1.appendView (view_0_1_1)
-        let view_0_1_2 = AutoLayoutStaticLabel (title: "TP: Track to Pad Distance", bold: false, size: .small, alignment: .left)
-        _ = view_0_1.appendView (view_0_1_2)
-        let view_0_1_3 = AutoLayoutStaticLabel (title: "TT: Track to Track Distance", bold: false, size: .small, alignment: .left)
-        _ = view_0_1.appendView (view_0_1_3)
-        let view_0_1_4 = AutoLayoutStaticLabel (title: "TW: Track Width", bold: false, size: .small, alignment: .left)
-        _ = view_0_1.appendView (view_0_1_4)
-        let view_0_1_5 = AutoLayoutStaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: false, size: .small, alignment: .left)
-        _ = view_0_1.appendView (view_0_1_5)
-        let view_0_1_6 = AutoLayoutStaticLabel (title: "OAR: Outer Annular Ring", bold: false, size: .small, alignment: .left)
-        _ = view_0_1.appendView (view_0_1_6)
-        let view_0_1_7 = AutoLayoutStaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: false, size: .small, alignment: .left)
-        _ = view_0_1.appendView (view_0_1_7)
-        let view_0_1_8 = AutoLayoutFlexibleSpace ()
-        _ = view_0_1.appendView (view_0_1_8)
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "PP: Pad to Pad Distance", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "TP: Track to Pad Distance", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "TT: Track to Track Distance", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "TW: Track Width", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "OAR: Outer Annular Ring", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+}
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticImageView (name: "artwork")
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
+      do{
+        let vStackView_view_view = AutoLayoutStaticImageView (name: "artwork")
+        _ = vStackView_view .appendView (vStackView_view_view)
+}
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: .large)
-        .set (rightMargin: .large)
-        .set (topMargin: .regular)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
       do{
-        let view_1_1_0 = AutoLayoutHorizontalStackView ()
+        let vStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (leftMargin: .large)
+          .set (rightMargin: .large)
+          .set (topMargin: .regular)
         do{
-          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular, alignment: .center)
-          _ = view_1_1_0.appendView (view_1_1_0_0)
-          let view_1_1_0_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-          _ = view_1_1_0.appendView (view_1_1_0_1)
-          let view_1_1_0_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-            .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
-          _ = view_1_1_0.appendView (view_1_1_0_2)
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          vStackView_view_view_view.appendGutter ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+              .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_1_0 = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular, alignment: .center)
-          _ = view_1_1_1.appendView (view_1_1_1_0)
-          let view_1_1_1_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-          _ = view_1_1_1.appendView (view_1_1_1_1)
-          let view_1_1_1_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-            .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
-          _ = view_1_1_1.appendView (view_1_1_1_2)
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          vStackView_view_view_view.appendGutter ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+              .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = view_1_1.appendView (view_1_1_1)
-        let view_1_1_2 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_2_0 = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular, alignment: .center)
-          _ = view_1_1_2.appendView (view_1_1_2_0)
-          let view_1_1_2_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-          _ = view_1_1_2.appendView (view_1_1_2_1)
-          let view_1_1_2_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-            .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
-          _ = view_1_1_2.appendView (view_1_1_2_2)
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          vStackView_view_view_view.appendGutter ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+              .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = view_1_1.appendView (view_1_1_2)
-        let view_1_1_3 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_3_0 = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular, alignment: .center)
-          _ = view_1_1_3.appendView (view_1_1_3_0)
-          let view_1_1_3_1 = AutoLayoutHorizontalStackView.GutterSeparator ()
-          _ = view_1_1_3.appendView (view_1_1_3_1)
-          let view_1_1_3_2 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-            .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
-          _ = view_1_1_3.appendView (view_1_1_3_2)
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          vStackView_view_view_view.appendGutter ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+              .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+}
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = view_1_1.appendView (view_1_1_3)
+        _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutFlexibleSpace ()
-    _ = vStackView.appendView (view_2)
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -4290,45 +4948,54 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
   final func PDFSettingsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: .large)
-    let view_0 = AutoLayoutVerticalStackView ()
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Gerber Settings", bold: true, size: .regular, alignment: .left)
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: .large)
+      let hStackView_view = AutoLayoutVerticalStackView ()
       do{
-        let view_0_1_0 = AutoLayoutEnumPopUpButton (titles: GerberUnit.popupTitles (), size: .regular)
-          .bind_selectedIndex (self.rootObject.mGerberProductUnit_property)
-        _ = view_0_1.appendView (view_0_1_0)
-      }
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "PDF Settings", bold: true, size: .regular, alignment: .left)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutVerticalStackView ()
-        .set (leftMargin: .large)
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "Gerber Settings", bold: true, size: .regular, alignment: .left)
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
       do{
-        let view_0_3_0 = AutoLayoutHorizontalStackView ()
+        let hStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (leftMargin: .large)
         do{
-          let view_0_3_0_0 = AutoLayoutColorWell ()
-            .bind_color (self.rootObject.mPDFBoardBackgroundColor_property)
-          _ = view_0_3_0.appendView (view_0_3_0_0)
-          let view_0_3_0_1 = AutoLayoutStaticLabel (title: "Board Background Color", bold: false, size: .regular, alignment: .center)
-          _ = view_0_3_0.appendView (view_0_3_0_1)
-          let view_0_3_0_2 = AutoLayoutFlexibleSpace ()
-          _ = view_0_3_0.appendView (view_0_3_0_2)
-        }
-        _ = view_0_3.appendView (view_0_3_0)
-        let view_0_3_1 = AutoLayoutEnumPopUpButton (titles: PDFProductGrid.popupTitles (), size: .regular)
-          .bind_selectedIndex (self.rootObject.mPDFProductGrid_property)
-        _ = view_0_3.appendView (view_0_3_1)
+          let hStackView_view_view_view = AutoLayoutEnumPopUpButton (titles: GerberUnit.popupTitles (), size: .regular)
+            .bind_selectedIndex (self.rootObject.mGerberProductUnit_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view.appendView (hStackView_view_view)
       }
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_4)
+      do{
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "PDF Settings", bold: true, size: .regular, alignment: .left)
+        _ = hStackView_view .appendView (hStackView_view_view)
+}
+      do{
+        let hStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (leftMargin: .large)
+        do{
+          let hStackView_view_view_view = AutoLayoutHorizontalStackView ()
+          do{
+            let hStackView_view_view_view_view = AutoLayoutColorWell ()
+              .bind_color (self.rootObject.mPDFBoardBackgroundColor_property)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          do{
+            let hStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Board Background Color", bold: false, size: .regular, alignment: .center)
+            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
+}
+          _ = hStackView_view_view_view.appendFlexibleSpace ()
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+        }
+        do{
+          let hStackView_view_view_view = AutoLayoutEnumPopUpButton (titles: PDFProductGrid.popupTitles (), size: .regular)
+            .bind_selectedIndex (self.rootObject.mPDFProductGrid_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+}
+        _ = hStackView_view.appendView (hStackView_view_view)
+      }
+      _ = hStackView_view.appendFlexibleSpace ()
+      _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
-    _ = hStackView.appendView (view_1)
+    _ = hStackView.appendFlexibleSpace ()
     return hStackView
   }
 
@@ -4339,9 +5006,11 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
   final func GenerationLogPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .large)
-    let view_0 = AutoLayoutTextObserverView (size: .regular)
-    self.mProductFileGenerationLogTextView = view_0 // Outlet
-    _ = vStackView.appendView (view_0)
+    do{
+      let vStackView_view = AutoLayoutTextObserverView (size: .regular)
+      self.mProductFileGenerationLogTextView = vStackView_view // Outlet
+      _ = vStackView .appendView (vStackView_view)
+}
     return vStackView
   }
 

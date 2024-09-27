@@ -403,13 +403,13 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)")
 //    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)")
 //    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)")
-    let baseline : String
-    if let view = inView.pmLastBaselineRepresentativeView {
-      baseline = String (describing: type (of: view))
-    }else{
-      baseline = "nil"
-    }
-    self.appendTextField (titled: "Baseline View: " + baseline)
+//    let baseline : String // §§
+//    if let view = inView.pmLastBaselineRepresentativeView {
+//      baseline = String (describing: type (of: view))
+//    }else{
+//      baseline = "nil"
+//    }
+//    self.appendTextField (titled: "Baseline View: " + baseline)
 //    self.appendTextField (titled: "acceptsFirstResponder: \(inView.acceptsFirstResponder)")
 //    self.appendTextField (titled: "canBecomeKeyView: \(inView.canBecomeKeyView)")
     self.appendTextField (titled: "h Compression Resistance: \(inView.contentCompressionResistancePriority (for: .horizontal).rawValue)")
@@ -605,21 +605,24 @@ fileprivate final class FilePrivateHiliteView : NSView {
         bp.stroke ()
       }
     //--- Last baseline
-      if let representativeView = inView.pmLastBaselineRepresentativeView {
-        let representativeViewFrame = self.convert (representativeView.alignmentRect (forFrame: representativeView.bounds), from: representativeView)
-        let bp = NSBezierPath ()
-        let p = NSPoint (
-          x: viewFrame.origin.x,
-          y: representativeViewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
-        )
-        bp.move (to: p)
-        bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
-        if inView is ALB_NSStackView {
-          DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
-        }else{
-          DEBUG_LAST_BASELINE_COLOR.setStroke ()
+//      if let representativeView = inView.pmLastBaselineRepresentativeView { // §§
+      for i in 0 ..< inView.lastBaselineRepresentativeViewArray.count {
+        if let representativeView = inView.lastBaselineRepresentativeViewArray [i] {
+          let representativeViewFrame = self.convert (representativeView.alignmentRect (forFrame: representativeView.bounds), from: representativeView)
+          let bp = NSBezierPath ()
+          let p = NSPoint (
+            x: viewFrame.origin.x,
+            y: representativeViewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
+          )
+          bp.move (to: p)
+          bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
+          if inView is ALB_NSStackView {
+            DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
+          }else{
+            DEBUG_LAST_BASELINE_COLOR.setStroke ()
+          }
+          bp.stroke ()
         }
-        bp.stroke ()
       }
     //--- Explore subviews
       if exploreSubviews {
