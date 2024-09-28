@@ -136,7 +136,7 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating private func add (topOf inView : NSView,
-                             closeToBottomOfGutter inGutter : AutoLayoutVerticalStackView.HorizontalGutterView) {
+                             closeToBottomOfGutter inGutter : VerticalStackGutter) {
   // Vertical Axis is from to top to bottom
   //--- >= Constraint
     var c = inView.topAnchor.constraint (greaterThanOrEqualTo: inGutter.bottomAnchor)

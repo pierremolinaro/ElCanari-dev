@@ -314,7 +314,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     _ = vStackView.appendView (pageMasterView)
     return vStackView
   }
@@ -427,7 +427,7 @@ import AppKit
       _ = hStackView_view.appendFlexibleSpace ()
       _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    _ = hStackView.appendSeparator ()
     do{
       let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
         .bind_horizontalFlip (preferences_mSymbolHorizontalFlipForDevice_property)
@@ -648,7 +648,7 @@ import AppKit
       _ = hStackView_view.appendFlexibleSpace ()
       _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    _ = hStackView.appendSeparator ()
     do{
       let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
         .bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property)

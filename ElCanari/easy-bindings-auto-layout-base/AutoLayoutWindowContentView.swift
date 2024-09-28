@@ -587,18 +587,18 @@ fileprivate final class FilePrivateHiliteView : NSView {
           r.size.width = stackView.mRightMargin
           NSBezierPath.fill (r)
         }
-      }else if inView is AutoLayoutVerticalStackView.FlexibleSpace {
+      }else if inView is VerticalStackFlexibleSpace {
         DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
         NSBezierPath.fill (viewFrame)
-      }else if inView is AutoLayoutHorizontalStackView.FlexibleSpace {
+      }else if inView is HorizontalStackFlexibleSpace {
         DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
         NSBezierPath.fill (viewFrame)
-      }else if inView is AutoLayoutHorizontalStackView.VerticalGutterView {
+      }else if inView is HorizontalStackGutter {
         GUTTER_FILL_COLOR.setFill ()
         NSBezierPath.fill (viewFrame)
-      }else if inView is AutoLayoutHorizontalStackView.VerticalSeparator { // Do not frame
+      }else if inView is HorizontalStackSeparator { // Do not frame
         exploreSubviews = false
-      }else if inView is AutoLayoutVerticalStackView.HorizontalSeparator { // Do not frame
+      }else if inView is VerticalStackSeparator { // Do not frame
         exploreSubviews = false
       }else{ // Frame
         let bp = NSBezierPath (rect: viewFrame)

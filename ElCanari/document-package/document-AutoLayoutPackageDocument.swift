@@ -445,7 +445,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     _ = vStackView.appendView (pageMasterView)
     return vStackView
   }
@@ -544,7 +544,7 @@ import AppKit
         }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+      _ = hStackView_view.appendSeparator ()
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
@@ -573,7 +573,7 @@ import AppKit
         }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+      _ = hStackView_view.appendSeparator ()
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
@@ -728,7 +728,7 @@ import AppKit
       _ = hStackView_view.appendFlexibleSpace ()
       _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    _ = hStackView.appendSeparator ()
     do{
       let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 12000)
         .bind_backgroundImageData (self.rootObject.mModelImageData_property)
@@ -894,7 +894,7 @@ import AppKit
         }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
-      _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+      _ = hStackView_view.appendSeparator ()
       do{
         let hStackView_view_view = AutoLayoutSegmentedControlWithPages (documentView: packagePageInspectorMasterView, equalWidth: true, size: .small)
           .expandableWidth ()
@@ -912,7 +912,7 @@ import AppKit
       _ = hStackView_view.appendFlexibleSpace ()
       _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    _ = hStackView.appendSeparator ()
     do{
       let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 12000)
         .bind_foregroundImageData (self.rootObject.mModelImageData_property)
@@ -1576,7 +1576,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -1735,7 +1735,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -1762,7 +1762,7 @@ import AppKit
         .bind_value (self.mPackageZoneSelectionController.displayZoneNameWithPadNumbers_property)
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -1777,7 +1777,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -1959,7 +1959,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -1988,7 +1988,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -2158,7 +2158,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -2368,7 +2368,7 @@ import AppKit
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -2404,7 +2404,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -2480,7 +2480,7 @@ import AppKit
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -2522,7 +2522,7 @@ import AppKit
         .bind_fontValue (preferences_dimensionFont_property)
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{

@@ -240,7 +240,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     _ = vStackView.appendView (pageMasterView)
     return vStackView
   }
@@ -449,7 +449,7 @@ import AppKit
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
         .set (leftMargin: .regular)
@@ -470,7 +470,7 @@ import AppKit
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = vStackView_view.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+      _ = vStackView_view.appendSeparator ()
       do{
         let vStackView_view_view = AutoLayoutVerticalStackView ()
           .set (topMargin: .regular)

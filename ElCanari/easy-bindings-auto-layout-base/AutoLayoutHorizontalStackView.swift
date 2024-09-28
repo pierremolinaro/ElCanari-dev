@@ -49,7 +49,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendGutter () -> Self {
-    let newRoot = AutoLayoutHorizontalStackView.VerticalGutterView (self.mInternalStackRoot)
+    let newRoot = HorizontalStackGutter (self.mInternalStackRoot)
     self.addSubview (newRoot)
     self.mInternalStackRoot = newRoot
     self.invalidateIntrinsicContentSize ()
@@ -60,7 +60,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   final func appendDivider (drawFrame inDrawFrame : Bool = true,
                             canResizeWindow inFlag : Bool = false) -> Self {
-    let newRoot = AutoLayoutHorizontalStackView.VerticalDivider (
+    let newRoot = HorizontalStackDivider (
       self.mInternalStackRoot,
       drawFrame: inDrawFrame,
       canResizeWindow: inFlag
@@ -74,11 +74,25 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendFlexibleSpace () -> Self {
-    let newRoot = Self.FlexibleSpace (self.mInternalStackRoot)
+    let newRoot = HorizontalStackFlexibleSpace (self.mInternalStackRoot)
     self.addSubview (newRoot)
     self.mInternalStackRoot = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func appendSeparator (ignoreVerticalMargins inFlag : Bool = true) -> Self {
+    let separator = HorizontalStackSeparator (ignoreVerticalMargins: inFlag)
+    return self.appendView (separator)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func prependSeparator (ignoreVerticalMargins inFlag : Bool = true) -> Self {
+    let separator = HorizontalStackSeparator (ignoreVerticalMargins: inFlag)
+    return self.prependView (separator)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -89,7 +103,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     if let root = ioRoot {
       root.appendInHorizontalHierarchy (inView)
     }else{
-      let root = StackSequence ()
+      let root = HorizontalStackStackSequence ()
       root.appendInHorizontalHierarchy (inView)
       ioRoot = root
     }
@@ -103,7 +117,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     if let root = ioRoot {
       root.prependInHorizontalHierarchy (inView)
     }else{
-      let root = StackSequence ()
+      let root = HorizontalStackStackSequence ()
       root.prependInHorizontalHierarchy (inView)
       ioRoot = root
     }
@@ -152,7 +166,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Build constraints
     if let root = self.mInternalStackRoot {
-      var flexibleSpaceView : FlexibleSpace? = nil
+      var flexibleSpaceView : HorizontalStackFlexibleSpace? = nil
       var optionalLastRightView : NSView? = nil
       root.buildConstraintsFor (
         horizontalStackView: self,
@@ -169,7 +183,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
       self.mConstraints.add (leftOf: self, equalToRightOf: self)
     }
   //--- Align gutters
-    var gutters = [AutoLayoutVerticalStackView.HorizontalGutterView] ()
+    var gutters = [VerticalStackGutter] ()
     self.mInternalStackRoot?.alignHorizontalGutters (&gutters, &self.mConstraints)
   //--- Apply constaints
     self.addConstraints (self.mConstraints)
@@ -292,26 +306,6 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   class final func viewFollowedByFlexibleSpace (_ inView : NSView) -> AutoLayoutHorizontalStackView {
     return AutoLayoutHorizontalStackView ().appendView (inView).appendFlexibleSpace ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @MainActor protocol HorizontalStackHierarchyProtocol : AnyObject {
-
-    func appendInHorizontalHierarchy (_ inView : NSView)
-
-    func prependInHorizontalHierarchy (_ inView : NSView)
-
-    func removeInHorizontalHierarchy (_ inView : NSView)
-
-    func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                              optionalLastRightView ioOptionalLastRightView : inout NSView?,
-                              flexibleSpaceView ioFlexibleSpaceView : inout AutoLayoutHorizontalStackView.FlexibleSpace?,
-                              _ ioContraints : inout [NSLayoutConstraint])
-
-    func alignHorizontalGutters (_ ioGutters : inout [AutoLayoutVerticalStackView.HorizontalGutterView],
-                                 _ ioContraints : inout [NSLayoutConstraint])
-
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

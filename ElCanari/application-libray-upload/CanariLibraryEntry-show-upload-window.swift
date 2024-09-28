@@ -68,7 +68,7 @@ import AppKit
     let gridView = AutoLayoutVerticalStackView ()
       .append (left: self.mSetLibraryRepositoryButton, right: self.mLibraryRepositoryTextField)
       .append (left: self.mSetUserAndPasswordButton, right: self.mUserAndPasswordTextField)
-      .appendView (AutoLayoutVerticalStackView.HorizontalSeparator ())
+      .appendSeparator ()
       .append (left: self.mLibraryRepositoryLoadCurrentReleaseButton, right: self.mLibraryRepositoryCurrentReleaseTextField)
       .append (left: self.mLibraryRepositoryStatusButton, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (self.mLibraryRepositoryCommitButton))
     _ = mainView.appendView (gridView)

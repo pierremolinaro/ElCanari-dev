@@ -313,7 +313,7 @@ import AppKit
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .mini, alignment: .center)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view.appendView (vStackView_view_view)
@@ -354,7 +354,7 @@ import AppKit
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+    _ = vStackView.appendSeparator ()
     _ = vStackView.appendView (pageMasterView)
     return vStackView
   }
@@ -442,7 +442,7 @@ import AppKit
         }
         _ = hStackView_view.appendView (hStackView_view_view)
       }
-      _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
+      _ = hStackView_view.appendSeparator ()
       do{
         let hStackView_view_view = AutoLayoutVerticalStackView ()
           .set (leftMargin: .large)
@@ -474,7 +474,7 @@ import AppKit
       }
       _ = hStackView.appendView (hStackView_view)
     }
-    _ = hStackView.appendView (AutoLayoutHorizontalStackView.VerticalSeparator())
+    _ = hStackView.appendSeparator ()
     do{
       let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
         .bind_horizontalFlip (self.rootObject.horizontalFlip_property)
