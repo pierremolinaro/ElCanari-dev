@@ -18,16 +18,19 @@ extension AutoLayoutHorizontalStackView {
   // VerticalDivider internal class
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   final class VerticalDivider : NSView {
+   final class VerticalDivider : NSView, HorizontalStackHierarchyProtocol {
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     private let mDrawFrame : Bool
     private let mCanResizeWindow : Bool
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    init (drawFrame inDrawFrame : Bool = true, canResizeWindow inFlag : Bool = false) {
+    init (_ inRoot : (any HorizontalStackHierarchyProtocol)?,
+          drawFrame inDrawFrame : Bool,
+          canResizeWindow inFlag : Bool) {
+      self.mLeft = inRoot
       self.mDrawFrame = inDrawFrame
       self.mCanResizeWindow = inFlag
       super.init (frame: .zero)
@@ -35,36 +38,92 @@ extension AutoLayoutHorizontalStackView {
       self.pmConfigureForAutolayout (hStretchingResistance: .highest, vStrechingResistance: .lowest)
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     required init? (coder inCoder : NSCoder) {
       fatalError ("init(coder:) has not been implemented")
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     deinit {
       noteObjectDeallocation (self)
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    private var mLeft : (any HorizontalStackHierarchyProtocol)?
+    private var mRight : (any HorizontalStackHierarchyProtocol)? = nil
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func appendInHorizontalHierarchy (_ inView : NSView) {
+      AutoLayoutHorizontalStackView.appendInHorizontalHierarchy (inView, toStackRoot: &self.mRight)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func prependInHorizontalHierarchy (_ inView : NSView) {
+      AutoLayoutHorizontalStackView.prependInHorizontalHierarchy (inView, toStackRoot: &self.mLeft)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func removeInHorizontalHierarchy (_ inView : NSView) {
+      self.mLeft?.removeInHorizontalHierarchy (inView)
+      self.mRight?.removeInHorizontalHierarchy (inView)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
+                              optionalLastRightView ioOptionalLastRightView : inout NSView?,
+                              flexibleSpaceView ioFlexibleSpaceView : inout AutoLayoutHorizontalStackView.FlexibleSpace?,
+                              _ ioContraints : inout [NSLayoutConstraint]) {
+    //--- Before
+      self.mLeft?.buildConstraintsFor (
+        horizontalStackView: inHorizontalStackView,
+        optionalLastRightView: &ioOptionalLastRightView,
+        flexibleSpaceView: &ioFlexibleSpaceView,
+        &ioContraints
+      )
+    //--- Divider
+      ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self)
+      ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
+      ioContraints.add (widthOf: self, equalTo: DIVIDER_WIDTH)
+      if let lastLeftView = ioOptionalLastRightView {
+        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      }else{
+        ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      }
+    //--- After
+      ioOptionalLastRightView = self
+      self.mRight?.buildConstraintsFor (
+        horizontalStackView: inHorizontalStackView,
+        optionalLastRightView: &ioOptionalLastRightView,
+        flexibleSpaceView: &ioFlexibleSpaceView,
+        &ioContraints
+      )
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override var intrinsicContentSize: NSSize {
       return NSSize (width: DIVIDER_WIDTH, height: NSView.noIntrinsicMetric)
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     private static let mLayoutSettings = AutoLayoutViewSettings (
       vLayoutInHorizontalContainer: .fillIgnoringMargins,
       hLayoutInVerticalContainer: .fill
     )
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override var pmLayoutSettings : AutoLayoutViewSettings { Self.mLayoutSettings }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func draw (_ inDirtyRect : NSRect) {
       if self.mDrawFrame {
@@ -83,9 +142,9 @@ extension AutoLayoutHorizontalStackView {
       }
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
     //   Mouse
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     private var mDividerConstraints = [NSLayoutConstraint] ()
     private var mDividerInitialLeftLocationX : CGFloat = 0.0 // In hStack coordinates
@@ -103,7 +162,7 @@ extension AutoLayoutHorizontalStackView {
       super.mouseDown (with: inEvent)
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func mouseDragged (with inEvent: NSEvent) {
       NSCursor.resizeLeftRight.set ()
@@ -113,13 +172,13 @@ extension AutoLayoutHorizontalStackView {
       }
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func mouseUp (with inEvent: NSEvent) {
       NSCursor.arrow.set ()
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func updateConstraints () {
       if let hStack = self.superview as? AutoLayoutHorizontalStackView {
@@ -134,13 +193,13 @@ extension AutoLayoutHorizontalStackView {
       super.updateConstraints ()
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
     // Tracking mouse moved events
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     var mTrackingArea : NSTrackingArea? = nil
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     final override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
     //--- Remove current tracking area
@@ -160,19 +219,19 @@ extension AutoLayoutHorizontalStackView {
       super.updateTrackingAreas ()
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func mouseEntered (with inEvent : NSEvent) {
       NSCursor.resizeLeftRight.set ()
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override func mouseExited (with inEvent : NSEvent) {
       NSCursor.arrow.set ()
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
   }
 

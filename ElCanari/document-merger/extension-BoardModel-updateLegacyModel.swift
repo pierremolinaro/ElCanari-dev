@@ -27,9 +27,9 @@ extension AutoLayoutMergerDocument {
     textField.stringValue = "Updating…"
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: .zero)
-      .appendView (AutoLayoutFlexibleSpace ())
+      .appendFlexibleSpace ()
       .appendView (AutoLayoutSpinningProgressIndicator (size: .small))
-      .appendView (AutoLayoutFlexibleSpace ())
+      .appendFlexibleSpace ()
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: .large)
       .appendView (textField)

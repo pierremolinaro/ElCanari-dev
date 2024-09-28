@@ -21,7 +21,7 @@ extension AutoLayoutPackageDocument {
       sheet.setContentSize (NSSize (width: 600.0, height: 500.0))
     //---
       let vStack = AutoLayoutVerticalStackView ().set (margins: .large)
-      _ = vStack.appendView (AutoLayoutFlexibleSpace ())
+        .appendFlexibleSpace ()
     //--- Text
       let textView = AutoLayoutRTFTextView (editable: false)
       if let url = Bundle.main.url (forResource: "package-program-guide", withExtension: "rtf") {

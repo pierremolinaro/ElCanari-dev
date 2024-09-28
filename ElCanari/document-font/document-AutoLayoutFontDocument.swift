@@ -191,12 +191,12 @@ import AppKit
             .addPage (title: "Infos", tooltip: "Document Infos", pageView: infoPage)
             .bind_selectedPage (self.rootObject.selectedTab_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Page", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -206,12 +206,12 @@ import AppKit
           let vStackView_view_view_view = AutoLayoutSignatureField (size: .regular)
             .bind_signature (self.signatureObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -222,12 +222,12 @@ import AppKit
             .bind_version (self.versionObserver_property)
             .bind_versionShouldChange (self.versionShouldChangeObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView_view.appendFlexibleSpace ()
@@ -240,12 +240,12 @@ import AppKit
             .bind_errorCount (self.statusErrorCount_property)
             .bind_warningCount (self.statusWarningCount_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView .appendView (vStackView_view)
@@ -282,19 +282,19 @@ import AppKit
           .expandableWidth ()
           .bind_value (preferences_sampleString_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutDoubleField (width: 60, size: .small)
           .bind_value (preferences_sampleStringSize_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutCanariSampleFontStringView ()
         .bind_bezierPath (self.rootObject.sampleStringBezierPath_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -310,7 +310,7 @@ import AppKit
             .bind_segmentTitle (self.statusTitle_property, segmentIndex:2)
           self.mFontInspectorSegmentedControl = vStackView_view_view_view // Outlet
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutVerticalStackView ()
             .set (leftMargin: .large)
@@ -332,7 +332,7 @@ import AppKit
         self.mFontGraphicView = vStackView_view_view // Outlet
         self.configure_fontGraphicView (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -351,7 +351,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutLabel (bold: false, size: .small)
           .bind_title (self.statusMessage_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -359,7 +359,7 @@ import AppKit
       let vStackView_view = AutoLayoutCanariIssueTableView (hasHideIssueButton: false)
         .bind_issues (self.rootObject.issues_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -372,16 +372,16 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Sample String", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutTextView ()
         .bind_value (preferences_sampleString_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Sample String Metrics", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       _ = vStackView_view.appendFlexibleSpace ()
@@ -392,13 +392,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutDoubleField (width: 64, size: .small)
               .bind_value (preferences_sampleStringSize_property, sendContinously:true)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -406,13 +406,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .small)
               .bind_title (self.rootObject.sampleStringBezierPathWidth_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -420,13 +420,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Ascenders", bold: false, size: .small, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .small)
               .bind_title (self.rootObject.sampleStringBezierPathAscent_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -434,13 +434,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Descenders", bold: false, size: .small, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .small)
               .bind_title (self.rootObject.sampleStringBezierPathDescent_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view.appendView (vStackView_view_view)
@@ -462,12 +462,12 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Font Nominal Size", bold: true, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutIntField (minWidth: 56, size: .small)
           .bind_value (self.rootObject.nominalSize_property, sendContinously:false)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -477,12 +477,12 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Segment Opacity", bold: true, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "(for edition)", bold: false, size: .mini, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -491,12 +491,12 @@ import AppKit
         let vStackView_view_view = AutoLayoutDoubleSlider (width: -1, min: 0, max: 1, ticks: 11)
           .bind_value (preferences_fontEditionTransparency_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutDoubleField (width: 56, size: .small)
           .bind_value (preferences_fontEditionTransparency_property, sendContinously:false)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -505,7 +505,7 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Current Character", bold: true, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutButton (title: "Delete", size: .small)
           .bind_enabled (.prop (self.canDeleteCurrentCharacter_property))
@@ -514,7 +514,7 @@ import AppKit
             selector: #selector (AutoLayoutFontDocument.deleteCurrentCharacterAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutButton (title: "New Character…", size: .small)
@@ -523,7 +523,7 @@ import AppKit
             selector: #selector (AutoLayoutFontDocument.newCharacterAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -533,21 +533,21 @@ import AppKit
           .bind_codePoint (self.rootObject.currentCharacterCodePoint_property)
           .bind_characters (self.rootObject.definedCharacters_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutStepper ()
           .bind_value (self.rootObject.currentCharacterCodePoint_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Code", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutLabel (bold: false, size: .small)
           .bind_title (self.rootObject.currentCharacterCodePointString_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutButton (title: "New Segment", size: .small)
@@ -556,7 +556,7 @@ import AppKit
             selector: #selector (AutoLayoutFontDocument.addSegmentAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -564,7 +564,7 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Advancement", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -574,12 +574,12 @@ import AppKit
         let vStackView_view_view = AutoLayoutIntSlider (width: -1, min: 0, max: 32, ticks: 33)
           .bind_value (self.characterSelection.advance_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutIntField (minWidth: 56, size: .small)
           .bind_value (self.characterSelection.advance_property, sendContinously:false)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -587,18 +587,18 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Warns", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "No Segment", size: .small)
           .bind_value (self.characterSelection.mWarnsWhenNoSegment_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Zero Advancement", size: .small)
           .bind_value (self.characterSelection.mWarnsWhenAdvanceIsZero_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -607,13 +607,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Gerber Code", bold: true, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutLabel (bold: false, size: .small)
           .bind_title (self.characterSelection.gerberCodeInstructionCountMessage_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -622,20 +622,20 @@ import AppKit
         let vStackView_view_view = AutoLayoutCheckbox (title: "Show Gerber Flow", size: .small)
           .bind_value (preferences_showGerberDrawingFlow_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Show Indexes", size: .small)
           .bind_value (preferences_showGerberDrawingIndexes_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutCanariFontCharacterGerberCodeTableView (size: .small)
         .bind_characterGerberCode (self.characterSelection.gerberCode_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -651,12 +651,12 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Description", bold: false, size: .regular, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutTextView ()
           .bind_value (self.rootObject.comments_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -669,7 +669,7 @@ import AppKit
             selector: #selector (AutoLayoutFontDocument.resetVersionAndSignatureAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView

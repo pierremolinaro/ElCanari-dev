@@ -47,7 +47,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     helperTextField.lineBreakMode = .byTruncatingTail
     _ = self.mTopHStack.appendView (helperTextField)
     self.mHelperTextField = helperTextField
-    _ = self.mTopHStack.appendView (AutoLayoutFlexibleSpace ())
+    _ = self.mTopHStack.appendFlexibleSpace ()
   //--- Build focus ring
     let focusRingView = EBFocusRingView ()
     _ = self.appendView (focusRingView)

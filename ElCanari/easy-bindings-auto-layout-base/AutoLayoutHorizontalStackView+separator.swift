@@ -32,11 +32,11 @@ extension AutoLayoutHorizontalStackView {
 
   final class VerticalSeparator : NSBox {
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     let mIgnoreVerticalMargins : Bool
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     init (ignoreVerticalMargins inFlag : Bool = true) {
       self.mIgnoreVerticalMargins = inFlag
@@ -48,13 +48,13 @@ extension AutoLayoutHorizontalStackView {
       self.boxType = .separator
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     required init? (coder inCoder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     deinit {
       noteObjectDeallocation (self)
@@ -64,7 +64,7 @@ extension AutoLayoutHorizontalStackView {
 
     override var intrinsicContentSize : NSSize { NSSize (width: 1.0, height: NSView.noIntrinsicMetric) }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
     override var pmLayoutSettings : AutoLayoutViewSettings {
       return AutoLayoutViewSettings (
@@ -73,7 +73,7 @@ extension AutoLayoutHorizontalStackView {
       )
     }
 
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
   }
 

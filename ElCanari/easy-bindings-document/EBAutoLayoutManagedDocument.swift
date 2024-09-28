@@ -225,9 +225,9 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
         textField.stringValue = "Loading File…"
         let hStackView = AutoLayoutHorizontalStackView ()
           .set (margins: .zero)
-          .appendView (AutoLayoutFlexibleSpace ())
+          .appendFlexibleSpace ()
           .appendView (AutoLayoutSpinningProgressIndicator (size: .small))
-          .appendView (AutoLayoutFlexibleSpace ())
+          .appendFlexibleSpace ()
         let vStackView = AutoLayoutVerticalStackView ()
           .set (margins: .large)
           .appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))

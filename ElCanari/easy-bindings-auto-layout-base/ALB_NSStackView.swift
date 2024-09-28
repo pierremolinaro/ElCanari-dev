@@ -81,34 +81,6 @@ class ALB_NSStackView : NSView {
     objectDidDeinitSoReleaseHiddenControllers ()
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @MainActor static
-  func appendInHierarchy (_ inView : NSView,
-                          toStackRoot ioRoot : inout (any StackHierarchyProtocol)?) {
-    if let root = ioRoot {
-      root.appendInHierarchy (inView)
-    }else{
-      let root = StackSequence ()
-      root.appendInHierarchy (inView)
-      ioRoot = root
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @MainActor static
-  func prependInHierarchy (_ inView : NSView,
-                           toStackRoot ioRoot : inout (any StackHierarchyProtocol)?) {
-    if let root = ioRoot {
-      root.prependInHierarchy (inView)
-    }else{
-      let root = StackSequence ()
-      root.prependInHierarchy (inView)
-      ioRoot = root
-    }
-  }
-
   //····················································································································
   //  MARGINS
   //····················································································································
@@ -219,12 +191,6 @@ class ALB_NSStackView : NSView {
     return self
   }
   
-  // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-  final func isFlexibleSpace (_ inView : NSView) -> Bool {
-    return inView is AutoLayoutFlexibleSpace
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!
   // So we perform this operation manually

@@ -61,7 +61,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
           .addPage (image: "library", title: "Library", tooltip: "Library", pageView: prefsLibraryPage)
           .bind_selectedPage (preferences_mSelectedPrefsPage_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -88,7 +88,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -98,12 +98,12 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             selector: #selector (Preferences.checkForAppUpdateAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Using…", bold: false, size: .regular, alignment: .center)
         self.configure_usingSparkleTextFieldConfigurator (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -113,12 +113,12 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
         let vStackView_view_view = AutoLayoutCheckbox (title: "Automatically Check for Updates", size: .regular)
         self.configure_automaticallyCheckForUpdatesConfigurator (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutPopUpButton (size: .regular)
         self.configure_updateCheckIntervalPopUpButtonConfigurator (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -127,12 +127,12 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Last Check Time", bold: false, size: .regular, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "?", bold: false, size: .regular, alignment: .center)
         self.configure_sparkleLastCheckTimeTextFieldConfigurator (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -140,7 +140,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
       let vStackView_view = AutoLayoutWebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html")
         .set (minHeight: 200)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -157,19 +157,19 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
       do{
         let hStackView_view_view = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .left)
         _ = hStackView_view .appendView (hStackView_view_view)
-}
+      }
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutColorWell ()
             .bind_color (preferences_selectionHiliteColor_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         _ = hStackView_view .appendView (hStackView_view_view)
       }
@@ -178,8 +178,8 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutTaggedPopUpButton (size: .regular)
             .add (title: "0.5 Point", withTag: 5)
@@ -189,29 +189,29 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             .add (title: "2.5 Points", withTag: 25)
             .bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
         _ = hStackView_view_view.appendFlexibleSpace ()
-        hStackView_view_view.appendGutter ()
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
             .bind_value (preferences_showDebugMenu_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
         let hStackView_view_view = AutoLayoutStaticLabel (title: "FreeRouting Application Directory", bold: true, size: .regular, alignment: .left)
         _ = hStackView_view .appendView (hStackView_view_view)
-}
+      }
       do{
         let hStackView_view_view = AutoLayoutButton (title: "", size: .regular)
         self.configure_configureFreeRoutingPath (hStackView_view_view) // Configurator
         _ = hStackView_view .appendView (hStackView_view_view)
-}
+      }
       _ = hStackView.appendView (hStackView_view)
     }
     _ = hStackView.appendFlexibleSpace ()
@@ -228,7 +228,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -240,12 +240,12 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
         self.mRevealInFinderSystemLibraryButton = vStackView_view_view // Outlet
         self.configure_revealInFinderSystemLibraryButtonConfigurator (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Uses", size: .regular)
           .bind_value (preferences_usesUserLibrary_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -259,18 +259,18 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
           )
         self.mCheckForLibraryUpdatesButton = vStackView_view_view // Outlet
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "At Start Up", size: .regular)
           .bind_value (preferences_checkForSystemLibraryAtStartUp_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutPopUpButton (size: .regular)
           .bind_enabled (.prop (preferences_checkForSystemLibraryAtStartUp_property))
         self.configure_lastSystemLibraryCheckTimeButtonConfigurator (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -283,28 +283,28 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             selector: #selector (Preferences.showSystemLibraryLogAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Last Check", bold: false, size: .regular, alignment: .left)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutDateLabel (bold: false, size: .regular)
           .bind_date (preferences_mLastSystemLibraryCheckTime_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular, alignment: .left)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutTableView (size: .small, addControlButtons: false)
       preferences_userLibraryArrayController.bind_tableView (vStackView_view)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -314,7 +314,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             selector: #selector (Preferences.addLibraryEntryAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutButton (title: "Reveal in Finder", size: .regular)
           .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .eq, .literalInt (1)))
@@ -323,7 +323,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             selector: #selector (Preferences.revealInFinderLibraryFolderAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutButton (title: "-", size: .regular)
           .bind_enabled (.intcmp (.prop (preferences_userLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -332,14 +332,14 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             selector: #selector (Preferences.removeLibraryEntryAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular, alignment: .left)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -349,7 +349,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             selector: #selector (Preferences.checkLibraryAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
           .bind_run (
@@ -357,7 +357,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
             selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }

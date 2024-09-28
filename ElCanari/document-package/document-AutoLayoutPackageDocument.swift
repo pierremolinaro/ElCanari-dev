@@ -386,12 +386,12 @@ import AppKit
             .bind_selectedPage (self.rootObject.selectedPageIndex_property)
             .bind_segmentImage (self.segmentedControlPackageIssueImage_property, segmentIndex:1)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Page", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -401,12 +401,12 @@ import AppKit
           let vStackView_view_view_view = AutoLayoutSignatureField (size: .regular)
             .bind_signature (self.signatureObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -417,12 +417,12 @@ import AppKit
             .bind_version (self.versionObserver_property)
             .bind_versionShouldChange (self.versionShouldChangeObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView_view.appendFlexibleSpace ()
@@ -435,12 +435,12 @@ import AppKit
             .bind_errorCount (self.statusErrorCount_property)
             .bind_warningCount (self.statusWarningCount_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView .appendView (vStackView_view)
@@ -467,13 +467,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
             .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -481,8 +481,8 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutTaggedPopUpButton (size: .small)
             .add (title: "1 Step", withTag: 1)
@@ -500,7 +500,7 @@ import AppKit
             .add (title: "200 Steps", withTag: 200)
             .bind_selectedTag (self.rootObject.mModelImagePageGridDisplayFactor_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -508,13 +508,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -522,26 +522,26 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
             .expandableWidth ()
             .bind_value (self.rootObject.mModelImagePageHorizontalFlip_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
         _ = hStackView_view_view.appendFlexibleSpace ()
-        hStackView_view_view.appendGutter ()
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCheckbox (title: "Vertical", size: .small)
             .expandableWidth ()
             .bind_value (self.rootObject.mModelImagePageVerticalFlip_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -550,13 +550,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabels (left: "Placard", right: "X", bold: false, size: .small)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
             .bind_unit (self.rootObject.mModelImagePageXPlacardUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -564,13 +564,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
             .bind_unit (self.rootObject.mModelImagePageYPlacardUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -584,13 +584,13 @@ import AppKit
             .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:)), enableBinding: .prop (self.rootObject.hasModelImage_property)))
             .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:)), enableBinding: .prop (self.rootObject.hasModelImage_property)))
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutLabel (bold: false, size: .small)
             .bind_title (self.rootObject.modelImageSizeString_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -599,20 +599,20 @@ import AppKit
           .bind_setter6 (self.rootObject.mDimensionUnitFirstModelPointX_property, self.rootObject.mDimensionUnitFirstModelPointY_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, self.rootObject.mModelImageSecondPointXUnit_property, self.rootObject.mModelImageSecondPointYUnit_property)
           .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
         _ = hStackView_view .appendView (hStackView_view_view)
-}
+      }
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
           .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabels (left: "Green", right: "X", bold: false, size: .small)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -621,13 +621,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -636,13 +636,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "∆X", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -651,13 +651,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -666,13 +666,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabels (left: "Brown", right: "X", bold: false, size: .small)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -681,13 +681,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointYUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -696,13 +696,13 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "PointSize", bold: false, size: .small, alignment: .right)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutLinearSlider (min: 1, max: 61, ticks: 19)
             .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -716,13 +716,13 @@ import AppKit
               selector: #selector (AutoLayoutPackageDocument.lockImagePointsAction (_:))
             )
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutImageObserverView (size: .small)
             .bind_image (self.rootObject.lockImageView_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       _ = hStackView_view.appendFlexibleSpace ()
@@ -748,7 +748,7 @@ import AppKit
         .bind_yPlacardUnit (self.rootObject.mModelImagePageYPlacardUnit_property)
         .bind_graphic_controller (self.mModelImageObjectsController)
       _ = hStackView .appendView (hStackView_view)
-}
+    }
     return hStackView
   }
 
@@ -786,35 +786,35 @@ import AppKit
             .bind_image (self.addSegmentButtonImage_property)
           self.configure_addPackageSegment (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
             .bind_image (self.addBezierButtonImage_property)
           self.configure_addPackageBezier (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Oval")
             .bind_image (self.addOvalButtonImage_property)
           self.configure_addPackageOval (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Arc")
             .bind_image (self.addArcButtonImage_property)
           self.configure_addPackageArc (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Master Pad")
             .bind_image (self.addMasterPadButtonImage_property)
           self.configure_addPackageMasterPad (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Slave Pad")
@@ -822,28 +822,28 @@ import AppKit
             .bind_enabled (.intcmp (.prop (self.rootObject.packagePads_property.count_property), .gt, .literalInt (0)))
           self.configure_addPackageSlavePad (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Zone")
             .bind_image (self.addZoneButtonImage_property)
           self.configure_addPackageZone (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Guide")
             .bind_image (self.addGuideButtonImage_property)
           self.configure_addPackageGuide (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Dimension")
             .bind_image (self.addDimensionButtonImage_property)
           self.configure_addPackageDimension (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -851,14 +851,14 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Model Image Opacity", bold: false, size: .small, alignment: .left)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutLinearSlider (min: 0, max: 1, ticks: 11)
             .bind_doubleValue (self.rootObject.mModelImageOpacity_property, sendContinously:true)
             .bind_enabled (.prop (self.rootObject.hasModelImage_property))
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -866,24 +866,24 @@ import AppKit
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Auto Numbering", bold: false, size: .small, alignment: .left)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
-        hStackView_view_view.appendGutter ()
+        }
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
             .bind_selectedIndex (self.rootObject.padNumbering_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
           .bind_hidden (.not (.prop (self.rootObject.counterClockNumbering_property)))
         _ = hStackView_view_view.appendFlexibleSpace ()
-        hStackView_view_view.appendGutter ()
+        _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutStaticLabel (title: "From", bold: false, size: .small, alignment: .center)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         do{
           let hStackView_view_view_view = AutoLayoutIntField (minWidth: 45, size: .small)
             .set (min: 0)
@@ -891,7 +891,7 @@ import AppKit
             .set (format: "##0°")
             .bind_value (self.rootObject.counterClockNumberingStartAngle_property, sendContinously:true)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       _ = hStackView_view.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -907,7 +907,7 @@ import AppKit
           .bind_segmentTitle (self.segmentedControlSegmentIssueString_property, segmentIndex:3)
         self.configure_packagePageSegmentedControl (hStackView_view_view) // Configurator
         _ = hStackView_view .appendView (hStackView_view_view)
-}
+      }
       _ = hStackView_view.appendView (packagePageInspectorMasterView)
       _ = hStackView_view.appendFlexibleSpace ()
       _ = hStackView.appendView (hStackView_view)
@@ -936,7 +936,7 @@ import AppKit
       self.mPackageGraphicView = hStackView_view // Outlet
       self.configure_packageGraphicView (hStackView_view) // Configurator
       _ = hStackView .appendView (hStackView_view)
-}
+    }
     return hStackView
   }
 
@@ -953,7 +953,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutLabel (bold: false, size: .small)
           .bind_title (self.statusMessage_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -962,7 +962,7 @@ import AppKit
         .bind_issues (self.issues_property)
       self.mPackageIssueTableView = vStackView_view // Outlet
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -994,7 +994,7 @@ import AppKit
         .addObjectInspector (forEntity: PackageZone.self, inspectorView: zoneInspectorView)
         .bind_graphic_controller (self.mPackageObjectsController)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
@@ -1008,24 +1008,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Segment Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter5 (self.mPackageSegmentSelectionController.x1Unit_property, self.mPackageSegmentSelectionController.y1Unit_property, self.mPackageSegmentSelectionController.x2Unit_property, self.mPackageSegmentSelectionController.y2Unit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1033,13 +1033,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y1_property, self.mPackageSegmentSelectionController.y1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1047,13 +1047,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x2_property, self.mPackageSegmentSelectionController.x2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1061,13 +1061,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y2_property, self.mPackageSegmentSelectionController.y2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1075,13 +1075,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Length", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.lengthInCanariUnit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -1096,24 +1096,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Bezier Curve Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter8 (self.mPackageBezierCurveSelectionController.x1Unit_property, self.mPackageBezierCurveSelectionController.y1Unit_property, self.mPackageBezierCurveSelectionController.x2Unit_property, self.mPackageBezierCurveSelectionController.y2Unit_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x1_property, self.mPackageBezierCurveSelectionController.x1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1121,13 +1121,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y1_property, self.mPackageBezierCurveSelectionController.y1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1135,13 +1135,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x2_property, self.mPackageBezierCurveSelectionController.x2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1149,13 +1149,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y2_property, self.mPackageBezierCurveSelectionController.y2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1163,13 +1163,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "First Ctrl", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx1_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1177,13 +1177,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy1_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1191,13 +1191,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Second Ctrl", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx2_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1205,13 +1205,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy2_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -1226,24 +1226,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Oval Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter4 (self.mPackageOvalSelectionController.xUnit_property, self.mPackageOvalSelectionController.yUnit_property, self.mPackageOvalSelectionController.widthUnit_property, self.mPackageOvalSelectionController.heightUnit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Bottom Left", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageOvalSelectionController.x_property, self.mPackageOvalSelectionController.xUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1251,13 +1251,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageOvalSelectionController.y_property, self.mPackageOvalSelectionController.yUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1265,13 +1265,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageOvalSelectionController.width_property, self.mPackageOvalSelectionController.widthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1279,13 +1279,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageOvalSelectionController.height_property, self.mPackageOvalSelectionController.heightUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -1300,24 +1300,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Arc Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter5 (self.mPackageArcSelectionController.xCenterUnit_property, self.mPackageArcSelectionController.yCenterUnit_property, self.mPackageArcSelectionController.radiusUnit_property, self.mPackageArcSelectionController.startTangentUnit_property, self.mPackageArcSelectionController.endTangentUnit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageArcSelectionController.xCenter_property, self.mPackageArcSelectionController.xCenterUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1325,13 +1325,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageArcSelectionController.yCenter_property, self.mPackageArcSelectionController.yCenterUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1339,13 +1339,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Radius", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageArcSelectionController.radius_property, self.mPackageArcSelectionController.radiusUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1353,13 +1353,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Start Angle", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
           .bind_angle (self.mPackageArcSelectionController.startAngle_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1367,13 +1367,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Angle", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariAngleField (minWidth: 64, size: .small)
           .bind_angle (self.mPackageArcSelectionController.arcAngle_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1381,13 +1381,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Start Tangent", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageArcSelectionController.startTangent_property, self.mPackageArcSelectionController.startTangentUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1395,13 +1395,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "End Tangent", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageArcSelectionController.endTangent_property, self.mPackageArcSelectionController.endTangentUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1410,7 +1410,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutCheckbox (title: "Path is Closed", size: .small)
           .bind_value (self.mPackageArcSelectionController.pathIsClosed_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -1426,24 +1426,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Guide Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter4 (self.mPackageGuideSelectionController.x1Unit_property, self.mPackageGuideSelectionController.y1Unit_property, self.mPackageGuideSelectionController.x2Unit_property, self.mPackageGuideSelectionController.y2Unit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x1_property, self.mPackageGuideSelectionController.x1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1451,13 +1451,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y1_property, self.mPackageGuideSelectionController.y1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1465,13 +1465,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x2_property, self.mPackageGuideSelectionController.x2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1479,13 +1479,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y2_property, self.mPackageGuideSelectionController.y2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -1500,24 +1500,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Dimension Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter7 (self.mPackageDimensionSelectionController.x1Unit_property, self.mPackageDimensionSelectionController.y1Unit_property, self.mPackageDimensionSelectionController.x2Unit_property, self.mPackageDimensionSelectionController.y2Unit_property, self.mPackageDimensionSelectionController.distanceUnit_property, self.mPackageDimensionSelectionController.xDimensionUnit_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x1_property, self.mPackageDimensionSelectionController.x1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1525,13 +1525,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y1_property, self.mPackageDimensionSelectionController.y1Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1539,13 +1539,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x2_property, self.mPackageDimensionSelectionController.x2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1553,13 +1553,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y2_property, self.mPackageDimensionSelectionController.y2Unit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1567,13 +1567,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Distance", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.distanceInCanariUnit_property, self.mPackageDimensionSelectionController.distanceUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -1582,13 +1582,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Label", right: "∆X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.xDimension_property, self.mPackageDimensionSelectionController.xDimensionUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1596,13 +1596,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.yDimension_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1611,7 +1611,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutCheckbox (title: "Draw Label Background", size: .small)
           .bind_value (self.mPackageDimensionSelectionController.drawDimensionBackground_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -1623,7 +1623,7 @@ import AppKit
           selector: #selector (AutoLayoutPackageDocument.setDimensionTextOriginAtMidXAction (_:))
         )
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutButton (title: "Set Label at Mid Y", size: .small)
         .expandableWidth ()
@@ -1632,7 +1632,7 @@ import AppKit
           selector: #selector (AutoLayoutPackageDocument.setDimensionTextOriginAtMidYAction (_:))
         )
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -1645,24 +1645,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Zone Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter6 (self.mPackageZoneSelectionController.xUnit_property, self.mPackageZoneSelectionController.yUnit_property, self.mPackageZoneSelectionController.widthUnit_property, self.mPackageZoneSelectionController.heightUnit_property, self.mPackageZoneSelectionController.xNameUnit_property, self.mPackageZoneSelectionController.yNameUnit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Bottom Left", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageZoneSelectionController.x_property, self.mPackageZoneSelectionController.xUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1670,13 +1670,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageZoneSelectionController.y_property, self.mPackageZoneSelectionController.yUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1684,13 +1684,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageZoneSelectionController.width_property, self.mPackageZoneSelectionController.widthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1698,13 +1698,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageZoneSelectionController.height_property, self.mPackageZoneSelectionController.heightUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1712,13 +1712,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Label", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageZoneSelectionController.xName_property, self.mPackageZoneSelectionController.xNameUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1726,13 +1726,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -1741,13 +1741,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Name", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
           .bind_value (self.mPackageZoneSelectionController.zoneName_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1755,26 +1755,26 @@ import AppKit
         .expandableWidth ()
         .bind_value (self.mPackageZoneSelectionController.displayZoneName_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCheckbox (title: "Show Zone Name with Pad Numbers", size: .small)
         .expandableWidth ()
         .bind_value (self.mPackageZoneSelectionController.displayZoneNameWithPadNumbers_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Auto Numbering", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
           .bind_selectedIndex (self.mPackageZoneSelectionController.zoneNumbering_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -1790,7 +1790,7 @@ import AppKit
               selector: #selector (AutoLayoutPackageDocument.addZoneForbiddenPadNumberAction (_:))
             )
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutButton (title: "-", size: .small)
             .set (width: 32)
@@ -1800,7 +1800,7 @@ import AppKit
               selector: #selector (AutoLayoutPackageDocument.removeZoneForbiddenPadNumberAction (_:))
             )
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
@@ -1809,7 +1809,7 @@ import AppKit
           .bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property)
         self.mZoneForbiddenPadNumberTableView = vStackView_view_view // Outlet
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -1824,24 +1824,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Master Pad Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter7 (self.mPackagePadSelectionController.xCenterUnit_property, self.mPackagePadSelectionController.yCenterUnit_property, self.mPackagePadSelectionController.widthUnit_property, self.mPackagePadSelectionController.heightUnit_property, self.mPackagePadSelectionController.holeWidthUnit_property, self.mPackagePadSelectionController.holeHeightUnit_property, self.mPackagePadSelectionController.annularRingUnit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.xCenter_property, self.mPackagePadSelectionController.xCenterUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1849,13 +1849,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.yCenter_property, self.mPackagePadSelectionController.yCenterUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1863,13 +1863,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.width_property, self.mPackagePadSelectionController.widthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1877,13 +1877,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.height_property, self.mPackagePadSelectionController.heightUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1891,13 +1891,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Shape", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
           .bind_selectedIndex (self.mPackagePadSelectionController.padShape_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1905,13 +1905,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Style", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: PadStyle.popupTitles (), size: .small)
           .bind_selectedIndex (self.mPackagePadSelectionController.padStyle_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1920,13 +1920,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeWidth_property, self.mPackagePadSelectionController.holeWidthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1935,13 +1935,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeHeight_property, self.mPackagePadSelectionController.holeHeightUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1950,13 +1950,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -1965,13 +1965,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Zone", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
           .bind_title (self.mPackagePadSelectionController.zoneName_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -1979,13 +1979,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Pad Number", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutIntObserverField (bold: true, size: .small)
           .bind_observedValue (self.mPackagePadSelectionController.padNumber_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -1994,13 +1994,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Slave Pads", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutIntObserverField (bold: true, size: .small)
           .bind_observedValue (self.mPackagePadSelectionController.slavePadCount_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2010,7 +2010,7 @@ import AppKit
         .bind_enabled (.boolcmp (.boolcmp (.prop (self.mPackagePadSelectionController.noZone_property), .and, .prop (self.rootObject.freePadNumbering_property)), .or, .prop (self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property)))
       self.configure_configurePadRenumberPullDownButton (vStackView_view) // Configurator
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -2023,24 +2023,24 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Slave Pad Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter7 (self.mPackageSlavePadSelectionController.xCenterUnit_property, self.mPackageSlavePadSelectionController.yCenterUnit_property, self.mPackageSlavePadSelectionController.widthUnit_property, self.mPackageSlavePadSelectionController.heightUnit_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.xCenter_property, self.mPackageSlavePadSelectionController.xCenterUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2048,13 +2048,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.yCenter_property, self.mPackageSlavePadSelectionController.yCenterUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2062,13 +2062,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.width_property, self.mPackageSlavePadSelectionController.widthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2076,13 +2076,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.height_property, self.mPackageSlavePadSelectionController.heightUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2090,13 +2090,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Shape", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
           .bind_selectedIndex (self.mPackageSlavePadSelectionController.padShape_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2104,13 +2104,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Style", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: SlavePadStyle.popupTitles (), size: .small)
           .bind_selectedIndex (self.mPackageSlavePadSelectionController.padStyle_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2119,13 +2119,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeWidth_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2134,13 +2134,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeHeight_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2149,13 +2149,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -2164,15 +2164,15 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Linked to Pad", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariSlavePadAssignPopUpButton ()
           .bind_masterPadName (self.mPackageSlavePadSelectionController.masterPadNameWithZoneName_property)
           .bind_masterPadObjectIndexArray (self.rootObject.masterPadObjectIndexArray_property)
         self.configure_configureSlavePadAssignPopUpButton (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -2187,19 +2187,19 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "(Stored in Document Preferences)", bold: false, size: .mini, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
           .bind_selectedIndex (self.rootObject.gridStyle_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2207,8 +2207,8 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutTaggedPopUpButton (size: .small)
           .add (title: "1 Step", withTag: 1)
@@ -2219,7 +2219,7 @@ import AppKit
           .add (title: "10 Steps", withTag: 10)
           .bind_selectedTag (self.rootObject.gridDisplayFactor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2227,13 +2227,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2241,26 +2241,26 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
           .expandableWidth ()
           .bind_value (self.rootObject.horizontalFlip_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       _ = vStackView_view.appendFlexibleSpace ()
-      vStackView_view.appendGutter ()
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Vertical", size: .small)
           .expandableWidth ()
           .bind_value (self.rootObject.verticalFlip_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2268,13 +2268,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Placard", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
           .bind_unit (self.rootObject.xPlacardUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2282,13 +2282,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
           .bind_unit (self.rootObject.yPlacardUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2296,14 +2296,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Knob Size", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutLinearSlider (min: 7, max: 41, ticks: 18)
           .expandableWidth ()
           .bind_intValue (self.rootObject.knobSizeMultpliedByTen_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendFlexibleSpace ()
@@ -2319,20 +2319,20 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "(Stored in Application Preferences)", bold: false, size: .mini, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_packageBackgroundColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2341,14 +2341,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_crossColorOfPackageGrid_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2357,14 +2357,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_lineColorOfPackageGrid_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2374,14 +2374,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Package", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_packageColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2390,8 +2390,8 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Line Width", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutTaggedPopUpButton (size: .small)
           .add (title: "0.5 Point", withTag: 5)
@@ -2401,7 +2401,7 @@ import AppKit
           .add (title: "2.5 Points", withTag: 25)
           .bind_selectedTag (preferences_packageDrawingWidthMultipliedByTen_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
@@ -2410,51 +2410,51 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Pad Numbering", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_padNumberColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Show", size: .small)
           .expandableHeight ()
           .bind_value (preferences_showPadNumber_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Pad Font", bold: false, size: .small, alignment: .left)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutFontButton (width: 125, size: .small)
         .bind_fontValue (preferences_padNumberFont_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Top Side Pads", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_frontSidePadColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Show", size: .small)
           .expandableHeight ()
           .bind_value (preferences_displayPackageFrontSidePads_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2463,20 +2463,20 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Back Side Pads", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_backSidePadColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Show", size: .small)
           .expandableHeight ()
           .bind_value (preferences_displayPackageBackSidePads_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2486,14 +2486,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Guide Color", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_packageGuideColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2502,40 +2502,40 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Dimension Color", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_packageDimensionColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Dimension Font", bold: false, size: .small, alignment: .left)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutFontButton (width: 125, size: .small)
         .bind_fontValue (preferences_dimensionFont_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     _ = vStackView.appendView (AutoLayoutVerticalStackView.HorizontalSeparator())
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Zone Color", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_padZoneColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2562,7 +2562,7 @@ import AppKit
             selector: #selector (AutoLayoutPackageDocument.loadFromDesignAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutButton (title: "Run", size: .small)
           .bind_run (
@@ -2570,7 +2570,7 @@ import AppKit
             selector: #selector (AutoLayoutPackageDocument.runProgramAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutButton (title: "Clear Error", size: .small)
           .bind_run (
@@ -2578,13 +2578,13 @@ import AppKit
             selector: #selector (AutoLayoutPackageDocument.clearProgramErrorAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutLabel (bold: false, size: .small)
           .setRedTextColor ()
         self.mProgramErrorTextField = vStackView_view_view // Outlet
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutHelpButton (size: .small)
@@ -2593,7 +2593,7 @@ import AppKit
             selector: #selector (AutoLayoutPackageDocument.programHelpAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -2601,7 +2601,7 @@ import AppKit
         .bind_value (self.rootObject.program_property)
       self.mProgramTextView = vStackView_view // Outlet
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -2624,7 +2624,7 @@ import AppKit
             selector: #selector (AutoLayoutPackageDocument.resetVersionAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -2635,7 +2635,7 @@ import AppKit
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Comments", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
@@ -2643,7 +2643,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutTextView ()
           .bind_value (self.rootObject.comments_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView

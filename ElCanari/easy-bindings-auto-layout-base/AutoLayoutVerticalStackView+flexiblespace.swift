@@ -1,5 +1,5 @@
 //
-//  AutoLayoutHorizontalStackView+flexiblespace.swift
+//  AutoLayoutVerticalStackView+flexiblespace.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 28/09/2024.
@@ -10,18 +10,18 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-extension AutoLayoutHorizontalStackView {
+extension AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // FlexibleSpace internal class
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final class FlexibleSpace : NSView, HorizontalStackHierarchyProtocol {
+  final class FlexibleSpace : NSView, VerticalStackHierarchyProtocol {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    init (_ inRoot : (any HorizontalStackHierarchyProtocol)?) {
-      self.mLeft = inRoot
+    init (_ inRoot : (any VerticalStackHierarchyProtocol)?) {
+      self.mAbove = inRoot
       super.init (frame: .zero)
       noteObjectAllocation (self)
       self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
@@ -41,65 +41,6 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    private var mLeft : (any HorizontalStackHierarchyProtocol)?
-    private var mRight : (any HorizontalStackHierarchyProtocol)? = nil
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    func appendInHorizontalHierarchy (_ inView : NSView) {
-      AutoLayoutHorizontalStackView.appendInHorizontalHierarchy (inView, toStackRoot: &self.mRight)
-    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    func prependInHorizontalHierarchy (_ inView : NSView) {
-      AutoLayoutHorizontalStackView.prependInHorizontalHierarchy (inView, toStackRoot: &self.mLeft)
-    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    func removeInHorizontalHierarchy (_ inView : NSView) {
-      self.mLeft?.removeInHorizontalHierarchy (inView)
-      self.mRight?.removeInHorizontalHierarchy (inView)
-    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
-    func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                              optionalLastRightView ioOptionalLastRightView : inout NSView?,
-                              flexibleSpaceView ioFlexibleSpaceView : inout AutoLayoutHorizontalStackView.FlexibleSpace?,
-                              _ ioContraints : inout [NSLayoutConstraint]) {
-      //--- Before
-      self.mLeft?.buildConstraintsFor (
-        horizontalStackView: inHorizontalStackView,
-        optionalLastRightView: &ioOptionalLastRightView,
-        flexibleSpaceView: &ioFlexibleSpaceView,
-        &ioContraints
-      )
-    //--- Flexible space
-      ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self)
-      ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
-      if let lastSpace = ioFlexibleSpaceView {
-        ioContraints.add (widthOf: lastSpace, equalToWidthOf: self)
-      }
-      if let lastLeftView = ioOptionalLastRightView {
-        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
-      }else{
-        ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
-      }
-      ioFlexibleSpaceView = self
-    //--- After
-      ioOptionalLastRightView = self
-      self.mRight?.buildConstraintsFor (
-        horizontalStackView: inHorizontalStackView,
-        optionalLastRightView: &ioOptionalLastRightView,
-        flexibleSpaceView: &ioFlexibleSpaceView,
-        &ioContraints
-      )
-    }
-
-    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
-
     private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
       vLayoutInHorizontalContainer: .fill,
       hLayoutInVerticalContainer: .fill
@@ -111,6 +52,65 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
+    private var mAbove : (any VerticalStackHierarchyProtocol)?
+    private var mBelow : (any VerticalStackHierarchyProtocol)? = nil
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func appendInVerticalHierarchy (_ inView : NSView) {
+      AutoLayoutVerticalStackView.appendInVerticalHierarchy (inView, toStackRoot: &self.mBelow)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func prependInVerticalHierarchy (_ inView : NSView) {
+      AutoLayoutVerticalStackView.prependInVerticalHierarchy (inView, toStackRoot: &self.mAbove)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func removeInVerticalHierarchy (_ inView : NSView) {
+      self.mAbove?.removeInVerticalHierarchy (inView)
+      self.mBelow?.removeInVerticalHierarchy (inView)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
+    func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
+                              optionalLastBottomView ioOptionalLastBottomView : inout NSView?,
+                              flexibleSpaceView ioFlexibleSpaceView : inout AutoLayoutVerticalStackView.FlexibleSpace?,
+                              _ ioContraints : inout [NSLayoutConstraint]) {
+    //--- Before
+      self.mAbove?.buildConstraintsFor (
+        verticalStackView: inVerticalStackView,
+        optionalLastBottomView: &ioOptionalLastBottomView,
+        flexibleSpaceView: &ioFlexibleSpaceView,
+        &ioContraints
+      )
+    //--- Flexible space
+      ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView)
+      ioContraints.add (rightOf: inVerticalStackView, equalToRightOf: self)
+      if let lastSpace = ioFlexibleSpaceView {
+        ioContraints.add (heightOf: lastSpace, equalToHeightOf: self)
+      }
+      if let lastBottomView = ioOptionalLastBottomView {
+        ioContraints.add (bottomOf: lastBottomView, equalToTopOf: self, plus: inVerticalStackView.mSpacing)
+      }else{
+        ioContraints.add (topOf: inVerticalStackView, equalToTopOf: self, plus: inVerticalStackView.mTopMargin)
+      }
+      ioFlexibleSpaceView = self
+    //--- After
+      ioOptionalLastBottomView = self
+      self.mBelow?.buildConstraintsFor (
+        verticalStackView: inVerticalStackView,
+        optionalLastBottomView: &ioOptionalLastBottomView,
+        flexibleSpaceView: &ioFlexibleSpaceView,
+        &ioContraints
+      )
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -118,3 +118,4 @@ extension AutoLayoutHorizontalStackView {
 }
 
 //--------------------------------------------------------------------------------------------------
+

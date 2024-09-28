@@ -295,12 +295,12 @@ import AppKit
             .addPage (title: "Infos", tooltip: "Symbol Informations", pageView: infosPage)
             .bind_selectedPage (self.rootObject.selectedPageIndex_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Page", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -310,12 +310,12 @@ import AppKit
           let vStackView_view_view_view = AutoLayoutSignatureField (size: .regular)
             .bind_signature (self.signatureObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -326,12 +326,12 @@ import AppKit
             .bind_version (self.versionObserver_property)
             .bind_versionShouldChange (self.versionShouldChangeObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView_view.appendFlexibleSpace ()
@@ -344,12 +344,12 @@ import AppKit
             .bind_errorCount (self.statusErrorCount_property)
             .bind_warningCount (self.statusWarningCount_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView .appendView (vStackView_view)
@@ -395,49 +395,49 @@ import AppKit
               .bind_image (self.addSegmentButtonImage_property)
             self.configure_addSymbolSegment (hStackView_view_view_view_view) // Configurator
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-}
+          }
           _ = hStackView_view_view_view.appendFlexibleSpace ()
           do{
             let hStackView_view_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
               .bind_image (self.addBezierButtonImage_property)
             self.configure_addSymbolBezier (hStackView_view_view_view_view) // Configurator
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-}
+          }
           _ = hStackView_view_view_view.appendFlexibleSpace ()
           do{
             let hStackView_view_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Solid Oval")
               .bind_image (self.addSolidOvalButtonImage_property)
             self.configure_addSymbolSolidOval (hStackView_view_view_view_view) // Configurator
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-}
+          }
           _ = hStackView_view_view_view.appendFlexibleSpace ()
           do{
             let hStackView_view_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Oval")
               .bind_image (self.addOvalButtonImage_property)
             self.configure_addSymbolOval (hStackView_view_view_view_view) // Configurator
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-}
+          }
           _ = hStackView_view_view_view.appendFlexibleSpace ()
           do{
             let hStackView_view_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Solid Rect")
               .bind_image (self.addSolidRectButtonImage_property)
             self.configure_addSymbolSolidRect (hStackView_view_view_view_view) // Configurator
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-}
+          }
           _ = hStackView_view_view_view.appendFlexibleSpace ()
           do{
             let hStackView_view_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Text")
               .bind_image (self.addTextButtonImage_property)
             self.configure_addSymbolText (hStackView_view_view_view_view) // Configurator
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-}
+          }
           _ = hStackView_view_view_view.appendFlexibleSpace ()
           do{
             let hStackView_view_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Pin")
               .bind_image (self.addPinButtonImage_property)
             self.configure_addSymbolPin (hStackView_view_view_view_view) // Configurator
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-}
+          }
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
         }
         _ = hStackView_view.appendView (hStackView_view_view)
@@ -460,7 +460,7 @@ import AppKit
           self.mSymbolInspectorSegmentedControl = hStackView_view_view_view // Outlet
           self.configure_symbolPageSegmentedControl (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
-}
+        }
         _ = hStackView_view.appendView (hStackView_view_view)
       }
       do{
@@ -491,7 +491,7 @@ import AppKit
       self.mSymbolGraphicView = hStackView_view // Outlet
       self.configure_symbolGraphicView (hStackView_view) // Configurator
       _ = hStackView .appendView (hStackView_view)
-}
+    }
     return hStackView
   }
 
@@ -509,7 +509,7 @@ import AppKit
         .addObjectInspector (forEntity: SymbolPin.self, inspectorView: symbolPinInspectorView)
         .bind_graphic_controller (self.mSymbolObjectsController)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
@@ -523,20 +523,20 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Pin Name", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
           .expandableWidth ()
           .bind_value (self.mSymbolTextSelectionController.text_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -544,14 +544,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Alignment", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (size: .small)
           .expandableWidth ()
           .bind_alignment (self.mSymbolTextSelectionController.horizontalAlignment_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -566,20 +566,20 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "Pin Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Value", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
           .automaticallyAdjustHeight (maxWidth: 100)
           .bind_value (self.mSymbolPinSelectionController.name_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -587,14 +587,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Name Alignment", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (size: .small)
           .expandableWidth ()
           .bind_alignment (self.mSymbolPinSelectionController.nameHorizontalAlignment_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -602,14 +602,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Number Alignment", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (size: .small)
           .expandableWidth ()
           .bind_alignment (self.mSymbolPinSelectionController.numberHorizontalAlignment_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -618,7 +618,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutCheckbox (title: "Pin is visible in schematics", size: .small)
           .bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -634,19 +634,19 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "(Stored in Document Preferences)", bold: false, size: .mini, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
           .bind_selectedIndex (self.rootObject.gridStyle_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -654,8 +654,8 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutTaggedPopUpButton (size: .small)
           .add (title: "1 Step", withTag: 1)
@@ -666,7 +666,7 @@ import AppKit
           .add (title: "10 Steps", withTag: 10)
           .bind_selectedTag (self.rootObject.gridDisplay_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -674,12 +674,12 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "25 mils", bold: true, size: .small, alignment: .left)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -687,24 +687,24 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
           .bind_value (self.rootObject.horizontalFlip_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       _ = vStackView_view.appendFlexibleSpace ()
-      vStackView_view.appendGutter ()
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCheckbox (title: "Vertical", size: .small)
           .bind_value (self.rootObject.verticalFlip_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -712,13 +712,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabels (left: "Placard", right: "X", bold: false, size: .small)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
           .bind_unit (self.rootObject.xPlacardUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -726,13 +726,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutCanariUnitPopUpButton (size: .small)
           .bind_unit (self.rootObject.yPlacardUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendFlexibleSpace ()
@@ -748,20 +748,20 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutStaticLabel (title: "(Stored in Application Preferences)", bold: false, size: .mini, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Symbol", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_symbolColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -770,14 +770,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_symbolBackgroundColor_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -786,14 +786,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_crossColorOfSymbolGrid_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -802,14 +802,14 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutColorWell ()
           .set (toolTip: "Stored in Preferences")
           .bind_color (preferences_lineColorOfSymbolGrid_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -818,8 +818,8 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Line Width", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutTaggedPopUpButton (size: .small)
           .add (title: "0.5 Point", withTag: 5)
@@ -829,7 +829,7 @@ import AppKit
           .add (title: "2.5 Points", withTag: 25)
           .bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTen_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     do{
@@ -837,13 +837,13 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Pin Font", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
-      vStackView_view.appendGutter ()
+      }
+      _ = vStackView_view.appendGutter ()
       do{
         let vStackView_view_view = AutoLayoutFontButton (width: 125, size: .small)
           .bind_fontValue (preferences_pinNameFont_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendFlexibleSpace ()
@@ -863,7 +863,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutLabel (bold: false, size: .small)
           .bind_title (self.statusMessage_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -872,7 +872,7 @@ import AppKit
         .bind_issues (self.symbolIssues_property)
       self.mSymbolIssueTableView = vStackView_view // Outlet
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     return vStackView
   }
 
@@ -895,7 +895,7 @@ import AppKit
             selector: #selector (AutoLayoutSymbolDocument.resetVersionAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -906,7 +906,7 @@ import AppKit
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Comments", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
@@ -914,7 +914,7 @@ import AppKit
         let vStackView_view_view = AutoLayoutTextView ()
           .bind_value (self.rootObject.comments_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView

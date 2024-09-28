@@ -136,7 +136,7 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating private func add (topOf inView : NSView,
-                             closeToBottomOfGutter inGutter : AutoLayoutVerticalStackView.GutterSeparator) {
+                             closeToBottomOfGutter inGutter : AutoLayoutVerticalStackView.HorizontalGutterView) {
   // Vertical Axis is from to top to bottom
   //--- >= Constraint
     var c = inView.topAnchor.constraint (greaterThanOrEqualTo: inGutter.bottomAnchor)
@@ -272,7 +272,7 @@ import AppKit
 
   mutating func add (verticalConstraintsOf inView : NSView,
                      inHorizontalContainer inContainer : NSView,
-                     currentGutter inOptionalCurrentGutter : AutoLayoutVerticalStackView.GutterSeparator?,
+                     currentGutter inOptionalCurrentGutter : AutoLayoutVerticalStackView.HorizontalGutterView?,
                      topMargin inTopMargin : CGFloat,
                      bottomMargin inBottomMargin : CGFloat,
                      optionalLastBaseLineView ioOptionalLastBaseLineViewArray : inout [NSView?]) {

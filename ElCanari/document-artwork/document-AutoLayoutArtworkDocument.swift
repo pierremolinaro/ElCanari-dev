@@ -181,12 +181,12 @@ import AppKit
             .bind_selectedPage (self.rootObject.selectedTab_property)
             .bind_segmentImage (self.segmentedControlDataIssueImage_property, segmentIndex:2)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Page", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -196,12 +196,12 @@ import AppKit
           let vStackView_view_view_view = AutoLayoutSignatureField (size: .regular)
             .bind_signature (self.signatureObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       do{
@@ -212,12 +212,12 @@ import AppKit
             .bind_version (self.versionObserver_property)
             .bind_versionShouldChange (self.versionShouldChangeObserver_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView_view.appendFlexibleSpace ()
@@ -230,12 +230,12 @@ import AppKit
             .bind_errorCount (self.statusErrorCount_property)
             .bind_warningCount (self.statusWarningCount_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
-        vStackView_view_view.appendGutter ()
+        }
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Status", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view.appendView (vStackView_view_view)
       }
       _ = vStackView .appendView (vStackView_view)
@@ -258,19 +258,19 @@ import AppKit
         .set (alignment: .left)
         .bind_value (self.rootObject.title_property, sendContinously:true)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .regular, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: LayerConfiguration.popupTitles (), size: .regular)
           .bind_selectedIndex (self.rootObject.layerConfiguration_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -278,7 +278,7 @@ import AppKit
       let vStackView_view = AutoLayoutTextView ()
         .bind_value (self.rootObject.comments_property)
       _ = vStackView .appendView (vStackView_view)
-}
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       _ = vStackView_view.appendFlexibleSpace ()
@@ -289,7 +289,7 @@ import AppKit
             selector: #selector (AutoLayoutArtworkDocument.resetVersionAndSignatureAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -312,31 +312,31 @@ import AppKit
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "PP: Pad to Pad Distance", bold: false, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "TP: Track to Pad Distance", bold: false, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "TT: Track to Track Distance", bold: false, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "TW: Track Width", bold: false, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: false, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "OAR: Outer Annular Ring", bold: false, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: false, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
@@ -344,7 +344,7 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticImageView (name: "artwork")
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -362,13 +362,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -376,13 +376,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -390,13 +390,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -404,13 +404,13 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular, alignment: .center)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
-          vStackView_view_view_view.appendGutter ()
+          }
+          _ = vStackView_view_view_view.appendGutter ()
           do{
             let vStackView_view_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view.appendView (vStackView_view_view)
@@ -435,17 +435,17 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutTextField (minWidth: 112, size: .small)
           .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       do{
         let vStackView_view_view = AutoLayoutImageObserverView (size: .small)
           .bind_image (self.emptyDrillFileExtensionImage_property)
         _ = vStackView_view .appendView (vStackView_view_view)
-}
+      }
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
@@ -461,12 +461,12 @@ import AppKit
           let vStackView_view_view_view = AutoLayoutLabel (bold: true, size: .small)
             .bind_title (self.generatedFileCountString_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutTableView (size: .small, addControlButtons: true)
           self.mDataController.bind_tableView (vStackView_view_view_view)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
@@ -481,33 +481,33 @@ import AppKit
             do{
               let vStackView_view_view_view_view_view = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small, alignment: .center)
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
-}
+            }
             do{
               let vStackView_view_view_view_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
                 .bind_value (self.mDataSelection.fileExtension_property, sendContinously:true)
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
-}
+            }
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
           do{
             let vStackView_view_view_view_view = AutoLayoutImageObserverView (size: .small)
               .bind_image (self.mDataSelection.emptyFileExtensionImage_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           do{
             let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small, alignment: .center)
               .setOrangeTextColor ()
               .bind_hidden (.not (.prop (self.mDataSelection.hasNoData_property)))
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendFlexibleSpace ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small, alignment: .left)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
           do{
@@ -519,13 +519,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Images", size: .small)
                   .bind_value (self.mDataSelection.drawImagesTopSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side QRCodes", size: .small)
                   .bind_value (self.mDataSelection.drawQRCodesTopSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
@@ -534,13 +534,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Legend Front Side Texts", size: .small)
                   .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Layout Front Side Texts", size: .small)
                   .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
@@ -549,13 +549,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Tracks", size: .small)
                   .bind_value (self.mDataSelection.drawTracksTopSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Pads", size: .small)
                   .bind_value (self.mDataSelection.drawPadsTopSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             _ = vStackView_view_view_view.appendView (vStackView_view_view_view_view)
@@ -570,7 +570,7 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
               .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -581,7 +581,7 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
               .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -592,14 +592,14 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
               .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner Elements", bold: true, size: .small, alignment: .left)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
           do{
@@ -612,8 +612,8 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
                   .bind_value (self.mDataSelection.drawTraversingPads_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               _ = vStackView_view_view_view_view_view.appendFlexibleSpace ()
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
@@ -624,8 +624,8 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Traversing Pads", size: .small)
                   .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               _ = vStackView_view_view_view_view_view.appendFlexibleSpace ()
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
@@ -636,13 +636,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
                   .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
                   .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
@@ -652,13 +652,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 1 Layer Tracks", size: .small)
                   .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 2 Layer Tracks", size: .small)
                   .bind_enabled (.prop (self.rootObject.hasInnerElements_property))
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
@@ -668,13 +668,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
                   .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
                   .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
@@ -684,13 +684,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 3 Layer Tracks", size: .small)
                   .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Inner 4 Layer Tracks", size: .small)
                   .bind_enabled (.prop (self.rootObject.hasSixLayers_property))
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             _ = vStackView_view_view_view.appendView (vStackView_view_view_view_view)
@@ -701,7 +701,7 @@ import AppKit
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small, alignment: .left)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
           do{
@@ -713,13 +713,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Images", size: .small)
                   .bind_value (self.mDataSelection.drawImagesBottomSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side QRCodes", size: .small)
                   .bind_value (self.mDataSelection.drawQRCodesBottomSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
@@ -728,13 +728,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Legend Back Side Texts", size: .small)
                   .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Layout Back Side Texts", size: .small)
                   .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
@@ -743,13 +743,13 @@ import AppKit
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Tracks", size: .small)
                   .bind_value (self.mDataSelection.drawTracksBottomSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
-              vStackView_view_view_view_view_view.appendGutter ()
+              }
+              _ = vStackView_view_view_view_view_view.appendGutter ()
               do{
                 let vStackView_view_view_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Pads", size: .small)
                   .bind_value (self.mDataSelection.drawPadsBottomSide_property)
                 _ = vStackView_view_view_view_view_view .appendView (vStackView_view_view_view_view_view_view)
-}
+              }
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             _ = vStackView_view_view_view.appendView (vStackView_view_view_view_view)
@@ -764,7 +764,7 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
               .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -775,7 +775,7 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
               .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -786,14 +786,14 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
               .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small, alignment: .left)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
             .set (leftMargin: .large)
@@ -801,25 +801,25 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Vias", size: .small)
               .bind_value (self.mDataSelection.drawVias_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           do{
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Internal Board Limits", size: .small)
               .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           do{
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Board Limits", size: .small)
               .bind_value (self.mDataSelection.drawBoardLimits_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small, alignment: .left)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
-}
+        }
         do{
           let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
             .set (leftMargin: .large)
@@ -827,7 +827,7 @@ import AppKit
             let vStackView_view_view_view_view = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
               .bind_value (self.mDataSelection.horizontalMirror_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-}
+          }
           _ = vStackView_view_view_view.appendFlexibleSpace ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
