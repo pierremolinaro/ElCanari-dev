@@ -105,14 +105,17 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignHorizontalGutters (_ ioGutters : inout [VerticalStackGutter],
+                               _ ioLastBaselineViews : inout [NSView?],
                                _ ioContraints : inout [NSLayoutConstraint]) {
-    self.mLeft?.alignHorizontalGutters (&ioGutters, &ioContraints)
-    self.mRight?.alignHorizontalGutters (&ioGutters, &ioContraints)
+    self.mLeft?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
+    ioGutters = []
+    ioLastBaselineViews = []
+    self.mRight?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var intrinsicContentSize: NSSize {
+  override var intrinsicContentSize : NSSize {
     return NSSize (width: DIVIDER_WIDTH, height: NSView.noIntrinsicMetric)
   }
 

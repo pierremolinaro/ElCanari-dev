@@ -1,12 +1,12 @@
-//----------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 //     D E V I C E    D O C U M E N T
-//----------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentMainView {
 
-//······················································································································
+//·············································································
 //   MAIN VIEW
-//······················································································································
+//·············································································
 
   stackView \PageMasterView vStack { }
  
@@ -63,9 +63,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   transient String statusMessage dependsFrom self.issues ;
   transient MetadataStatus metadataStatus dependsFrom self.issues ;
 
-//······················································································································
+//·············································································
 //   DESCRIPTION
-//······················································································································
+//·············································································
 
   stackView \DescriptionPage vStack set (margins: .large) set (spacing: .large) {
     TextField (minWidth: 70, size : .regular) {
@@ -114,9 +114,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   action showDocAction ;
   action saveDocAction ;
 
-//······················································································································
+//·············································································
 //   SYMBOLS
-//······················································································································
+//·············································································
 
   stackView \SymbolsPage hStack {
     newView symbolPageInspectorView = \SymbolPageInspectorView ()
@@ -216,9 +216,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     FontButton (width: 125, size: .small) { $fontValue prefs.mPinNameFontForDevice }
   }
 
-//······················································································································
+//·············································································
 //   PACKAGES
-//······················································································································
+//·············································································
 
   stackView \PackagesPage hStack {
     newView packagePageInspectorView = \PackagePageInspectorView ()
@@ -372,9 +372,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   action addPackageFromLibraryAction ;
   arrayController #packageDisplayController : root.mPackages ;
 
-//······················································································································
+//·············································································
 //   LIBRARY
-//······················································································································
+//·············································································
 
   action resetSymbolsAndPackagesVersion ;
   action updateSymbolsAndPackagesAction ;
@@ -486,9 +486,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   action exportSelectedPackages ;
   action updateSelectedPackages ;
 
-//······················································································································
+//·············································································
 //   ASSIGNMENTS
-//······················································································································
+//·············································································
 
   stackView \AssignmentsPage hStack set (margins: .regular) {
     hStack $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
@@ -509,7 +509,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       }
       divider
       vStack {
-        StaticLabel (title: " ", bold: yes, size : .regular, alignment: .center)
         space
         Button (title: "- Bind →", size : .regular) {
           expandableWidth ()
@@ -567,9 +566,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   action performUnbindAction ;
   action performUnbindAllAction ;
 
-//······················································································································
+//·············································································
 //   INFOS
-//······················································································································
+//·············································································
 
   stackView \InfosPage vStack set (leftMargin: .large) set (rightMargin: .large) set (bottomMargin: .large) set (topMargin: .regular) {
     hStack {

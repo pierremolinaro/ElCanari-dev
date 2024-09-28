@@ -10,27 +10,19 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class HorizontalStackFlexibleSpace : NSView, HorizontalStackHierarchyProtocol {
+final class HorizontalStackFlexibleSpace : ALB_NSView, HorizontalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inRoot : (any HorizontalStackHierarchyProtocol)?) {
     self.mLeft = inRoot
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
+    super.init ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,9 +87,10 @@ final class HorizontalStackFlexibleSpace : NSView, HorizontalStackHierarchyProto
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignHorizontalGutters (_ ioGutters : inout [VerticalStackGutter],
+                               _ ioLastBaselineViews : inout [NSView?],
                                _ ioContraints : inout [NSLayoutConstraint]) {
-    self.mLeft?.alignHorizontalGutters (&ioGutters, &ioContraints)
-    self.mRight?.alignHorizontalGutters (&ioGutters, &ioContraints)
+    self.mLeft?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
+    self.mRight?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

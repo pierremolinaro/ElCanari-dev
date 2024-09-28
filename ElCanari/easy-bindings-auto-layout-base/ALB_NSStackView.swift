@@ -16,12 +16,13 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
-    self.mHorizontalDisposition = .fill
-    self.mVerticalDisposition = .lastBaseline
+  init (horizontalDispositionInVerticalStackView inHorizontalDisposition : HorizontalLayoutInVerticalStackView,
+        verticalDispositionInHorizontalStackView inVerticalDisposition : VerticalLayoutInHorizontalStackView) {
+    self.mHorizontalDispositionInVerticalStackView = inHorizontalDisposition
+    self.mVerticalDispositionInHorizontalStackView = inVerticalDisposition
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .high)
+    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -44,7 +45,7 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  enum HorizontalLayoutInVerticalCollectionView {
+  enum HorizontalLayoutInVerticalStackView {
     case center
     case fillIgnoringMargins
     case fill
@@ -54,7 +55,7 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  enum VerticalLayoutInHorizontalCollectionView {
+  enum VerticalLayoutInHorizontalStackView {
     case center
     case fillIgnoringMargins
     case fill
@@ -65,8 +66,17 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let mHorizontalDisposition : HorizontalLayoutInVerticalCollectionView
-  let mVerticalDisposition : VerticalLayoutInHorizontalCollectionView
+  let mHorizontalDispositionInVerticalStackView : HorizontalLayoutInVerticalStackView
+  let mVerticalDispositionInHorizontalStackView : VerticalLayoutInHorizontalStackView
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override var pmLayoutSettings : AutoLayoutViewSettings {
+    return AutoLayoutViewSettings (
+      vLayoutInHorizontalContainer: self.mVerticalDispositionInHorizontalStackView,
+      hLayoutInVerticalContainer: self.mHorizontalDispositionInVerticalStackView
+    )
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

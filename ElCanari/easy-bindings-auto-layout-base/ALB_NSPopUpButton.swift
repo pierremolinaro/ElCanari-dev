@@ -68,9 +68,7 @@ class ALB_NSPopUpButton : NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc override var lastBaselineRepresentativeViewArray : OptionalViewArray {
-    OptionalViewArray (self)
-  }
+  @objc override var lastBaselineRepresentativeView : NSView? { self }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!

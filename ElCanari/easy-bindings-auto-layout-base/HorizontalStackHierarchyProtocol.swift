@@ -24,6 +24,7 @@ import AppKit
                             _ ioContraints : inout [NSLayoutConstraint])
 
   func alignHorizontalGutters (_ ioGutters : inout [VerticalStackGutter],
+                               _ ioLastBaselineViews : inout [NSView?],
                                _ ioContraints : inout [NSLayoutConstraint])
 
 }

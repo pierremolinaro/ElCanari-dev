@@ -1,5 +1,5 @@
 //
-//  StackSequence.swift
+//  HorizontalStackSequence.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 27/09/2024.
@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class HorizontalStackStackSequence : HorizontalStackHierarchyProtocol {
+final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -59,17 +59,18 @@ final class HorizontalStackStackSequence : HorizontalStackHierarchyProtocol {
                             optionalLastRightView ioOptionalLastRightView : inout NSView?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
-    var optionalLastBaselineRepresentativeView : [NSView?] = []
   //--- Vertical constraints
+    var lastBaselineRefView : NSView? = nil
     for view in self.mViewArray {
       if !view.isHidden {
         ioContraints.add (
           verticalConstraintsOf: view,
-          inHorizontalContainer: inHorizontalStackView,
-          topMargin: inHorizontalStackView.mTopMargin,
-          bottomMargin: inHorizontalStackView.mBottomMargin,
-          optionalLastBaseLineView: &optionalLastBaselineRepresentativeView
+          forHorizontalStackView: inHorizontalStackView,
+          lastBaselineRefView: &lastBaselineRefView
         )
+        if (view is HorizontalStackSeparator) || (view is HorizontalStackDivider) {
+          lastBaselineRefView = nil
+        }
       }
     }
   //--- Horizontal constraints
@@ -88,9 +89,11 @@ final class HorizontalStackStackSequence : HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignHorizontalGutters (_ ioGutters : inout [VerticalStackGutter],
+                               _ ioLastBaselineViews : inout [NSView?],
                                _ ioContraints : inout [NSLayoutConstraint]) {
     for view in self.mViewArray {
       if !view.isHidden, let vStack = view as? AutoLayoutVerticalStackView {
+      //--- Gutters
         let gutters = vStack.gutters ()
         let n = Swift.min (gutters.count, ioGutters.count)
         for i in 0 ..< n {
@@ -98,6 +101,21 @@ final class HorizontalStackStackSequence : HorizontalStackHierarchyProtocol {
         }
         for i in n ..< gutters.count {
           ioGutters.append (gutters [i])
+        }
+      //--- Last baseline views
+        let lastBaselineViews = vStack.lastBaselineViews ()
+        let m = Swift.min (lastBaselineViews.count, ioLastBaselineViews.count)
+        for i in 0 ..< m {
+          if let lastBaselineView = lastBaselineViews [i] {
+            if let refLastBaselineView = ioLastBaselineViews [i] {
+              ioContraints.add (lastBaselineOf: lastBaselineView, equalToLastBaselineOf: refLastBaselineView)
+            }else{
+              ioLastBaselineViews [i] = lastBaselineViews [i]
+            }
+          }
+        }
+        for i in m ..< lastBaselineViews.count {
+          ioLastBaselineViews.append (lastBaselineViews [i])
         }
       }
     }

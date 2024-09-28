@@ -1,5 +1,5 @@
 //
-//  AutoLayoutVerticalStackView+sequence.swift
+//  VerticalStackSequence.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 28/09/2024.
@@ -12,35 +12,35 @@ import AppKit
 
 final class VerticalStackSequence : VerticalStackHierarchyProtocol {
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init () {
     noteObjectAllocation (self)
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit {
     noteObjectDeallocation (self)
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mViewArray = [NSView] ()
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendInVerticalHierarchy (_ inView : NSView) {
     self.mViewArray.append (inView)
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func prependInVerticalHierarchy (_ inView : NSView) {
     self.mViewArray.insert (inView, at: 0)
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removeInVerticalHierarchy (_ inView : NSView) {
     var idx = 0
@@ -53,7 +53,7 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
     }
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
                             optionalLastBottomView ioOptionalLastBottomView : inout NSView?,
@@ -91,7 +91,25 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
     }
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func enumerateLastBaselineViews (_ ioArray : inout [NSView?],
+                                   _ ioCurrentLastBaselineView : inout NSView?) {
+    for view in self.mViewArray {
+      if !view.isHidden {
+        switch view.pmLayoutSettings.vLayoutInHorizontalContainer {
+        case .center, .fill, .fillIgnoringMargins, .bottom, .top :
+          ()
+        case .lastBaseline :
+          if let viewLastBaselineRepresentativeView = view.lastBaselineRepresentativeView {
+            ioCurrentLastBaselineView = viewLastBaselineRepresentativeView
+          }
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -19,9 +19,8 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (widthOf inView1 : NSView,
-                     equalToWidthOf inView2 : NSView,
-                     plus inOffset : CGFloat = 0.0) {
-    let c = inView1.widthAnchor.constraint (equalTo: inView2.widthAnchor, constant: inOffset)
+                     equalToWidthOf inView2 : NSView) {
+    let c = inView1.widthAnchor.constraint (equalTo: inView2.widthAnchor)
     self.append (c)
   }
 
@@ -54,9 +53,8 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (heightOf inView1 : NSView,
-                     equalToHeightOf inView2 : NSView,
-                     plus inOffset : CGFloat = 0.0) {
-    let c = inView1.heightAnchor.constraint (equalTo: inView2.heightAnchor, constant: inOffset)
+                     equalToHeightOf inView2 : NSView) {
+    let c = inView1.heightAnchor.constraint (equalTo: inView2.heightAnchor)
     self.append (c)
   }
 
@@ -271,57 +269,34 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (verticalConstraintsOf inView : NSView,
-                     inHorizontalContainer inContainer : NSView,
-//                     currentGutter inOptionalCurrentGutter : AutoLayoutVerticalStackView.HorizontalGutterView?,
-                     topMargin inTopMargin : CGFloat,
-                     bottomMargin inBottomMargin : CGFloat,
-                     optionalLastBaseLineView ioOptionalLastBaseLineViewArray : inout [NSView?]) {
+                     forHorizontalStackView inHStackView : AutoLayoutHorizontalStackView,
+                     lastBaselineRefView ioLastBaselineRefView : inout NSView?) {
+    let topMargin = inHStackView.mTopMargin
+    let bottomMargin = inHStackView.mBottomMargin
     switch inView.pmLayoutSettings.vLayoutInHorizontalContainer {
     case .center :
-      self.add (centerYOf: inView, equalToCenterYOf: inContainer)
-      self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
-      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
+      self.add (centerYOf: inView, equalToCenterYOf: inHStackView)
+      self.add (topOf: inView, closeToTopOfContainer: inHStackView, topMargin: topMargin)
+      self.add (bottomOf: inView, closeToBottomOfContainer: inHStackView, bottomMargin: bottomMargin)
     case .fill :
-      self.add (topOf: inContainer, equalToTopOf: inView, plus: inTopMargin)
-      self.add (bottomOf: inView, equalToBottomOf: inContainer, plus: inBottomMargin)
+      self.add (topOf: inHStackView, equalToTopOf: inView, plus: topMargin)
+      self.add (bottomOf: inView, equalToBottomOf: inHStackView, plus: bottomMargin)
     case .fillIgnoringMargins :
-      self.add (topOf: inContainer, equalToTopOf: inView)
-      self.add (bottomOf: inView, equalToBottomOf: inContainer)
+      self.add (topOf: inHStackView, equalToTopOf: inView)
+      self.add (bottomOf: inView, equalToBottomOf: inHStackView)
     case .bottom :
-      self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
-      self.add (bottomOf: inView, equalToBottomOf: inContainer, plus: inBottomMargin)
+      self.add (topOf: inView, closeToTopOfContainer: inHStackView, topMargin: topMargin)
+      self.add (bottomOf: inView, equalToBottomOf: inHStackView, plus: bottomMargin)
     case .top :
-      self.add (topOf: inContainer, equalToTopOf: inView, plus: inTopMargin)
-      self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
+      self.add (topOf: inHStackView, equalToTopOf: inView, plus: topMargin)
+      self.add (bottomOf: inView, closeToBottomOfContainer: inHStackView, bottomMargin: bottomMargin)
     case .lastBaseline :
-//      if let gutter = inOptionalCurrentGutter {
-//        self.add (topOf: inView, closeToBottomOfGutter: gutter)
-//        self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
-//      }else{
-        self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
-        self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
-//      }
-//      let n = Swift.min (inView.lastBaselineRepresentativeViewArray.count, ioOptionalLastBaseLineViewArray.count)
-//      for i in 0 ..< n {
-//        if let viewLastBaselineRepresentativeView = inView.lastBaselineRepresentativeViewArray [i] { // §§
-//          if let lastBaselineRepresentativeView = ioOptionalLastBaseLineViewArray [i] {
-////            Swift.print (lastBaselineRepresentativeView, viewLastBaselineRepresentativeView)
-////            self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
-//          }else{
-//            ioOptionalLastBaseLineViewArray [i] = viewLastBaselineRepresentativeView
-//          }
-//        }
-//      }
-//      for i in n ..< inView.lastBaselineRepresentativeViewArray.count {
-//        ioOptionalLastBaseLineViewArray.append (inView.lastBaselineRepresentativeViewArray [i])
-//      }
-//      if let viewLastBaselineRepresentativeView = inView.pmLastBaselineRepresentativeView { // §§
-//        if let lastBaselineRepresentativeView = ioOptionalLastBaseLineViewArray {
-//          self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
-//        }else{
-//          ioOptionalLastBaseLineViewArray = viewLastBaselineRepresentativeView
-//        }
-//      }
+      self.add (topOf: inView, closeToTopOfContainer: inHStackView, topMargin: topMargin)
+      self.add (bottomOf: inView, closeToBottomOfContainer: inHStackView, bottomMargin: bottomMargin)
+      if let v = ioLastBaselineRefView {
+        self.add (lastBaselineOf: v, equalToLastBaselineOf: inView)
+      }
+      ioLastBaselineRefView = inView
     }
   }
 

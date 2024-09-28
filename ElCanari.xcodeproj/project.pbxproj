@@ -112,8 +112,8 @@
 		CF131B87294F5F8100E587B9 /* StringTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131B85294F5F8100E587B9 /* StringTag.swift */; };
 		CF1361FE220223E800E7CEE7 /* ftp-read-write.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */; };
 		CF1361FF220223E800E7CEE7 /* ftp-read-write.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */; };
-		CF13B28C2CA71A21001464D0 /* HorizontalStackStackSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B28B2CA71A10001464D0 /* HorizontalStackStackSequence.swift */; };
-		CF13B28D2CA71A21001464D0 /* HorizontalStackStackSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B28B2CA71A10001464D0 /* HorizontalStackStackSequence.swift */; };
+		CF13B28C2CA71A21001464D0 /* HorizontalStackSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B28B2CA71A10001464D0 /* HorizontalStackSequence.swift */; };
+		CF13B28D2CA71A21001464D0 /* HorizontalStackSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B28B2CA71A10001464D0 /* HorizontalStackSequence.swift */; };
 		CF13B28E2CA744AC001464D0 /* ApplicationDelegate+layout-demos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF223CB32C73A85F00FFF7E7 /* ApplicationDelegate+layout-demos.swift */; };
 		CF13B28F2CA744AC001464D0 /* ApplicationDelegate+layout-demos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF223CB32C73A85F00FFF7E7 /* ApplicationDelegate+layout-demos.swift */; };
 		CF13CDAD2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13CDAC2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift */; };
@@ -3577,7 +3577,7 @@
 		CF12F044277A5B8A0066D4B0 /* extension-AutoLayoutProjectDocument-import-ses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-import-ses.swift"; sourceTree = "<group>"; };
 		CF131B85294F5F8100E587B9 /* StringTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTag.swift; sourceTree = "<group>"; };
 		CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ftp-read-write.swift"; sourceTree = "<group>"; };
-		CF13B28B2CA71A10001464D0 /* HorizontalStackStackSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackStackSequence.swift; sourceTree = "<group>"; };
+		CF13B28B2CA71A10001464D0 /* HorizontalStackSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackSequence.swift; sourceTree = "<group>"; };
 		CF13CDAC2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-schematicTooltips.swift"; sourceTree = "<group>"; };
 		CF13CDB02A06661400870156 /* GraphicViewTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicViewTooltip.swift; sourceTree = "<group>"; };
 		CF13CDB42A0666E700870156 /* property-GraphicViewTooltipArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-GraphicViewTooltipArray.swift"; sourceTree = "<group>"; };
@@ -6291,7 +6291,7 @@
 				CF541E6F2C7F9D9400189071 /* HorizontalStackGutter.swift */,
 				CFDB1AB42CA84EDC005DF39A /* HorizontalStackHierarchyProtocol.swift */,
 				CF7AB2C22C734F3700BA9590 /* HorizontalStackSeparator.swift */,
-				CF13B28B2CA71A10001464D0 /* HorizontalStackStackSequence.swift */,
+				CF13B28B2CA71A10001464D0 /* HorizontalStackSequence.swift */,
 				CF7AB2C42C734F3700BA9590 /* layout-compression-stretching-priorities.swift */,
 				CF7AB2BC2C734F3700BA9590 /* NSControl+autolayout-settings.swift */,
 				CF625BB925D003EF00072462 /* NSControl+enabled-binding.swift */,
@@ -8986,7 +8986,7 @@
 				CF39CCC3268CC0B4004971F9 /* document-AutoLayoutDeviceDocument.swift in Sources */,
 				CFEC04272945E4C80034D365 /* extension-SymbolInstanceInDevice.swift in Sources */,
 				CFEB7BA0233A26F20060A97A /* transient-DevicePinInProject-descriptor.swift in Sources */,
-				CF13B28C2CA71A21001464D0 /* HorizontalStackStackSequence.swift in Sources */,
+				CF13B28C2CA71A21001464D0 /* HorizontalStackSequence.swift in Sources */,
 				CF3494C829EAE279006AB1EB /* selectionController-AutoLayoutProjectDocument-boardQRCodeSelectionController.swift in Sources */,
 				CFB4C045279465E700C509A9 /* AutoLayoutFontButton.swift in Sources */,
 				CF355A45279D9F8D000BFC9B /* AutoLayoutCanariBoardOperationPullDownButton.swift in Sources */,
@@ -10079,7 +10079,7 @@
 				CF3DAD2D2AD09785003830F4 /* EBObservableObjectProtocol.swift in Sources */,
 				CF49913828D8C9430099F871 /* enum-VerticalAlignment.swift in Sources */,
 				CFB1F9912940F43200C1E120 /* action-AutoLayoutProjectDocument-appendNewBoardERCCheckingInspectorAction.swift in Sources */,
-				CF13B28D2CA71A21001464D0 /* HorizontalStackStackSequence.swift in Sources */,
+				CF13B28D2CA71A21001464D0 /* HorizontalStackSequence.swift in Sources */,
 				CF8BE750235112CC00F95B3A /* EBReadOnlyAbstractArrayProperty.swift in Sources */,
 				CF49914128D8C9430099F871 /* enum-LayerConfiguration.swift in Sources */,
 				CFEB7CD4233A28860060A97A /* transient-ProjectRoot-trackCountString.swift in Sources */,

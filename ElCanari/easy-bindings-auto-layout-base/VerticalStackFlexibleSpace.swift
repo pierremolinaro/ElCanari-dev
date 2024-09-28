@@ -10,65 +10,57 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class VerticalStackFlexibleSpace : NSView, VerticalStackHierarchyProtocol {
+final class VerticalStackFlexibleSpace : ALB_NSView, VerticalStackHierarchyProtocol {
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inRoot : (any VerticalStackHierarchyProtocol)?) {
     self.mAbove = inRoot
-    super.init (frame: .zero)
-    noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
+    super.init ()
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
     vLayoutInHorizontalContainer: .fill,
     hLayoutInVerticalContainer: .fill
   )
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var pmLayoutSettings : AutoLayoutViewSettings { Self.mFlexibleSpaceLayoutSettings }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mAbove : (any VerticalStackHierarchyProtocol)?
   private var mBelow : (any VerticalStackHierarchyProtocol)? = nil
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendInVerticalHierarchy (_ inView : NSView) {
     AutoLayoutVerticalStackView.appendInVerticalHierarchy (inView, toStackRoot: &self.mBelow)
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func prependInVerticalHierarchy (_ inView : NSView) {
     AutoLayoutVerticalStackView.prependInVerticalHierarchy (inView, toStackRoot: &self.mAbove)
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removeInVerticalHierarchy (_ inView : NSView) {
     self.mAbove?.removeInVerticalHierarchy (inView)
     self.mBelow?.removeInVerticalHierarchy (inView)
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
                             optionalLastBottomView ioOptionalLastBottomView : inout NSView?,
@@ -92,9 +84,9 @@ final class VerticalStackFlexibleSpace : NSView, VerticalStackHierarchyProtocol 
     }else{
       ioContraints.add (topOf: inVerticalStackView, equalToTopOf: self, plus: inVerticalStackView.mTopMargin)
     }
+    ioOptionalLastBottomView = self
     ioFlexibleSpaceView = self
   //--- After
-    ioOptionalLastBottomView = self
     self.mBelow?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
       optionalLastBottomView: &ioOptionalLastBottomView,
@@ -103,7 +95,15 @@ final class VerticalStackFlexibleSpace : NSView, VerticalStackHierarchyProtocol 
     )
   }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func enumerateLastBaselineViews (_ ioArray : inout [NSView?],
+                                   _ ioCurrentLastBaselineView : inout NSView?) {
+    self.mAbove?.enumerateLastBaselineViews (&ioArray, &ioCurrentLastBaselineView)
+    self.mBelow?.enumerateLastBaselineViews (&ioArray, &ioCurrentLastBaselineView)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

@@ -608,24 +608,21 @@ fileprivate final class FilePrivateHiliteView : NSView {
         bp.stroke ()
       }
     //--- Last baseline
-//      if let representativeView = inView.pmLastBaselineRepresentativeView { // §§
-      for i in 0 ..< inView.lastBaselineRepresentativeViewArray.count {
-        if let representativeView = inView.lastBaselineRepresentativeViewArray [i] {
-          let representativeViewFrame = self.convert (representativeView.alignmentRect (forFrame: representativeView.bounds), from: representativeView)
-          let bp = NSBezierPath ()
-          let p = NSPoint (
-            x: viewFrame.origin.x,
-            y: representativeViewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
-          )
-          bp.move (to: p)
-          bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
-          if inView is ALB_NSStackView {
-            DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
-          }else{
-            DEBUG_LAST_BASELINE_COLOR.setStroke ()
-          }
-          bp.stroke ()
+      if let representativeView = inView.lastBaselineRepresentativeView { // §§
+        let representativeViewFrame = self.convert (representativeView.alignmentRect (forFrame: representativeView.bounds), from: representativeView)
+        let bp = NSBezierPath ()
+        let p = NSPoint (
+          x: viewFrame.origin.x,
+          y: representativeViewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
+        )
+        bp.move (to: p)
+        bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
+        if inView is ALB_NSStackView {
+          DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
+        }else{
+          DEBUG_LAST_BASELINE_COLOR.setStroke ()
         }
+        bp.stroke ()
       }
     //--- Explore subviews
       if exploreSubviews {

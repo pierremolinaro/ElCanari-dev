@@ -1134,10 +1134,6 @@ import AppKit
       _ = hStackView_view.appendDivider ()
       do{
         let hStackView_view_view = AutoLayoutVerticalStackView ()
-        do{
-          let hStackView_view_view_view = AutoLayoutStaticLabel (title: " ", bold: true, size: .regular, alignment: .center)
-          _ = hStackView_view_view .appendView (hStackView_view_view_view)
-        }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
           let hStackView_view_view_view = AutoLayoutButton (title: "- Bind →", size: .regular)

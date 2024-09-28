@@ -26,7 +26,7 @@ class ALB_NSButton : NSButton {
     self.lineBreakMode = .byTruncatingTail
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
@@ -62,9 +62,7 @@ class ALB_NSButton : NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc override var lastBaselineRepresentativeViewArray : OptionalViewArray {
-    OptionalViewArray (self)
-  }
+  @objc override var lastBaselineRepresentativeView : NSView? { self }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!

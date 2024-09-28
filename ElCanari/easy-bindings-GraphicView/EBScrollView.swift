@@ -22,7 +22,7 @@ final class EBScrollView : NSScrollView {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
-    self.wantsLayer = true
+ //   self.wantsLayer = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

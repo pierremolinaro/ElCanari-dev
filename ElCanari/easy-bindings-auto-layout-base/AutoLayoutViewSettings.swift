@@ -14,13 +14,13 @@ class AutoLayoutViewSettings : NSObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let hLayoutInVerticalContainer : ALB_NSStackView.HorizontalLayoutInVerticalCollectionView
-  let vLayoutInHorizontalContainer : ALB_NSStackView.VerticalLayoutInHorizontalCollectionView
+  let hLayoutInVerticalContainer : ALB_NSStackView.HorizontalLayoutInVerticalStackView
+  let vLayoutInHorizontalContainer : ALB_NSStackView.VerticalLayoutInHorizontalStackView
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (vLayoutInHorizontalContainer inVerticalDisposition : ALB_NSStackView.VerticalLayoutInHorizontalCollectionView,
-        hLayoutInVerticalContainer inHorizontalDisposition : ALB_NSStackView.HorizontalLayoutInVerticalCollectionView) {
+  init (vLayoutInHorizontalContainer inVerticalDisposition : ALB_NSStackView.VerticalLayoutInHorizontalStackView,
+        hLayoutInVerticalContainer inHorizontalDisposition : ALB_NSStackView.HorizontalLayoutInVerticalStackView) {
     self.hLayoutInVerticalContainer = inHorizontalDisposition
     self.vLayoutInHorizontalContainer = inVerticalDisposition
   }

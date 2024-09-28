@@ -14,23 +14,38 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mStackHierarchy : (any VerticalStackHierarchyProtocol)? = nil
+  init () {
+    super.init (
+      horizontalDispositionInVerticalStackView: .fill,
+      verticalDispositionInHorizontalStackView: .fill
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  required init? (coder: NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mVStackHierarchy : (any VerticalStackHierarchyProtocol)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
+    Self.appendInVerticalHierarchy (inView, toStackRoot: &self.mVStackHierarchy)
     self.invalidateIntrinsicContentSize ()
-    Self.appendInVerticalHierarchy (inView, toStackRoot: &self.mStackHierarchy)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func prependView (_ inView : NSView) -> Self {
-    self.addSubview (inView, positioned: .below, relativeTo: nil)
+    self.addSubview (inView)
+    Self.prependInVerticalHierarchy (inView, toStackRoot: &self.mVStackHierarchy)
     self.invalidateIntrinsicContentSize ()
-    Self.prependInVerticalHierarchy (inView, toStackRoot: &self.mStackHierarchy)
     return self
   }
 
@@ -42,7 +57,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
         inView.removeFromSuperview ()
       }
     }
-    self.mStackHierarchy?.removeInVerticalHierarchy (inView)
+    self.mVStackHierarchy?.removeInVerticalHierarchy (inView)
     self.invalidateIntrinsicContentSize ()
   }
 
@@ -53,10 +68,10 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendGutter () -> Self {
-    let newRoot = VerticalStackGutter (self.mStackHierarchy)
+    let newRoot = VerticalStackGutter (self.mVStackHierarchy)
     self.mGutterArray.append (newRoot)
     self.addSubview (newRoot)
-    self.mStackHierarchy = newRoot
+    self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -64,9 +79,9 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendDivider (canResizeWindow inFlag : Bool = false) -> Self {
-    let newRoot = VerticalStackDivider (self.mStackHierarchy)
+    let newRoot = VerticalStackDivider (self.mVStackHierarchy)
     self.addSubview (newRoot)
-    self.mStackHierarchy = newRoot
+    self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -74,9 +89,9 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendFlexibleSpace () -> Self {
-    let newRoot = VerticalStackFlexibleSpace (self.mStackHierarchy)
+    let newRoot = VerticalStackFlexibleSpace (self.mVStackHierarchy)
     self.addSubview (newRoot)
-    self.mStackHierarchy = newRoot
+    self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
   }
@@ -133,11 +148,12 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var pmLayoutSettings : AutoLayoutViewSettings {
-    return AutoLayoutViewSettings (
-      vLayoutInHorizontalContainer: self.mVerticalDisposition,
-      hLayoutInVerticalContainer: self.mHorizontalDisposition
-    )
+  final func lastBaselineViews () -> [NSView?] {
+    var array = [NSView?] ()
+    var currentLastBaselineView : NSView? = nil
+    self.mVStackHierarchy?.enumerateLastBaselineViews (&array, &currentLastBaselineView)
+    array.append (currentLastBaselineView)
+    return array
   }
 
   //····················································································································
@@ -151,13 +167,11 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   //  Last Baseline representative view
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mLastBaselineRepresentativeView : [NSView?] = []
+  private var mLastBaselineRepresentativeView : NSView? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var lastBaselineRepresentativeViewArray : OptionalViewArray {
-    OptionalViewArray (self.mLastBaselineRepresentativeView)
-  }
+  override var lastBaselineRepresentativeView : NSView? { self.mLastBaselineRepresentativeView }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Add row with two columns
@@ -184,7 +198,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Build constraints
-    if let root = self.mStackHierarchy {
+    if let root = self.mVStackHierarchy {
       var flexibleSpaceView : VerticalStackFlexibleSpace? = nil
       var optionalLastBottomView : NSView? = nil
       root.buildConstraintsFor (

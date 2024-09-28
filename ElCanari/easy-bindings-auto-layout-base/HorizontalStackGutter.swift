@@ -101,9 +101,10 @@ final class HorizontalStackGutter : ALB_NSView, HorizontalStackHierarchyProtocol
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func alignHorizontalGutters (_ ioGutters : inout [VerticalStackGutter],
+                               _ ioLastBaselineViews : inout [NSView?],
                                _ ioContraints : inout [NSLayoutConstraint]) {
-    self.mLeft?.alignHorizontalGutters (&ioGutters, &ioContraints)
-    self.mRight?.alignHorizontalGutters (&ioGutters, &ioContraints)
+    self.mLeft?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
+    self.mRight?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

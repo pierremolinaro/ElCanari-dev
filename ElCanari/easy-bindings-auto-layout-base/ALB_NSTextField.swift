@@ -26,7 +26,9 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (optionalWidth inOptionalWidth : Int?, bold inBold : Bool, size inSize : NSControl.ControlSize) {
+  init (optionalWidth inOptionalWidth : Int?,
+        bold inBold : Bool,
+        size inSize : NSControl.ControlSize) {
     if let w = inOptionalWidth {
       self.mWidth = CGFloat (w)
     }else{
@@ -34,7 +36,7 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
     }
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .higher, vStrechingResistance: .higher)
+    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
 
     self.delegate = self
 
@@ -134,7 +136,7 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
     if self.mAutomaticallyAdjustHeight, let cell = self.cell {
       var frame = self.frame
     //--- Make the frame very high, while keeping the width
-      frame.size.height = CGFloat.greatestFiniteMagnitude;
+      frame.size.height = CGFloat.greatestFiniteMagnitude
     //--- Calculate new height within the frame with practically infinite height.
       s.height = cell.cellSize (forBounds: frame).height
     }
@@ -170,9 +172,7 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc override var lastBaselineRepresentativeViewArray : OptionalViewArray {
-    OptionalViewArray (self)
-  }
+  @objc override var lastBaselineRepresentativeView : NSView? { self }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!

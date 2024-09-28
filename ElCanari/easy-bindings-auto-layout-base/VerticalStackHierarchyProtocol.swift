@@ -23,6 +23,9 @@ import AppKit
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint])
 
+  func enumerateLastBaselineViews (_ ioArray : inout [NSView?],
+                                   _ ioCurrentLastBaselineView : inout NSView?)
+
 }
 
 //--------------------------------------------------------------------------------------------------
