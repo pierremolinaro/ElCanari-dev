@@ -66,17 +66,12 @@ extension AutoLayoutHorizontalStackView {
                               flexibleSpaceView ioFlexibleSpaceView : inout AutoLayoutHorizontalStackView.FlexibleSpace?,
                               _ ioContraints : inout [NSLayoutConstraint]) {
       var optionalLastBaselineRepresentativeView : [NSView?] = []
-  //    var optionalLastView : NSView? = nil
-  //    var optionalLastFlexibleSpace : NSView? = nil
-  //    var referenceGutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
-      var optionalCurrentGutter : AutoLayoutVerticalStackView.HorizontalGutterView? = nil
     //--- Vertical constraints
       for view in self.mViewArray {
         if !view.isHidden {
           ioContraints.add (
             verticalConstraintsOf: view,
             inHorizontalContainer: inHorizontalStackView,
-            currentGutter: optionalCurrentGutter,
             topMargin: inHorizontalStackView.mTopMargin,
             bottomMargin: inHorizontalStackView.mBottomMargin,
             optionalLastBaseLineView: &optionalLastBaselineRepresentativeView
@@ -98,6 +93,23 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
+    func alignHorizontalGutters (_ ioGutters : inout [AutoLayoutVerticalStackView.HorizontalGutterView],
+                                 _ ioContraints : inout [NSLayoutConstraint]) {
+      for view in self.mViewArray {
+        if !view.isHidden, let vStack = view as? AutoLayoutVerticalStackView {
+          let gutters = vStack.gutters
+          let n = Swift.min (gutters.count, ioGutters.count)
+          for i in 0 ..< n {
+            ioContraints.add (bottomOf: gutters [i], equalToBottomOf: ioGutters [i])
+          }
+          for i in n ..< gutters.count {
+            ioGutters.append (gutters [i])
+          }
+        }
+      }
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
   }
 

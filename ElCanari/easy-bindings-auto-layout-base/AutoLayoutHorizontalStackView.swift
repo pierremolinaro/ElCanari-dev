@@ -168,6 +168,9 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     }else{
       self.mConstraints.add (leftOf: self, equalToRightOf: self)
     }
+  //--- Align gutters
+    var gutters = [AutoLayoutVerticalStackView.HorizontalGutterView] ()
+    self.mInternalStackRoot?.alignHorizontalGutters (&gutters, &self.mConstraints)
   //--- Apply constaints
     self.addConstraints (self.mConstraints)
   //--- This should the last instruction: call super method
@@ -305,6 +308,9 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
                               optionalLastRightView ioOptionalLastRightView : inout NSView?,
                               flexibleSpaceView ioFlexibleSpaceView : inout AutoLayoutHorizontalStackView.FlexibleSpace?,
                               _ ioContraints : inout [NSLayoutConstraint])
+
+    func alignHorizontalGutters (_ ioGutters : inout [AutoLayoutVerticalStackView.HorizontalGutterView],
+                                 _ ioContraints : inout [NSLayoutConstraint])
 
   }
 

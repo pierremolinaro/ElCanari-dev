@@ -108,6 +108,14 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
+    func alignHorizontalGutters (_ ioGutters : inout [AutoLayoutVerticalStackView.HorizontalGutterView],
+                                 _ ioContraints : inout [NSLayoutConstraint]) {
+      self.mLeft?.alignHorizontalGutters (&ioGutters, &ioContraints)
+      self.mRight?.alignHorizontalGutters (&ioGutters, &ioContraints)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
     override var intrinsicContentSize: NSSize {
       return NSSize (width: DIVIDER_WIDTH, height: NSView.noIntrinsicMetric)
     }

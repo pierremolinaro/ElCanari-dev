@@ -313,7 +313,7 @@ import AppKit
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .regular, alignment: .center)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .mini, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view.appendView (vStackView_view_view)

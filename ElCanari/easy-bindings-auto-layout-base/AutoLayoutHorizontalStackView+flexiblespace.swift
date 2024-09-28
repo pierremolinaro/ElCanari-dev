@@ -100,6 +100,14 @@ extension AutoLayoutHorizontalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
+    func alignHorizontalGutters (_ ioGutters : inout [AutoLayoutVerticalStackView.HorizontalGutterView],
+                                 _ ioContraints : inout [NSLayoutConstraint]) {
+      self.mLeft?.alignHorizontalGutters (&ioGutters, &ioContraints)
+      self.mRight?.alignHorizontalGutters (&ioGutters, &ioContraints)
+    }
+
+    // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
+
     private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
       vLayoutInHorizontalContainer: .fill,
       hLayoutInVerticalContainer: .fill

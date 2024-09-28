@@ -272,7 +272,7 @@ import AppKit
 
   mutating func add (verticalConstraintsOf inView : NSView,
                      inHorizontalContainer inContainer : NSView,
-                     currentGutter inOptionalCurrentGutter : AutoLayoutVerticalStackView.HorizontalGutterView?,
+//                     currentGutter inOptionalCurrentGutter : AutoLayoutVerticalStackView.HorizontalGutterView?,
                      topMargin inTopMargin : CGFloat,
                      bottomMargin inBottomMargin : CGFloat,
                      optionalLastBaseLineView ioOptionalLastBaseLineViewArray : inout [NSView?]) {
@@ -294,27 +294,27 @@ import AppKit
       self.add (topOf: inContainer, equalToTopOf: inView, plus: inTopMargin)
       self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
     case .lastBaseline :
-      if let gutter = inOptionalCurrentGutter {
-        self.add (topOf: inView, closeToBottomOfGutter: gutter)
-        self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
-      }else{
+//      if let gutter = inOptionalCurrentGutter {
+//        self.add (topOf: inView, closeToBottomOfGutter: gutter)
+//        self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
+//      }else{
         self.add (topOf: inView, closeToTopOfContainer: inContainer, topMargin: inTopMargin)
         self.add (bottomOf: inView, closeToBottomOfContainer: inContainer, bottomMargin: inBottomMargin)
-      }
-      let n = Swift.min (inView.lastBaselineRepresentativeViewArray.count, ioOptionalLastBaseLineViewArray.count)
-      for i in 0 ..< n {
-        if let viewLastBaselineRepresentativeView = inView.lastBaselineRepresentativeViewArray [i] { // §§
-          if let lastBaselineRepresentativeView = ioOptionalLastBaseLineViewArray [i] {
-//            Swift.print (lastBaselineRepresentativeView, viewLastBaselineRepresentativeView)
-//            self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
-          }else{
-            ioOptionalLastBaseLineViewArray [i] = viewLastBaselineRepresentativeView
-          }
-        }
-      }
-      for i in n ..< inView.lastBaselineRepresentativeViewArray.count {
-        ioOptionalLastBaseLineViewArray.append (inView.lastBaselineRepresentativeViewArray [i])
-      }
+//      }
+//      let n = Swift.min (inView.lastBaselineRepresentativeViewArray.count, ioOptionalLastBaseLineViewArray.count)
+//      for i in 0 ..< n {
+//        if let viewLastBaselineRepresentativeView = inView.lastBaselineRepresentativeViewArray [i] { // §§
+//          if let lastBaselineRepresentativeView = ioOptionalLastBaseLineViewArray [i] {
+////            Swift.print (lastBaselineRepresentativeView, viewLastBaselineRepresentativeView)
+////            self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
+//          }else{
+//            ioOptionalLastBaseLineViewArray [i] = viewLastBaselineRepresentativeView
+//          }
+//        }
+//      }
+//      for i in n ..< inView.lastBaselineRepresentativeViewArray.count {
+//        ioOptionalLastBaseLineViewArray.append (inView.lastBaselineRepresentativeViewArray [i])
+//      }
 //      if let viewLastBaselineRepresentativeView = inView.pmLastBaselineRepresentativeView { // §§
 //        if let lastBaselineRepresentativeView = ioOptionalLastBaseLineViewArray {
 //          self.add (lastBaselineOf: viewLastBaselineRepresentativeView, equalToLastBaselineOf: lastBaselineRepresentativeView)
