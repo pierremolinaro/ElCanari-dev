@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let GUTTER_HEIGHT = 4.0
+let GUTTER_HEIGHT = 4.0
 
 //--------------------------------------------------------------------------------------------------
 
@@ -24,7 +24,9 @@ extension AutoLayoutVerticalStackView {
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
-    override var intrinsicContentSize : NSSize { NSSize (width: NSView.noIntrinsicMetric, height: GUTTER_HEIGHT) }
+    override var intrinsicContentSize : NSSize {
+      NSSize (width: NSView.noIntrinsicMetric, height: GUTTER_HEIGHT)
+    }
 
     // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

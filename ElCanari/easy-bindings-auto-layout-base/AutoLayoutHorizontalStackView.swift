@@ -15,19 +15,30 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendGutter () {
-    _ = self.appendView (AutoLayoutHorizontalStackView.GutterSeparator ())
+    let gutter = AutoLayoutHorizontalStackView.GutterSeparator ()
+    self.addSubview (gutter)
+    let newRoot = StackGutter (self.mInternalStackRoot, gutter: gutter)
+    self.mInternalStackRoot = newRoot
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendDivider () -> Self {
-    return self.appendView (AutoLayoutHorizontalStackView.VerticalDivider ())
+  final func appendDivider (canResizeWindow inFlag : Bool = false) -> Self {
+    let divider = AutoLayoutHorizontalStackView.VerticalDivider ()
+    self.addSubview (divider)
+    let newRoot = StackDivider (self.mInternalStackRoot, divider: divider)
+    self.mInternalStackRoot = newRoot
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendFlexibleSpace () -> Self {
-    return self.appendView (AutoLayoutFlexibleSpace ())
+    let space = AutoLayoutFlexibleSpace ()
+    self.addSubview (space)
+    let newRoot = StackSpace (self.mInternalStackRoot, flexibleSpaceView: space)
+    self.mInternalStackRoot = newRoot
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -72,86 +83,116 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Build constraints
-    var optionalLastBaselineRepresentativeView : [NSView?] = []
-    var optionalLastView : NSView? = nil
-    var optionalLastFlexibleSpace : NSView? = nil
-    var referenceGutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
-    var optionalCurrentGutter : AutoLayoutVerticalStackView.GutterSeparator? = nil
-    for view in self.subviews {
-      if !view.isHidden {
-      //--- Vertical constraints
-        self.mConstraints.add (
-          verticalConstraintsOf: view,
-          inHorizontalContainer: self,
-          currentGutter: optionalCurrentGutter,
-          topMargin: self.mTopMargin,
-          bottomMargin: self.mBottomMargin,
-          optionalLastBaseLineView: &optionalLastBaselineRepresentativeView
-        )
-        if (view is VerticalSeparator) || (view is VerticalDivider) {
-          optionalLastBaselineRepresentativeView = []
-        }
-      //--- Horizontal constraints
-        if let lastView = optionalLastView {
-          let spacing = self.isFlexibleSpace (view) ? 0.0 : self.mSpacing
-          self.mConstraints.add (leftOf: view, equalToRightOf: lastView, plus: spacing)
-        }else{
-          self.mConstraints.add (leftOf: view, equalToLeftOf: self, plus: self.mLeftMargin)
-        }
-      //--- Handle width constraint for views with lower hugging priority
-        if self.isFlexibleSpace (view) {
-          if let refView = optionalLastFlexibleSpace {
-            self.mConstraints.add (widthOf: refView, equalToWidthOf: view)
-          }
-          optionalLastFlexibleSpace = view
-        }
-        if self.isVerticalDivider (view) {
-          optionalLastFlexibleSpace = nil
-        }
-        if let v = view as? AutoLayoutVerticalStackView.GutterSeparator {
-          optionalCurrentGutter = v
-        }
-      //--- current is a vertical stack view ? enumerate its gutters
-        if let vStack = view as? AutoLayoutVerticalStackView {
-          var gutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
-          var currentOptionalLastBaselineRepresentativeViewArray = [NSView?] ()
-          var currentOptionalLastBaselineRepresentativeView : NSView? = nil
-          for vStackSubView in vStack.subviews {
-            if !vStackSubView.isHidden {
-              if let v = vStackSubView.lastBaselineRepresentativeViewArray.last {
-                currentOptionalLastBaselineRepresentativeView = v
-              }
-              if let gutter = vStackSubView as? AutoLayoutVerticalStackView.GutterSeparator {
-                gutterArray.append (gutter)
-                currentOptionalLastBaselineRepresentativeViewArray.append (currentOptionalLastBaselineRepresentativeView)
-                currentOptionalLastBaselineRepresentativeView = nil
-              }
-            }
-          }
-          currentOptionalLastBaselineRepresentativeViewArray.append (currentOptionalLastBaselineRepresentativeView)
-          let n = min (referenceGutterArray.count, gutterArray.count)
-          for i in 0 ..< n {
-            self.mConstraints.add (topOf: referenceGutterArray [i], equalToTopOf: gutterArray [i])
-            self.mConstraints.add (bottomOf: referenceGutterArray [i], equalToBottomOf: gutterArray [i])
-          }
-          if referenceGutterArray.count < gutterArray.count {
-            referenceGutterArray = gutterArray
-            optionalLastBaselineRepresentativeView = currentOptionalLastBaselineRepresentativeViewArray
-          }
-        }
-      //---
-        optionalLastView = view
+    if let root = self.mInternalStackRoot {
+      var flexibleSpaceView : AutoLayoutFlexibleSpace? = nil
+      var optionalLastRightView : NSView? = nil
+      root.buildConstraintsFor (
+        horizontalStackView: self,
+        optionalLastRightView: &optionalLastRightView,
+        flexibleSpaceView: &flexibleSpaceView,
+        &self.mConstraints
+      )
+      if let lastRightView = optionalLastRightView {
+        self.mConstraints.add (rightOf: self, equalToRightOf: lastRightView, plus: self.mRightMargin)
+      }else{
+        self.mConstraints.add (leftOf: self, equalToRightOf: self)
       }
-    }
-  //--- Add right constraint for last view
-    if let lastView = optionalLastView {
-      self.mConstraints.add (rightOf: self, equalToRightOf: lastView, plus: self.mRightMargin)
+    }else{
+      self.mConstraints.add (leftOf: self, equalToRightOf: self)
     }
   //--- Apply constaints
     self.addConstraints (self.mConstraints)
   //--- This should the last instruction: call super method
     super.updateConstraints ()
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override func updateConstraints () {
+//  //--- Remove all constraints
+//    self.removeConstraints (self.mConstraints)
+//    self.mConstraints.removeAll (keepingCapacity: true)
+//  //--- Build constraints
+//    var optionalLastBaselineRepresentativeView : [NSView?] = []
+//    var optionalLastView : NSView? = nil
+//    var optionalLastFlexibleSpace : NSView? = nil
+//    var referenceGutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
+//    var optionalCurrentGutter : AutoLayoutVerticalStackView.GutterSeparator? = nil
+//    for view in self.subviews {
+//      if !view.isHidden {
+//      //--- Vertical constraints
+//        self.mConstraints.add (
+//          verticalConstraintsOf: view,
+//          inHorizontalContainer: self,
+//          currentGutter: optionalCurrentGutter,
+//          topMargin: self.mTopMargin,
+//          bottomMargin: self.mBottomMargin,
+//          optionalLastBaseLineView: &optionalLastBaselineRepresentativeView
+//        )
+//        if (view is VerticalSeparator) || (view is VerticalDivider) {
+//          optionalLastBaselineRepresentativeView = []
+//        }
+//      //--- Horizontal constraints
+//        if let lastView = optionalLastView {
+//          let spacing = self.isFlexibleSpace (view) ? 0.0 : self.mSpacing
+//          self.mConstraints.add (leftOf: view, equalToRightOf: lastView, plus: spacing)
+//        }else{
+//          self.mConstraints.add (leftOf: view, equalToLeftOf: self, plus: self.mLeftMargin)
+//        }
+//      //--- Handle width constraint for views with lower hugging priority
+//        if self.isFlexibleSpace (view) {
+//          if let refView = optionalLastFlexibleSpace {
+//            self.mConstraints.add (widthOf: refView, equalToWidthOf: view)
+//          }
+//          optionalLastFlexibleSpace = view
+//        }
+//        if self.isVerticalDivider (view) {
+//          optionalLastFlexibleSpace = nil
+//        }
+//        if let v = view as? AutoLayoutVerticalStackView.GutterSeparator {
+//          optionalCurrentGutter = v
+//        }
+//      //--- current is a vertical stack view ? enumerate its gutters
+//        if let vStack = view as? AutoLayoutVerticalStackView {
+//          var gutterArray = [AutoLayoutVerticalStackView.GutterSeparator] ()
+//          var currentOptionalLastBaselineRepresentativeViewArray = [NSView?] ()
+//          var currentOptionalLastBaselineRepresentativeView : NSView? = nil
+//          for vStackSubView in vStack.subviews {
+//            if !vStackSubView.isHidden {
+//              if let v = vStackSubView.lastBaselineRepresentativeViewArray.last {
+//                currentOptionalLastBaselineRepresentativeView = v
+//              }
+//              if let gutter = vStackSubView as? AutoLayoutVerticalStackView.GutterSeparator {
+//                gutterArray.append (gutter)
+//                currentOptionalLastBaselineRepresentativeViewArray.append (currentOptionalLastBaselineRepresentativeView)
+//                currentOptionalLastBaselineRepresentativeView = nil
+//              }
+//            }
+//          }
+//          currentOptionalLastBaselineRepresentativeViewArray.append (currentOptionalLastBaselineRepresentativeView)
+//          let n = min (referenceGutterArray.count, gutterArray.count)
+//          for i in 0 ..< n {
+//            self.mConstraints.add (topOf: referenceGutterArray [i], equalToTopOf: gutterArray [i])
+//            self.mConstraints.add (bottomOf: referenceGutterArray [i], equalToBottomOf: gutterArray [i])
+//          }
+//          if referenceGutterArray.count < gutterArray.count {
+//            referenceGutterArray = gutterArray
+//            optionalLastBaselineRepresentativeView = currentOptionalLastBaselineRepresentativeViewArray
+//          }
+//        }
+//      //---
+//        optionalLastView = view
+//      }
+//    }
+//  //--- Add right constraint for last view
+//    if let lastView = optionalLastView {
+//      self.mConstraints.add (rightOf: self, equalToRightOf: lastView, plus: self.mRightMargin)
+//    }
+//  //--- Apply constaints
+//    self.addConstraints (self.mConstraints)
+//  //--- This should the last instruction: call super method
+//    super.updateConstraints ()
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Facilities

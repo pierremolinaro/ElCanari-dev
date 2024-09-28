@@ -34,7 +34,23 @@ import AppKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (widthOf inView : NSView,
+                     equalTo inValue : CGFloat) {
+    let c = inView.widthAnchor.constraint (equalToConstant: inValue)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Height
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (heightOf inView : NSView,
+                     equalTo inValue : CGFloat) {
+    let c = inView.heightAnchor.constraint (equalToConstant: inValue)
+    self.append (c)
+  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (heightOf inView1 : NSView,

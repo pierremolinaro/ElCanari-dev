@@ -1,5 +1,5 @@
 //
-//  PMAbstractStackView.swift
+//  ALB_NSStackView.swift
 //  essai-gridview
 //
 //  Created by Pierre Molinaro on 01/11/2023.
@@ -65,28 +65,53 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func appendView (_ inView : NSView) -> Self {
+  final func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
     self.invalidateIntrinsicContentSize ()
+    Self.append (inView, toStackRoot: &self.mInternalStackRoot)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func prependView (_ inView : NSView) -> Self {
+  final func prependView (_ inView : NSView) -> Self {
     self.addSubview (inView, positioned: .below, relativeTo: nil)
     self.invalidateIntrinsicContentSize ()
+    Self.prepend (inView, toStackRoot: &self.mInternalStackRoot)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  final func appendFlexibleSpace () -> Self {
-//    let view = AutoLayoutFlexibleSpace ()
-//    self.addSubview (view)
-//    self.invalidateIntrinsicContentSize ()
-//    return self
-//  }
+  var mInternalStackRoot : (any StackRootProtocol)? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor static
+  func append (_ inView : NSView,
+               toStackRoot ioRoot : inout (any StackRootProtocol)?) {
+    if let root = ioRoot {
+      root.append (inView)
+    }else{
+      let root = StackSequence ()
+      root.append (inView)
+      ioRoot = root
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor static
+  func prepend (_ inView : NSView,
+                toStackRoot ioRoot : inout (any StackRootProtocol)?) {
+    if let root = ioRoot {
+      root.prepend (inView)
+    }else{
+      let root = StackSequence ()
+      root.prepend (inView)
+      ioRoot = root
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -96,6 +121,7 @@ class ALB_NSStackView : NSView {
         inView.removeFromSuperview ()
       }
     }
+    self.mInternalStackRoot?.remove (inView)
     self.invalidateIntrinsicContentSize ()
   }
 

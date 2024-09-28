@@ -39,9 +39,9 @@ extension ApplicationDelegate {
     window.title = inTitle
     window.isReleasedWhenClosed = false
 
-    let stack = AutoLayoutVerticalStackView (horizontal: .fill, vertical: .fill)
+    let stack = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-      .appendView (ALB_NSTextView (drawsBackground: true, horizontalScroller: true, verticalScroller: true))
+      .appendView (ALB_NSTextView (drawsBackground: true, horizontalScroller: true, verticalScroller: true, editable: true))
     window.contentView = stack
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)
@@ -60,16 +60,16 @@ extension ApplicationDelegate {
     window.title = inTitle
     window.isReleasedWhenClosed = false
 
-    let stack = AutoLayoutVerticalStackView (horizontal: .fill, vertical: .fill)
+    let stack = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 0", size: .small))
       .appendFlexibleSpace ()
-      .appendHorizontalDivider (drawFrame: true, canResizeWindow: false)
+      .appendDivider (canResizeWindow: false)
       .appendView (ALB_NSButton (title: "Button 1", size: .regular))
       .appendFlexibleSpace ()
-      .appendView (AutoLayoutHorizontalStackView (horizontal: .fill, vertical: .lastBaseline).appendView (ALB_NSButton (title: "Button 2", size: .regular)))
-      .appendHorizontalDivider (drawFrame: true, canResizeWindow: true)
+      .appendView (AutoLayoutHorizontalStackView ().appendView (ALB_NSButton (title: "Button 2", size: .regular)))
+      .appendDivider (canResizeWindow: true)
       .appendFlexibleSpace ()
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 3", size: .mini))
@@ -91,21 +91,21 @@ extension ApplicationDelegate {
     window.title = inTitle
     window.isReleasedWhenClosed = false
 
-    let stack = AutoLayoutHorizontalStackView (horizontal: .fill, vertical: .fill)
+    let stack = AutoLayoutHorizontalStackView ()
       .set (margins: .regular)
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 0", size: .small))
-      .appendView (AutoLayoutVerticalStackView (horizontal: .fill, vertical: .lastBaseline).appendView (ALB_NSButton (title: "Button 0", size: .small)).appendFlexibleSpace ())
+      .appendView (AutoLayoutVerticalStackView ().appendView (ALB_NSButton (title: "Button 0", size: .small)).appendFlexibleSpace ())
       .appendFlexibleSpace ()
-      .appendVerticalDivider (drawFrame: true, canResizeWindow: false)
+      .appendDivider (canResizeWindow: false)
       .appendView (ALB_NSButton (title: "Button 1", size: .regular))
       .appendVerticalSeparator ()
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 2", size: .regular))
-      .appendView (AutoLayoutHorizontalStackView (horizontal: .fill, vertical: .lastBaseline).appendView (ALB_NSButton (title: "Button 2", size: .regular)))
+      .appendView (AutoLayoutHorizontalStackView ().appendView (ALB_NSButton (title: "Button 2", size: .regular)))
       .appendView (ALB_NSButton (title: "Button 2", size: .regular))
       .appendFlexibleSpace ()
-      .appendVerticalDivider (drawFrame: true, canResizeWindow: true)
+      .appendDivider (canResizeWindow: true)
       .appendFlexibleSpace ()
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 3", size: .mini))
@@ -130,7 +130,7 @@ extension ApplicationDelegate {
 
     let stack = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
-      .set (horizontalSpacing: .large)
+      .set (spacing: .large)
       .append (left: ALB_NSButton (title: "Button 0", size: .regular), right: ALB_NSButton (title: "Button 1", size: .regular))
 //      .appendVerticalSeparator (ignoreHorizontalMargins: true)
       .append (left: ALB_NSButton (title: "Large Button 2", size: .regular), right: ALB_NSButton (title: "Button 3", size: .small))
@@ -153,10 +153,10 @@ extension ApplicationDelegate {
     window.title = inTitle
     window.isReleasedWhenClosed = false
 
-    let stack = AutoLayoutHorizontalStackView (horizontal: .fill, vertical: .fill)
+    let stack = AutoLayoutHorizontalStackView ()
       .set (margins: .regular)
       .appendView (AutoLayoutTableView (size: .regular, addControlButtons: true))
-      .appendVerticalDivider (drawFrame: true, canResizeWindow: true)
+      .appendDivider (canResizeWindow: true)
       .appendView (AutoLayoutTableView (size: .regular, addControlButtons: false))
 
     window.contentView = stack
