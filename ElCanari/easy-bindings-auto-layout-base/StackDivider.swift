@@ -10,11 +10,11 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class StackDivider : StackRootProtocol {
+final class StackDivider : StackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inRoot : (any StackRootProtocol)?, divider inDivider : NSView) {
+  init (_ inRoot : (any StackHierarchyProtocol)?, divider inDivider : NSView) {
     self.mBefore = inRoot
     self.mDividerView = inDivider
     noteObjectAllocation (self)
@@ -28,9 +28,9 @@ final class StackDivider : StackRootProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mBefore : (any StackRootProtocol)?
+  private var mBefore : (any StackHierarchyProtocol)?
   private let mDividerView : NSView
-  private var mAfter : (any StackRootProtocol)? = nil
+  private var mAfter : (any StackHierarchyProtocol)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

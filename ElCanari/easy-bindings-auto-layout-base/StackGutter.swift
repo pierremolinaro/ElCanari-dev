@@ -10,11 +10,11 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class StackGutter : StackRootProtocol {
+final class StackGutter : StackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inRoot : (any StackRootProtocol)?, gutter inGutterView : NSView) {
+  init (_ inRoot : (any StackHierarchyProtocol)?, gutter inGutterView : NSView) {
     self.mBefore = inRoot
     self.mGutterView = inGutterView
     noteObjectAllocation (self)
@@ -28,9 +28,9 @@ final class StackGutter : StackRootProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mBefore : (any StackRootProtocol)?
+  private var mBefore : (any StackHierarchyProtocol)?
   private let mGutterView : NSView
-  private var mAfter : (any StackRootProtocol)? = nil
+  private var mAfter : (any StackHierarchyProtocol)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

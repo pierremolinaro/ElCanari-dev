@@ -26,6 +26,24 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func appendView (_ inView : NSView) -> Self {
+    fatalError ("abstract method call")
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func prependView (_ inView : NSView) -> Self {
+    fatalError ("abstract method call")
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func removeView (_ inView : NSView) {
+    fatalError ("abstract method call")
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   enum HorizontalLayoutInVerticalCollectionView {
     case center
     case fillIgnoringMargins
@@ -65,31 +83,9 @@ class ALB_NSStackView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendView (_ inView : NSView) -> Self {
-    self.addSubview (inView)
-    self.invalidateIntrinsicContentSize ()
-    Self.appendInHierarchy (inView, toStackRoot: &self.mInternalStackRoot)
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func prependView (_ inView : NSView) -> Self {
-    self.addSubview (inView, positioned: .below, relativeTo: nil)
-    self.invalidateIntrinsicContentSize ()
-    Self.prependInHierarchy (inView, toStackRoot: &self.mInternalStackRoot)
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var mInternalStackRoot : (any StackRootProtocol)? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   @MainActor static
   func appendInHierarchy (_ inView : NSView,
-                          toStackRoot ioRoot : inout (any StackRootProtocol)?) {
+                          toStackRoot ioRoot : inout (any StackHierarchyProtocol)?) {
     if let root = ioRoot {
       root.appendInHierarchy (inView)
     }else{
@@ -103,7 +99,7 @@ class ALB_NSStackView : NSView {
 
   @MainActor static
   func prependInHierarchy (_ inView : NSView,
-                           toStackRoot ioRoot : inout (any StackRootProtocol)?) {
+                           toStackRoot ioRoot : inout (any StackHierarchyProtocol)?) {
     if let root = ioRoot {
       root.prependInHierarchy (inView)
     }else{
@@ -111,18 +107,6 @@ class ALB_NSStackView : NSView {
       root.prependInHierarchy (inView)
       ioRoot = root
     }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func removeView (_ inView : NSView) {
-    for view in self.subviews {
-      if view === inView {
-        inView.removeFromSuperview ()
-      }
-    }
-    self.mInternalStackRoot?.removeInHierarchy (inView)
-    self.invalidateIntrinsicContentSize ()
   }
 
   //····················································································································

@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class StackSequence : StackRootProtocol {
+final class StackSequence : StackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

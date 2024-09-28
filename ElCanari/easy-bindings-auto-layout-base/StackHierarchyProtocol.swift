@@ -1,5 +1,5 @@
 //
-//  StackRootProtocol.swift
+//  StackHierarchyProtocol.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 27/09/2024.
@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol StackRootProtocol : AnyObject {
+@MainActor protocol StackHierarchyProtocol : AnyObject {
 
   func appendInHierarchy (_ inView : NSView)
 

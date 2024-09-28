@@ -112,8 +112,8 @@
 		CF131B87294F5F8100E587B9 /* StringTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131B85294F5F8100E587B9 /* StringTag.swift */; };
 		CF1361FE220223E800E7CEE7 /* ftp-read-write.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */; };
 		CF1361FF220223E800E7CEE7 /* ftp-read-write.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */; };
-		CF13B2802CA71917001464D0 /* StackRootProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B27F2CA718FD001464D0 /* StackRootProtocol.swift */; };
-		CF13B2812CA71917001464D0 /* StackRootProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B27F2CA718FD001464D0 /* StackRootProtocol.swift */; };
+		CF13B2802CA71917001464D0 /* StackHierarchyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B27F2CA718FD001464D0 /* StackHierarchyProtocol.swift */; };
+		CF13B2812CA71917001464D0 /* StackHierarchyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B27F2CA718FD001464D0 /* StackHierarchyProtocol.swift */; };
 		CF13B2832CA7192C001464D0 /* StackGutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B2822CA71925001464D0 /* StackGutter.swift */; };
 		CF13B2842CA7192C001464D0 /* StackGutter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B2822CA71925001464D0 /* StackGutter.swift */; };
 		CF13B2862CA71939001464D0 /* StackDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF13B2852CA71932001464D0 /* StackDivider.swift */; };
@@ -3579,7 +3579,7 @@
 		CF12F044277A5B8A0066D4B0 /* extension-AutoLayoutProjectDocument-import-ses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-import-ses.swift"; sourceTree = "<group>"; };
 		CF131B85294F5F8100E587B9 /* StringTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTag.swift; sourceTree = "<group>"; };
 		CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ftp-read-write.swift"; sourceTree = "<group>"; };
-		CF13B27F2CA718FD001464D0 /* StackRootProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackRootProtocol.swift; sourceTree = "<group>"; };
+		CF13B27F2CA718FD001464D0 /* StackHierarchyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackHierarchyProtocol.swift; sourceTree = "<group>"; };
 		CF13B2822CA71925001464D0 /* StackGutter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackGutter.swift; sourceTree = "<group>"; };
 		CF13B2852CA71932001464D0 /* StackDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackDivider.swift; sourceTree = "<group>"; };
 		CF13B2882CA7193E001464D0 /* StackSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackSpace.swift; sourceTree = "<group>"; };
@@ -6267,7 +6267,7 @@
 				CF13B2882CA7193E001464D0 /* StackSpace.swift */,
 				CF13B2852CA71932001464D0 /* StackDivider.swift */,
 				CF13B2822CA71925001464D0 /* StackGutter.swift */,
-				CF13B27F2CA718FD001464D0 /* StackRootProtocol.swift */,
+				CF13B27F2CA718FD001464D0 /* StackHierarchyProtocol.swift */,
 				CF7AB2C92C734F3800BA9590 /* ALB_NSButton.swift */,
 				CF7AB2C72C734F3800BA9590 /* ALB_NSColorWell.swift */,
 				CF7AB2CD2C734F3800BA9590 /* ALB_NSComboBox.swift */,
@@ -8815,7 +8815,7 @@
 				CFB1F9692940EDDC00C1E120 /* action-AutoLayoutProjectDocument-openSetDateDialogAction.swift in Sources */,
 				CFB7D73D26839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addTextButtonImage.swift in Sources */,
 				CFA42F7B229AEACF000AA8C8 /* tomany-MasterPadInDevice.swift in Sources */,
-				CF13B2812CA71917001464D0 /* StackRootProtocol.swift in Sources */,
+				CF13B2812CA71917001464D0 /* StackHierarchyProtocol.swift in Sources */,
 				CFEB7B4A233A25EC0060A97A /* transient-ComponentInProject-deviceSymbolDictionary.swift in Sources */,
 				CFB1F8E82940EDDB00C1E120 /* action-AutoLayoutProjectDocument-appendNewSchematicSheetInspectorAction.swift in Sources */,
 				CF2285CC276678E900804193 /* transient-FontInProject-componentValuesCount.swift in Sources */,
@@ -10955,7 +10955,7 @@
 				CF217C1525016A46003E322E /* file-format-binary.swift in Sources */,
 				CF49EEB7275A499500481930 /* document-AutoLayoutFontDocument-extension.swift in Sources */,
 				CFB4C0E42794677200C509A9 /* AutoLayoutRTFTextView.swift in Sources */,
-				CF13B2802CA71917001464D0 /* StackRootProtocol.swift in Sources */,
+				CF13B2802CA71917001464D0 /* StackHierarchyProtocol.swift in Sources */,
 				CFA43000229AEB68000AA8C8 /* toone-PackageObject.swift in Sources */,
 				CF35596D279D9F3B000BFC9B /* extension-AutoLayoutProjectDocument-change-component-package.swift in Sources */,
 				CFB82C15276B8A4F00BAD56E /* AutoLayoutTableView-column-String.swift in Sources */,

@@ -10,11 +10,11 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class StackSpace : StackRootProtocol {
+final class StackSpace : StackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inRoot : (any StackRootProtocol)?,
+  init (_ inRoot : (any StackHierarchyProtocol)?,
         flexibleSpaceView inFlexibleSpaceView : AutoLayoutFlexibleSpace) {
     self.mBefore = inRoot
     self.mFlexibleSpaceView = inFlexibleSpaceView
@@ -29,9 +29,9 @@ final class StackSpace : StackRootProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mBefore : (any StackRootProtocol)?
+  private var mBefore : (any StackHierarchyProtocol)?
   private let mFlexibleSpaceView : AutoLayoutFlexibleSpace
-  private var mAfter : (any StackRootProtocol)? = nil
+  private var mAfter : (any StackHierarchyProtocol)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

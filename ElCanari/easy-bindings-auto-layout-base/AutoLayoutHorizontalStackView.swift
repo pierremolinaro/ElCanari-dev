@@ -14,6 +14,40 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private var mInternalStackRoot : (any StackHierarchyProtocol)? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final override func appendView (_ inView : NSView) -> Self {
+    self.addSubview (inView)
+    self.invalidateIntrinsicContentSize ()
+    Self.appendInHierarchy (inView, toStackRoot: &self.mInternalStackRoot)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final override func prependView (_ inView : NSView) -> Self {
+    self.addSubview (inView, positioned: .below, relativeTo: nil)
+    self.invalidateIntrinsicContentSize ()
+    Self.prependInHierarchy (inView, toStackRoot: &self.mInternalStackRoot)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final override func removeView (_ inView : NSView) {
+    for view in self.subviews {
+      if view === inView {
+        inView.removeFromSuperview ()
+      }
+    }
+    self.mInternalStackRoot?.removeInHierarchy (inView)
+    self.invalidateIntrinsicContentSize ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final func appendGutter () {
     let gutter = AutoLayoutHorizontalStackView.GutterSeparator ()
     self.addSubview (gutter)
