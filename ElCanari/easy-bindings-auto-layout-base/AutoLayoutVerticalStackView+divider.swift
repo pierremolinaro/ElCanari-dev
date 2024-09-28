@@ -17,23 +17,6 @@ let DIVIDER_HEIGHT = 10.0
 extension AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // appendVerticalDivider
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  final func appendHorizontalDivider (drawFrame inDrawFrame : Bool,
-//                                      canResizeWindow inFlag : Bool) -> Self {
-//    let divider = Self.HorizontalDivider (drawFrame: inDrawFrame, canResizeWindow: inFlag)
-//    self.addSubview (divider)
-//    return self
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  final func isHorizontalDivider (_ inView : NSView) -> Bool {
-//    return inView is HorizontalDivider
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // HorizontalDivider internal class
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -99,7 +99,7 @@ extension ApplicationDelegate {
       .appendFlexibleSpace ()
       .appendDivider (canResizeWindow: false)
       .appendView (ALB_NSButton (title: "Button 1", size: .regular))
-      .appendVerticalSeparator ()
+      .appendSeparator ()
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 2", size: .regular))
       .appendView (AutoLayoutHorizontalStackView ().appendView (ALB_NSButton (title: "Button 2", size: .regular)))
@@ -109,7 +109,7 @@ extension ApplicationDelegate {
       .appendFlexibleSpace ()
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 3", size: .mini))
-      .prependVerticalSeparator ()
+      .prependSeparator ()
     window.contentView = stack
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)

@@ -34,21 +34,21 @@ final class StackGutter : StackRootProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func append (_ inView : NSView) {
-    ALB_NSStackView.append (inView, toStackRoot: &self.mAfter)
+  func appendInHierarchy (_ inView : NSView) {
+    ALB_NSStackView.appendInHierarchy (inView, toStackRoot: &self.mAfter)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func prepend (_ inView : NSView) {
-    ALB_NSStackView.prepend (inView, toStackRoot: &self.mBefore)
+  func prependInHierarchy (_ inView : NSView) {
+    ALB_NSStackView.prependInHierarchy (inView, toStackRoot: &self.mBefore)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func remove (_ inView : NSView) {
-    self.mBefore?.remove (inView)
-    self.mAfter?.remove (inView)
+  func removeInHierarchy (_ inView : NSView) {
+    self.mBefore?.removeInHierarchy (inView)
+    self.mAfter?.removeInHierarchy (inView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

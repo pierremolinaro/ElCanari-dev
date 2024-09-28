@@ -68,7 +68,7 @@ class ALB_NSStackView : NSView {
   final func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
     self.invalidateIntrinsicContentSize ()
-    Self.append (inView, toStackRoot: &self.mInternalStackRoot)
+    Self.appendInHierarchy (inView, toStackRoot: &self.mInternalStackRoot)
     return self
   }
 
@@ -77,7 +77,7 @@ class ALB_NSStackView : NSView {
   final func prependView (_ inView : NSView) -> Self {
     self.addSubview (inView, positioned: .below, relativeTo: nil)
     self.invalidateIntrinsicContentSize ()
-    Self.prepend (inView, toStackRoot: &self.mInternalStackRoot)
+    Self.prependInHierarchy (inView, toStackRoot: &self.mInternalStackRoot)
     return self
   }
 
@@ -88,13 +88,13 @@ class ALB_NSStackView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor static
-  func append (_ inView : NSView,
-               toStackRoot ioRoot : inout (any StackRootProtocol)?) {
+  func appendInHierarchy (_ inView : NSView,
+                          toStackRoot ioRoot : inout (any StackRootProtocol)?) {
     if let root = ioRoot {
-      root.append (inView)
+      root.appendInHierarchy (inView)
     }else{
       let root = StackSequence ()
-      root.append (inView)
+      root.appendInHierarchy (inView)
       ioRoot = root
     }
   }
@@ -102,13 +102,13 @@ class ALB_NSStackView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor static
-  func prepend (_ inView : NSView,
-                toStackRoot ioRoot : inout (any StackRootProtocol)?) {
+  func prependInHierarchy (_ inView : NSView,
+                           toStackRoot ioRoot : inout (any StackRootProtocol)?) {
     if let root = ioRoot {
-      root.prepend (inView)
+      root.prependInHierarchy (inView)
     }else{
       let root = StackSequence ()
-      root.prepend (inView)
+      root.prependInHierarchy (inView)
       ioRoot = root
     }
   }
@@ -121,7 +121,7 @@ class ALB_NSStackView : NSView {
         inView.removeFromSuperview ()
       }
     }
-    self.mInternalStackRoot?.remove (inView)
+    self.mInternalStackRoot?.removeInHierarchy (inView)
     self.invalidateIntrinsicContentSize ()
   }
 

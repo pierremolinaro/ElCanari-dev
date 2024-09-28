@@ -2062,6 +2062,8 @@
 		CF9C6DEB269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */; };
 		CF9DE347267A41DA0064234B /* NSControl+run-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */; };
 		CF9DE348267A41DA0064234B /* NSControl+run-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */; };
+		CF9F7FD22CA812A70014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F7FD12CA8128F0014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift */; };
+		CF9F7FD32CA812A70014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F7FD12CA8128F0014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift */; };
 		CF9F8BEA2852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionDownAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F8BE62852689300E313C7 /* action-AutoLayoutMergerDocument-stackSelectionDownAction.swift */; };
 		CF9F8BEB2852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionDownAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F8BE62852689300E313C7 /* action-AutoLayoutMergerDocument-stackSelectionDownAction.swift */; };
 		CF9F8BED2852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionLeftAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F8BE72852689300E313C7 /* action-AutoLayoutMergerDocument-stackSelectionLeftAction.swift */; };
@@ -4509,6 +4511,7 @@
 		CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBAutoLayoutManagedDocument.swift; sourceTree = "<group>"; };
 		CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutPackageDocument-copyModelImageAction.swift"; sourceTree = "<group>"; };
 		CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSControl+run-binding.swift"; sourceTree = "<group>"; };
+		CF9F7FD12CA8128F0014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutHorizontalStackView+flexiblespace.swift"; sourceTree = "<group>"; };
 		CF9F8BE62852689300E313C7 /* action-AutoLayoutMergerDocument-stackSelectionDownAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutMergerDocument-stackSelectionDownAction.swift"; sourceTree = "<group>"; };
 		CF9F8BE72852689300E313C7 /* action-AutoLayoutMergerDocument-stackSelectionLeftAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutMergerDocument-stackSelectionLeftAction.swift"; sourceTree = "<group>"; };
 		CF9F8BE82852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionRightAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutMergerDocument-stackSelectionRightAction.swift"; sourceTree = "<group>"; };
@@ -6259,6 +6262,7 @@
 		CF7EF0972C728894009FB0D4 /* Auto Layout — Base */ = {
 			isa = PBXGroup;
 			children = (
+				CF9F7FD12CA8128F0014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift */,
 				CF13B28B2CA71A10001464D0 /* StackSequence.swift */,
 				CF13B2882CA7193E001464D0 /* StackSpace.swift */,
 				CF13B2852CA71932001464D0 /* StackDivider.swift */,
@@ -8194,6 +8198,7 @@
 				CF6E148421CD1F90008E2180 /* transient-PackageZone-rect.swift in Sources */,
 				CF3559B3279D9F3D000BFC9B /* controller-array-AutoLayoutProjectDocument-boardCurveObjectsController.swift in Sources */,
 				CFEB7B5E233A25EC0060A97A /* transient-ComponentInProject-unplacedSymbols.swift in Sources */,
+				CF9F7FD32CA812A70014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift in Sources */,
 				CF4B39D621D4E8B1001217C6 /* transient-PackagePad-zoneAllowsManualRenumbering.swift in Sources */,
 				CF22F1EF275A73ED009C6FAC /* transient-BoardModel-backPackagesBezierPaths.swift in Sources */,
 				CFB7D8C22683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageMasterPad.swift in Sources */,
@@ -11280,6 +11285,7 @@
 				CFEB7BBA233A27940060A97A /* transient-DeviceSymbolInstanceInProject-symbolTypeName.swift in Sources */,
 				CFDD6D6226A1B0F20050CB78 /* AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView.swift in Sources */,
 				CF3494AC29EAB36F006AB1EB /* property-QRCodeDescriptor.swift in Sources */,
+				CF9F7FD22CA812A70014918B /* AutoLayoutHorizontalStackView+flexiblespace.swift in Sources */,
 				CFDD6D4126A1B0F20050CB78 /* AutoLayoutCanariDimensionField.swift in Sources */,
 				CF59C43E29BE36AB004CA404 /* property-StringArray.swift in Sources */,
 				CFBEA960257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift in Sources */,

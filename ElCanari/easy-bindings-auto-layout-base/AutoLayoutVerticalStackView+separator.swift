@@ -14,15 +14,15 @@ extension AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendHorizontalSeparator (ignoreHorizontalMargins inFlag : Bool = true) { // -> Self {
+  final func appendSeparator (ignoreHorizontalMargins inFlag : Bool = true) -> Self {
     let separator = Self.HorizontalSeparator (ignoreHorizontalMargins: inFlag)
     _ = self.appendView (separator)
-//    return self
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func prependVerticalSeparator (ignoreHorizontalMargins inFlag : Bool = true) -> Self {
+  final func prependSeparator (ignoreHorizontalMargins inFlag : Bool = true) -> Self {
     let separator = Self.HorizontalSeparator (ignoreHorizontalMargins: inFlag)
     _ = self.prependView (separator)
     return self

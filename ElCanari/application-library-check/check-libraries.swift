@@ -311,7 +311,7 @@ extension Preferences {
     var deviceToUpdateSet = Set <String> ()
     for (deviceName, entry) in deviceDict {
       if entry.partStatus != .partIsValid {
-        inStackView.appendHorizontalSeparator ()
+        _ = inStackView.appendSeparator ()
       }
       switch entry.partStatus {
       case .partIsDuplicated :
@@ -336,7 +336,7 @@ extension Preferences {
           if inSymbolDict [importedSymbolName] == nil {
             if !deviceHasError {
               deviceHasError = true
-              inStackView.appendHorizontalSeparator ()
+              _ = inStackView.appendSeparator ()
             }
             var message = "  Error; '"
             message += deviceName
@@ -354,7 +354,7 @@ extension Preferences {
           if inPackageDict [importedPackageName] == nil {
             if !deviceHasError {
               deviceHasError = true
-              inStackView.appendHorizontalSeparator ()
+              _ = inStackView.appendSeparator ()
             }
             var message = "  Error; '"
             message += deviceName
@@ -376,8 +376,8 @@ extension Preferences {
     }
   //---
     if !deviceToUpdateSet.isEmpty {
-      inStackView.appendHorizontalSeparator ()
-      inStackView.appendText ("Theses devices should be updated", bold: true)
+      inStackView.appendSeparator ()
+        .appendText ("Theses devices should be updated", bold: true)
       for path in deviceToUpdateSet {
         inStackView.appendOpenDocumentButton (path)
         errorCount += 1
@@ -492,7 +492,7 @@ extension Preferences {
   //--- Display duplicate entries for symbols, invalid entries
     for (symbolName, entry) in ioSymbolDict {
       if entry.partStatus != .partIsValid {
-        inStackView.appendHorizontalSeparator ()
+        _ = inStackView.appendSeparator ()
       }
       switch entry.partStatus {
       case .partIsDuplicated :
@@ -623,7 +623,7 @@ fileprivate struct PMPackageDictionaryEntry {
 //--- Display duplicate entries for symbols, invalid entries
   for (packageName, entry) in ioPackageDict {
     if entry.partStatus != .partIsValid {
-      inStackView.appendHorizontalSeparator ()
+      _ = inStackView.appendSeparator ()
     }
     switch entry.partStatus {
     case .partIsDuplicated :
@@ -754,7 +754,7 @@ extension Preferences {
   //--- Display duplicate entries for font, invalid entries
     for (fontName, entry) in fontDict {
       if entry.partStatus != .partIsValid {
-        inStackView.appendHorizontalSeparator ()
+        _ = inStackView.appendSeparator ()
       }
       switch entry.partStatus {
       case .partIsDuplicated :
@@ -879,7 +879,7 @@ extension Preferences {
   //--- Display duplicate entries for symbols, invalid entries
     for (artworkName, entry) in artworkDict {
       if entry.partStatus != .partIsValid {
-        inStackView.appendHorizontalSeparator ()
+        _ = inStackView.appendSeparator ()
       }
       switch entry.partStatus {
       case .partIsDuplicated :

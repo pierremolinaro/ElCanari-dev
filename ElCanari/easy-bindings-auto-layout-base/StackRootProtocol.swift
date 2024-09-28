@@ -12,11 +12,11 @@ import AppKit
 
 @MainActor protocol StackRootProtocol : AnyObject {
 
-  func append (_ inView : NSView)
+  func appendInHierarchy (_ inView : NSView)
 
-  func prepend (_ inView : NSView)
+  func prependInHierarchy (_ inView : NSView)
 
-  func remove (_ inView : NSView)
+  func removeInHierarchy (_ inView : NSView)
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
                             optionalLastBottomView ioOptionalLastBottomView : inout NSView?,

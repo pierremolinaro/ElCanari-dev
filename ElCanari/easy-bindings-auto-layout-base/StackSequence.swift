@@ -30,19 +30,19 @@ final class StackSequence : StackRootProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func append (_ inView : NSView) {
+  func appendInHierarchy (_ inView : NSView) {
     self.mViewArray.append (inView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func prepend (_ inView : NSView) {
+  func prependInHierarchy (_ inView : NSView) {
     self.mViewArray.insert (inView, at: 0)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func remove (_ inView : NSView) {
+  func removeInHierarchy (_ inView : NSView) {
     var idx = 0
     while idx < self.mViewArray.count {
       if self.mViewArray [idx] === inView {
