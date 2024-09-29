@@ -105,8 +105,8 @@ final class VerticalStackGutter : ALB_NSView, VerticalStackHierarchyProtocol {
   func enumerateLastBaselineViews (_ ioArray : inout [NSView?],
                                    _ ioCurrentLastBaselineView : inout NSView?) {
     self.mAbove?.enumerateLastBaselineViews (&ioArray, &ioCurrentLastBaselineView)
-    ioArray.append (ioCurrentLastBaselineView)
-    ioCurrentLastBaselineView = nil
+//    ioArray.append (ioCurrentLastBaselineView)
+//    ioCurrentLastBaselineView = nil
     self.mBelow?.enumerateLastBaselineViews (&ioArray, &ioCurrentLastBaselineView)
   }
 

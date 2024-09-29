@@ -469,14 +469,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView insertSymbolInSchematicView = \schematicsInsertSymbolInSchematicView ()
     newView schematicsDisplayInspectorView = \schematicsDisplayInspectorView ()
     newView schematicsSheetInspectorView = \schematicsSheetInspectorView ()
-    hStack set (margins: .regular) {
-//      space
-//      PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
-//        add (item: menuItem "Select all Connected Elements"
-//             $run selectAllConnectedElementsInSchematicsAction )
-//        add (item: menuItem "Move Selected Elements to Sheet…"
-//             $run moveSelectedToSheetInSchematicsAction )
-//      }
+    hStack set (margins: .regular) set (spacing: .small) {
       space
       DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
       space
@@ -1272,7 +1265,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardRouterInspectorView = \boardRouterInspectorView ()
     newView boardERCInspectorView = \boardERCInspectorView ()
     vStack set (width: 250) {
-      hStack set (margins: .regular) {
+      hStack set (margins: .regular) set (spacing: .small) {
         DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.") [configurator addBoardImageButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.") [configurator addQRCodeButton]

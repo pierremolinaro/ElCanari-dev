@@ -68,12 +68,16 @@ final class HorizontalStackFlexibleSpace : ALB_NSView, HorizontalStackHierarchyP
     if let lastSpace = ioFlexibleSpaceView {
       ioContraints.add (widthOf: lastSpace, equalToWidthOf: self)
     }
+    ioFlexibleSpaceView = self
     if let lastLeftView = ioOptionalLastRightView {
-      ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      if lastLeftView is Self {
+        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView)
+      }else{
+        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      }
     }else{
       ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
     }
-    ioFlexibleSpaceView = self
   //--- After
     ioOptionalLastRightView = self
     self.mRight?.buildConstraintsFor (

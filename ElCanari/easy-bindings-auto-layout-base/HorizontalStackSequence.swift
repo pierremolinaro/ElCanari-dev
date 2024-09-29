@@ -103,19 +103,21 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
           ioGutters.append (gutters [i])
         }
       //--- Last baseline views
-        let lastBaselineViews = vStack.lastBaselineViews ()
-        let m = Swift.min (lastBaselineViews.count, ioLastBaselineViews.count)
-        for i in 0 ..< m {
-          if let lastBaselineView = lastBaselineViews [i] {
-            if let refLastBaselineView = ioLastBaselineViews [i] {
-              ioContraints.add (lastBaselineOf: lastBaselineView, equalToLastBaselineOf: refLastBaselineView)
-            }else{
-              ioLastBaselineViews [i] = lastBaselineViews [i]
+        if ioGutters.count > 0 {
+          let lastBaselineViews = vStack.lastBaselineViews ()
+          let m = Swift.min (lastBaselineViews.count, ioLastBaselineViews.count)
+          for i in 0 ..< m {
+            if let lastBaselineView = lastBaselineViews [i] {
+              if let refLastBaselineView = ioLastBaselineViews [i] {
+                ioContraints.add (lastBaselineOf: lastBaselineView, equalToLastBaselineOf: refLastBaselineView)
+              }else{
+                ioLastBaselineViews [i] = lastBaselineViews [i]
+              }
             }
           }
-        }
-        for i in m ..< lastBaselineViews.count {
-          ioLastBaselineViews.append (lastBaselineViews [i])
+          for i in m ..< lastBaselineViews.count {
+            ioLastBaselineViews.append (lastBaselineViews [i])
+          }
         }
       }
     }

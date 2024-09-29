@@ -1224,6 +1224,7 @@ self.configure_sheetPopUpButtonConfigurator2 (toTopHStack) // Configurator
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
         .set (margins: .regular)
+        .set (spacing: .small)
       _ = vStackView_view.appendFlexibleSpace ()
       do{
         let vStackView_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
@@ -2696,6 +2697,7 @@ do{
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
           .set (margins: .regular)
+          .set (spacing: .small)
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.")
           self.configure_addBoardImageButton (hStackView_view_view_view) // Configurator

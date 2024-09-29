@@ -259,7 +259,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     newView displayInspectorView = \DisplayInspectorView ()
     newView issuesInspectorView = \IssuesInspectorView ()
     vStack set (width: 250) set (leftMargin: .large) set (rightMargin: .large) set (topMargin: .regular) set (spacing: .large) {
-      hStack {
+      hStack set (spacing: .zero) {
         DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
         space
         DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }

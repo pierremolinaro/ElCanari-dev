@@ -781,6 +781,7 @@ import AppKit
         .set (spacing: .large)
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
+          .set (spacing: .zero)
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButton (tooltip: "Add Segment")
             .bind_image (self.addSegmentButtonImage_property)
