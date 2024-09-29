@@ -14,6 +14,12 @@ extension NSWindow {
   @MainActor func setContentView (_ inContentView : NSView) {
     self.contentView = AutoLayoutWindowContentView (view: inContentView)
   }
+
+  func triggerDecoration () {
+    if let view = self.contentView as? AutoLayoutWindowContentView {
+      view.triggerDecoration ()
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -153,11 +159,6 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     constraints.add (rightOf: self, equalToRightOf: inView)
     constraints.add (bottomOf: self, equalToBottomOf: inView)
 
-//    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .horizontal), for: .horizontal)
-//    self.setContentHuggingPriority (inView.contentHuggingPriority (for: .vertical), for: .vertical)
-//    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .horizontal), for: .horizontal)
-//    self.setContentCompressionResistancePriority (inView.contentCompressionResistancePriority (for: .vertical), for: .vertical)
-
     self.addSubview (self.mHiliteView)
     constraints.add (leftOf: self, equalToLeftOf: self.mHiliteView)
     constraints.add (topOf: self, equalToTopOf: self.mHiliteView)
@@ -189,6 +190,12 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func triggerDecoration () {
+    self.mHiliteView.needsDisplay = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -311,20 +318,6 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     }
     return super.wantsForwardedScrollEvents (for: axis)
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override func trackSwipeEvent (options: NSEvent.SwipeTrackingOptions = [],
-//      dampenAmountThresholdMin minDampenThreshold: CGFloat,
-//      max maxDampenThreshold: CGFloat,
-//      usingHandler trackingHandler: @escaping (CGFloat, NSEvent.Phase, Bool, UnsafeMutablePointer<ObjCBool>) -> Void)) {
-//   super.trackSwipeEvent (
-//      options: options,
-//      dampenAmountThresholdMin: minDampenThreshold,
-//      max: maxDampenThreshold,
-//      usingHandler: trackingHandler
-//    )
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -526,7 +519,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
 
   override func draw (_ inDirtyRect : NSRect) {
     if getDebugAutoLayout () {
-      self.drawViewRects (self.mRootView)
+      self.decorateViewRects (self.mRootView)
     }
     if getDebugResponderChain () {
       let strokeBP = NSBezierPath ()
@@ -559,7 +552,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func drawViewRects (_ inView : NSView) {
+  private func decorateViewRects (_ inView : NSView) {
     if !inView.frame.isEmpty {
       let viewFrame = self.convert (inView.alignmentRect (forFrame: inView.bounds), from: inView)
       var exploreSubviews = true
@@ -639,7 +632,7 @@ fileprivate final class FilePrivateHiliteView : NSView {
       }
       if exploreSubviews {
         for view in inView.subviews {
-          self.drawViewRects (view)
+          self.decorateViewRects (view)
         }
       }
     }
