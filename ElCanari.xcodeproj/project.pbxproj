@@ -948,6 +948,8 @@
 		CF3DD5F9250236A400163A12 /* file-metadata-get.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DD5F7250236A400163A12 /* file-metadata-get.swift */; };
 		CF3E658A21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */; };
 		CF3E658B21BECB7A0041FA2A /* EBGraphicView-issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */; };
+		CF3F92CC2CA991C4004D8BFB /* AnchorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F92CA2CA991B9004D8BFB /* AnchorProtocol.swift */; };
+		CF3F92CD2CA9940E004D8BFB /* AnchorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3F92CA2CA991B9004D8BFB /* AnchorProtocol.swift */; };
 		CF40D13329CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40D13129CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift */; };
 		CF40D13429CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40D13129CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift */; };
 		CF40D13629CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusErrorCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40D13229CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusErrorCount.swift */; };
@@ -3979,6 +3981,7 @@
 		CF3DAD342AD0A2D6003830F4 /* EBEnumReadObservableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBEnumReadObservableProtocol.swift; sourceTree = "<group>"; };
 		CF3DD5F7250236A400163A12 /* file-metadata-get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-get.swift"; sourceTree = "<group>"; };
 		CF3E658921BECB7A0041FA2A /* EBGraphicView-issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-issue.swift"; sourceTree = "<group>"; };
+		CF3F92CA2CA991B9004D8BFB /* AnchorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorProtocol.swift; sourceTree = "<group>"; };
 		CF40D13129CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusWarningCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutSymbolDocument-statusWarningCount.swift"; sourceTree = "<group>"; };
 		CF40D13229CF7E9500B94422 /* transient-AutoLayoutSymbolDocument-statusErrorCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutSymbolDocument-statusErrorCount.swift"; sourceTree = "<group>"; };
 		CF40D13929CF81B600B94422 /* transient-AutoLayoutPackageDocument-statusErrorCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-statusErrorCount.swift"; sourceTree = "<group>"; };
@@ -6387,6 +6390,7 @@
 				CF21D88A2C7476B70012AD5F /* ALB_NSTextView.swift */,
 				CF7AB2D02C734F3800BA9590 /* ALB_NSView.swift */,
 				CF7AB2CB2C734F3800BA9590 /* ALB_WKWebView.swift */,
+				CF3F92CA2CA991B9004D8BFB /* AnchorProtocol.swift */,
 				CFCC545325D2F937009C186D /* AutoLayout-debug-menu.swift */,
 				CF7AB2BD2C734F3700BA9590 /* AutoLayoutHorizontalStackView.swift */,
 				CF7AB2D42C734F3900BA9590 /* AutoLayoutVerticalStackView.swift */,
@@ -9725,6 +9729,7 @@
 				CF40D15629CF888A00B94422 /* transient-AutoLayoutArtworkDocument-statusErrorCount.swift in Sources */,
 				CF4EA9FB26F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner2LayerString.swift in Sources */,
 				CFA80DC625C0493100966D91 /* transient-BoardTrack-p2ConnectedToSomePad.swift in Sources */,
+				CF3F92CC2CA991C4004D8BFB /* AnchorProtocol.swift in Sources */,
 				CFB7D8DA2683A61D007B9D3B /* transient-AutoLayoutPackageDocument-addSegmentButtonImage.swift in Sources */,
 				CF42D122275CF1A600B83712 /* transient-AutoLayoutMergerDocument-generatedFileCountString.swift in Sources */,
 				CFFEC1C82804836300E5E8DD /* tomany-PackageZone.swift in Sources */,
@@ -10940,6 +10945,7 @@
 				CF8570F025BF44AE00801CA0 /* compute-BoardTrack-trackDirectionInDegrees.swift in Sources */,
 				CFF6D68A2427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */,
 				CF8386912423CEBC007F1D21 /* EBGraphicView-binding-backgroundImage.swift in Sources */,
+				CF3F92CD2CA9940E004D8BFB /* AnchorProtocol.swift in Sources */,
 				CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */,
 				CFFF881029BE364C007A12DE /* property-CGFloat.swift in Sources */,
 				CF05B7FA2AD1E513009B6E1E /* EBTransientProperty.swift in Sources */,

@@ -179,7 +179,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   //--- Build constraints
     if let root = self.mHStackHierarchy {
       var flexibleSpaceView : HorizontalStackFlexibleSpace? = nil
-      var optionalLastRightView : NSLayoutXAxisAnchor? = nil
+      var optionalLastRightView : (any AnchorProtocol)? = nil
       root.buildConstraintsFor (
         horizontalStackView: self,
         optionalLastRightView: &optionalLastRightView,
@@ -187,7 +187,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
         &self.mConstraints
       )
       if let lastRightView = optionalLastRightView {
-        self.mConstraints.add (rightOf: self, equalToAnchor: lastRightView, plus: self.mRightMargin)
+        self.mConstraints.add (rightOf: self, equalToRightOf: lastRightView, plus: self.mRightMargin)
       }else{
         self.mConstraints.add (leftOf: self, equalToRightOf: self)
       }

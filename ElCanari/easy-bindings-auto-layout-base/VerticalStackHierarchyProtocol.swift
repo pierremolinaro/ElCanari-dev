@@ -19,7 +19,7 @@ import AppKit
   func removeInVerticalHierarchy (_ inView : NSView)
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
-                            optionalLastBottomView ioOptionalLastBottomView : inout NSLayoutYAxisAnchor?,
+                            optionalLastBottomView ioOptionalLastBottomView : inout (any AnchorProtocol)?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint])
 

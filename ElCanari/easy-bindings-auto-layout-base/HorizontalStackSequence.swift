@@ -56,7 +56,7 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
+                            optionalLastRightView ioOptionalLastRightView : inout (any AnchorProtocol)?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Vertical constraints
@@ -77,11 +77,11 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
     for view in self.mViewArray {
       if !view.isHidden {
         if let lastLeftView = ioOptionalLastRightView {
-          ioContraints.add (leftOf: view, equalToAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
+          ioContraints.add (leftOf: view, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
         }else{
           ioContraints.add (leftOf: view, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
         }
-        ioOptionalLastRightView = view.rightAnchor
+        ioOptionalLastRightView = view
       }
     }
   }
@@ -97,7 +97,7 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
         let gutters = vStack.gutters ()
         let n = Swift.min (gutters.count, ioGutters.count)
         for i in 0 ..< n {
-          ioContraints.add (bottomOfGuide: gutters [i], equalToBottomOfGuide: ioGutters [i])
+          ioContraints.add (bottomOf: gutters [i], equalToBottomOf: ioGutters [i])
         }
         for i in n ..< gutters.count {
           ioGutters.append (gutters [i])

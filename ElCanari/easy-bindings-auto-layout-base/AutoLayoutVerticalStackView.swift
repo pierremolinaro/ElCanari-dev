@@ -200,7 +200,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   //--- Build constraints
     if let root = self.mVStackHierarchy {
       var flexibleSpaceView : VerticalStackFlexibleSpace? = nil
-      var optionalLastBottomView : NSLayoutYAxisAnchor? = nil
+      var optionalLastBottomView : (any AnchorProtocol)? = nil
       root.buildConstraintsFor (
         verticalStackView: self,
         optionalLastBottomView: &optionalLastBottomView,
@@ -208,7 +208,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
         &self.mConstraints
       )
       if let lastBottomView = optionalLastBottomView {
-        self.mConstraints.add (bottomAnchor: lastBottomView, equalToBottomOfView: self, plus: self.mBottomMargin)
+        self.mConstraints.add (bottomOf: lastBottomView, equalToBottomOf: self, plus: self.mBottomMargin)
       }else{
         self.mConstraints.add (bottomOf: self, equalToTopOf: self)
       }

@@ -70,7 +70,7 @@ final class VerticalStackFlexibleSpace : NSLayoutGuide, VerticalStackHierarchyPr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
-                            optionalLastBottomView ioOptionalLastBottomView : inout NSLayoutYAxisAnchor?,
+                            optionalLastBottomView ioOptionalLastBottomView : inout (any AnchorProtocol)?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -81,17 +81,17 @@ final class VerticalStackFlexibleSpace : NSLayoutGuide, VerticalStackHierarchyPr
       &ioContraints
     )
   //--- Flexible space
-    ioContraints.add (leftOfGuide: self, equalToLeftOf: inVerticalStackView)
-    ioContraints.add (rightOf: inVerticalStackView, equalToRightOfGuide: self)
+    ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView)
+    ioContraints.add (rightOf: inVerticalStackView, equalToRightOf: self)
     if let lastSpace = ioFlexibleSpaceView {
-      ioContraints.add (heightOfGuide: lastSpace, equalToHeightOfGuide: self)
+      ioContraints.add (heightOf: lastSpace, equalToHeightOf: self)
     }
     if let lastBottomView = ioOptionalLastBottomView {
-      ioContraints.add (bottomAnchor: lastBottomView, equalToTopOfGuide: self, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (bottomOf: lastBottomView, equalToTopOf: self, plus: inVerticalStackView.mSpacing)
     }else{
-      ioContraints.add (topOf: inVerticalStackView, equalToTopOfGuide: self, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (topOf: inVerticalStackView, equalToTopOf: self, plus: inVerticalStackView.mTopMargin)
     }
-    ioOptionalLastBottomView = self.bottomAnchor
+    ioOptionalLastBottomView = self
     ioFlexibleSpaceView = self
   //--- After
     self.mBelow?.buildConstraintsFor (

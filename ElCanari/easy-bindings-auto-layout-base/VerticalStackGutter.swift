@@ -63,7 +63,7 @@ final class VerticalStackGutter : NSLayoutGuide, VerticalStackHierarchyProtocol 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
-                            optionalLastBottomView ioOptionalLastBottomView : inout NSLayoutYAxisAnchor?,
+                            optionalLastBottomView ioOptionalLastBottomView : inout (any AnchorProtocol)?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -74,16 +74,16 @@ final class VerticalStackGutter : NSLayoutGuide, VerticalStackHierarchyProtocol 
       &ioContraints
     )
   //--- Gutter
-    ioContraints.add (leftOfGuide: self, equalToLeftOf: inVerticalStackView)
-    ioContraints.add (rightOfGuide: self, equalToRightOf: inVerticalStackView)
-    ioContraints.add (heightOfGuide: self, equalTo: GUTTER_HEIGHT)
+    ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView)
+    ioContraints.add (rightOf: self, equalToRightOf: inVerticalStackView)
+    ioContraints.add (heightOf: self, equalTo: GUTTER_HEIGHT)
     if let lastBottomView = ioOptionalLastBottomView {
-      ioContraints.add (bottomAnchor: lastBottomView, equalToTopOfGuide: self, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (bottomOf: lastBottomView, equalToTopOf: self, plus: inVerticalStackView.mSpacing)
     }else{
-      ioContraints.add (topOf: inVerticalStackView, equalToTopOfGuide: self, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (topOf: inVerticalStackView, equalToTopOf: self, plus: inVerticalStackView.mTopMargin)
     }
   //--- After
-    ioOptionalLastBottomView = self.bottomAnchor
+    ioOptionalLastBottomView = self
     self.mBelow?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
       optionalLastBottomView: &ioOptionalLastBottomView,
