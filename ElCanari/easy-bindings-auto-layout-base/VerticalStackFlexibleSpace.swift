@@ -81,8 +81,8 @@ final class VerticalStackFlexibleSpace : NSLayoutGuide, VerticalStackHierarchyPr
       &ioContraints
     )
   //--- Flexible space
-    ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView)
-    ioContraints.add (rightOf: inVerticalStackView, equalToRightOf: self)
+    ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView, plus: inVerticalStackView.mLeftMargin)
+    ioContraints.add (rightOf: inVerticalStackView, equalToRightOf: self, plus: inVerticalStackView.mRightMargin)
     if let lastSpace = ioFlexibleSpaceView {
       ioContraints.add (heightOf: lastSpace, equalToHeightOf: self)
     }

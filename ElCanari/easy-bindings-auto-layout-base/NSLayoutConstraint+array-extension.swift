@@ -26,11 +26,11 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  mutating func add (widthOfGuide inView1 : NSLayoutGuide,
-//                     equalToWidthOfGuide inView2 : NSLayoutGuide) {
-//    let c = inView1.widthAnchor.constraint (equalTo: inView2.widthAnchor)
-//    self.append (c)
-//  }
+  mutating func add (widthOfGuide inView1 : NSLayoutGuide,
+                     equalToWidthOfGuide inView2 : NSLayoutGuide) {
+    let c = inView1.widthAnchor.constraint (equalTo: inView2.widthAnchor)
+    self.append (c)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

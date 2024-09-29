@@ -100,16 +100,14 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   final func appendSeparator (ignoreHorizontalMargins inFlag : Bool = true) -> Self {
     let separator = VerticalStackSeparator (ignoreHorizontalMargins: inFlag)
-    _ = self.appendView (separator)
-    return self
+    return self.appendView (separator)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func prependSeparator (ignoreHorizontalMargins inFlag : Bool = true) -> Self {
     let separator = VerticalStackSeparator (ignoreHorizontalMargins: inFlag)
-    _ = self.prependView (separator)
-    return self
+    return self.prependView (separator)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

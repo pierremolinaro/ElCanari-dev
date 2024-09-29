@@ -35,8 +35,8 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   final override func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
-    self.invalidateIntrinsicContentSize ()
     Self.appendInHorizontalHierarchy (inView, toStackRoot: &self.mHStackHierarchy)
+    self.invalidateIntrinsicContentSize ()
     return self
   }
 

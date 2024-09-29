@@ -70,8 +70,8 @@ final class HorizontalStackFlexibleSpace : NSLayoutGuide, HorizontalStackHierarc
       &ioContraints
     )
   //--- Flexible space
-    ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self)
-    ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
+    ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self, plus: inHorizontalStackView.mTopMargin)
+    ioContraints.add (bottomOf: self, equalToBottomOf: inHorizontalStackView, plus: inHorizontalStackView.mBottomMargin)
     if let lastSpace = ioFlexibleSpaceView {
       ioContraints.add (widthOf: lastSpace, equalToWidthOf: self)
     }
