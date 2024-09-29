@@ -26,6 +26,14 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  mutating func add (widthOfGuide inView1 : NSLayoutGuide,
+                     equalToWidthOfGuide inView2 : NSLayoutGuide) {
+    let c = inView1.widthAnchor.constraint (equalTo: inView2.widthAnchor)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   mutating func add (widthOf inView1 : NSView,
                      greaterThanOrEqualToConstant inConstant : CGFloat) {
     let c = inView1.widthAnchor.constraint (greaterThanOrEqualToConstant: inConstant)
@@ -35,6 +43,14 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (widthOf inView : NSView,
+                     equalTo inValue : CGFloat) {
+    let c = inView.widthAnchor.constraint (equalToConstant: inValue)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (widthOfGuide inView : NSLayoutGuide,
                      equalTo inValue : CGFloat) {
     let c = inView.widthAnchor.constraint (equalToConstant: inValue)
     self.append (c)
@@ -52,8 +68,24 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  mutating func add (heightOfGuide inView : NSLayoutGuide,
+                     equalTo inValue : CGFloat) {
+    let c = inView.heightAnchor.constraint (equalToConstant: inValue)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   mutating func add (heightOf inView1 : NSView,
                      equalToHeightOf inView2 : NSView) {
+    let c = inView1.heightAnchor.constraint (equalTo: inView2.heightAnchor)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (heightOfGuide inView1 : NSLayoutGuide,
+                     equalToHeightOfGuide inView2 : NSLayoutGuide) {
     let c = inView1.heightAnchor.constraint (equalTo: inView2.heightAnchor)
     self.append (c)
   }
@@ -72,6 +104,24 @@ import AppKit
 
   mutating func add (leftOf inView1 : NSView,
                      equalToLeftOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = inView1.leftAnchor.constraint (equalTo: inView2.leftAnchor, constant: inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (leftOfGuide inView1 : NSLayoutGuide,
+                     equalToLeftOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = inView1.leftAnchor.constraint (equalTo: inView2.leftAnchor, constant: inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (leftOfGuide inView1 : NSLayoutGuide,
+                     equalToLeftOfGuide inView2 : NSLayoutGuide,
                      plus inOffset : CGFloat = 0.0) {
     let c = inView1.leftAnchor.constraint (equalTo: inView2.leftAnchor, constant: inOffset)
     self.append (c)
@@ -98,11 +148,59 @@ import AppKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (leftOfGuide inView1 : NSLayoutGuide,
+                     equalToAnchor inAnchor : NSLayoutXAxisAnchor,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = inView1.leftAnchor.constraint (equalTo: inAnchor, constant: inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (leftOf inView1 : NSView,
+                     equalToAnchor inAnchor : NSLayoutXAxisAnchor,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = inView1.leftAnchor.constraint (equalTo: inAnchor, constant: inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Right
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (rightOfGuide inView1 : NSLayoutGuide,
+                     equalToRightOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = inView1.rightAnchor.constraint (equalTo: inView2.rightAnchor, constant: inOffset)
+    c.priority = LayoutCompressionConstraintPriority.highest.cocoaPriority
+    self.append (c)
+  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (rightOf inView1 : NSView,
                      equalToRightOf inView2 : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = inView1.rightAnchor.constraint (equalTo: inView2.rightAnchor, constant: inOffset)
+    c.priority = LayoutCompressionConstraintPriority.highest.cocoaPriority
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (rightOf inView1 : NSView,
+                     equalToAnchor inAnchor : NSLayoutXAxisAnchor,
+                     plus inOffset : CGFloat = 0.0) {
+    let c = inView1.rightAnchor.constraint (equalTo: inAnchor, constant: inOffset)
+    c.priority = LayoutCompressionConstraintPriority.highest.cocoaPriority
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (rightOf inView1 : NSView,
+                     equalToRightOfGuide inView2 : NSLayoutGuide,
                      plus inOffset : CGFloat = 0.0) {
     let c = inView1.rightAnchor.constraint (equalTo: inView2.rightAnchor, constant: inOffset)
     c.priority = LayoutCompressionConstraintPriority.highest.cocoaPriority
@@ -118,6 +216,16 @@ import AppKit
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
     let c = inView1.topAnchor.constraint (equalTo: inView2.topAnchor, constant: -inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (topOf inView1 : NSView,
+                     equalToTopOfGuide inGuide : NSLayoutGuide,
+                     plus inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+    let c = inView1.topAnchor.constraint (equalTo: inGuide.topAnchor, constant: -inOffset)
     self.append (c)
   }
 
@@ -190,11 +298,61 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  mutating func add (bottomOfGuide inView1 : NSLayoutGuide,
+                     equalToBottomOfGuide inView2 : NSLayoutGuide,
+                     plus inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+    let c = inView1.bottomAnchor.constraint (equalTo: inView2.bottomAnchor, constant: -inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (bottomOf inView1 : NSView,
+                     equalToBottomOfGuide inGuide : NSLayoutGuide,
+                     plus inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+    let c = inView1.bottomAnchor.constraint (equalTo: inGuide.bottomAnchor, constant: -inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   mutating func add (bottomOf inView1 : NSView,
                      equalToTopOf inView2 : NSView,
                      plus inOffset : CGFloat = 0.0) {
   // Vertical Axis is from to top to bottom
     let c = inView1.bottomAnchor.constraint (equalTo: inView2.topAnchor, constant: -inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (bottomAnchor inBottomAnchor : NSLayoutYAxisAnchor,
+                     equalToTopOfGuide inGuide : NSLayoutGuide,
+                     plus inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+    let c = inBottomAnchor.constraint (equalTo: inGuide.topAnchor, constant: -inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (bottomAnchor inBottomAnchor : NSLayoutYAxisAnchor,
+                     equalToTopOfView inView : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+    let c = inBottomAnchor.constraint (equalTo: inView.topAnchor, constant: -inOffset)
+    self.append (c)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func add (bottomAnchor inBottomAnchor : NSLayoutYAxisAnchor,
+                     equalToBottomOfView inView : NSView,
+                     plus inOffset : CGFloat = 0.0) {
+  // Vertical Axis is from to top to bottom
+    let c = inBottomAnchor.constraint (equalTo: inView.bottomAnchor, constant: -inOffset)
     self.append (c)
   }
 

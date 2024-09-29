@@ -10,13 +10,14 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class VerticalStackFlexibleSpace : ALB_NSView, VerticalStackHierarchyProtocol {
+final class VerticalStackFlexibleSpace : NSLayoutGuide, VerticalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inRoot : (any VerticalStackHierarchyProtocol)?) {
     self.mAbove = inRoot
     super.init ()
+    noteObjectAllocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -27,14 +28,20 @@ final class VerticalStackFlexibleSpace : ALB_NSView, VerticalStackHierarchyProto
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
-    vLayoutInHorizontalContainer: .fill,
-    hLayoutInVerticalContainer: .fill
-  )
+  deinit {
+    noteObjectDeallocation (self)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var pmLayoutSettings : AutoLayoutViewSettings { Self.mFlexibleSpaceLayoutSettings }
+//  private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
+//    vLayoutInHorizontalContainer: .fill,
+//    hLayoutInVerticalContainer: .fill
+//  )
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override var pmLayoutSettings : AutoLayoutViewSettings { Self.mFlexibleSpaceLayoutSettings }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -63,7 +70,7 @@ final class VerticalStackFlexibleSpace : ALB_NSView, VerticalStackHierarchyProto
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
-                            optionalLastBottomView ioOptionalLastBottomView : inout NSView?,
+                            optionalLastBottomView ioOptionalLastBottomView : inout NSLayoutYAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -74,17 +81,17 @@ final class VerticalStackFlexibleSpace : ALB_NSView, VerticalStackHierarchyProto
       &ioContraints
     )
   //--- Flexible space
-    ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView)
-    ioContraints.add (rightOf: inVerticalStackView, equalToRightOf: self)
+    ioContraints.add (leftOfGuide: self, equalToLeftOf: inVerticalStackView)
+    ioContraints.add (rightOf: inVerticalStackView, equalToRightOfGuide: self)
     if let lastSpace = ioFlexibleSpaceView {
-      ioContraints.add (heightOf: lastSpace, equalToHeightOf: self)
+      ioContraints.add (heightOfGuide: lastSpace, equalToHeightOfGuide: self)
     }
     if let lastBottomView = ioOptionalLastBottomView {
-      ioContraints.add (bottomOf: lastBottomView, equalToTopOf: self, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (bottomAnchor: lastBottomView, equalToTopOfGuide: self, plus: inVerticalStackView.mSpacing)
     }else{
-      ioContraints.add (topOf: inVerticalStackView, equalToTopOf: self, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (topOf: inVerticalStackView, equalToTopOfGuide: self, plus: inVerticalStackView.mTopMargin)
     }
-    ioOptionalLastBottomView = self
+    ioOptionalLastBottomView = self.bottomAnchor
     ioFlexibleSpaceView = self
   //--- After
     self.mBelow?.buildConstraintsFor (

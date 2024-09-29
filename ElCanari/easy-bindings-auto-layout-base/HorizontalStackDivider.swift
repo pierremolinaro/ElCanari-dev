@@ -73,7 +73,7 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout NSView?,
+                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -88,12 +88,12 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
     ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
     ioContraints.add (widthOf: self, equalTo: DIVIDER_WIDTH)
     if let lastLeftView = ioOptionalLastRightView {
-      ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      ioContraints.add (leftOf: self, equalToAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
     }else{
       ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
-    ioOptionalLastRightView = self
+    ioOptionalLastRightView = self.rightAnchor
     self.mRight?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
       optionalLastRightView: &ioOptionalLastRightView,
@@ -108,8 +108,6 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
                                _ ioLastBaselineViews : inout [NSView?],
                                _ ioContraints : inout [NSLayoutConstraint]) {
     self.mLeft?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
-//    ioGutters = []
-//    ioLastBaselineViews = []
     self.mRight?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
   }
 

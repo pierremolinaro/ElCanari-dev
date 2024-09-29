@@ -19,7 +19,7 @@ import AppKit
   func removeInHorizontalHierarchy (_ inView : NSView)
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout NSView?,
+                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint])
 

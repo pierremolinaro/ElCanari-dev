@@ -70,7 +70,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   final func appendGutter () -> Self {
     let newRoot = HorizontalStackGutter (self.mHStackHierarchy)
-    self.addSubview (newRoot)
+    self.addLayoutGuide (newRoot)
     self.mGutterArray.append (newRoot)
     self.mHStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
@@ -96,7 +96,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   final func appendFlexibleSpace () -> Self {
     let newRoot = HorizontalStackFlexibleSpace (self.mHStackHierarchy)
-    self.addSubview (newRoot)
+    self.addLayoutGuide (newRoot)
     self.mHStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -179,7 +179,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   //--- Build constraints
     if let root = self.mHStackHierarchy {
       var flexibleSpaceView : HorizontalStackFlexibleSpace? = nil
-      var optionalLastRightView : NSView? = nil
+      var optionalLastRightView : NSLayoutXAxisAnchor? = nil
       root.buildConstraintsFor (
         horizontalStackView: self,
         optionalLastRightView: &optionalLastRightView,
@@ -187,7 +187,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
         &self.mConstraints
       )
       if let lastRightView = optionalLastRightView {
-        self.mConstraints.add (rightOf: self, equalToRightOf: lastRightView, plus: self.mRightMargin)
+        self.mConstraints.add (rightOf: self, equalToAnchor: lastRightView, plus: self.mRightMargin)
       }else{
         self.mConstraints.add (leftOf: self, equalToRightOf: self)
       }

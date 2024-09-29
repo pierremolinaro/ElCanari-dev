@@ -10,19 +10,26 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class HorizontalStackFlexibleSpace : ALB_NSView, HorizontalStackHierarchyProtocol {
+final class HorizontalStackFlexibleSpace : NSLayoutGuide, HorizontalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inRoot : (any HorizontalStackHierarchyProtocol)?) {
     self.mLeft = inRoot
     super.init ()
+    noteObjectAllocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -52,7 +59,7 @@ final class HorizontalStackFlexibleSpace : ALB_NSView, HorizontalStackHierarchyP
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout NSView?,
+                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
     //--- Before
@@ -63,23 +70,23 @@ final class HorizontalStackFlexibleSpace : ALB_NSView, HorizontalStackHierarchyP
       &ioContraints
     )
   //--- Flexible space
-    ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self)
-    ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
+    ioContraints.add (topOf: inHorizontalStackView, equalToTopOfGuide: self)
+    ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOfGuide: self)
     if let lastSpace = ioFlexibleSpaceView {
-      ioContraints.add (widthOf: lastSpace, equalToWidthOf: self)
+      ioContraints.add (widthOfGuide: lastSpace, equalToWidthOfGuide: self)
     }
     ioFlexibleSpaceView = self
     if let lastLeftView = ioOptionalLastRightView {
-      if lastLeftView is Self {
-        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView)
-      }else{
-        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
-      }
+//      if lastLeftView is Self {
+//        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView)
+//      }else{
+        ioContraints.add (leftOfGuide: self, equalToAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
+//      }
     }else{
-      ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      ioContraints.add (leftOfGuide: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
-    ioOptionalLastRightView = self
+    ioOptionalLastRightView = self.rightAnchor
     self.mRight?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
       optionalLastRightView: &ioOptionalLastRightView,
@@ -96,17 +103,6 @@ final class HorizontalStackFlexibleSpace : ALB_NSView, HorizontalStackHierarchyP
     self.mLeft?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
     self.mRight?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private static let mFlexibleSpaceLayoutSettings = AutoLayoutViewSettings (
-    vLayoutInHorizontalContainer: .fill,
-    hLayoutInVerticalContainer: .fill
-  )
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var pmLayoutSettings : AutoLayoutViewSettings { Self.mFlexibleSpaceLayoutSettings }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

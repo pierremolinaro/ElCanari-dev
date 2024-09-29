@@ -14,13 +14,14 @@ let GUTTER_WIDTH = 4.0
 
 //--------------------------------------------------------------------------------------------------
 
-final class HorizontalStackGutter : ALB_NSView, HorizontalStackHierarchyProtocol {
+final class HorizontalStackGutter : NSLayoutGuide, HorizontalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inRoot : (any HorizontalStackHierarchyProtocol)?) {
     self.mLeft = inRoot
     super.init ()
+    noteObjectAllocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -31,15 +32,8 @@ final class HorizontalStackGutter : ALB_NSView, HorizontalStackHierarchyProtocol
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var intrinsicContentSize : NSSize { NSSize (width: GUTTER_WIDTH, height: NSView.noIntrinsicMetric) }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var pmLayoutSettings : AutoLayoutViewSettings {
-    return AutoLayoutViewSettings (
-      vLayoutInHorizontalContainer: .fillIgnoringMargins,
-      hLayoutInVerticalContainer: .fill // non significant, as vertical separator cannot be inside a vertical stack view
-    )
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -69,7 +63,7 @@ final class HorizontalStackGutter : ALB_NSView, HorizontalStackHierarchyProtocol
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout NSView?,
+                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -80,16 +74,16 @@ final class HorizontalStackGutter : ALB_NSView, HorizontalStackHierarchyProtocol
       &ioContraints
     )
   //--- Gutter
-    ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self)
-    ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
-    ioContraints.add (widthOf: self, equalTo: GUTTER_WIDTH)
+    ioContraints.add (topOf: inHorizontalStackView, equalToTopOfGuide: self)
+    ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOfGuide: self)
+    ioContraints.add (widthOfGuide: self, equalTo: GUTTER_WIDTH)
     if let lastLeftView = ioOptionalLastRightView {
-      ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      ioContraints.add (leftOfGuide: self, equalToAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
     }else{
-      ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      ioContraints.add (leftOfGuide: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
-    ioOptionalLastRightView = self
+    ioOptionalLastRightView = self.rightAnchor
     self.mRight?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
       optionalLastRightView: &ioOptionalLastRightView,

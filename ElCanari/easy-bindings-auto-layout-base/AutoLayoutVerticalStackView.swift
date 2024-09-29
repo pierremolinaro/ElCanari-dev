@@ -70,7 +70,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   final func appendGutter () -> Self {
     let newRoot = VerticalStackGutter (self.mVStackHierarchy)
     self.mGutterArray.append (newRoot)
-    self.addSubview (newRoot)
+    self.addLayoutGuide (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -90,7 +90,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   final func appendFlexibleSpace () -> Self {
     let newRoot = VerticalStackFlexibleSpace (self.mVStackHierarchy)
-    self.addSubview (newRoot)
+    self.addLayoutGuide (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -200,7 +200,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   //--- Build constraints
     if let root = self.mVStackHierarchy {
       var flexibleSpaceView : VerticalStackFlexibleSpace? = nil
-      var optionalLastBottomView : NSView? = nil
+      var optionalLastBottomView : NSLayoutYAxisAnchor? = nil
       root.buildConstraintsFor (
         verticalStackView: self,
         optionalLastBottomView: &optionalLastBottomView,
@@ -208,7 +208,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
         &self.mConstraints
       )
       if let lastBottomView = optionalLastBottomView {
-        self.mConstraints.add (bottomOf: lastBottomView, equalToBottomOf: self, plus: self.mBottomMargin)
+        self.mConstraints.add (bottomAnchor: lastBottomView, equalToBottomOfView: self, plus: self.mBottomMargin)
       }else{
         self.mConstraints.add (bottomOf: self, equalToTopOf: self)
       }

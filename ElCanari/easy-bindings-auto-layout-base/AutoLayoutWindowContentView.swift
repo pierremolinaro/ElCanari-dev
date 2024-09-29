@@ -581,22 +581,22 @@ fileprivate final class FilePrivateHiliteView : NSView {
           r.size.width = stackView.mRightMargin
           NSBezierPath.fill (r)
         }
-      }else if inView is VerticalStackFlexibleSpace {
-        DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
-        NSBezierPath.fill (viewFrame)
-        exploreSubviews = false
-      }else if inView is HorizontalStackFlexibleSpace {
-        DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
-        NSBezierPath.fill (viewFrame)
-        exploreSubviews = false
-      }else if inView is HorizontalStackGutter {
-        GUTTER_FILL_COLOR.setFill ()
-        NSBezierPath.fill (viewFrame)
-        exploreSubviews = false
-      }else if inView is VerticalStackGutter {
-        GUTTER_FILL_COLOR.setFill ()
-        NSBezierPath.fill (viewFrame)
-        exploreSubviews = false
+//      }else if inView is VerticalStackFlexibleSpace {
+//        DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
+//        NSBezierPath.fill (viewFrame)
+//        exploreSubviews = false
+//      }else if inView is HorizontalStackFlexibleSpace {
+//        DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
+//        NSBezierPath.fill (viewFrame)
+//        exploreSubviews = false
+//      }else if inView is HorizontalStackGutter {
+//        GUTTER_FILL_COLOR.setFill ()
+//        NSBezierPath.fill (viewFrame)
+//        exploreSubviews = false
+//      }else if inView is VerticalStackGutter {
+//        GUTTER_FILL_COLOR.setFill ()
+//        NSBezierPath.fill (viewFrame)
+//        exploreSubviews = false
       }else if inView is HorizontalStackSeparator { // Do not frame
         exploreSubviews = false
       }else if inView is VerticalStackSeparator { // Do not frame
@@ -641,6 +641,17 @@ fileprivate final class FilePrivateHiliteView : NSView {
       if exploreSubviews {
         for view in inView.subviews {
           self.decorateViewRects (view)
+        }
+        for guide in inView.layoutGuides {
+          if (guide is VerticalStackFlexibleSpace) || (guide is HorizontalStackFlexibleSpace) {
+            DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
+            let frame = self.convert (guide.frame, from: inView)
+            NSBezierPath.fill (frame)
+          }else if (guide is HorizontalStackGutter) || (guide is VerticalStackGutter) {
+            GUTTER_FILL_COLOR.setFill ()
+            let frame = self.convert (guide.frame, from: inView)
+            NSBezierPath.fill (frame)
+          }
         }
       }
     }

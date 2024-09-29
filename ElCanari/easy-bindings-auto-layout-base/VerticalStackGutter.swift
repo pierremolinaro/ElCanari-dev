@@ -14,13 +14,14 @@ let GUTTER_HEIGHT = 4.0
 
 //--------------------------------------------------------------------------------------------------
 
-final class VerticalStackGutter : ALB_NSView, VerticalStackHierarchyProtocol {
+final class VerticalStackGutter : NSLayoutGuide, VerticalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inRoot : (any VerticalStackHierarchyProtocol)?) {
     self.mAbove = inRoot
     super.init ()
+    noteObjectAllocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -31,17 +32,8 @@ final class VerticalStackGutter : ALB_NSView, VerticalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var intrinsicContentSize : NSSize {
-    NSSize (width: NSView.noIntrinsicMetric, height: GUTTER_HEIGHT)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override var pmLayoutSettings : AutoLayoutViewSettings {
-    return AutoLayoutViewSettings (
-      vLayoutInHorizontalContainer: .fill, // non significant, as h separator cannot be inside a vertical stack view
-      hLayoutInVerticalContainer: .fillIgnoringMargins
-    )
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -71,7 +63,7 @@ final class VerticalStackGutter : ALB_NSView, VerticalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
-                            optionalLastBottomView ioOptionalLastBottomView : inout NSView?,
+                            optionalLastBottomView ioOptionalLastBottomView : inout NSLayoutYAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -82,16 +74,16 @@ final class VerticalStackGutter : ALB_NSView, VerticalStackHierarchyProtocol {
       &ioContraints
     )
   //--- Gutter
-    ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView)
-    ioContraints.add (rightOf: self, equalToRightOf: inVerticalStackView)
-    ioContraints.add (heightOf: self, equalTo: GUTTER_HEIGHT)
+    ioContraints.add (leftOfGuide: self, equalToLeftOf: inVerticalStackView)
+    ioContraints.add (rightOfGuide: self, equalToRightOf: inVerticalStackView)
+    ioContraints.add (heightOfGuide: self, equalTo: GUTTER_HEIGHT)
     if let lastBottomView = ioOptionalLastBottomView {
-      ioContraints.add (bottomOf: lastBottomView, equalToTopOf: self, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (bottomAnchor: lastBottomView, equalToTopOfGuide: self, plus: inVerticalStackView.mSpacing)
     }else{
-      ioContraints.add (topOf: inVerticalStackView, equalToTopOf: self, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (topOf: inVerticalStackView, equalToTopOfGuide: self, plus: inVerticalStackView.mTopMargin)
     }
   //--- After
-    ioOptionalLastBottomView = self
+    ioOptionalLastBottomView = self.bottomAnchor
     self.mBelow?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
       optionalLastBottomView: &ioOptionalLastBottomView,
