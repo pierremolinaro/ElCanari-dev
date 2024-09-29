@@ -63,7 +63,7 @@ final class HorizontalStackGutter : NSLayoutGuide, HorizontalStackHierarchyProto
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout (any AnchorProtocol)?,
+                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -74,16 +74,16 @@ final class HorizontalStackGutter : NSLayoutGuide, HorizontalStackHierarchyProto
       &ioContraints
     )
   //--- Gutter
-    ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self)
-    ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
-    ioContraints.add (widthOf: self, equalTo: GUTTER_WIDTH)
+    ioContraints.add (topOfView: inHorizontalStackView, equalToTopOfGuide: self)
+    ioContraints.add (bottomOfView: inHorizontalStackView, equalToBottomOfGuide: self)
+    ioContraints.add (widthOfGuide: self, equalTo: GUTTER_WIDTH)
     if let lastLeftView = ioOptionalLastRightView {
-      ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      ioContraints.add (leftOfGuide: self, equalToAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
     }else{
-      ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      ioContraints.add (leftOfGuide: self, equalToLeftOfView: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
-    ioOptionalLastRightView = self
+    ioOptionalLastRightView = self.rightAnchor
     self.mRight?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
       optionalLastRightView: &ioOptionalLastRightView,

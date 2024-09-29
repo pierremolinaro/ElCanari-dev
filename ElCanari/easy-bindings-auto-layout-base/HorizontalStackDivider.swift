@@ -73,7 +73,7 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout (any AnchorProtocol)?,
+                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
@@ -84,16 +84,16 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
       &ioContraints
     )
   //--- Divider
-    ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self)
-    ioContraints.add (bottomOf: inHorizontalStackView, equalToBottomOf: self)
-    ioContraints.add (widthOf: self, equalTo: DIVIDER_WIDTH)
+    ioContraints.add (topOfView: inHorizontalStackView, equalToTopOfView: self)
+    ioContraints.add (bottomOfView: inHorizontalStackView, equalToBottomOfView: self)
+    ioContraints.add (widthOfView: self, equalTo: DIVIDER_WIDTH)
     if let lastLeftView = ioOptionalLastRightView {
-      ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      ioContraints.add (leftOfView: self, equalToXAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
     }else{
-      ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      ioContraints.add (leftOfView: self, equalToLeftOfView: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
-    ioOptionalLastRightView = self
+    ioOptionalLastRightView = self.rightAnchor
     self.mRight?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
       optionalLastRightView: &ioOptionalLastRightView,
@@ -192,7 +192,7 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
       let priority : LayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
       let dX = self.mCurrentMouseDraggedLocationX - self.mInitialMouseDownLocationX
       let newLeft = self.mDividerInitialLeftLocationX + dX
-      self.mDividerConstraints.add (leftOf: self, equalToLeftOf: hStack, plus: newLeft, priority: priority)
+      self.mDividerConstraints.add (leftOfView: self, equalToLeftOfView: hStack, plus: newLeft, priority: priority)
       hStack.addConstraints (self.mDividerConstraints)
     }
     super.updateConstraints ()

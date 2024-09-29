@@ -70,33 +70,33 @@ final class VerticalStackFlexibleSpace : NSLayoutGuide, VerticalStackHierarchyPr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
-                            optionalLastBottomView ioOptionalLastBottomView : inout (any AnchorProtocol)?,
+                            optionalLastBottomAnchor ioOptionalLastBottomAnchor : inout NSLayoutYAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
     self.mAbove?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
-      optionalLastBottomView: &ioOptionalLastBottomView,
+      optionalLastBottomAnchor: &ioOptionalLastBottomAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints
     )
   //--- Flexible space
-    ioContraints.add (leftOf: self, equalToLeftOf: inVerticalStackView, plus: inVerticalStackView.mLeftMargin)
-    ioContraints.add (rightOf: inVerticalStackView, equalToRightOf: self, plus: inVerticalStackView.mRightMargin)
+    ioContraints.add (leftOfGuide: self, equalToLeftOfView: inVerticalStackView, plus: inVerticalStackView.mLeftMargin)
+    ioContraints.add (rightOfView: inVerticalStackView, equalToRightOfGuide: self, plus: inVerticalStackView.mRightMargin)
     if let lastSpace = ioFlexibleSpaceView {
-      ioContraints.add (heightOf: lastSpace, equalToHeightOf: self)
+      ioContraints.add (heightOfGuide: lastSpace, equalToHeightOfGuide: self)
     }
-    if let lastBottomView = ioOptionalLastBottomView {
-      ioContraints.add (bottomOf: lastBottomView, equalToTopOf: self, plus: inVerticalStackView.mSpacing)
+    if let lastBottomView = ioOptionalLastBottomAnchor {
+      ioContraints.add (YAnchor: lastBottomView, equalToTopOfGuide: self, plus: inVerticalStackView.mSpacing)
     }else{
-      ioContraints.add (topOf: inVerticalStackView, equalToTopOf: self, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (topOfView: inVerticalStackView, equalToTopOfGuide: self, plus: inVerticalStackView.mTopMargin)
     }
-    ioOptionalLastBottomView = self
+    ioOptionalLastBottomAnchor = self.bottomAnchor
     ioFlexibleSpaceView = self
   //--- After
     self.mBelow?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
-      optionalLastBottomView: &ioOptionalLastBottomView,
+      optionalLastBottomAnchor: &ioOptionalLastBottomAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints
     )

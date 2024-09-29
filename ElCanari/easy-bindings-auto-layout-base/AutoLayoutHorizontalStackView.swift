@@ -179,7 +179,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   //--- Build constraints
     if let root = self.mHStackHierarchy {
       var flexibleSpaceView : HorizontalStackFlexibleSpace? = nil
-      var optionalLastRightView : (any AnchorProtocol)? = nil
+      var optionalLastRightView : NSLayoutXAxisAnchor? = nil
       root.buildConstraintsFor (
         horizontalStackView: self,
         optionalLastRightView: &optionalLastRightView,
@@ -187,12 +187,12 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
         &self.mConstraints
       )
       if let lastRightView = optionalLastRightView {
-        self.mConstraints.add (rightOf: self, equalToRightOf: lastRightView, plus: self.mRightMargin)
+        self.mConstraints.add (rightOfView: self, equalToXAnchor: lastRightView, plus: self.mRightMargin)
       }else{
-        self.mConstraints.add (leftOf: self, equalToRightOf: self)
+        self.mConstraints.add (leftOfView: self, equalToRightOfView: self)
       }
     }else{
-      self.mConstraints.add (leftOf: self, equalToRightOf: self)
+      self.mConstraints.add (leftOfView: self, equalToRightOfView: self)
     }
   //--- Align gutters
     var gutters = [VerticalStackGutter] ()

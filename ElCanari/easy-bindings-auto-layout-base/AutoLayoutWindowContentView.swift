@@ -156,16 +156,16 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     var constraints = [NSLayoutConstraint] ()
 
     self.addSubview (inView)
-    constraints.add (leftOf: self, equalToLeftOf: inView)
-    constraints.add (topOf: self, equalToTopOf: inView)
-    constraints.add (rightOf: self, equalToRightOf: inView)
-    constraints.add (bottomOf: self, equalToBottomOf: inView)
+    constraints.add (leftOfView: self, equalToLeftOfView: inView)
+    constraints.add (topOfView: self, equalToTopOfView: inView)
+    constraints.add (rightOfView: self, equalToRightOfView: inView)
+    constraints.add (bottomOfView: self, equalToBottomOfView: inView)
 
     self.addSubview (self.mHiliteView)
-    constraints.add (leftOf: self, equalToLeftOf: self.mHiliteView)
-    constraints.add (topOf: self, equalToTopOf: self.mHiliteView)
-    constraints.add (rightOf: self, equalToRightOf: self.mHiliteView)
-    constraints.add (bottomOf: self, equalToBottomOf: self.mHiliteView)
+    constraints.add (leftOfView: self, equalToLeftOfView: self.mHiliteView)
+    constraints.add (topOfView: self, equalToTopOfView: self.mHiliteView)
+    constraints.add (rightOfView: self, equalToRightOfView: self.mHiliteView)
+    constraints.add (bottomOfView: self, equalToBottomOfView: self.mHiliteView)
 
     self.addConstraints (constraints)
 
@@ -412,7 +412,7 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.appendTextField (titled: "h Stretching Resistance: \(inView.contentHuggingPriority (for: .horizontal).rawValue)")
     self.appendTextField (titled: "v Stretching Resistance: \(inView.contentHuggingPriority (for: .vertical).rawValue)")
     if let lastView = self.subviews.last {
-      self.mNewConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: 8.0)
+      self.mNewConstraints.add (bottomOfView: lastView, equalToBottomOfView: self, plus: 8.0)
     }
   }
 
@@ -437,12 +437,12 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     view.stringValue = inString
     let optionalLastView = self.subviews.last
     self.addSubview (view)
-    self.mNewConstraints.add (leftOf: view, equalToLeftOf: self, plus: 8.0)
-    self.mNewConstraints.add (rightOf: self, equalToRightOf: view, plus: 8.0)
+    self.mNewConstraints.add (leftOfView: view, equalToLeftOfView: self, plus: 8.0)
+    self.mNewConstraints.add (rightOfView: self, equalToRightOfView: view, plus: 8.0)
     if let lastView = optionalLastView {
-      self.mNewConstraints.add (bottomOf: lastView, equalToTopOf: view, plus: 4.0)
+      self.mNewConstraints.add (bottomOfView: lastView, equalToTopOfView: view, plus: 4.0)
     }else{
-      self.mNewConstraints.add (topOf: self, equalToTopOf: view, plus: 8.0)
+      self.mNewConstraints.add (topOfView: self, equalToTopOfView: view, plus: 8.0)
     }
   }
 

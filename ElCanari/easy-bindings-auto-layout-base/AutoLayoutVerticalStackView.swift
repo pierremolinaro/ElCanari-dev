@@ -198,20 +198,20 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   //--- Build constraints
     if let root = self.mVStackHierarchy {
       var flexibleSpaceView : VerticalStackFlexibleSpace? = nil
-      var optionalLastBottomView : (any AnchorProtocol)? = nil
+      var optionalLastBottomAnchor : NSLayoutYAxisAnchor? = nil
       root.buildConstraintsFor (
         verticalStackView: self,
-        optionalLastBottomView: &optionalLastBottomView,
+        optionalLastBottomAnchor: &optionalLastBottomAnchor,
         flexibleSpaceView: &flexibleSpaceView,
         &self.mConstraints
       )
-      if let lastBottomView = optionalLastBottomView {
-        self.mConstraints.add (bottomOf: lastBottomView, equalToBottomOf: self, plus: self.mBottomMargin)
+      if let lastBottomAnchor = optionalLastBottomAnchor {
+        self.mConstraints.add (YAnchor: lastBottomAnchor, equalToBottomOfView: self, plus: self.mBottomMargin)
       }else{
-        self.mConstraints.add (bottomOf: self, equalToTopOf: self)
+        self.mConstraints.add (bottomOfView: self, equalToTopOfView: self)
       }
     }else{
-       self.mConstraints.add (bottomOf: self, equalToTopOf: self)
+       self.mConstraints.add (bottomOfView: self, equalToTopOfView: self)
     }
   //--- Align gutters
     var gutters = [HorizontalStackGutter] ()

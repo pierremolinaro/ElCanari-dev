@@ -59,7 +59,7 @@ final class HorizontalStackFlexibleSpace : NSLayoutGuide, HorizontalStackHierarc
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout (any AnchorProtocol)?,
+                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
     //--- Before
@@ -70,23 +70,23 @@ final class HorizontalStackFlexibleSpace : NSLayoutGuide, HorizontalStackHierarc
       &ioContraints
     )
   //--- Flexible space
-    ioContraints.add (topOf: inHorizontalStackView, equalToTopOf: self, plus: inHorizontalStackView.mTopMargin)
-    ioContraints.add (bottomOf: self, equalToBottomOf: inHorizontalStackView, plus: inHorizontalStackView.mBottomMargin)
+    ioContraints.add (topOfView: inHorizontalStackView, equalToTopOfGuide: self, plus: inHorizontalStackView.mTopMargin)
+    ioContraints.add (bottomOfGuide: self, equalToBottomOfView: inHorizontalStackView, plus: inHorizontalStackView.mBottomMargin)
     if let lastSpace = ioFlexibleSpaceView {
-      ioContraints.add (widthOf: lastSpace, equalToWidthOf: self)
+      ioContraints.add (widthOfGuide: lastSpace, equalToWidthOfGuide: self)
     }
     ioFlexibleSpaceView = self
     if let lastLeftView = ioOptionalLastRightView {
 //      if lastLeftView is Self {
 //        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView)
 //      }else{
-        ioContraints.add (leftOf: self, equalToRightOf: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      ioContraints.add (leftOfGuide: self, equalToAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
 //      }
     }else{
-      ioContraints.add (leftOf: self, equalToLeftOf: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      ioContraints.add (leftOfGuide: self, equalToLeftOfView: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
-    ioOptionalLastRightView = self
+    ioOptionalLastRightView = self.rightAnchor
     self.mRight?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
       optionalLastRightView: &ioOptionalLastRightView,

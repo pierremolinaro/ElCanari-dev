@@ -66,7 +66,7 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Build constraints
     if let minHeight = self.mMinHeight {
-      self.mConstraints.add (heightOf: self, greaterThanOrEqualToConstant: minHeight)
+      self.mConstraints.add (heightOfView: self, greaterThanOrEqualToConstant: minHeight)
     }
   //--- Apply constaints
     self.addConstraints (self.mConstraints)

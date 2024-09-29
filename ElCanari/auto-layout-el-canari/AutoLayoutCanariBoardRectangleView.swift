@@ -45,21 +45,20 @@ import AppKit
 
     var constraints = [NSLayoutConstraint] ()
   //--- Left
-    constraints.add (leftOf: self, equalToLeftOf: self.mLeftTextField)
-    constraints.add (centerYOf: self, equalToCenterYOf: self.mLeftTextField)
+    constraints.add (leftOfView: self, equalToLeftOfView: self.mLeftTextField)
+    constraints.add (centerYOfView: self, equalToCenterYOfView: self.mLeftTextField)
   //--- Right
-    constraints.add (rightOf: self, equalToRightOf: self.mRightTextField)
-    constraints.add (centerYOf: self, equalToCenterYOf: self.mRightTextField)
+    constraints.add (rightOfView: self, equalToRightOfView: self.mRightTextField)
+    constraints.add (centerYOfView: self, equalToCenterYOfView: self.mRightTextField)
   //--- Top
-    constraints.add (topOf: self, equalToTopOf: self.mTopTextField)
-    constraints.add (centerXOf: self, equalToCenterXOf: self.mTopTextField)
+    constraints.add (topOfView: self, equalToTopOfView: self.mTopTextField)
+    constraints.add (centerXOfView: self, equalToCenterXOfView: self.mTopTextField)
   //--- Bottom
-    constraints.add (bottomOf: self,
-                     equalToBottomOf: self.mBottomTextField)
-    constraints.add (centerXOf: self, equalToCenterXOf: self.mBottomTextField)
+    constraints.add (bottomOfView: self, equalToBottomOfView: self.mBottomTextField)
+    constraints.add (centerXOfView: self, equalToCenterXOfView: self.mBottomTextField)
   //--- Unit pop up
-    constraints.add (centerYOf: self, equalToCenterYOf: self.mUnitPopUpButton)
-    constraints.add (centerXOf: self, equalToCenterXOf: self.mUnitPopUpButton)
+    constraints.add (centerYOfView: self, equalToCenterYOfView: self.mUnitPopUpButton)
+    constraints.add (centerXOfView: self, equalToCenterXOfView: self.mUnitPopUpButton)
   //---
     self.addConstraints (constraints)
   }
