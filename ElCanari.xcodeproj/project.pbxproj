@@ -2831,6 +2831,80 @@
 		CFD306AA2C28A9A600A44658 /* zip-directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD306A82C28A9A600A44658 /* zip-directory.swift */; };
 		CFD3B2BC21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */; };
 		CFD3B2BD21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */; };
+		CFD525C52CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AC2CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift */; };
+		CFD525C62CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AE2CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift */; };
+		CFD525C72CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B82CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift */; };
+		CFD525C82CA97B1600FFEABF /* enum-PadShape-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B32CA97B1600FFEABF /* enum-PadShape-ebExtension.swift */; };
+		CFD525C92CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B92CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift */; };
+		CFD525CA2CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A52CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift */; };
+		CFD525CB2CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B02CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift */; };
+		CFD525CC2CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AD2CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift */; };
+		CFD525CD2CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B12CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift */; };
+		CFD525CE2CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B62CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift */; };
+		CFD525CF2CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BB2CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift */; };
+		CFD525D02CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BD2CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift */; };
+		CFD525D12CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BF2CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift */; };
+		CFD525D22CA97B1600FFEABF /* enum-PadSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B42CA97B1600FFEABF /* enum-PadSide-ebExtension.swift */; };
+		CFD525D32CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C12CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift */; };
+		CFD525D42CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A22CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift */; };
+		CFD525D52CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C22CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift */; };
+		CFD525D62CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AB2CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift */; };
+		CFD525D72CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A12CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift */; };
+		CFD525D82CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A62CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift */; };
+		CFD525D92CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A82CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift */; };
+		CFD525DA2CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B22CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift */; };
+		CFD525DB2CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B52CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift */; };
+		CFD525DC2CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AA2CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift */; };
+		CFD525DD2CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A72CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift */; };
+		CFD525DE2CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C42CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift */; };
+		CFD525DF2CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C02CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift */; };
+		CFD525E02CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A32CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift */; };
+		CFD525E12CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BC2CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift */; };
+		CFD525E22CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B72CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift */; };
+		CFD525E32CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BA2CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift */; };
+		CFD525E42CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AF2CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift */; };
+		CFD525E52CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A42CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift */; };
+		CFD525E62CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C32CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift */; };
+		CFD525E72CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A92CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift */; };
+		CFD525E82CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A02CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift */; };
+		CFD525E92CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BE2CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift */; };
+		CFD525EA2CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AC2CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift */; };
+		CFD525EB2CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AE2CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift */; };
+		CFD525EC2CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B82CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift */; };
+		CFD525ED2CA97B1600FFEABF /* enum-PadShape-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B32CA97B1600FFEABF /* enum-PadShape-ebExtension.swift */; };
+		CFD525EE2CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B92CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift */; };
+		CFD525EF2CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A52CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift */; };
+		CFD525F02CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B02CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift */; };
+		CFD525F12CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AD2CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift */; };
+		CFD525F22CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B12CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift */; };
+		CFD525F32CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B62CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift */; };
+		CFD525F42CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BB2CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift */; };
+		CFD525F52CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BD2CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift */; };
+		CFD525F62CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BF2CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift */; };
+		CFD525F72CA97B1600FFEABF /* enum-PadSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B42CA97B1600FFEABF /* enum-PadSide-ebExtension.swift */; };
+		CFD525F82CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C12CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift */; };
+		CFD525F92CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A22CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift */; };
+		CFD525FA2CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C22CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift */; };
+		CFD525FB2CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AB2CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift */; };
+		CFD525FC2CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A12CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift */; };
+		CFD525FD2CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A62CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift */; };
+		CFD525FE2CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A82CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift */; };
+		CFD525FF2CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B22CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift */; };
+		CFD526002CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B52CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift */; };
+		CFD526012CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AA2CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift */; };
+		CFD526022CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A72CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift */; };
+		CFD526032CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C42CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift */; };
+		CFD526042CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C02CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift */; };
+		CFD526052CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A32CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift */; };
+		CFD526062CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BC2CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift */; };
+		CFD526072CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B72CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift */; };
+		CFD526082CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BA2CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift */; };
+		CFD526092CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AF2CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift */; };
+		CFD5260A2CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A42CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift */; };
+		CFD5260B2CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525C32CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift */; };
+		CFD5260C2CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A92CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift */; };
+		CFD5260D2CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525A02CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift */; };
+		CFD5260E2CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525BE2CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift */; };
 		CFD6BDBE2802F5EA003B6E02 /* CanariChoiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6BDBD2802F5EA003B6E02 /* CanariChoiceMenu.swift */; };
 		CFD6BDBF2802F5EA003B6E02 /* CanariChoiceMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6BDBD2802F5EA003B6E02 /* CanariChoiceMenu.swift */; };
 		CFD6BDC228030392003B6E02 /* CanariWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6BDC128030392003B6E02 /* CanariWindow.swift */; };
@@ -4934,6 +5008,43 @@
 		CFD24155222C1270000D6B65 /* transient-DeviceRoot-inconsistentPackagePadNameSetsMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-inconsistentPackagePadNameSetsMessage.swift"; sourceTree = "<group>"; };
 		CFD306A82C28A9A600A44658 /* zip-directory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "zip-directory.swift"; sourceTree = "<group>"; };
 		CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-nameRect.swift"; sourceTree = "<group>"; };
+		CFD525A02CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterPreferredDirections-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A12CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterSnapAngle-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A22CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BoardImageDisplay-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A32CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BoardLineLayer-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A42CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BoardQRCodeLayer-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A52CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BoardShape-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A62CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BoardTextLayer-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A72CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BoardTextVerticalAlignment-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A82CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BorderCurveShape-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525A92CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-ComponentSide-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525AA2CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-ConnectorSide-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525AB2CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-EBControlSize-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525AC2CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-GerberUnit-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525AD2CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-GridStyle-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525AE2CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-HorizontalAlignment-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525AF2CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-LayerConfiguration-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B02CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-MarginSize-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B12CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-MetadataStatus-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B22CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-PadNumbering-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B32CA97B1600FFEABF /* enum-PadShape-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-PadShape-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B42CA97B1600FFEABF /* enum-PadSide-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-PadSide-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B52CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-PadStyle-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B62CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-PDFProductGrid-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B72CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-QRCodeCorrectionLevel-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B82CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-QuadrantRotation-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525B92CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-RastnetDisplay-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525BA2CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-RestrictRectangleLayer-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525BB2CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-RouteDirection-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525BC2CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-RouteOrigin-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525BD2CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-SchematicSheetOrientation-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525BE2CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-SlavePadStyle-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525BF2CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-TextAlignment-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525C02CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-TrackCreationDirection-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525C12CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-TrackEndStyle-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525C22CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-TrackLockDirection-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525C32CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-TrackSide-ebExtension.swift"; sourceTree = "<group>"; };
+		CFD525C42CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-VerticalAlignment-ebExtension.swift"; sourceTree = "<group>"; };
 		CFD6BDBD2802F5EA003B6E02 /* CanariChoiceMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariChoiceMenu.swift; sourceTree = "<group>"; };
 		CFD6BDC128030392003B6E02 /* CanariWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariWindow.swift; sourceTree = "<group>"; };
 		CFD733892258B8D6009B2614 /* open-font-in-library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "open-font-in-library.swift"; sourceTree = "<group>"; };
@@ -5319,6 +5430,7 @@
 				CF26AE082AD1784F0041763B /* EB — extensions for handling properties */,
 				CF3DAD0F2AD09694003830F4 /* EB — property generic classes */,
 				CFD1B75221B2E90400F6F9EA /* EB — shapes */,
+				CFD5259F2CA97AB100FFEABF /* Enumerations — EBExtensions */,
 				CF747FC81B3C41BB00140C49 /* Frameworks */,
 				CF8B9D282AD1842B002169DC /* Managed Object Factory */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
@@ -6986,6 +7098,51 @@
 			path = "ElCanari/document-font";
 			sourceTree = "<group>";
 		};
+		CFD5259F2CA97AB100FFEABF /* Enumerations — EBExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				CFD525A02CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift */,
+				CFD525A12CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift */,
+				CFD525A22CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift */,
+				CFD525A32CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift */,
+				CFD525A42CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift */,
+				CFD525A52CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift */,
+				CFD525A62CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift */,
+				CFD525A72CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift */,
+				CFD525A82CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift */,
+				CFD525A92CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift */,
+				CFD525AA2CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift */,
+				CFD525AB2CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift */,
+				CFD525AC2CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift */,
+				CFD525AD2CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift */,
+				CFD525AE2CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift */,
+				CFD525AF2CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift */,
+				CFD525B02CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift */,
+				CFD525B12CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift */,
+				CFD525B22CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift */,
+				CFD525B32CA97B1600FFEABF /* enum-PadShape-ebExtension.swift */,
+				CFD525B42CA97B1600FFEABF /* enum-PadSide-ebExtension.swift */,
+				CFD525B52CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift */,
+				CFD525B62CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift */,
+				CFD525B72CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift */,
+				CFD525B82CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift */,
+				CFD525B92CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift */,
+				CFD525BA2CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift */,
+				CFD525BB2CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift */,
+				CFD525BC2CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift */,
+				CFD525BD2CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift */,
+				CFD525BE2CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift */,
+				CFD525BF2CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift */,
+				CFD525C02CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift */,
+				CFD525C12CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift */,
+				CFD525C22CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift */,
+				CFD525C32CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift */,
+				CFD525C42CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift */,
+			);
+			name = "Enumerations — EBExtensions";
+			path = "ElCanari/Enumerations — EBExtensions";
+			sourceTree = "<group>";
+		};
 		CFDD6D2E26A1B0B30050CB78 /* Auto Layout — El Canari */ = {
 			isa = PBXGroup;
 			children = (
@@ -7942,6 +8099,43 @@
 				CF8A09A42231969400A17B92 /* transient-SymbolInstanceInDevice-objectDisplay.swift in Sources */,
 				CFEB7CA5233A28860060A97A /* transient-ProjectRoot-boardGridStepMultipliedByDisplayFactor.swift in Sources */,
 				CF05C9BD21A809AC0021652C /* transient-SymbolSolidRect-issues.swift in Sources */,
+				CFD525C52CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift in Sources */,
+				CFD525C62CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift in Sources */,
+				CFD525C72CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift in Sources */,
+				CFD525C82CA97B1600FFEABF /* enum-PadShape-ebExtension.swift in Sources */,
+				CFD525C92CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift in Sources */,
+				CFD525CA2CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift in Sources */,
+				CFD525CB2CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift in Sources */,
+				CFD525CC2CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift in Sources */,
+				CFD525CD2CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift in Sources */,
+				CFD525CE2CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift in Sources */,
+				CFD525CF2CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift in Sources */,
+				CFD525D02CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift in Sources */,
+				CFD525D12CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift in Sources */,
+				CFD525D22CA97B1600FFEABF /* enum-PadSide-ebExtension.swift in Sources */,
+				CFD525D32CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift in Sources */,
+				CFD525D42CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift in Sources */,
+				CFD525D52CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift in Sources */,
+				CFD525D62CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift in Sources */,
+				CFD525D72CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift in Sources */,
+				CFD525D82CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift in Sources */,
+				CFD525D92CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift in Sources */,
+				CFD525DA2CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift in Sources */,
+				CFD525DB2CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift in Sources */,
+				CFD525DC2CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift in Sources */,
+				CFD525DD2CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift in Sources */,
+				CFD525DE2CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift in Sources */,
+				CFD525DF2CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift in Sources */,
+				CFD525E02CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift in Sources */,
+				CFD525E12CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift in Sources */,
+				CFD525E22CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift in Sources */,
+				CFD525E32CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift in Sources */,
+				CFD525E42CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift in Sources */,
+				CFD525E52CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift in Sources */,
+				CFD525E62CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift in Sources */,
+				CFD525E72CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift in Sources */,
+				CFD525E82CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift in Sources */,
+				CFD525E92CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift in Sources */,
 				CF711DD9275E1B7E00280069 /* entity-SheetInProject.swift in Sources */,
 				CFEB7C91233A28860060A97A /* transient-ProjectRoot-unplacedSymbols.swift in Sources */,
 				CF711E07275E1C8D00280069 /* extension-PackageArc.swift in Sources */,
@@ -9668,6 +9862,43 @@
 				CF85859121C5124300082CE3 /* transient-PackageArc-selectionDisplay.swift in Sources */,
 				CF62176E27A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_packages.swift in Sources */,
 				CFCD1F6321A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */,
+				CFD525EA2CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift in Sources */,
+				CFD525EB2CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift in Sources */,
+				CFD525EC2CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift in Sources */,
+				CFD525ED2CA97B1600FFEABF /* enum-PadShape-ebExtension.swift in Sources */,
+				CFD525EE2CA97B1600FFEABF /* enum-RastnetDisplay-ebExtension.swift in Sources */,
+				CFD525EF2CA97B1600FFEABF /* enum-BoardShape-ebExtension.swift in Sources */,
+				CFD525F02CA97B1600FFEABF /* enum-MarginSize-ebExtension.swift in Sources */,
+				CFD525F12CA97B1600FFEABF /* enum-GridStyle-ebExtension.swift in Sources */,
+				CFD525F22CA97B1600FFEABF /* enum-MetadataStatus-ebExtension.swift in Sources */,
+				CFD525F32CA97B1600FFEABF /* enum-PDFProductGrid-ebExtension.swift in Sources */,
+				CFD525F42CA97B1600FFEABF /* enum-RouteDirection-ebExtension.swift in Sources */,
+				CFD525F52CA97B1600FFEABF /* enum-SchematicSheetOrientation-ebExtension.swift in Sources */,
+				CFD525F62CA97B1600FFEABF /* enum-TextAlignment-ebExtension.swift in Sources */,
+				CFD525F72CA97B1600FFEABF /* enum-PadSide-ebExtension.swift in Sources */,
+				CFD525F82CA97B1600FFEABF /* enum-TrackEndStyle-ebExtension.swift in Sources */,
+				CFD525F92CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift in Sources */,
+				CFD525FA2CA97B1600FFEABF /* enum-TrackLockDirection-ebExtension.swift in Sources */,
+				CFD525FB2CA97B1600FFEABF /* enum-EBControlSize-ebExtension.swift in Sources */,
+				CFD525FC2CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift in Sources */,
+				CFD525FD2CA97B1600FFEABF /* enum-BoardTextLayer-ebExtension.swift in Sources */,
+				CFD525FE2CA97B1600FFEABF /* enum-BorderCurveShape-ebExtension.swift in Sources */,
+				CFD525FF2CA97B1600FFEABF /* enum-PadNumbering-ebExtension.swift in Sources */,
+				CFD526002CA97B1600FFEABF /* enum-PadStyle-ebExtension.swift in Sources */,
+				CFD526012CA97B1600FFEABF /* enum-ConnectorSide-ebExtension.swift in Sources */,
+				CFD526022CA97B1600FFEABF /* enum-BoardTextVerticalAlignment-ebExtension.swift in Sources */,
+				CFD526032CA97B1600FFEABF /* enum-VerticalAlignment-ebExtension.swift in Sources */,
+				CFD526042CA97B1600FFEABF /* enum-TrackCreationDirection-ebExtension.swift in Sources */,
+				CFD526052CA97B1600FFEABF /* enum-BoardLineLayer-ebExtension.swift in Sources */,
+				CFD526062CA97B1600FFEABF /* enum-RouteOrigin-ebExtension.swift in Sources */,
+				CFD526072CA97B1600FFEABF /* enum-QRCodeCorrectionLevel-ebExtension.swift in Sources */,
+				CFD526082CA97B1600FFEABF /* enum-RestrictRectangleLayer-ebExtension.swift in Sources */,
+				CFD526092CA97B1600FFEABF /* enum-LayerConfiguration-ebExtension.swift in Sources */,
+				CFD5260A2CA97B1600FFEABF /* enum-BoardQRCodeLayer-ebExtension.swift in Sources */,
+				CFD5260B2CA97B1600FFEABF /* enum-TrackSide-ebExtension.swift in Sources */,
+				CFD5260C2CA97B1600FFEABF /* enum-ComponentSide-ebExtension.swift in Sources */,
+				CFD5260D2CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift in Sources */,
+				CFD5260E2CA97B1600FFEABF /* enum-SlavePadStyle-ebExtension.swift in Sources */,
 				CF05C9BA21A809AC0021652C /* transient-SymbolBezierCurve-issues.swift in Sources */,
 				CF39CCCA268CC0B4004971F9 /* selectionController-AutoLayoutDeviceDocument-symbolInstanceSelection.swift in Sources */,
 				CFE85A8721A5BBE600991A66 /* transient-SymbolOval-objectDisplay.swift in Sources */,

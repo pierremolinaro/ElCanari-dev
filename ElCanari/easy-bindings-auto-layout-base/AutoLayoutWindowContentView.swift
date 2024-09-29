@@ -81,9 +81,10 @@ fileprivate let DEBUG_RESPONDER_CHAIN_PREFERENCES_KEY = "debug.responder.chain"
     gDebugResponderChain = inFlag
     UserDefaults.standard.setValue (inFlag, forKey: DEBUG_RESPONDER_CHAIN_PREFERENCES_KEY)
     for window in NSApplication.shared.windows {
-      if let mainView = window.contentView {
-        propagateNeedsDisplay (mainView)
-      }
+      window.triggerDecoration ()
+//      if let mainView = window.contentView {
+//        propagateNeedsDisplay (mainView)
+//      }
     }
   }
 }
@@ -109,21 +110,22 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
     gDebugAutoLayout = inFlag
     UserDefaults.standard.setValue (inFlag, forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
     for window in NSApplication.shared.windows {
-      if let mainView = window.contentView {
-        propagateNeedsDisplay (mainView)
-      }
+      window.triggerDecoration ()
+//      if let mainView = window.contentView {
+//        propagateNeedsDisplay (mainView)
+//      }
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor fileprivate func propagateNeedsDisplay (_ inView : NSView) {
-  inView.needsDisplay = true
-  for view in inView.subviews {
-    propagateNeedsDisplay (view)
-  }
-}
+//@MainActor fileprivate func propagateNeedsDisplay (_ inView : NSView) {
+////  inView.needsDisplay = true
+//  for view in inView.subviews {
+//    propagateNeedsDisplay (view)
+//  }
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -173,11 +175,11 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
 
     checkAutoLayoutAdoption (self, [])
 
-    if getDebugAutoLayout () {
-      DispatchQueue.main.async {
-        self.mHiliteView.needsDisplay = true
-      }
-    }
+//    if getDebugAutoLayout () {
+//      DispatchQueue.main.async {
+//        self.mHiliteView.needsDisplay = true
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -312,19 +314,19 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func wantsForwardedScrollEvents (for axis: NSEvent.GestureAxis) -> Bool {
-    if getDebugAutoLayout () {
-      self.mHiliteView.needsDisplay = true
-    }
-    return super.wantsForwardedScrollEvents (for: axis)
-  }
+//  override func wantsForwardedScrollEvents (for axis: NSEvent.GestureAxis) -> Bool {
+//    if getDebugAutoLayout () {
+//      self.mHiliteView.needsDisplay = true
+//    }
+//    return super.wantsForwardedScrollEvents (for: axis)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseMoved (with inEvent : NSEvent) {
-    if getDebugAutoLayout () {
-      self.mHiliteView.needsDisplay = true
-    }
+//    if getDebugAutoLayout () {
+//      self.mHiliteView.needsDisplay = true
+//    }
     if getShowViewCurrentSettings () {
       let windowContentView = self.subviews [0]
       let mouseLocation = windowContentView.convert (inEvent.locationInWindow, from: nil)
@@ -527,7 +529,6 @@ fileprivate final class FilePrivateHiliteView : NSView {
       var optionalResponder = self.window?.initialFirstResponder
       var loop = true
       while let responder = optionalResponder, loop {
-//        Swift.print ("\(responder.className)")
         let r = responder.convert (responder.bounds, to: self)
         strokeBP.appendRect (r)
         let optionalNextResponder = responder.nextKeyView
@@ -583,12 +584,19 @@ fileprivate final class FilePrivateHiliteView : NSView {
       }else if inView is VerticalStackFlexibleSpace {
         DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
         NSBezierPath.fill (viewFrame)
+        exploreSubviews = false
       }else if inView is HorizontalStackFlexibleSpace {
         DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
         NSBezierPath.fill (viewFrame)
+        exploreSubviews = false
       }else if inView is HorizontalStackGutter {
         GUTTER_FILL_COLOR.setFill ()
         NSBezierPath.fill (viewFrame)
+        exploreSubviews = false
+      }else if inView is VerticalStackGutter {
+        GUTTER_FILL_COLOR.setFill ()
+        NSBezierPath.fill (viewFrame)
+        exploreSubviews = false
       }else if inView is HorizontalStackSeparator { // Do not frame
         exploreSubviews = false
       }else if inView is VerticalStackSeparator { // Do not frame
