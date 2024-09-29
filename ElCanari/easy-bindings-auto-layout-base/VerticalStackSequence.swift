@@ -111,6 +111,25 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func alignVerticalGutters (_ ioGutters : inout [HorizontalStackGutter],
+                             _ ioContraints : inout [NSLayoutConstraint]) {
+    for view in self.mViewArray {
+      if !view.isHidden, let hStack = view as? AutoLayoutHorizontalStackView {
+      //--- Gutters
+        let gutters = hStack.gutters
+        let n = Swift.min (gutters.count, ioGutters.count)
+        for i in 0 ..< n {
+          ioContraints.add (leftOf: gutters [i], equalToLeftOf: ioGutters [i])
+        }
+        for i in n ..< gutters.count {
+          ioGutters.append (gutters [i])
+        }
+      }
+    }
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

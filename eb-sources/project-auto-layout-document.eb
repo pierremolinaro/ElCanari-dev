@@ -1419,11 +1419,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
           $hidden !self.rastnetDisplayComponentNet
         }
-        StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .center)
+        StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .left)
         LinearSlider (min: 0, max: 24, ticks: 13) {
            $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes)
         }
-        StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .center)
+        StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .left)
         LinearSlider (min: 10, max: 200, ticks: 10) {
           $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes)
         }

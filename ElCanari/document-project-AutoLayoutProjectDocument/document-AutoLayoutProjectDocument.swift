@@ -5393,7 +5393,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       _ = view .appendView (view_view)
     }
     do{
-      let view_view = AutoLayoutStaticLabel (title: "Warning and Error Circle", bold: true, size: .small, alignment: .center)
+      let view_view = AutoLayoutStaticLabel (title: "Warning and Error Circle", bold: true, size: .small, alignment: .left)
       _ = view .appendView (view_view)
     }
     do{
@@ -5402,7 +5402,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       _ = view .appendView (view_view)
     }
     do{
-      let view_view = AutoLayoutStaticLabel (title: "Contextual Click Diameter", bold: true, size: .small, alignment: .center)
+      let view_view = AutoLayoutStaticLabel (title: "Contextual Click Diameter", bold: true, size: .small, alignment: .left)
       _ = view .appendView (view_view)
     }
     do{

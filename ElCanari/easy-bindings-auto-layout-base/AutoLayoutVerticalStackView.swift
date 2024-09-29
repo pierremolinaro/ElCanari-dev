@@ -215,6 +215,9 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     }else{
        self.mConstraints.add (bottomOf: self, equalToTopOf: self)
     }
+  //--- Align gutters
+    var gutters = [HorizontalStackGutter] ()
+    self.mVStackHierarchy?.alignVerticalGutters (&gutters, &self.mConstraints)
   //--- Apply constaints
     self.addConstraints (self.mConstraints)
   //--- This should the last instruction: call super method

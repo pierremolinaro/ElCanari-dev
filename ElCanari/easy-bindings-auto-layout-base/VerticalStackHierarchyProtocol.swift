@@ -26,6 +26,9 @@ import AppKit
   func enumerateLastBaselineViews (_ ioArray : inout [NSView?],
                                    _ ioCurrentLastBaselineView : inout NSView?)
 
+  func alignVerticalGutters (_ ioGutters : inout [HorizontalStackGutter],
+                             _ ioContraints : inout [NSLayoutConstraint])
+
 }
 
 //--------------------------------------------------------------------------------------------------

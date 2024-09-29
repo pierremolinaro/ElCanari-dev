@@ -105,6 +105,14 @@ final class VerticalStackFlexibleSpace : ALB_NSView, VerticalStackHierarchyProto
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func alignVerticalGutters (_ ioGutters : inout [HorizontalStackGutter],
+                             _ ioContraints : inout [NSLayoutConstraint]) {
+    self.mAbove?.alignVerticalGutters (&ioGutters, &ioContraints)
+    self.mBelow?.alignVerticalGutters (&ioGutters, &ioContraints)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

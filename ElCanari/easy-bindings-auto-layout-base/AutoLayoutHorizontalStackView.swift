@@ -63,9 +63,15 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private var mGutterArray = [HorizontalStackGutter] ()
+  var gutters : [HorizontalStackGutter] { self.mGutterArray }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final func appendGutter () -> Self {
     let newRoot = HorizontalStackGutter (self.mHStackHierarchy)
     self.addSubview (newRoot)
+    self.mGutterArray.append (newRoot)
     self.mHStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self

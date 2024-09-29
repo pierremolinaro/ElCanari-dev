@@ -108,8 +108,8 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
                                _ ioLastBaselineViews : inout [NSView?],
                                _ ioContraints : inout [NSLayoutConstraint]) {
     self.mLeft?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
-    ioGutters = []
-    ioLastBaselineViews = []
+//    ioGutters = []
+//    ioLastBaselineViews = []
     self.mRight?.alignHorizontalGutters (&ioGutters, &ioLastBaselineViews, &ioContraints)
   }
 
