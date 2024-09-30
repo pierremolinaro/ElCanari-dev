@@ -14,12 +14,42 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
+  init (verticalScroller inVerticalScroller : Bool = false) {
+    self.mScrollView = inVerticalScroller ? ALB_NSScrollView () : nil
     super.init (
       horizontalDispositionInVerticalStackView: .fill,
       verticalDispositionInHorizontalStackView: .fill
     )
+    if let scrollView = self.mScrollView {
+   //--- Set document view
+      let documentView = AutoLayoutVerticalStackView ()
+      scrollView.documentView = documentView
+    //--- Set clip view (SHOULD BE DONE AFTER SETTING document view)
+      scrollView.contentView = InternalClipView ()
+    //--- Set background (SHOULD BE DONE AFTER SETTING contient view)
+      scrollView.drawsBackground = false
+//      scrollView.backgroundColor = NSColor.red
+      scrollView.hasVerticalScroller = true
+
+      self.addSubview (scrollView)
+    //--- Constraints
+//      var constraints = [NSLayoutConstraint] ()
+//      self.mPermanentsConstraints.add (x: self.leftAnchor, equalTo: scrollView.leftAnchor)
+//      self.mPermanentsConstraints.add (x: self.rightAnchor, equalTo: scrollView.rightAnchor)
+//      self.mPermanentsConstraints.add (y: self.topAnchor, equalTo: scrollView.topAnchor)
+//      self.mPermanentsConstraints.add (y: self.bottomAnchor, equalTo: scrollView.bottomAnchor)
+
+//      self.mPermanentsConstraints.add (x: documentView.leftAnchor, equalTo: scrollView.contentView.leftAnchor)
+//      self.mPermanentsConstraints.add (x: documentView.rightAnchor, equalTo: scrollView.contentView.rightAnchor)
+//      self.mPermanentsConstraints.add (y: documentView.topAnchor, equalTo: scrollView.contentView.topAnchor)
+//      self.addConstraints (constraints)
+
+    }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  private var mPermanentsConstraints = [NSLayoutConstraint] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -29,12 +59,18 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private let mScrollView : ALB_NSScrollView?
+
+  private var receiverView : AutoLayoutVerticalStackView {
+    return (self.mScrollView?.documentView as? AutoLayoutVerticalStackView) ?? self
+  }
+
   private var mVStackHierarchy : (any VerticalStackHierarchyProtocol)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func appendView (_ inView : NSView) -> Self {
-    self.addSubview (inView)
+    self.receiverView.addSubview (inView)
     Self.appendInVerticalHierarchy (inView, toStackRoot: &self.mVStackHierarchy)
     self.invalidateIntrinsicContentSize ()
     return self
@@ -43,7 +79,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func prependView (_ inView : NSView) -> Self {
-    self.addSubview (inView)
+    self.receiverView.addSubview (inView)
     Self.prependInVerticalHierarchy (inView, toStackRoot: &self.mVStackHierarchy)
     self.invalidateIntrinsicContentSize ()
     return self
@@ -52,7 +88,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func removeView (_ inView : NSView) {
-    for view in self.subviews {
+    for view in self.receiverView.subviews {
       if view === inView {
         inView.removeFromSuperview ()
       }
@@ -70,7 +106,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   final func appendGutter () -> Self {
     let newRoot = VerticalStackGutter (self.mVStackHierarchy)
     self.mGutterArray.append (newRoot)
-    self.addLayoutGuide (newRoot)
+    self.receiverView.addLayoutGuide (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -80,7 +116,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   final func appendDivider (canResizeWindow inFlag : Bool = false) -> Self {
     let newRoot = VerticalStackDivider (self.mVStackHierarchy)
-    self.addSubview (newRoot)
+    self.receiverView.addSubview (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -90,7 +126,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   final func appendFlexibleSpace () -> Self {
     let newRoot = VerticalStackFlexibleSpace (self.mVStackHierarchy)
-    self.addLayoutGuide (newRoot)
+    self.receiverView.addLayoutGuide (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -108,6 +144,25 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   final func prependSeparator (ignoreHorizontalMargins inFlag : Bool = true) -> Self {
     let separator = VerticalStackSeparator (ignoreHorizontalMargins: inFlag)
     return self.prependView (separator)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+      .appendFlexibleSpace ()
+      .appendView (inView)
+      .appendFlexibleSpace ()
+    return self.appendView (hStack)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+      .appendFlexibleSpace ()
+      .appendView (inView)
+    return self.appendView (hStack)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -165,11 +220,11 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   //  Last Baseline representative view
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mLastBaselineRepresentativeView : NSView? = nil
+//  private var mLastBaselineRepresentativeView : NSView? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var lastBaselineRepresentativeView : NSView? { self.mLastBaselineRepresentativeView }
+//  override var lastBaselineRepresentativeView : NSView? { self.mLastBaselineRepresentativeView }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Add row with two columns
@@ -195,23 +250,31 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   //--- Remove all constraints
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll (keepingCapacity: true)
+  //--- Permanent constraints
+    if let scrollView = self.mScrollView {
+      self.mConstraints.add (x: self.leftAnchor, equalTo: scrollView.leftAnchor)
+      self.mConstraints.add (x: self.rightAnchor, equalTo: scrollView.rightAnchor)
+      self.mConstraints.add (y: self.topAnchor, equalTo: scrollView.topAnchor)
+      self.mConstraints.add (y: self.bottomAnchor, equalTo: scrollView.bottomAnchor)
+    }
   //--- Build constraints
+    let vStack = self.receiverView
     if let root = self.mVStackHierarchy {
       var flexibleSpaceView : VerticalStackFlexibleSpace? = nil
       var optionalLastBottomAnchor : NSLayoutYAxisAnchor? = nil
       root.buildConstraintsFor (
-        verticalStackView: self,
+        verticalStackView: vStack,
         optionalLastBottomAnchor: &optionalLastBottomAnchor,
         flexibleSpaceView: &flexibleSpaceView,
         &self.mConstraints
       )
       if let lastBottomAnchor = optionalLastBottomAnchor {
-        self.mConstraints.add (y: lastBottomAnchor, equalTo: self.bottomAnchor, plus: self.mBottomMargin)
+        self.mConstraints.add (y: lastBottomAnchor, equalTo: vStack.bottomAnchor, plus: self.mBottomMargin)
       }else{
-        self.mConstraints.add (y: self.bottomAnchor, equalTo: self.topAnchor)
+        self.mConstraints.add (y: vStack.bottomAnchor, equalTo: vStack.topAnchor)
       }
     }else{
-      self.mConstraints.add (y: self.bottomAnchor, equalTo: self.topAnchor)
+      self.mConstraints.add (y: vStack.bottomAnchor, equalTo: vStack.topAnchor)
     }
   //--- Align gutters
     var gutters = [HorizontalStackGutter] ()
@@ -224,108 +287,34 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override func updateConstraints () {
-//  //--- Remove all constraints
-//    self.removeConstraints (self.mConstraints)
-//    self.mConstraints.removeAll (keepingCapacity: true)
-//  //--- Build constraints
-//    self.mLastBaselineRepresentativeView = []
-//    var currentLastBaselineRepresentativeView : NSView? = nil
-//    var optionalLastView : NSView? = nil
-//    var optionalLastFlexibleSpace : NSView? = nil
-//    var referenceGutterArray = [AutoLayoutHorizontalStackView.GutterSeparator] ()
-//    for view in self.subviews {
-//      if !view.isHidden {
-//      //--- Horizontal constraints
-//        switch view.pmLayoutSettings.hLayoutInVerticalContainer {
-//        case .center :
-//          self.mConstraints.add (centerXOf: view, equalToCenterXOf: self)
-//        case .fill :
-//          self.mConstraints.add (leftOf: view, equalToLeftOf: self, plus: self.mLeftMargin)
-//          self.mConstraints.add (rightOf: self, equalToRightOf: view, plus: self.mRightMargin)
-//        case .fillIgnoringMargins :
-//          self.mConstraints.add (leftOf: view, equalToLeftOf: self)
-//          self.mConstraints.add (rightOf: self, equalToRightOf: view)
-//        case .left :
-//          self.mConstraints.add (leftOf: view, equalToLeftOf: self, plus: self.mLeftMargin)
-//        case .right :
-//          self.mConstraints.add (rightOf: self, equalToRightOf: view, plus: self.mRightMargin)
-//        }
-//      //--- Vertical constraints
-//        if let lastView = optionalLastView {
-//          let spacing = self.isFlexibleSpace (view) ? 0.0 : self.mSpacing
-//          self.mConstraints.add (bottomOf: lastView, equalToTopOf: view, plus: spacing)
-//        }else{
-//          self.mConstraints.add (topOf: self, equalToTopOf: view, plus: self.mTopMargin)
-//        }
-//        if let v = view.lastBaselineRepresentativeViewArray.last { // §§
-//          currentLastBaselineRepresentativeView = v
-//        }
-//      //--- Handle height constraint for views with lower hugging priority
-//        if self.isFlexibleSpace (view) {
-//          if let refView = optionalLastFlexibleSpace {
-//            self.mConstraints.add (heightOf: refView, equalToHeightOf: view)
-//          }
-//          optionalLastFlexibleSpace = view
-//        }
-//        if self.isHorizontalDivider (view) {
-//          optionalLastFlexibleSpace = nil
-//        }
-//        if view is AutoLayoutVerticalStackView.GutterSeparator { // §§
-//          self.mLastBaselineRepresentativeView.append (currentLastBaselineRepresentativeView)
-//          currentLastBaselineRepresentativeView = nil
-//        }
-//      //--- view is horizontal stack view ? Enumerate its gutters
-//        if let hStack = view as? AutoLayoutHorizontalStackView {
-//          var gutterArray = [AutoLayoutHorizontalStackView.GutterSeparator] ()
-//          for hStackSubView in hStack.subviews {
-//            if !hStackSubView.isHidden, let gutter = hStackSubView as? AutoLayoutHorizontalStackView.GutterSeparator {
-//              gutterArray.append (gutter)
-//            }
-//          }
-//          let n = min (referenceGutterArray.count, gutterArray.count)
-//          for i in 0 ..< n {
-//            self.mConstraints.add (leftOf: referenceGutterArray [i], equalToLeftOf: gutterArray [i])
-//            self.mConstraints.add (rightOf: referenceGutterArray [i], equalToRightOf: gutterArray [i])
-//          }
-//          if referenceGutterArray.count < gutterArray.count {
-//            referenceGutterArray = gutterArray
-//          }
-//        }
-//     //---
-//        optionalLastView = view
-//      }
-//    }
-//    self.mLastBaselineRepresentativeView.append (currentLastBaselineRepresentativeView)
-//  //--- Add bottom constraint for last view
-//    if let lastView = optionalLastView {
-//      self.mConstraints.add (bottomOf: lastView, equalToBottomOf: self, plus: self.mBottomMargin)
-//    }
-//  //--- Apply constaints
-//    self.addConstraints (self.mConstraints)
-//  //--- This should the last instruction: call super method
-//    super.updateConstraints ()
-//  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate final class InternalClipView : NSClipView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendFlexibleSpace ()
-      .appendView (inView)
-      .appendFlexibleSpace ()
-    self.addSubview (hStack)
-    return self
+  init () {
+    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
+    noteObjectAllocation (self)
+  //--- Do not set drawsBackground and backgroundColor of a clip view !!!
+  // It is also important to note that setting drawsBackground to false in an NSScrollView
+  // has the added effect of setting the NSClipView property copiesOnScroll to false.
+  // The side effect of setting the drawsBackground property directly to the NSClipView is the
+  // appearance of “trails” (vestiges of previous drawing) in the document view as it is scrolled.
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendFlexibleSpace ()
-      .appendView (inView)
-    self.addSubview (hStack)
-    return self
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

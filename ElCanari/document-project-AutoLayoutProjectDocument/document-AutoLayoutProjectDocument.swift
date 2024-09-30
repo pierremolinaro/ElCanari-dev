@@ -2882,10 +2882,706 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_2 ())
-      _ = vStackView .appendView (vStackView_view)
+      let vStackView_view = AutoLayoutVerticalStackView (verticalScroller: true)
+        .set (rightMargin: .regular)
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid and Flip", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+            .bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
+            .bind_selectedIndex (self.rootObject.mBoardGridStyle_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Every", bold: false, size: .small, alignment: .right)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutTaggedPopUpButton (size: .small)
+            .add (title: "1 Step", withTag: 1)
+            .add (title: "2 Steps", withTag: 2)
+            .add (title: "4 Steps", withTag: 4)
+            .add (title: "5 Steps", withTag: 5)
+            .add (title: "8 Steps", withTag: 8)
+            .add (title: "10 Steps", withTag: 10)
+            .bind_selectedTag (self.rootObject.mBoardGridDisplayFactor_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
+            .set (width: 125)
+            .bind_value (self.rootObject.mBoardHorizontalFlip_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+            .bind_value (self.rootObject.mBoardVerticalFlip_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, size: .small, alignment: .right)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .expandableWidth ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_crossColorGridForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, size: .small, alignment: .right)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .expandableWidth ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_lineColorGridForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Rastnet", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: RastnetDisplay.popupTitles (), size: .small)
+          .bind_selectedIndex (self.rootObject.mRastnetDisplay_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutCanariSelectionPopUpButton (size: .small)
+          .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.netNamesArray_property)
+          .bind_hidden (.not (.prop (self.rastnetDisplayOneNet_property)))
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutCanariSelectionPopUpButton (size: .small)
+          .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property)
+          .bind_hidden (.not (.prop (self.rastnetDisplayComponentNet_property)))
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Warning and Error Circle", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutLinearSlider (min: 0, max: 24, ticks: 13)
+          .bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Contextual Click Diameter", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutLinearSlider (min: 10, max: 200, ticks: 10)
+          .bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, sendContinously:true)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Pad Number", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutFontButton (width: 125, size: .small)
+          .bind_fontValue (preferences_padNumberFontForBoard_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Package Width", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutTaggedPopUpButton (size: .small)
+          .add (title: "0.5 Point", withTag: 5)
+          .add (title: "1.0 Point", withTag: 10)
+          .add (title: "1.5 Point", withTag: 15)
+          .add (title: "2.0 Point", withTag: 20)
+          .add (title: "2.5 Point", withTag: 25)
+          .bind_selectedTag (self.rootObject.packageDrawingWidthMultpliedByTenForBoard_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutDisclosureTriangle (size: .small)
+            .bind_expanded (self.rootObject.mExpandFrontSideBoardSettings_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Front side Display", bold: true, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_frontSidePadColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Pads", size: .small)
+            .bind_value (self.rootObject.displayFrontPadsForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_frontSideLegendColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Component + Legend", size: .small)
+            .bind_value (self.rootObject.displayFrontLegendForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_frontSideLayoutColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
+            .bind_value (self.rootObject.displayFrontLayoutForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_frontSideRestrictRectangleColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+            .bind_value (self.rootObject.displayFrontRestrictRectangles_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutDisclosureTriangle (size: .small)
+            .bind_expanded (self.rootObject.mExpandBackSideBoardSettings_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Back Side Display", bold: true, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_backSidePadColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Pads", size: .small)
+            .bind_value (self.rootObject.displayBackPadsForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_backSideLegendColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Component + Legend", size: .small)
+            .bind_value (self.rootObject.displayBackLegendForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_backSideLayoutColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
+            .bind_value (self.rootObject.displayBackLayoutForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_backSideRestrictRectangleColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+            .bind_value (self.rootObject.displayBackRestrictRectangles_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutDisclosureTriangle (size: .small)
+            .bind_expanded (self.rootObject.mExpandInner1BoardSettings_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 1 Layer Display", bold: true, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner1BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_inner1LayoutColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
+            .bind_value (self.rootObject.displayInner1LayoutForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner1BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_inner1SideRestrictRectangleColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+            .bind_value (self.rootObject.displayInner1RestrictRectangles_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutDisclosureTriangle (size: .small)
+            .bind_expanded (self.rootObject.mExpandInner2BoardSettings_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 2 Layer Display", bold: true, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner2BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_inner2LayoutColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
+            .bind_value (self.rootObject.displayInner2LayoutForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner2BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_inner2SideRestrictRectangleColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+            .bind_value (self.rootObject.displayInner2RestrictRectangles_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutDisclosureTriangle (size: .small)
+            .bind_expanded (self.rootObject.mExpandInner3BoardSettings_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 3 Layer Display", bold: true, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner3BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_inner3LayoutColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
+            .bind_value (self.rootObject.displayInner3LayoutForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner3BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_inner3SideRestrictRectangleColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+            .bind_value (self.rootObject.displayInner3RestrictRectangles_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutDisclosureTriangle (size: .small)
+            .bind_expanded (self.rootObject.mExpandInner4BoardSettings_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 4 Layer Display", bold: true, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner4BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
+            .bind_value (self.rootObject.displayInner4LayoutForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandInner4BoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_inner4SideRestrictRectangleColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
+            .bind_value (self.rootObject.displayInner4RestrictRectangles_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutDisclosureTriangle (size: .small)
+            .bind_expanded (self.rootObject.mExpandOtherBoardSettings_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Other", bold: true, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_padNumberColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Pad Numbers", size: .small)
+            .bind_value (self.rootObject.displayPadNumbersForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_boardLimitsColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Board Limits", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_boardClearanceColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Board Clearance", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_rastnetColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Rastnet", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_workingAreaColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Working Area", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_boardBackgroundColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_errorBackgroundColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Error Background", size: .small)
+            .bind_value (self.rootObject.drawErrorBackgroundForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_warningBackgroundColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Warning Background", size: .small)
+            .bind_value (preferences_drawWarningBackgroundForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView.appendView (vStackView_view)
     }
-    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 
@@ -2923,7 +3619,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_3 ())
+      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_2 ())
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -4209,7 +4905,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
     }
     _ = vStackView.appendSeparator ()
     do{
-      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_4 ())
+      let vStackView_view = AutoLayoutVerticalScrollView (content: self.computeImplicitView_3 ())
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -5260,712 +5956,6 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
 
   private final func computeImplicitView_2 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
-      .set (rightMargin: .regular)
-    do{
-      let view_view = AutoLayoutStaticLabel (title: "Grid and Flip", bold: true, size: .small, alignment: .left)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-          .bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Display", bold: false, size: .small, alignment: .right)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
-          .bind_selectedIndex (self.rootObject.mBoardGridStyle_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Every", bold: false, size: .small, alignment: .right)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutTaggedPopUpButton (size: .small)
-          .add (title: "1 Step", withTag: 1)
-          .add (title: "2 Steps", withTag: 2)
-          .add (title: "4 Steps", withTag: 4)
-          .add (title: "5 Steps", withTag: 5)
-          .add (title: "8 Steps", withTag: 8)
-          .add (title: "10 Steps", withTag: 10)
-          .bind_selectedTag (self.rootObject.mBoardGridDisplayFactor_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-          .set (width: 125)
-          .bind_value (self.rootObject.mBoardHorizontalFlip_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      _ = view_view.appendFlexibleSpace ()
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Vertical", size: .small)
-          .bind_value (self.rootObject.mBoardVerticalFlip_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, size: .small, alignment: .right)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .expandableWidth ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_crossColorGridForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, size: .small, alignment: .right)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .expandableWidth ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_lineColorGridForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutStaticLabel (title: "Rastnet", bold: true, size: .small, alignment: .left)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutEnumPopUpButton (titles: RastnetDisplay.popupTitles (), size: .small)
-        .bind_selectedIndex (self.rootObject.mRastnetDisplay_property)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutCanariSelectionPopUpButton (size: .small)
-        .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedNetName_property, self.rootObject.netNamesArray_property)
-        .bind_hidden (.not (.prop (self.rastnetDisplayOneNet_property)))
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutCanariSelectionPopUpButton (size: .small)
-        .bind_selectedNameInArray (self.rootObject.mRastnetDisplayedComponentName_property, self.rootObject.placedComponentNameArray_property)
-        .bind_hidden (.not (.prop (self.rastnetDisplayComponentNet_property)))
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutStaticLabel (title: "Warning and Error Circle", bold: true, size: .small, alignment: .left)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutLinearSlider (min: 0, max: 24, ticks: 13)
-        .bind_doubleValue (self.rootObject.mErrorOrWarningIssueSize_property, sendContinously:true)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutStaticLabel (title: "Contextual Click Diameter", bold: true, size: .small, alignment: .left)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutLinearSlider (min: 10, max: 200, ticks: 10)
-        .bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, sendContinously:true)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutStaticLabel (title: "Pad Number", bold: true, size: .small, alignment: .left)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutFontButton (width: 125, size: .small)
-        .bind_fontValue (preferences_padNumberFontForBoard_property)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutStaticLabel (title: "Package Width", bold: true, size: .small, alignment: .left)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutTaggedPopUpButton (size: .small)
-        .add (title: "0.5 Point", withTag: 5)
-        .add (title: "1.0 Point", withTag: 10)
-        .add (title: "1.5 Point", withTag: 15)
-        .add (title: "2.0 Point", withTag: 20)
-        .add (title: "2.5 Point", withTag: 25)
-        .bind_selectedTag (self.rootObject.packageDrawingWidthMultpliedByTenForBoard_property)
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutDisclosureTriangle (size: .small)
-          .bind_expanded (self.rootObject.mExpandFrontSideBoardSettings_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Front side Display", bold: true, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendFlexibleSpace ()
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_frontSidePadColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Pads", size: .small)
-          .bind_value (self.rootObject.displayFrontPadsForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_frontSideLegendColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Component + Legend", size: .small)
-          .bind_value (self.rootObject.displayFrontLegendForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_frontSideLayoutColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
-          .bind_value (self.rootObject.displayFrontLayoutForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandFrontSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_frontSideRestrictRectangleColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
-          .bind_value (self.rootObject.displayFrontRestrictRectangles_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutDisclosureTriangle (size: .small)
-          .bind_expanded (self.rootObject.mExpandBackSideBoardSettings_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Back Side Display", bold: true, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendFlexibleSpace ()
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_backSidePadColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Pads", size: .small)
-          .bind_value (self.rootObject.displayBackPadsForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_backSideLegendColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Component + Legend", size: .small)
-          .bind_value (self.rootObject.displayBackLegendForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_backSideLayoutColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
-          .bind_value (self.rootObject.displayBackLayoutForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandBackSideBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_backSideRestrictRectangleColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
-          .bind_value (self.rootObject.displayBackRestrictRectangles_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutDisclosureTriangle (size: .small)
-          .bind_expanded (self.rootObject.mExpandInner1BoardSettings_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Inner 1 Layer Display", bold: true, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendFlexibleSpace ()
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner1BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_inner1LayoutColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
-          .bind_value (self.rootObject.displayInner1LayoutForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner1BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_inner1SideRestrictRectangleColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
-          .bind_value (self.rootObject.displayInner1RestrictRectangles_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutDisclosureTriangle (size: .small)
-          .bind_expanded (self.rootObject.mExpandInner2BoardSettings_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Inner 2 Layer Display", bold: true, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendFlexibleSpace ()
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner2BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_inner2LayoutColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
-          .bind_value (self.rootObject.displayInner2LayoutForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner2BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_inner2SideRestrictRectangleColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
-          .bind_value (self.rootObject.displayInner2RestrictRectangles_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutDisclosureTriangle (size: .small)
-          .bind_expanded (self.rootObject.mExpandInner3BoardSettings_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Inner 3 Layer Display", bold: true, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendFlexibleSpace ()
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner3BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_inner3LayoutColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
-          .bind_value (self.rootObject.displayInner3LayoutForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner3BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_inner3SideRestrictRectangleColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
-          .bind_value (self.rootObject.displayInner3RestrictRectangles_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutDisclosureTriangle (size: .small)
-          .bind_expanded (self.rootObject.mExpandInner4BoardSettings_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Inner 4 Layer Display", bold: true, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendFlexibleSpace ()
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner4BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Layout", size: .small)
-          .bind_value (self.rootObject.displayInner4LayoutForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandInner4BoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_inner4SideRestrictRectangleColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Restrict Rectangle", size: .small)
-          .bind_value (self.rootObject.displayInner4RestrictRectangles_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-      do{
-        let view_view_view = AutoLayoutDisclosureTriangle (size: .small)
-          .bind_expanded (self.rootObject.mExpandOtherBoardSettings_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Other", bold: true, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendFlexibleSpace ()
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_padNumberColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Pad Numbers", size: .small)
-          .bind_value (self.rootObject.displayPadNumbersForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_boardLimitsColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Board Limits", bold: false, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_boardClearanceColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Board Clearance", bold: false, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_rastnetColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Rastnet", bold: false, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_workingAreaColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Working Area", bold: false, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_boardBackgroundColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .left)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_errorBackgroundColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Error Background", size: .small)
-          .bind_value (self.rootObject.drawErrorBackgroundForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    do{
-      let view_view = AutoLayoutHorizontalStackView ()
-        .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
-      _ = view_view.appendFlexibleSpace ()
-      do{
-        let view_view_view = AutoLayoutColorWell ()
-          .set (toolTip: "Stored in Preferences")
-          .bind_color (preferences_warningBackgroundColorForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view_view.appendGutter ()
-      do{
-        let view_view_view = AutoLayoutCheckbox (title: "Warning Background", size: .small)
-          .bind_value (preferences_drawWarningBackgroundForBoard_property)
-        _ = view_view .appendView (view_view_view)
-      }
-      _ = view .appendView (view_view)
-    }
-    return view
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 3
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func computeImplicitView_3 () -> NSView {
-    let view = AutoLayoutVerticalStackView ()
     do{
       let view_view = AutoLayoutHorizontalStackView ()
       do{
@@ -6275,10 +6265,10 @@ do{
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    IMPLICIT VIEW 4
+  //    IMPLICIT VIEW 3
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final func computeImplicitView_4 () -> NSView {
+  private final func computeImplicitView_3 () -> NSView {
     let view = AutoLayoutVerticalStackView ()
     do{
       let view_view = AutoLayoutStaticLabel (title: "Package", bold: true, size: .small, alignment: .left)

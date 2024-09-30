@@ -19,7 +19,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override init () {
+  init () {
     super.init ()
 
     self.mTableView.configure (

@@ -19,7 +19,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override init () {
+  init () {
     super.init ()
 
     self.mTableView.configure (

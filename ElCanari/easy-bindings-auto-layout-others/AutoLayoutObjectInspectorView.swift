@@ -20,7 +20,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   // INIT
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override init () {
+  init () {
   //--- Define default View
     _ = self.mDefaultInspectorView.appendView (self.mDefaultLabel).appendFlexibleSpace ()
   //---

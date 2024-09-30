@@ -1353,7 +1353,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
       Button (title: "+▶︎", size: .regular) { $run appendNewBoardDisplayInspectorAction }
     }
-    VerticalScrollView (content:
+//    VerticalScrollView (content:
       vStack set (rightMargin: .regular) {
         StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
         hStack {
@@ -1662,8 +1662,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         }
       }
-    )
-    space 
+//    )
+ // §   space 
   }
 
   action prependNewBoardSettingsInspectorAction ;
