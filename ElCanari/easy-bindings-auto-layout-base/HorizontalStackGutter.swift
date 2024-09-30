@@ -74,13 +74,14 @@ final class HorizontalStackGutter : NSLayoutGuide, HorizontalStackHierarchyProto
       &ioContraints
     )
   //--- Gutter
-    ioContraints.add (topOfView: inHorizontalStackView, equalToTopOfGuide: self)
-    ioContraints.add (bottomOfView: inHorizontalStackView, equalToBottomOfGuide: self)
-    ioContraints.add (widthOfGuide: self, equalTo: GUTTER_WIDTH)
+    ioContraints.add (y: inHorizontalStackView.topAnchor, equalTo: self.topAnchor)
+    ioContraints.add (y: inHorizontalStackView.bottomAnchor, equalTo: self.bottomAnchor)
+    ioContraints.add (dim: self.widthAnchor, equalToConstant: GUTTER_WIDTH)
     if let lastLeftView = ioOptionalLastRightView {
-      ioContraints.add (leftOfGuide: self, equalToAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
+      ioContraints.add (x: self.leftAnchor, equalTo: lastLeftView, plus: inHorizontalStackView.mSpacing)
     }else{
-      ioContraints.add (leftOfGuide: self, equalToLeftOfView: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+//      ioContraints.add (leftOfGuide: self, equalToLeftOfView: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      ioContraints.add (x: self.leftAnchor, equalTo: inHorizontalStackView.leftAnchor, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
     ioOptionalLastRightView = self.rightAnchor

@@ -51,9 +51,9 @@ class AutoLayoutVerticalScrollView : ALB_NSScrollView {
 //    self.mConstraints.add (bottomOf: self, equalToBottomOf: self.contentView)
 
     if let documentView = self.documentView {
-      self.mConstraints.add (leftOfView: documentView, equalToLeftOfView: self.contentView)
-      self.mConstraints.add (rightOfView: documentView, equalToRightOfView: self.contentView)
-      self.mConstraints.add (topOfView: documentView, equalToTopOfView: self.contentView)
+      self.mConstraints.add (x: documentView.leftAnchor, equalTo: self.contentView.leftAnchor)
+      self.mConstraints.add (x: documentView.rightAnchor, equalTo: self.contentView.rightAnchor)
+      self.mConstraints.add (y: documentView.topAnchor, equalTo: self.contentView.topAnchor)
     }
   //--- Apply constaints
     self.addConstraints (self.mConstraints)

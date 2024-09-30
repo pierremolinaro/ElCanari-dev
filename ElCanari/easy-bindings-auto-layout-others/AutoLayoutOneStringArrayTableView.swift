@@ -106,8 +106,8 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     result.addSubview (textField)
     result.textField = textField
     var constraints = [NSLayoutConstraint] ()
-    constraints.add (widthOfView: textField, equalToWidthOfView: result)
-    constraints.add (heightOfView: textField, equalToHeightOfView: result)
+    constraints.add (dim: textField.widthAnchor, equalTo: result.widthAnchor)
+    constraints.add (dim: textField.heightAnchor, equalTo: result.heightAnchor)
     result.addConstraints (constraints)
     return result
   }

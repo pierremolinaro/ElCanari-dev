@@ -74,13 +74,14 @@ final class VerticalStackGutter : NSLayoutGuide, VerticalStackHierarchyProtocol 
       &ioContraints
     )
   //--- Gutter
-    ioContraints.add (leftOfGuide: self, equalToLeftOfView: inVerticalStackView)
-    ioContraints.add (rightOfGuide: self, equalToRightOf: inVerticalStackView)
-    ioContraints.add (heightOfGuide: self, equalTo: GUTTER_HEIGHT)
+//    ioContraints.add (leftOfGuide: self, equalToLeftOfView: inVerticalStackView)
+    ioContraints.add (x: self.leftAnchor, equalTo: inVerticalStackView.leftAnchor)
+    ioContraints.add (x: self.rightAnchor, equalTo: inVerticalStackView.rightAnchor)
+    ioContraints.add (dim: self.heightAnchor, equalToConstant: GUTTER_HEIGHT)
     if let lastBottomAnchor = ioOptionalLastBottomAnchor {
-      ioContraints.add (YAnchor: lastBottomAnchor, equalToTopOfGuide: self, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (y: lastBottomAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mSpacing)
     }else{
-      ioContraints.add (topOfView: inVerticalStackView, equalToTopOfGuide: self, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mTopMargin)
     }
   //--- After
     ioOptionalLastBottomAnchor = self.bottomAnchor

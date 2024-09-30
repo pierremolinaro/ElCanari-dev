@@ -206,12 +206,12 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
         &self.mConstraints
       )
       if let lastBottomAnchor = optionalLastBottomAnchor {
-        self.mConstraints.add (YAnchor: lastBottomAnchor, equalToBottomOfView: self, plus: self.mBottomMargin)
+        self.mConstraints.add (y: lastBottomAnchor, equalTo: self.bottomAnchor, plus: self.mBottomMargin)
       }else{
-        self.mConstraints.add (bottomOfView: self, equalToTopOfView: self)
+        self.mConstraints.add (y: self.bottomAnchor, equalTo: self.topAnchor)
       }
     }else{
-       self.mConstraints.add (bottomOfView: self, equalToTopOfView: self)
+      self.mConstraints.add (y: self.bottomAnchor, equalTo: self.topAnchor)
     }
   //--- Align gutters
     var gutters = [HorizontalStackGutter] ()

@@ -156,16 +156,16 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     var constraints = [NSLayoutConstraint] ()
 
     self.addSubview (inView)
-    constraints.add (leftOfView: self, equalToLeftOfView: inView)
-    constraints.add (topOfView: self, equalToTopOfView: inView)
-    constraints.add (rightOfView: self, equalToRightOfView: inView)
-    constraints.add (bottomOfView: self, equalToBottomOfView: inView)
+    constraints.add (x: self.leftAnchor, equalTo: inView.leftAnchor)
+    constraints.add (y: self.topAnchor, equalTo: inView.topAnchor)
+    constraints.add (x: self.rightAnchor, equalTo: inView.rightAnchor)
+    constraints.add (y: self.bottomAnchor, equalTo: inView.bottomAnchor)
 
     self.addSubview (self.mHiliteView)
-    constraints.add (leftOfView: self, equalToLeftOfView: self.mHiliteView)
-    constraints.add (topOfView: self, equalToTopOfView: self.mHiliteView)
-    constraints.add (rightOfView: self, equalToRightOfView: self.mHiliteView)
-    constraints.add (bottomOfView: self, equalToBottomOfView: self.mHiliteView)
+    constraints.add (x: self.leftAnchor, equalTo: self.mHiliteView.leftAnchor)
+    constraints.add (y: self.topAnchor, equalTo: self.mHiliteView.topAnchor)
+    constraints.add (x: self.rightAnchor, equalTo: self.mHiliteView.rightAnchor)
+    constraints.add (y: self.bottomAnchor, equalTo: self.mHiliteView.bottomAnchor)
 
     self.addConstraints (constraints)
 
@@ -412,7 +412,7 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.appendTextField (titled: "h Stretching Resistance: \(inView.contentHuggingPriority (for: .horizontal).rawValue)")
     self.appendTextField (titled: "v Stretching Resistance: \(inView.contentHuggingPriority (for: .vertical).rawValue)")
     if let lastView = self.subviews.last {
-      self.mNewConstraints.add (bottomOfView: lastView, equalToBottomOfView: self, plus: 8.0)
+      self.mNewConstraints.add (y: lastView.bottomAnchor, equalTo: self.bottomAnchor, plus: 8.0)
     }
   }
 
@@ -437,12 +437,12 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     view.stringValue = inString
     let optionalLastView = self.subviews.last
     self.addSubview (view)
-    self.mNewConstraints.add (leftOfView: view, equalToLeftOfView: self, plus: 8.0)
-    self.mNewConstraints.add (rightOfView: self, equalToRightOfView: view, plus: 8.0)
+    self.mNewConstraints.add (x: view.leftAnchor, equalTo: self.leftAnchor, plus: 8.0)
+    self.mNewConstraints.add (x: self.rightAnchor, equalTo: view.rightAnchor, plus: 8.0)
     if let lastView = optionalLastView {
-      self.mNewConstraints.add (bottomOfView: lastView, equalToTopOfView: view, plus: 4.0)
+      self.mNewConstraints.add (y: lastView.bottomAnchor, equalTo: view.topAnchor, plus: 4.0)
     }else{
-      self.mNewConstraints.add (topOfView: self, equalToTopOfView: view, plus: 8.0)
+      self.mNewConstraints.add (y: self.topAnchor, equalTo: view.topAnchor, plus: 8.0)
     }
   }
 

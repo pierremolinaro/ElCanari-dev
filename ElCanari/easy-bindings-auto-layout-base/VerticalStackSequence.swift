@@ -64,17 +64,17 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
       if !view.isHidden {
         switch view.pmLayoutSettings.hLayoutInVerticalContainer {
         case .center :
-          ioContraints.add (centerXOfView: view, equalToCenterXOfView: inVerticalStackView)
+          ioContraints.add (x: view.centerXAnchor, equalTo: inVerticalStackView.centerXAnchor)
         case .fill :
-          ioContraints.add (leftOfView: view, equalToLeftOfView: inVerticalStackView, plus: inVerticalStackView.mLeftMargin)
-          ioContraints.add (rightOfView: inVerticalStackView, equalToRightOfView: view, plus: inVerticalStackView.mRightMargin)
+          ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor, plus: inVerticalStackView.mLeftMargin)
+          ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor, plus: inVerticalStackView.mRightMargin)
         case .fillIgnoringMargins :
-          ioContraints.add (leftOfView: view, equalToLeftOfView: inVerticalStackView)
-          ioContraints.add (rightOfView: inVerticalStackView, equalToRightOfView: view)
+          ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor)
+          ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor)
         case .left :
-          ioContraints.add (leftOfView: view, equalToLeftOfView: inVerticalStackView, plus: inVerticalStackView.mLeftMargin)
+          ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor, plus: inVerticalStackView.mLeftMargin)
         case .right :
-          ioContraints.add (rightOfView: inVerticalStackView, equalToRightOfView: view, plus: inVerticalStackView.mRightMargin)
+          ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor, plus: inVerticalStackView.mRightMargin)
         }
       }
     }
@@ -82,9 +82,9 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
     for view in self.mViewArray {
       if !view.isHidden {
         if let lastBottomView = ioOptionalLastBottomAnchor {
-          ioContraints.add (YAnchor: lastBottomView, equalToTopOfView: view, plus: inVerticalStackView.mSpacing)
+          ioContraints.add (y: lastBottomView, equalTo: view.topAnchor, plus: inVerticalStackView.mSpacing)
         }else{
-          ioContraints.add (topOfView: inVerticalStackView, equalToTopOfView: view, plus: inVerticalStackView.mTopMargin)
+          ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: view.topAnchor, plus: inVerticalStackView.mTopMargin)
         }
         ioOptionalLastBottomAnchor = view.bottomAnchor
       }
@@ -119,7 +119,7 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
         let gutters = hStack.gutters
         let n = Swift.min (gutters.count, ioGutters.count)
         for i in 0 ..< n {
-          ioContraints.add (leftOfGuide: gutters [i], equalToLeftOfGuide: ioGutters [i])
+          ioContraints.add (x: gutters [i].leftAnchor, equalTo: ioGutters [i].leftAnchor)
         }
         for i in n ..< gutters.count {
           ioGutters.append (gutters [i])

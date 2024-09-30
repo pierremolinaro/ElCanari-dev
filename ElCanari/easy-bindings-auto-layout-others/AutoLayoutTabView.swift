@@ -32,13 +32,14 @@ final class AutoLayoutTabView : ALB_NSView {
 
   //--- Permanent tab view constraints
     var permanentConstraints = [NSLayoutConstraint] ()
-    permanentConstraints.add (topOfView: self, equalToTopOfView: self.mSegmentedControl)
-    permanentConstraints.add (centerXOfView: self, equalToCenterXOfView: self.mSegmentedControl)
-    let c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-    permanentConstraints.append (c)
-    permanentConstraints.add (bottomOfView: self, equalToBottomOfView: self.mDocumentView)
-    permanentConstraints.add (leftOfView: self, equalToLeftOfView: self.mDocumentView)
-    permanentConstraints.add (rightOfView: self, equalToRightOfView: self.mDocumentView)
+    permanentConstraints.add (y: self.topAnchor, equalTo: self.mSegmentedControl.topAnchor)
+    permanentConstraints.add (x: self.centerXAnchor, equalTo: self.mSegmentedControl.centerXAnchor)
+//    let c = NSLayoutConstraint (item: self.mDocumentView, attribute: .top, relatedBy: .equal, toItem: self.mSegmentedControl, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+//    permanentConstraints.append (c)
+    permanentConstraints.add (y: self.mDocumentView.topAnchor, equalTo: self.mDocumentView.centerYAnchor)
+    permanentConstraints.add (y: self.bottomAnchor, equalTo: self.mDocumentView.bottomAnchor)
+    permanentConstraints.add (x: self.leftAnchor, equalTo: self.mDocumentView.leftAnchor)
+    permanentConstraints.add (x: self.rightAnchor, equalTo: self.mDocumentView.rightAnchor)
     self.addConstraints (permanentConstraints)
   }
 

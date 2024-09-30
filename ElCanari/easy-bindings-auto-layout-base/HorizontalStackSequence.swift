@@ -76,10 +76,10 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
   //--- Horizontal constraints
     for view in self.mViewArray {
       if !view.isHidden {
-        if let lastLeftAnchor = ioOptionalLastRightView {
-          ioContraints.add (leftOfView: view, equalToXAnchor: lastLeftAnchor, plus: inHorizontalStackView.mSpacing)
+        if let lastRightAnchor = ioOptionalLastRightView {
+          ioContraints.add (x: view.leftAnchor, equalTo: lastRightAnchor, plus: inHorizontalStackView.mSpacing)
         }else{
-          ioContraints.add (leftOfView: view, equalToLeftOfView: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+          ioContraints.add (x: view.leftAnchor, equalTo: inHorizontalStackView.leftAnchor, plus: inHorizontalStackView.mLeftMargin)
         }
         ioOptionalLastRightView = view.rightAnchor
       }
@@ -97,7 +97,7 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
         let gutters = vStack.gutters ()
         let n = Swift.min (gutters.count, ioGutters.count)
         for i in 0 ..< n {
-          ioContraints.add (bottomOfGuide: gutters [i], equalToBottomOfGuide: ioGutters [i])
+          ioContraints.add (y: gutters [i].bottomAnchor, equalTo: ioGutters [i].bottomAnchor)
         }
         for i in n ..< gutters.count {
           ioGutters.append (gutters [i])
@@ -109,7 +109,7 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
           for i in 0 ..< m {
             if let lastBaselineView = lastBaselineViews [i] {
               if let refLastBaselineView = ioLastBaselineViews [i] {
-                ioContraints.add (lastBaselineOfView: lastBaselineView, equalToLastBaselineOfView: refLastBaselineView)
+                ioContraints.add (y: lastBaselineView.lastBaselineAnchor, equalTo: refLastBaselineView.lastBaselineAnchor)
               }else{
                 ioLastBaselineViews [i] = lastBaselineViews [i]
               }

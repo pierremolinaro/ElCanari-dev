@@ -84,13 +84,13 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
       &ioContraints
     )
   //--- Divider
-    ioContraints.add (topOfView: inHorizontalStackView, equalToTopOfView: self)
-    ioContraints.add (bottomOfView: inHorizontalStackView, equalToBottomOfView: self)
-    ioContraints.add (widthOfView: self, equalTo: DIVIDER_WIDTH)
-    if let lastLeftView = ioOptionalLastRightView {
-      ioContraints.add (leftOfView: self, equalToXAnchor: lastLeftView, plus: inHorizontalStackView.mSpacing)
+    ioContraints.add (y: inHorizontalStackView.topAnchor, equalTo: self.topAnchor)
+    ioContraints.add (y: inHorizontalStackView.bottomAnchor, equalTo: self.bottomAnchor)
+    ioContraints.add (dim: self.widthAnchor, equalToConstant: DIVIDER_WIDTH)
+    if let lastRightAnchor = ioOptionalLastRightView {
+      ioContraints.add (x: self.leftAnchor, equalTo: lastRightAnchor, plus: inHorizontalStackView.mSpacing)
     }else{
-      ioContraints.add (leftOfView: self, equalToLeftOfView: inHorizontalStackView, plus: inHorizontalStackView.mLeftMargin)
+      ioContraints.add (x: self.leftAnchor, equalTo: inHorizontalStackView.leftAnchor, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
     ioOptionalLastRightView = self.rightAnchor
@@ -192,7 +192,7 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
       let priority : LayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
       let dX = self.mCurrentMouseDraggedLocationX - self.mInitialMouseDownLocationX
       let newLeft = self.mDividerInitialLeftLocationX + dX
-      self.mDividerConstraints.add (leftOfView: self, equalToLeftOfView: hStack, plus: newLeft, priority: priority)
+      self.mDividerConstraints.add (x: self.leftAnchor, equalTo: hStack.leftAnchor, plus: newLeft, priority: priority)
       hStack.addConstraints (self.mDividerConstraints)
     }
     super.updateConstraints ()

@@ -79,13 +79,13 @@ final class VerticalStackDivider : NSView, VerticalStackHierarchyProtocol {
       &ioContraints
     )
   //--- Divider
-    ioContraints.add (leftOfView: self, equalToLeftOfView: inVerticalStackView)
-    ioContraints.add (rightOfView: inVerticalStackView, equalToRightOfView: self)
-    ioContraints.add (heightOfView: self, equalTo: DIVIDER_HEIGHT)
+    ioContraints.add (x: self.leftAnchor, equalTo: inVerticalStackView.leftAnchor)
+    ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: self.rightAnchor)
+    ioContraints.add (dim: self.heightAnchor, equalToConstant: DIVIDER_HEIGHT)
     if let lastBottomAnchor = ioOptionalLastBottomAnchor {
-      ioContraints.add (YAnchor: lastBottomAnchor, equalToTopOfView: self, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (y: lastBottomAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mSpacing)
     }else{
-      ioContraints.add (topOfView: inVerticalStackView, equalToTopOfView: self, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mTopMargin)
     }
   //--- After
     ioOptionalLastBottomAnchor = self.bottomAnchor
@@ -197,7 +197,7 @@ final class VerticalStackDivider : NSView, VerticalStackHierarchyProtocol {
       let priority : LayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow
       let dY = self.mCurrentMouseDraggedLocationY - self.mInitialMouseDownLocationY
       let newTop = self.mDividerInitialTopLocationY + (vStack.isFlipped ? dY : -dY)
-      self.mDividerConstraints.add (topOfView: vStack, equalToTopOfView: self, plus: newTop, priority: priority)
+      self.mDividerConstraints.add (y: vStack.topAnchor, equalTo: self.topAnchor, plus: newTop, priority: priority)
       vStack.addConstraints (self.mDividerConstraints)
     }
     super.updateConstraints ()
