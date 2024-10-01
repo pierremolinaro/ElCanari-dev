@@ -50,7 +50,7 @@ class EBOutletEvent : EBObserverProtocol {
       if !self.mEventIsPosted {
         appendMessage (str)
       }else{ // Event already posted
-        appendMessage (str, color: NSColor.brown)
+        appendMessage (str, color: .brown)
       }
     }
     if !self.mEventIsPosted {
@@ -109,7 +109,7 @@ class EBOutletEvent : EBObserverProtocol {
     }
     #if BUILD_OBJECT_EXPLORER
       if logEvents () {
-        appendMessage ("--------------------------------------\n", color: NSColor.blue)
+        appendMessage ("--------------------------------------\n", color: .blue)
       }
     #endif
   }
