@@ -198,7 +198,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
         _ = hStackView_view_view.appendGutter ()
         do{
           let hStackView_view_view_view = AutoLayoutCheckbox (title: "Show Debug Menu", size: .regular)
-            .bind_value (preferences_showDebugMenu_property)
+          self.configure_showDebugMenu (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
         }
         _ = hStackView_view .appendView (hStackView_view_view)
@@ -559,7 +559,6 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 //--------------------------------------------------------------------------------------------------
 
 @MainActor let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
-@MainActor let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 @MainActor let Preferences_symbolColor = "Preferences:symbolColor"
 @MainActor let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
 @MainActor let Preferences_lineColorOfSymbolGrid = "Preferences:lineColorOfSymbolGrid"
@@ -570,7 +569,6 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 @MainActor let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
 @MainActor let Preferences_packageColor = "Preferences:packageColor"
 @MainActor let Preferences_frontSidePadColor = "Preferences:frontSidePadColor"
-@MainActor let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
 @MainActor let Preferences_backSidePadColor = "Preferences:backSidePadColor"
 @MainActor let Preferences_displayPackageBackSidePads = "Preferences:displayPackageBackSidePads"
 @MainActor let Preferences_padNumberColor = "Preferences:padNumberColor"
@@ -732,10 +730,11 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 @MainActor let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 @MainActor let Preferences_artworkDialogFilterString = "Preferences:artworkDialogFilterString"
 @MainActor let Preferences_mSelectedPrefsPage = "Preferences:mSelectedPrefsPage"
-@MainActor let Preferences_showDebugMenu = "Preferences:showDebugMenu"
 @MainActor let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
+@MainActor let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 @MainActor let Preferences_pinNameFont = "Preferences:pinNameFont"
+@MainActor let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
 @MainActor let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
 @MainActor let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 @MainActor let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
@@ -745,12 +744,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //································································································
 
 @MainActor let preferences_hiliteWidthMultipliedByTen_property = EBPreferenceProperty <Int> (defaultValue: 15, prefKey: Preferences_hiliteWidthMultipliedByTen)
-
-//································································································
-//   Atomic property: usesUserLibrary
-//································································································
-
-@MainActor let preferences_usesUserLibrary_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_usesUserLibrary)
 
 //································································································
 //   Atomic property: symbolColor
@@ -811,12 +804,6 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //································································································
 
 @MainActor let preferences_frontSidePadColor_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColor)
-
-//································································································
-//   Atomic property: displayPackageFrontSidePads
-//································································································
-
-@MainActor let preferences_displayPackageFrontSidePads_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
 
 //································································································
 //   Atomic property: backSidePadColor
@@ -1785,16 +1772,16 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_mSelectedPrefsPage_property = EBPreferenceProperty <Int> (defaultValue: 0, prefKey: Preferences_mSelectedPrefsPage)
 
 //································································································
-//   Atomic property: showDebugMenu
-//································································································
-
-@MainActor let preferences_showDebugMenu_property = EBPreferenceProperty <Bool> (defaultValue: false, prefKey: Preferences_showDebugMenu)
-
-//································································································
 //   Atomic property: selectionHiliteColor
 //································································································
 
 @MainActor let preferences_selectionHiliteColor_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
+
+//································································································
+//   Atomic property: usesUserLibrary
+//································································································
+
+@MainActor let preferences_usesUserLibrary_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_usesUserLibrary)
 
 //································································································
 //   To many property: additionnalLibraryArray
@@ -1807,6 +1794,12 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //································································································
 
 @MainActor let preferences_pinNameFont_property = EBPreferenceProperty <NSFont> (defaultValue: NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFont)
+
+//································································································
+//   Atomic property: displayPackageFrontSidePads
+//································································································
+
+@MainActor let preferences_displayPackageFrontSidePads_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
 
 //································································································
 //   Atomic property: mFreeRouterGuiDefaultFileContents

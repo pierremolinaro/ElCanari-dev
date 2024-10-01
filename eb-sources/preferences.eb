@@ -36,14 +36,6 @@ prefs {
 }
 
 //——————————————————————————————————————————————————————————————————————————————
-//! General
-
-prefs {
-  property Bool showDebugMenu default no ;
-//  property AutoLayoutUserInterfaceStyle mAutoLayoutStyle default roundedBezel ;
-}
-
-//——————————————————————————————————————————————————————————————————————————————
 //! Application Update
 
 prefs {
@@ -106,7 +98,7 @@ prefs {
       hStack {
         space
         gutter
-        Checkbox (title: "Show Debug Menu", size: .regular) { $value prefs.showDebugMenu }
+        Checkbox (title: "Show Debug Menu", size: .regular) [configurator showDebugMenu]
       }
       StaticLabel (title: "FreeRouting Application Directory", bold: yes, size: .regular, alignment: .left)
       Button (title: "", size: .regular) [configurator configureFreeRoutingPath]

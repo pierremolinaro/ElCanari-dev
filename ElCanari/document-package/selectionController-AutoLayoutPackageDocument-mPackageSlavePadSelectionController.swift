@@ -113,12 +113,6 @@ import AppKit
   final let annularRingUnit_property = EBComputedProperty_Int ()
 
   //································································································
-  //   Selection observable property: objectDisplay
-  //································································································
-
-  final let objectDisplay_property = EBTransientProperty <EBShape> ()
-
-  //································································································
   //   Selection observable property: issues
   //································································································
 
@@ -161,6 +155,12 @@ import AppKit
   final let padNumberDisplay_property = EBTransientProperty <EBShape> ()
 
   //································································································
+  //   Selection observable property: objectDisplay
+  //································································································
+
+  final let objectDisplay_property = EBTransientProperty <EBShape> ()
+
+  //································································································
   //   Selection observable property: selectionDisplay
   //································································································
 
@@ -197,7 +197,6 @@ import AppKit
     self.bind_property_holeWidthUnit ()
     self.bind_property_holeHeightUnit ()
     self.bind_property_annularRingUnit ()
-    self.bind_property_objectDisplay ()
     self.bind_property_issues ()
     self.bind_property_padIsTraversing ()
     self.bind_property_annularRing ()
@@ -205,6 +204,7 @@ import AppKit
     self.bind_property_masterPadNameWithZoneName ()
     self.bind_property_padNameForDisplay ()
     self.bind_property_padNumberDisplay ()
+    self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
   }
 
@@ -274,9 +274,6 @@ import AppKit
     self.annularRingUnit_property.mReadModelFunction = nil 
     self.annularRingUnit_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_annularRingUnit_StopsBeingObserved (by: self.annularRingUnit_property)
-  //--- objectDisplay
-    self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_issues_StopsBeingObserved (by: self.issues_property)
@@ -298,6 +295,9 @@ import AppKit
   //--- padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_padNumberDisplay_StopsBeingObserved (by: self.padNumberDisplay_property)
+  //--- objectDisplay
+    self.objectDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
@@ -1070,45 +1070,6 @@ import AppKit
   }
   //································································································
 
-  private final func bind_property_objectDisplay () {
-    self.selectedArray_property.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //································································································
-
   private final func bind_property_issues () {
     self.selectedArray_property.toMany_issues_StartsBeingObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
@@ -1357,6 +1318,45 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.padNumberDisplay_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //································································································
+
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

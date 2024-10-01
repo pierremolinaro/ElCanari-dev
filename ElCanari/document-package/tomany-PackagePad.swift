@@ -65,9 +65,6 @@ class ReadOnlyArrayOf_PackagePad : EBReadOnlyAbstractArrayProperty <PackagePad> 
       if let relay = self.mObserversOf_annularRingUnit { // Stored property
         managedObject.annularRingUnit_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_padNameForDisplay { // Transient property
         managedObject.padNameForDisplay_property.stopsBeingObserved (by: relay)
       }
@@ -97,6 +94,9 @@ class ReadOnlyArrayOf_PackagePad : EBReadOnlyAbstractArrayProperty <PackagePad> 
       }
       if let relay = self.mObserversOf_masterPadObjectIndex { // Transient property
         managedObject.masterPadObjectIndex_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
         managedObject.selectionDisplay_property.stopsBeingObserved (by: relay)
@@ -155,9 +155,6 @@ class ReadOnlyArrayOf_PackagePad : EBReadOnlyAbstractArrayProperty <PackagePad> 
       if let relay = self.mObserversOf_annularRingUnit { // Stored property
         managedObject.annularRingUnit_property.startsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_objectDisplay { // Transient property
-        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_padNameForDisplay { // Transient property
         managedObject.padNameForDisplay_property.startsBeingObserved (by: relay)
       }
@@ -187,6 +184,9 @@ class ReadOnlyArrayOf_PackagePad : EBReadOnlyAbstractArrayProperty <PackagePad> 
       }
       if let relay = self.mObserversOf_masterPadObjectIndex { // Transient property
         managedObject.masterPadObjectIndex_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_objectDisplay { // Transient property
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_selectionDisplay { // Transient property
         managedObject.selectionDisplay_property.startsBeingObserved (by: relay)
@@ -662,35 +662,6 @@ class ReadOnlyArrayOf_PackagePad : EBReadOnlyAbstractArrayProperty <PackagePad> 
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'objectDisplay' transient property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_objectDisplay {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_objectDisplay = relay
-    }
-    relay.startsBeingObserved (by:  inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
-    self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'padNameForDisplay' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -978,6 +949,35 @@ class ReadOnlyArrayOf_PackagePad : EBReadOnlyAbstractArrayProperty <PackagePad> 
 
   final func toMany_masterPadObjectIndex_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_masterPadObjectIndex?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'objectDisplay' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_objectDisplay : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_objectDisplay {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.objectDisplay_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_objectDisplay = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

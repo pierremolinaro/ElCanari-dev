@@ -151,7 +151,7 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
     self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
   //---
     self.checkForLibraryUpdateAtLaunch ()
-    instanciateDebugMenuVisibilityObjectOnWillFinishLaunchingNotification ()
+    instanciateDebugMenuObjectOnWillFinishLaunchingNotification ()
     // self.createDemosWindows ()
   }
 

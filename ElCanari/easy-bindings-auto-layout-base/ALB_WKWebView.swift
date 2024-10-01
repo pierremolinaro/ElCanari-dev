@@ -1,16 +1,15 @@
 //
-//  AutoLayoutBase_WebView.swift
+//  AutoLayoutWebView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 26/01/2022.
 //
 //--------------------------------------------------------------------------------------------------
 
-import AppKit
 import WebKit
 
 //--------------------------------------------------------------------------------------------------
-//   AutoLayoutBase_WebView
+//   AutoLayoutWebView
 //--------------------------------------------------------------------------------------------------
 
 final class AutoLayoutWebView : WKWebView, WKUIDelegate {
@@ -80,8 +79,8 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidHide () {
-    if let rootView = self.window?.contentView {
-      rootView.needsLayout = true
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
       buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
@@ -90,9 +89,8 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidUnhide () {
-    if let rootView = self.window?.contentView {
-      rootView.needsLayout = true
-      buildResponderKeyChainForWindowThatContainsView (self)
+    if let superview = self.superview, !superview.isHidden {
+      superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
   }

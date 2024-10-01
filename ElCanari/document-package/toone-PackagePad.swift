@@ -32,7 +32,6 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
       oldValue.holeWidthUnit_property.stopsBeingObserved (by: self.holeWidthUnit_property) // Stored property
       oldValue.holeHeightUnit_property.stopsBeingObserved (by: self.holeHeightUnit_property) // Stored property
       oldValue.annularRingUnit_property.stopsBeingObserved (by: self.annularRingUnit_property) // Stored property
-      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
       oldValue.padNameForDisplay_property.stopsBeingObserved (by: self.padNameForDisplay_property) // Transient property
       oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
       oldValue.padIsTraversing_property.stopsBeingObserved (by: self.padIsTraversing_property) // Transient property
@@ -43,6 +42,7 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
       oldValue.zoneAllowsManualRenumbering_property.stopsBeingObserved (by: self.zoneAllowsManualRenumbering_property) // Transient property
       oldValue.slavePadCount_property.stopsBeingObserved (by: self.slavePadCount_property) // Transient property
       oldValue.masterPadObjectIndex_property.stopsBeingObserved (by: self.masterPadObjectIndex_property) // Transient property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
       oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       oldValue.padNumberDisplay_property.stopsBeingObserved (by: self.padNumberDisplay_property) // Transient property
       if let relay = self.mObserversOf_slaves { // to Many
@@ -67,7 +67,6 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
       newValue.holeWidthUnit_property.startsBeingObserved (by: self.holeWidthUnit_property) // Stored property
       newValue.holeHeightUnit_property.startsBeingObserved (by: self.holeHeightUnit_property) // Stored property
       newValue.annularRingUnit_property.startsBeingObserved (by: self.annularRingUnit_property) // Stored property
-      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
       newValue.padNameForDisplay_property.startsBeingObserved (by: self.padNameForDisplay_property) // Transient property
       newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
       newValue.padIsTraversing_property.startsBeingObserved (by: self.padIsTraversing_property) // Transient property
@@ -78,6 +77,7 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
       newValue.zoneAllowsManualRenumbering_property.startsBeingObserved (by: self.zoneAllowsManualRenumbering_property) // Transient property
       newValue.slavePadCount_property.startsBeingObserved (by: self.slavePadCount_property) // Transient property
       newValue.masterPadObjectIndex_property.startsBeingObserved (by: self.masterPadObjectIndex_property) // Transient property
+      newValue.objectDisplay_property.startsBeingObserved (by: self.objectDisplay_property) // Transient property
       newValue.selectionDisplay_property.startsBeingObserved (by: self.selectionDisplay_property) // Transient property
       newValue.padNumberDisplay_property.startsBeingObserved (by: self.padNumberDisplay_property) // Transient property
       if let relay = self.mObserversOf_slaves { // to Many
@@ -183,12 +183,6 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
   final let annularRingUnit_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'objectDisplay' transient property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'padNameForDisplay' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -247,6 +241,12 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let masterPadObjectIndex_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'objectDisplay' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let objectDisplay_property = EBTransientProperty <EBShape?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'selectionDisplay' transient property
@@ -356,10 +356,6 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
     self.annularRingUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.annularRingUnit_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure objectDisplay transient property
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
-    }
   //--- Configure padNameForDisplay transient property
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.padNameForDisplay_property.optionalSelection ?? .single (nil)
@@ -399,6 +395,10 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
   //--- Configure masterPadObjectIndex transient property
     self.masterPadObjectIndex_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.masterPadObjectIndex_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure objectDisplay transient property
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.objectDisplay_property.optionalSelection ?? .single (nil)
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in

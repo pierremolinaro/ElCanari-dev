@@ -102,12 +102,6 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 @MainActor protocol PackagePad_padNameForDisplay : AnyObject {
   var padNameForDisplay : String? { get }
 }
@@ -168,6 +162,12 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol PackagePad_objectDisplay : AnyObject {
+  var objectDisplay : EBShape? { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol PackagePad_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
@@ -199,7 +199,6 @@ final class PackagePad : PackageObject,
          PackagePad_holeWidthUnit,
          PackagePad_holeHeightUnit,
          PackagePad_annularRingUnit,
-         PackagePad_objectDisplay,
          PackagePad_padNameForDisplay,
          PackagePad_issues,
          PackagePad_padIsTraversing,
@@ -210,6 +209,7 @@ final class PackagePad : PackageObject,
          PackagePad_zoneAllowsManualRenumbering,
          PackagePad_slavePadCount,
          PackagePad_masterPadObjectIndex,
+         PackagePad_objectDisplay,
          PackagePad_selectionDisplay,
          PackagePad_padNumberDisplay {
 
@@ -618,67 +618,6 @@ final class PackagePad : PackageObject,
     )
   //--- To one property: zone
     self.zone_property.undoManager = inUndoManager
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.xCenter_property.selection
-        let s1 = unwSelf.yCenter_property.selection
-        let s2 = unwSelf.width_property.selection
-        let s3 = unwSelf.height_property.selection
-        let s4 = unwSelf.holeWidth_property.selection
-        let s5 = unwSelf.holeHeight_property.selection
-        let s6 = unwSelf.padShape_property.selection
-        let s7 = unwSelf.padStyle_property.selection
-        let s8 = preferences_frontSidePadColor_property.selection
-        let s9 = preferences_displayPackageFrontSidePads_property.selection
-        let s10 = preferences_backSidePadColor_property.selection
-        let s11 = preferences_displayPackageBackSidePads_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3),
-              .single (let v4),
-              .single (let v5),
-              .single (let v6),
-              .single (let v7),
-              .single (let v8),
-              .single (let v9),
-              .single (let v10),
-              .single (let v11)) :
-          return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-        case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xCenter_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.yCenter_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.width_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.height_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.holeWidth_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.holeHeight_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.padShape_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.padStyle_property.startsBeingObserved (by: self.objectDisplay_property)
-    preferences_frontSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
-    preferences_displayPackageFrontSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
-    preferences_backSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
-    preferences_displayPackageBackSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -892,6 +831,67 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.xCenter_property.selection
+        let s1 = unwSelf.yCenter_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        let s4 = unwSelf.holeWidth_property.selection
+        let s5 = unwSelf.holeHeight_property.selection
+        let s6 = unwSelf.padShape_property.selection
+        let s7 = unwSelf.padStyle_property.selection
+        let s8 = preferences_frontSidePadColor_property.selection
+        let s9 = preferences_displayPackageFrontSidePads_property.selection
+        let s10 = preferences_backSidePadColor_property.selection
+        let s11 = preferences_displayPackageBackSidePads_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11)) :
+          return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xCenter_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.yCenter_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.width_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.height_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.holeWidth_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.holeHeight_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.padShape_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.padStyle_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_frontSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_displayPackageFrontSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_backSidePadColor_property.startsBeingObserved (by: self.objectDisplay_property)
+    preferences_displayPackageBackSidePads_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

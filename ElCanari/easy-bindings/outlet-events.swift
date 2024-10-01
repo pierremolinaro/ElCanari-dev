@@ -91,9 +91,6 @@ class EBOutletEvent : EBObserverProtocol {
     while gPendingOutletEvents.count > 0 {
       let pendingOutletEvents = gPendingOutletEvents
       gPendingOutletEvents.removeAll ()
-//      for event in pendingOutletEvents {
-//        event.mEventIsPosted = false
-//      }
       for event in pendingOutletEvents {
         #if BUILD_OBJECT_EXPLORER
           if logEvents () {
