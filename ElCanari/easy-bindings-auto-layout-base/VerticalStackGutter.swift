@@ -62,31 +62,33 @@ final class VerticalStackGutter : NSLayoutGuide, VerticalStackHierarchyProtocol 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
+  func buildConstraintsFor (verticalStackView inVerticalStackView : NSLayoutGuide,
+                            spacing inSpacing : Double,
                             optionalLastBottomAnchor ioOptionalLastBottomAnchor : inout NSLayoutYAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
     self.mAbove?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
+      spacing: inSpacing,
       optionalLastBottomAnchor: &ioOptionalLastBottomAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints
     )
   //--- Gutter
-//    ioContraints.add (leftOfGuide: self, equalToLeftOfView: inVerticalStackView)
     ioContraints.add (x: self.leftAnchor, equalTo: inVerticalStackView.leftAnchor)
     ioContraints.add (x: self.rightAnchor, equalTo: inVerticalStackView.rightAnchor)
     ioContraints.add (dim: self.heightAnchor, equalToConstant: GUTTER_HEIGHT)
     if let lastBottomAnchor = ioOptionalLastBottomAnchor {
-      ioContraints.add (y: lastBottomAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (y: lastBottomAnchor, equalTo: self.topAnchor, plus: inSpacing)
     }else{
-      ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: self.topAnchor)
     }
   //--- After
     ioOptionalLastBottomAnchor = self.bottomAnchor
     self.mBelow?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
+      spacing: inSpacing,
       optionalLastBottomAnchor: &ioOptionalLastBottomAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints

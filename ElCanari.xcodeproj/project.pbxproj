@@ -463,8 +463,6 @@
 		CF28049E2BE14206006758CC /* AutoLayoutMenuItemDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2804962BE14206006758CC /* AutoLayoutMenuItemDescriptor.swift */; };
 		CF28049F2BE14206006758CC /* AutoLayoutObjectInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2804972BE14206006758CC /* AutoLayoutObjectInspectorView.swift */; };
 		CF2804A02BE14206006758CC /* AutoLayoutObjectInspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2804972BE14206006758CC /* AutoLayoutObjectInspectorView.swift */; };
-		CF2804A12BE14206006758CC /* AutoLayoutVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2804982BE14206006758CC /* AutoLayoutVerticalScrollView.swift */; };
-		CF2804A22BE14206006758CC /* AutoLayoutVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2804982BE14206006758CC /* AutoLayoutVerticalScrollView.swift */; };
 		CF28314222CCA5A2000988BA /* EBShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF28314122CCA5A2000988BA /* EBShape.swift */; };
 		CF28314322CCA5A2000988BA /* EBShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF28314122CCA5A2000988BA /* EBShape.swift */; };
 		CF29563522324C4C004100D6 /* transient-DeviceRoot-inconsistentSymbolNameSetMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29563322324C4B004100D6 /* transient-DeviceRoot-inconsistentSymbolNameSetMessage.swift */; };
@@ -3821,7 +3819,6 @@
 		CF2804952BE14206006758CC /* AutoLayoutOneStringArrayTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutOneStringArrayTableView.swift; sourceTree = "<group>"; };
 		CF2804962BE14206006758CC /* AutoLayoutMenuItemDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutMenuItemDescriptor.swift; sourceTree = "<group>"; };
 		CF2804972BE14206006758CC /* AutoLayoutObjectInspectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutObjectInspectorView.swift; sourceTree = "<group>"; };
-		CF2804982BE14206006758CC /* AutoLayoutVerticalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutVerticalScrollView.swift; sourceTree = "<group>"; };
 		CF28314122CCA5A2000988BA /* EBShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBShape.swift; sourceTree = "<group>"; };
 		CF2852B227541EDA000BD372 /* action-AutoLayoutFontDocument-resetVersionAndSignatureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutFontDocument-resetVersionAndSignatureAction.swift"; sourceTree = "<group>"; };
 		CF2852B4275423FE000BD372 /* AutoLayoutCanariSampleFontStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariSampleFontStringView.swift; sourceTree = "<group>"; };
@@ -6906,7 +6903,6 @@
 				CF223CBB2C73B14F00FFF7E7 /* AutoLayoutStatusView.swift */,
 				CFC579292BDEE756005CA3F0 /* AutoLayoutStepper.swift */,
 				CFC5792F2BDEE7A5005CA3F0 /* AutoLayoutTabView.swift */,
-				CF2804982BE14206006758CC /* AutoLayoutVerticalScrollView.swift */,
 				CF2804942BE14206006758CC /* AutoLayoutViewByPrefixingAppIcon.swift */,
 				CFC579442BDEEAAF005CA3F0 /* AutoLayoutViewWithBackground.swift */,
 			);
@@ -8528,7 +8524,6 @@
 				CFF79DDA284614A900C7BEE3 /* transient-BoardObject-displayBackPadsForBoard.swift in Sources */,
 				CF355A4A279D9F8D000BFC9B /* AutoLayoutCanariRestrictRectangleView.swift in Sources */,
 				CF379168269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift in Sources */,
-				CF2804A12BE14206006758CC /* AutoLayoutVerticalScrollView.swift in Sources */,
 				CFD1EAAF274EE23B000AED8E /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */,
 				CFEDE5B61B4677C500036ACF /* EBDataScanner.swift in Sources */,
 				CF1D9C7821BBEA6400FFF459 /* EBGraphicView-binding-underObjectsDisplay.swift in Sources */,
@@ -9915,7 +9910,6 @@
 				CF355942279D9F3B000BFC9B /* transient-AutoLayoutProjectDocument-selectedDevicePackageNames.swift in Sources */,
 				CF61916326F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift in Sources */,
 				CF35597E279D9F3B000BFC9B /* configurator-AutoLayoutProjectDocument-ercIssueTableViewConfigurator.swift in Sources */,
-				CF2804A22BE14206006758CC /* AutoLayoutVerticalScrollView.swift in Sources */,
 				CF83868B2423B90C007F1D21 /* transient-PackageRoot-backgroundImagePageBackgroundDisplay.swift in Sources */,
 				CFEB7B3F233A25EC0060A97A /* transient-ComponentInProject-deviceName.swift in Sources */,
 				CF3926F929C31E0A00B2E471 /* transient-BoardModel-errorArchiveVersionMessageIsHidden.swift in Sources */,

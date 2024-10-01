@@ -67,13 +67,15 @@ final class VerticalStackDivider : NSView, VerticalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
+  func buildConstraintsFor (verticalStackView inVerticalStackView : NSLayoutGuide,
+                            spacing inSpacing : Double,
                             optionalLastBottomAnchor ioOptionalLastBottomAnchor : inout NSLayoutYAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
     self.mAbove?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
+      spacing: inSpacing,
       optionalLastBottomAnchor: &ioOptionalLastBottomAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints
@@ -83,14 +85,15 @@ final class VerticalStackDivider : NSView, VerticalStackHierarchyProtocol {
     ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: self.rightAnchor)
     ioContraints.add (dim: self.heightAnchor, equalToConstant: DIVIDER_HEIGHT)
     if let lastBottomAnchor = ioOptionalLastBottomAnchor {
-      ioContraints.add (y: lastBottomAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mSpacing)
+      ioContraints.add (y: lastBottomAnchor, equalTo: self.topAnchor, plus: inSpacing)
     }else{
-      ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: self.topAnchor, plus: inVerticalStackView.mTopMargin)
+      ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: self.topAnchor)
     }
   //--- After
     ioOptionalLastBottomAnchor = self.bottomAnchor
     self.mBelow?.buildConstraintsFor (
       verticalStackView: inVerticalStackView,
+      spacing: inSpacing,
       optionalLastBottomAnchor: &ioOptionalLastBottomAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints

@@ -223,6 +223,7 @@ class ALB_NSStackView : NSView {
     super.viewDidUnhide ()
   }
 
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func removeFromSuperview () {

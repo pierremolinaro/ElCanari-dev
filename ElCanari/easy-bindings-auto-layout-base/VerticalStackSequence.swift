@@ -55,7 +55,8 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func buildConstraintsFor (verticalStackView inVerticalStackView : AutoLayoutVerticalStackView,
+  func buildConstraintsFor (verticalStackView inVerticalStackView : NSLayoutGuide,
+                            spacing inSpacing : Double,
                             optionalLastBottomAnchor ioOptionalLastBottomAnchor : inout NSLayoutYAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout VerticalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
@@ -66,15 +67,15 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
         case .center :
           ioContraints.add (x: view.centerXAnchor, equalTo: inVerticalStackView.centerXAnchor)
         case .fill :
-          ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor, plus: inVerticalStackView.mLeftMargin)
-          ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor, plus: inVerticalStackView.mRightMargin)
+          ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor)
+          ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor)
         case .fillIgnoringMargins :
           ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor)
           ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor)
         case .left :
-          ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor, plus: inVerticalStackView.mLeftMargin)
+          ioContraints.add (x: view.leftAnchor, equalTo: inVerticalStackView.leftAnchor)
         case .right :
-          ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor, plus: inVerticalStackView.mRightMargin)
+          ioContraints.add (x: inVerticalStackView.rightAnchor, equalTo: view.rightAnchor)
         }
       }
     }
@@ -82,9 +83,9 @@ final class VerticalStackSequence : VerticalStackHierarchyProtocol {
     for view in self.mViewArray {
       if !view.isHidden {
         if let lastBottomView = ioOptionalLastBottomAnchor {
-          ioContraints.add (y: lastBottomView, equalTo: view.topAnchor, plus: inVerticalStackView.mSpacing)
+          ioContraints.add (y: lastBottomView, equalTo: view.topAnchor, plus: inSpacing)
         }else{
-          ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: view.topAnchor, plus: inVerticalStackView.mTopMargin)
+          ioContraints.add (y: inVerticalStackView.topAnchor, equalTo: view.topAnchor)
         }
         ioOptionalLastBottomAnchor = view.bottomAnchor
       }

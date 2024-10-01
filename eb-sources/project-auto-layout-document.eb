@@ -407,8 +407,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       divider
       vStack {
         StaticLabel (title: "Selected Net Inspector", bold: yes, size: .small, alignment: .center)
-        VerticalScrollView (content: vStack set (margins: .regular) set (width: 300) { }
-        ) [configurator selectedNetVerticalScrollViewConfigurator]
+        vStack withVScroller [configurator selectedNetVerticalScrollViewConfigurator]
+        set (margins: .regular) set (width: 300) {
+        }
+//        VerticalScrollView (
+//          content: vStack set (margins: .regular) set (width: 300) { }
+//        ) [configurator selectedNetVerticalScrollViewConfigurator]
       }
     }
   }
@@ -1017,99 +1021,97 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //----------------- Board outline tab
   stackView \boardOutlinePage hStack {
-    VerticalScrollView (content:
-      vStack set (margins: .regular) set (width: 250) {
-        newView boardShapeBaseView = \BoardShapeBaseView ()
-        newView boardRectangularOutlineView = \BoardRectangularOutlineView ()
-        newView boardBezierPathOutlineView = \BoardBezierPathOutlineView ()
-        StaticLabel (title: "Board Shape", bold: yes, size : .small, alignment: .center)
-        SegmentedControlWithPages (documentView: view boardShapeBaseView, equalWidth: no, size : .small) {
-          addPage (title: "Rectangular", tooltip: "", pageView: view boardRectangularOutlineView)
-          addPage (title: "Bezier Pathes", tooltip: "", pageView: view boardBezierPathOutlineView)
-          $selectedSegment root.mBoardShape
+    vStack withVScroller set (margins: .regular) set (width: 250) {
+      newView boardShapeBaseView = \BoardShapeBaseView ()
+      newView boardRectangularOutlineView = \BoardRectangularOutlineView ()
+      newView boardBezierPathOutlineView = \BoardBezierPathOutlineView ()
+      StaticLabel (title: "Board Shape", bold: yes, size : .small, alignment: .center)
+      SegmentedControlWithPages (documentView: view boardShapeBaseView, equalWidth: no, size : .small) {
+        addPage (title: "Rectangular", tooltip: "", pageView: view boardRectangularOutlineView)
+        addPage (title: "Bezier Pathes", tooltip: "", pageView: view boardBezierPathOutlineView)
+        $selectedSegment root.mBoardShape
+      }
+      view boardShapeBaseView
+      separator
+      StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
+      hStack {
+        StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
         }
-        view boardShapeBaseView
-        separator
-        StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
-        hStack {
-          StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size : .small) {
-            $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
-          }
+      }
+      hStack {
+        StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
         }
-        hStack {
-          StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size : .small) {
-            $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
-          }
+      }
+      separator
+      StaticLabel (title: "Interior Bounding Box", bold: yes, size : .small, alignment: .center)
+      CanariBoardRectangleView {
+        $top root.boardInteriorTop
+        $bottom root.boardInteriorBottom 
+        $left root.boardInteriorLeft
+        $right root.boardInteriorRight
+        $unit root.mBoardPointsBoundingBoxUnit
+      }
+      separator
+      StaticLabel (title: "Board Bounding Box", bold: yes, size : .small, alignment: .center)
+      CanariBoardRectangleView {
+        $top root.boardLimitBorderTop
+        $bottom root.boardLimitBorderBottom 
+        $left root.boardLimitBorderLeft
+        $right root.boardLimitBorderRight
+        $unit root.mBoardLimitsBoundingBoxUnit
+      }
+      separator
+      StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
+      hStack {
+        StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
         }
-        separator
-        StaticLabel (title: "Interior Bounding Box", bold: yes, size : .small, alignment: .center)
-        CanariBoardRectangleView {
-          $top root.boardInteriorTop
-          $bottom root.boardInteriorBottom 
-          $left root.boardInteriorLeft
-          $right root.boardInteriorRight
-          $unit root.mBoardPointsBoundingBoxUnit
+      }
+      hStack {
+        StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right)
+        gutter
+        EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) {
+          expandableWidth ()
+          $selectedIndex root.mBoardLimitsGridStyle
         }
-        separator
-        StaticLabel (title: "Board Bounding Box", bold: yes, size : .small, alignment: .center)
-        CanariBoardRectangleView {
-          $top root.boardLimitBorderTop
-          $bottom root.boardLimitBorderBottom 
-          $left root.boardLimitBorderLeft
-          $right root.boardLimitBorderRight
-          $unit root.mBoardLimitsBoundingBoxUnit
+      }
+      hStack {
+        StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right)
+        gutter
+        TaggedPopUpButton (size: .small) {
+          expandableWidth ()
+          add (title: "1 Step",   withTag:  1)
+          add (title: "2 Steps",  withTag:  2)
+          add (title: "4 Steps",  withTag:  4)
+          add (title: "5 Steps",  withTag:  5)
+          add (title: "8 Steps",  withTag:  8)
+          add (title: "10 Steps", withTag: 10)
+          $selectedTag root.mBoardLimitsGridDisplayFactor
         }
-        separator
-        StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
-        hStack {
-          StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size : .small) {
-            $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
-          }
-        }
-        hStack {
-          StaticLabel (title: "Display Grid", bold: no, size : .small, alignment: .right)
-          gutter
-          EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) {
-            expandableWidth ()
-            $selectedIndex root.mBoardLimitsGridStyle
-          }
-        }
-        hStack {
-          StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right)
-          gutter
-          TaggedPopUpButton (size: .small) {
-            expandableWidth ()
-            add (title: "1 Step",   withTag:  1)
-            add (title: "2 Steps",  withTag:  2)
-            add (title: "4 Steps",  withTag:  4)
-            add (title: "5 Steps",  withTag:  5)
-            add (title: "8 Steps",  withTag:  8)
-            add (title: "10 Steps", withTag: 10)
-            $selectedTag root.mBoardLimitsGridDisplayFactor
-          }
-        }
-        hStack {
-          StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right)
-          gutter
-          Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
-        }
-        hStack {
-          space
-          gutter
-          Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
-        }
-        separator
-        StaticLabel (title: "Board Contents Opacity", bold: yes, size: .small, alignment: .center)
-        LinearSlider (min: 0, max: 1, ticks: 11) { $doubleValue root.mContentOpacityInBoardOutline (sendContinously : yes) }      
-        StaticLabels (left: "Transparent", right: "Opaque", bold: no, size: .mini)
-      }   
-    )
+      }
+      hStack {
+        StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right)
+        gutter
+        Checkbox (title: "Horizontal", size : .small) { expandableWidth () $value root.mBoardLimitsHorizontalFlip }
+      }
+      hStack {
+        space
+        gutter
+        Checkbox (title: "Vertical", size : .small) { expandableWidth () $value root.mBoardLimitsVerticalFlip }
+      }
+      separator
+      StaticLabel (title: "Board Contents Opacity", bold: yes, size: .small, alignment: .center)
+      LinearSlider (min: 0, max: 1, ticks: 11) { $doubleValue root.mContentOpacityInBoardOutline (sendContinously : yes) }      
+      StaticLabels (left: "Transparent", right: "Opaque", bold: no, size: .mini)
+    }   
     separator
     GraphicView (minZoom: 10, maxZoom: 20_000) [configurator boardOutlineView] {
       $underObjectsDisplay root.borderViewBackground
@@ -1353,317 +1355,314 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
       Button (title: "+▶︎", size: .regular) { $run appendNewBoardDisplayInspectorAction }
     }
-//    VerticalScrollView (content:
-      vStack set (rightMargin: .regular) {
-        StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
-        hStack {
-          StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size : .small)  {
-            $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
-          }
-        }
-        hStack {
-          StaticLabel (title: "Display", bold: no, size: .small, alignment: .right)
-          gutter
-          EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  {
-            $selectedIndex root.mBoardGridStyle
-          }
-        }
-        hStack {
-          StaticLabel (title: "Every", bold: no, size: .small, alignment: .right)
-          gutter
-          TaggedPopUpButton (size: .small) {
-            add (title: "1 Step",   withTag:  1)
-            add (title: "2 Steps",  withTag:  2)
-            add (title: "4 Steps",  withTag:  4)
-            add (title: "5 Steps",  withTag:  5)
-            add (title: "8 Steps",  withTag:  8)
-            add (title: "10 Steps", withTag: 10)
-            $selectedTag root.mBoardGridDisplayFactor
-          }
-        }
-        hStack {
-          StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right)
-          gutter
-          Checkbox (title: "Horizontal", size : .small)  { set (width: 125) $value root.mBoardHorizontalFlip}
-        }
-        hStack {
-          space
-          gutter
-          Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
-        }
-        hStack {
-          StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right)
-          gutter
-          ColorWell {
-            expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard
-          }
-        }
-        hStack {
-          StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right)
-          gutter
-          ColorWell {
-             expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard
-          }
-        }
-        StaticLabel (title: "Rastnet", bold: yes, size: .small, alignment: .left)
-        EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) {
-          $selectedIndex root.mRastnetDisplay
-        }
-        CanariSelectionPopUpButton (size: .small) {
-          $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
-          $hidden !self.rastnetDisplayOneNet
-        }
-        CanariSelectionPopUpButton (size: .small) {
-          $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
-          $hidden !self.rastnetDisplayComponentNet
-        }
-        StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .left)
-        LinearSlider (min: 0, max: 24, ticks: 13) {
-           $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes)
-        }
-        StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .left)
-        LinearSlider (min: 10, max: 200, ticks: 10) {
-          $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes)
-        }
-        StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left)
-        FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard }
-        StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left)
-        TaggedPopUpButton (size: .small) {
-          add (title: "0.5 Point",   withTag:  5)
-          add (title: "1.0 Point",  withTag:  10)
-          add (title: "1.5 Point",  withTag:  15)
-          add (title: "2.0 Point",  withTag:  20)
-          add (title: "2.5 Point",  withTag:  25)
-          $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
-        }
-        hStack {
-          DisclosureTriangle (size: .small) { $expanded root.mExpandFrontSideBoardSettings }
-          StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left)
-          space
-        }
-        hStack $hidden !root.mExpandFrontSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard }
-          gutter
-          Checkbox (title: "Pads", size : .small)  {
-            $value root.displayFrontPadsForBoard
-          }
-        }
-        hStack $hidden !root.mExpandFrontSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard }
-          gutter
-          Checkbox (title: "Component + Legend", size : .small)  {
-            $value root.displayFrontLegendForBoard
-          }
-        }
-        hStack $hidden !root.mExpandFrontSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard }
-          gutter
-          Checkbox (title: "Layout", size : .small)  {
-            $value root.displayFrontLayoutForBoard
-          }
-        }
-        hStack $hidden !root.mExpandFrontSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard }
-          gutter
-          Checkbox (title: "Restrict Rectangle", size : .small) {
-            $value root.displayFrontRestrictRectangles
-          }
-        }
-        hStack {
-          DisclosureTriangle (size: .small) { $expanded root.mExpandBackSideBoardSettings }
-          StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left)
-          space
-        }
-        hStack $hidden !root.mExpandBackSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard }
-          gutter
-          Checkbox (title: "Pads", size : .small)  {
-            $value root.displayBackPadsForBoard
-          }
-        }
-        hStack $hidden !root.mExpandBackSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard }
-          gutter
-          Checkbox (title: "Component + Legend", size : .small)  {
-            $value root.displayBackLegendForBoard
-          }
-        }
-        hStack $hidden !root.mExpandBackSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard }
-          gutter
-          Checkbox (title: "Layout", size : .small)  {
-            $value root.displayBackLayoutForBoard 
-          }
-        }
-        hStack $hidden !root.mExpandBackSideBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard }
-          gutter
-          Checkbox (title: "Restrict Rectangle", size : .small)  {
-            $value root.displayBackRestrictRectangles
-          }
-        }
-        hStack {
-          DisclosureTriangle (size: .small) { $expanded root.mExpandInner1BoardSettings }
-          StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left)
-          space
-        }
-        hStack $hidden !root.mExpandInner1BoardSettings {
-          space
-          ColorWell {
-            set (toolTip: "Stored in Preferences")
-            $color prefs.inner1LayoutColorForBoard
-          }
-          gutter
-          Checkbox (title: "Layout", size : .small)  {
-             $value root.displayInner1LayoutForBoard
-          }
-        }
-        hStack $hidden !root.mExpandInner1BoardSettings {
-          space
-          ColorWell {
-            set (toolTip: "Stored in Preferences")
-            $color prefs.inner1SideRestrictRectangleColorForBoard
-          }
-          gutter
-          Checkbox (title: "Restrict Rectangle", size : .small) {
-            $value root.displayInner1RestrictRectangles
-          }
-        }
-        hStack {
-          DisclosureTriangle (size: .small) { $expanded root.mExpandInner2BoardSettings }
-          StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left)
-          space
-        }
-        hStack $hidden !root.mExpandInner2BoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard }
-          gutter
-          Checkbox (title: "Layout", size : .small) {
-            $value root.displayInner2LayoutForBoard
-          }
-        }
-        hStack $hidden !root.mExpandInner2BoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard }
-          gutter
-          Checkbox (title: "Restrict Rectangle", size : .small)  {
-            $value root.displayInner2RestrictRectangles
-          }
-        }
-        hStack {
-          DisclosureTriangle (size: .small) { $expanded root.mExpandInner3BoardSettings }
-          StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left)
-          space
-        }
-        hStack $hidden !root.mExpandInner3BoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard }
-          gutter
-          Checkbox (title: "Layout", size : .small)  {
-            $value root.displayInner3LayoutForBoard
-          }
-        }
-        hStack $hidden !root.mExpandInner3BoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard }
-          gutter
-          Checkbox (title: "Restrict Rectangle", size : .small)  {
-            $value root.displayInner3RestrictRectangles
-          }
-        }
-        hStack {
-          DisclosureTriangle (size: .small) { $expanded root.mExpandInner4BoardSettings }
-          StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left)
-          space
-        }
-        hStack $hidden !root.mExpandInner4BoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") }
-          gutter
-          Checkbox (title: "Layout", size : .small) {
-            $value root.displayInner4LayoutForBoard
-          }
-        }
-        hStack $hidden !root.mExpandInner4BoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard }
-          gutter
-          Checkbox (title: "Restrict Rectangle", size : .small) {
-            $value root.displayInner4RestrictRectangles
-          }
-        }
-        hStack {
-          DisclosureTriangle (size: .small) { $expanded root.mExpandOtherBoardSettings }
-          StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left)
-          space
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard }
-          gutter
-          Checkbox (title: "Pad Numbers", size : .small)  {
-            $value root.displayPadNumbersForBoard 
-          }
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard }
-          gutter
-          StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard }
-          gutter
-          StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard }
-          gutter
-          StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left)
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard }
-          gutter
-          StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left)
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard }
-          gutter
-          StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard }
-          gutter
-          Checkbox (title: "Error Background", size : .small)  {
-            $value root.drawErrorBackgroundForBoard
-          }
-        }
-        hStack $hidden !root.mExpandOtherBoardSettings {
-          space
-          ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard }
-          gutter
-          Checkbox (title: "Warning Background", size : .small)  {
-            $value prefs.drawWarningBackgroundForBoard
-          }
+    vStack withVScroller set (rightMargin: .small) {
+      StaticLabel (title: "Grid and Flip", bold: yes, size: .small, alignment: .left)
+      hStack {
+        StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small)  {
+          $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
         }
       }
-//    )
- // §   space 
+      hStack {
+        StaticLabel (title: "Display", bold: no, size: .small, alignment: .right)
+        gutter
+        EnumPopUpButton (titles: enum GridStyle.popupTitles, size : .small)  {
+          $selectedIndex root.mBoardGridStyle
+        }
+      }
+      hStack {
+        StaticLabel (title: "Every", bold: no, size: .small, alignment: .right)
+        gutter
+        TaggedPopUpButton (size: .small) {
+          add (title: "1 Step",   withTag:  1)
+          add (title: "2 Steps",  withTag:  2)
+          add (title: "4 Steps",  withTag:  4)
+          add (title: "5 Steps",  withTag:  5)
+          add (title: "8 Steps",  withTag:  8)
+          add (title: "10 Steps", withTag: 10)
+          $selectedTag root.mBoardGridDisplayFactor
+        }
+      }
+      hStack {
+        StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right)
+        gutter
+        Checkbox (title: "Horizontal", size : .small)  { set (width: 125) $value root.mBoardHorizontalFlip}
+      }
+      hStack {
+        space
+        gutter
+        Checkbox (title: "Vertical", size : .small)  { $value root.mBoardVerticalFlip }
+      }
+      hStack {
+        StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .right)
+        gutter
+        ColorWell {
+          expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.crossColorGridForBoard
+        }
+      }
+      hStack {
+        StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .right)
+        gutter
+        ColorWell {
+           expandableWidth () set (toolTip: "Stored in Preferences") $color prefs.lineColorGridForBoard
+        }
+      }
+      StaticLabel (title: "Rastnet", bold: yes, size: .small, alignment: .left)
+      EnumPopUpButton (titles: enum RastnetDisplay.popupTitles, size: .small) {
+        $selectedIndex root.mRastnetDisplay
+      }
+      CanariSelectionPopUpButton (size: .small) {
+        $selectedNameInArray root.mRastnetDisplayedNetName, root.netNamesArray
+        $hidden !self.rastnetDisplayOneNet
+      }
+      CanariSelectionPopUpButton (size: .small) {
+        $selectedNameInArray root.mRastnetDisplayedComponentName, root.placedComponentNameArray
+        $hidden !self.rastnetDisplayComponentNet
+      }
+      StaticLabel (title: "Warning and Error Circle", bold: yes, size: .small, alignment: .left)
+      LinearSlider (min: 0, max: 24, ticks: 13) {
+         $doubleValue root.mErrorOrWarningIssueSize (sendContinously : yes)
+      }
+      StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .left)
+      LinearSlider (min: 10, max: 200, ticks: 10) {
+        $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes)
+      }
+      StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left)
+      FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard }
+      StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left)
+      TaggedPopUpButton (size: .small) {
+        add (title: "0.5 Point",   withTag:  5)
+        add (title: "1.0 Point",  withTag:  10)
+        add (title: "1.5 Point",  withTag:  15)
+        add (title: "2.0 Point",  withTag:  20)
+        add (title: "2.5 Point",  withTag:  25)
+        $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
+      }
+      hStack {
+        DisclosureTriangle (size: .small) { $expanded root.mExpandFrontSideBoardSettings }
+        StaticLabel (title: "Front side Display", bold: yes, size: .small, alignment: .left)
+        space
+      }
+      hStack $hidden !root.mExpandFrontSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColorForBoard }
+        gutter
+        Checkbox (title: "Pads", size : .small)  {
+          $value root.displayFrontPadsForBoard
+        }
+      }
+      hStack $hidden !root.mExpandFrontSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLegendColorForBoard }
+        gutter
+        Checkbox (title: "Component + Legend", size : .small)  {
+          $value root.displayFrontLegendForBoard
+        }
+      }
+      hStack $hidden !root.mExpandFrontSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard }
+        gutter
+        Checkbox (title: "Layout", size : .small)  {
+          $value root.displayFrontLayoutForBoard
+        }
+      }
+      hStack $hidden !root.mExpandFrontSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideRestrictRectangleColorForBoard }
+        gutter
+        Checkbox (title: "Restrict Rectangle", size : .small) {
+          $value root.displayFrontRestrictRectangles
+        }
+      }
+      hStack {
+        DisclosureTriangle (size: .small) { $expanded root.mExpandBackSideBoardSettings }
+        StaticLabel (title: "Back Side Display", bold: yes, size: .small, alignment: .left)
+        space
+      }
+      hStack $hidden !root.mExpandBackSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSidePadColorForBoard }
+        gutter
+        Checkbox (title: "Pads", size : .small)  {
+          $value root.displayBackPadsForBoard
+        }
+      }
+      hStack $hidden !root.mExpandBackSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard }
+        gutter
+        Checkbox (title: "Component + Legend", size : .small)  {
+          $value root.displayBackLegendForBoard
+        }
+      }
+      hStack $hidden !root.mExpandBackSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLayoutColorForBoard }
+        gutter
+        Checkbox (title: "Layout", size : .small)  {
+          $value root.displayBackLayoutForBoard 
+        }
+      }
+      hStack $hidden !root.mExpandBackSideBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideRestrictRectangleColorForBoard }
+        gutter
+        Checkbox (title: "Restrict Rectangle", size : .small)  {
+          $value root.displayBackRestrictRectangles
+        }
+      }
+      hStack {
+        DisclosureTriangle (size: .small) { $expanded root.mExpandInner1BoardSettings }
+        StaticLabel (title: "Inner 1 Layer Display", bold: yes, size: .small, alignment: .left)
+        space
+      }
+      hStack $hidden !root.mExpandInner1BoardSettings {
+        space
+        ColorWell {
+          set (toolTip: "Stored in Preferences")
+          $color prefs.inner1LayoutColorForBoard
+        }
+        gutter
+        Checkbox (title: "Layout", size : .small)  {
+           $value root.displayInner1LayoutForBoard
+        }
+      }
+      hStack $hidden !root.mExpandInner1BoardSettings {
+        space
+        ColorWell {
+          set (toolTip: "Stored in Preferences")
+          $color prefs.inner1SideRestrictRectangleColorForBoard
+        }
+        gutter
+        Checkbox (title: "Restrict Rectangle", size : .small) {
+          $value root.displayInner1RestrictRectangles
+        }
+      }
+      hStack {
+        DisclosureTriangle (size: .small) { $expanded root.mExpandInner2BoardSettings }
+        StaticLabel (title: "Inner 2 Layer Display", bold: yes, size: .small, alignment: .left)
+        space
+      }
+      hStack $hidden !root.mExpandInner2BoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2LayoutColorForBoard }
+        gutter
+        Checkbox (title: "Layout", size : .small) {
+          $value root.displayInner2LayoutForBoard
+        }
+      }
+      hStack $hidden !root.mExpandInner2BoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner2SideRestrictRectangleColorForBoard }
+        gutter
+        Checkbox (title: "Restrict Rectangle", size : .small)  {
+          $value root.displayInner2RestrictRectangles
+        }
+      }
+      hStack {
+        DisclosureTriangle (size: .small) { $expanded root.mExpandInner3BoardSettings }
+        StaticLabel (title: "Inner 3 Layer Display", bold: yes, size: .small, alignment: .left)
+        space
+      }
+      hStack $hidden !root.mExpandInner3BoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3LayoutColorForBoard }
+        gutter
+        Checkbox (title: "Layout", size : .small)  {
+          $value root.displayInner3LayoutForBoard
+        }
+      }
+      hStack $hidden !root.mExpandInner3BoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner3SideRestrictRectangleColorForBoard }
+        gutter
+        Checkbox (title: "Restrict Rectangle", size : .small)  {
+          $value root.displayInner3RestrictRectangles
+        }
+      }
+      hStack {
+        DisclosureTriangle (size: .small) { $expanded root.mExpandInner4BoardSettings }
+        StaticLabel (title: "Inner 4 Layer Display", bold: yes, size: .small, alignment: .left)
+        space
+      }
+      hStack $hidden !root.mExpandInner4BoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") }
+        gutter
+        Checkbox (title: "Layout", size : .small) {
+          $value root.displayInner4LayoutForBoard
+        }
+      }
+      hStack $hidden !root.mExpandInner4BoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.inner4SideRestrictRectangleColorForBoard }
+        gutter
+        Checkbox (title: "Restrict Rectangle", size : .small) {
+          $value root.displayInner4RestrictRectangles
+        }
+      }
+      hStack {
+        DisclosureTriangle (size: .small) { $expanded root.mExpandOtherBoardSettings }
+        StaticLabel (title: "Other", bold: yes, size: .small, alignment: .left)
+        space
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.padNumberColorForBoard }
+        gutter
+        Checkbox (title: "Pad Numbers", size : .small)  {
+          $value root.displayPadNumbersForBoard 
+        }
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard }
+        gutter
+        StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard }
+        gutter
+        StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.rastnetColorForBoard }
+        gutter
+        StaticLabel (title: "Rastnet", bold: no, size : .small, alignment: .left)
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.workingAreaColorForBoard }
+        gutter
+        StaticLabel (title: "Working Area", bold: no, size : .small, alignment: .left)
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard }
+        gutter
+        StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard }
+        gutter
+        Checkbox (title: "Error Background", size : .small)  {
+          $value root.drawErrorBackgroundForBoard
+        }
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.warningBackgroundColorForBoard }
+        gutter
+        Checkbox (title: "Warning Background", size : .small)  {
+          $value prefs.drawWarningBackgroundForBoard
+        }
+      }
+    }
   }
 
   action prependNewBoardSettingsInspectorAction ;
@@ -1677,138 +1676,136 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
       Button (title: "+▶︎", size: .regular) { $run appendNewBoardSettingsInspectorAction }
     }
-    VerticalScrollView (content:
-      vStack {
-        hStack {
-          StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right)
-          gutter
-          EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
-            $selectedIndex root.mLayerConfiguration
-            $run changeLayerConfigurationAction
-          }
+    vStack withVScroller {
+      hStack {
+        StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right)
+        gutter
+        EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
+          $selectedIndex root.mLayerConfiguration
+          $run changeLayerConfigurationAction
         }
-        hStack {
-          StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
-        }
-        EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
-          $selectedIndex root.mAutoRouterPreferredDirections
-        }
-        EnumPopUpButton (titles: enum AutorouterSnapAngle.popupTitles, size: .small) {
-          $selectedIndex root.mAutorouterSnapAngle
-        }
-        hStack {
-          StaticLabel (title: "Route", bold: no, size: .small, alignment: .center)
-          space
-          EnumPopUpButton (titles: enum RouteDirection.popupTitles, size: .small) {
-            $selectedIndex root.mRouteDirection
-          }
-          space
-          EnumPopUpButton (titles: enum RouteOrigin.popupTitles, size: .small) {
-            $selectedIndex root.mRouteOrigin
-          }
-        }
-        Checkbox (title: "Allow Via at SMD", size: .small) {
-          expandableWidth () $value root.mAllowViaAtSMD
-        }
-        TabView (size: .small) {
-          addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
-            vStack set (margins: .large) {
-              Checkbox (title: "Export Tracks and Vias", size: .small) {
-                expandableWidth () $value root.mExportExistingTracksAndVias
-              }
-              hStack {
-                space
-                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
-                  $run launchFreeRouterWithRouterDocument
-                }
-                space
-              }
-              hStack {
-                space
-                Button (title: "Import SES File", size: .small) { $run importSESFromBasicTabAction }
-                space
-              }
-            }
-          )
-          addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
-            vStack set (margins: .large) {
-              Checkbox (title: "Export Tracks and Vias", size: .small) {
-                expandableWidth () $value root.mExportExistingTracksAndVias
-              }
-              hStack {
-                space
-                Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }
-                space
-              }
-              hStack {
-                space
-                ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
-                  $run launchFreeRouterWithoutAnyDocument
-                }
-                space
-              }
-              hStack {
-                space
-                Button (title: "Import SES File…", size: .small) { $run importSESFromExtendedTabAction }
-                space
-              }
-            }
-          )
-          $selectedPage root.mAutorouterInterfaceMode
-        }
-        StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
-        hStack {
-          StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
-        }
-        hStack {
-          StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
-        }
-        hStack {
-          StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
-        }
-        hStack {
-          StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
-        }
-        hStack {
-          StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
-        }
-        hStack {
-          StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
-        }
-        hStack {
-          StaticLabel (title: "Total", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.trackCountString }
-        }
-        hStack {
-          StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.trackLengthString }
-          CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
-          space
-        }
-        hStack {
-          StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right)
-          gutter
-          Label (bold: yes, size : .small) { $title root.viaCountString }
-        }
-        Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
       }
-    )
+      hStack {
+        StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
+      }
+      EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
+        $selectedIndex root.mAutoRouterPreferredDirections
+      }
+      EnumPopUpButton (titles: enum AutorouterSnapAngle.popupTitles, size: .small) {
+        $selectedIndex root.mAutorouterSnapAngle
+      }
+      hStack {
+        StaticLabel (title: "Route", bold: no, size: .small, alignment: .center)
+        space
+        EnumPopUpButton (titles: enum RouteDirection.popupTitles, size: .small) {
+          $selectedIndex root.mRouteDirection
+        }
+        space
+        EnumPopUpButton (titles: enum RouteOrigin.popupTitles, size: .small) {
+          $selectedIndex root.mRouteOrigin
+        }
+      }
+      Checkbox (title: "Allow Via at SMD", size: .small) {
+        expandableWidth () $value root.mAllowViaAtSMD
+      }
+      TabView (size: .small) {
+        addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
+          vStack set (margins: .large) {
+            Checkbox (title: "Export Tracks and Vias", size: .small) {
+              expandableWidth () $value root.mExportExistingTracksAndVias
+            }
+            hStack {
+              space
+              ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
+                $run launchFreeRouterWithRouterDocument
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Import SES File", size: .small) { $run importSESFromBasicTabAction }
+              space
+            }
+          }
+        )
+        addTab (title: "Advanced", tooltip: "Autorouter Advanced Configuration", contentView :
+          vStack set (margins: .large) {
+            Checkbox (title: "Export Tracks and Vias", size: .small) {
+              expandableWidth () $value root.mExportExistingTracksAndVias
+            }
+            hStack {
+              space
+              Button (title: "Export DSN File…", size: .small) { $run exportDSNFileAction }
+              space
+            }
+            hStack {
+              space
+              ImageButton (imageName: "freeRoutingLogo", tooltip: "Launch Free Router…", width: 150, height: 48) {
+                $run launchFreeRouterWithoutAnyDocument
+              }
+              space
+            }
+            hStack {
+              space
+              Button (title: "Import SES File…", size: .small) { $run importSESFromExtendedTabAction }
+              space
+            }
+          }
+        )
+        $selectedPage root.mAutorouterInterfaceMode
+      }
+      StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
+      hStack {
+        StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
+      }
+      hStack {
+        StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
+      }
+      hStack {
+        StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
+      }
+      hStack {
+        StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
+      }
+      hStack {
+        StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
+      }
+      hStack {
+        StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
+      }
+      hStack {
+        StaticLabel (title: "Total", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.trackCountString }
+      }
+      hStack {
+        StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.trackLengthString }
+        CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
+        space
+      }
+      hStack {
+        StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right)
+        gutter
+        Label (bold: yes, size : .small) { $title root.viaCountString }
+      }
+      Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
+    }
   }
   
   action changeLayerConfigurationAction ;
@@ -2521,157 +2518,155 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       #componentInBoardSelectionController.mXValueUnit, #componentInBoardSelectionController.mYValueUnit
     }
     separator
-    VerticalScrollView (content:
-      vStack {
-        StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left)
-        hStack {
-          StaticLabels (left: "Center", right:"X", bold: no, size: .small)
-          gutter
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
-          }
-        }
-        hStack {
-          StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
-          }
-        }
-        CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator]
-        hStack {
-          StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
-        }
-        hStack {
-          space
-          gutter
-          CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-            $angle #componentInBoardSelectionController.mRotation
-          }
-        }
-        separator
-        hStack {
-          StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left)
-          gutter
-          Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
-        }
-        hStack {
-          StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
-          gutter
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
-          }
-        }
-        hStack {
-          StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
-          }
-        }
-        hStack {
-          StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
-          gutter
-          DoubleField (width: 64, size: .small) {
-            $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
-            // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-          }
-        }
-        hStack {
-          StaticLabel (title: "Font", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariBoardFontPopUpButton {
-            $currentFontName #componentInBoardSelectionController.componentNameFontName
-            $fontNames root.fontNameArray
-            $run setComponentNameFontAction
-          }
-        }
-        hStack {
-          StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
-          CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
-        }
-        hStack {
-          space
-          gutter
-          CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-            $angle #componentInBoardSelectionController.mNameRotation
-            $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
-          }
-        }
-        separator
-        hStack {
-          StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left)
-          gutter
-          TextField (minWidth: 150, size: .small) {
-            automaticallyAdjustHeight (maxWidth: 150)
-            $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
-      //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-          }
-        }
-        hStack {
-          StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
-          gutter
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
-          }
-        }
-        hStack {
-          StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariDimensionAndPopUp (size: .small) {
-            $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
-          }
-        }
-        hStack {
-          StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
-          gutter
-          DoubleField (width: 64, size: .small) {
-            $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
-          }
-        }
-        hStack {
-          StaticLabel (title: "Font", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariBoardFontPopUpButton {
-            $currentFontName #componentInBoardSelectionController.componentValueFontName
-            $fontNames root.fontNameArray
-            $run setComponentValueFontAction
-          }
-        }
-        hStack {
-          StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
-          gutter
-          CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
-        }
-        hStack {
-          space
-          gutter
-          CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
-            $angle #componentInBoardSelectionController.mValueRotation
-            $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
-          }
-        }
-        separator
-        hStack {
-          StaticLabel (title: "Slave Pads", bold: yes, size: .small, alignment: .left)
-          gutter
-          BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
-            $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
-            $enabled #componentInBoardSelectionController.hasSlavePads
-          }
-        }
-        separator
-        hStack {
-          StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left)
-          gutter
-          EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) {
-            $selectedIndex #componentInBoardSelectionController.mSide
-          }
+    vStack withVScroller {
+      StaticLabel (title: "Package", bold: yes, size: .small, alignment: .left)
+      hStack {
+        StaticLabels (left: "Center", right:"X", bold: no, size: .small)
+        gutter
+        CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
         }
       }
-    )
+      hStack {
+        StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
+        }
+      }
+      CanariBoardComponentPackagePopUpButton [configurator componentPackagePopUpButtonConfigurator]
+      hStack {
+        StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
+      }
+      hStack {
+        space
+        gutter
+        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+          $angle #componentInBoardSelectionController.mRotation
+        }
+      }
+      separator
+      hStack {
+        StaticLabel (title: "Name", bold: yes, size: .small, alignment: .left)
+        gutter
+        Label (bold: yes, size: .small) { set (alignment: .left) $title #componentInBoardSelectionController.componentName }
+      }
+      hStack {
+        StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
+        gutter
+        CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
+        }
+      }
+      hStack {
+        StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
+        }
+      }
+      hStack {
+        StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
+        gutter
+        DoubleField (width: 64, size: .small) {
+          $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
+          // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+        }
+      }
+      hStack {
+        StaticLabel (title: "Font", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariBoardFontPopUpButton {
+          $currentFontName #componentInBoardSelectionController.componentNameFontName
+          $fontNames root.fontNameArray
+          $run setComponentNameFontAction
+        }
+      }
+      hStack {
+        StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+        CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
+      }
+      hStack {
+        space
+        gutter
+        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+          $angle #componentInBoardSelectionController.mNameRotation
+          $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
+        }
+      }
+      separator
+      hStack {
+        StaticLabel (title: "Value", bold: yes, size: .small, alignment: .left)
+        gutter
+        TextField (minWidth: 150, size: .small) {
+          automaticallyAdjustHeight (maxWidth: 150)
+          $value #componentInBoardSelectionController.mComponentValue (sendContinously : yes)
+    //    $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+        }
+      }
+      hStack {
+        StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
+        gutter
+        CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
+        }
+      }
+      hStack {
+        StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
+        }
+      }
+      hStack {
+        StaticLabel (title: "Size", bold: no, size: .small, alignment: .right)
+        gutter
+        DoubleField (width: 64, size: .small) {
+          $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
+        }
+      }
+      hStack {
+        StaticLabel (title: "Font", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariBoardFontPopUpButton {
+          $currentFontName #componentInBoardSelectionController.componentValueFontName
+          $fontNames root.fontNameArray
+          $run setComponentValueFontAction
+        }
+      }
+      hStack {
+        StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
+        gutter
+        CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
+      }
+      hStack {
+        space
+        gutter
+        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+          $angle #componentInBoardSelectionController.mValueRotation
+          $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
+        }
+      }
+      separator
+      hStack {
+        StaticLabel (title: "Slave Pads", bold: yes, size: .small, alignment: .left)
+        gutter
+        BoolPopUpButton (title0: "should be insulated", title1: "should be routed") {
+          $value #componentInBoardSelectionController.mSlavePadsShouldBeRouted
+          $enabled #componentInBoardSelectionController.hasSlavePads
+        }
+      }
+      separator
+      hStack {
+        StaticLabel (title: "Side", bold: yes, size: .small, alignment: .left)
+        gutter
+        EnumPopUpButton (titles: enum ComponentSide.popupTitles, size: .small) {
+          $selectedIndex #componentInBoardSelectionController.mSide
+        }
+      }
+    }
   }
 
   action setComponentNameFontAction ;

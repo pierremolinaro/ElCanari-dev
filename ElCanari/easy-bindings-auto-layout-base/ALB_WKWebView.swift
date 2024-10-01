@@ -80,8 +80,8 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidHide () {
-    if let superview = self.superview, !superview.isHidden {
-      superview.invalidateIntrinsicContentSize ()
+    if let rootView = self.window?.contentView {
+      rootView.needsLayout = true
       buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidHide ()
@@ -90,8 +90,9 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidUnhide () {
-    if let superview = self.superview, !superview.isHidden {
-      superview.invalidateIntrinsicContentSize ()
+    if let rootView = self.window?.contentView {
+      rootView.needsLayout = true
+      buildResponderKeyChainForWindowThatContainsView (self)
     }
     super.viewDidUnhide ()
   }

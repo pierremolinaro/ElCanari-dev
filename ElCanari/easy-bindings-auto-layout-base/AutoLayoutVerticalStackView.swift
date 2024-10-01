@@ -20,36 +20,26 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
       horizontalDispositionInVerticalStackView: .fill,
       verticalDispositionInHorizontalStackView: .fill
     )
+    self.addLayoutGuide (self.mStackGuide)
     if let scrollView = self.mScrollView {
-   //--- Set document view
-      let documentView = AutoLayoutVerticalStackView ()
-      scrollView.documentView = documentView
-    //--- Set clip view (SHOULD BE DONE AFTER SETTING document view)
+    //--- Set clip view
       scrollView.contentView = InternalClipView ()
+   //--- Set document view (SHOULD BE DONE AFTER SETTING clip view)
+      let documentView = InternalReceiverView (rootView: self)
+      scrollView.documentView = documentView
     //--- Set background (SHOULD BE DONE AFTER SETTING contient view)
+    //--- Do not set drawsBackground and backgroundColor of a clip view !!!
+    // It is also important to note that setting drawsBackground to false in an NSScrollView
+    // has the added effect of setting the NSClipView property copiesOnScroll to false.
+    // The side effect of setting the drawsBackground property directly to the NSClipView is the
+    // appearance of “trails” (vestiges of previous drawing) in the document view as it is scrolled.
       scrollView.drawsBackground = false
-//      scrollView.backgroundColor = NSColor.red
+    //--- By default, no scroller
       scrollView.hasVerticalScroller = true
-
+    //---
       self.addSubview (scrollView)
-    //--- Constraints
-//      var constraints = [NSLayoutConstraint] ()
-//      self.mPermanentsConstraints.add (x: self.leftAnchor, equalTo: scrollView.leftAnchor)
-//      self.mPermanentsConstraints.add (x: self.rightAnchor, equalTo: scrollView.rightAnchor)
-//      self.mPermanentsConstraints.add (y: self.topAnchor, equalTo: scrollView.topAnchor)
-//      self.mPermanentsConstraints.add (y: self.bottomAnchor, equalTo: scrollView.bottomAnchor)
-
-//      self.mPermanentsConstraints.add (x: documentView.leftAnchor, equalTo: scrollView.contentView.leftAnchor)
-//      self.mPermanentsConstraints.add (x: documentView.rightAnchor, equalTo: scrollView.contentView.rightAnchor)
-//      self.mPermanentsConstraints.add (y: documentView.topAnchor, equalTo: scrollView.contentView.topAnchor)
-//      self.addConstraints (constraints)
-
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  private var mPermanentsConstraints = [NSLayoutConstraint] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -60,9 +50,10 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mScrollView : ALB_NSScrollView?
+  private let mStackGuide = NSLayoutGuide ()
 
-  private var receiverView : AutoLayoutVerticalStackView {
-    return (self.mScrollView?.documentView as? AutoLayoutVerticalStackView) ?? self
+  private var receiverView : NSView {
+    return self.mScrollView?.documentView ?? self
   }
 
   private var mVStackHierarchy : (any VerticalStackHierarchyProtocol)? = nil
@@ -166,6 +157,18 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Add row with two columns
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func append (left inLeftView : NSView, right inRightView : NSView) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+      .appendView (inLeftView)
+      .appendGutter ()
+      .appendView (inRightView)
+    return self.appendView (hStack)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor static
   func appendInVerticalHierarchy (_ inView : NSView,
@@ -209,34 +212,29 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     return array
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func removeAllItems () {
+    self.mVStackHierarchy = nil
+    for guide in self.receiverView.layoutGuides {
+      if guide !== self.mStackGuide {
+        self.receiverView.removeLayoutGuide (guide)
+      }
+    }
+    for view in self.receiverView.subviews {
+      if view !== self.mScrollView {
+        view.removeFromSuperview ()
+      }
+    }
+    self.invalidateIntrinsicContentSize ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Flipped
   // https://stackoverflow.com/questions/4697583/setting-nsscrollview-contents-to-top-left-instead-of-bottom-left-when-document-s
-  //····················································································································
-
-  final override var isFlipped : Bool { true }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Last Baseline representative view
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  private var mLastBaselineRepresentativeView : NSView? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override var lastBaselineRepresentativeView : NSView? { self.mLastBaselineRepresentativeView }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Add row with two columns
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func append (left inLeftView : NSView, right inRightView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendView (inLeftView)
-      .appendGutter ()
-      .appendView (inRightView)
-    return self.appendView (hStack)
-  }
+  final override var isFlipped : Bool { true } // So document view is at top
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Constraints
@@ -256,6 +254,19 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
       self.mConstraints.add (x: self.rightAnchor, equalTo: scrollView.rightAnchor)
       self.mConstraints.add (y: self.topAnchor, equalTo: scrollView.topAnchor)
       self.mConstraints.add (y: self.bottomAnchor, equalTo: scrollView.bottomAnchor)
+      let vStack = self.receiverView
+      self.mConstraints.add (x: self.mStackGuide.leftAnchor, equalTo: vStack.leftAnchor, plus: self.mLeftMargin)
+      self.mConstraints.add (x: vStack.rightAnchor, equalTo: self.mStackGuide.rightAnchor, plus: self.mRightMargin)
+      self.mConstraints.add (y: vStack.topAnchor, equalTo: self.mStackGuide.topAnchor, plus: self.mTopMargin)
+      self.mConstraints.add (y: self.mStackGuide.bottomAnchor, equalTo: vStack.bottomAnchor, plus: self.mBottomMargin)
+
+      self.mConstraints.add (x: scrollView.contentView.leftAnchor, equalTo: vStack.leftAnchor)
+      self.mConstraints.add (x: scrollView.contentView.rightAnchor, equalTo: vStack.rightAnchor)
+    }else{
+      self.mConstraints.add (x: self.mStackGuide.leftAnchor, equalTo: self.leftAnchor, plus: self.mLeftMargin)
+      self.mConstraints.add (x: self.rightAnchor, equalTo: self.mStackGuide.rightAnchor, plus: self.mRightMargin)
+      self.mConstraints.add (y: self.topAnchor, equalTo: self.mStackGuide.topAnchor, plus: self.mTopMargin)
+      self.mConstraints.add (y: self.mStackGuide.bottomAnchor, equalTo: self.bottomAnchor, plus: self.mBottomMargin)
     }
   //--- Build constraints
     let vStack = self.receiverView
@@ -263,13 +274,14 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
       var flexibleSpaceView : VerticalStackFlexibleSpace? = nil
       var optionalLastBottomAnchor : NSLayoutYAxisAnchor? = nil
       root.buildConstraintsFor (
-        verticalStackView: vStack,
+        verticalStackView: self.mStackGuide,
+        spacing: self.mSpacing,
         optionalLastBottomAnchor: &optionalLastBottomAnchor,
         flexibleSpaceView: &flexibleSpaceView,
         &self.mConstraints
       )
       if let lastBottomAnchor = optionalLastBottomAnchor {
-        self.mConstraints.add (y: lastBottomAnchor, equalTo: vStack.bottomAnchor, plus: self.mBottomMargin)
+        self.mConstraints.add (y: lastBottomAnchor, equalTo: self.mStackGuide.bottomAnchor)
       }else{
         self.mConstraints.add (y: vStack.bottomAnchor, equalTo: vStack.topAnchor)
       }
@@ -319,6 +331,40 @@ fileprivate final class InternalClipView : NSClipView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final override var isFlipped : Bool { true } // So document view is at top
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
+
+final class InternalReceiverView : ALB_NSView {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private weak var mRootView : AutoLayoutVerticalStackView? // Should be WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (rootView inRootView : AutoLayoutVerticalStackView) {
+    self.mRootView = inRootView
+    super.init ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func invalidateIntrinsicContentSize () {
+    self.mRootView?.invalidateIntrinsicContentSize ()
+    super.invalidateIntrinsicContentSize ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}

@@ -262,9 +262,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
   private func reloadSelectedNetVerticalScrollView (selectedRows inSelectedRows : IndexSet) {
     if let vStack = mSelectedNetVerticalStackView {
     //--- Remove all items of vStack
-      for view in vStack.subviews {
-        vStack.removeView (view)
-      }
+      vStack.removeAllItems ()
     //--- If one selected net, add description views
       if inSelectedRows.count == 1 {
         let selectedNetInfo : NetInfo = self.mDataSource [inSelectedRows.first!]
