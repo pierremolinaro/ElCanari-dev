@@ -14,31 +14,12 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (verticalScroller inVerticalScroller : Bool = false) {
-    self.mScrollView = inVerticalScroller ? ALB_NSScrollView () : nil
+  init () {
     super.init (
       horizontalDispositionInVerticalStackView: .fill,
       verticalDispositionInHorizontalStackView: .fill
     )
     self.addLayoutGuide (self.mStackGuide)
-    if let scrollView = self.mScrollView {
-    //--- Set clip view
-      scrollView.contentView = InternalClipView ()
-   //--- Set document view (SHOULD BE DONE AFTER SETTING clip view)
-      let documentView = InternalReceiverView (rootView: self)
-      scrollView.documentView = documentView
-    //--- Set background (SHOULD BE DONE AFTER SETTING contient view)
-    //--- Do not set drawsBackground and backgroundColor of a clip view !!!
-    // It is also important to note that setting drawsBackground to false in an NSScrollView
-    // has the added effect of setting the NSClipView property copiesOnScroll to false.
-    // The side effect of setting the drawsBackground property directly to the NSClipView is the
-    // appearance of “trails” (vestiges of previous drawing) in the document view as it is scrolled.
-      scrollView.drawsBackground = false
-    //--- By default, no scroller
-      scrollView.hasVerticalScroller = true
-    //---
-      self.addSubview (scrollView)
-    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,19 +30,14 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mScrollView : ALB_NSScrollView?
   private let mStackGuide = NSLayoutGuide ()
-
-  private var receiverView : NSView {
-    return self.mScrollView?.documentView ?? self
-  }
 
   private var mVStackHierarchy : (any VerticalStackHierarchyProtocol)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func appendView (_ inView : NSView) -> Self {
-    self.receiverView.addSubview (inView)
+    self.addSubview (inView)
     Self.appendInVerticalHierarchy (inView, toStackRoot: &self.mVStackHierarchy)
     self.invalidateIntrinsicContentSize ()
     return self
@@ -70,7 +46,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func prependView (_ inView : NSView) -> Self {
-    self.receiverView.addSubview (inView)
+    self.addSubview (inView)
     Self.prependInVerticalHierarchy (inView, toStackRoot: &self.mVStackHierarchy)
     self.invalidateIntrinsicContentSize ()
     return self
@@ -79,7 +55,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func removeView (_ inView : NSView) {
-    for view in self.receiverView.subviews {
+    for view in self.subviews {
       if view === inView {
         inView.removeFromSuperview ()
       }
@@ -97,7 +73,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
   final func appendGutter () -> Self {
     let newRoot = VerticalStackGutter (self.mVStackHierarchy)
     self.mGutterArray.append (newRoot)
-    self.receiverView.addLayoutGuide (newRoot)
+    self.addLayoutGuide (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -107,7 +83,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   final func appendDivider (canResizeWindow inFlag : Bool = false) -> Self {
     let newRoot = VerticalStackDivider (self.mVStackHierarchy)
-    self.receiverView.addSubview (newRoot)
+    self.addSubview (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -117,7 +93,7 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   final func appendFlexibleSpace () -> Self {
     let newRoot = VerticalStackFlexibleSpace (self.mVStackHierarchy)
-    self.receiverView.addLayoutGuide (newRoot)
+    self.addLayoutGuide (newRoot)
     self.mVStackHierarchy = newRoot
     self.invalidateIntrinsicContentSize ()
     return self
@@ -216,15 +192,13 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   final func removeAllItems () {
     self.mVStackHierarchy = nil
-    for guide in self.receiverView.layoutGuides {
+    for guide in self.layoutGuides {
       if guide !== self.mStackGuide {
-        self.receiverView.removeLayoutGuide (guide)
+        self.removeLayoutGuide (guide)
       }
     }
-    for view in self.receiverView.subviews {
-      if view !== self.mScrollView {
-        view.removeFromSuperview ()
-      }
+    for view in self.subviews {
+      view.removeFromSuperview ()
     }
     self.invalidateIntrinsicContentSize ()
   }
@@ -249,27 +223,11 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
     self.removeConstraints (self.mConstraints)
     self.mConstraints.removeAll (keepingCapacity: true)
   //--- Permanent constraints
-    if let scrollView = self.mScrollView {
-      self.mConstraints.add (x: self.leftAnchor, equalTo: scrollView.leftAnchor)
-      self.mConstraints.add (x: self.rightAnchor, equalTo: scrollView.rightAnchor)
-      self.mConstraints.add (y: self.topAnchor, equalTo: scrollView.topAnchor)
-      self.mConstraints.add (y: self.bottomAnchor, equalTo: scrollView.bottomAnchor)
-      let vStack = self.receiverView
-      self.mConstraints.add (x: self.mStackGuide.leftAnchor, equalTo: vStack.leftAnchor, plus: self.mLeftMargin)
-      self.mConstraints.add (x: vStack.rightAnchor, equalTo: self.mStackGuide.rightAnchor, plus: self.mRightMargin)
-      self.mConstraints.add (y: vStack.topAnchor, equalTo: self.mStackGuide.topAnchor, plus: self.mTopMargin)
-      self.mConstraints.add (y: self.mStackGuide.bottomAnchor, equalTo: vStack.bottomAnchor, plus: self.mBottomMargin)
-
-      self.mConstraints.add (x: scrollView.contentView.leftAnchor, equalTo: vStack.leftAnchor)
-      self.mConstraints.add (x: scrollView.contentView.rightAnchor, equalTo: vStack.rightAnchor)
-    }else{
-      self.mConstraints.add (x: self.mStackGuide.leftAnchor, equalTo: self.leftAnchor, plus: self.mLeftMargin)
-      self.mConstraints.add (x: self.rightAnchor, equalTo: self.mStackGuide.rightAnchor, plus: self.mRightMargin)
-      self.mConstraints.add (y: self.topAnchor, equalTo: self.mStackGuide.topAnchor, plus: self.mTopMargin)
-      self.mConstraints.add (y: self.mStackGuide.bottomAnchor, equalTo: self.bottomAnchor, plus: self.mBottomMargin)
-    }
+    self.mConstraints.add (x: self.mStackGuide.leftAnchor, equalTo: self.leftAnchor, plus: self.mLeftMargin)
+    self.mConstraints.add (x: self.rightAnchor, equalTo: self.mStackGuide.rightAnchor, plus: self.mRightMargin)
+    self.mConstraints.add (y: self.topAnchor, equalTo: self.mStackGuide.topAnchor, plus: self.mTopMargin)
+    self.mConstraints.add (y: self.mStackGuide.bottomAnchor, equalTo: self.bottomAnchor, plus: self.mBottomMargin)
   //--- Build constraints
-    let vStack = self.receiverView
     if let root = self.mVStackHierarchy {
       var flexibleSpaceView : VerticalStackFlexibleSpace? = nil
       var optionalLastBottomAnchor : NSLayoutYAxisAnchor? = nil
@@ -283,10 +241,10 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
       if let lastBottomAnchor = optionalLastBottomAnchor {
         self.mConstraints.add (y: lastBottomAnchor, equalTo: self.mStackGuide.bottomAnchor)
       }else{
-        self.mConstraints.add (y: vStack.bottomAnchor, equalTo: vStack.topAnchor)
+        self.mConstraints.add (y: self.bottomAnchor, equalTo: self.topAnchor)
       }
     }else{
-      self.mConstraints.add (y: vStack.bottomAnchor, equalTo: vStack.topAnchor)
+      self.mConstraints.add (y: self.bottomAnchor, equalTo: self.topAnchor)
     }
   //--- Align gutters
     var gutters = [HorizontalStackGutter] ()
@@ -339,7 +297,7 @@ fileprivate final class InternalClipView : NSClipView {
 
 //--------------------------------------------------------------------------------------------------
 
-final class InternalReceiverView : ALB_NSView {
+fileprivate final class InternalReceiverView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -368,3 +326,5 @@ final class InternalReceiverView : ALB_NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
+//--------------------------------------------------------------------------------------------------

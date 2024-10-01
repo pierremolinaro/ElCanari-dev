@@ -1159,7 +1159,7 @@ import AppKit
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutVerticalStackView (verticalScroller: true)
+          let vStackView_view_view_view = AutoLayoutVerticalStackViewWithScrollBar ()
             .set (margins: .regular)
             .set (width: 300)
           _ = vStackView_view_view.appendView (vStackView_view_view_view)
@@ -2436,7 +2436,7 @@ do{
   final func boardOutlinePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
     do{
-      let hStackView_view = AutoLayoutVerticalStackView (verticalScroller: true)
+      let hStackView_view = AutoLayoutVerticalStackViewWithScrollBar ()
         .set (margins: .regular)
         .set (width: 250)
       let boardShapeBaseView = self.BoardShapeBaseView ()
@@ -3058,7 +3058,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutVerticalStackView (verticalScroller: true)
+      let vStackView_view = AutoLayoutVerticalStackViewWithScrollBar ()
         .set (rightMargin: .small)
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Grid and Flip", bold: true, size: .small, alignment: .left)
@@ -3795,7 +3795,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutVerticalStackView (verticalScroller: true)
+      let vStackView_view = AutoLayoutVerticalStackViewWithScrollBar ()
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
@@ -5386,7 +5386,7 @@ do{
     }
     _ = vStackView.appendSeparator ()
     do{
-      let vStackView_view = AutoLayoutVerticalStackView (verticalScroller: true)
+      let vStackView_view = AutoLayoutVerticalStackViewWithScrollBar ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Package", bold: true, size: .small, alignment: .left)
         _ = vStackView_view .appendView (vStackView_view_view)

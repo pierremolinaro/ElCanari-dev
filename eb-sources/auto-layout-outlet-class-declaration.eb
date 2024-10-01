@@ -1,6 +1,6 @@
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————
 //  Auto Layout classes
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————
 
 vStack func set (spacing: MarginSize) ;
 vStack func set (margins: MarginSize) ;
@@ -25,11 +25,6 @@ func enum GridStyle.popupTitles {
   noGrid : "No Grid" ;
   line : "Line Grid" ;
 }
-
-extern autolayout class VerticalScrollView (content: view) {
-  func set (width: Int)
-}
-
 
 extern autolayout class DisclosureTriangle (size: EBControlSize) {
   $expanded property Bool
@@ -502,4 +497,4 @@ extern autolayout class WebView (url: String) {
   func set (minHeight : Int)
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————

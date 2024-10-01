@@ -36,7 +36,7 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
     }
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
+    self.pmConfigureForAutolayout (hStretchingResistance: .higher, vStrechingResistance: .higher)
 
     self.delegate = self
 

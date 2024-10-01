@@ -1420,6 +1420,8 @@
 		CF5E89CA27D409AA004DAC18 /* Preferences_SuperClass-app-update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E89C927D409AA004DAC18 /* Preferences_SuperClass-app-update.swift */; };
 		CF5E89CB27D409AA004DAC18 /* Preferences_SuperClass-app-update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5E89C927D409AA004DAC18 /* Preferences_SuperClass-app-update.swift */; };
 		CF604DC821BC1BC1004F2311 /* EBScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollView.swift */; };
+		CF60C7772CABF59300DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60C7762CABF57900DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift */; };
+		CF60C7782CABF59300DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60C7762CABF57900DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift */; };
 		CF61725B1B3C4B4300F3CA82 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6172591B3C4B4300F3CA82 /* MainMenu.xib */; };
 		CF6172BD1B3C4CD600F3CA82 /* A4horizontal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */; };
 		CF6172BE1B3C4CD600F3CA82 /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
@@ -4181,6 +4183,7 @@
 		CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		CF5E89C927D409AA004DAC18 /* Preferences_SuperClass-app-update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preferences_SuperClass-app-update.swift"; sourceTree = "<group>"; };
 		CF604DC621BC1BC1004F2311 /* EBScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBScrollView.swift; sourceTree = "<group>"; };
+		CF60C7762CABF57900DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutVerticalStackViewWithScrollBar.swift; sourceTree = "<group>"; };
 		CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Debug.plist"; sourceTree = "<group>"; };
 		CF6172591B3C4B4300F3CA82 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = A4horizontal.pdf; sourceTree = "<group>"; };
@@ -6387,6 +6390,7 @@
 				CFCC545325D2F937009C186D /* AutoLayout-debug-menu.swift */,
 				CF7AB2BD2C734F3700BA9590 /* AutoLayoutHorizontalStackView.swift */,
 				CF7AB2D42C734F3900BA9590 /* AutoLayoutVerticalStackView.swift */,
+				CF60C7762CABF57900DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift */,
 				CF7AB2D22C734F3900BA9590 /* AutoLayoutViewSettings.swift */,
 				CFC579412BDEEA54005CA3F0 /* AutoLayoutWindowContentView.swift */,
 				CF4990EE28D8C9400099F871 /* enum-EBControlSize.swift */,
@@ -9352,6 +9356,7 @@
 				CFC579252BDEE42E005CA3F0 /* AutoLayoutStaticImageView.swift in Sources */,
 				CFF858952687C201001B868C /* transient-AutoLayoutArtworkDocument-generatedFileCountString.swift in Sources */,
 				CF53C46421C662C2001502F4 /* outlet-events.swift in Sources */,
+				CF60C7782CABF59300DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift in Sources */,
 				CFA430CC229AED07000AA8C8 /* tomany-CanariLibraryEntry.swift in Sources */,
 				CFB7D77F26839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addOvalButtonImage.swift in Sources */,
 				CF7FC49B29EDBFD30045DD14 /* transient-BoardImage-objectDisplay.swift in Sources */,
@@ -10498,6 +10503,7 @@
 				CF78DE87222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift in Sources */,
 				CFE85A7221A5B37900991A66 /* entity-SymbolBezierCurve.swift in Sources */,
 				CF22F217275A73EE009C6FAC /* transient-BoardModel-frontLayoutTextsSegments.swift in Sources */,
+				CF60C7772CABF59300DABDA1 /* AutoLayoutVerticalStackViewWithScrollBar.swift in Sources */,
 				CFA42F88229AEACF000AA8C8 /* tomany-SymbolInstanceInDevice.swift in Sources */,
 				CFB7D76526839B90007B9D3B /* transient-AutoLayoutSymbolDocument-segmentedControlSegmentIssueString.swift in Sources */,
 				CFB7D74126839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-addSymbolBezier.swift in Sources */,

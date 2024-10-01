@@ -14,7 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutProjectDocument {
-  final func configure_selectedNetVerticalScrollViewConfigurator (_ inOutlet : AutoLayoutVerticalStackView) {
+  final func configure_selectedNetVerticalScrollViewConfigurator (_ inOutlet : AutoLayoutVerticalStackViewWithScrollBar) {
 //--- START OF USER ZONE 2
         self.mNetInfoTableView?.setSelectedNetVerticalStackView (inOutlet)
 //--- END OF USER ZONE 2

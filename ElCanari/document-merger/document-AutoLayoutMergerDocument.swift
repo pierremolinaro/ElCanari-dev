@@ -564,7 +564,7 @@ import AppKit
         .set (width: 250)
         .bind_hidden (.not (.prop (self.rootObject.showDisplaySettingView_property)))
       do{
-        let hStackView_view_view = AutoLayoutVerticalStackView (verticalScroller: true)
+        let hStackView_view_view = AutoLayoutVerticalStackViewWithScrollBar ()
           .set (margins: .regular)
         do{
           let hStackView_view_view_view = AutoLayoutHorizontalStackView ()
@@ -1449,7 +1449,7 @@ import AppKit
     }
     _ = vStackView.appendSeparator ()
     do{
-      let vStackView_view = AutoLayoutVerticalStackView (verticalScroller: true)
+      let vStackView_view = AutoLayoutVerticalStackViewWithScrollBar ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Board", bold: true, size: .small, alignment: .left)
         _ = vStackView_view .appendView (vStackView_view_view)

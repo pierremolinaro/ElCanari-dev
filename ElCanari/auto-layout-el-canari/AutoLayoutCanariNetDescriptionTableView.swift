@@ -20,7 +20,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
+  override init () {
     super.init ()
 
     self.mTableView.configure (
@@ -249,11 +249,11 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
   //  mPinsOfSelectedNetTableView
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private weak var mSelectedNetVerticalStackView : AutoLayoutVerticalStackView? = nil
+  private weak var mSelectedNetVerticalStackView : AutoLayoutVerticalStackViewWithScrollBar? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setSelectedNetVerticalStackView (_ inSelectedNetVerticalStackView : AutoLayoutVerticalStackView) {
+  func setSelectedNetVerticalStackView (_ inSelectedNetVerticalStackView : AutoLayoutVerticalStackViewWithScrollBar) {
     self.mSelectedNetVerticalStackView = inSelectedNetVerticalStackView
   }
 
