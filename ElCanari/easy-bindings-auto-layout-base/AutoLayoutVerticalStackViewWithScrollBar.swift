@@ -14,6 +14,11 @@ class AutoLayoutVerticalStackViewWithScrollBar : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private let mScrollView = ALB_NSScrollView ()
+  private let mStackView = AutoLayoutVerticalStackView ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   init () {
     super.init (
       horizontalDispositionInVerticalStackView: .fill,
@@ -44,7 +49,6 @@ class AutoLayoutVerticalStackViewWithScrollBar : ALB_NSStackView {
     constraints.add (x: self.mScrollView.contentView.leftAnchor, equalTo: self.mStackView.leftAnchor)
     constraints.add (x: self.mScrollView.contentView.rightAnchor, equalTo: self.mStackView.rightAnchor)
     self.addConstraints (constraints)
-
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -52,11 +56,6 @@ class AutoLayoutVerticalStackViewWithScrollBar : ALB_NSStackView {
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private let mScrollView = ALB_NSScrollView ()
-  private let mStackView = AutoLayoutVerticalStackView ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -115,34 +114,76 @@ class AutoLayoutVerticalStackViewWithScrollBar : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendFlexibleSpace ()
-      .appendView (inView)
-      .appendFlexibleSpace ()
-    return self.appendView (hStack)
+  override func set (spacing inValue : MarginSize) -> Self {
+    _ = self.mStackView.set (spacing: inValue)
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendFlexibleSpace ()
-      .appendView (inView)
-    return self.appendView (hStack)
+  override func set (margins inValue : MarginSize) -> Self {
+    _ = self.mStackView.set (margins: inValue)
+    return self
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func set (topMargin inValue : MarginSize) -> Self {
+    _ = self.mStackView.set (topMargin: inValue)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func set (bottomMargin inValue : MarginSize) -> Self {
+    _ = self.mStackView.set (bottomMargin: inValue)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func set (leftMargin inValue : MarginSize) -> Self {
+    _ = self.mStackView.set (leftMargin: inValue)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func set (rightMargin inValue : MarginSize) -> Self {
+    _ = self.mStackView.set (rightMargin: inValue)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
+//    let hStack = AutoLayoutHorizontalStackView ()
+//      .appendFlexibleSpace ()
+//      .appendView (inView)
+//      .appendFlexibleSpace ()
+//    return self.appendView (hStack)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
+//    let hStack = AutoLayoutHorizontalStackView ()
+//      .appendFlexibleSpace ()
+//      .appendView (inView)
+//    return self.appendView (hStack)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Add row with two columns
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func append (left inLeftView : NSView, right inRightView : NSView) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-      .appendView (inLeftView)
-      .appendGutter ()
-      .appendView (inRightView)
-    return self.appendView (hStack)
-  }
+//  final func append (left inLeftView : NSView, right inRightView : NSView) -> Self {
+//    let hStack = AutoLayoutHorizontalStackView ()
+//      .appendView (inLeftView)
+//      .appendGutter ()
+//      .appendView (inRightView)
+//    return self.appendView (hStack)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

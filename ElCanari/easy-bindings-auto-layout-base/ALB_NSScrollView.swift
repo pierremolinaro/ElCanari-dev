@@ -64,6 +64,15 @@ class ALB_NSScrollView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  override func reflectScrolledClipView (_ inClipView : NSClipView) {
+    if let window = self.window {
+      window.triggerDecoration ()
+    }
+    super.reflectScrolledClipView (inClipView)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

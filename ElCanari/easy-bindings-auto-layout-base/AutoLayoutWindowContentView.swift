@@ -11,15 +11,23 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension NSWindow {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   @MainActor func setContentView (_ inContentView : NSView) {
     self.contentView = AutoLayoutWindowContentView (view: inContentView)
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func triggerDecoration () {
     if let view = self.contentView as? AutoLayoutWindowContentView {
       view.triggerDecoration ()
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -27,7 +35,7 @@ extension NSWindow {
 fileprivate let DEBUG_FLEXIBLE_SPACE_FILL_COLOR      = NSColor.systemGreen.withAlphaComponent (0.25)
 fileprivate let DEBUG_LAST_BASELINE_COLOR            = NSColor.systemPink
 fileprivate let DEBUG_LAST_STACK_VIEW_BASELINE_COLOR = NSColor.systemBlue
-fileprivate let DEBUG_STROKE_COLOR                   = NSColor.systemOrange
+fileprivate let DEBUG_FRAME_STROKE_COLOR             = NSColor.systemOrange
 fileprivate let DEBUG_MARGIN_COLOR                   = NSColor.systemYellow.withAlphaComponent (0.25)
 fileprivate let DEBUG_KEY_CHAIN_STROKE_COLOR         = NSColor.systemPurple
 fileprivate let GUTTER_FILL_COLOR                    = NSColor.systemBrown
@@ -174,12 +182,6 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     self.updateTrackingAreas ()
 
     checkAutoLayoutAdoption (self, [])
-
-//    if getDebugAutoLayout () {
-//      DispatchQueue.main.async {
-//        self.mHiliteView.needsDisplay = true
-//      }
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -299,10 +301,12 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
 
   private func findSubView (in inView: NSView, at inPoint : NSPoint) -> NSView? {
     for view in inView.subviews.reversed () {
-     let p = view.convert (inPoint, from: inView)
-     let v = self.findSubView (in: view, at: p)
-      if v != nil {
-        return v
+      if !view.isHidden {
+        let p = view.convert (inPoint, from: inView)
+        let v = self.findSubView (in: view, at: p)
+        if v != nil {
+          return v
+        }
       }
     }
     if inView.self.bounds.contains (inPoint) {
@@ -556,74 +560,61 @@ fileprivate final class FilePrivateHiliteView : NSView {
   private func decorateViewRects (_ inView : NSView) {
     if !inView.frame.isEmpty {
       let viewFrame = self.convert (inView.alignmentRect (forFrame: inView.bounds), from: inView)
+      let viewVisibleRect = self.convert (inView.visibleRect, from: inView)
       var exploreSubviews = true
       if let stackView = inView as? ALB_NSStackView { // Draw margins
         DEBUG_MARGIN_COLOR.setFill ()
         if stackView.mBottomMargin > 0.0 {
           var r = viewFrame
           r.size.height = stackView.mBottomMargin
-          NSBezierPath.fill (r)
+          NSBezierPath.fill (r.intersection (viewVisibleRect))
         }
         if stackView.mTopMargin > 0.0 {
           var r = viewFrame
           r.origin.y += r.size.height - stackView.mTopMargin
           r.size.height = stackView.mTopMargin
-          NSBezierPath.fill (r)
+          NSBezierPath.fill (r.intersection (viewVisibleRect))
         }
         if stackView.mLeftMargin > 0.0 {
           var r = viewFrame
           r.size.width = stackView.mLeftMargin
-          NSBezierPath.fill (r)
+          NSBezierPath.fill (r.intersection (viewVisibleRect))
         }
         if stackView.mRightMargin > 0.0 {
           var r = viewFrame
           r.origin.x += r.size.width - stackView.mRightMargin
           r.size.width = stackView.mRightMargin
-          NSBezierPath.fill (r)
+          NSBezierPath.fill (r.intersection (viewVisibleRect))
         }
-//      }else if inView is VerticalStackFlexibleSpace {
-//        DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
-//        NSBezierPath.fill (viewFrame)
-//        exploreSubviews = false
-//      }else if inView is HorizontalStackFlexibleSpace {
-//        DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
-//        NSBezierPath.fill (viewFrame)
-//        exploreSubviews = false
-//      }else if inView is HorizontalStackGutter {
-//        GUTTER_FILL_COLOR.setFill ()
-//        NSBezierPath.fill (viewFrame)
-//        exploreSubviews = false
-//      }else if inView is VerticalStackGutter {
-//        GUTTER_FILL_COLOR.setFill ()
-//        NSBezierPath.fill (viewFrame)
-//        exploreSubviews = false
       }else if inView is HorizontalStackSeparator { // Do not frame
         exploreSubviews = false
       }else if inView is VerticalStackSeparator { // Do not frame
         exploreSubviews = false
       }else{ // Frame
-        let bp = NSBezierPath (rect: viewFrame)
+        let bp = NSBezierPath (rect: viewFrame.intersection (viewVisibleRect))
         bp.lineWidth = 1.0
         bp.lineJoinStyle = .round
-        DEBUG_STROKE_COLOR.setStroke ()
+        DEBUG_FRAME_STROKE_COLOR.setStroke ()
         bp.stroke ()
       }
     //--- Last baseline
-      if let representativeView = inView.lastBaselineRepresentativeView { // §§
+      if let representativeView = inView.lastBaselineRepresentativeView {
         let representativeViewFrame = self.convert (representativeView.alignmentRect (forFrame: representativeView.bounds), from: representativeView)
-        let bp = NSBezierPath ()
         let p = NSPoint (
           x: viewFrame.origin.x,
           y: representativeViewFrame.origin.y + representativeView.lastBaselineOffsetFromBottom
         )
-        bp.move (to: p)
-        bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
-        if inView is ALB_NSStackView {
-          DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
-        }else{
-          DEBUG_LAST_BASELINE_COLOR.setStroke ()
+        if viewVisibleRect.contains (p) {
+          let bp = NSBezierPath ()
+          bp.move (to: p)
+          bp.relativeLine (to: NSPoint (x: viewFrame.size.width, y: 0.0))
+          if inView is ALB_NSStackView {
+            DEBUG_LAST_STACK_VIEW_BASELINE_COLOR.setStroke ()
+          }else{
+            DEBUG_LAST_BASELINE_COLOR.setStroke ()
+          }
+          bp.stroke ()
         }
-        bp.stroke ()
       }
     //--- Explore subviews
       if exploreSubviews {
@@ -640,17 +631,19 @@ fileprivate final class FilePrivateHiliteView : NSView {
       }
       if exploreSubviews {
         for view in inView.subviews {
-          self.decorateViewRects (view)
+          if !view.isHidden {
+            self.decorateViewRects (view)
+          }
         }
         for guide in inView.layoutGuides {
           if (guide is VerticalStackFlexibleSpace) || (guide is HorizontalStackFlexibleSpace) {
             DEBUG_FLEXIBLE_SPACE_FILL_COLOR.setFill ()
             let frame = self.convert (guide.frame, from: inView)
-            NSBezierPath.fill (frame)
+            NSBezierPath.fill (frame.intersection (viewVisibleRect))
           }else if (guide is HorizontalStackGutter) || (guide is VerticalStackGutter) {
             GUTTER_FILL_COLOR.setFill ()
             let frame = self.convert (guide.frame, from: inView)
-            NSBezierPath.fill (frame)
+            NSBezierPath.fill (frame.intersection (viewVisibleRect))
           }
         }
       }
