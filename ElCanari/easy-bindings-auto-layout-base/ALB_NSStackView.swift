@@ -22,7 +22,7 @@ class ALB_NSStackView : NSView {
     self.mVerticalDispositionInHorizontalStackView = inVerticalDisposition
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout (hStretchingResistance: .lowest, vStrechingResistance: .lowest)
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

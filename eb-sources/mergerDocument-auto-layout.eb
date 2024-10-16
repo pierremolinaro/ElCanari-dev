@@ -23,12 +23,12 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         StaticLabel (title: "Page", bold: no, size : .regular, alignment: .center)
       }
       vStack set (spacing: .zero) {
-        Checkbox (title: "Show", size : .regular) {
+        Checkbox (title: "Show Display Settings", size : .regular) {
           $enabled root.selectedPageIndex <= 1
           $value root.showDisplaySettingView
         }
         gutter
-        StaticLabel (title: "Display Settings", bold: no, size : .regular, alignment: .center)
+        StaticLabel (title: "Models and Board", bold: no, size : .regular, alignment: .center)
       }
       space
       vStack set (spacing: .zero) {
@@ -191,12 +191,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     }
     vStack {
       space
-      hStack {
-        space
-        StaticLabel (title: "No Model", bold: yes, size: .regular, alignment: .center) {
-          $hidden root.boardModels.count > 0
-        }
-        space
+      StaticLabel (title: "No Model", bold: yes, size: .regular, alignment: .center) {
+        $hidden root.boardModels.count > 0
       }
       space
     }
@@ -249,7 +245,8 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         hStack { 
           StaticLabel (title: "Board Limits", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
+          space
+//          Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBoardLimits }
           Checkbox (title: "", size: .small) {
             expandableHeight () $value prefs.mergerBoardViewDisplayBoardLimits
@@ -258,166 +255,166 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         hStack { 
           StaticLabel (title: "Model Board Limits", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayModelBoardLimits }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayModelBoardLimits }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInternalBoardsLimits }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayModelBoardsLimits }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayModelBoardsLimits }
         }
         hStack { 
           StaticLabel (title: "Background", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
+          Checkbox (title: "", size: .small) { $value prefs.mergerShowModelBackground  }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackground }
-          Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
+          Checkbox (title: "", size: .small) { $value prefs.mergerShowInstanceBackground }
         }
         StaticLabel (title: "Front", bold: yes, size: .small, alignment: .left)
         hStack { 
           StaticLabel (title: "Pads", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontPads }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontPads }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontPads }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontPads }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontPads }
         }
         hStack { 
           StaticLabel (title: "Component Names", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontComponentNames }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontComponentNames }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontComponentNames }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontComponentNames }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontComponentNames }
         }
         hStack { 
           StaticLabel (title: "Component Values", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontComponentValues }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontComponentValues }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontComponentValues }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontComponentValues }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontComponentValues }
         }
         hStack { 
           StaticLabel (title: "Packages", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontPackages }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontPackages }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontPackages }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontPackages }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontPackages }
         }
         hStack { 
           StaticLabel (title: "Legend Texts", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLegendTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontLegendTexts }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLegendTexts }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontLegendTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontLegendTexts }
         }
         hStack { 
           StaticLabel (title: "Legend Lines", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLegendLines }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontLegendLines }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLegendLines }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontLegendLines }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontLegendLines }
         }
         hStack { 
           StaticLabel (title: "Layout Texts", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLayoutTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontLayoutTexts }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLayoutTexts }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontLayoutTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontLayoutTexts }
         }
         hStack { 
           StaticLabel (title: "Tracks", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontTracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayFrontTracks }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontTracks }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayFrontTracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayFrontTracks }
         }
         StaticLabel (title: "Inner", bold: yes, size: .small, alignment: .left)
         hStack { 
           StaticLabel (title: "Traversing Pads", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayTraversingPads }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayTraversingPads }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorTraversingPads }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayTraversingPads }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayTraversingPads }
         }
         hStack { 
           StaticLabel (title: "Inner 1 Tracks", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner1Tracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInner1Tracks }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner1Tracks }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayInner1Tracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner1Tracks }
         }
         hStack { 
           StaticLabel (title: "Inner 2 Tracks", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner2Tracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInner2Tracks }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner2Tracks }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayInner2Tracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner2Tracks }
         }
         hStack { 
           StaticLabel (title: "Inner 3 Tracks", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner3Tracks }
+          Checkbox (title: "", size: .small) {$value prefs.mergerModelViewDisplayInner3Tracks }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner3Tracks }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayInner3Tracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner3Tracks }
         }
         hStack { 
           StaticLabel (title: "Inner 4 Tracks", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner4Tracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayInner4Tracks }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner4Tracks }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayInner4Tracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayInner4Tracks }
         }
         StaticLabel (title: "Back", bold: yes, size: .small, alignment: .left)
         hStack { 
           StaticLabel (title: "Pads", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackPads }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackPads }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackPads }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackPads }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackPads }
         }
         hStack { 
           StaticLabel (title: "Component Names", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackComponentNames }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackComponentNames }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackComponentNames }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackComponentNames }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackComponentNames }
         }
         hStack { 
           StaticLabel (title: "Component Values", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackComponentValues }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackComponentValues }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackComponentValues }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackComponentValues }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackComponentValues }
         }
         hStack { 
           StaticLabel (title: "Packages", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackPackages }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackPackages }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackPackages }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackPackages }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackPackages }
         }
         hStack { 
           StaticLabel (title: "Legend Texts", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLegendTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackLegendTexts }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLegendTexts }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackLegendTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackLegendTexts }
         }
         hStack { 
           StaticLabel (title: "Legend Lines", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLegendLines }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackLegendLines }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLegendLines }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackLegendLines }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackLegendLines }
         }
         hStack { 
           StaticLabel (title: "Layout Texts", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLayoutTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackLayoutTexts }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLayoutTexts }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackLayoutTexts }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackLayoutTexts }
         }
         hStack { 
           StaticLabel (title: "Tracks", bold: no, size: .small, alignment: .right)
           gutter
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackTracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerModelViewDisplayBackTracks }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackTracks }
-          Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerBoardViewDisplayBackTracks }
+          Checkbox (title: "", size: .small) { $value prefs.mergerBoardViewDisplayBackTracks }
         }
       }
       space

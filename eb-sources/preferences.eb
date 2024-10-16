@@ -538,6 +538,8 @@ prefs {
   property NSColor mergerColorBackLegendLines default green ;
 
   property NSColor mergerColorBackground default lightGray ;
+  property Bool mergerShowModelBackground default yes ;
+  property Bool mergerShowInstanceBackground default yes ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

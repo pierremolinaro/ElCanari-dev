@@ -15,6 +15,7 @@ import AppKit
 
 @MainActor func transient_BoardModel_imageForInstances (
        _ prefs_mergerColorBackground : NSColor,         
+       _ prefs_mergerShowInstanceBackground : Bool,     
        _ self_modelWidth : Int,                         
        _ self_modelHeight : Int,                        
        _ self_frontTracksNoSilkScreenBezierPaths : BezierPathArray,
@@ -100,8 +101,10 @@ import AppKit
 //--- START OF USER ZONE 2
   var shapes = EBShape ()
 //--- Background
-  let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa (self_modelHeight))
-  shapes.add (filled: [EBBezierPath (rect: backRect)], prefs_mergerColorBackground)
+  if prefs_mergerShowInstanceBackground {
+    let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa (self_modelHeight))
+    shapes.add (filled: [EBBezierPath (rect: backRect)], prefs_mergerColorBackground)
+  }
 //--- Back Legend Lines, images and QR Codes
   if (prefs_mergerBoardViewDisplayBackLegendLines) {
     shapes.add (stroke: self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines)

@@ -32,7 +32,6 @@ graphic handlingOpposite entity MergerBoardInstance {
     self.x, self.y,
     self.myModel.one.modelWidth, self.myModel.one.modelHeight,
     self.instanceRotation,
-//    self.instanceRect,
     self.myModel.one.imageForInstances
   ;
 }

@@ -109,7 +109,7 @@ extension AutoLayoutMergerDocument {
   //--- Back packages
     boardModel.backPackages = inProduct.segmentEntities (self.undoManager, forLayers: .backSidePackageLegend)
   //--- Front packages
-    boardModel.backPackages = inProduct.segmentEntities (self.undoManager, forLayers: .frontSidePackageLegend)
+    boardModel.frontPackages = inProduct.segmentEntities (self.undoManager, forLayers: .frontSidePackageLegend)
   //--- Back component names
     boardModel.backComponentNames = inProduct.segmentEntities (self.undoManager, forLayers: .backSideComponentName)
   //--- Front component names

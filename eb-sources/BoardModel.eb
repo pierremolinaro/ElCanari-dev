@@ -364,6 +364,7 @@ handlingOpposite entity BoardModel {
 //--- Image for model
   transient EBShape imageForModel dependsFrom
     prefs.mergerColorBackground,
+    prefs.mergerShowModelBackground,
     self.modelWidth,
     self.modelHeight,
 // Model Board limits
@@ -475,6 +476,7 @@ handlingOpposite entity BoardModel {
 //----
   transient EBShape imageForInstances dependsFrom
     prefs.mergerColorBackground,
+    prefs.mergerShowInstanceBackground,
     self.modelWidth,
     self.modelHeight,
 // Tracks without silkscreen

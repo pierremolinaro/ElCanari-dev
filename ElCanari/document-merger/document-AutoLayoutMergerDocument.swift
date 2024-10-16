@@ -306,14 +306,14 @@ import AppKit
         let vStackView_view_view = AutoLayoutVerticalStackView ()
           .set (spacing: .zero)
         do{
-          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Show", size: .regular)
+          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Show Display Settings", size: .regular)
             .bind_value (self.rootObject.showDisplaySettingView_property)
             .bind_enabled (.intcmp (.prop (self.rootObject.selectedPageIndex_property), .le, .literalInt (1)))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Display Settings", bold: false, size: .regular, alignment: .center)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Models and Board", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view.appendView (vStackView_view_view)
@@ -536,14 +536,8 @@ import AppKit
       let hStackView_view = AutoLayoutVerticalStackView ()
       _ = hStackView_view.appendFlexibleSpace ()
       do{
-        let hStackView_view_view = AutoLayoutHorizontalStackView ()
-        _ = hStackView_view_view.appendFlexibleSpace ()
-        do{
-          let hStackView_view_view_view = AutoLayoutStaticLabel (title: "No Model", bold: true, size: .regular, alignment: .center)
-            .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)))
-          _ = hStackView_view_view .appendView (hStackView_view_view_view)
-        }
-        _ = hStackView_view_view.appendFlexibleSpace ()
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "No Model", bold: true, size: .regular, alignment: .center)
+          .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)))
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       _ = hStackView_view.appendFlexibleSpace ()
@@ -677,12 +671,7 @@ import AppKit
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
           _ = hStackView_view_view_view.appendGutter ()
-          do{
-            let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
-              .set (enabled: false, checked: true)
-            _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
-          }
+          _ = hStackView_view_view_view.appendFlexibleSpace ()
           do{
             let hStackView_view_view_view_view = AutoLayoutColorWell ()
               .set (toolTip: "Stored in Preferences")
@@ -706,7 +695,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayModelBoardLimits_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -718,7 +706,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayModelBoardsLimits_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -733,8 +720,7 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
-              .set (enabled: false, checked: true)
+              .bind_value (preferences_mergerShowModelBackground_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
           do{
@@ -745,8 +731,7 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
-              .set (enabled: false, checked: true)
+              .bind_value (preferences_mergerShowInstanceBackground_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
@@ -764,7 +749,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontPads_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -776,7 +760,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontPads_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -791,7 +774,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontComponentNames_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -803,7 +785,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontComponentNames_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -818,7 +799,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontComponentValues_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -830,7 +810,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontComponentValues_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -845,7 +824,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontPackages_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -857,7 +835,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontPackages_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -872,7 +849,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontLegendTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -884,7 +860,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontLegendTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -899,7 +874,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontLegendLines_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -911,7 +885,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontLegendLines_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -926,7 +899,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontLayoutTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -938,7 +910,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontLayoutTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -953,7 +924,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayFrontTracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -965,7 +935,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayFrontTracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -984,7 +953,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayTraversingPads_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -996,7 +964,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayTraversingPads_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1011,7 +978,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayInner1Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1023,7 +989,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayInner1Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1038,7 +1003,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayInner2Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1050,7 +1014,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayInner2Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1065,7 +1028,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayInner3Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1077,7 +1039,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayInner3Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1092,7 +1053,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayInner4Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1104,7 +1064,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayInner4Tracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1123,7 +1082,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackPads_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1135,7 +1093,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackPads_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1150,7 +1107,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackComponentNames_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1162,7 +1118,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackComponentNames_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1177,7 +1132,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackComponentValues_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1189,7 +1143,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackComponentValues_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1204,7 +1157,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackPackages_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1216,7 +1168,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackPackages_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1231,7 +1182,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackLegendTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1243,7 +1193,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackLegendTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1258,7 +1207,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackLegendLines_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1270,7 +1218,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackLegendLines_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1285,7 +1232,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackLayoutTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1297,7 +1243,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackLayoutTexts_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1312,7 +1257,6 @@ import AppKit
           _ = hStackView_view_view_view.appendGutter ()
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerModelViewDisplayBackTracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }
@@ -1324,7 +1268,6 @@ import AppKit
           }
           do{
             let hStackView_view_view_view_view = AutoLayoutCheckbox (title: "", size: .small)
-              .expandableHeight ()
               .bind_value (preferences_mergerBoardViewDisplayBackTracks_property)
             _ = hStackView_view_view_view .appendView (hStackView_view_view_view_view)
           }

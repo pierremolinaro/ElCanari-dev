@@ -728,6 +728,8 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 @MainActor let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegendLines"
 @MainActor let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
 @MainActor let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
+@MainActor let Preferences_mergerShowModelBackground = "Preferences:mergerShowModelBackground"
+@MainActor let Preferences_mergerShowInstanceBackground = "Preferences:mergerShowInstanceBackground"
 @MainActor let Preferences_artworkDialogFilterString = "Preferences:artworkDialogFilterString"
 @MainActor let Preferences_mSelectedPrefsPage = "Preferences:mSelectedPrefsPage"
 @MainActor let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
@@ -1758,6 +1760,18 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //································································································
 
 @MainActor let preferences_mergerColorBackground_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.lightGray, prefKey: Preferences_mergerColorBackground)
+
+//································································································
+//   Atomic property: mergerShowModelBackground
+//································································································
+
+@MainActor let preferences_mergerShowModelBackground_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_mergerShowModelBackground)
+
+//································································································
+//   Atomic property: mergerShowInstanceBackground
+//································································································
+
+@MainActor let preferences_mergerShowInstanceBackground_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_mergerShowInstanceBackground)
 
 //································································································
 //   Atomic property: artworkDialogFilterString

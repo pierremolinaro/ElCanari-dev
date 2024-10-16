@@ -33,6 +33,8 @@ let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Merger : dessin incorrect des packages",
+  "Merger : ajout du contrôle de l'affichage du fond"
 ]
 let CHANGES : [String] = [
   "Nouvelle écriture de l'interface utilisateur"
