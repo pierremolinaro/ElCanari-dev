@@ -291,6 +291,7 @@ extension AutoLayoutProjectDocument {
             let title = "Octolinear Track Alignment in " + inSide.string + " Layer"
             let menuItem = NSMenuItem (title: title, action: #selector (Self.octolinearAlignmentAction), keyEquivalent: "")
             menuItem.target = self
+            menuItem.representedObject = (connector, p0, p1)
             if p0.x < p1.x {
               menuItem.representedObject = (connector, p0, p1)
             }else{
@@ -304,66 +305,113 @@ extension AutoLayoutProjectDocument {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  octolinearAlignmentAction
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func octolinearAlignmentAction (_ inMenuItem : NSMenuItem) {
-    if let (connector, p0, p1) = inMenuItem.representedObject as? (BoardConnector, CanariPoint, CanariPoint) {
-    //--- Here, p0.x < p1.x and p0.y != p1.y and (p1.x - p0.x) != abs (p0.y - p1.y)
-      if p0.y < p1.y {
-        if (p1.x - p0.x) > (p1.y - p0.y) {
-          // Swift.print ("Cas 1")
-          let top = CanariPoint (x: p0.x + (p1.y - p0.y), y: p1.y)
-          let bottom = CanariPoint (x: p1.x - (p1.y - p0.y), y: p0.y)
-          let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
-          let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
-          if dTop < dBottom {
-            connector.mX = top.x
-            connector.mY = top.y
-          }else{
-            connector.mX = bottom.x
-            connector.mY = bottom.y
-          }
-        }else{
-          // Swift.print ("Cas 2")
-          let left  = CanariPoint (x: p0.x, y: p1.y - (p1.x - p0.x))
-          let right = CanariPoint (x: p1.x, y: p0.y + (p1.x - p0.x))
-          let dLeft = CanariPoint.squareOfCanariDistance (left, connector.location!)
-          let dRight = CanariPoint.squareOfCanariDistance (right, connector.location!)
-          if dLeft < dRight {
-            connector.mX = left.x
-            connector.mY = left.y
-          }else{
-            connector.mX = right.x
-            connector.mY = right.y
-          }
-        }
+    if let (connector, leftP, rightP) = inMenuItem.representedObject as? (BoardConnector, CanariPoint, CanariPoint) {
+      if leftP.y < rightP.y {
+        self.leftPointBelowRightPoint (leftPoint: leftP, rightPoint: rightP, connector)
       }else{
-        if (p1.x - p0.x) > (p0.y - p1.y) {
-          // Swift.print ("Cas 3")
-          let top    = CanariPoint (x: p1.x - (p0.y - p1.y), y: p0.y)
-          let bottom = CanariPoint (x: p1.x + (p0.y - p1.y), y: p1.y)
-          let dTop = CanariPoint.squareOfCanariDistance (top, connector.location!)
-          let dBottom = CanariPoint.squareOfCanariDistance (bottom, connector.location!)
-          if dTop < dBottom {
-            connector.mX = top.x
-            connector.mY = top.y
-          }else{
-            connector.mX = bottom.x
-            connector.mY = bottom.y
-          }
-        }else{
-          // Swift.print ("Cas 4")
-          let left  = CanariPoint (x: p0.x, y: p1.y + (p1.x - p0.x))
-          let right = CanariPoint (x: p1.x, y: p0.y - (p1.x - p0.x))
-          let dLeft = CanariPoint.squareOfCanariDistance (left, connector.location!)
-          let dRight = CanariPoint.squareOfCanariDistance (right, connector.location!)
-          if dLeft < dRight {
-            connector.mX = left.x
-            connector.mY = left.y
-          }else{
-            connector.mX = right.x
-            connector.mY = right.y
-          }
-        }
+        self.leftPointAboveRightPoint (leftPoint: leftP, rightPoint: rightP, connector)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  leftPointBelowRightPoint
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Les deux points sont symbolisés par un '*', la position du connecteur par un '+'
+  // Les pistes sont représentées par "/", "-" et "|".
+  // 'Pente' est la pente entre les deux points
+  // 'Position' est la position relative actuelle du connecteur par rapport au segment qui lie
+  // les deux points : c'est 'dessus' ou 'dessous'
+  //  Quatre cas à considérer :
+  //             Premier cas   Deuxième cas  Troisième cas   Quatrième cas
+  //  Pente :    > 45 °        > 45°         < 45°           < 45°
+  //  Position : dessus        dessous       dessus          dessous
+  //                  *              *            --*                *
+  //              +  /               |        +  /                  /
+  //                /               /           /                  /
+  //               /               /           /                  /
+  //              /               /           /                  /  +
+  //             |               /  +        +                *--
+  //             *              *
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func leftPointBelowRightPoint (leftPoint inLeftP : CanariPoint,
+                                         rightPoint inRightP : CanariPoint,
+                                         _ inConnector : BoardConnector) {
+    let dY = inRightP.y - inLeftP.y // > 0
+    let dX = inRightP.x - inLeftP.x  // > 0
+    let leftToRightAngle = atan2 (Double (dY), Double (dX))
+    let leftToConnectorAngle = atan2 (Double (inConnector.mY - inLeftP.y), Double (inConnector.mX - inLeftP.x))
+//    Swift.print ("leftToRightAngle \(leftToRightAngle * 180.0 / .pi)°, leftToConnectorAngle \(leftToConnectorAngle * 180.0 / .pi)°")
+    if dY > dX { // Pente > 45°
+      if leftToConnectorAngle > leftToRightAngle { // Dessus
+        inConnector.mX = inLeftP.x
+        inConnector.mY = inLeftP.y + dY - dX
+      }else{ // Dessous
+        inConnector.mX = inRightP.x
+        inConnector.mY = inRightP.y - (dY - dX)
+      }
+    }else{  // Pente < 45°
+      if leftToConnectorAngle > leftToRightAngle { // Dessus
+        inConnector.mX = inRightP.x - (dX - dY)
+        inConnector.mY = inRightP.y
+      }else{ // Dessous
+        inConnector.mX = inLeftP.x + (dX - dY)
+        inConnector.mY = inLeftP.y
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  leftPointAboveRightPoint
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Les deux points sont symbolisés par un '*', la position du connecteur par un '+'
+  // Les pistes sont représentées par "\", "-" et "|".
+  // 'Pente' est la pente entre les deux points
+  // 'Position' est la position relative actuelle du connecteur par rapport au segment qui lie
+  // les deux points : c'est 'dessus' ou 'dessous'
+  //  Quatre cas à considérer :
+  //             Premier cas   Deuxième cas  Troisième cas   Quatrième cas
+  //  Pente :    > 45 °        > 45°         < 45°           < 45°
+  //  Position : dessus        dessous       dessus          dessous
+  //             *             *             *--             *
+  //              \  +         |                \  +          \
+  //               \            \                \             \
+  //                \            \                \             \
+  //                 \            \                \             \
+  //                  |         +  \                *         +   --*
+  //                  *             *
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func leftPointAboveRightPoint (leftPoint inLeftP : CanariPoint,
+                                         rightPoint inRightP : CanariPoint,
+                                         _ inConnector : BoardConnector) {
+    let dY = inLeftP.y - inRightP.y // > 0
+    let dX = inRightP.x - inLeftP.x  // > 0
+    let leftToRightAngle = atan2 (Double (dY), Double (dX))
+    let leftToConnectorAngle = atan2 (Double (inLeftP.y - inConnector.mY), Double (inConnector.mX - inLeftP.x))
+//    Swift.print ("leftToRightAngle \(leftToRightAngle * 180.0 / .pi)°, leftToConnectorAngle \(leftToConnectorAngle * 180.0 / .pi)°")
+    if dY > dX { // Pente > 45°
+      if leftToConnectorAngle < leftToRightAngle { // Dessus
+        inConnector.mX = inRightP.x
+        inConnector.mY = inRightP.y + dY - dX
+      }else{ // Dessous
+        inConnector.mX = inLeftP.x
+        inConnector.mY = inLeftP.y - (dY - dX)
+      }
+    }else{  // Pente < 45°
+      if leftToConnectorAngle < leftToRightAngle { // Dessus
+        inConnector.mX = inLeftP.x + (dX - dY)
+        inConnector.mY = inLeftP.y
+      }else{ // Dessous
+        inConnector.mX = inRightP.x - (dX - dY)
+        inConnector.mY = inRightP.y
       }
     }
   }
