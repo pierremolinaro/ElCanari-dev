@@ -114,7 +114,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  image binding
+  //  $image binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateValue (from inObject : EBObservableProperty <NSImage>) {

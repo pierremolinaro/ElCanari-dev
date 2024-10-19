@@ -3,12 +3,13 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor private var gStream : FSEventStreamRef? = nil
-@MainActor private var gPreferences : Preferences? = nil
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func configureLibraryFileSystemObservation () {
-  gPreferences?.configureLibraryFileSystemObservation ()
+  DispatchQueue.main.async {
+    gPreferences?.configureLibraryFileSystemObservation ()
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -18,7 +19,6 @@ extension Preferences {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func configureLibraryFileSystemObservation () {
-    gPreferences = self
     self.updateLibrariesUserInterfaceStatus ()
   //--- If the stream was already created, remove it
     if let previousStream = gStream {
@@ -112,6 +112,7 @@ extension Preferences {
       projectDocument.checkEmbeddedDevicesAndFonts ()
     }
   }
+  gPreferences?.checkFileSystemLibrary ()
 }
 
 //--------------------------------------------------------------------------------------------------

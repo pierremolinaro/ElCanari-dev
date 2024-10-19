@@ -33,6 +33,15 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
         StaticLabel (title: "Version", bold: no, size : .regular, alignment: .center)
       }
       space
+      vStack set (spacing: .zero) $hidden prefs.fileSystemLibraryIsOk {
+        Button (title: "Show Consistency Window", size: .regular)  { 
+          $run prefs.showLibraryConsistencyLogWindowAction
+          $image prefs.fileSystemLibraryStatusImage
+        }
+        gutter
+        StaticLabel (title: "File System Library requires attention", bold: no, size : .regular, alignment: .center)
+      }
+      space
       vStack set (spacing: .zero) {
         StatusBadgeView () {
           $tooltip self.statusMessage

@@ -181,6 +181,7 @@ extern autolayout class Button (title: String, size: EBControlSize) $enabled $ru
   func setTitleAsDownArrow ()
   func setTitleAsLeftArrow ()
   func setTitleAsRightArrow ()
+  $image transient NSImage
 }
 
 extern autolayout class TextField (minWidth: Int, size: EBControlSize) $enabled {

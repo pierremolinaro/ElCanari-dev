@@ -98,13 +98,6 @@ final class AutoLayoutButton : ALB_NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  final func set (height inHeight : Int) -> Self {
-//    self.mHeight = CGFloat (inHeight)
-//    return self
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func setTitleAsDownArrow () -> Self {
     self.title = DOWN_ARROW_STRING
     return self
@@ -130,27 +123,6 @@ final class AutoLayoutButton : ALB_NSButton {
     self.title = LEFT_ARROW_STRING
     return self
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  final func setEscapeKeyAsKeyEquivalent () -> Self {
-//    self.keyEquivalent = "\u{1b}"
-//    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
-//      if let me = self {
-//        let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
-//        if modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey == nil {
-//          me.mSavedTitle = me.title
-//          me.mTemporaryWidthOnControlKey = me.alignmentRect (forFrame: me.frame).width
-//          me.title = ESCAPE_KEY_STRING
-//        }else if !modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey != nil {
-//          me.title = me.mSavedTitle
-//          me.mTemporaryWidthOnControlKey = nil
-//        }
-//      }
-//      return inEvent
-//    }
-//    return self
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -219,28 +191,6 @@ final class AutoLayoutButton : ALB_NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  final func set (optionCommandKeyEquivalent inKeyEquivalent : String) -> Self {
-//    self.keyEquivalent = inKeyEquivalent
-//    self.keyEquivalentModifierMask = [.command, .option]
-//    self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
-//      if let me = self {
-//        let modifierFlagsContainsCommand = inEvent.modifierFlags.contains (.command)
-//        if modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey == nil {
-//          me.mSavedTitle = me.title
-//          me.mTemporaryWidthOnControlKey = me.alignmentRect (forFrame: me.frame).width
-//          me.title = OPTION_KEY_STRING + " " + COMMAND_KEY_STRING + " " + me.keyEquivalent.uppercased ()
-//        }else if !modifierFlagsContainsCommand, me.mTemporaryWidthOnControlKey != nil {
-//          me.title = me.mSavedTitle
-//          me.mTemporaryWidthOnControlKey = nil
-//        }
-//      }
-//      return inEvent
-//    }
-//    return self
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   final func set (controlCommandKeyEquivalent inKeyEquivalent : String) -> Self {
     self.keyEquivalent = inKeyEquivalent
     self.keyEquivalentModifierMask = [.command, .control]
@@ -275,6 +225,36 @@ final class AutoLayoutButton : ALB_NSButton {
       s.height = h
     }
     return s
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  $image binding
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>) {
+    switch inObject.selection {
+    case .empty :
+      self.image = nil
+    case .multiple :
+      self.image = nil
+    case .single (let v) :
+      self.image = v
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate var mImageController : EBObservablePropertyController? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func bind_image (_ inObject : EBObservableProperty <NSImage>) -> Self {
+    self.imagePosition = .imageLeft
+    self.mImageController = EBObservablePropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.updateImage (from: inObject) }
+    )
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

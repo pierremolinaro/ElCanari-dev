@@ -31,6 +31,15 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         StaticLabel (title: "Models and Board", bold: no, size : .regular, alignment: .center)
       }
       space
+      vStack set (spacing: .zero) $hidden prefs.fileSystemLibraryIsOk {
+        Button (title: "Show Consistency Window", size: .regular)  { 
+          $run prefs.showLibraryConsistencyLogWindowAction
+          $image prefs.fileSystemLibraryStatusImage
+        }
+        gutter
+        StaticLabel (title: "File System Library requires attention", bold: no, size : .regular, alignment: .center)
+      }
+      space
       vStack set (spacing: .zero) {
         StatusBadgeView () {
           $tooltip self.statusMessage

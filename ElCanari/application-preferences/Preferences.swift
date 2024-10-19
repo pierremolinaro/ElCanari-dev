@@ -6,6 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor var gPreferences : Preferences? = nil
+
+//--------------------------------------------------------------------------------------------------
+
 class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -337,21 +341,18 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular, alignment: .left)
-      _ = vStackView .appendView (vStackView_view)
-    }
-    do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let vStackView_view_view = AutoLayoutButton (title: "Check Library Consistency", size: .regular)
-          .bind_run (
-            target: self,
-            selector: #selector (Preferences.checkLibraryAction (_:))
-          )
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular, alignment: .left)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       do{
-        let vStackView_view_view = AutoLayoutButton (title: "Show Library Consistency Log Window", size: .regular)
+        let vStackView_view_view = AutoLayoutImageObserverView (size: .small)
+          .bind_image (preferences_fileSystemLibraryStatusImage_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Show Library Consistency Window", size: .regular)
           .bind_run (
             target: self,
             selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
@@ -410,13 +411,25 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   override init () {
     super.init ()
- //   DispatchQueue.main.async {
-      // g_Preferences = self
-    //--- Read from preferences
+    gPreferences = self
+  //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
     preferences_additionnalLibraryArray_property.undoManager = self.undoManager
   //--- Array controller property: userLibraryArrayController
     preferences_userLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.undoManager)
+  //--- Atomic property: fileSystemLibraryStatusImage
+    preferences_fileSystemLibraryStatusImage_property.mReadModelFunction = {
+        let s0 = preferences_fileSystemLibraryIsOk_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_Preferences_fileSystemLibraryStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+    }
+    preferences_fileSystemLibraryIsOk_property.startsBeingObserved (by: preferences_fileSystemLibraryStatusImage_property)
   //--- Atomic property: mValueRevealInFinder_packages
     preferences_mValueRevealInFinder_packages_property.mReadModelFunction = {
         let s0 = preferences_usesUserLibrary_property.selection
@@ -548,6 +561,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     //--------------------------- Set targets / actions
     //--------------------------- Extern functions
       self.configureLibraryFileSystemObservation ()
+      self.checkFileSystemLibrary ()
     }
     super.awakeFromNib ()
   }
@@ -647,6 +661,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 @MainActor let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 @MainActor let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
 @MainActor let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
+@MainActor let Preferences_fileSystemLibraryIsOk = "Preferences:fileSystemLibraryIsOk"
 @MainActor let Preferences_checkForSystemLibraryAtStartUp = "Preferences:checkForSystemLibraryAtStartUp"
 @MainActor let Preferences_systemLibraryCheckTimeInterval = "Preferences:systemLibraryCheckTimeInterval"
 @MainActor let Preferences_mergerModelViewHorizontalFlip = "Preferences:mergerModelViewHorizontalFlip"
@@ -1276,6 +1291,12 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 @MainActor let preferences_fontEditionTransparency_property = EBPreferenceProperty <Double> (defaultValue: 0.5, prefKey: Preferences_fontEditionTransparency)
 
 //································································································
+//   Atomic property: fileSystemLibraryIsOk
+//································································································
+
+@MainActor let preferences_fileSystemLibraryIsOk_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_fileSystemLibraryIsOk)
+
+//································································································
 //   Atomic property: checkForSystemLibraryAtStartUp
 //································································································
 
@@ -1838,6 +1859,12 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //································································································
 
 @MainActor let preferences_userLibraryArrayController = Controller_Preferences_userLibraryArrayController ()
+
+//································································································
+//   Transient property: fileSystemLibraryStatusImage
+//································································································
+
+@MainActor let preferences_fileSystemLibraryStatusImage_property = EBTransientProperty <NSImage> ()
 
 //································································································
 //   Transient property: mValueRevealInFinder_packages

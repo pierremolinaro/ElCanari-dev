@@ -411,10 +411,10 @@ prefs {
       }
       space
     }
-    StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular, alignment: .left)
     hStack {
-      Button (title: "Check Library Consistency", size: .regular) { $run checkLibraryAction }
-      Button (title: "Show Library Consistency Log Window", size: .regular) { $run showLibraryConsistencyLogWindowAction }
+      StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular, alignment: .left)
+      ImageObserverView (size: .small) { $image self.fileSystemLibraryStatusImage }
+      Button (title: "Show Library Consistency Window", size: .regular) { $run showLibraryConsistencyLogWindowAction }
       space
     }
   }
@@ -424,12 +424,16 @@ prefs {
   action revealInFinderLibraryFolderAction ;
   action showLibraryConsistencyLogWindowAction ;
   externFunc configureLibraryFileSystemObservation calledBy awakeFromNib ;
+  externFunc checkFileSystemLibrary calledBy awakeFromNib ;
   action revealUserLibraryInFinderAction ;
   action checkSystemLibraryUpdateAction ;
 
 //--- Using User Library path
   property Bool usesUserLibrary default yes ;
+  standalone property Bool fileSystemLibraryIsOk default yes ;
 
+  transient NSImage fileSystemLibraryStatusImage dependsFrom self.fileSystemLibraryIsOk ;
+  
 //--- Update System Library path at startup
   property Bool checkForSystemLibraryAtStartUp default yes ;
   property Date mLastSystemLibraryCheckTime default distantPast ;
@@ -446,9 +450,6 @@ prefs {
 
 //--- Add Entry Button
   action addLibraryEntryAction ;
-
-//--- Check Library button
-  action checkLibraryAction ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

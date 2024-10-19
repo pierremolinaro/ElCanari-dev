@@ -14,29 +14,43 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor func checkLibrary (windowForSheet inWindow : NSWindow,
-                                logWindow inLogWindow : NSWindow) {
+  @MainActor func checkFileSystemLibrary () {
+    let window : CanariWindow
+    if let w = self.mLibraryConsistencyLogWindow {
+      window = w
+    }else{
+      window = CanariWindow (
+        contentRect: NSRect (x: 0, y: 0, width: 500, height: 400),
+        styleMask: [.closable, .resizable, .titled],
+        backing: .buffered,
+        defer: false
+      )
+      _ = window.setFrameAutosaveName ("LibraryConsistencyLogWindowSettings")
+      window.title = "Library Consistency"
+      window.isReleasedWhenClosed = false
+      self.mLibraryConsistencyLogWindow = window
+    }
     var errorCount = 0
   //---------- Previous Tab View selection
-    let previousSelectedTab : Int?
-    if let stackView = inLogWindow.contentView as? AutoLayoutVerticalStackView,
-       stackView.subviews.count > 1,
-       let tabView = stackView.subviews [1] as? AutoLayoutTabView {
-      previousSelectedTab = tabView.indexOfSelectedItem
-    }else{
-      previousSelectedTab = nil
-    }
+    let previousSelectedTab = self.mLibraryConsistencyLogTabView?.indexOfSelectedItem ?? 0
+//    if let stackView = window.contentView as? AutoLayoutVerticalStackView,
+//       stackView.subviews.count > 1,
+//       let tabView = stackView.subviews [1] as? AutoLayoutTabView {
+//      previousSelectedTab = tabView.indexOfSelectedItem
+//    }else{
+//      previousSelectedTab = nil
+//    }
   //---------- Check library button
-    let button = AutoLayoutButton (title: "Check Library", size: .regular)
-      .expandableWidth ()
-    button.setClosureAction {
-      self.checkLibrary (windowForSheet: inLogWindow, logWindow: inLogWindow)
-    }
+//    let button = AutoLayoutButton (title: "Check Library", size: .regular)
+//      .expandableWidth ()
+//    button.setClosureAction { self.checkFileSystemLibrary () }
   //---------- Tab View
     let tabView = AutoLayoutTabView (size: .regular)
       .expandableWidth ()
       .expandableHeight ()
-    inLogWindow.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (button).appendView (tabView))
+    self.mLibraryConsistencyLogTabView = tabView
+//    window.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (button).appendView (tabView))
+    window.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (tabView))
   //---------- Checking Symbols
     let symbolTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     var symbolDict : [String : PMSymbolDictionaryEntry] = [:]
@@ -60,7 +74,6 @@ extension Preferences {
       contentView: packageTabContents.appendFlexibleSpace ()
     )
   //---------- Checking Devices
-  //  var deviceToUpdateSet = Set <String> ()
     let deviceTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     let (deviceCount, deviceErrorCount) = self.checkDeviceLibrary (
         deviceTabContents,
@@ -95,26 +108,29 @@ extension Preferences {
       contentView: artworkTabContents.appendFlexibleSpace ()
     )
   //---------
-    if let idx = previousSelectedTab {
-      tabView.selectTab (atIndex: idx)
-    }
+    tabView.selectTab (atIndex: previousSelectedTab)
+    preferences_fileSystemLibraryIsOk_property.setProp (errorCount == 0)
+
+//    if let idx = previousSelectedTab {
+//      tabView.selectTab (atIndex: idx)
+//    }
   //---------
-    if errorCount > 0 {
-      let alert = NSAlert ()
-      alert.messageText = "There are inconsistencies in the librairies"
-      _ = alert.addButton (withTitle: "Ok")
-      _ = alert.addButton (withTitle: "Show Log Window")
-      alert.informativeText = "Select the 'Show Log Window' button for details."
-      alert.beginSheetModal (for: inWindow) { inReturnCode in
-        if inReturnCode == .alertSecondButtonReturn {
-          inLogWindow.makeKeyAndOrderFront (nil)
-        }
-      }
-    }else{
-      let alert = NSAlert ()
-      alert.messageText = "Librairies are consistent."
-      alert.beginSheetModal (for: inWindow)
-    }
+//    if errorCount > 0 {
+//      let alert = NSAlert ()
+//      alert.messageText = "There are inconsistencies in the librairies"
+//      _ = alert.addButton (withTitle: "Ok")
+//      _ = alert.addButton (withTitle: "Show Log Window")
+//      alert.informativeText = "Select the 'Show Log Window' button for details."
+//      alert.beginSheetModal (for: inWindow) { inReturnCode in
+//        if inReturnCode == .alertSecondButtonReturn {
+//          inLogWindow.makeKeyAndOrderFront (nil)
+//        }
+//      }
+//    }else{
+//      let alert = NSAlert ()
+//      alert.messageText = "Librairies are consistent."
+//      alert.beginSheetModal (for: inWindow)
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

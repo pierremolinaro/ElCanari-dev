@@ -13,8 +13,7 @@ import AppKit
 extension Preferences {
   @objc func showLibraryConsistencyLogWindowAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    let window = self.buildLibraryConsistencyLogWindow ()
-    window.makeKeyAndOrderFront (nil)
+    self.mLibraryConsistencyLogWindow?.makeKeyAndOrderFront (nil)
 //--- END OF USER ZONE 2
   }
 }
