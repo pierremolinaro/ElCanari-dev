@@ -6,6 +6,18 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol FontInProject_mFileSystemStatusMessage : AnyObject {
+  var mFileSystemStatusMessage : String { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol FontInProject_mFileSystemStatusRequiresAttention : AnyObject {
+  var mFileSystemStatusRequiresAttention : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol FontInProject_mNominalSize : AnyObject {
   var mNominalSize : Int { get }
 }
@@ -54,6 +66,12 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol FontInProject_fileSystemStatusImage : AnyObject {
+  var fileSystemStatusImage : NSImage? { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol FontInProject_canRemoveFont : AnyObject {
   var canRemoveFont : Bool? { get }
 }
@@ -75,6 +93,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 final class FontInProject : EBManagedObject,
+         FontInProject_mFileSystemStatusMessage,
+         FontInProject_mFileSystemStatusRequiresAttention,
          FontInProject_mNominalSize,
          FontInProject_mFontName,
          FontInProject_mFontVersion,
@@ -83,6 +103,7 @@ final class FontInProject : EBManagedObject,
          FontInProject_sizeString,
          FontInProject_descriptor,
          FontInProject_textCount,
+         FontInProject_fileSystemStatusImage,
          FontInProject_canRemoveFont,
          FontInProject_componentNamesCount,
          FontInProject_componentValuesCount {
@@ -92,6 +113,32 @@ final class FontInProject : EBManagedObject,
   //································································································
 
   final let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false, key: "mTexts")
+
+  //································································································
+  //   Atomic property: mFileSystemStatusMessage
+  //································································································
+
+  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+
+  //································································································
+
+  final var mFileSystemStatusMessage : String {
+    get { return self.mFileSystemStatusMessage_property.propval }
+    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mFileSystemStatusRequiresAttention
+  //································································································
+
+  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mFileSystemStatusRequiresAttention : Bool {
+    get { return self.mFileSystemStatusRequiresAttention_property.propval }
+    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
+  }
 
   //································································································
   //   Atomic property: mNominalSize
@@ -206,6 +253,18 @@ final class FontInProject : EBManagedObject,
   }
 
   //································································································
+  //   Transient property: fileSystemStatusImage
+  //································································································
+
+  final let fileSystemStatusImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var fileSystemStatusImage : NSImage? {
+    return self.fileSystemStatusImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: canRemoveFont
   //································································································
 
@@ -246,6 +305,8 @@ final class FontInProject : EBManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
+    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String (defaultValue: "")
+    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (defaultValue: false)
     self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNominalSize")
     self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mFontName")
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mFontVersion")
@@ -341,6 +402,23 @@ final class FontInProject : EBManagedObject,
       }
     }
     self.mTexts_property.startsBeingObserved (by: self.textCount_property)
+  //--- Atomic property: fileSystemStatusImage
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_FontInProject_fileSystemStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: canRemoveFont
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

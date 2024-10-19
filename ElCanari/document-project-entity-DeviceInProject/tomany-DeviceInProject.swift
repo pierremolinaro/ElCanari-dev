@@ -29,6 +29,12 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
       if let relay = self.mObserversOf_mDeviceFileData { // Stored property
         managedObject.mDeviceFileData_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mFileSystemStatusMessage { // Stored property
+        managedObject.mFileSystemStatusMessage_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mFileSystemStatusRequiresAttention { // Stored property
+        managedObject.mFileSystemStatusRequiresAttention_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_versionString { // Transient property
         managedObject.versionString_property.stopsBeingObserved (by: relay)
       }
@@ -40,6 +46,9 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
       }
       if let relay = self.mObserversOf_packageNames { // Transient property
         managedObject.packageNames_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_fileSystemStatusImage { // Transient property
+        managedObject.fileSystemStatusImage_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_deviceComponentCountString { // Transient property
         managedObject.deviceComponentCountString_property.stopsBeingObserved (by: relay)
@@ -71,6 +80,12 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
       if let relay = self.mObserversOf_mDeviceFileData { // Stored property
         managedObject.mDeviceFileData_property.startsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mFileSystemStatusMessage { // Stored property
+        managedObject.mFileSystemStatusMessage_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mFileSystemStatusRequiresAttention { // Stored property
+        managedObject.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_versionString { // Transient property
         managedObject.versionString_property.startsBeingObserved (by: relay)
       }
@@ -82,6 +97,9 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
       }
       if let relay = self.mObserversOf_packageNames { // Transient property
         managedObject.packageNames_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_fileSystemStatusImage { // Transient property
+        managedObject.fileSystemStatusImage_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_deviceComponentCountString { // Transient property
         managedObject.deviceComponentCountString_property.startsBeingObserved (by: relay)
@@ -218,6 +236,64 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusMessage' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mFileSystemStatusMessage : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mFileSystemStatusMessage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mFileSystemStatusMessage {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mFileSystemStatusMessage_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mFileSystemStatusMessage = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mFileSystemStatusMessage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mFileSystemStatusMessage?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusRequiresAttention' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mFileSystemStatusRequiresAttention : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mFileSystemStatusRequiresAttention {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mFileSystemStatusRequiresAttention = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mFileSystemStatusRequiresAttention_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mFileSystemStatusRequiresAttention?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'versionString' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -331,6 +407,35 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
 
   final func toMany_packageNames_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_packageNames?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'fileSystemStatusImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_fileSystemStatusImage : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_fileSystemStatusImage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_fileSystemStatusImage {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.fileSystemStatusImage_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_fileSystemStatusImage = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_fileSystemStatusImage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_fileSystemStatusImage?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

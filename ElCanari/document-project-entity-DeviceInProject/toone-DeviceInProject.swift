@@ -20,10 +20,13 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
       oldValue.mPrefix_property.stopsBeingObserved (by: self.mPrefix_property) // Stored property
       oldValue.mDeviceVersion_property.stopsBeingObserved (by: self.mDeviceVersion_property) // Stored property
       oldValue.mDeviceFileData_property.stopsBeingObserved (by: self.mDeviceFileData_property) // Stored property
+      oldValue.mFileSystemStatusMessage_property.stopsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
+      oldValue.mFileSystemStatusRequiresAttention_property.stopsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
       oldValue.versionString_property.stopsBeingObserved (by: self.versionString_property) // Transient property
       oldValue.sizeString_property.stopsBeingObserved (by: self.sizeString_property) // Transient property
       oldValue.canExport_property.stopsBeingObserved (by: self.canExport_property) // Transient property
       oldValue.packageNames_property.stopsBeingObserved (by: self.packageNames_property) // Transient property
+      oldValue.fileSystemStatusImage_property.stopsBeingObserved (by: self.fileSystemStatusImage_property) // Transient property
       oldValue.deviceComponentCountString_property.stopsBeingObserved (by: self.deviceComponentCountString_property) // Transient property
       oldValue.canRemove_property.stopsBeingObserved (by: self.canRemove_property) // Transient property
       oldValue.symbolAndTypesNames_property.stopsBeingObserved (by: self.symbolAndTypesNames_property) // Transient property
@@ -48,10 +51,13 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
       newValue.mPrefix_property.startsBeingObserved (by: self.mPrefix_property) // Stored property
       newValue.mDeviceVersion_property.startsBeingObserved (by: self.mDeviceVersion_property) // Stored property
       newValue.mDeviceFileData_property.startsBeingObserved (by: self.mDeviceFileData_property) // Stored property
+      newValue.mFileSystemStatusMessage_property.startsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
+      newValue.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
       newValue.versionString_property.startsBeingObserved (by: self.versionString_property) // Transient property
       newValue.sizeString_property.startsBeingObserved (by: self.sizeString_property) // Transient property
       newValue.canExport_property.startsBeingObserved (by: self.canExport_property) // Transient property
       newValue.packageNames_property.startsBeingObserved (by: self.packageNames_property) // Transient property
+      newValue.fileSystemStatusImage_property.startsBeingObserved (by: self.fileSystemStatusImage_property) // Transient property
       newValue.deviceComponentCountString_property.startsBeingObserved (by: self.deviceComponentCountString_property) // Transient property
       newValue.canRemove_property.startsBeingObserved (by: self.canRemove_property) // Transient property
       newValue.symbolAndTypesNames_property.startsBeingObserved (by: self.symbolAndTypesNames_property) // Transient property
@@ -97,6 +103,18 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
   final let mDeviceFileData_property = EBTransientProperty <Data?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusMessage' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mFileSystemStatusMessage_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusRequiresAttention' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mFileSystemStatusRequiresAttention_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'versionString' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -119,6 +137,12 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let packageNames_property = EBTransientProperty <StringArray?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'fileSystemStatusImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let fileSystemStatusImage_property = EBTransientProperty <NSImage?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'deviceComponentCountString' transient property
@@ -276,6 +300,14 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
     self.mDeviceFileData_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDeviceFileData_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure mFileSystemStatusMessage simple stored property
+    self.mFileSystemStatusMessage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusMessage_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mFileSystemStatusRequiresAttention simple stored property
+    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusRequiresAttention_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.versionString_property.optionalSelection ?? .single (nil)
@@ -291,6 +323,10 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
   //--- Configure packageNames transient property
     self.packageNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.packageNames_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure fileSystemStatusImage transient property
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.fileSystemStatusImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure deviceComponentCountString transient property
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in

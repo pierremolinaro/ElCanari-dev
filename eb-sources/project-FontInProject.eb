@@ -7,6 +7,9 @@ handlingOpposite entity FontInProject {
   toMany ComponentInProject mComponentNames inverse toOne mNameFont ;
   toMany ComponentInProject mComponentValues inverse toOne mValueFont ;
 
+  standalone property String mFileSystemStatusMessage default "" ;
+  standalone property Bool mFileSystemStatusRequiresAttention default no ;
+
   property @generateDirectAccess Int mNominalSize default 0 ;
   property @generateDirectAccess String mFontName default "" ;
   property @generateDirectAccess Int mFontVersion default 0 ;
@@ -21,6 +24,11 @@ handlingOpposite entity FontInProject {
   transient Int textCount dependsFrom self.mTexts.count ;
   transient Int componentNamesCount dependsFrom self.mComponentNames.count ;
   transient Int componentValuesCount dependsFrom self.mComponentValues.count ;
+
+
+  transient NSImage fileSystemStatusImage dependsFrom
+    self.mFileSystemStatusRequiresAttention
+  ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

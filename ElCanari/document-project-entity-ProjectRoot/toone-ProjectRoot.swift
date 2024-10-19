@@ -146,6 +146,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.ercStatusImageOrNoneOnSuccess_property.stopsBeingObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
       oldValue.ercStatusMessage_property.stopsBeingObserved (by: self.ercStatusMessage_property) // Transient property
       oldValue.ercStatusValue_property.stopsBeingObserved (by: self.ercStatusValue_property) // Transient property
+      oldValue.fileSystemDeviceLibraryStatusImage_property.stopsBeingObserved (by: self.fileSystemDeviceLibraryStatusImage_property) // Transient property
+      oldValue.fileSystemFontLibraryStatusImage_property.stopsBeingObserved (by: self.fileSystemFontLibraryStatusImage_property) // Transient property
+      oldValue.libraryPageRequiresAttentionImage_property.stopsBeingObserved (by: self.libraryPageRequiresAttentionImage_property) // Transient property
       oldValue.viaCountString_property.stopsBeingObserved (by: self.viaCountString_property) // Transient property
       oldValue.topSideTrackCountString_property.stopsBeingObserved (by: self.topSideTrackCountString_property) // Transient property
       oldValue.backSideTrackCountString_property.stopsBeingObserved (by: self.backSideTrackCountString_property) // Transient property
@@ -343,6 +346,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.ercStatusImageOrNoneOnSuccess_property.startsBeingObserved (by: self.ercStatusImageOrNoneOnSuccess_property) // Transient property
       newValue.ercStatusMessage_property.startsBeingObserved (by: self.ercStatusMessage_property) // Transient property
       newValue.ercStatusValue_property.startsBeingObserved (by: self.ercStatusValue_property) // Transient property
+      newValue.fileSystemDeviceLibraryStatusImage_property.startsBeingObserved (by: self.fileSystemDeviceLibraryStatusImage_property) // Transient property
+      newValue.fileSystemFontLibraryStatusImage_property.startsBeingObserved (by: self.fileSystemFontLibraryStatusImage_property) // Transient property
+      newValue.libraryPageRequiresAttentionImage_property.startsBeingObserved (by: self.libraryPageRequiresAttentionImage_property) // Transient property
       newValue.viaCountString_property.startsBeingObserved (by: self.viaCountString_property) // Transient property
       newValue.topSideTrackCountString_property.startsBeingObserved (by: self.topSideTrackCountString_property) // Transient property
       newValue.backSideTrackCountString_property.startsBeingObserved (by: self.backSideTrackCountString_property) // Transient property
@@ -1189,6 +1195,24 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let ercStatusValue_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'fileSystemDeviceLibraryStatusImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let fileSystemDeviceLibraryStatusImage_property = EBTransientProperty <NSImage?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'fileSystemFontLibraryStatusImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let fileSystemFontLibraryStatusImage_property = EBTransientProperty <NSImage?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'libraryPageRequiresAttentionImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let libraryPageRequiresAttentionImage_property = EBTransientProperty <NSImage?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'viaCountString' transient property
@@ -2155,6 +2179,18 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure ercStatusValue transient property
     self.ercStatusValue_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.ercStatusValue_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure fileSystemDeviceLibraryStatusImage transient property
+    self.fileSystemDeviceLibraryStatusImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.fileSystemDeviceLibraryStatusImage_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure fileSystemFontLibraryStatusImage transient property
+    self.fileSystemFontLibraryStatusImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.fileSystemFontLibraryStatusImage_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure libraryPageRequiresAttentionImage transient property
+    self.libraryPageRequiresAttentionImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.libraryPageRequiresAttentionImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure viaCountString transient property
     self.viaCountString_property.mReadModelFunction = { [weak self] in

@@ -229,8 +229,8 @@ extension ApplicationDelegate {
                     if let deviceDocument = document as? AutoLayoutDeviceDocument {
                       var okMessages = [String] ()
                       var errorMessages = [String] ()
-                      deviceDocument.performSymbolsUpdate (&okMessages, &errorMessages)
-                      deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, &okMessages, &errorMessages)
+                      deviceDocument.performSymbolsUpdate (deviceDocument.rootObject.mSymbolTypes, okMessages: &okMessages, errorMessages: &errorMessages)
+                      deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, okMessages: &okMessages, errorMessages: &errorMessages)
                       deviceDocument.save (nil)
                       deviceDocument.close ()
                       if errorMessages.count == 0 {

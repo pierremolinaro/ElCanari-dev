@@ -160,7 +160,6 @@ graphic handlingOpposite entity PackageInDevice {
 
   transient StringSet padNameSet dependsFrom self.mMasterPads.all.mName ;
 
-
   transient NSImage fileSystemStatusImage dependsFrom
     self.mFileSystemStatusRequiresAttention
   ;

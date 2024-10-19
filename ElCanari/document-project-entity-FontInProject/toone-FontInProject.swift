@@ -16,6 +16,8 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
+      oldValue.mFileSystemStatusMessage_property.stopsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
+      oldValue.mFileSystemStatusRequiresAttention_property.stopsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
       oldValue.mNominalSize_property.stopsBeingObserved (by: self.mNominalSize_property) // Stored property
       oldValue.mFontName_property.stopsBeingObserved (by: self.mFontName_property) // Stored property
       oldValue.mFontVersion_property.stopsBeingObserved (by: self.mFontVersion_property) // Stored property
@@ -24,6 +26,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
       oldValue.sizeString_property.stopsBeingObserved (by: self.sizeString_property) // Transient property
       oldValue.descriptor_property.stopsBeingObserved (by: self.descriptor_property) // Transient property
       oldValue.textCount_property.stopsBeingObserved (by: self.textCount_property) // Transient property
+      oldValue.fileSystemStatusImage_property.stopsBeingObserved (by: self.fileSystemStatusImage_property) // Transient property
       oldValue.canRemoveFont_property.stopsBeingObserved (by: self.canRemoveFont_property) // Transient property
       oldValue.componentNamesCount_property.stopsBeingObserved (by: self.componentNamesCount_property) // Transient property
       oldValue.componentValuesCount_property.stopsBeingObserved (by: self.componentValuesCount_property) // Transient property
@@ -39,6 +42,8 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
+      newValue.mFileSystemStatusMessage_property.startsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
+      newValue.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
       newValue.mNominalSize_property.startsBeingObserved (by: self.mNominalSize_property) // Stored property
       newValue.mFontName_property.startsBeingObserved (by: self.mFontName_property) // Stored property
       newValue.mFontVersion_property.startsBeingObserved (by: self.mFontVersion_property) // Stored property
@@ -47,6 +52,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
       newValue.sizeString_property.startsBeingObserved (by: self.sizeString_property) // Transient property
       newValue.descriptor_property.startsBeingObserved (by: self.descriptor_property) // Transient property
       newValue.textCount_property.startsBeingObserved (by: self.textCount_property) // Transient property
+      newValue.fileSystemStatusImage_property.startsBeingObserved (by: self.fileSystemStatusImage_property) // Transient property
       newValue.canRemoveFont_property.startsBeingObserved (by: self.canRemoveFont_property) // Transient property
       newValue.componentNamesCount_property.startsBeingObserved (by: self.componentNamesCount_property) // Transient property
       newValue.componentValuesCount_property.startsBeingObserved (by: self.componentValuesCount_property) // Transient property
@@ -61,6 +67,18 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
       }
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusMessage' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mFileSystemStatusMessage_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusRequiresAttention' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mFileSystemStatusRequiresAttention_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mNominalSize' stored property
@@ -109,6 +127,12 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let textCount_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'fileSystemStatusImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let fileSystemStatusImage_property = EBTransientProperty <NSImage?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'canRemoveFont' transient property
@@ -212,6 +236,14 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   override init () {
     super.init ()
+  //--- Configure mFileSystemStatusMessage simple stored property
+    self.mFileSystemStatusMessage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusMessage_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mFileSystemStatusRequiresAttention simple stored property
+    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusRequiresAttention_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure mNominalSize simple stored property
     self.mNominalSize_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mNominalSize_property.optionalSelection ?? .single (nil)
@@ -243,6 +275,10 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
   //--- Configure textCount transient property
     self.textCount_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.textCount_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure fileSystemStatusImage transient property
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.fileSystemStatusImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure canRemoveFont transient property
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in

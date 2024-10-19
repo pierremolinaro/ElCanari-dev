@@ -67,6 +67,7 @@ import AppKit
     }
   //--- Remove unused devices
     self.rootObject.removeUnusedDevices ()
+    self.checkEmbeddedDevicesAndFonts ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

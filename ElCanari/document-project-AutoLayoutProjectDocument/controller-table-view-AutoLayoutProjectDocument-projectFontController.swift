@@ -61,6 +61,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
       addSortObserversCallback: { (observer) in
         inModel.toMany_componentNamesCount_StartsBeingObserved (by: observer)
         inModel.toMany_componentValuesCount_StartsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: observer)
         inModel.toMany_mFontName_StartsBeingObserved (by: observer)
         inModel.toMany_sizeString_StartsBeingObserved (by: observer)
         inModel.toMany_textCount_StartsBeingObserved (by: observer)
@@ -69,6 +70,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
       removeSortObserversCallback: {(observer) in
         inModel.toMany_componentNamesCount_StopsBeingObserved (by: observer)
         inModel.toMany_componentValuesCount_StopsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: observer)
         inModel.toMany_mFontName_StopsBeingObserved (by: observer)
         inModel.toMany_sizeString_StopsBeingObserved (by: observer)
         inModel.toMany_textCount_StopsBeingObserved (by: observer)
@@ -152,6 +154,10 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mFontName' column
     self.sortedArray_property.toMany_mFontName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'fileSystemStatusImage' column
+    self.sortedArray_property.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'mFileSystemStatusMessage' column
+    self.sortedArray_property.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
     self.sortedArray_property.toMany_versionString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'sizeString' column
@@ -202,6 +208,30 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
       title: "Font Name",
       minWidth: 60,
       maxWidth: 2000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+  //--- Configure 'fileSystemStatusImage' column
+    inTableView.addColumn_NSImage (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].fileSystemStatusImage },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "",
+      minWidth: 20,
+      maxWidth: 20,
+      headerAlignment: .left,
+      contentAlignment: .center
+    )
+  //--- Configure 'mFileSystemStatusMessage' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileSystemStatusMessage },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_String_properties (left.mFileSystemStatusMessage_property, ascending, right.mFileSystemStatusMessage_property) })
+      },
+      title: "Status in Device Libraries",
+      minWidth: 150,
+      maxWidth: 200,
       headerAlignment: .left,
       contentAlignment: .left
     )

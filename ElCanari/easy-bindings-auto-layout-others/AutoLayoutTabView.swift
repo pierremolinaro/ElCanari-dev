@@ -127,6 +127,33 @@ final class AutoLayoutTabView : ALB_NSView {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  $segmentImage binding
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mSegmentImageController = [Int : EBObservablePropertyController] ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
+    self.mSegmentImageController [inSegmentIndex] = EBObservablePropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self, inSegmentIndex] in self?.updateImage (from: inObject, segmentIndex: inSegmentIndex) }
+    )
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) {
+    switch inObject.selection {
+    case .empty, .multiple :
+      self.mSegmentedControl.setImage (nil, forSegment: inSegmentIndex)
+    case .single (let v) :
+      self.mSegmentedControl.setImage (v.isValid ? v : nil, forSegment: inSegmentIndex)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  $selectedPage binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

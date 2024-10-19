@@ -34,6 +34,63 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func checkDevices (_ ioMessages : inout [String]) {
+    for deviceInProject in self.rootObject.mDevices.values {
+      deviceInProject.mFileSystemStatusMessage = "Ok"
+      deviceInProject.mFileSystemStatusRequiresAttention = false
+      let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
+      if pathes.count == 0 {
+        ioMessages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
+        deviceInProject.mFileSystemStatusMessage = "No device file in Library"
+        deviceInProject.mFileSystemStatusRequiresAttention = true
+      }else if pathes.count == 1 {
+        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])) {
+          let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
+          switch documentReadData {
+          case .ok (let documentData) :
+            if let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
+               let candidateDeviceRoot = documentData.documentRootObject as? DeviceRoot {
+              if deviceInProject.mDeviceVersion < version {
+                var errorMessage = self.checkCandidateDevicePads (deviceInProject, candidateDeviceRoot)
+                errorMessage += self.checkCandidateDeviceSymbolTypes (deviceInProject, candidateDeviceRoot)
+                errorMessage += self.checkCandidateDeviceSymbolInstances (deviceInProject, candidateDeviceRoot)
+//                let errorMessage = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
+                deviceInProject.mFileSystemStatusRequiresAttention = true
+                if errorMessage == "" {
+                  deviceInProject.mFileSystemStatusMessage = "Device is updatable"
+                }else{
+                 deviceInProject.mFileSystemStatusMessage = "Cannot update: new device is incompatible"
+                 ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
+                }
+              }
+            }else{
+              deviceInProject.mFileSystemStatusMessage = "Cannot read device file"
+              deviceInProject.mFileSystemStatusRequiresAttention = true
+              ioMessages.append ("Cannot read \(pathes [0]) file.")
+            }
+          case .readError (_) :
+            deviceInProject.mFileSystemStatusMessage = "Cannot read device file"
+            deviceInProject.mFileSystemStatusRequiresAttention = true
+            ioMessages.append ("Cannot read \(pathes [0]) file.")
+          }
+        }else{
+          deviceInProject.mFileSystemStatusMessage = "Cannot read device file"
+          deviceInProject.mFileSystemStatusRequiresAttention = true
+          ioMessages.append ("Cannot read \(pathes [0]) file.")
+        }
+      }else{ // pathes.count > 1
+        deviceInProject.mFileSystemStatusMessage = "Several device files in library"
+        deviceInProject.mFileSystemStatusRequiresAttention = true
+        ioMessages.append ("Several files for \(deviceInProject.mDeviceName) font in Library:")
+        for path in pathes {
+          ioMessages.append ("  - \(path)")
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func updateDevices (_ inDevices : EBReferenceArray <DeviceInProject>, _ ioMessages : inout [String]) {
     for deviceInProject in inDevices.values {
       let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
@@ -49,7 +106,7 @@ extension AutoLayoutProjectDocument {
               if deviceInProject.mDeviceVersion < version {
                 let errorMessage = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
                 if errorMessage != "" {
-                  ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
+                 ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
                 }
               }
             }else{
@@ -67,20 +124,6 @@ extension AutoLayoutProjectDocument {
           ioMessages.append ("  - \(path)")
         }
       }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func updateDeviceAction () {
-    var messages = [String] ()
-    let selectedDevices = self.projectDeviceController.selectedArray
-    self.updateDevices (selectedDevices, &messages)
-    if messages.count > 0 {
-      let alert = NSAlert ()
-      alert.messageText = "Error updating device"
-      alert.informativeText = messages.joined (separator: "\n")
-      alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
     }
   }
 
@@ -158,7 +201,7 @@ extension AutoLayoutProjectDocument {
 
   private func checkCandidateDevicePads (_ inCurrentDeviceInProject : DeviceInProject,
                                          _ inCandidateDeviceRoot : DeviceRoot) -> String {
-    var result = ""
+    var errorMessage = ""
   //--- Compute current master pad set
     var currentMasterPadSet = Set <String> ()
     for masterPad in inCurrentDeviceInProject.mPackages [0].mMasterPads.values {
@@ -173,20 +216,20 @@ extension AutoLayoutProjectDocument {
     let missingPads = currentMasterPadSet.subtracting (newMasterPadSet)
     let unknownPads = newMasterPadSet.subtracting (currentMasterPadSet)
     for p in missingPads {
-      result += "\n  - the candidate device has no '\(p)' pad"
+      errorMessage += "\n  - the candidate device has no '\(p)' pad"
     }
     for p in unknownPads {
-      result += "\n  - the candidate device has unknown '\(p)' pad"
+      errorMessage += "\n  - the candidate device has unknown '\(p)' pad"
     }
   //---
-    return result
+    return errorMessage
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkCandidateDeviceSymbolTypes (_ inCurrentDeviceInProject : DeviceInProject,
                                                 _ inCandidateDeviceRoot : DeviceRoot) -> String {
-    var result = ""
+    var errorMessage = ""
   //--- Compute current symbol type dictionary
     var currentSymbolTypeDictionary = [String : Set <String>] () // Symbol type name, set of pin names
     for padAssignment in inCurrentDeviceInProject.mPadAssignments.values {
@@ -214,37 +257,37 @@ extension AutoLayoutProjectDocument {
     let missingSymbols = currentSymbolTypeSet.subtracting (candidateSymbolTypeSet)
     let unknownSymbols = candidateSymbolTypeSet.subtracting (currentSymbolTypeSet)
     for p in missingSymbols {
-      result += "\n  - the candidate device has no '\(p)' symbol type"
+      errorMessage += "\n  - the candidate device has no '\(p)' symbol type"
     }
     for p in unknownSymbols {
-      result += "\n  - the candidate device has unknown '\(p)' symbol type (available: "
+      errorMessage += "\n  - the candidate device has unknown '\(p)' symbol type (available: "
       var first = true
       for symbol in candidateSymbolTypeSet {
         if first {
           first = false
         }else{
-          result += ", "
+          errorMessage += ", "
         }
-        result += "'\(symbol)'"
+        errorMessage += "'\(symbol)'"
       }
-      result += ")"
+      errorMessage += ")"
     }
-    if result.isEmpty {
+    if errorMessage.isEmpty {
       for symbolTypeName in currentSymbolTypeSet {
         let currentPinSet = currentSymbolTypeDictionary [symbolTypeName]!
         let candidatePinSet = candidateSymbolTypeDictionary [symbolTypeName]!
         let missingPins = currentPinSet.subtracting (candidatePinSet)
         let unknownPins = candidatePinSet.subtracting (currentPinSet)
         for p in missingPins {
-          result += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has no '\(p)' pin"
+          errorMessage += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has no '\(p)' pin"
         }
         for p in unknownPins {
-          result += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has a new '\(p)' pin"
+          errorMessage += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has a new '\(p)' pin"
         }
       }
     }
   //---
-    return result
+    return errorMessage
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

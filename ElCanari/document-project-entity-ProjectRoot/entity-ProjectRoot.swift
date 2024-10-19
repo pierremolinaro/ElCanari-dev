@@ -1625,6 +1625,42 @@ final class ProjectRoot : EBManagedObject {
   }
 
   //································································································
+  //   Transient property: fileSystemDeviceLibraryStatusImage
+  //································································································
+
+  final let fileSystemDeviceLibraryStatusImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var fileSystemDeviceLibraryStatusImage : NSImage? {
+    return self.fileSystemDeviceLibraryStatusImage_property.optionalValue
+  }
+
+  //································································································
+  //   Transient property: fileSystemFontLibraryStatusImage
+  //································································································
+
+  final let fileSystemFontLibraryStatusImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var fileSystemFontLibraryStatusImage : NSImage? {
+    return self.fileSystemFontLibraryStatusImage_property.optionalValue
+  }
+
+  //································································································
+  //   Transient property: libraryPageRequiresAttentionImage
+  //································································································
+
+  final let libraryPageRequiresAttentionImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var libraryPageRequiresAttentionImage : NSImage? {
+    return self.libraryPageRequiresAttentionImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: viaCountString
   //································································································
 
@@ -2979,6 +3015,61 @@ final class ProjectRoot : EBManagedObject {
     self.mLastERCCheckingIsSuccess_property.startsBeingObserved (by: self.ercStatusValue_property)
     self.mLastERCCheckingSignature_property.startsBeingObserved (by: self.ercStatusValue_property)
     self.signatureForERCChecking_property.startsBeingObserved (by: self.ercStatusValue_property)
+  //--- Atomic property: fileSystemDeviceLibraryStatusImage
+    self.fileSystemDeviceLibraryStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mDevices_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_fileSystemDeviceLibraryStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDevices_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.fileSystemDeviceLibraryStatusImage_property)
+  //--- Atomic property: fileSystemFontLibraryStatusImage
+    self.fileSystemFontLibraryStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mFonts_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_fileSystemFontLibraryStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFonts_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.fileSystemFontLibraryStatusImage_property)
+  //--- Atomic property: libraryPageRequiresAttentionImage
+    self.libraryPageRequiresAttentionImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mDevices_property.selection
+        let s1 = unwSelf.mFonts_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_ProjectRoot_libraryPageRequiresAttentionImage (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDevices_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.libraryPageRequiresAttentionImage_property)
+    self.mFonts_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.libraryPageRequiresAttentionImage_property)
   //--- Atomic property: viaCountString
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

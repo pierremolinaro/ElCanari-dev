@@ -30,6 +30,18 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol DeviceInProject_mFileSystemStatusMessage : AnyObject {
+  var mFileSystemStatusMessage : String { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol DeviceInProject_mFileSystemStatusRequiresAttention : AnyObject {
+  var mFileSystemStatusRequiresAttention : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol DeviceInProject_versionString : AnyObject {
   var versionString : String? { get }
 }
@@ -50,6 +62,12 @@ import AppKit
 
 @MainActor protocol DeviceInProject_packageNames : AnyObject {
   var packageNames : StringArray? { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol DeviceInProject_fileSystemStatusImage : AnyObject {
+  var fileSystemStatusImage : NSImage? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -91,10 +109,13 @@ final class DeviceInProject : EBManagedObject,
          DeviceInProject_mPrefix,
          DeviceInProject_mDeviceVersion,
          DeviceInProject_mDeviceFileData,
+         DeviceInProject_mFileSystemStatusMessage,
+         DeviceInProject_mFileSystemStatusRequiresAttention,
          DeviceInProject_versionString,
          DeviceInProject_sizeString,
          DeviceInProject_canExport,
          DeviceInProject_packageNames,
+         DeviceInProject_fileSystemStatusImage,
          DeviceInProject_deviceComponentCountString,
          DeviceInProject_canRemove,
          DeviceInProject_symbolAndTypesNames,
@@ -164,6 +185,32 @@ final class DeviceInProject : EBManagedObject,
   final var mPackages : EBReferenceArray <DevicePackageInProject> {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mFileSystemStatusMessage
+  //································································································
+
+  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+
+  //································································································
+
+  final var mFileSystemStatusMessage : String {
+    get { return self.mFileSystemStatusMessage_property.propval }
+    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mFileSystemStatusRequiresAttention
+  //································································································
+
+  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mFileSystemStatusRequiresAttention : Bool {
+    get { return self.mFileSystemStatusRequiresAttention_property.propval }
+    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
   }
 
   //································································································
@@ -253,6 +300,18 @@ final class DeviceInProject : EBManagedObject,
   }
 
   //································································································
+  //   Transient property: fileSystemStatusImage
+  //································································································
+
+  final let fileSystemStatusImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var fileSystemStatusImage : NSImage? {
+    return self.fileSystemStatusImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: deviceComponentCountString
   //································································································
 
@@ -321,6 +380,8 @@ final class DeviceInProject : EBManagedObject,
     self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPrefix")
     self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDeviceVersion")
     self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mDeviceFileData")
+    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String (defaultValue: "")
+    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (defaultValue: false)
     super.init (inUndoManager)
   //--- To many property: mPackages (no option)
     self.mPackages_property.undoManager = inUndoManager
@@ -402,6 +463,23 @@ final class DeviceInProject : EBManagedObject,
       }
     }
     self.mPackages_property.toMany_mPackageName_StartsBeingObserved (by: self.packageNames_property)
+  //--- Atomic property: fileSystemStatusImage
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_fileSystemStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: deviceComponentCountString
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

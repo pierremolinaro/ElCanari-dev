@@ -71,8 +71,9 @@ extension AutoLayoutDeviceDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func performSymbolsUpdate (_ ioOkMessages : inout [String],
-                                   _ ioErrorMessages : inout [String]) {
+  final func performSymbolsUpdate (_ inSymbols : EBReferenceArray <SymbolTypeInDevice>,
+                                   okMessages ioOkMessages : inout [String],
+                                   errorMessages ioErrorMessages : inout [String]) {
     let fm = FileManager ()
     for symbolType in self.rootObject.mSymbolTypes.values {
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
@@ -203,8 +204,8 @@ extension AutoLayoutDeviceDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func performPackagesUpdate (_ inPackages : EBReferenceArray <PackageInDevice>,
-                                    _ ioOkMessages : inout [String],
-                                    _ ioErrorMessages : inout [String]) {
+                                    okMessages ioOkMessages : inout [String],
+                                    errorMessages ioErrorMessages : inout [String]) {
 //--- START OF USER ZONE 2
     let fm = FileManager ()
     for package in inPackages.values {

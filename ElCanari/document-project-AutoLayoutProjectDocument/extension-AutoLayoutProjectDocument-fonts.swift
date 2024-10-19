@@ -60,6 +60,47 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final func checkFonts (_ ioMessages : inout [String]) {
+    for font in self.rootObject.mFonts.values {
+      let pathes = fontFilePathInLibraries (font.mFontName)
+      font.mFileSystemStatusMessage = "Ok"
+      font.mFileSystemStatusRequiresAttention = false
+      if pathes.count == 0 {
+        ioMessages.append ("No file for \(font.mFontName) font in Library")
+        font.mFileSystemStatusMessage = "No file in Library"
+        font.mFileSystemStatusRequiresAttention = true
+      }else if pathes.count == 1 {
+//        var ok = false
+        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])) {
+          let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
+          switch documentReadData {
+          case .ok (let documentData) :
+            if let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int, font.mFontVersion < version {
+              font.mFileSystemStatusMessage = "Font is updatable"
+              font.mFileSystemStatusRequiresAttention = true
+            }
+          case .readError (_) :
+            font.mFileSystemStatusMessage = "Cannot read file"
+            font.mFileSystemStatusRequiresAttention = true
+          }
+        }else{
+          font.mFileSystemStatusMessage = "Cannot read file"
+          font.mFileSystemStatusRequiresAttention = true
+          ioMessages.append ("Cannot read \(pathes [0]) file.")
+        }
+      }else{ // pathes.count > 1
+        font.mFileSystemStatusMessage = "Several files in library"
+        font.mFileSystemStatusRequiresAttention = true
+        ioMessages.append ("Several files for \(font.mFontName) font in Library:")
+        for path in pathes {
+          ioMessages.append ("  - \(path)")
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final func updateFonts (_ inFonts : EBReferenceArray <FontInProject>, _ ioMessages : inout [String]) {
     for font in inFonts.values {
       let pathes = fontFilePathInLibraries (font.mFontName)

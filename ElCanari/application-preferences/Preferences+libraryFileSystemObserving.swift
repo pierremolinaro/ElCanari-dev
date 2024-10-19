@@ -33,7 +33,6 @@ extension Preferences {
     let latency : CFTimeInterval = 1.0 // Latency in seconds
   //--- Flags
     let streamCreationFlags = FSEventStreamCreateFlags (
-//      kFSEventStreamCreateFlagUseCFTypes |
       kFSEventStreamCreateFlagWatchRoot // Request notifications of changes along the path to the path(s) you're watching.
     )
   //--- Call back function
@@ -63,7 +62,7 @@ extension Preferences {
       FSEventStreamSetDispatchQueue (stream, DispatchQueue.main)
 //      FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString) // Deprecated
       FSEventStreamStart (stream)
-      Swift.print ("Start observing \(pathsToWatch)")
+//      Swift.print ("Start observing \(pathsToWatch)")
     }
   }
 
@@ -104,10 +103,13 @@ extension Preferences {
                                     eventPaths _ : UnsafeMutableRawPointer,
                                     eventFlags _ : UnsafePointer <FSEventStreamEventFlags>?,
                                     eventIds _ : UnsafePointer <FSEventStreamEventId>?) {
+//  Swift.print ("callbackForFSEvent")
   gPreferences?.updateLibrariesUserInterfaceStatus ()
   for document in NSDocumentController.shared.documents {
     if let deviceDocument = document as? AutoLayoutDeviceDocument {
       deviceDocument.checkEmbeddedPackagesAndSymbols ()
+    }else if let projectDocument = document as? AutoLayoutProjectDocument {
+      projectDocument.checkEmbeddedDevicesAndFonts ()
     }
   }
 }

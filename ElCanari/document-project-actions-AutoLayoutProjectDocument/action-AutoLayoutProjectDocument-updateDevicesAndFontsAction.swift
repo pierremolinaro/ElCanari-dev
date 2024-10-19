@@ -16,12 +16,13 @@ extension AutoLayoutProjectDocument {
         var messages = [String] ()
         self.updateDevices (self.rootObject.mDevices, &messages)
         self.updateFonts (self.rootObject.mFonts, &messages)
-        if messages.count > 0 {
-          let alert = NSAlert ()
-          alert.messageText = "Error updating project"
-          alert.informativeText = messages.joined (separator: "\n")
-          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
-        }
+        self.checkEmbeddedDevicesAndFonts ()
+//        if messages.count > 0 {
+//          let alert = NSAlert ()
+//          alert.messageText = "Error updating project"
+//          alert.informativeText = messages.joined (separator: "\n")
+//          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
+//        }
 //--- END OF USER ZONE 2
   }
 }

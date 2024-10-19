@@ -28,6 +28,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           addPage (title: "Board Contents", tooltip: "", pageView: view boardContentsPage)
           addPage (title: "Product", tooltip: "", pageView: view productPage)
           $selectedPage root.mSelectedPageIndex
+          $segmentImage root.libraryPageRequiresAttentionImage (segmentIndex : 1)
           $segmentImage root.segmentedControlSchematicIssueImage (segmentIndex : 2)
           $segmentImage root.segmentedControlNetListIssueImage (segmentIndex : 4)
           $segmentImage root.segmentedControlBoardIssueImage (segmentIndex : 6)
@@ -151,7 +152,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //---------------------- Library Tab
 
   stackView \libraryPage vStack set (margins: .regular) {
-//    newView libraryContentView = \LibraryContentView ()
     newView devicesInLibraryPage = \DevicesInLibraryPage ()
     newView fontsInLibraryPage = \FontsInLibraryPage ()
     hStack {
@@ -175,6 +175,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     TabView (size : .regular) {
       addTab (title: "Devices", tooltip: "", contentView: view devicesInLibraryPage)
       addTab (title: "Fonts", tooltip: "", contentView: view fontsInLibraryPage)
+      $segmentImage root.fileSystemDeviceLibraryStatusImage (segmentIndex : 0)
+      $segmentImage root.fileSystemFontLibraryStatusImage (segmentIndex : 1)
     }
   }
     
@@ -212,13 +214,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       vStack {
         StaticLabel (title: "Selected Device", bold: no, size: .regular, alignment: .center)
         hStack {
-          CanariProjectDeviceTableView (size : .regular) {
-            expandableWidth ()
-            set (minWidth: 150)
-            $array self.selectedDeviceNames
-          }
-          divider
           vStack {
+            CanariProjectDeviceTableView (size : .regular) {
+              expandableWidth ()
+              set (minWidth: 150)
+              $array self.selectedDeviceNames
+            }
+            divider
             CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
               expandableWidth ()
               set (minWidth: 150)
@@ -302,6 +304,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   tableViewController #projectFontController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mFonts {
      column mFontName (title: "Font Name", minWidth: 60, maxWidth: 2000, headerAlignment: .left, contentAlignment: .left)
        sortkey mFontName
+    column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
+    column mFileSystemStatusMessage (title: "Status in Device Libraries", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
      column versionString (title: "Version", minWidth: 60, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)
        sortkey versionString
      column sizeString (title: "Size", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
@@ -315,13 +319,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }
 
   tableViewController #projectDeviceController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mDevices {
-     column mDeviceName (title: "Name", minWidth: 60, maxWidth: 600, headerAlignment: .left, contentAlignment: .left)
+     column mDeviceName (title: "Name", minWidth: 200, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left)
        sortkey mDeviceName
-     column versionString (title: "Version", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
+    column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
+    column mFileSystemStatusMessage (title: "Status in Device Libraries", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
+     column versionString (title: "Version", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center)
        sortkey versionString
-    column sizeString (title: "Size", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
+    column sizeString (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)
        sortkey sizeString
-    column deviceComponentCountString (title: "Components", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
+    column deviceComponentCountString (title: "Components", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)
        sortkey deviceComponentCountString
   } 
 

@@ -19,6 +19,7 @@ extension AutoLayoutProjectDocument {
        for font in self.rootObject.mFonts.values {
          font.mFontVersion = 0
        }
+       self.checkEmbeddedDevicesAndFonts ()
 //--- END OF USER ZONE 2
   }
 }

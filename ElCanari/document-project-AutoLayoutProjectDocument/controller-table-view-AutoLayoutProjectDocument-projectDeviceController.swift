@@ -61,12 +61,14 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
       addSortObserversCallback: { (observer) in
         inModel.toMany_deviceComponentCountString_StartsBeingObserved (by: observer)
         inModel.toMany_mDeviceName_StartsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: observer)
         inModel.toMany_sizeString_StartsBeingObserved (by: observer)
         inModel.toMany_versionString_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_deviceComponentCountString_StopsBeingObserved (by: observer)
         inModel.toMany_mDeviceName_StopsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: observer)
         inModel.toMany_sizeString_StopsBeingObserved (by: observer)
         inModel.toMany_versionString_StopsBeingObserved (by: observer)
       }
@@ -148,6 +150,10 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mDeviceName' column
     self.sortedArray_property.toMany_mDeviceName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'fileSystemStatusImage' column
+    self.sortedArray_property.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'mFileSystemStatusMessage' column
+    self.sortedArray_property.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
     self.sortedArray_property.toMany_versionString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'sizeString' column
@@ -192,8 +198,32 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
         self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.mDeviceName_property, ascending, right.mDeviceName_property) })
       },
       title: "Name",
-      minWidth: 60,
-      maxWidth: 600,
+      minWidth: 200,
+      maxWidth: 4000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+  //--- Configure 'fileSystemStatusImage' column
+    inTableView.addColumn_NSImage (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].fileSystemStatusImage },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "",
+      minWidth: 20,
+      maxWidth: 20,
+      headerAlignment: .left,
+      contentAlignment: .center
+    )
+  //--- Configure 'mFileSystemStatusMessage' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileSystemStatusMessage },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.mFileSystemStatusMessage_property, ascending, right.mFileSystemStatusMessage_property) })
+      },
+      title: "Status in Device Libraries",
+      minWidth: 150,
+      maxWidth: 200,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -205,8 +235,8 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
         self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
       },
       title: "Version",
-      minWidth: 60,
-      maxWidth: 150,
+      minWidth: 80,
+      maxWidth: 80,
       headerAlignment: .center,
       contentAlignment: .center
     )
@@ -217,9 +247,9 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.sizeString_property, ascending, right.sizeString_property) })
       },
-      title: "Size",
-      minWidth: 60,
-      maxWidth: 150,
+      title: "Size (bytes)",
+      minWidth: 100,
+      maxWidth: 100,
       headerAlignment: .center,
       contentAlignment: .center
     )
@@ -231,8 +261,8 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
         self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.deviceComponentCountString_property, ascending, right.deviceComponentCountString_property) })
       },
       title: "Components",
-      minWidth: 60,
-      maxWidth: 150,
+      minWidth: 100,
+      maxWidth: 100,
       headerAlignment: .center,
       contentAlignment: .center
     )

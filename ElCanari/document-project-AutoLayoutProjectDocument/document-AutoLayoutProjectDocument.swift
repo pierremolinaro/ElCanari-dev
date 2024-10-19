@@ -615,6 +615,7 @@ import AppKit
             .addPage (title: "Board Contents", tooltip: "", pageView: boardContentsPage)
             .addPage (title: "Product", tooltip: "", pageView: productPage)
             .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
+            .bind_segmentImage (self.rootObject.libraryPageRequiresAttentionImage_property, segmentIndex:1)
             .bind_segmentImage (self.rootObject.segmentedControlSchematicIssueImage_property, segmentIndex:2)
             .bind_segmentImage (self.rootObject.segmentedControlNetListIssueImage_property, segmentIndex:4)
             .bind_segmentImage (self.rootObject.segmentedControlBoardIssueImage_property, segmentIndex:6)
@@ -856,6 +857,8 @@ import AppKit
       let vStackView_view = AutoLayoutTabView (size: .regular)
         .addTab (title: "Devices", tooltip: "", contentView: devicesInLibraryPage)
         .addTab (title: "Fonts", tooltip: "", contentView: fontsInLibraryPage)
+        .bind_segmentImage (self.rootObject.fileSystemDeviceLibraryStatusImage_property, segmentIndex:0)
+        .bind_segmentImage (self.rootObject.fileSystemFontLibraryStatusImage_property, segmentIndex:1)
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -933,15 +936,15 @@ import AppKit
         do{
           let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariProjectDeviceTableView (size: .regular)
-              .expandableWidth ()
-              .set (minWidth: 150)
-              .bind_array (self.selectedDeviceNames_property)
-            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-          }
-          _ = vStackView_view_view_view.appendDivider ()
-          do{
             let vStackView_view_view_view_view = AutoLayoutVerticalStackView ()
+            do{
+              let vStackView_view_view_view_view_view = AutoLayoutCanariProjectDeviceTableView (size: .regular)
+                .expandableWidth ()
+                .set (minWidth: 150)
+                .bind_array (self.selectedDeviceNames_property)
+              _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
+            }
+            _ = vStackView_view_view_view_view.appendDivider ()
             do{
               let vStackView_view_view_view_view_view = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
                 .expandableWidth ()

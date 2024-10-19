@@ -16,6 +16,7 @@ extension AutoLayoutProjectDocument {
         for device in self.projectDeviceController.selectedArray.values {
           device.mDeviceVersion = 0
         }
+        self.checkEmbeddedDevicesAndFonts ()
 //--- END OF USER ZONE 2
   }
 }

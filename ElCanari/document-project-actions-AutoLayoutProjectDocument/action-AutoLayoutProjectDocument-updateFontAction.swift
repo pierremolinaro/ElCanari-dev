@@ -16,12 +16,13 @@ extension AutoLayoutProjectDocument {
         let selectedFonts = self.projectFontController.selectedArray
         var messages = [String] ()
         self.updateFonts (selectedFonts, &messages)
-        if messages.count > 0 {
-          let alert = NSAlert ()
-          alert.messageText = "Error opening Font"
-          alert.informativeText = messages.joined (separator: "\n")
-          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
-        }
+//        if messages.count > 0 {
+//          let alert = NSAlert ()
+//          alert.messageText = "Error opening Font"
+//          alert.informativeText = messages.joined (separator: "\n")
+//          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
+//        }
+        self.checkEmbeddedDevicesAndFonts ()
 //--- END OF USER ZONE 2
   }
 }
