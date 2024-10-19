@@ -8,8 +8,9 @@ import AppKit
 //   Scalar property Int
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_Int   = EBObservableMutableProperty <Int>
-typealias EBComputedProperty_Int    = EBComputedProperty <Int>
-typealias EBStoredProperty_Int      = EBStoredProperty <Int>
+typealias EBReadWriteProperty_Int = EBObservableMutableProperty <Int>
+typealias EBComputedProperty_Int   = EBComputedProperty <Int>
+typealias EBStoredProperty_Int     = EBStoredProperty <Int>
+typealias EBStandAloneProperty_Int = EBStandAloneProperty <Int>
 
 //--------------------------------------------------------------------------------------------------

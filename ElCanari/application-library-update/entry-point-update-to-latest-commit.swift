@@ -14,7 +14,7 @@ extension Preferences {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool) {
-    self.mLibraryUpdateLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
+    self.mLibraryUpdateLogTextView.appendMessageString ("Start library update operation\n", color: .blue)
   //--- Disable update buttons
     self.mCheckForLibraryUpdatesButton?.isEnabled = false
     self.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false

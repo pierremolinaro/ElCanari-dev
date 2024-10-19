@@ -60,11 +60,13 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
         inModel.toMany_documentSize_StartsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: observer)
         inModel.toMany_mName_StartsBeingObserved (by: observer)
         inModel.toMany_versionString_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_documentSize_StopsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: observer)
         inModel.toMany_mName_StopsBeingObserved (by: observer)
         inModel.toMany_versionString_StopsBeingObserved (by: observer)
       }
@@ -148,6 +150,10 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
     self.sortedArray_property.toMany_versionString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mName' column
     self.sortedArray_property.toMany_mName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'fileSystemStatusImage' column
+    self.sortedArray_property.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'mFileSystemStatusMessage' column
+    self.sortedArray_property.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'documentSize' column
     self.sortedArray_property.toMany_documentSize_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
@@ -188,8 +194,8 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
         self?.mSortDescriptorArray.append ({ (_ left : PackageInDevice, _ right : PackageInDevice) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
       },
       title: "Version",
-      minWidth: 60,
-      maxWidth: 60,
+      minWidth: 80,
+      maxWidth: 80,
       headerAlignment: .center,
       contentAlignment: .center
     )
@@ -201,6 +207,30 @@ final class Controller_AutoLayoutDeviceDocument_packageController : NSObject, Au
         self?.mSortDescriptorArray.append ({ (_ left : PackageInDevice, _ right : PackageInDevice) in return compare_String_properties (left.mName_property, ascending, right.mName_property) })
       },
       title: "Package",
+      minWidth: 100,
+      maxWidth: 4000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+  //--- Configure 'fileSystemStatusImage' column
+    inTableView.addColumn_NSImage (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].fileSystemStatusImage },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "",
+      minWidth: 20,
+      maxWidth: 20,
+      headerAlignment: .left,
+      contentAlignment: .center
+    )
+  //--- Configure 'mFileSystemStatusMessage' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileSystemStatusMessage },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : PackageInDevice, _ right : PackageInDevice) in return compare_String_properties (left.mFileSystemStatusMessage_property, ascending, right.mFileSystemStatusMessage_property) })
+      },
+      title: "Status in Package Libraries",
       minWidth: 100,
       maxWidth: 4000,
       headerAlignment: .left,

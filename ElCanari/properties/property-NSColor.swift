@@ -11,4 +11,5 @@ import AppKit
 typealias EBReadWriteProperty_NSColor   = EBObservableMutableProperty <NSColor>
 typealias EBComputedProperty_NSColor    = EBComputedProperty <NSColor>
 typealias EBStoredProperty_NSColor      = EBStoredProperty <NSColor>
+typealias EBStandAloneProperty_NSColor  = EBStandAloneProperty <NSColor>
 

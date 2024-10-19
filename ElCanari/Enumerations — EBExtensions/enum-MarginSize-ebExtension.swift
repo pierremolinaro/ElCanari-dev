@@ -77,8 +77,9 @@ extension MarginSize : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_MarginSize = EBEnumReadWriteProperty <MarginSize>
-typealias EBStoredProperty_MarginSize = EBEnumStoredProperty <MarginSize>
-typealias EBComputedProperty_MarginSize = EBEnumGenericComputedProperty <MarginSize>
+typealias EBReadWriteProperty_MarginSize  = EBEnumReadWriteProperty <MarginSize>
+typealias EBStoredProperty_MarginSize     = EBEnumStoredProperty <MarginSize>
+typealias EBStandAloneProperty_MarginSize = EBEnumStandAloneProperty <MarginSize>
+typealias EBComputedProperty_MarginSize   = EBEnumGenericComputedProperty <MarginSize>
 
 //--------------------------------------------------------------------------------------------------

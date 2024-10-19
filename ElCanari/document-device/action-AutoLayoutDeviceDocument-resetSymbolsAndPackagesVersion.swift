@@ -19,6 +19,7 @@ extension AutoLayoutDeviceDocument {
     for symbolType in self.rootObject.mSymbolTypes_property.propval.values {
       symbolType.mVersion = 0
     }
+    self.checkEmbeddedPackagesAndSymbols ()
 //--- END OF USER ZONE 2
   }
 }

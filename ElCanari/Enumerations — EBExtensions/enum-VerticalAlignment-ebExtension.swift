@@ -85,8 +85,9 @@ extension VerticalAlignment : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_VerticalAlignment = EBEnumReadWriteProperty <VerticalAlignment>
-typealias EBStoredProperty_VerticalAlignment = EBEnumStoredProperty <VerticalAlignment>
-typealias EBComputedProperty_VerticalAlignment = EBEnumGenericComputedProperty <VerticalAlignment>
+typealias EBReadWriteProperty_VerticalAlignment  = EBEnumReadWriteProperty <VerticalAlignment>
+typealias EBStoredProperty_VerticalAlignment     = EBEnumStoredProperty <VerticalAlignment>
+typealias EBStandAloneProperty_VerticalAlignment = EBEnumStandAloneProperty <VerticalAlignment>
+typealias EBComputedProperty_VerticalAlignment   = EBEnumGenericComputedProperty <VerticalAlignment>
 
 //--------------------------------------------------------------------------------------------------

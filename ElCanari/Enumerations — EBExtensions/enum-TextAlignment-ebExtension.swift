@@ -77,8 +77,9 @@ extension TextAlignment : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_TextAlignment = EBEnumReadWriteProperty <TextAlignment>
-typealias EBStoredProperty_TextAlignment = EBEnumStoredProperty <TextAlignment>
-typealias EBComputedProperty_TextAlignment = EBEnumGenericComputedProperty <TextAlignment>
+typealias EBReadWriteProperty_TextAlignment  = EBEnumReadWriteProperty <TextAlignment>
+typealias EBStoredProperty_TextAlignment     = EBEnumStoredProperty <TextAlignment>
+typealias EBStandAloneProperty_TextAlignment = EBEnumStandAloneProperty <TextAlignment>
+typealias EBComputedProperty_TextAlignment   = EBEnumGenericComputedProperty <TextAlignment>
 
 //--------------------------------------------------------------------------------------------------

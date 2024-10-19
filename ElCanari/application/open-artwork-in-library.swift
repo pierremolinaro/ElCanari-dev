@@ -188,7 +188,6 @@ import AppKit
     _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
     panel.setContentView (mainView)
-//    panel.contentView = AutoLayoutWindowContentView (view: mainView)
   //--- Sheet or dialog ?
     if let window = inWindow {
       window.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in

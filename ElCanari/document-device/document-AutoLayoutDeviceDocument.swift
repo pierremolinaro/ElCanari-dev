@@ -254,6 +254,7 @@ import AppKit
             .addPage (title: "Library", tooltip: "Device Embedded Library", pageView: libraryPage)
             .addPage (title: "Infos", tooltip: "Device Informations", pageView: infosPage)
             .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
+            .bind_segmentImage (self.rootObject.embeddedLibraryAttentionImage_property, segmentIndex:4)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -937,7 +938,7 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let vStackView_view_view = AutoLayoutButton (title: "Reset Symbols and Packages Version and Signature", size: .small)
+        let vStackView_view_view = AutoLayoutButton (title: "Reset Symbols and Packages Version and Signature", size: .regular)
           .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
           .bind_run (
             target: self,
@@ -946,7 +947,7 @@ import AppKit
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       do{
-        let vStackView_view_view = AutoLayoutButton (title: "Update Symbols and Packages", size: .small)
+        let vStackView_view_view = AutoLayoutButton (title: "Update Symbols and Packages", size: .regular)
           .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
           .bind_run (
             target: self,

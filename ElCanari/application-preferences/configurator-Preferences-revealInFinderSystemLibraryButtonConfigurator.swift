@@ -16,7 +16,7 @@ import AppKit
 extension Preferences {
   final func configure_revealInFinderSystemLibraryButtonConfigurator (_ inOutlet : AutoLayoutButton) {
 //--- START OF USER ZONE 2
-          self.updateForLibrary ()
+          self.updateLibrariesUserInterfaceStatus ()
 //--- END OF USER ZONE 2
   }
 }

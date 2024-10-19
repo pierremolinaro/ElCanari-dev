@@ -77,8 +77,9 @@ extension BoardShape : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BoardShape = EBEnumReadWriteProperty <BoardShape>
-typealias EBStoredProperty_BoardShape = EBEnumStoredProperty <BoardShape>
-typealias EBComputedProperty_BoardShape = EBEnumGenericComputedProperty <BoardShape>
+typealias EBReadWriteProperty_BoardShape  = EBEnumReadWriteProperty <BoardShape>
+typealias EBStoredProperty_BoardShape     = EBEnumStoredProperty <BoardShape>
+typealias EBStandAloneProperty_BoardShape = EBEnumStandAloneProperty <BoardShape>
+typealias EBComputedProperty_BoardShape   = EBEnumGenericComputedProperty <BoardShape>
 
 //--------------------------------------------------------------------------------------------------

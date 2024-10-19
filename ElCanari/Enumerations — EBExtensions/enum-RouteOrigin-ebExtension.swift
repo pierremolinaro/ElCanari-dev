@@ -85,8 +85,9 @@ extension RouteOrigin : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_RouteOrigin = EBEnumReadWriteProperty <RouteOrigin>
-typealias EBStoredProperty_RouteOrigin = EBEnumStoredProperty <RouteOrigin>
-typealias EBComputedProperty_RouteOrigin = EBEnumGenericComputedProperty <RouteOrigin>
+typealias EBReadWriteProperty_RouteOrigin  = EBEnumReadWriteProperty <RouteOrigin>
+typealias EBStoredProperty_RouteOrigin     = EBEnumStoredProperty <RouteOrigin>
+typealias EBStandAloneProperty_RouteOrigin = EBEnumStandAloneProperty <RouteOrigin>
+typealias EBComputedProperty_RouteOrigin   = EBEnumGenericComputedProperty <RouteOrigin>
 
 //--------------------------------------------------------------------------------------------------

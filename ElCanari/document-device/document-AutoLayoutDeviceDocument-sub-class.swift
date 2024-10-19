@@ -32,6 +32,8 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
         self.rootObject.mSymbolTypes_property.remove (symbolType)
       }
     }
+  //--- Check embedded packages and symbols
+    self.checkEmbeddedPackagesAndSymbols ()
   }
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
@@ -58,7 +60,8 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
     for symbolType in self.rootObject.mSymbolTypes.values.sorted (by: { $0.mTypeName < $1.mTypeName }) {
       symbolDictionary [symbolType.mTypeName] = symbolType.mVersion
     }
-    metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary  }
+    metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

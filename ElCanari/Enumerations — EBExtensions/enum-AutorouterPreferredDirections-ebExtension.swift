@@ -85,8 +85,9 @@ extension AutorouterPreferredDirections : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_AutorouterPreferredDirections = EBEnumReadWriteProperty <AutorouterPreferredDirections>
-typealias EBStoredProperty_AutorouterPreferredDirections = EBEnumStoredProperty <AutorouterPreferredDirections>
-typealias EBComputedProperty_AutorouterPreferredDirections = EBEnumGenericComputedProperty <AutorouterPreferredDirections>
+typealias EBReadWriteProperty_AutorouterPreferredDirections  = EBEnumReadWriteProperty <AutorouterPreferredDirections>
+typealias EBStoredProperty_AutorouterPreferredDirections     = EBEnumStoredProperty <AutorouterPreferredDirections>
+typealias EBStandAloneProperty_AutorouterPreferredDirections = EBEnumStandAloneProperty <AutorouterPreferredDirections>
+typealias EBComputedProperty_AutorouterPreferredDirections   = EBEnumGenericComputedProperty <AutorouterPreferredDirections>
 
 //--------------------------------------------------------------------------------------------------

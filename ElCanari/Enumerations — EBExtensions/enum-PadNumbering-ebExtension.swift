@@ -85,8 +85,9 @@ extension PadNumbering : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_PadNumbering = EBEnumReadWriteProperty <PadNumbering>
-typealias EBStoredProperty_PadNumbering = EBEnumStoredProperty <PadNumbering>
-typealias EBComputedProperty_PadNumbering = EBEnumGenericComputedProperty <PadNumbering>
+typealias EBReadWriteProperty_PadNumbering  = EBEnumReadWriteProperty <PadNumbering>
+typealias EBStoredProperty_PadNumbering     = EBEnumStoredProperty <PadNumbering>
+typealias EBStandAloneProperty_PadNumbering = EBEnumStandAloneProperty <PadNumbering>
+typealias EBComputedProperty_PadNumbering   = EBEnumGenericComputedProperty <PadNumbering>
 
 //--------------------------------------------------------------------------------------------------

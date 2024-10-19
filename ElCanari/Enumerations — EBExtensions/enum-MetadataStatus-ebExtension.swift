@@ -77,8 +77,9 @@ extension MetadataStatus : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_MetadataStatus = EBEnumReadWriteProperty <MetadataStatus>
-typealias EBStoredProperty_MetadataStatus = EBEnumStoredProperty <MetadataStatus>
-typealias EBComputedProperty_MetadataStatus = EBEnumGenericComputedProperty <MetadataStatus>
+typealias EBReadWriteProperty_MetadataStatus  = EBEnumReadWriteProperty <MetadataStatus>
+typealias EBStoredProperty_MetadataStatus     = EBEnumStoredProperty <MetadataStatus>
+typealias EBStandAloneProperty_MetadataStatus = EBEnumStandAloneProperty <MetadataStatus>
+typealias EBComputedProperty_MetadataStatus   = EBEnumGenericComputedProperty <MetadataStatus>
 
 //--------------------------------------------------------------------------------------------------

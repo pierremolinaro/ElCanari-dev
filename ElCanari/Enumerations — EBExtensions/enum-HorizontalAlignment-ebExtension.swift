@@ -85,8 +85,9 @@ extension HorizontalAlignment : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_HorizontalAlignment = EBEnumReadWriteProperty <HorizontalAlignment>
-typealias EBStoredProperty_HorizontalAlignment = EBEnumStoredProperty <HorizontalAlignment>
-typealias EBComputedProperty_HorizontalAlignment = EBEnumGenericComputedProperty <HorizontalAlignment>
+typealias EBReadWriteProperty_HorizontalAlignment  = EBEnumReadWriteProperty <HorizontalAlignment>
+typealias EBStoredProperty_HorizontalAlignment     = EBEnumStoredProperty <HorizontalAlignment>
+typealias EBStandAloneProperty_HorizontalAlignment = EBEnumStandAloneProperty <HorizontalAlignment>
+typealias EBComputedProperty_HorizontalAlignment   = EBEnumGenericComputedProperty <HorizontalAlignment>
 
 //--------------------------------------------------------------------------------------------------

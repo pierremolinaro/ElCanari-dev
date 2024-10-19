@@ -33,7 +33,6 @@ extension AutoLayoutPackageDocument {
       _ = vStack.appendView (okButton)
     //---
       sheet.setContentView (vStack)
-//      sheet.contentView = AutoLayoutWindowContentView (view: vStack)
       window.beginSheet (sheet, completionHandler: nil)
     }
 //--- END OF USER ZONE 2

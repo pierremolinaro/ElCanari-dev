@@ -246,7 +246,6 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           StaticLabel (title: "Board Limits", bold: no, size: .small, alignment: .right)
           gutter
           space
-//          Checkbox (title: "", size: .small) { expandableHeight () set (enabled : no, checked : yes) }
           ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBoardLimits }
           Checkbox (title: "", size: .small) {
             expandableHeight () $value prefs.mergerBoardViewDisplayBoardLimits

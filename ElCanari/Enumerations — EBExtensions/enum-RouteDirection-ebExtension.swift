@@ -85,8 +85,9 @@ extension RouteDirection : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_RouteDirection = EBEnumReadWriteProperty <RouteDirection>
-typealias EBStoredProperty_RouteDirection = EBEnumStoredProperty <RouteDirection>
-typealias EBComputedProperty_RouteDirection = EBEnumGenericComputedProperty <RouteDirection>
+typealias EBReadWriteProperty_RouteDirection  = EBEnumReadWriteProperty <RouteDirection>
+typealias EBStoredProperty_RouteDirection     = EBEnumStoredProperty <RouteDirection>
+typealias EBStandAloneProperty_RouteDirection = EBEnumStandAloneProperty <RouteDirection>
+typealias EBComputedProperty_RouteDirection   = EBEnumGenericComputedProperty <RouteDirection>
 
 //--------------------------------------------------------------------------------------------------

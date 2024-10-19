@@ -85,8 +85,9 @@ extension TrackSide : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_TrackSide = EBEnumReadWriteProperty <TrackSide>
-typealias EBStoredProperty_TrackSide = EBEnumStoredProperty <TrackSide>
-typealias EBComputedProperty_TrackSide = EBEnumGenericComputedProperty <TrackSide>
+typealias EBReadWriteProperty_TrackSide  = EBEnumReadWriteProperty <TrackSide>
+typealias EBStoredProperty_TrackSide     = EBEnumStoredProperty <TrackSide>
+typealias EBStandAloneProperty_TrackSide = EBEnumStandAloneProperty <TrackSide>
+typealias EBComputedProperty_TrackSide   = EBEnumGenericComputedProperty <TrackSide>
 
 //--------------------------------------------------------------------------------------------------

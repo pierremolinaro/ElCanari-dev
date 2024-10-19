@@ -77,8 +77,9 @@ extension TrackCreationDirection : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_TrackCreationDirection = EBEnumReadWriteProperty <TrackCreationDirection>
-typealias EBStoredProperty_TrackCreationDirection = EBEnumStoredProperty <TrackCreationDirection>
-typealias EBComputedProperty_TrackCreationDirection = EBEnumGenericComputedProperty <TrackCreationDirection>
+typealias EBReadWriteProperty_TrackCreationDirection  = EBEnumReadWriteProperty <TrackCreationDirection>
+typealias EBStoredProperty_TrackCreationDirection     = EBEnumStoredProperty <TrackCreationDirection>
+typealias EBStandAloneProperty_TrackCreationDirection = EBEnumStandAloneProperty <TrackCreationDirection>
+typealias EBComputedProperty_TrackCreationDirection   = EBEnumGenericComputedProperty <TrackCreationDirection>
 
 //--------------------------------------------------------------------------------------------------

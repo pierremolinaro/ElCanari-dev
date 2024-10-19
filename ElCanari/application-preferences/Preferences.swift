@@ -547,7 +547,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
     //--------------------------- Array controller
     //--------------------------- Set targets / actions
     //--------------------------- Extern functions
-      self.setupForLibrary ()
+      self.configureLibraryFileSystemObservation ()
     }
     super.awakeFromNib ()
   }

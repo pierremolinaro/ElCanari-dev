@@ -423,7 +423,7 @@ prefs {
   action removeLibraryEntryAction ;
   action revealInFinderLibraryFolderAction ;
   action showLibraryConsistencyLogWindowAction ;
-  externFunc setupForLibrary calledBy awakeFromNib ;
+  externFunc configureLibraryFileSystemObservation calledBy awakeFromNib ;
   action revealUserLibraryInFinderAction ;
   action checkSystemLibraryUpdateAction ;
 

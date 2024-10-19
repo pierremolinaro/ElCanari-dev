@@ -85,8 +85,9 @@ extension BoardTextLayer : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BoardTextLayer = EBEnumReadWriteProperty <BoardTextLayer>
-typealias EBStoredProperty_BoardTextLayer = EBEnumStoredProperty <BoardTextLayer>
-typealias EBComputedProperty_BoardTextLayer = EBEnumGenericComputedProperty <BoardTextLayer>
+typealias EBReadWriteProperty_BoardTextLayer  = EBEnumReadWriteProperty <BoardTextLayer>
+typealias EBStoredProperty_BoardTextLayer     = EBEnumStoredProperty <BoardTextLayer>
+typealias EBStandAloneProperty_BoardTextLayer = EBEnumStandAloneProperty <BoardTextLayer>
+typealias EBComputedProperty_BoardTextLayer   = EBEnumGenericComputedProperty <BoardTextLayer>
 
 //--------------------------------------------------------------------------------------------------

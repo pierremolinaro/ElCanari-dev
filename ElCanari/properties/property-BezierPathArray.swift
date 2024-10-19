@@ -8,8 +8,9 @@ import AppKit
 //   Scalar property BezierPathArray
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BezierPathArray   = EBObservableMutableProperty <BezierPathArray>
-typealias EBComputedProperty_BezierPathArray    = EBComputedProperty <BezierPathArray>
-typealias EBStoredProperty_BezierPathArray      = EBStoredProperty <BezierPathArray>
+typealias EBReadWriteProperty_BezierPathArray = EBObservableMutableProperty <BezierPathArray>
+typealias EBComputedProperty_BezierPathArray   = EBComputedProperty <BezierPathArray>
+typealias EBStoredProperty_BezierPathArray     = EBStoredProperty <BezierPathArray>
+typealias EBStandAloneProperty_BezierPathArray = EBStandAloneProperty <BezierPathArray>
 
 //--------------------------------------------------------------------------------------------------

@@ -85,8 +85,9 @@ extension PDFProductGrid : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_PDFProductGrid = EBEnumReadWriteProperty <PDFProductGrid>
-typealias EBStoredProperty_PDFProductGrid = EBEnumStoredProperty <PDFProductGrid>
-typealias EBComputedProperty_PDFProductGrid = EBEnumGenericComputedProperty <PDFProductGrid>
+typealias EBReadWriteProperty_PDFProductGrid  = EBEnumReadWriteProperty <PDFProductGrid>
+typealias EBStoredProperty_PDFProductGrid     = EBEnumStoredProperty <PDFProductGrid>
+typealias EBStandAloneProperty_PDFProductGrid = EBEnumStandAloneProperty <PDFProductGrid>
+typealias EBComputedProperty_PDFProductGrid   = EBEnumGenericComputedProperty <PDFProductGrid>
 
 //--------------------------------------------------------------------------------------------------

@@ -85,8 +85,9 @@ extension BorderCurveShape : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BorderCurveShape = EBEnumReadWriteProperty <BorderCurveShape>
-typealias EBStoredProperty_BorderCurveShape = EBEnumStoredProperty <BorderCurveShape>
-typealias EBComputedProperty_BorderCurveShape = EBEnumGenericComputedProperty <BorderCurveShape>
+typealias EBReadWriteProperty_BorderCurveShape  = EBEnumReadWriteProperty <BorderCurveShape>
+typealias EBStoredProperty_BorderCurveShape     = EBEnumStoredProperty <BorderCurveShape>
+typealias EBStandAloneProperty_BorderCurveShape = EBEnumStandAloneProperty <BorderCurveShape>
+typealias EBComputedProperty_BorderCurveShape   = EBEnumGenericComputedProperty <BorderCurveShape>
 
 //--------------------------------------------------------------------------------------------------

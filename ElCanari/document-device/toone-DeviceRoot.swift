@@ -38,6 +38,7 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
       oldValue.packagePadNameSetsAreConsistent_property.stopsBeingObserved (by: self.packagePadNameSetsAreConsistent_property) // Transient property
       oldValue.symbolNameAreConsistent_property.stopsBeingObserved (by: self.symbolNameAreConsistent_property) // Transient property
       oldValue.symbolTypeNames_property.stopsBeingObserved (by: self.symbolTypeNames_property) // Transient property
+      oldValue.embeddedLibraryAttentionImage_property.stopsBeingObserved (by: self.embeddedLibraryAttentionImage_property) // Transient property
       oldValue.unconnectedPads_property.stopsBeingObserved (by: self.unconnectedPads_property) // Transient property
       oldValue.assignedPadProxies_property.stopsBeingObserved (by: self.assignedPadProxies_property) // Transient property
       oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
@@ -81,6 +82,7 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
       newValue.packagePadNameSetsAreConsistent_property.startsBeingObserved (by: self.packagePadNameSetsAreConsistent_property) // Transient property
       newValue.symbolNameAreConsistent_property.startsBeingObserved (by: self.symbolNameAreConsistent_property) // Transient property
       newValue.symbolTypeNames_property.startsBeingObserved (by: self.symbolTypeNames_property) // Transient property
+      newValue.embeddedLibraryAttentionImage_property.startsBeingObserved (by: self.embeddedLibraryAttentionImage_property) // Transient property
       newValue.unconnectedPads_property.startsBeingObserved (by: self.unconnectedPads_property) // Transient property
       newValue.assignedPadProxies_property.startsBeingObserved (by: self.assignedPadProxies_property) // Transient property
       newValue.issues_property.startsBeingObserved (by: self.issues_property) // Transient property
@@ -233,6 +235,12 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let symbolTypeNames_property = EBTransientProperty <StringArray?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'embeddedLibraryAttentionImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let embeddedLibraryAttentionImage_property = EBTransientProperty <NSImage?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'unconnectedPads' transient property
@@ -475,6 +483,10 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
   //--- Configure symbolTypeNames transient property
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.symbolTypeNames_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure embeddedLibraryAttentionImage transient property
+    self.embeddedLibraryAttentionImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.embeddedLibraryAttentionImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure unconnectedPads transient property
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in

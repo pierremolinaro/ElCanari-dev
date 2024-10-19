@@ -85,8 +85,9 @@ extension GridStyle : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_GridStyle = EBEnumReadWriteProperty <GridStyle>
-typealias EBStoredProperty_GridStyle = EBEnumStoredProperty <GridStyle>
-typealias EBComputedProperty_GridStyle = EBEnumGenericComputedProperty <GridStyle>
+typealias EBReadWriteProperty_GridStyle  = EBEnumReadWriteProperty <GridStyle>
+typealias EBStoredProperty_GridStyle     = EBEnumStoredProperty <GridStyle>
+typealias EBStandAloneProperty_GridStyle = EBEnumStandAloneProperty <GridStyle>
+typealias EBComputedProperty_GridStyle   = EBEnumGenericComputedProperty <GridStyle>
 
 //--------------------------------------------------------------------------------------------------

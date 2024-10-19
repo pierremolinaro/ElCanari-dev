@@ -77,8 +77,9 @@ extension ConnectorSide : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_ConnectorSide = EBEnumReadWriteProperty <ConnectorSide>
-typealias EBStoredProperty_ConnectorSide = EBEnumStoredProperty <ConnectorSide>
-typealias EBComputedProperty_ConnectorSide = EBEnumGenericComputedProperty <ConnectorSide>
+typealias EBReadWriteProperty_ConnectorSide  = EBEnumReadWriteProperty <ConnectorSide>
+typealias EBStoredProperty_ConnectorSide     = EBEnumStoredProperty <ConnectorSide>
+typealias EBStandAloneProperty_ConnectorSide = EBEnumStandAloneProperty <ConnectorSide>
+typealias EBComputedProperty_ConnectorSide   = EBEnumGenericComputedProperty <ConnectorSide>
 
 //--------------------------------------------------------------------------------------------------

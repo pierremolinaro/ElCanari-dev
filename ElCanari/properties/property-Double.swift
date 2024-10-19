@@ -8,8 +8,9 @@ import AppKit
 //   Scalar property Double
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_Double   = EBObservableMutableProperty <Double>
-typealias EBComputedProperty_Double    = EBComputedProperty <Double>
-typealias EBStoredProperty_Double      = EBStoredProperty <Double>
+typealias EBReadWriteProperty_Double = EBObservableMutableProperty <Double>
+typealias EBComputedProperty_Double   = EBComputedProperty <Double>
+typealias EBStoredProperty_Double     = EBStoredProperty <Double>
+typealias EBStandAloneProperty_Double = EBStandAloneProperty <Double>
 
 //--------------------------------------------------------------------------------------------------

@@ -85,8 +85,9 @@ extension SchematicSheetOrientation : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_SchematicSheetOrientation = EBEnumReadWriteProperty <SchematicSheetOrientation>
-typealias EBStoredProperty_SchematicSheetOrientation = EBEnumStoredProperty <SchematicSheetOrientation>
-typealias EBComputedProperty_SchematicSheetOrientation = EBEnumGenericComputedProperty <SchematicSheetOrientation>
+typealias EBReadWriteProperty_SchematicSheetOrientation  = EBEnumReadWriteProperty <SchematicSheetOrientation>
+typealias EBStoredProperty_SchematicSheetOrientation     = EBEnumStoredProperty <SchematicSheetOrientation>
+typealias EBStandAloneProperty_SchematicSheetOrientation = EBEnumStandAloneProperty <SchematicSheetOrientation>
+typealias EBComputedProperty_SchematicSheetOrientation   = EBEnumGenericComputedProperty <SchematicSheetOrientation>
 
 //--------------------------------------------------------------------------------------------------

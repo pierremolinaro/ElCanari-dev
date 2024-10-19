@@ -28,6 +28,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
           addPage (title: "Library", tooltip: "Device Embedded Library", pageView: view libraryPage)
           addPage (title: "Infos", tooltip: "Device Informations", pageView: view infosPage)
           $selectedPage root.mSelectedPageIndex
+          $segmentImage root.embeddedLibraryAttentionImage (segmentIndex : 4)
         }
         gutter
         StaticLabel (title: "Page", bold: no, size : .regular, alignment: .center)
@@ -380,27 +381,31 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   action updateSymbolsAndPackagesAction ;
 
   tableViewController #symbolTypeController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mSymbolTypes {
-    column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
+    column versionString (title: "Version", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey versionString
     column instanceCount (title: "Instances", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey instanceCount
     column mTypeName (title: "Symbol", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mTypeName
+    column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
+    column mFileSystemStatusMessage (title: "Status in Symbol Libraries", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
     column documentSize (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .right) sortkey documentSize
   }
 
   selectionController SymbolTypeInDevice #symbolTypeSelection : #symbolTypeController.selectedArray ;
 
   tableViewController #packageController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mPackages {
-    column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
+    column versionString (title: "Version", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey versionString
     column mName (title: "Package", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mName
+    column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
+    column mFileSystemStatusMessage (title: "Status in Package Libraries", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
     column documentSize (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .right) sortkey documentSize
   }
 
   stackView \LibraryPage vStack set (margins: .large) {
     hStack {
-      Button (title: "Reset Symbols and Packages Version and Signature", size : .small) {
+      Button (title: "Reset Symbols and Packages Version and Signature", size : .regular) {
         $run resetSymbolsAndPackagesVersion
         $enabled (root.mPackages.count > 0) | (root.mSymbolTypes.count > 0)
       }
-      Button (title: "Update Symbols and Packages", size : .small) {
+      Button (title: "Update Symbols and Packages", size : .regular) {
         $run updateSymbolsAndPackagesAction
         $enabled (root.mPackages.count > 0) | (root.mSymbolTypes.count > 0)
       }
@@ -432,11 +437,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
               $run editSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
-//            Button (title: "Remove", size : .small) {
-//              expandableWidth ()
-//              $run removeUselessSymbolTypeAction
-//              $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
-//            }
             space
           }
         }

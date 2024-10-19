@@ -6,6 +6,18 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol SymbolTypeInDevice_mFileSystemStatusMessage : AnyObject {
+  var mFileSystemStatusMessage : String { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol SymbolTypeInDevice_mFileSystemStatusRequiresAttention : AnyObject {
+  var mFileSystemStatusRequiresAttention : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol SymbolTypeInDevice_mTypeName : AnyObject {
   var mTypeName : String { get }
 }
@@ -54,6 +66,12 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol SymbolTypeInDevice_fileSystemStatusImage : AnyObject {
+  var fileSystemStatusImage : NSImage? { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol SymbolTypeInDevice_pinNameShape : AnyObject {
   var pinNameShape : EBShape? { get }
 }
@@ -63,6 +81,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 final class SymbolTypeInDevice : EBManagedObject,
+         SymbolTypeInDevice_mFileSystemStatusMessage,
+         SymbolTypeInDevice_mFileSystemStatusRequiresAttention,
          SymbolTypeInDevice_mTypeName,
          SymbolTypeInDevice_mVersion,
          SymbolTypeInDevice_mFileData,
@@ -71,6 +91,7 @@ final class SymbolTypeInDevice : EBManagedObject,
          SymbolTypeInDevice_versionString,
          SymbolTypeInDevice_instanceCount,
          SymbolTypeInDevice_documentSize,
+         SymbolTypeInDevice_fileSystemStatusImage,
          SymbolTypeInDevice_pinNameShape {
 
   //································································································
@@ -83,6 +104,32 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   final var mInstances : EBReferenceArray <SymbolInstanceInDevice> {
     get { return self.mInstances_property.propval }
+  }
+
+  //································································································
+  //   Atomic property: mFileSystemStatusMessage
+  //································································································
+
+  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+
+  //································································································
+
+  final var mFileSystemStatusMessage : String {
+    get { return self.mFileSystemStatusMessage_property.propval }
+    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mFileSystemStatusRequiresAttention
+  //································································································
+
+  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mFileSystemStatusRequiresAttention : Bool {
+    get { return self.mFileSystemStatusRequiresAttention_property.propval }
+    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
   }
 
   //································································································
@@ -200,6 +247,18 @@ final class SymbolTypeInDevice : EBManagedObject,
   }
 
   //································································································
+  //   Transient property: fileSystemStatusImage
+  //································································································
+
+  final let fileSystemStatusImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var fileSystemStatusImage : NSImage? {
+    return self.fileSystemStatusImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: pinNameShape
   //································································································
 
@@ -216,6 +275,8 @@ final class SymbolTypeInDevice : EBManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
+    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String (defaultValue: "")
+    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (defaultValue: false)
     self.mTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mTypeName")
     self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mVersion")
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
@@ -281,6 +342,23 @@ final class SymbolTypeInDevice : EBManagedObject,
       }
     }
     self.mFileData_property.startsBeingObserved (by: self.documentSize_property)
+  //--- Atomic property: fileSystemStatusImage
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolTypeInDevice_fileSystemStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

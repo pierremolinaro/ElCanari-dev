@@ -83,7 +83,7 @@ import Sparkle
       _ = window.setFrameAutosaveName ("LibraryUpdateLogWindowSettings")
       window.title = "Library Update Log"
       window.isReleasedWhenClosed = false
-      window.contentView = self.mLibraryUpdateLogTextView
+      window.setContentView (self.mLibraryUpdateLogTextView)
       return window
     }
   }
@@ -110,16 +110,16 @@ import Sparkle
       window.title = "Checking for Library Updates…"
       window.isReleasedWhenClosed = false
 
-      let contents = AutoLayoutVerticalStackView ()
-      _ = contents.appendFlexibleSpace ()
       let hStack = AutoLayoutHorizontalStackView ()
-      _ = hStack.appendFlexibleSpace ()
-      _ = hStack.appendView (AutoLayoutSpinningProgressIndicator (size: .regular))
-      _ = hStack.appendFlexibleSpace ()
-      _ = contents.appendView (hStack)
-      _ = contents.appendFlexibleSpace ()
+        .appendFlexibleSpace ()
+        .appendView (AutoLayoutSpinningProgressIndicator (size: .regular))
+        .appendFlexibleSpace ()
+      let contents = AutoLayoutVerticalStackView ()
+        .appendFlexibleSpace ()
+        .appendView (hStack)
+        .appendFlexibleSpace ()
 
-      window.contentView = contents
+      window.setContentView (contents)
     }
     window.makeKeyAndOrderFront (nil)
   }

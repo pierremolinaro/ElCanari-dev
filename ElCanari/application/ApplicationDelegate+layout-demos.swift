@@ -42,7 +42,7 @@ extension ApplicationDelegate {
     let stack = AutoLayoutVerticalStackView ()
       .set (margins: .regular)
       .appendView (ALB_NSTextView (drawsBackground: true, horizontalScroller: true, verticalScroller: true, editable: true))
-    window.contentView = stack
+    window.setContentView (stack)
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)
   }
@@ -73,7 +73,7 @@ extension ApplicationDelegate {
       .appendFlexibleSpace ()
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 3", size: .mini))
-    window.contentView = stack
+    window.setContentView (stack)
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)
   }
@@ -110,7 +110,7 @@ extension ApplicationDelegate {
       .appendFlexibleSpace ()
       .appendView (ALB_NSButton (title: "Button 3", size: .mini))
       .prependSeparator ()
-    window.contentView = stack
+    window.setContentView (stack)
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)
   }
@@ -132,10 +132,9 @@ extension ApplicationDelegate {
       .set (margins: .regular)
       .set (spacing: .large)
       .append (left: ALB_NSButton (title: "Button 0", size: .regular), right: ALB_NSButton (title: "Button 1", size: .regular))
-//      .appendVerticalSeparator (ignoreHorizontalMargins: true)
       .append (left: ALB_NSButton (title: "Large Button 2", size: .regular), right: ALB_NSButton (title: "Button 3", size: .small))
 
-    window.contentView = stack
+    window.setContentView (stack)
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)
   }
@@ -159,7 +158,7 @@ extension ApplicationDelegate {
       .appendDivider (canResizeWindow: true)
       .appendView (AutoLayoutTableView (size: .regular, addControlButtons: false))
 
-    window.contentView = stack
+    window.setContentView (stack)
     window.makeKeyAndOrderFront (nil)
     gRetainedWindows.append (window)
   }

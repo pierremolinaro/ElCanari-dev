@@ -92,11 +92,7 @@ import AppKit
     _ = bottomView.appendView (self.mOpenButton)
     _ = mainView.appendView (bottomView)
   //--- Set content view
-    self.mDialog.contentView = mainView
-  //---
-//    super.init ()
-  //---
-//    _ = self.mSearchField.bind_run (target: self, selector: #selector (Self.searchFieldAction (_:)))
+    self.mDialog.setContentView (mainView)
     _ = self.mSearchField.setClosureAction { [weak self] in self?.searchFieldAction (nil) }
   //--- Configure table view
     self.mTableView.configure (

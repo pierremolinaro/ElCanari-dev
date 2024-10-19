@@ -119,21 +119,9 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
     UserDefaults.standard.setValue (inFlag, forKey: DEBUG_AUTOLAYOUT_PREFERENCES_KEY)
     for window in NSApplication.shared.windows {
       window.triggerDecoration ()
-//      if let mainView = window.contentView {
-//        propagateNeedsDisplay (mainView)
-//      }
     }
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//@MainActor fileprivate func propagateNeedsDisplay (_ inView : NSView) {
-////  inView.needsDisplay = true
-//  for view in inView.subviews {
-//    propagateNeedsDisplay (view)
-//  }
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -233,7 +221,6 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
       if !view.isHidden {
         if view.canBecomeKeyView && view.acceptsFirstResponder {
           if outLastView == nil {
-            // Swift.print ("Last Key View: \(view.className)")
             outLastView = view
           }
           view.nextKeyView = ioCurrentNextKeyView
@@ -318,19 +305,7 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  override func wantsForwardedScrollEvents (for axis: NSEvent.GestureAxis) -> Bool {
-//    if getDebugAutoLayout () {
-//      self.mHiliteView.needsDisplay = true
-//    }
-//    return super.wantsForwardedScrollEvents (for: axis)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func mouseMoved (with inEvent : NSEvent) {
-//    if getDebugAutoLayout () {
-//      self.mHiliteView.needsDisplay = true
-//    }
     if getShowViewCurrentSettings () {
       let windowContentView = self.subviews [0]
       let mouseLocation = windowContentView.convert (inEvent.locationInWindow, from: nil)
@@ -376,7 +351,6 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     window.isExcludedFromWindowsMenu = true
     let mainView = FilePrivateHelperView (configuredWithView: inView)
     window.contentView = mainView
-//    window.updateConstraintsIfNeeded ()
     return window
   }
 

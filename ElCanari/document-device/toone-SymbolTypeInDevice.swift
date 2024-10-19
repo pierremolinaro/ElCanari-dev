@@ -16,6 +16,8 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
+      oldValue.mFileSystemStatusMessage_property.stopsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
+      oldValue.mFileSystemStatusRequiresAttention_property.stopsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
       oldValue.mTypeName_property.stopsBeingObserved (by: self.mTypeName_property) // Stored property
       oldValue.mVersion_property.stopsBeingObserved (by: self.mVersion_property) // Stored property
       oldValue.mFileData_property.stopsBeingObserved (by: self.mFileData_property) // Stored property
@@ -24,6 +26,7 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
       oldValue.versionString_property.stopsBeingObserved (by: self.versionString_property) // Transient property
       oldValue.instanceCount_property.stopsBeingObserved (by: self.instanceCount_property) // Transient property
       oldValue.documentSize_property.stopsBeingObserved (by: self.documentSize_property) // Transient property
+      oldValue.fileSystemStatusImage_property.stopsBeingObserved (by: self.fileSystemStatusImage_property) // Transient property
       oldValue.pinNameShape_property.stopsBeingObserved (by: self.pinNameShape_property) // Transient property
       if let relay = self.mObserversOf_mInstances { // to Many
         oldValue.mInstances_property.stopsBeingObserved (by: relay)
@@ -34,6 +37,8 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
+      newValue.mFileSystemStatusMessage_property.startsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
+      newValue.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
       newValue.mTypeName_property.startsBeingObserved (by: self.mTypeName_property) // Stored property
       newValue.mVersion_property.startsBeingObserved (by: self.mVersion_property) // Stored property
       newValue.mFileData_property.startsBeingObserved (by: self.mFileData_property) // Stored property
@@ -42,6 +47,7 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
       newValue.versionString_property.startsBeingObserved (by: self.versionString_property) // Transient property
       newValue.instanceCount_property.startsBeingObserved (by: self.instanceCount_property) // Transient property
       newValue.documentSize_property.startsBeingObserved (by: self.documentSize_property) // Transient property
+      newValue.fileSystemStatusImage_property.startsBeingObserved (by: self.fileSystemStatusImage_property) // Transient property
       newValue.pinNameShape_property.startsBeingObserved (by: self.pinNameShape_property) // Transient property
       if let relay = self.mObserversOf_mInstances { // to Many
         newValue.mInstances_property.startsBeingObserved (by: relay)
@@ -51,6 +57,18 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
       }
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusMessage' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mFileSystemStatusMessage_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mFileSystemStatusRequiresAttention' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mFileSystemStatusRequiresAttention_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mTypeName' stored property
@@ -99,6 +117,12 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let documentSize_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'fileSystemStatusImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let fileSystemStatusImage_property = EBTransientProperty <NSImage?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'pinNameShape' transient property
@@ -164,6 +188,14 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
 
   override init () {
     super.init ()
+  //--- Configure mFileSystemStatusMessage simple stored property
+    self.mFileSystemStatusMessage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusMessage_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mFileSystemStatusRequiresAttention simple stored property
+    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusRequiresAttention_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure mTypeName simple stored property
     self.mTypeName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mTypeName_property.optionalSelection ?? .single (nil)
@@ -195,6 +227,10 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
   //--- Configure documentSize transient property
     self.documentSize_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.documentSize_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure fileSystemStatusImage transient property
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.fileSystemStatusImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure pinNameShape transient property
     self.pinNameShape_property.mReadModelFunction = { [weak self] in

@@ -77,8 +77,9 @@ extension RestrictRectangleLayer : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_RestrictRectangleLayer = EBEnumReadWriteProperty <RestrictRectangleLayer>
-typealias EBStoredProperty_RestrictRectangleLayer = EBEnumStoredProperty <RestrictRectangleLayer>
-typealias EBComputedProperty_RestrictRectangleLayer = EBEnumGenericComputedProperty <RestrictRectangleLayer>
+typealias EBReadWriteProperty_RestrictRectangleLayer  = EBEnumReadWriteProperty <RestrictRectangleLayer>
+typealias EBStoredProperty_RestrictRectangleLayer     = EBEnumStoredProperty <RestrictRectangleLayer>
+typealias EBStandAloneProperty_RestrictRectangleLayer = EBEnumStandAloneProperty <RestrictRectangleLayer>
+typealias EBComputedProperty_RestrictRectangleLayer   = EBEnumGenericComputedProperty <RestrictRectangleLayer>
 
 //--------------------------------------------------------------------------------------------------

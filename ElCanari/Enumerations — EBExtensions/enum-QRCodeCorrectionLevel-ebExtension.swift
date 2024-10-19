@@ -85,8 +85,9 @@ extension QRCodeCorrectionLevel : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_QRCodeCorrectionLevel = EBEnumReadWriteProperty <QRCodeCorrectionLevel>
-typealias EBStoredProperty_QRCodeCorrectionLevel = EBEnumStoredProperty <QRCodeCorrectionLevel>
-typealias EBComputedProperty_QRCodeCorrectionLevel = EBEnumGenericComputedProperty <QRCodeCorrectionLevel>
+typealias EBReadWriteProperty_QRCodeCorrectionLevel  = EBEnumReadWriteProperty <QRCodeCorrectionLevel>
+typealias EBStoredProperty_QRCodeCorrectionLevel     = EBEnumStoredProperty <QRCodeCorrectionLevel>
+typealias EBStandAloneProperty_QRCodeCorrectionLevel = EBEnumStandAloneProperty <QRCodeCorrectionLevel>
+typealias EBComputedProperty_QRCodeCorrectionLevel   = EBEnumGenericComputedProperty <QRCodeCorrectionLevel>
 
 //--------------------------------------------------------------------------------------------------

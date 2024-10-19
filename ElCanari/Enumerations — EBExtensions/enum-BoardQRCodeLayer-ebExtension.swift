@@ -85,8 +85,9 @@ extension BoardQRCodeLayer : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BoardQRCodeLayer = EBEnumReadWriteProperty <BoardQRCodeLayer>
-typealias EBStoredProperty_BoardQRCodeLayer = EBEnumStoredProperty <BoardQRCodeLayer>
-typealias EBComputedProperty_BoardQRCodeLayer = EBEnumGenericComputedProperty <BoardQRCodeLayer>
+typealias EBReadWriteProperty_BoardQRCodeLayer  = EBEnumReadWriteProperty <BoardQRCodeLayer>
+typealias EBStoredProperty_BoardQRCodeLayer     = EBEnumStoredProperty <BoardQRCodeLayer>
+typealias EBStandAloneProperty_BoardQRCodeLayer = EBEnumStandAloneProperty <BoardQRCodeLayer>
+typealias EBComputedProperty_BoardQRCodeLayer   = EBEnumGenericComputedProperty <BoardQRCodeLayer>
 
 //--------------------------------------------------------------------------------------------------

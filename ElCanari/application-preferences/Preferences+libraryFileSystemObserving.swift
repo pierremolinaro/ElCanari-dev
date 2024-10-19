@@ -6,16 +6,9 @@ import AppKit
 @MainActor private var gPreferences : Preferences? = nil
 
 //--------------------------------------------------------------------------------------------------
-// https://stackoverflow.com/questions/31173903/swift-2-cannot-invoke-fseventstreamcreate-with-an-argument-list-of-type
-//--------------------------------------------------------------------------------------------------
 
-@MainActor func callbackForFSEvent (streamRef _ : ConstFSEventStreamRef,
-                                    clientCallBackInfo _ : UnsafeMutableRawPointer?,
-                                    numEvents _ : Int,
-                                    eventPaths _ : UnsafeMutableRawPointer,
-                                    eventFlags _ : UnsafePointer <FSEventStreamEventFlags>?,
-                                    eventIds _ : UnsafePointer <FSEventStreamEventId>?) {
-  gPreferences?.updateForLibrary ()
+@MainActor func configureLibraryFileSystemObservation () {
+  gPreferences?.configureLibraryFileSystemObservation ()
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -24,14 +17,26 @@ extension Preferences {
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setupForLibrary () {
+  final func configureLibraryFileSystemObservation () {
     gPreferences = self
-    self.updateForLibrary ()
+    self.updateLibrariesUserInterfaceStatus ()
+  //--- If the stream was already created, remove it
+    if let previousStream = gStream {
+      FSEventStreamStop (previousStream)
+      FSEventStreamInvalidate (previousStream)
+      FSEventStreamRelease (previousStream)
+      gStream = nil
+    }
   //--- Use an FSEvent for tracking Canari System Library changes
-    let pathsToWatch : [String] = [systemLibraryPath (), userLibraryPath ()]
+    let pathsToWatch : [String] = [systemLibraryPath ()] + existingLibraryPathArray ()
   //--- Latency
     let latency : CFTimeInterval = 1.0 // Latency in seconds
-  //---
+  //--- Flags
+    let streamCreationFlags = FSEventStreamCreateFlags (
+//      kFSEventStreamCreateFlagUseCFTypes |
+      kFSEventStreamCreateFlagWatchRoot // Request notifications of changes along the path to the path(s) you're watching.
+    )
+  //--- Call back function
     let callback: FSEventStreamCallback = {
       (streamRef, clientCallBackInfo, numEvents, eventPaths, eventFlags, eventIds) -> Void
     in
@@ -44,25 +49,27 @@ extension Preferences {
         eventIds: eventIds
       )
     }
-  //--- Create the stream, passing in a callback
+  //--- Create the stream
     gStream = FSEventStreamCreate (
       kCFAllocatorDefault,
       callback,
       nil,
-      pathsToWatch as CFArray, // pathsToWatch,
+      pathsToWatch as CFArray,
       FSEventStreamEventId (kFSEventStreamEventIdSinceNow),
       latency,
-      FSEventStreamCreateFlags (kFSEventStreamCreateFlagNoDefer | kFSEventStreamCreateFlagWatchRoot)
+      streamCreationFlags
     )
     if let stream = gStream {
-      FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString)
+      FSEventStreamSetDispatchQueue (stream, DispatchQueue.main)
+//      FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString) // Deprecated
       FSEventStreamStart (stream)
+      Swift.print ("Start observing \(pathsToWatch)")
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func updateForLibrary () {
+  func updateLibrariesUserInterfaceStatus () {
     let fm = FileManager ()
   //--- System Library
  //   do{
@@ -85,6 +92,24 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+}
+
+//--------------------------------------------------------------------------------------------------
+// https://stackoverflow.com/questions/31173903/swift-2-cannot-invoke-fseventstreamcreate-with-an-argument-list-of-type
+//--------------------------------------------------------------------------------------------------
+
+@MainActor fileprivate func callbackForFSEvent (streamRef _ : ConstFSEventStreamRef,
+                                    clientCallBackInfo _ : UnsafeMutableRawPointer?,
+                                    numEvents _ : Int,
+                                    eventPaths _ : UnsafeMutableRawPointer,
+                                    eventFlags _ : UnsafePointer <FSEventStreamEventFlags>?,
+                                    eventIds _ : UnsafePointer <FSEventStreamEventId>?) {
+  gPreferences?.updateLibrariesUserInterfaceStatus ()
+  for document in NSDocumentController.shared.documents {
+    if let deviceDocument = document as? AutoLayoutDeviceDocument {
+      deviceDocument.checkEmbeddedPackagesAndSymbols ()
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

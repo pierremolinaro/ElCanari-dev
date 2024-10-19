@@ -77,8 +77,9 @@ extension PadSide : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_PadSide = EBEnumReadWriteProperty <PadSide>
-typealias EBStoredProperty_PadSide = EBEnumStoredProperty <PadSide>
-typealias EBComputedProperty_PadSide = EBEnumGenericComputedProperty <PadSide>
+typealias EBReadWriteProperty_PadSide  = EBEnumReadWriteProperty <PadSide>
+typealias EBStoredProperty_PadSide     = EBEnumStoredProperty <PadSide>
+typealias EBStandAloneProperty_PadSide = EBEnumStandAloneProperty <PadSide>
+typealias EBComputedProperty_PadSide   = EBEnumGenericComputedProperty <PadSide>
 
 //--------------------------------------------------------------------------------------------------

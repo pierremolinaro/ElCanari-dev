@@ -29,6 +29,12 @@ import AppKit
   var documentSize_property = EBTransientProperty <Int> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Selection observable property: fileSystemStatusImage
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var fileSystemStatusImage_property = EBTransientProperty <NSImage> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: instanceCount
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -39,6 +45,18 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mFileData_property = EBComputedProperty_Data ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Selection observable property: mFileSystemStatusMessage
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var mFileSystemStatusMessage_property = EBComputedProperty_String ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Selection observable property: mFileSystemStatusRequiresAttention
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var mFileSystemStatusRequiresAttention_property = EBComputedProperty_Bool ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: mFilledBezierPath
@@ -95,8 +113,11 @@ import AppKit
   final func bind_selection (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     self.mModel = model
     self.bind_property_documentSize (model: model)
+    self.bind_property_fileSystemStatusImage (model: model)
     self.bind_property_instanceCount (model: model)
     self.bind_property_mFileData (model: model)
+    self.bind_property_mFileSystemStatusMessage (model: model)
+    self.bind_property_mFileSystemStatusRequiresAttention (model: model)
     self.bind_property_mFilledBezierPath (model: model)
     self.bind_property_mStrokeBezierPath (model: model)
     self.bind_property_mTypeName (model: model)
@@ -113,6 +134,9 @@ import AppKit
   //--- documentSize
     self.documentSize_property.mReadModelFunction = nil 
     self.mModel?.toMany_documentSize_StopsBeingObserved (by: self.documentSize_property)
+  //--- fileSystemStatusImage
+    self.fileSystemStatusImage_property.mReadModelFunction = nil 
+    self.mModel?.toMany_fileSystemStatusImage_StopsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- instanceCount
     self.instanceCount_property.mReadModelFunction = nil 
     self.mModel?.toMany_instanceCount_StopsBeingObserved (by: self.instanceCount_property)
@@ -120,6 +144,14 @@ import AppKit
     self.mFileData_property.mReadModelFunction = nil 
     self.mFileData_property.mWriteModelFunction = nil 
     self.mModel?.toMany_mFileData_StopsBeingObserved (by: self.mFileData_property)
+  //--- mFileSystemStatusMessage
+    self.mFileSystemStatusMessage_property.mReadModelFunction = nil 
+    self.mFileSystemStatusMessage_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: self.mFileSystemStatusMessage_property)
+  //--- mFileSystemStatusRequiresAttention
+    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = nil 
+    self.mFileSystemStatusRequiresAttention_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_mFileSystemStatusRequiresAttention_StopsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property)
   //--- mFilledBezierPath
     self.mFilledBezierPath_property.mReadModelFunction = nil 
     self.mFilledBezierPath_property.mWriteModelFunction = nil 
@@ -162,6 +194,46 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.documentSize_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+
+  private final func bind_property_fileSystemStatusImage (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
+    model.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.fileSystemStatusImage_property)
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSImage> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.fileSystemStatusImage_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -272,6 +344,110 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mFileData_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+
+  private final func bind_property_mFileSystemStatusMessage (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
+    model.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: self.mFileSystemStatusMessage_property)
+    self.mFileSystemStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mFileSystemStatusMessage_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFileSystemStatusMessage_property.mWriteModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mFileSystemStatusMessage_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+
+  private final func bind_property_mFileSystemStatusRequiresAttention (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
+    model.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property)
+    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mFileSystemStatusRequiresAttention_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFileSystemStatusRequiresAttention_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mFileSystemStatusRequiresAttention_property.setProp (inValue)
           }
         }
       }

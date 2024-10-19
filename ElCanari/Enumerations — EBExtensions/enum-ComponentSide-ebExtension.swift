@@ -85,8 +85,9 @@ extension ComponentSide : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_ComponentSide = EBEnumReadWriteProperty <ComponentSide>
-typealias EBStoredProperty_ComponentSide = EBEnumStoredProperty <ComponentSide>
-typealias EBComputedProperty_ComponentSide = EBEnumGenericComputedProperty <ComponentSide>
+typealias EBReadWriteProperty_ComponentSide  = EBEnumReadWriteProperty <ComponentSide>
+typealias EBStoredProperty_ComponentSide     = EBEnumStoredProperty <ComponentSide>
+typealias EBStandAloneProperty_ComponentSide = EBEnumStandAloneProperty <ComponentSide>
+typealias EBComputedProperty_ComponentSide   = EBEnumGenericComputedProperty <ComponentSide>
 
 //--------------------------------------------------------------------------------------------------

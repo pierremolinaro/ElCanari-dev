@@ -85,8 +85,9 @@ extension AutorouterSnapAngle : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_AutorouterSnapAngle = EBEnumReadWriteProperty <AutorouterSnapAngle>
-typealias EBStoredProperty_AutorouterSnapAngle = EBEnumStoredProperty <AutorouterSnapAngle>
-typealias EBComputedProperty_AutorouterSnapAngle = EBEnumGenericComputedProperty <AutorouterSnapAngle>
+typealias EBReadWriteProperty_AutorouterSnapAngle  = EBEnumReadWriteProperty <AutorouterSnapAngle>
+typealias EBStoredProperty_AutorouterSnapAngle     = EBEnumStoredProperty <AutorouterSnapAngle>
+typealias EBStandAloneProperty_AutorouterSnapAngle = EBEnumStandAloneProperty <AutorouterSnapAngle>
+typealias EBComputedProperty_AutorouterSnapAngle   = EBEnumGenericComputedProperty <AutorouterSnapAngle>
 
 //--------------------------------------------------------------------------------------------------

@@ -77,8 +77,9 @@ extension BoardTextVerticalAlignment : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BoardTextVerticalAlignment = EBEnumReadWriteProperty <BoardTextVerticalAlignment>
-typealias EBStoredProperty_BoardTextVerticalAlignment = EBEnumStoredProperty <BoardTextVerticalAlignment>
-typealias EBComputedProperty_BoardTextVerticalAlignment = EBEnumGenericComputedProperty <BoardTextVerticalAlignment>
+typealias EBReadWriteProperty_BoardTextVerticalAlignment  = EBEnumReadWriteProperty <BoardTextVerticalAlignment>
+typealias EBStoredProperty_BoardTextVerticalAlignment     = EBEnumStoredProperty <BoardTextVerticalAlignment>
+typealias EBStandAloneProperty_BoardTextVerticalAlignment = EBEnumStandAloneProperty <BoardTextVerticalAlignment>
+typealias EBComputedProperty_BoardTextVerticalAlignment   = EBEnumGenericComputedProperty <BoardTextVerticalAlignment>
 
 //--------------------------------------------------------------------------------------------------

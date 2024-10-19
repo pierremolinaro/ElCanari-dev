@@ -85,8 +85,9 @@ extension PadShape : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_PadShape = EBEnumReadWriteProperty <PadShape>
-typealias EBStoredProperty_PadShape = EBEnumStoredProperty <PadShape>
-typealias EBComputedProperty_PadShape = EBEnumGenericComputedProperty <PadShape>
+typealias EBReadWriteProperty_PadShape  = EBEnumReadWriteProperty <PadShape>
+typealias EBStoredProperty_PadShape     = EBEnumStoredProperty <PadShape>
+typealias EBStandAloneProperty_PadShape = EBEnumStandAloneProperty <PadShape>
+typealias EBComputedProperty_PadShape   = EBEnumGenericComputedProperty <PadShape>
 
 //--------------------------------------------------------------------------------------------------

@@ -28,11 +28,13 @@ digraph G {
   "EBObservableMutableProperty<T>" -> "EBObservableProperty<T>" ;
   "EBComputedProperty<T>" -> "EBObservableMutableProperty<T>" ;
   "EBPreferenceProperty<T>" -> "EBObservableMutableProperty<T>" ;
+  "EBStandAloneProperty<T>" -> "EBObservableMutableProperty<T>" ;
   "EBStoredProperty<T>" -> "EBObservableMutableProperty<T>" ;
   "EBStoredProperty<T>" -> EBDocumentStorablePropertyProtocol ;
   "EBEnumReadWriteProperty<T>" -> "EBEnumReadOnlyProperty<T>" ;
   "EBEnumReadWriteProperty<T>" -> EBEnumReadWriteObservableProtocol ;
   "EBEnumTransientProperty<T>" -> "EBEnumReadOnlyProperty<T>" ;
+  "EBEnumStandAloneProperty<T>" -> "EBEnumReadWriteProperty<T>" ;
   "EBEnumStoredProperty<T>" -> "EBEnumReadWriteProperty<T>" ;
   "EBEnumStoredProperty<T>" -> EBDocumentStorablePropertyProtocol ;
  }

@@ -88,12 +88,13 @@ extension AutoLayoutDeviceDocument {
         }
       }
     }
-    if messages.count > 0 {
-      let alert = NSAlert ()
-      alert.messageText = "Done."
-      alert.informativeText = messages.joined (separator: "\n")
-      alert.beginSheetModal (for: self.windowForSheet!)
-    }
+    self.checkEmbeddedPackagesAndSymbols ()
+//    if messages.count > 0 {
+//      let alert = NSAlert ()
+//      alert.messageText = "Done."
+//      alert.informativeText = messages.joined (separator: "\n")
+//      alert.beginSheetModal (for: self.windowForSheet!)
+//    }
 //--- END OF USER ZONE 2
   }
 }

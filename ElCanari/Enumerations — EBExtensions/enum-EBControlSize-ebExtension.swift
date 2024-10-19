@@ -77,8 +77,9 @@ extension EBControlSize : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_EBControlSize = EBEnumReadWriteProperty <EBControlSize>
-typealias EBStoredProperty_EBControlSize = EBEnumStoredProperty <EBControlSize>
-typealias EBComputedProperty_EBControlSize = EBEnumGenericComputedProperty <EBControlSize>
+typealias EBReadWriteProperty_EBControlSize  = EBEnumReadWriteProperty <EBControlSize>
+typealias EBStoredProperty_EBControlSize     = EBEnumStoredProperty <EBControlSize>
+typealias EBStandAloneProperty_EBControlSize = EBEnumStandAloneProperty <EBControlSize>
+typealias EBComputedProperty_EBControlSize   = EBEnumGenericComputedProperty <EBControlSize>
 
 //--------------------------------------------------------------------------------------------------

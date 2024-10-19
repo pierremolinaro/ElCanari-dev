@@ -36,7 +36,7 @@ extension Preferences {
     let tabView = AutoLayoutTabView (size: .regular)
       .expandableWidth ()
       .expandableHeight ()
-    inLogWindow.contentView = AutoLayoutVerticalStackView ().set (margins: .large).appendView (button).appendView (tabView)
+    inLogWindow.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (button).appendView (tabView))
   //---------- Checking Symbols
     let symbolTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
     var symbolDict : [String : PMSymbolDictionaryEntry] = [:]

@@ -85,8 +85,9 @@ extension SlavePadStyle : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_SlavePadStyle = EBEnumReadWriteProperty <SlavePadStyle>
-typealias EBStoredProperty_SlavePadStyle = EBEnumStoredProperty <SlavePadStyle>
-typealias EBComputedProperty_SlavePadStyle = EBEnumGenericComputedProperty <SlavePadStyle>
+typealias EBReadWriteProperty_SlavePadStyle  = EBEnumReadWriteProperty <SlavePadStyle>
+typealias EBStoredProperty_SlavePadStyle     = EBEnumStoredProperty <SlavePadStyle>
+typealias EBStandAloneProperty_SlavePadStyle = EBEnumStandAloneProperty <SlavePadStyle>
+typealias EBComputedProperty_SlavePadStyle   = EBEnumGenericComputedProperty <SlavePadStyle>
 
 //--------------------------------------------------------------------------------------------------

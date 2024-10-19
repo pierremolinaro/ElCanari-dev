@@ -464,7 +464,6 @@ handlingOpposite entity ArtworkFileGenerationParameters {
     self.drawComponentValuesBottomSide,
     self.drawPackageLegendTopSide,
     self.drawPackageLegendBottomSide,
-//    self.drawPadHolesInPDF,
     self.drawPadsTopSide,
     self.drawPadsBottomSide,
     self.drawTextsLayoutTopSide,

@@ -85,8 +85,9 @@ extension RastnetDisplay : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_RastnetDisplay = EBEnumReadWriteProperty <RastnetDisplay>
-typealias EBStoredProperty_RastnetDisplay = EBEnumStoredProperty <RastnetDisplay>
-typealias EBComputedProperty_RastnetDisplay = EBEnumGenericComputedProperty <RastnetDisplay>
+typealias EBReadWriteProperty_RastnetDisplay  = EBEnumReadWriteProperty <RastnetDisplay>
+typealias EBStoredProperty_RastnetDisplay     = EBEnumStoredProperty <RastnetDisplay>
+typealias EBStandAloneProperty_RastnetDisplay = EBEnumStandAloneProperty <RastnetDisplay>
+typealias EBComputedProperty_RastnetDisplay   = EBEnumGenericComputedProperty <RastnetDisplay>
 
 //--------------------------------------------------------------------------------------------------

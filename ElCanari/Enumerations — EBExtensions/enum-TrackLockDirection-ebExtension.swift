@@ -85,8 +85,9 @@ extension TrackLockDirection : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_TrackLockDirection = EBEnumReadWriteProperty <TrackLockDirection>
-typealias EBStoredProperty_TrackLockDirection = EBEnumStoredProperty <TrackLockDirection>
-typealias EBComputedProperty_TrackLockDirection = EBEnumGenericComputedProperty <TrackLockDirection>
+typealias EBReadWriteProperty_TrackLockDirection  = EBEnumReadWriteProperty <TrackLockDirection>
+typealias EBStoredProperty_TrackLockDirection     = EBEnumStoredProperty <TrackLockDirection>
+typealias EBStandAloneProperty_TrackLockDirection = EBEnumStandAloneProperty <TrackLockDirection>
+typealias EBComputedProperty_TrackLockDirection   = EBEnumGenericComputedProperty <TrackLockDirection>
 
 //--------------------------------------------------------------------------------------------------

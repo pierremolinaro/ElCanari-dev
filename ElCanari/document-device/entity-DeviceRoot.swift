@@ -257,6 +257,18 @@ final class DeviceRoot : EBManagedObject {
   }
 
   //································································································
+  //   Transient property: embeddedLibraryAttentionImage
+  //································································································
+
+  final let embeddedLibraryAttentionImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var embeddedLibraryAttentionImage : NSImage? {
+    return self.embeddedLibraryAttentionImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: unconnectedPads
   //································································································
 
@@ -458,6 +470,27 @@ final class DeviceRoot : EBManagedObject {
       }
     }
     self.mSymbolTypes_property.toMany_mTypeName_StartsBeingObserved (by: self.symbolTypeNames_property)
+  //--- Atomic property: embeddedLibraryAttentionImage
+    self.embeddedLibraryAttentionImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mPackages_property.selection
+        let s1 = unwSelf.mSymbolTypes_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_DeviceRoot_embeddedLibraryAttentionImage (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPackages_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.embeddedLibraryAttentionImage_property)
+    self.mSymbolTypes_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.embeddedLibraryAttentionImage_property)
   //--- Atomic property: unconnectedPads
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

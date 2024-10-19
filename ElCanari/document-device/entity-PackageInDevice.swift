@@ -6,6 +6,18 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol PackageInDevice_mFileSystemStatusMessage : AnyObject {
+  var mFileSystemStatusMessage : String { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol PackageInDevice_mFileSystemStatusRequiresAttention : AnyObject {
+  var mFileSystemStatusRequiresAttention : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol PackageInDevice_mFileData : AnyObject {
   var mFileData : Data { get }
 }
@@ -54,6 +66,12 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol PackageInDevice_fileSystemStatusImage : AnyObject {
+  var fileSystemStatusImage : NSImage? { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol PackageInDevice_frontSidePadFilledBezierPathArray : AnyObject {
   var frontSidePadFilledBezierPathArray : BezierPathArray? { get }
 }
@@ -87,6 +105,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 final class PackageInDevice : EBGraphicManagedObject,
+         PackageInDevice_mFileSystemStatusMessage,
+         PackageInDevice_mFileSystemStatusRequiresAttention,
          PackageInDevice_mFileData,
          PackageInDevice_mName,
          PackageInDevice_mVersion,
@@ -95,11 +115,38 @@ final class PackageInDevice : EBGraphicManagedObject,
          PackageInDevice_mY,
          PackageInDevice_versionString,
          PackageInDevice_documentSize,
+         PackageInDevice_fileSystemStatusImage,
          PackageInDevice_frontSidePadFilledBezierPathArray,
          PackageInDevice_backSidePadFilledBezierPathArray,
          PackageInDevice_objectDisplay,
          PackageInDevice_selectionDisplay,
          PackageInDevice_padNameSet {
+
+  //································································································
+  //   Atomic property: mFileSystemStatusMessage
+  //································································································
+
+  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+
+  //································································································
+
+  final var mFileSystemStatusMessage : String {
+    get { return self.mFileSystemStatusMessage_property.propval }
+    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mFileSystemStatusRequiresAttention
+  //································································································
+
+  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mFileSystemStatusRequiresAttention : Bool {
+    get { return self.mFileSystemStatusRequiresAttention_property.propval }
+    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
+  }
 
   //································································································
   //   Atomic property: mFileData
@@ -245,6 +292,18 @@ final class PackageInDevice : EBGraphicManagedObject,
   }
 
   //································································································
+  //   Transient property: fileSystemStatusImage
+  //································································································
+
+  final let fileSystemStatusImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var fileSystemStatusImage : NSImage? {
+    return self.fileSystemStatusImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: frontSidePadFilledBezierPathArray
   //································································································
 
@@ -285,6 +344,8 @@ final class PackageInDevice : EBGraphicManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
+    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String (defaultValue: "")
+    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (defaultValue: false)
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mVersion")
@@ -342,6 +403,23 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mFileData_property.startsBeingObserved (by: self.documentSize_property)
+  //--- Atomic property: fileSystemStatusImage
+    self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_PackageInDevice_fileSystemStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: frontSidePadFilledBezierPathArray
     self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

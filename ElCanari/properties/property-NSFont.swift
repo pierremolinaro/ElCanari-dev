@@ -11,4 +11,5 @@ import AppKit
 typealias EBReadWriteProperty_NSFont   = EBObservableMutableProperty <NSFont>
 typealias EBComputedProperty_NSFont    = EBComputedProperty <NSFont>
 typealias EBStoredProperty_NSFont      = EBStoredProperty <NSFont>
+typealias EBStandAloneProperty_NSFont  = EBStandAloneProperty <NSFont>
 

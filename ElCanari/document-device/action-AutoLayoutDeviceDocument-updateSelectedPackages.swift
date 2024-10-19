@@ -17,10 +17,11 @@ extension AutoLayoutDeviceDocument {
     var okMessages = [String] ()
     var errorMessages = [String] ()
     self.performPackagesUpdate (selectedPackages, &okMessages, &errorMessages)
-    let alert = NSAlert ()
-    alert.messageText = (errorMessages.count == 0) ? "Success." : "Error"
-    alert.informativeText = (okMessages + errorMessages).joined (separator: "\n")
-    alert.beginSheetModal (for: self.windowForSheet!)
+//    let alert = NSAlert ()
+//    alert.messageText = (errorMessages.count == 0) ? "Success." : "Error"
+//    alert.informativeText = (okMessages + errorMessages).joined (separator: "\n")
+//    alert.beginSheetModal (for: self.windowForSheet!)
+    self.checkEmbeddedPackagesAndSymbols ()
 //--- END OF USER ZONE 2
   }
 }

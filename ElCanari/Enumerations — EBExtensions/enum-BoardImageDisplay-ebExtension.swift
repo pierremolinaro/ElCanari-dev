@@ -85,8 +85,9 @@ extension BoardImageDisplay : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BoardImageDisplay = EBEnumReadWriteProperty <BoardImageDisplay>
-typealias EBStoredProperty_BoardImageDisplay = EBEnumStoredProperty <BoardImageDisplay>
-typealias EBComputedProperty_BoardImageDisplay = EBEnumGenericComputedProperty <BoardImageDisplay>
+typealias EBReadWriteProperty_BoardImageDisplay  = EBEnumReadWriteProperty <BoardImageDisplay>
+typealias EBStoredProperty_BoardImageDisplay     = EBEnumStoredProperty <BoardImageDisplay>
+typealias EBStandAloneProperty_BoardImageDisplay = EBEnumStandAloneProperty <BoardImageDisplay>
+typealias EBComputedProperty_BoardImageDisplay   = EBEnumGenericComputedProperty <BoardImageDisplay>
 
 //--------------------------------------------------------------------------------------------------
