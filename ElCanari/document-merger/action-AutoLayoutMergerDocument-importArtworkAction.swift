@@ -22,12 +22,12 @@ extension AutoLayoutMergerDocument {
                 let documentReadData = loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager)
                 switch documentReadData {
                 case .ok (let documentData) :
-                  if let artworkRoot = documentData.documentRootObject as? ArtworkRoot {
+                  if let artworkRoot = documentData.documentRootObject as? ArtworkRoot,
+                     let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
                     self.rootObject.mArtwork = artworkRoot
                     self.rootObject.mArtworkName = inName
-                    if let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
-                      self.rootObject.mArtworkVersion = version
-                    }
+                    self.rootObject.mArtworkVersion = version
+       //             self.triggerStandAlonePropertyComputation ()
                   }
                 case .readError (_) :
                   ()

@@ -11,13 +11,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutProjectDocument {
-  @objc func detachArtworkAction (_ inSender : NSObject?) {
+  @objc func updateArtworkAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-            self.rootObject.mArtwork = nil
-            self.rootObject.mArtworkName = ""
-            self.rootObject.mArtworkVersion = 0
-            self.rootObject.mArtworkIsUpdatable = false
-            self.invalidateERC ()
+        self.updateArtwork ()
 //--- END OF USER ZONE 2
   }
 }

@@ -28,17 +28,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.0"
+let VERSION_CANARI = "1.8.1"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Projet, board : correction placement octolinéaire",
-  "Merger : dessin incorrect des packages",
-  "Merger : ajout du contrôle de l'affichage du fond"
 ]
 let CHANGES : [String] = [
-  "Nouvelle écriture de l'interface utilisateur"
+  "Nouvelle gestion de la librarie des composants"
 ]
 let NEWS : [String] = [
 ]

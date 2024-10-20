@@ -88,7 +88,7 @@ extension AutoLayoutDeviceDocument {
         }
       }
     }
-    self.checkEmbeddedPackagesAndSymbols ()
+    self.triggerStandAlonePropertyComputationForDeviceDocument ()
 //    if messages.count > 0 {
 //      let alert = NSAlert ()
 //      alert.messageText = "Done."

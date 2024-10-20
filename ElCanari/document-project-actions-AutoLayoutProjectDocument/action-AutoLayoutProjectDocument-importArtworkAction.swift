@@ -28,6 +28,9 @@ extension AutoLayoutProjectDocument {
                     self.rootObject.mArtworkName = inName
                     if let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
                       self.rootObject.mArtworkVersion = version
+                      self.rootObject.mArtworkIsUpdatable = false
+                      self.rootObject.mArtworkFileSystemLibraryStatus = "Up to date"
+                      self.rootObject.mArtworkFileSystemLibraryRequiresAttention = false
                     }
                   }
                 case .readError (_) :

@@ -17,7 +17,7 @@ extension AutoLayoutDeviceDocument {
     for package in selectedPackages.values {
       package.mVersion = 0
     }
-    self.checkEmbeddedPackagesAndSymbols ()
+    self.triggerStandAlonePropertyComputationForDeviceDocument ()
 //--- END OF USER ZONE 2
   }
 }

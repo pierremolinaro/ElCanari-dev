@@ -305,8 +305,8 @@ final class FontInProject : EBManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String (defaultValue: "")
-    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (defaultValue: false)
+    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String ("")
+    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (false)
     self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNominalSize")
     self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mFontName")
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mFontVersion")

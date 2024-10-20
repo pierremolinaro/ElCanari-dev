@@ -13,10 +13,11 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func resetSelectedDeviceVersionAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
+        self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
         for device in self.projectDeviceController.selectedArray.values {
           device.mDeviceVersion = 0
         }
-        self.checkEmbeddedDevicesAndFonts ()
+        self.triggerStandAlonePropertyComputationForProject ()
 //--- END OF USER ZONE 2
   }
 }

@@ -380,8 +380,8 @@ final class DeviceInProject : EBManagedObject,
     self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPrefix")
     self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDeviceVersion")
     self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mDeviceFileData")
-    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String (defaultValue: "")
-    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (defaultValue: false)
+    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String ("")
+    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (false)
     super.init (inUndoManager)
   //--- To many property: mPackages (no option)
     self.mPackages_property.undoManager = inUndoManager

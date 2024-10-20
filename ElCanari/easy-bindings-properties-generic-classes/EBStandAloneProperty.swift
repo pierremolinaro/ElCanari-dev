@@ -18,7 +18,7 @@ final class EBStandAloneProperty <TYPE : EBStoredPropertyProtocol> : EBObservabl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (defaultValue inValue : TYPE) {
+  init (_ inValue : TYPE) {
     self.mValue = inValue
     super.init ()
   }

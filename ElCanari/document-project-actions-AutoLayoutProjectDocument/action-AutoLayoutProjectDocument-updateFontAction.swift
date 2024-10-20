@@ -13,6 +13,7 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func updateFontAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
+        self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
         let selectedFonts = self.projectFontController.selectedArray
         var messages = [String] ()
         self.updateFonts (selectedFonts, &messages)
@@ -22,7 +23,7 @@ extension AutoLayoutProjectDocument {
 //          alert.informativeText = messages.joined (separator: "\n")
 //          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
 //        }
-        self.checkEmbeddedDevicesAndFonts ()
+        self.triggerStandAlonePropertyComputationForProject ()
 //--- END OF USER ZONE 2
   }
 }

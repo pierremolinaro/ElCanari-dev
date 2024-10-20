@@ -13,16 +13,11 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func updateDevicesAndFontsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
+        self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
         var messages = [String] ()
         self.updateDevices (self.rootObject.mDevices, &messages)
         self.updateFonts (self.rootObject.mFonts, &messages)
-        self.checkEmbeddedDevicesAndFonts ()
-//        if messages.count > 0 {
-//          let alert = NSAlert ()
-//          alert.messageText = "Error updating project"
-//          alert.informativeText = messages.joined (separator: "\n")
-//          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
-//        }
+        self.triggerStandAlonePropertyComputationForProject ()
 //--- END OF USER ZONE 2
   }
 }

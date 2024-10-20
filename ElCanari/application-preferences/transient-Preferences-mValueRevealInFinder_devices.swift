@@ -20,9 +20,6 @@ import AppKit
 ) -> StringArray {
 //--- START OF USER ZONE 2
   var items = StringArray ()
-//  if self_2E_usesSystemLibrary_0 {
-//    items.append (deviceLibraryPathForPath (systemLibraryPath ()))
-//  }
   if self_usesUserLibrary {
     items.append (deviceLibraryPathForPath (userLibraryPath ()))
   }

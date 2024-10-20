@@ -33,7 +33,7 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
       }
     }
   //--- Check embedded packages and symbols
-    self.checkEmbeddedPackagesAndSymbols ()
+    self.triggerStandAlonePropertyComputationForDeviceDocument ()
   }
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················

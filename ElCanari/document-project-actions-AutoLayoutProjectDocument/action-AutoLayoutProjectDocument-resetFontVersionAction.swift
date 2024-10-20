@@ -13,11 +13,12 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func resetFontVersionAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
+        self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
         let selectedFonts = self.projectFontController.selectedArray_property.propval
         for font in selectedFonts.values {
           font.mFontVersion = 0
         }
-        self.checkEmbeddedDevicesAndFonts()
+        self.triggerStandAlonePropertyComputationForProject ()
 //--- END OF USER ZONE 2
   }
 }

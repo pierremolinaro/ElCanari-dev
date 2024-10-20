@@ -1294,7 +1294,7 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //   Atomic property: fileSystemLibraryIsOk
 //································································································
 
-@MainActor let preferences_fileSystemLibraryIsOk_property = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: Preferences_fileSystemLibraryIsOk)
+@MainActor let preferences_fileSystemLibraryIsOk_property = EBStandAloneProperty_Bool (true)
 
 //································································································
 //   Atomic property: checkForSystemLibraryAtStartUp

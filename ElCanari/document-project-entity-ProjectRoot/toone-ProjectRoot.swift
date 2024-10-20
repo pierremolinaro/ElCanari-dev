@@ -18,6 +18,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
     if let oldValue = inOldValue {
       oldValue.mArtworkName_property.stopsBeingObserved (by: self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
+      oldValue.mArtworkFileSystemLibraryStatus_property.stopsBeingObserved (by: self.mArtworkFileSystemLibraryStatus_property) // Stored property
+      oldValue.mArtworkFileSystemLibraryRequiresAttention_property.stopsBeingObserved (by: self.mArtworkFileSystemLibraryRequiresAttention_property) // Stored property
+      oldValue.mArtworkIsUpdatable_property.stopsBeingObserved (by: self.mArtworkIsUpdatable_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.stopsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       oldValue.mGenerateMergerArchive_property.stopsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       oldValue.mGenerateBOM_property.stopsBeingObserved (by: self.mGenerateBOM_property) // Stored property
@@ -129,6 +132,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mRastnetDisplayedNetName_property.stopsBeingObserved (by: self.mRastnetDisplayedNetName_property) // Stored property
       oldValue.mRastnetDisplayedComponentName_property.stopsBeingObserved (by: self.mRastnetDisplayedComponentName_property) // Stored property
       oldValue.hasInnerElements_property.stopsBeingObserved (by: self.hasInnerElements_property) // Transient property
+      oldValue.segmentedControlArtworkAttentionImage_property.stopsBeingObserved (by: self.segmentedControlArtworkAttentionImage_property) // Transient property
       oldValue.layerConfigurationString_property.stopsBeingObserved (by: self.layerConfigurationString_property) // Transient property
       oldValue.boardGridStepMultipliedByDisplayFactor_property.stopsBeingObserved (by: self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.stopsBeingObserved (by: self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
@@ -218,6 +222,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
     if let newValue = self.mWeakInternalValue {
       newValue.mArtworkName_property.startsBeingObserved (by: self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.startsBeingObserved (by: self.mArtworkVersion_property) // Stored property
+      newValue.mArtworkFileSystemLibraryStatus_property.startsBeingObserved (by: self.mArtworkFileSystemLibraryStatus_property) // Stored property
+      newValue.mArtworkFileSystemLibraryRequiresAttention_property.startsBeingObserved (by: self.mArtworkFileSystemLibraryRequiresAttention_property) // Stored property
+      newValue.mArtworkIsUpdatable_property.startsBeingObserved (by: self.mArtworkIsUpdatable_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.startsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       newValue.mGenerateMergerArchive_property.startsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       newValue.mGenerateBOM_property.startsBeingObserved (by: self.mGenerateBOM_property) // Stored property
@@ -329,6 +336,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mRastnetDisplayedNetName_property.startsBeingObserved (by: self.mRastnetDisplayedNetName_property) // Stored property
       newValue.mRastnetDisplayedComponentName_property.startsBeingObserved (by: self.mRastnetDisplayedComponentName_property) // Stored property
       newValue.hasInnerElements_property.startsBeingObserved (by: self.hasInnerElements_property) // Transient property
+      newValue.segmentedControlArtworkAttentionImage_property.startsBeingObserved (by: self.segmentedControlArtworkAttentionImage_property) // Transient property
       newValue.layerConfigurationString_property.startsBeingObserved (by: self.layerConfigurationString_property) // Transient property
       newValue.boardGridStepMultipliedByDisplayFactor_property.startsBeingObserved (by: self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
       newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.startsBeingObserved (by: self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
@@ -427,6 +435,24 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let mArtworkVersion_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mArtworkFileSystemLibraryStatus' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mArtworkFileSystemLibraryStatus_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mArtworkFileSystemLibraryRequiresAttention' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mArtworkFileSystemLibraryRequiresAttention_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mArtworkIsUpdatable' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mArtworkIsUpdatable_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mPDFBoardBackgroundColor' stored property
@@ -1095,6 +1121,12 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   final let hasInnerElements_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'segmentedControlArtworkAttentionImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let segmentedControlArtworkAttentionImage_property = EBTransientProperty <NSImage?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'layerConfigurationString' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1668,6 +1700,18 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
     self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mArtworkVersion_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure mArtworkFileSystemLibraryStatus simple stored property
+    self.mArtworkFileSystemLibraryStatus_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mArtworkFileSystemLibraryStatus_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mArtworkFileSystemLibraryRequiresAttention simple stored property
+    self.mArtworkFileSystemLibraryRequiresAttention_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mArtworkFileSystemLibraryRequiresAttention_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mArtworkIsUpdatable simple stored property
+    self.mArtworkIsUpdatable_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mArtworkIsUpdatable_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mPDFBoardBackgroundColor_property.optionalSelection ?? .single (nil)
@@ -2111,6 +2155,10 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure hasInnerElements transient property
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.hasInnerElements_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure segmentedControlArtworkAttentionImage transient property
+    self.segmentedControlArtworkAttentionImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.segmentedControlArtworkAttentionImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in

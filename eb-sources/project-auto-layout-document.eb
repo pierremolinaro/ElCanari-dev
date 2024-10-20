@@ -32,6 +32,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           $segmentImage root.segmentedControlSchematicIssueImage (segmentIndex : 2)
           $segmentImage root.segmentedControlNetListIssueImage (segmentIndex : 4)
           $segmentImage root.segmentedControlBoardIssueImage (segmentIndex : 6)
+          $segmentImage root.segmentedControlArtworkAttentionImage (segmentIndex : 7)
         }
         gutter
         StaticLabel (title: "Page", bold: no, size : .regular, alignment: .center)
@@ -2700,17 +2701,30 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       vStack {
         Button (title: "Import Artwork…", size : .regular) {
-          expandableWidth ()
           $hidden !root.mArtwork.none
           $run importArtworkAction 
         }
-        Button (title: "Detach Artwork", size : .regular) {
-          expandableWidth ()
-          $hidden root.mArtwork.none
-          $run detachArtworkAction 
-        }
-        Label (bold: yes, size : .regular) {
-          expandableWidth () set (alignment: .center) $title root.mArtworkName
+        hStack $hidden root.mArtwork.none {
+          StaticLabel (title: "Artwork", bold: no, size : .regular, alignment: .center)
+          Label (bold: yes, size : .regular) { $title root.mArtworkName }
+          separator
+          StaticLabel (title: "Version", bold: no, size : .regular, alignment: .center)
+          IntObserverField (bold: yes, size : .regular) {
+            $observedValue root.mArtworkVersion
+          }
+          separator
+          ImageObserverView (size: .small) { $image root.segmentedControlArtworkAttentionImage }
+          Label (bold: yes, size : .regular) { $title root.mArtworkFileSystemLibraryStatus }
+          separator
+          Button (title: "Update", size : .regular) {
+            $enabled root.mArtworkIsUpdatable
+            $run updateArtworkAction
+          }
+          Button (title: "Detach Artwork", size : .regular) {
+            expandableWidth ()
+            $hidden root.mArtwork.none
+            $run detachArtworkAction 
+          }
         }
         hStack {
           Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
@@ -2738,7 +2752,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
         space
       }
+      space    
     }
+    separator
     hStack $hidden !root.mArtwork.none {
       space
       vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular, alignment: .center) space }
@@ -2757,6 +2773,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   action importArtworkAction ;
   action detachArtworkAction ;
+  action updateArtworkAction ;
   action generateProductFilesAction ;
   transient Bool documentIsUnnamed dependsFrom self.documentFileName ;
   transient String incorrectDocumentFileDetailedErrorMessage dependsFrom self.documentFileName ;

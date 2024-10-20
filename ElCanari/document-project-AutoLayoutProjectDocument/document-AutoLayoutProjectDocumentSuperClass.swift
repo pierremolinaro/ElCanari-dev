@@ -1,6 +1,6 @@
 //
 //  AutoLayoutProjectDocumentSuperClass.swift
-//  ElCanari-Debug-temporary
+//  ElCanari
 //
 //  Created by Pierre Molinaro on 22/01/2022.
 //
@@ -10,6 +10,10 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 class AutoLayoutProjectDocumentSuperClass : EBAutoLayoutManagedDocument {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var mStandAlonePropertyComputationIsTriggered = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

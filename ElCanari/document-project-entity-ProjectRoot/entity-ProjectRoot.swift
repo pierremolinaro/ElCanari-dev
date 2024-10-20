@@ -37,6 +37,45 @@ final class ProjectRoot : EBManagedObject {
   }
 
   //································································································
+  //   Atomic property: mArtworkFileSystemLibraryStatus
+  //································································································
+
+  final let mArtworkFileSystemLibraryStatus_property : EBStandAloneProperty_String
+
+  //································································································
+
+  final var mArtworkFileSystemLibraryStatus : String {
+    get { return self.mArtworkFileSystemLibraryStatus_property.propval }
+    set { self.mArtworkFileSystemLibraryStatus_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mArtworkFileSystemLibraryRequiresAttention
+  //································································································
+
+  final let mArtworkFileSystemLibraryRequiresAttention_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mArtworkFileSystemLibraryRequiresAttention : Bool {
+    get { return self.mArtworkFileSystemLibraryRequiresAttention_property.propval }
+    set { self.mArtworkFileSystemLibraryRequiresAttention_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mArtworkIsUpdatable
+  //································································································
+
+  final let mArtworkIsUpdatable_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mArtworkIsUpdatable : Bool {
+    get { return self.mArtworkIsUpdatable_property.propval }
+    set { self.mArtworkIsUpdatable_property.setProp (newValue) }
+  }
+
+  //································································································
   //   Atomic property: mPDFBoardBackgroundColor
   //································································································
 
@@ -1393,6 +1432,18 @@ final class ProjectRoot : EBManagedObject {
   }
 
   //································································································
+  //   Transient property: segmentedControlArtworkAttentionImage
+  //································································································
+
+  final let segmentedControlArtworkAttentionImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var segmentedControlArtworkAttentionImage : NSImage? {
+    return self.segmentedControlArtworkAttentionImage_property.optionalValue
+  }
+
+  //································································································
   //   Transient property: layerConfigurationString
   //································································································
 
@@ -2183,6 +2234,9 @@ final class ProjectRoot : EBManagedObject {
   required init (_ inUndoManager : UndoManager?) {
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mArtworkName")
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mArtworkVersion")
+    self.mArtworkFileSystemLibraryStatus_property = EBStandAloneProperty_String ("")
+    self.mArtworkFileSystemLibraryRequiresAttention_property = EBStandAloneProperty_Bool (false)
+    self.mArtworkIsUpdatable_property = EBStandAloneProperty_Bool (false)
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
     self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
     self.mGenerateBOM_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateBOM")
@@ -2680,6 +2734,23 @@ final class ProjectRoot : EBManagedObject {
       }
     }
     self.mArtwork_property.hasInnerElements_property.startsBeingObserved (by: self.hasInnerElements_property)
+  //--- Atomic property: segmentedControlArtworkAttentionImage
+    self.segmentedControlArtworkAttentionImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mArtworkFileSystemLibraryRequiresAttention_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_segmentedControlArtworkAttentionImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtworkFileSystemLibraryRequiresAttention_property.startsBeingObserved (by: self.segmentedControlArtworkAttentionImage_property)
   //--- Atomic property: layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

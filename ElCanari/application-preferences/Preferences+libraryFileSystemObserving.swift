@@ -60,8 +60,8 @@ extension Preferences {
     )
     if let stream = gStream {
       FSEventStreamSetDispatchQueue (stream, DispatchQueue.main)
-//      FSEventStreamScheduleWithRunLoop (stream, CFRunLoopGetMain (), "" as CFString) // Deprecated
       FSEventStreamStart (stream)
+      runCallbackForFSEvent ()
 //      Swift.print ("Start observing \(pathsToWatch)")
     }
   }
@@ -103,13 +103,19 @@ extension Preferences {
                                     eventPaths _ : UnsafeMutableRawPointer,
                                     eventFlags _ : UnsafePointer <FSEventStreamEventFlags>?,
                                     eventIds _ : UnsafePointer <FSEventStreamEventId>?) {
+  runCallbackForFSEvent ()
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor fileprivate func runCallbackForFSEvent () {
 //  Swift.print ("callbackForFSEvent")
   gPreferences?.updateLibrariesUserInterfaceStatus ()
   for document in NSDocumentController.shared.documents {
     if let deviceDocument = document as? AutoLayoutDeviceDocument {
-      deviceDocument.checkEmbeddedPackagesAndSymbols ()
+      deviceDocument.triggerStandAlonePropertyComputationForDeviceDocument ()
     }else if let projectDocument = document as? AutoLayoutProjectDocument {
-      projectDocument.checkEmbeddedDevicesAndFonts ()
+      projectDocument.triggerStandAlonePropertyComputationForProject ()
     }
   }
   gPreferences?.checkFileSystemLibrary ()

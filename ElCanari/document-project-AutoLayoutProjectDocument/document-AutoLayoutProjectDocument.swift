@@ -619,6 +619,7 @@ import AppKit
             .bind_segmentImage (self.rootObject.segmentedControlSchematicIssueImage_property, segmentIndex:2)
             .bind_segmentImage (self.rootObject.segmentedControlNetListIssueImage_property, segmentIndex:4)
             .bind_segmentImage (self.rootObject.segmentedControlBoardIssueImage_property, segmentIndex:6)
+            .bind_segmentImage (self.rootObject.segmentedControlArtworkAttentionImage_property, segmentIndex:7)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -5732,7 +5733,6 @@ do{
         let vStackView_view_view = AutoLayoutVerticalStackView ()
         do{
           let vStackView_view_view_view = AutoLayoutButton (title: "Import Artwork…", size: .regular)
-            .expandableWidth ()
             .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
             .bind_run (
               target: self,
@@ -5741,20 +5741,58 @@ do{
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutButton (title: "Detach Artwork", size: .regular)
-            .expandableWidth ()
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
             .bind_hidden (.prop (self.rootObject.mArtwork_none))
-            .bind_run (
-              target: self,
-              selector: #selector (AutoLayoutProjectDocument.detachArtworkAction (_:))
-            )
-          _ = vStackView_view_view .appendView (vStackView_view_view_view)
-        }
-        do{
-          let vStackView_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
-            .expandableWidth ()
-            .set (alignment: .center)
-            .bind_title (self.rootObject.mArtworkName_property)
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Artwork", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
+              .bind_title (self.rootObject.mArtworkName_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          _ = vStackView_view_view_view.appendSeparator ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutIntObserverField (bold: true, size: .regular)
+              .bind_observedValue (self.rootObject.mArtworkVersion_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          _ = vStackView_view_view_view.appendSeparator ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutImageObserverView (size: .small)
+              .bind_image (self.rootObject.segmentedControlArtworkAttentionImage_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
+              .bind_title (self.rootObject.mArtworkFileSystemLibraryStatus_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          _ = vStackView_view_view_view.appendSeparator ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutButton (title: "Update", size: .regular)
+              .bind_enabled (.prop (self.rootObject.mArtworkIsUpdatable_property))
+              .bind_run (
+                target: self,
+                selector: #selector (AutoLayoutProjectDocument.updateArtworkAction (_:))
+              )
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutButton (title: "Detach Artwork", size: .regular)
+              .expandableWidth ()
+              .bind_hidden (.prop (self.rootObject.mArtwork_none))
+              .bind_run (
+                target: self,
+                selector: #selector (AutoLayoutProjectDocument.detachArtworkAction (_:))
+              )
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -5809,8 +5847,10 @@ do{
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
+      _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
         .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))

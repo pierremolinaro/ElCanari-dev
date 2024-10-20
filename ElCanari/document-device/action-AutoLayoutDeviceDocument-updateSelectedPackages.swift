@@ -17,7 +17,7 @@ extension AutoLayoutDeviceDocument {
     var okMessages = [String] ()
     var errorMessages = [String] ()
     self.performPackagesUpdate (selectedPackages, okMessages: &okMessages, errorMessages: &errorMessages)
-    self.checkEmbeddedPackagesAndSymbols ()
+    self.triggerStandAlonePropertyComputationForDeviceDocument ()
 //--- END OF USER ZONE 2
   }
 }

@@ -14,7 +14,7 @@ extension AutoLayoutDeviceDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func checkEmbeddedPackagesAndSymbols () {
+  func triggerStandAlonePropertyComputationForDeviceDocument () {
     self.checkEmbeddedPackages ()
     self.checkEmbeddedSymbols ()
   }

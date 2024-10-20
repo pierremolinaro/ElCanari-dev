@@ -344,8 +344,8 @@ final class PackageInDevice : EBGraphicManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String (defaultValue: "")
-    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (defaultValue: false)
+    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String ("")
+    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (false)
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mVersion")

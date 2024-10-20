@@ -7,6 +7,9 @@ handlingOpposite entity ProjectRoot {
   property @generateDirectAccess String mArtworkName default "" ;
   property @generateDirectAccess Int mArtworkVersion default 0 ;
   toOne ArtworkRoot mArtwork ;
+  standalone property String mArtworkFileSystemLibraryStatus default "" ;
+  standalone property Bool mArtworkFileSystemLibraryRequiresAttention default no ;
+  standalone property Bool mArtworkIsUpdatable default no ;
 
   property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
   property proxy Int minPPTPTTTW : mArtwork.minPPTPTTTW ;
@@ -30,6 +33,10 @@ handlingOpposite entity ProjectRoot {
   property proxy String artworkTitle : mArtwork.title ;
   property proxy LayerConfiguration artworkLayerConfiguration : mArtwork.layerConfiguration ;
  
+  transient NSImage segmentedControlArtworkAttentionImage dependsFrom
+    self.mArtworkFileSystemLibraryRequiresAttention
+  ;
+
 //--- Generation
   property @generateDirectRead NSColor mPDFBoardBackgroundColor default lightGray ;
   property Bool mGenerateMergerArchive default yes ;
