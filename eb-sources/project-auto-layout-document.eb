@@ -2757,7 +2757,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     hStack $hidden !root.mArtwork.none {
       space
-      vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular, alignment: .center) space }
+      vStack {
+        space
+        StaticLabel (title: "No Artwork", bold: yes, size : .regular, alignment: .center)
+        space 
+      }
       space
     }
     vStack $hidden root.mArtwork.none {

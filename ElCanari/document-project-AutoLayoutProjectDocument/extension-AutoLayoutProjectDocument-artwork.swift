@@ -80,7 +80,9 @@ extension AutoLayoutProjectDocument {
       }
     }
     if foundPaths.count == 1, let data = try? Data (contentsOf: URL (fileURLWithPath: foundPaths [0])) {
+      self.undoManager?.disableUndoRegistration ()
       let documentReadData = loadEasyBindingFile (fromData: data, documentName: foundPaths [0].lastPathComponent, undoManager: self.undoManager)
+      self.undoManager?.enableUndoRegistration ()
       switch documentReadData {
       case .ok (let documentData) :
         if let artworkRoot = documentData.documentRootObject as? ArtworkRoot,
