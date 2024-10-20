@@ -80,14 +80,13 @@ extension AutoLayoutProjectDocument {
       }
     }
     if foundPaths.count == 1, let data = try? Data (contentsOf: URL (fileURLWithPath: foundPaths [0])) {
-      let documentReadData = loadEasyBindingFile (fromData: data, documentName: foundPaths [0].lastPathComponent, undoManager: nil) // self.undoManager)
+      let documentReadData = loadEasyBindingFile (fromData: data, documentName: foundPaths [0].lastPathComponent, undoManager: self.undoManager)
       switch documentReadData {
       case .ok (let documentData) :
         if let artworkRoot = documentData.documentRootObject as? ArtworkRoot,
            let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
           self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
           self.invalidateERC ()
-          self.rootObject.mArtwork = nil
           self.rootObject.mArtwork = artworkRoot
           self.rootObject.mArtworkVersion = version
           self.triggerStandAlonePropertyComputationForProject ()
