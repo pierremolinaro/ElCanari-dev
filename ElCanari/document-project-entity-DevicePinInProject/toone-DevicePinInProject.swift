@@ -292,7 +292,8 @@ final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-    self.mWeakInternalValue = inObject.mOldValue
+  //  self.mWeakInternalValue = inObject.mOldValue
+    self.setProp (inObject.mOldValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -304,7 +305,7 @@ final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject,
       selector: #selector (Self.myPerformUndo (_:)),
       object: MyPrivateUndoer (inOldValue)
     )
-//    self.undoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
+//    self.undoManager?.registerUndo (withTarget: self) { $0.setProp (inOldValue) }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {

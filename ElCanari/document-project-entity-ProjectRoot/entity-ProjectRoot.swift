@@ -1405,12 +1405,12 @@ final class ProjectRoot : EBManagedObject {
     }
     set {
       if self.mArtwork_property.propval !== newValue {
-//        if self.mArtwork_property.propval != nil {
-//          self.mArtwork_property.setProp (nil)
-//        }
-//        if newValue != nil {
+        if self.mArtwork_property.propval != nil {
+          self.mArtwork_property.setProp (nil)
+        }
+        if newValue != nil {
           self.mArtwork_property.setProp (newValue)
-//        }
+        }
       }
     }
   }

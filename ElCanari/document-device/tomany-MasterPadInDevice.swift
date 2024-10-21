@@ -592,7 +592,8 @@ class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSi
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-    self.mInternalArrayValue = inObject.mOldValue
+  //  self.mWeakInternalValue = inObject.mOldValue
+    self.setProp (inObject.mOldValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -606,7 +607,7 @@ class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSi
     )
 //    self.undoManager?.registerUndo (withTarget: self) { (inSelfObject) in
 //      // DispatchQueue.main.async {
-//        inSelfObject.mInternalArrayValue = inOldValue
+//        inSelfObject.setProp (inOldValue)
 //      // }
 //    }
   //---
