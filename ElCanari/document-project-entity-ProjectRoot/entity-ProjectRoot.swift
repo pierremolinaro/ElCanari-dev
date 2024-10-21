@@ -1404,14 +1404,15 @@ final class ProjectRoot : EBManagedObject {
       return self.mArtwork_property.propval
     }
     set {
-      if self.mArtwork_property.propval !== newValue {
+      self.mArtwork_property.setProp (newValue)
+      /* if self.mArtwork_property.propval !== newValue {
         if self.mArtwork_property.propval != nil {
           self.mArtwork_property.setProp (nil)
         }
         if newValue != nil {
           self.mArtwork_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 
@@ -1504,14 +1505,15 @@ final class ProjectRoot : EBManagedObject {
       return self.mSelectedSheet_property.propval
     }
     set {
-      if self.mSelectedSheet_property.propval !== newValue {
+      self.mSelectedSheet_property.setProp (newValue)
+      /* if self.mSelectedSheet_property.propval !== newValue {
         if self.mSelectedSheet_property.propval != nil {
           self.mSelectedSheet_property.setProp (nil)
         }
         if newValue != nil {
           self.mSelectedSheet_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

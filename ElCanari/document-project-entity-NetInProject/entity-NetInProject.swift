@@ -138,14 +138,15 @@ final class NetInProject : EBManagedObject,
       return self.mNetClass_property.propval
     }
     set {
-      if self.mNetClass_property.propval !== newValue {
+      self.mNetClass_property.setProp (newValue)
+      /* if self.mNetClass_property.propval !== newValue {
         if self.mNetClass_property.propval != nil {
           self.mNetClass_property.setProp (nil)
         }
         if newValue != nil {
           self.mNetClass_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

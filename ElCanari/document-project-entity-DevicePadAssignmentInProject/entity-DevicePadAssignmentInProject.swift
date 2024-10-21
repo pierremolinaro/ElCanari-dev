@@ -57,14 +57,15 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       return self.mPin_property.propval
     }
     set {
-      if self.mPin_property.propval !== newValue {
+      self.mPin_property.setProp (newValue)
+      /* if self.mPin_property.propval !== newValue {
         if self.mPin_property.propval != nil {
           self.mPin_property.setProp (nil)
         }
         if newValue != nil {
           self.mPin_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

@@ -118,14 +118,15 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       return self.myModel_property.propval
     }
     set {
-      if self.myModel_property.propval !== newValue {
+      self.myModel_property.setProp (newValue)
+      /* if self.myModel_property.propval !== newValue {
         if self.myModel_property.propval != nil {
           self.myModel_property.setProp (nil)
         }
         if newValue != nil {
           self.myModel_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 
@@ -182,14 +183,15 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       return self.myRoot_property.propval
     }
     set {
-      if self.myRoot_property.propval !== newValue {
+      self.myRoot_property.setProp (newValue)
+      /* if self.myRoot_property.propval !== newValue {
         if self.myRoot_property.propval != nil {
           self.myRoot_property.setProp (nil)
         }
         if newValue != nil {
           self.myRoot_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

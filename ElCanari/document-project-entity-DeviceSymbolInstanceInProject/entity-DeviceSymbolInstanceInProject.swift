@@ -71,14 +71,15 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       return self.mSymbolType_property.propval
     }
     set {
-      if self.mSymbolType_property.propval !== newValue {
+      self.mSymbolType_property.setProp (newValue)
+      /* if self.mSymbolType_property.propval !== newValue {
         if self.mSymbolType_property.propval != nil {
           self.mSymbolType_property.setProp (nil)
         }
         if newValue != nil {
           self.mSymbolType_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

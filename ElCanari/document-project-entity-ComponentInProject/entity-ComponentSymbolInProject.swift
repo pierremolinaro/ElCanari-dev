@@ -330,14 +330,15 @@ final class ComponentSymbolInProject : SchematicObject,
       return self.mComponent_property.propval
     }
     set {
-      if self.mComponent_property.propval !== newValue {
+      self.mComponent_property.setProp (newValue)
+      /* if self.mComponent_property.propval !== newValue {
         if self.mComponent_property.propval != nil {
           self.mComponent_property.setProp (nil)
         }
         if newValue != nil {
           self.mComponent_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

@@ -65,14 +65,15 @@ final class WireInSchematic : SchematicObject,
       return self.mP1_property.propval
     }
     set {
-      if self.mP1_property.propval !== newValue {
+      self.mP1_property.setProp (newValue)
+      /* if self.mP1_property.propval !== newValue {
         if self.mP1_property.propval != nil {
           self.mP1_property.setProp (nil)
         }
         if newValue != nil {
           self.mP1_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 
@@ -93,14 +94,15 @@ final class WireInSchematic : SchematicObject,
       return self.mP2_property.propval
     }
     set {
-      if self.mP2_property.propval !== newValue {
+      self.mP2_property.setProp (newValue)
+      /* if self.mP2_property.propval !== newValue {
         if self.mP2_property.propval != nil {
           self.mP2_property.setProp (nil)
         }
         if newValue != nil {
           self.mP2_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

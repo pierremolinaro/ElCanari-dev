@@ -283,14 +283,15 @@ final class BoardText : BoardObject,
       return self.mFont_property.propval
     }
     set {
-      if self.mFont_property.propval !== newValue {
+      self.mFont_property.setProp (newValue)
+      /* if self.mFont_property.propval !== newValue {
         if self.mFont_property.propval != nil {
           self.mFont_property.setProp (nil)
         }
         if newValue != nil {
           self.mFont_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

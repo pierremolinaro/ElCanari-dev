@@ -58,14 +58,15 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       return self.mSymbolInstance_property.propval
     }
     set {
-      if self.mSymbolInstance_property.propval !== newValue {
+      self.mSymbolInstance_property.setProp (newValue)
+      /* if self.mSymbolInstance_property.propval !== newValue {
         if self.mSymbolInstance_property.propval != nil {
           self.mSymbolInstance_property.setProp (nil)
         }
         if newValue != nil {
           self.mSymbolInstance_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 
@@ -86,14 +87,15 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       return self.mType_property.propval
     }
     set {
-      if self.mType_property.propval !== newValue {
+      self.mType_property.setProp (newValue)
+      /* if self.mType_property.propval !== newValue {
         if self.mType_property.propval != nil {
           self.mType_property.setProp (nil)
         }
         if newValue != nil {
           self.mType_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 
@@ -114,14 +116,15 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       return self.mPadProxy_property.propval
     }
     set {
-      if self.mPadProxy_property.propval !== newValue {
+      self.mPadProxy_property.setProp (newValue)
+      /* if self.mPadProxy_property.propval !== newValue {
         if self.mPadProxy_property.propval != nil {
           self.mPadProxy_property.setProp (nil)
         }
         if newValue != nil {
           self.mPadProxy_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

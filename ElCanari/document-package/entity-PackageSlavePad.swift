@@ -385,14 +385,15 @@ final class PackageSlavePad : PackageObject,
       return self.master_property.propval
     }
     set {
-      if self.master_property.propval !== newValue {
+      self.master_property.setProp (newValue)
+      /* if self.master_property.propval !== newValue {
         if self.master_property.propval != nil {
           self.master_property.setProp (nil)
         }
         if newValue != nil {
           self.master_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

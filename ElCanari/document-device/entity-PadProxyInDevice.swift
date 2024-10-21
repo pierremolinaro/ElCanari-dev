@@ -97,14 +97,15 @@ final class PadProxyInDevice : EBManagedObject,
       return self.mPinInstance_property.propval
     }
     set {
-      if self.mPinInstance_property.propval !== newValue {
+      self.mPinInstance_property.setProp (newValue)
+      /* if self.mPinInstance_property.propval !== newValue {
         if self.mPinInstance_property.propval != nil {
           self.mPinInstance_property.setProp (nil)
         }
         if newValue != nil {
           self.mPinInstance_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 

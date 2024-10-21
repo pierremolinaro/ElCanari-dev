@@ -445,14 +445,15 @@ final class PackagePad : PackageObject,
       return self.zone_property.propval
     }
     set {
-      if self.zone_property.propval !== newValue {
+      self.zone_property.setProp (newValue)
+      /* if self.zone_property.propval !== newValue {
         if self.zone_property.propval != nil {
           self.zone_property.setProp (nil)
         }
         if newValue != nil {
           self.zone_property.setProp (newValue)
         }
-      }
+      } */
     }
   }
 
