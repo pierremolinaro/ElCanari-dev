@@ -192,6 +192,8 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
       validate = true
     }else if action == #selector (Self.openElCanariDocumentationAction (_:)) {
       validate = true
+    }else if action == #selector (Self.openLibraryConsistencyWindowAction (_:)) {
+      validate = true
     }else{
       validate = false
     }

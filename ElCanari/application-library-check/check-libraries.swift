@@ -33,76 +33,132 @@ extension Preferences {
     var errorCount = 0
   //---------- Previous Tab View selection
     let previousSelectedTab = self.mLibraryConsistencyLogTabView?.indexOfSelectedItem ?? 0
-//    if let stackView = window.contentView as? AutoLayoutVerticalStackView,
-//       stackView.subviews.count > 1,
-//       let tabView = stackView.subviews [1] as? AutoLayoutTabView {
-//      previousSelectedTab = tabView.indexOfSelectedItem
-//    }else{
-//      previousSelectedTab = nil
-//    }
-  //---------- Check library button
-//    let button = AutoLayoutButton (title: "Check Library", size: .regular)
-//      .expandableWidth ()
-//    button.setClosureAction { self.checkFileSystemLibrary () }
+  //---------- Comment
+    let comment = AutoLayoutStaticLabel (
+      title: "ElCanari observes file system, this window is automatically updated on changes",
+      bold: false,
+      size: .regular,
+      alignment: .center
+    )
   //---------- Tab View
     let tabView = AutoLayoutTabView (size: .regular)
       .expandableWidth ()
       .expandableHeight ()
     self.mLibraryConsistencyLogTabView = tabView
-//    window.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (button).appendView (tabView))
-    window.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (tabView))
+    window.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (comment).appendView (tabView))
   //---------- Checking Symbols
-    let symbolTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
+    let symbolTabContents = AutoLayoutVerticalStackViewWithScrollBar ().set (margins: .large)
     var symbolDict : [String : PMSymbolDictionaryEntry] = [:]
     let symbolErrorCount = self.checkSymbolLibrary (symbolTabContents, symbolDict: &symbolDict)
     errorCount += symbolErrorCount
+    var title : String
+    if symbolDict.count == 0 {
+      title = "No symbol"
+    }else if symbolDict.count == 1 {
+      title = "1 symbol"
+    }else{
+      title = "\(symbolDict.count) symbols"
+    }
+    if symbolErrorCount == 1 {
+      title += " (1 error)"
+    }else if symbolErrorCount > 1 {
+      title += " (\(symbolErrorCount) errors)"
+    }
     _ = tabView.addTab (
-      title: "\(symbolDict.count) symbols",
+      title: title,
       image : (symbolErrorCount == 0) ? NSImage.statusSuccess : NSImage.statusError,
       tooltip: "",
       contentView: symbolTabContents.appendFlexibleSpace ()
     )
   //---------- Checking Packages
-    let packageTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
+    let packageTabContents = AutoLayoutVerticalStackViewWithScrollBar ().set (margins: .large)
     var packageDict : [String : PMPackageDictionaryEntry] = [:]
     let packageErrorCount = checkPackageLibrary (packageTabContents, packageDict: &packageDict)
     errorCount += packageErrorCount
+    if packageDict.count == 0 {
+      title = "No package"
+    }else if packageDict.count == 1 {
+      title = "1 package"
+    }else{
+      title = "\(packageDict.count) packages"
+    }
+    if packageErrorCount == 1 {
+      title += " (1 error)"
+    }else if packageErrorCount > 1 {
+      title += " (\(packageErrorCount) errors)"
+    }
     _ = tabView.addTab (
-      title: "\(packageDict.count) packages",
+      title: title,
       image : (packageErrorCount == 0) ? NSImage.statusSuccess : NSImage.statusError,
       tooltip: "",
       contentView: packageTabContents.appendFlexibleSpace ()
     )
   //---------- Checking Devices
-    let deviceTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
+    let deviceTabContents = AutoLayoutVerticalStackViewWithScrollBar ().set (margins: .large)
     let (deviceCount, deviceErrorCount) = self.checkDeviceLibrary (
-        deviceTabContents,
-        symbolDict: symbolDict,
-        packageDict: packageDict
+      deviceTabContents,
+      symbolDict: symbolDict,
+      packageDict: packageDict
     )
     errorCount += deviceErrorCount
+    if deviceCount == 0 {
+      title = "No device"
+    }else if deviceCount == 1 {
+      title = "1 device"
+    }else{
+      title = "\(deviceCount) devices"
+    }
+    if deviceErrorCount == 1 {
+      title += " (1 error)"
+    }else if deviceErrorCount > 1 {
+      title += " (\(deviceErrorCount) errors)"
+    }
     _ = tabView.addTab (
-      title: "\(deviceCount) devices",
+      title: title,
       image : (deviceErrorCount == 0) ? NSImage.statusSuccess : NSImage.statusError,
       tooltip: "",
       contentView: deviceTabContents.appendFlexibleSpace ()
     )
   //--------- Checking Fonts
-    let fontTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
+    let fontTabContents = AutoLayoutVerticalStackViewWithScrollBar ().set (margins: .large)
     let (fontCount, fontErrorCount) = checkFontLibrary (fontTabContents)
     errorCount += fontErrorCount
+    if fontCount == 0 {
+      title = "No font"
+    }else if fontCount == 1 {
+      title = "1 font"
+    }else{
+      title = "\(fontCount) fonts"
+    }
+    if fontErrorCount == 1 {
+      title += " (1 error)"
+    }else if deviceErrorCount > 1 {
+      title += " (\(fontErrorCount) errors)"
+    }
     _ = tabView.addTab (
-      title: "\(fontCount) fonts",
+      title: title,
       image : (fontErrorCount == 0) ? NSImage.statusSuccess : NSImage.statusError,
       tooltip: "",
       contentView: fontTabContents.appendFlexibleSpace ()
     )
   //--------- Checking Artworks
-    let artworkTabContents = AutoLayoutVerticalStackView ().set (margins: .large)
+    let artworkTabContents = AutoLayoutVerticalStackViewWithScrollBar ().set (margins: .large)
     let (arworkCount, artworkErrorCount) = checkArtworkLibrary (artworkTabContents)
     errorCount += artworkErrorCount
+    if arworkCount == 0 {
+      title = "No artwork"
+    }else if arworkCount == 1 {
+      title = "1 artwork"
+    }else{
+      title = "\(arworkCount) artworks"
+    }
+    if artworkErrorCount == 1 {
+      title += " (1 error)"
+    }else if artworkErrorCount > 1 {
+      title += " (\(artworkErrorCount) errors)"
+    }
     _ = tabView.addTab (
-      title: "\(arworkCount) artworks",
+      title: title,
       image : (artworkErrorCount == 0) ? NSImage.statusSuccess : NSImage.statusError,
       tooltip: "",
       contentView: artworkTabContents.appendFlexibleSpace ()
@@ -110,27 +166,6 @@ extension Preferences {
   //---------
     tabView.selectTab (atIndex: previousSelectedTab)
     preferences_fileSystemLibraryIsOk_property.setProp (errorCount == 0)
-
-//    if let idx = previousSelectedTab {
-//      tabView.selectTab (atIndex: idx)
-//    }
-  //---------
-//    if errorCount > 0 {
-//      let alert = NSAlert ()
-//      alert.messageText = "There are inconsistencies in the librairies"
-//      _ = alert.addButton (withTitle: "Ok")
-//      _ = alert.addButton (withTitle: "Show Log Window")
-//      alert.informativeText = "Select the 'Show Log Window' button for details."
-//      alert.beginSheetModal (for: inWindow) { inReturnCode in
-//        if inReturnCode == .alertSecondButtonReturn {
-//          inLogWindow.makeKeyAndOrderFront (nil)
-//        }
-//      }
-//    }else{
-//      let alert = NSAlert ()
-//      alert.messageText = "Librairies are consistent."
-//      alert.beginSheetModal (for: inWindow)
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -139,7 +174,7 @@ extension Preferences {
 
 //--------------------------------------------------------------------------------------------------
 
-extension AutoLayoutVerticalStackView {
+fileprivate extension AutoLayoutVerticalStackViewWithScrollBar {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -209,7 +244,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkDeviceLibrary (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func checkDeviceLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                        atPath inDeviceFullPath : String,
                                        deviceDict ioDeviceDict : inout [String : PMDeviceDictionaryEntry],
                                        errorCount ioErrorCount : inout Int) {
@@ -293,7 +328,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func performDeviceLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func performDeviceLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                   atPath inPackageLibraryPath : String,
                                   deviceDict ioDeviceDict : inout [String : PMDeviceDictionaryEntry],
                                   errorCount ioErrorCount : inout Int) {
@@ -312,11 +347,12 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkDeviceLibrary (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func checkDeviceLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                        symbolDict inSymbolDict : [String : PMSymbolDictionaryEntry],
                                        packageDict inPackageDict : [String : PMPackageDictionaryEntry]) -> (Int, Int) {
     var deviceDict : [String : PMDeviceDictionaryEntry] = [:]
     inStackView.appendText ("Device Library Pathes", bold: true)
+    let MAX_DISPLAYED_ERRORS = 10
     var errorCount = 0
     for path in existingLibraryPathArray () {
       let deviceLibraryPath = deviceLibraryPathForPath (path)
@@ -325,78 +361,139 @@ extension Preferences {
     }
   //--- Display duplicate entries and invalid entries
     var deviceToUpdateSet = Set <String> ()
+    var moreErrorCount = 0
     for (deviceName, entry) in deviceDict {
-      if entry.partStatus != .partIsValid {
-        _ = inStackView.appendSeparator ()
-      }
-      switch entry.partStatus {
-      case .partIsDuplicated :
-        inStackView.appendError ("  Error; several files for '\(deviceName)' device")
-        errorCount += 1
-      case .partHasUnknownStatus :
-        inStackView.appendError ("  Error; '\(deviceName)' device has unknown status")
-        errorCount += 1
-      case .partHasInvalidName :
-        inStackView.appendError ("  Error; '\(deviceName)' device has an invalid name")
-        errorCount += 1
-      case .partHasError :
-        inStackView.appendError ("  Error; '\(deviceName)' device contains error(s)")
-        errorCount += 1
-      case .partHasWarning :
-        inStackView.appendError ("  Error; '\(deviceName)' device contains warning(s)")
-        errorCount += 1
-      case .partIsValid :
-      //--- Check imported symbols
-        var deviceHasError = false
-        for (importedSymbolName, importedSymbolVersion) in entry.symbolDictionary {
-          if inSymbolDict [importedSymbolName] == nil {
-            if !deviceHasError {
-              deviceHasError = true
-              _ = inStackView.appendSeparator ()
+      if errorCount >= MAX_DISPLAYED_ERRORS {
+        switch entry.partStatus {
+        case .partIsDuplicated, .partHasUnknownStatus, .partHasInvalidName, .partHasError, .partHasWarning :
+          moreErrorCount += 1
+          errorCount += 1
+        case .partIsValid :
+        //--- Check imported symbols
+          for (importedSymbolName, _) in entry.symbolDictionary {
+            if inSymbolDict [importedSymbolName] == nil {
+              moreErrorCount += 1
+              errorCount += 1
             }
-            var message = "  Error; '"
-            message += deviceName
-            message += "' device contains the '"
-            message += importedSymbolName
-            message += "' symbol, but this symbol is not defined by the library\n"
-            inStackView.appendError (message)
-            errorCount += 1
-          }else if inSymbolDict [importedSymbolName]!.version != importedSymbolVersion {
-            deviceToUpdateSet.insert (entry.pathArray[0])
+          }
+        //--- Check imported package
+          for (importedPackageName, _) in entry.packageDictionary {
+            if inPackageDict [importedPackageName] == nil {
+              moreErrorCount += 1
+              errorCount += 1
+            }
           }
         }
-      //--- Check imported package
-        for (importedPackageName, importedPackageVersion) in entry.packageDictionary {
-          if inPackageDict [importedPackageName] == nil {
-            if !deviceHasError {
-              deviceHasError = true
-              _ = inStackView.appendSeparator ()
-            }
-            var message = "  Error; '"
-            message += deviceName
-            message += "' device contains the '"
-            message += importedPackageName
-            message += "' package, but this package is not defined by the library\n"
-            inStackView.appendError (message)
-            errorCount += 1
-          }else if inPackageDict [importedPackageName]!.version != importedPackageVersion {
-            deviceToUpdateSet.insert (entry.pathArray[0])
-          }
+      }else{
+        if entry.partStatus != .partIsValid {
+          _ = inStackView.appendSeparator ()
         }
-        if deviceHasError || (entry.partStatus != .partIsValid) {
+        switch entry.partStatus {
+        case .partIsDuplicated :
+          inStackView.appendError ("  Error; several files for '\(deviceName)' device")
           for path in entry.pathArray {
             inStackView.appendOpenDocumentButton (path)
+          }
+          errorCount += 1
+        case .partHasUnknownStatus :
+          inStackView.appendError ("  Error; '\(deviceName)' device has unknown status")
+          errorCount += 1
+        case .partHasInvalidName :
+          inStackView.appendError ("  Error; '\(deviceName)' device has an invalid name")
+          errorCount += 1
+        case .partHasError :
+          inStackView.appendError ("  Error; '\(deviceName)' device contains error(s)")
+          errorCount += 1
+        case .partHasWarning :
+          inStackView.appendError ("  Error; '\(deviceName)' device contains warning(s)")
+          errorCount += 1
+        case .partIsValid :
+        //--- Check imported symbols
+          var deviceHasError = false
+          for (importedSymbolName, importedSymbolVersion) in entry.symbolDictionary {
+            if inSymbolDict [importedSymbolName] == nil {
+              if !deviceHasError {
+                deviceHasError = true
+                _ = inStackView.appendSeparator ()
+              }
+              var message = "  Error; '"
+              message += deviceName
+              message += "' device contains the '"
+              message += importedSymbolName
+              message += "' symbol, but this symbol is not defined by the library\n"
+              inStackView.appendError (message)
+              errorCount += 1
+            }else if inSymbolDict [importedSymbolName]!.version != importedSymbolVersion {
+              deviceToUpdateSet.insert (entry.pathArray[0])
+            }
+          }
+        //--- Check imported package
+          for (importedPackageName, importedPackageVersion) in entry.packageDictionary {
+            if inPackageDict [importedPackageName] == nil {
+              if !deviceHasError {
+                deviceHasError = true
+                _ = inStackView.appendSeparator ()
+              }
+              var message = "  Error; '"
+              message += deviceName
+              message += "' device contains the '"
+              message += importedPackageName
+              message += "' package, but this package is not defined by the library\n"
+              inStackView.appendError (message)
+              errorCount += 1
+            }else if inPackageDict [importedPackageName]!.version != importedPackageVersion {
+              deviceToUpdateSet.insert (entry.pathArray[0])
+            }
+          }
+          if deviceHasError || (entry.partStatus != .partIsValid) {
+            for path in entry.pathArray {
+              inStackView.appendOpenDocumentButton (path)
+            }
           }
         }
       }
     }
+//  //--- Count duplicate entries and invalid entries
+//    var moreErrorCount = 0
+//    for (_, entry) in deviceDict {
+//      switch entry.partStatus {
+//      case .partIsDuplicated, .partHasUnknownStatus, .partHasInvalidName, .partHasError, .partHasWarning :
+//        moreErrorCount += 1
+//      case .partIsValid :
+//      //--- Check imported symbols
+//        for (importedSymbolName, _) in entry.symbolDictionary {
+//          if inSymbolDict [importedSymbolName] == nil {
+//            moreErrorCount += 1
+//          }
+//        }
+//      //--- Check imported package
+//        for (importedPackageName, _) in entry.packageDictionary {
+//          if inPackageDict [importedPackageName] == nil {
+//            moreErrorCount += 1
+//          }
+//        }
+//      }
+//    }
+    if moreErrorCount == 1 {
+      inStackView.appendSeparator ().appendError ("  …and 1 more error")
+    }else if moreErrorCount > 1 {
+      inStackView.appendSeparator ().appendError ("  …and \(moreErrorCount) more errors")
+    }
   //---
-    if !deviceToUpdateSet.isEmpty {
-      inStackView.appendSeparator ()
-        .appendText ("Theses devices should be updated", bold: true)
-      for path in deviceToUpdateSet {
-        inStackView.appendOpenDocumentButton (path)
-        errorCount += 1
+    if errorCount < MAX_DISPLAYED_ERRORS {
+      if !deviceToUpdateSet.isEmpty {
+        inStackView.appendSeparator ().appendSeparator ()
+          .appendText ("Theses devices should be updated", bold: true)
+        for path in deviceToUpdateSet {
+          inStackView.appendSeparator ().appendOpenDocumentButton (path)
+          errorCount += 1
+        }
+      }
+    }else{
+      if deviceToUpdateSet.count == 1 {
+        inStackView.appendError ("  …and 1 more updatable device")
+      }else if deviceToUpdateSet.count > 1 {
+        inStackView.appendError ("  …and \(deviceToUpdateSet.count) more updatable devices")
       }
     }
   //---
@@ -424,7 +521,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkSymbolLibrary (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func checkSymbolLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                        atPath inSymbolFullPath : String,
                                        symbolDict ioSymbolDict : inout [String : PMSymbolDictionaryEntry],
                                        errorCount ioErrorCount : inout Int) {
@@ -477,7 +574,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor fileprivate func performSymbolLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+  @MainActor fileprivate func performSymbolLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                                     atPath inSymbolLibraryPath : String,
                                                     errorCount ioErrorCount : inout Int,
                                                     symbolDict ioSymbolDict : inout [String : PMSymbolDictionaryEntry]) {
@@ -496,9 +593,10 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkSymbolLibrary (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func checkSymbolLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                        symbolDict ioSymbolDict : inout [String : PMSymbolDictionaryEntry]) -> Int {
     inStackView.appendText ("Symbol Library Pathes", bold: true)
+    let MAX_DISPLAYED_ERRORS = 10
     var errorCount = 0
     for path in existingLibraryPathArray () {
       let symbolLibraryPath = symbolLibraryPathForPath (path)
@@ -506,34 +604,47 @@ extension Preferences {
       performSymbolLibraryEnumeration (inStackView, atPath: symbolLibraryPath, errorCount: &errorCount, symbolDict: &ioSymbolDict)
     }
   //--- Display duplicate entries for symbols, invalid entries
+    var moreErrorCount = 0
     for (symbolName, entry) in ioSymbolDict {
-      if entry.partStatus != .partIsValid {
-        _ = inStackView.appendSeparator ()
-      }
-      switch entry.partStatus {
-      case .partIsDuplicated :
-        inStackView.appendError ("  Error; several files for '\(symbolName)' symbol")
-        errorCount += 1
-      case .partHasUnknownStatus :
-        inStackView.appendError ("  Error; '\(symbolName)' symbol has unknown status")
-        errorCount += 1
-      case .partHasInvalidName :
-        inStackView.appendError ("  Error; '\(symbolName)' symbol has an invalid name")
-        errorCount += 1
-      case .partHasError :
-        inStackView.appendError ("  Error; '\(symbolName)' symbol contains error(s)")
-        errorCount += 1
-      case .partHasWarning :
-        inStackView.appendError ("  Error; '\(symbolName)' symbol contains warning(s)")
-        errorCount += 1
-      case .partIsValid :
-        break
-      }
-      if entry.partStatus != .partIsValid {
-        for path in entry.pathArray {
-          inStackView.appendOpenDocumentButton (path)
+      if errorCount >= MAX_DISPLAYED_ERRORS {
+        if entry.partStatus != .partIsValid {
+          moreErrorCount += 1
+          errorCount += 1
+        }
+      }else{
+        if entry.partStatus != .partIsValid {
+          _ = inStackView.appendSeparator ()
+        }
+        switch entry.partStatus {
+        case .partIsDuplicated :
+          inStackView.appendError ("  Error; several files for '\(symbolName)' symbol")
+          errorCount += 1
+        case .partHasUnknownStatus :
+          inStackView.appendError ("  Error; '\(symbolName)' symbol has unknown status")
+          errorCount += 1
+        case .partHasInvalidName :
+          inStackView.appendError ("  Error; '\(symbolName)' symbol has an invalid name")
+          errorCount += 1
+        case .partHasError :
+          inStackView.appendError ("  Error; '\(symbolName)' symbol contains error(s)")
+          errorCount += 1
+        case .partHasWarning :
+          inStackView.appendError ("  Error; '\(symbolName)' symbol contains warning(s)")
+          errorCount += 1
+        case .partIsValid :
+          break
+        }
+        if entry.partStatus != .partIsValid {
+          for path in entry.pathArray {
+            inStackView.appendOpenDocumentButton (path)
+          }
         }
       }
+    }
+    if moreErrorCount == 1 {
+      inStackView.appendSeparator ().appendError ("  …and 1 more error")
+    }else if moreErrorCount > 1 {
+      inStackView.appendSeparator ().appendError ("  …and \(moreErrorCount) more errors")
     }
     return errorCount
   }
@@ -555,7 +666,7 @@ fileprivate struct PMPackageDictionaryEntry {
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor fileprivate func checkPackageLibrary (_ inStackView : AutoLayoutVerticalStackView,
+@MainActor fileprivate func checkPackageLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                            atPath inPackageFullPath : String,
                                            packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry],
                                            errorCount ioErrorCount : inout Int) {
@@ -608,7 +719,7 @@ fileprivate struct PMPackageDictionaryEntry {
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor fileprivate func performPackageLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+@MainActor fileprivate func performPackageLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                                    atPath inPackageLibraryPath : String,
                                                    packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry],
                                                    errorCount ioErrorCount : inout Int) {
@@ -627,9 +738,10 @@ fileprivate struct PMPackageDictionaryEntry {
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor fileprivate func checkPackageLibrary (_ inStackView : AutoLayoutVerticalStackView,
+@MainActor fileprivate func checkPackageLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                                  packageDict ioPackageDict : inout [String : PMPackageDictionaryEntry]) -> Int {
   inStackView.appendText ("Package Library Pathes", bold: true)
+  let MAX_DISPLAYED_ERRORS = 10
   var errorCount = 0
   for path in existingLibraryPathArray () {
     let packageLibraryPath = packageLibraryPathForPath (path)
@@ -637,34 +749,47 @@ fileprivate struct PMPackageDictionaryEntry {
     performPackageLibraryEnumeration (inStackView, atPath: packageLibraryPath, packageDict: &ioPackageDict, errorCount: &errorCount)
   }
 //--- Display duplicate entries for symbols, invalid entries
+  var moreErrorCount = 0
   for (packageName, entry) in ioPackageDict {
-    if entry.partStatus != .partIsValid {
-      _ = inStackView.appendSeparator ()
-    }
-    switch entry.partStatus {
-    case .partIsDuplicated :
-      inStackView.appendError ("  Error; several files for '\(packageName)' package")
-      errorCount += 1
-    case .partHasUnknownStatus :
-      inStackView.appendError ("  Error; '\(packageName)' package has unknown status")
-      errorCount += 1
-    case .partHasInvalidName :
-      inStackView.appendError ("  Error; '\(packageName)' package has an invalid name")
-      errorCount += 1
-    case .partHasError :
-      inStackView.appendError ("  Error; '\(packageName)' package contains error(s)")
-      errorCount += 1
-    case .partHasWarning :
-      inStackView.appendError ("  Error; '\(packageName)' package contains warning(s)")
-      errorCount += 1
-    case .partIsValid :
-      break
-    }
-    if entry.partStatus != .partIsValid {
-      for path in entry.pathArray {
-        inStackView.appendOpenDocumentButton (path)
+    if errorCount >= MAX_DISPLAYED_ERRORS {
+      if entry.partStatus != .partIsValid {
+        errorCount += 1
+        moreErrorCount += 1
+      }
+    }else{
+      if entry.partStatus != .partIsValid {
+        _ = inStackView.appendSeparator ()
+      }
+      switch entry.partStatus {
+      case .partIsDuplicated :
+        inStackView.appendError ("  Error; several files for '\(packageName)' package")
+        errorCount += 1
+      case .partHasUnknownStatus :
+        inStackView.appendError ("  Error; '\(packageName)' package has unknown status")
+        errorCount += 1
+      case .partHasInvalidName :
+        inStackView.appendError ("  Error; '\(packageName)' package has an invalid name")
+        errorCount += 1
+      case .partHasError :
+        inStackView.appendError ("  Error; '\(packageName)' package contains error(s)")
+        errorCount += 1
+      case .partHasWarning :
+        inStackView.appendError ("  Error; '\(packageName)' package contains warning(s)")
+        errorCount += 1
+      case .partIsValid :
+        break
+      }
+      if entry.partStatus != .partIsValid {
+        for path in entry.pathArray {
+          inStackView.appendOpenDocumentButton (path)
+        }
       }
     }
+  }
+  if moreErrorCount == 1 {
+    inStackView.appendSeparator ().appendError ("  …and 1 more error")
+  }else if moreErrorCount > 1 {
+    inStackView.appendSeparator ().appendError ("  …and \(moreErrorCount) more errors")
   }
   return errorCount
 }
@@ -686,7 +811,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkFontLibrary (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func checkFontLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                      atPath inFontFullPath : String,
                                      fontDict ioFontDict : inout [String : PMFontDictionaryEntry],
                                      errorCount ioErrorCount : inout Int) {
@@ -739,7 +864,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func performFontLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func performFontLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                                 atPath inFontLibraryPath : String,
                                                 fontDict ioFontDict : inout [String : PMFontDictionaryEntry],
                                                 errorCount ioErrorCount : inout Int) {
@@ -758,7 +883,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkFontLibrary (_ inStackView : AutoLayoutVerticalStackView) -> (Int, Int) {
+  fileprivate func checkFontLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar) -> (Int, Int) {
     var fontDict : [String : PMFontDictionaryEntry] = [:]
     inStackView.appendText ("Font Library Pathes", bold: true)
     var errorCount = 0
@@ -820,7 +945,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkArtworkLibrary (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func checkArtworkLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                         atPath inArtworkFullPath : String,
                                         artworkDict ioArtworkDict : inout [String : PMArtworkDictionaryEntry],
                                         errorCount ioErrorCount : inout Int) {
@@ -864,7 +989,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func performArtworkLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackView,
+  fileprivate func performArtworkLibraryEnumeration (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar,
                                                    atPath inArtworkLibraryPath : String,
                                                    artworkDict ioArtworkDict : inout [String : PMArtworkDictionaryEntry],
                                                    errorCount ioErrorCount : inout Int) {
@@ -883,7 +1008,7 @@ extension Preferences {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkArtworkLibrary (_ inStackView : AutoLayoutVerticalStackView) -> (Int, Int) {
+  fileprivate func checkArtworkLibrary (_ inStackView : AutoLayoutVerticalStackViewWithScrollBar) -> (Int, Int) {
     var artworkDict : [String : PMArtworkDictionaryEntry] = [:]
     inStackView.appendText ("Arwork Library Pathes", bold: true)
     var errorCount = 0

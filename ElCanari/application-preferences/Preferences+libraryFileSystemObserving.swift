@@ -3,12 +3,17 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor private var gStream : FSEventStreamRef? = nil
+@MainActor private var gConfigureLibraryFileSystemObservationTriggered = false
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func configureLibraryFileSystemObservation () {
-  DispatchQueue.main.async {
-    gPreferences?.configureLibraryFileSystemObservation ()
+  if !gConfigureLibraryFileSystemObservationTriggered {
+    gConfigureLibraryFileSystemObservationTriggered = true
+    DispatchQueue.main.asyncAfter (deadline: .now ().advanced (by: .milliseconds (250))) {
+      gConfigureLibraryFileSystemObservationTriggered = false
+      gPreferences?.configureLibraryFileSystemObservation ()
+    }
   }
 }
 

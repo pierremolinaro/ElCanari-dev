@@ -53,6 +53,7 @@ class EBObservedObject : EBObservableObjectProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func currentObjectDidChange () {
+    self.mObserverCallback? ()
     for (key, entry) in self.mDictionary {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
@@ -61,6 +62,10 @@ class EBObservedObject : EBObservableObjectProtocol {
       }
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var mObserverCallback : (() -> Void)? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

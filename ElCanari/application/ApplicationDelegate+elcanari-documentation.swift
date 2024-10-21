@@ -27,7 +27,15 @@ extension ApplicationDelegate {
         gWindow = CanariPDFWindow (fileName: docPath.lastPathComponent, pdfData: data)
       }
     }
-    gWindow?.makeKeyAndOrderFront (nil)
+    gWindow?.makeKeyAndOrderFront (inSender)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   OPEN LIBRARY CONSISTENCY WINDOW
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func openLibraryConsistencyWindowAction (_ inSender : Any?) {
+    self.mLibraryConsistencyLogWindow?.makeKeyAndOrderFront (inSender)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

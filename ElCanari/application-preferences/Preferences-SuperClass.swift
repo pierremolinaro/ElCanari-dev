@@ -25,6 +25,7 @@ import Sparkle
   @MainActor override init () {
     super.init ()
     noteObjectAllocation (self)
+    preferences_usesUserLibrary_property.mObserverCallback = { configureLibraryFileSystemObservation () }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23503" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23503"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EBApplication">
@@ -419,6 +419,12 @@
                             <menuItem title="ElCanari Documentation" keyEquivalent="?" id="sik-Nc-bP4">
                                 <connections>
                                     <action selector="openElCanariDocumentationAction:" target="212" id="YLe-KB-wTe"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Library Consistency" id="YOb-OZ-EfI">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openLibraryConsistencyWindowAction:" target="-1" id="D6p-zJ-0wj"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="gcW-Dj-dqg"/>
