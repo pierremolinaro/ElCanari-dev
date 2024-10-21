@@ -92,6 +92,8 @@ extension AutoLayoutProjectDocument {
           self.rootObject.mArtwork = artworkRoot
           self.rootObject.mArtworkVersion = version
           self.triggerStandAlonePropertyComputationForProject ()
+//        }else{
+//          self.undoManager?.removeAllActions (withTarget: documentData.documentRootObject)
         }
       case .readError :
         ()

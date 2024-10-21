@@ -661,6 +661,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 @MainActor let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 @MainActor let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
 @MainActor let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
+@MainActor let Preferences_fileSystemLibraryIsOk = "Preferences:fileSystemLibraryIsOk"
 @MainActor let Preferences_checkForSystemLibraryAtStartUp = "Preferences:checkForSystemLibraryAtStartUp"
 @MainActor let Preferences_systemLibraryCheckTimeInterval = "Preferences:systemLibraryCheckTimeInterval"
 @MainActor let Preferences_mergerModelViewHorizontalFlip = "Preferences:mergerModelViewHorizontalFlip"

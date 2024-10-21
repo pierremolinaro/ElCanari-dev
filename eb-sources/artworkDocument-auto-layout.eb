@@ -412,12 +412,14 @@ handlingOpposite entity ArtworkRoot {
 
   property @generateDirectRead @signature String title default "" ;
 
-//--- Excellon drill data
+//--- Drill data
   property @generateDirectRead @signature String drillDataFileExtension default "DRF" ;
 
 //--- For artwork embedded in document
   transient UInt32 signatureForERCChecking dependsFrom
-     self.minPPTPTTTW, self.minValueForOARinEBUnit, self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit ;
+     self.minPPTPTTTW, self.minValueForOARinEBUnit,
+     self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit
+  ;
      
   transient Bool hasInnerElements dependsFrom self.layerConfiguration ;
   transient Bool hasSixLayers dependsFrom self.layerConfiguration ;
@@ -459,9 +461,6 @@ handlingOpposite entity ArtworkFileGenerationParameters {
   property @signature String fileExtension default "" ;
   property @signature Bool horizontalMirror default no ;
   property @signature @generateDirectAccess String name default "Unnamed" ;
-//  property @signature Bool drawPadHolesInPDF default no ;
-//  property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; // mm
-//  property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
   
   transient Bool hasNoData dependsFrom
     self.mArtwork.one.layerConfiguration,

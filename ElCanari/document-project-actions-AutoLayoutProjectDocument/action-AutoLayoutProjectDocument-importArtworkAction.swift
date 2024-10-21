@@ -22,16 +22,14 @@ extension AutoLayoutProjectDocument {
                 let documentReadData = loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager)
                 switch documentReadData {
                 case .ok (let documentData) :
-                  if let artworkRoot = documentData.documentRootObject as? ArtworkRoot {
+                  if let artworkRoot = documentData.documentRootObject as? ArtworkRoot,
+                     let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
+                    self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
                     self.invalidateERC ()
                     self.rootObject.mArtwork = artworkRoot
                     self.rootObject.mArtworkName = inName
-                    if let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
-                      self.rootObject.mArtworkVersion = version
-                      self.rootObject.mArtworkIsUpdatable = false
-                      self.rootObject.mArtworkFileSystemLibraryStatus = "Up to date"
-                      self.rootObject.mArtworkFileSystemLibraryRequiresAttention = false
-                    }
+                    self.rootObject.mArtworkVersion = version
+                    self.triggerStandAlonePropertyComputationForProject ()
                   }
                 case .readError (_) :
                   ()
