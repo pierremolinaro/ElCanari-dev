@@ -2,7 +2,8 @@
 //     M E R G E R    D O C U M E N T
 //------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentMainView {
+autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
+                                root MergerRoot stackView \DocumentMainView {
 
   stackView \PageMasterView vStack { }
 
@@ -18,6 +19,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
           addPage (title: "Board", tooltip: "Board Description", pageView: view boardPage)
           addPage (title: "Product", tooltip: "Product Description", pageView: view productPage)
           $selectedPage root.selectedPageIndex
+          $segmentImage root.segmentedControlArtworkAttentionImage (segmentIndex : 2)
         }
         gutter
         StaticLabel (title: "Page", bold: no, size : .regular, alignment: .center)
@@ -714,25 +716,41 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
     newView artworkDataPage = \ArtworkDataPage ()
     newView pdfSettingsPage = \PDFSettingsPage ()
     newView generationLogPage = \GenerationLogPage ()
+
     hStack {
       vStack {
         Button (title: "Import Artwork…", size : .regular) {
-          expandableWidth ()
           $hidden !root.mArtwork.none
           $run importArtworkAction 
         }
-        Button (title: "Detach Artwork", size : .regular) {
-          expandableWidth ()
-          $hidden root.mArtwork.none
-          $run detachArtworkAction 
+        hStack $hidden root.mArtwork.none {
+          StaticLabel (title: "Artwork", bold: no, size : .regular, alignment: .center)
+          Label (bold: yes, size : .regular) { $title root.mArtworkName }
+          separator
+          StaticLabel (title: "Version", bold: no, size : .regular, alignment: .center)
+          IntObserverField (bold: yes, size : .regular) {
+            $observedValue root.mArtworkVersion
+          }
+          separator
+          ImageObserverView (size: .small) { $image root.segmentedControlArtworkAttentionImage }
+          Label (bold: yes, size : .regular) { $title root.mArtworkFileSystemLibraryStatus }
+          separator
+          Button (title: "Update", size : .regular) {
+            $enabled root.mArtworkIsUpdatable
+            $run updateArtworkAction
+          }
+          Button (title: "Detach Artwork", size : .regular) {
+            expandableWidth ()
+            $hidden root.mArtwork.none
+            $run detachArtworkAction 
+          }
         }
-        Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
         hStack {
           Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
           Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
           Button (title: "Generate Files", size : .regular) {
             expandableWidth ()
-            $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
+            $enabled !root.mArtwork.none & !self.documentIsUnnamed
             $run generateProductFilesAction
           }
         }
@@ -752,10 +770,58 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
         }
         space
       }
+      space    
     }
+
+
+
+
+//    hStack {
+//      vStack {
+//        Button (title: "Import Artwork…", size : .regular) {
+//          expandableWidth ()
+//          $hidden !root.mArtwork.none
+//          $run importArtworkAction 
+//        }
+//        Button (title: "Detach Artwork", size : .regular) {
+//          expandableWidth ()
+//          $hidden root.mArtwork.none
+//          $run detachArtworkAction 
+//        }
+//        Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
+//        hStack {
+//          Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
+//          Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
+//          Button (title: "Generate Files", size : .regular) {
+//            expandableWidth ()
+//            $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
+//            $run generateProductFilesAction
+//          }
+//        }
+//      }
+//      vStack {
+//        Label (bold: yes, size: .regular) {
+//          set (alignment: .left)
+//          expandableWidth ()
+//          $title self.documentFileShouldBeRenamedErrorMessage
+//        }
+//        TextObserverView (size: .small) {
+//          expandableWidth ()
+//          setNoBackground ()
+//          setNoVerticalScroller ()
+//          setNoHorizontalScroller ()
+//          $observedValue self.incorrectDocumentFileDetailedErrorMessage
+//        }
+//        space
+//      }
+//    }
     hStack $hidden !root.mArtwork.none {
       space
-      vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular, alignment: .center) space }
+      vStack {
+        space
+        StaticLabel (title: "No Artwork", bold: yes, size : .regular, alignment: .center)
+        space
+      }
       space
     }
     vStack $hidden root.mArtwork.none {
@@ -778,6 +844,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentM
   action importArtworkAction ;
   action detachArtworkAction ;
   action generateProductFilesAction ;
+  action updateArtworkAction ;
   transient Bool documentIsUnnamed dependsFrom self.documentFileName ;
   transient String incorrectDocumentFileDetailedErrorMessage dependsFrom self.documentFileName ;
   transient String documentFileShouldBeRenamedErrorMessage dependsFrom self.documentFileName ;

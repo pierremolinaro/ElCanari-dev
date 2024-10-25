@@ -46,6 +46,8 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mScrollView.hasVerticalScroller = true
     self.mScrollView.borderType = .bezelBorder
     self.mScrollView.documentView = self.mTableView
+
+
   //---
     _ = self.appendView (self.mScrollView)
     if inAddControlButtons {
@@ -61,6 +63,18 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
         .appendFlexibleSpace ()
       _ = self.appendView (hStack)
     }
+  //--- Permanent constraints
+//    var constraints = [NSLayoutConstraint] ()
+//    constraints.add (dim: self.mScrollView.widthAnchor, equalTo: self.mTableView.widthAnchor)
+//    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.mScrollView.contentView.rightAnchor)
+//    constraints.add (x: self.mTableView.leftAnchor, equalTo: self.mScrollView.contentView.leftAnchor)
+//    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.mScrollView.contentView.rightAnchor)
+//    constraints.add (y: self.mTableView.topAnchor, equalTo: self.mScrollView.topAnchor)
+//    constraints.add (y: self.mTableView.bottomAnchor, equalTo: self.mScrollView.bottomAnchor)
+
+//    constraints.add (x: self.mScrollView.contentView.leftAnchor, equalTo: self.mStackView.leftAnchor)
+//    constraints.add (x: self.mScrollView.contentView.rightAnchor, equalTo: self.mStackView.rightAnchor)
+//    self.addConstraints (constraints)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,6 +82,19 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
+
+//  private var mWidthConstraint = [NSLayoutConstraint] ()
+//
+//  override func updateConstraints () {
+//    self.removeConstraints (self.mWidthConstraint)
+//    self.mWidthConstraint.removeAll ()
+//    self.mTableView.sizeToFit ()
+//    let s = self.mTableView.intrinsicContentSize
+//    self.mWidthConstraint.add (dim: self.widthAnchor, greaterThanOrEqualToConstant: s.width)
+//    self.addConstraints (self.mWidthConstraint)
+//
+//    super.updateConstraints ()
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Configure table view
@@ -317,10 +344,7 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
   init (size inSize : EBControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
-    self.pmConfigureForAutolayout(hStretchingResistance: .low, vStrechingResistance: .low)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+    self.pmConfigureForAutolayout (hStretchingResistance: .low, vStrechingResistance: .low)
     self.controlSize = inSize.cocoaControlSize
   }
 

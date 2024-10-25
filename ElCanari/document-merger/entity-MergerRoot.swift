@@ -237,6 +237,45 @@ final class MergerRoot : EBManagedObject {
   }
 
   //································································································
+  //   Atomic property: mArtworkFileSystemLibraryStatus
+  //································································································
+
+  final let mArtworkFileSystemLibraryStatus_property : EBStandAloneProperty_String
+
+  //································································································
+
+  final var mArtworkFileSystemLibraryStatus : String {
+    get { return self.mArtworkFileSystemLibraryStatus_property.propval }
+    set { self.mArtworkFileSystemLibraryStatus_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mArtworkFileSystemLibraryRequiresAttention
+  //································································································
+
+  final let mArtworkFileSystemLibraryRequiresAttention_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mArtworkFileSystemLibraryRequiresAttention : Bool {
+    get { return self.mArtworkFileSystemLibraryRequiresAttention_property.propval }
+    set { self.mArtworkFileSystemLibraryRequiresAttention_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mArtworkIsUpdatable
+  //································································································
+
+  final let mArtworkIsUpdatable_property : EBStandAloneProperty_Bool
+
+  //································································································
+
+  final var mArtworkIsUpdatable : Bool {
+    get { return self.mArtworkIsUpdatable_property.propval }
+    set { self.mArtworkIsUpdatable_property.setProp (newValue) }
+  }
+
+  //································································································
   //   Atomic proxy property: minPPTPTTTWdisplayUnit
   //································································································
 
@@ -412,7 +451,6 @@ final class MergerRoot : EBManagedObject {
   //································································································
 
   var fileGenerationParameterArray_modelDidChangeController : EBObservablePropertyController? = nil
-  // var fileGenerationParameterArray_boundObjectDidChangeController : EBObservablePropertyController? = nil
   final let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
 
   //································································································
@@ -507,6 +545,18 @@ final class MergerRoot : EBManagedObject {
   //································································································
 
   final let mArtwork_none = EBTransientProperty <Bool> ()
+
+  //································································································
+  //   Transient property: segmentedControlArtworkAttentionImage
+  //································································································
+
+  final let segmentedControlArtworkAttentionImage_property = EBTransientProperty <NSImage> ()
+
+  //································································································
+
+  final var segmentedControlArtworkAttentionImage : NSImage? {
+    return self.segmentedControlArtworkAttentionImage_property.optionalValue
+  }
 
   //································································································
   //   Transient property: comments
@@ -618,6 +668,9 @@ final class MergerRoot : EBManagedObject {
     self.mGerberProductUnit_property = EBStoredProperty_GerberUnit (defaultValue: GerberUnit.metric, undoManager: inUndoManager, key: "mGerberProductUnit")
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mArtworkName")
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mArtworkVersion")
+    self.mArtworkFileSystemLibraryStatus_property = EBStandAloneProperty_String ("")
+    self.mArtworkFileSystemLibraryRequiresAttention_property = EBStandAloneProperty_Bool (false)
+    self.mArtworkIsUpdatable_property = EBStandAloneProperty_Bool (false)
     super.init (inUndoManager)
     self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -949,6 +1002,23 @@ final class MergerRoot : EBManagedObject {
     self.boardRect_property.startsBeingObserved (by: self.boardHeight_property)
   //--- To one property: mArtwork
     self.mArtwork_property.undoManager = inUndoManager
+  //--- Atomic property: segmentedControlArtworkAttentionImage
+    self.segmentedControlArtworkAttentionImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mArtworkFileSystemLibraryRequiresAttention_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_segmentedControlArtworkAttentionImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtworkFileSystemLibraryRequiresAttention_property.startsBeingObserved (by: self.segmentedControlArtworkAttentionImage_property)
   //--- Atomic property: comments
     self.comments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

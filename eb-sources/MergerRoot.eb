@@ -60,6 +60,14 @@ handlingOpposite entity MergerRoot {
   property @generateDirectAccess String mArtworkName default "" ;
   property @generateDirectAccess Int mArtworkVersion default 0 ;
 
+  standalone property String mArtworkFileSystemLibraryStatus default "" ;
+  standalone property Bool mArtworkFileSystemLibraryRequiresAttention default no ;
+  standalone property Bool mArtworkIsUpdatable default no ;
+ 
+  transient NSImage segmentedControlArtworkAttentionImage dependsFrom
+    self.mArtworkFileSystemLibraryRequiresAttention
+  ;
+
   property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
   property proxy Int minPPTPTTTW : mArtwork.minPPTPTTTW ;
   

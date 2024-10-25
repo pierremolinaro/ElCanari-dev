@@ -229,7 +229,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : FontInProject, _ right : FontInProject) in return compare_String_properties (left.mFileSystemStatusMessage_property, ascending, right.mFileSystemStatusMessage_property) })
       },
-      title: "Status in Device Libraries",
+      title: "Status in Device Library",
       minWidth: 150,
       maxWidth: 200,
       headerAlignment: .left,

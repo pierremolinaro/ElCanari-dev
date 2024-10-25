@@ -1329,7 +1329,6 @@ final class ProjectRoot : EBManagedObject {
   //································································································
 
   var selectedSheetObjects_modelDidChangeController : EBObservablePropertyController? = nil
-  // var selectedSheetObjects_boundObjectDidChangeController : EBObservablePropertyController? = nil
   final let selectedSheetObjects_property = ProxyArrayOf_SchematicObject ()
 
   //································································································
@@ -1372,7 +1371,6 @@ final class ProjectRoot : EBManagedObject {
   //································································································
 
   var fileGenerationParameterArray_modelDidChangeController : EBObservablePropertyController? = nil
-  // var fileGenerationParameterArray_boundObjectDidChangeController : EBObservablePropertyController? = nil
   final let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
 
   //································································································

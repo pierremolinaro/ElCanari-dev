@@ -19,6 +19,7 @@ extension AutoLayoutMergerDocument {
             validationButtonTitle: "Import",
             callBack: { (_ inURL : URL, _ inName : String) -> Void in
               if let data = try? Data (contentsOf: inURL) {
+                self.registerUndoForTriggeringStandAlonePropertyComputationForMerger ()
                 let documentReadData = loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager)
                 switch documentReadData {
                 case .ok (let documentData) :
@@ -27,7 +28,7 @@ extension AutoLayoutMergerDocument {
                     self.rootObject.mArtwork = artworkRoot
                     self.rootObject.mArtworkName = inName
                     self.rootObject.mArtworkVersion = version
-       //             self.triggerStandAlonePropertyComputation ()
+                    self.triggerStandAlonePropertyComputationForMerger ()
                   }
                 case .readError (_) :
                   ()

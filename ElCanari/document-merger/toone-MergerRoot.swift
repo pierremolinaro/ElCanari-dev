@@ -37,10 +37,14 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       oldValue.mGerberProductUnit_property.stopsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
       oldValue.mArtworkName_property.stopsBeingObserved (by: self.mArtworkName_property) // Stored property
       oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
+      oldValue.mArtworkFileSystemLibraryStatus_property.stopsBeingObserved (by: self.mArtworkFileSystemLibraryStatus_property) // Stored property
+      oldValue.mArtworkFileSystemLibraryRequiresAttention_property.stopsBeingObserved (by: self.mArtworkFileSystemLibraryRequiresAttention_property) // Stored property
+      oldValue.mArtworkIsUpdatable_property.stopsBeingObserved (by: self.mArtworkIsUpdatable_property) // Stored property
       oldValue.modelNames_property.stopsBeingObserved (by: self.modelNames_property) // Transient property
       oldValue.boardRect_property.stopsBeingObserved (by: self.boardRect_property) // Transient property
       oldValue.boardWidth_property.stopsBeingObserved (by: self.boardWidth_property) // Transient property
       oldValue.boardHeight_property.stopsBeingObserved (by: self.boardHeight_property) // Transient property
+      oldValue.segmentedControlArtworkAttentionImage_property.stopsBeingObserved (by: self.segmentedControlArtworkAttentionImage_property) // Transient property
       oldValue.comments_property.stopsBeingObserved (by: self.comments_property) // Transient property
       oldValue.layoutLayerWarningMessage_property.stopsBeingObserved (by: self.layoutLayerWarningMessage_property) // Transient property
       oldValue.layerConfigurationString_property.stopsBeingObserved (by: self.layerConfigurationString_property) // Transient property
@@ -78,10 +82,14 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       newValue.mGerberProductUnit_property.startsBeingObserved (by: self.mGerberProductUnit_property) // Stored property
       newValue.mArtworkName_property.startsBeingObserved (by: self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.startsBeingObserved (by: self.mArtworkVersion_property) // Stored property
+      newValue.mArtworkFileSystemLibraryStatus_property.startsBeingObserved (by: self.mArtworkFileSystemLibraryStatus_property) // Stored property
+      newValue.mArtworkFileSystemLibraryRequiresAttention_property.startsBeingObserved (by: self.mArtworkFileSystemLibraryRequiresAttention_property) // Stored property
+      newValue.mArtworkIsUpdatable_property.startsBeingObserved (by: self.mArtworkIsUpdatable_property) // Stored property
       newValue.modelNames_property.startsBeingObserved (by: self.modelNames_property) // Transient property
       newValue.boardRect_property.startsBeingObserved (by: self.boardRect_property) // Transient property
       newValue.boardWidth_property.startsBeingObserved (by: self.boardWidth_property) // Transient property
       newValue.boardHeight_property.startsBeingObserved (by: self.boardHeight_property) // Transient property
+      newValue.segmentedControlArtworkAttentionImage_property.startsBeingObserved (by: self.segmentedControlArtworkAttentionImage_property) // Transient property
       newValue.comments_property.startsBeingObserved (by: self.comments_property) // Transient property
       newValue.layoutLayerWarningMessage_property.startsBeingObserved (by: self.layoutLayerWarningMessage_property) // Transient property
       newValue.layerConfigurationString_property.startsBeingObserved (by: self.layerConfigurationString_property) // Transient property
@@ -225,6 +233,24 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   final let mArtworkVersion_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mArtworkFileSystemLibraryStatus' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mArtworkFileSystemLibraryStatus_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mArtworkFileSystemLibraryRequiresAttention' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mArtworkFileSystemLibraryRequiresAttention_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mArtworkIsUpdatable' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mArtworkIsUpdatable_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'modelNames' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -247,6 +273,12 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let boardHeight_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'segmentedControlArtworkAttentionImage' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let segmentedControlArtworkAttentionImage_property = EBTransientProperty <NSImage?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'comments' transient property
@@ -432,6 +464,18 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
     self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mArtworkVersion_property.optionalSelection ?? .single (nil)
     }
+  //--- Configure mArtworkFileSystemLibraryStatus simple stored property
+    self.mArtworkFileSystemLibraryStatus_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mArtworkFileSystemLibraryStatus_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mArtworkFileSystemLibraryRequiresAttention simple stored property
+    self.mArtworkFileSystemLibraryRequiresAttention_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mArtworkFileSystemLibraryRequiresAttention_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mArtworkIsUpdatable simple stored property
+    self.mArtworkIsUpdatable_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mArtworkIsUpdatable_property.optionalSelection ?? .single (nil)
+    }
   //--- Configure modelNames transient property
     self.modelNames_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelNames_property.optionalSelection ?? .single (nil)
@@ -447,6 +491,10 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //--- Configure boardHeight transient property
     self.boardHeight_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardHeight_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure segmentedControlArtworkAttentionImage transient property
+    self.segmentedControlArtworkAttentionImage_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.segmentedControlArtworkAttentionImage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure comments transient property
     self.comments_property.mReadModelFunction = { [weak self] in

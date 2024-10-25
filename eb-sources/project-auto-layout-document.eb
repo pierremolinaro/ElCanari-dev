@@ -315,7 +315,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
      column mFontName (title: "Font Name", minWidth: 60, maxWidth: 2000, headerAlignment: .left, contentAlignment: .left)
        sortkey mFontName
     column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
-    column mFileSystemStatusMessage (title: "Status in Device Libraries", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
+    column mFileSystemStatusMessage (title: "Status in Device Library", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
      column versionString (title: "Version", minWidth: 60, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)
        sortkey versionString
      column sizeString (title: "Size", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
@@ -332,7 +332,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
      column mDeviceName (title: "Name", minWidth: 200, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left)
        sortkey mDeviceName
     column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
-    column mFileSystemStatusMessage (title: "Status in Device Libraries", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
+    column mFileSystemStatusMessage (title: "Status in Device Library", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
      column versionString (title: "Version", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center)
        sortkey versionString
     column sizeString (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)

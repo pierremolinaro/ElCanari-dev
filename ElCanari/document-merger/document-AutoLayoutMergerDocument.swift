@@ -6,7 +6,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutMergerDocument) class AutoLayoutMergerDocument : EBAutoLayoutManagedDocument {
+@objc(AutoLayoutMergerDocument) class AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass {
   
   //································································································
   //   Array controller: mBoardModelController
@@ -293,6 +293,7 @@ import AppKit
             .addPage (title: "Board", tooltip: "Board Description", pageView: boardPage)
             .addPage (title: "Product", tooltip: "Product Description", pageView: productPage)
             .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+            .bind_segmentImage (self.rootObject.segmentedControlArtworkAttentionImage_property, segmentIndex:2)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -1815,7 +1816,6 @@ import AppKit
         let vStackView_view_view = AutoLayoutVerticalStackView ()
         do{
           let vStackView_view_view_view = AutoLayoutButton (title: "Import Artwork…", size: .regular)
-            .expandableWidth ()
             .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
             .bind_run (
               target: self,
@@ -1824,20 +1824,58 @@ import AppKit
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutButton (title: "Detach Artwork", size: .regular)
-            .expandableWidth ()
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
             .bind_hidden (.prop (self.rootObject.mArtwork_none))
-            .bind_run (
-              target: self,
-              selector: #selector (AutoLayoutMergerDocument.detachArtworkAction (_:))
-            )
-          _ = vStackView_view_view .appendView (vStackView_view_view_view)
-        }
-        do{
-          let vStackView_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
-            .expandableWidth ()
-            .set (alignment: .center)
-            .bind_title (self.rootObject.mArtworkName_property)
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Artwork", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
+              .bind_title (self.rootObject.mArtworkName_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          _ = vStackView_view_view_view.appendSeparator ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .regular, alignment: .center)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutIntObserverField (bold: true, size: .regular)
+              .bind_observedValue (self.rootObject.mArtworkVersion_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          _ = vStackView_view_view_view.appendSeparator ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutImageObserverView (size: .small)
+              .bind_image (self.rootObject.segmentedControlArtworkAttentionImage_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutLabel (bold: true, size: .regular)
+              .bind_title (self.rootObject.mArtworkFileSystemLibraryStatus_property)
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          _ = vStackView_view_view_view.appendSeparator ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutButton (title: "Update", size: .regular)
+              .bind_enabled (.prop (self.rootObject.mArtworkIsUpdatable_property))
+              .bind_run (
+                target: self,
+                selector: #selector (AutoLayoutMergerDocument.updateArtworkAction (_:))
+              )
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutButton (title: "Detach Artwork", size: .regular)
+              .expandableWidth ()
+              .bind_hidden (.prop (self.rootObject.mArtwork_none))
+              .bind_run (
+                target: self,
+                selector: #selector (AutoLayoutMergerDocument.detachArtworkAction (_:))
+              )
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
@@ -1855,7 +1893,7 @@ import AppKit
           do{
             let vStackView_view_view_view_view = AutoLayoutButton (title: "Generate Files", size: .regular)
               .expandableWidth ()
-              .bind_enabled (.boolcmp (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.prop (self.documentIsUnnamed_property))))
+              .bind_enabled (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .not (.prop (self.documentIsUnnamed_property))))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutMergerDocument.generateProductFilesAction (_:))
@@ -1887,6 +1925,7 @@ import AppKit
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
+      _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
     do{

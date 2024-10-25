@@ -121,6 +121,8 @@ func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
       deviceDocument.triggerStandAlonePropertyComputationForDeviceDocument ()
     }else if let projectDocument = document as? AutoLayoutProjectDocument {
       projectDocument.triggerStandAlonePropertyComputationForProject ()
+    }else if let mergerDocument = document as? AutoLayoutMergerDocument {
+      mergerDocument.triggerStandAlonePropertyComputationForMerger ()
     }
   }
   gPreferences?.checkFileSystemLibrary ()

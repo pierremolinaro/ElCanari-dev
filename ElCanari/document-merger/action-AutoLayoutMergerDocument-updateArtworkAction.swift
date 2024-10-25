@@ -11,13 +11,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutMergerDocument {
-  @objc func detachArtworkAction (_ inSender : NSObject?) {
+  @objc func updateArtworkAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.registerUndoForTriggeringStandAlonePropertyComputationForMerger ()
-        self.rootObject.mArtwork = nil
-        self.rootObject.mArtworkName = ""
-        self.rootObject.mArtworkVersion = 0
-        self.triggerStandAlonePropertyComputationForMerger ()
+         self.updateArtwork ()
 //--- END OF USER ZONE 2
   }
 }

@@ -73,30 +73,31 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildConstraintsFor (horizontalStackView inHorizontalStackView : AutoLayoutHorizontalStackView,
-                            optionalLastRightView ioOptionalLastRightView : inout NSLayoutXAxisAnchor?,
+                            optionalLastRightView ioOptionalLastRightAnchor : inout NSLayoutXAxisAnchor?,
                             flexibleSpaceView ioFlexibleSpaceView : inout HorizontalStackFlexibleSpace?,
                             _ ioContraints : inout [NSLayoutConstraint]) {
   //--- Before
     self.mLeft?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
-      optionalLastRightView: &ioOptionalLastRightView,
+      optionalLastRightView: &ioOptionalLastRightAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints
     )
-  //--- Divider
+  //--- Divider, vertical constraints
     ioContraints.add (y: inHorizontalStackView.topAnchor, equalTo: self.topAnchor)
     ioContraints.add (y: inHorizontalStackView.bottomAnchor, equalTo: self.bottomAnchor)
+  //--- Divider, horizontal constraints
     ioContraints.add (dim: self.widthAnchor, equalToConstant: DIVIDER_WIDTH)
-    if let lastRightAnchor = ioOptionalLastRightView {
+    if let lastRightAnchor = ioOptionalLastRightAnchor {
       ioContraints.add (x: self.leftAnchor, equalTo: lastRightAnchor, plus: inHorizontalStackView.mSpacing)
     }else{
       ioContraints.add (x: self.leftAnchor, equalTo: inHorizontalStackView.leftAnchor, plus: inHorizontalStackView.mLeftMargin)
     }
   //--- After
-    ioOptionalLastRightView = self.rightAnchor
+    ioOptionalLastRightAnchor = self.rightAnchor
     self.mRight?.buildConstraintsFor (
       horizontalStackView: inHorizontalStackView,
-      optionalLastRightView: &ioOptionalLastRightView,
+      optionalLastRightView: &ioOptionalLastRightAnchor,
       flexibleSpaceView: &ioFlexibleSpaceView,
       &ioContraints
     )

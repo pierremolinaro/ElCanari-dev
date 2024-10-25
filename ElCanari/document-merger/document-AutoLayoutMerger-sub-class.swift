@@ -41,6 +41,8 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         self.updateLegacyModel (legacyBoardModels: modelsToUpdate)
       }
     }
+  //--- Needs library update ?
+    self.triggerStandAlonePropertyComputationForMerger ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
