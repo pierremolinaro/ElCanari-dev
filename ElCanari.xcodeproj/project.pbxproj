@@ -1538,7 +1538,6 @@
 		CF6E148521CD1F90008E2180 /* transient-PackageZone-rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148321CD1F90008E2180 /* transient-PackageZone-rect.swift */; };
 		CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */; };
 		CF6E148821CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */; };
-		CF70296B2AD4254F00B7EA72 /* periphery in Frameworks */ = {isa = PBXBuildFile; productRef = CF70296A2AD4254F00B7EA72 /* periphery */; };
 		CF7034C02353ABD100F4D2C7 /* alignmentTop.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BB2353ABD000F4D2C7 /* alignmentTop.png */; };
 		CF7034C12353ABD100F4D2C7 /* alignmentTop.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BB2353ABD000F4D2C7 /* alignmentTop.png */; };
 		CF7034C42353ABD100F4D2C7 /* alignmentBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BD2353ABD100F4D2C7 /* alignmentBottom.png */; };
@@ -5442,7 +5441,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF50656727490E7F009A99B6 /* Sparkle in Frameworks */,
-				CF70296B2AD4254F00B7EA72 /* periphery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7985,7 +7983,6 @@
 			name = "ElCanari-Debug";
 			packageProductDependencies = (
 				CF50656627490E7F009A99B6 /* Sparkle */,
-				CF70296A2AD4254F00B7EA72 /* periphery */,
 			);
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
@@ -8055,7 +8052,6 @@
 			mainGroup = 4B5CE2FE28308FD9F2A7BAF3;
 			packageReferences = (
 				CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */,
-				CF7029692AD4254F00B7EA72 /* XCRemoteSwiftPackageReference "periphery" */,
 			);
 			productRefGroup = CF747FB01B3C3D8D00140C49 /* Products */;
 			projectDirPath = "";
@@ -12094,14 +12090,6 @@
 				minimumVersion = 2.3.2;
 			};
 		};
-		CF7029692AD4254F00B7EA72 /* XCRemoteSwiftPackageReference "periphery" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/peripheryapp/periphery";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.16.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -12109,11 +12097,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
-		};
-		CF70296A2AD4254F00B7EA72 /* periphery */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF7029692AD4254F00B7EA72 /* XCRemoteSwiftPackageReference "periphery" */;
-			productName = periphery;
 		};
 		CF935B682749127D00C0F42D /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;

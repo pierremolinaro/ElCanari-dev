@@ -17,7 +17,7 @@ extension AutoLayoutMergerDocument {
           openArtworkPanelInLibrary (
             windowForSheet: window,
             validationButtonTitle: "Import",
-            callBack: { (_ inURL : URL, _ inName : String) -> Void in
+            callBack: { (_ inURL : URL, _ inName : String) in
               if let data = try? Data (contentsOf: inURL) {
                 self.registerUndoForTriggeringStandAlonePropertyComputationForMerger ()
                 let documentReadData = loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager)
