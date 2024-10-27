@@ -28,8 +28,10 @@ extension AutoLayoutProjectDocument {
 
   func addComponent (_ inData : Data, _ inName : String) -> Bool {
   //--- Append device
+    self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
     let possibleNewDeviceInProject = self.appendDevice (inData, inName)
     let optionalAddedComponent = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject, prefix: nil)
+    self.triggerStandAlonePropertyComputationForProject ()
     return optionalAddedComponent != nil
   }
 
@@ -81,6 +83,7 @@ extension AutoLayoutProjectDocument {
     var optionalNewComponent : ComponentInProject? = nil
   //--- Append component
     if let deviceInProject = inPossibleDevice {
+      self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
       let newComponent = ComponentInProject (self.undoManager)
     //--- Set device
       newComponent.mDevice = deviceInProject
@@ -114,6 +117,7 @@ extension AutoLayoutProjectDocument {
       self.rootObject.mComponents.append (newComponent)
       self.componentController.setSelection ([newComponent])
       optionalNewComponent = newComponent
+      self.triggerStandAlonePropertyComputationForProject ()
     }
     return optionalNewComponent
   }

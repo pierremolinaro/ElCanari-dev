@@ -54,7 +54,6 @@ extension AutoLayoutProjectDocument {
                 var errorMessage = self.checkCandidateDevicePads (deviceInProject, candidateDeviceRoot)
                 errorMessage += self.checkCandidateDeviceSymbolTypes (deviceInProject, candidateDeviceRoot)
                 errorMessage += self.checkCandidateDeviceSymbolInstances (deviceInProject, candidateDeviceRoot)
-//                let errorMessage = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
                 deviceInProject.mFileSystemStatusRequiresAttention = true
                 if errorMessage == "" {
                   deviceInProject.mFileSystemStatusMessage = "Device is updatable"

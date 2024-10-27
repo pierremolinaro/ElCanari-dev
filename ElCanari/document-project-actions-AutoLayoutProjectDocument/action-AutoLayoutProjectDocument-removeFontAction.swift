@@ -14,13 +14,17 @@ extension AutoLayoutProjectDocument {
   @objc func removeFontAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedFonts = self.projectFontController.selectedArray_property.propval
-        var allFonts = self.rootObject.mFonts_property.propval
-        for font in selectedFonts.values {
-          if let idx = allFonts.firstIndex(of: font) {
-            allFonts.remove(at: idx)
+        if selectedFonts.count > 0 {
+          self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
+          var allFonts = self.rootObject.mFonts_property.propval
+          for font in selectedFonts.values {
+            if let idx = allFonts.firstIndex(of: font) {
+              allFonts.remove (at: idx)
+            }
           }
+          self.rootObject.mFonts_property.setProp (allFonts)
+          self.triggerStandAlonePropertyComputationForProject ()
         }
-        self.rootObject.mFonts_property.setProp (allFonts)
 //--- END OF USER ZONE 2
   }
 }

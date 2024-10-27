@@ -223,7 +223,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
       },
       title: "Status in Device Library",
       minWidth: 150,
-      maxWidth: 200,
+      maxWidth: 300,
       headerAlignment: .left,
       contentAlignment: .left
     )

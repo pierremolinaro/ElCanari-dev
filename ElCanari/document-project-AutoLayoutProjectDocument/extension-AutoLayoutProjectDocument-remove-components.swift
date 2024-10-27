@@ -52,6 +52,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performRemoveSelectedComponents () {
+    self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
     for component in self.componentController.selectedArray.values {
       if let idx = self.rootObject.mComponents.firstIndex (of: component) {
       //--- Remove all symbols from schematics sheets
@@ -82,6 +83,7 @@ extension AutoLayoutProjectDocument {
         self.rootObject.mDevices_property.remove (device)
       }
     }
+    self.triggerStandAlonePropertyComputationForProject ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
