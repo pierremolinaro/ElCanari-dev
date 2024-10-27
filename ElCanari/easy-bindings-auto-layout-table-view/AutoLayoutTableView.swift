@@ -47,7 +47,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mScrollView.borderType = .bezelBorder
     self.mScrollView.documentView = self.mTableView
 
-
   //---
     _ = self.appendView (self.mScrollView)
     if inAddControlButtons {
@@ -58,16 +57,17 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       let removeButton = AutoLayoutButton (title: "-", size: inSize.cocoaControlSize)
         .bind_run (target: self, selector: #selector (Self.removeSelectedEntriesAction (_:)))
       self.mRemoveButton = removeButton
-      _ = hStack.appendView (addButton)
-        .appendView (removeButton)
-        .appendFlexibleSpace ()
+      _ = hStack.appendView (addButton).appendView (removeButton).appendFlexibleSpace ()
       _ = self.appendView (hStack)
     }
   //--- Permanent constraints
 //    var constraints = [NSLayoutConstraint] ()
+//    constraints.add (dim: self.widthAnchor, greaterThanOrEqualToConstant: 500.0)
 //    constraints.add (dim: self.mScrollView.widthAnchor, equalTo: self.mTableView.widthAnchor)
 //    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.mScrollView.contentView.rightAnchor)
 //    constraints.add (x: self.mTableView.leftAnchor, equalTo: self.mScrollView.contentView.leftAnchor)
+//    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.rightAnchor)
+//    constraints.add (x: self.mTableView.leftAnchor, equalTo: self.leftAnchor)
 //    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.mScrollView.contentView.rightAnchor)
 //    constraints.add (y: self.mTableView.topAnchor, equalTo: self.mScrollView.topAnchor)
 //    constraints.add (y: self.mTableView.bottomAnchor, equalTo: self.mScrollView.bottomAnchor)
@@ -83,18 +83,22 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     fatalError ("init(coder:) has not been implemented")
   }
 
-//  private var mWidthConstraint = [NSLayoutConstraint] ()
+//  private var mConstraints = [NSLayoutConstraint] ()
 //
 //  override func updateConstraints () {
-//    self.removeConstraints (self.mWidthConstraint)
-//    self.mWidthConstraint.removeAll ()
-//    self.mTableView.sizeToFit ()
-//    let s = self.mTableView.intrinsicContentSize
-//    self.mWidthConstraint.add (dim: self.widthAnchor, greaterThanOrEqualToConstant: s.width)
-//    self.addConstraints (self.mWidthConstraint)
-//
+//    Swift.print (self.mTableView.intrinsicContentSize)
+//    self.removeConstraints (self.mConstraints)
+//    self.mConstraints.removeAll ()
+//    self.mConstraints.add (x: self.mScrollView.contentView.leftAnchor, equalTo: self.leftAnchor)
+//    self.mConstraints.add (x: self.mScrollView.contentView.rightAnchor, equalTo: self.rightAnchor)
+////    self.mConstraints.add (dim: self.mScrollView.contentView.widthAnchor, greaterThanOrEqualToConstant: 900)
 //    super.updateConstraints ()
 //  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override var intrinsicContentSize : NSSize { NSSize (width: 500, height: -1) }
+//  override var intrinsicContentSize : NSSize { self.mTableView.intrinsicContentSize }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Configure table view
@@ -104,7 +108,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
                         rowCountCallBack inRowCountCallBack : @escaping () -> Int,
                         delegate inDelegate : (any AutoLayoutTableViewDelegate)?) {
-    // Swift.print ("inAllowsEmptySelection \(inAllowsEmptySelection) inAllowsMultipleSelection \(inAllowsMultipleSelection)")
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
     self.mRowCountCallBack = inRowCountCallBack
@@ -175,12 +178,16 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   final func endUpdates () {
     self.mTableView.endUpdates ()
+//    self.mTableView.needsUpdateConstraints = true
+//    print ("endUpdates")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc final func addEntryAction (_ _ : Any?) {
+  @objc final func addEntryAction (_ inUnusedSender : Any?) {
     self.mDelegate?.tableViewDelegate_addEntry ()
+//    self.mTableView.needsUpdateConstraints = true
+//    print ("addEntryAction")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -307,8 +314,8 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func tableViewSelectionDidChange (_ notification : Notification) {
-    if mTransmitSelectionChangeToDelegate {
+  final func tableViewSelectionDidChange (_ inUnusedNotification : Notification) {
+    if self.mTransmitSelectionChangeToDelegate {
       self.mDelegate?.tableViewDelegate_selectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
     }
     self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty, self.mTableView.enabledBindingController ())
@@ -359,6 +366,12 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
   deinit {
     noteObjectDeallocation (self)
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override var intrinsicContentSize : NSSize {
+//    NSSize (width: NSView.noIntrinsicMetric, height: 100.0)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: Drag
@@ -413,20 +426,6 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
       self.mDragConcludeCallBack? (array)
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //MARK:  $enabled binding
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  private var mEnabledBindingController : EnabledBindingController? = nil
-//  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
-//    self.mEnabledBindingController = EnabledBindingController (inExpression, self)
-//    return self
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

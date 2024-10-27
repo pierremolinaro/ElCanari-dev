@@ -21,15 +21,23 @@ extension AutoLayoutTableView {
                           minWidth inMinWidth : Int,
                           maxWidth inMaxWidth : Int,
                           headerAlignment inHeaderAlignment : TextAlignment,
-                          contentAlignment _ : TextAlignment) {
-    let column = InternalColorValueTableColumn (valueGetterDelegate: inGetterDelegate)
-    column.title = inTitle
-    column.headerCell.controlSize = self.controlSize
-    column.headerCell.font = self.font
-    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
-    column.minWidth = CGFloat (inMinWidth)
-    column.maxWidth = CGFloat (inMaxWidth)
-    column.width = (column.minWidth + column.maxWidth) / 2.0
+                          contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalColorValueTableColumn (
+      title: inTitle,
+      minWidth: inMinWidth,
+      maxWidth: inMaxWidth,
+      headerAlignment: inHeaderAlignment,
+      contentAlignment: inContentAlignment,
+      valueGetterDelegate: inGetterDelegate
+    )
+//    column.title = inTitle
+//    column.headerCell.controlSize = self.controlSize
+//    column.headerCell.font = self.font
+//    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
+//    column.minWidth = CGFloat (inMinWidth)
+//    column.maxWidth = CGFloat (inMaxWidth)
+////    column.width = (column.minWidth + column.maxWidth) / 2.0
+//    column.width = column.minWidth // §§
   //--- Add Column
     self.appendTableColumn (column)
   }
@@ -52,9 +60,21 @@ fileprivate final class InternalColorValueTableColumn : AutoLayoutTableColumn {
   // INIT
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?) {
+  init (title inTitle : String,
+        minWidth inMinWidth : Int,
+        maxWidth inMaxWidth : Int,
+        headerAlignment inHeaderAlignment : TextAlignment,
+        contentAlignment inContentAlignment : TextAlignment,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSColor?) {
     self.mValueGetterDelegate = inGetterDelegate
-    super.init (sortDelegate: nil, contentAlignment: .center)
+    super.init (
+      sortDelegate: nil,
+      title: inTitle,
+      minWidth: inMinWidth,
+      maxWidth: inMaxWidth,
+      headerAlignment: inHeaderAlignment,
+      contentAlignment: inContentAlignment
+    )
     self.isEditable = false
   }
 

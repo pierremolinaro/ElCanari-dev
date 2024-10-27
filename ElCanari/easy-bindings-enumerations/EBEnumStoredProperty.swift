@@ -33,7 +33,7 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
   private var mValue : TYPE {
     didSet {
       if self.mValue != oldValue {
-        self.mUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
+        self.mUndoManager?.registerUndo (withTarget: self) { (inTarget) in inTarget.mValue = oldValue }
         if logEvents () {
           appendMessage ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
         }

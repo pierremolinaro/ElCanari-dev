@@ -943,56 +943,23 @@ import AppKit
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutTableView (size: .regular, addControlButtons: false)
-          .expandableWidth ()
-          .set (minWidth: 400)
         self.projectDeviceController.bind_tableView (vStackView_view_view)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
-      _ = vStackView_view.appendDivider ()
+      _ = vStackView_view.appendSeparator ()
       do{
         let vStackView_view_view = AutoLayoutVerticalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Selected Device", bold: false, size: .regular, alignment: .center)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Selected Device", bold: true, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
-          do{
-            let vStackView_view_view_view_view = AutoLayoutVerticalStackView ()
-            do{
-              let vStackView_view_view_view_view_view = AutoLayoutCanariProjectDeviceTableView (size: .regular)
-                .expandableWidth ()
-                .set (minWidth: 150)
-                .bind_array (self.selectedDeviceNames_property)
-              _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
-            }
-            _ = vStackView_view_view_view_view.appendDivider ()
-            do{
-              let vStackView_view_view_view_view_view = AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView (size: .regular)
-                .expandableWidth ()
-                .set (minWidth: 150)
-                .set (minHeight: 150)
-                .bind_array (self.selectedDeviceSymbolNames_property)
-              _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
-            }
-            _ = vStackView_view_view_view_view.appendDivider ()
-            do{
-              let vStackView_view_view_view_view_view = AutoLayoutCanariProjectDevicePackageTableView (size: .regular)
-                .set (minHeight: 150)
-                .expandableWidth ()
-                .bind_array (self.selectedDevicePackageNames_property)
-              _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
-            }
-            _ = vStackView_view_view_view.appendView (vStackView_view_view_view_view)
-          }
-          _ = vStackView_view_view_view.appendDivider ()
-          do{
-            let vStackView_view_view_view_view = AutoLayoutCanariProjectPinPadAssignmentTableView (size: .regular)
-              .expandableWidth ()
-              .set (minWidth: 200)
-              .bind_array (self.pinPadAssignments_property)
-            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
-          }
+          let vStackView_view_view_view = AutoLayoutCanariProjectDeviceDescriptionView ()
+            .set (minWidth: 300)
+            .bind_symbolTypeNameArray (self.selectedDeviceNames_property)
+            .bind_symbolInstanceNameArray (self.selectedDeviceSymbolNames_property)
+            .bind_packageNameArray (self.selectedDevicePackageNames_property)
+            .bind_pinPadAssignmentArray (self.pinPadAssignments_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view.appendView (vStackView_view_view)

@@ -413,29 +413,37 @@ extern autolayout class CanariDragSourceTableView {
   $models transient StringTagArray
 }
 
-extern autolayout class CanariProjectPinPadAssignmentTableView (size: EBControlSize) {
-  func set (minWidth: Int)
-  func expandableWidth ()
-  $array transient ThreeStringArray
-}
+//extern autolayout class CanariProjectPinPadAssignmentTableView (size: EBControlSize) {
+//  func set (minWidth: Int)
+//  func expandableWidth ()
+//  $array transient ThreeStringArray
+//}
 
-extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBControlSize) {
-  func set (minWidth: Int)
-  func set (minHeight: Int)
-  func expandableWidth ()
-  $array transient TwoStringArray
-}
+//extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBControlSize) {
+//  func set (minWidth: Int)
+//  func set (minHeight: Int)
+//  func expandableWidth ()
+//  $array transient TwoStringArray
+//}
 
-extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
-  func expandableWidth ()
-  func set (minHeight: Int)
-  $array transient StringArray
-}
+//extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
+//  func expandableWidth ()
+//  func set (minHeight: Int)
+//  $array transient StringArray
+//}
 
-extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
+//extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
+//  func set (minWidth: Int)
+//  func expandableWidth ()
+//  $array transient StringArray
+//}
+
+extern autolayout class CanariProjectDeviceDescriptionView {
   func set (minWidth: Int)
-  func expandableWidth ()
-  $array transient StringArray
+  $symbolTypeNameArray transient StringArray
+  $symbolInstanceNameArray transient TwoStringArray
+  $packageNameArray transient StringArray
+  $pinPadAssignmentArray transient ThreeStringArray
 }
 
 extern autolayout class WarningImageView $hidden {

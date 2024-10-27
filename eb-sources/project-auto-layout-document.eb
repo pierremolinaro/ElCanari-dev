@@ -216,41 +216,49 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack {
       TableView (size : .regular, addControlButtons: no) {
-        expandableWidth ()
-        set (minWidth: 400)
+//        expandableWidth ()
+//        set (minWidth: 400)
         $tableValue #projectDeviceController
       }
-      divider
+      separator
       vStack {
-        StaticLabel (title: "Selected Device", bold: no, size: .regular, alignment: .center)
-        hStack {
-          vStack {
-            CanariProjectDeviceTableView (size : .regular) {
-              expandableWidth ()
-              set (minWidth: 150)
-              $array self.selectedDeviceNames
-            }
-            divider
-            CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
-              expandableWidth ()
-              set (minWidth: 150)
-              set (minHeight: 150)
-              $array self.selectedDeviceSymbolNames
-            }
-            divider
-            CanariProjectDevicePackageTableView (size : .regular) {
-              set (minHeight: 150)
-              expandableWidth ()
-              $array self.selectedDevicePackageNames
-            }
-          }
-          divider
-          CanariProjectPinPadAssignmentTableView (size : .regular) {
-            expandableWidth ()
-            set (minWidth: 200)
-            $array self.pinPadAssignments
-          }
+        StaticLabel (title: "Selected Device", bold: yes, size: .regular, alignment: .center)
+        CanariProjectDeviceDescriptionView {
+           set (minWidth: 300)
+           $symbolTypeNameArray self.selectedDeviceNames
+           $symbolInstanceNameArray self.selectedDeviceSymbolNames
+           $packageNameArray self.selectedDevicePackageNames
+           $pinPadAssignmentArray self.pinPadAssignments
         }
+//        hStack {
+//          vStack {
+//            CanariProjectDeviceTableView (size : .regular) {
+//              expandableWidth ()
+////              set (minHeight: 75)
+//              set (minWidth: 150)
+//              $array self.selectedDeviceNames
+//            }
+//            divider
+//            CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
+//              expandableWidth ()
+//              set (minWidth: 75)
+//              set (minHeight: 150)
+//              $array self.selectedDeviceSymbolNames
+//            }
+//            divider
+//            CanariProjectDevicePackageTableView (size : .regular) {
+//              set (minHeight: 75)
+//              expandableWidth ()
+//              $array self.selectedDevicePackageNames
+//            }
+//          }
+//          divider
+//          CanariProjectPinPadAssignmentTableView (size : .regular) {
+//            expandableWidth ()
+//            set (minWidth: 200)
+//            $array self.pinPadAssignments
+//          }
+//        }
       }
     }
   }
@@ -298,7 +306,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     dependsFrom #projectFontController.selectedArray.all.canRemoveFont ;
   action editSelectedDeviceAction ;
   action resetSelectedDeviceVersionAction ;
-//  action removeSelectedDeviceAction ;
   transient Bool canRemoveSelectedDevices
     dependsFrom #projectDeviceController.selectedArray.all.canRemove ;
   action exportSelectedDeviceAction ;
@@ -307,7 +314,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     dependsFrom #projectDeviceController.selectedArray.all.pinPadAssignments ;
   transient TwoStringArray selectedDeviceSymbolNames dependsFrom
     #projectDeviceController.selectedArray.all.symbolAndTypesNames ;
-  transient StringArray selectedDevicePackageNames dependsFrom #projectDeviceController.selectedArray.all.packageNames ;
+  transient StringArray selectedDevicePackageNames dependsFrom
+    #projectDeviceController.selectedArray.all.packageNames ;
   transient StringArray selectedDeviceNames dependsFrom
     #projectDeviceController.selectedArray.all.symbolAndTypesNames ;
  

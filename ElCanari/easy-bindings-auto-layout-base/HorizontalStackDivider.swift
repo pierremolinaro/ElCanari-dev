@@ -140,7 +140,12 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
       }
     }
     let s : CGFloat = 6.0
-    let r = NSRect (x: NSMidX (self.bounds) - s / 2.0, y: NSMidY (self.bounds) - s / 2.0, width: s, height: s)
+    let r = NSRect (
+      x: NSMidX (self.bounds) - s / 2.0,
+      y: NSMidY (self.bounds) - s / 2.0,
+      width: s,
+      height: s
+    )
     if !r.isEmpty {
       NSColor.separatorColor.setFill ()
       let bp = NSBezierPath (ovalIn: r)
@@ -153,9 +158,9 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mDividerConstraints = [NSLayoutConstraint] ()
-  private var mDividerInitialLeftLocationX : CGFloat = 0.0 // In hStack coordinates
-  private var mInitialMouseDownLocationX : CGFloat = 0.0 // In hStack coordinates
-  private var mCurrentMouseDraggedLocationX : CGFloat = 0.0  // In hStack coordinates
+  private var mDividerInitialLeftLocationX  : CGFloat = 500.0 // In hStack coordinates
+  private var mInitialMouseDownLocationX    : CGFloat = 0.0 // In hStack coordinates
+  private var mCurrentMouseDraggedLocationX : CGFloat = 0.0 // In hStack coordinates
 
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 

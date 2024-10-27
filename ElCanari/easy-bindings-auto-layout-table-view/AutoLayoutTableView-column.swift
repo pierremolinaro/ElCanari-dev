@@ -24,11 +24,22 @@ class AutoLayoutTableColumn : NSTableColumn {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+        title inTitle : String,
+        minWidth inMinWidth : Int,
+        maxWidth inMaxWidth : Int,
+        headerAlignment inHeaderAlignment : TextAlignment,
         contentAlignment inContentAlignment : TextAlignment) {
     self.mContentAlignment = inContentAlignment.cocoaAlignment
     self.mSortDelegate = inSortDelegate
     super.init (identifier: NSUserInterfaceItemIdentifier (rawValue: ""))
     noteObjectAllocation (self)
+
+    self.title = inTitle
+    self.headerCell.alignment = inHeaderAlignment.cocoaAlignment
+    self.minWidth = CGFloat (inMinWidth)
+    self.maxWidth = CGFloat (inMaxWidth)
+//    self.width = (self.minWidth + self.maxWidth) / 2.0
+    self.width = self.minWidth // §§
 
     let name : String = "\(ObjectIdentifier (self))"
     self.identifier =  NSUserInterfaceItemIdentifier (rawValue: name)

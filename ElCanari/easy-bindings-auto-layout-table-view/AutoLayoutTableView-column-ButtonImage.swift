@@ -21,21 +21,26 @@ extension AutoLayoutTableView {
                                     title inTitle : String,
                                     minWidth inMinWidth : Int,
                                     maxWidth inMaxWidth : Int,
-                                    headerAlignment inHeaderAlignment : NSTextAlignment,
+                                    headerAlignment inHeaderAlignment : TextAlignment,
                                     contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalButtonImageTableColumn (
       sortDelegate: inSortDelegate,
+      title: inTitle,
+      minWidth: inMinWidth,
+      maxWidth: inMaxWidth,
+      headerAlignment: inHeaderAlignment,
       contentAlignment: inContentAlignment,
       valueGetterDelegate: inGetterDelegate,
       actionDelegate: inActionDelegate
     )
-    column.title = inTitle
-    column.headerCell.controlSize = self.controlSize
-    column.headerCell.font = self.font
-    column.headerCell.alignment = inHeaderAlignment
-    column.minWidth = CGFloat (inMinWidth)
-    column.maxWidth = CGFloat (inMaxWidth)
-    column.width = (column.minWidth + column.maxWidth) / 2.0
+//    column.title = inTitle
+//    column.headerCell.controlSize = self.controlSize
+//    column.headerCell.font = self.font
+//    column.headerCell.alignment = inHeaderAlignment
+//    column.minWidth = CGFloat (inMinWidth)
+//    column.maxWidth = CGFloat (inMaxWidth)
+////    column.width = (column.minWidth + column.maxWidth) / 2.0
+//    column.width = column.minWidth // §§
   //--- Add Column
     self.appendTableColumn (column)
   //--- Update table view sort descriptors
@@ -64,12 +69,23 @@ fileprivate class InternalButtonImageTableColumn : AutoLayoutTableColumn {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+        title inTitle : String,
+        minWidth inMinWidth : Int,
+        maxWidth inMaxWidth : Int,
+        headerAlignment inHeaderAlignment : TextAlignment,
         contentAlignment inContentAlignment : TextAlignment,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?,
         actionDelegate inActionDelegate : @escaping (_ inRow : Int) -> Void) {
     self.mValueGetterDelegate = inGetterDelegate
     self.mActionDelegate = inActionDelegate
-    super.init (sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    super.init (
+      sortDelegate: inSortDelegate,
+      title: inTitle,
+      minWidth: inMinWidth,
+      maxWidth: inMaxWidth,
+      headerAlignment: inHeaderAlignment,
+      contentAlignment: inContentAlignment
+    )
     self.isEditable = false
   }
 

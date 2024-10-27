@@ -24,17 +24,22 @@ extension AutoLayoutTableView {
                          contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalStringValueTableColumn (
       sortDelegate: inSortDelegate,
+      title: inTitle,
+      minWidth: inMinWidth,
+      maxWidth: inMaxWidth,
+      headerAlignment: inHeaderAlignment,
       contentAlignment: inContentAlignment,
       valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
     )
-    column.title = inTitle
-    column.headerCell.font = self.font
-    column.headerCell.controlSize = self.controlSize
-    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
-    column.minWidth = CGFloat (inMinWidth)
-    column.maxWidth = CGFloat (inMaxWidth)
-    column.width = (column.minWidth + column.maxWidth) / 2.0
+//    column.title = inTitle
+//    column.headerCell.font = self.font
+//    column.headerCell.controlSize = self.controlSize
+//    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
+//    column.minWidth = CGFloat (inMinWidth)
+//    column.maxWidth = CGFloat (inMaxWidth)
+////    column.width = (column.minWidth + column.maxWidth) / 2.0
+//    column.width = column.minWidth // §§
   //--- Add Column
     self.appendTableColumn (column)
   }
@@ -59,12 +64,23 @@ fileprivate final class InternalStringValueTableColumn : AutoLayoutTableColumn {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+        title inTitle : String,
+        minWidth inMinWidth : Int,
+        maxWidth inMaxWidth : Int,
+        headerAlignment inHeaderAlignment : TextAlignment,
         contentAlignment inContentAlignment : TextAlignment,
         valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?) {
     self.mValueGetterDelegate = inGetterDelegate
     self.mValueSetterDelegate = inSetterDelegate
-    super.init (sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    super.init (
+      sortDelegate: inSortDelegate,
+      title: inTitle,
+      minWidth: inMinWidth,
+      maxWidth: inMaxWidth,
+      headerAlignment: inHeaderAlignment,
+      contentAlignment: inContentAlignment
+    )
     self.isEditable = inSetterDelegate != nil
   }
 
