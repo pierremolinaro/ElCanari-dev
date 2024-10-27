@@ -197,7 +197,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
           nets.append (net)
         }
       }
-      nets.sort { String.numeriCaseInsensitiveCompare ($0.mNetName, $1.mNetName) }
+      nets.sort { String.numericCaseInsensitiveCompare ($0.mNetName, $1.mNetName) }
       for net in nets {
         popUpButton.addItem (withTitle: net.mNetName)
         popUpButton.lastItem?.representedObject = net

@@ -109,7 +109,7 @@ extension String {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func numeriCaseInsensitiveCompare (_ inLeft : String, _ inRight : String) -> Bool {
+  static func numericCaseInsensitiveCompare (_ inLeft : String, _ inRight : String) -> Bool {
     return numericCompare (inLeft.uppercased (), true, inRight.uppercased ())
   }
 

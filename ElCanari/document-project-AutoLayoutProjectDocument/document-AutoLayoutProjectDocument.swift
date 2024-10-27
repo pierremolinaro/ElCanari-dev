@@ -946,7 +946,6 @@ import AppKit
         self.projectDeviceController.bind_tableView (vStackView_view_view)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
-      _ = vStackView_view.appendSeparator ()
       do{
         let vStackView_view_view = AutoLayoutVerticalStackView ()
         do{

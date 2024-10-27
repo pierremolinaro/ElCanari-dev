@@ -220,7 +220,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //        set (minWidth: 400)
         $tableValue #projectDeviceController
       }
-      separator
+//      separator
       vStack {
         StaticLabel (title: "Selected Device", bold: yes, size: .regular, alignment: .center)
         CanariProjectDeviceDescriptionView {

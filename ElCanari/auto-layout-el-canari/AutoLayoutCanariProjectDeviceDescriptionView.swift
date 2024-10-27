@@ -79,7 +79,7 @@ final class AutoLayoutCanariProjectDeviceDescriptionView : AutoLayoutVerticalSta
       }
       for symbolInstance in self.mSymbolInstanceNameArray {
         let s1 = AutoLayoutStaticLabel (
-          title: symbolInstance.left,
+          title: symbolInstance.left.isEmpty ? "—" : symbolInstance.left,
           bold: false,
           size: .regular,
           alignment: .right
@@ -129,7 +129,7 @@ final class AutoLayoutCanariProjectDeviceDescriptionView : AutoLayoutVerticalSta
         alignment: .right
       )
       let s2 = AutoLayoutStaticLabel (
-        title: "Symbol Type",
+        title: "Symbol Name",
         bold: true,
         size: .regular,
         alignment: .center
@@ -153,7 +153,7 @@ final class AutoLayoutCanariProjectDeviceDescriptionView : AutoLayoutVerticalSta
           alignment: .right
         )
         let s2 = AutoLayoutStaticLabel (
-          title: assignment.center,
+          title: assignment.center.isEmpty ? "—" : assignment.center,
           bold: false,
           size: .regular,
           alignment: .center
@@ -196,7 +196,7 @@ final class AutoLayoutCanariProjectDeviceDescriptionView : AutoLayoutVerticalSta
     case .empty, .multiple :
       self.mSymbolInstanceNameArray.removeAll ()
     case .single (let v) :
-      self.mSymbolInstanceNameArray = v
+      self.mSymbolInstanceNameArray = v.sorted { $0.left < $1.left }
     }
     self.triggerPopulate ()
   }
@@ -223,7 +223,7 @@ final class AutoLayoutCanariProjectDeviceDescriptionView : AutoLayoutVerticalSta
     case .empty, .multiple :
       self.mSymbolTypeNameArray.removeAll ()
     case .single (let v) :
-      self.mSymbolTypeNameArray = v
+      self.mSymbolTypeNameArray = v.sorted { $0 < $1 }
     }
     self.triggerPopulate ()
   }
@@ -250,7 +250,7 @@ final class AutoLayoutCanariProjectDeviceDescriptionView : AutoLayoutVerticalSta
     case .empty, .multiple :
       self.mPackageNameArray.removeAll ()
     case .single (let v) :
-      self.mPackageNameArray = v
+      self.mPackageNameArray = v.sorted { $0 < $1 }
     }
     self.triggerPopulate ()
   }
@@ -277,7 +277,7 @@ final class AutoLayoutCanariProjectDeviceDescriptionView : AutoLayoutVerticalSta
     case .empty, .multiple :
       self.mPinPadAssignmentArray.removeAll ()
     case .single (let v) :
-      self.mPinPadAssignmentArray = v
+      self.mPinPadAssignmentArray = v.sorted { String.numericCaseInsensitiveCompare ($0.left, $1.left) }
     }
     self.triggerPopulate ()
   }
