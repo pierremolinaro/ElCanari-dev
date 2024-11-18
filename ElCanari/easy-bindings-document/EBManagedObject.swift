@@ -74,9 +74,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   //  Getters
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final var undoManager : UndoManager? {
-    return self.mUndoManager
-  }
+  final var undoManager : UndoManager? { self.mUndoManager }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Setup
@@ -121,31 +119,29 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Save
+  //  Save relationships
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func savePropertiesAndRelationshipsIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
-//    Swift.print ("Object of class \(self.className)")
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
       if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
-        // Swift.print ("  \(key)")
       }
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Save properties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func savePropertiesIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
-//    Swift.print ("Object of class \(self.className)")
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
       if let storedProperty = property.value as? any EBDocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
-        // Swift.print ("  \(key)")
       }
     }
   }
@@ -164,7 +160,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   appendPropertyValuesTo(string:)
+  //   appendPropertyValuesTo(data:)
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendPropertyValuesTo (data ioData : inout Data) {

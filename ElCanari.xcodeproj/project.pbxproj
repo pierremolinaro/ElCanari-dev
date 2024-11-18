@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -5418,6 +5418,10 @@
 		CFFF880E29BE364C007A12DE /* property-Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-Date.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CF3EF8492CE5051F0099C54B /* Simple Layout */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); name = "Simple Layout"; path = "ElCanari/simple-layout"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		CF5C4DAC219F04D600EAC52A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -5441,6 +5445,7 @@
 		4B5CE2FE28308FD9F2A7BAF3 = {
 			isa = PBXGroup;
 			children = (
+				CF3EF8492CE5051F0099C54B /* Simple Layout */,
 				CF1406D81B3C4A6F002A3B15 /* Allocation Debug */,
 				CF61725C1B3C4B5000F3CA82 /* Application */,
 				CF7BCE222AAF1A5000318271 /* Application — Library Check */,

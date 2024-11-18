@@ -35,7 +35,8 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Nouvelle gestion de la librarie des composants"
+  "Nouvel interface de gestion de la librarie des composants",
+  "Nouvel interface de la Librarie d'un projet"
 ]
 let NEWS : [String] = [
 ]
