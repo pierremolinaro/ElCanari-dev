@@ -19,21 +19,21 @@ extension SheetInProject {
       if inPoint.mWiresP1s.count == 2 {
         let removedWire = inPoint.mWiresP1s [0]
         let conservedWire = inPoint.mWiresP1s [1]
-        conservedWire.mP1 = removedWire.mP2
+        conservedWire.mP1 = removedWire.mP2!
         removedWire.mP1 = nil
         removedWire.mP2 = nil
         inPoint.mNet = nil
       }else if inPoint.mWiresP2s.count == 2 {
         let removedWire = inPoint.mWiresP2s [0]
         let conservedWire = inPoint.mWiresP2s [1]
-        conservedWire.mP2 = removedWire.mP1
+        conservedWire.mP2 = removedWire.mP1!
         removedWire.mP1 = nil
         removedWire.mP2 = nil
         inPoint.mNet = nil
       }else{
-        let removedWire = inPoint.mWiresP2s [0]
-        let conservedWire = inPoint.mWiresP1s [0]
-        conservedWire.mP1 = removedWire.mP1
+        let removedWire : WireInSchematic = inPoint.mWiresP2s [0]
+        let conservedWire : WireInSchematic = inPoint.mWiresP1s [0]
+        conservedWire.mP1 = removedWire.mP1!
         removedWire.mP1 = nil
         removedWire.mP2 = nil
         inPoint.mNet = nil

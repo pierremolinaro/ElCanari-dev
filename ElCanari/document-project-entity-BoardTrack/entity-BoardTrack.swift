@@ -435,15 +435,15 @@ final class BoardTrack : BoardObject,
       return self.mConnectorP1_property.propval
     }
     set {
-      self.mConnectorP1_property.setProp (newValue)
-      /* if self.mConnectorP1_property.propval !== newValue {
+      // self.mConnectorP1_property.setProp (newValue)
+      if self.mConnectorP1_property.propval !== newValue {
         if self.mConnectorP1_property.propval != nil {
           self.mConnectorP1_property.setProp (nil)
         }
         if newValue != nil {
           self.mConnectorP1_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -464,15 +464,15 @@ final class BoardTrack : BoardObject,
       return self.mConnectorP2_property.propval
     }
     set {
-      self.mConnectorP2_property.setProp (newValue)
-      /* if self.mConnectorP2_property.propval !== newValue {
+      // self.mConnectorP2_property.setProp (newValue)
+      if self.mConnectorP2_property.propval !== newValue {
         if self.mConnectorP2_property.propval != nil {
           self.mConnectorP2_property.setProp (nil)
         }
         if newValue != nil {
           self.mConnectorP2_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -493,15 +493,15 @@ final class BoardTrack : BoardObject,
       return self.mNet_property.propval
     }
     set {
-      self.mNet_property.setProp (newValue)
-      /* if self.mNet_property.propval !== newValue {
+      // self.mNet_property.setProp (newValue)
+      if self.mNet_property.propval !== newValue {
         if self.mNet_property.propval != nil {
           self.mNet_property.setProp (nil)
         }
         if newValue != nil {
           self.mNet_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

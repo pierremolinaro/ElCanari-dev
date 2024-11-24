@@ -252,15 +252,15 @@ final class PackageInDevice : EBGraphicManagedObject,
       return self.mRoot_property.propval
     }
     set {
-      self.mRoot_property.setProp (newValue)
-      /* if self.mRoot_property.propval !== newValue {
+      // self.mRoot_property.setProp (newValue)
+      if self.mRoot_property.propval !== newValue {
         if self.mRoot_property.propval != nil {
           self.mRoot_property.setProp (nil)
         }
         if newValue != nil {
           self.mRoot_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

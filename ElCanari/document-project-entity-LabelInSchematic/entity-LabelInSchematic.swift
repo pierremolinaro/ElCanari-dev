@@ -78,15 +78,15 @@ final class LabelInSchematic : SchematicObject,
       return self.mPoint_property.propval
     }
     set {
-      self.mPoint_property.setProp (newValue)
-      /* if self.mPoint_property.propval !== newValue {
+      // self.mPoint_property.setProp (newValue)
+      if self.mPoint_property.propval !== newValue {
         if self.mPoint_property.propval != nil {
           self.mPoint_property.setProp (nil)
         }
         if newValue != nil {
           self.mPoint_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

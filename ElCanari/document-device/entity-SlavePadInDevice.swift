@@ -204,15 +204,15 @@ final class SlavePadInDevice : EBManagedObject,
       return self.mMasterPad_property.propval
     }
     set {
-      self.mMasterPad_property.setProp (newValue)
-      /* if self.mMasterPad_property.propval !== newValue {
+      // self.mMasterPad_property.setProp (newValue)
+      if self.mMasterPad_property.propval !== newValue {
         if self.mMasterPad_property.propval != nil {
           self.mMasterPad_property.setProp (nil)
         }
         if newValue != nil {
           self.mMasterPad_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

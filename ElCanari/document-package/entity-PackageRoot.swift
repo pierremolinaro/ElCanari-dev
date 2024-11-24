@@ -646,15 +646,15 @@ final class PackageRoot : EBManagedObject {
       return self.mModelImageDoublePoint_property.propval
     }
     set {
-      self.mModelImageDoublePoint_property.setProp (newValue)
-      /* if self.mModelImageDoublePoint_property.propval !== newValue {
+      // self.mModelImageDoublePoint_property.setProp (newValue)
+      if self.mModelImageDoublePoint_property.propval !== newValue {
         if self.mModelImageDoublePoint_property.propval != nil {
           self.mModelImageDoublePoint_property.setProp (nil)
         }
         if newValue != nil {
           self.mModelImageDoublePoint_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

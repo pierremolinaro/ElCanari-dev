@@ -257,15 +257,15 @@ final class BorderCurve : EBGraphicManagedObject,
       return self.mRoot_property.propval
     }
     set {
-      self.mRoot_property.setProp (newValue)
-      /* if self.mRoot_property.propval !== newValue {
+      // self.mRoot_property.setProp (newValue)
+      if self.mRoot_property.propval !== newValue {
         if self.mRoot_property.propval != nil {
           self.mRoot_property.setProp (nil)
         }
         if newValue != nil {
           self.mRoot_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -286,15 +286,15 @@ final class BorderCurve : EBGraphicManagedObject,
       return self.mNext_property.propval
     }
     set {
-      self.mNext_property.setProp (newValue)
-      /* if self.mNext_property.propval !== newValue {
+      // self.mNext_property.setProp (newValue)
+      if self.mNext_property.propval !== newValue {
         if self.mNext_property.propval != nil {
           self.mNext_property.setProp (nil)
         }
         if newValue != nil {
           self.mNext_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -315,15 +315,15 @@ final class BorderCurve : EBGraphicManagedObject,
       return self.mPrevious_property.propval
     }
     set {
-      self.mPrevious_property.setProp (newValue)
-      /* if self.mPrevious_property.propval !== newValue {
+      // self.mPrevious_property.setProp (newValue)
+      if self.mPrevious_property.propval !== newValue {
         if self.mPrevious_property.propval != nil {
           self.mPrevious_property.setProp (nil)
         }
         if newValue != nil {
           self.mPrevious_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

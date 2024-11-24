@@ -72,15 +72,15 @@ class SchematicObject : EBGraphicManagedObject,
       return self.mSheet_property.propval
     }
     set {
-      self.mSheet_property.setProp (newValue)
-      /* if self.mSheet_property.propval !== newValue {
+      // self.mSheet_property.setProp (newValue)
+      if self.mSheet_property.propval !== newValue {
         if self.mSheet_property.propval != nil {
           self.mSheet_property.setProp (nil)
         }
         if newValue != nil {
           self.mSheet_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

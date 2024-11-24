@@ -721,15 +721,15 @@ final class ComponentInProject : BoardObject,
       return self.mDevice_property.propval
     }
     set {
-      self.mDevice_property.setProp (newValue)
-      /* if self.mDevice_property.propval !== newValue {
+      // self.mDevice_property.setProp (newValue)
+      if self.mDevice_property.propval !== newValue {
         if self.mDevice_property.propval != nil {
           self.mDevice_property.setProp (nil)
         }
         if newValue != nil {
           self.mDevice_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -762,15 +762,15 @@ final class ComponentInProject : BoardObject,
       return self.mSelectedPackage_property.propval
     }
     set {
-      self.mSelectedPackage_property.setProp (newValue)
-      /* if self.mSelectedPackage_property.propval !== newValue {
+      // self.mSelectedPackage_property.setProp (newValue)
+      if self.mSelectedPackage_property.propval !== newValue {
         if self.mSelectedPackage_property.propval != nil {
           self.mSelectedPackage_property.setProp (nil)
         }
         if newValue != nil {
           self.mSelectedPackage_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -863,15 +863,15 @@ final class ComponentInProject : BoardObject,
       return self.mNameFont_property.propval
     }
     set {
-      self.mNameFont_property.setProp (newValue)
-      /* if self.mNameFont_property.propval !== newValue {
+      // self.mNameFont_property.setProp (newValue)
+      if self.mNameFont_property.propval !== newValue {
         if self.mNameFont_property.propval != nil {
           self.mNameFont_property.setProp (nil)
         }
         if newValue != nil {
           self.mNameFont_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -892,15 +892,15 @@ final class ComponentInProject : BoardObject,
       return self.mValueFont_property.propval
     }
     set {
-      self.mValueFont_property.setProp (newValue)
-      /* if self.mValueFont_property.propval !== newValue {
+      // self.mValueFont_property.setProp (newValue)
+      if self.mValueFont_property.propval !== newValue {
         if self.mValueFont_property.propval != nil {
           self.mValueFont_property.setProp (nil)
         }
         if newValue != nil {
           self.mValueFont_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

@@ -596,15 +596,15 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       return self.mArtwork_property.propval
     }
     set {
-      self.mArtwork_property.setProp (newValue)
-      /* if self.mArtwork_property.propval !== newValue {
+      // self.mArtwork_property.setProp (newValue)
+      if self.mArtwork_property.propval !== newValue {
         if self.mArtwork_property.propval != nil {
           self.mArtwork_property.setProp (nil)
         }
         if newValue != nil {
           self.mArtwork_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 

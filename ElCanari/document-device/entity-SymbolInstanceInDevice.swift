@@ -136,15 +136,15 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       return self.mDeviceRoot_property.propval
     }
     set {
-      self.mDeviceRoot_property.setProp (newValue)
-      /* if self.mDeviceRoot_property.propval !== newValue {
+      // self.mDeviceRoot_property.setProp (newValue)
+      if self.mDeviceRoot_property.propval !== newValue {
         if self.mDeviceRoot_property.propval != nil {
           self.mDeviceRoot_property.setProp (nil)
         }
         if newValue != nil {
           self.mDeviceRoot_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
@@ -165,15 +165,15 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       return self.mType_property.propval
     }
     set {
-      self.mType_property.setProp (newValue)
-      /* if self.mType_property.propval !== newValue {
+      // self.mType_property.setProp (newValue)
+      if self.mType_property.propval !== newValue {
         if self.mType_property.propval != nil {
           self.mType_property.setProp (nil)
         }
         if newValue != nil {
           self.mType_property.setProp (newValue)
         }
-      } */
+      }
     }
   }
 
