@@ -134,34 +134,35 @@ final class AutoLayoutTabView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
-    self.mSegmentImageController [inSegmentIndex] = EBObservablePropertyController (
+  final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>,
+                                tabIndex inTabIndex : Int) -> Self {
+    self.mSegmentImageController [inTabIndex] = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack: { [weak self, inSegmentIndex] in self?.updateImage (from: inObject, segmentIndex: inSegmentIndex) }
+      callBack: { [weak self, inTabIndex] in self?.updateImage (from: inObject, tabIndex: inTabIndex) }
     )
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) {
+  fileprivate func updateImage (from inObject : EBObservableProperty <NSImage>, tabIndex inTabIndex : Int) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.mSegmentedControl.setImage (nil, forSegment: inSegmentIndex)
+      self.mSegmentedControl.setImage (nil, forSegment: inTabIndex)
     case .single (let v) :
-      self.mSegmentedControl.setImage (v.isValid ? v : nil, forSegment: inSegmentIndex)
+      self.mSegmentedControl.setImage (v.isValid ? v : nil, forSegment: inTabIndex)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  $selectedPage binding
+  //  $selectedTab binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSelectedTabIndexController : EBGenericReadWritePropertyController <Int>? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_selectedPage (_ inObject : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_selectedTab (_ inObject : EBObservableMutableProperty <Int>) -> Self {
     self.mSelectedTabIndexController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack: { [weak self] in self?.update (from: inObject) }

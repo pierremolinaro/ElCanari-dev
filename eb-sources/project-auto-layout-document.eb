@@ -185,8 +185,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     TabView (size : .regular) {
       addTab (title: "Devices", tooltip: "", contentView: view devicesInLibraryPage)
       addTab (title: "Fonts", tooltip: "", contentView: view fontsInLibraryPage)
-      $segmentImage root.fileSystemDeviceLibraryStatusImage (segmentIndex : 0)
-      $segmentImage root.fileSystemFontLibraryStatusImage (segmentIndex : 1)
+      $segmentImage root.fileSystemDeviceLibraryStatusImage (tabIndex : 0)
+      $segmentImage root.fileSystemFontLibraryStatusImage (tabIndex : 1)
     }
   }
     
@@ -216,11 +216,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack {
       TableView (size : .regular, addControlButtons: no) {
-//        expandableWidth ()
-//        set (minWidth: 400)
         $tableValue #projectDeviceController
       }
-//      separator
       vStack {
         StaticLabel (title: "Selected Device", bold: yes, size: .regular, alignment: .center)
         CanariProjectDeviceDescriptionView {
@@ -230,35 +227,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
            $packageNameArray self.selectedDevicePackageNames
            $pinPadAssignmentArray self.pinPadAssignments
         }
-//        hStack {
-//          vStack {
-//            CanariProjectDeviceTableView (size : .regular) {
-//              expandableWidth ()
-////              set (minHeight: 75)
-//              set (minWidth: 150)
-//              $array self.selectedDeviceNames
-//            }
-//            divider
-//            CanariProjectDeviceSymbolTypeAndNameTableView (size : .regular) {
-//              expandableWidth ()
-//              set (minWidth: 75)
-//              set (minHeight: 150)
-//              $array self.selectedDeviceSymbolNames
-//            }
-//            divider
-//            CanariProjectDevicePackageTableView (size : .regular) {
-//              set (minHeight: 75)
-//              expandableWidth ()
-//              $array self.selectedDevicePackageNames
-//            }
-//          }
-//          divider
-//          CanariProjectPinPadAssignmentTableView (size : .regular) {
-//            expandableWidth ()
-//            set (minWidth: 200)
-//            $array self.pinPadAssignments
-//          }
-//        }
       }
     }
   }
@@ -428,15 +396,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         set (minWidth: 300)
         $netInfo root.netsDescription
       }
-      divider
+//      separator
       vStack {
         StaticLabel (title: "Selected Net Inspector", bold: yes, size: .small, alignment: .center)
         vStack withVScroller [configurator selectedNetVerticalScrollViewConfigurator]
         set (margins: .regular) set (width: 300) {
         }
-//        VerticalScrollView (
-//          content: vStack set (margins: .regular) set (width: 300) { }
-//        ) [configurator selectedNetVerticalScrollViewConfigurator]
       }
     }
   }
@@ -1778,7 +1743,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
           }
         )
-        $selectedPage root.mAutorouterInterfaceMode
+        $selectedTab root.mAutorouterInterfaceMode
       }
       StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
       hStack {

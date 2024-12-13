@@ -1446,14 +1446,6 @@
 		CF61915F26F7739B003B75FF /* NSImage-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915D26F7739B003B75FF /* NSImage-extension.swift */; };
 		CF61916226F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61916126F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift */; };
 		CF61916326F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61916126F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift */; };
-		CF61DBB22CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBAF2CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift */; };
-		CF61DBB32CECB533000DE397 /* SLB_NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBB12CECB533000DE397 /* SLB_NSTextField.swift */; };
-		CF61DBB42CECB533000DE397 /* NSView+simple-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBAE2CECB533000DE397 /* NSView+simple-layout.swift */; };
-		CF61DBB52CECB533000DE397 /* SimpleLayoutStaticLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBB02CECB533000DE397 /* SimpleLayoutStaticLabel.swift */; };
-		CF61DBB62CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBAF2CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift */; };
-		CF61DBB72CECB533000DE397 /* SLB_NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBB12CECB533000DE397 /* SLB_NSTextField.swift */; };
-		CF61DBB82CECB533000DE397 /* NSView+simple-layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBAE2CECB533000DE397 /* NSView+simple-layout.swift */; };
-		CF61DBB92CECB533000DE397 /* SimpleLayoutStaticLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61DBB02CECB533000DE397 /* SimpleLayoutStaticLabel.swift */; };
 		CF62176127A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62175327A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift */; };
 		CF62176227A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62175327A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift */; };
 		CF62176727A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62175527A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_fonts.swift */; };
@@ -1483,6 +1475,8 @@
 		CF62187F27A1A57B00D02368 /* configurator-Preferences-updateCheckIntervalPopUpButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62187E27A1A57B00D02368 /* configurator-Preferences-updateCheckIntervalPopUpButtonConfigurator.swift */; };
 		CF62188027A1A57B00D02368 /* configurator-Preferences-updateCheckIntervalPopUpButtonConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62187E27A1A57B00D02368 /* configurator-Preferences-updateCheckIntervalPopUpButtonConfigurator.swift */; };
 		CF636434267516D0000005B5 /* ApplicationDelegate+batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A118121B1C72300A8030C /* ApplicationDelegate+batch.swift */; };
+		CF6390A32D02224C009E9ECD /* EBAllocationDebug-release.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4ADB9B25753BAC002E7864 /* EBAllocationDebug-release.swift */; };
+		CF6390A42D022296009E9ECD /* EBAllocationDebug-debug-with-actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D3DE428C354F30097D987 /* EBAllocationDebug-debug-with-actor.swift */; };
 		CF644E1122E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */; };
 		CF644E1222E7560C004B7ED3 /* enum-AutorouterPreferredDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1022E7560B004B7ED3 /* enum-AutorouterPreferredDirections.swift */; };
 		CF644E1422E75744004B7ED3 /* enum-AutorouterSnapAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF644E1322E75744004B7ED3 /* enum-AutorouterSnapAngle.swift */; };
@@ -4242,10 +4236,6 @@
 		CF61915926F7709C003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift"; sourceTree = "<group>"; };
 		CF61915D26F7739B003B75FF /* NSImage-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage-extension.swift"; sourceTree = "<group>"; };
 		CF61916126F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift"; sourceTree = "<group>"; };
-		CF61DBAE2CECB533000DE397 /* NSView+simple-layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+simple-layout.swift"; sourceTree = "<group>"; };
-		CF61DBAF2CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLayoutHorizontalStackView.swift; sourceTree = "<group>"; };
-		CF61DBB02CECB533000DE397 /* SimpleLayoutStaticLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLayoutStaticLabel.swift; sourceTree = "<group>"; };
-		CF61DBB12CECB533000DE397 /* SLB_NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLB_NSTextField.swift; sourceTree = "<group>"; };
 		CF62175327A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_symbols.swift"; sourceTree = "<group>"; };
 		CF62175527A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_fonts.swift"; sourceTree = "<group>"; };
 		CF62175627A19E4C00D02368 /* action-Preferences-checkForAppUpdateAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-checkForAppUpdateAction.swift"; sourceTree = "<group>"; };
@@ -5453,7 +5443,6 @@
 		4B5CE2FE28308FD9F2A7BAF3 = {
 			isa = PBXGroup;
 			children = (
-				CF61DBAD2CECB4F1000DE397 /* Simple Layout */,
 				CF1406D81B3C4A6F002A3B15 /* Allocation Debug */,
 				CF61725C1B3C4B5000F3CA82 /* Application */,
 				CF7BCE222AAF1A5000318271 /* Application — Library Check */,
@@ -5570,10 +5559,11 @@
 		CF217C0825015ED3003E322E /* EB — document */ = {
 			isa = PBXGroup;
 			children = (
-				CFF85808295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift */,
 				CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
+				CFF85808295C8E5600444543 /* EBDocumentStorablePropertyProtocol.swift */,
 				CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */,
+				CF3DAD2E2AD098BF003830F4 /* EBStoredProperty.swift */,
 				CF217C1325016A46003E322E /* file-format-binary.swift */,
 				CF217C0F250165BD003E322E /* file-format-text.swift */,
 				CF217C1925017D6B003E322E /* file-format-utilities.swift */,
@@ -6035,8 +6025,8 @@
 				CF3DAD182AD096CA003830F4 /* EBObserverProtocol.swift */,
 				CF3DAD142AD096CA003830F4 /* EBPreferenceProperty.swift */,
 				CF3DAD112AD096CA003830F4 /* EBPropertyProtocol.swift */,
+				CF07781123521CB800F56EAB /* EBSelection.swift */,
 				CFB79A182CC3AD2E001EA1EF /* EBStandAloneProperty.swift */,
-				CF3DAD2E2AD098BF003830F4 /* EBStoredProperty.swift */,
 				CF3DAD152AD096CA003830F4 /* EBTransientProperty.swift */,
 			);
 			name = "EB — property generic classes";
@@ -6127,7 +6117,6 @@
 				CFA80DD325C0503700966D91 /* EBGenericReadWritePropertyController.swift */,
 				CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */,
 				CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */,
-				CF07781123521CB800F56EAB /* EBSelection.swift */,
 				CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */,
 				CF8BE743235112CB00F95B3A /* func-checkOutletConnection.swift */,
 				CF8BE744235112CB00F95B3A /* func-presentErrorWindow.swift */,
@@ -6180,18 +6169,6 @@
 			);
 			name = Resources;
 			path = ElCanari/resources;
-			sourceTree = "<group>";
-		};
-		CF61DBAD2CECB4F1000DE397 /* Simple Layout */ = {
-			isa = PBXGroup;
-			children = (
-				CF61DBAE2CECB533000DE397 /* NSView+simple-layout.swift */,
-				CF61DBAF2CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift */,
-				CF61DBB02CECB533000DE397 /* SimpleLayoutStaticLabel.swift */,
-				CF61DBB12CECB533000DE397 /* SLB_NSTextField.swift */,
-			);
-			name = "Simple Layout";
-			path = "ElCanari/Simple Layout";
 			sourceTree = "<group>";
 		};
 		CF61FA911B3EBF21000E0257 /* Outlets Canari */ = {
@@ -8585,6 +8562,7 @@
 				CF223CB82C73AF6700FFF7E7 /* transient-ProjectRoot-ercStatusValue.swift in Sources */,
 				CF711DA9275E1B3500280069 /* toone-NetInProject.swift in Sources */,
 				CFC5793A2BDEE923005CA3F0 /* AutoLayoutProgressIndicator.swift in Sources */,
+				CF6390A32D02224C009E9ECD /* EBAllocationDebug-release.swift in Sources */,
 				CF59C3F829BE36AB004CA404 /* property-Int.swift in Sources */,
 				CFB1F9482940EDDC00C1E120 /* action-AutoLayoutProjectDocument-removeFontAction.swift in Sources */,
 				CFB4C042279465E700C509A9 /* AutoLayoutButton.swift in Sources */,
@@ -8806,10 +8784,6 @@
 				CFEB7CF2233A298D0060A97A /* transient-SchematicObject-isPlacedInSchematic.swift in Sources */,
 				CF39CD24268CC267004971F9 /* transient-SymbolTypeInDevice-documentSize.swift in Sources */,
 				CF4EA9EB26F6517800F01746 /* transient-ProjectRoot-inner2LayerTrackCountString.swift in Sources */,
-				CF61DBB62CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift in Sources */,
-				CF61DBB72CECB533000DE397 /* SLB_NSTextField.swift in Sources */,
-				CF61DBB82CECB533000DE397 /* NSView+simple-layout.swift in Sources */,
-				CF61DBB92CECB533000DE397 /* SimpleLayoutStaticLabel.swift in Sources */,
 				CF5220A927A2EF49004FEEB2 /* configurator-Preferences-lastSystemLibraryCheckTimeButtonConfigurator.swift in Sources */,
 				CFFF32BB248E27BD0008EC34 /* EBGraphicView-mouse-moved-exited.swift in Sources */,
 				CFB1F9792940EEF700C1E120 /* action-AutoLayoutProjectDocument-setDateToNowAction.swift in Sources */,
@@ -10828,10 +10802,6 @@
 				CF49EEBD275A499500481930 /* action-AutoLayoutFontDocument-resetVersionAndSignatureAction.swift in Sources */,
 				CFB7D86C2683A61C007B9D3B /* document-AutoLayoutPackageDocument.swift in Sources */,
 				CFEB7B18233A24BF0060A97A /* transient-BoardTrack-actualTrackWidth.swift in Sources */,
-				CF61DBB22CECB533000DE397 /* SimpleLayoutHorizontalStackView.swift in Sources */,
-				CF61DBB32CECB533000DE397 /* SLB_NSTextField.swift in Sources */,
-				CF61DBB42CECB533000DE397 /* NSView+simple-layout.swift in Sources */,
-				CF61DBB52CECB533000DE397 /* SimpleLayoutStaticLabel.swift in Sources */,
 				CFA42F9C229AEACF000AA8C8 /* tomany-SlavePadInDevice.swift in Sources */,
 				CF711CA7275E1A2E00280069 /* entity-BoardObject.swift in Sources */,
 				CF4D083D21C2F18000380ACA /* transient-PackageSegment-objectDisplay.swift in Sources */,
@@ -11232,6 +11202,7 @@
 				CF22F268275A73EE009C6FAC /* transient-BoardModel-backTrackSegments.swift in Sources */,
 				CFB1F9162940EDDB00C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift in Sources */,
 				CFEB7CCA233A28860060A97A /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
+				CF6390A42D022296009E9ECD /* EBAllocationDebug-debug-with-actor.swift in Sources */,
 				CFB1F91F2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-editSelectedDeviceAction.swift in Sources */,
 				CF5220A627A2EC38004FEEB2 /* action-Preferences-checkSystemLibraryUpdateAction.swift in Sources */,
 				CF711DBF275E1B6600280069 /* entity-ProjectRoot.swift in Sources */,
@@ -11805,7 +11776,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OSACOMPILE_EXECUTE_ONLY = YES;
-				"OTHER_SWIFT_FLAGS[arch=*]" = "-DBUILD_OBJECT_EXPLORER";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
@@ -11840,6 +11811,7 @@
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				ONLY_ACTIVE_ARCH = NO;
+				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -11862,6 +11834,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -11997,10 +11970,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = fast;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -12038,12 +12011,11 @@
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				ONLY_ACTIVE_ARCH = YES;
-				"OTHER_SWIFT_FLAGS[arch=*]" = "";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";

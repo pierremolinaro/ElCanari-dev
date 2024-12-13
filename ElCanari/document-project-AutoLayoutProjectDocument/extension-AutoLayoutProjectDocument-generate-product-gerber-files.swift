@@ -70,6 +70,7 @@ extension AutoLayoutProjectDocument {
     let drillString = inProduct.excellonDrillString (unit: self.rootObject.mGerberProductUnit)
     let drillData : Data? = drillString.data (using: .ascii, allowLossyConversion: false)
     try drillData?.write (to: inURL, options: .atomic)
+    self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -92,138 +93,6 @@ extension AutoLayoutProjectDocument {
     let gerberString = gerber.gerberString (unit: self.rootObject.mGerberProductUnit)
     let gerberData : Data? = gerberString.data (using: .ascii, allowLossyConversion: false)
     try gerberData?.write (to: url, options: .atomic)
-//    }else{
-//      var af = AffineTransform ()
-//      if inDescriptor.horizontalMirror {
-//        let t = inProductData.boardBoundBox.origin.x + inProductData.boardBoundBox.size.width / 2.0
-//        af.translate (x: t, y: 0.0)
-//        af.scale (x: -1.0, y: 1.0)
-//        af.translate (x: -t, y: 0.0)
-//      }
-//      var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
-//      s += "%MOIN*%\n" // length unit is inch
-//      var apertureDictionary = [ApertureKey : [String]] ()
-//      var polygons = [ProductPolygon] ()
-//      if inDescriptor.drawBoardLimits {
-//        apertureDictionary.appendCircular ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]], af)
-//      }
-//      if inDescriptor.drawPackageLegendTopSide {
-//        apertureDictionary.appendCircular (inProductData.frontPackageLegend, af)
-//      }
-//      if inDescriptor.drawPackageLegendBottomSide {
-//        apertureDictionary.appendCircular (inProductData.backPackageLegend, af)
-//      }
-//      if inDescriptor.drawComponentNamesTopSide {
-//        apertureDictionary.appendCircular (inProductData.frontComponentNames, af)
-//      }
-//      if inDescriptor.drawComponentNamesBottomSide {
-//        apertureDictionary.appendCircular (inProductData.backComponentNames, af)
-//      }
-//      if inDescriptor.drawComponentValuesTopSide {
-//        apertureDictionary.appendCircular (inProductData.frontComponentValues, af)
-//      }
-//      if inDescriptor.drawComponentValuesBottomSide {
-//        apertureDictionary.appendCircular (inProductData.backComponentValues, af)
-//      }
-//      if inDescriptor.drawTextsLegendTopSide {
-//        apertureDictionary.appendCircular (inProductData.legendFrontTexts, af)
-//        apertureDictionary.append (oblongs: inProductData.frontLines, af)
-//        polygons += inProductData.legendFrontQRCodes.polygons.transformed (by: af)
-//        polygons += inProductData.legendFrontImages.polygons.transformed (by: af)
-//      }
-//      if inDescriptor.drawTextsLayoutTopSide {
-//        apertureDictionary.appendCircular (inProductData.layoutFrontTexts, af)
-//      }
-//      if inDescriptor.drawTextsLayoutBottomSide {
-//        apertureDictionary.appendCircular (inProductData.layoutBackTexts, af)
-//      }
-//      if inDescriptor.drawTextsLegendBottomSide {
-//        apertureDictionary.appendCircular (inProductData.legendBackTexts, af)
-//        apertureDictionary.append (oblongs: inProductData.backLines, af)
-//        polygons += inProductData.legendBackQRCodes.polygons.transformed (by: af)
-//        polygons += inProductData.legendBackImages.polygons.transformed (by: af)
-//      }
-//      if inDescriptor.drawVias {
-//        apertureDictionary.append (productCircles: inProductData.viaPads, af)
-//      }
-//      if inDescriptor.drawTracksTopSide {
-//        apertureDictionary.append (oblongs: inProductData.tracks [.front], af)
-//      }
-//      if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
-//        apertureDictionary.append (oblongs: inProductData.tracks [.inner1], af)
-//      }
-//      if inDescriptor.drawTracksInner2Layer && (inLayerConfiguration != .twoLayers) {
-//        apertureDictionary.append (oblongs: inProductData.tracks [.inner2], af)
-//      }
-//      if inDescriptor.drawTracksInner3Layer && (inLayerConfiguration == .sixLayers) {
-//        apertureDictionary.append (oblongs: inProductData.tracks [.inner3], af)
-//      }
-//      if inDescriptor.drawTracksInner4Layer && (inLayerConfiguration == .sixLayers) {
-//        apertureDictionary.append (oblongs: inProductData.tracks [.inner4], af)
-//      }
-//      if inDescriptor.drawTracksBottomSide {
-//        apertureDictionary.append (oblongs: inProductData.tracks [.back], af)
-//      }
-//      if inDescriptor.drawPadsTopSide {
-//        apertureDictionary.append (oblongs: inProductData.frontTracksWithNoSilkScreen, af)
-//        apertureDictionary.append (productCircles: inProductData.circularPads [.frontLayer], af)
-//        apertureDictionary.append (oblongs: inProductData.oblongPads [.frontLayer], af)
-//        if let pp = inProductData.polygonPads [.frontLayer] {
-//          polygons += pp.transformed (by: af)
-//        }
-//      }
-//      if inDescriptor.drawPadsBottomSide {
-//        apertureDictionary.append (oblongs: inProductData.backTracksWithNoSilkScreen, af)
-//        apertureDictionary.append (productCircles: inProductData.circularPads [.backLayer], af)
-//        apertureDictionary.append (oblongs: inProductData.oblongPads [.backLayer], af)
-//        if let pp = inProductData.polygonPads [.backLayer] {
-//          polygons += pp.transformed (by: af)
-//        }
-//      }
-//      if inDescriptor.drawTraversingPads {
-//        apertureDictionary.append (productCircles: inProductData.circularPads [.innerLayer], af)
-//        apertureDictionary.append (oblongs: inProductData.oblongPads [.innerLayer], af)
-//        if let pp = inProductData.polygonPads [.innerLayer] {
-//          polygons += pp.transformed (by: af)
-//        }
-//      }
-//    //--- Write aperture diameters
-//      let keys = apertureDictionary.keys.sorted ()
-//      var idx = 10
-//      for aperture in keys {
-//        let apertureString = aperture.gerberAperture
-//        s += "%ADD\(idx)\(apertureString)*%\n"
-//        idx += 1
-//      }
-//    //--- Write drawings
-//      idx = 10
-//      for aperture in keys {
-//        s += "D\(idx)*\n"
-//        s += "G01" // Linear interpolation
-//        for element in apertureDictionary [aperture]! {
-//          s += element + "*\n"
-//        }
-//        idx += 1
-//      }
-//    //--- Write polygon fills
-//      for poly in polygons {
-//        s += "G36*\n"
-//        let x0 = cocoaToMilTenth (poly.origin.x)
-//        let y0 = cocoaToMilTenth (poly.origin.y)
-//        s.append ("X\(x0)Y\(y0)D02*")
-//        s += "G01*\n"
-//        for p in poly.points {
-//          let x = cocoaToMilTenth (p.x)
-//          let y = cocoaToMilTenth (p.y)
-//          s.append ("X\(x)Y\(y)D01*")
-//        }
-//        s += "G37*\n"
-//      }
-//    //--- Write file
-//      s += "M02*\n"
-//      let data : Data? = s.data (using: .ascii, allowLossyConversion: false)
-//      try data?.write (to: url, options: .atomic)
-//    }
     self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
   }
 

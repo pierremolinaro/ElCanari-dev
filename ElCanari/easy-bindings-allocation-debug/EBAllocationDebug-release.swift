@@ -8,17 +8,23 @@ import AppKit
 //    Public routines
 //--------------------------------------------------------------------------------------------------
 
-nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
-}
+#if RELEASE
+  nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
-}
+#if RELEASE
+  nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
-}
+#if RELEASE
+  @MainActor func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------

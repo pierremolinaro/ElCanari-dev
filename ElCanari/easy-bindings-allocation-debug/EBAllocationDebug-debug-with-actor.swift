@@ -1,3 +1,4 @@
+//--------------------------------------------------------------------------------------------------
 //
 //  EBAllocationDebug-debug-auto-layout.swift
 //  ElCanari-Debug
@@ -12,447 +13,481 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-private let prefsEnableObjectAllocationDebugString        = "EBAllocationDebug:enableObjectAllocationDebug"
-private let prefsEnableObjectAllocationStatsWindowVisible = "EBAllocationDebug:allocationStatsWindowVisible"
-private let prefsEnableObjectAllocationStatsDisplayFilter = "EBAllocationDebug:allocationStatsDisplayFilter"
+#if DEBUG
+  private let prefsEnableObjectAllocationDebugString        = "EBAllocationDebug:enableObjectAllocationDebug"
+  private let prefsEnableObjectAllocationStatsWindowVisible = "EBAllocationDebug:allocationStatsWindowVisible"
+  private let prefsEnableObjectAllocationStatsDisplayFilter = "EBAllocationDebug:allocationStatsDisplayFilter"
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-private let gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: prefsEnableObjectAllocationDebugString)
+#if DEBUG
+  private let gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: prefsEnableObjectAllocationDebugString)
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //    Public routines
 //--------------------------------------------------------------------------------------------------
 
-nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
-  if gEnableObjectAllocationDebug {
-    let objectType : AnyObject.Type = type (of: inObject)
-    Task {
-      await serializedNoteObjectAllocation (ofType: objectType)
+#if DEBUG
+  nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+    if gEnableObjectAllocationDebug {
+      let objectType : AnyObject.Type = type (of: inObject)
+      Task {
+        await serializedNoteObjectAllocation (ofType: objectType)
+      }
     }
   }
-}
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //    pmNoteObjectDeallocation
 //--------------------------------------------------------------------------------------------------
 
-nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
-  if gEnableObjectAllocationDebug {
-    let objectType : AnyObject.Type = type (of: inObject)
-    Task {
-      await serializedNoteObjectDeallocation (ofType: objectType)
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@globalActor fileprivate final actor PendingAllocationBufferActor {
-  static var shared = PendingAllocationBufferActor ()
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@PendingAllocationBufferActor fileprivate var gPendingAllocatedObjectClasses = [AnyObject.Type] ()
-@PendingAllocationBufferActor fileprivate var gPendingDeallocatedObjectClasses = [AnyObject.Type] ()
-@PendingAllocationBufferActor fileprivate var gTransmitEventTriggered = false
-
-//--------------------------------------------------------------------------------------------------
-
-@PendingAllocationBufferActor fileprivate func serializedNoteObjectAllocation (ofType inType : AnyObject.Type) {
-  gPendingAllocatedObjectClasses.append (inType)
-  triggerTransmit ()
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@PendingAllocationBufferActor fileprivate func serializedNoteObjectDeallocation (ofType inType : AnyObject.Type) {
-  gPendingDeallocatedObjectClasses.append (inType)
-  triggerTransmit ()
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@PendingAllocationBufferActor fileprivate func triggerTransmit () {
-  if !gTransmitEventTriggered {
-    gTransmitEventTriggered = true
-    Task.detached {
-      try? await Task.sleep (nanoseconds: 100_000_000)
-      let (pendingAllocations, pendingDeallocations) = await getPendingAllocation ()
-      await gAllocationDebugActorClass.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@PendingAllocationBufferActor fileprivate func getPendingAllocation () -> ([AnyObject.Type], [AnyObject.Type]) {
-  gTransmitEventTriggered = false
-  let result = (gPendingAllocatedObjectClasses, gPendingDeallocatedObjectClasses)
-  gPendingAllocatedObjectClasses.removeAll (keepingCapacity: true)
-  gPendingDeallocatedObjectClasses.removeAll (keepingCapacity: true)
-  return result
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@globalActor fileprivate final actor AllocationDebugActor {
-  static var shared = AllocationDebugActor ()
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@AllocationDebugActor fileprivate var gAllocationDebugActorClass = AllocationDebugActorClass ()
-
-//--------------------------------------------------------------------------------------------------
-
-@AllocationDebugActor final fileprivate class AllocationDebugActorClass {
-
-  private var mTotalAllocatedObjectCountByClass = [String : Int] ()
-  private var mLiveObjectCountByClass = [String : Int] ()
-  private var mRefreshTriggered = false
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func transmitPendingAllocations (_ inAllocations : [AnyObject.Type], _ inDeallocations : [AnyObject.Type]) {
-    for t in inAllocations {
-      let className = String (describing: t)
-      let currentCount = self.mTotalAllocatedObjectCountByClass [className] ?? 0
-      self.mTotalAllocatedObjectCountByClass [className] = currentCount + 1
-      let liveCount = self.mLiveObjectCountByClass [className] ?? 0
-      self.mLiveObjectCountByClass [className] = liveCount + 1
-    }
-    for t in inDeallocations {
-      let className = String (describing: t)
-      if let n = self.mLiveObjectCountByClass [className] {
-        if n > 1 {
-          self.mLiveObjectCountByClass [className] = n - 1
-        }else{
-          self.mLiveObjectCountByClass [className] = nil
-        }
+#if DEBUG
+  nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+    if gEnableObjectAllocationDebug {
+      let objectType : AnyObject.Type = type (of: inObject)
+      Task {
+        await serializedNoteObjectDeallocation (ofType: objectType)
       }
     }
-  //---
-    if !self.mRefreshTriggered {
-      self.mRefreshTriggered = true
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if DEBUG
+  @globalActor fileprivate final actor PendingAllocationBufferActor {
+    static var shared = PendingAllocationBufferActor ()
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if DEBUG
+  @PendingAllocationBufferActor fileprivate var gPendingAllocatedObjectClasses = [AnyObject.Type] ()
+  @PendingAllocationBufferActor fileprivate var gPendingDeallocatedObjectClasses = [AnyObject.Type] ()
+  @PendingAllocationBufferActor fileprivate var gTransmitEventTriggered = false
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if DEBUG
+  @PendingAllocationBufferActor fileprivate func serializedNoteObjectAllocation (ofType inType : AnyObject.Type) {
+    gPendingAllocatedObjectClasses.append (inType)
+    triggerTransmit ()
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if DEBUG
+  @PendingAllocationBufferActor fileprivate func serializedNoteObjectDeallocation (ofType inType : AnyObject.Type) {
+    gPendingDeallocatedObjectClasses.append (inType)
+    triggerTransmit ()
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if DEBUG
+  @PendingAllocationBufferActor fileprivate func triggerTransmit () {
+    if !gTransmitEventTriggered {
+      gTransmitEventTriggered = true
       Task.detached {
-        try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
-        let (totalAllocatedObjectCountByClass, liveObjectCountByClass) = await self.getAllocations ()
-        DispatchQueue.main.async {
-          gDebugObject?.display (totalAllocatedObjectCountByClass, liveObjectCountByClass)
-        }
+        try? await Task.sleep (nanoseconds: 100_000_000)
+        let (pendingAllocations, pendingDeallocations) = await getPendingAllocation ()
+        await gAllocationDebugActorClass.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
       }
     }
   }
+#endif
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-  private func getAllocations () -> ([String : Int], [String : Int]) {
-    self.mRefreshTriggered = false
-    return (self.mTotalAllocatedObjectCountByClass, self.mLiveObjectCountByClass)
+#if DEBUG
+  @PendingAllocationBufferActor fileprivate func getPendingAllocation () -> ([AnyObject.Type], [AnyObject.Type]) {
+    gTransmitEventTriggered = false
+    let result = (gPendingAllocatedObjectClasses, gPendingDeallocatedObjectClasses)
+    gPendingAllocatedObjectClasses.removeAll (keepingCapacity: true)
+    gPendingDeallocatedObjectClasses.removeAll (keepingCapacity: true)
+    return result
   }
+#endif
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//--------------------------------------------------------------------------------------------------
 
-}
+#if DEBUG
+  @globalActor fileprivate final actor AllocationDebugActor {
+    static var shared = AllocationDebugActor ()
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if DEBUG
+  @AllocationDebugActor fileprivate var gAllocationDebugActorClass = AllocationDebugActorClass ()
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+#if DEBUG
+  @AllocationDebugActor final fileprivate class AllocationDebugActorClass {
+
+    private var mTotalAllocatedObjectCountByClass = [String : Int] ()
+    private var mLiveObjectCountByClass = [String : Int] ()
+    private var mRefreshTriggered = false
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    func transmitPendingAllocations (_ inAllocations : [AnyObject.Type], _ inDeallocations : [AnyObject.Type]) {
+      for t in inAllocations {
+        let className = String (describing: t)
+        let currentCount = self.mTotalAllocatedObjectCountByClass [className] ?? 0
+        self.mTotalAllocatedObjectCountByClass [className] = currentCount + 1
+        let liveCount = self.mLiveObjectCountByClass [className] ?? 0
+        self.mLiveObjectCountByClass [className] = liveCount + 1
+      }
+      for t in inDeallocations {
+        let className = String (describing: t)
+        if let n = self.mLiveObjectCountByClass [className] {
+          if n > 1 {
+            self.mLiveObjectCountByClass [className] = n - 1
+          }else{
+            self.mLiveObjectCountByClass [className] = nil
+          }
+        }
+      }
+    //---
+      if !self.mRefreshTriggered {
+        self.mRefreshTriggered = true
+        Task.detached {
+          try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
+          let (totalAllocatedObjectCountByClass, liveObjectCountByClass) = await self.getAllocations ()
+          DispatchQueue.main.async {
+            gDebugObject?.display (totalAllocatedObjectCountByClass, liveObjectCountByClass)
+          }
+        }
+      }
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    private func getAllocations () -> ([String : Int], [String : Int]) {
+      self.mRefreshTriggered = false
+      return (self.mTotalAllocatedObjectCountByClass, self.mLiveObjectCountByClass)
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //    appendAllocationDebugMenuItems
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
-  gDebugObject = EBAllocationDebug ()
-//---
-  let item = NSMenuItem (
-    title: "Show Allocation Stats",
-    action: #selector (EBAllocationDebug.showAllocationStatWindow (_:)),
-    keyEquivalent: ","
-  )
-  item.keyEquivalentModifierMask = [.command, .control]
-  item.target = gDebugObject
-  inMenu.addItem (item)
-}
+#if DEBUG
+  @MainActor func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
+    gDebugObject = EBAllocationDebug ()
+  //---
+    let item = NSMenuItem (
+      title: "Show Allocation Stats",
+      action: #selector (EBAllocationDebug.showAllocationStatWindow (_:)),
+      keyEquivalent: ","
+    )
+    item.keyEquivalentModifierMask = [.command, .control]
+    item.target = gDebugObject
+    inMenu.addItem (item)
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //   EBAllocationItemDisplay class
 //--------------------------------------------------------------------------------------------------
 
-fileprivate struct EBAllocationItemDisplay {
-  let className : String
-  let allCount : Int
-  let live : Int
-  let snapShot : Int
-}
+#if DEBUG
+  fileprivate struct EBAllocationItemDisplay {
+    let className : String
+    let allCount : Int
+    let live : Int
+    let snapShot : Int
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor private var gDebugObject : EBAllocationDebug? = nil
+#if DEBUG
+  @MainActor private var gDebugObject : EBAllocationDebug? = nil
+#endif
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor final class EBAllocationDebug {
+#if DEBUG
+  @MainActor final class EBAllocationDebug {
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Properties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //   Properties
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mTotalAllocatedObjectCountByClass = [String : Int] ()
-  private var mLiveObjectCountByClass = [String : Int] ()
-  private var mSnapShotDictionary = [String : Int] ()
+    private var mTotalAllocatedObjectCountByClass = [String : Int] ()
+    private var mLiveObjectCountByClass = [String : Int] ()
+    private var mSnapShotDictionary = [String : Int] ()
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mAllocationStatsDisplayFilterIndex = EBPreferenceProperty <Int> (
-    defaultValue: 0,
-    prefKey: prefsEnableObjectAllocationStatsDisplayFilter
-  )
-
-  private let mAllocationStatsWindowVisibleAtLaunch = EBPreferenceProperty <Bool> (
-    defaultValue: false,
-    prefKey: prefsEnableObjectAllocationStatsWindowVisible
-  )
-
-  private let mEnableAllocationDebug = EBPreferenceProperty <Bool> (
-    defaultValue: false,
-    prefKey: prefsEnableObjectAllocationDebugString
-  )
-
-  private let mTotalAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
-
-  private let mCurrentlyAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
-
-  fileprivate let mAllocationStatsWindow = NSWindow (
-    contentRect: NSRect(x: 0.0, y: 0.0, width: 600.0, height: 400.0),
-    styleMask: [.titled, .closable, .miniaturizable],
-    backing: .buffered,
-    defer: true
-  )
-
-  fileprivate let mAllocationStatsWindowVisibleAtLaunchCheckbox = AutoLayoutCheckbox (
-    title: "Visible At Launch",
-    size: .small
-  )
-
-  fileprivate let mEnableAllocationDebugCheckbox = AutoLayoutCheckbox (
-    title: "Enable Allocation Debug",
-    size: .small
-  )
-
-  fileprivate let mTotalAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
-
-  fileprivate let mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
-
-  fileprivate let mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", size: .small)
-
-  fileprivate let mFilterPopUpButton = AutoLayoutTaggedPopUpButton (size: .small)
-    .add (title: "All Classes", withTag: 0)
-    .add (title: "Allocated Classes", withTag: 1)
-    .add (title: "Differences with Snap Shot", withTag: 2)
-
-  fileprivate let mStatsTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    init
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-   init () {
-   //--- Bindings
-     _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)
-     _ = self.mEnableAllocationDebugCheckbox.bind_value (self.mEnableAllocationDebug)
-     _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
-     _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
-     self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
-     _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
-       .setClosureAction { [weak self] in self?.allocationStatsDisplayFilterIndexDidChange () }
-  //--- Configure table view
-    self.mStatsTableView.configure (
-      allowsEmptySelection: false,
-      allowsMultipleSelection: false,
-      rowCountCallBack: { [weak self] in self?.mAllocationStatsDataSource.count ?? 0 },
-      delegate: nil
+    private let mAllocationStatsDisplayFilterIndex = EBPreferenceProperty <Int> (
+      defaultValue: 0,
+      prefKey: prefsEnableObjectAllocationStatsDisplayFilter
     )
-    _ = self.mStatsTableView.setIntercellSpacing (horizontal: 0, vertical: 5)
-    self.mStatsTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].className ?? "" },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mAllocationStatsDataSource.sort { ascending ? ($0.className < $1.className) : ($0.className > $1.className) }
-      },
-      title: "Class Name",
-      minWidth: 80,
-      maxWidth: 1000,
-      headerAlignment: .center,
-      contentAlignment: .left
-    )
-    self.mStatsTableView.addColumn_Int (
-      valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].snapShot ?? -1 },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mAllocationStatsDataSource.sort { ascending ? ($0.snapShot < $1.snapShot) : ($0.snapShot > $1.snapShot) }
-      },
-      title: "Snap Shot",
-      minWidth: 80,
-      maxWidth: 80,
-      headerAlignment: .center,
-      contentAlignment: .right
-    )
-    self.mStatsTableView.addColumn_Int (
-      valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].live ?? -1 },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mAllocationStatsDataSource.sort { ascending ? ($0.live < $1.live) : ($0.live > $1.live) }
-      },
-      title: "Live",
-      minWidth: 80,
-      maxWidth: 80,
-      headerAlignment: .center,
-      contentAlignment: .right
-    )
-    self.mStatsTableView.addColumn_Int (
-      valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].allCount ?? -1 },
-      valueSetterDelegate: nil,
-      sortDelegate: { [weak self] (ascending) in
-        self?.mAllocationStatsDataSource.sort { ascending ? ($0.allCount < $1.allCount) : ($0.allCount > $1.allCount) }
-      },
-      title: "Total",
-      minWidth: 80,
-      maxWidth: 80,
-      headerAlignment: .center,
-      contentAlignment: .right
-    )
-   //--- Configure Window
-     self.mAllocationStatsWindow.title = "Allocation Stats"
-     self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-   //--- Build window contents
-    let mainVStack = AutoLayoutVerticalStackView ()
-      let hStack = AutoLayoutHorizontalStackView ().set (margins: .large).set (bottomMargin: .large)
-        .appendView (self.mEnableAllocationDebugCheckbox)
-        .appendFlexibleSpace ()
-        .appendView (AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
-            .expandableWidth ()
-        )
-      _ = mainVStack.appendView (hStack).appendSeparator ()
-      let gridView = AutoLayoutVerticalStackView ().set (margins: .large).set (topMargin: .large).set (spacing: .regular)
-        .append (
-          left: AutoLayoutHorizontalStackView ()
-            .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
-            .appendFlexibleSpace (),
-          right: AutoLayoutHorizontalStackView ()
-            .appendFlexibleSpace ()
-            .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small, alignment: .center))
-            .appendView (self.mTotalAllocatedLabel)
-        )
-        .append (
-          left: AutoLayoutHorizontalStackView ()
-            .appendView (self.mPerformSnapShotButton)
-            .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small, alignment: .center))
-            .appendView (self.mFilterPopUpButton),
-          right: AutoLayoutHorizontalStackView ()
-            .appendFlexibleSpace ()
-            .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
-            .appendView (self.mCurrentlyAllocatedLabel)
-        )
-        .appendView (self.mStatsTableView)
-      _ = mainVStack.appendView (gridView)
-    //--- Assign main view to window
-      self.mAllocationStatsWindow.setContentView (mainVStack)
-   //--- Show Window at Launch
-     if self.mAllocationStatsWindowVisibleAtLaunch.propval {
-       self.mAllocationStatsWindow.makeKeyAndOrderFront (nil)
-     }
-  }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    private let mAllocationStatsWindowVisibleAtLaunch = EBPreferenceProperty <Bool> (
+      defaultValue: false,
+      prefKey: prefsEnableObjectAllocationStatsWindowVisible
+    )
 
-  private var mAllocationStatsDataSource = [EBAllocationItemDisplay] ()
-  private var mRefreshTriggered = false
+    private let mEnableAllocationDebug = EBPreferenceProperty <Bool> (
+      defaultValue: false,
+      prefKey: prefsEnableObjectAllocationDebugString
+    )
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    triggerRefreshDisplay
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    private let mTotalAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
 
-  private func triggerRefreshDisplay () {
-    if !self.mRefreshTriggered {
-      self.mRefreshTriggered = true
-      let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 100_000_000)
-      DispatchQueue.main.asyncAfter (deadline: deadline) {
-        self.mRefreshTriggered = false
-        self.displayAllocation ()
+    private let mCurrentlyAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
+
+    fileprivate let mAllocationStatsWindow = NSWindow (
+      contentRect: NSRect(x: 0.0, y: 0.0, width: 600.0, height: 400.0),
+      styleMask: [.titled, .closable, .miniaturizable],
+      backing: .buffered,
+      defer: true
+    )
+
+    fileprivate let mAllocationStatsWindowVisibleAtLaunchCheckbox = AutoLayoutCheckbox (
+      title: "Visible At Launch",
+      size: .small
+    )
+
+    fileprivate let mEnableAllocationDebugCheckbox = AutoLayoutCheckbox (
+      title: "Enable Allocation Debug",
+      size: .small
+    )
+
+    fileprivate let mTotalAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
+
+    fileprivate let mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (bold: true, size: .small)
+
+    fileprivate let mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", size: .small)
+
+    fileprivate let mFilterPopUpButton = AutoLayoutTaggedPopUpButton (size: .small)
+      .add (title: "All Classes", withTag: 0)
+      .add (title: "Allocated Classes", withTag: 1)
+      .add (title: "Differences with Snap Shot", withTag: 2)
+
+    fileprivate let mStatsTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //    init
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+     init () {
+     //--- Bindings
+       _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)
+       _ = self.mEnableAllocationDebugCheckbox.bind_value (self.mEnableAllocationDebug)
+       _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
+       _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
+       self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
+       _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
+         .setClosureAction { [weak self] in self?.allocationStatsDisplayFilterIndexDidChange () }
+    //--- Configure table view
+      self.mStatsTableView.configure (
+        allowsEmptySelection: false,
+        allowsMultipleSelection: false,
+        rowCountCallBack: { [weak self] in self?.mAllocationStatsDataSource.count ?? 0 },
+        delegate: nil
+      )
+      _ = self.mStatsTableView.setIntercellSpacing (horizontal: 0, vertical: 5)
+      self.mStatsTableView.addColumn_String (
+        valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].className ?? "" },
+        valueSetterDelegate: nil,
+        sortDelegate: { [weak self] (ascending) in
+          self?.mAllocationStatsDataSource.sort { ascending ? ($0.className < $1.className) : ($0.className > $1.className) }
+        },
+        title: "Class Name",
+        minWidth: 80,
+        maxWidth: 1000,
+        headerAlignment: .center,
+        contentAlignment: .left
+      )
+      self.mStatsTableView.addColumn_Int (
+        valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].snapShot ?? -1 },
+        valueSetterDelegate: nil,
+        sortDelegate: { [weak self] (ascending) in
+          self?.mAllocationStatsDataSource.sort { ascending ? ($0.snapShot < $1.snapShot) : ($0.snapShot > $1.snapShot) }
+        },
+        title: "Snap Shot",
+        minWidth: 80,
+        maxWidth: 80,
+        headerAlignment: .center,
+        contentAlignment: .right
+      )
+      self.mStatsTableView.addColumn_Int (
+        valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].live ?? -1 },
+        valueSetterDelegate: nil,
+        sortDelegate: { [weak self] (ascending) in
+          self?.mAllocationStatsDataSource.sort { ascending ? ($0.live < $1.live) : ($0.live > $1.live) }
+        },
+        title: "Live",
+        minWidth: 80,
+        maxWidth: 80,
+        headerAlignment: .center,
+        contentAlignment: .right
+      )
+      self.mStatsTableView.addColumn_Int (
+        valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].allCount ?? -1 },
+        valueSetterDelegate: nil,
+        sortDelegate: { [weak self] (ascending) in
+          self?.mAllocationStatsDataSource.sort { ascending ? ($0.allCount < $1.allCount) : ($0.allCount > $1.allCount) }
+        },
+        title: "Total",
+        minWidth: 80,
+        maxWidth: 80,
+        headerAlignment: .center,
+        contentAlignment: .right
+      )
+     //--- Configure Window
+       self.mAllocationStatsWindow.title = "Allocation Stats"
+       self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+     //--- Build window contents
+      let mainVStack = AutoLayoutVerticalStackView ()
+        let hStack = AutoLayoutHorizontalStackView ().set (margins: .large).set (bottomMargin: .large)
+          .appendView (self.mEnableAllocationDebugCheckbox)
+          .appendFlexibleSpace ()
+          .appendView (AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .right)
+              .expandableWidth ()
+          )
+        _ = mainVStack.appendView (hStack).appendSeparator ()
+        let gridView = AutoLayoutVerticalStackView ().set (margins: .large).set (topMargin: .large).set (spacing: .regular)
+          .append (
+            left: AutoLayoutHorizontalStackView ()
+              .appendView (self.mAllocationStatsWindowVisibleAtLaunchCheckbox)
+              .appendFlexibleSpace (),
+            right: AutoLayoutHorizontalStackView ()
+              .appendFlexibleSpace ()
+              .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small, alignment: .center))
+              .appendView (self.mTotalAllocatedLabel)
+          )
+          .append (
+            left: AutoLayoutHorizontalStackView ()
+              .appendView (self.mPerformSnapShotButton)
+              .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small, alignment: .center))
+              .appendView (self.mFilterPopUpButton),
+            right: AutoLayoutHorizontalStackView ()
+              .appendFlexibleSpace ()
+              .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
+              .appendView (self.mCurrentlyAllocatedLabel)
+          )
+          .appendView (self.mStatsTableView)
+        _ = mainVStack.appendView (gridView)
+      //--- Assign main view to window
+        self.mAllocationStatsWindow.setContentView (mainVStack)
+     //--- Show Window at Launch
+       if self.mAllocationStatsWindowVisibleAtLaunch.propval {
+         self.mAllocationStatsWindow.makeKeyAndOrderFront (nil)
+       }
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    private var mAllocationStatsDataSource = [EBAllocationItemDisplay] ()
+    private var mRefreshTriggered = false
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //    triggerRefreshDisplay
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    private func triggerRefreshDisplay () {
+      if !self.mRefreshTriggered {
+        self.mRefreshTriggered = true
+        let deadline = DispatchTime (uptimeNanoseconds: DispatchTime.now ().uptimeNanoseconds + 100_000_000)
+        DispatchQueue.main.asyncAfter (deadline: deadline) {
+          self.mRefreshTriggered = false
+          self.displayAllocation ()
+        }
       }
     }
-  }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func allocationStatsDisplayFilterIndexDidChange () {
-    self.triggerRefreshDisplay ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @objc func showAllocationStatWindow (_ inSender : AnyObject) {
-    self.mAllocationStatsWindow.makeKeyAndOrderFront (inSender)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    performSnapShotAction
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private func performSnapShotAction () {
-    self.mSnapShotDictionary = self.mLiveObjectCountByClass
-    self.triggerRefreshDisplay ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    display
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @MainActor func display (_ inTotalAllocatedObjectCountByClass : [String : Int], _ inLiveObjectCountByClass : [String : Int]) {
-    self.mTotalAllocatedObjectCountByClass = inTotalAllocatedObjectCountByClass
-    self.mLiveObjectCountByClass = inLiveObjectCountByClass
-    self.displayAllocation ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    displayAllocation
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private func displayAllocation () {
-    var liveObjectCount = 0
-    var totalObjectCount = 0
-    var array = [EBAllocationItemDisplay] ()
-    for (className, totalByClass) in self.mTotalAllocatedObjectCountByClass {
-      let liveByClass = self.mLiveObjectCountByClass [className] ?? 0
-      let snapShotByClass = self.mSnapShotDictionary [className] ?? 0
-      liveObjectCount += liveByClass
-      totalObjectCount += totalByClass
-      var display = true
-      if 1 == self.mAllocationStatsDisplayFilterIndex.propval {
-        display = liveByClass != 0 ;
-      }else if 2 == self.mAllocationStatsDisplayFilterIndex.propval {
-        display = liveByClass != snapShotByClass ;
-      }
-      if display {
-        let item = EBAllocationItemDisplay (
-          className: className,
-          allCount: totalByClass,
-          live: liveByClass,
-          snapShot: snapShotByClass
-        )
-        array.append (item)
-      }
+    private func allocationStatsDisplayFilterIndexDidChange () {
+      self.triggerRefreshDisplay ()
     }
-    self.mCurrentlyAllocated.setProp (liveObjectCount)
-    self.mTotalAllocated.setProp (totalObjectCount)
-  //---
-    self.mAllocationStatsDataSource = array
-    self.mStatsTableView.sortAndReloadData () // Will sort mAllocationStatsDataSource
-    flushOutletEvents ()
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    @objc func showAllocationStatWindow (_ inSender : AnyObject) {
+      self.mAllocationStatsWindow.makeKeyAndOrderFront (inSender)
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //    performSnapShotAction
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    private func performSnapShotAction () {
+      self.mSnapShotDictionary = self.mLiveObjectCountByClass
+      self.triggerRefreshDisplay ()
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //    display
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    @MainActor func display (_ inTotalAllocatedObjectCountByClass : [String : Int], _ inLiveObjectCountByClass : [String : Int]) {
+      self.mTotalAllocatedObjectCountByClass = inTotalAllocatedObjectCountByClass
+      self.mLiveObjectCountByClass = inLiveObjectCountByClass
+      self.displayAllocation ()
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //    displayAllocation
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    private func displayAllocation () {
+      var liveObjectCount = 0
+      var totalObjectCount = 0
+      var array = [EBAllocationItemDisplay] ()
+      for (className, totalByClass) in self.mTotalAllocatedObjectCountByClass {
+        let liveByClass = self.mLiveObjectCountByClass [className] ?? 0
+        let snapShotByClass = self.mSnapShotDictionary [className] ?? 0
+        liveObjectCount += liveByClass
+        totalObjectCount += totalByClass
+        var display = true
+        if 1 == self.mAllocationStatsDisplayFilterIndex.propval {
+          display = liveByClass != 0 ;
+        }else if 2 == self.mAllocationStatsDisplayFilterIndex.propval {
+          display = liveByClass != snapShotByClass ;
+        }
+        if display {
+          let item = EBAllocationItemDisplay (
+            className: className,
+            allCount: totalByClass,
+            live: liveByClass,
+            snapShot: snapShotByClass
+          )
+          array.append (item)
+        }
+      }
+      self.mCurrentlyAllocated.setProp (liveObjectCount)
+      self.mTotalAllocated.setProp (totalObjectCount)
+    //---
+      self.mAllocationStatsDataSource = array
+      self.mStatsTableView.sortAndReloadData () // Will sort mAllocationStatsDataSource
+      flushOutletEvents ()
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+#endif
 
 //--------------------------------------------------------------------------------------------------

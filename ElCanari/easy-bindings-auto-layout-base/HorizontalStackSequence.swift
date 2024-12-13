@@ -43,14 +43,15 @@ final class HorizontalStackSequence : HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func removeInHorizontalHierarchy (_ inView : NSView) {
-    var idx = 0
-    while idx < self.mViewArray.count {
-      if self.mViewArray [idx] === inView {
-        self.mViewArray.remove (at: idx)
-      }else{
-        idx += 1
-      }
-    }
+    self.mViewArray.removeAll { $0 === inView }
+//    var idx = 0
+//    while idx < self.mViewArray.count {
+//      if self.mViewArray [idx] === inView {
+//        self.mViewArray.remove (at: idx)
+//      }else{
+//        idx += 1
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

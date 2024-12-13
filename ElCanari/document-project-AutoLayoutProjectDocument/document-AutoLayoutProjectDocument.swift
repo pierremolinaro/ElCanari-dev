@@ -879,8 +879,8 @@ import AppKit
       let vStackView_view = AutoLayoutTabView (size: .regular)
         .addTab (title: "Devices", tooltip: "", contentView: devicesInLibraryPage)
         .addTab (title: "Fonts", tooltip: "", contentView: fontsInLibraryPage)
-        .bind_segmentImage (self.rootObject.fileSystemDeviceLibraryStatusImage_property, segmentIndex:0)
-        .bind_segmentImage (self.rootObject.fileSystemFontLibraryStatusImage_property, segmentIndex:1)
+        .bind_segmentImage (self.rootObject.fileSystemDeviceLibraryStatusImage_property, tabIndex:0)
+        .bind_segmentImage (self.rootObject.fileSystemFontLibraryStatusImage_property, tabIndex:1)
       _ = vStackView .appendView (vStackView_view)
     }
     return vStackView
@@ -1142,7 +1142,6 @@ import AppKit
         self.configure_netDescriptionTableViewConfigurator (vStackView_view_view) // Configurator
         _ = vStackView_view .appendView (vStackView_view_view)
       }
-      _ = vStackView_view.appendDivider ()
       do{
         let vStackView_view_view = AutoLayoutVerticalStackView ()
         do{
@@ -3945,7 +3944,7 @@ do{
   _ = contentView .appendView (contentView_view)
 }
  ; return contentView } ())
-          .bind_selectedPage (self.rootObject.mAutorouterInterfaceMode_property)
+          .bind_selectedTab (self.rootObject.mAutorouterInterfaceMode_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       do{

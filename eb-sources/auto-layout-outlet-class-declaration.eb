@@ -81,8 +81,8 @@ extern autolayout class SegmentedControlWithPages (documentView: view, equalWidt
 
 extern autolayout class TabView (size: EBControlSize) {
   func addTab (title: String, tooltip: String, contentView: view)
-  $segmentImage transient NSImage (segmentIndex : Int)
-  $selectedPage property Int
+  $segmentImage transient NSImage (tabIndex : Int)
+  $selectedTab property Int
 }
 
 extern autolayout class SignatureField (size: EBControlSize) {

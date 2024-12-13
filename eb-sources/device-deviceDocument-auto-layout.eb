@@ -85,8 +85,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     }
     hStack {
       DroppableImageView (removeButton : yes) {
-//        set (maxWidth: 400)
-//        set (maxHeight: 400)
         $imageData root.mImageData
       }
       divider
