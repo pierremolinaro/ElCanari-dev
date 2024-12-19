@@ -87,8 +87,6 @@ extension AutoLayoutProjectDocument {
                                               _ inArtwork : ArtworkRoot) throws {
     let baseName = inDocumentFilePathWithoutExtension.lastPathComponent
     let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
-  //--- Build product data
-    let productData = self.buildProductData ()
     let boardBoundBox = self.rootObject.boardBoundBox!
     var productRepresentation = ProductRepresentation (
       boardWidth: ProductLength (valueInCanariUnit: boardBoundBox.width),
@@ -111,13 +109,12 @@ extension AutoLayoutProjectDocument {
   //--- Write gerber files
     if generateGerberAndPDF {
       try self.writeGerberDrillFile (atURL: generatedGerberFileURL.appendingPathExtension (inArtwork.drillDataFileExtension),
-                                     productRepresentation, productData)
+                                     productRepresentation)
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
         try self.writeGerberProductFile (
           atURL: generatedGerberFileURL,
           productDescriptor,
           inArtwork.layerConfiguration,
-          productData,
           productRepresentation
         )
       }
@@ -130,9 +127,9 @@ extension AutoLayoutProjectDocument {
     try self.removeAndCreateDirectory (atURL: URL (fileURLWithPath: pdfDirPath), create: generateGerberAndPDF)
   //--- Write PDF files
     if generateGerberAndPDF {
-      try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productRepresentation, productData)
+      try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productRepresentation)
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
-        try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productRepresentation, productData)
+        try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productRepresentation)
       }
     }
   //--- Write board archive

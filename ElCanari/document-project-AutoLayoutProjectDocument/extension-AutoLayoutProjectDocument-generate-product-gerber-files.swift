@@ -64,8 +64,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writeGerberDrillFile (atURL inURL : URL,
-                             _ inProduct : ProductRepresentation,
-                             _ inProductData : ProductData) throws {
+                             _ inProduct : ProductRepresentation) throws {
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inURL.lastPathComponent)…")
     let drillString = inProduct.excellonDrillString (unit: self.rootObject.mGerberProductUnit)
     let drillData : Data? = drillString.data (using: .ascii, allowLossyConversion: false)
@@ -78,11 +77,9 @@ extension AutoLayoutProjectDocument {
   func writeGerberProductFile (atURL inURL : URL,
                                _ inDescriptor : ArtworkFileGenerationParameters,
                                _ inLayerConfiguration : LayerConfiguration,
-                               _ inProductData : ProductData,
                                _ inProductRepresentation : ProductRepresentation) throws {
     let url = inURL.appendingPathExtension (inDescriptor.fileExtension)
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(url.lastPathComponent)…")
-//    if self.rootObject.mUsesNewProductGeneration {
     let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror
       ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width)
       : .noMirror
@@ -147,78 +144,6 @@ extension Dictionary where Key == ApertureKey, Value == [String] {
       }
       self.append (drawings, for: ApertureKey (circular: aperture))
     }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  mutating func append (productCircles inCircles : [ProductCircle]?,
-                        _ inAffineTransform : AffineTransform) {
-    if let circles = inCircles {
-      for circle in circles {
-        let tc = inAffineTransform.transform (circle.center)
-        let x = cocoaToMilTenth (tc.x)
-        let y = cocoaToMilTenth (tc.y)
-        let flash = ["X\(x)Y\(y)D03"]
-        self.append (flash, for: ApertureKey (circular: circle.diameter))
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  mutating func append (oblongs inLines : [ProductLine]?, _ inAffineTransform : AffineTransform) {
-    if let lines = inLines {
-      for segment in lines {
-        let p1 = inAffineTransform.transform (segment.p1)
-        let x1 = cocoaToMilTenth (p1.x)
-        let y1 = cocoaToMilTenth (p1.y)
-        let p2 = inAffineTransform.transform (segment.p2)
-        let x2 = cocoaToMilTenth (p2.x)
-        let y2 = cocoaToMilTenth (p2.y)
-        let lines = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
-        switch segment.endStyle {
-        case .round :
-          self.append (lines, for: ApertureKey (circular: segment.width))
-        case .square :
-          self.append (lines, for: ApertureKey (square: segment.width))
-        }
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  mutating func append (tracks inTracks : [ProductLine]?, _ inAffineTransform : AffineTransform) {
-//    if let tracks = inTracks {
-//      for track in tracks {
-//        let p1 = inAffineTransform.transform (track.p1)
-//        let x1 = cocoaToMilTenth (p1.x)
-//        let y1 = cocoaToMilTenth (p1.y)
-//        let p2 = inAffineTransform.transform (track.p2)
-//        let x2 = cocoaToMilTenth (p2.x)
-//        let y2 = cocoaToMilTenth (p2.y)
-//        let lines = ["X\(x1)Y\(y1)D02", "X\(x2)Y\(y2)D01"]
-//        self.append (lines, for: track.width)
-//      }
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
-extension Array where Element == ProductPolygon {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func transformed (by inAffineTransform : AffineTransform) -> [ProductPolygon] {
-    var result = [ProductPolygon] ()
-    for polygon in self {
-      result.append (polygon.transformed (by: inAffineTransform))
-    }
-    return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -15,8 +15,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writePDFDrillFile (atPath inPath : String,
-                          _ inProductRepresentation : ProductRepresentation,
-                          _ inProductData : ProductData) throws {
+                          _ inProductRepresentation : ProductRepresentation) throws {
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(inPath.lastPathComponent)…")
     let pdfData = inProductRepresentation.pdf (
       items: .hole,
@@ -33,8 +32,7 @@ extension AutoLayoutProjectDocument {
   func writePDFProductFile (atPath inPath : String,
                             _ inDescriptor : ArtworkFileGenerationParameters,
                             _ inLayerConfiguration : LayerConfiguration,
-                            _ inProductRepresentation : ProductRepresentation,
-                            _ inProductData : ProductData) throws {
+                            _ inProductRepresentation : ProductRepresentation) throws {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(path.lastPathComponent)…")
     let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror

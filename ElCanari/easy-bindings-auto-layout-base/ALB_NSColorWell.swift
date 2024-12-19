@@ -18,10 +18,6 @@ class ALB_NSColorWell : NSColorWell {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.setContentCompressionResistancePriority (.required, for: .horizontal)
-//    self.setContentCompressionResistancePriority (.required, for: .vertical)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

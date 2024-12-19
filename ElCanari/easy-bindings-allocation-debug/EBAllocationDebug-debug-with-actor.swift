@@ -252,9 +252,9 @@ import AppKit
       prefKey: prefsEnableObjectAllocationDebugString
     )
 
-    private let mTotalAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
+    private let mTotalAllocated = EBStandAloneProperty <Int> (0)
 
-    private let mCurrentlyAllocated = EBStoredProperty <Int> (defaultValue: 0, undoManager: nil, key: nil)
+    private let mCurrentlyAllocated = EBStandAloneProperty <Int> (0)
 
     fileprivate let mAllocationStatsWindow = NSWindow (
       contentRect: NSRect(x: 0.0, y: 0.0, width: 600.0, height: 400.0),
