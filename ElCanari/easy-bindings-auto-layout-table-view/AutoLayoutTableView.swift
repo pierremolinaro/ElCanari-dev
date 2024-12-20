@@ -60,21 +60,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       _ = hStack.appendView (addButton).appendView (removeButton).appendFlexibleSpace ()
       _ = self.appendView (hStack)
     }
-  //--- Permanent constraints
-//    var constraints = [NSLayoutConstraint] ()
-//    constraints.add (dim: self.widthAnchor, greaterThanOrEqualToConstant: 500.0)
-//    constraints.add (dim: self.mScrollView.widthAnchor, equalTo: self.mTableView.widthAnchor)
-//    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.mScrollView.contentView.rightAnchor)
-//    constraints.add (x: self.mTableView.leftAnchor, equalTo: self.mScrollView.contentView.leftAnchor)
-//    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.rightAnchor)
-//    constraints.add (x: self.mTableView.leftAnchor, equalTo: self.leftAnchor)
-//    constraints.add (x: self.mTableView.rightAnchor, equalTo: self.mScrollView.contentView.rightAnchor)
-//    constraints.add (y: self.mTableView.topAnchor, equalTo: self.mScrollView.topAnchor)
-//    constraints.add (y: self.mTableView.bottomAnchor, equalTo: self.mScrollView.bottomAnchor)
-
-//    constraints.add (x: self.mScrollView.contentView.leftAnchor, equalTo: self.mStackView.leftAnchor)
-//    constraints.add (x: self.mScrollView.contentView.rightAnchor, equalTo: self.mStackView.rightAnchor)
-//    self.addConstraints (constraints)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -82,23 +67,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-//  private var mConstraints = [NSLayoutConstraint] ()
-//
-//  override func updateConstraints () {
-//    Swift.print (self.mTableView.intrinsicContentSize)
-//    self.removeConstraints (self.mConstraints)
-//    self.mConstraints.removeAll ()
-//    self.mConstraints.add (x: self.mScrollView.contentView.leftAnchor, equalTo: self.leftAnchor)
-//    self.mConstraints.add (x: self.mScrollView.contentView.rightAnchor, equalTo: self.rightAnchor)
-////    self.mConstraints.add (dim: self.mScrollView.contentView.widthAnchor, greaterThanOrEqualToConstant: 900)
-//    super.updateConstraints ()
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override var intrinsicContentSize : NSSize { NSSize (width: 500, height: -1) }
-//  override var intrinsicContentSize : NSSize { self.mTableView.intrinsicContentSize }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Configure table view
@@ -178,16 +146,12 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   final func endUpdates () {
     self.mTableView.endUpdates ()
-//    self.mTableView.needsUpdateConstraints = true
-//    print ("endUpdates")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func addEntryAction (_ inUnusedSender : Any?) {
     self.mDelegate?.tableViewDelegate_addEntry ()
-//    self.mTableView.needsUpdateConstraints = true
-//    print ("addEntryAction")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -366,12 +330,6 @@ fileprivate final class InternalAutoLayoutTableView : NSTableView {
   deinit {
     noteObjectDeallocation (self)
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  override var intrinsicContentSize : NSSize {
-//    NSSize (width: NSView.noIntrinsicMetric, height: 100.0)
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: Drag

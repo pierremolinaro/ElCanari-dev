@@ -28,12 +28,12 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.2"
+let VERSION_CANARI = "1.8.3"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction du bug introduit par la version 1.8.1 de la fonction \"Remove Point from Wire\""
+  "Dans les fichiers Gerber engendrés, les points n'apparaissaient pas, alors qu'ils étaient présents dans les PDF engendrés"
 ]
 let CHANGES : [String] = [
 ]
