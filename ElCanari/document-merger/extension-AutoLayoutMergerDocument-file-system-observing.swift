@@ -31,7 +31,9 @@ extension AutoLayoutMergerDocument {
 
   func registerUndoForTriggeringStandAlonePropertyComputationForMerger () {
     self.undoManager?.registerUndo (withTarget: self) { (inOwner) in
-      inOwner.triggerStandAlonePropertyComputationForMerger ()
+      DispatchQueue.main.async {
+        inOwner.triggerStandAlonePropertyComputationForMerger ()
+      }
     }
   }
 
