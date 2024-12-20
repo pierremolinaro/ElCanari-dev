@@ -1441,8 +1441,8 @@
 		CF61915726F7700E003B75FF /* transient-ArtworkRoot-emptyDrillFileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915526F7700E003B75FF /* transient-ArtworkRoot-emptyDrillFileExtension.swift */; };
 		CF61915A26F7709D003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915926F7709C003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift */; };
 		CF61915B26F7709D003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915926F7709C003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift */; };
-		CF61915E26F7739B003B75FF /* NSImage-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915D26F7739B003B75FF /* NSImage-extension.swift */; };
-		CF61915F26F7739B003B75FF /* NSImage-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915D26F7739B003B75FF /* NSImage-extension.swift */; };
+		CF61915E26F7739B003B75FF /* extension-NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915D26F7739B003B75FF /* extension-NSImage.swift */; };
+		CF61915F26F7739B003B75FF /* extension-NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61915D26F7739B003B75FF /* extension-NSImage.swift */; };
 		CF61916226F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61916126F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift */; };
 		CF61916326F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61916126F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift */; };
 		CF62176127A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF62175327A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift */; };
@@ -4234,7 +4234,7 @@
 		CF61915126F76B2B003B75FF /* transient-AutoLayoutArtworkDocument-segmentedControlDataIssueImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutArtworkDocument-segmentedControlDataIssueImage.swift"; sourceTree = "<group>"; };
 		CF61915526F7700E003B75FF /* transient-ArtworkRoot-emptyDrillFileExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkRoot-emptyDrillFileExtension.swift"; sourceTree = "<group>"; };
 		CF61915926F7709C003B75FF /* transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutArtworkDocument-emptyDrillFileExtensionImage.swift"; sourceTree = "<group>"; };
-		CF61915D26F7739B003B75FF /* NSImage-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage-extension.swift"; sourceTree = "<group>"; };
+		CF61915D26F7739B003B75FF /* extension-NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSImage.swift"; sourceTree = "<group>"; };
 		CF61916126F7791E003B75FF /* transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ArtworkFileGenerationParameters-emptyFileExtensionImage.swift"; sourceTree = "<group>"; };
 		CF62175327A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_symbols.swift"; sourceTree = "<group>"; };
 		CF62175527A19E4C00D02368 /* transient-Preferences-mValueRevealInFinder_fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_fonts.swift"; sourceTree = "<group>"; };
@@ -5999,15 +5999,16 @@
 		CF35A54121A8257D00A0E500 /* Swift Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CF0E852D2A1B64DD00099ED0 /* extension-Int-alignment-on-grid.swift */,
+				CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */,
 				CF30969822397B5E00507740 /* extension-Int.swift */,
+				CF0E852D2A1B64DD00099ED0 /* extension-Int-alignment-on-grid.swift */,
 				CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */,
+				CF61915D26F7739B003B75FF /* extension-NSImage.swift */,
 				CF4915BF2AC8AE3B0028D6C5 /* extension-NSPoint.swift */,
 				CF4915BE2AC8AE3B0028D6C5 /* extension-NSRect.swift */,
 				CF4915C02AC8AE3B0028D6C5 /* extension-NSSize.swift */,
 				CF35A54521A825BC00A0E500 /* extension-String.swift */,
 				CFCA22262AC9A1C900A435DF /* StringArray.swift */,
-				CFED865D2C08BAC800E6FDF8 /* extension-AffineTransform.swift */,
 			);
 			name = "Swift Extensions";
 			path = "ElCanari/swift-extensions";
@@ -6064,7 +6065,6 @@
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
 				CF13CDB02A06661400870156 /* GraphicViewTooltip.swift */,
 				CF571D8E295DCC680063E7AB /* NetStatusEntry.swift */,
-				CF61915D26F7739B003B75FF /* NSImage-extension.swift */,
 				CF4597812C07995A00091FB3 /* OffScreenView.swift */,
 				CF514049276BB7AB008DB542 /* ProductRectangle.swift */,
 				CF3494B729EAB3B1006AB1EB /* QRCodeDescriptor.swift */,
@@ -9132,7 +9132,7 @@
 				CF59C45529BE36AB004CA404 /* property-UnconnectedSymbolPinsInDevice.swift in Sources */,
 				CF355A03279D9F3E000BFC9B /* controller-table-view-AutoLayoutProjectDocument-mDataController.swift in Sources */,
 				CFB7D8EE2683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueImage.swift in Sources */,
-				CF61915E26F7739B003B75FF /* NSImage-extension.swift in Sources */,
+				CF61915E26F7739B003B75FF /* extension-NSImage.swift in Sources */,
 				CFB4C0D72794674800C509A9 /* AutoLayoutSearchField.swift in Sources */,
 				CF355A0D279D9F3E000BFC9B /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift in Sources */,
 				CF3559AF279D9F3D000BFC9B /* transient-AutoLayoutProjectDocument-documentIsUnnamed.swift in Sources */,
@@ -10902,7 +10902,7 @@
 				CF22F1F9275A73ED009C6FAC /* transient-BoardModel-frontTracksBezierPaths.swift in Sources */,
 				CFB4C0D82794674800C509A9 /* AutoLayoutSearchField.swift in Sources */,
 				CFB7D8722683A61C007B9D3B /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift in Sources */,
-				CF61915F26F7739B003B75FF /* NSImage-extension.swift in Sources */,
+				CF61915F26F7739B003B75FF /* extension-NSImage.swift in Sources */,
 				CF49914728D8C9430099F871 /* enum-PadStyle-extension.swift in Sources */,
 				CF355969279D9F3B000BFC9B /* selectionController-AutoLayoutProjectDocument-boardLineSelectionController.swift in Sources */,
 				CFB8DDB327A6CFF20097DF9A /* Preferences-SuperClass.swift in Sources */,

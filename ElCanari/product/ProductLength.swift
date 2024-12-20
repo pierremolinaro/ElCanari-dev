@@ -24,7 +24,7 @@ func - (_ inLeft : ProductLength, _ inRight : ProductLength) -> ProductLength {
 
 //--------------------------------------------------------------------------------------------------
 
-struct ProductLength : Codable, Hashable, Comparable {
+struct ProductLength : Codable, Hashable, Comparable, CustomStringConvertible {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Property
@@ -126,6 +126,12 @@ struct ProductLength : Codable, Hashable, Comparable {
       }
     }
 
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var description : String {
+    "\(self.value (in: .mm)) mm"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

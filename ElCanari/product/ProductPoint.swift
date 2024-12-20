@@ -10,7 +10,7 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-struct ProductPoint : Codable, Equatable {
+struct ProductPoint : Codable, Equatable, CustomStringConvertible {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Properties
@@ -55,6 +55,12 @@ struct ProductPoint : Codable, Equatable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var cocoaPoint : NSPoint { NSPoint (x: self.x.value (in: .cocoa), y: self.y.value (in: .cocoa)) }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var description : String {
+    "(\(self.x), \(self.y))"
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

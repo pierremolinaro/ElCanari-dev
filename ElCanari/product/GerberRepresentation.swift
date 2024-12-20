@@ -32,8 +32,11 @@ struct GerberRepresentation {
   mutating func addRoundSegment (p1 inP1 : ProductPoint,
                                  p2 inP2 : ProductPoint,
                                  width inWidth : ProductLength) {
-    if inP1 != inP2 {
-      let oblong = Oblong (p1: inP1, p2: inP2, width: inWidth)
+    if inP1 == inP2 {
+      let circle = Self.Circle (center: inP1, diameter: inWidth)
+      self.mFilledCircles.append (circle)
+    }else{
+      let oblong = Self.Oblong (p1: inP1, p2: inP2, width: inWidth)
       self.mRoundSegments.append (oblong)
     }
   }
@@ -98,7 +101,11 @@ struct GerberRepresentation {
           }else{
             s += oblong.p1.gerberPointString (inUnit) + "D02*\n" // Move to p1
           }
-          s += oblong.p2.gerberPointString (inUnit) + "D01*\n" // Line to p2
+          if oblong.p1 == oblong.p2 {
+            s += oblong.p1.gerberPointString (inUnit) + "D03*\n" // Flash
+          }else{
+            s += oblong.p2.gerberPointString (inUnit) + "D01*\n" // Line to p2
+          }
           currentPoint = oblong.p2
         }
       }

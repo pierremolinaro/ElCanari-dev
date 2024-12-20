@@ -160,7 +160,6 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
   final func control (_ control: NSControl,
                       textView: NSTextView,
                       doCommandBy inCommandSelector: Selector) -> Bool {
-    //Swift.print ("commandSelector \(inCommandSelector)")
     if inCommandSelector == #selector (Self.insertLineBreak (_:)) {
       return true
     }else if inCommandSelector == #selector (Self.insertNewlineIgnoringFieldEditor (_:)) {

@@ -90,7 +90,7 @@ extension AutoLayoutProjectDocument {
     let boardBoundBox = self.rootObject.boardBoundBox!
     var productRepresentation = ProductRepresentation (
       boardWidth: ProductLength (valueInCanariUnit: boardBoundBox.width),
-      boardWidthUnit:  self.rootObject.mRectangularBoardWidthUnit_property.propval, // Canari Unit
+      boardWidthUnit: self.rootObject.mRectangularBoardWidthUnit_property.propval, // Canari Unit
       boardHeight: ProductLength (valueInCanariUnit: boardBoundBox.height),
       boardHeightUnit: self.rootObject.mRectangularBoardHeightUnit_property.propval, // Canari Unit
       boardLimitWidth: ProductLength (valueInCanariUnit: self.rootObject.mBoardLimitsWidth),
@@ -373,7 +373,7 @@ extension AutoLayoutProjectDocument {
       if let line = object as? BoardLine {
         let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
         let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
-        if let (clippedP1, clippedP2) = cocoaBoardRect.clippedSegment(p1: p1, p2: p2) {
+        if let (clippedP1, clippedP2) = cocoaBoardRect.clippedSegment (p1: p1, p2: p2) {
           let width = ProductLength (valueInCanariUnit: line.mWidth)
           let layer : ProductLayerSet
           switch line.mLayer {

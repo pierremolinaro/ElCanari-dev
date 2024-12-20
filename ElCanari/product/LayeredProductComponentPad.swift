@@ -136,7 +136,7 @@ struct LayeredProductComponentPad : Codable {
       ioGerber.addRoundSegment (p1: p1, p2: p2, width: ProductLength (width, .cocoa))
     }else{ // circular
       ioGerber.addCircle (
-        center: inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint.zero))),
+        center: inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (.zero))),
         diameter: ProductLength (width, .cocoa)
       )
     }
