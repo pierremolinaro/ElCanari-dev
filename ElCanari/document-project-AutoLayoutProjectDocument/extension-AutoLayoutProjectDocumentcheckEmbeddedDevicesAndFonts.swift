@@ -31,7 +31,9 @@ extension AutoLayoutProjectDocument {
 
   func registerUndoForTriggeringStandAlonePropertyComputationForProject () {
     self.undoManager?.registerUndo (withTarget: self) { (inOwner) in
-      inOwner.triggerStandAlonePropertyComputationForProject ()
+      DispatchQueue.main.async {
+        inOwner.triggerStandAlonePropertyComputationForProject ()
+      }
     }
   }
 

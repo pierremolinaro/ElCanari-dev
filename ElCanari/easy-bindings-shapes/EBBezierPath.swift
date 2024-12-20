@@ -653,7 +653,7 @@ extension NSBezierPath {
   // https://stackoverflow.com/questions/1815568/how-can-i-convert-nsbezierpath-to-cgpath
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public var cgPath : CGPath {
+  var cgPath : CGPath {
     let path = CGMutablePath ()
     var points = [NSPoint] (repeating: .zero, count: 3)
     for idx in 0 ..< self.elementCount {

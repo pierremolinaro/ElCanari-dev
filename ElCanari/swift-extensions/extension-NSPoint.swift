@@ -4,6 +4,7 @@
 
 import Foundation
 import CoreGraphics
+import AppKit
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION NSPoint

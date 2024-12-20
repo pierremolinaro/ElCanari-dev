@@ -6,10 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-let CohenSutherlandOutcodeLEFT   : UInt8 = 1
-let CohenSutherlandOutcodeRIGHT  : UInt8 = 2
-let CohenSutherlandOutcodeBOTTOM : UInt8 = 4
-let CohenSutherlandOutcodeTOP    : UInt8 = 8
+fileprivate let CohenSutherlandOutcodeLEFT   : UInt8 = 1
+fileprivate let CohenSutherlandOutcodeRIGHT  : UInt8 = 2
+fileprivate let CohenSutherlandOutcodeBOTTOM : UInt8 = 4
+fileprivate let CohenSutherlandOutcodeTOP    : UInt8 = 8
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION NSRect
@@ -63,10 +63,10 @@ extension NSRect : @retroactive Hashable {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Contains point
+  //   CohenSutherlandCodeForPoint
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func CohenSutherlandOutcode (x inX : CGFloat, y inY : CGFloat) -> UInt8 {
+  func CohenSutherlandCodeForPoint (x inX : CGFloat, y inY : CGFloat) -> UInt8 {
     var result : UInt8 = 0
     if inX < self.minX {
       result |= CohenSutherlandOutcodeLEFT
@@ -90,13 +90,13 @@ extension NSRect : @retroactive Hashable {
     var p2 = inP2
     var loop = true
     while loop {
-      let p1OutCode = self.CohenSutherlandOutcode (x: p1.x, y: p1.y)
-      let p2OutCode = self.CohenSutherlandOutcode (x: p2.x, y: p2.y)
+      let p1OutCode = self.CohenSutherlandCodeForPoint (x: p1.x, y: p1.y)
+      let p2OutCode = self.CohenSutherlandCodeForPoint (x: p2.x, y: p2.y)
       if (p1OutCode | p2OutCode) == 0 { // Both points are inside
         result = (p1, p2)
         loop = false
       }else if (p1OutCode & p2OutCode) != 0 { // Both points are outside, no intersection
-        loop = false // returns nil
+        loop = false
       }else{ // non trivial case
       // Failed both tests, so calculate the line segment to clip from an outside point to an intersection with clip edge
         let p : NSPoint
@@ -128,87 +128,6 @@ extension NSRect : @retroactive Hashable {
     }
     return result
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func intersectsStrokeBezierPath (_ inPath: NSBezierPath) -> Bool {
-//    var intersect = self.intersects (inPath.bounds)
-//    if intersect {
-//      intersect = false
-//      var points = [NSPoint] (repeating: .zero, count: 3)
-//      var currentPoint = NSPoint ()
-//      let flattenedPath = inPath.flattened
-//      var idx = 0
-//      while (idx < flattenedPath.elementCount) && !intersect {
-//        let type = flattenedPath.element (at: idx, associatedPoints: &points)
-//        idx += 1
-//        switch type {
-//        case .moveTo:
-//          currentPoint = points [0]
-//        case .lineTo:
-//          let p = points [0]
-//          let possibleResultSegment = self.clippedSegment (p1: currentPoint, p2: p)
-//          intersect = possibleResultSegment != nil
-//          currentPoint = p
-//        case .curveTo, .closePath: // Flattened path has no element of theses types
-//          ()
-//        case .cubicCurveTo:
-//          ()
-//        case .quadraticCurveTo:
-//          ()
-//        @unknown default:
-//          ()
-//        }
-//      }
-//    }
-//    return intersect
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func intersectsFilledBezierPath (_ inPath: NSBezierPath) -> Bool {
-//    var intersect = self.intersects (inPath.bounds)
-//    if intersect {
-//      intersect = inPath.contains (self.origin) // Bottom left
-//      if !intersect {
-//        intersect = inPath.contains (NSPoint (x: self.minX, y: self.maxY)) // Top left
-//      }
-//      if !intersect {
-//        intersect = inPath.contains (NSPoint (x: self.maxX, y: self.maxY)) // Top right
-//      }
-//      if !intersect {
-//        intersect = inPath.contains (NSPoint (x: self.maxX, y: self.minY)) // Bottom right
-//      }
-//      if !intersect {
-//        var points = [NSPoint] (repeating: .zero, count: 3)
-//        var currentPoint = NSPoint ()
-//        let flattenedPath = inPath.flattened
-//        var idx = 0
-//        while (idx < flattenedPath.elementCount) && !intersect {
-//          let type = flattenedPath.element (at: idx, associatedPoints: &points)
-//          idx += 1
-//          switch type {
-//          case .moveTo:
-//            currentPoint = points [0]
-//          case .lineTo:
-//            let p = points [0]
-//            let possibleResultSegment = self.clippedSegment (p1: currentPoint, p2: p)
-//            intersect = possibleResultSegment != nil
-//            currentPoint = p
-//          case .curveTo, .closePath: // Flattened path has no element of theses types
-//            ()
-//          case .cubicCurveTo:
-//            ()
-//          case .quadraticCurveTo:
-//            ()
-//          @unknown default:
-//            ()
-//          }
-//        }
-//      }
-//    }
-//    return intersect
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

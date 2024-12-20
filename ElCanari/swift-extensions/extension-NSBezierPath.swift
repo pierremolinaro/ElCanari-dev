@@ -9,12 +9,12 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension NSBezierPath {
-
+  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func addArrow (withFilledPath fillPath : NSBezierPath,
-                 to inEndPoint : NSPoint,
-                 arrowSize inArrowSize : CGFloat) {
+  
+  public func addArrow (withFilledPath fillPath : NSBezierPath,
+                        to inEndPoint : NSPoint,
+                        arrowSize inArrowSize : CGFloat) {
     if inEndPoint != self.currentPoint {
    //--- Compute angle
       let angle = NSPoint.angleInRadian (self.currentPoint, inEndPoint)
@@ -41,7 +41,7 @@ extension NSBezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override open var description : String {
+  open override var description : String {
     return "\(self.elementCount) elements"
   }
 
