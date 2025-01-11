@@ -86,7 +86,18 @@ extension AutoLayoutProjectDocument {
           backSide: restrictRectangle.mIsInBackLayer
         )
         restrictRectangles.append (rr)
-      }
+      }else if let nph = object as? NonPlatedHole {
+        let r = CanariRect (
+          center: CanariPoint (x: nph.mX, y: nph.mY),
+          size: CanariSize (width: nph.mWidth, height: nph.mHeight)
+        )
+        let rr = RestrictRectangleForDSNExport (
+          rect: r,
+          frontSide: true,
+          backSide: true
+        )
+        restrictRectangles.append (rr)
+     }
     }
   //--- Net classes
     var maxTrackWithInDSNUnit : Double = 0.0

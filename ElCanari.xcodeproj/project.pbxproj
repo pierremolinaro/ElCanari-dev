@@ -1490,6 +1490,24 @@
 		CF67AB8D23E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */; };
 		CF67AC7423E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7323E9BD6E0099DE60 /* transient-PackageZone-forbiddenPadArray.swift */; };
 		CF67AC7523E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AC7323E9BD6E0099DE60 /* transient-PackageZone-forbiddenPadArray.swift */; };
+		CF687F7C2D32E0D3006575A2 /* entity-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F762D32E0D3006575A2 /* entity-NonPlatedHole.swift */; };
+		CF687F7D2D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F7A2D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift */; };
+		CF687F7E2D32E0D3006575A2 /* toone-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F782D32E0D3006575A2 /* toone-NonPlatedHole.swift */; };
+		CF687F7F2D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F792D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift */; };
+		CF687F802D32E0D3006575A2 /* tomany-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F772D32E0D3006575A2 /* tomany-NonPlatedHole.swift */; };
+		CF687F812D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F7B2D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift */; };
+		CF687F822D32E0D3006575A2 /* entity-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F762D32E0D3006575A2 /* entity-NonPlatedHole.swift */; };
+		CF687F832D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F7A2D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift */; };
+		CF687F842D32E0D3006575A2 /* toone-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F782D32E0D3006575A2 /* toone-NonPlatedHole.swift */; };
+		CF687F852D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F792D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift */; };
+		CF687F862D32E0D3006575A2 /* tomany-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F772D32E0D3006575A2 /* tomany-NonPlatedHole.swift */; };
+		CF687F872D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F7B2D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift */; };
+		CF687F892D32E179006575A2 /* extension-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F882D32E179006575A2 /* extension-NonPlatedHole.swift */; };
+		CF687F8A2D32E179006575A2 /* extension-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F882D32E179006575A2 /* extension-NonPlatedHole.swift */; };
+		CF687F8C2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F8B2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift */; };
+		CF687F8D2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F8B2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift */; };
+		CF687F8F2D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F8E2D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift */; };
+		CF687F902D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF687F8E2D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift */; };
 		CF69ABCF21A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */; };
 		CF69ABD021A6C08100F5E49A /* transient-SymbolPin-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */; };
 		CF69ABD121A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABCB21A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift */; };
@@ -4263,6 +4281,15 @@
 		CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
 		CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
 		CF67AC7323E9BD6E0099DE60 /* transient-PackageZone-forbiddenPadArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageZone-forbiddenPadArray.swift"; sourceTree = "<group>"; };
+		CF687F762D32E0D3006575A2 /* entity-NonPlatedHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "entity-NonPlatedHole.swift"; sourceTree = "<group>"; };
+		CF687F772D32E0D3006575A2 /* tomany-NonPlatedHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "tomany-NonPlatedHole.swift"; sourceTree = "<group>"; };
+		CF687F782D32E0D3006575A2 /* toone-NonPlatedHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "toone-NonPlatedHole.swift"; sourceTree = "<group>"; };
+		CF687F792D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "transient-NonPlatedHole-objectDisplay.swift"; sourceTree = "<group>"; };
+		CF687F7A2D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "transient-NonPlatedHole-selectionDisplay.swift"; sourceTree = "<group>"; };
+		CF687F7B2D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "transient-NonPlatedHole-signatureForERCChecking.swift"; sourceTree = "<group>"; };
+		CF687F882D32E179006575A2 /* extension-NonPlatedHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NonPlatedHole.swift"; sourceTree = "<group>"; };
+		CF687F8B2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift"; sourceTree = "<group>"; };
+		CF687F8E2D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift"; sourceTree = "<group>"; };
 		CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF69ABCB21A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF69ABCC21A6C08100F5E49A /* entity-SymbolPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolPin.swift"; sourceTree = "<group>"; };
@@ -5509,6 +5536,7 @@
 				CFEB7BAB233A27390060A97A /* project — entity — NCInSchematic */,
 				CFEB7BAC233A273F0060A97A /* project — entity — NetClassInProject */,
 				CFEB7BAD233A27470060A97A /* project — entity — NetInProject */,
+				CF687F752D32E038006575A2 /* project — entity — NonPlatedHole */,
 				CFEB7BAE233A274C0060A97A /* project — entity — PointInSchematic */,
 				CFEB7BB0233A27580060A97A /* project — entity — ProjectRoot */,
 				CFEB7BB2233A27650060A97A /* project — entity — SchematicObject */,
@@ -6217,6 +6245,21 @@
 			path = "ElCanari/application-preferences";
 			sourceTree = "<group>";
 		};
+		CF687F752D32E038006575A2 /* project — entity — NonPlatedHole */ = {
+			isa = PBXGroup;
+			children = (
+				CF687F762D32E0D3006575A2 /* entity-NonPlatedHole.swift */,
+				CF687F882D32E179006575A2 /* extension-NonPlatedHole.swift */,
+				CF687F772D32E0D3006575A2 /* tomany-NonPlatedHole.swift */,
+				CF687F782D32E0D3006575A2 /* toone-NonPlatedHole.swift */,
+				CF687F792D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift */,
+				CF687F7A2D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift */,
+				CF687F7B2D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift */,
+			);
+			name = "project — entity — NonPlatedHole";
+			path = "ElCanari/document-project-entity-NonPlatedHole";
+			sourceTree = "<group>";
+		};
 		CF711DEC275E1BEF00280069 /* project — entity — DeviceSymbolTypeInProject */ = {
 			isa = PBXGroup;
 			children = (
@@ -6285,10 +6328,12 @@
 		CF784E41275E2914001BC885 /* project — ProjectDocument - autolayout */ = {
 			isa = PBXGroup;
 			children = (
+				CF687F8E2D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift */,
 				CF4D3E45276A423800013196 /* AutoLayoutProjectDocument-utilities.swift */,
 				CF7FC49229EDBB960045DD14 /* configurator-AutoLayoutProjectDocument-addBoardImageButton.swift */,
 				CF9C1C24279C5A720018CCDB /* configurator-AutoLayoutProjectDocument-addCommentInSchematicsButton.swift */,
 				CF6CC7A227789D8C007BA775 /* configurator-AutoLayoutProjectDocument-addLineButton.swift */,
+				CF687F8B2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift */,
 				CF3494BF29EAD537006AB1EB /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift */,
 				CF3304EC27734CBE00275263 /* configurator-AutoLayoutProjectDocument-addRestrictRectangleButton.swift */,
 				CF6CC7A82778B6ED007BA775 /* configurator-AutoLayoutProjectDocument-addTextButton.swift */,
@@ -8372,6 +8417,7 @@
 				CF0777E7235216F800F56EAB /* EBEnumGenericComputedProperty.swift in Sources */,
 				CF22F210275A73EE009C6FAC /* transient-BoardModel-inner3TracksSegments.swift in Sources */,
 				CF8DEAFA2C0CBB4A00BB9C62 /* extension-BoardModel-updateLegacyModel.swift in Sources */,
+				CF687F8F2D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift in Sources */,
 				CFEB7A95233A23270060A97A /* transient-BoardConnector-selectionDisplay.swift in Sources */,
 				CF59C45B29BE36AB004CA404 /* property-NetInfoPoint.swift in Sources */,
 				CFEB7C2C233A284A0060A97A /* transient-PointInSchematic-status.swift in Sources */,
@@ -8386,6 +8432,12 @@
 				CFB7D76A26839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolPageSegmentedControl.swift in Sources */,
 				CF67AC7423E9BD6F0099DE60 /* transient-PackageZone-forbiddenPadArray.swift in Sources */,
 				CFEB7BE8233A28130060A97A /* transient-NetClassInProject-viaHoleDiameter.swift in Sources */,
+				CF687F7C2D32E0D3006575A2 /* entity-NonPlatedHole.swift in Sources */,
+				CF687F7D2D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift in Sources */,
+				CF687F7E2D32E0D3006575A2 /* toone-NonPlatedHole.swift in Sources */,
+				CF687F7F2D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift in Sources */,
+				CF687F802D32E0D3006575A2 /* tomany-NonPlatedHole.swift in Sources */,
+				CF687F812D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift in Sources */,
 				CFB7D75E26839B90007B9D3B /* action-AutoLayoutSymbolDocument-resetVersionAction.swift in Sources */,
 				CFEB7B19233A24BF0060A97A /* transient-BoardTrack-netClassViaPadDiameter.swift in Sources */,
 				CF711DA3275E1B3500280069 /* tomany-NetInProject.swift in Sources */,
@@ -9289,6 +9341,7 @@
 				CF99E37721AE920F002AB233 /* CanariIssueArray.swift in Sources */,
 				CFDB1AB52CA84EE0005DF39A /* HorizontalStackHierarchyProtocol.swift in Sources */,
 				CF217C0D25015FF2003E322E /* file-operations-facade.swift in Sources */,
+				CF687F8A2D32E179006575A2 /* extension-NonPlatedHole.swift in Sources */,
 				CF8570EF25BF44AE00801CA0 /* compute-BoardTrack-trackDirectionInDegrees.swift in Sources */,
 				CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */,
 				CF711FFD275E1EA300280069 /* extension-SheetInProject-add-point-to-wire.swift in Sources */,
@@ -9856,6 +9909,7 @@
 				CFB4C057279465E700C509A9 /* AutoLayoutMenuButton.swift in Sources */,
 				CFF79DF52846177400C7BEE3 /* transient-BoardObject-displayBackRestrictRectangles.swift in Sources */,
 				CF6E147B21CD1144008E2180 /* transient-PackageZone-issues.swift in Sources */,
+				CF687F8D2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift in Sources */,
 				CF7C09FE21E4BA8C00FFB7A2 /* open-symbol-in-library.swift in Sources */,
 				CFA42F85229AEACF000AA8C8 /* tomany-SymbolPinInstanceInDevice.swift in Sources */,
 				CF22F17D275A73EC009C6FAC /* transient-BoardModel-backComponentValueSegments.swift in Sources */,
@@ -10108,6 +10162,7 @@
 				CFB7D8602683A61C007B9D3B /* transient-AutoLayoutPackageDocument-addSlavePadButtonImage.swift in Sources */,
 				CF355964279D9F3B000BFC9B /* controller-popup-net-class-from-selected-labels.swift in Sources */,
 				CFEB7B89233A26330060A97A /* transient-DeviceInProject-symbolAndTypesNames.swift in Sources */,
+				CF687F902D32EEA7006575A2 /* selectionController-AutoLayoutProjectDocument-boardNonPlatedHoleSelectionController.swift in Sources */,
 				CF22F286275A73EE009C6FAC /* toone-BoardModel.swift in Sources */,
 				CF711E14275E1C8D00280069 /* extension-PackageOval.swift in Sources */,
 				CF711CC4275E1A4400280069 /* extension-BoardText.swift in Sources */,
@@ -10910,6 +10965,7 @@
 				CF355986279D9F3C000BFC9B /* document-AutoLayoutProjectDocument.swift in Sources */,
 				CFE85A8321A5BBE600991A66 /* entity-SymbolOval.swift in Sources */,
 				CF9C1C2C279C6A3E0018CCDB /* AutoLayoutPopUpButton.swift in Sources */,
+				CF687F892D32E179006575A2 /* extension-NonPlatedHole.swift in Sources */,
 				CF20417129C5D933007F6ADF /* transient-BoardModel-errorArchiveLabelColor.swift in Sources */,
 				CFEB7BC7233A27AF0060A97A /* transient-FontInProject-versionString.swift in Sources */,
 				CF4990FF28D8C9430099F871 /* enum-PadShape-extension.swift in Sources */,
@@ -11001,6 +11057,12 @@
 				CFF2A1F221B2D18E00945D01 /* transient-SymbolSolidOval-issues.swift in Sources */,
 				CF4EA9EF26F6517800F01746 /* transient-ProjectRoot-inner4LayerTrackCountString.swift in Sources */,
 				CFD1EAB6274EE23B000AED8E /* transient-FontRoot-definedCharacters.swift in Sources */,
+				CF687F822D32E0D3006575A2 /* entity-NonPlatedHole.swift in Sources */,
+				CF687F832D32E0D3006575A2 /* transient-NonPlatedHole-selectionDisplay.swift in Sources */,
+				CF687F842D32E0D3006575A2 /* toone-NonPlatedHole.swift in Sources */,
+				CF687F852D32E0D3006575A2 /* transient-NonPlatedHole-objectDisplay.swift in Sources */,
+				CF687F862D32E0D3006575A2 /* tomany-NonPlatedHole.swift in Sources */,
+				CF687F872D32E0D3006575A2 /* transient-NonPlatedHole-signatureForERCChecking.swift in Sources */,
 				CFA60B102AB8DBD300A3462D /* configurator-Preferences-configureFreeRoutingPath.swift in Sources */,
 				CFB1F8C52940EDDB00C1E120 /* action-AutoLayoutProjectDocument-changePackageOfSelectedComponentsAction.swift in Sources */,
 				CFBC2037275E14EF0076697D /* extension-BoardConnector.swift in Sources */,
@@ -11241,6 +11303,7 @@
 				CFF79DEA2846174000C7BEE3 /* transient-BoardObject-displayFrontRestrictRectangles.swift in Sources */,
 				CFC727832A3C8C310002C487 /* EBGenericReadWritePropertyController.swift in Sources */,
 				CFB1F8F52940EDDB00C1E120 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift in Sources */,
+				CF687F8C2D32E72A006575A2 /* configurator-AutoLayoutProjectDocument-addNonPlatedHole.swift in Sources */,
 				CF51403E276BB1C0008DB542 /* transient-ProjectRoot-hasSixLayers.swift in Sources */,
 				CFB7D8512683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageArcSelectionController.swift in Sources */,
 				CF711D9B275E1B2A00280069 /* tomany-NetClassInProject.swift in Sources */,

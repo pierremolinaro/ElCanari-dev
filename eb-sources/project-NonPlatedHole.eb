@@ -1,0 +1,31 @@
+//——————————————————————————————————————————————————————————————————————————————
+//   NonPlatedHole
+//——————————————————————————————————————————————————————————————————————————————
+
+graphic entity NonPlatedHole : BoardObject {
+  graphic canCopyAndPaste ;
+
+  property @generateDirectAccess Int mX default 0 ;
+  property Int mXUnit default 90_000 ; // mm
+  property @generateDirectAccess Int mY default 0 ;
+  property Int mYUnit default 90_000 ; // mm
+  property @generateDirectAccess Int mWidth default 360_000 ;
+  property Int mWidthUnit default 90_000 ; // mm
+  property @generateDirectAccess Int mHeight default 360_000 ;
+  property Int mHeightUnit default 90_000 ; // mm
+
+  override transient EBShape objectDisplay dependsFrom
+    self.mX, self.mY, self.mWidth, self.mHeight
+  ;
+
+  override transient EBShape selectionDisplay dependsFrom
+    prefs.selectionHiliteColor,
+    self.mX, self.mY, self.mWidth, self.mHeight,
+    prefs.hiliteWidthMultipliedByTen
+  ;
+
+  override transient UInt32 signatureForERCChecking dependsFrom
+    self.mX, self.mY, self.mWidth, self.mHeight ;
+}
+
+//——————————————————————————————————————————————————————————————————————————————

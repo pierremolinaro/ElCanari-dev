@@ -56,6 +56,7 @@ include "eb-sources/project-LabelInSchematic.eb" ;
 include "eb-sources/project-NCInSchematic.eb" ;
 include "eb-sources/project-NetClassInProject.eb" ;
 include "eb-sources/project-NetInProject.eb" ;
+include "eb-sources/project-NonPlatedHole.eb" ;
 include "eb-sources/project-PointInSchematic.eb" ;
 include "eb-sources/project-ProjectRoot.eb" ;
 include "eb-sources/project-SchematicObject.eb" ;

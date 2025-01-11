@@ -252,6 +252,9 @@ import AppKit
       }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardQRCode]) {
         self.performAddBoardQRCodeDragOperation (draggingLocationInDestinationView)
         ok = true
+      }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardNonPlatedHole]) {
+        self.performAddBoardNonPlatedHoleDragOperation (draggingLocationInDestinationView)
+        ok = true
       }else if let _ = pasteboard.availableType (from: [kDragAndDropBoardImage]) {
         self.performAddBoardImageDragOperation (draggingLocationInDestinationView)
         ok = true
@@ -372,6 +375,18 @@ import AppKit
     boardQRCode.mCenterY = p.y
     self.rootObject.mBoardObjects.append (boardQRCode)
     self.boardObjectsController.setSelection ([boardQRCode])
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func performAddBoardNonPlatedHoleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let nph = NonPlatedHole (self.undoManager)
+    nph.mX = p.x
+    nph.mY = p.y
+    self.rootObject.mBoardObjects.append (nph)
+    self.boardObjectsController.setSelection ([nph])
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 

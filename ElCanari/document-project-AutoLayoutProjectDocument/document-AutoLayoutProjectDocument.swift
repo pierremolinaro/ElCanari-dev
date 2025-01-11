@@ -123,6 +123,12 @@ import AppKit
   final var boardQRCodeSelectionController = SelectionController_AutoLayoutProjectDocument_boardQRCodeSelectionController ()
 
   //································································································
+  //   Selection controller: boardNonPlatedHoleSelectionController
+  //································································································
+
+  final var boardNonPlatedHoleSelectionController = SelectionController_AutoLayoutProjectDocument_boardNonPlatedHoleSelectionController ()
+
+  //································································································
   //   Selection controller: boardTextSelectionController
   //································································································
 
@@ -2899,6 +2905,12 @@ do{
           self.configure_addTrackButton (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
         }
+        _ = hStackView_view_view.appendFlexibleSpace ()
+        do{
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Non Plated Hole.")
+          self.configure_addNonPlatedHole (hStackView_view_view_view) // Configurator
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+        }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{
@@ -4153,6 +4165,7 @@ do{
     let boardLineInspectorView = self.BoardLineInspectorView ()
     let restrictRectangleInspectorView = self.RestrictRectangleInspectorView ()
     let boardTextInspectorView = self.BoardTextInspectorView ()
+    let boardNonPlatedHoleInspectorView = self.BoardNonPlatedHoleInspectorView ()
     let boardQRCodeInspectorView = self.BoardQRCodeInspectorView ()
     let boardImageInspectorView = self.BoardImageInspectorView ()
     let componentInBoardInspectorView = self.ComponentInBoardInspectorView ()
@@ -4164,6 +4177,7 @@ do{
         .addObjectInspector (forEntity: BoardRestrictRectangle.self, inspectorView: restrictRectangleInspectorView)
         .addObjectInspector (forEntity: BoardText.self, inspectorView: boardTextInspectorView)
         .addObjectInspector (forEntity: BoardQRCode.self, inspectorView: boardQRCodeInspectorView)
+        .addObjectInspector (forEntity: NonPlatedHole.self, inspectorView: boardNonPlatedHoleInspectorView)
         .addObjectInspector (forEntity: BoardImage.self, inspectorView: boardImageInspectorView)
         .addObjectInspector (forEntity: ComponentInProject.self, inspectorView: componentInBoardInspectorView)
         .bind_graphic_controller (self.boardObjectsController)
@@ -5142,6 +5156,76 @@ do{
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.boardQRCodeSelectionController.mCenterY_property, self.boardQRCodeSelectionController.mYUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendFlexibleSpace ()
+    return vStackView
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //    VIEW BoardNonPlatedHoleInspectorView
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func BoardNonPlatedHoleInspectorView () -> AutoLayoutVerticalStackView {
+    let vStackView = AutoLayoutVerticalStackView ()
+    do{
+      let vStackView_view = AutoLayoutStaticLabel (title: "Non Plated Hole Inspector", bold: true, size: .small, alignment: .center)
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardNonPlatedHoleSelectionController.mX_property, self.boardNonPlatedHoleSelectionController.mXUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardNonPlatedHoleSelectionController.mY_property, self.boardNonPlatedHoleSelectionController.mYUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabels (left: "Size", right: "Width", bold: false, size: .small)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardNonPlatedHoleSelectionController.mWidth_property, self.boardNonPlatedHoleSelectionController.mWidthUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .right)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          .bind_dimensionAndUnit (self.boardNonPlatedHoleSelectionController.mHeight_property, self.boardNonPlatedHoleSelectionController.mHeightUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       _ = vStackView .appendView (vStackView_view)
@@ -6646,6 +6730,9 @@ do{
 
   //--- Selection controller property: boardQRCodeSelectionController
     self.boardQRCodeSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
+
+  //--- Selection controller property: boardNonPlatedHoleSelectionController
+    self.boardNonPlatedHoleSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
 
   //--- Selection controller property: boardTextSelectionController
     self.boardTextSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)

@@ -1268,6 +1268,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         DragSourceButtonWithMenus (tooltip: "Add Text; the layer is set by the contextual menu.") [configurator addTextButton]
         space
         DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
+        space
+        DragSourceButtonWithMenus (tooltip: "Add Non Plated Hole.") [configurator addNonPlatedHole]
       }
       vStack {
         hStack set (leftMargin: .regular) set (rightMargin: .regular) {
@@ -1834,6 +1836,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardLineInspectorView = \BoardLineInspectorView ()
     newView restrictRectangleInspectorView = \RestrictRectangleInspectorView ()
     newView boardTextInspectorView = \BoardTextInspectorView ()
+    newView boardNonPlatedHoleInspectorView = \BoardNonPlatedHoleInspectorView ()
     newView boardQRCodeInspectorView = \BoardQRCodeInspectorView ()
     newView boardImageInspectorView = \BoardImageInspectorView ()
     newView componentInBoardInspectorView = \ComponentInBoardInspectorView ()
@@ -1844,6 +1847,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: view restrictRectangleInspectorView)
       addObjectInspector (forEntity: entity BoardText, inspectorView: view boardTextInspectorView)
       addObjectInspector (forEntity: entity BoardQRCode, inspectorView: view boardQRCodeInspectorView)
+      addObjectInspector (forEntity: entity NonPlatedHole, inspectorView: view boardNonPlatedHoleInspectorView)
       addObjectInspector (forEntity: entity BoardImage, inspectorView: view boardImageInspectorView)
       addObjectInspector (forEntity: entity ComponentInProject, inspectorView: view componentInBoardInspectorView)
       $graphicController #boardObjectsController
@@ -2376,6 +2380,44 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       gutter
       CanariDimensionAndPopUp (size: .small) {
         $dimensionAndUnit #boardQRCodeSelectionController.mCenterY, #boardQRCodeSelectionController.mYUnit
+      }
+    }
+    space
+  }
+
+//--- Non Plated Hole inspector
+  selectionController NonPlatedHole #boardNonPlatedHoleSelectionController :
+    #boardObjectsController.selectedArray
+  ;
+
+  stackView \BoardNonPlatedHoleInspectorView vStack {
+    StaticLabel (title: "Non Plated Hole Inspector", bold: yes, size: .small, alignment: .center)
+    hStack {
+      StaticLabels (left: "Center", right:"X", bold: no, size: .small)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardNonPlatedHoleSelectionController.mX, #boardNonPlatedHoleSelectionController.mXUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardNonPlatedHoleSelectionController.mY, #boardNonPlatedHoleSelectionController.mYUnit
+      }
+    }
+    hStack {
+      StaticLabels (left: "Size", right:"Width", bold: no, size: .small)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardNonPlatedHoleSelectionController.mWidth, #boardNonPlatedHoleSelectionController.mWidthUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Height", bold: no, size: .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size: .small) {
+        $dimensionAndUnit #boardNonPlatedHoleSelectionController.mHeight, #boardNonPlatedHoleSelectionController.mHeightUnit
       }
     }
     space

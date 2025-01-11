@@ -290,15 +290,15 @@ import AppKit
     //    init
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-     init () {
-     //--- Bindings
-       _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)
-       _ = self.mEnableAllocationDebugCheckbox.bind_value (self.mEnableAllocationDebug)
-       _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
-       _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
-       self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
-       _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
-         .setClosureAction { [weak self] in self?.allocationStatsDisplayFilterIndexDidChange () }
+    init () {
+    //--- Bindings
+      _ = self.mAllocationStatsWindowVisibleAtLaunchCheckbox.bind_value (self.mAllocationStatsWindowVisibleAtLaunch)
+      _ = self.mEnableAllocationDebugCheckbox.bind_value (self.mEnableAllocationDebug)
+      _ = self.mTotalAllocatedLabel.bind_observedValue (self.mTotalAllocated)
+      _ = self.mCurrentlyAllocatedLabel.bind_observedValue (self.mCurrentlyAllocated)
+      self.mPerformSnapShotButton.setClosureAction { [weak self] in self?.performSnapShotAction () }
+      _ = self.mFilterPopUpButton.bind_selectedTag (self.mAllocationStatsDisplayFilterIndex)
+        .setClosureAction { [weak self] in self?.allocationStatsDisplayFilterIndexDidChange () }
     //--- Configure table view
       self.mStatsTableView.configure (
         allowsEmptySelection: false,
@@ -355,9 +355,10 @@ import AppKit
         headerAlignment: .center,
         contentAlignment: .right
       )
-     //--- Configure Window
-       self.mAllocationStatsWindow.title = "Allocation Stats"
-       self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+    //--- Configure Window
+      self.mAllocationStatsWindow.title = "Allocation Stats"
+      self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+      self.mAllocationStatsWindow.setFrameAutosaveName ("allocation.stats.window.frame")
      //--- Build window contents
       let mainVStack = AutoLayoutVerticalStackView ()
         let hStack = AutoLayoutHorizontalStackView ().set (margins: .large).set (bottomMargin: .large)

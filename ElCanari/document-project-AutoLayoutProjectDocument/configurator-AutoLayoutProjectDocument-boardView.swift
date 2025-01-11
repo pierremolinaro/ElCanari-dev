@@ -19,7 +19,16 @@ extension AutoLayoutProjectDocument {
   //--- Set document to scroll view for enabling drag and drop of components
      inOutlet.mScrollView?.register (document: self)
      inOutlet.mGraphicView.register (
-       draggedTypes: [kDragAndDropRestrictRectangle, kDragAndDropBoardText, kDragAndDropBoardQRCode, kDragAndDropBoardImage, kDragAndDropBoardPackage, kDragAndDropBoardLine, kDragAndDropBoardTrack]
+       draggedTypes: [
+         kDragAndDropRestrictRectangle,
+         kDragAndDropBoardText,
+         kDragAndDropBoardQRCode,
+         kDragAndDropBoardImage,
+         kDragAndDropBoardPackage,
+         kDragAndDropBoardLine,
+         kDragAndDropBoardTrack,
+         kDragAndDropBoardNonPlatedHole
+       ]
      )
      inOutlet.mGraphicView.setUsesOptionKeyForDuplicatingSelectedObjects (false)
   //--- Option click for creating track

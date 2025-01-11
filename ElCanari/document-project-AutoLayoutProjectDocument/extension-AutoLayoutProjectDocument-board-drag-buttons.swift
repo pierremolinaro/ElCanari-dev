@@ -45,6 +45,18 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func boardNonPlatedHoleImageFactory () -> EBShape? {
+    self.undoManager?.disableUndoRegistration ()
+    let nph = NonPlatedHole (nil)
+    let temporaryRootObject = ProjectRoot (nil)
+    nph.mRoot = temporaryRootObject
+    let result = nph.objectDisplay
+    self.undoManager?.enableUndoRegistration ()
+    return result
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func boardImageFactory () -> EBShape? {
     self.undoManager?.disableUndoRegistration ()
     let boardImage = BoardImage (nil)

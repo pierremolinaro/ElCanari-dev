@@ -30,31 +30,6 @@ extension AutoLayoutProjectDocument {
   func performERCChecking () -> Bool {
     self.mERCLogTextViewArray.clear ()
     var issues = [CanariIssue] ()
-  //--- Remove tracks without connectors
-//    var boardObjects = [BoardObject] ()
-//    for object in self.rootObject.mBoardObjects.values {
-//      if let track = object as? BoardTrack {
-//        let removeTrack = (track.mConnectorP1 == nil) || (track.mConnectorP2 == nil)
-//        if removeTrack {
-//          Swift.print ("removeTrack")
-//          track.mConnectorP1 = nil
-//          track.mConnectorP2 = nil
-//          track.mNet = nil
-//        }else{
-//          boardObjects.append (track)
-//        }
-//      }else if let connector = object as? BoardConnector {
-//        let removeConnector = ((connector.mTracksP1.count + connector.mTracksP2.count) == 0) && (connector.mComponent == nil)
-//        if removeConnector {
-//          Swift.print ("removeConnector")
-//        }else{
-//          boardObjects.append (connector)
-//        }
-//      }else{
-//        boardObjects.append (object)
-//      }
-//    }
-//    self.rootObject.mBoardObjects = EBReferenceArray (boardObjects)
   //--- Checkings
     self.checkVersusArtwork (&issues)
     if let artwork = self.rootObject.mArtwork {
@@ -757,6 +732,7 @@ extension AutoLayoutProjectDocument {
   //--- Track inventory
     var trackSideNetDictionary = [SideAndNetName : [GeometricOblong]] ()
     var restrictRectangles = [TrackSide : [GeometricRect]] ()
+    var nonPlatedHoles = [GeometricRect] ()
 
     var viaDictionary = [String : [GeometricCircle]] ()
     for object in self.rootObject.mBoardObjects.values {
@@ -793,6 +769,13 @@ extension AutoLayoutProjectDocument {
         if restrictRect.mIsInBackLayer {
           restrictRectangles [.back] = restrictRectangles [.back, default: []] + [r]
         }
+      }else if let nph = object as? NonPlatedHole {
+        let canariRect = CanariRect (
+          center: CanariPoint (x: nph.mX, y: nph.mY),
+          size: CanariSize (width: nph.mWidth, height: nph.mHeight)
+        )
+        let r = GeometricRect (rect: canariRect.cocoaRect)
+        nonPlatedHoles.append (r)
       }else if let text = object as? BoardText {
         switch text.mLayer {
         case .legendBack, .legendFront :
@@ -850,6 +833,41 @@ extension AutoLayoutProjectDocument {
       self.checkViaRestrictRectInsulation (&ioIssues, side.string, layout [side], restrictRectangles [side])
     }
     self.checkViaViaInsulation (&ioIssues, viaDictionary)
+    for side in TrackSide.allCases {
+      self.checkTrackNonPlatedHoleInsulation (&ioIssues, side.string, layout [side], nonPlatedHoles)
+    }
+    self.checkPadNonPlatedHoleInsulation (&ioIssues, TrackSide.front.string, layout [.front], nonPlatedHoles)
+    self.checkPadNonPlatedHoleInsulation (&ioIssues, TrackSide.back.string, layout [.back], nonPlatedHoles)
+    self.checkViaNonPlatedHoleInsulation (&ioIssues, viaDictionary, nonPlatedHoles)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func checkViaNonPlatedHoleInsulation (_ ioIssues : inout [CanariIssue],
+                                                _ inViaDictionary : [String : [GeometricCircle]],
+                                                _ inNonPlatedHoles : [GeometricRect]) {
+    self.mERCLogTextViewArray.appendMessage ("Via vs non plated hole… ")
+    var insulationErrorCount = 0
+    var allVias = [GeometricCircle] ()
+    for (_, vias) in inViaDictionary {
+      allVias += vias
+    }
+    for via in allVias {
+      for nph in inNonPlatedHoles {
+        if via.intersects (rect: nph) {
+          insulationErrorCount += 1
+          let issue = CanariIssue (kind: .error, message: "via vs non plated hole", pathes: [via.bezierPath, nph.bezierPath])
+          ioIssues.append (issue)
+        }
+      }
+    }
+    if insulationErrorCount == 0 {
+      self.mERCLogTextViewArray.appendSuccess ("ok\n")
+    }else if insulationErrorCount == 1 {
+      self.mERCLogTextViewArray.appendError ("1 error\n")
+    }else{
+      self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1004,6 +1022,72 @@ extension AutoLayoutProjectDocument {
                 let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs via collision", pathes: [tx.bezierPath, via.bezierPath])
                 ioIssues.append (issue)
               }
+            }
+          }
+        }
+      }
+      if insulationErrorCount == 0 {
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextViewArray.appendError ("1 error\n")
+      }else{
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func checkPadNonPlatedHoleInsulation (_ ioIssues : inout [CanariIssue],
+                                                _ inSide : String,
+                                                _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
+                                                _ inNonPlatedHoles : [GeometricRect]) {
+    if let layout = inLayout {
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " pad vs non plated hole… ")
+      var insulationErrorCount = 0
+      for (_, pads, _) in layout {
+        for pad in pads {
+          for nph in inNonPlatedHoles {
+            if pad.intersects (rect: nph) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (
+                kind: .error,
+                message: inSide.capitalizingFirstLetter () + " pad vs non plated hole", pathes: [pad.bezierPath, nph.bezierPath]
+              )
+              ioIssues.append (issue)
+            }
+          }
+        }
+      }
+      if insulationErrorCount == 0 {
+        self.mERCLogTextViewArray.appendSuccess ("ok\n")
+      }else if insulationErrorCount == 1 {
+        self.mERCLogTextViewArray.appendError ("1 error\n")
+      }else{
+        self.mERCLogTextViewArray.appendError ("\(insulationErrorCount) errors\n")
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func checkTrackNonPlatedHoleInsulation (_ ioIssues : inout [CanariIssue],
+                                                  _ inSide : String,
+                                                  _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
+                                                  _ inNonPlatedHoles : [GeometricRect]) {
+    if let layout = inLayout {
+      self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " track vs non plated hole… ")
+      var insulationErrorCount = 0
+      for (tracks, _, _) in layout {
+        for track in tracks {
+          for nph in inNonPlatedHoles {
+            if track.intersects (rect: nph) {
+              insulationErrorCount += 1
+              let issue = CanariIssue (
+                kind: .error,
+                message: inSide.capitalizingFirstLetter () + " track vs non plated hole", pathes: [track.bezierPath, nph.bezierPath]
+              )
+              ioIssues.append (issue)
             }
           }
         }

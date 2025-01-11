@@ -209,6 +209,7 @@ extension AutoLayoutProjectDocument {
     self.appendQRCodePathes (to: &ioProduct)
     self.appendImagesPathes (to: &ioProduct)
     self.appendTracks (to: &ioProduct)
+    self.appendNonPlatedHoles (to: &ioProduct)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -414,6 +415,45 @@ extension AutoLayoutProjectDocument {
           layers: .hole
         )
         ioProduct.append (circle: hole)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendNonPlatedHoles (to ioProduct : inout ProductRepresentation) {
+    for object in self.rootObject.mBoardObjects.values {
+      if let nph = object as? NonPlatedHole {
+        let p = CanariPoint (x: nph.mX, y: nph.mY)
+        let holeSize = CanariSize (width: nph.mWidth, height: nph.mHeight)
+        if holeSize.width < holeSize.height { // Vertical oblong
+          let p1 = CanariPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2)
+          let p2 = CanariPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2)
+          let oblong = LayeredProductSegment (
+            p1: ProductPoint (canariPoint: p1),
+            p2: ProductPoint (canariPoint: p2),
+            width: ProductLength (valueInCanariUnit: holeSize.width),
+            layers: .hole
+          )
+          ioProduct.append (roundSegment: oblong)
+        }else if holeSize.width > holeSize.height { // Horizontal oblong
+          let p1 = CanariPoint (x: p.x - (holeSize.width - holeSize.height) / 2, y: p.y)
+          let p2 = CanariPoint (x: p.x + (holeSize.width - holeSize.height) / 2, y: p.y)
+          let oblong = LayeredProductSegment (
+            p1: ProductPoint (canariPoint: p1),
+            p2: ProductPoint (canariPoint: p2),
+            width: ProductLength (valueInCanariUnit: holeSize.height),
+            layers: .hole
+          )
+          ioProduct.append (roundSegment: oblong)
+        }else{ // Circular
+          let pad = LayeredProductCircle (
+            center: ProductPoint (canariPoint: p),
+            diameter: ProductLength (valueInCanariUnit: holeSize.width),
+            layers: .hole
+          )
+          ioProduct.append (circle: pad)
+        }
       }
     }
   }
