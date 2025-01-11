@@ -21,8 +21,7 @@ extension AutoLayoutProjectDocument {
       draggedObjectImage: { [weak self] in return self?.boardNonPlatedHoleImageFactory () },
       scaleProvider: self.boardObjectsController
     )
-//    let bp = NSBezierPath (rect: NSRect (center: .zero, size: NSSize (width: 15, height: 15)))
-    inOutlet.set (image: NSImage (named: "qrcode"))
+    inOutlet.set (image: NSImage (named: "nonPlatedHole"))
 //--- END OF USER ZONE 2
   }
 }

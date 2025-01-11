@@ -2080,6 +2080,8 @@
 		CF9C1C42279C83FD0018CCDB /* AutoLayoutEnumSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C40279C83FD0018CCDB /* AutoLayoutEnumSegmentedControl.swift */; };
 		CF9C6DEA269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */; };
 		CF9C6DEB269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */; };
+		CF9D47D62D331C3900940F17 /* nonPlatedHole.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF9D47D52D331C3900940F17 /* nonPlatedHole.pdf */; };
+		CF9D47D72D331C3900940F17 /* nonPlatedHole.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF9D47D52D331C3900940F17 /* nonPlatedHole.pdf */; };
 		CF9DE347267A41DA0064234B /* NSControl+run-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */; };
 		CF9DE348267A41DA0064234B /* NSControl+run-binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */; };
 		CF9F7FD22CA812A70014918B /* HorizontalStackFlexibleSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F7FD12CA8128F0014918B /* HorizontalStackFlexibleSpace.swift */; };
@@ -4657,6 +4659,7 @@
 		CF9C1C40279C83FD0018CCDB /* AutoLayoutEnumSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutEnumSegmentedControl.swift; sourceTree = "<group>"; };
 		CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBAutoLayoutManagedDocument.swift; sourceTree = "<group>"; };
 		CF9C6DE9269E1CBE003DF5E0 /* action-AutoLayoutPackageDocument-copyModelImageAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutPackageDocument-copyModelImageAction.swift"; sourceTree = "<group>"; };
+		CF9D47D52D331C3900940F17 /* nonPlatedHole.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = nonPlatedHole.pdf; sourceTree = "<group>"; };
 		CF9DE346267A41DA0064234B /* NSControl+run-binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSControl+run-binding.swift"; sourceTree = "<group>"; };
 		CF9F7FD12CA8128F0014918B /* HorizontalStackFlexibleSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackFlexibleSpace.swift; sourceTree = "<group>"; };
 		CF9F7FD42CA826640014918B /* VerticalStackSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackSequence.swift; sourceTree = "<group>"; };
@@ -6186,8 +6189,9 @@
 				CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */,
 				CFB438BD2430EE0300163B86 /* model-image-dil16.png */,
 				CF8C301A29F017F300F911C9 /* NextToolbarImage.png */,
-				CF26AF7925EAAF84000E3080 /* package-program-guide.rtf */,
+				CF9D47D52D331C3900940F17 /* nonPlatedHole.pdf */,
 				CF61729A1B3C4CD600F3CA82 /* package.pdf */,
+				CF26AF7925EAAF84000E3080 /* package-program-guide.rtf */,
 				CF8C301B29F017F300F911C9 /* PreviousToolbarImage.png */,
 				CF3494C329EAD694006AB1EB /* qrcode.png */,
 				CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */,
@@ -8170,6 +8174,7 @@
 				CF8C301329F0133300F911C9 /* ZoomInToolbarImage.png in Resources */,
 				CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */,
 				CF6172BD1B3C4CD600F3CA82 /* A4horizontal.pdf in Resources */,
+				CF9D47D72D331C3900940F17 /* nonPlatedHole.pdf in Resources */,
 				CF7034C82353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF6173001B3C4CD600F3CA82 /* track-in-board.png in Resources */,
 				CF7B7E3624F2B98E00A12A46 /* rotationCursor.png in Resources */,
@@ -8215,6 +8220,7 @@
 				CF8C301429F0133300F911C9 /* ZoomInToolbarImage.png in Resources */,
 				CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */,
 				CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */,
+				CF9D47D62D331C3900940F17 /* nonPlatedHole.pdf in Resources */,
 				CF7034C92353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF5C4CA9219F04D600EAC52A /* track-in-board.png in Resources */,
 				CF7B7E3724F2B98E00A12A46 /* rotationCursor.png in Resources */,
