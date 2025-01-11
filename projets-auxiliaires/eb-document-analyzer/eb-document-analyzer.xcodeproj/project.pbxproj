@@ -1,0 +1,338 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF9345A51B4D212F00CA99F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9345A41B4D212F00CA99F8 /* AppDelegate.swift */; };
+		CF9345A71B4D212F00CA99F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9345A61B4D212F00CA99F8 /* Assets.xcassets */; };
+		CF9345AA1B4D212F00CA99F8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9345A81B4D212F00CA99F8 /* MainMenu.xib */; };
+		CF9345B21B4D25FB00CA99F8 /* analyze-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9345B11B4D25FB00CA99F8 /* analyze-document.swift */; };
+		CF9345B41B4D284100CA99F8 /* DataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9345B31B4D284100CA99F8 /* DataScanner.swift */; };
+		CF9345B61B4D42EB00CA99F8 /* extension+NSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9345B51B4D42EB00CA99F8 /* extension+NSTextView.swift */; };
+		CF9345B81B4D5A5000CA99F8 /* legacy-bz2-data-analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9345B71B4D5A5000CA99F8 /* legacy-bz2-data-analysis.swift */; };
+		CF9345BC1B4D5CC900CA99F8 /* bz2-uncompress.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9345BA1B4D5CC900CA99F8 /* bz2-uncompress.m */; };
+		CFDF7E081B4D616600C75668 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDF7E071B4D616600C75668 /* libbz2.1.0.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CF9345A11B4D212F00CA99F8 /* eb-document-analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eb-document-analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9345A41B4D212F00CA99F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CF9345A61B4D212F00CA99F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF9345A91B4D212F00CA99F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CF9345AB1B4D212F00CA99F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF9345B11B4D25FB00CA99F8 /* analyze-document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "analyze-document.swift"; sourceTree = "<group>"; };
+		CF9345B31B4D284100CA99F8 /* DataScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScanner.swift; sourceTree = "<group>"; };
+		CF9345B51B4D42EB00CA99F8 /* extension+NSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension+NSTextView.swift"; sourceTree = "<group>"; };
+		CF9345B71B4D5A5000CA99F8 /* legacy-bz2-data-analysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "legacy-bz2-data-analysis.swift"; sourceTree = "<group>"; };
+		CF9345B91B4D5CC800CA99F8 /* eb-document-analyzer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eb-document-analyzer-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF9345BA1B4D5CC900CA99F8 /* bz2-uncompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "bz2-uncompress.m"; sourceTree = "<group>"; };
+		CF9345BB1B4D5CC900CA99F8 /* bz2-uncompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bz2-uncompress.h"; sourceTree = "<group>"; };
+		CFDF7E071B4D616600C75668 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = /usr/lib/libbz2.1.0.dylib; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF93459E1B4D212F00CA99F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFDF7E081B4D616600C75668 /* libbz2.1.0.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF9345981B4D212F00CA99F8 = {
+			isa = PBXGroup;
+			children = (
+				CF9345A31B4D212F00CA99F8 /* eb-document-analyzer */,
+				CF9345A21B4D212F00CA99F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF9345A21B4D212F00CA99F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF9345A11B4D212F00CA99F8 /* eb-document-analyzer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF9345A31B4D212F00CA99F8 /* eb-document-analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				CFDF7E071B4D616600C75668 /* libbz2.1.0.dylib */,
+				CF9345B11B4D25FB00CA99F8 /* analyze-document.swift */,
+				CF9345B71B4D5A5000CA99F8 /* legacy-bz2-data-analysis.swift */,
+				CF9345BA1B4D5CC900CA99F8 /* bz2-uncompress.m */,
+				CF9345BB1B4D5CC900CA99F8 /* bz2-uncompress.h */,
+				CF9345A41B4D212F00CA99F8 /* AppDelegate.swift */,
+				CF9345A61B4D212F00CA99F8 /* Assets.xcassets */,
+				CF9345B31B4D284100CA99F8 /* DataScanner.swift */,
+				CF9345B51B4D42EB00CA99F8 /* extension+NSTextView.swift */,
+				CF9345AB1B4D212F00CA99F8 /* Info.plist */,
+				CF9345A81B4D212F00CA99F8 /* MainMenu.xib */,
+				CF9345B91B4D5CC800CA99F8 /* eb-document-analyzer-Bridging-Header.h */,
+			);
+			path = "eb-document-analyzer";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF9345A01B4D212F00CA99F8 /* eb-document-analyzer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF9345AE1B4D212F00CA99F8 /* Build configuration list for PBXNativeTarget "eb-document-analyzer" */;
+			buildPhases = (
+				CF93459D1B4D212F00CA99F8 /* Sources */,
+				CF93459E1B4D212F00CA99F8 /* Frameworks */,
+				CF93459F1B4D212F00CA99F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "eb-document-analyzer";
+			productName = "eb-document-analyzer";
+			productReference = CF9345A11B4D212F00CA99F8 /* eb-document-analyzer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF9345991B4D212F00CA99F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Pierre Molinaro";
+				TargetAttributes = {
+					CF9345A01B4D212F00CA99F8 = {
+						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 1130;
+					};
+				};
+			};
+			buildConfigurationList = CF93459C1B4D212F00CA99F8 /* Build configuration list for PBXProject "eb-document-analyzer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF9345981B4D212F00CA99F8;
+			productRefGroup = CF9345A21B4D212F00CA99F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF9345A01B4D212F00CA99F8 /* eb-document-analyzer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF93459F1B4D212F00CA99F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF9345A71B4D212F00CA99F8 /* Assets.xcassets in Resources */,
+				CF9345AA1B4D212F00CA99F8 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF93459D1B4D212F00CA99F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF9345B81B4D5A5000CA99F8 /* legacy-bz2-data-analysis.swift in Sources */,
+				CF9345A51B4D212F00CA99F8 /* AppDelegate.swift in Sources */,
+				CF9345B21B4D25FB00CA99F8 /* analyze-document.swift in Sources */,
+				CF9345BC1B4D5CC900CA99F8 /* bz2-uncompress.m in Sources */,
+				CF9345B61B4D42EB00CA99F8 /* extension+NSTextView.swift in Sources */,
+				CF9345B41B4D284100CA99F8 /* DataScanner.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CF9345A81B4D212F00CA99F8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF9345A91B4D212F00CA99F8 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF9345AC1B4D212F00CA99F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+			};
+			name = Debug;
+		};
+		CF9345AD1B4D212F00CA99F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+			};
+			name = Release;
+		};
+		CF9345AF1B4D212F00CA99F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "eb-document-analyzer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.free.pcmolinaro.eb-document-analyzer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eb-document-analyzer/eb-document-analyzer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CF9345B01B4D212F00CA99F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "eb-document-analyzer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.free.pcmolinaro.eb-document-analyzer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eb-document-analyzer/eb-document-analyzer-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF93459C1B4D212F00CA99F8 /* Build configuration list for PBXProject "eb-document-analyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF9345AC1B4D212F00CA99F8 /* Debug */,
+				CF9345AD1B4D212F00CA99F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF9345AE1B4D212F00CA99F8 /* Build configuration list for PBXNativeTarget "eb-document-analyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF9345AF1B4D212F00CA99F8 /* Debug */,
+				CF9345B01B4D212F00CA99F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF9345991B4D212F00CA99F8 /* Project object */;
+}
