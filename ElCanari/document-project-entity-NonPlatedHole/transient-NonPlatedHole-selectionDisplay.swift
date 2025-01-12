@@ -23,12 +23,16 @@ import AppKit
 ) -> EBShape {
 //--- START OF USER ZONE 2
        var shape = EBShape ()
-//       let color = NSColor.black
        let r = CanariRect (
          center: CanariPoint (x: self_mX, y: self_mY),
-         size: CanariSize (width: self_mWidth + prefs_hiliteWidthMultipliedByTen / 5, height: self_mHeight + prefs_hiliteWidthMultipliedByTen / 5)
+//         size: CanariSize (width: self_mWidth + prefs_hiliteWidthMultipliedByTen / 5, height: self_mHeight + prefs_hiliteWidthMultipliedByTen / 5)
+         size: CanariSize (width: self_mWidth, height: self_mHeight)
        )
-       let bp = EBBezierPath (oblongInRect: r.cocoaRect)
+       var bp = EBBezierPath (oblongInRect: r.cocoaRect)
+//       let hiliteWidth = canariUnitToCocoa (prefs_hiliteWidthMultipliedByTen) / 10.0
+//       bp.appendOblong (in: r.cocoaRect.insetBy (dx: 2.0 * hiliteWidth, dy: 2.0 * hiliteWidth))
+       bp.appendOblong (in: r.cocoaRect.insetBy (dx: 2.0, dy: 2.0))
+       bp.windingRule = .evenOdd
        shape.add (filled: [bp], prefs_selectionHiliteColor)
        return shape
 //--- END OF USER ZONE 2
