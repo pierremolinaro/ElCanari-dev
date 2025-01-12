@@ -28,16 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.3"
+let VERSION_CANARI = "1.8.4"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Dans les fichiers Gerber engendrés, les points n'apparaissaient pas, alors qu'ils étaient présents dans les PDF engendrés"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Project : Ajout de \"Non Plated Holes\" sur la carte"
 ]
 
 //--------------------------------------------------------------------------------------------------
