@@ -3644,6 +3644,23 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
         do{
           let vStackView_view_view_view = AutoLayoutColorWell ()
             .set (toolTip: "Stored in Preferences")
+            .bind_color (preferences_nonPlatedHoleColorForBoard_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Non Plated Holes", bold: false, size: .small, alignment: .left)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+          .bind_hidden (.not (.prop (self.rootObject.mExpandOtherBoardSettings_property)))
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        do{
+          let vStackView_view_view_view = AutoLayoutColorWell ()
+            .set (toolTip: "Stored in Preferences")
             .bind_color (preferences_boardLimitsColorForBoard_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }

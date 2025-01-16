@@ -1609,6 +1609,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       hStack $hidden !root.mExpandOtherBoardSettings {
         space
+        ColorWell { set (toolTip: "Stored in Preferences") $color prefs.nonPlatedHoleColorForBoard }
+        gutter
+        StaticLabel (title: "Non Plated Holes", bold: no, size : .small, alignment: .left)
+      }
+      hStack $hidden !root.mExpandOtherBoardSettings {
+        space
         ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard }
         gutter
         StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)

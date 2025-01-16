@@ -15,6 +15,7 @@ graphic entity NonPlatedHole : BoardObject {
   property Int mHeightUnit default 90_000 ; // mm
 
   override transient EBShape objectDisplay dependsFrom
+    prefs.nonPlatedHoleColorForBoard,
     self.mX, self.mY, self.mWidth, self.mHeight
   ;
 

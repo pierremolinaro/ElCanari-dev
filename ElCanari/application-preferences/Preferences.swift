@@ -653,6 +653,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 @MainActor let Preferences_backSidePadColorForBoard = "Preferences:backSidePadColorForBoard"
 @MainActor let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 @MainActor let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
+@MainActor let Preferences_nonPlatedHoleColorForBoard = "Preferences:nonPlatedHoleColorForBoard"
 @MainActor let Preferences_rastnetColorForBoard = "Preferences:rastnetColorForBoard"
 @MainActor let Preferences_workingAreaColorForBoard = "Preferences:workingAreaColorForBoard"
 @MainActor let Preferences_mShowComponentRotationKnobInBoard = "Preferences:mShowComponentRotationKnobInBoard"
@@ -1241,6 +1242,12 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //································································································
 
 @MainActor let preferences_padNumberColorForBoard_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.red, prefKey: Preferences_padNumberColorForBoard)
+
+//································································································
+//   Atomic property: nonPlatedHoleColorForBoard
+//································································································
+
+@MainActor let preferences_nonPlatedHoleColorForBoard_property = EBPreferenceProperty <NSColor> (defaultValue: NSColor.black, prefKey: Preferences_nonPlatedHoleColorForBoard)
 
 //································································································
 //   Atomic property: rastnetColorForBoard

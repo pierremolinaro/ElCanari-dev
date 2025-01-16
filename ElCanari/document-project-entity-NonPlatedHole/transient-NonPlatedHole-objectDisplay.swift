@@ -14,6 +14,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NonPlatedHole_objectDisplay (
+       _ prefs_nonPlatedHoleColorForBoard : NSColor,   
        _ self_mX : Int,                                
        _ self_mY : Int,                                
        _ self_mWidth : Int,                            
@@ -21,13 +22,12 @@ import AppKit
 ) -> EBShape {
 //--- START OF USER ZONE 2
        var shape = EBShape ()
-       let color = NSColor.black
        let r = CanariRect (
          center: CanariPoint (x: self_mX, y: self_mY),
          size: CanariSize (width: self_mWidth, height: self_mHeight)
        )
        let bp = EBBezierPath (oblongInRect: r.cocoaRect)
-       shape.add (filled: [bp], color)
+       shape.add (filled: [bp], prefs_nonPlatedHoleColorForBoard)
        return shape
 //--- END OF USER ZONE 2
 }

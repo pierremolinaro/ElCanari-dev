@@ -329,6 +329,8 @@ prefs {
   property NSFont padNumberFontForBoard default 3 ;
 //--- Pad Number Color
   property NSColor padNumberColorForBoard default red ;
+//--- Non Plated Hole Color
+  property NSColor nonPlatedHoleColorForBoard default black ;
 //--- Rastnet Color
   property NSColor rastnetColorForBoard default yellow ;
 //--- Working Area Color

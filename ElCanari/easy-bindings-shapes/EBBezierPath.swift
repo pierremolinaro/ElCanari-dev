@@ -24,32 +24,24 @@ struct EBBezierPath : Hashable {
 
   init (rect inRect : NSRect) {
     self.mPath = NSBezierPath (rect: inRect)
-//    self.mPath.appendRect (inRect)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (ovalIn inRect : NSRect) {
     self.mPath = NSBezierPath (ovalIn: inRect)
-//    self.mPath.appendOval (in: inRect)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (roundedRect rect : NSRect, xRadius inXRadius : CGFloat, yRadius inYRadius : CGFloat) {
     self.mPath = NSBezierPath (roundedRect: rect, xRadius: inXRadius, yRadius: inYRadius)
-//    self.mPath.appendRoundedRect (rect, xRadius: xRadius, yRadius: yRadius)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inBezierPath : NSBezierPath) {
     self.mPath = inBezierPath.copy () as! NSBezierPath
-//    self.mPath = NSBezierPath ()
-//    self.mPath.append (inBezierPath)
-//    self.mPath.lineWidth = inBezierPath.lineWidth
-//    self.mPath.lineCapStyle = inBezierPath.lineCapStyle
-//    self.mPath.lineJoinStyle = inBezierPath.lineJoinStyle
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
