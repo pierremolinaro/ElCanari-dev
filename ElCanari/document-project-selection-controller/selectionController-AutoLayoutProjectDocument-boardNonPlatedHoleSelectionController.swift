@@ -65,6 +65,12 @@ import AppKit
   final let mHeightUnit_property = EBComputedProperty_Int ()
 
   //································································································
+  //   Selection observable property: mRotation
+  //································································································
+
+  final let mRotation_property = EBComputedProperty_Int ()
+
+  //································································································
   //   Selection observable property: mX
   //································································································
 
@@ -111,6 +117,7 @@ import AppKit
     self.bind_property_mWidthUnit ()
     self.bind_property_mHeight ()
     self.bind_property_mHeightUnit ()
+    self.bind_property_mRotation ()
     self.bind_property_mX ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
@@ -151,6 +158,10 @@ import AppKit
     self.mHeightUnit_property.mReadModelFunction = nil 
     self.mHeightUnit_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mHeightUnit_StopsBeingObserved (by: self.mHeightUnit_property)
+  //--- mRotation
+    self.mRotation_property.mReadModelFunction = nil 
+    self.mRotation_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mRotation_StopsBeingObserved (by: self.mRotation_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -518,6 +529,57 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mHeightUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //································································································
+
+  private final func bind_property_mRotation () {
+    self.selectedArray_property.toMany_mRotation_StartsBeingObserved (by: self.mRotation_property)
+    self.mRotation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mRotation_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mRotation_property.setProp (inValue)
           }
         }
       }

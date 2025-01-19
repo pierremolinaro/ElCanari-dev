@@ -19,22 +19,26 @@ import AppKit
        _ self_mY : Int,                                   
        _ self_mWidth : Int,                               
        _ self_mHeight : Int,                              
+       _ self_mRotation : Int,                            
        _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-       var shape = EBShape ()
-       let r = CanariRect (
-         center: CanariPoint (x: self_mX, y: self_mY),
-//         size: CanariSize (width: self_mWidth + prefs_hiliteWidthMultipliedByTen / 5, height: self_mHeight + prefs_hiliteWidthMultipliedByTen / 5)
-         size: CanariSize (width: self_mWidth, height: self_mHeight)
-       )
-       var bp = EBBezierPath (oblongInRect: r.cocoaRect)
-//       let hiliteWidth = canariUnitToCocoa (prefs_hiliteWidthMultipliedByTen) / 10.0
-//       bp.appendOblong (in: r.cocoaRect.insetBy (dx: 2.0 * hiliteWidth, dy: 2.0 * hiliteWidth))
-       bp.appendOblong (in: r.cocoaRect.insetBy (dx: 2.0, dy: 2.0))
-       bp.windingRule = .evenOdd
-       shape.add (filled: [bp], prefs_selectionHiliteColor)
-       return shape
+        var af = AffineTransform ()
+        let startX = canariUnitToCocoa (self_mX)
+        let startY = canariUnitToCocoa (self_mY)
+        af.translate (x: startX, y: startY)
+        let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
+        af.rotate (byDegrees: rotationInDegrees)
+        var shape = EBShape ()
+        let r = CanariRect (
+          center: .zero,
+          size: CanariSize (width: self_mWidth, height: self_mHeight)
+        )
+        var bp = EBBezierPath (oblongInRect: r.cocoaRect)
+        bp.appendOblong (in: r.cocoaRect.insetBy (dx: 2.0, dy: 2.0))
+        bp.windingRule = .evenOdd
+        shape.add (filled: [bp.transformed (by: af)], prefs_selectionHiliteColor)
+        return shape
 //--- END OF USER ZONE 2
 }
 

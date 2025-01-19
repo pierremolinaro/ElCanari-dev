@@ -36,68 +36,10 @@ extension NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  private static let mDefaultLastBaselineRepresentative = OptionalViewArray ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   @objc var lastBaselineRepresentativeView : NSView? { self }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//class OptionalViewArray : NSObject {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  private let mArray : [NSView?]
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  override init () {
-//    self.mArray = [nil]
-//    super.init ()
-//    noteObjectAllocation (self)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  init (_ inView : NSView) {
-//    self.mArray = [inView]
-//    super.init ()
-//    noteObjectAllocation (self)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  init (_ inViews : [NSView?]) {
-//    self.mArray = inViews
-//    super.init ()
-//    noteObjectAllocation (self)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  var last : NSView? { self.mArray.last ?? nil }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  var count : Int { self.mArray.count }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  subscript (_ inIndex : Int) -> NSView? { self.mArray [inIndex] }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
 
 //--------------------------------------------------------------------------------------------------

@@ -82,8 +82,13 @@ extension AutoLayoutProjectDocument {
         let r = CanariRect (left: restrictRectangle.mX, bottom: restrictRectangle.mY, width: restrictRectangle.mWidth, height: restrictRectangle.mHeight)
         let rr = RestrictRectangleForDSNExport (
           rect: r,
+          rotationInDegrees: 0.0,
           frontSide: restrictRectangle.mIsInFrontLayer,
-          backSide: restrictRectangle.mIsInBackLayer
+          backSide: restrictRectangle.mIsInBackLayer,
+          inner1Side: restrictRectangle.mIsInInner1Layer,
+          inner2Side: restrictRectangle.mIsInInner2Layer,
+          inner3Side: restrictRectangle.mIsInInner3Layer,
+          inner4Side: restrictRectangle.mIsInInner4Layer
         )
         restrictRectangles.append (rr)
       }else if let nph = object as? NonPlatedHole {
@@ -93,8 +98,13 @@ extension AutoLayoutProjectDocument {
         )
         let rr = RestrictRectangleForDSNExport (
           rect: r,
+          rotationInDegrees: Double (nph.mRotation) / 1000.0,
           frontSide: true,
-          backSide: true
+          backSide: true,
+          inner1Side: true,
+          inner2Side: true,
+          inner3Side: true,
+          inner4Side: true
         )
         restrictRectangles.append (rr)
      }
@@ -526,8 +536,32 @@ fileprivate struct NetClassForDSNExport {
 
 fileprivate struct RestrictRectangleForDSNExport {
   let rect : CanariRect
+  let rotationInDegrees : Double
   let frontSide : Bool
   let backSide  : Bool
+  let inner1Side  : Bool
+  let inner2Side  : Bool
+  let inner3Side  : Bool
+  let inner4Side  : Bool
+
+  func vertexString (_ inConverter : CanariUnitToDSNUnitConverter) -> String {
+    var af = AffineTransform ()
+    let centerX = canariUnitToCocoa (self.rect.center.x)
+    let centerY = canariUnitToCocoa (self.rect.center.y)
+    af.translate (x: centerX, y: centerY)
+    af.rotate (byDegrees: self.rotationInDegrees)
+    let halfWidth  = canariUnitToCocoa (self.rect.width) / 2.0
+    let halfHeight = canariUnitToCocoa (self.rect.height) / 2.0
+    let bottomLeft  = af.transform (NSPoint (x: -halfWidth, y: -halfHeight)).canariPoint
+    let bottomRight = af.transform (NSPoint (x: +halfWidth, y: -halfHeight)).canariPoint
+    let topRight    = af.transform (NSPoint (x: +halfWidth, y: +halfHeight)).canariPoint
+    let topLeft     = af.transform (NSPoint (x: -halfWidth, y: +halfHeight)).canariPoint
+    let bottomLeftStr  = "\(inConverter.dsnUnitFromCanariUnit (bottomLeft.x)) \(inConverter.dsnUnitFromCanariUnit (bottomLeft.y))"
+    let bottomRightStr = "\(inConverter.dsnUnitFromCanariUnit (bottomRight.x)) \(inConverter.dsnUnitFromCanariUnit (bottomRight.y))"
+    let topRightStr    = "\(inConverter.dsnUnitFromCanariUnit (topRight.x)) \(inConverter.dsnUnitFromCanariUnit (topRight.y))"
+    let topLeftStr     = "\(inConverter.dsnUnitFromCanariUnit (topLeft.x)) \(inConverter.dsnUnitFromCanariUnit (topLeft.y))"
+    return " \(bottomLeftStr) \(bottomRightStr) \(topRightStr) \(topLeftStr) \(bottomLeftStr)"
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -995,19 +1029,47 @@ fileprivate func addRestrictRectangles (_ ioString : inout String,
                                         _ inRestrictRectangles : [RestrictRectangleForDSNExport],
                                         _ inConverter : CanariUnitToDSNUnitConverter) {
   for rr in inRestrictRectangles {
-    let left = inConverter.dsnUnitFromCanariUnit (rr.rect.left)
-    let bottom = inConverter.dsnUnitFromCanariUnit (rr.rect.bottom)
-    let right = left + inConverter.dsnUnitFromCanariUnit (rr.rect.width)
-    let top = bottom + inConverter.dsnUnitFromCanariUnit (rr.rect.height)
+//    let left = inConverter.dsnUnitFromCanariUnit (rr.rect.left)
+//    let bottom = inConverter.dsnUnitFromCanariUnit (rr.rect.bottom)
+//    let right = left + inConverter.dsnUnitFromCanariUnit (rr.rect.width)
+//    let top = bottom + inConverter.dsnUnitFromCanariUnit (rr.rect.height)
+//    let leftBottomStr = " \(left) \(bottom)"
+//    let rightBottomStr = " \(right) \(bottom)"
+//    let leftTopStr = " \(left) \(top)"
+//    let rightTopStr = " \(right) \(top)"
     if rr.frontSide {
       ioString += "    (keepout\n"
-      ioString += "      (rect \(FRONT_SIDE_LAYOUT) \(left) \(bottom) \(right) \(top))\n"
+      ioString += "      (polygon \(FRONT_SIDE_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
       ioString += "      (clearance_class default)\n"
       ioString += "    )\n"
     }
     if rr.backSide {
       ioString += "    (keepout\n"
-      ioString += "      (rect \(BACK_SIDE_LAYOUT) \(left) \(bottom) \(right) \(top))\n"
+      ioString += "      (polygon \(BACK_SIDE_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
+      ioString += "      (clearance_class default)\n"
+      ioString += "    )\n"
+    }
+    if rr.inner1Side {
+      ioString += "    (keepout\n"
+      ioString += "      (polygon \(INNER1_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
+      ioString += "      (clearance_class default)\n"
+      ioString += "    )\n"
+    }
+    if rr.inner2Side {
+      ioString += "    (keepout\n"
+      ioString += "      (polygon \(INNER2_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
+      ioString += "      (clearance_class default)\n"
+      ioString += "    )\n"
+    }
+    if rr.inner3Side {
+      ioString += "    (keepout\n"
+      ioString += "      (polygon \(INNER3_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
+      ioString += "      (clearance_class default)\n"
+      ioString += "    )\n"
+    }
+    if rr.inner4Side {
+      ioString += "    (keepout\n"
+      ioString += "      (polygon \(INNER4_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
       ioString += "      (clearance_class default)\n"
       ioString += "    )\n"
     }

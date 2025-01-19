@@ -159,7 +159,6 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func operationBeforeRemoving_NonPlatedHole () {
-//    self.mFont = nil
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -187,25 +186,6 @@ extension NonPlatedHole {
   func canFlipVertically_NonPlatedHole () -> Bool {
     return false
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func displayInfos (extraWidth inExtraWidth : CGFloat) -> (EBBezierPath, EBBezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
-//    return boardText_displayInfos (
-//      x: self.mX,
-//      y: self.mY,
-//      string: self.mText,
-//      fontSize: self.mFontSize,
-//      self.mFont!.descriptor!,
-//      horizontalAlignment: self.mHorizontalAlignment,
-//      verticalAlignment: self.mVerticalAlignment,
-//      frontSide: (self.mLayer == .legendFront) || (self.mLayer == .layoutFront),
-//      rotation: self.mRotation,
-//      weight: self.mWeight,
-//      oblique: self.mOblique,
-//      extraWidth: inExtraWidth
-//    )
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -2261,7 +2261,7 @@ do{
       _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
           .bind_angle (self.commentInSchematicSelectionController.mRotation_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -4302,7 +4302,7 @@ do{
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
           .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
           .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
         _ = vStackView_view .appendView (vStackView_view_view)
@@ -4993,7 +4993,7 @@ do{
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
           .bind_angle (self.boardImageSelectionController.mRotation_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -5142,7 +5142,7 @@ do{
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
           .bind_angle (self.boardQRCodeSelectionController.mRotation_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -5243,6 +5243,20 @@ do{
       do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.boardNonPlatedHoleSelectionController.mHeight_property, self.boardNonPlatedHoleSelectionController.mHeightUnit_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
+          .bind_angle (self.boardNonPlatedHoleSelectionController.mRotation_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       _ = vStackView .appendView (vStackView_view)
@@ -5393,7 +5407,7 @@ do{
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
           .bind_angle (self.boardTextSelectionController.mRotation_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -5534,7 +5548,7 @@ do{
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
             .bind_angle (self.componentInBoardSelectionController.mRotation_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -5635,7 +5649,7 @@ do{
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
             .bind_angle (self.componentInBoardSelectionController.mNameRotation_property)
             .bind_enabled (.prop (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
@@ -5738,7 +5752,7 @@ do{
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
             .bind_angle (self.componentInBoardSelectionController.mValueRotation_property)
             .bind_enabled (.prop (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)

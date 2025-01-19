@@ -38,6 +38,9 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
       if let relay = self.mObserversOf_mHeightUnit { // Stored property
         managedObject.mHeightUnit_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mRotation { // Stored property
+        managedObject.mRotation_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.stopsBeingObserved (by: relay)
       }
@@ -73,6 +76,9 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
       }
       if let relay = self.mObserversOf_mHeightUnit { // Stored property
         managedObject.mHeightUnit_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mRotation { // Stored property
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.startsBeingObserved (by: relay)
@@ -290,6 +296,35 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   final func toMany_mHeightUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mHeightUnit?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mRotation' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mRotation : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mRotation_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mRotation {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mRotation_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mRotation = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mRotation_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mRotation?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

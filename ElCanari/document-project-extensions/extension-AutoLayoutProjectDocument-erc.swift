@@ -732,7 +732,7 @@ extension AutoLayoutProjectDocument {
   //--- Track inventory
     var trackSideNetDictionary = [SideAndNetName : [GeometricOblong]] ()
     var restrictRectangles = [TrackSide : [GeometricRect]] ()
-    var nonPlatedHoles = [GeometricRect] ()
+    var nonPlatedHoles = [GeometricOblong] ()
 
     var viaDictionary = [String : [GeometricCircle]] ()
     for object in self.rootObject.mBoardObjects.values {
@@ -774,7 +774,13 @@ extension AutoLayoutProjectDocument {
           center: CanariPoint (x: nph.mX, y: nph.mY),
           size: CanariSize (width: nph.mWidth, height: nph.mHeight)
         )
-        let r = GeometricRect (rect: canariRect.cocoaRect)
+        let r = GeometricOblong (
+          center: CanariPoint (x: nph.mX, y: nph.mY).cocoaPoint,
+          width: canariUnitToCocoa (nph.mWidth),
+          height: canariUnitToCocoa (nph.mHeight),
+          angleInDegrees: CGFloat (nph.mRotation) / 1000.0
+        )
+//        let r = GeometricRect (rect: canariRect.cocoaRect)
         nonPlatedHoles.append (r)
       }else if let text = object as? BoardText {
         switch text.mLayer {
@@ -845,7 +851,7 @@ extension AutoLayoutProjectDocument {
 
   private func checkViaNonPlatedHoleInsulation (_ ioIssues : inout [CanariIssue],
                                                 _ inViaDictionary : [String : [GeometricCircle]],
-                                                _ inNonPlatedHoles : [GeometricRect]) {
+                                                _ inNonPlatedHoles : [GeometricOblong]) {
     self.mERCLogTextViewArray.appendMessage ("Via vs non plated hole… ")
     var insulationErrorCount = 0
     var allVias = [GeometricCircle] ()
@@ -854,7 +860,7 @@ extension AutoLayoutProjectDocument {
     }
     for via in allVias {
       for nph in inNonPlatedHoles {
-        if via.intersects (rect: nph) {
+        if nph.intersects (circle: via) {
           insulationErrorCount += 1
           let issue = CanariIssue (kind: .error, message: "via vs non plated hole", pathes: [via.bezierPath, nph.bezierPath])
           ioIssues.append (issue)
@@ -1041,14 +1047,14 @@ extension AutoLayoutProjectDocument {
   private func checkPadNonPlatedHoleInsulation (_ ioIssues : inout [CanariIssue],
                                                 _ inSide : String,
                                                 _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
-                                                _ inNonPlatedHoles : [GeometricRect]) {
+                                                _ inNonPlatedHoles : [GeometricOblong]) {
     if let layout = inLayout {
       self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " pad vs non plated hole… ")
       var insulationErrorCount = 0
       for (_, pads, _) in layout {
         for pad in pads {
           for nph in inNonPlatedHoles {
-            if pad.intersects (rect: nph) {
+            if pad.intersects (oblong: nph) {
               insulationErrorCount += 1
               let issue = CanariIssue (
                 kind: .error,
@@ -1074,14 +1080,14 @@ extension AutoLayoutProjectDocument {
   private func checkTrackNonPlatedHoleInsulation (_ ioIssues : inout [CanariIssue],
                                                   _ inSide : String,
                                                   _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
-                                                  _ inNonPlatedHoles : [GeometricRect]) {
+                                                  _ inNonPlatedHoles : [GeometricOblong]) {
     if let layout = inLayout {
       self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " track vs non plated hole… ")
       var insulationErrorCount = 0
       for (tracks, _, _) in layout {
         for track in tracks {
           for nph in inNonPlatedHoles {
-            if track.intersects (rect: nph) {
+            if track.intersects (oblong: nph) {
               insulationErrorCount += 1
               let issue = CanariIssue (
                 kind: .error,

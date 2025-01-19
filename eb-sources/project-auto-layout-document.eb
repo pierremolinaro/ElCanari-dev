@@ -925,7 +925,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       space
       gutter
-      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #commentInSchematicSelectionController.mRotation }
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) { $angle #commentInSchematicSelectionController.mRotation }
     }
     separator
     hStack {
@@ -1917,7 +1917,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left)
       gutter
-      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
         $angle #boardTrackSelectionController.trackDirectionInDegrees
         $enabled #boardTrackSelectionController.trackCanRotate
       }
@@ -2291,7 +2291,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
       gutter
-      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
         $angle #boardImageSelectionController.mRotation
       }
     }
@@ -2369,7 +2369,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
       gutter
-      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
         $angle #boardQRCodeSelectionController.mRotation
       }
     }
@@ -2424,6 +2424,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       gutter
       CanariDimensionAndPopUp (size: .small) {
         $dimensionAndUnit #boardNonPlatedHoleSelectionController.mHeight, #boardNonPlatedHoleSelectionController.mHeightUnit
+      }
+    }
+    hStack {
+      StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
+        $angle #boardNonPlatedHoleSelectionController.mRotation
       }
     }
     space
@@ -2499,7 +2506,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right)
       gutter
-      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardTextSelectionController.mRotation }
+      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) { $angle #boardTextSelectionController.mRotation }
     }
     hStack {
       StaticLabel (title: "Side", bold: no, size: .small, alignment: .right)
@@ -2580,7 +2587,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         space
         gutter
-        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
           $angle #componentInBoardSelectionController.mRotation
         }
       }
@@ -2628,7 +2635,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         space
         gutter
-        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
           $angle #componentInBoardSelectionController.mNameRotation
           $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
         }
@@ -2681,7 +2688,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         space
         gutter
-        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) {
+        CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
           $angle #componentInBoardSelectionController.mValueRotation
           $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
         }

@@ -424,32 +424,38 @@ extension AutoLayoutProjectDocument {
   private func appendNonPlatedHoles (to ioProduct : inout ProductRepresentation) {
     for object in self.rootObject.mBoardObjects.values {
       if let nph = object as? NonPlatedHole {
-        let p = CanariPoint (x: nph.mX, y: nph.mY)
-        let holeSize = CanariSize (width: nph.mWidth, height: nph.mHeight)
-        if holeSize.width < holeSize.height { // Vertical oblong
-          let p1 = CanariPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2)
-          let p2 = CanariPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2)
+        var af = AffineTransform ()
+        let centerX = canariUnitToCocoa (nph.mX)
+        let centerY = canariUnitToCocoa (nph.mY)
+        af.translate (x: centerX, y: centerY)
+        let rotationInDegrees = CGFloat (nph.mRotation) / 1000.0
+        af.rotate (byDegrees: rotationInDegrees)
+        if nph.mWidth < nph.mHeight { // Vertical oblong
+          let cocoaHalfHeight = canariUnitToCocoa (nph.mHeight) / 2.0
+          let p1 = af.transform (NSPoint (x: 0.0, y: -cocoaHalfHeight)).canariPoint
+          let p2 = af.transform (NSPoint (x: 0.0, y: +cocoaHalfHeight)).canariPoint
           let oblong = LayeredProductSegment (
             p1: ProductPoint (canariPoint: p1),
             p2: ProductPoint (canariPoint: p2),
-            width: ProductLength (valueInCanariUnit: holeSize.width),
+            width: ProductLength (valueInCanariUnit: nph.mWidth),
             layers: .hole
           )
           ioProduct.append (roundSegment: oblong)
-        }else if holeSize.width > holeSize.height { // Horizontal oblong
-          let p1 = CanariPoint (x: p.x - (holeSize.width - holeSize.height) / 2, y: p.y)
-          let p2 = CanariPoint (x: p.x + (holeSize.width - holeSize.height) / 2, y: p.y)
+        }else if nph.mWidth > nph.mHeight { // Horizontal oblong
+          let cocoaHalfWidth = canariUnitToCocoa (nph.mWidth) / 2.0
+          let p1 = af.transform (NSPoint (x: -cocoaHalfWidth, y: 0.0)).canariPoint
+          let p2 = af.transform (NSPoint (x: +cocoaHalfWidth, y: 0.0)).canariPoint
           let oblong = LayeredProductSegment (
             p1: ProductPoint (canariPoint: p1),
             p2: ProductPoint (canariPoint: p2),
-            width: ProductLength (valueInCanariUnit: holeSize.height),
+            width: ProductLength (valueInCanariUnit: nph.mHeight),
             layers: .hole
           )
           ioProduct.append (roundSegment: oblong)
         }else{ // Circular
           let pad = LayeredProductCircle (
-            center: ProductPoint (canariPoint: p),
-            diameter: ProductLength (valueInCanariUnit: holeSize.width),
+            center: ProductPoint (canariPoint: CanariPoint (x: nph.mX, y: nph.mY)),
+            diameter: ProductLength (valueInCanariUnit: nph.mWidth),
             layers: .hole
           )
           ioProduct.append (circle: pad)

@@ -41,6 +41,21 @@ class ALB_NSSlider : NSSlider {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private static let mDefaultViewLayoutSettings = AutoLayoutViewSettings (
+    vLayoutInHorizontalContainer: .fill,
+    hLayoutInVerticalContainer: .fill
+  )
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override var pmLayoutSettings : AutoLayoutViewSettings { Self.mDefaultViewLayoutSettings }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override var lastBaselineRepresentativeView : NSView? { nil }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Changing isHidden does not invalidate constraints !!!!
   // So we perform this operation manually
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -21,6 +21,50 @@ struct GeometricOblong {
   let capStyle : TrackEndStyle
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Initializers
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (p1 inP1 : NSPoint,
+        p2 inP2 : NSPoint,
+        width inWidth : CGFloat,
+        capStyle inCapStyle : TrackEndStyle) {
+    self.p1 = inP1
+    self.p2 = inP2
+    self.width = inWidth
+    self.capStyle = inCapStyle
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (center inCenter : NSPoint,
+        width inWidth : CGFloat,
+        height inHeight : CGFloat,
+        angleInDegrees inAngleInDegrees : Double) {
+    if inWidth < inHeight {
+      var af = AffineTransform ()
+      af.translate (x: inCenter.x, y: inCenter.y)
+      af.rotate (byDegrees: inAngleInDegrees)
+      let dh = (inHeight - inWidth) / 2.0
+      self.p1 = af.transform (NSPoint (x: 0.0, y: -dh))
+      self.p2 = af.transform (NSPoint (x: 0.0, y: +dh))
+      self.width = inWidth
+    }else if inWidth > inHeight {
+      var af = AffineTransform ()
+      af.translate (x: inCenter.x, y: inCenter.y)
+      af.rotate (byDegrees: inAngleInDegrees)
+      let dw = (inWidth - inHeight) / 2.0
+      self.p1 = af.transform (NSPoint (x: -dw, y: 0.0))
+      self.p2 = af.transform (NSPoint (x: +dw, y: 0.0))
+      self.width = inHeight
+    }else{
+      self.p1 = inCenter
+      self.p2 = inCenter
+      self.width = inWidth
+    }
+    self.capStyle = .round
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Contains point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

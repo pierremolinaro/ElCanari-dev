@@ -18,17 +18,24 @@ import AppKit
        _ self_mX : Int,                                
        _ self_mY : Int,                                
        _ self_mWidth : Int,                            
-       _ self_mHeight : Int
+       _ self_mHeight : Int,                           
+       _ self_mRotation : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-       var shape = EBShape ()
-       let r = CanariRect (
-         center: CanariPoint (x: self_mX, y: self_mY),
-         size: CanariSize (width: self_mWidth, height: self_mHeight)
-       )
-       let bp = EBBezierPath (oblongInRect: r.cocoaRect)
-       shape.add (filled: [bp], prefs_nonPlatedHoleColorForBoard)
-       return shape
+        var af = AffineTransform ()
+        let startX = canariUnitToCocoa (self_mX)
+        let startY = canariUnitToCocoa (self_mY)
+        af.translate (x: startX, y: startY)
+        let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
+        af.rotate (byDegrees: rotationInDegrees)
+        var shape = EBShape ()
+        let r = CanariRect (
+          center: .zero,
+          size: CanariSize (width: self_mWidth, height: self_mHeight)
+        )
+        let bp = EBBezierPath (oblongInRect: r.cocoaRect).transformed (by: af)
+        shape.add (filled: [bp], prefs_nonPlatedHoleColorForBoard)
+        return shape
 //--- END OF USER ZONE 2
 }
 

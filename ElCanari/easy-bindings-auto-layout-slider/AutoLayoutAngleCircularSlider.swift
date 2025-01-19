@@ -27,7 +27,6 @@ final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
 
     self.controlSize = inSize.cocoaControlSize
     self.sliderType = .circular
- //   self.doubleValue = 1800.0
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -47,22 +46,7 @@ final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  doubleValue binding
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  fileprivate func updateDoubleValue (_ object : EBObservableProperty <Double>) {
-//    switch object.selection {
-//    case .empty, .multiple :
-//      self.stringValue = "-"
-//      self.enable (fromValueBinding: false, self.enabledBindingController)
-//    case .single (let propertyValue) :
-//      self.doubleValue = propertyValue
-//      self.enable (fromValueBinding: true, self.enabledBindingController)
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  intValue binding
+  //  $angle binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateAngleValue (_ object : EBObservableProperty <Int>) {

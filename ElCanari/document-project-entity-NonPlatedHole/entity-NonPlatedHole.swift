@@ -48,6 +48,12 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol NonPlatedHole_mRotation : AnyObject {
+  var mRotation : Int { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol NonPlatedHole_mX : AnyObject {
   var mX : Int { get }
 }
@@ -82,6 +88,7 @@ final class NonPlatedHole : BoardObject,
          NonPlatedHole_mWidthUnit,
          NonPlatedHole_mHeight,
          NonPlatedHole_mHeightUnit,
+         NonPlatedHole_mRotation,
          NonPlatedHole_mX,
          NonPlatedHole_objectDisplay,
          NonPlatedHole_selectionDisplay,
@@ -134,7 +141,6 @@ final class NonPlatedHole : BoardObject,
 
   final var mWidth : Int {
     get { return self.mWidth_property.propval }
-    set { self.mWidth_property.setProp (newValue) }
   }
 
   //································································································
@@ -159,7 +165,6 @@ final class NonPlatedHole : BoardObject,
 
   final var mHeight : Int {
     get { return self.mHeight_property.propval }
-    set { self.mHeight_property.setProp (newValue) }
   }
 
   //································································································
@@ -172,6 +177,19 @@ final class NonPlatedHole : BoardObject,
 
   final var mHeightUnit : Int {
     get { return self.mHeightUnit_property.propval }
+  }
+
+  //································································································
+  //   Atomic property: mRotation
+  //································································································
+
+  final let mRotation_property : EBStoredProperty_Int
+
+  //································································································
+
+  final var mRotation : Int {
+    get { return self.mRotation_property.propval }
+    set { self.mRotation_property.setProp (newValue) }
   }
 
   //································································································
@@ -199,6 +217,7 @@ final class NonPlatedHole : BoardObject,
     self.mWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mWidthUnit")
     self.mHeight_property = EBStoredProperty_Int (defaultValue: 360000, undoManager: inUndoManager, key: "mHeight")
     self.mHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mHeightUnit")
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
   //--- Atomic property: objectDisplay
@@ -209,14 +228,17 @@ final class NonPlatedHole : BoardObject,
         let s2 = unwSelf.mY_property.selection
         let s3 = unwSelf.mWidth_property.selection
         let s4 = unwSelf.mHeight_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s5 = unwSelf.mRotation_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4)) :
-          return .single (transient_NonPlatedHole_objectDisplay (v0, v1, v2, v3, v4))
+              .single (let v4),
+              .single (let v5)) :
+          return .single (transient_NonPlatedHole_objectDisplay (v0, v1, v2, v3, v4, v5))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -234,6 +256,7 @@ final class NonPlatedHole : BoardObject,
     self.mY_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mWidth_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mHeight_property.startsBeingObserved (by: self.objectDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -242,16 +265,19 @@ final class NonPlatedHole : BoardObject,
         let s2 = unwSelf.mY_property.selection
         let s3 = unwSelf.mWidth_property.selection
         let s4 = unwSelf.mHeight_property.selection
-        let s5 = preferences_hiliteWidthMultipliedByTen_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
+        let s5 = unwSelf.mRotation_property.selection
+        let s6 = preferences_hiliteWidthMultipliedByTen_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
               .single (let v4),
-              .single (let v5)) :
-          return .single (transient_NonPlatedHole_selectionDisplay (v0, v1, v2, v3, v4, v5))
+              .single (let v5),
+              .single (let v6)) :
+          return .single (transient_NonPlatedHole_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -270,6 +296,7 @@ final class NonPlatedHole : BoardObject,
     self.mY_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mWidth_property.startsBeingObserved (by: self.selectionDisplay_property)
     self.mHeight_property.startsBeingObserved (by: self.selectionDisplay_property)
+    self.mRotation_property.startsBeingObserved (by: self.selectionDisplay_property)
     preferences_hiliteWidthMultipliedByTen_property.startsBeingObserved (by: self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
@@ -278,13 +305,16 @@ final class NonPlatedHole : BoardObject,
         let s1 = unwSelf.mY_property.selection
         let s2 = unwSelf.mWidth_property.selection
         let s3 = unwSelf.mHeight_property.selection
-        switch (s0, s1, s2, s3) {
+        let s4 = unwSelf.mRotation_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3)) :
-          return .single (transient_NonPlatedHole_signatureForERCChecking (v0, v1, v2, v3))
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_NonPlatedHole_signatureForERCChecking (v0, v1, v2, v3, v4))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -300,6 +330,7 @@ final class NonPlatedHole : BoardObject,
     self.mY_property.startsBeingObserved (by: self.signatureForERCChecking_property)
     self.mWidth_property.startsBeingObserved (by: self.signatureForERCChecking_property)
     self.mHeight_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mRotation_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
