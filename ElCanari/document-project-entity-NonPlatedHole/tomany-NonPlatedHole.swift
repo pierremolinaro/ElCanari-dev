@@ -41,6 +41,9 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
       if let relay = self.mObserversOf_mRotation { // Stored property
         managedObject.mRotation_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mShowTextRotationKnobInBoard { // Stored property
+        managedObject.mShowTextRotationKnobInBoard_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.stopsBeingObserved (by: relay)
       }
@@ -79,6 +82,9 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
       }
       if let relay = self.mObserversOf_mRotation { // Stored property
         managedObject.mRotation_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mShowTextRotationKnobInBoard { // Stored property
+        managedObject.mShowTextRotationKnobInBoard_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.startsBeingObserved (by: relay)
@@ -325,6 +331,35 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   final func toMany_mRotation_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mRotation?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mShowTextRotationKnobInBoard' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mShowTextRotationKnobInBoard : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mShowTextRotationKnobInBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mShowTextRotationKnobInBoard {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mShowTextRotationKnobInBoard_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mShowTextRotationKnobInBoard = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mShowTextRotationKnobInBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mShowTextRotationKnobInBoard?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

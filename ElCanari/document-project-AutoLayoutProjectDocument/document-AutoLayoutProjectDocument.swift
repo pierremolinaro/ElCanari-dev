@@ -5248,6 +5248,11 @@ do{
       _ = vStackView .appendView (vStackView_view)
     }
     do{
+      let vStackView_view = AutoLayoutCheckbox (title: "Show Rotation Knob", size: .small)
+        .bind_value (self.boardNonPlatedHoleSelectionController.mShowTextRotationKnobInBoard_property)
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .left)

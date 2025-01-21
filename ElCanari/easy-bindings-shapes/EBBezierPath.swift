@@ -238,6 +238,15 @@ struct EBBezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  mutating func relativeLine (to inPoint : NSPoint) {
+    if !isKnownUniquelyReferenced (&self.mPath) {
+      self.mPath = self.mPath.copy () as! NSBezierPath
+    }
+    self.mPath.relativeLine (to: inPoint)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   mutating func curve (to inPoint : NSPoint, controlPoint1 inCP1 : NSPoint, controlPoint2 inCP2 : NSPoint) {
     if !isKnownUniquelyReferenced (&self.mPath) {
       self.mPath = self.mPath.copy () as! NSBezierPath
@@ -256,12 +265,12 @@ struct EBBezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func relativeLine (to inPoint : NSPoint) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
-    self.mPath.relativeLine (to: inPoint)
-  }
+//  mutating func relativeLine (to inPoint : NSPoint) {
+//    if !isKnownUniquelyReferenced (&self.mPath) {
+//      self.mPath = self.mPath.copy () as! NSBezierPath
+//    }
+//    self.mPath.relativeLine (to: inPoint)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

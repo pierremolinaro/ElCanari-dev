@@ -14,13 +14,14 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NonPlatedHole_selectionDisplay (
-       _ prefs_selectionHiliteColor : NSColor,            
        _ self_mX : Int,                                   
        _ self_mY : Int,                                   
        _ self_mWidth : Int,                               
        _ self_mHeight : Int,                              
        _ self_mRotation : Int,                            
-       _ prefs_hiliteWidthMultipliedByTen : Int
+       _ prefs_selectionHiliteColor : NSColor,            
+       _ prefs_hiliteWidthMultipliedByTen : Int,          
+       _ self_mShowTextRotationKnobInBoard : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var af = AffineTransform ()
@@ -38,6 +39,21 @@ import AppKit
         bp.appendOblong (in: r.cocoaRect.insetBy (dx: 2.0, dy: 2.0))
         bp.windingRule = .evenOdd
         shape.add (filled: [bp.transformed (by: af)], prefs_selectionHiliteColor)
+      //--- Rotation knob
+        let center = NSPoint (x: startX, y: startY)
+        if self_mShowTextRotationKnobInBoard {
+          var knobLine = EBBezierPath ()
+          knobLine.move (to : center)
+          let rotationKnobLocation = center + NSPoint (length: NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE, angleInDegrees: rotationInDegrees)
+          knobLine.line (to : rotationKnobLocation)
+          knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
+          knobLine.lineCapStyle = .round
+          knobLine.lineJoinStyle = .round
+          shape.add (stroke: [knobLine], prefs_selectionHiliteColor)
+          shape.add (knobAt: rotationKnobLocation, knobIndex: NON_PLATED_HOLE_ROTATION_KNOB, .circ, 2.0)
+        }
+      //--- Knob
+         shape.add (knobAt: center, knobIndex: NON_PLATED_HOLE_ORIGIN_KNOB, .rect, 2.0)
         return shape
 //--- END OF USER ZONE 2
 }

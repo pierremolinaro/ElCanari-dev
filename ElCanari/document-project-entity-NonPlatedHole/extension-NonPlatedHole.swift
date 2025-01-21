@@ -11,6 +11,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 let NON_PLATED_HOLE_ORIGIN_KNOB  = 0
+let NON_PLATED_HOLE_ROTATION_KNOB  = 1
+
+let NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION NonPlatedHole
@@ -23,6 +26,8 @@ extension NonPlatedHole {
   func cursorForKnob_NonPlatedHole (knob inKnobIndex : Int) -> NSCursor? {
     if inKnobIndex == NON_PLATED_HOLE_ORIGIN_KNOB {
       return NSCursor.upDownRightLeftCursor
+    }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
+      return NSCursor.rotationCursor
     }else{
       return nil
     }
@@ -77,6 +82,8 @@ extension NonPlatedHole {
                           shift _ : Bool) -> CanariPoint {
     if inKnobIndex == NON_PLATED_HOLE_ORIGIN_KNOB {
       return inProposedAlignedTranslation
+    }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
+      return inProposedAlignedTranslation
     }else{
       return .zero
     }
@@ -95,6 +102,11 @@ extension NonPlatedHole {
     if inKnobIndex == NON_PLATED_HOLE_ORIGIN_KNOB {
       self.mX += inDx
       self.mY += inDy
+    }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
+      let origin = CanariPoint (x: self.mX, y: self.mY).cocoaPoint
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
+      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
   }
 

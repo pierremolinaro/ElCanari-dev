@@ -14,6 +14,7 @@ graphic entity NonPlatedHole : BoardObject {
   property Int mHeight default 360_000 ;
   property Int mHeightUnit default 90_000 ; // mm
   property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
+  property @generateDirectAccess Bool mShowTextRotationKnobInBoard default yes ;
 
   override transient EBShape objectDisplay dependsFrom
     prefs.nonPlatedHoleColorForBoard,
@@ -22,14 +23,17 @@ graphic entity NonPlatedHole : BoardObject {
   ;
 
   override transient EBShape selectionDisplay dependsFrom
-    prefs.selectionHiliteColor,
     self.mX, self.mY, self.mWidth, self.mHeight,
     self.mRotation,
-    prefs.hiliteWidthMultipliedByTen
+    prefs.selectionHiliteColor,
+    prefs.hiliteWidthMultipliedByTen,
+    self.mShowTextRotationKnobInBoard
   ;
 
   override transient UInt32 signatureForERCChecking dependsFrom
-    self.mX, self.mY, self.mWidth, self.mHeight, self.mRotation ;
+    self.mX, self.mY, self.mWidth, self.mHeight, self.mRotation,
+    self.mShowTextRotationKnobInBoard
+  ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

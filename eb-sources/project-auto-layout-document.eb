@@ -2426,6 +2426,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $dimensionAndUnit #boardNonPlatedHoleSelectionController.mHeight, #boardNonPlatedHoleSelectionController.mHeightUnit
       }
     }
+    Checkbox (title: "Show Rotation Knob", size: .small) {
+      $value #boardNonPlatedHoleSelectionController.mShowTextRotationKnobInBoard
+    }
     hStack {
       StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .left)
       gutter

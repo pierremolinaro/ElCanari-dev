@@ -18,7 +18,8 @@ import AppKit
        _ self_mY : Int,                                          
        _ self_mWidth : Int,                                      
        _ self_mHeight : Int,                                     
-       _ self_mRotation : Int
+       _ self_mRotation : Int,                                   
+       _ self_mShowTextRotationKnobInBoard : Bool
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
@@ -27,6 +28,7 @@ import AppKit
         crc.accumulate (u32: self_mWidth.ebHashValue ())
         crc.accumulate (u32: self_mHeight.ebHashValue ())
         crc.accumulate (u32: self_mRotation.ebHashValue ())
+        crc.accumulate (u32: self_mShowTextRotationKnobInBoard.ebHashValue ())
         return crc
 //--- END OF USER ZONE 2
 }

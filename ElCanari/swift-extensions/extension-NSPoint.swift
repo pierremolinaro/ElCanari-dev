@@ -7,10 +7,24 @@ import CoreGraphics
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+
+func + (_ inLeft : NSPoint, inRight : NSPoint) -> NSPoint {
+  return NSPoint (x: inLeft.x + inRight.x, y: inLeft.y + inRight.y)
+}
+
+//--------------------------------------------------------------------------------------------------
 //   EXTENSION NSPoint
 //--------------------------------------------------------------------------------------------------
 
 extension NSPoint : @retroactive Hashable {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (length inLength : Double, angleInDegrees inAngle : Double) {
+    self.init ()
+    self.x = inLength * cos (inAngle * .pi / 180.0)
+    self.y = inLength * sin (inAngle * .pi / 180.0)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   /// The hash value.
