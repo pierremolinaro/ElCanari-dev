@@ -43,7 +43,7 @@ extension BoardQRCode {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardQRCode (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_BoardQRCode (xBy inDx : Int, yBy inDy : Int) -> Bool {
     return true
   }
 
@@ -51,7 +51,7 @@ extension BoardQRCode {
 
   func translate_BoardQRCode (xBy inDx : Int,
                               yBy inDy : Int,
-                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
+                              userSet ioUserSet : inout EBReferenceSet <EBManagedObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
@@ -71,7 +71,6 @@ extension BoardQRCode {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func saveIntoAdditionalDictionary_BoardQRCode (_ _ : inout [String : Any]) {
-//    ioDictionary [FONT_NAME_IN_DICTIONARY] = self.fontName
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
