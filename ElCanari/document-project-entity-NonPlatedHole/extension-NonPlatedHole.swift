@@ -61,7 +61,7 @@ extension NonPlatedHole {
   func operationAfterPasting_NonPlatedHole (additionalDictionary inDictionary : [String : Any],
                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                         objectArray _ : [EBGraphicManagedObject]) -> String {
-    return ""
+    return "" // Ok, no error
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -134,28 +134,28 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_NonPlatedHole (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-//    accumulatedPoints.insertCanariPoint (x: self.mX, y: self.mY)
-    return false
+    accumulatedPoints.insertCanariPoint (x: self.mX, y: self.mY)
+    return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90Clockwise_NonPlatedHole (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-//    let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-//    self.mX = p.x
-//    self.mY = p.y
-//    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
-//    ioSet.insert (self)
+    let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
+    self.mX = p.x
+    self.mY = p.y
+    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
+    ioSet.insert (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_NonPlatedHole (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-//    let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-//    self.mX = p.x
-//    self.mY = p.y
-//    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
-//    ioSet.insert (self)
+    let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
+    self.mX = p.x
+    self.mY = p.y
+    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
+    ioSet.insert (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
