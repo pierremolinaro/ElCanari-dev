@@ -23,7 +23,9 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol>
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (defaultValue inValue : TYPE, undoManager inUndoManager : UndoManager?, key inKey : String?) {
+  init (defaultValue inValue : TYPE,
+        undoManager inUndoManager : UndoManager?,
+        key inKey : String?) {
     self.mValue = inValue
     self.mUndoManager = inUndoManager
     self.mKey = inKey
@@ -35,7 +37,12 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol>
   private var mValue : TYPE {
     didSet {
       if self.mValue != oldValue {
-        self.mUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
+//        self.mUndoManager?.registerUndo (withTarget: self) { targetSelf in
+//          MainActor.assumeIsolated { targetSelf.mValue = oldValue }
+//        }
+        self.mUndoManager?.registerUndo (withTarget: self) { targetSelf in
+          targetSelf.mValue = oldValue
+        }
         if logEvents () {
           appendMessage ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
         }

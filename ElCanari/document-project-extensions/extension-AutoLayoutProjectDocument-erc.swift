@@ -770,17 +770,12 @@ extension AutoLayoutProjectDocument {
           restrictRectangles [.back] = restrictRectangles [.back, default: []] + [r]
         }
       }else if let nph = object as? NonPlatedHole {
-        let canariRect = CanariRect (
-          center: CanariPoint (x: nph.mX, y: nph.mY),
-          size: CanariSize (width: nph.mWidth, height: nph.mHeight)
-        )
         let r = GeometricOblong (
           center: CanariPoint (x: nph.mX, y: nph.mY).cocoaPoint,
           width: canariUnitToCocoa (nph.mWidth),
           height: canariUnitToCocoa (nph.mHeight),
           angleInDegrees: CGFloat (nph.mRotation) / 1000.0
         )
-//        let r = GeometricRect (rect: canariRect.cocoaRect)
         nonPlatedHoles.append (r)
       }else if let text = object as? BoardText {
         switch text.mLayer {
