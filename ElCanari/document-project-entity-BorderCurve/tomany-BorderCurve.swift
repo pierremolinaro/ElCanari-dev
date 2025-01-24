@@ -684,25 +684,22 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-  //  self.mWeakInternalValue = inObject.mOldValue
-    self.setProp (inObject.mOldValue)
-  }
+//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+//    self.setProp (inObject.mOldValue)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BorderCurve>) {
   //--- Register old value in undo manager
-     self.undoManager?.registerUndo (  // For Swift 6
-      withTarget: self,
-      selector: #selector (Self.myPerformUndo (_:)),
-      object: MyPrivateUndoer (inOldValue)
-    )
-//    self.undoManager?.registerUndo (withTarget: self) { (inSelfObject) in
-//      // DispatchQueue.main.async {
-//        inSelfObject.setProp (inOldValue)
-//      // }
-//    }
+  //   self.undoManager?.registerUndo (  // For Swift 6
+  //    withTarget: self,
+  //    selector: #selector (Self.myPerformUndo (_:)),
+  //    object: MyPrivateUndoer (inOldValue)
+  //  )
+    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
+      MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+    }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }

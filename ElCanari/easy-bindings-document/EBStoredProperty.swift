@@ -37,11 +37,8 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol>
   private var mValue : TYPE {
     didSet {
       if self.mValue != oldValue {
-//        self.mUndoManager?.registerUndo (withTarget: self) { targetSelf in
-//          MainActor.assumeIsolated { targetSelf.mValue = oldValue }
-//        }
         self.mUndoManager?.registerUndo (withTarget: self) { targetSelf in
-          targetSelf.mValue = oldValue
+          MainActor.assumeIsolated { targetSelf.mValue = oldValue }
         }
         if logEvents () {
           appendMessage ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
