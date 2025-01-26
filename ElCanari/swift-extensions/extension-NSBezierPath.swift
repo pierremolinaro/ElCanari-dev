@@ -21,7 +21,7 @@ extension NSBezierPath {
     //--- Affine transform
       let tr = NSAffineTransform ()
       tr.translateX (by: inEndPoint.x, yBy: inEndPoint.y)
-      tr.rotate (byRadians:angle)
+      tr.rotate (byRadians: angle)
     //--- Draw path
       let path = NSBezierPath ()
       path.move (to: NSPoint (x: 0.0, y: 0.0))
