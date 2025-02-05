@@ -37,19 +37,16 @@ extension AutoLayoutProjectDocument {
         }
         self.mFreerouterTemporaryDocumentDirectory = freerouterTemporaryBaseFilePath
       }
-      // Swift.print ("freerouterTemporaryBaseFilePath \(freerouterTemporaryBaseFilePath)")
     //---------- Write gui_default.par
       if preferences_mFreeRouterGuiDefaultFileContents_property.propval != "" {
         let guiDefaultPath = freerouterTemporaryBaseFilePath + "gui_defaults.par"
         try? preferences_mFreeRouterGuiDefaultFileContents_property.propval.write (to: URL (fileURLWithPath: guiDefaultPath), atomically: true, encoding: .utf8)
-        // Swift.print ("WRITE PATH \(guiDefaultPath)")
       }
     //---------- Build freerouter document
       let exportTracks : Bool = self.rootObject.mExportExistingTracksAndVias
       let s = self.dsnContents (exportTracks)
     //---------- Write DSN file
       let dsnFilePath = freerouterTemporaryBaseFilePath + "design.dsn"
-      // Swift.print ("freerouterTemporaryBaseFilePath \(freerouterTemporaryBaseFilePath)")
       do{
         try s.write (to: URL (fileURLWithPath: dsnFilePath), atomically: true, encoding: .utf8)
       //--- Launch free router with document

@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func checkSchematicsAndBeforeAndLaunchFreeRouteur (_ inCallBack : @escaping () -> Void) {
+  func checkSchematicsAndLaunchFreeRouteur (_ inCallBack : @escaping () -> Void) {
      if !self.rootObject.schematicHasErrorOrWarning! {
       self.checkAllComponentsAreInBoard (inCallBack)
     }else{

@@ -96,18 +96,31 @@ extension AutoLayoutProjectDocument {
           center: CanariPoint (x: nph.mX, y: nph.mY),
           size: CanariSize (width: nph.mWidth, height: nph.mHeight)
         )
+        let inner12 : Bool
+        let inner34 : Bool
+        switch layerConfiguration {
+        case .twoLayers :
+          inner12 = false
+          inner34 = false
+        case .fourLayers :
+          inner12 = true
+          inner34 = false
+        case .sixLayers :
+          inner12 = true
+          inner34 = true
+        }
         let rr = RestrictRectangleForDSNExport (
           rect: r,
           rotationInDegrees: Double (nph.mRotation) / 1000.0,
           frontSide: true,
           backSide: true,
-          inner1Side: true,
-          inner2Side: true,
-          inner3Side: true,
-          inner4Side: true
+          inner1Side: inner12,
+          inner2Side: inner12,
+          inner3Side: inner34,
+          inner4Side: inner34
         )
         restrictRectangles.append (rr)
-     }
+      }
     }
   //--- Net classes
     var maxTrackWithInDSNUnit : Double = 0.0
@@ -1029,14 +1042,6 @@ fileprivate func addRestrictRectangles (_ ioString : inout String,
                                         _ inRestrictRectangles : [RestrictRectangleForDSNExport],
                                         _ inConverter : CanariUnitToDSNUnitConverter) {
   for rr in inRestrictRectangles {
-//    let left = inConverter.dsnUnitFromCanariUnit (rr.rect.left)
-//    let bottom = inConverter.dsnUnitFromCanariUnit (rr.rect.bottom)
-//    let right = left + inConverter.dsnUnitFromCanariUnit (rr.rect.width)
-//    let top = bottom + inConverter.dsnUnitFromCanariUnit (rr.rect.height)
-//    let leftBottomStr = " \(left) \(bottom)"
-//    let rightBottomStr = " \(right) \(bottom)"
-//    let leftTopStr = " \(left) \(top)"
-//    let rightTopStr = " \(right) \(top)"
     if rr.frontSide {
       ioString += "    (keepout\n"
       ioString += "      (polygon \(FRONT_SIDE_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
@@ -1051,7 +1056,7 @@ fileprivate func addRestrictRectangles (_ ioString : inout String,
     }
     if rr.inner1Side {
       ioString += "    (keepout\n"
-      ioString += "      (polygon \(INNER1_LAYOUT) 0\(rr.vertexString (inConverter)))\n"
+      ioString += "      (polygon \(INNER1_LAYOUT) 0\(rr.vertexString (inConverter))\n"
       ioString += "      (clearance_class default)\n"
       ioString += "    )\n"
     }

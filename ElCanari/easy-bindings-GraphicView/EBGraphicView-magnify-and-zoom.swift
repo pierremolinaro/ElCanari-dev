@@ -79,6 +79,7 @@ extension EBGraphicView {
   @objc final func didEndLiveMagnification (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
     self.mZoomController?.updateModel (withValue: newZoom)
+    self.needsDisplay = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

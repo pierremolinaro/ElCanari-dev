@@ -27,16 +27,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.4"
+let VERSION_CANARI = "1.8.5"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Project : correction de l'erreur d'exportation des \"Non Plated Holes\" sur les fichiers DSN"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Project : Ajout de \"Non Plated Holes\" sur la carte"
 ]
 
 //--------------------------------------------------------------------------------------------------
