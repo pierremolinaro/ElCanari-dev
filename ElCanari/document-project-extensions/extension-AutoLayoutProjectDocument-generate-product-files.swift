@@ -431,9 +431,9 @@ extension AutoLayoutProjectDocument {
         let rotationInDegrees = CGFloat (nph.mRotation) / 1000.0
         af.rotate (byDegrees: rotationInDegrees)
         if nph.mWidth < nph.mHeight { // Vertical oblong
-          let cocoaHalfHeight = canariUnitToCocoa (nph.mHeight) / 2.0
-          let p1 = af.transform (NSPoint (x: 0.0, y: -cocoaHalfHeight)).canariPoint
-          let p2 = af.transform (NSPoint (x: 0.0, y: +cocoaHalfHeight)).canariPoint
+          let h = canariUnitToCocoa (nph.mHeight - nph.mWidth) / 2.0
+          let p1 = af.transform (NSPoint (x: 0.0, y: -h)).canariPoint
+          let p2 = af.transform (NSPoint (x: 0.0, y: +h)).canariPoint
           let oblong = LayeredProductSegment (
             p1: ProductPoint (canariPoint: p1),
             p2: ProductPoint (canariPoint: p2),
@@ -442,9 +442,9 @@ extension AutoLayoutProjectDocument {
           )
           ioProduct.append (roundSegment: oblong)
         }else if nph.mWidth > nph.mHeight { // Horizontal oblong
-          let cocoaHalfWidth = canariUnitToCocoa (nph.mWidth) / 2.0
-          let p1 = af.transform (NSPoint (x: -cocoaHalfWidth, y: 0.0)).canariPoint
-          let p2 = af.transform (NSPoint (x: +cocoaHalfWidth, y: 0.0)).canariPoint
+          let h = canariUnitToCocoa (nph.mWidth - nph.mHeight) / 2.0
+          let p1 = af.transform (NSPoint (x: -h, y: 0.0)).canariPoint
+          let p2 = af.transform (NSPoint (x: +h, y: 0.0)).canariPoint
           let oblong = LayeredProductSegment (
             p1: ProductPoint (canariPoint: p1),
             p2: ProductPoint (canariPoint: p2),
