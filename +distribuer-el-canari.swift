@@ -27,14 +27,15 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.5"
+let VERSION_CANARI = "1.8.6"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Project : correction de l'erreur d'exportation des \"Non Plated Holes\" sur les fichiers DSN"
+  "Project : correction du crash lors du lancement de FreeRouter"
 ]
 let CHANGES : [String] = [
+  "Compilé avec Swift 6"
 ]
 let NEWS : [String] = [
 ]

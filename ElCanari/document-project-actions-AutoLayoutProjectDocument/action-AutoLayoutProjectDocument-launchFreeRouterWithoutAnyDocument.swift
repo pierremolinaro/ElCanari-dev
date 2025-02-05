@@ -16,16 +16,18 @@ extension AutoLayoutProjectDocument {
     self.checkSchematicsAndLaunchFreeRouteur {
       if let mainWindow = self.windowForSheet, let freeRouterApplication : URL = self.installFreeRouter (mainWindow) {
         let openConfiguration = NSWorkspace.OpenConfiguration ()
-        NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
-          if optionalApplication == nil {
-            DispatchQueue.main.async {
-              let alert = NSAlert ()
-              alert.messageText = "Cannot launch FreeRouting application"
-              alert.informativeText = "FreeRouting application does not exist."
-              alert.beginSheetModal (for: self.windowForSheet!)
-            }
-          }
-        }
+        NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration)
+       // Completion handler --> crash on 15.3
+//        NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
+//          if optionalApplication == nil {
+//            DispatchQueue.main.async {
+//              let alert = NSAlert ()
+//              alert.messageText = "Cannot launch FreeRouting application"
+//              alert.informativeText = "FreeRouting application does not exist."
+//              alert.beginSheetModal (for: self.windowForSheet!)
+//            }
+//          }
+//        }
       }
     }
 //--- END OF USER ZONE 2
