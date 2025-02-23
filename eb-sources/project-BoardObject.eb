@@ -1,6 +1,6 @@
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   BoardObject
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 abstract graphic handlingOpposite entity BoardObject {
   toOne @weak ProjectRoot mRoot inverse toMany mBoardObjects ;
@@ -45,4 +45,4 @@ abstract graphic handlingOpposite entity BoardObject {
   transient Int packageDrawingWidthMultpliedByTenForBoard dependsFrom self.mRoot.one.packageDrawingWidthMultpliedByTenForBoard ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

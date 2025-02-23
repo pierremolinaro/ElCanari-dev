@@ -1,4 +1,4 @@
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity MergerRoot {
   toMany @generateDirectRead BoardModel boardModels ;
@@ -98,4 +98,4 @@ handlingOpposite entity MergerRoot {
   transient Bool hasSixLayers dependsFrom self.mArtwork.one.hasSixLayers ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

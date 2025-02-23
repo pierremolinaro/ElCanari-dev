@@ -18,4 +18,4 @@ entity FontCharacter {
     self.codePoint, self.advance, self.mWarnsWhenNoSegment, self.mWarnsWhenAdvanceIsZero, self.segments.count ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

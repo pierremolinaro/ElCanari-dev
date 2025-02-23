@@ -203,12 +203,6 @@ fileprivate extension ProductPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func aperturePointString (_ inUnit : GerberUnit) -> String {
-//    return "X\(self.x.apertureLengthString (inUnit))Y\(self.y.apertureLengthString (inUnit))"
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity SegmentForFontCharacter {
   property @signature @generateDirectAccess Int x1 default 2 ;
@@ -16,4 +16,4 @@ graphic entity SegmentForFontCharacter {
   transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

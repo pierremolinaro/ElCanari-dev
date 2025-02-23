@@ -1,10 +1,10 @@
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentMainView {
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   MAIN VIEW
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
  
   stackView \PageMasterView vStack { }
  
@@ -66,9 +66,9 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
   transient NSImage segmentedControlSegmentIssueImage dependsFrom self.symbolIssues ;
   transient String segmentedControlSegmentIssueString dependsFrom self.symbolIssues ;
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   PAGE   SYMBOL
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   arrayController #mSymbolObjectsController : root.symbolObjects ;
 
@@ -140,9 +140,9 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
     }
   }
   
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   Selected objects inspector
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   stackView \SelectedObjectsInspectorView vStack {
     newView symbolTextInspectorView = \SymbolTextInspectorView ()
@@ -213,9 +213,9 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
     }
   }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   Zoom and flip inspector
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   stackView \GridZoomInspectorView vStack {
     StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
@@ -265,9 +265,9 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
     space
   }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   Display inspector
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   stackView \DisplayInspectorView vStack {
     StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini, alignment: .center)
@@ -315,9 +315,9 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
     space
   }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   Issue inspector
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   stackView \IssuesInspectorView vStack {
    hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
@@ -326,9 +326,9 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   linker issueTableViewToGraphicView (mSymbolIssueTableView, mSymbolGraphicView)
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   PAGE   INFOS
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
  stackView \InfosPage vStack set (leftMargin: .large) set (rightMargin: .large) set (bottomMargin: .large) set (topMargin: .regular) {
     hStack {

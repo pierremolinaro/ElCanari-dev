@@ -23,8 +23,8 @@ extension AutoLayoutProjectDocument {
       alert.messageText = "The document should be saved before performing product file generation."
       _ = alert.addButton (withTitle: "Save…")
       _ = alert.addButton (withTitle: "Cancel")
-      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
-        if response == .alertFirstButtonReturn {
+      alert.beginSheetModal (for: self.windowForSheet!) { (inResponse) in
+        if inResponse == .alertFirstButtonReturn {
           self.save (nil)
         }
       }

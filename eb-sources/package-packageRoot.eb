@@ -1,4 +1,4 @@
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 abstract graphic handlingOpposite entity PackageObject {
   toOne @weak PackageRoot mRoot inverse toMany packageObjects ;
@@ -7,7 +7,7 @@ abstract graphic handlingOpposite entity PackageObject {
   transient Double knobSize dependsFrom self.mRoot.one.knobSizeMultpliedByTen ;
 }
 
-//----------------------------------------------------------------------------*
+//--------------------------------------------------------------------------------------------------
 
 enum PadNumbering {
   noNumbering,
@@ -155,7 +155,7 @@ handlingOpposite entity PackageRoot {
   transient IntArray masterPadObjectIndexArray dependsFrom self.packagePads.all.masterPadObjectIndex ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity PackageSegment : PackageObject {
   graphic canCopyAndPaste ;
@@ -186,7 +186,7 @@ graphic entity PackageSegment : PackageObject {
   transient Int lengthInCanariUnit dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity PackageBezier : PackageObject {
   graphic canCopyAndPaste ;
@@ -232,7 +232,7 @@ graphic entity PackageBezier : PackageObject {
   ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity PackageOval : PackageObject {
   graphic canCopyAndPaste ;
@@ -264,7 +264,7 @@ graphic entity PackageOval : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity PackageArc : PackageObject {
   graphic canCopyAndPaste ;
@@ -306,7 +306,7 @@ graphic entity PackageArc : PackageObject {
   ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic handlingOpposite entity PackagePad : PackageObject {
   graphic canCopyAndPaste ;
@@ -375,7 +375,7 @@ graphic handlingOpposite entity PackagePad : PackageObject {
   transient Int masterPadObjectIndex dependsFrom self ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic handlingOpposite entity PackageSlavePad : PackageObject {
   graphic canCopyAndPaste ;
@@ -430,7 +430,7 @@ graphic handlingOpposite entity PackageSlavePad : PackageObject {
   ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity PackageGuide : PackageObject {
   graphic canCopyAndPaste ;
@@ -456,7 +456,7 @@ graphic entity PackageGuide : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity PackageDimension : PackageObject {
   graphic canCopyAndPaste ;
@@ -504,7 +504,7 @@ graphic entity PackageDimension : PackageObject {
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic entity PackageZone : PackageObject {
   graphic canCopyAndPaste ;
@@ -559,13 +559,13 @@ graphic entity PackageZone : PackageObject {
   transient Bool emptyForbiddenPadArray dependsFrom self.forbiddenPadNumbers.count ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 entity ForbiddenPadNumber {
   property @generateDirectAccess @signature Int padNumber default 0 ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 graphic handlingOpposite entity PackageModelImageDoublePoint {
   toOne @weak PackageRoot mRoot inverse toMany mModelImageObjects ;
@@ -591,4 +591,4 @@ graphic handlingOpposite entity PackageModelImageDoublePoint {
   ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

@@ -142,13 +142,18 @@ struct ProductRepresentation : Codable {
       self.circles.append (newCircle)
     }
     for segment in inProduct.roundSegments {
+      var layers = segment.layers
+      if layers.contains (.boardLimits) {
+        layers.remove (.boardLimits)
+        layers.insert (.internalBoardLimits)
+      }
       let p1 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).cocoaPoint))
       let p2 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).cocoaPoint))
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
         width: segment.width,
-        layers: segment.layers
+        layers: layers
       )
       self.roundSegments.append (s)
     }

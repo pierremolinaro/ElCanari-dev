@@ -217,32 +217,43 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           vStack set (leftMargin: .large) {
             hStack {
               Checkbox (title: "Front Side Images", size : .small) {
-                $value #mDataSelection.drawImagesTopSide
+               set (enabled: no)
+               $value #mDataSelection.drawImagesTopSide
               }
               gutter
               Checkbox (title: "Front Side QRCodes", size : .small) {
-                $value #mDataSelection.drawQRCodesTopSide
+               set (enabled: no)
+               $value #mDataSelection.drawQRCodesTopSide
               }
             }
             hStack {
               Checkbox (title: "Legend Front Side Texts", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawTextsLegendTopSide
               }
               gutter
               Checkbox (title: "Layout Front Side Texts", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawTextsLayoutTopSide
               }
             }
             hStack {
-              Checkbox (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide }
+              Checkbox (title: "Front Side Tracks", size : .small) {
+               set (enabled: no)
+               $value #mDataSelection.drawTracksTopSide
+              }
               gutter
-              Checkbox (title: "Front Side Pads", size : .small) { $value #mDataSelection.drawPadsTopSide }
+              Checkbox (title: "Front Side Pads", size : .small) {
+               set (enabled: no)
+               $value #mDataSelection.drawPadsTopSide
+              }
             }
           }
           space
         }
         hStack set (leftMargin: .large) {
           Checkbox (title: "Front Side Component Names", size : .small) {
+            set (enabled: no)
             $value #mDataSelection.drawComponentNamesTopSide
           }
           space
@@ -255,6 +266,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         }
         hStack set (leftMargin: .large) {
           Checkbox (title: "Front Side Package Legends", size : .small) {
+            set (enabled: no)
             $value #mDataSelection.drawPackageLegendTopSide
           }
           space
@@ -264,6 +276,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           vStack set (leftMargin: .large) {
             hStack $hidden !root.hasInnerElements {
               Checkbox (title: "Traversing Pads", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawTraversingPads
               }
               gutter
@@ -271,45 +284,49 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
             }
             hStack $hidden root.hasInnerElements {
               Checkbox (title: "Traversing Pads", size : .small) {
-                $enabled root.hasInnerElements  
+                set (enabled: no)
               }
               gutter
               space
             }
             hStack $hidden !root.hasInnerElements {
               Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
-                $value #mDataSelection.drawTracksInner1Layer
+               set (enabled: no)
+               $value #mDataSelection.drawTracksInner1Layer
               }
               gutter
               Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
-                $value #mDataSelection.drawTracksInner2Layer
+               set (enabled: no)
+               $value #mDataSelection.drawTracksInner2Layer
               }
             }
             hStack $hidden root.hasInnerElements {
               Checkbox (title: "Inner 1 Layer Tracks", size : .small) {
-                $enabled root.hasInnerElements
+                set (enabled: no)
               }
               gutter
               Checkbox (title: "Inner 2 Layer Tracks", size : .small) {
-                $enabled root.hasInnerElements
+                set (enabled: no)
               }
             }
             hStack $hidden !root.hasSixLayers {
               Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawTracksInner3Layer
               }
               gutter
               Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawTracksInner4Layer
               }
             }
             hStack $hidden root.hasSixLayers {
               Checkbox (title: "Inner 3 Layer Tracks", size : .small) {
-                $enabled root.hasSixLayers
+                set (enabled: no)
               }
               gutter
               Checkbox (title: "Inner 4 Layer Tracks", size : .small) {
-                $enabled root.hasSixLayers
+                set (enabled: no)
               }
             }
           }
@@ -320,59 +337,82 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
           vStack set (leftMargin: .large) {
             hStack {
               Checkbox (title: "Back Side Images", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawImagesBottomSide
               }
               gutter
               Checkbox (title: "Back Side QRCodes", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawQRCodesBottomSide
               }
             }
             hStack {
               Checkbox (title: "Legend Back Side Texts", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawTextsLegendBottomSide
               }
               gutter
               Checkbox (title: "Layout Back Side Texts", size : .small) {
+                set (enabled: no)
                 $value #mDataSelection.drawTextsLayoutBottomSide
               }
             }
             hStack {
-              Checkbox (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide }
+              Checkbox (title: "Back Side Tracks", size : .small) {
+                set (enabled: no)
+                $value #mDataSelection.drawTracksBottomSide
+              }
               gutter
-              Checkbox (title: "Back Side Pads", size : .small) { $value #mDataSelection.drawPadsBottomSide }
+              Checkbox (title: "Back Side Pads", size : .small) {
+                set (enabled: no)
+                $value #mDataSelection.drawPadsBottomSide
+              }
             }
           }
           space
         }
         hStack set (leftMargin: .large) {
           Checkbox (title: "Back Side Component Names", size : .small) {
+            set (enabled: no)
             $value #mDataSelection.drawComponentNamesBottomSide
           }
           space
         }
         hStack set (leftMargin: .large) {
           Checkbox (title: "Back Side Component Values", size : .small) {
+            set (enabled: no)
             $value #mDataSelection.drawComponentValuesBottomSide
           }
           space
         }
         hStack set (leftMargin: .large) {
           Checkbox (title: "Back Side Package Legends", size : .small) {
+            set (enabled: no)
             $value #mDataSelection.drawPackageLegendBottomSide
           }
           space
         }
         StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .left)
         hStack set (leftMargin: .large) {
-          Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
+          Checkbox (title: "Vias", size : .small) {
+            set (enabled: no)
+            $value #mDataSelection.drawVias
+          }
           space
-          Checkbox (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits }
+          Checkbox (title: "Internal Board Limits", size : .small) {
+            set (enabled: no)
+            $value #mDataSelection.drawInternalBoardLimits
+          }
           space
-          Checkbox (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits }
+          Checkbox (title: "Board Limits", size : .small) {
+            set (enabled: no)
+            $value #mDataSelection.drawBoardLimits
+          }
         }
         StaticLabel (title: "Option", bold: yes, size : .small, alignment: .left)
         hStack set (leftMargin: .large) {
           Checkbox (title: "Horizontal Mirror", size : .small) {
+            set (enabled: no)
             $value #mDataSelection.horizontalMirror
           }
           space

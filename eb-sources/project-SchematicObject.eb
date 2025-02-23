@@ -1,6 +1,6 @@
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 //   SchematicObject
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 abstract graphic handlingOpposite entity SchematicObject {
   toOne @weak SheetInProject mSheet inverse toMany mObjects ;
@@ -16,4 +16,4 @@ abstract graphic handlingOpposite entity SchematicObject {
   transient SchematicSheetDescriptor sheetDescriptor dependsFrom self.mSheet.one.sheetDescriptor ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 entity DeviceSymbolTypeInProject {
   property @generateDirectAccess String mSymbolTypeName default "" ;
@@ -7,4 +7,4 @@ entity DeviceSymbolTypeInProject {
   property @generateDirectAccess NSBezierPath mFilledBezierPath default empty ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

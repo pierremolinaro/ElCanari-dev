@@ -27,7 +27,7 @@ enum ASCII : UInt8 {
   case plus = 0x2B // +
   case comma = 0x2C // ,
   case minus = 0x2D // -
-  case period = 0x2E // ;
+  case period = 0x2E // ,
   case slash = 0x2F // /
 
   case zero = 0x30
@@ -76,9 +76,9 @@ enum ASCII : UInt8 {
   case Y = 0x59
   case Z = 0x5A
 
-  case leftBracket = 0x5B // [
-  case baskSlah = 0x5E // \
-  case rightBracket = 0x5F // ]
+  case leftBracket    = 0x5B // [
+  case baskSlah       = 0x5E // \
+  case rightBracket   = 0x5F // ]
   case baskApostrophe = 0x60 // `
 
   case a = 0x61
@@ -108,10 +108,10 @@ enum ASCII : UInt8 {
   case y = 0x79
   case z = 0x7A
 
-  case leftBrace = 0x7B // {
+  case leftBrace   = 0x7B // {
   case verticalBar = 0x7C // |
-  case rightBrace = 0x7D // }
-  case tilde = 0x7E // ~
+  case rightBrace  = 0x7D // }
+  case tilde       = 0x7E // ~
 }
 
 //--------------------------------------------------------------------------------------------------
