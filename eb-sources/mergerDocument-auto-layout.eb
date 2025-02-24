@@ -886,8 +886,8 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
   stackView \ArtworkDataPage vStack {
     hStack set (margins: .regular) {
       hStack {
-        StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
-        TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
+        StaticLabel (title: "Drill File Extension", bold: yes, size : .small, alignment: .center)
+        Label (bold: yes, size : .small) { $title root.drillDataFileExtension }
       }
       ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
       space
@@ -902,7 +902,7 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
         hStack {
           hStack {
             StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
-            TextField (minWidth: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
+            Label (bold: yes, size : .small) { $title #mDataSelection.fileExtension }
           }
           ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
          space
@@ -1129,7 +1129,7 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
   transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
 
   tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
-    editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
+    column name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
     column parameterStatusImage (title: "", minWidth: 30, maxWidth: 30, headerAlignment: .center, contentAlignment: .center)
   }
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;

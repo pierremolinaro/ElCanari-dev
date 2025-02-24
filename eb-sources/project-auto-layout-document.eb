@@ -3089,7 +3089,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
 
   tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
-    editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
+    column name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
     column parameterStatusImage (title: "", minWidth: 30, maxWidth: 30, headerAlignment: .center, contentAlignment: .center)
   }
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;

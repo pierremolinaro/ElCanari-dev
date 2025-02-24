@@ -2052,12 +2052,12 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Drill File Extension", bold: true, size: .small, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
-            .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
+          let vStackView_view_view_view = AutoLayoutLabel (bold: true, size: .small)
+            .bind_title (self.rootObject.drillDataFileExtension_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view .appendView (vStackView_view_view)
@@ -2102,8 +2102,8 @@ import AppKit
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             do{
-              let vStackView_view_view_view_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
-                .bind_value (self.mDataSelection.fileExtension_property, sendContinously:true)
+              let vStackView_view_view_view_view_view = AutoLayoutLabel (bold: true, size: .small)
+                .bind_title (self.mDataSelection.fileExtension_property)
               _ = vStackView_view_view_view_view .appendView (vStackView_view_view_view_view_view)
             }
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)

@@ -177,7 +177,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : NSObject, Auto
   //--- Configure 'name' column
     inTableView.addColumn_String (
       valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].name },
-      valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray_property.propval [inRowIndex].name = inNewValue },
+      valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) in return compare_String_properties (left.name_property, ascending, right.name_property) })
       },
