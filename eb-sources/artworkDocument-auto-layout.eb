@@ -473,6 +473,7 @@ handlingOpposite entity ArtworkFileGenerationParameters {
   toOne @weak ArtworkRoot mArtwork inverse toMany fileGenerationParameterArray ;
   
   property @signature Bool drawBoardLimits default no ;
+//  property Int customDrawBoardLimits default 0 ; // à -> default, 1 : forced true, 2 -> forced false
   property @signature Bool drawInternalBoardLimits default no ;
   property @signature Bool drawComponentNamesTopSide default no ;
   property @signature Bool drawComponentNamesBottomSide default no ;
