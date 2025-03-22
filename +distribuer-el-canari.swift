@@ -27,15 +27,14 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.8"
+let VERSION_CANARI = "1.8.9"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Merger : correction de la production du fichier « Board outline » (GML)"
+  "Project : correction de l'affichage de l'édition des « net classes »"
 ]
 let CHANGES : [String] = [
-  "Project et Merger : amélioration de l'onglet « Atrwork Data » de la page « Product »"
 ]
 let NEWS : [String] = [
 ]
