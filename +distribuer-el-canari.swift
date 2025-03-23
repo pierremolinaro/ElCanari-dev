@@ -30,6 +30,7 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.8.9"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
+  "Construit avec Xcode 16.3 beta 3"
 ]
 let BUGFIXES : [String] = [
   "Project : correction de l'affichage de l'édition des « net classes »"
