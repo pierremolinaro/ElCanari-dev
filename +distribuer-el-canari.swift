@@ -44,15 +44,15 @@ let NEWS : [String] = [
 //   FOR PRINTING IN COLOR
 //------------------------------------------------------------------------------
 
-let BLACK   = "\u{1B}[0;30m"
-let RED     = "\u{1B}[0;31m"
-let GREEN   = "\u{1B}[0;32m"
-let YELLOW  = "\u{1B}[0;33m"
-let BLUE    = "\u{1B}[0;34m"
-let MAGENTA = "\u{1B}[0;35m"
-let CYAN    = "\u{1B}[0;36m"
-let ENDC    = "\u{1B}[0;0m"
-let BOLD    = "\u{1B}[0;1m"
+let BLACK   = "\u{1B}[30m"
+let RED     = "\u{1B}[31m"
+let GREEN   = "\u{1B}[32m"
+let YELLOW  = "\u{1B}[33m"
+let BLUE    = "\u{1B}[34m"
+let MAGENTA = "\u{1B}[35m"
+let CYAN    = "\u{1B}[36m"
+let ENDC    = "\u{1B}[0m"
+let BOLD    = "\u{1B}[1m"
 let UNDERLINE = "\u{1B}[4m"
 let BOLD_MAGENTA = BOLD + MAGENTA
 let BOLD_BLUE = BOLD + BLUE
