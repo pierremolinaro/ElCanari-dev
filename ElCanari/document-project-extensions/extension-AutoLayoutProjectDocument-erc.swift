@@ -454,6 +454,18 @@ extension AutoLayoutProjectDocument {
     for (key, pads) in ioPadNetDictionary {
       padsArrayDictionary [key.side] = padsArrayDictionary [key.side, default: []] + [(key.netName, pads)]
     }
+    switch self.rootObject.mLayerConfiguration {
+    case .twoLayers:
+      padsArrayDictionary [.inner1] = nil
+      padsArrayDictionary [.inner2] = nil
+      padsArrayDictionary [.inner3] = nil
+      padsArrayDictionary [.inner4] = nil
+    case .fourLayers:
+      padsArrayDictionary [.inner3] = nil
+      padsArrayDictionary [.inner4] = nil
+    case .sixLayers:
+      ()
+    }
     var collisionCount = 0
     for side in padsArrayDictionary.keys {
       let padArray = padsArrayDictionary [side] ?? []
@@ -462,11 +474,11 @@ extension AutoLayoutProjectDocument {
           let netNameX = padArray [idx].0
           let frontPadX = padArray [idx].1
           if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || netNameX.isEmpty {
-            self.checkPadInsulation (inArray: frontPadX, side.string, &ioIssues, &collisionCount)
+            self.checkPadInsulationWithinArray (frontPadX, side.string, &ioIssues, &collisionCount)
           }
           for idy in idx+1 ..< padArray.count {
             let frontPadY = padArray [idy].1
-            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), side.string, &ioIssues, &collisionCount)
+            self.checkPadInsulationBetweenArraies ((frontPadX, frontPadY), side.string, &ioIssues, &collisionCount)
           }
         }
       }
@@ -482,10 +494,10 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func checkPadInsulation (betweenArraies inPadArray : ([PadGeometryForERC], [PadGeometryForERC]),
-                                   _ inLayerName : String,
-                                   _ ioIssues : inout [CanariIssue],
-                                   _ ioCollisionCount : inout Int) {
+  private func checkPadInsulationBetweenArraies (_ inPadArray : ([PadGeometryForERC], [PadGeometryForERC]),
+                                                 _ inLayerName : String,
+                                                 _ ioIssues : inout [CanariIssue],
+                                                 _ ioCollisionCount : inout Int) {
     for padX in inPadArray.0 {
       for padY in inPadArray.1 {
         if padX.intersects (pad: padY) {
@@ -500,10 +512,10 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func checkPadInsulation (inArray inPadArray : [PadGeometryForERC],
-                                   _ inLayerName : String,
-                                   _ ioIssues : inout [CanariIssue],
-                                   _ ioCollisionCount : inout Int) {
+  private func checkPadInsulationWithinArray (_ inPadArray : [PadGeometryForERC],
+                                              _ inLayerName : String,
+                                              _ ioIssues : inout [CanariIssue],
+                                              _ ioCollisionCount : inout Int) {
     if inPadArray.count > 1 {
       for idx in 1 ..< inPadArray.count {
         let padX = inPadArray [idx]
