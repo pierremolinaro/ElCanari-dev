@@ -14,15 +14,15 @@ extension AutoLayoutProjectDocument {
   @objc func performERCCheckingAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let ok = self.performERCChecking ()
-    if !ok && (self.rootObject.mBoardSelectedInspector != 5) {
+    if !ok, self.rootObject.mBoardSelectedInspector != 4, let window = self.windowForSheet {
       let alert = NSAlert ()
-      alert.messageText =  "ERC Checking error."
       _ = alert.addButton (withTitle: "Close")
       _ = alert.addButton (withTitle: "Select ERC Inspector")
+      alert.messageText =  "ERC Checking error."
       alert.informativeText = "ERC checking has detected error(s)."
-      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
+      alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
-          self.rootObject.mBoardSelectedInspector = 5
+          self.rootObject.mBoardSelectedInspector = 4
         }
       }
     }

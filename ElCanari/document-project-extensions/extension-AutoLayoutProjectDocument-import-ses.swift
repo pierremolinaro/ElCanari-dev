@@ -92,12 +92,12 @@ extension AutoLayoutProjectDocument {
   //---
     if errorMessage.isEmpty {
       self.performERCCheckingAction (nil)
-    }else{
+    }else if let window = self.windowForSheet {
       let alert = NSAlert ()
       alert.messageText =  "Cannot Import the .ses File"
       _ = alert.addButton (withTitle: "Ok")
       alert.informativeText = "Cannot Import the .ses File, due to the following errors:\(errorMessage)"
-      alert.beginSheetModal (for: self.windowForSheet!) { (response) in }
+      alert.beginSheetModal (for: window)
     }
   }
 
