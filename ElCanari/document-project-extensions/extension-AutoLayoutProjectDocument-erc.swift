@@ -1159,7 +1159,7 @@ extension AutoLayoutProjectDocument {
           for rr in restrictRectangles {
             if pad.intersects (rect: rr) {
               insulationErrorCount += 1
-              let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs restrict rect collision", pathes: [pad.bezierPath, rr.bezierPath])
+              let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " pad vs restrict rect collision", pathes: [pad.bezierPath, rr.bezierPath])
               ioIssues.append (issue)
             }
           }

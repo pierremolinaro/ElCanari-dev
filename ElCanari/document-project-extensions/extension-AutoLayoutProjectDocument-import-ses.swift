@@ -61,32 +61,32 @@ extension AutoLayoutProjectDocument {
   //--- Extract nets
     let netComponents = inFileContents.components (separatedBy: "(net ")
   //--- Extract resolution
-    var resolution = 0
+    var optResolution : Double? = nil
     let resolutionUM = netComponents [0].components (separatedBy: "(resolution um ")
     if resolutionUM.count >= 2 {
       let res = resolutionUM [1].components (separatedBy: ")")
-      resolution = 90 / Int (res [0])!
+      optResolution = 90.0 / Double (res [0])!
     }else{
       let resolutionMIL = netComponents [0].components (separatedBy: "(resolution mil ")
       if resolutionMIL.count >= 2 {
         let res = resolutionMIL [1].components (separatedBy: ")")
-        resolution = (90 * 2286) / Int (res [0])!
+        optResolution = (90.0 * 25.4) / Double (res [0])!
       }else{
         let resolutionMM = netComponents [0].components (separatedBy: "(resolution mm ")
         if resolutionMM.count >= 2 {
           let res = resolutionMM [1].components (separatedBy: ")")
-          resolution = (90 * 1000) / Int (res [0])!
+          optResolution = (90.0 * 1000.0) / Double (res [0])!
         }
       }
     }
-    if 0 == resolution {
-      errorMessage += "\n  - cannot extract resolution from input file"
-    }else{
+    if let resolution = optResolution {
       extractTracksAndVias (netComponents, resolution, &routedTracks, &routedVias, &errorMessage)
     //--- Send to canari
       if errorMessage.isEmpty {
         self.enterResults (routedTracks, routedVias, importSESTextField, importSESProgressIndicator)
       }
+    }else{
+      errorMessage += "\n  - cannot extract resolution from input file"
     }
     self.windowForSheet?.endSheet (panel)
   //---
@@ -104,7 +104,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func extractTracksAndVias (_ inNetComponents : [String],
-                                     _ inResolution : Int,
+                                     _ inResolution : Double,
                                      _ ioRoutedTracks : inout [RoutedTrackForSESImporting],
                                      _ ioRoutedVias : inout [(BoardConnector, NetInProject)],
                                      _ ioErrorMessage : inout String) {
@@ -169,7 +169,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func extractsVias (_ netDescription : String,
-                             _ inResolution : Int,
+                             _ inResolution : Double,
                              _ inNet : NetInProject,
                              _ ioRoutedVias : inout [(BoardConnector, NetInProject)],
                              _ ioErrorMessage : inout String) {
@@ -392,32 +392,47 @@ fileprivate struct RoutedTrackForSESImporting {
 fileprivate func enterSegments (_ inScanner : Scanner,
                                 _ inSide : TrackSide,
                                 _ ioRoutedSegments : inout [RoutedTrackForSESImporting],
-                                _ inResolution : Int,
+                                _ inResolution : Double,
                                 _ inNet : NetInProject,
                                 _ ioErrorMessage : inout String) {
-  var wireWidth = 0
-  var ok = inScanner.scanInt (&wireWidth)
+  var wireWidth = 0.0
+  var ok = true
+  if let d = inScanner.scanDouble (representation: .decimal) {
+    wireWidth = d
+  }else{
+    ok = false
+  }
   var routedSegments = [RoutedTrackForSESImporting] ()
   if ok {
-    var currentX = 0
-    var currentY = 0
-    ok = inScanner.scanInt (&currentX) && inScanner.scanInt (&currentY)
+    var currentX = 0.0
+    var currentY = 0.0
+    if let x = inScanner.scanDouble (representation: .decimal), let y = inScanner.scanDouble (representation: .decimal) {
+      currentX = x
+      currentY = y
+    }else{
+      ok = false
+    }
     var loop = ok
     while loop {
       let idx = inScanner.currentIndex
       loop = inScanner.scanString (")") == nil
       if loop {
         inScanner.currentIndex = idx
-        var x = 0
-        var y = 0
-        ok = inScanner.scanInt (&x) && inScanner.scanInt (&y)
+        var x = 0.0
+        var y = 0.0
+        if let xx = inScanner.scanDouble (representation: .decimal), let yy = inScanner.scanDouble (representation: .decimal) {
+          x = xx
+          y = yy
+        }else{
+          ok = false
+        }
         if ok {
           if (x != currentX) || (y != currentY) {
             let rt = RoutedTrackForSESImporting (
-              p1: CanariPoint (x: currentX * inResolution, y: currentY * inResolution),
-              p2: CanariPoint (x: x * inResolution, y: y * inResolution),
+              p1: CanariPoint (x: Int (currentX * inResolution), y: Int (currentY * inResolution)),
+              p2: CanariPoint (x: Int (x * inResolution), y: Int (y * inResolution)),
               side: inSide,
-              width: wireWidth * inResolution,
+              width: Int (wireWidth * inResolution),
               net: inNet,
               preservedByRouter: false
             )

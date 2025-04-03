@@ -68,6 +68,8 @@ extension AutoLayoutProjectDocument {
   func dsnContents (_ inExportTracks : Bool) -> String {
   //--- Selecting DSN Unit
     let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
+//    let converter = CanariUnitToDSNUnitConverter (unit: .mil)
+//    let converter = CanariUnitToDSNUnitConverter (unit: .micrometer)
     let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance)
   //--- Border
     let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
@@ -329,7 +331,7 @@ extension AutoLayoutProjectDocument {
 
 //--------------------------------------------------------------------------------------------------
 
-enum DSNUnit { case millimeter, micrometer}
+enum DSNUnit { case millimeter, micrometer, mil}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -347,6 +349,8 @@ struct CanariUnitToDSNUnitConverter {
       return "mm"
     case .micrometer :
       return "um"
+    case .mil :
+      return "mil"
     }
   }
 
@@ -356,6 +360,8 @@ struct CanariUnitToDSNUnitConverter {
     switch unit {
     case .millimeter :
       return 10000
+    case .mil :
+      return 1000
     case .micrometer :
       return 10
     }
@@ -367,6 +373,8 @@ struct CanariUnitToDSNUnitConverter {
     switch unit {
     case .millimeter :
       return Double (inValue) / Double (CANARI_UNITS_PER_MM)
+    case .mil :
+      return Double (inValue) / Double (CANARI_UNITS_PER_MIL)
     case .micrometer :
       return 1000.0 * Double (inValue) / Double (CANARI_UNITS_PER_MM)
     }
