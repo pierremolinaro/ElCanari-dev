@@ -56,6 +56,9 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
       if let relay = self.mObserversOf_mIsInInner4Layer { // Stored property
         managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mAllowPadsInside { // Stored property
+        managedObject.mAllowPadsInside_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.stopsBeingObserved (by: relay)
       }
@@ -109,6 +112,9 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
       }
       if let relay = self.mObserversOf_mIsInInner4Layer { // Stored property
         managedObject.mIsInInner4Layer_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mAllowPadsInside { // Stored property
+        managedObject.mAllowPadsInside_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.startsBeingObserved (by: relay)
@@ -500,6 +506,35 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   final func toMany_mIsInInner4Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mIsInInner4Layer?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mAllowPadsInside' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mAllowPadsInside : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mAllowPadsInside_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mAllowPadsInside {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mAllowPadsInside_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mAllowPadsInside = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mAllowPadsInside_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mAllowPadsInside?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

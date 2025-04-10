@@ -2130,6 +2130,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         #restrictRectSelController.mIsInInner1Layer, #restrictRectSelController.mIsInInner2Layer,
         #restrictRectSelController.mIsInInner3Layer, #restrictRectSelController.mIsInInner4Layer
     }
+    separator
+    Checkbox (title: "Allow Pads inside", size: .small) { $value #restrictRectSelController.mAllowPadsInside }
+    separator
     CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
       #restrictRectSelController.mXUnit, #restrictRectSelController.mYUnit,
       #restrictRectSelController.mWidthUnit, #restrictRectSelController.mHeightUnit

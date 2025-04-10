@@ -743,7 +743,7 @@ extension AutoLayoutProjectDocument {
     let clearance = canariUnitToCocoa (inArtworkClearance)
   //--- Track inventory
     var trackSideNetDictionary = [SideAndNetName : [GeometricOblong]] ()
-    var restrictRectangles = [TrackSide : [GeometricRect]] ()
+    var restrictRectangles = [TrackSide : [(GeometricRect, Bool)]] () // (rect, allow pads inside)
     var nonPlatedHoles = [GeometricOblong] ()
 
     var viaDictionary = [String : [GeometricCircle]] ()
@@ -773,13 +773,19 @@ extension AutoLayoutProjectDocument {
           viaDictionary [netName] = viaDictionary [netName, default: []] + [c]
         }
       }else if let restrictRect = object as? BoardRestrictRectangle {
-        let canariRect = CanariRect (left: restrictRect.mX, bottom: restrictRect.mY, width: restrictRect.mWidth, height: restrictRect.mHeight)
+        let canariRect = CanariRect (
+          left: restrictRect.mX,
+          bottom: restrictRect.mY,
+          width: restrictRect.mWidth,
+          height: restrictRect.mHeight
+        )
         let r = GeometricRect (rect: canariRect.cocoaRect)
+        let allowPadsInside = restrictRect.mAllowPadsInside
         if restrictRect.mIsInFrontLayer {
-          restrictRectangles [.front] = restrictRectangles [.front, default: []] + [r]
+          restrictRectangles [.front] = restrictRectangles [.front, default: []] + [(r, allowPadsInside)]
         }
         if restrictRect.mIsInBackLayer {
-          restrictRectangles [.back] = restrictRectangles [.back, default: []] + [r]
+          restrictRectangles [.back] = restrictRectangles [.back, default: []] + [(r, allowPadsInside)]
         }
       }else if let nph = object as? NonPlatedHole {
         let r = GeometricOblong (
@@ -1120,13 +1126,13 @@ extension AutoLayoutProjectDocument {
   private func checkTrackRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                  _ inSide : String,
                                                  _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
-                                                 _ inRestrictRectangles : [GeometricRect]?) {
+                                                 _ inRestrictRectangles : [(GeometricRect, Bool)]?) {
     if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
       self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " track vs restrict rect… ")
       var insulationErrorCount = 0
       for (tracks, _, _) in layout {
         for track in tracks {
-          for rr in restrictRectangles {
+          for (rr, _) in restrictRectangles {
             if track.intersects (rect: rr) {
               insulationErrorCount += 1
               let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " track vs restrict rect collision", pathes: [track.bezierPath, rr.bezierPath])
@@ -1150,14 +1156,14 @@ extension AutoLayoutProjectDocument {
   private func checkPadRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
                                                _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
-                                               _ inRestrictRectangles : [GeometricRect]?) {
+                                               _ inRestrictRectangles : [(GeometricRect, Bool)]?) {
     if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
       self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " pad vs restrict rect… ")
       var insulationErrorCount = 0
       for (_, pads, _) in layout {
         for pad in pads {
-          for rr in restrictRectangles {
-            if pad.intersects (rect: rr) {
+          for (rr, allowPadsInside) in restrictRectangles {
+            if !allowPadsInside, pad.intersects (rect: rr) {
               insulationErrorCount += 1
               let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " pad vs restrict rect collision", pathes: [pad.bezierPath, rr.bezierPath])
               ioIssues.append (issue)
@@ -1180,13 +1186,13 @@ extension AutoLayoutProjectDocument {
   private func checkViaRestrictRectInsulation (_ ioIssues : inout [CanariIssue],
                                                _ inSide : String,
                                                _ inLayout : [([GeometricOblong], [PadGeometryForERC], [GeometricCircle])]?,
-                                               _ inRestrictRectangles : [GeometricRect]?) {
+                                               _ inRestrictRectangles : [(GeometricRect, Bool)]?) {
     if let layout = inLayout, let restrictRectangles = inRestrictRectangles {
       self.mERCLogTextViewArray.appendMessage (inSide.capitalizingFirstLetter () + " restrict rect vs via… ")
       var insulationErrorCount = 0
       for (_, _, vias) in layout {
         for via in vias {
-          for rr in restrictRectangles {
+          for (rr, _) in restrictRectangles {
             if via.intersects (rect: rr) {
               insulationErrorCount += 1
               let issue = CanariIssue (kind: .error, message: inSide.capitalizingFirstLetter () + " via vs restrict rect collision", pathes: [via.bezierPath, rr.bezierPath])

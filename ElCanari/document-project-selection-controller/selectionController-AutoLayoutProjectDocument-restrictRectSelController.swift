@@ -101,6 +101,12 @@ import AppKit
   final let mIsInInner4Layer_property = EBComputedProperty_Bool ()
 
   //································································································
+  //   Selection observable property: mAllowPadsInside
+  //································································································
+
+  final let mAllowPadsInside_property = EBComputedProperty_Bool ()
+
+  //································································································
   //   Selection observable property: mX
   //································································································
 
@@ -153,6 +159,7 @@ import AppKit
     self.bind_property_mIsInInner2Layer ()
     self.bind_property_mIsInInner3Layer ()
     self.bind_property_mIsInInner4Layer ()
+    self.bind_property_mAllowPadsInside ()
     self.bind_property_mX ()
     self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
@@ -217,6 +224,10 @@ import AppKit
     self.mIsInInner4Layer_property.mReadModelFunction = nil 
     self.mIsInInner4Layer_property.mWriteModelFunction = nil 
     self.selectedArray_property.toMany_mIsInInner4Layer_StopsBeingObserved (by: self.mIsInInner4Layer_property)
+  //--- mAllowPadsInside
+    self.mAllowPadsInside_property.mReadModelFunction = nil 
+    self.mAllowPadsInside_property.mWriteModelFunction = nil 
+    self.selectedArray_property.toMany_mAllowPadsInside_StopsBeingObserved (by: self.mAllowPadsInside_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
@@ -890,6 +901,57 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.mIsInInner4Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+  }
+  //································································································
+
+  private final func bind_property_mAllowPadsInside () {
+    self.selectedArray_property.toMany_mAllowPadsInside_StartsBeingObserved (by: self.mAllowPadsInside_property)
+    self.mAllowPadsInside_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mAllowPadsInside_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mAllowPadsInside_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mAllowPadsInside_property.setProp (inValue)
           }
         }
       }

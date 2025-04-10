@@ -27,17 +27,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.9"
+let VERSION_CANARI = "1.8.10"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
-  "Construit avec Xcode 16.3 beta 3"
+  "Construit avec Xcode 16.3"
 ]
 let BUGFIXES : [String] = [
-  "Project : correction de l'affichage de l'édition des « net classes »"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Projet: contrôle de l'autorisation de pads à l'intérieur d'un rectangle de restriction"
 ]
 
 //------------------------------------------------------------------------------

@@ -23,7 +23,8 @@ import AppKit
        _ self_mIsInInner1Layer : Bool,                                    
        _ self_mIsInInner2Layer : Bool,                                    
        _ self_mIsInInner3Layer : Bool,                                    
-       _ self_mIsInInner4Layer : Bool
+       _ self_mIsInInner4Layer : Bool,                                    
+       _ self_mAllowPadsInside : Bool
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
@@ -37,6 +38,7 @@ import AppKit
         crc.accumulate (u32: self_mIsInInner2Layer.ebHashValue ())
         crc.accumulate (u32: self_mIsInInner3Layer.ebHashValue ())
         crc.accumulate (u32: self_mIsInInner4Layer.ebHashValue ())
+        crc.accumulate (u32: self_mAllowPadsInside.ebHashValue ())
         return crc
 //--- END OF USER ZONE 2
 }

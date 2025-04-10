@@ -4691,6 +4691,13 @@ do{
         .bind_frontBackInner1Inner2Inner3Inner4 (self.restrictRectSelController.mIsInFrontLayer_property, self.restrictRectSelController.mIsInBackLayer_property, self.restrictRectSelController.mIsInInner1Layer_property, self.restrictRectSelController.mIsInInner2Layer_property, self.restrictRectSelController.mIsInInner3Layer_property, self.restrictRectSelController.mIsInInner4Layer_property)
       _ = vStackView .appendView (vStackView_view)
     }
+    _ = vStackView.appendSeparator ()
+    do{
+      let vStackView_view = AutoLayoutCheckbox (title: "Allow Pads inside", size: .small)
+        .bind_value (self.restrictRectSelController.mAllowPadsInside_property)
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
         .bind_setter4 (self.restrictRectSelController.mXUnit_property, self.restrictRectSelController.mYUnit_property, self.restrictRectSelController.mWidthUnit_property, self.restrictRectSelController.mHeightUnit_property)

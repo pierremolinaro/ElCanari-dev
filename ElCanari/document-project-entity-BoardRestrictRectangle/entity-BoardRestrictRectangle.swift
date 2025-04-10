@@ -84,6 +84,12 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol BoardRestrictRectangle_mAllowPadsInside : AnyObject {
+  var mAllowPadsInside : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol BoardRestrictRectangle_mX : AnyObject {
   var mX : Int { get }
 }
@@ -124,6 +130,7 @@ final class BoardRestrictRectangle : BoardObject,
          BoardRestrictRectangle_mIsInInner2Layer,
          BoardRestrictRectangle_mIsInInner3Layer,
          BoardRestrictRectangle_mIsInInner4Layer,
+         BoardRestrictRectangle_mAllowPadsInside,
          BoardRestrictRectangle_mX,
          BoardRestrictRectangle_objectDisplay,
          BoardRestrictRectangle_selectionDisplay,
@@ -295,6 +302,19 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //································································································
+  //   Atomic property: mAllowPadsInside
+  //································································································
+
+  final let mAllowPadsInside_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var mAllowPadsInside : Bool {
+    get { return self.mAllowPadsInside_property.propval }
+    set { self.mAllowPadsInside_property.setProp (newValue) }
+  }
+
+  //································································································
   //   Atomic property: mX
   //································································································
 
@@ -325,6 +345,7 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner2Layer")
     self.mIsInInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner3Layer")
     self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner4Layer")
+    self.mAllowPadsInside_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAllowPadsInside")
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
   //--- Atomic property: objectDisplay
@@ -514,7 +535,8 @@ final class BoardRestrictRectangle : BoardObject,
         let s7 = unwSelf.mIsInInner2Layer_property.selection
         let s8 = unwSelf.mIsInInner3Layer_property.selection
         let s9 = unwSelf.mIsInInner4Layer_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
+        let s10 = unwSelf.mAllowPadsInside_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -524,9 +546,11 @@ final class BoardRestrictRectangle : BoardObject,
               .single (let v6),
               .single (let v7),
               .single (let v8),
-              .single (let v9)) :
-          return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+              .single (let v9),
+              .single (let v10)) :
+          return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -554,6 +578,7 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner2Layer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
     self.mIsInInner3Layer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
     self.mIsInInner4Layer_property.startsBeingObserved (by: self.signatureForERCChecking_property)
+    self.mAllowPadsInside_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

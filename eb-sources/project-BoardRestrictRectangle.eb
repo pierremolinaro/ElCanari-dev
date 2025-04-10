@@ -20,6 +20,7 @@ graphic entity BoardRestrictRectangle : BoardObject {
   property @generateDirectAccess Bool mIsInInner2Layer default no ;
   property @generateDirectAccess Bool mIsInInner3Layer default no ;
   property @generateDirectAccess Bool mIsInInner4Layer default no ;
+  property @generateDirectAccess Bool mAllowPadsInside default no ;
 
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
@@ -50,7 +51,8 @@ graphic entity BoardRestrictRectangle : BoardObject {
     self.mX, self.mY, self.mWidth, self.mHeight,
     self.mIsInFrontLayer, self.mIsInBackLayer,
     self.mIsInInner1Layer, self.mIsInInner2Layer,
-    self.mIsInInner3Layer, self.mIsInInner4Layer ;
+    self.mIsInInner3Layer, self.mIsInInner4Layer,
+    self.mAllowPadsInside ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————
