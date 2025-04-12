@@ -1,15 +1,13 @@
-#! /usr/bin/env python
+#! /usr/bin/python3
 # -*- coding: UTF-8 -*-
-
-#------------------------------------------------------------------------------
-# https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Procedures/Procedures.html
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+# https://www.oracle.com/java/technologies/downloads/#jdk17-mac
 
 import sys, os, subprocess
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   FOR PRINTING IN COLOR
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 BLACK = '\033[30m'
 RED = '\033[31m'
@@ -24,15 +22,12 @@ BOLD = '\033[1m'
 UNDERLINE = '\033[4m'
 BLINK = '\033[5m'
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 def runCommand (command) :
   s = MAGENTA + BOLD + "+"
   for c in command :
-    if " " in c :
-      s += " '" + c + "'"
-    else :
-      s += " " + c
+    s += " " + c
   s += ENDC
   print (s)
   childProcess = subprocess.Popen (command)
@@ -41,9 +36,9 @@ def runCommand (command) :
     sys.exit (childProcess.returncode)
 
 
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #   MAIN
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
@@ -90,65 +85,71 @@ else:
     ])
 #--- Build executable
 os.chdir (scriptDir)
-# FREE_ROUTING_NAME = "Freerouting-" + APP_VERSION
-runCommand (["rm", "-fr", "Freerouting.app"])
+FREE_ROUTING_NAME = "Freerouting-" + APP_VERSION
+runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".app"])
 runCommand ([
   JPKG_HOME + "/bin/jpackage",
   "--input", FREEROUTING_DIR + "/build/dist/",
-  "--name", "Freerouting",
+  "--name", FREE_ROUTING_NAME,
   "--main-jar", "freerouting-executable.jar",
   "--type", "app-image",
   "--runtime-image", "jdk14/runtime",
-#   "--mac-sign",
+#  "--mac-sign",
 #   "--mac-signing-key-user-name", "pierre@pcmolinaro.name",
   "--app-version", APP_VERSION
 ])
 runCommand ([
-  "/usr/bin/codesign",
+  "codesign",
   "--force",
-  "--sign", "Apple Development: pierre@pcmolinaro.name",
-#   "--deep",
-  "Freerouting.app"
+  "--sign", "U399CP39LD",
+#  "--sign", "Apple Development: pierre@pcmolinaro.name",
+  "--deep",
+  FREE_ROUTING_NAME + ".app"
 ])
 runCommand ([
   "/usr/bin/codesign",
   "-dv",
   "--verbose=4",
-  "Freerouting.app"
+  FREE_ROUTING_NAME + ".app"
 ])
-runCommand ([
-  "/usr/bin/codesign",
-  "--verify",
-#   "--deep",
-  "--strict",
-  "--verbose=2",
-  "Freerouting.app"
-])
-#--- PRODUCT
-runCommand (["tar", "-a", "-cJf", "Freerouting.app.tar.xz", "Freerouting.app"])
 # runCommand ([
 #   "spctl",
 #   "-a",
-#   "Freerouting.app"
+#   FREE_ROUTING_NAME + ".app"
 # ])
-runCommand ([
-  "spctl",
-  "--assess",
-  "--verbose=4",
-  "--type", "execute",
-  "Freerouting.app"
-])
-#--- Build DMG
-# PACKAGE_FILE = FREE_ROUTING_NAME + ".pkg"
-# runCommand (["/usr/bin/productbuild", "--component-compression", "auto", "--component", FREE_ROUTING_NAME + ".app", "/Applications", PACKAGE_FILE])
-# DISTRIBUTION_DIR = "Freerouting-" + APP_VERSION
-# runCommand (["/bin/rm", "-rf", DISTRIBUTION_DIR])
-# runCommand (["/bin/rm", "-f", FREE_ROUTING_NAME + ".dmg"])
-# runCommand (["/bin/mkdir", DISTRIBUTION_DIR])
-# runCommand (["/bin/cp", PACKAGE_FILE, DISTRIBUTION_DIR])
-# runCommand (["/usr/bin/hdiutil", "create", "-srcfolder", FREE_ROUTING_NAME, FREE_ROUTING_NAME + ".dmg", "-fs", "HFS+"])
-# runCommand (["/bin/rm", PACKAGE_FILE])
-# runCommand (["/bin/rm", "-rf", DISTRIBUTION_DIR])
+# runCommand ([
+#   "spctl",
+#   "--assess",
+#   "--verbose=4",
+#   "--type", "execute",
+#   FREE_ROUTING_NAME + ".app"
+# ])
+# runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".dmg"])
+# runCommand ([
+#   JPKG_HOME + "/bin/jpackage",
+#   "--input", FREEROUTING_DIR + "/build/dist/",
+#   "--name", "Freerouting",
+#   "--main-jar", "freerouting-executable.jar",
+#   "--type", "dmg",
+#   "--runtime-image", "jdk14/runtime",
+#   "--app-version", APP_VERSION,
+#   "--license-file", "../LICENSE"
+# ])
+# runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".pkg"])
+# runCommand ([
+#   JPKG_HOME + "/bin/jpackage",
+#   "--input", FREEROUTING_DIR + "/build/dist/",
+#   "--name", "Freerouting",
+#   "--main-jar", "freerouting-executable.jar",
+#   "--type", "pkg",
+#   "--runtime-image", "jdk14/runtime",
+#   "--app-version", APP_VERSION,
+#   "--license-file", "../LICENSE"
+# ])
+#--- Copy application in ElCanari resource directory
+ELCANARI_FREEROUTING_RESOURCE_DIR = scriptDir + "/../ElCanari/free-router-application"
+runCommand (["rm", "-rf", ELCANARI_FREEROUTING_RESOURCE_DIR + "/Freerouting.app"])
+runCommand (["cp", "-r", FREE_ROUTING_NAME + ".app", ELCANARI_FREEROUTING_RESOURCE_DIR])
+runCommand (["mv", ELCANARI_FREEROUTING_RESOURCE_DIR + "/" + FREE_ROUTING_NAME + ".app", ELCANARI_FREEROUTING_RESOURCE_DIR + "/Freerouting.app"])
 
-
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
