@@ -22,6 +22,9 @@ extension AutoLayoutProjectDocument {
         inOutlet.setImage (NSImage (named: "alignmentLeft"), forSegment: 0)
         inOutlet.setImage (NSImage (named: "alignmentCenter"), forSegment: 1)
         inOutlet.setImage (NSImage (named: "alignmentRight"), forSegment: 2)
+        inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 0)
+        inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 1)
+        inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 2)
 //--- END OF USER ZONE 2
   }
 }

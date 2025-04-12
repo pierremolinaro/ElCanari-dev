@@ -3821,7 +3821,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Layers", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = vStackView_view_view.appendGutter ()
+        _ = vStackView_view_view.appendFlexibleSpace ()
         do{
           let vStackView_view_view_view = AutoLayoutEnumPopUpButton (titles: LayerConfiguration.popupTitles (), size: .small)
             .bind_selectedIndex (self.rootObject.mLayerConfiguration_property)
@@ -3839,7 +3839,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Clearance", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = vStackView_view_view.appendGutter ()
+        _ = vStackView_view_view.appendFlexibleSpace ()
         do{
           let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property)

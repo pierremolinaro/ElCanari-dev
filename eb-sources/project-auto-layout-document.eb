@@ -936,10 +936,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     LinearSlider (min: 4, max: 20, ticks: 17) { setAllowsTickMarkValuesOnly () $doubleValue #commentInSchematicSelectionController.mSize (sendContinously:yes) }
     separator
     StaticLabel (title: "Alignment", bold: yes, size: .small, alignment: .left)
-    EnumSegmentedControl (titles: enum HorizontalAlignment.popupTitles, equalWidth: yes, size: .small) [configurator labelHAlignmentSegmendControlConfigurator] {
+    EnumSegmentedControl (titles: enum HorizontalAlignment.popupTitles, equalWidth: yes, size: .small)
+      [configurator labelHAlignmentSegmendControlConfigurator] {
       $selectedSegment #commentInSchematicSelectionController.mHorizontalAlignment
     }
-    EnumSegmentedControl (titles: enum VerticalAlignment.popupTitles, equalWidth: yes, size: .small) [configurator labelVAlignmentSegmendControlConfigurator] {
+    EnumSegmentedControl (titles: enum VerticalAlignment.popupTitles, equalWidth: yes, size: .small)
+      [configurator labelVAlignmentSegmendControlConfigurator] {
       $selectedSegment #commentInSchematicSelectionController.mVerticalAlignment
     }
   }
@@ -1676,7 +1678,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     vStack withVScroller {
       hStack {
         StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right)
-        gutter
+        space
         EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
           $selectedIndex root.mLayerConfiguration
           $run changeLayerConfigurationAction
@@ -1684,8 +1686,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       hStack {
         StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right)
-        gutter
-        CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
+        space
+        CanariDimensionAndPopUp (size : .small) {
+          $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
+        }
       }
       EnumPopUpButton (titles: enum AutorouterPreferredDirections.popupTitles, size: .small) {
         $selectedIndex root.mAutoRouterPreferredDirections
