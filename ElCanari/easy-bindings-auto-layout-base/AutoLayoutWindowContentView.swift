@@ -371,20 +371,8 @@ fileprivate final class FilePrivateHelperView : ALB_NSView {
     self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
     self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
     self.appendTextField (titled: "Class: \(String (describing: type (of: inView)))")
-//    self.appendTextField (titled: "Bounds: \(inView.bounds)")
     self.appendTextField (titled: "Frame: \(inView.frame)")
     self.appendTextField (titled: "Intrinsic Size: \(inView.intrinsicContentSize)")
-//    self.appendTextField (titled: "firstBaselineOffsetFromTop: \(inView.firstBaselineOffsetFromTop)")
-//    self.appendTextField (titled: "lastBaselineOffsetFromBottom: \(inView.lastBaselineOffsetFromBottom)")
-//    let baseline : String // §§
-//    if let view = inView.pmLastBaselineRepresentativeView {
-//      baseline = String (describing: type (of: view))
-//    }else{
-//      baseline = "nil"
-//    }
-//    self.appendTextField (titled: "Baseline View: " + baseline)
-//    self.appendTextField (titled: "acceptsFirstResponder: \(inView.acceptsFirstResponder)")
-//    self.appendTextField (titled: "canBecomeKeyView: \(inView.canBecomeKeyView)")
     self.appendTextField (titled: "h Compression Resistance: \(inView.contentCompressionResistancePriority (for: .horizontal).rawValue)")
     self.appendTextField (titled: "v Compression Resistance: \(inView.contentCompressionResistancePriority (for: .vertical).rawValue)")
     self.appendTextField (titled: "h Stretching Resistance: \(inView.contentHuggingPriority (for: .horizontal).rawValue)")

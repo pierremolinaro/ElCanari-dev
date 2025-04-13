@@ -71,6 +71,34 @@ struct LayeredProductSegment : Codable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @MainActor func boardModelPad (_ inUndoManager : UndoManager?,
+                                 endStyle inEndStyle : TrackEndStyle) -> BoardModelPad {
+    let center = ProductPoint (
+      x: (self.x1 + self.x2) / 2,
+      y: (self.y1 + self.y2) / 2
+    )
+    let p1 = ProductPoint (x: self.x1, y: self.y1).cocoaPoint
+    let p2 = ProductPoint (x: self.x2, y: self.y2).cocoaPoint
+    let d = NSPoint.distance (p1, p2)
+    let angleInDegrees = NSPoint.angleInDegrees (p1, p2)
+
+    let pad = BoardModelPad (inUndoManager)
+    pad.x = center.x.valueInCanariUnit
+    pad.y = center.y.valueInCanariUnit
+    pad.width = cocoaToCanariUnit (d) + self.width.valueInCanariUnit
+    pad.height = self.width.valueInCanariUnit
+    pad.rotation = Int (angleInDegrees * 1000.0)
+    switch inEndStyle {
+    case .round :
+      pad.shape = .round
+    case .square :
+      pad.shape = .rect
+    }
+    return pad
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

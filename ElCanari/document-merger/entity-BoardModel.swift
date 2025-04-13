@@ -330,30 +330,6 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backTrackSegmentsNoSilkScreen : AnyObject {
-  var backTrackSegmentsNoSilkScreen : MergerSegmentArray? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor protocol BoardModel_backTracksNoSilkScreenBezierPaths : AnyObject {
-  var backTracksNoSilkScreenBezierPaths : BezierPathArray? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor protocol BoardModel_frontTrackSegmentsNoSilkScreen : AnyObject {
-  var frontTrackSegmentsNoSilkScreen : MergerSegmentArray? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor protocol BoardModel_frontTracksNoSilkScreenBezierPaths : AnyObject {
-  var frontTracksNoSilkScreenBezierPaths : BezierPathArray? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 @MainActor protocol BoardModel_backTrackSegments : AnyObject {
   var backTrackSegments : MergerSegmentArray? { get }
 }
@@ -531,10 +507,6 @@ final class BoardModel : EBManagedObject,
          BoardModel_frontComponentValuesBezierPaths,
          BoardModel_backComponentValueSegments,
          BoardModel_backComponentValuesBezierPaths,
-         BoardModel_backTrackSegmentsNoSilkScreen,
-         BoardModel_backTracksNoSilkScreenBezierPaths,
-         BoardModel_frontTrackSegmentsNoSilkScreen,
-         BoardModel_frontTracksNoSilkScreenBezierPaths,
          BoardModel_backTrackSegments,
          BoardModel_backTracksBezierPaths,
          BoardModel_frontTrackSegments,
@@ -956,32 +928,6 @@ final class BoardModel : EBManagedObject,
   final var backComponentValues : EBReferenceArray <SegmentEntity> {
     get { return self.backComponentValues_property.propval }
     set { self.backComponentValues_property.setProp (newValue) }
-  }
-
-  //································································································
-  //   To many property: backTracksNoSilkScreen
-  //································································································
-
-  final let backTracksNoSilkScreen_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backTracksNoSilkScreen")
-
-  //································································································
-
-  final var backTracksNoSilkScreen : EBReferenceArray <SegmentEntity> {
-    get { return self.backTracksNoSilkScreen_property.propval }
-    set { self.backTracksNoSilkScreen_property.setProp (newValue) }
-  }
-
-  //································································································
-  //   To many property: frontTracksNoSilkScreen
-  //································································································
-
-  final let frontTracksNoSilkScreen_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontTracksNoSilkScreen")
-
-  //································································································
-
-  final var frontTracksNoSilkScreen : EBReferenceArray <SegmentEntity> {
-    get { return self.frontTracksNoSilkScreen_property.propval }
-    set { self.frontTracksNoSilkScreen_property.setProp (newValue) }
   }
 
   //································································································
@@ -1613,54 +1559,6 @@ final class BoardModel : EBManagedObject,
   }
 
   //································································································
-  //   Transient property: backTrackSegmentsNoSilkScreen
-  //································································································
-
-  final let backTrackSegmentsNoSilkScreen_property = EBTransientProperty <MergerSegmentArray> ()
-
-  //································································································
-
-  final var backTrackSegmentsNoSilkScreen : MergerSegmentArray? {
-    return self.backTrackSegmentsNoSilkScreen_property.optionalValue
-  }
-
-  //································································································
-  //   Transient property: backTracksNoSilkScreenBezierPaths
-  //································································································
-
-  final let backTracksNoSilkScreenBezierPaths_property = EBTransientProperty <BezierPathArray> ()
-
-  //································································································
-
-  final var backTracksNoSilkScreenBezierPaths : BezierPathArray? {
-    return self.backTracksNoSilkScreenBezierPaths_property.optionalValue
-  }
-
-  //································································································
-  //   Transient property: frontTrackSegmentsNoSilkScreen
-  //································································································
-
-  final let frontTrackSegmentsNoSilkScreen_property = EBTransientProperty <MergerSegmentArray> ()
-
-  //································································································
-
-  final var frontTrackSegmentsNoSilkScreen : MergerSegmentArray? {
-    return self.frontTrackSegmentsNoSilkScreen_property.optionalValue
-  }
-
-  //································································································
-  //   Transient property: frontTracksNoSilkScreenBezierPaths
-  //································································································
-
-  final let frontTracksNoSilkScreenBezierPaths_property = EBTransientProperty <BezierPathArray> ()
-
-  //································································································
-
-  final var frontTracksNoSilkScreenBezierPaths : BezierPathArray? {
-    return self.frontTracksNoSilkScreenBezierPaths_property.optionalValue
-  }
-
-  //································································································
   //   Transient property: backTrackSegments
   //································································································
 
@@ -1959,10 +1857,6 @@ final class BoardModel : EBManagedObject,
     self.frontComponentValues_property.undoManager = inUndoManager
   //--- To many property: backComponentValues (no option)
     self.backComponentValues_property.undoManager = inUndoManager
-  //--- To many property: backTracksNoSilkScreen (no option)
-    self.backTracksNoSilkScreen_property.undoManager = inUndoManager
-  //--- To many property: frontTracksNoSilkScreen (no option)
-    self.frontTracksNoSilkScreen_property.undoManager = inUndoManager
   //--- To many property: backTracks (no option)
     self.backTracks_property.undoManager = inUndoManager
   //--- To many property: frontTracks (no option)
@@ -3062,114 +2956,6 @@ final class BoardModel : EBManagedObject,
       }
     }
     self.backComponentValueSegments_property.startsBeingObserved (by: self.backComponentValuesBezierPaths_property)
-  //--- Atomic property: backTrackSegmentsNoSilkScreen
-    self.backTrackSegmentsNoSilkScreen_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.backTracksNoSilkScreen_property.selection
-        let s1 = unwSelf.backTracksNoSilkScreen_property.selection
-        let s2 = unwSelf.backTracksNoSilkScreen_property.selection
-        let s3 = unwSelf.backTracksNoSilkScreen_property.selection
-        let s4 = unwSelf.backTracksNoSilkScreen_property.selection
-        let s5 = unwSelf.backTracksNoSilkScreen_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3),
-              .single (let v4),
-              .single (let v5)) :
-          return .single (transient_BoardModel_backTrackSegmentsNoSilkScreen (v0, v1, v2, v3, v4, v5))
-        case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.backTracksNoSilkScreen_property.toMany_x1_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
-    self.backTracksNoSilkScreen_property.toMany_y1_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
-    self.backTracksNoSilkScreen_property.toMany_x2_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
-    self.backTracksNoSilkScreen_property.toMany_y2_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
-    self.backTracksNoSilkScreen_property.toMany_width_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
-    self.backTracksNoSilkScreen_property.toMany_endStyle_StartsBeingObserved (by: self.backTrackSegmentsNoSilkScreen_property)
-  //--- Atomic property: backTracksNoSilkScreenBezierPaths
-    self.backTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.backTrackSegmentsNoSilkScreen_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_BoardModel_backTracksNoSilkScreenBezierPaths (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.backTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: self.backTracksNoSilkScreenBezierPaths_property)
-  //--- Atomic property: frontTrackSegmentsNoSilkScreen
-    self.frontTrackSegmentsNoSilkScreen_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.frontTracksNoSilkScreen_property.selection
-        let s1 = unwSelf.frontTracksNoSilkScreen_property.selection
-        let s2 = unwSelf.frontTracksNoSilkScreen_property.selection
-        let s3 = unwSelf.frontTracksNoSilkScreen_property.selection
-        let s4 = unwSelf.frontTracksNoSilkScreen_property.selection
-        let s5 = unwSelf.frontTracksNoSilkScreen_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
-        case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3),
-              .single (let v4),
-              .single (let v5)) :
-          return .single (transient_BoardModel_frontTrackSegmentsNoSilkScreen (v0, v1, v2, v3, v4, v5))
-        case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.frontTracksNoSilkScreen_property.toMany_x1_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
-    self.frontTracksNoSilkScreen_property.toMany_y1_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
-    self.frontTracksNoSilkScreen_property.toMany_x2_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
-    self.frontTracksNoSilkScreen_property.toMany_y2_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
-    self.frontTracksNoSilkScreen_property.toMany_width_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
-    self.frontTracksNoSilkScreen_property.toMany_endStyle_StartsBeingObserved (by: self.frontTrackSegmentsNoSilkScreen_property)
-  //--- Atomic property: frontTracksNoSilkScreenBezierPaths
-    self.frontTracksNoSilkScreenBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.frontTrackSegmentsNoSilkScreen_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_BoardModel_frontTracksNoSilkScreenBezierPaths (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.frontTrackSegmentsNoSilkScreen_property.startsBeingObserved (by: self.frontTracksNoSilkScreenBezierPaths_property)
   //--- Atomic property: backTrackSegments
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3639,82 +3425,80 @@ final class BoardModel : EBManagedObject,
         let s5 = preferences_mergerModelViewDisplayModelBoardLimits_property.selection
         let s6 = preferences_mergerColorInternalBoardsLimits_property.selection
         let s7 = unwSelf.internalBoardsLimitsBezierPaths_property.selection
-        let s8 = unwSelf.frontTracksNoSilkScreenBezierPaths_property.selection
-        let s9 = unwSelf.backTracksNoSilkScreenBezierPaths_property.selection
-        let s10 = unwSelf.frontTracksBezierPaths_property.selection
-        let s11 = preferences_mergerModelViewDisplayFrontTracks_property.selection
-        let s12 = preferences_mergerColorFrontTracks_property.selection
-        let s13 = unwSelf.inner1TracksBezierPaths_property.selection
-        let s14 = preferences_mergerModelViewDisplayInner1Tracks_property.selection
-        let s15 = preferences_mergerColorInner1Tracks_property.selection
-        let s16 = unwSelf.inner2TracksBezierPaths_property.selection
-        let s17 = preferences_mergerModelViewDisplayInner2Tracks_property.selection
-        let s18 = preferences_mergerColorInner2Tracks_property.selection
-        let s19 = unwSelf.inner3TracksBezierPaths_property.selection
-        let s20 = preferences_mergerModelViewDisplayInner3Tracks_property.selection
-        let s21 = preferences_mergerColorInner3Tracks_property.selection
-        let s22 = unwSelf.inner4TracksBezierPaths_property.selection
-        let s23 = preferences_mergerModelViewDisplayInner4Tracks_property.selection
-        let s24 = preferences_mergerColorInner4Tracks_property.selection
-        let s25 = unwSelf.backTracksBezierPaths_property.selection
-        let s26 = preferences_mergerModelViewDisplayBackTracks_property.selection
-        let s27 = preferences_mergerColorBackTracks_property.selection
-        let s28 = unwSelf.frontPadsBezierPaths_property.selection
-        let s29 = preferences_mergerModelViewDisplayFrontPads_property.selection
-        let s30 = preferences_mergerColorFrontPads_property.selection
-        let s31 = unwSelf.backPadsBezierPaths_property.selection
-        let s32 = preferences_mergerModelViewDisplayBackPads_property.selection
-        let s33 = preferences_mergerColorBackPads_property.selection
-        let s34 = unwSelf.traversingPadsBezierPaths_property.selection
-        let s35 = preferences_mergerModelViewDisplayTraversingPads_property.selection
-        let s36 = preferences_mergerColorTraversingPads_property.selection
-        let s37 = unwSelf.viasBezierPaths_property.selection
-        let s38 = preferences_mergerModelViewDisplayVias_property.selection
-        let s39 = preferences_mergerColorVias_property.selection
-        let s40 = unwSelf.holesBezierPaths_property.selection
-        let s41 = preferences_mergerModelViewDisplayHoles_property.selection
-        let s42 = preferences_mergerColorHoles_property.selection
-        let s43 = unwSelf.frontLegendBoardImageRectangles_property.selection
-        let s44 = unwSelf.frontLegendQRCodeRectangles_property.selection
-        let s45 = unwSelf.frontLegendLinesBezierPaths_property.selection
-        let s46 = preferences_mergerModelViewDisplayFrontLegendLines_property.selection
-        let s47 = preferences_mergerColorFrontLegendLines_property.selection
-        let s48 = unwSelf.backLegendBoardImageRectangles_property.selection
-        let s49 = unwSelf.backLegendQRCodeRectangles_property.selection
-        let s50 = unwSelf.backLegendLinesBezierPaths_property.selection
-        let s51 = preferences_mergerModelViewDisplayBackLegendLines_property.selection
-        let s52 = preferences_mergerColorBackLegendLines_property.selection
-        let s53 = unwSelf.frontLegendTextsBezierPaths_property.selection
-        let s54 = preferences_mergerModelViewDisplayFrontLegendTexts_property.selection
-        let s55 = preferences_mergerColorFrontLegendTexts_property.selection
-        let s56 = unwSelf.frontLayoutTextsBezierPaths_property.selection
-        let s57 = preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection
-        let s58 = preferences_mergerColorFrontLayoutTexts_property.selection
-        let s59 = unwSelf.backLegendTextsBezierPaths_property.selection
-        let s60 = preferences_mergerModelViewDisplayBackLegendTexts_property.selection
-        let s61 = preferences_mergerColorBackLegendTexts_property.selection
-        let s62 = unwSelf.backLayoutTextsBezierPaths_property.selection
-        let s63 = preferences_mergerModelViewDisplayBackLayoutTexts_property.selection
-        let s64 = preferences_mergerColorBackLayoutTexts_property.selection
-        let s65 = unwSelf.backComponentNamesBezierPaths_property.selection
-        let s66 = preferences_mergerModelViewDisplayBackComponentNames_property.selection
-        let s67 = preferences_mergerColorBackComponentNames_property.selection
-        let s68 = unwSelf.frontComponentNamesBezierPaths_property.selection
-        let s69 = preferences_mergerModelViewDisplayFrontComponentNames_property.selection
-        let s70 = preferences_mergerColorFrontComponentNames_property.selection
-        let s71 = unwSelf.frontComponentValuesBezierPaths_property.selection
-        let s72 = preferences_mergerModelViewDisplayFrontComponentValues_property.selection
-        let s73 = preferences_mergerColorFrontComponentValues_property.selection
-        let s74 = unwSelf.backComponentValuesBezierPaths_property.selection
-        let s75 = preferences_mergerModelViewDisplayBackComponentValues_property.selection
-        let s76 = preferences_mergerColorBackComponentValues_property.selection
-        let s77 = unwSelf.frontPackagesBezierPaths_property.selection
-        let s78 = preferences_mergerModelViewDisplayFrontPackages_property.selection
-        let s79 = preferences_mergerColorFrontPackages_property.selection
-        let s80 = unwSelf.backPackagesBezierPaths_property.selection
-        let s81 = preferences_mergerModelViewDisplayBackPackages_property.selection
-        let s82 = preferences_mergerColorBackPackages_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77, s78, s79, s80, s81, s82) {
+        let s8 = unwSelf.frontTracksBezierPaths_property.selection
+        let s9 = preferences_mergerModelViewDisplayFrontTracks_property.selection
+        let s10 = preferences_mergerColorFrontTracks_property.selection
+        let s11 = unwSelf.inner1TracksBezierPaths_property.selection
+        let s12 = preferences_mergerModelViewDisplayInner1Tracks_property.selection
+        let s13 = preferences_mergerColorInner1Tracks_property.selection
+        let s14 = unwSelf.inner2TracksBezierPaths_property.selection
+        let s15 = preferences_mergerModelViewDisplayInner2Tracks_property.selection
+        let s16 = preferences_mergerColorInner2Tracks_property.selection
+        let s17 = unwSelf.inner3TracksBezierPaths_property.selection
+        let s18 = preferences_mergerModelViewDisplayInner3Tracks_property.selection
+        let s19 = preferences_mergerColorInner3Tracks_property.selection
+        let s20 = unwSelf.inner4TracksBezierPaths_property.selection
+        let s21 = preferences_mergerModelViewDisplayInner4Tracks_property.selection
+        let s22 = preferences_mergerColorInner4Tracks_property.selection
+        let s23 = unwSelf.backTracksBezierPaths_property.selection
+        let s24 = preferences_mergerModelViewDisplayBackTracks_property.selection
+        let s25 = preferences_mergerColorBackTracks_property.selection
+        let s26 = unwSelf.frontPadsBezierPaths_property.selection
+        let s27 = preferences_mergerModelViewDisplayFrontPads_property.selection
+        let s28 = preferences_mergerColorFrontPads_property.selection
+        let s29 = unwSelf.backPadsBezierPaths_property.selection
+        let s30 = preferences_mergerModelViewDisplayBackPads_property.selection
+        let s31 = preferences_mergerColorBackPads_property.selection
+        let s32 = unwSelf.traversingPadsBezierPaths_property.selection
+        let s33 = preferences_mergerModelViewDisplayTraversingPads_property.selection
+        let s34 = preferences_mergerColorTraversingPads_property.selection
+        let s35 = unwSelf.viasBezierPaths_property.selection
+        let s36 = preferences_mergerModelViewDisplayVias_property.selection
+        let s37 = preferences_mergerColorVias_property.selection
+        let s38 = unwSelf.holesBezierPaths_property.selection
+        let s39 = preferences_mergerModelViewDisplayHoles_property.selection
+        let s40 = preferences_mergerColorHoles_property.selection
+        let s41 = unwSelf.frontLegendBoardImageRectangles_property.selection
+        let s42 = unwSelf.frontLegendQRCodeRectangles_property.selection
+        let s43 = unwSelf.frontLegendLinesBezierPaths_property.selection
+        let s44 = preferences_mergerModelViewDisplayFrontLegendLines_property.selection
+        let s45 = preferences_mergerColorFrontLegendLines_property.selection
+        let s46 = unwSelf.backLegendBoardImageRectangles_property.selection
+        let s47 = unwSelf.backLegendQRCodeRectangles_property.selection
+        let s48 = unwSelf.backLegendLinesBezierPaths_property.selection
+        let s49 = preferences_mergerModelViewDisplayBackLegendLines_property.selection
+        let s50 = preferences_mergerColorBackLegendLines_property.selection
+        let s51 = unwSelf.frontLegendTextsBezierPaths_property.selection
+        let s52 = preferences_mergerModelViewDisplayFrontLegendTexts_property.selection
+        let s53 = preferences_mergerColorFrontLegendTexts_property.selection
+        let s54 = unwSelf.frontLayoutTextsBezierPaths_property.selection
+        let s55 = preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection
+        let s56 = preferences_mergerColorFrontLayoutTexts_property.selection
+        let s57 = unwSelf.backLegendTextsBezierPaths_property.selection
+        let s58 = preferences_mergerModelViewDisplayBackLegendTexts_property.selection
+        let s59 = preferences_mergerColorBackLegendTexts_property.selection
+        let s60 = unwSelf.backLayoutTextsBezierPaths_property.selection
+        let s61 = preferences_mergerModelViewDisplayBackLayoutTexts_property.selection
+        let s62 = preferences_mergerColorBackLayoutTexts_property.selection
+        let s63 = unwSelf.backComponentNamesBezierPaths_property.selection
+        let s64 = preferences_mergerModelViewDisplayBackComponentNames_property.selection
+        let s65 = preferences_mergerColorBackComponentNames_property.selection
+        let s66 = unwSelf.frontComponentNamesBezierPaths_property.selection
+        let s67 = preferences_mergerModelViewDisplayFrontComponentNames_property.selection
+        let s68 = preferences_mergerColorFrontComponentNames_property.selection
+        let s69 = unwSelf.frontComponentValuesBezierPaths_property.selection
+        let s70 = preferences_mergerModelViewDisplayFrontComponentValues_property.selection
+        let s71 = preferences_mergerColorFrontComponentValues_property.selection
+        let s72 = unwSelf.backComponentValuesBezierPaths_property.selection
+        let s73 = preferences_mergerModelViewDisplayBackComponentValues_property.selection
+        let s74 = preferences_mergerColorBackComponentValues_property.selection
+        let s75 = unwSelf.frontPackagesBezierPaths_property.selection
+        let s76 = preferences_mergerModelViewDisplayFrontPackages_property.selection
+        let s77 = preferences_mergerColorFrontPackages_property.selection
+        let s78 = unwSelf.backPackagesBezierPaths_property.selection
+        let s79 = preferences_mergerModelViewDisplayBackPackages_property.selection
+        let s80 = preferences_mergerColorBackPackages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77, s78, s79, s80) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3795,13 +3579,9 @@ final class BoardModel : EBManagedObject,
               .single (let v77),
               .single (let v78),
               .single (let v79),
-              .single (let v80),
-              .single (let v81),
-              .single (let v82)) :
-          return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82))
+              .single (let v80)) :
+          return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80))
         case (.multiple,
-              .multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3898,8 +3678,6 @@ final class BoardModel : EBManagedObject,
     preferences_mergerModelViewDisplayModelBoardLimits_property.startsBeingObserved (by: self.imageForModel_property)
     preferences_mergerColorInternalBoardsLimits_property.startsBeingObserved (by: self.imageForModel_property)
     self.internalBoardsLimitsBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
-    self.frontTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
-    self.backTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
     self.frontTracksBezierPaths_property.startsBeingObserved (by: self.imageForModel_property)
     preferences_mergerModelViewDisplayFrontTracks_property.startsBeingObserved (by: self.imageForModel_property)
     preferences_mergerColorFrontTracks_property.startsBeingObserved (by: self.imageForModel_property)
@@ -3980,86 +3758,84 @@ final class BoardModel : EBManagedObject,
         let s1 = preferences_mergerShowInstanceBackground_property.selection
         let s2 = unwSelf.modelWidth_property.selection
         let s3 = unwSelf.modelHeight_property.selection
-        let s4 = unwSelf.frontTracksNoSilkScreenBezierPaths_property.selection
-        let s5 = unwSelf.backTracksNoSilkScreenBezierPaths_property.selection
-        let s6 = unwSelf.frontTracksBezierPaths_property.selection
-        let s7 = preferences_mergerBoardViewDisplayFrontTracks_property.selection
-        let s8 = preferences_mergerColorFrontTracks_property.selection
-        let s9 = unwSelf.inner1TracksBezierPaths_property.selection
-        let s10 = preferences_mergerBoardViewDisplayInner1Tracks_property.selection
-        let s11 = preferences_mergerColorInner1Tracks_property.selection
-        let s12 = unwSelf.inner2TracksBezierPaths_property.selection
-        let s13 = preferences_mergerBoardViewDisplayInner2Tracks_property.selection
-        let s14 = preferences_mergerColorInner2Tracks_property.selection
-        let s15 = unwSelf.inner3TracksBezierPaths_property.selection
-        let s16 = preferences_mergerBoardViewDisplayInner3Tracks_property.selection
-        let s17 = preferences_mergerColorInner3Tracks_property.selection
-        let s18 = unwSelf.inner4TracksBezierPaths_property.selection
-        let s19 = preferences_mergerBoardViewDisplayInner4Tracks_property.selection
-        let s20 = preferences_mergerColorInner4Tracks_property.selection
-        let s21 = unwSelf.backTracksBezierPaths_property.selection
-        let s22 = preferences_mergerBoardViewDisplayBackTracks_property.selection
-        let s23 = preferences_mergerColorBackTracks_property.selection
-        let s24 = unwSelf.internalBoardsLimitsBezierPaths_property.selection
-        let s25 = unwSelf.boardLimitsBezierPaths_property.selection
-        let s26 = preferences_mergerBoardViewDisplayModelBoardsLimits_property.selection
-        let s27 = preferences_mergerColorInternalBoardsLimits_property.selection
-        let s28 = unwSelf.frontPadsBezierPaths_property.selection
-        let s29 = preferences_mergerBoardViewDisplayFrontPads_property.selection
-        let s30 = preferences_mergerColorFrontPads_property.selection
-        let s31 = unwSelf.traversingPadsBezierPaths_property.selection
-        let s32 = preferences_mergerBoardViewDisplayTraversingPads_property.selection
-        let s33 = preferences_mergerColorTraversingPads_property.selection
-        let s34 = unwSelf.backPadsBezierPaths_property.selection
-        let s35 = preferences_mergerBoardViewDisplayBackPads_property.selection
-        let s36 = preferences_mergerColorBackPads_property.selection
-        let s37 = unwSelf.viasBezierPaths_property.selection
-        let s38 = preferences_mergerBoardViewDisplayVias_property.selection
-        let s39 = preferences_mergerColorVias_property.selection
-        let s40 = unwSelf.holesBezierPaths_property.selection
-        let s41 = preferences_mergerBoardViewDisplayHoles_property.selection
-        let s42 = preferences_mergerColorHoles_property.selection
-        let s43 = unwSelf.frontLegendBoardImageRectangles_property.selection
-        let s44 = unwSelf.frontLegendQRCodeRectangles_property.selection
-        let s45 = unwSelf.frontLegendLinesBezierPaths_property.selection
-        let s46 = preferences_mergerBoardViewDisplayFrontLegendLines_property.selection
-        let s47 = preferences_mergerColorFrontLegendLines_property.selection
-        let s48 = unwSelf.backLegendBoardImageRectangles_property.selection
-        let s49 = unwSelf.backLegendQRCodeRectangles_property.selection
-        let s50 = unwSelf.backLegendLinesBezierPaths_property.selection
-        let s51 = preferences_mergerBoardViewDisplayBackLegendLines_property.selection
-        let s52 = preferences_mergerColorBackLegendLines_property.selection
-        let s53 = unwSelf.frontLegendTextsBezierPaths_property.selection
-        let s54 = preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection
-        let s55 = preferences_mergerColorFrontLegendTexts_property.selection
-        let s56 = unwSelf.frontLayoutTextsBezierPaths_property.selection
-        let s57 = preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection
-        let s58 = preferences_mergerColorFrontLayoutTexts_property.selection
-        let s59 = unwSelf.backLegendTextsBezierPaths_property.selection
-        let s60 = preferences_mergerBoardViewDisplayBackLegendTexts_property.selection
-        let s61 = preferences_mergerColorBackLegendTexts_property.selection
-        let s62 = unwSelf.backLayoutTextsBezierPaths_property.selection
-        let s63 = preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection
-        let s64 = preferences_mergerColorBackLayoutTexts_property.selection
-        let s65 = unwSelf.backComponentNamesBezierPaths_property.selection
-        let s66 = preferences_mergerBoardViewDisplayBackComponentNames_property.selection
-        let s67 = preferences_mergerColorBackComponentNames_property.selection
-        let s68 = unwSelf.frontComponentNamesBezierPaths_property.selection
-        let s69 = preferences_mergerBoardViewDisplayFrontComponentNames_property.selection
-        let s70 = preferences_mergerColorFrontComponentNames_property.selection
-        let s71 = unwSelf.frontComponentValuesBezierPaths_property.selection
-        let s72 = preferences_mergerBoardViewDisplayFrontComponentValues_property.selection
-        let s73 = preferences_mergerColorFrontComponentValues_property.selection
-        let s74 = unwSelf.backComponentValuesBezierPaths_property.selection
-        let s75 = preferences_mergerBoardViewDisplayBackComponentValues_property.selection
-        let s76 = preferences_mergerColorBackComponentValues_property.selection
-        let s77 = unwSelf.frontPackagesBezierPaths_property.selection
-        let s78 = preferences_mergerBoardViewDisplayFrontPackages_property.selection
-        let s79 = preferences_mergerColorFrontPackages_property.selection
-        let s80 = unwSelf.backPackagesBezierPaths_property.selection
-        let s81 = preferences_mergerBoardViewDisplayBackPackages_property.selection
-        let s82 = preferences_mergerColorBackPackages_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77, s78, s79, s80, s81, s82) {
+        let s4 = unwSelf.frontTracksBezierPaths_property.selection
+        let s5 = preferences_mergerBoardViewDisplayFrontTracks_property.selection
+        let s6 = preferences_mergerColorFrontTracks_property.selection
+        let s7 = unwSelf.inner1TracksBezierPaths_property.selection
+        let s8 = preferences_mergerBoardViewDisplayInner1Tracks_property.selection
+        let s9 = preferences_mergerColorInner1Tracks_property.selection
+        let s10 = unwSelf.inner2TracksBezierPaths_property.selection
+        let s11 = preferences_mergerBoardViewDisplayInner2Tracks_property.selection
+        let s12 = preferences_mergerColorInner2Tracks_property.selection
+        let s13 = unwSelf.inner3TracksBezierPaths_property.selection
+        let s14 = preferences_mergerBoardViewDisplayInner3Tracks_property.selection
+        let s15 = preferences_mergerColorInner3Tracks_property.selection
+        let s16 = unwSelf.inner4TracksBezierPaths_property.selection
+        let s17 = preferences_mergerBoardViewDisplayInner4Tracks_property.selection
+        let s18 = preferences_mergerColorInner4Tracks_property.selection
+        let s19 = unwSelf.backTracksBezierPaths_property.selection
+        let s20 = preferences_mergerBoardViewDisplayBackTracks_property.selection
+        let s21 = preferences_mergerColorBackTracks_property.selection
+        let s22 = unwSelf.internalBoardsLimitsBezierPaths_property.selection
+        let s23 = unwSelf.boardLimitsBezierPaths_property.selection
+        let s24 = preferences_mergerBoardViewDisplayModelBoardsLimits_property.selection
+        let s25 = preferences_mergerColorInternalBoardsLimits_property.selection
+        let s26 = unwSelf.frontPadsBezierPaths_property.selection
+        let s27 = preferences_mergerBoardViewDisplayFrontPads_property.selection
+        let s28 = preferences_mergerColorFrontPads_property.selection
+        let s29 = unwSelf.traversingPadsBezierPaths_property.selection
+        let s30 = preferences_mergerBoardViewDisplayTraversingPads_property.selection
+        let s31 = preferences_mergerColorTraversingPads_property.selection
+        let s32 = unwSelf.backPadsBezierPaths_property.selection
+        let s33 = preferences_mergerBoardViewDisplayBackPads_property.selection
+        let s34 = preferences_mergerColorBackPads_property.selection
+        let s35 = unwSelf.viasBezierPaths_property.selection
+        let s36 = preferences_mergerBoardViewDisplayVias_property.selection
+        let s37 = preferences_mergerColorVias_property.selection
+        let s38 = unwSelf.holesBezierPaths_property.selection
+        let s39 = preferences_mergerBoardViewDisplayHoles_property.selection
+        let s40 = preferences_mergerColorHoles_property.selection
+        let s41 = unwSelf.frontLegendBoardImageRectangles_property.selection
+        let s42 = unwSelf.frontLegendQRCodeRectangles_property.selection
+        let s43 = unwSelf.frontLegendLinesBezierPaths_property.selection
+        let s44 = preferences_mergerBoardViewDisplayFrontLegendLines_property.selection
+        let s45 = preferences_mergerColorFrontLegendLines_property.selection
+        let s46 = unwSelf.backLegendBoardImageRectangles_property.selection
+        let s47 = unwSelf.backLegendQRCodeRectangles_property.selection
+        let s48 = unwSelf.backLegendLinesBezierPaths_property.selection
+        let s49 = preferences_mergerBoardViewDisplayBackLegendLines_property.selection
+        let s50 = preferences_mergerColorBackLegendLines_property.selection
+        let s51 = unwSelf.frontLegendTextsBezierPaths_property.selection
+        let s52 = preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection
+        let s53 = preferences_mergerColorFrontLegendTexts_property.selection
+        let s54 = unwSelf.frontLayoutTextsBezierPaths_property.selection
+        let s55 = preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection
+        let s56 = preferences_mergerColorFrontLayoutTexts_property.selection
+        let s57 = unwSelf.backLegendTextsBezierPaths_property.selection
+        let s58 = preferences_mergerBoardViewDisplayBackLegendTexts_property.selection
+        let s59 = preferences_mergerColorBackLegendTexts_property.selection
+        let s60 = unwSelf.backLayoutTextsBezierPaths_property.selection
+        let s61 = preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection
+        let s62 = preferences_mergerColorBackLayoutTexts_property.selection
+        let s63 = unwSelf.backComponentNamesBezierPaths_property.selection
+        let s64 = preferences_mergerBoardViewDisplayBackComponentNames_property.selection
+        let s65 = preferences_mergerColorBackComponentNames_property.selection
+        let s66 = unwSelf.frontComponentNamesBezierPaths_property.selection
+        let s67 = preferences_mergerBoardViewDisplayFrontComponentNames_property.selection
+        let s68 = preferences_mergerColorFrontComponentNames_property.selection
+        let s69 = unwSelf.frontComponentValuesBezierPaths_property.selection
+        let s70 = preferences_mergerBoardViewDisplayFrontComponentValues_property.selection
+        let s71 = preferences_mergerColorFrontComponentValues_property.selection
+        let s72 = unwSelf.backComponentValuesBezierPaths_property.selection
+        let s73 = preferences_mergerBoardViewDisplayBackComponentValues_property.selection
+        let s74 = preferences_mergerColorBackComponentValues_property.selection
+        let s75 = unwSelf.frontPackagesBezierPaths_property.selection
+        let s76 = preferences_mergerBoardViewDisplayFrontPackages_property.selection
+        let s77 = preferences_mergerColorFrontPackages_property.selection
+        let s78 = unwSelf.backPackagesBezierPaths_property.selection
+        let s79 = preferences_mergerBoardViewDisplayBackPackages_property.selection
+        let s80 = preferences_mergerColorBackPackages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75, s76, s77, s78, s79, s80) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -4140,13 +3916,9 @@ final class BoardModel : EBManagedObject,
               .single (let v77),
               .single (let v78),
               .single (let v79),
-              .single (let v80),
-              .single (let v81),
-              .single (let v82)) :
-          return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82))
+              .single (let v80)) :
+          return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80))
         case (.multiple,
-              .multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -4239,8 +4011,6 @@ final class BoardModel : EBManagedObject,
     preferences_mergerShowInstanceBackground_property.startsBeingObserved (by: self.imageForInstances_property)
     self.modelWidth_property.startsBeingObserved (by: self.imageForInstances_property)
     self.modelHeight_property.startsBeingObserved (by: self.imageForInstances_property)
-    self.frontTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
-    self.backTracksNoSilkScreenBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
     self.frontTracksBezierPaths_property.startsBeingObserved (by: self.imageForInstances_property)
     preferences_mergerBoardViewDisplayFrontTracks_property.startsBeingObserved (by: self.imageForInstances_property)
     preferences_mergerColorFrontTracks_property.startsBeingObserved (by: self.imageForInstances_property)

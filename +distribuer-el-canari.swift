@@ -33,6 +33,7 @@ let NOTES : [String] = [
   "Construit avec Xcode 16.3"
 ]
 let BUGFIXES : [String] = [
+  "Projet et Merger : correction de la génération des pistes non couvertes par le vernis"
 ]
 let CHANGES : [String] = [
 ]

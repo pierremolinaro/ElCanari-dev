@@ -86,8 +86,8 @@ extension AutoLayoutMergerDocument {
     self.appendSegments (from: inLegacyBoardModel.inner2Tracks, layer: .inner2Track, to: &product)
     self.appendSegments (from: inLegacyBoardModel.inner3Tracks, layer: .inner3Track, to: &product)
     self.appendSegments (from: inLegacyBoardModel.inner4Tracks, layer: .inner4Track, to: &product)
-    self.appendSegments (from: inLegacyBoardModel.frontTracksNoSilkScreen, layer: .frontSideExposedTrack, to: &product)
-    self.appendSegments (from: inLegacyBoardModel.backTracksNoSilkScreen, layer: .backSideExposedTrack, to: &product)
+// §    self.appendSegments (from: inLegacyBoardModel.frontTracksNoSilkScreen, layer: .frontSideExposedTrack, to: &product)
+// §    self.appendSegments (from: inLegacyBoardModel.backTracksNoSilkScreen, layer: .backSideExposedTrack, to: &product)
   //--- Images
     self.appendRectangles (from: inLegacyBoardModel.legendFrontImages, layer: .frontSideImage, to: &product)
     self.appendRectangles (from: inLegacyBoardModel.legendBackImages, layer: .backSideImage, to: &product)

@@ -39,8 +39,8 @@ struct ProductLayerSet : Codable, OptionSet {
   static let inner3Track               = Self (rawValue: 1 << 17)
   static let inner4Track               = Self (rawValue: 1 << 18)
   static let backSideTrack             = Self (rawValue: 1 << 19)
-  static let frontSideExposedTrack     = Self (rawValue: 1 << 20)
-  static let backSideExposedTrack      = Self (rawValue: 1 << 21)
+//  static let frontSideExposedTrack     = Self (rawValue: 1 << 20)
+//  static let backSideExposedTrack      = Self (rawValue: 1 << 21)
 //--- Vias
   static let viaPad                    = Self (rawValue: 1 << 22)
 //--- Holes

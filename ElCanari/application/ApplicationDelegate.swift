@@ -201,6 +201,18 @@ let ALL_ELCANARI_DOCUMENT_EXTENSIONS = Set ([
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Ajout 13 avril 2025, suite au warning de Xcode :
+  // WARNING: Secure coding is automatically enabled for restorable state!
+  //  However, not on all supported macOS versions of this application.
+  //  Opt-in to secure coding explicitly by implementing
+  //  NSApplicationDelegate.applicationSupportsSecureRestorableState:.
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func applicationSupportsSecureRestorableState (_ application : NSApplication) -> Bool {
+    return false
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

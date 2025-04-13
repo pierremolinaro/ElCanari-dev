@@ -631,13 +631,14 @@ extension AutoLayoutProjectDocument {
         switch track.mSide {
         case .front :
           if track.mAddedToSolderMask_property.propval {
-            layer = .frontSideExposedTrack
+            layer = [.frontSideTrack, .frontSideComponentPad] // .frontSideExposedTrack
           }else{
             layer = .frontSideTrack
           }
         case .back :
           if track.mAddedToSolderMask_property.propval {
-            layer = .backSideExposedTrack
+            layer = [.backSideTrack, .backSideComponentPad]
+//            layer = .backSideExposedTrack
           }else{
             layer = .backSideTrack
           }

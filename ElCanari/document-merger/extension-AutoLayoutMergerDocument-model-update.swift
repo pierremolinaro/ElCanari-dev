@@ -77,13 +77,13 @@ extension AutoLayoutMergerDocument {
     inLoadedModel.frontPackages = EBReferenceArray ()
     inModelToUpdate.frontPackages = newArray
 
-    newArray = inLoadedModel.frontTracksNoSilkScreen
-    inLoadedModel.frontTracksNoSilkScreen = EBReferenceArray ()
-    inModelToUpdate.frontTracksNoSilkScreen = newArray
-
-    newArray = inLoadedModel.backTracksNoSilkScreen
-    inLoadedModel.backTracksNoSilkScreen = EBReferenceArray ()
-    inModelToUpdate.backTracksNoSilkScreen = newArray
+//    newArray = inLoadedModel.frontTracksNoSilkScreen
+//    inLoadedModel.frontTracksNoSilkScreen = EBReferenceArray ()
+//    inModelToUpdate.frontTracksNoSilkScreen = newArray
+//
+//    newArray = inLoadedModel.backTracksNoSilkScreen
+//    inLoadedModel.backTracksNoSilkScreen = EBReferenceArray ()
+//    inModelToUpdate.backTracksNoSilkScreen = newArray
 
     newArray = inLoadedModel.frontTracks
     inLoadedModel.frontTracks = EBReferenceArray ()

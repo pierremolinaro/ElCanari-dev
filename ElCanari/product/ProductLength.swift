@@ -139,3 +139,15 @@ struct ProductLength : Codable, Hashable, Comparable, CustomStringConvertible {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+func + (_ inLeft : ProductLength, _ inRight : ProductLength) -> ProductLength {
+  return ProductLength (valueInCanariUnit: inLeft.valueInCanariUnit + inRight.valueInCanariUnit)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func / (_ inLeft : ProductLength, _ inRight : Int) -> ProductLength {
+  return ProductLength (valueInCanariUnit: inLeft.valueInCanariUnit / inRight)
+}
+
+//--------------------------------------------------------------------------------------------------

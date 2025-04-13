@@ -22,8 +22,6 @@ import AppKit
        _ prefs_mergerModelViewDisplayModelBoardLimits : Bool,
        _ prefs_mergerColorInternalBoardsLimits : NSColor,
        _ self_internalBoardsLimitsBezierPaths : BezierPathArray,
-       _ self_frontTracksNoSilkScreenBezierPaths : BezierPathArray,
-       _ self_backTracksNoSilkScreenBezierPaths : BezierPathArray,
        _ self_frontTracksBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,    
@@ -138,7 +136,7 @@ import AppKit
 //--- Back pads
   if (prefs_mergerModelViewDisplayBackPads) {
     shapes.add (filled: self_backPadsBezierPaths.array, prefs_mergerColorBackPads)
-    shapes.add (stroke: self_backTracksNoSilkScreenBezierPaths.array, prefs_mergerColorBackPads)
+//    shapes.add (stroke: self_backTracksNoSilkScreenBezierPaths.array, prefs_mergerColorBackPads)
   }
 //--- Inner 4 tracks
   if (prefs_mergerModelViewDisplayInner4Tracks) {
@@ -193,7 +191,7 @@ import AppKit
 //--- Front pads
   if (prefs_mergerModelViewDisplayFrontPads) {
     shapes.add (filled: self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads)
-    shapes.add (stroke: self_frontTracksNoSilkScreenBezierPaths.array, prefs_mergerColorFrontPads)
+//    shapes.add (stroke: self_frontTracksNoSilkScreenBezierPaths.array, prefs_mergerColorFrontPads)
   }
 //--- Model Board limits
   do{

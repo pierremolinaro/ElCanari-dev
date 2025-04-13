@@ -38,8 +38,7 @@ class AutoLayoutTableColumn : NSTableColumn {
     self.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     self.minWidth = CGFloat (inMinWidth)
     self.maxWidth = CGFloat (inMaxWidth)
-//    self.width = (self.minWidth + self.maxWidth) / 2.0
-    self.width = self.minWidth // §§
+    self.width = self.minWidth
 
     let name : String = "\(ObjectIdentifier (self))"
     self.identifier =  NSUserInterfaceItemIdentifier (rawValue: name)

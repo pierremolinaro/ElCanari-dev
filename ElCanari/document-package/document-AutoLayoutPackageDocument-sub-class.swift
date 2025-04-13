@@ -138,16 +138,16 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mModelImageFirstPointLastX = 0
-  private var mModelImageFirstPointXObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
+  private var mModelImageFirstPointXObserver : EBOutletEvent? = nil
 
   private var mModelImageFirstPointLastY = 0
-  private var mModelImageFirstPointYObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
+  private var mModelImageFirstPointYObserver : EBOutletEvent? = nil
 
   private var mModelImagePointsLastDx = 0
-  private var mModelImagePointsDxObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
+  private var mModelImagePointsDxObserver : EBOutletEvent? = nil
 
   private var mModelImagePointsLastDy = 0
-  private var mModelImagePointsDyObserver : EBOutletEvent? = nil //§ EBModelEvent? = nil
+  private var mModelImagePointsDyObserver : EBOutletEvent? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

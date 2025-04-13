@@ -32,14 +32,6 @@ extension AutoLayoutTableView {
       valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
     )
-//    column.title = inTitle
-//    column.headerCell.font = self.font
-//    column.headerCell.controlSize = self.controlSize
-//    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
-//    column.minWidth = CGFloat (inMinWidth)
-//    column.maxWidth = CGFloat (inMaxWidth)
-////    column.width = (column.minWidth + column.maxWidth) / 2.0
-//    column.width = column.minWidth // §§
   //--- Add Column
     self.appendTableColumn (column)
   }

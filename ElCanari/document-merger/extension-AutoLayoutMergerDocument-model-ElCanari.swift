@@ -71,9 +71,13 @@ extension AutoLayoutMergerDocument {
   //--- Back tracks
     boardModel.backTracks = inProduct.segmentEntities (self.undoManager, forLayers: .backSideTrack)
   //--- Front exposed tracks
-    boardModel.frontTracksNoSilkScreen = inProduct.segmentEntities (self.undoManager, forLayers: .frontSideExposedTrack)
+// §    boardModel.frontTracksNoSilkScreen = inProduct.segmentEntities (self.undoManager, forLayers: .frontSideExposedTrack)
   //--- Back exposed tracks
-    boardModel.backTracksNoSilkScreen = inProduct.segmentEntities (self.undoManager, forLayers: .backSideExposedTrack)
+// §    boardModel.backTracksNoSilkScreen = inProduct.segmentEntities (self.undoManager, forLayers: .backSideExposedTrack)
+  //--- Back pads
+    boardModel.backPads = inProduct.pads (self.undoManager, forLayers: .backSideComponentPad)
+  //--- Front pads
+    boardModel.frontPads = inProduct.pads (self.undoManager, forLayers: .frontSideComponentPad)
   //--- Via pads
     do{
       var viaEntities = EBReferenceArray <BoardModelVia> ()
@@ -141,10 +145,6 @@ extension AutoLayoutMergerDocument {
       }
       boardModel.drills = drillEntities
     }
-  //--- Back pads
-    boardModel.backPads = inProduct.pads (self.undoManager, forLayers: .backSideComponentPad)
-  //--- Front pads
-    boardModel.frontPads = inProduct.pads (self.undoManager, forLayers: .frontSideComponentPad)
   //--- Return
     inCallBack (boardModel)
   }

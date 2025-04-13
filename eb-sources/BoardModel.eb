@@ -243,28 +243,28 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray backComponentValuesBezierPaths dependsFrom self.backComponentValueSegments ;
 
 //--- Back tracks, no silk screen
-  toMany @generateDirectAccess SegmentEntity backTracksNoSilkScreen ;
-
-  transient MergerSegmentArray backTrackSegmentsNoSilkScreen dependsFrom
-    self.backTracksNoSilkScreen.all.x1, self.backTracksNoSilkScreen.all.y1,
-    self.backTracksNoSilkScreen.all.x2, self.backTracksNoSilkScreen.all.y2,
-    self.backTracksNoSilkScreen.all.width,
-    self.backTracksNoSilkScreen.all.endStyle
-  ;
-
-  transient BezierPathArray backTracksNoSilkScreenBezierPaths dependsFrom self.backTrackSegmentsNoSilkScreen ;
+//  toMany @generateDirectAccess SegmentEntity backTracksNoSilkScreen ;
+//
+//  transient MergerSegmentArray backTrackSegmentsNoSilkScreen dependsFrom
+//    self.backTracksNoSilkScreen.all.x1, self.backTracksNoSilkScreen.all.y1,
+//    self.backTracksNoSilkScreen.all.x2, self.backTracksNoSilkScreen.all.y2,
+//    self.backTracksNoSilkScreen.all.width,
+//    self.backTracksNoSilkScreen.all.endStyle
+//  ;
+//
+//  transient BezierPathArray backTracksNoSilkScreenBezierPaths dependsFrom self.backTrackSegmentsNoSilkScreen ;
 
 //--- Front tracks, no silk screen
-  toMany @generateDirectAccess SegmentEntity frontTracksNoSilkScreen ;
-
-  transient MergerSegmentArray frontTrackSegmentsNoSilkScreen dependsFrom
-    self.frontTracksNoSilkScreen.all.x1, self.frontTracksNoSilkScreen.all.y1,
-    self.frontTracksNoSilkScreen.all.x2, self.frontTracksNoSilkScreen.all.y2,
-    self.frontTracksNoSilkScreen.all.width,
-    self.frontTracksNoSilkScreen.all.endStyle
-  ;
-
-  transient BezierPathArray frontTracksNoSilkScreenBezierPaths dependsFrom self.frontTrackSegmentsNoSilkScreen ;
+//  toMany @generateDirectAccess SegmentEntity frontTracksNoSilkScreen ;
+//
+//  transient MergerSegmentArray frontTrackSegmentsNoSilkScreen dependsFrom
+//    self.frontTracksNoSilkScreen.all.x1, self.frontTracksNoSilkScreen.all.y1,
+//    self.frontTracksNoSilkScreen.all.x2, self.frontTracksNoSilkScreen.all.y2,
+//    self.frontTracksNoSilkScreen.all.width,
+//    self.frontTracksNoSilkScreen.all.endStyle
+//  ;
+//
+//  transient BezierPathArray frontTracksNoSilkScreenBezierPaths dependsFrom self.frontTrackSegmentsNoSilkScreen ;
 
 //--- Back tracks
   toMany @generateDirectAccess SegmentEntity backTracks ;
@@ -373,8 +373,8 @@ handlingOpposite entity BoardModel {
     prefs.mergerColorInternalBoardsLimits,
     self.internalBoardsLimitsBezierPaths,
 // Tracks without silkscreen
-   self.frontTracksNoSilkScreenBezierPaths,
-   self.backTracksNoSilkScreenBezierPaths,
+//   self.frontTracksNoSilkScreenBezierPaths,
+//   self.backTracksNoSilkScreenBezierPaths,
 // Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerModelViewDisplayFrontTracks,
@@ -480,8 +480,8 @@ handlingOpposite entity BoardModel {
     self.modelWidth,
     self.modelHeight,
 // Tracks without silkscreen
-   self.frontTracksNoSilkScreenBezierPaths,
-   self.backTracksNoSilkScreenBezierPaths,
+//   self.frontTracksNoSilkScreenBezierPaths,
+//   self.backTracksNoSilkScreenBezierPaths,
 // Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerBoardViewDisplayFrontTracks,

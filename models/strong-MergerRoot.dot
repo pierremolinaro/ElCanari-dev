@@ -30,9 +30,7 @@ digraph G {
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
-  BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> BoardModelPad [dir=both arrowtail=none arrowhead=veevee] ;
-  BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;
   BoardModel -> SegmentEntity [dir=both arrowtail=none arrowhead=veevee] ;

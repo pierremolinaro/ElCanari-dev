@@ -311,11 +311,11 @@ struct ProductRepresentation : Codable {
   @MainActor func pads (_ inUndoManager : UndoManager?,
                         forLayers inLayers : ProductLayerSet) -> EBReferenceArray <BoardModelPad> {
     var padEntities = EBReferenceArray <BoardModelPad> ()
+  //--- Pads
     for componentPad in self.componentPads {
       if !componentPad.layers.intersection (inLayers).isEmpty {
         let pad = BoardModelPad (inUndoManager)
-      //  let relativeCenter = ProductPoint (x: componentPad.xCenter, y: componentPad.yCenter).cocoaPoint
-        let relativeCenter = ProductPoint (x: .zero, y: .zero).cocoaPoint // $$
+        let relativeCenter = NSPoint ()
         let absoluteCenter = ProductPoint (cocoaPoint: componentPad.af.transform (relativeCenter))
         pad.x = absoluteCenter.x.valueInCanariUnit
         pad.y = absoluteCenter.y.valueInCanariUnit
@@ -326,6 +326,19 @@ struct ProductRepresentation : Codable {
         padEntities.append (pad)
       }
     }
+  //--- Exposed tracks
+    for segment in self.roundSegments {
+      if !segment.layers.intersection (inLayers).isEmpty {
+        padEntities.append (segment.boardModelPad (inUndoManager, endStyle: .round))
+      }
+    }
+    for segment in self.squareSegments {
+      if !segment.layers.intersection (inLayers).isEmpty {
+        padEntities.append (segment.boardModelPad (inUndoManager, endStyle: .square))
+      }
+    }
+
+  //---
     return padEntities
   }
 

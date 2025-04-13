@@ -33,20 +33,8 @@ extension AutoLayoutTableView {
       valueGetterDelegate: inGetterDelegate,
       actionDelegate: inActionDelegate
     )
-//    column.title = inTitle
-//    column.headerCell.controlSize = self.controlSize
-//    column.headerCell.font = self.font
-//    column.headerCell.alignment = inHeaderAlignment
-//    column.minWidth = CGFloat (inMinWidth)
-//    column.maxWidth = CGFloat (inMaxWidth)
-////    column.width = (column.minWidth + column.maxWidth) / 2.0
-//    column.width = column.minWidth // §§
   //--- Add Column
     self.appendTableColumn (column)
-  //--- Update table view sort descriptors
-//    if let s = column.sortDescriptorPrototype {
-//      self.mTableView.sortDescriptors.append (s)
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -148,7 +148,7 @@ class AutoLayoutHorizontalStackView : ALB_NSStackView {
   //  Last Baseline representative view
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override var lastBaselineRepresentativeView : NSView? { // §§
+  override var lastBaselineRepresentativeView : NSView? {
     for view in self.subviews {
       if !view.isHidden {
         switch view.pmLayoutSettings.vLayoutInHorizontalContainer {

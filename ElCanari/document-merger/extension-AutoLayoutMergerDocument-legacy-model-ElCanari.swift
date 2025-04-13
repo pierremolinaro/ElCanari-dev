@@ -118,53 +118,53 @@ extension AutoLayoutMergerDocument {
       boardModel.internalBoardsLimits = internalBoardsLimitsEntities
     }
   //--- Front tracks, no silkscreen
-    do{
-      var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
-      let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_FRONT_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
-      for str in frontTracks {
-        let track = SegmentEntity (self.undoManager)
-        let ints = array6int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
-        let endStyle = ints [5]
-        if endStyle == 0 {
-          track.endStyle = .round
-        }else if endStyle == 1 {
-          track.endStyle = .square
-        }else{
-          errorArray.append ("Invalid end style (line \(#line))")
-        }
-        frontTrackEntities.append (track)
-      }
-      boardModel.frontTracksNoSilkScreen = frontTrackEntities
-    }
+//    do{
+//      var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
+//      let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_FRONT_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
+//      for str in frontTracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        let endStyle = ints [5]
+//        if endStyle == 0 {
+//          track.endStyle = .round
+//        }else if endStyle == 1 {
+//          track.endStyle = .square
+//        }else{
+//          errorArray.append ("Invalid end style (line \(#line))")
+//        }
+//        frontTrackEntities.append (track)
+//      }
+//      boardModel.frontTracksNoSilkScreen = frontTrackEntities
+//    }
   //--- Back tracks, no silk screen
-    do{
-      var backTrackEntities = EBReferenceArray <SegmentEntity> ()
-      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
-      for str in backTracks {
-        let track = SegmentEntity (self.undoManager)
-        let ints = array6int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
-        let endStyle = ints [5]
-        if endStyle == 0 {
-          track.endStyle = .round
-        }else if endStyle == 1 {
-          track.endStyle = .square
-        }else{
-          errorArray.append ("Invalid end style (line \(#line))")
-        }
-       backTrackEntities.append (track)
-      }
-      boardModel.backTracksNoSilkScreen = backTrackEntities
-    }
+//    do{
+//      var backTrackEntities = EBReferenceArray <SegmentEntity> ()
+//      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
+//      for str in backTracks {
+//        let track = SegmentEntity (self.undoManager)
+//        let ints = array6int (fromString: str, #line, &errorArray)
+//        track.x1 = ints [0]
+//        track.y1 = ints [1]
+//        track.x2 = ints [2]
+//        track.y2 = ints [3]
+//        track.width = ints [4]
+//        let endStyle = ints [5]
+//        if endStyle == 0 {
+//          track.endStyle = .round
+//        }else if endStyle == 1 {
+//          track.endStyle = .square
+//        }else{
+//          errorArray.append ("Invalid end style (line \(#line))")
+//        }
+//       backTrackEntities.append (track)
+//      }
+//      boardModel.backTracksNoSilkScreen = backTrackEntities
+//    }
   //--- Front tracks
     do{
       var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
