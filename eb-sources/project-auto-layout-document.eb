@@ -1258,20 +1258,29 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView boardRouterInspectorView = \boardRouterInspectorView ()
     newView boardERCInspectorView = \boardERCInspectorView ()
     vStack set (width: 250) {
-      hStack set (margins: .regular) set (spacing: .small) {
-        DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.") [configurator addBoardImageButton]
+      hStack set (margins: .regular) set (bottomMargin: .zero) set (spacing: .small) {
+        DragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.")
+         [configurator addBoardImageButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.") [configurator addQRCodeButton]
+        DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.")
+         [configurator addQRCodeButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.") [configurator addRestrictRectangleButton]
+        DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.")
+         [configurator addRestrictRectangleButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Line;  the layer is set by the contextual menu.") [configurator addLineButton]
+//      }
+//      hStack set (margins: .regular) set (topMargin: .zero) set (spacing: .small) {
+        DragSourceButtonWithMenus (tooltip: "Add Line;  the layer is set by the contextual menu.")
+         [configurator addLineButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Text; the layer is set by the contextual menu.") [configurator addTextButton]
+        DragSourceButtonWithMenus (tooltip: "Add Text; the layer is set by the contextual menu.")
+         [configurator addTextButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.") [configurator addTrackButton]
+        DragSourceButtonWithMenus (tooltip: "Add Track; hint:\n  - option + click starts a new track.\n\nThe new track side is set by the right contextual menu. The direction constraint on creation is set by the left contextual menu.")
+         [configurator addTrackButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Non Plated Hole.") [configurator addNonPlatedHole]
+        DragSourceButtonWithMenus (tooltip: "Add Non Plated Hole.")
+         [configurator addNonPlatedHole]
       }
       vStack {
         hStack set (leftMargin: .regular) set (rightMargin: .regular) {
@@ -1921,7 +1930,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left)
       gutter
-      CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular) {
+      CanariAngleFieldAndSlider (fieldMinWidth: 80, size: .regular) {
         $angle #boardTrackSelectionController.trackDirectionInDegrees
         $enabled #boardTrackSelectionController.trackCanRotate
       }

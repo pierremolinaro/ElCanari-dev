@@ -2869,6 +2869,7 @@ do{
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
           .set (margins: .regular)
+          .set (bottomMargin: .zero)
           .set (spacing: .small)
         do{
           let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Image; the layer is set by the contextual menu.")
@@ -4302,7 +4303,7 @@ do{
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .regular)
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 80, size: .regular)
           .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
           .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
         _ = vStackView_view .appendView (vStackView_view_view)

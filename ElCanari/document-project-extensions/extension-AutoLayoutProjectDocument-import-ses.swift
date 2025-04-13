@@ -10,7 +10,14 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let SQUARE_OF_CAPTURE_DISTANCE = 90.0 * 90.0 * 25.4 * 25.4 // Distance: 25.4 µm = 1 mil
+fileprivate func isPointInSESCaptureArea (_ inP : CanariPoint, _ p : CanariPoint) -> Bool {
+  let SQUARE_OF_CAPTURE_DISTANCE = 90.0 * 90.0 * 25.4 * 25.4 // Distance: 25.4 µm = 1 mil
+  let dx = Double (inP.x - p.x)
+  let dy = Double (inP.y - p.y)
+  let dSquare = dx * dx + dy * dy
+  let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+  return found
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -208,10 +215,11 @@ extension AutoLayoutProjectDocument {
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
     for (via, _) in inViaArray {
       let p = via.location!
-      let dx = Double (inP.x - p.x)
-      let dy = Double (inP.y - p.y)
-      let dSquare = dx * dx + dy * dy
-      let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+//      let dx = Double (inP.x - p.x)
+//      let dy = Double (inP.y - p.y)
+//      let dSquare = dx * dx + dy * dy
+//      let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+      let found = isPointInSESCaptureArea (inP, p)
       if found {
         return via
       }
@@ -230,10 +238,11 @@ extension AutoLayoutProjectDocument {
       }
       if ok {
         let p = connector.location!
-        let dx = Double (inP.x - p.x)
-        let dy = Double (inP.y - p.y)
-        let dSquare = dx * dx + dy * dy
-        let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+//        let dx = Double (inP.x - p.x)
+//        let dy = Double (inP.y - p.y)
+//        let dSquare = dx * dx + dy * dy
+//        let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+        let found = isPointInSESCaptureArea (inP, p)
         if found {
           return connector
         }
@@ -257,9 +266,9 @@ extension AutoLayoutProjectDocument {
     importSESTextField.stringValue = "Remove Current Tracks and Vias…"
     importSESProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
-    self.removeAllViasAndTracks ()
+    let preservedTracks : [PreservedTrack] = self.removeAllViasAndTracks ()
   //----------------- Add Tracks and vias
-    importSESTextField.stringValue = "Add Tracks and Vias…"
+    importSESTextField.stringValue = "Add Tracks (\(preservedTracks.count) preserved) and Vias…"
     importSESProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
   //----------------- Add Connectors to added object array
@@ -316,6 +325,25 @@ extension AutoLayoutProjectDocument {
         track.mUsesCustomTrackWidth = true
         track.mCustomTrackWidth = t.width
         track.mIsPreservedByAutoRouter = t.preservedByRouter
+        if track.mIsPreservedByAutoRouter {
+          var found = false
+          var idx = 0
+          while !found, idx < preservedTracks.count {
+            found = t.side == preservedTracks [idx].side
+            if found {
+              found = isPointInSESCaptureArea (t.p1, preservedTracks [idx].p1) && isPointInSESCaptureArea (t.p2, preservedTracks [idx].p2)
+              if !found {
+                found = isPointInSESCaptureArea (t.p2, preservedTracks [idx].p1) && isPointInSESCaptureArea (t.p1, preservedTracks [idx].p2)
+              }
+            }
+            if found {
+              track.mEndStyle_property.setProp (preservedTracks [idx].endStyle)
+              track.mAddedToSolderMask_property.setProp (preservedTracks [idx].copperIsExposed)
+            }else{
+              idx += 1
+            }
+          }
+        }
         addedObjectArray.append (track)
       }
     }
@@ -329,29 +357,20 @@ extension AutoLayoutProjectDocument {
               let connected = componentConnector.connectedToComponent, connected,
               let componentConnectorSide = componentConnector.side,
               (componentConnectorSide == .front) || (componentConnectorSide == .back) {
-             let dx = Double (componentConnectorLocation.x - viaLocation.x)
-             let dy = Double (componentConnectorLocation.y - viaLocation.y)
-             let dSquare = dx * dx + dy * dy
-             let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+//             let dx = Double (componentConnectorLocation.x - viaLocation.x)
+//             let dy = Double (componentConnectorLocation.y - viaLocation.y)
+//             let dSquare = dx * dx + dy * dy
+//             let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
+             let found = isPointInSESCaptureArea (componentConnectorLocation, viaLocation)
              if found {
                let track = BoardTrack (self.undoManager)
                track.mSide = (componentConnectorSide == .front) ? .front : .back
                track.mConnectorP1 = viaConnector
                track.mConnectorP2 = componentConnector
-//               Swift.print ("viaConnector \(ObjectIdentifier (viaConnector)) componentConnector \(ObjectIdentifier (componentConnector))")
                track.mNet = viaNet // componentConnector.connectedTracksNet ()
-//               if viaNet.mNetName != componentConnector.connectedTracksNet ()?.mNetName {
-//                 Swift.print ("viaNet.mNetName \(viaNet.mNetName) componentConnector.connectedTracksNet ()?.mNetName \(componentConnector.connectedTracksNet ()?.mNetName)")
-//               }
                track.mUsesCustomTrackWidth = true
                track.mCustomTrackWidth = viaConnector.actualPadDiameter!
                track.mIsPreservedByAutoRouter = false
-//               let viaConnectorOk = (viaConnector.mTracksP1.count + viaConnector.mTracksP2.count + (viaConnector.connectedToComponent! ? 1 : 0)) >= 2
-//               let componentConnectorOk = (componentConnector.mTracksP1.count + componentConnector.mTracksP2.count + (componentConnector.connectedToComponent! ? 1 : 0)) >= 2
-//               if !viaConnectorOk || !componentConnectorOk {
-//                 Swift.print ("viaConnector \(viaConnector.mTracksP1.count) \(viaConnector.mTracksP2.count) \(viaConnector.connectedToComponent)")
-//                 Swift.print ("componentConnector \(componentConnector.mTracksP1.count) \(componentConnector.mTracksP2.count) \(componentConnector.connectedToComponent)")
-//               }
                addedObjectArray.append (track)
              }
            }

@@ -37,6 +37,10 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @objc override var lastBaselineRepresentativeView : NSView? { nil }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final func bind_angle (_ inModel : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mAngleTextField.bind_angle (inModel)
     _ = self.mAngleSlider.bind_angle (inModel, sendContinously: true)

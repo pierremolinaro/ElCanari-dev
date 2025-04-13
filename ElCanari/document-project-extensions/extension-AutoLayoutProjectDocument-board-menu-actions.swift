@@ -9,6 +9,16 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
+
+struct PreservedTrack {
+  let p1 : CanariPoint
+  let p2 : CanariPoint
+  let side : TrackSide
+  let copperIsExposed : Bool
+  let endStyle : TrackEndStyle
+}
+
+//--------------------------------------------------------------------------------------------------
 //   EXTENSION AutoLayoutProjectDocument
 //--------------------------------------------------------------------------------------------------
 
@@ -17,15 +27,28 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func removeAllViasAndTracksAction (_ _ : Any?) {
-    self.removeAllViasAndTracks ()
+    _ = self.removeAllViasAndTracks ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func removeAllViasAndTracks () {
+  func removeAllViasAndTracks () -> [PreservedTrack] {
+    var preservedTracks = [PreservedTrack] ()
   //--- Remove all tracks, and connectors not linked to a component
     for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
+        if track.mIsPreservedByAutoRouter,
+             let p1 = track.mConnectorP1?.location,
+             let p2 = track.mConnectorP2?.location {
+          let preservedTrack = PreservedTrack (
+            p1: p1,
+            p2: p2,
+            side: track.mSide,
+            copperIsExposed: track.mAddedToSolderMask,
+            endStyle: track.mEndStyle
+          )
+          preservedTracks.append (preservedTrack)
+        }
         let optionalNet = track.mNet
         track.mConnectorP1 = nil // Disconnect connector
         track.mConnectorP2 = nil // Disconnect connector
@@ -42,6 +65,7 @@ extension AutoLayoutProjectDocument {
         }
       }
     }
+    return preservedTracks
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
