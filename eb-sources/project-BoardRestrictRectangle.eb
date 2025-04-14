@@ -22,6 +22,11 @@ graphic entity BoardRestrictRectangle : BoardObject {
   property @generateDirectAccess Bool mIsInInner4Layer default no ;
   property @generateDirectAccess Bool mAllowPadsInside default no ;
 
+  property @generateDirectAccess Bool mAllowTracksInside default no ;
+
+  property @generateDirectAccess Bool mExposeTrackCopper default no ;
+  property @generateDirectAccess Bool mRectTrackEnd default no ;
+
   override transient EBShape objectDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
     self.mIsInFrontLayer, self.mIsInBackLayer,
@@ -53,6 +58,12 @@ graphic entity BoardRestrictRectangle : BoardObject {
     self.mIsInInner1Layer, self.mIsInInner2Layer,
     self.mIsInInner3Layer, self.mIsInInner4Layer,
     self.mAllowPadsInside ;
+
+  transient Bool exposeTrackCopperAvailable dependsFrom
+    self.mIsInInner1Layer, self.mIsInInner2Layer,
+    self.mIsInInner3Layer, self.mIsInInner4Layer,
+    self.mAllowTracksInside
+  ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

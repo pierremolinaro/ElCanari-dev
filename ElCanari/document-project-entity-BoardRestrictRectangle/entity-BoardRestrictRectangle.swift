@@ -90,8 +90,32 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol BoardRestrictRectangle_mAllowTracksInside : AnyObject {
+  var mAllowTracksInside : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol BoardRestrictRectangle_mExposeTrackCopper : AnyObject {
+  var mExposeTrackCopper : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol BoardRestrictRectangle_mRectTrackEnd : AnyObject {
+  var mRectTrackEnd : Bool { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol BoardRestrictRectangle_mX : AnyObject {
   var mX : Int { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor protocol BoardRestrictRectangle_exposeTrackCopperAvailable : AnyObject {
+  var exposeTrackCopperAvailable : Bool? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -131,7 +155,11 @@ final class BoardRestrictRectangle : BoardObject,
          BoardRestrictRectangle_mIsInInner3Layer,
          BoardRestrictRectangle_mIsInInner4Layer,
          BoardRestrictRectangle_mAllowPadsInside,
+         BoardRestrictRectangle_mAllowTracksInside,
+         BoardRestrictRectangle_mExposeTrackCopper,
+         BoardRestrictRectangle_mRectTrackEnd,
          BoardRestrictRectangle_mX,
+         BoardRestrictRectangle_exposeTrackCopperAvailable,
          BoardRestrictRectangle_objectDisplay,
          BoardRestrictRectangle_selectionDisplay,
          BoardRestrictRectangle_signatureForERCChecking {
@@ -315,6 +343,45 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //································································································
+  //   Atomic property: mAllowTracksInside
+  //································································································
+
+  final let mAllowTracksInside_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var mAllowTracksInside : Bool {
+    get { return self.mAllowTracksInside_property.propval }
+    set { self.mAllowTracksInside_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mExposeTrackCopper
+  //································································································
+
+  final let mExposeTrackCopper_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var mExposeTrackCopper : Bool {
+    get { return self.mExposeTrackCopper_property.propval }
+    set { self.mExposeTrackCopper_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mRectTrackEnd
+  //································································································
+
+  final let mRectTrackEnd_property : EBStoredProperty_Bool
+
+  //································································································
+
+  final var mRectTrackEnd : Bool {
+    get { return self.mRectTrackEnd_property.propval }
+    set { self.mRectTrackEnd_property.setProp (newValue) }
+  }
+
+  //································································································
   //   Atomic property: mX
   //································································································
 
@@ -325,6 +392,18 @@ final class BoardRestrictRectangle : BoardObject,
   final var mX : Int {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Transient property: exposeTrackCopperAvailable
+  //································································································
+
+  final let exposeTrackCopperAvailable_property = EBTransientProperty <Bool> ()
+
+  //································································································
+
+  final var exposeTrackCopperAvailable : Bool? {
+    return self.exposeTrackCopperAvailable_property.optionalValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -346,8 +425,44 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner3Layer")
     self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner4Layer")
     self.mAllowPadsInside_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAllowPadsInside")
+    self.mAllowTracksInside_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAllowTracksInside")
+    self.mExposeTrackCopper_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExposeTrackCopper")
+    self.mRectTrackEnd_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mRectTrackEnd")
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
+  //--- Atomic property: exposeTrackCopperAvailable
+    self.exposeTrackCopperAvailable_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mIsInInner1Layer_property.selection
+        let s1 = unwSelf.mIsInInner2Layer_property.selection
+        let s2 = unwSelf.mIsInInner3Layer_property.selection
+        let s3 = unwSelf.mIsInInner4Layer_property.selection
+        let s4 = unwSelf.mAllowTracksInside_property.selection
+        switch (s0, s1, s2, s3, s4) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_BoardRestrictRectangle_exposeTrackCopperAvailable (v0, v1, v2, v3, v4))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mIsInInner1Layer_property.startsBeingObserved (by: self.exposeTrackCopperAvailable_property)
+    self.mIsInInner2Layer_property.startsBeingObserved (by: self.exposeTrackCopperAvailable_property)
+    self.mIsInInner3Layer_property.startsBeingObserved (by: self.exposeTrackCopperAvailable_property)
+    self.mIsInInner4Layer_property.startsBeingObserved (by: self.exposeTrackCopperAvailable_property)
+    self.mAllowTracksInside_property.startsBeingObserved (by: self.exposeTrackCopperAvailable_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

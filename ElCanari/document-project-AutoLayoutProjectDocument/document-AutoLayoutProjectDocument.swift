@@ -2884,7 +2884,7 @@ do{
         }
         _ = hStackView_view_view.appendFlexibleSpace ()
         do{
-          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.")
+          let hStackView_view_view_view = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Property Rectangle; the layers are set by the contextual menu.")
           self.configure_addRestrictRectangleButton (hStackView_view_view_view) // Configurator
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
         }
@@ -3228,8 +3228,14 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       do{
         let vStackView_view_view = AutoLayoutTaggedPopUpButton (size: .small)
           .add (title: "0.5 Point", withTag: 5)
+          .add (title: "0.6 Point", withTag: 6)
+          .add (title: "0.7 Point", withTag: 7)
+          .add (title: "0.8 Point", withTag: 8)
+          .add (title: "0.9 Point", withTag: 9)
           .add (title: "1.0 Point", withTag: 10)
+          .add (title: "1.2 Point", withTag: 12)
           .add (title: "1.5 Point", withTag: 15)
+          .add (title: "1.7 Point", withTag: 17)
           .add (title: "2.0 Point", withTag: 20)
           .add (title: "2.5 Point", withTag: 25)
           .bind_selectedTag (self.rootObject.packageDrawingWidthMultpliedByTenForBoard_property)
@@ -3820,6 +3826,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Layers", bold: false, size: .small, alignment: .right)
+            .expandableHeight ()
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendFlexibleSpace ()
@@ -4684,18 +4691,77 @@ do{
   final func RestrictRectangleInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     do{
-      let vStackView_view = AutoLayoutStaticLabel (title: "Restrict Rectangle Inspector", bold: true, size: .small, alignment: .center)
+      let vStackView_view = AutoLayoutStaticLabel (title: "Property Rectangle Inspector", bold: true, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutCanariRestrictRectangleView ()
-        .bind_frontBackInner1Inner2Inner3Inner4 (self.restrictRectSelController.mIsInFrontLayer_property, self.restrictRectSelController.mIsInBackLayer_property, self.restrictRectSelController.mIsInInner1Layer_property, self.restrictRectSelController.mIsInInner2Layer_property, self.restrictRectSelController.mIsInInner3Layer_property, self.restrictRectSelController.mIsInInner4Layer_property)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Layers", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariRestrictRectangleView ()
+          .bind_frontBackInner1Inner2Inner3Inner4 (self.restrictRectSelController.mIsInFrontLayer_property, self.restrictRectSelController.mIsInBackLayer_property, self.restrictRectSelController.mIsInInner1Layer_property, self.restrictRectSelController.mIsInInner2Layer_property, self.restrictRectSelController.mIsInInner3Layer_property, self.restrictRectSelController.mIsInInner4Layer_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendSeparator ()
     do{
-      let vStackView_view = AutoLayoutCheckbox (title: "Allow Pads inside", size: .small)
-        .bind_value (self.restrictRectSelController.mAllowPadsInside_property)
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Properties", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Allow Pads inside", size: .small)
+          .bind_value (self.restrictRectSelController.mAllowPadsInside_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Allow Track inside", size: .small)
+          .bind_value (self.restrictRectSelController.mAllowTracksInside_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Expose Track Copper", size: .small)
+          .bind_value (self.restrictRectSelController.mExposeTrackCopper_property)
+          .bind_hidden (.not (.prop (self.restrictRectSelController.exposeTrackCopperAvailable_property)))
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Expose Track Copper", size: .small)
+          .set (enabled: false)
+          .bind_hidden (.prop (self.restrictRectSelController.exposeTrackCopperAvailable_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      _ = vStackView_view.appendFlexibleSpace ()
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCheckbox (title: "Rectangular Track End", size: .small)
+          .bind_value (self.restrictRectSelController.mRectTrackEnd_property)
+          .bind_enabled (.prop (self.restrictRectSelController.mAllowTracksInside_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendSeparator ()

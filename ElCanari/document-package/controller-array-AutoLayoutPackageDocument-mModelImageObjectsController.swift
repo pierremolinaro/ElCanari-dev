@@ -825,7 +825,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
-      objects.insert (object, at: idx-1)
+      objects.insert (object, at: idx - 1)
     }
     self.mModel?.setProp (objects)
   }

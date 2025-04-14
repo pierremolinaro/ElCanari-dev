@@ -769,10 +769,16 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutTaggedPopUpButton (size: .small)
           .add (title: "0.5 Point", withTag: 5)
+          .add (title: "0.6 Point", withTag: 6)
+          .add (title: "0.7 Point", withTag: 7)
+          .add (title: "0.8 Point", withTag: 8)
+          .add (title: "0.9 Point", withTag: 9)
           .add (title: "1.0 Point", withTag: 10)
+          .add (title: "1.2 Point", withTag: 12)
           .add (title: "1.5 Point", withTag: 15)
-          .add (title: "2.0 Points", withTag: 20)
-          .add (title: "2.5 Points", withTag: 25)
+          .add (title: "1.7 Point", withTag: 17)
+          .add (title: "2.0 Point", withTag: 20)
+          .add (title: "2.5 Point", withTag: 25)
           .bind_selectedTag (preferences_packageDrawingWidthForDeviceMultipliedByTen_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }

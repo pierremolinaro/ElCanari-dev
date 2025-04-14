@@ -247,6 +247,37 @@ extension BoardRestrictRectangle {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  var layers : Set <TrackSide> {
+    var result = Set <TrackSide> ()
+    if self.mIsInBackLayer {
+      result.insert (.back)
+    }
+    if self.mIsInFrontLayer {
+      result.insert (.front)
+    }
+    if self.mIsInInner1Layer {
+      result.insert (.inner1)
+    }
+    if self.mIsInInner2Layer {
+      result.insert (.inner2)
+    }
+    if self.mIsInInner3Layer {
+      result.insert (.inner3)
+    }
+    if self.mIsInInner4Layer {
+      result.insert (.inner4)
+    }
+    return result
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var hasInnerLayer : Bool {
+    return self.mIsInInner1Layer || self.mIsInInner2Layer || self.mIsInInner3Layer || self.mIsInInner4Layer
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

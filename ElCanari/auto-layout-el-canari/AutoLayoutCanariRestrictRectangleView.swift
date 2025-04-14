@@ -14,8 +14,8 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mFrontLayerCheckBox = AutoLayoutCheckbox (title: "Front Layer", size: .small)
-  private let mBackLayerCheckBox = AutoLayoutCheckbox (title: "Back Layer", size: .small)
+  private let mFrontLayerCheckBox  = AutoLayoutCheckbox (title: "Front Layer", size: .small)
+  private let mBackLayerCheckBox   = AutoLayoutCheckbox (title: "Back Layer",   size: .small)
   private let mInner1LayerCheckBox = AutoLayoutCheckbox (title: "Inner1 Layer", size: .small)
   private let mInner2LayerCheckBox = AutoLayoutCheckbox (title: "Inner2 Layer", size: .small)
   private let mInner3LayerCheckBox = AutoLayoutCheckbox (title: "Inner3 Layer", size: .small)
@@ -42,8 +42,12 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bind_frontBackInner1Inner2Inner3Inner4 (_ inFrontModel : EBObservableMutableProperty <Bool>,
-                                               _ inBackModel : EBObservableMutableProperty <Bool>,
+  @objc override var lastBaselineRepresentativeView : NSView? { self.mFrontLayerCheckBox }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func bind_frontBackInner1Inner2Inner3Inner4 (_ inFrontModel  : EBObservableMutableProperty <Bool>,
+                                               _ inBackModel   : EBObservableMutableProperty <Bool>,
                                                _ inInner1Model : EBObservableMutableProperty <Bool>,
                                                _ inInner2Model : EBObservableMutableProperty <Bool>,
                                                _ inInner3Model : EBObservableMutableProperty <Bool>,

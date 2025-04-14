@@ -22,7 +22,7 @@ final class GeometricRect {
   //   init
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (rect inRect : NSRect) {
+  init (cocoaRect inRect : NSRect) {
     self.p1 = NSPoint (x: NSMinX (inRect), y: NSMidY (inRect))
     self.p2 = NSPoint (x: NSMaxX (inRect), y: NSMidY (inRect))
     self.width = inRect.size.height

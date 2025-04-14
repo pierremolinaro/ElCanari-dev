@@ -10,6 +10,15 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+fileprivate struct PropertyRectForImportingSES {
+  let rect : CanariRect
+  let layers : Set <TrackSide>
+  let exposeTrackCopper : Bool
+  let requireRectTrackEnds : Bool
+}
+
+//--------------------------------------------------------------------------------------------------
+
 fileprivate func isPointInSESCaptureArea (_ inP : CanariPoint, _ p : CanariPoint) -> Bool {
   let SQUARE_OF_CAPTURE_DISTANCE = 90.0 * 90.0 * 25.4 * 25.4 // Distance: 25.4 µm = 1 mil
   let dx = Double (inP.x - p.x)
@@ -53,6 +62,19 @@ extension AutoLayoutProjectDocument {
     _ = rightColumn.appendView (importSESProgressIndicator)
     _ = mainView.appendView (rightColumn)
     panel.setContentView (mainView)
+  //--- Extract property rectangles
+    var propertyRects = [PropertyRectForImportingSES] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let pr = object as? BoardRestrictRectangle {
+        let sesPR = PropertyRectForImportingSES (
+          rect: CanariRect (left: pr.mX, bottom: pr.mY, width: pr.mWidth, height: pr.mHeight),
+          layers: pr.layers,
+          exposeTrackCopper: pr.mExposeTrackCopper && !pr.hasInnerLayer,
+          requireRectTrackEnds: pr.mRectTrackEnd
+        )
+        propertyRects.append (sesPR)
+      }
+    }
   //--- Display sheet
     importSESTextField.stringValue = "Extracting Tracks…"
     importSESProgressIndicator.minValue = 0.0
@@ -90,7 +112,7 @@ extension AutoLayoutProjectDocument {
       extractTracksAndVias (netComponents, resolution, &routedTracks, &routedVias, &errorMessage)
     //--- Send to canari
       if errorMessage.isEmpty {
-        self.enterResults (routedTracks, routedVias, importSESTextField, importSESProgressIndicator)
+        self.enterResults (routedTracks, routedVias, propertyRects, importSESTextField, importSESProgressIndicator)
       }
     }else{
       errorMessage += "\n  - cannot extract resolution from input file"
@@ -139,7 +161,6 @@ extension AutoLayoutProjectDocument {
            }
          }
       }
-      // Swift.print ("Net: \"\(netName)\" \((possibleNet == nil) ? "" : "found")")
       if let net = possibleNet {
       //--- Extract tracks (wireComponents [0] is not a valid wire description
         for netDescription in Array (wireComponents [1 ..< wireComponents.count]) {
@@ -215,10 +236,6 @@ extension AutoLayoutProjectDocument {
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
     for (via, _) in inViaArray {
       let p = via.location!
-//      let dx = Double (inP.x - p.x)
-//      let dy = Double (inP.y - p.y)
-//      let dSquare = dx * dx + dy * dy
-//      let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
       let found = isPointInSESCaptureArea (inP, p)
       if found {
         return via
@@ -238,10 +255,6 @@ extension AutoLayoutProjectDocument {
       }
       if ok {
         let p = connector.location!
-//        let dx = Double (inP.x - p.x)
-//        let dy = Double (inP.y - p.y)
-//        let dSquare = dx * dx + dy * dy
-//        let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
         let found = isPointInSESCaptureArea (inP, p)
         if found {
           return connector
@@ -260,6 +273,7 @@ extension AutoLayoutProjectDocument {
 
   private func enterResults (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                              _ inRoutedViaArray : [(BoardConnector, NetInProject)],
+                             _ inPropertyRects : [PropertyRectForImportingSES],
                              _ importSESTextField : AutoLayoutStaticLabel,
                              _ importSESProgressIndicator : AutoLayoutProgressIndicator) {
   //----------------- Remove Current Tracks and Vias…
@@ -308,7 +322,9 @@ extension AutoLayoutProjectDocument {
   //--- Build connectors attached to pad
     var connectorArray = [BoardConnector] ()
     for object in self.rootObject.mBoardObjects.values {
-      if let componentConnector = object as? BoardConnector, let connected = componentConnector.connectedToComponent, connected {
+      if let componentConnector = object as? BoardConnector,
+           let connected = componentConnector.connectedToComponent,
+           connected {
         connectorArray.append (componentConnector)
       }
     }
@@ -329,7 +345,7 @@ extension AutoLayoutProjectDocument {
           var found = false
           var idx = 0
           while !found, idx < preservedTracks.count {
-            found = t.side == preservedTracks [idx].side
+            found = t.side == preservedTracks [idx].layer
             if found {
               found = isPointInSESCaptureArea (t.p1, preservedTracks [idx].p1) && isPointInSESCaptureArea (t.p2, preservedTracks [idx].p2)
               if !found {
@@ -344,6 +360,28 @@ extension AutoLayoutProjectDocument {
             }
           }
         }
+      //--- Explore property rects
+        let oblong = GeometricOblong (
+          p1: t.p1.cocoaPoint,
+          p2: t.p2.cocoaPoint,
+          width: canariUnitToCocoa (t.width),
+          capStyle: .round
+        )
+        for pr in inPropertyRects {
+          var found = pr.layers.contains (track.mSide)
+          if found {
+            found = oblong.intersects (rect: GeometricRect (cocoaRect: pr.rect.cocoaRect))
+          }
+          if found {
+            if pr.requireRectTrackEnds {
+              track.mEndStyle_property.setProp (.square)
+            }
+            if pr.exposeTrackCopper {
+              track.mAddedToSolderMask_property.setProp (true)
+            }
+          }
+        }
+      //---
         addedObjectArray.append (track)
       }
     }
@@ -357,10 +395,6 @@ extension AutoLayoutProjectDocument {
               let connected = componentConnector.connectedToComponent, connected,
               let componentConnectorSide = componentConnector.side,
               (componentConnectorSide == .front) || (componentConnectorSide == .back) {
-//             let dx = Double (componentConnectorLocation.x - viaLocation.x)
-//             let dy = Double (componentConnectorLocation.y - viaLocation.y)
-//             let dSquare = dx * dx + dy * dy
-//             let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
              let found = isPointInSESCaptureArea (componentConnectorLocation, viaLocation)
              if found {
                let track = BoardTrack (self.undoManager)

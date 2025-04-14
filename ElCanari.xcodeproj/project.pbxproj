@@ -2874,6 +2874,8 @@
 		CFD306AA2C28A9A600A44658 /* zip-directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD306A82C28A9A600A44658 /* zip-directory.swift */; };
 		CFD3B2BC21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */; };
 		CFD3B2BD21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */; };
+		CFD3BD0D2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3BD0C2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift */; };
+		CFD3BD0E2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3BD0C2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift */; };
 		CFD525C52CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AC2CA97B1600FFEABF /* enum-GerberUnit-ebExtension.swift */; };
 		CFD525C62CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525AE2CA97B1600FFEABF /* enum-HorizontalAlignment-ebExtension.swift */; };
 		CFD525C72CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD525B82CA97B1600FFEABF /* enum-QuadrantRotation-ebExtension.swift */; };
@@ -5087,6 +5089,7 @@
 		CFD24155222C1270000D6B65 /* transient-DeviceRoot-inconsistentPackagePadNameSetsMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-inconsistentPackagePadNameSetsMessage.swift"; sourceTree = "<group>"; };
 		CFD306A82C28A9A600A44658 /* zip-directory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "zip-directory.swift"; sourceTree = "<group>"; };
 		CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-nameRect.swift"; sourceTree = "<group>"; };
+		CFD3BD0C2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift"; sourceTree = "<group>"; };
 		CFD525A02CA97B1600FFEABF /* enum-AutorouterPreferredDirections-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterPreferredDirections-ebExtension.swift"; sourceTree = "<group>"; };
 		CFD525A12CA97B1600FFEABF /* enum-AutorouterSnapAngle-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-AutorouterSnapAngle-ebExtension.swift"; sourceTree = "<group>"; };
 		CFD525A22CA97B1600FFEABF /* enum-BoardImageDisplay-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-BoardImageDisplay-ebExtension.swift"; sourceTree = "<group>"; };
@@ -7484,6 +7487,7 @@
 				CF711CAE275E1A3900280069 /* extension-BoardRestrictRectangle.swift */,
 				CF711CAF275E1A3900280069 /* tomany-BoardRestrictRectangle.swift */,
 				CF711CAC275E1A3800280069 /* toone-BoardRestrictRectangle.swift */,
+				CFD3BD0C2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift */,
 				CFEB7AEA233A247F0060A97A /* transient-BoardRestrictRectangle-objectDisplay.swift */,
 				CFEB7AEB233A247F0060A97A /* transient-BoardRestrictRectangle-selectionDisplay.swift */,
 				CFEB7AE9233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift */,
@@ -8943,6 +8947,7 @@
 				CFEB7C9B233A28860060A97A /* transient-ProjectRoot-boardInteriorLeft.swift in Sources */,
 				CF22F258275A73EE009C6FAC /* entity-BoardModel.swift in Sources */,
 				CF85859621C5124300082CE3 /* transient-PackageArc-issues.swift in Sources */,
+				CFD3BD0D2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift in Sources */,
 				CFECF356294640FA0053F682 /* ProjectRoot-remove-unused-devices.swift in Sources */,
 				CFFF883029BE364C007A12DE /* property-CanariPointArray.swift in Sources */,
 				CF0E852A2A1B640800099ED0 /* canari-rotations.swift in Sources */,
@@ -10972,6 +10977,7 @@
 				CF6881362D330EAC006575A2 /* configurator-AutoLayoutProjectDocument-moveSheetDown.swift in Sources */,
 				CF6881372D330EAC006575A2 /* configurator-AutoLayoutProjectDocument-sheetStepperConfigurator.swift in Sources */,
 				CF6881382D330EAC006575A2 /* configurator-AutoLayoutProjectDocument-schematicView.swift in Sources */,
+				CFD3BD0E2DAD300D002BD4F4 /* transient-BoardRestrictRectangle-exposeTrackCopperAvailable.swift in Sources */,
 				CF6881392D330EAC006575A2 /* configurator-AutoLayoutProjectDocument-sheetPopUpButtonConfigurator2.swift in Sources */,
 				CF68813A2D330EAC006575A2 /* configurator-AutoLayoutProjectDocument-moveSheetUp.swift in Sources */,
 				CF68813B2D330EAC006575A2 /* configurator-AutoLayoutProjectDocument-addQRCodeButton.swift in Sources */,
@@ -11880,7 +11886,7 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_ENABLE_BARE_SLASH_REGEX = NO;
-				SWIFT_ENABLE_EMIT_CONST_VALUES = NO;
+				SWIFT_ENABLE_EMIT_CONST_VALUES = YES;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -12048,7 +12054,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_DISABLE_SAFETY_CHECKS = NO;
 				SWIFT_ENABLE_BARE_SLASH_REGEX = NO;
-				SWIFT_ENABLE_EMIT_CONST_VALUES = NO;
+				SWIFT_ENABLE_EMIT_CONST_VALUES = YES;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;

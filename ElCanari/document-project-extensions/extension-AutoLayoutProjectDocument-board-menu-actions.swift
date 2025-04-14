@@ -13,7 +13,7 @@ import AppKit
 struct PreservedTrack {
   let p1 : CanariPoint
   let p2 : CanariPoint
-  let side : TrackSide
+  let layer : TrackSide
   let copperIsExposed : Bool
   let endStyle : TrackEndStyle
 }
@@ -43,7 +43,7 @@ extension AutoLayoutProjectDocument {
           let preservedTrack = PreservedTrack (
             p1: p1,
             p2: p2,
-            side: track.mSide,
+            layer: track.mSide,
             copperIsExposed: track.mAddedToSolderMask,
             endStyle: track.mEndStyle
           )
@@ -113,7 +113,8 @@ extension AutoLayoutProjectDocument {
         others.append (object)
       }
     }
-    var array = backComponents
+    var array = restrictRectangles
+    array.append (objects: backComponents)
     array.append (objects: backTracks)
     array.append (objects: inner4Tracks)
     array.append (objects: inner3Tracks)
@@ -122,7 +123,6 @@ extension AutoLayoutProjectDocument {
     array.append (objects: frontTracks)
     array.append (objects: connectors)
     array.append (objects: frontComponents)
-    array.append (objects: restrictRectangles)
     array.append (objects: others)
     self.rootObject.mBoardObjects = array
   }

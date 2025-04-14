@@ -80,17 +80,17 @@ extension AutoLayoutProjectDocument {
   //--- Restrict rectangles
     var restrictRectangles = [RestrictRectangleForDSNExport] ()
     for object in self.rootObject.mBoardObjects.values {
-      if let restrictRectangle = object as? BoardRestrictRectangle {
-        let r = CanariRect (left: restrictRectangle.mX, bottom: restrictRectangle.mY, width: restrictRectangle.mWidth, height: restrictRectangle.mHeight)
+      if let propertyRectangle = object as? BoardRestrictRectangle, !propertyRectangle.mAllowTracksInside {
+        let r = CanariRect (left: propertyRectangle.mX, bottom: propertyRectangle.mY, width: propertyRectangle.mWidth, height: propertyRectangle.mHeight)
         let rr = RestrictRectangleForDSNExport (
           rect: r,
           rotationInDegrees: 0.0,
-          frontSide: restrictRectangle.mIsInFrontLayer,
-          backSide: restrictRectangle.mIsInBackLayer,
-          inner1Side: restrictRectangle.mIsInInner1Layer,
-          inner2Side: restrictRectangle.mIsInInner2Layer,
-          inner3Side: restrictRectangle.mIsInInner3Layer,
-          inner4Side: restrictRectangle.mIsInInner4Layer
+          frontSide: propertyRectangle.mIsInFrontLayer,
+          backSide: propertyRectangle.mIsInBackLayer,
+          inner1Side: propertyRectangle.mIsInInner1Layer,
+          inner2Side: propertyRectangle.mIsInInner2Layer,
+          inner3Side: propertyRectangle.mIsInInner3Layer,
+          inner4Side: propertyRectangle.mIsInInner4Layer
         )
         restrictRectangles.append (rr)
       }else if let nph = object as? NonPlatedHole {

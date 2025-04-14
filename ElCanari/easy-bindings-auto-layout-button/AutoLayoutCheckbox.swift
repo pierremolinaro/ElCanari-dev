@@ -35,15 +35,21 @@ final class AutoLayoutCheckbox : ALB_NSButton {
 
   private var mWidth : CGFloat? = nil
   private var mMaintainDisabled = false
+//  private var mIsUncheckedWhenDisabled = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (width inWidth : Int) -> Self {
     self.mWidth = CGFloat (inWidth)
-//    self.usesSingleLineMode = !inMultiLine
-//    self.cell?.truncatesLastVisibleLine = !inMultiLine
     return self
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  func set (isUncheckedWhenDisabled inFlag : Bool) -> Self {
+//    self.mIsUncheckedWhenDisabled = inFlag
+//    return self
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -101,7 +107,7 @@ final class AutoLayoutCheckbox : ALB_NSButton {
       enableCheckbox = false
     case .single (let v) :
       self.allowsMixedState = false
-      self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
+      self.state = v ? .on : .off
       enableCheckbox = true
     }
     self.enable (fromValueBinding: enableCheckbox && !mMaintainDisabled, self.enabledBindingController ())

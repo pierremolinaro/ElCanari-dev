@@ -38,8 +38,9 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Projet: contrôle de l'autorisation de pads à l'intérieur d'un rectangle de restriction",
-  "Projet: les pistes préservées par l'autorouteur conservent l'exposition du cuivre et la forme des extrémités"
+  "Projet : contrôle de l'autorisation de pads à l'intérieur d'un rectangle de restriction",
+  "Projet : les pistes préservées par l'autorouteur conservent l'exposition du cuivre et la forme des extrémités",
+  "Projet : les rectangles de restriction permettent d'indiquer l'exposition du cuivre des pistes et d'imposer des terminaisons rectangulaires des pistes"
 ]
 
 //------------------------------------------------------------------------------

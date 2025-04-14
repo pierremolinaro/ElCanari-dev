@@ -36,6 +36,7 @@ include "eb-sources/project-BoardLine.eb" ;
 include "eb-sources/project-BoardObject.eb" ;
 include "eb-sources/project-BoardQRCode.eb" ;
 include "eb-sources/project-BoardImage.eb" ;
+//include "eb-sources/project-BoardPropertyRectangle.eb" ;
 include "eb-sources/project-BoardRestrictRectangle.eb" ;
 include "eb-sources/project-BoardText.eb" ;
 include "eb-sources/project-BoardTrack.eb" ;

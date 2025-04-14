@@ -59,8 +59,20 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
       if let relay = self.mObserversOf_mAllowPadsInside { // Stored property
         managedObject.mAllowPadsInside_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mAllowTracksInside { // Stored property
+        managedObject.mAllowTracksInside_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mExposeTrackCopper { // Stored property
+        managedObject.mExposeTrackCopper_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mRectTrackEnd { // Stored property
+        managedObject.mRectTrackEnd_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_exposeTrackCopperAvailable { // Transient property
+        managedObject.exposeTrackCopperAvailable_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
@@ -116,8 +128,20 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
       if let relay = self.mObserversOf_mAllowPadsInside { // Stored property
         managedObject.mAllowPadsInside_property.startsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mAllowTracksInside { // Stored property
+        managedObject.mAllowTracksInside_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mExposeTrackCopper { // Stored property
+        managedObject.mExposeTrackCopper_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mRectTrackEnd { // Stored property
+        managedObject.mRectTrackEnd_property.startsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mX { // Stored property
         managedObject.mX_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_exposeTrackCopperAvailable { // Transient property
+        managedObject.exposeTrackCopperAvailable_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.startsBeingObserved (by: relay)
@@ -538,6 +562,93 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mAllowTracksInside' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mAllowTracksInside : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mAllowTracksInside_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mAllowTracksInside {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mAllowTracksInside_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mAllowTracksInside = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mAllowTracksInside_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mAllowTracksInside?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mExposeTrackCopper' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mExposeTrackCopper : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mExposeTrackCopper_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mExposeTrackCopper {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mExposeTrackCopper_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mExposeTrackCopper = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mExposeTrackCopper_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mExposeTrackCopper?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mRectTrackEnd' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mRectTrackEnd : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mRectTrackEnd_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mRectTrackEnd {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mRectTrackEnd_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mRectTrackEnd = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mRectTrackEnd_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mRectTrackEnd?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mX' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -564,6 +675,35 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : EBReadOnlyAbstractArrayProperty <
 
   final func toMany_mX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'exposeTrackCopperAvailable' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_exposeTrackCopperAvailable : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_exposeTrackCopperAvailable_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_exposeTrackCopperAvailable {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.exposeTrackCopperAvailable_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_exposeTrackCopperAvailable = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_exposeTrackCopperAvailable_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_exposeTrackCopperAvailable?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

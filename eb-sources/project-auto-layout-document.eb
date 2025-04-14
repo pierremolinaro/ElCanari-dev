@@ -1265,7 +1265,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         DragSourceButtonWithMenus (tooltip: "Add QR Code; the layer is set by the contextual menu.")
          [configurator addQRCodeButton]
         space
-        DragSourceButtonWithMenus (tooltip: "Add Restrict Rectangle;  the layers are set by the contextual menu.")
+        DragSourceButtonWithMenus (tooltip: "Add Property Rectangle; the layers are set by the contextual menu.")
          [configurator addRestrictRectangleButton]
         space
 //      }
@@ -1435,8 +1435,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left)
       TaggedPopUpButton (size: .small) {
         add (title: "0.5 Point",   withTag:  5)
+        add (title: "0.6 Point",  withTag:   6)
+        add (title: "0.7 Point",  withTag:   7)
+        add (title: "0.8 Point",  withTag:   8)
+        add (title: "0.9 Point",  withTag:   9)
         add (title: "1.0 Point",  withTag:  10)
+        add (title: "1.2 Point",  withTag:  12)
         add (title: "1.5 Point",  withTag:  15)
+        add (title: "1.7 Point",  withTag:  17)
         add (title: "2.0 Point",  withTag:  20)
         add (title: "2.5 Point",  withTag:  25)
         $selectedTag root.packageDrawingWidthMultpliedByTenForBoard
@@ -1686,7 +1692,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     vStack withVScroller {
       hStack {
-        StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right)
+        StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right) { expandableHeight () }
         space
         EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
           $selectedIndex root.mLayerConfiguration
@@ -2136,15 +2142,52 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   ;
 
   stackView \RestrictRectangleInspectorView vStack {
-    StaticLabel (title: "Restrict Rectangle Inspector", bold: yes, size: .small, alignment: .center)
-    CanariRestrictRectangleView {
-      $frontBackInner1Inner2Inner3Inner4 
-        #restrictRectSelController.mIsInFrontLayer, #restrictRectSelController.mIsInBackLayer,
-        #restrictRectSelController.mIsInInner1Layer, #restrictRectSelController.mIsInInner2Layer,
-        #restrictRectSelController.mIsInInner3Layer, #restrictRectSelController.mIsInInner4Layer
+    StaticLabel (title: "Property Rectangle Inspector", bold: yes, size: .small, alignment: .center)
+    hStack {
+      StaticLabel (title: "Layers", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariRestrictRectangleView {
+        $frontBackInner1Inner2Inner3Inner4 
+          #restrictRectSelController.mIsInFrontLayer, #restrictRectSelController.mIsInBackLayer,
+          #restrictRectSelController.mIsInInner1Layer, #restrictRectSelController.mIsInInner2Layer,
+          #restrictRectSelController.mIsInInner3Layer, #restrictRectSelController.mIsInInner4Layer
+      }
     }
     separator
-    Checkbox (title: "Allow Pads inside", size: .small) { $value #restrictRectSelController.mAllowPadsInside }
+    hStack {
+      StaticLabel (title: "Properties", bold: no, size: .small, alignment: .left)
+      gutter
+      Checkbox (title: "Allow Pads inside", size: .small) {
+        $value #restrictRectSelController.mAllowPadsInside
+      }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Allow Track inside", size: .small) {
+        $value #restrictRectSelController.mAllowTracksInside 
+      }
+    }
+     hStack {
+      space
+      gutter
+      Checkbox (title: "Expose Track Copper", size: .small) {
+        $value #restrictRectSelController.mExposeTrackCopper
+        $hidden !#restrictRectSelController.exposeTrackCopperAvailable
+      }
+      Checkbox (title: "Expose Track Copper", size: .small) {
+        set (enabled : no)
+        $hidden #restrictRectSelController.exposeTrackCopperAvailable
+      }
+    }
+    hStack {
+      space
+      gutter
+      Checkbox (title: "Rectangular Track End", size: .small) {
+        $value #restrictRectSelController.mRectTrackEnd
+        $enabled #restrictRectSelController.mAllowTracksInside
+      }
+    }
     separator
     CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
       #restrictRectSelController.mXUnit, #restrictRectSelController.mYUnit,
