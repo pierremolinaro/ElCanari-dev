@@ -1726,6 +1726,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       Checkbox (title: "Allow Via at SMD", size: .small) {
         expandableWidth () $value root.mAllowViaAtSMD
       }
+      separator
       TabView (size: .small) {
         addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView :
           vStack set (margins: .large) {
@@ -1772,34 +1773,35 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         )
         $selectedTab root.mAutorouterInterfaceMode
       }
+      separator
       StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
       hStack {
-        StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right)
+        StaticLabel (title: "Top Layer", bold: no, size: .small, alignment: .right)
         gutter
         Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
       }
       hStack {
-        StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right)
+        StaticLabel (title: "Inner 1 Layer", bold: no, size: .small, alignment: .right)
         gutter
         Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
       }
       hStack {
-        StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right)
+        StaticLabel (title: "Inner 2 Layer", bold: no, size: .small, alignment: .right)
         gutter
         Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
       }
       hStack {
-        StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right)
+        StaticLabel (title: "Inner 3 Layer", bold: no, size: .small, alignment: .right)
         gutter
         Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
       }
       hStack {
-        StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right)
+        StaticLabel (title: "Inner 4 Layer", bold: no, size: .small, alignment: .right)
         gutter
         Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
       }
       hStack {
-        StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right)
+        StaticLabel (title: "Back Layer", bold: no, size: .small, alignment: .right)
         gutter
         Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
       }

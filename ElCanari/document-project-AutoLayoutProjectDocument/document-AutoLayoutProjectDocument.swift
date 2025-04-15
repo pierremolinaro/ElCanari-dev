@@ -3891,6 +3891,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
           .bind_value (self.rootObject.mAllowViaAtSMD_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
+      _ = vStackView_view.appendSeparator ()
       do{
         let vStackView_view_view = AutoLayoutTabView (size: .small)
           .addTab (title: "Basic", tooltip: "Autorouter Basic Configuration", contentView: { () -> NSView in let contentView = AutoLayoutVerticalStackView ()
@@ -3984,6 +3985,7 @@ do{
           .bind_selectedTab (self.rootObject.mAutorouterInterfaceMode_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
+      _ = vStackView_view.appendSeparator ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Tracks", bold: true, size: .small, alignment: .left)
         _ = vStackView_view .appendView (vStackView_view_view)
@@ -3991,7 +3993,7 @@ do{
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Top Layer Tracks", bold: false, size: .small, alignment: .right)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Top Layer", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -4005,7 +4007,7 @@ do{
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 1 Layer Tracks", bold: false, size: .small, alignment: .right)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 1 Layer", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -4019,7 +4021,7 @@ do{
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 2 Layer Tracks", bold: false, size: .small, alignment: .right)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 2 Layer", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -4033,7 +4035,7 @@ do{
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 3 Layer Tracks", bold: false, size: .small, alignment: .right)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 3 Layer", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -4047,7 +4049,7 @@ do{
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 4 Layer Tracks", bold: false, size: .small, alignment: .right)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Inner 4 Layer", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
@@ -4061,7 +4063,7 @@ do{
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Back Layer Tracks", bold: false, size: .small, alignment: .right)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Back Layer", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
