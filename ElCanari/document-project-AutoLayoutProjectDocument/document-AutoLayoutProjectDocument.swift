@@ -4255,6 +4255,12 @@ do{
       }
       _ = vStackView .appendView (vStackView_view)
     }
+    _ = vStackView.appendSeparator ()
+    do{
+      let vStackView_view = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
+        .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
+      _ = vStackView .appendView (vStackView_view)
+    }
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
@@ -4273,50 +4279,6 @@ do{
       let vStackView_view = AutoLayoutCheckbox (title: "Expose Copper (as Pad)", size: .small)
         .bind_value (self.boardTrackSelectionController.mAddedToSolderMask_property)
         .bind_enabled (.prop (self.boardTrackSelectionController.trackIsOnFrontOrBackLayer_property))
-      _ = vStackView .appendView (vStackView_view)
-    }
-    do{
-      let vStackView_view = AutoLayoutCheckbox (title: "Is Preserved by Auto Router", size: .small)
-        .bind_value (self.boardTrackSelectionController.mIsPreservedByAutoRouter_property)
-      _ = vStackView .appendView (vStackView_view)
-    }
-    _ = vStackView.appendSeparator ()
-    do{
-      let vStackView_view = AutoLayoutCanariTrackLockView ()
-        .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
-        .bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property)
-        .bind_manualLockP2 (self.boardTrackSelectionController.mManualLockP2_property)
-        .bind_p1ConnectedToSomePad (self.boardTrackSelectionController.p1ConnectedToSomePad_property)
-        .bind_p2ConnectedToSomePad (self.boardTrackSelectionController.p2ConnectedToSomePad_property)
-      _ = vStackView .appendView (vStackView_view)
-    }
-    do{
-      let vStackView_view = AutoLayoutHorizontalStackView ()
-      do{
-        let vStackView_view_view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
-      _ = vStackView_view.appendGutter ()
-      do{
-        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
-          .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
-      _ = vStackView .appendView (vStackView_view)
-    }
-    do{
-      let vStackView_view = AutoLayoutHorizontalStackView ()
-      do{
-        let vStackView_view_view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
-      _ = vStackView_view.appendGutter ()
-      do{
-        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 80, size: .regular)
-          .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
-          .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendSeparator ()
@@ -4441,6 +4403,45 @@ do{
         let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.boardTrackSelectionController.computedP2Y_property, self.boardTrackSelectionController.mP2YUnit_property)
           .bind_enabled (.prop (self.boardTrackSelectionController.p2CanMove_property))
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendSeparator ()
+    do{
+      let vStackView_view = AutoLayoutCanariTrackLockView ()
+        .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
+        .bind_manualLockP1 (self.boardTrackSelectionController.mManualLockP1_property)
+        .bind_manualLockP2 (self.boardTrackSelectionController.mManualLockP2_property)
+        .bind_p1ConnectedToSomePad (self.boardTrackSelectionController.p1ConnectedToSomePad_property)
+        .bind_p2ConnectedToSomePad (self.boardTrackSelectionController.p2ConnectedToSomePad_property)
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "On Knob Dragging", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutEnumPopUpButton (titles: TrackLockDirection.popupTitles (), size: .small)
+          .bind_selectedIndex (self.boardTrackSelectionController.mDirectionLockOnKnobDragging_property)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView .appendView (vStackView_view)
+    }
+    do{
+      let vStackView_view = AutoLayoutHorizontalStackView ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Track Angle", bold: false, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      _ = vStackView_view.appendGutter ()
+      do{
+        let vStackView_view_view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 80, size: .regular)
+          .bind_angle (self.boardTrackSelectionController.trackDirectionInDegrees_property)
+          .bind_enabled (.prop (self.boardTrackSelectionController.trackCanRotate_property))
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       _ = vStackView .appendView (vStackView_view)

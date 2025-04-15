@@ -1906,6 +1906,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $title #boardTrackSelectionController.netClassName
       }
     }
+    separator
+    Checkbox (title: "Is Preserved by Auto Router", size : .small) {
+      $value #boardTrackSelectionController.mIsPreservedByAutoRouter
+    }
     hStack {
       StaticLabel (title: "Side", bold: no, size: .small, alignment: .left)
       gutter
@@ -1916,32 +1920,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     Checkbox (title: "Expose Copper (as Pad)", size : .small) {
       $enabled #boardTrackSelectionController.trackIsOnFrontOrBackLayer
       $value #boardTrackSelectionController.mAddedToSolderMask
-    }
-    Checkbox (title: "Is Preserved by Auto Router", size : .small) {
-      $value #boardTrackSelectionController.mIsPreservedByAutoRouter
-    }
-    separator 
-    CanariTrackLockView {
-      $angle #boardTrackSelectionController.trackDirectionInDegrees
-      $manualLockP1 #boardTrackSelectionController.mManualLockP1
-      $manualLockP2 #boardTrackSelectionController.mManualLockP2
-      $p1ConnectedToSomePad #boardTrackSelectionController.p1ConnectedToSomePad
-      $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
-    }
-    hStack {
-      StaticLabel (title: "On Knob Dragging", bold: no, size: .small, alignment: .left)
-      gutter
-      EnumPopUpButton (titles: enum TrackLockDirection.popupTitles, size: .small) {
-        $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
-      }
-    }
-    hStack {
-      StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left)
-      gutter
-      CanariAngleFieldAndSlider (fieldMinWidth: 80, size: .regular) {
-        $angle #boardTrackSelectionController.trackDirectionInDegrees
-        $enabled #boardTrackSelectionController.trackCanRotate
-      }
     }
     separator
     CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
@@ -2010,6 +1988,29 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       CanariDimensionAndPopUp (size: .small) {
         $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
         $enabled #boardTrackSelectionController.p2CanMove
+      }
+    }
+    separator 
+    CanariTrackLockView {
+      $angle #boardTrackSelectionController.trackDirectionInDegrees
+      $manualLockP1 #boardTrackSelectionController.mManualLockP1
+      $manualLockP2 #boardTrackSelectionController.mManualLockP2
+      $p1ConnectedToSomePad #boardTrackSelectionController.p1ConnectedToSomePad
+      $p2ConnectedToSomePad #boardTrackSelectionController.p2ConnectedToSomePad
+    }
+    hStack {
+      StaticLabel (title: "On Knob Dragging", bold: no, size: .small, alignment: .left)
+      gutter
+      EnumPopUpButton (titles: enum TrackLockDirection.popupTitles, size: .small) {
+        $selectedIndex #boardTrackSelectionController.mDirectionLockOnKnobDragging
+      }
+    }
+    hStack {
+      StaticLabel (title: "Track Angle", bold: no, size: .small, alignment: .left)
+      gutter
+      CanariAngleFieldAndSlider (fieldMinWidth: 80, size: .regular) {
+        $angle #boardTrackSelectionController.trackDirectionInDegrees
+        $enabled #boardTrackSelectionController.trackCanRotate
       }
     }
     space
