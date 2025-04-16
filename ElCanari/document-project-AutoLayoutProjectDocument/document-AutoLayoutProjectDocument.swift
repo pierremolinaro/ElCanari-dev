@@ -3985,6 +3985,14 @@ do{
           .bind_selectedTab (self.rootObject.mAutorouterInterfaceMode_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
+      do{
+        let vStackView_view_view = AutoLayoutButton (title: "Design Rule Check", size: .small)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
+          )
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
       _ = vStackView_view.appendSeparator ()
       do{
         let vStackView_view_view = AutoLayoutStaticLabel (title: "Tracks", bold: true, size: .small, alignment: .left)
@@ -4120,14 +4128,6 @@ do{
             .bind_title (self.rootObject.viaCountString_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
-      do{
-        let vStackView_view_view = AutoLayoutButton (title: "Design Rule Check", size: .small)
-          .bind_run (
-            target: self,
-            selector: #selector (AutoLayoutProjectDocument.performERCCheckingAction (_:))
-          )
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       _ = vStackView.appendView (vStackView_view)

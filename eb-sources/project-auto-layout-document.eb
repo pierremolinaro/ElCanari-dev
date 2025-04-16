@@ -1773,6 +1773,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         )
         $selectedTab root.mAutorouterInterfaceMode
       }
+      Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
       separator
       StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
       hStack {
@@ -1822,7 +1823,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         gutter
         Label (bold: yes, size : .small) { $title root.viaCountString }
       }
-      Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
     }
   }
   
