@@ -49,7 +49,7 @@ final class GeometricRect {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mCircumRadius : CGFloat? = nil
-  var circumRadius : CGFloat {
+    var circumRadius : CGFloat {
     if let r = self.mCircumRadius {
       return r
     }else{

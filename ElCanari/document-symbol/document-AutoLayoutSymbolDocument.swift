@@ -549,12 +549,12 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let vStackView_view_view = AutoLayoutStaticLabel (title: "Pin Name", bold: false, size: .small, alignment: .center)
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Text", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
+        let vStackView_view_view = AutoLayoutTextField (minWidth: 160, size: .small)
           .expandableWidth ()
           .bind_value (self.mSymbolTextSelectionController.text_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
@@ -564,7 +564,7 @@ import AppKit
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{
-        let vStackView_view_view = AutoLayoutStaticLabel (title: "Alignment", bold: false, size: .small, alignment: .center)
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Alignment", bold: false, size: .small, alignment: .right)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       _ = vStackView_view.appendGutter ()

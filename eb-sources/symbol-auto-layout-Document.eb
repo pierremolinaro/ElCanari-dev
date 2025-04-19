@@ -161,14 +161,14 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
   stackView \SymbolTextInspectorView vStack {
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
     hStack { 
-      StaticLabel (title: "Pin Name", bold: no, size: .small, alignment: .center)
+      StaticLabel (title: "Text", bold: no, size: .small, alignment: .right)
       gutter
-      TextField (minWidth: 56, size: .small) {
-         expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes)
+      TextField (minWidth: 160, size: .small) {
+        expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes)
       }
     }
     hStack { 
-      StaticLabel (title: "Alignment", bold: no, size: .small, alignment: .center)
+      StaticLabel (title: "Alignment", bold: no, size: .small, alignment: .right)
       gutter
       CanariHorizontalAlignmentSegmentedControl (size: .small) {
          expandableWidth () $alignment #mSymbolTextSelectionController.horizontalAlignment
