@@ -5483,6 +5483,7 @@
 				CF7BCE222AAF1A5000318271 /* Application — Library Check */,
 				CF730B4221F87D7B00944B3E /* Application — Library Update */,
 				CF34A0AD2200CFC900DEA8EF /* Application — Library Upload */,
+				CF7DD7E02DB63F9500AD7BE0 /* Application — Open in Library */,
 				CF62175227A19E1F00D02368 /* Application — Preferences */,
 				CF7EF0972C728894009FB0D4 /* Auto Layout — Base */,
 				CFB4C02D279465B000C509A9 /* Auto Layout — Button */,
@@ -6133,12 +6134,6 @@
 				CFA085E921A17A6B00DFD00B /* Info-Release.plist */,
 				CF861AA21B3F04460006BE63 /* library-utilities.swift */,
 				CF6172591B3C4B4300F3CA82 /* MainMenu.xib */,
-				CF7F64E322F0336B00180A46 /* open-artwork-in-library.swift */,
-				CF11AB9C225A211F0092A524 /* open-device-in-library.swift */,
-				CFD733892258B8D6009B2614 /* open-font-in-library.swift */,
-				CF88969E21E13334007A0F1C /* open-in-library.swift */,
-				CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */,
-				CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */,
 				CF5E89C927D409AA004DAC18 /* Preferences_SuperClass-app-update.swift */,
 				CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */,
 				CFA430C9229AED06000AA8C8 /* tomany-CanariLibraryEntry.swift */,
@@ -6511,6 +6506,20 @@
 			);
 			name = "Application — Library Check";
 			path = "ElCanari/application-library-check";
+			sourceTree = "<group>";
+		};
+		CF7DD7E02DB63F9500AD7BE0 /* Application — Open in Library */ = {
+			isa = PBXGroup;
+			children = (
+				CF7F64E322F0336B00180A46 /* open-artwork-in-library.swift */,
+				CF11AB9C225A211F0092A524 /* open-device-in-library.swift */,
+				CFD733892258B8D6009B2614 /* open-font-in-library.swift */,
+				CF88969E21E13334007A0F1C /* open-in-library.swift */,
+				CF7C0A0021E4DAC900FFB7A2 /* open-package-in-library.swift */,
+				CF7C09FD21E4BA8C00FFB7A2 /* open-symbol-in-library.swift */,
+			);
+			name = "Application — Open in Library";
+			path = "ElCanari/application-open-in-library";
 			sourceTree = "<group>";
 		};
 		CF7EF0972C728894009FB0D4 /* Auto Layout — Base */ = {

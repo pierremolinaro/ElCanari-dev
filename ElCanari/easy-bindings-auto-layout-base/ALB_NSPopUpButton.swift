@@ -95,6 +95,27 @@ class ALB_NSPopUpButton : NSPopUpButton {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Closure action
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private var mClosureAction : Optional < () -> Void > = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
+    self.mClosureAction = inClosureAction
+    self.target = self
+    self.action = #selector (Self.runClosureAction (_:))
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+   @objc private final func runClosureAction (_ inUnusedSender : Any?) {
+     self.mClosureAction? ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

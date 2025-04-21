@@ -27,20 +27,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.10"
+let VERSION_CANARI = "1.8.11"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
   "Construit avec Xcode 16.3"
 ]
 let BUGFIXES : [String] = [
-  "Projet et Merger : correction de la génération des pistes non couvertes par le vernis"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Projet : contrôle de l'autorisation de pads à l'intérieur d'un rectangle de restriction",
-  "Projet : les pistes préservées par l'autorouteur conservent l'exposition du cuivre et la forme des extrémités",
-  "Projet : les rectangles de restriction permettent d'indiquer l'exposition du cuivre des pistes et d'imposer des terminaisons rectangulaires des pistes"
+  "Devices : ajout de « catégories » pour faciliter leur recherche"
 ]
 
 //------------------------------------------------------------------------------

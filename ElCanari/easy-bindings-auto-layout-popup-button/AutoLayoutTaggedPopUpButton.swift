@@ -67,22 +67,22 @@ final class AutoLayoutTaggedPopUpButton : ALB_NSPopUpButton {
   //  Closure action
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private var mClosureAction : Optional < () -> Void > = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
-    self.mClosureAction = inClosureAction
-    self.target = self
-    self.action = #selector (Self.runClosureAction (_:))
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-   @objc private final func runClosureAction (_ _ : Any?) {
-     self.mClosureAction? ()
-  }
+//  final private var mClosureAction : Optional < () -> Void > = nil
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  final func setClosureAction (_ inClosureAction : @escaping () -> Void) -> Self {
+//    self.mClosureAction = inClosureAction
+//    self.target = self
+//    self.action = #selector (Self.runClosureAction (_:))
+//    return self
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//   @objc private final func runClosureAction (_ _ : Any?) {
+//     self.mClosureAction? ()
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
