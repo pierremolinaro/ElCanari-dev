@@ -2,7 +2,9 @@
 //     D E V I C E    D O C U M E N T
 //-----------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentMainView {
+autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClass
+  root DeviceRoot
+  stackView \DocumentMainView {
 
 //·············································································
 //   MAIN VIEW
@@ -18,7 +20,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
     newView assignmentsPage = \AssignmentsPage ()
     newView libraryPage = \LibraryPage ()
     newView infosPage = \InfosPage ()
-     hStack set (margins: .regular) {
+    hStack set (margins: .regular) {
       vStack set (spacing: .zero) {
         SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Description", tooltip: "Device Description", pageView: view descriptionPage)
@@ -89,6 +91,15 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
       }
       divider
       vStack {
+        hStack {
+          StaticLabel (title: "Category", bold: no, size : .regular, alignment: .center) {
+            notExpandableWidth ()
+          }
+          ComboBox (width: 200, size : .regular) [configurator categoryComboBox] {
+            expandableWidth ()
+            $value root.mCategory (sendContinously: yes)
+          }
+        }
         StaticLabel (title: "PDF Documentation", bold: no, size : .regular, alignment: .center)
         TableView (size : .regular, addControlButtons: no) [configurator documentationTableView] {
           expandableWidth ()

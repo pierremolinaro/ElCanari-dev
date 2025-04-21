@@ -20,6 +20,7 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
       oldValue.mSelectedSymbolInspectorIndex_property.stopsBeingObserved (by: self.mSelectedSymbolInspectorIndex_property) // Stored property
       oldValue.mSelectedPackageInspectorIndex_property.stopsBeingObserved (by: self.mSelectedPackageInspectorIndex_property) // Stored property
       oldValue.mTitle_property.stopsBeingObserved (by: self.mTitle_property) // Stored property
+      oldValue.mCategory_property.stopsBeingObserved (by: self.mCategory_property) // Stored property
       oldValue.mImageData_property.stopsBeingObserved (by: self.mImageData_property) // Stored property
       oldValue.mPrefix_property.stopsBeingObserved (by: self.mPrefix_property) // Stored property
       oldValue.mComments_property.stopsBeingObserved (by: self.mComments_property) // Stored property
@@ -64,6 +65,7 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
       newValue.mSelectedSymbolInspectorIndex_property.startsBeingObserved (by: self.mSelectedSymbolInspectorIndex_property) // Stored property
       newValue.mSelectedPackageInspectorIndex_property.startsBeingObserved (by: self.mSelectedPackageInspectorIndex_property) // Stored property
       newValue.mTitle_property.startsBeingObserved (by: self.mTitle_property) // Stored property
+      newValue.mCategory_property.startsBeingObserved (by: self.mCategory_property) // Stored property
       newValue.mImageData_property.startsBeingObserved (by: self.mImageData_property) // Stored property
       newValue.mPrefix_property.startsBeingObserved (by: self.mPrefix_property) // Stored property
       newValue.mComments_property.startsBeingObserved (by: self.mComments_property) // Stored property
@@ -127,6 +129,12 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let mTitle_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mCategory' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mCategory_property = EBTransientProperty <String?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mImageData' stored property
@@ -411,6 +419,10 @@ class ReadOnlyObject_DeviceRoot : EBReadOnlyAbstractObjectProperty <DeviceRoot> 
   //--- Configure mTitle simple stored property
     self.mTitle_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mTitle_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mCategory simple stored property
+    self.mCategory_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mCategory_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mImageData simple stored property
     self.mImageData_property.mReadModelFunction = { [weak self] in

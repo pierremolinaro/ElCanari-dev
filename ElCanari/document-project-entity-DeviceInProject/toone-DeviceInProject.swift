@@ -17,6 +17,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
       oldValue.mDeviceName_property.stopsBeingObserved (by: self.mDeviceName_property) // Stored property
+      oldValue.mCategory_property.stopsBeingObserved (by: self.mCategory_property) // Stored property
       oldValue.mPrefix_property.stopsBeingObserved (by: self.mPrefix_property) // Stored property
       oldValue.mDeviceVersion_property.stopsBeingObserved (by: self.mDeviceVersion_property) // Stored property
       oldValue.mDeviceFileData_property.stopsBeingObserved (by: self.mDeviceFileData_property) // Stored property
@@ -48,6 +49,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
       newValue.mDeviceName_property.startsBeingObserved (by: self.mDeviceName_property) // Stored property
+      newValue.mCategory_property.startsBeingObserved (by: self.mCategory_property) // Stored property
       newValue.mPrefix_property.startsBeingObserved (by: self.mPrefix_property) // Stored property
       newValue.mDeviceVersion_property.startsBeingObserved (by: self.mDeviceVersion_property) // Stored property
       newValue.mDeviceFileData_property.startsBeingObserved (by: self.mDeviceFileData_property) // Stored property
@@ -83,6 +85,12 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let mDeviceName_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mCategory' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mCategory_property = EBTransientProperty <String?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mPrefix' stored property
@@ -287,6 +295,10 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
   //--- Configure mDeviceName simple stored property
     self.mDeviceName_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mDeviceName_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mCategory simple stored property
+    self.mCategory_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mCategory_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mPrefix simple stored property
     self.mPrefix_property.mReadModelFunction = { [weak self] in

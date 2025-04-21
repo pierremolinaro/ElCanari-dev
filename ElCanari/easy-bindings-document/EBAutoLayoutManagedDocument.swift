@@ -90,41 +90,47 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingEntered (_ _ : any NSDraggingInfo, _ inScrollView : NSScrollView) -> NSDragOperation {
+  func draggingEntered (_ inDraggingInfo : any NSDraggingInfo,
+                        _ inScrollView : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingEntered")
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingUpdated (_ _ : any NSDraggingInfo, _ inScrollView : NSScrollView) -> NSDragOperation {
+  func draggingUpdated (_ inDraggingInfo : any NSDraggingInfo,
+                        _ inScrollView : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingUpdated")
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingExited (_ _ : (any NSDraggingInfo)?, _ inScrollView : NSScrollView) {
+  func draggingExited (_ inDraggingInfo : (any NSDraggingInfo)?,
+                       _ inScrollView : NSScrollView) {
     // NSLog ("draggingExited")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func prepareForDragOperation (_ _ : any NSDraggingInfo, _ inScrollView : NSScrollView) -> Bool {
+  func prepareForDragOperation (_ inDraggingInfo : any NSDraggingInfo,
+                                _ inScrollView : NSScrollView) -> Bool {
     // NSLog ("prepareForDragOperation")
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performDragOperation (_ sender : any NSDraggingInfo, _ inScrollView : NSScrollView) -> Bool {
+  func performDragOperation (_ inDraggingInfo : any NSDraggingInfo,
+                             _ inScrollView : NSScrollView) -> Bool {
     // NSLog ("performDragOperation")
     return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func concludeDragOperation (_ _ : (any NSDraggingInfo)?, _ inScrollView : NSScrollView) {
+  func concludeDragOperation (_ inDraggingInfo : (any NSDraggingInfo)?,
+                              _ inScrollView : NSScrollView) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -253,7 +259,7 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
       //--- Store metadata dictionary
         self.mMetadataDictionary = documentData.documentMetadataDictionary
       //--- Read version from file
-        self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
+        self.mVersion.setProp (self.readVersionFromMetadataDictionary (self.mMetadataDictionary))
       //--- Store root object
         self.mRootObject = documentData.documentRootObject
       //---
@@ -506,7 +512,11 @@ final class EBVersionShouldChangeObserver : EBTransientProperty <Bool>, EBSignat
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clearStartUpSignature () {
-    self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
+    self.mUndoManager?.registerUndo (
+      withTarget: self,
+      selector: #selector (Self.performUndo(_:)),
+      object: NSNumber (value: mSignatureAtStartUp)
+    )
     self.mSignatureAtStartUp = 0
     self.observedObjectDidChange ()
   }
@@ -571,7 +581,5 @@ final class EBSignatureObserverEvent : EBTransientProperty <UInt32>, EBSignature
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
-
-//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------

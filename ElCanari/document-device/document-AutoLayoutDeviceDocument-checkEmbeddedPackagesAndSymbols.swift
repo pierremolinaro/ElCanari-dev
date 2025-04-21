@@ -17,6 +17,10 @@ extension AutoLayoutDeviceDocument {
   func triggerStandAlonePropertyComputationForDeviceDocument () {
     self.checkEmbeddedPackages ()
     self.checkEmbeddedSymbols ()
+
+    if let deviceCategorySet = gPreferences?.deviceCategorySet {
+      self.mCategoryComboBox?.setItems (Array (deviceCategorySet).sorted ())
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

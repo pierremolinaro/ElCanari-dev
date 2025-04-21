@@ -4,6 +4,7 @@
 
 handlingOpposite entity DeviceInProject {
   property @generateDirectAccess String mDeviceName default "" ;
+  property @generateDirectAccess String mCategory default "" ;
   property @generateDirectAccess String mPrefix default "" ;
   property @generateDirectAccess Int mDeviceVersion default 0 ;
   property @generateDirectAccess Data mDeviceFileData default empty ;

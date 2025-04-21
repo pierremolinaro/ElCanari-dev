@@ -16,11 +16,14 @@ class ALB_NSComboBox : NSComboBox {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init () {
+  init (size inSize : EBControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
-//    self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.controlSize = inSize.cocoaControlSize
+    let size = NSFont.systemFontSize (for: self.controlSize)
+    self.font = NSFont.systemFont (ofSize: size)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,6 +67,16 @@ class ALB_NSComboBox : NSComboBox {
   override func removeFromSuperview () {
     buildResponderKeyChainForWindowThatContainsView (self)
     super.removeFromSuperview ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func setItems (_ inItemArray : [String]) {
+    self.removeAllItems ()
+    for item in inItemArray {
+      self.addItem (withObjectValue: item)
+    }
+    self.numberOfVisibleItems = inItemArray.count
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

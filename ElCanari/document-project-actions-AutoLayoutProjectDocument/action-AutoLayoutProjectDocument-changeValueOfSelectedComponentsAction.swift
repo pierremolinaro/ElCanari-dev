@@ -44,7 +44,7 @@ extension AutoLayoutProjectDocument {
             _ = gridView.append (left: left, right: right)
           }
         //---
-          let comboBox = AutoLayoutComboBox (width: 120).expandableWidth ()
+          let comboBox = AutoLayoutComboBox (width: 120, size: .regular).expandableWidth ()
           do{
             let left = AutoLayoutStaticLabel (title: "New Value", bold: false, size: .regular, alignment: .center)
             _ = gridView.append (left: left, right: comboBox)

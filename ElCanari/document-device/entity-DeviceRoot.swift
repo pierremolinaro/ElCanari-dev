@@ -35,6 +35,12 @@ final class DeviceRoot : EBManagedObject {
   final let mTitle_property : EBStoredProperty_String
 
   //································································································
+  //   Atomic property: mCategory
+  //································································································
+
+  final let mCategory_property : EBStoredProperty_String
+
+  //································································································
   //   Atomic property: mImageData
   //································································································
 
@@ -313,6 +319,7 @@ final class DeviceRoot : EBManagedObject {
     self.mSelectedSymbolInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedSymbolInspectorIndex")
     self.mSelectedPackageInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedPackageInspectorIndex")
     self.mTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mTitle")
+    self.mCategory_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mCategory")
     self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mImageData")
     self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPrefix")
     self.mComments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComments")
@@ -608,6 +615,7 @@ final class DeviceRoot : EBManagedObject {
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
   //--- Register properties for handling signature
+    self.mCategory_property.setSignatureObserver (observer: self)
     self.mComments_property.setSignatureObserver (observer: self)
     self.mDocs_property.setSignatureObserver (observer: self)
     self.mImageData_property.setSignatureObserver (observer: self)
@@ -631,6 +639,7 @@ final class DeviceRoot : EBManagedObject {
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulate (u32: self.mCategory_property.signature ())
     crc.accumulate (u32: self.mComments_property.signature ())
     crc.accumulate (u32: self.mDocs_property.signature ())
     crc.accumulate (u32: self.mImageData_property.signature ())

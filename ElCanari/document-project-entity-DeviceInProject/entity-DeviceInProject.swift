@@ -12,6 +12,12 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor protocol DeviceInProject_mCategory : AnyObject {
+  var mCategory : String { get }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor protocol DeviceInProject_mPrefix : AnyObject {
   var mPrefix : String { get }
 }
@@ -106,6 +112,7 @@ import AppKit
 
 final class DeviceInProject : EBManagedObject,
          DeviceInProject_mDeviceName,
+         DeviceInProject_mCategory,
          DeviceInProject_mPrefix,
          DeviceInProject_mDeviceVersion,
          DeviceInProject_mDeviceFileData,
@@ -133,6 +140,19 @@ final class DeviceInProject : EBManagedObject,
   final var mDeviceName : String {
     get { return self.mDeviceName_property.propval }
     set { self.mDeviceName_property.setProp (newValue) }
+  }
+
+  //································································································
+  //   Atomic property: mCategory
+  //································································································
+
+  final let mCategory_property : EBStoredProperty_String
+
+  //································································································
+
+  final var mCategory : String {
+    get { return self.mCategory_property.propval }
+    set { self.mCategory_property.setProp (newValue) }
   }
 
   //································································································
@@ -377,6 +397,7 @@ final class DeviceInProject : EBManagedObject,
 
   required init (_ inUndoManager : UndoManager?) {
     self.mDeviceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDeviceName")
+    self.mCategory_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mCategory")
     self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPrefix")
     self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDeviceVersion")
     self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mDeviceFileData")

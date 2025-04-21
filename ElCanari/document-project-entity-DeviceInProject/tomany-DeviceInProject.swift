@@ -20,6 +20,9 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
       if let relay = self.mObserversOf_mDeviceName { // Stored property
         managedObject.mDeviceName_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_mCategory { // Stored property
+        managedObject.mCategory_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_mPrefix { // Stored property
         managedObject.mPrefix_property.stopsBeingObserved (by: relay)
       }
@@ -70,6 +73,9 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
     for managedObject in inAddedSet.values {
       if let relay = self.mObserversOf_mDeviceName { // Stored property
         managedObject.mDeviceName_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_mCategory { // Stored property
+        managedObject.mCategory_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mPrefix { // Stored property
         managedObject.mPrefix_property.startsBeingObserved (by: relay)
@@ -146,6 +152,35 @@ class ReadOnlyArrayOf_DeviceInProject : EBReadOnlyAbstractArrayProperty <DeviceI
 
   final func toMany_mDeviceName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_mDeviceName?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mCategory' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_mCategory : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mCategory_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_mCategory {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.mCategory_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_mCategory = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_mCategory_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mCategory?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

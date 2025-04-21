@@ -14,12 +14,13 @@ let DEVICE_VERSION_METADATA_DICTIONARY_KEY = "DeviceVersion"
 let DEVICE_COMMENT_METADATA_DICTIONARY_KEY = "DeviceComment"
 let DEVICE_SYMBOL_METADATA_DICTIONARY_KEY  = "DeviceSymbols"
 let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
+let DEVICE_CATEGORY_KEY = "Category"
 
 //--------------------------------------------------------------------------------------------------
 
 @objc(AutoLayoutDeviceDocumentSubClass) final class AutoLayoutDeviceDocumentSubClass : AutoLayoutDeviceDocument {
 
- // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
+ //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func ebBuildUserInterface () {
     super.ebBuildUserInterface ()
@@ -44,30 +45,33 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
+  override func saveMetadataDictionary (version inVersion : Int,
+                                        metadataDictionary ioMetadataDictionary : inout [String : Any]) {
   //--- Version
-    metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] = version
+    ioMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] = inVersion
   //--- Comments
-    metadataDictionary [DEVICE_COMMENT_METADATA_DICTIONARY_KEY] = self.rootObject.mComments
+    ioMetadataDictionary [DEVICE_COMMENT_METADATA_DICTIONARY_KEY] = self.rootObject.mComments
   //--- Packages
     var packageDictionary = [String : Int] ()
     for package in self.rootObject.mPackages.values.sorted (by: { $0.mName < $1.mName }) {
       packageDictionary [package.mName] = package.mVersion
     }
-    metadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY] = packageDictionary
+    ioMetadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY] = packageDictionary
   //--- Symbol Types
     var symbolDictionary = [String : Int] ()
     for symbolType in self.rootObject.mSymbolTypes.values.sorted (by: { $0.mTypeName < $1.mTypeName }) {
       symbolDictionary [symbolType.mTypeName] = symbolType.mVersion
     }
-    metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary
+    ioMetadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary
+  //--- Category
+    ioMetadataDictionary [DEVICE_CATEGORY_KEY] = self.rootObject.mCategory_property.propval
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
+  override func readVersionFromMetadataDictionary (_ inMetadataDictionary : [String : Any]) -> Int {
     var result = 0
-    if let versionNumber = metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int {
+    if let versionNumber = inMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int {
       result = versionNumber
     }
     return result

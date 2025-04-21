@@ -60,6 +60,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
         inModel.toMany_deviceComponentCountString_StartsBeingObserved (by: observer)
+        inModel.toMany_mCategory_StartsBeingObserved (by: observer)
         inModel.toMany_mDeviceName_StartsBeingObserved (by: observer)
         inModel.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: observer)
         inModel.toMany_sizeString_StartsBeingObserved (by: observer)
@@ -67,6 +68,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_deviceComponentCountString_StopsBeingObserved (by: observer)
+        inModel.toMany_mCategory_StopsBeingObserved (by: observer)
         inModel.toMany_mDeviceName_StopsBeingObserved (by: observer)
         inModel.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: observer)
         inModel.toMany_sizeString_StopsBeingObserved (by: observer)
@@ -150,6 +152,8 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
     self.sortedArray_property.startsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mDeviceName' column
     self.sortedArray_property.toMany_mDeviceName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'mCategory' column
+    self.sortedArray_property.toMany_mCategory_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'fileSystemStatusImage' column
     self.sortedArray_property.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mFileSystemStatusMessage' column
@@ -200,6 +204,19 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
       title: "Name",
       minWidth: 200,
       maxWidth: 4000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+  //--- Configure 'mCategory' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mCategory },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.mCategory_property, ascending, right.mCategory_property) })
+      },
+      title: "Category",
+      minWidth: 100,
+      maxWidth: 200,
       headerAlignment: .left,
       contentAlignment: .left
     )

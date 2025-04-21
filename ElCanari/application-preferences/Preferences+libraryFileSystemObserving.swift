@@ -116,6 +116,7 @@ func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
 
 @MainActor fileprivate func runCallbackForFSEvent () {
   gPreferences?.updateLibrariesUserInterfaceStatus ()
+  gPreferences?.checkFileSystemLibrary ()
   for document in NSDocumentController.shared.documents {
     if let deviceDocument = document as? AutoLayoutDeviceDocument {
       deviceDocument.triggerStandAlonePropertyComputationForDeviceDocument ()
@@ -125,7 +126,6 @@ func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
       mergerDocument.triggerStandAlonePropertyComputationForMerger ()
     }
   }
-  gPreferences?.checkFileSystemLibrary ()
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -9,8 +9,11 @@ handlingOpposite entity DeviceRoot {
 //--- Title
   property @signature String mTitle default "" ;
 
+//--- Category
+  property @signature String mCategory default "" ;
+
 //--- Image
-  property @generateDirectRead @signature Data mImageData default empty ;
+  property @signature @generateDirectRead Data mImageData default empty ;
   transient Bool imageIsValid dependsFrom self.mImageData ;
 
 //--- Documentation
@@ -20,7 +23,7 @@ handlingOpposite entity DeviceRoot {
   property @signature @generateDirectRead String mPrefix default "" ;
 
 //--- Comment
-  property @generateDirectRead @signature String mComments default "" ;
+  property @signature @generateDirectRead String mComments default "" ;
 
 //--- Issues
   transient CanariIssueArray issues dependsFrom

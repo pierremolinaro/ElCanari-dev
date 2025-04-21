@@ -41,6 +41,17 @@ class ALB_NSButton : NSButton {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  setUseBoldFont
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func setUseBoldFont (_ inFlag : Bool) -> Self {
+    self.font = inFlag
+     ? NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+     : NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Closure action
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

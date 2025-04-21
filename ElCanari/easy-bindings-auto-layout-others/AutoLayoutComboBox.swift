@@ -20,12 +20,11 @@ final class AutoLayoutComboBox : ALB_NSComboBox, NSComboBoxDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (width inWidth : Int) {
+  init (width inWidth : Int, size inSize : EBControlSize) {
     self.mWidth = CGFloat (inWidth)
-    super.init ()
+    super.init (size: inSize)
 
-    self.delegate = self
-//    self.isContinuous = true
+    self.delegate = self // NSComboBoxDelegate
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,28 +52,71 @@ final class AutoLayoutComboBox : ALB_NSComboBox, NSComboBoxDelegate {
 
   override func textDidChange (_ inNotification : Notification) {
     super.textDidChange (inNotification)
-    self.mTextDidChange? (self)
+    self.runAction ()
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private func runAction () {
+    self.mTextDidChange? (self)
+    self.mValueController?.updateModel (withValue: self.stringValue)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // NSComboBoxDelegate functions
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func comboBoxSelectionDidChange (_ inNotification : Notification) {
-    DispatchQueue.main.async { self.mTextDidChange? (self) }
+    DispatchQueue.main.async { self.runAction () }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func controlTextDidChange (_ inNotification : Notification) {
-    self.mTextDidChange? (self)
+    self.runAction ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func controlTextDidEndEditing (_ notification : Notification) {
-    self.mTextDidChange? (self)
+    self.runAction ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  value binding
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate func updateOutlet (_ inModel : EBObservableProperty <String>) {
+    switch inModel.selection {
+    case .empty :
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
+      self.enable (fromValueBinding: false, self.enabledBindingController ())
+    case .multiple :
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
+    case .single (let propertyValue) :
+      self.placeholderString = nil
+      self.stringValue = propertyValue
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
+    }
+    self.invalidateIntrinsicContentSize ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func bind_value (_ inModel : EBObservableMutableProperty <String>, sendContinously inContinuous : Bool) -> Self {
+    self.isContinuous = inContinuous
+    self.mValueController = EBGenericReadWritePropertyController <String> (
+      observedObject: inModel,
+      callBack: { [weak self] in self?.updateOutlet (inModel) }
+    )
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

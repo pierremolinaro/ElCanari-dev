@@ -22,7 +22,16 @@ extension AutoLayoutProjectDocument {
         let newDevice = DeviceInProject (self.undoManager)
         device = newDevice
         newDevice.mDeviceName = inName
-        self.performUpdateDevice (newDevice, from: deviceRoot, version, inData)
+        if let categoryName = documentData.documentMetadataDictionary [DEVICE_CATEGORY_KEY] as? String {
+          newDevice.mCategory = categoryName
+        }
+        self.performUpdateDevice (
+          newDevice,
+          from: deviceRoot,
+          version: version,
+          category: newDevice.mCategory,
+          data: inData
+        )
       //--- Add to device list
         self.rootObject.mDevices.append (newDevice)
       }
@@ -103,9 +112,16 @@ extension AutoLayoutProjectDocument {
             if let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
                let deviceRoot = documentData.documentRootObject as? DeviceRoot {
               if deviceInProject.mDeviceVersion < version {
-                let errorMessage = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
+                let category = documentData.documentMetadataDictionary [DEVICE_CATEGORY_KEY] as? String ?? ""
+                let errorMessage = self.testAndUpdateDevice (
+                  deviceInProject,
+                  from: deviceRoot,
+                  version: version,
+                  category: category,
+                  data: data
+                )
                 if errorMessage != "" {
-                 ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
+                  ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
                 }
               }
             }else{
@@ -130,13 +146,20 @@ extension AutoLayoutProjectDocument {
 
   func testAndUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
                             from inCandidateDeviceRoot : DeviceRoot,
-                            _ inVersion : Int,
-                            _ inData : Data) -> String { // Return "" if new device is compatible
+                            version inVersion : Int,
+                            category inCategory : String,
+                            data inData : Data) -> String { // Return "" if new device is compatible
    var errorMessage = self.checkCandidateDevicePads (inCurrentDeviceInProject, inCandidateDeviceRoot)
    errorMessage += self.checkCandidateDeviceSymbolTypes (inCurrentDeviceInProject, inCandidateDeviceRoot)
    errorMessage += self.checkCandidateDeviceSymbolInstances (inCurrentDeviceInProject, inCandidateDeviceRoot)
    if errorMessage.isEmpty {
-      self.performUpdateDevice (inCurrentDeviceInProject, from: inCandidateDeviceRoot, inVersion, inData)
+      self.performUpdateDevice (
+        inCurrentDeviceInProject,
+        from: inCandidateDeviceRoot,
+        version: inVersion,
+        category: inCategory,
+        data: inData
+      )
     }
     return errorMessage
   }
@@ -293,17 +316,15 @@ extension AutoLayoutProjectDocument {
 
   func performUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
                             from inCandidateDeviceRoot : DeviceRoot,
-                            _ inVersion : Int,
-                            _ inData : Data) {
+                            version inVersion : Int,
+                            category inCategory : String,
+                            data inData : Data) {
     inCurrentDeviceInProject.mDeviceVersion = inVersion
+    inCurrentDeviceInProject.mCategory = inCategory
     inCurrentDeviceInProject.mDeviceFileData = inData
     inCurrentDeviceInProject.mPrefix = inCandidateDeviceRoot.mPrefix
   //--- Remove current packages
-//    let currentPackages = inCurrentDeviceInProject.mPackages
     inCurrentDeviceInProject.mPackages = EBReferenceArray ()
-//    for p in currentPackages.values {
-//      p.removeRecursivelyAllRelationsShips ()
-//    }
   //--- Build package dictionary
     var packageDictionary = [String : DevicePackageInProject] ()
   //--- Append packages

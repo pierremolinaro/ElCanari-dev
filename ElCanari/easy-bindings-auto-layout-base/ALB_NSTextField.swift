@@ -67,6 +67,20 @@ class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDe
   //  final override var acceptsFirstResponder: Bool { return true }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final func setHorizontalStretchingResistance (_ inHorizontalStrechingResistance : LayoutStrechingConstraintPriority) -> Self {
+    self.setContentHuggingPriority (inHorizontalStrechingResistance.cocoaPriority, for: .horizontal)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func setHorizontalCompressionResistance (_ inHorizontalCompressionResistance : LayoutCompressionConstraintPriority) -> Self {
+    self.setContentCompressionResistancePriority (inHorizontalCompressionResistance.cocoaPriority, for: .horizontal)
+    return self
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final func set (alignment inAlignment : TextAlignment) -> Self {
     self.alignment = inAlignment.cocoaAlignment
     return self

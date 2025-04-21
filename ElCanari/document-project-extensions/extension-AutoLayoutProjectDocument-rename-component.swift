@@ -18,7 +18,7 @@ import AppKit
   let mComponentCurrentPrefix : String
   var mComponentNewIndex : Int
   var mComponentNewPrefix : String
-  let mComboBox = AutoLayoutComboBox (width: 80)
+  let mComboBox = AutoLayoutComboBox (width: 80, size: .regular)
   let mIndexesPopUpButton = ALB_NSPopUpButton (pullsDown: false, size: .regular)
   let mErrorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .right).setRedTextColor ()
   let mOkButton : AutoLayoutSheetDefaultOkButton

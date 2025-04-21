@@ -6,7 +6,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutDeviceDocument) class AutoLayoutDeviceDocument : EBAutoLayoutManagedDocument {
+@objc(AutoLayoutDeviceDocument) class AutoLayoutDeviceDocument : AutoLayoutDeviceDocumentSuperClass {
   
   //································································································
   //   Array controller: packageController
@@ -366,6 +366,22 @@ import AppKit
       _ = vStackView_view.appendDivider ()
       do{
         let vStackView_view_view = AutoLayoutVerticalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutHorizontalStackView ()
+          do{
+            let vStackView_view_view_view_view = AutoLayoutStaticLabel (title: "Category", bold: false, size: .regular, alignment: .center)
+              .notExpandableWidth ()
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutComboBox (width: 200, size: .regular)
+              .expandableWidth ()
+              .bind_value (self.rootObject.mCategory_property, sendContinously:true)
+            self.configure_categoryComboBox (vStackView_view_view_view_view) // Configurator
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
         do{
           let vStackView_view_view_view = AutoLayoutStaticLabel (title: "PDF Documentation", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
