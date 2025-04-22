@@ -22,8 +22,6 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
         size inSize : EBControlSize,
         sheet inPanel : NSPanel) {
     super.init (title: inTitle, size: inSize.cocoaControlSize)
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
 
     self.setButtonType (.momentaryPushIn)
     self.bezelStyle = .rounded
@@ -49,12 +47,6 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

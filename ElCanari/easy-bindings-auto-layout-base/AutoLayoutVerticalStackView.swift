@@ -45,6 +45,16 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  final func append (hStackWith inViews : [NSView]) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+    for view in inViews {
+      _ = hStack.appendView (view)
+    }
+    return self.appendView (hStack)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final override func prependView (_ inView : NSView) -> Self {
     self.addSubview (inView)
     Self.prependInVerticalHierarchy (inView, toStackRoot: &self.mVStackHierarchy)

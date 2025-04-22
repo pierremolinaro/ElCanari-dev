@@ -46,6 +46,10 @@ final class OpenDeviceInLibrary : OpenInLibrary {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  override var categoryKey : String? { DEVICE_CATEGORY_KEY }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func partLibraryPathForPath (_ inPath : String) -> String {
     return deviceLibraryPathForPath (inPath)
   }

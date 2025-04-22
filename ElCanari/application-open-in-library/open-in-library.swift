@@ -10,6 +10,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
+fileprivate let CATEGORY_SUFFIX = "✸"
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor class OpenInLibrary : AutoLayoutTableViewDelegate, Sendable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -25,7 +29,12 @@ import AppKit
   private final let mNoSelectedPartTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .center)
   private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
   private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)
-  private final let mCategoryPopUpButton = AutoLayoutPopUpButton (size: .regular)
+  private final let mCategoryPullDownButton = AutoLayoutPullDownButton (title: "Category", size: .regular)
+
+  private final let mSelectedCategory = EBStandAloneProperty <String> ("")
+  private final let mSelectedCategoryTextField = AutoLayoutLabel (bold: false, size: .regular)
+    .set (minWidth: 100)
+    .set (alignment: .left)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -42,12 +51,16 @@ import AppKit
       backing: .buffered,
       defer: false
     )
+    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
+    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mDialog)
     let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
   //--- First column
-    let firstColumn = AutoLayoutVerticalStackView ()
-          .appendView (self.mSearchField)
-          .appendView (self.mCategoryPopUpButton)
-          .appendView (self.mTableView)
+    let firstColumn = AutoLayoutVerticalStackView ().appendView (self.mSearchField)
+    if self.categoryKey != nil {
+      _ = firstColumn.append (hStackWith: [self.mCategoryPullDownButton, self.mSelectedCategoryTextField])
+    }
+    _ = firstColumn.appendView (self.mTableView)
+    _ = self.mSelectedCategoryTextField.bind_title (self.mSelectedCategory)
   //--- Second Column
     _ = self.mNoSelectedPartView.appendFlexibleSpace ()
     _ = self.mNoSelectedPartView.appendViewSurroundedByFlexibleSpaces (self.mNoSelectedPartTextField)
@@ -60,26 +73,26 @@ import AppKit
   //--- Add view
     _ = mainView.appendView (topView)
   //--- Grid view: status and path
-    let gridView = AutoLayoutVerticalStackView ()
-      .append (
-        left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular, alignment: .right),
-        right: self.mStatusTextField
-      )
-      .append (
+    let gridView = AutoLayoutVerticalStackView ().append (
+      left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular, alignment: .right),
+      right: self.mStatusTextField
+    )
+    if self.categoryKey != nil {
+      _ = gridView.append (
         left: AutoLayoutStaticLabel (title: "Category:", bold: false, size: .regular, alignment: .right).notExpandableWidth (),
         right: self.mCategoryTextField
       )
-      .append (
-        left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular, alignment: .right),
-        right: self.mFullPathTextField
-      )
+    }
+    _ = gridView.append (
+      left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular, alignment: .right),
+      right: self.mFullPathTextField
+    )
     _ = mainView.appendView (gridView)
   //--- Bottom view
     let bottomView = AutoLayoutHorizontalStackView ()
-    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-    _ = bottomView.appendView (self.mCancelButton).appendFlexibleSpace ()
-    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mDialog)
-    _ = bottomView.appendView (self.mOpenButton)
+      .appendView (self.mCancelButton)
+      .appendFlexibleSpace ()
+      .appendView (self.mOpenButton)
     _ = mainView.appendView (bottomView)
   //--- Set content view
     self.mDialog.setContentView (mainView)
@@ -111,7 +124,6 @@ import AppKit
       contentAlignment: .left
     )
   //---
-    _ = self.mCategoryPopUpButton.setClosureAction { [weak self] in self?.filterAction (nil) }
     _ = self.mSearchField.setClosureAction { [weak self] in self?.filterAction (nil) }
   }
 
@@ -134,17 +146,57 @@ import AppKit
     let sortedCategoryArray = Array (inNameSet).sorted {
       $0.lowercased () < $1.lowercased ()
     }
-    let optionalCategory = self.mCategoryPopUpButton.selectedItem?.representedObject as? String
-    self.mCategoryPopUpButton.removeAllItems ()
-  //--- Populate
-    self.mCategoryPopUpButton.addItem (withTitle: "all")
+  //---
+    var dict = [String : [(String, String)]] () // FirstName : (secondName, representedObject)
     for str in sortedCategoryArray {
-      self.mCategoryPopUpButton.addItem (withTitle: str)
-      self.mCategoryPopUpButton.lastItem?.representedObject = str
-      if str == optionalCategory {
-        self.mCategoryPopUpButton.selectItem (at: self.mCategoryPopUpButton.numberOfItems - 1)
+      let names = str.split (separator: " ", maxSplits: 1)
+      let firstName = String (names [0])
+      let secondName = (names.count > 1) ? String (names [1]) : "—"
+      dict [firstName] = (dict [firstName] ?? []) + [(secondName, str)]
+    }
+  //--- Populate pull down button
+    var foundCurrentSelectedCategory = false
+    while self.mCategoryPullDownButton.numberOfItems > 1 {
+      self.mCategoryPullDownButton.removeItem (at: self.mCategoryPullDownButton.numberOfItems - 1)
+    }
+    self.mCategoryPullDownButton.addItem (withItalicTitle: "all")
+    self.mCategoryPullDownButton.lastItem?.representedObject = ""
+    self.mCategoryPullDownButton.lastItem?.action = #selector (Self.categoryPullDownButtonAction (_:))
+    self.mCategoryPullDownButton.lastItem?.target = self
+    for firstName in dict.keys.sorted (by: { $0.lowercased () < $1.lowercased () }) {
+      let array = dict [firstName]!
+      if array.count == 1 {
+        let category = array [0].1
+        if category == self.mSelectedCategory.propval {
+          foundCurrentSelectedCategory = true
+        }
+        self.mCategoryPullDownButton.addItem (withTitle: category)
+        self.mCategoryPullDownButton.lastItem?.representedObject = category
+        self.mCategoryPullDownButton.lastItem?.action = #selector (Self.categoryPullDownButtonAction (_:))
+        self.mCategoryPullDownButton.lastItem?.target = self
+      }else{
+        let submenu = NSMenu ()
+        submenu.autoenablesItems = false
+        for (secondName, category) in array {
+          if category == self.mSelectedCategory.propval {
+            foundCurrentSelectedCategory = true
+          }
+          let menuItem = NSMenuItem (title: secondName, action: #selector (Self.categoryPullDownButtonAction (_:)), keyEquivalent: "")
+          menuItem.target = self
+          menuItem.representedObject = category
+          submenu.addItem (menuItem)
+        }
+        self.mCategoryPullDownButton.addItem (withTitle: firstName)
+        self.mCategoryPullDownButton.lastItem?.submenu = submenu
+        self.mCategoryPullDownButton.lastItem?.representedObject = firstName + CATEGORY_SUFFIX
+        self.mCategoryPullDownButton.lastItem?.action = #selector (Self.categoryPullDownButtonAction (_:))
+        self.mCategoryPullDownButton.lastItem?.target = self
       }
     }
+    if !foundCurrentSelectedCategory {
+      self.mSelectedCategory.setProp ("")
+    }
+    self.filterAction (nil)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -228,6 +280,10 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  var categoryKey : String? { nil }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func partLibraryPathForPath (_ inPath : String) -> String {  // Abstract method
     return inPath
   }
@@ -295,7 +351,7 @@ import AppKit
     if selectedRow >= 0 {
       let selectedPart = self.mTableViewFilteredDataSource [selectedRow]
       self.mStatusTextField.stringValue = selectedPart.statusString ()
-      self.mCategoryTextField.stringValue = selectedPart.partCategory ()
+      self.mCategoryTextField.stringValue = selectedPart.partCategory (self.categoryKey) ?? ""
       self.mFullPathTextField.stringValue = selectedPart.mFullPath
       self.mOpenButton.isEnabled = true
       self.mPartImage.image = selectedPart.image
@@ -342,9 +398,18 @@ import AppKit
   //   SEARCH FIELD ACTION
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @objc private func categoryPullDownButtonAction (_ inSender : Any?) {
+    if let menuItem = inSender as? NSMenuItem, let category = (menuItem.representedObject as? String) {
+      self.mSelectedCategory.setProp (category)
+      self.filterAction (nil)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   @objc private func filterAction (_ inUnusedSender : Any?) {
     let filter = self.mSearchField.stringValue.uppercased ()
-    let optionalCategory = self.mCategoryPopUpButton.selectedItem?.representedObject as? String
+    let category = self.mSelectedCategory.propval
     var dataSource = self.mTableViewDataSource
   //--- Filter from search field
     if !filter.isEmpty {
@@ -357,12 +422,21 @@ import AppKit
       }
     }
   //--- Filter from category
-    if let category = optionalCategory {
+    if !category.isEmpty {
       let previousDataSource = dataSource
       dataSource = []
-      for entry in previousDataSource {
-        if entry.partCategory () == category {
-          dataSource.append (entry)
+      if category.hasSuffix (CATEGORY_SUFFIX) {
+        let c = category.dropLast ()
+        for entry in previousDataSource {
+          if let names = entry.partCategory (self.categoryKey)?.split (separator: " "), names [0] == c {
+            dataSource.append (entry)
+          }
+        }
+      }else{
+        for entry in previousDataSource {
+          if entry.partCategory (self.categoryKey) == category {
+            dataSource.append (entry)
+          }
         }
       }
     }
@@ -481,20 +555,24 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func partCategory () -> String {
-    if let s = self.mCategory {
-      return s
-    }else if self.mFullPath != "", let metadata = try? getFileMetadata (atPath: self.mFullPath) {
-      let dictionary = metadata.metadataDictionary
-      if let s = dictionary [DEVICE_CATEGORY_KEY] as? String {
-        self.mCategory = s
+  func partCategory (_ inKey : String?) -> String? {
+    if let key = inKey {
+      if let s = self.mCategory {
         return s
+      }else if self.mFullPath != "", let metadata = try? getFileMetadata (atPath: self.mFullPath) {
+        let dictionary = metadata.metadataDictionary
+        if let s = dictionary [key] as? String {
+          self.mCategory = s
+          return s
+        }else{
+          self.mCategory = ""
+          return ""
+        }
       }else{
-        self.mCategory = ""
         return ""
       }
     }else{
-      return ""
+      return nil
     }
   }
 
