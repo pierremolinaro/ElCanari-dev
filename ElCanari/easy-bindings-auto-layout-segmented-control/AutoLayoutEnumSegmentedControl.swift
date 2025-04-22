@@ -33,12 +33,20 @@ final class AutoLayoutEnumSegmentedControl : ALB_NSSegmentedControl {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func updateIndex (fromEnumeration inObject : any EBEnumReadWriteObservableProtocol) {
-    if let v = inObject.rawValue () {
+    switch inObject.rawSelection {
+    case .single (let rawValue) :
       self.enable (fromValueBinding: true, self.enabledBindingController ())
-      self.setSelectedSegment (atIndex: v)
-    }else{
+      self.setSelectedSegment (atIndex: rawValue)
+    case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController ())
     }
+
+//    if let v = inObject.rawValue () {
+//      self.enable (fromValueBinding: true, self.enabledBindingController ())
+//      self.setSelectedSegment (atIndex: v)
+//    }else{
+//      self.enable (fromValueBinding: false, self.enabledBindingController ())
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

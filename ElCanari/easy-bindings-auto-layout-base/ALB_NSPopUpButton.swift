@@ -63,6 +63,18 @@ class ALB_NSPopUpButton : NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func addItem (withItalicTitle inTitle : String) {
+    self.addItem (withTitle: inTitle)
+    if let font = self.font {
+      let italicFont : NSFont = NSFontManager.shared.convert (font, toHaveTrait: .italicFontMask)
+      let attributes : [NSAttributedString.Key : Any] = [.font : italicFont]
+      let title = NSAttributedString (string: inTitle, attributes: attributes)
+      self.lastItem?.attributedTitle = title
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   @objc override var lastBaselineRepresentativeView : NSView? { self }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

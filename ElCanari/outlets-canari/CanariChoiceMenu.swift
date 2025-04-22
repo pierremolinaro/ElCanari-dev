@@ -54,12 +54,20 @@ final class CanariChoiceMenu : NSMenu {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @MainActor fileprivate func updateOutletFromSelectedIndexController (_ inObject : any EBEnumReadWriteObservableProtocol) {
-    if let v = inObject.rawValue () {
+    switch inObject.rawSelection {
+    case .single (let rawValue) :
       self.enableItems (true)
-      self.checkItemAtIndex (v)
-    }else{
+      self.checkItemAtIndex (rawValue)
+    case .empty, .multiple :
       self.enableItems (false)
     }
+
+//    if let v = inObject.rawValue () {
+//      self.enableItems (true)
+//      self.checkItemAtIndex (v)
+//    }else{
+//      self.enableItems (false)
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

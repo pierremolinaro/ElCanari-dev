@@ -123,7 +123,7 @@ enum MultipleBindingIntegerOperation {
       case .multiple :
         return .multiple
       }
-    case .prop  (let model) :
+    case .prop (let model) :
       return model.selection
     }
   }

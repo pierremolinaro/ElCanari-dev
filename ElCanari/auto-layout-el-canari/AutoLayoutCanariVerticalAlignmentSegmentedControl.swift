@@ -79,10 +79,18 @@ final class AutoLayoutCanariVerticalAlignmentSegmentedControl : ALB_NSSegmentedC
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func update (from inObject : EBEnumReadWriteProperty <BoardTextVerticalAlignment>) {
-    if let rawValue = inObject.rawValue () {
+    switch inObject.rawSelection {
+    case .single (let rawValue) :
       self.selectedSegment = rawValue
       self.selectedSegmentDidChange (nil)
+    case .empty, .multiple :
+      ()
     }
+
+//    if let rawValue = inObject.rawValue () {
+//      self.selectedSegment = rawValue
+//      self.selectedSegmentDidChange (nil)
+//    }
   }
 
 

@@ -8,16 +8,30 @@ import AppKit
 //   EBReadOnlyEnumProperty <T>
 //--------------------------------------------------------------------------------------------------
 
-class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>, EBEnumReadObservableProtocol where T : Equatable {
+class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>,
+                                                    EBEnumReadObservableProtocol where T : Equatable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func rawValue () -> Int? {
+//  final func rawValue () -> Int? {
+//    switch self.selection {
+//    case .empty, .multiple :
+//      return nil
+//    case .single (let v) :
+//      return v.rawValue
+//    }
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var rawSelection : EBSelection <Int> {
     switch self.selection {
-    case .empty, .multiple :
-      return nil
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
     case .single (let v) :
-      return v.rawValue
+      return .single (v.rawValue)
     }
   }
 

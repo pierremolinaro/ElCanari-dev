@@ -14,7 +14,12 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private let mTitles : [String]
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   init (titles inTitles : [String], size inSize : EBControlSize) {
+    self.mTitles = inTitles
     super.init (pullsDown: false, size: inSize.cocoaControlSize)
     for title in inTitles {
       self.addItem (withTitle: title)
@@ -29,20 +34,35 @@ final class AutoLayoutEnumPopUpButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func updateIndex (_ object : any EBEnumReadWriteObservableProtocol) {
-    if let v = object.rawValue () {
-      self.enable (fromValueBinding: true, self.enabledBindingController ())
-      self.selectItem (at: v)
-    }else{
+  fileprivate func updateOutlet (_ inObject : any EBEnumReadWriteObservableProtocol) {
+    self.removeAllItems ( )
+    switch inObject.rawSelection {
+    case .empty :
+      self.addItem (withTitle: "No Selection")
       self.enable (fromValueBinding: false, self.enabledBindingController ())
+    case .multiple :
+      for title in self.mTitles {
+        self.addItem (withTitle: title)
+      }
+      self.addItem (withItalicTitle: "Multiple Selection")
+      self.selectItem (at: self.numberOfItems - 1)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
+    case .single (let v) :
+      for title in self.mTitles {
+        self.addItem (withTitle: title)
+      }
+      self.selectItem (at: v)
+      self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
-    return super.sendAction (action, to: to)
+  override func sendAction (_ inAction : Selector?, to inTarget : Any?) -> Bool {
+    if self.indexOfSelectedItem < self.mTitles.count { // Prevent selection of "Multiple Selection"
+      self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
+    }
+    return super.sendAction (inAction, to: inTarget)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,9 +97,13 @@ fileprivate final class Controller_AutoLayoutEnumPopUpButton_Index : EBObservabl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (object : any EBEnumReadWriteObservableProtocol, outlet inOutlet : AutoLayoutEnumPopUpButton) {
-    self.mObject = object
-    super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateIndex (object) } )
+  init (object inObject : any EBEnumReadWriteObservableProtocol,
+        outlet inOutlet : AutoLayoutEnumPopUpButton) {
+    self.mObject = inObject
+    super.init (
+      observedObjects: [inObject],
+      callBack: { [weak inOutlet] in inOutlet?.updateOutlet (inObject) }
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

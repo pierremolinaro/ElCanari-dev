@@ -206,7 +206,13 @@ final class AutoLayoutSegmentedControlWithPages : ALB_NSSegmentedControl {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func updateSelectedSegment (_ inObject : any EBEnumReadWriteObservableProtocol) {
-    self.selectedSegment = inObject.rawValue () ?? 0
+    switch inObject.rawSelection {
+    case .single (let rawValue) :
+      self.selectedSegment = rawValue
+    case .empty, .multiple :
+      ()
+    }
+//    self.selectedSegment = inObject.rawValue () ?? 0
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
