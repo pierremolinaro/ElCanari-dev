@@ -17,14 +17,14 @@ final class AutoLayoutMenuItemDescriptor {
   let title : String
   let target : NSObject?
   let selector : Selector?
-  let enableBinding : EBMultipleBindingBooleanExpression
+  let enableBinding : MultipleBindingBooleanExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title inTitle : String,
         target inTarget : NSObject?,
         selector inSelector : Selector?,
-        enableBinding inBinding : EBMultipleBindingBooleanExpression) {
+        enableBinding inBinding : MultipleBindingBooleanExpression) {
     self.title = inTitle
     self.target = inTarget
     self.selector = inSelector

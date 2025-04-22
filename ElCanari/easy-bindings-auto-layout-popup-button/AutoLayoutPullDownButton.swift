@@ -51,7 +51,7 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func enable (itemIndex inIndex : Int, from inObject : EBMultipleBindingBooleanExpression) {
+  private func enable (itemIndex inIndex : Int, from inObject : MultipleBindingBooleanExpression) {
     let menuItem = self.item (at: inIndex)
     switch inObject.compute () {
     case .empty, .multiple :

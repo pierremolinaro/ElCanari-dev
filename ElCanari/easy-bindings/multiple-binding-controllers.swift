@@ -17,33 +17,14 @@ extension NSView : HiddenEBProtocol {
 
 //--------------------------------------------------------------------------------------------------
 
-enum MultipleBindingBooleanOperation {
-  case or
-  case and
-  case xor
-}
-
-//--------------------------------------------------------------------------------------------------
-
-enum MultipleBindingIntegerOperation {
-  case eq
-  case ne
-  case lt
-  case le
-  case gt
-  case ge
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor indirect enum EBMultipleBindingBooleanExpression {
+@MainActor indirect enum MultipleBindingBooleanExpression {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   case alwaysTrue
-  case boolcmp (EBMultipleBindingBooleanExpression, MultipleBindingBooleanOperation, EBMultipleBindingBooleanExpression)
-  case intcmp  (EBMultipleBindingIntegerExpression, MultipleBindingIntegerOperation, EBMultipleBindingIntegerExpression)
-  case not  (EBMultipleBindingBooleanExpression)
+  case boolcmp (MultipleBindingBooleanExpression, MultipleBindingBooleanOperation, MultipleBindingBooleanExpression)
+  case intcmp  (MultipleBindingIntegerExpression, MultipleBindingIntegerOperation, MultipleBindingIntegerExpression)
+  case not  (MultipleBindingBooleanExpression)
   case prop (EBObservableProperty <Bool>)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -134,7 +115,26 @@ enum MultipleBindingIntegerOperation {
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor enum EBMultipleBindingIntegerExpression {
+enum MultipleBindingBooleanOperation {
+  case or
+  case and
+  case xor
+}
+
+//--------------------------------------------------------------------------------------------------
+
+enum MultipleBindingIntegerOperation {
+  case eq
+  case ne
+  case lt
+  case le
+  case gt
+  case ge
+}
+
+//--------------------------------------------------------------------------------------------------
+
+@MainActor enum MultipleBindingIntegerExpression {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

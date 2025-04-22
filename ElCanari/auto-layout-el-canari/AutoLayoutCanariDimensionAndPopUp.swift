@@ -46,7 +46,7 @@ final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+  final func bind_enabled (_ inExpression : MultipleBindingBooleanExpression) -> Self {
     _ = self.mDimensionField.bind_enabled (inExpression)
     return self
   }

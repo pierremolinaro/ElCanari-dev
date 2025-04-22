@@ -45,7 +45,7 @@ extension NSControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+  final func bind_enabled (_ inExpression : MultipleBindingBooleanExpression) -> Self {
     let enabledBindingController = EnabledBindingController (inExpression, self)
     performRetain (enabledBindingController: enabledBindingController, forObject: self)
     return self
@@ -67,7 +67,7 @@ final class EnabledBindingController : EBObservablePropertyController {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSControl) {
+  init (_ inExpression : MultipleBindingBooleanExpression, _ inOutlet : NSControl) {
     self.mControlOutlet = inOutlet
     var modelArray = [any EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)

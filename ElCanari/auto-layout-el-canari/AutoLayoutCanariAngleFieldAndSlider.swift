@@ -49,7 +49,7 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+  final func bind_enabled (_ inExpression : MultipleBindingBooleanExpression) -> Self {
     _ = self.mAngleTextField.bind_enabled (inExpression)
     _ = self.mAngleSlider.bind_enabled (inExpression)
     return self

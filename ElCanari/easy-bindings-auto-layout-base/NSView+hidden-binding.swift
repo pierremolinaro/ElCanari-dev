@@ -18,7 +18,7 @@ extension NSView {
   //  $hidden binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+  final func bind_hidden (_ inExpression : MultipleBindingBooleanExpression) -> Self {
     let hiddenBindingController = HiddenBindingController (inExpression, self)
     performRetain (hiddenBindingController: hiddenBindingController, forObject: self)
     return self
@@ -38,7 +38,7 @@ final class HiddenBindingController : EBObservablePropertyController {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inExpression : EBMultipleBindingBooleanExpression, _ inOutlet : NSView) {
+  init (_ inExpression : MultipleBindingBooleanExpression, _ inOutlet : NSView) {
     self.mOutlet = inOutlet
     var modelArray = [any EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)

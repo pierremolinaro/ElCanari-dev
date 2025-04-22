@@ -11,7 +11,6 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol EBEnumReadObservableProtocol : EBObservableObjectProtocol {
-//  func rawValue () -> Int?
   var rawSelection : EBSelection <Int> { get }
 }
 

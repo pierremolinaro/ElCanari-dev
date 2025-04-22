@@ -35,6 +35,7 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
+  "Amélioration de la sélection multiple"
 ]
 let NEWS : [String] = [
   "Devices : ajout de « catégories » pour faciliter leur recherche"
