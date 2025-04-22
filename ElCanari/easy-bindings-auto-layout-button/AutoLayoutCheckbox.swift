@@ -104,7 +104,7 @@ final class AutoLayoutCheckbox : ALB_NSButton {
     case .multiple :
       self.allowsMixedState = true
       self.state = NSControl.StateValue.mixed
-      enableCheckbox = false
+      enableCheckbox = true
     case .single (let v) :
       self.allowsMixedState = false
       self.state = v ? .on : .off

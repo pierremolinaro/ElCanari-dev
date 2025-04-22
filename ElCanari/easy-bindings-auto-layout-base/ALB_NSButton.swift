@@ -24,6 +24,8 @@ class ALB_NSButton : NSButton {
     self.bezelStyle = .rounded
     self.title = inTitle
     self.lineBreakMode = .byTruncatingTail
+
+//    self.clipsToBounds = false // Compatibilité pour OSX < 13
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
