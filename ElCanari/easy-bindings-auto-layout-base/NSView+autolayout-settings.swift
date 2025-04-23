@@ -21,6 +21,7 @@ extension NSView {
     self.setContentHuggingPriority (inVerticalStrechingResistance.cocoaPriority, for: .vertical)
     self.setContentCompressionResistancePriority (.defaultHigh, for: .horizontal)
     self.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
+    self.clipsToBounds = false // Compatibilité pour OSX < 13
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
