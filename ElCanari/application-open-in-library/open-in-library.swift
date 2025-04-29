@@ -34,7 +34,7 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
   private final let mCategoryPullDownButton = AutoLayoutPullDownButton (title: "Category", size: .regular)
   private final let mSubCategoryPullDownButton = AutoLayoutPullDownButton (title: "☜", size: .regular)
 
-  private final let mSelectedCategory = EBStandAloneProperty <String> ("")
+  private final let mSelectedCategory = EBStandAloneProperty <String> (CATEGORY_SUFFIX)
   private final let mSelectedCategoryTextField = AutoLayoutLabel (bold: false, size: .regular)
     .set (minWidth: 100)
     .set (alignment: .left)
@@ -59,10 +59,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     self.mWindow.hasShadow = true
     self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
     self.mOpenButton = AutoLayoutButton (title: "Open", size: .regular)
-//    if let buttonCell = self.mOpenButton.cell as? NSButtonCell {
-//      DispatchQueue.main.async { self.mWindow.defaultButtonCell = buttonCell }
-//    }
-
   //--- First column
     let firstColumn = AutoLayoutVerticalStackView ().appendView (self.mSearchField)
     if self.categoryKey != nil {
@@ -162,12 +158,22 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       dict [firstName] = (dict [firstName] ?? []) + [(secondName, str)]
     }
   //--- Populate pull down button
-    var foundCurrentSelectedCategory = false
+    var foundCurrentSelectedCategory = self.mSelectedCategory.propval == CATEGORY_SUFFIX
     while self.mCategoryPullDownButton.numberOfItems > 1 {
       self.mCategoryPullDownButton.removeItem (at: self.mCategoryPullDownButton.numberOfItems - 1)
     }
   //--- First item : all
     self.mCategoryPullDownButton.addItem (withItalicTitle: "— all —")
+    if let item = self.mCategoryPullDownButton.lastItem {
+      item.representedObject = CategoryMenuItemRepresentedObject (
+        category: CATEGORY_SUFFIX,
+        subCategories: []
+      )
+      item.action = #selector (Self.categoryPullDownButtonAction (_:))
+      item.target = self
+    }
+  //--- Second item : none
+    self.mCategoryPullDownButton.addItem (withItalicTitle: "— none —")
     if let item = self.mCategoryPullDownButton.lastItem {
       item.representedObject = CategoryMenuItemRepresentedObject (
         category: "",
@@ -511,13 +517,21 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       }
     }
   //--- Filter from category
-    if !category.isEmpty {
+    if category.isEmpty {
+      let previousDataSource = dataSource
+      dataSource = []
+      for entry in previousDataSource {
+        if let c = entry.partCategory (self.categoryKey), c.isEmpty {
+          dataSource.append (entry)
+        }
+      }
+    }else if category != CATEGORY_SUFFIX {
       let previousDataSource = dataSource
       dataSource = []
       if category.hasSuffix (CATEGORY_SUFFIX) {
         let c = category.dropLast (CATEGORY_SUFFIX.count)
         for entry in previousDataSource {
-          if let names = entry.partCategory (self.categoryKey)?.split (separator: " "), names [0] == c {
+          if let names = entry.partCategory (self.categoryKey)?.split (separator: " "), !names.isEmpty, names [0] == c {
             dataSource.append (entry)
           }
         }
