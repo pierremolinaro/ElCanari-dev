@@ -263,23 +263,33 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
                                       postAction inPostAction : Optional <@MainActor () -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
-//    _ = self.mOpenButton.enableDismissAction ()
+    self.mOpenButton.setClosureAction { [weak self] in
+      self?.sheetWindowOpenDocumentButtonAction (callBack: inCallBack, postAction: inPostAction)
+    }
   //--- Dialog
-    inWindow.beginSheet (self.mWindow) { (_ inModalResponse : NSApplication.ModalResponse) in
-      let selectedRow = self.mTableView.selectedRow
-      if inModalResponse == .stop, selectedRow >= 0 {
-        let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
-        if selectedItem.mFullPath != "" {
-          let fm = FileManager ()
-          if let data = fm.contents (atPath: selectedItem.mFullPath) {
-            let ok = inCallBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
-            if ok {
-              inPostAction? ()
-            }
+    inWindow.beginSheet (self.mWindow)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func sheetWindowOpenDocumentButtonAction (
+        callBack inCallBack : @MainActor @escaping (_ inData : Data, _ inName : String) -> Bool,
+        postAction inPostAction : Optional <@MainActor () -> Void>) {
+    let selectedRow = self.mTableView.selectedRow
+    if selectedRow >= 0 {
+      let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
+      if selectedItem.mFullPath != "" {
+        let fm = FileManager ()
+        if let data = fm.contents (atPath: selectedItem.mFullPath) {
+          let ok = inCallBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
+          if ok {
+            inPostAction? ()
           }
         }
       }
-      self.removeAllEntries ()
+      if self.mCloseWindowAfterOpeningDocument.propval, let parent = self.mWindow.sheetParent {
+        parent.endSheet (self.mWindow)
+      }
     }
   }
 
