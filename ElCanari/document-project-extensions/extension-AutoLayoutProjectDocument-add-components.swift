@@ -28,25 +28,22 @@ extension AutoLayoutProjectDocument {
 
   func addComponent (_ inData : Data, _ inDeviceName : String) -> Bool {
     self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
-  //---
-    for embeddedDevice in self.rootObject.mDevices.values {
-      if embeddedDevice.mDeviceName == inDeviceName {
-        self.addComponent (fromEmbeddedLibraryDeviceName: inDeviceName)
-        return true
-      }
+    var added = self.addComponent (fromEmbeddedLibraryDeviceName: inDeviceName)
+    if !added {
+      let possibleNewDeviceInProject = self.appendDevice (inData, inDeviceName)
+      let optionalAddedComponent = self.addComponent (
+        fromPossibleDevice: possibleNewDeviceInProject,
+        prefix: nil
+      )
+      added = optionalAddedComponent != nil
     }
-    let possibleNewDeviceInProject = self.appendDevice (inData, inDeviceName)
-    let optionalAddedComponent = self.addComponent (
-      fromPossibleDevice: possibleNewDeviceInProject,
-      prefix: nil
-    )
     self.triggerStandAlonePropertyComputationForProject ()
-    return optionalAddedComponent != nil
+    return added
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addComponent (fromEmbeddedLibraryDeviceName inDeviceName : String) {
+  func addComponent (fromEmbeddedLibraryDeviceName inDeviceName : String) -> Bool {
   //--- find device
     var possibleDevice : DeviceInProject? = nil
     for device in self.rootObject.mDevices.values {
@@ -55,7 +52,8 @@ extension AutoLayoutProjectDocument {
       }
     }
   //--- Add Component
-    _ = self.addComponent (fromPossibleDevice: possibleDevice, prefix: nil)
+    let embeddedDevice = self.addComponent (fromPossibleDevice: possibleDevice, prefix: nil)
+    return embeddedDevice != nil
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
