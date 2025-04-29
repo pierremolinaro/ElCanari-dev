@@ -14,7 +14,8 @@ class ALB_NSButton : NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (title inTitle : String, size inSize : NSControl.ControlSize) {
+  init (title inTitle : String,
+        size inSize : NSControl.ControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
     self.pmConfigureForAutolayout (hStretchingResistance: .high, vStrechingResistance: .high)
@@ -38,6 +39,16 @@ class ALB_NSButton : NSButton {
     noteObjectDeallocation (self)
     objectDidDeinitSoReleaseHiddenControllers ()
     objectDidDeinitSoReleaseEnabledBindingController ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func respondsToValidationKeyDown (_ inWindow : NSWindow) -> Self {
+    if let buttonCell = self.cell as? NSButtonCell {
+      inWindow.defaultButtonCell = buttonCell
+    }
+    self.keyEquivalent = "\u{0D}"
+    return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -67,7 +78,7 @@ class ALB_NSButton : NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   @objc private final func runClosureAction (_ _ : Any?) {
+   @objc private final func runClosureAction (_ inUnusedSender : Any?) {
      self.mClosureAction? ()
   }
 

@@ -16,21 +16,30 @@ extension AutoLayoutProjectDocument {
     for device in self.rootObject.mDevices_property.propval.values {
       currentDeviceNames.insert (device.mDeviceName)
     }
-     gOpenDeviceInLibrary.loadDocumentFromLibrary (
-       windowForSheet: self.windowForSheet!,
-       alreadyLoadedDocuments: currentDeviceNames,
-       callBack: self.addComponent,
-       postAction: nil
-     )
+    gOpenDeviceInLibrary.loadDocumentFromLibrary (
+      windowForSheet: self.windowForSheet!,
+      alreadyLoadedDocuments: [], // currentDeviceNames,
+      callBack: self.addComponent,
+      postAction: nil
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addComponent (_ inData : Data, _ inName : String) -> Bool {
-  //--- Append device
+  func addComponent (_ inData : Data, _ inDeviceName : String) -> Bool {
     self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
-    let possibleNewDeviceInProject = self.appendDevice (inData, inName)
-    let optionalAddedComponent = self.addComponent (fromPossibleDevice: possibleNewDeviceInProject, prefix: nil)
+  //---
+    for embeddedDevice in self.rootObject.mDevices.values {
+      if embeddedDevice.mDeviceName == inDeviceName {
+        self.addComponent (fromEmbeddedLibraryDeviceName: inDeviceName)
+        return true
+      }
+    }
+    let possibleNewDeviceInProject = self.appendDevice (inData, inDeviceName)
+    let optionalAddedComponent = self.addComponent (
+      fromPossibleDevice: possibleNewDeviceInProject,
+      prefix: nil
+    )
     self.triggerStandAlonePropertyComputationForProject ()
     return optionalAddedComponent != nil
   }

@@ -21,8 +21,7 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
   private final let mWindow : NSWindow
 
   private final let mCancelButton : AutoLayoutSheetCancelButton
-  private final let mCloseWindowAfterOpeningDocumentCheckBox = AutoLayoutCheckbox (title: "Close this window after Opening Document", size: .regular)
-  private final let mOpenButton : AutoLayoutSheetDefaultOkButton
+  private final let mOpenButton : AutoLayoutButton
 
   private final let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
   private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
@@ -35,7 +34,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
   private final let mCategoryPullDownButton = AutoLayoutPullDownButton (title: "Category", size: .regular)
   private final let mSubCategoryPullDownButton = AutoLayoutPullDownButton (title: "☜", size: .regular)
 
-  private final let mCloseWindowAfterOpeningDocument = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: "CLOSE_DOC_AFTER_OPENING_IN_LIBRARY")
   private final let mSelectedCategory = EBStandAloneProperty <String> ("")
   private final let mSelectedCategoryTextField = AutoLayoutLabel (bold: false, size: .regular)
     .set (minWidth: 100)
@@ -50,7 +48,7 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
 
   init () {
   //--- Dialog
-    self.mWindow = NSWindow (
+    self.mWindow = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 700, height: 600),
       styleMask: [.titled, .closable],
       backing: .buffered,
@@ -60,11 +58,11 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     self.mWindow.setFrameAutosaveName ("OpenInLibraryWindowFrame")
     self.mWindow.hasShadow = true
     self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mWindow)
-  //--- Maintain window settings
-    _ = self.mCloseWindowAfterOpeningDocumentCheckBox.bind_value (self.mCloseWindowAfterOpeningDocument)
-    self.mCloseWindowAfterOpeningDocument.mObserverCallback = { [weak self] in self?.updateOpenButtonTitle () }
-    self.updateOpenButtonTitle ()
+    self.mOpenButton = AutoLayoutButton (title: "Open", size: .regular)
+//    if let buttonCell = self.mOpenButton.cell as? NSButtonCell {
+//      DispatchQueue.main.async { self.mWindow.defaultButtonCell = buttonCell }
+//    }
+
   //--- First column
     let firstColumn = AutoLayoutVerticalStackView ().appendView (self.mSearchField)
     if self.categoryKey != nil {
@@ -101,9 +99,10 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     )
     _ = mainView.appendView (gridView)
   //--- Bottom view
-    _ = mainView.append (hStackWith: [self.mCancelButton, nil, self.mCloseWindowAfterOpeningDocumentCheckBox, self.mOpenButton])
+    _ = mainView.append (hStackWith: [self.mCancelButton, nil, self.mOpenButton])
   //--- Set content view
     self.mWindow.setContentView (mainView)
+    _ = self.mOpenButton.respondsToValidationKeyDown (self.mWindow)
   //--- Configure table view
     self.mTableView.configure (
       allowsEmptySelection: false,
@@ -145,19 +144,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     self.mNoSelectedPartView.isHidden = false
     self.buildDataSource (alreadyLoadedDocuments: inNames)
     self.mTableView.sortAndReloadData ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func updateOpenButtonTitle () {
-    let title : String
-    if self.mCloseWindowAfterOpeningDocument.propval {
-      title = "Open Document and close this window"
-    }else{
-      title = "Open Document"
-    }
-    _ = self.mOpenButton.enableDismissAction (self.mCloseWindowAfterOpeningDocument.propval)
-    self.mOpenButton.title = title
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -287,9 +273,12 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
           }
         }
       }
-      if self.mCloseWindowAfterOpeningDocument.propval, let parent = self.mWindow.sheetParent {
-        parent.endSheet (self.mWindow)
+    //--- Update part display
+      for item in self.mTableViewDataSource {
+        item.updateFromFile ()
       }
+    //---
+      self.filterAction (nil)
     }
   }
 
@@ -301,9 +290,13 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
   //--- Configure
     self.mWindow.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
-    self.mOpenButton.setClosureAction { [weak self] in self?.regularWindowOpenDocumentButtonAction () }
-  //--- Dialog
+    self.mOpenButton.setClosureAction { [weak self] in
+      self?.regularWindowOpenDocumentButtonAction ()
+    }
+  //---
     self.mWindow.makeKeyAndOrderFront (nil)
+  //--- Par défaut, le TextField de recherche est activé, ce qui inhibe l'action par
+  // de validation du bouton par défaut
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -323,12 +316,10 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       if selectedItem.mFullPath != "" {
         let dc = NSDocumentController.shared
         let url = URL (fileURLWithPath: selectedItem.mFullPath)
-        dc.openDocument (withContentsOf: url, display: true) { (document : NSDocument?, alreadyOpen : Bool, error : Error?) in }
+        dc.openDocument (withContentsOf: url, display: true) {
+          (document : NSDocument?, alreadyOpen : Bool, error : Error?) in
+        }
       }
-    }
-  //--- Close window ?
-    if self.mCloseWindowAfterOpeningDocument.propval {
-      self.mWindow.orderOut (nil)
     }
   }
 

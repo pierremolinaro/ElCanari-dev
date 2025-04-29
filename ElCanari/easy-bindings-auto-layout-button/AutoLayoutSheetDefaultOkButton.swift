@@ -14,7 +14,7 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mEventMonitor : Any? = nil // For tracking option key change
+  private var mEventMonitor : Any? = nil // For tracking key down
   private var mDismissSheet = true
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
