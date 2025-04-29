@@ -15,12 +15,13 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mEventMonitor : Any? = nil // For tracking option key change
+  private var mDismissSheet = true
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (title inTitle : String,
         size inSize : EBControlSize,
-        sheet inPanel : NSPanel) {
+        sheet inPanel : NSWindow) {
     super.init (title: inTitle, size: inSize.cocoaControlSize)
 
     self.setButtonType (.momentaryPushIn)
@@ -32,7 +33,8 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
       DispatchQueue.main.async { inPanel.defaultButtonCell = buttonCell }
     }
 
-    _ = self.setDismissAction ()
+    self.target = self
+    self.action = #selector (Self.dismissSheetAction (_:))
 
     self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .keyDown) {  [weak self] inEvent in
       if let me = self, let myWindow = me.window, myWindow.isVisible, let characters = inEvent.characters, characters.contains ("\u{0D}") {
@@ -50,16 +52,15 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setDismissAction () -> Self {
-    self.target = self
-    self.action = #selector (Self.dismissSheetAction (_:))
+  func enableDismissAction (_ inFlag : Bool) -> Self {
+    self.mDismissSheet = inFlag
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func dismissSheetAction (_ sender : Any?) {
-    if let mySheet = self.window {
+  @objc private func dismissSheetAction (_ sender : Any?) {
+    if self.mDismissSheet, let mySheet = self.window {
       mySheet.endEditing (for: nil)
       if let parent = mySheet.sheetParent {
         parent.endSheet (mySheet, returnCode: .stop)

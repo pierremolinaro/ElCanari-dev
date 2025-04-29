@@ -195,7 +195,7 @@ extension Preferences {
       tabView.selectTab (atIndex: 0)
     }
     preferences_fileSystemLibraryIsOk_property.setProp (errorCount == 0)
-    gOpenDeviceInLibrary.populateCategoryPopUpButton (withNameSet: deviceCategorySet)
+    gOpenDeviceInLibrary.populateCategoryPopUpButton (withCategoryNameSet: deviceCategorySet)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

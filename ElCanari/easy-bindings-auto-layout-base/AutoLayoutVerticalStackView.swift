@@ -45,10 +45,14 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func append (hStackWith inViews : [NSView]) -> Self {
+  final func append (hStackWith inViews : [NSView?]) -> Self {
     let hStack = AutoLayoutHorizontalStackView ()
-    for view in inViews {
-      _ = hStack.appendView (view)
+    for optionalView in inViews {
+     if let view = optionalView {
+        _ = hStack.appendView (view)
+      }else{
+        _ = hStack.appendFlexibleSpace ()
+      }
     }
     return self.appendView (hStack)
   }

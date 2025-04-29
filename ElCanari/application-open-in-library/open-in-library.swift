@@ -10,7 +10,7 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let CATEGORY_SUFFIX = "✸"
+fileprivate let CATEGORY_SUFFIX = " ✸"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,9 +18,12 @@ fileprivate let CATEGORY_SUFFIX = "✸"
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final let mDialog : NSPanel
-  private final let mOpenButton : AutoLayoutSheetDefaultOkButton
+  private final let mWindow : NSWindow
+
   private final let mCancelButton : AutoLayoutSheetCancelButton
+  private final let mCloseWindowAfterOpeningDocumentCheckBox = AutoLayoutCheckbox (title: "Close this window after Opening Document", size: .regular)
+  private final let mOpenButton : AutoLayoutSheetDefaultOkButton
+
   private final let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
   private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
   private final let mCategoryTextField = AutoLayoutStaticLabel (title: "—", bold: false, size: .regular, alignment: .left)
@@ -30,7 +33,9 @@ fileprivate let CATEGORY_SUFFIX = "✸"
   private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
   private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)
   private final let mCategoryPullDownButton = AutoLayoutPullDownButton (title: "Category", size: .regular)
+  private final let mSubCategoryPullDownButton = AutoLayoutPullDownButton (title: "☜", size: .regular)
 
+  private final let mCloseWindowAfterOpeningDocument = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: "CLOSE_DOC_AFTER_OPENING_IN_LIBRARY")
   private final let mSelectedCategory = EBStandAloneProperty <String> ("")
   private final let mSelectedCategoryTextField = AutoLayoutLabel (bold: false, size: .regular)
     .set (minWidth: 100)
@@ -45,20 +50,27 @@ fileprivate let CATEGORY_SUFFIX = "✸"
 
   init () {
   //--- Dialog
-    self.mDialog = NSPanel (
+    self.mWindow = NSWindow (
       contentRect: NSRect (x: 0, y: 0, width: 700, height: 600),
-      styleMask: [.titled],
+      styleMask: [.titled, .closable],
       backing: .buffered,
       defer: false
     )
+    self.mWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+    self.mWindow.setFrameAutosaveName ("OpenInLibraryWindowFrame")
+    self.mWindow.hasShadow = true
     self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mDialog)
-    let mainView = AutoLayoutVerticalStackView ().set (margins: .large)
+    self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mWindow)
+  //--- Maintain window settings
+    _ = self.mCloseWindowAfterOpeningDocumentCheckBox.bind_value (self.mCloseWindowAfterOpeningDocument)
+    self.mCloseWindowAfterOpeningDocument.mObserverCallback = { [weak self] in self?.updateOpenButtonTitle () }
+    self.updateOpenButtonTitle ()
   //--- First column
     let firstColumn = AutoLayoutVerticalStackView ().appendView (self.mSearchField)
     if self.categoryKey != nil {
-      _ = firstColumn.append (hStackWith: [self.mCategoryPullDownButton, self.mSelectedCategoryTextField])
+      _ = firstColumn.append (hStackWith: [self.mCategoryPullDownButton, self.mSelectedCategoryTextField, self.mSubCategoryPullDownButton])
     }
+    self.mSubCategoryPullDownButton.isHidden = true
     _ = firstColumn.appendView (self.mTableView)
     _ = self.mSelectedCategoryTextField.bind_title (self.mSelectedCategory)
   //--- Second Column
@@ -71,7 +83,7 @@ fileprivate let CATEGORY_SUFFIX = "✸"
           .appendView (self.mNoSelectedPartView)
           .appendView (self.mPartImage)
   //--- Add view
-    _ = mainView.appendView (topView)
+    let mainView = AutoLayoutVerticalStackView ().set (margins: .large).appendView (topView)
   //--- Grid view: status and path
     let gridView = AutoLayoutVerticalStackView ().append (
       left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular, alignment: .right),
@@ -89,13 +101,9 @@ fileprivate let CATEGORY_SUFFIX = "✸"
     )
     _ = mainView.appendView (gridView)
   //--- Bottom view
-    let bottomView = AutoLayoutHorizontalStackView ()
-      .appendView (self.mCancelButton)
-      .appendFlexibleSpace ()
-      .appendView (self.mOpenButton)
-    _ = mainView.appendView (bottomView)
+    _ = mainView.append (hStackWith: [self.mCancelButton, nil, self.mCloseWindowAfterOpeningDocumentCheckBox, self.mOpenButton])
   //--- Set content view
-    self.mDialog.setContentView (mainView)
+    self.mWindow.setContentView (mainView)
   //--- Configure table view
     self.mTableView.configure (
       allowsEmptySelection: false,
@@ -141,9 +149,22 @@ fileprivate let CATEGORY_SUFFIX = "✸"
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func populateCategoryPopUpButton (withNameSet inNameSet : Set <String>) {
+  private final func updateOpenButtonTitle () {
+    let title : String
+    if self.mCloseWindowAfterOpeningDocument.propval {
+      title = "Open Document and close this window"
+    }else{
+      title = "Open Document"
+    }
+    _ = self.mOpenButton.enableDismissAction (self.mCloseWindowAfterOpeningDocument.propval)
+    self.mOpenButton.title = title
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func populateCategoryPopUpButton (withCategoryNameSet inCategoryNameSet : Set <String>) {
   //--- Sort
-    let sortedCategoryArray = Array (inNameSet).sorted {
+    let sortedCategoryArray = Array (inCategoryNameSet).sorted {
       $0.lowercased () < $1.lowercased ()
     }
   //---
@@ -159,43 +180,76 @@ fileprivate let CATEGORY_SUFFIX = "✸"
     while self.mCategoryPullDownButton.numberOfItems > 1 {
       self.mCategoryPullDownButton.removeItem (at: self.mCategoryPullDownButton.numberOfItems - 1)
     }
-    self.mCategoryPullDownButton.addItem (withItalicTitle: "all")
-    self.mCategoryPullDownButton.lastItem?.representedObject = ""
-    self.mCategoryPullDownButton.lastItem?.action = #selector (Self.categoryPullDownButtonAction (_:))
-    self.mCategoryPullDownButton.lastItem?.target = self
+  //--- First item : all
+    self.mCategoryPullDownButton.addItem (withItalicTitle: "— all —")
+    if let item = self.mCategoryPullDownButton.lastItem {
+      item.representedObject = CategoryMenuItemRepresentedObject (
+        category: "",
+        subCategories: []
+      )
+      item.action = #selector (Self.categoryPullDownButtonAction (_:))
+      item.target = self
+    }
+  //--- Enumerate category dictionary entries
     for firstName in dict.keys.sorted (by: { $0.lowercased () < $1.lowercased () }) {
-      let array = dict [firstName]!
-      if array.count == 1 {
-        let category = array [0].1
+      let subCategoryArray : [(String, String)] = dict [firstName]!.sorted { $0.0.lowercased () < $1.0.lowercased () }
+      if subCategoryArray.count == 1 {
+        let category = subCategoryArray [0].1
         if category == self.mSelectedCategory.propval {
           foundCurrentSelectedCategory = true
         }
         self.mCategoryPullDownButton.addItem (withTitle: category)
-        self.mCategoryPullDownButton.lastItem?.representedObject = category
-        self.mCategoryPullDownButton.lastItem?.action = #selector (Self.categoryPullDownButtonAction (_:))
-        self.mCategoryPullDownButton.lastItem?.target = self
+        if let item = self.mCategoryPullDownButton.lastItem {
+          item.representedObject = CategoryMenuItemRepresentedObject (
+            category: category,
+            subCategories: subCategoryArray
+          )
+          item.action = #selector (Self.categoryPullDownButtonAction (_:))
+          item.target = self
+        }
       }else{
         let submenu = NSMenu ()
         submenu.autoenablesItems = false
-        for (secondName, category) in array {
+        for (secondName, category) in subCategoryArray {
           if category == self.mSelectedCategory.propval {
             foundCurrentSelectedCategory = true
           }
-          let menuItem = NSMenuItem (title: secondName, action: #selector (Self.categoryPullDownButtonAction (_:)), keyEquivalent: "")
+          let menuItem = NSMenuItem (
+            title: secondName,
+            action: #selector (Self.categoryPullDownButtonAction (_:)),
+            keyEquivalent: ""
+          )
           menuItem.target = self
-          menuItem.representedObject = category
+          menuItem.representedObject = CategoryMenuItemRepresentedObject(
+            category: category,
+            subCategories: subCategoryArray
+          )
           submenu.addItem (menuItem)
         }
+        let title = firstName + CATEGORY_SUFFIX
+        if title == self.mSelectedCategory.propval {
+          foundCurrentSelectedCategory = true
+        }
         self.mCategoryPullDownButton.addItem (withTitle: firstName)
-        self.mCategoryPullDownButton.lastItem?.submenu = submenu
-        self.mCategoryPullDownButton.lastItem?.representedObject = firstName + CATEGORY_SUFFIX
-        self.mCategoryPullDownButton.lastItem?.action = #selector (Self.categoryPullDownButtonAction (_:))
-        self.mCategoryPullDownButton.lastItem?.target = self
+        if let item = self.mCategoryPullDownButton.lastItem {
+          item.submenu = submenu
+          item.representedObject = CategoryMenuItemRepresentedObject (
+            category: title,
+            subCategories: subCategoryArray
+          )
+          item.action = #selector (Self.categoryPullDownButtonAction (_:))
+          item.target = self
+        }
       }
     }
     if !foundCurrentSelectedCategory {
       self.mSelectedCategory.setProp ("")
     }
+  //--- Update part display
+    for item in self.mTableViewDataSource {
+      item.updateFromFile ()
+    }
+  //---
     self.filterAction (nil)
   }
 
@@ -209,9 +263,9 @@ fileprivate let CATEGORY_SUFFIX = "✸"
                                       postAction inPostAction : Optional <@MainActor () -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
-    _ = self.mOpenButton.setDismissAction ()
+//    _ = self.mOpenButton.enableDismissAction ()
   //--- Dialog
-    inWindow.beginSheet (self.mDialog) { (_ inModalResponse : NSApplication.ModalResponse) in
+    inWindow.beginSheet (self.mWindow) { (_ inModalResponse : NSApplication.ModalResponse) in
       let selectedRow = self.mTableView.selectedRow
       if inModalResponse == .stop, selectedRow >= 0 {
         let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
@@ -230,16 +284,16 @@ fileprivate let CATEGORY_SUFFIX = "✸"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Open document in library, displayed as dialog window
+  //   Open document in library, displayed as regular window
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func openDocumentInLibrary (windowTitle inTitle : String) {
   //--- Configure
-    self.mDialog.title = inTitle
+    self.mWindow.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
-    self.mOpenButton.setClosureAction { [weak self] in self?.stopModalAndOpenDocumentAction () }
+    self.mOpenButton.setClosureAction { [weak self] in self?.regularWindowOpenDocumentButtonAction () }
   //--- Dialog
-    _ = NSApplication.shared.runModal (for: self.mDialog)
+    self.mWindow.makeKeyAndOrderFront (nil)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -252,9 +306,7 @@ fileprivate let CATEGORY_SUFFIX = "✸"
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc private func stopModalAndOpenDocumentAction () {
-    NSApplication.shared.stopModal ()
-    self.mDialog.orderOut (nil)
+  private func regularWindowOpenDocumentButtonAction () {
     let selectedRow = self.mTableView.selectedRow
     if selectedRow >= 0 {
       let selectedItem = self.mTableViewFilteredDataSource [selectedRow]
@@ -264,7 +316,10 @@ fileprivate let CATEGORY_SUFFIX = "✸"
         dc.openDocument (withContentsOf: url, display: true) { (document : NSDocument?, alreadyOpen : Bool, error : Error?) in }
       }
     }
-    self.removeAllEntries ()
+  //--- Close window ?
+    if self.mCloseWindowAfterOpeningDocument.propval {
+      self.mWindow.orderOut (nil)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -399,8 +454,41 @@ fileprivate let CATEGORY_SUFFIX = "✸"
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func categoryPullDownButtonAction (_ inSender : Any?) {
-    if let menuItem = inSender as? NSMenuItem, let category = (menuItem.representedObject as? String) {
+    if let menuItem = inSender as? NSMenuItem,
+             let rep = menuItem.representedObject as? CategoryMenuItemRepresentedObject {
+      let category = rep.category
+      let subCategoryArray = rep.subCategories
       self.mSelectedCategory.setProp (category)
+    //--- Populate sub category pulldown button
+      while self.mSubCategoryPullDownButton.numberOfItems > 1 {
+        self.mSubCategoryPullDownButton.removeItem (at: self.mSubCategoryPullDownButton.numberOfItems - 1)
+      }
+      self.mSubCategoryPullDownButton.menu?.autoenablesItems = false
+      self.mSubCategoryPullDownButton.isHidden = subCategoryArray.count <= 1
+      if subCategoryArray.count > 1 {
+        self.mSubCategoryPullDownButton.addItem (withTitle: CATEGORY_SUFFIX)
+        if let item = self.mSubCategoryPullDownButton.lastItem {
+          let baseCategory = String (category.split (separator: " ", maxSplits: 1) [0]) + CATEGORY_SUFFIX
+          item.representedObject = CategoryMenuItemRepresentedObject (
+            category: baseCategory,
+            subCategories: subCategoryArray
+          )
+          item.action = #selector (Self.categoryPullDownButtonAction (_:))
+          item.target = self
+        }
+        for (secondName, category) in subCategoryArray {
+          self.mSubCategoryPullDownButton.addItem (withTitle: secondName)
+          if let button = self.mSubCategoryPullDownButton.lastItem {
+            button.representedObject = CategoryMenuItemRepresentedObject (
+              category: category,
+              subCategories: subCategoryArray
+            )
+            button.action = #selector (Self.categoryPullDownButtonAction (_:))
+            button.target = self
+          }
+        }
+      }
+    //---
       self.filterAction (nil)
     }
   }
@@ -426,7 +514,7 @@ fileprivate let CATEGORY_SUFFIX = "✸"
       let previousDataSource = dataSource
       dataSource = []
       if category.hasSuffix (CATEGORY_SUFFIX) {
-        let c = category.dropLast ()
+        let c = category.dropLast (CATEGORY_SUFFIX.count)
         for entry in previousDataSource {
           if let names = entry.partCategory (self.categoryKey)?.split (separator: " "), names [0] == c {
             dataSource.append (entry)
@@ -576,7 +664,7 @@ fileprivate let CATEGORY_SUFFIX = "✸"
     }
   }
 
- // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var image : NSImage {
     if let image = self.mObjectImage {
@@ -604,6 +692,14 @@ fileprivate let CATEGORY_SUFFIX = "✸"
       }
     }
     return image ?? NSImage ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func updateFromFile () {
+    self.mCategory = nil
+    self.mPartStatus = nil
+    self.mObjectImage = nil
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -647,6 +743,13 @@ extension Array where Element == OpenInLibraryDialogFlatItem {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate struct CategoryMenuItemRepresentedObject {
+  let category : String
+  let subCategories : [(String, String)]
 }
 
 //--------------------------------------------------------------------------------------------------
