@@ -36,15 +36,6 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton {
     self.addItem (withTitle: inMenuItemDescriptor.title)
     self.lastItem?.target = inMenuItemDescriptor.target
     self.lastItem?.action = inMenuItemDescriptor.selector
-  //--- Add Enabled binding
-//    let idx = self.numberOfItems - 1
-//    var modelArray = [EBObservableObjectProtocol] ()
-//    inMenuItemDescriptor.enableBinding.addModelsTo (&modelArray)
-//    let controller = EBObservablePropertyController (
-//      observedObjects: modelArray,
-//      callBack: { [weak self] in self?.enable (itemIndex: idx, from: inMenuItemDescriptor.enableBinding) }
-//    )
-//    self.mControllerArray.append (controller)
   //---
     return self
   }
@@ -92,6 +83,68 @@ final class AutoLayoutPullDownButton : ALB_NSPopUpButton {
         self.addItem (withTitle: itemTitle)
       }
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func populate (from inMenuItems : [MenuItem]) {
+    let pullDownButtonMenu = self.menu!
+    while pullDownButtonMenu.numberOfItems > 1 {
+      pullDownButtonMenu.removeItem (at: pullDownButtonMenu.numberOfItems - 1)
+    }
+    self.autoenablesItems = false
+    self.recursivePopulate (menu: pullDownButtonMenu, from: inMenuItems)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func recursivePopulate (menu inMenu : NSMenu,
+                                  from inMenuItems : [MenuItem]) {
+    for menuItem in inMenuItems {
+      inMenu.addItem (withTitle: menuItem.title, action: nil, keyEquivalent: "")
+      if let item = inMenu.item (at: inMenu.numberOfItems - 1) {
+        item.representedObject = RepresentedObject (
+          userObject: menuItem.userObject,
+          action: menuItem.action
+        )
+        item.action = #selector (Self.pullDownButtonItemAction(_:))
+        item.target = self
+        if !menuItem.items.isEmpty {
+          let subMenu = NSMenu ()
+          self.recursivePopulate (menu: subMenu, from: menuItem.items)
+          item.submenu = subMenu
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func pullDownButtonItemAction (_ inSender : Any?) {
+    if let sender = inSender as? NSMenuItem,
+       let representedObject = sender.representedObject as? RepresentedObject {
+      representedObject.action? (representedObject.userObject)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private struct RepresentedObject {
+    let userObject : Any?
+    let action : Action?
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  typealias Action = (_ inUserObject: Any?) -> Void
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  struct MenuItem {
+    let title : String
+    let userObject : Any?
+    let action : Action?
+    let items : [MenuItem]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -50,10 +50,10 @@ final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  final func set (alignment inAlignment : TextAlignment) -> Self {
-//    self.alignment = inAlignment.cocoaAlignment
-//    return self
-//  }
+  final func setRecentsAutosaveName (_ inName : String) -> Self {
+    self.recentsAutosaveName = inName
+    return self
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible

@@ -374,10 +374,15 @@ import AppKit
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
           do{
-            let vStackView_view_view_view_view = AutoLayoutComboBox (width: 200, size: .regular)
+            let vStackView_view_view_view_view = AutoLayoutTextField (minWidth: 200, size: .regular)
               .expandableWidth ()
               .bind_value (self.rootObject.mCategory_property, sendContinously:true)
-            self.configure_categoryComboBox (vStackView_view_view_view_view) // Configurator
+            self.configure_categoryTextField (vStackView_view_view_view_view) // Configurator
+            _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
+          }
+          do{
+            let vStackView_view_view_view_view = AutoLayoutPullDownButton (title: "", size: .regular)
+            self.configure_categoryPullDownButton (vStackView_view_view_view_view) // Configurator
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
           _ = vStackView_view_view .appendView (vStackView_view_view_view)

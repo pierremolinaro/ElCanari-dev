@@ -95,10 +95,11 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
           StaticLabel (title: "Category", bold: no, size : .regular, alignment: .center) {
             notExpandableWidth ()
           }
-          ComboBox (width: 200, size : .regular) [configurator categoryComboBox] {
+          TextField (minWidth: 200, size : .regular) [configurator categoryTextField] {
             expandableWidth ()
             $value root.mCategory (sendContinously: yes)
           }
+          PullDownButton (title: "", size: .regular) [configurator categoryPullDownButton]
         }
         StaticLabel (title: "PDF Documentation", bold: no, size : .regular, alignment: .center)
         TableView (size : .regular, addControlButtons: no) [configurator documentationTableView] {

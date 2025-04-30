@@ -1257,6 +1257,8 @@
 		CF6471FF24F2796500452009 /* upDownRightLeftCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */; };
 		CF651F172AD33787002234F3 /* AutoLayoutTableView-column-AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF651F152AD33787002234F3 /* AutoLayoutTableView-column-AttributedString.swift */; };
 		CF651F192AD33787002234F3 /* AutoLayoutTableView-column-ButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF651F162AD33787002234F3 /* AutoLayoutTableView-column-ButtonImage.swift */; };
+		CF65A37F2DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65A37E2DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift */; };
+		CF65A3802DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65A37E2DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift */; };
 		CF67AB8923E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */; };
 		CF67AB8B23E9B08B0099DE60 /* toone-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */; };
 		CF67AB8C23E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */; };
@@ -2058,8 +2060,8 @@
 		CF93324A294DFC1D00A37C3E /* debug-drag-and-drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF933249294DFC1D00A37C3E /* debug-drag-and-drop.swift */; };
 		CF93324B294DFC1D00A37C3E /* debug-drag-and-drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF933249294DFC1D00A37C3E /* debug-drag-and-drop.swift */; };
 		CF935B692749127D00C0F42D /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CF935B682749127D00C0F42D /* Sparkle */; };
-		CF9653F52DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift */; };
-		CF9653F62DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift */; };
+		CF9653F52DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift */; };
+		CF9653F62DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift */; };
 		CF9653F82DB4281100C570E5 /* document-AutoLayoutDeviceDocument-super-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9653F72DB4280200C570E5 /* document-AutoLayoutDeviceDocument-super-class.swift */; };
 		CF9653F92DB4281100C570E5 /* document-AutoLayoutDeviceDocument-super-class.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9653F72DB4280200C570E5 /* document-AutoLayoutDeviceDocument-super-class.swift */; };
 		CF968AEE21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF968AED21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift */; };
@@ -4220,6 +4222,7 @@
 		CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upDownRightLeftCursor.png; sourceTree = "<group>"; };
 		CF651F152AD33787002234F3 /* AutoLayoutTableView-column-AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-column-AttributedString.swift"; sourceTree = "<group>"; };
 		CF651F162AD33787002234F3 /* AutoLayoutTableView-column-ButtonImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-column-ButtonImage.swift"; sourceTree = "<group>"; };
+		CF65A37E2DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift"; sourceTree = "<group>"; };
 		CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
 		CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
 		CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
@@ -4647,7 +4650,7 @@
 		CF92C3BF22BEC30900C221B2 /* EBBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBBezierPath.swift; sourceTree = "<group>"; };
 		CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricRect.swift; sourceTree = "<group>"; };
 		CF933249294DFC1D00A37C3E /* debug-drag-and-drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "debug-drag-and-drop.swift"; sourceTree = "<group>"; };
-		CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutDeviceDocument-categoryComboBox.swift"; sourceTree = "<group>"; };
+		CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutDeviceDocument-categoryTextField.swift"; sourceTree = "<group>"; };
 		CF9653F72DB4280200C570E5 /* document-AutoLayoutDeviceDocument-super-class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "document-AutoLayoutDeviceDocument-super-class.swift"; sourceTree = "<group>"; };
 		CF968AED21BBD2C10010175E /* EBGraphicView-binding-arrowKeyMagnitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-arrowKeyMagnitude.swift"; sourceTree = "<group>"; };
 		CF968AF021BBD3700010175E /* EBGraphicView-binding-shiftArrowKeyMagnitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-shiftArrowKeyMagnitude.swift"; sourceTree = "<group>"; };
@@ -6635,7 +6638,8 @@
 				CFDD885522340057008D3781 /* atomic-AssignedPadProxiesInDevice.swift */,
 				CFC5BB552232D25900E03849 /* atomic-UnconnectedSymbolPinsInDevice.swift */,
 				CF39CC9E268CC0B2004971F9 /* configurator-AutoLayoutDeviceDocument-addSymbolInstancePullDownButton.swift */,
-				CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift */,
+				CF9653F42DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift */,
+				CF65A37E2DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift */,
 				CF39CCA4268CC0B3004971F9 /* configurator-AutoLayoutDeviceDocument-documentationTableView.swift */,
 				CF39CCA6268CC0B3004971F9 /* controller-array-AutoLayoutDeviceDocument-packageDisplayController.swift */,
 				CF39CCA2268CC0B3004971F9 /* controller-array-AutoLayoutDeviceDocument-symbolDisplayController.swift */,
@@ -8371,7 +8375,7 @@
 				CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */,
 				CFEB7C18233A284A0060A97A /* transient-PointInSchematic-symbolRotation.swift in Sources */,
 				CF62176127A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */,
-				CF9653F62DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift in Sources */,
+				CF9653F62DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift in Sources */,
 				CF61914E26F76839003B75FF /* transient-ArtworkRoot-hasDataWarning.swift in Sources */,
 				CFB7D78826839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift in Sources */,
 				CFA80DDE25C0604600966D91 /* computed-BoardTrack-computedP1Y.swift in Sources */,
@@ -8919,6 +8923,7 @@
 				CFA42F81229AEACF000AA8C8 /* tomany-SymbolPinTypeInDevice.swift in Sources */,
 				CFC5BB5C2232D45A00E03849 /* transient-SymbolPinInstanceInDevice-pinName.swift in Sources */,
 				CF22F216275A73EE009C6FAC /* transient-BoardModel-frontLayoutTextsSegments.swift in Sources */,
+				CF65A3802DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift in Sources */,
 				CFEDE5AF1B4677BA00036ACF /* entity-ArtworkRoot.swift in Sources */,
 				CF59C41029BE36AB004CA404 /* property-NSBezierPath.swift in Sources */,
 				CFB7D76426839B90007B9D3B /* transient-AutoLayoutSymbolDocument-segmentedControlSegmentIssueString.swift in Sources */,
@@ -10366,6 +10371,7 @@
 				CFDD6D6526A1B0F20050CB78 /* AutoLayoutCanariAddSymbolInstancePullDownButton.swift in Sources */,
 				CF968AF821BBD5180010175E /* EBGraphicView-binding-xPlacardUnit.swift in Sources */,
 				CF22F1F0275A73ED009C6FAC /* transient-BoardModel-backPackagesBezierPaths.swift in Sources */,
+				CF65A37F2DC2774F004C822E /* configurator-AutoLayoutDeviceDocument-categoryPullDownButton.swift in Sources */,
 				CF35590F279D9F3B000BFC9B /* controller-array-AutoLayoutProjectDocument-boardCurveObjectsController.swift in Sources */,
 				CFEB7B5F233A25EC0060A97A /* transient-ComponentInProject-unplacedSymbols.swift in Sources */,
 				CF49EED9275A4A3900481930 /* AutoLayoutCanariSampleFontStringView.swift in Sources */,
@@ -10932,7 +10938,7 @@
 				CFEB7B1E233A24BF0060A97A /* transient-BoardTrack-objectDisplay.swift in Sources */,
 				CF22F196275A73ED009C6FAC /* transient-BoardModel-instanceCount.swift in Sources */,
 				CF61914826F75965003B75FF /* transient-ArtworkFileGenerationParameters-parameterStatusImage.swift in Sources */,
-				CF9653F52DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryComboBox.swift in Sources */,
+				CF9653F52DB4155D00C570E5 /* configurator-AutoLayoutDeviceDocument-categoryTextField.swift in Sources */,
 				CFA430B0229AEC41000AA8C8 /* tomany-SymbolRoot.swift in Sources */,
 				CF730B4521F87E8A00944B3E /* entry-point-update-to-latest-commit.swift in Sources */,
 				CFB7D8962683A61C007B9D3B /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift in Sources */,

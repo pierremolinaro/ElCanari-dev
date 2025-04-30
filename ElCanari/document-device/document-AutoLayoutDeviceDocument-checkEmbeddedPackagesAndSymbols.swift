@@ -14,13 +14,73 @@ extension AutoLayoutDeviceDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private struct SubCategoryDescriptor {
+    let subCategory : String
+    let category : String
+    let count : Int
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private struct CategoryDescriptor {
+    let subCategories : [SubCategoryDescriptor]
+    let count : Int
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func triggerStandAlonePropertyComputationForDeviceDocument () {
     self.checkEmbeddedPackages ()
     self.checkEmbeddedSymbols ()
 
-    if let deviceCategorySet = gPreferences?.deviceCategorySet {
-      let array = deviceCategorySet.keys.sorted { $0.lowercased () < $1.lowercased () }
-      self.mCategoryComboBox?.setItems (array)
+    if let deviceCategorySet : CountedSet <String> = gPreferences?.deviceCategorySet {
+      var dict = [String : CategoryDescriptor] ()
+      for (category, count) in deviceCategorySet.values {
+        if category.isEmpty {
+          dict [""] = CategoryDescriptor (subCategories: [], count: count)
+        }else{
+          let names = category.split (separator: " ", maxSplits: 1)
+          let baseCategory = String (names [0])
+          let subCategory = (names.count > 1) ? String (names[1]) : "—"
+          let a = dict [baseCategory] ?? CategoryDescriptor (subCategories: [], count: 0)
+          let s = SubCategoryDescriptor (subCategory: subCategory, category: category, count: count)
+          dict [baseCategory] = CategoryDescriptor (
+            subCategories: a.subCategories + [s],
+            count: a.count + count
+          )
+        }
+      }
+      let keys = dict.keys.sorted { $0.lowercased () < $1.lowercased () }
+      var pullDownMenuItems : [AutoLayoutPullDownButton.MenuItem] = []
+
+      let action = { [weak self] (inUserObject : Any?) in
+        if let category = inUserObject as? String {
+          self?.rootObject.mCategory_property.setProp (category)
+        }
+      }
+
+      for baseCategory in keys {
+        let descriptor = dict [baseCategory]!
+        var subItems = [AutoLayoutPullDownButton.MenuItem] ()
+        for subCategory in descriptor.subCategories {
+          let item = AutoLayoutPullDownButton.MenuItem (
+            title: subCategory.subCategory + " (\(subCategory.count))",
+            userObject: subCategory.category,
+            action: action,
+            items: []
+          )
+          subItems.append (item)
+        }
+        let item = AutoLayoutPullDownButton.MenuItem (
+          title: baseCategory + " (\(descriptor.count))",
+          userObject: baseCategory,
+          action: action,
+          items: subItems
+        )
+        pullDownMenuItems.append (item)
+      }
+      self.mCategoryPullDownButton?.populate (from: pullDownMenuItems)
+
     }
   }
 
@@ -61,10 +121,6 @@ extension AutoLayoutDeviceDocument {
       }else{ // pathes.count > 1
         package.mFileSystemStatusMessage = "Several files in Library for package"
         package.mFileSystemStatusRequiresAttention = true
-//        ioMessages.append ("Cannot update, several files in Library for package \(package.mName):")
-//        for path in pathes {
-//          ioMessages.append ("  - \(path)")
-//        }
       }
     }
   }

@@ -31,6 +31,7 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
   private final let mNoSelectedPartTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .center)
   private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
   private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)
+
   private final let mCategoryPullDownButton = AutoLayoutPullDownButton (title: "Category", size: .regular)
   private final let mSubCategoryPullDownButton = AutoLayoutPullDownButton (title: "☜", size: .regular)
 
@@ -60,7 +61,7 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
     self.mOpenButton = AutoLayoutButton (title: "Open", size: .regular)
   //--- First column
-    let firstColumn = AutoLayoutVerticalStackView ().appendView (self.mSearchField)
+    let firstColumn = AutoLayoutVerticalStackView ().appendView (self.mSearchField.setRecentsAutosaveName (self.recentSearchAutosaveName ()))
     if self.categoryKey != nil {
       _ = firstColumn.append (hStackWith: [self.mCategoryPullDownButton, self.mSelectedCategoryTextField, self.mSubCategoryPullDownButton])
     }
@@ -561,6 +562,12 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     self.mTableViewFilteredDataSource = dataSource
     self.mTableViewFilteredDataSource.sort { $0.mPartName < $1.mPartName }
     self.mTableView.sortAndReloadData ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func recentSearchAutosaveName () -> String {
+    return ""
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -14,9 +14,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutDeviceDocument {
-  final func configure_categoryComboBox (_ inOutlet : AutoLayoutComboBox) {
+  final func configure_categoryTextField (_ inOutlet : AutoLayoutTextField) {
 //--- START OF USER ZONE 2
-     self.mCategoryComboBox = inOutlet
+     self.mCategoryTextField = inOutlet
 //--- END OF USER ZONE 2
   }
 }

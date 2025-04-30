@@ -10,7 +10,8 @@ class AutoLayoutDeviceDocumentSuperClass : EBAutoLayoutManagedDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mCategoryComboBox : AutoLayoutComboBox? = nil
+  var mCategoryTextField : AutoLayoutTextField? = nil
+  var mCategoryPullDownButton : AutoLayoutPullDownButton? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

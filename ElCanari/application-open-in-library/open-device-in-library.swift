@@ -56,6 +56,12 @@ final class OpenDeviceInLibrary : OpenInLibrary {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  override func recentSearchAutosaveName () -> String {
+    return "DeviceRecentSearches"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
