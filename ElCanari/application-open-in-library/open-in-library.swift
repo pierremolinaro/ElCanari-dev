@@ -153,14 +153,10 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
   //---
     var dict = [String : [(String, String, Int)]] () // FirstName : (secondName, category, count)
     for (str, n) in sortedCategoryArray {
-//      if str.isEmpty {
-//        dict [str] = (dict [str] ?? []) + [("—", str, n)]
-//      }else{
-        let names = str.split (separator: " ", maxSplits: 1)
-        let firstName = String (names [0])
-        let secondName = (names.count > 1) ? String (names [1]) : "—"
-        dict [firstName] = (dict [firstName] ?? []) + [(secondName, str, n)]
-//      }
+      let names = str.split (separator: " ", maxSplits: 1)
+      let firstName = String (names [0])
+      let secondName = (names.count > 1) ? String (names [1]) : "—"
+      dict [firstName, default: []] += [(secondName, str, n)]
     }
   //--- Populate pull down button
     var foundCurrentSelectedCategory = self.mSelectedCategory.propval == CATEGORY_SUFFIX
