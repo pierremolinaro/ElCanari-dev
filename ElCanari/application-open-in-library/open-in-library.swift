@@ -144,18 +144,23 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func populateCategoryPopUpButton (withCategoryNameSet inCategoryNameSet : Set <String>) {
+  func populateCategoryPopUpButton (withCategoryNameSet inCategoryNameSet : CountedSet <String>) {
   //--- Sort
-    let sortedCategoryArray = Array (inCategoryNameSet).sorted {
-      $0.lowercased () < $1.lowercased ()
+    let categoryNameSet = inCategoryNameSet.removingAllOccurences (of: "")
+    let sortedCategoryArray = categoryNameSet.values.sorted {
+      $0.0.lowercased () < $1.0.lowercased ()
     }
   //---
-    var dict = [String : [(String, String)]] () // FirstName : (secondName, representedObject)
-    for str in sortedCategoryArray {
-      let names = str.split (separator: " ", maxSplits: 1)
-      let firstName = String (names [0])
-      let secondName = (names.count > 1) ? String (names [1]) : "—"
-      dict [firstName] = (dict [firstName] ?? []) + [(secondName, str)]
+    var dict = [String : [(String, String, Int)]] () // FirstName : (secondName, category, count)
+    for (str, n) in sortedCategoryArray {
+//      if str.isEmpty {
+//        dict [str] = (dict [str] ?? []) + [("—", str, n)]
+//      }else{
+        let names = str.split (separator: " ", maxSplits: 1)
+        let firstName = String (names [0])
+        let secondName = (names.count > 1) ? String (names [1]) : "—"
+        dict [firstName] = (dict [firstName] ?? []) + [(secondName, str, n)]
+//      }
     }
   //--- Populate pull down button
     var foundCurrentSelectedCategory = self.mSelectedCategory.propval == CATEGORY_SUFFIX
@@ -163,38 +168,45 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       self.mCategoryPullDownButton.removeItem (at: self.mCategoryPullDownButton.numberOfItems - 1)
     }
   //--- First item : all
-    self.mCategoryPullDownButton.addItem (withItalicTitle: "— all —")
+    self.mCategoryPullDownButton.addItem (withItalicTitle: "— all — (\(inCategoryNameSet.totalCount))")
     if let item = self.mCategoryPullDownButton.lastItem {
       item.representedObject = CategoryMenuItemRepresentedObject (
         category: CATEGORY_SUFFIX,
-        subCategories: []
+        subCategories: [],
+        count: inCategoryNameSet.totalCount
       )
       item.action = #selector (Self.categoryPullDownButtonAction (_:))
       item.target = self
     }
   //--- Second item : none
-    self.mCategoryPullDownButton.addItem (withItalicTitle: "— none —")
-    if let item = self.mCategoryPullDownButton.lastItem {
-      item.representedObject = CategoryMenuItemRepresentedObject (
-        category: "",
-        subCategories: []
-      )
-      item.action = #selector (Self.categoryPullDownButtonAction (_:))
-      item.target = self
+    let noCategoryCount = inCategoryNameSet.count(for: "")
+    if noCategoryCount > 0 {
+      self.mCategoryPullDownButton.addItem (withItalicTitle: "— none — (\(noCategoryCount))")
+      if let item = self.mCategoryPullDownButton.lastItem {
+        item.representedObject = CategoryMenuItemRepresentedObject (
+          category: "",
+          subCategories: [],
+          count: noCategoryCount
+        )
+        item.action = #selector (Self.categoryPullDownButtonAction (_:))
+        item.target = self
+      }
     }
   //--- Enumerate category dictionary entries
     for firstName in dict.keys.sorted (by: { $0.lowercased () < $1.lowercased () }) {
-      let subCategoryArray : [(String, String)] = dict [firstName]!.sorted { $0.0.lowercased () < $1.0.lowercased () }
+      let subCategoryArray : [(String, String, Int)] = dict [firstName]!.sorted { $0.0.lowercased () < $1.0.lowercased () }
       if subCategoryArray.count == 1 {
         let category = subCategoryArray [0].1
+        let categoryCount = subCategoryArray [0].2
         if category == self.mSelectedCategory.propval {
           foundCurrentSelectedCategory = true
         }
-        self.mCategoryPullDownButton.addItem (withTitle: category)
+        self.mCategoryPullDownButton.addItem (withTitle: category + " (\(categoryCount))")
         if let item = self.mCategoryPullDownButton.lastItem {
           item.representedObject = CategoryMenuItemRepresentedObject (
             category: category,
-            subCategories: subCategoryArray
+            subCategories: subCategoryArray,
+            count: categoryCount
           )
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
           item.target = self
@@ -202,19 +214,22 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       }else{
         let submenu = NSMenu ()
         submenu.autoenablesItems = false
-        for (secondName, category) in subCategoryArray {
+        var baseCategoryCount = 0
+        for (secondName, category, n) in subCategoryArray {
+          baseCategoryCount += n
           if category == self.mSelectedCategory.propval {
             foundCurrentSelectedCategory = true
           }
           let menuItem = NSMenuItem (
-            title: secondName,
+            title: secondName + " (\(n))",
             action: #selector (Self.categoryPullDownButtonAction (_:)),
             keyEquivalent: ""
           )
           menuItem.target = self
           menuItem.representedObject = CategoryMenuItemRepresentedObject(
             category: category,
-            subCategories: subCategoryArray
+            subCategories: subCategoryArray,
+            count: n
           )
           submenu.addItem (menuItem)
         }
@@ -222,12 +237,13 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
         if title == self.mSelectedCategory.propval {
           foundCurrentSelectedCategory = true
         }
-        self.mCategoryPullDownButton.addItem (withTitle: firstName)
+        self.mCategoryPullDownButton.addItem (withTitle: firstName + " (\(baseCategoryCount))")
         if let item = self.mCategoryPullDownButton.lastItem {
           item.submenu = submenu
           item.representedObject = CategoryMenuItemRepresentedObject (
             category: title,
-            subCategories: subCategoryArray
+            subCategories: subCategoryArray,
+            count: baseCategoryCount
           )
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
           item.target = self
@@ -473,22 +489,24 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       self.mSubCategoryPullDownButton.menu?.autoenablesItems = false
       self.mSubCategoryPullDownButton.isHidden = subCategoryArray.count <= 1
       if subCategoryArray.count > 1 {
-        self.mSubCategoryPullDownButton.addItem (withTitle: CATEGORY_SUFFIX)
+        self.mSubCategoryPullDownButton.addItem (withTitle: CATEGORY_SUFFIX + " (\(rep.count))")
         if let item = self.mSubCategoryPullDownButton.lastItem {
           let baseCategory = String (category.split (separator: " ", maxSplits: 1) [0]) + CATEGORY_SUFFIX
           item.representedObject = CategoryMenuItemRepresentedObject (
             category: baseCategory,
-            subCategories: subCategoryArray
+            subCategories: subCategoryArray,
+            count: rep.count
           )
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
           item.target = self
         }
-        for (secondName, category) in subCategoryArray {
-          self.mSubCategoryPullDownButton.addItem (withTitle: secondName)
+        for (secondName, category, n) in subCategoryArray {
+          self.mSubCategoryPullDownButton.addItem (withTitle: secondName + " (\(n))")
           if let button = self.mSubCategoryPullDownButton.lastItem {
             button.representedObject = CategoryMenuItemRepresentedObject (
               category: category,
-              subCategories: subCategoryArray
+              subCategories: subCategoryArray,
+              count: n
             )
             button.action = #selector (Self.categoryPullDownButtonAction (_:))
             button.target = self
@@ -764,7 +782,8 @@ extension Array where Element == OpenInLibraryDialogFlatItem {
 
 fileprivate struct CategoryMenuItemRepresentedObject {
   let category : String
-  let subCategories : [(String, String)]
+  let subCategories : [(String, String, Int)]
+  let count : Int
 }
 
 //--------------------------------------------------------------------------------------------------

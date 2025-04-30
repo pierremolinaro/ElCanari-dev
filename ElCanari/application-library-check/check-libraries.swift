@@ -335,20 +335,19 @@ extension Preferences {
   fileprivate func checkDeviceLibrary (_ inStackView : MessageStackView,
                                        atPath inDeviceFullPath : String,
                                        deviceDict ioDeviceDict : inout [String : DeviceDictionaryEntry],
-                                       categories ioCategories : inout Set <String>) {
+                                       categories ioCategories : inout CountedSet <String>) {
     let deviceName = ((inDeviceFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
   //--- Get metadata dictionary
     if let metadata = try? getFileMetadata (atPath: inDeviceFullPath) {
     //--- Category
       let category : String = (metadata.metadataDictionary [DEVICE_CATEGORY_KEY] as? String) ?? ""
+      ioCategories.insert (category)
       if category == "" {
         inStackView.appendError (
           deviceName,
           ["Device '\(deviceName)' has an empty category string"],
           documentPathes: [inDeviceFullPath]
         )
-      }else{
-        ioCategories.insert (category)
       }
     //--- Version number
       let possibleVersionNumber : Any? = metadata.metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY]
@@ -440,7 +439,7 @@ extension Preferences {
   fileprivate func performDeviceLibraryEnumeration (_ inStackView : MessageStackView,
                                   atPath inPackageLibraryPath : String,
                                   deviceDict ioDeviceDict : inout [String : DeviceDictionaryEntry],
-                                  categories ioCategories : inout Set <String>) {
+                                  categories ioCategories : inout CountedSet <String>) {
     let fm = FileManager ()
     if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
       for path in unwSubpaths {
@@ -458,8 +457,8 @@ extension Preferences {
 
   fileprivate func checkDeviceLibrary (_ inStackView : MessageStackView,
                                        symbolDict inSymbolDict : [String : SymbolDictionaryEntry],
-                                       packageDict inPackageDict : [String : PackageDictionaryEntry]) -> (Int, Set <String>) {
-    var categories = Set <String> ()
+                                       packageDict inPackageDict : [String : PackageDictionaryEntry]) -> (Int, CountedSet <String>) {
+    var categories = CountedSet <String> ()
     var deviceDict : [String : DeviceDictionaryEntry] = [:]
     for path in existingLibraryPathArray () {
       let deviceLibraryPath = deviceLibraryPathForPath (path)

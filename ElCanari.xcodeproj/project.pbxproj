@@ -2723,6 +2723,8 @@
 		CFBCB7AA242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCB7A8242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift */; };
 		CFBEA95F257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEA95E257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift */; };
 		CFBEA960257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEA95E257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift */; };
+		CFBEF33C2DC2169000BC7A0F /* CountedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEF33B2DC2168900BC7A0F /* CountedSet.swift */; };
+		CFBEF33D2DC2169000BC7A0F /* CountedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEF33B2DC2168900BC7A0F /* CountedSet.swift */; };
 		CFC1325F26FB4EBB0027AC93 /* EBReferenceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC1325E26FB4EBB0027AC93 /* EBReferenceSet.swift */; };
 		CFC1326026FB4EBB0027AC93 /* EBReferenceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC1325E26FB4EBB0027AC93 /* EBReferenceSet.swift */; };
 		CFC192272AC8B64500A872D2 /* ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC192262AC8B64500A872D2 /* ASCII.swift */; };
@@ -5014,6 +5016,7 @@
 		CFBC78792688FE9C00EE6FF4 /* artwork.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = artwork.pdf; sourceTree = "<group>"; };
 		CFBCB7A8242FAB70000B42CE /* transient-PackageRoot-lockImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-lockImageView.swift"; sourceTree = "<group>"; };
 		CFBEA95E257965660032C2CA /* EBGraphicView-binding-foregroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EBGraphicView-binding-foregroundImage.swift"; sourceTree = "<group>"; };
+		CFBEF33B2DC2168900BC7A0F /* CountedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountedSet.swift; sourceTree = "<group>"; };
 		CFC1325E26FB4EBB0027AC93 /* EBReferenceSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReferenceSet.swift; sourceTree = "<group>"; };
 		CFC192262AC8B64500A872D2 /* ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
 		CFC36FBE2C0A263E00B3D8DF /* extension-ArtworkFileGenerationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-ArtworkFileGenerationParameters.swift"; sourceTree = "<group>"; };
@@ -6097,6 +6100,7 @@
 				CFD8D48C2C0480B0008212F9 /* CanariSize.swift */,
 				CF379163269C97F000FA083F /* check-el-canari-file-path.swift */,
 				CFCDA84E2C09D6E3005424E8 /* compression.swift */,
+				CFBEF33B2DC2168900BC7A0F /* CountedSet.swift */,
 				CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */,
 				CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */,
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
@@ -8477,6 +8481,7 @@
 				CF7FC4BF29EDDAF30045DD14 /* transient-BoardImage-boardOriginalImageWidth.swift in Sources */,
 				CF711D16275E1A8500280069 /* toone-ComponentSymbolInProject.swift in Sources */,
 				CFDD885622340057008D3781 /* atomic-AssignedPadProxiesInDevice.swift in Sources */,
+				CFBEF33D2DC2169000BC7A0F /* CountedSet.swift in Sources */,
 				CF22F1D4275A73ED009C6FAC /* transient-MergerBoardInstance-selectionDisplay.swift in Sources */,
 				CF22F27C275A73EE009C6FAC /* transient-BoardModel-frontLayoutTextsBezierPaths.swift in Sources */,
 				CF7FC48729EDB2DF0045DD14 /* extension-BoardImage.swift in Sources */,
@@ -11644,6 +11649,7 @@
 				CFEB7ACD233A235F0060A97A /* transient-BorderCurve-selectionDisplay.swift in Sources */,
 				CFA43014229AEB69000AA8C8 /* toone-PackageSegment.swift in Sources */,
 				CF6880252D330DE7006575A2 /* selectionController-AutoLayoutProjectDocument-wireInSchematicSelectionController.swift in Sources */,
+				CFBEF33C2DC2169000BC7A0F /* CountedSet.swift in Sources */,
 				CF6880262D330DE7006575A2 /* selectionController-AutoLayoutProjectDocument-boardTrackSelectionController.swift in Sources */,
 				CF6880272D330DE7006575A2 /* selectionController-AutoLayoutProjectDocument-componentSymbolSelectionController.swift in Sources */,
 				CF6880282D330DE7006575A2 /* selectionController-AutoLayoutProjectDocument-ncInSchematicSelectionController.swift in Sources */,

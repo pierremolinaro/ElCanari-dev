@@ -52,15 +52,15 @@ import Sparkle
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mDeviceCategorySet = Set <String> ()
+  private var mDeviceCategorySet = CountedSet <String> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var deviceCategorySet : Set <String> { self.mDeviceCategorySet }
+  var deviceCategorySet : CountedSet <String> { self.mDeviceCategorySet }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setDeviceCategorySet (_ inDeviceCategorySet : Set <String>) {
+  func setDeviceCategorySet (_ inDeviceCategorySet : CountedSet <String>) {
     self.mDeviceCategorySet = inDeviceCategorySet
   }
 

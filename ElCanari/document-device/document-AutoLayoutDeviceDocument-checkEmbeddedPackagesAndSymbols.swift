@@ -19,7 +19,7 @@ extension AutoLayoutDeviceDocument {
     self.checkEmbeddedSymbols ()
 
     if let deviceCategorySet = gPreferences?.deviceCategorySet {
-      let array = Array (deviceCategorySet).sorted { $0.lowercased () < $1.lowercased () }
+      let array = deviceCategorySet.keys.sorted { $0.lowercased () < $1.lowercased () }
       self.mCategoryComboBox?.setItems (array)
     }
   }
