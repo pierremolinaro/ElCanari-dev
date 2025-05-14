@@ -44,7 +44,7 @@ def runCommand (command) :
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 #--- Free routing dir
 FREEROUTING_DIR = scriptDir + "/freerouting"
-APP_VERSION = "1.4.4-pm"
+APP_VERSION = "1.4.5.a-pm"
 #--- Goto Freerouting dir
 os.chdir (FREEROUTING_DIR)
 #--- Compile for distribution
@@ -79,13 +79,13 @@ else:
       "--no-header-files",
       "--no-man-pages",
       "--strip-native-commands",
-      "--vm=server",
+#       "--vm=server",
       "--compress=2",
       "--output", "runtime"
     ])
 #--- Build executable
 os.chdir (scriptDir)
-FREE_ROUTING_NAME = "Freerouting-" + APP_VERSION
+FREE_ROUTING_NAME = "Freerouting"
 runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".app"])
 runCommand ([
   JPKG_HOME + "/bin/jpackage",
@@ -146,10 +146,7 @@ runCommand ([
 #   "--app-version", APP_VERSION,
 #   "--license-file", "../LICENSE"
 # ])
-#--- Copy application in ElCanari resource directory
-ELCANARI_FREEROUTING_RESOURCE_DIR = scriptDir + "/../ElCanari/free-router-application"
-runCommand (["rm", "-rf", ELCANARI_FREEROUTING_RESOURCE_DIR + "/Freerouting.app"])
-runCommand (["cp", "-r", FREE_ROUTING_NAME + ".app", ELCANARI_FREEROUTING_RESOURCE_DIR])
-runCommand (["mv", ELCANARI_FREEROUTING_RESOURCE_DIR + "/" + FREE_ROUTING_NAME + ".app", ELCANARI_FREEROUTING_RESOURCE_DIR + "/Freerouting.app"])
+#--- Build tar.xz file
+runCommand (["tar", "cfJ", FREE_ROUTING_NAME + ".app.tar.xz", FREE_ROUTING_NAME + ".app"])
 
 #-------------------------------------------------------------------------------

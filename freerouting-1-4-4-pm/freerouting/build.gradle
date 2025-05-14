@@ -59,8 +59,8 @@ dependencies {
     // https://mvnrepository.com/artifact/javax.help/javahelp
     compile group: 'javax.help', name: 'javahelp', version: '2.0.05'
 
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.0'
+//    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.0'
+//    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.0'
 }
 
 
