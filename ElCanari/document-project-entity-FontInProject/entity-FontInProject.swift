@@ -6,14 +6,14 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_mFileSystemStatusMessage : AnyObject {
-  var mFileSystemStatusMessage : String { get }
+@MainActor protocol FontInProject_mFileSystemStatusMessageForFontInProject : AnyObject {
+  var mFileSystemStatusMessageForFontInProject : String { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_mFileSystemStatusRequiresAttention : AnyObject {
-  var mFileSystemStatusRequiresAttention : Bool { get }
+@MainActor protocol FontInProject_mFileSystemStatusRequiresAttentionForFontInProject : AnyObject {
+  var mFileSystemStatusRequiresAttentionForFontInProject : Bool { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,8 +93,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 final class FontInProject : EBManagedObject,
-         FontInProject_mFileSystemStatusMessage,
-         FontInProject_mFileSystemStatusRequiresAttention,
+         FontInProject_mFileSystemStatusMessageForFontInProject,
+         FontInProject_mFileSystemStatusRequiresAttentionForFontInProject,
          FontInProject_mNominalSize,
          FontInProject_mFontName,
          FontInProject_mFontVersion,
@@ -115,29 +115,29 @@ final class FontInProject : EBManagedObject,
   final let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false, key: "mTexts")
 
   //································································································
-  //   Atomic property: mFileSystemStatusMessage
+  //   Atomic property: mFileSystemStatusMessageForFontInProject
   //································································································
 
-  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+  final let mFileSystemStatusMessageForFontInProject_property : EBStandAloneProperty_String
 
   //································································································
 
-  final var mFileSystemStatusMessage : String {
-    get { return self.mFileSystemStatusMessage_property.propval }
-    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  final var mFileSystemStatusMessageForFontInProject : String {
+    get { return self.mFileSystemStatusMessageForFontInProject_property.propval }
+    set { self.mFileSystemStatusMessageForFontInProject_property.setProp (newValue) }
   }
 
   //································································································
-  //   Atomic property: mFileSystemStatusRequiresAttention
+  //   Atomic property: mFileSystemStatusRequiresAttentionForFontInProject
   //································································································
 
-  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+  final let mFileSystemStatusRequiresAttentionForFontInProject_property : EBStandAloneProperty_Bool
 
   //································································································
 
-  final var mFileSystemStatusRequiresAttention : Bool {
-    get { return self.mFileSystemStatusRequiresAttention_property.propval }
-    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
+  final var mFileSystemStatusRequiresAttentionForFontInProject : Bool {
+    get { return self.mFileSystemStatusRequiresAttentionForFontInProject_property.propval }
+    set { self.mFileSystemStatusRequiresAttentionForFontInProject_property.setProp (newValue) }
   }
 
   //································································································
@@ -305,8 +305,8 @@ final class FontInProject : EBManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String ("")
-    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (false)
+    self.mFileSystemStatusMessageForFontInProject_property = EBStandAloneProperty_String ("")
+    self.mFileSystemStatusRequiresAttentionForFontInProject_property = EBStandAloneProperty_Bool (false)
     self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNominalSize")
     self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mFontName")
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mFontVersion")
@@ -405,7 +405,7 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: fileSystemStatusImage
     self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        let s0 = unwSelf.mFileSystemStatusRequiresAttentionForFontInProject_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontInProject_fileSystemStatusImage (v0))
@@ -418,7 +418,7 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
+    self.mFileSystemStatusRequiresAttentionForFontInProject_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: canRemoveFont
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

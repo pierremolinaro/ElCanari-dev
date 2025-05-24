@@ -14,10 +14,12 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceInProject_fileSystemStatusImage (
-       _ self_mFileSystemStatusRequiresAttention : Bool
+       _ self_mFileSystemStatusRequiresAttentionForDeviceInProject : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2
-  return self_mFileSystemStatusRequiresAttention ? NSImage.statusWarning : NSImage ()
+  return self_mFileSystemStatusRequiresAttentionForDeviceInProject
+    ? NSImage.statusWarning
+    : NSImage ()
 //--- END OF USER ZONE 2
 }
 

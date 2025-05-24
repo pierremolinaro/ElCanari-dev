@@ -61,14 +61,14 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : NSObject,
       addSortObserversCallback: { (observer) in
         inModel.toMany_documentSize_StartsBeingObserved (by: observer)
         inModel.toMany_instanceCount_StartsBeingObserved (by: observer)
-        inModel.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessageForSymbolTypeInDevice_StartsBeingObserved (by: observer)
         inModel.toMany_mTypeName_StartsBeingObserved (by: observer)
         inModel.toMany_versionString_StartsBeingObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
         inModel.toMany_documentSize_StopsBeingObserved (by: observer)
         inModel.toMany_instanceCount_StopsBeingObserved (by: observer)
-        inModel.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessageForSymbolTypeInDevice_StopsBeingObserved (by: observer)
         inModel.toMany_mTypeName_StopsBeingObserved (by: observer)
         inModel.toMany_versionString_StopsBeingObserved (by: observer)
       }
@@ -156,8 +156,8 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : NSObject,
     self.sortedArray_property.toMany_mTypeName_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'fileSystemStatusImage' column
     self.sortedArray_property.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
-  //--- Observe 'mFileSystemStatusMessage' column
-    self.sortedArray_property.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'mFileSystemStatusMessageForSymbolTypeInDevice' column
+    self.sortedArray_property.toMany_mFileSystemStatusMessageForSymbolTypeInDevice_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'documentSize' column
     self.sortedArray_property.toMany_documentSize_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //---
@@ -240,12 +240,12 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : NSObject,
       headerAlignment: .left,
       contentAlignment: .center
     )
-  //--- Configure 'mFileSystemStatusMessage' column
+  //--- Configure 'mFileSystemStatusMessageForSymbolTypeInDevice' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileSystemStatusMessage },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileSystemStatusMessageForSymbolTypeInDevice },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_String_properties (left.mFileSystemStatusMessage_property, ascending, right.mFileSystemStatusMessage_property) })
+        self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_String_properties (left.mFileSystemStatusMessageForSymbolTypeInDevice_property, ascending, right.mFileSystemStatusMessageForSymbolTypeInDevice_property) })
       },
       title: "Status in Symbol Libraries",
       minWidth: 100,

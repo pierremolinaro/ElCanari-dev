@@ -47,16 +47,16 @@ import AppKit
   var mFileData_property = EBComputedProperty_Data ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Selection observable property: mFileSystemStatusMessage
+  //   Selection observable property: mFileSystemStatusMessageForSymbolTypeInDevice
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mFileSystemStatusMessage_property = EBComputedProperty_String ()
+  var mFileSystemStatusMessageForSymbolTypeInDevice_property = EBComputedProperty_String ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Selection observable property: mFileSystemStatusRequiresAttention
+  //   Selection observable property: mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mFileSystemStatusRequiresAttention_property = EBComputedProperty_Bool ()
+  var mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property = EBComputedProperty_Bool ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: mFilledBezierPath
@@ -116,8 +116,8 @@ import AppKit
     self.bind_property_fileSystemStatusImage (model: model)
     self.bind_property_instanceCount (model: model)
     self.bind_property_mFileData (model: model)
-    self.bind_property_mFileSystemStatusMessage (model: model)
-    self.bind_property_mFileSystemStatusRequiresAttention (model: model)
+    self.bind_property_mFileSystemStatusMessageForSymbolTypeInDevice (model: model)
+    self.bind_property_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice (model: model)
     self.bind_property_mFilledBezierPath (model: model)
     self.bind_property_mStrokeBezierPath (model: model)
     self.bind_property_mTypeName (model: model)
@@ -144,14 +144,14 @@ import AppKit
     self.mFileData_property.mReadModelFunction = nil 
     self.mFileData_property.mWriteModelFunction = nil 
     self.mModel?.toMany_mFileData_StopsBeingObserved (by: self.mFileData_property)
-  //--- mFileSystemStatusMessage
-    self.mFileSystemStatusMessage_property.mReadModelFunction = nil 
-    self.mFileSystemStatusMessage_property.mWriteModelFunction = nil 
-    self.mModel?.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: self.mFileSystemStatusMessage_property)
-  //--- mFileSystemStatusRequiresAttention
-    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = nil 
-    self.mFileSystemStatusRequiresAttention_property.mWriteModelFunction = nil 
-    self.mModel?.toMany_mFileSystemStatusRequiresAttention_StopsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property)
+  //--- mFileSystemStatusMessageForSymbolTypeInDevice
+    self.mFileSystemStatusMessageForSymbolTypeInDevice_property.mReadModelFunction = nil 
+    self.mFileSystemStatusMessageForSymbolTypeInDevice_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_mFileSystemStatusMessageForSymbolTypeInDevice_StopsBeingObserved (by: self.mFileSystemStatusMessageForSymbolTypeInDevice_property)
+  //--- mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.mReadModelFunction = nil 
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.mWriteModelFunction = nil 
+    self.mModel?.toMany_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_StopsBeingObserved (by: self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property)
   //--- mFilledBezierPath
     self.mFilledBezierPath_property.mReadModelFunction = nil 
     self.mFilledBezierPath_property.mWriteModelFunction = nil 
@@ -352,9 +352,9 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
 
-  private final func bind_property_mFileSystemStatusMessage (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: self.mFileSystemStatusMessage_property)
-    self.mFileSystemStatusMessage_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mFileSystemStatusMessageForSymbolTypeInDevice (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
+    model.toMany_mFileSystemStatusMessageForSymbolTypeInDevice_StartsBeingObserved (by: self.mFileSystemStatusMessageForSymbolTypeInDevice_property)
+    self.mFileSystemStatusMessageForSymbolTypeInDevice_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
         case .empty :
@@ -365,7 +365,7 @@ import AppKit
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mFileSystemStatusMessage_property.selection {
+            switch object.mFileSystemStatusMessageForSymbolTypeInDevice_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -388,14 +388,14 @@ import AppKit
         return .empty
       }
     }
-    self.mFileSystemStatusMessage_property.mWriteModelFunction = { [weak self] (inValue : String) in
+    self.mFileSystemStatusMessageForSymbolTypeInDevice_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.mModel {
         switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.mFileSystemStatusMessage_property.setProp (inValue)
+            object.mFileSystemStatusMessageForSymbolTypeInDevice_property.setProp (inValue)
           }
         }
       }
@@ -404,9 +404,9 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
 
-  private final func bind_property_mFileSystemStatusRequiresAttention (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property)
-    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
+    model.toMany_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_StartsBeingObserved (by: self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property)
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
         case .empty :
@@ -417,7 +417,7 @@ import AppKit
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mFileSystemStatusRequiresAttention_property.selection {
+            switch object.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -440,14 +440,14 @@ import AppKit
         return .empty
       }
     }
-    self.mFileSystemStatusRequiresAttention_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.mModel {
         switch model.selection {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.mFileSystemStatusRequiresAttention_property.setProp (inValue)
+            object.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.setProp (inValue)
           }
         }
       }

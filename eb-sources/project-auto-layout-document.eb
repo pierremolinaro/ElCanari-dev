@@ -291,7 +291,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
      column mFontName (title: "Font Name", minWidth: 60, maxWidth: 2000, headerAlignment: .left, contentAlignment: .left)
        sortkey mFontName
     column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
-    column mFileSystemStatusMessage (title: "Status in Device Library", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
+    column mFileSystemStatusMessageForFontInProject (title: "Status in Device Library", minWidth: 150, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessageForFontInProject
      column versionString (title: "Version", minWidth: 60, maxWidth: 100, headerAlignment: .center, contentAlignment: .center)
        sortkey versionString
      column sizeString (title: "Size", minWidth: 60, maxWidth: 150, headerAlignment: .center, contentAlignment: .center)
@@ -326,13 +326,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       headerAlignment: .left,
       contentAlignment: .center
     )
-    column mFileSystemStatusMessage (
+    column mFileSystemStatusMessageForDeviceInProject (
       title: "Status in Device Library",
       minWidth: 150,
       maxWidth: 300,
       headerAlignment: .left,
       contentAlignment: .left
-     ) sortkey mFileSystemStatusMessage
+     ) sortkey mFileSystemStatusMessageForDeviceInProject
     column versionString (
       title: "Version",
       minWidth: 80,
@@ -811,9 +811,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action setDateToNowAction ;
   action openSetDateDialogAction ;
   
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //   Schematic selected objects inspector
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
   stackView \selectedSchematicElementInspectorView vStack set (topMargin: .regular) set (bottomMargin: .regular) {
     newView schematicsWireInspectorView = \schematicsWireInspectorView ()

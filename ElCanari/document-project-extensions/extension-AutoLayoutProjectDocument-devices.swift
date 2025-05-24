@@ -45,13 +45,13 @@ extension AutoLayoutProjectDocument {
 
   func checkDevices (_ ioMessages : inout [String]) {
     for deviceInProject in self.rootObject.mDevices.values {
-      deviceInProject.mFileSystemStatusMessage = "Ok"
-      deviceInProject.mFileSystemStatusRequiresAttention = false
+      deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Ok"
+      deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = false
       let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
       if pathes.count == 0 {
         ioMessages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
-        deviceInProject.mFileSystemStatusMessage = "No device file in Library"
-        deviceInProject.mFileSystemStatusRequiresAttention = true
+        deviceInProject.mFileSystemStatusMessageForDeviceInProject = "No device file in Library"
+        deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = true
       }else if pathes.count == 1 {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])) {
           let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
@@ -63,32 +63,32 @@ extension AutoLayoutProjectDocument {
                 var errorMessage = self.checkCandidateDevicePads (deviceInProject, candidateDeviceRoot)
                 errorMessage += self.checkCandidateDeviceSymbolTypes (deviceInProject, candidateDeviceRoot)
                 errorMessage += self.checkCandidateDeviceSymbolInstances (deviceInProject, candidateDeviceRoot)
-                deviceInProject.mFileSystemStatusRequiresAttention = true
+                deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = true
                 if errorMessage == "" {
-                  deviceInProject.mFileSystemStatusMessage = "Device is updatable"
+                  deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Device is updatable"
                 }else{
-                 deviceInProject.mFileSystemStatusMessage = "Cannot update: new device is incompatible"
+                 deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Cannot update: new device is incompatible"
                  ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
                 }
               }
             }else{
-              deviceInProject.mFileSystemStatusMessage = "Cannot read device file"
-              deviceInProject.mFileSystemStatusRequiresAttention = true
+              deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Cannot read device file"
+              deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = true
               ioMessages.append ("Cannot read \(pathes [0]) file.")
             }
           case .readError (_) :
-            deviceInProject.mFileSystemStatusMessage = "Cannot read device file"
-            deviceInProject.mFileSystemStatusRequiresAttention = true
+            deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Cannot read device file"
+            deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = true
             ioMessages.append ("Cannot read \(pathes [0]) file.")
           }
         }else{
-          deviceInProject.mFileSystemStatusMessage = "Cannot read device file"
-          deviceInProject.mFileSystemStatusRequiresAttention = true
+          deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Cannot read device file"
+          deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = true
           ioMessages.append ("Cannot read \(pathes [0]) file.")
         }
       }else{ // pathes.count > 1
-        deviceInProject.mFileSystemStatusMessage = "Several device files in library"
-        deviceInProject.mFileSystemStatusRequiresAttention = true
+        deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Several device files in library"
+        deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = true
         ioMessages.append ("Several files for \(deviceInProject.mDeviceName) font in Library:")
         for path in pathes {
           ioMessages.append ("  - \(path)")

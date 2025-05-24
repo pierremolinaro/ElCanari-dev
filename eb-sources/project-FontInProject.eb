@@ -7,8 +7,8 @@ handlingOpposite entity FontInProject {
   toMany ComponentInProject mComponentNames inverse toOne mNameFont ;
   toMany ComponentInProject mComponentValues inverse toOne mValueFont ;
 
-  standalone property String mFileSystemStatusMessage default "" ;
-  standalone property Bool mFileSystemStatusRequiresAttention default no ;
+  standalone property String mFileSystemStatusMessageForFontInProject default "" ;
+  standalone property Bool mFileSystemStatusRequiresAttentionForFontInProject default no ;
 
   property @generateDirectAccess Int mNominalSize default 0 ;
   property @generateDirectAccess String mFontName default "" ;
@@ -27,7 +27,7 @@ handlingOpposite entity FontInProject {
 
 
   transient NSImage fileSystemStatusImage dependsFrom
-    self.mFileSystemStatusRequiresAttention
+    self.mFileSystemStatusRequiresAttentionForFontInProject
   ;
 }
 

@@ -82,16 +82,16 @@ handlingOpposite entity ProjectRoot {
 
 //--- Library
   transient NSImage fileSystemDeviceLibraryStatusImage dependsFrom
-    self.mDevices.all.mFileSystemStatusRequiresAttention
+    self.mDevices.all.mFileSystemStatusRequiresAttentionForDeviceInProject
   ;
 
   transient NSImage fileSystemFontLibraryStatusImage dependsFrom
-    self.mFonts.all.mFileSystemStatusRequiresAttention
+    self.mFonts.all.mFileSystemStatusRequiresAttentionForFontInProject
   ;
 
   transient NSImage libraryPageRequiresAttentionImage dependsFrom
-    self.mDevices.all.mFileSystemStatusRequiresAttention,
-    self.mFonts.all.mFileSystemStatusRequiresAttention
+    self.mDevices.all.mFileSystemStatusRequiresAttentionForDeviceInProject,
+    self.mFonts.all.mFileSystemStatusRequiresAttentionForFontInProject
   ;
 
 //--- Board

@@ -14,13 +14,13 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_fileSystemFontLibraryStatusImage (
-       _ self_mFonts_mFileSystemStatusRequiresAttention : [any FontInProject_mFileSystemStatusRequiresAttention]
+       _ self_mFonts_mFileSystemStatusRequiresAttentionForFontInProject : [any FontInProject_mFileSystemStatusRequiresAttentionForFontInProject]
 ) -> NSImage {
 //--- START OF USER ZONE 2
          var result = false
          var idx = 0
-         while !result && idx < self_mFonts_mFileSystemStatusRequiresAttention.count {
-           result = self_mFonts_mFileSystemStatusRequiresAttention [idx].mFileSystemStatusRequiresAttention
+         while !result && idx < self_mFonts_mFileSystemStatusRequiresAttentionForFontInProject.count {
+           result = self_mFonts_mFileSystemStatusRequiresAttentionForFontInProject [idx].mFileSystemStatusRequiresAttentionForFontInProject
            idx += 1
          }
          return result ? NSImage.statusWarning : NSImage ()

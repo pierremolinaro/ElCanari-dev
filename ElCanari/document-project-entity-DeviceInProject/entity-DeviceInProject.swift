@@ -36,14 +36,14 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_mFileSystemStatusMessage : AnyObject {
-  var mFileSystemStatusMessage : String { get }
+@MainActor protocol DeviceInProject_mFileSystemStatusMessageForDeviceInProject : AnyObject {
+  var mFileSystemStatusMessageForDeviceInProject : String { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_mFileSystemStatusRequiresAttention : AnyObject {
-  var mFileSystemStatusRequiresAttention : Bool { get }
+@MainActor protocol DeviceInProject_mFileSystemStatusRequiresAttentionForDeviceInProject : AnyObject {
+  var mFileSystemStatusRequiresAttentionForDeviceInProject : Bool { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -116,8 +116,8 @@ final class DeviceInProject : EBManagedObject,
          DeviceInProject_mPrefix,
          DeviceInProject_mDeviceVersion,
          DeviceInProject_mDeviceFileData,
-         DeviceInProject_mFileSystemStatusMessage,
-         DeviceInProject_mFileSystemStatusRequiresAttention,
+         DeviceInProject_mFileSystemStatusMessageForDeviceInProject,
+         DeviceInProject_mFileSystemStatusRequiresAttentionForDeviceInProject,
          DeviceInProject_versionString,
          DeviceInProject_sizeString,
          DeviceInProject_canExport,
@@ -208,29 +208,29 @@ final class DeviceInProject : EBManagedObject,
   }
 
   //································································································
-  //   Atomic property: mFileSystemStatusMessage
+  //   Atomic property: mFileSystemStatusMessageForDeviceInProject
   //································································································
 
-  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+  final let mFileSystemStatusMessageForDeviceInProject_property : EBStandAloneProperty_String
 
   //································································································
 
-  final var mFileSystemStatusMessage : String {
-    get { return self.mFileSystemStatusMessage_property.propval }
-    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  final var mFileSystemStatusMessageForDeviceInProject : String {
+    get { return self.mFileSystemStatusMessageForDeviceInProject_property.propval }
+    set { self.mFileSystemStatusMessageForDeviceInProject_property.setProp (newValue) }
   }
 
   //································································································
-  //   Atomic property: mFileSystemStatusRequiresAttention
+  //   Atomic property: mFileSystemStatusRequiresAttentionForDeviceInProject
   //································································································
 
-  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+  final let mFileSystemStatusRequiresAttentionForDeviceInProject_property : EBStandAloneProperty_Bool
 
   //································································································
 
-  final var mFileSystemStatusRequiresAttention : Bool {
-    get { return self.mFileSystemStatusRequiresAttention_property.propval }
-    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
+  final var mFileSystemStatusRequiresAttentionForDeviceInProject : Bool {
+    get { return self.mFileSystemStatusRequiresAttentionForDeviceInProject_property.propval }
+    set { self.mFileSystemStatusRequiresAttentionForDeviceInProject_property.setProp (newValue) }
   }
 
   //································································································
@@ -401,8 +401,8 @@ final class DeviceInProject : EBManagedObject,
     self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPrefix")
     self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDeviceVersion")
     self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mDeviceFileData")
-    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String ("")
-    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (false)
+    self.mFileSystemStatusMessageForDeviceInProject_property = EBStandAloneProperty_String ("")
+    self.mFileSystemStatusRequiresAttentionForDeviceInProject_property = EBStandAloneProperty_Bool (false)
     super.init (inUndoManager)
   //--- To many property: mPackages (no option)
     self.mPackages_property.undoManager = inUndoManager
@@ -487,7 +487,7 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: fileSystemStatusImage
     self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        let s0 = unwSelf.mFileSystemStatusRequiresAttentionForDeviceInProject_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_fileSystemStatusImage (v0))
@@ -500,7 +500,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
+    self.mFileSystemStatusRequiresAttentionForDeviceInProject_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: deviceComponentCountString
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

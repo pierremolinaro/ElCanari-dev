@@ -90,11 +90,11 @@ extension AutoLayoutDeviceDocument {
     let fm = FileManager ()
     for package in self.rootObject.mPackages.values {
       let pathes = packageFilePathInLibraries (package.mName)
-      package.mFileSystemStatusMessage = "Ok"
-      package.mFileSystemStatusRequiresAttention = false
+      package.mFileSystemStatusMessageForPackageInDevice = "Ok"
+      package.mFileSystemStatusRequiresAttentionForPackageInDevice = false
       if pathes.count == 0 {
-        package.mFileSystemStatusMessage = "No file in Library"
-        package.mFileSystemStatusRequiresAttention = true
+        package.mFileSystemStatusMessageForPackageInDevice = "No file in Library"
+        package.mFileSystemStatusRequiresAttentionForPackageInDevice = true
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]) {
           let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
@@ -103,24 +103,24 @@ extension AutoLayoutDeviceDocument {
             if let _ = documentData.documentRootObject as? PackageRoot,
               let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int {
               if version > package.mVersion {
-                package.mFileSystemStatusMessage = "Package is updatable to version \(version)"
-                package.mFileSystemStatusRequiresAttention = true
+                package.mFileSystemStatusMessageForPackageInDevice = "Package is updatable to version \(version)"
+                package.mFileSystemStatusRequiresAttentionForPackageInDevice = true
               }
             }else{
-              package.mFileSystemStatusMessage = "Invalid file at path \(pathes [0])"
-              package.mFileSystemStatusRequiresAttention = true
+              package.mFileSystemStatusMessageForPackageInDevice = "Invalid file at path \(pathes [0])"
+              package.mFileSystemStatusRequiresAttentionForPackageInDevice = true
             }
           case .readError (_) :
-            package.mFileSystemStatusMessage = "Cannot read file at path \(pathes [0])"
-            package.mFileSystemStatusRequiresAttention = true
+            package.mFileSystemStatusMessageForPackageInDevice = "Cannot read file at path \(pathes [0])"
+            package.mFileSystemStatusRequiresAttentionForPackageInDevice = true
           }
         }else{
-          package.mFileSystemStatusMessage = "Cannot read file at path \(pathes [0])"
-          package.mFileSystemStatusRequiresAttention = true
+          package.mFileSystemStatusMessageForPackageInDevice = "Cannot read file at path \(pathes [0])"
+          package.mFileSystemStatusRequiresAttentionForPackageInDevice = true
         }
       }else{ // pathes.count > 1
-        package.mFileSystemStatusMessage = "Several files in Library for package"
-        package.mFileSystemStatusRequiresAttention = true
+        package.mFileSystemStatusMessageForPackageInDevice = "Several files in Library for package"
+        package.mFileSystemStatusRequiresAttentionForPackageInDevice = true
       }
     }
   }
@@ -130,13 +130,12 @@ extension AutoLayoutDeviceDocument {
   private func checkEmbeddedSymbols () {
     let fm = FileManager ()
     for symbolType in self.rootObject.mSymbolTypes.values {
-      symbolType.mFileSystemStatusMessage = "Ok"
-      symbolType.mFileSystemStatusRequiresAttention = false
+      symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Ok"
+      symbolType.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice = false
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
       if pathes.count == 0 {
-        symbolType.mFileSystemStatusMessage = "No file in Library"
-        symbolType.mFileSystemStatusRequiresAttention = true
-//        ioMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
+        symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "No file in Library"
+        symbolType.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice = true
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]) {
           let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
@@ -165,33 +164,25 @@ extension AutoLayoutDeviceDocument {
                 for pinType in newSymbolPinTypes.values {
                   newPinNameDictionary [pinType.mName] = pinType
                 }
-                symbolType.mFileSystemStatusRequiresAttention = true
+                symbolType.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice = true
                 if currentPinNameSet != Set (newPinNameDictionary.keys) {
-                  symbolType.mFileSystemStatusMessage = "Cannot update: pin name set has changed"
-//                  ioMessages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
+                  symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Cannot update: pin name set has changed"
                 }else{ // Ok, make update
-                  symbolType.mFileSystemStatusMessage = "Updatable to version \(version)"
-//                  ioMessages.append ("Symbol \(symbolType.mTypeName) is updatable to version \(version).")
+                  symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Updatable to version \(version)"
                 }
               }
             }
           case .readError (_) :
-            symbolType.mFileSystemStatusRequiresAttention = true
-            symbolType.mFileSystemStatusMessage = "Cannot read at path \(pathes [0])"
-//            ioMessages.append ("Invalid file at path \(pathes [0])")
+            symbolType.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice = true
+            symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Cannot read at path \(pathes [0])"
           }
         }else{
-          symbolType.mFileSystemStatusRequiresAttention = true
-          symbolType.mFileSystemStatusMessage = "Cannot read at path \(pathes [0])"
-//          ioMessages.append ("Invalid file at path \(pathes [0])")
+          symbolType.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice = true
+          symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Cannot read at path \(pathes [0])"
         }
       }else{ // pathes.count > 1
-        symbolType.mFileSystemStatusRequiresAttention = true
-        symbolType.mFileSystemStatusMessage = "Cannot update, several files in Library"
-//        ioMessages.append ("Cannot update, several files in Library for \(symbolType.mTypeName) symbol:")
-//        for path in pathes {
-//          ioMessages.append ("  - \(path)")
-//        }
+        symbolType.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice = true
+        symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Cannot update, several files in Library"
       }
     }
   }

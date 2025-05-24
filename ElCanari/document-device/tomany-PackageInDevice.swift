@@ -17,11 +17,11 @@ class ReadOnlyArrayOf_PackageInDevice : EBReadOnlyAbstractArrayProperty <Package
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
     for managedObject in inRemovedSet.values {
-      if let relay = self.mObserversOf_mFileSystemStatusMessage { // Stored property
-        managedObject.mFileSystemStatusMessage_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_mFileSystemStatusMessageForPackageInDevice { // Stored property
+        managedObject.mFileSystemStatusMessageForPackageInDevice_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mFileSystemStatusRequiresAttention { // Stored property
-        managedObject.mFileSystemStatusRequiresAttention_property.stopsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_mFileSystemStatusRequiresAttentionForPackageInDevice { // Stored property
+        managedObject.mFileSystemStatusRequiresAttentionForPackageInDevice_property.stopsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mFileData { // Stored property
         managedObject.mFileData_property.stopsBeingObserved (by: relay)
@@ -68,11 +68,11 @@ class ReadOnlyArrayOf_PackageInDevice : EBReadOnlyAbstractArrayProperty <Package
     }
   //--- Add observers to added objects
     for managedObject in inAddedSet.values {
-      if let relay = self.mObserversOf_mFileSystemStatusMessage { // Stored property
-        managedObject.mFileSystemStatusMessage_property.startsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_mFileSystemStatusMessageForPackageInDevice { // Stored property
+        managedObject.mFileSystemStatusMessageForPackageInDevice_property.startsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_mFileSystemStatusRequiresAttention { // Stored property
-        managedObject.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: relay)
+      if let relay = self.mObserversOf_mFileSystemStatusRequiresAttentionForPackageInDevice { // Stored property
+        managedObject.mFileSystemStatusRequiresAttentionForPackageInDevice_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_mFileData { // Stored property
         managedObject.mFileData_property.startsBeingObserved (by: relay)
@@ -120,61 +120,61 @@ class ReadOnlyArrayOf_PackageInDevice : EBReadOnlyAbstractArrayProperty <Package
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'mFileSystemStatusMessage' stored property
+  //   Observers of 'mFileSystemStatusMessageForPackageInDevice' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final var mObserversOf_mFileSystemStatusMessage : EBObservedObserver? = nil
+  private final var mObserversOf_mFileSystemStatusMessageForPackageInDevice : EBObservedObserver? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusMessage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFileSystemStatusMessageForPackageInDevice_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_mFileSystemStatusMessage {
+    if let r = self.mObserversOf_mFileSystemStatusMessageForPackageInDevice {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mFileSystemStatusMessage_property.startsBeingObserved (by: relay)
+        managedObject.mFileSystemStatusMessageForPackageInDevice_property.startsBeingObserved (by: relay)
       }
-      self.mObserversOf_mFileSystemStatusMessage = relay
+      self.mObserversOf_mFileSystemStatusMessageForPackageInDevice = relay
     }
     relay.startsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusMessage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
-    self.mObserversOf_mFileSystemStatusMessage?.stopsBeingObserved (by: inObserver)
+  final func toMany_mFileSystemStatusMessageForPackageInDevice_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mFileSystemStatusMessageForPackageInDevice?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'mFileSystemStatusRequiresAttention' stored property
+  //   Observers of 'mFileSystemStatusRequiresAttentionForPackageInDevice' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final var mObserversOf_mFileSystemStatusRequiresAttention : EBObservedObserver? = nil
+  private final var mObserversOf_mFileSystemStatusRequiresAttentionForPackageInDevice : EBObservedObserver? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFileSystemStatusRequiresAttentionForPackageInDevice_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
     let relay : EBObservedObserver
-    if let r = self.mObserversOf_mFileSystemStatusRequiresAttention {
+    if let r = self.mObserversOf_mFileSystemStatusRequiresAttentionForPackageInDevice {
       relay = r
     }else{
       relay = EBObservedObserver ()
       self.startsBeingObserved (by: relay)
       for managedObject in self.propval.values {
-        managedObject.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: relay)
+        managedObject.mFileSystemStatusRequiresAttentionForPackageInDevice_property.startsBeingObserved (by: relay)
       }
-      self.mObserversOf_mFileSystemStatusRequiresAttention = relay
+      self.mObserversOf_mFileSystemStatusRequiresAttentionForPackageInDevice = relay
     }
     relay.startsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusRequiresAttention_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
-    self.mObserversOf_mFileSystemStatusRequiresAttention?.stopsBeingObserved (by: inObserver)
+  final func toMany_mFileSystemStatusRequiresAttentionForPackageInDevice_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+    self.mObserversOf_mFileSystemStatusRequiresAttentionForPackageInDevice?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

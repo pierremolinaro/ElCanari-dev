@@ -6,14 +6,14 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_mFileSystemStatusMessage : AnyObject {
-  var mFileSystemStatusMessage : String { get }
+@MainActor protocol SymbolTypeInDevice_mFileSystemStatusMessageForSymbolTypeInDevice : AnyObject {
+  var mFileSystemStatusMessageForSymbolTypeInDevice : String { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_mFileSystemStatusRequiresAttention : AnyObject {
-  var mFileSystemStatusRequiresAttention : Bool { get }
+@MainActor protocol SymbolTypeInDevice_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice : AnyObject {
+  var mFileSystemStatusRequiresAttentionForSymbolTypeInDevice : Bool { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -81,8 +81,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 final class SymbolTypeInDevice : EBManagedObject,
-         SymbolTypeInDevice_mFileSystemStatusMessage,
-         SymbolTypeInDevice_mFileSystemStatusRequiresAttention,
+         SymbolTypeInDevice_mFileSystemStatusMessageForSymbolTypeInDevice,
+         SymbolTypeInDevice_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice,
          SymbolTypeInDevice_mTypeName,
          SymbolTypeInDevice_mVersion,
          SymbolTypeInDevice_mFileData,
@@ -107,29 +107,29 @@ final class SymbolTypeInDevice : EBManagedObject,
   }
 
   //································································································
-  //   Atomic property: mFileSystemStatusMessage
+  //   Atomic property: mFileSystemStatusMessageForSymbolTypeInDevice
   //································································································
 
-  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+  final let mFileSystemStatusMessageForSymbolTypeInDevice_property : EBStandAloneProperty_String
 
   //································································································
 
-  final var mFileSystemStatusMessage : String {
-    get { return self.mFileSystemStatusMessage_property.propval }
-    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  final var mFileSystemStatusMessageForSymbolTypeInDevice : String {
+    get { return self.mFileSystemStatusMessageForSymbolTypeInDevice_property.propval }
+    set { self.mFileSystemStatusMessageForSymbolTypeInDevice_property.setProp (newValue) }
   }
 
   //································································································
-  //   Atomic property: mFileSystemStatusRequiresAttention
+  //   Atomic property: mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
   //································································································
 
-  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+  final let mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property : EBStandAloneProperty_Bool
 
   //································································································
 
-  final var mFileSystemStatusRequiresAttention : Bool {
-    get { return self.mFileSystemStatusRequiresAttention_property.propval }
-    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
+  final var mFileSystemStatusRequiresAttentionForSymbolTypeInDevice : Bool {
+    get { return self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.propval }
+    set { self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.setProp (newValue) }
   }
 
   //································································································
@@ -275,8 +275,8 @@ final class SymbolTypeInDevice : EBManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String ("")
-    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (false)
+    self.mFileSystemStatusMessageForSymbolTypeInDevice_property = EBStandAloneProperty_String ("")
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property = EBStandAloneProperty_Bool (false)
     self.mTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mTypeName")
     self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mVersion")
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
@@ -345,7 +345,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: fileSystemStatusImage
     self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        let s0 = unwSelf.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_SymbolTypeInDevice_fileSystemStatusImage (v0))
@@ -358,7 +358,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

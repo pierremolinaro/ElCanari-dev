@@ -340,7 +340,13 @@ extension Preferences {
   //--- Get metadata dictionary
     if let metadata = try? getFileMetadata (atPath: inDeviceFullPath) {
     //--- Category
-      let category : String = (metadata.metadataDictionary [DEVICE_CATEGORY_KEY] as? String) ?? ""
+      var category : String = (metadata.metadataDictionary [DEVICE_CATEGORY_KEY] as? String) ?? ""
+      while category.hasSuffix (" ") {
+        category.removeLast ()
+      }
+      while category.hasPrefix (" ") {
+        category.removeFirst ()
+      }
       ioCategories.insert (category)
       if category == "" {
         inStackView.appendError (

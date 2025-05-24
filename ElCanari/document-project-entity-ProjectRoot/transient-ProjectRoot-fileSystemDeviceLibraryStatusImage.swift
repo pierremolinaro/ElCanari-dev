@@ -14,13 +14,13 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_fileSystemDeviceLibraryStatusImage (
-       _ self_mDevices_mFileSystemStatusRequiresAttention : [any DeviceInProject_mFileSystemStatusRequiresAttention]
+       _ self_mDevices_mFileSystemStatusRequiresAttentionForDeviceInProject : [any DeviceInProject_mFileSystemStatusRequiresAttentionForDeviceInProject]
 ) -> NSImage {
 //--- START OF USER ZONE 2
          var result = false
          var idx = 0
-         while !result && idx < self_mDevices_mFileSystemStatusRequiresAttention.count {
-           result = self_mDevices_mFileSystemStatusRequiresAttention [idx].mFileSystemStatusRequiresAttention
+         while !result, idx < self_mDevices_mFileSystemStatusRequiresAttentionForDeviceInProject.count {
+           result = self_mDevices_mFileSystemStatusRequiresAttentionForDeviceInProject [idx].mFileSystemStatusRequiresAttentionForDeviceInProject
            idx += 1
          }
          return result ? NSImage.statusWarning : NSImage ()

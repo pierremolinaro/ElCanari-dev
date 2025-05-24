@@ -3102,7 +3102,7 @@ final class ProjectRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mDevices_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.fileSystemDeviceLibraryStatusImage_property)
+    self.mDevices_property.toMany_mFileSystemStatusRequiresAttentionForDeviceInProject_StartsBeingObserved (by: self.fileSystemDeviceLibraryStatusImage_property)
   //--- Atomic property: fileSystemFontLibraryStatusImage
     self.fileSystemFontLibraryStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3119,7 +3119,7 @@ final class ProjectRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mFonts_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.fileSystemFontLibraryStatusImage_property)
+    self.mFonts_property.toMany_mFileSystemStatusRequiresAttentionForFontInProject_StartsBeingObserved (by: self.fileSystemFontLibraryStatusImage_property)
   //--- Atomic property: libraryPageRequiresAttentionImage
     self.libraryPageRequiresAttentionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3139,8 +3139,8 @@ final class ProjectRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mDevices_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.libraryPageRequiresAttentionImage_property)
-    self.mFonts_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.libraryPageRequiresAttentionImage_property)
+    self.mDevices_property.toMany_mFileSystemStatusRequiresAttentionForDeviceInProject_StartsBeingObserved (by: self.libraryPageRequiresAttentionImage_property)
+    self.mFonts_property.toMany_mFileSystemStatusRequiresAttentionForFontInProject_StartsBeingObserved (by: self.libraryPageRequiresAttentionImage_property)
   //--- Atomic property: viaCountString
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

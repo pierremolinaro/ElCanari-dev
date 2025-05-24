@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity DeviceRoot {
 //--- Selected page index
@@ -86,12 +86,12 @@ handlingOpposite entity DeviceRoot {
 
 
   transient NSImage embeddedLibraryAttentionImage dependsFrom
-    self.mPackages.all.mFileSystemStatusRequiresAttention,
-    self.mSymbolTypes.all.mFileSystemStatusRequiresAttention
+    self.mPackages.all.mFileSystemStatusRequiresAttentionForPackageInDevice,
+    self.mSymbolTypes.all.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
   ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 entity DeviceDocumentation {
 
@@ -101,15 +101,15 @@ entity DeviceDocumentation {
   transient Int fileSize dependsFrom self.mFileData ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 graphic handlingOpposite entity PackageInDevice {
   toOne @weak DeviceRoot mRoot inverse toMany mPackages ;
 
   toMany @signature @generateDirectAccess MasterPadInDevice mMasterPads ;
 
-  standalone property String mFileSystemStatusMessage default "" ;
-  standalone property Bool mFileSystemStatusRequiresAttention default no ;
+  standalone property String mFileSystemStatusMessageForPackageInDevice default "" ;
+  standalone property Bool mFileSystemStatusRequiresAttentionForPackageInDevice default no ;
   property @signature @generateDirectAccess Data mFileData default empty ;
   property @signature @generateDirectAccess String mName default "" ;
   property @signature @generateDirectAccess Int mVersion default 0 ;
@@ -164,11 +164,11 @@ graphic handlingOpposite entity PackageInDevice {
   transient StringSet padNameSet dependsFrom self.mMasterPads.all.mName ;
 
   transient NSImage fileSystemStatusImage dependsFrom
-    self.mFileSystemStatusRequiresAttention
+    self.mFileSystemStatusRequiresAttentionForPackageInDevice
   ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity MasterPadInDevice {
   toMany @signature @generateDirectRead SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
@@ -199,7 +199,7 @@ handlingOpposite entity MasterPadInDevice {
      self.mCenterX, self.mCenterY, prefs.padNumberColor, self.mName, prefs.padNumberFont ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity SlavePadInDevice {
   toOne @weak MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
@@ -230,14 +230,14 @@ handlingOpposite entity SlavePadInDevice {
 
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity SymbolTypeInDevice {
   toMany @generateDirectRead SymbolInstanceInDevice mInstances inverse toOne mType ;
   toMany @signature @generateDirectAccess SymbolPinTypeInDevice mPinTypes ;
 
-  standalone property String mFileSystemStatusMessage default "" ;
-  standalone property Bool mFileSystemStatusRequiresAttention default no ;
+  standalone property String mFileSystemStatusMessageForSymbolTypeInDevice default "" ;
+  standalone property Bool mFileSystemStatusRequiresAttentionForSymbolTypeInDevice default no ;
   property @signature @generateDirectAccess String mTypeName default "" ;
   property @generateDirectAccess @signature Int mVersion default 0 ;
   property @generateDirectAccess @signature Data mFileData default empty ;
@@ -254,11 +254,11 @@ handlingOpposite entity SymbolTypeInDevice {
   transient EBShape pinNameShape dependsFrom self.mPinTypes.all.nameShape ;
 
   transient NSImage fileSystemStatusImage dependsFrom
-    self.mFileSystemStatusRequiresAttention
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
   ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity SymbolPinTypeInDevice {
   toMany @generateDirectAccess SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
@@ -285,7 +285,7 @@ handlingOpposite entity SymbolPinTypeInDevice {
    ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 graphic handlingOpposite entity SymbolInstanceInDevice {
   toOne @weak DeviceRoot mDeviceRoot inverse toMany mSymbolInstances ;
@@ -333,7 +333,7 @@ graphic handlingOpposite entity SymbolInstanceInDevice {
     self.mInstanceName  ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity SymbolPinInstanceInDevice {
   toOne @weak SymbolInstanceInDevice mSymbolInstance inverse toMany mPinInstances ;
@@ -356,7 +356,7 @@ handlingOpposite entity SymbolPinInstanceInDevice {
   transient Bool isConnected dependsFrom self.mPadProxy.none ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 handlingOpposite entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
@@ -372,4 +372,4 @@ handlingOpposite entity PadProxyInDevice {
   transient String symbolName dependsFrom self.mPinInstance.one.symbolName ;
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------

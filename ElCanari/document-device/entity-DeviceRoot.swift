@@ -496,8 +496,8 @@ final class DeviceRoot : EBManagedObject {
         return .empty
       }
     }
-    self.mPackages_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.embeddedLibraryAttentionImage_property)
-    self.mSymbolTypes_property.toMany_mFileSystemStatusRequiresAttention_StartsBeingObserved (by: self.embeddedLibraryAttentionImage_property)
+    self.mPackages_property.toMany_mFileSystemStatusRequiresAttentionForPackageInDevice_StartsBeingObserved (by: self.embeddedLibraryAttentionImage_property)
+    self.mSymbolTypes_property.toMany_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_StartsBeingObserved (by: self.embeddedLibraryAttentionImage_property)
   //--- Atomic property: unconnectedPads
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

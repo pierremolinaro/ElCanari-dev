@@ -14,8 +14,8 @@ handlingOpposite entity DeviceInProject {
   toMany @generateDirectRead ComponentInProject mComponents inverse toOne mDevice ;
   toMany @generateDirectAccess DevicePadAssignmentInProject mPadAssignments ;
 
-  standalone property String mFileSystemStatusMessage default "" ;
-  standalone property Bool mFileSystemStatusRequiresAttention default no ;
+  standalone property String mFileSystemStatusMessageForDeviceInProject default "" ;
+  standalone property Bool mFileSystemStatusRequiresAttentionForDeviceInProject default no ;
 
   transient String deviceComponentCountString dependsFrom self.mComponents.count ;
   transient String versionString dependsFrom self.mDeviceVersion ;
@@ -33,7 +33,7 @@ handlingOpposite entity DeviceInProject {
     self.mSymbols.all.strokeBezierPath ;
 
   transient NSImage fileSystemStatusImage dependsFrom
-    self.mFileSystemStatusRequiresAttention
+    self.mFileSystemStatusRequiresAttentionForDeviceInProject
   ;
 }
 

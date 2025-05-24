@@ -16,8 +16,8 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mFileSystemStatusMessage_property.stopsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
-      oldValue.mFileSystemStatusRequiresAttention_property.stopsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
+      oldValue.mFileSystemStatusMessageForSymbolTypeInDevice_property.stopsBeingObserved (by: self.mFileSystemStatusMessageForSymbolTypeInDevice_property) // Stored property
+      oldValue.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.stopsBeingObserved (by: self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property) // Stored property
       oldValue.mTypeName_property.stopsBeingObserved (by: self.mTypeName_property) // Stored property
       oldValue.mVersion_property.stopsBeingObserved (by: self.mVersion_property) // Stored property
       oldValue.mFileData_property.stopsBeingObserved (by: self.mFileData_property) // Stored property
@@ -37,8 +37,8 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mFileSystemStatusMessage_property.startsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
-      newValue.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
+      newValue.mFileSystemStatusMessageForSymbolTypeInDevice_property.startsBeingObserved (by: self.mFileSystemStatusMessageForSymbolTypeInDevice_property) // Stored property
+      newValue.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.startsBeingObserved (by: self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property) // Stored property
       newValue.mTypeName_property.startsBeingObserved (by: self.mTypeName_property) // Stored property
       newValue.mVersion_property.startsBeingObserved (by: self.mVersion_property) // Stored property
       newValue.mFileData_property.startsBeingObserved (by: self.mFileData_property) // Stored property
@@ -59,16 +59,16 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'mFileSystemStatusMessage' stored property
+  //   Observers of 'mFileSystemStatusMessageForSymbolTypeInDevice' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mFileSystemStatusMessage_property = EBTransientProperty <String?> ()
+  final let mFileSystemStatusMessageForSymbolTypeInDevice_property = EBTransientProperty <String?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'mFileSystemStatusRequiresAttention' stored property
+  //   Observers of 'mFileSystemStatusRequiresAttentionForSymbolTypeInDevice' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mFileSystemStatusRequiresAttention_property = EBTransientProperty <Bool?> ()
+  final let mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mTypeName' stored property
@@ -188,13 +188,13 @@ class ReadOnlyObject_SymbolTypeInDevice : EBReadOnlyAbstractObjectProperty <Symb
 
   override init () {
     super.init ()
-  //--- Configure mFileSystemStatusMessage simple stored property
-    self.mFileSystemStatusMessage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mFileSystemStatusMessage_property.optionalSelection ?? .single (nil)
+  //--- Configure mFileSystemStatusMessageForSymbolTypeInDevice simple stored property
+    self.mFileSystemStatusMessageForSymbolTypeInDevice_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusMessageForSymbolTypeInDevice_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure mFileSystemStatusRequiresAttention simple stored property
-    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mFileSystemStatusRequiresAttention_property.optionalSelection ?? .single (nil)
+  //--- Configure mFileSystemStatusRequiresAttentionForSymbolTypeInDevice simple stored property
+    self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mTypeName simple stored property
     self.mTypeName_property.mReadModelFunction = { [weak self] in

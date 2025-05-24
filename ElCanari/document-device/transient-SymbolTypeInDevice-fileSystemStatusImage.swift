@@ -14,10 +14,12 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolTypeInDevice_fileSystemStatusImage (
-       _ self_mFileSystemStatusRequiresAttention : Bool
+       _ self_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2
-  return self_mFileSystemStatusRequiresAttention ? NSImage.statusWarning : NSImage ()
+  return self_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
+     ? NSImage.statusWarning
+     : NSImage ()
 //--- END OF USER ZONE 2
 }
 

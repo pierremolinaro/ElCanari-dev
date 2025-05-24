@@ -1292,7 +1292,7 @@ import AppKit
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       do{
-        let vStackView_view_view = AutoLayoutStaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: false, size: .small, alignment: .center)
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "This field only accepts lowercase and uppercase ASCII letters.", bold: false, size: .small, alignment: .center)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       _ = vStackView_view.appendFlexibleSpace ()

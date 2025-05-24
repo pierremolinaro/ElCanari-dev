@@ -6,14 +6,14 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_mFileSystemStatusMessage : AnyObject {
-  var mFileSystemStatusMessage : String { get }
+@MainActor protocol PackageInDevice_mFileSystemStatusMessageForPackageInDevice : AnyObject {
+  var mFileSystemStatusMessageForPackageInDevice : String { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_mFileSystemStatusRequiresAttention : AnyObject {
-  var mFileSystemStatusRequiresAttention : Bool { get }
+@MainActor protocol PackageInDevice_mFileSystemStatusRequiresAttentionForPackageInDevice : AnyObject {
+  var mFileSystemStatusRequiresAttentionForPackageInDevice : Bool { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -105,8 +105,8 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 final class PackageInDevice : EBGraphicManagedObject,
-         PackageInDevice_mFileSystemStatusMessage,
-         PackageInDevice_mFileSystemStatusRequiresAttention,
+         PackageInDevice_mFileSystemStatusMessageForPackageInDevice,
+         PackageInDevice_mFileSystemStatusRequiresAttentionForPackageInDevice,
          PackageInDevice_mFileData,
          PackageInDevice_mName,
          PackageInDevice_mVersion,
@@ -123,29 +123,29 @@ final class PackageInDevice : EBGraphicManagedObject,
          PackageInDevice_padNameSet {
 
   //································································································
-  //   Atomic property: mFileSystemStatusMessage
+  //   Atomic property: mFileSystemStatusMessageForPackageInDevice
   //································································································
 
-  final let mFileSystemStatusMessage_property : EBStandAloneProperty_String
+  final let mFileSystemStatusMessageForPackageInDevice_property : EBStandAloneProperty_String
 
   //································································································
 
-  final var mFileSystemStatusMessage : String {
-    get { return self.mFileSystemStatusMessage_property.propval }
-    set { self.mFileSystemStatusMessage_property.setProp (newValue) }
+  final var mFileSystemStatusMessageForPackageInDevice : String {
+    get { return self.mFileSystemStatusMessageForPackageInDevice_property.propval }
+    set { self.mFileSystemStatusMessageForPackageInDevice_property.setProp (newValue) }
   }
 
   //································································································
-  //   Atomic property: mFileSystemStatusRequiresAttention
+  //   Atomic property: mFileSystemStatusRequiresAttentionForPackageInDevice
   //································································································
 
-  final let mFileSystemStatusRequiresAttention_property : EBStandAloneProperty_Bool
+  final let mFileSystemStatusRequiresAttentionForPackageInDevice_property : EBStandAloneProperty_Bool
 
   //································································································
 
-  final var mFileSystemStatusRequiresAttention : Bool {
-    get { return self.mFileSystemStatusRequiresAttention_property.propval }
-    set { self.mFileSystemStatusRequiresAttention_property.setProp (newValue) }
+  final var mFileSystemStatusRequiresAttentionForPackageInDevice : Bool {
+    get { return self.mFileSystemStatusRequiresAttentionForPackageInDevice_property.propval }
+    set { self.mFileSystemStatusRequiresAttentionForPackageInDevice_property.setProp (newValue) }
   }
 
   //································································································
@@ -345,8 +345,8 @@ final class PackageInDevice : EBGraphicManagedObject,
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFileSystemStatusMessage_property = EBStandAloneProperty_String ("")
-    self.mFileSystemStatusRequiresAttention_property = EBStandAloneProperty_Bool (false)
+    self.mFileSystemStatusMessageForPackageInDevice_property = EBStandAloneProperty_String ("")
+    self.mFileSystemStatusRequiresAttentionForPackageInDevice_property = EBStandAloneProperty_Bool (false)
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mVersion")
@@ -407,7 +407,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: fileSystemStatusImage
     self.fileSystemStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.mFileSystemStatusRequiresAttention_property.selection
+        let s0 = unwSelf.mFileSystemStatusRequiresAttentionForPackageInDevice_property.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageInDevice_fileSystemStatusImage (v0))
@@ -420,7 +420,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
+    self.mFileSystemStatusRequiresAttentionForPackageInDevice_property.startsBeingObserved (by: self.fileSystemStatusImage_property)
   //--- Atomic property: frontSidePadFilledBezierPathArray
     self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

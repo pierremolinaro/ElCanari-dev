@@ -63,12 +63,12 @@ extension AutoLayoutProjectDocument {
   final func checkFonts (_ ioMessages : inout [String]) {
     for font in self.rootObject.mFonts.values {
       let pathes = fontFilePathInLibraries (font.mFontName)
-      font.mFileSystemStatusMessage = "Ok"
-      font.mFileSystemStatusRequiresAttention = false
+      font.mFileSystemStatusMessageForFontInProject = "Ok"
+      font.mFileSystemStatusRequiresAttentionForFontInProject = false
       if pathes.count == 0 {
         ioMessages.append ("No file for \(font.mFontName) font in Library")
-        font.mFileSystemStatusMessage = "No file in Library"
-        font.mFileSystemStatusRequiresAttention = true
+        font.mFileSystemStatusMessageForFontInProject = "No file in Library"
+        font.mFileSystemStatusRequiresAttentionForFontInProject = true
       }else if pathes.count == 1 {
 //        var ok = false
         if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])) {
@@ -76,21 +76,21 @@ extension AutoLayoutProjectDocument {
           switch documentReadData {
           case .ok (let documentData) :
             if let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int, font.mFontVersion < version {
-              font.mFileSystemStatusMessage = "Font is updatable"
-              font.mFileSystemStatusRequiresAttention = true
+              font.mFileSystemStatusMessageForFontInProject = "Font is updatable"
+              font.mFileSystemStatusRequiresAttentionForFontInProject = true
             }
           case .readError (_) :
-            font.mFileSystemStatusMessage = "Cannot read file"
-            font.mFileSystemStatusRequiresAttention = true
+            font.mFileSystemStatusMessageForFontInProject = "Cannot read file"
+            font.mFileSystemStatusRequiresAttentionForFontInProject = true
           }
         }else{
-          font.mFileSystemStatusMessage = "Cannot read file"
-          font.mFileSystemStatusRequiresAttention = true
+          font.mFileSystemStatusMessageForFontInProject = "Cannot read file"
+          font.mFileSystemStatusRequiresAttentionForFontInProject = true
           ioMessages.append ("Cannot read \(pathes [0]) file.")
         }
       }else{ // pathes.count > 1
-        font.mFileSystemStatusMessage = "Several files in library"
-        font.mFileSystemStatusRequiresAttention = true
+        font.mFileSystemStatusMessageForFontInProject = "Several files in library"
+        font.mFileSystemStatusRequiresAttentionForFontInProject = true
         ioMessages.append ("Several files for \(font.mFontName) font in Library:")
         for path in pathes {
           ioMessages.append ("  - \(path)")

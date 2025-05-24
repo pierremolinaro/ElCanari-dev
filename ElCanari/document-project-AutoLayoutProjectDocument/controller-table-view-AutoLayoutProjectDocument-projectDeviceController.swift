@@ -62,7 +62,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
         inModel.toMany_deviceComponentCountString_StartsBeingObserved (by: observer)
         inModel.toMany_mCategory_StartsBeingObserved (by: observer)
         inModel.toMany_mDeviceName_StartsBeingObserved (by: observer)
-        inModel.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessageForDeviceInProject_StartsBeingObserved (by: observer)
         inModel.toMany_sizeString_StartsBeingObserved (by: observer)
         inModel.toMany_versionString_StartsBeingObserved (by: observer)
       },
@@ -70,7 +70,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
         inModel.toMany_deviceComponentCountString_StopsBeingObserved (by: observer)
         inModel.toMany_mCategory_StopsBeingObserved (by: observer)
         inModel.toMany_mDeviceName_StopsBeingObserved (by: observer)
-        inModel.toMany_mFileSystemStatusMessage_StopsBeingObserved (by: observer)
+        inModel.toMany_mFileSystemStatusMessageForDeviceInProject_StopsBeingObserved (by: observer)
         inModel.toMany_sizeString_StopsBeingObserved (by: observer)
         inModel.toMany_versionString_StopsBeingObserved (by: observer)
       }
@@ -156,8 +156,8 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
     self.sortedArray_property.toMany_mCategory_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'fileSystemStatusImage' column
     self.sortedArray_property.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
-  //--- Observe 'mFileSystemStatusMessage' column
-    self.sortedArray_property.toMany_mFileSystemStatusMessage_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
+  //--- Observe 'mFileSystemStatusMessageForDeviceInProject' column
+    self.sortedArray_property.toMany_mFileSystemStatusMessageForDeviceInProject_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
     self.sortedArray_property.toMany_versionString_StartsBeingObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'sizeString' column
@@ -231,12 +231,12 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : NSObj
       headerAlignment: .left,
       contentAlignment: .center
     )
-  //--- Configure 'mFileSystemStatusMessage' column
+  //--- Configure 'mFileSystemStatusMessageForDeviceInProject' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileSystemStatusMessage },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileSystemStatusMessageForDeviceInProject },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.mFileSystemStatusMessage_property, ascending, right.mFileSystemStatusMessage_property) })
+        self?.mSortDescriptorArray.append ({ (_ left : DeviceInProject, _ right : DeviceInProject) in return compare_String_properties (left.mFileSystemStatusMessageForDeviceInProject_property, ascending, right.mFileSystemStatusMessageForDeviceInProject_property) })
       },
       title: "Status in Device Library",
       minWidth: 150,

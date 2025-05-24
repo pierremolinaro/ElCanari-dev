@@ -14,19 +14,19 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_DeviceRoot_embeddedLibraryAttentionImage (
-       _ self_mPackages_mFileSystemStatusRequiresAttention : [any PackageInDevice_mFileSystemStatusRequiresAttention],
-       _ self_mSymbolTypes_mFileSystemStatusRequiresAttention : [any SymbolTypeInDevice_mFileSystemStatusRequiresAttention]
+       _ self_mPackages_mFileSystemStatusRequiresAttentionForPackageInDevice : [any PackageInDevice_mFileSystemStatusRequiresAttentionForPackageInDevice],
+       _ self_mSymbolTypes_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice : [any SymbolTypeInDevice_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice]
 ) -> NSImage {
 //--- START OF USER ZONE 2
          var result = false
          var idx = 0
-         while !result && idx < self_mPackages_mFileSystemStatusRequiresAttention.count {
-           result = self_mPackages_mFileSystemStatusRequiresAttention [idx].mFileSystemStatusRequiresAttention
+         while !result && idx < self_mPackages_mFileSystemStatusRequiresAttentionForPackageInDevice.count {
+           result = self_mPackages_mFileSystemStatusRequiresAttentionForPackageInDevice [idx].mFileSystemStatusRequiresAttentionForPackageInDevice
            idx += 1
          }
          idx = 0
-         while !result && idx < self_mSymbolTypes_mFileSystemStatusRequiresAttention.count {
-           result = self_mSymbolTypes_mFileSystemStatusRequiresAttention [idx].mFileSystemStatusRequiresAttention
+         while !result && idx < self_mSymbolTypes_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice.count {
+           result = self_mSymbolTypes_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice [idx].mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
            idx += 1
          }
          return result ? NSImage.statusWarning : NSImage ()

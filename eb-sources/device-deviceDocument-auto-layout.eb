@@ -1,14 +1,14 @@
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //     D E V I C E    D O C U M E N T
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClass
   root DeviceRoot
   stackView \DocumentMainView {
 
-//·············································································
+//--------------------------------------------------------------------------------------------------
 //   MAIN VIEW
-//·············································································
+//--------------------------------------------------------------------------------------------------
 
   stackView \PageMasterView vStack { }
  
@@ -75,9 +75,9 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
   transient String statusMessage dependsFrom self.issues ;
   transient MetadataStatus metadataStatus dependsFrom self.issues ;
 
-//·············································································
+//--------------------------------------------------------------------------------------------------
 //   DESCRIPTION
-//·············································································
+//--------------------------------------------------------------------------------------------------
 
   stackView \DescriptionPage vStack set (margins: .large) set (spacing: .large) {
     TextField (minWidth: 70, size : .regular) {
@@ -134,9 +134,9 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
   action showDocAction ;
   action saveDocAction ;
 
-//·············································································
+//--------------------------------------------------------------------------------------------------
 //   SYMBOLS
-//·············································································
+//--------------------------------------------------------------------------------------------------
 
   stackView \SymbolsPage hStack {
     newView symbolPageInspectorView = \SymbolPageInspectorView ()
@@ -236,9 +236,9 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
     FontButton (width: 125, size: .small) { $fontValue prefs.mPinNameFontForDevice }
   }
 
-//·············································································
+//--------------------------------------------------------------------------------------------------
 //   PACKAGES
-//·············································································
+//--------------------------------------------------------------------------------------------------
 
   stackView \PackagesPage hStack {
     newView packagePageInspectorView = \PackagePageInspectorView ()
@@ -398,9 +398,9 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
   action addPackageFromLibraryAction ;
   arrayController #packageDisplayController : root.mPackages ;
 
-//·············································································
+//--------------------------------------------------------------------------------------------------
 //   LIBRARY
-//·············································································
+//--------------------------------------------------------------------------------------------------
 
   action resetSymbolsAndPackagesVersion ;
   action updateSymbolsAndPackagesAction ;
@@ -410,7 +410,7 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
     column instanceCount (title: "Instances", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey instanceCount
     column mTypeName (title: "Symbol", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mTypeName
     column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
-    column mFileSystemStatusMessage (title: "Status in Symbol Libraries", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
+    column mFileSystemStatusMessageForSymbolTypeInDevice (title: "Status in Symbol Libraries", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessageForSymbolTypeInDevice
     column documentSize (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .right) sortkey documentSize
   }
 
@@ -420,7 +420,7 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
     column versionString (title: "Version", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey versionString
     column mName (title: "Package", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mName
     column fileSystemStatusImage (title: "", minWidth: 20, maxWidth: 20, headerAlignment: .left, contentAlignment: .center)
-    column mFileSystemStatusMessage (title: "Status in Package Libraries", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessage
+    column mFileSystemStatusMessageForPackageInDevice (title: "Status in Package Libraries", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileSystemStatusMessageForPackageInDevice
     column documentSize (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .right) sortkey documentSize
   }
 
@@ -511,9 +511,9 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
   action exportSelectedPackages ;
   action updateSelectedPackages ;
 
-//·············································································
+//--------------------------------------------------------------------------------------------------
 //   ASSIGNMENTS
-//·············································································
+//--------------------------------------------------------------------------------------------------
 
   stackView \AssignmentsPage hStack set (margins: .regular) {
     hStack $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
@@ -591,15 +591,22 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
   action performUnbindAction ;
   action performUnbindAllAction ;
 
-//·············································································
+//--------------------------------------------------------------------------------------------------
 //   INFOS
-//·············································································
+//--------------------------------------------------------------------------------------------------
 
   stackView \InfosPage vStack set (leftMargin: .large) set (rightMargin: .large) set (bottomMargin: .large) set (topMargin: .regular) {
     hStack {
-      StaticLabel (title: "Device Prefix", bold: no, size : .small, alignment: .center) { set (minWidth: 84) }
+      StaticLabel (title: "Device Prefix", bold: no, size : .small, alignment: .center) {
+        set (minWidth: 84)
+      }
       TextField (minWidth: 56, size : .small) { $value root.mPrefix (sendContinously : yes) }
-      StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, size : .small, alignment: .center)
+      StaticLabel (
+        title: "This field only accepts lowercase and uppercase ASCII letters.",
+        bold: no,
+        size : .small,
+        alignment: .center
+      )
       space
       Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAction }
     }
@@ -619,4 +626,4 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
 
 }
 
-//----------------------------------------------------------------------------*
+//--------------------------------------------------------------------------------------------------

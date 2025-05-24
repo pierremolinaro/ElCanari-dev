@@ -16,8 +16,8 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mFileSystemStatusMessage_property.stopsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
-      oldValue.mFileSystemStatusRequiresAttention_property.stopsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
+      oldValue.mFileSystemStatusMessageForFontInProject_property.stopsBeingObserved (by: self.mFileSystemStatusMessageForFontInProject_property) // Stored property
+      oldValue.mFileSystemStatusRequiresAttentionForFontInProject_property.stopsBeingObserved (by: self.mFileSystemStatusRequiresAttentionForFontInProject_property) // Stored property
       oldValue.mNominalSize_property.stopsBeingObserved (by: self.mNominalSize_property) // Stored property
       oldValue.mFontName_property.stopsBeingObserved (by: self.mFontName_property) // Stored property
       oldValue.mFontVersion_property.stopsBeingObserved (by: self.mFontVersion_property) // Stored property
@@ -42,8 +42,8 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mFileSystemStatusMessage_property.startsBeingObserved (by: self.mFileSystemStatusMessage_property) // Stored property
-      newValue.mFileSystemStatusRequiresAttention_property.startsBeingObserved (by: self.mFileSystemStatusRequiresAttention_property) // Stored property
+      newValue.mFileSystemStatusMessageForFontInProject_property.startsBeingObserved (by: self.mFileSystemStatusMessageForFontInProject_property) // Stored property
+      newValue.mFileSystemStatusRequiresAttentionForFontInProject_property.startsBeingObserved (by: self.mFileSystemStatusRequiresAttentionForFontInProject_property) // Stored property
       newValue.mNominalSize_property.startsBeingObserved (by: self.mNominalSize_property) // Stored property
       newValue.mFontName_property.startsBeingObserved (by: self.mFontName_property) // Stored property
       newValue.mFontVersion_property.startsBeingObserved (by: self.mFontVersion_property) // Stored property
@@ -69,16 +69,16 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'mFileSystemStatusMessage' stored property
+  //   Observers of 'mFileSystemStatusMessageForFontInProject' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mFileSystemStatusMessage_property = EBTransientProperty <String?> ()
+  final let mFileSystemStatusMessageForFontInProject_property = EBTransientProperty <String?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'mFileSystemStatusRequiresAttention' stored property
+  //   Observers of 'mFileSystemStatusRequiresAttentionForFontInProject' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mFileSystemStatusRequiresAttention_property = EBTransientProperty <Bool?> ()
+  final let mFileSystemStatusRequiresAttentionForFontInProject_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mNominalSize' stored property
@@ -236,13 +236,13 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   override init () {
     super.init ()
-  //--- Configure mFileSystemStatusMessage simple stored property
-    self.mFileSystemStatusMessage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mFileSystemStatusMessage_property.optionalSelection ?? .single (nil)
+  //--- Configure mFileSystemStatusMessageForFontInProject simple stored property
+    self.mFileSystemStatusMessageForFontInProject_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusMessageForFontInProject_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure mFileSystemStatusRequiresAttention simple stored property
-    self.mFileSystemStatusRequiresAttention_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mFileSystemStatusRequiresAttention_property.optionalSelection ?? .single (nil)
+  //--- Configure mFileSystemStatusRequiresAttentionForFontInProject simple stored property
+    self.mFileSystemStatusRequiresAttentionForFontInProject_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mFileSystemStatusRequiresAttentionForFontInProject_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mNominalSize simple stored property
     self.mNominalSize_property.mReadModelFunction = { [weak self] in

@@ -152,12 +152,12 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       $0.0.lowercased () < $1.0.lowercased ()
     }
   //---
-    var dict = [String : [(String, String, Int)]] () // FirstName : (secondName, category, count)
+    var dict = [String : [SubCategoryDescriptor]] () // FirstName : (secondName, category, count)
     for (str, n) in sortedCategoryArray {
       let names = str.split (separator: " ", maxSplits: 1)
       let firstName = String (names [0])
       let secondName = (names.count > 1) ? String (names [1]) : "—"
-      dict [firstName, default: []] += [(secondName, str, n)]
+      dict [firstName, default: []] += [SubCategoryDescriptor (category: secondName, subCategory: str, subCount: n)]
     }
   //--- Populate pull down button
     var foundCurrentSelectedCategory = self.mSelectedCategory.propval == CATEGORY_SUFFIX
@@ -168,9 +168,9 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     self.mCategoryPullDownButton.addItem (withItalicTitle: "— all — (\(inCategoryNameSet.totalCount))")
     if let item = self.mCategoryPullDownButton.lastItem {
       item.representedObject = CategoryMenuItemRepresentedObject (
-        category: CATEGORY_SUFFIX,
+        baseCategory: CATEGORY_SUFFIX,
         subCategories: [],
-        count: inCategoryNameSet.totalCount
+        baseCategoryCount: inCategoryNameSet.totalCount
       )
       item.action = #selector (Self.categoryPullDownButtonAction (_:))
       item.target = self
@@ -181,9 +181,9 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       self.mCategoryPullDownButton.addItem (withItalicTitle: "— none — (\(noCategoryCount))")
       if let item = self.mCategoryPullDownButton.lastItem {
         item.representedObject = CategoryMenuItemRepresentedObject (
-          category: "",
+          baseCategory: "",
           subCategories: [],
-          count: noCategoryCount
+          baseCategoryCount: noCategoryCount
         )
         item.action = #selector (Self.categoryPullDownButtonAction (_:))
         item.target = self
@@ -191,19 +191,20 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     }
   //--- Enumerate category dictionary entries
     for firstName in dict.keys.sorted (by: { $0.lowercased () < $1.lowercased () }) {
-      let subCategoryArray : [(String, String, Int)] = dict [firstName]!.sorted { $0.0.lowercased () < $1.0.lowercased () }
+      let subCategoryArray : [SubCategoryDescriptor] = dict [firstName]!.sorted { $0.category.lowercased () < $1.category.lowercased () }
+      var baseCategoryCount = 0
       if subCategoryArray.count == 1 {
-        let category = subCategoryArray [0].1
-        let categoryCount = subCategoryArray [0].2
+        let category = subCategoryArray [0].subCategory
+        baseCategoryCount = subCategoryArray [0].subCount
         if category == self.mSelectedCategory.propval {
           foundCurrentSelectedCategory = true
         }
-        self.mCategoryPullDownButton.addItem (withTitle: category + " (\(categoryCount))")
+        self.mCategoryPullDownButton.addItem (withTitle: category + " (\(baseCategoryCount))")
         if let item = self.mCategoryPullDownButton.lastItem {
           item.representedObject = CategoryMenuItemRepresentedObject (
-            category: category,
+            baseCategory: category,
             subCategories: subCategoryArray,
-            count: categoryCount
+            baseCategoryCount: baseCategoryCount
           )
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
           item.target = self
@@ -211,22 +212,21 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       }else{
         let submenu = NSMenu ()
         submenu.autoenablesItems = false
-        var baseCategoryCount = 0
-        for (secondName, category, n) in subCategoryArray {
-          baseCategoryCount += n
-          if category == self.mSelectedCategory.propval {
+        for subCategoryDescriptor in subCategoryArray {
+          baseCategoryCount += subCategoryDescriptor.subCount
+          if subCategoryDescriptor.category == self.mSelectedCategory.propval {
             foundCurrentSelectedCategory = true
           }
           let menuItem = NSMenuItem (
-            title: secondName + " (\(n))",
+            title: subCategoryDescriptor.subCategory + " (\(subCategoryDescriptor.subCount))",
             action: #selector (Self.categoryPullDownButtonAction (_:)),
             keyEquivalent: ""
           )
           menuItem.target = self
           menuItem.representedObject = CategoryMenuItemRepresentedObject(
-            category: category,
+            baseCategory: subCategoryDescriptor.category,
             subCategories: subCategoryArray,
-            count: n
+            baseCategoryCount: subCategoryDescriptor.subCount
           )
           submenu.addItem (menuItem)
         }
@@ -238,13 +238,22 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
         if let item = self.mCategoryPullDownButton.lastItem {
           item.submenu = submenu
           item.representedObject = CategoryMenuItemRepresentedObject (
-            category: title,
+            baseCategory: title,
             subCategories: subCategoryArray,
-            count: baseCategoryCount
+            baseCategoryCount: baseCategoryCount
           )
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
           item.target = self
         }
+      }
+      if foundCurrentSelectedCategory {
+        self.populateSubCategoryPullDownButton (
+          CategoryMenuItemRepresentedObject (
+            baseCategory: self.mSelectedCategory.propval,
+            subCategories: subCategoryArray,
+            baseCategoryCount: baseCategoryCount
+          )
+        )
       }
     }
     if !foundCurrentSelectedCategory {
@@ -470,46 +479,50 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   SEARCH FIELD ACTION
+  //   categoryPullDownButtonAction
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func populateSubCategoryPullDownButton (_ inCategoryDescriptor : CategoryMenuItemRepresentedObject) {
+    while self.mSubCategoryPullDownButton.numberOfItems > 1 {
+      self.mSubCategoryPullDownButton.removeItem (at: self.mSubCategoryPullDownButton.numberOfItems - 1)
+    }
+    self.mSubCategoryPullDownButton.menu?.autoenablesItems = false
+    self.mSubCategoryPullDownButton.isHidden = inCategoryDescriptor.subCategories.count <= 1
+    if inCategoryDescriptor.subCategories.count > 1 {
+      self.mSubCategoryPullDownButton.addItem (withTitle: CATEGORY_SUFFIX + " (\(inCategoryDescriptor.baseCategoryCount))")
+      if let item = self.mSubCategoryPullDownButton.lastItem {
+        let baseCategory = String (inCategoryDescriptor.baseCategory.split (separator: " ", maxSplits: 1) [0]) + CATEGORY_SUFFIX
+        item.representedObject = CategoryMenuItemRepresentedObject (
+          baseCategory: baseCategory,
+          subCategories: inCategoryDescriptor.subCategories,
+          baseCategoryCount: inCategoryDescriptor.baseCategoryCount
+        )
+        item.action = #selector (Self.categoryPullDownButtonAction (_:))
+        item.target = self
+      }
+      for subCategoryDescriptor in inCategoryDescriptor.subCategories {
+        self.mSubCategoryPullDownButton.addItem (withTitle: subCategoryDescriptor.subCategory + " (\(subCategoryDescriptor.subCount))")
+        if let button = self.mSubCategoryPullDownButton.lastItem {
+          button.representedObject = CategoryMenuItemRepresentedObject (
+            baseCategory: subCategoryDescriptor.category,
+            subCategories: inCategoryDescriptor.subCategories,
+            baseCategoryCount: inCategoryDescriptor.baseCategoryCount
+          )
+          button.action = #selector (Self.categoryPullDownButtonAction (_:))
+          button.target = self
+        }
+      }
+    }
+  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func categoryPullDownButtonAction (_ inSender : Any?) {
     if let menuItem = inSender as? NSMenuItem,
              let rep = menuItem.representedObject as? CategoryMenuItemRepresentedObject {
-      let category = rep.category
-      let subCategoryArray = rep.subCategories
-      self.mSelectedCategory.setProp (category)
+      self.mSelectedCategory.setProp (rep.baseCategory)
     //--- Populate sub category pulldown button
-      while self.mSubCategoryPullDownButton.numberOfItems > 1 {
-        self.mSubCategoryPullDownButton.removeItem (at: self.mSubCategoryPullDownButton.numberOfItems - 1)
-      }
-      self.mSubCategoryPullDownButton.menu?.autoenablesItems = false
-      self.mSubCategoryPullDownButton.isHidden = subCategoryArray.count <= 1
-      if subCategoryArray.count > 1 {
-        self.mSubCategoryPullDownButton.addItem (withTitle: CATEGORY_SUFFIX + " (\(rep.count))")
-        if let item = self.mSubCategoryPullDownButton.lastItem {
-          let baseCategory = String (category.split (separator: " ", maxSplits: 1) [0]) + CATEGORY_SUFFIX
-          item.representedObject = CategoryMenuItemRepresentedObject (
-            category: baseCategory,
-            subCategories: subCategoryArray,
-            count: rep.count
-          )
-          item.action = #selector (Self.categoryPullDownButtonAction (_:))
-          item.target = self
-        }
-        for (secondName, category, n) in subCategoryArray {
-          self.mSubCategoryPullDownButton.addItem (withTitle: secondName + " (\(n))")
-          if let button = self.mSubCategoryPullDownButton.lastItem {
-            button.representedObject = CategoryMenuItemRepresentedObject (
-              category: category,
-              subCategories: subCategoryArray,
-              count: n
-            )
-            button.action = #selector (Self.categoryPullDownButtonAction (_:))
-            button.target = self
-          }
-        }
-      }
+      self.populateSubCategoryPullDownButton (rep)
     //---
       self.filterAction (nil)
     }
@@ -783,10 +796,18 @@ extension Array where Element == OpenInLibraryDialogFlatItem {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate struct CategoryMenuItemRepresentedObject {
+fileprivate struct SubCategoryDescriptor {
   let category : String
-  let subCategories : [(String, String, Int)]
-  let count : Int
+  let subCategory : String
+  let subCount : Int
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate struct CategoryMenuItemRepresentedObject {
+  let baseCategory : String
+  let subCategories : [SubCategoryDescriptor]
+  let baseCategoryCount : Int
 }
 
 //--------------------------------------------------------------------------------------------------
