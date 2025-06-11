@@ -137,6 +137,10 @@ let fm = FileManager ()
 //-------------------- Get script absolute path
 let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
 print ("scriptDir \(scriptDir)")
+runCommand (
+ "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+ ["-version"]
+)
 //-------------------- Supprimer une distribution existante
 let DISTRIBUTION_DIR = scriptDir + "/../EL_CANARI_DISTRIBUTION_" + VERSION_CANARI
 while fm.fileExists (atPath: DISTRIBUTION_DIR) {
@@ -188,10 +192,17 @@ do{
 //-------------------- Compiler le projet Xcode
   let debutCompilation = Date ()
   runCommand ("/bin/rm", ["-fr", "build"])
-  runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
-              ["-target", "ElCanari-" + BUILD_KIND.string,
-               "-configuration", BUILD_KIND.string
-              ])
+  runCommand (
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+    ["-version"]
+  )
+  runCommand (
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+    [ "-target", "ElCanari-" + BUILD_KIND.string,
+      "-configuration", BUILD_KIND.string,
+      "-verbose"
+    ]
+  )
   let DureeCompilation = Date ().timeIntervalSince (debutCompilation)
   let PRODUCT_NAME : String
   switch BUILD_KIND {
