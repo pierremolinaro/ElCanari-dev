@@ -500,8 +500,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   //    object: MyPrivateUndoer (inOldValue)
   //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
-      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
-      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+      MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)

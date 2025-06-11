@@ -316,8 +316,7 @@ final class StoredObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInD
      // object: MyPrivateUndoer (inOldValue)
     // )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
-      selfTarget.setProp (inOldValue) // Ok in swift 6.2
-      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+      MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
     }
   //---
     if let object = inOldValue {

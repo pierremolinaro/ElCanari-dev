@@ -1297,8 +1297,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   //    object: MyPrivateUndoer (inOldValue)
   //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
-      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
-      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+      MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
