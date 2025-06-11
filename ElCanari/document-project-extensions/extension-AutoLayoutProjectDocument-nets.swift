@@ -135,11 +135,13 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     //---
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { inResponse in
-        newNameTextField.mTextFieldUserInfo = nil
-        newNameTextField.mTextDidChange = nil // Required for breaking retain cycle
-        if inResponse == .stop {
-          let newNetName = newNameTextField.stringValue
-          inNet.mNetName = newNetName
+        DispatchQueue.main.async {
+          newNameTextField.mTextFieldUserInfo = nil
+          newNameTextField.mTextDidChange = nil // Required for breaking retain cycle
+          if inResponse == .stop {
+            let newNetName = newNameTextField.stringValue
+            inNet.mNetName = newNetName
+          }
         }
       }
     }
@@ -223,10 +225,12 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       _ = panel.makeFirstResponder (popUpButton)
       window.beginSheet (panel) { inResponse in
-        if inResponse == .stop, let net = popUpButton.selectedItem?.representedObject as? NetInProject {
-          inPoint.mNet = net
-          inPoint.propagateNetToAccessiblePointsThroughtWires ()
-          self.updateSchematicPointsAndNets ()
+        DispatchQueue.main.async {
+          if inResponse == .stop, let net = popUpButton.selectedItem?.representedObject as? NetInProject {
+            inPoint.mNet = net
+            inPoint.propagateNetToAccessiblePointsThroughtWires ()
+            self.updateSchematicPointsAndNets ()
+          }
         }
       }
     }
@@ -285,8 +289,10 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       //--- Dialog
         window.beginSheet (panel) { inResponse in
-          if inResponse == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {
-            net.mNetClass = netClass
+          DispatchQueue.main.async {
+            if inResponse == .stop, let netClass = popUpButton.selectedItem?.representedObject as? NetClassInProject {
+              net.mNetClass = netClass
+            }
           }
         }
       }

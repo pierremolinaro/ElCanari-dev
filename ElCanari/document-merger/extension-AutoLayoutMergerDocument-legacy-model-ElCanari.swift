@@ -22,7 +22,14 @@ extension AutoLayoutMergerDocument {
     let optionalFileData : Data? = FileManager ().contents (atPath: inFilePath)
     if let fileData = optionalFileData {
       let s = inFilePath.lastPathComponent.deletingPathExtension
-      self.parseBoardModelLegacyELCanariArchive (fromData: fileData, named : s, callBack: { self.registerBoardModelCallBack ($0) } )
+      self.parseBoardModelLegacyELCanariArchive (
+        fromData: fileData,
+        named : s,
+        callBack: {
+          let x = $0
+          DispatchQueue.main.async { self.registerBoardModelCallBack (x) }
+        }
+      )
     }else{ // Cannot read file
       let alert = NSAlert ()
       alert.messageText = "Cannot read file"
@@ -34,8 +41,8 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func parseBoardModelLegacyELCanariArchive (fromData inData : Data,
-                                             named inName : String,
-                                             callBack inCallBack : @escaping (BoardModel) -> Void) {
+                                named inName : String,
+                                callBack inCallBack : @escaping @Sendable (BoardModel) -> Void) {
     do{
       let optionalBoardArchiveDictionary = try PropertyListSerialization.propertyList (
         from: inData,
@@ -56,8 +63,8 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func internalCheckLegacyELCanariArchiveVersion (_ inBoardArchiveDict : [String : Any],
-                                                           named inName : String,
-                                                           callBack inCallBack : @escaping (BoardModel) -> Void) {
+                                named inName : String,
+                                callBack inCallBack : @escaping @Sendable (BoardModel) -> Void) {
     let version : Int = (inBoardArchiveDict [ARCHIVE_VERSION_KEY] as? Int) ?? 0
     if version != MERGER_ARCHIVE_VERSION {
       let alert = NSAlert ()
@@ -67,7 +74,15 @@ extension AutoLayoutMergerDocument {
       alert.informativeText = "Merger requires archive version #\(MERGER_ARCHIVE_VERSION) ; update your archive by generating the production files again."
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == .alertFirstButtonReturn {
-          self.internalParseBoardModelLegacyELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: true, named: inName, callBack: inCallBack)
+          DispatchQueue.main.async {
+            self.internalParseBoardModelLegacyELCanariArchive (
+              inBoardArchiveDict,
+              version: version,
+              ignoreVersionError: true,
+              named: inName,
+              callBack: inCallBack
+            )
+          }
         }
       }
     }else{

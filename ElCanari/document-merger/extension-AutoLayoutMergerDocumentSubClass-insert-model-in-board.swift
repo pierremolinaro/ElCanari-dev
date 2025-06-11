@@ -115,42 +115,44 @@ extension AutoLayoutMergerDocumentSubClass {
       _ = mainView.appendViewPreceededByFlexibleSpace (rightColumn)
       panel.setContentView (mainView)
       self.windowForSheet?.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
-        flushOutletEvents ()
-        if inResponse == .stop, let boardModel = modelPopUpButton.selectedItem?.representedObject as? BoardModel {
-          let xCount = self.mInsertArrayOfBoardsXCount.propval
-          let yCount = self.mInsertArrayOfBoardsYCount.propval
-          // Swift.print ("xCount \(xCount), yCount \(yCount)")
-          let boardModelWidth = boardModel.modelWidth
-          let boardModelHeight = boardModel.modelHeight
-          let overlapAmount = self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
-          let rotation = self.mInsertArrayOfBoardsOrientation.propval
-          var newBoardArray = [MergerBoardInstance] ()
-          var y = mouseDownLocationInView.y
-          for _ in 0 ..< yCount {
-            var x = mouseDownLocationInView.x
-            for _ in 0 ..< xCount {
-              let newBoard = MergerBoardInstance (self.undoManager)
-              newBoard.myModel_property.setProp (boardModel)
-              newBoard.instanceRotation = rotation
-              newBoard.x = x
-              newBoard.y = y
-              self.rootObject.boardInstances_property.add (newBoard)
-              newBoardArray.append (newBoard)
+        DispatchQueue.main.async {
+          flushOutletEvents ()
+          if inResponse == .stop, let boardModel = modelPopUpButton.selectedItem?.representedObject as? BoardModel {
+            let xCount = self.mInsertArrayOfBoardsXCount.propval
+            let yCount = self.mInsertArrayOfBoardsYCount.propval
+            // Swift.print ("xCount \(xCount), yCount \(yCount)")
+            let boardModelWidth = boardModel.modelWidth
+            let boardModelHeight = boardModel.modelHeight
+            let overlapAmount = self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
+            let rotation = self.mInsertArrayOfBoardsOrientation.propval
+            var newBoardArray = [MergerBoardInstance] ()
+            var y = mouseDownLocationInView.y
+            for _ in 0 ..< yCount {
+              var x = mouseDownLocationInView.x
+              for _ in 0 ..< xCount {
+                let newBoard = MergerBoardInstance (self.undoManager)
+                newBoard.myModel_property.setProp (boardModel)
+                newBoard.instanceRotation = rotation
+                newBoard.x = x
+                newBoard.y = y
+                self.rootObject.boardInstances_property.add (newBoard)
+                newBoardArray.append (newBoard)
+                switch rotation {
+                case .rotation0, .rotation180 :
+                  x += boardModelWidth - overlapAmount
+                case .rotation90, .rotation270 :
+                  x += boardModelHeight - overlapAmount
+                }
+              }
               switch rotation {
               case .rotation0, .rotation180 :
-                x += boardModelWidth - overlapAmount
+                y += boardModelHeight - overlapAmount
               case .rotation90, .rotation270 :
-                x += boardModelHeight - overlapAmount
+                y += boardModelWidth - overlapAmount
               }
             }
-            switch rotation {
-            case .rotation0, .rotation180 :
-              y += boardModelHeight - overlapAmount
-            case .rotation90, .rotation270 :
-              y += boardModelWidth - overlapAmount
-            }
+            self.mBoardInstanceController.setSelection (newBoardArray)
           }
-          self.mBoardInstanceController.setSelection (newBoardArray)
         }
       }
     }

@@ -21,7 +21,9 @@ extension AutoLayoutProjectDocument {
           _ = alert.addButton (withTitle: "Cancel")
           alert.beginSheetModal (for: self.windowForSheet!) {(inReturnCode : NSApplication.ModalResponse) in
             if (inReturnCode == .alertFirstButtonReturn) {
-              self.addFont (postAction: self.addComponentDialog)
+              DispatchQueue.main.async {
+                self.addFont (postAction: self.addComponentDialog)
+              }
             }
           }
         }else{

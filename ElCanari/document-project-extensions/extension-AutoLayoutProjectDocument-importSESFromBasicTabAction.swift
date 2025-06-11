@@ -23,11 +23,12 @@ extension AutoLayoutProjectDocument {
       alert.messageText = "FreeRouter gui defaults file did change."
       alert.informativeText = "Import new contents into ElCanari preferences ?"
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
-        if inResponse == .alertFirstButtonReturn {
-          preferences_mFreeRouterGuiDefaultFileContents_property.setProp (fileContents)
-          // Swift.print ("WRITE PREFS")
+        DispatchQueue.main.async {
+          if inResponse == .alertFirstButtonReturn {
+            preferences_mFreeRouterGuiDefaultFileContents_property.setProp (fileContents)
+          }
+          self.importSESFile (fileBasePath: inFileBasePath)
         }
-        DispatchQueue.main.async { self.importSESFile (fileBasePath: inFileBasePath) }
       }
     }else{
       self.importSESFile (fileBasePath: inFileBasePath)

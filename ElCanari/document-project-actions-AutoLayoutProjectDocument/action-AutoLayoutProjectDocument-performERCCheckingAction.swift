@@ -22,7 +22,9 @@ extension AutoLayoutProjectDocument {
       alert.informativeText = "ERC checking has detected error(s)."
       alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
-          self.rootObject.mBoardSelectedInspector = 4
+          DispatchQueue.main.async {
+            self.rootObject.mBoardSelectedInspector = 4
+          }
         }
       }
     }

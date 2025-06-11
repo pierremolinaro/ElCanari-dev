@@ -194,7 +194,9 @@ extension AutoLayoutProjectDocument {
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop {
-          self.performRenameComponent (component: inComponent, renameContext: renameContext)
+          DispatchQueue.main.async {
+            self.performRenameComponent (component: inComponent, renameContext: renameContext)
+          }
         }
       }
     }

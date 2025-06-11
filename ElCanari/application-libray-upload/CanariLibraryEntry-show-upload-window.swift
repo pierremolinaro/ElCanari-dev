@@ -176,9 +176,11 @@ extension CanariLibraryEntry {
     //---
       alert.beginSheetModal (for: window) { response in
         if response == .alertFirstButtonReturn {
-          self.mUserAndPasswordTag = tf.stringValue
-          self.set (userAndPassword: tf.stringValue)
-          self.updateLibraryRepositoryLoadCurrentReleaseButton ()
+          DispatchQueue.main.async {
+            self.mUserAndPasswordTag = tf.stringValue
+            self.set (userAndPassword: tf.stringValue)
+            self.updateLibraryRepositoryLoadCurrentReleaseButton ()
+          }
         }
       }
     }
@@ -204,9 +206,11 @@ extension CanariLibraryEntry {
     //---
       alert.beginSheetModal (for: window) { response in
         if response == .alertFirstButtonReturn {
-          self.mLibraryRepositoryURL = tf.stringValue
-          self.set (repositoryURL: tf.stringValue)
-          self.updateLibraryRepositoryLoadCurrentReleaseButton ()
+          DispatchQueue.main.async {
+            self.mLibraryRepositoryURL = tf.stringValue
+            self.set (repositoryURL: tf.stringValue)
+            self.updateLibraryRepositoryLoadCurrentReleaseButton ()
+          }
         }
       }
     }

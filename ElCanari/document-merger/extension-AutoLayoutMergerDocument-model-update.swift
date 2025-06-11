@@ -29,28 +29,39 @@ extension AutoLayoutMergerDocument {
       gPanel = OpenPanelDelegateForUpdatingBoardModels (boardModelName) // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       openPanel.delegate = gPanel
       openPanel.beginSheetModal (for: window) { (returnCode) in
-        gPanel = nil
-        if returnCode == .OK, let url = openPanel.url, url.isFileURL {
-          let filePath = url.path
-        //--- Load file, as plist
-          let optionalFileData : Data? = FileManager ().contents (atPath: filePath)
-          if let fileData = optionalFileData {
-            let s = filePath.lastPathComponent.deletingPathExtension
-            if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
-              self.parseBoardModelLegacyELCanariArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
-            }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
-              self.parseBoardModelELCanariBoardArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
-            }else if filePath.pathExtension == KICAD_PCB {
-              let possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
-              if let newTemporaryBoardModel = possibleBoardModel {
-                self.performUpdateModel (updatedBoardModel, with: newTemporaryBoardModel)
+        DispatchQueue.main.async {
+          gPanel = nil
+          if returnCode == .OK, let url = openPanel.url, url.isFileURL {
+            let filePath = url.path
+          //--- Load file, as plist
+            let optionalFileData : Data? = FileManager ().contents (atPath: filePath)
+            if let fileData = optionalFileData {
+              let s = filePath.lastPathComponent.deletingPathExtension
+              if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
+                self.parseBoardModelLegacyELCanariArchive (
+                  fromData: fileData,
+                  named: s,
+                  callBack: {
+                    let x = $0
+                    DispatchQueue.main.async {
+                      self.performUpdateModel (updatedBoardModel, with: x)
+                    }
+                  }
+                )
+              }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
+                self.parseBoardModelELCanariBoardArchive (fromData: fileData, named: s, callBack: { self.performUpdateModel (updatedBoardModel, with: $0) })
+              }else if filePath.pathExtension == KICAD_PCB {
+                let possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
+                if let newTemporaryBoardModel = possibleBoardModel {
+                  self.performUpdateModel (updatedBoardModel, with: newTemporaryBoardModel)
+                }
               }
+            }else{ // Cannot read file
+              let alert = NSAlert ()
+              alert.messageText = "Cannot read file"
+              alert.informativeText = "The file \(filePath) cannot be read."
+              alert.beginSheetModal (for: window)
             }
-          }else{ // Cannot read file
-            let alert = NSAlert ()
-            alert.messageText = "Cannot read file"
-            alert.informativeText = "The file \(filePath) cannot be read."
-            alert.beginSheetModal (for: window)
           }
         }
       }

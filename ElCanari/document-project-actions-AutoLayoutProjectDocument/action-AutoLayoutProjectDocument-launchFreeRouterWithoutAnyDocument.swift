@@ -14,9 +14,10 @@ extension AutoLayoutProjectDocument {
   @objc func launchFreeRouterWithoutAnyDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.checkSchematicsAndLaunchFreeRouteur {
-      if let mainWindow = self.windowForSheet, let freeRouterApplication : URL = self.installFreeRouter (mainWindow) {
-        let openConfiguration = NSWorkspace.OpenConfiguration ()
-        NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration)
+      DispatchQueue.main.async {
+        if let mainWindow = self.windowForSheet, let freeRouterApplication : URL = self.installFreeRouter (mainWindow) {
+          let openConfiguration = NSWorkspace.OpenConfiguration ()
+          NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration)
        // Completion handler --> crash on 15.3
 //        NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
 //          if optionalApplication == nil {
@@ -28,6 +29,7 @@ extension AutoLayoutProjectDocument {
 //            }
 //          }
 //        }
+        }
       }
     }
 //--- END OF USER ZONE 2

@@ -53,14 +53,16 @@ extension AutoLayoutFontDocument {
       newCharacterView.setImplementedCharacterSet (implementedCharacterSet)
     //--- Display sheet
       window.beginSheet (panel) { (response : NSApplication.ModalResponse) in
-        if response == NSApplication.ModalResponse.stop, let codePoint = newCharacterView.selectedCharacter {
-          var characterSet = self.rootObject.characters_property.propval
-          let newCharacter = FontCharacter (self.undoManager)
-          newCharacter.codePoint = codePoint
-          characterSet.append (newCharacter)
-          characterSet.sort {$0.codePoint < $1.codePoint}
-          self.rootObject.characters_property.setProp (characterSet)
-          self.rootObject.currentCharacterCodePoint = codePoint
+        DispatchQueue.main.async {
+          if response == NSApplication.ModalResponse.stop, let codePoint = newCharacterView.selectedCharacter {
+            var characterSet = self.rootObject.characters_property.propval
+            let newCharacter = FontCharacter (self.undoManager)
+            newCharacter.codePoint = codePoint
+            characterSet.append (newCharacter)
+            characterSet.sort {$0.codePoint < $1.codePoint}
+            self.rootObject.characters_property.setProp (characterSet)
+            self.rootObject.currentCharacterCodePoint = codePoint
+          }
         }
       }
     }

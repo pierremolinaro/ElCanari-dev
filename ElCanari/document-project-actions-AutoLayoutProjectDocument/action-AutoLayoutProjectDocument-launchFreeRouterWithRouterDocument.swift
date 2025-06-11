@@ -14,7 +14,9 @@ extension AutoLayoutProjectDocument {
   @objc func launchFreeRouterWithRouterDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.checkSchematicsAndLaunchFreeRouteur {
-      self.performLaunchFreeRouterWithRouterDocument ()
+      DispatchQueue.main.async {
+        self.performLaunchFreeRouterWithRouterDocument ()
+      }
     }
 //--- END OF USER ZONE 2
   }

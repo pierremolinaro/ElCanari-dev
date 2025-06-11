@@ -19,20 +19,22 @@ extension AutoLayoutProjectDocument {
             validationButtonTitle: "Import",
             callBack: { (_ inURL : URL, _ inName : String) -> Void in
               if let data = try? Data (contentsOf: inURL) {
-                let documentReadData = loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager)
-                switch documentReadData {
-                case .ok (let documentData) :
-                  if let artworkRoot = documentData.documentRootObject as? ArtworkRoot,
-                     let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
-                    self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
-                    self.invalidateERC ()
-                    self.rootObject.mArtwork = artworkRoot
-                    self.rootObject.mArtworkName = inName
-                    self.rootObject.mArtworkVersion = version
-                    self.triggerStandAlonePropertyComputationForProject ()
+                DispatchQueue.main.async {
+                  let documentReadData = loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager)
+                  switch documentReadData {
+                  case .ok (let documentData) :
+                    if let artworkRoot = documentData.documentRootObject as? ArtworkRoot,
+                       let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
+                      self.registerUndoForTriggeringStandAlonePropertyComputationForProject ()
+                      self.invalidateERC ()
+                      self.rootObject.mArtwork = artworkRoot
+                      self.rootObject.mArtworkName = inName
+                      self.rootObject.mArtworkVersion = version
+                      self.triggerStandAlonePropertyComputationForProject ()
+                    }
+                  case .readError (_) :
+                    ()
                   }
-                case .readError (_) :
-                  ()
                 }
               }
             }

@@ -68,9 +68,11 @@ extension AutoLayoutProjectDocument {
            panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
            window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
              if inResponse == .stop {
-               let newValue = comboBox.stringValue
-               for component in selectedComponents.values {
-                 component.mComponentValue = newValue
+              DispatchQueue.main.async {
+                 let newValue = comboBox.stringValue
+                 for component in selectedComponents.values {
+                   component.mComponentValue = newValue
+                 }
                }
              }
            }

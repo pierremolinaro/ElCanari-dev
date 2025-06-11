@@ -20,14 +20,16 @@ extension Preferences {
     op.beginSheetModal (
       for: (inSender as! NSButton).window!,
       completionHandler: { (inReturnCode : NSApplication.ModalResponse) in
-        if inReturnCode == .OK {
-          let URLToAdd : URL = op.urls [0]
-          let pathToAdd = URLToAdd.path
-          let newEntry = CanariLibraryEntry (self.undoManager)
-          newEntry.mPath = pathToAdd
-          var array = preferences_additionnalLibraryArray_property.propval
-          array.append (newEntry)
-          preferences_additionnalLibraryArray_property.setProp (array)
+        DispatchQueue.main.async {
+          if inReturnCode == .OK {
+            let URLToAdd : URL = op.urls [0]
+            let pathToAdd = URLToAdd.path
+            let newEntry = CanariLibraryEntry (self.undoManager)
+            newEntry.mPath = pathToAdd
+            var array = preferences_additionnalLibraryArray_property.propval
+            array.append (newEntry)
+            preferences_additionnalLibraryArray_property.setProp (array)
+          }
         }
       }
     )

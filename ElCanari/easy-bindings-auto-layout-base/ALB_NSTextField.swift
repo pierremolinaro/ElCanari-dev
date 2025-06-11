@@ -12,7 +12,7 @@ import AppKit
 //   ALB_NSTextField
 //--------------------------------------------------------------------------------------------------
 
-class ALB_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDelegate {
+class ALB_NSTextField : NSTextField, @MainActor NSTextFieldDelegate, NSControlTextEditingDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

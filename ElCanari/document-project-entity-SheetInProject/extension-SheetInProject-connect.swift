@@ -114,7 +114,7 @@ extension SheetInProject {
   func connect (points inPoints : [PointInSchematic],
                 window inWindow : NSWindow,
                 newNetCreator inNewNetCreator : @MainActor () -> NetInProject,
-                updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
+                updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping @Sendable () -> Void) {
     let (points, netArray) = self.tryToConnectWithoutDialog (
        points: inPoints,
        updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack
@@ -130,8 +130,10 @@ extension SheetInProject {
       }
       _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
-        self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
-        inUpdateSchematicPointsAndNetsCallBack ()
+        DispatchQueue.main.async {
+          self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+          inUpdateSchematicPointsAndNetsCallBack ()
+        }
       }
     }else if netArray.count == 3 {
       let alert = NSAlert ()
@@ -141,7 +143,14 @@ extension SheetInProject {
       }
       _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
-        self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+        DispatchQueue.main.async {
+          self.handleAlertResponseForMergingNets (
+            response,
+            points,
+            netArray,
+            updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack
+          )
+        }
       }
     }else if netArray.count > 3 {
       self.connectionWillMergeSeveralSubnets (points: points, netArray, inWindow, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
@@ -153,7 +162,7 @@ extension SheetInProject {
   private func connectionWillMergeSeveralSubnets (points inPoints : [PointInSchematic],
                                                   _ netArray : [NetInProject],
                                                   _ inWindow : NSWindow,
-                                                  updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
+                                                  updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping @Sendable () -> Void) {
     let panel = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 500, height: 200),
       styleMask: [.titled],
@@ -189,8 +198,10 @@ extension SheetInProject {
   //---
     panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
     inWindow.beginSheet (panel) { inResponse in
-      if inResponse == .stop, let net = popupButton.selectedItem?.representedObject as? NetInProject {
-        self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+      DispatchQueue.main.async {
+        if inResponse == .stop, let net = popupButton.selectedItem?.representedObject as? NetInProject {
+          self.propagateAndMerge (net: net, to: inPoints, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
+        }
       }
     }
   }

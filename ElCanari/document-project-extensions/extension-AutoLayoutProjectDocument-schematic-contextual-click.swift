@@ -138,17 +138,19 @@ extension AutoLayoutProjectDocument {
     //---
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       self.windowForSheet?.beginSheet (panel) { (inModalResponse) in
-        if inModalResponse == .stop,
-             let candidateSymbol = popUpButton.selectedItem?.representedObject as? ComponentSymbolInProject,
-             candidateSymbol !== inSymbolUnderMouse {
-          let symbolUnderMouseComponent = inSymbolUnderMouse.mComponent
-          let symbolUnderMouseInstanceName = inSymbolUnderMouse.mSymbolInstanceName
-          let candidateSymbolComponent = candidateSymbol.mComponent
-          let candidateSymbolInstanceName = candidateSymbol.mSymbolInstanceName
-          inSymbolUnderMouse.mComponent = candidateSymbolComponent
-          inSymbolUnderMouse.mSymbolInstanceName = candidateSymbolInstanceName
-          candidateSymbol.mComponent = symbolUnderMouseComponent
-          candidateSymbol.mSymbolInstanceName = symbolUnderMouseInstanceName
+        DispatchQueue.main.async {
+          if inModalResponse == .stop,
+               let candidateSymbol = popUpButton.selectedItem?.representedObject as? ComponentSymbolInProject,
+               candidateSymbol !== inSymbolUnderMouse {
+            let symbolUnderMouseComponent = inSymbolUnderMouse.mComponent
+            let symbolUnderMouseInstanceName = inSymbolUnderMouse.mSymbolInstanceName
+            let candidateSymbolComponent = candidateSymbol.mComponent
+            let candidateSymbolInstanceName = candidateSymbol.mSymbolInstanceName
+            inSymbolUnderMouse.mComponent = candidateSymbolComponent
+            inSymbolUnderMouse.mSymbolInstanceName = candidateSymbolInstanceName
+            candidateSymbol.mComponent = symbolUnderMouseComponent
+            candidateSymbol.mSymbolInstanceName = symbolUnderMouseInstanceName
+          }
         }
       }
     }
@@ -439,7 +441,9 @@ extension AutoLayoutProjectDocument {
         points: inPoints,
         window: window,
         newNetCreator: self.rootObject.createNetWithAutomaticName,
-        updateSchematicPointsAndNets: { self.updateSchematicPointsAndNets () }
+        updateSchematicPointsAndNets: {
+          DispatchQueue.main.async { self.updateSchematicPointsAndNets () }
+        }
       )
     }
   }

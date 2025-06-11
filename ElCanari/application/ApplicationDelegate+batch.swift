@@ -63,53 +63,59 @@ extension ApplicationDelegate {
       op.canChooseDirectories = true
       op.canChooseFiles = false
       op.beginSheetModal (for: window) { (_ response : NSApplication.ModalResponse) in
-        op.orderOut (nil)
-        if response == .OK {
-          let baseDirectory : String = op.urls [0].path
-          let fm = FileManager ()
-          let dc = NSDocumentController ()
-          var retainedFiles = [String] ()
-          if let files = fm.subpaths (atPath: baseDirectory) {
-            for f in files {
-              if f.first! != "." {
-                let fullPath = baseDirectory + "/" + f
-                if inExtensions.contains (fullPath.pathExtension.lowercased ()) {
-                  retainedFiles.append (fullPath)
+        DispatchQueue.main.async {
+          op.orderOut (nil)
+          if response == .OK {
+            let baseDirectory : String = op.urls [0].path
+            let fm = FileManager ()
+            let dc = NSDocumentController ()
+            var retainedFiles = [String] ()
+            if let files = fm.subpaths (atPath: baseDirectory) {
+              for f in files {
+                if f.first! != "." {
+                  let fullPath = baseDirectory + "/" + f
+                  if inExtensions.contains (fullPath.pathExtension.lowercased ()) {
+                    retainedFiles.append (fullPath)
+                  }
                 }
               }
             }
-          }
-          if retainedFiles.count == 0 {
-            let alert = NSAlert ()
-            alert.messageText = "No \(inTitle) to Open"
-            alert.beginSheetModal (for: window)
-          }else{
-            let alert = NSAlert ()
-            alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            _ = alert.addButton (withTitle: "Ok")
-            _ = alert.addButton (withTitle: "Cancel")
-            alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
-              if response == .alertFirstButtonReturn {
-                let message = "Opening \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")\n"
-                let maintenanceLogTextView = self.mMaintenanceLogTextView
-                let maintenanceLogTextField = self.mMaintenanceLogTextField
-                maintenanceLogTextView?.appendMessageString (message)
-                self.mCount = 0
-                for fullPath in retainedFiles {
-                  dc.openDocument (
-                    withContentsOf: URL (fileURLWithPath: fullPath),
-                    display: true
-                  ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                    if document != nil {
-                      self.mCount += 1
-                      let message = (self.mCount > 1)
-                        ? "\(self.mCount) \(inTitle)s have been opened"
-                        : "\(self.mCount) \(inTitle) has been opened"
-                      maintenanceLogTextField?.stringValue = message
-                    }else{
-                      maintenanceLogTextView?.appendErrorString ("Cannot open \(fullPath)")
+            if retainedFiles.count == 0 {
+              let alert = NSAlert ()
+              alert.messageText = "No \(inTitle) to Open"
+              alert.beginSheetModal (for: window)
+            }else{
+              let alert = NSAlert ()
+              alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
+              _ = alert.addButton (withTitle: "Ok")
+              _ = alert.addButton (withTitle: "Cancel")
+              alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+                if response == .alertFirstButtonReturn {
+                  DispatchQueue.main.async {
+                    let message = "Opening \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")\n"
+                    let maintenanceLogTextView = self.mMaintenanceLogTextView
+                    let maintenanceLogTextField = self.mMaintenanceLogTextField
+                    maintenanceLogTextView?.appendMessageString (message)
+                    self.mCount = 0
+                    for fullPath in retainedFiles {
+                      dc.openDocument (
+                        withContentsOf: URL (fileURLWithPath: fullPath),
+                        display: true
+                      ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                        DispatchQueue.main.async {
+                          if document != nil {
+                            self.mCount += 1
+                            let message = (self.mCount > 1)
+                              ? "\(self.mCount) \(inTitle)s have been opened"
+                              : "\(self.mCount) \(inTitle) has been opened"
+                            maintenanceLogTextField?.stringValue = message
+                          }else{
+                            maintenanceLogTextView?.appendErrorString ("Cannot open \(fullPath)")
+                          }
+                        }
+                        _ = RunLoop.main.run (mode: .default, before: Date ())
+                      }
                     }
-                    _ = RunLoop.main.run (mode: .default, before: Date ())
                   }
                 }
               }
@@ -134,41 +140,45 @@ extension ApplicationDelegate {
       op.canChooseDirectories = true
       op.canChooseFiles = false
       op.beginSheetModal (for: window) { (_ response : NSApplication.ModalResponse) in
-        op.orderOut (nil)
-        if response == .OK {
-          let baseDirectory : String = op.urls [0].path
-          let fm = FileManager ()
-          let dc = NSDocumentController ()
-          var retainedFiles = [String] ()
-          if let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) {
-            for f in filesInCurrentDirectory {
-              if f.first! != "." { // No hidden file
-                let fullPath = baseDirectory + "/" + f
-                if fullPath.pathExtension.lowercased() == fileExtension {
-                  retainedFiles.append (fullPath)
+        DispatchQueue.main.async {
+          op.orderOut (nil)
+          if response == .OK {
+            let baseDirectory : String = op.urls [0].path
+            let fm = FileManager ()
+            let dc = NSDocumentController ()
+            var retainedFiles = [String] ()
+            if let filesInCurrentDirectory = fm.subpaths (atPath: baseDirectory) {
+              for f in filesInCurrentDirectory {
+                if f.first! != "." { // No hidden file
+                  let fullPath = baseDirectory + "/" + f
+                  if fullPath.pathExtension.lowercased() == fileExtension {
+                    retainedFiles.append (fullPath)
+                  }
                 }
               }
             }
-          }
-          if retainedFiles.count == 0 {
-            let alert = NSAlert ()
-            alert.messageText = "No project to Open"
-            alert.beginSheetModal (for: window)
-          }else{
-            let alert = NSAlert ()
-            alert.messageText = "Update \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            _ = alert.addButton (withTitle: "Ok")
-            _ = alert.addButton (withTitle: "Cancel")
-            alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
-              if response == .alertFirstButtonReturn {
-                self.mMaintenanceLogTextField?.stringValue = "No updated project"
-                self.mMaintenanceLogTextView?.appendMessageString ("Updating \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")\n")
-                for fullpath in retainedFiles {
-                  dc.openDocument (
-                    withContentsOf: URL (fileURLWithPath: fullpath),
-                    display: true // animating,
-                  ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                    NSSound.beep ()
+            if retainedFiles.count == 0 {
+              let alert = NSAlert ()
+              alert.messageText = "No project to Open"
+              alert.beginSheetModal (for: window)
+            }else{
+              let alert = NSAlert ()
+              alert.messageText = "Update \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
+              _ = alert.addButton (withTitle: "Ok")
+              _ = alert.addButton (withTitle: "Cancel")
+              alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+                if response == .alertFirstButtonReturn {
+                  DispatchQueue.main.async {
+                    self.mMaintenanceLogTextField?.stringValue = "No updated project"
+                    self.mMaintenanceLogTextView?.appendMessageString ("Updating \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")\n")
+                    for fullpath in retainedFiles {
+                      dc.openDocument (
+                        withContentsOf: URL (fileURLWithPath: fullpath),
+                        display: true // animating,
+                      ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                        NSSound.beep ()
+                      }
+                    }
                   }
                 }
               }
@@ -192,56 +202,62 @@ extension ApplicationDelegate {
       op.canChooseDirectories = true
       op.canChooseFiles = false
       op.beginSheetModal (for: window) { (_ response : NSApplication.ModalResponse) in
-        op.orderOut (nil)
-        if response == .OK {
-          let baseDirectory : String = op.urls [0].path
-          let fm = FileManager ()
-          let dc = NSDocumentController ()
-          var retainedFiles = [String] ()
-          if let subPathes = fm.subpaths (atPath: baseDirectory) {
-            for f in subPathes {
-              if f.first! != "." {
-                let fullpath = baseDirectory + "/" + f
-                if fullpath.pathExtension.lowercased() == ElCanariDevice_EXTENSION {
-                  retainedFiles.append (fullpath)
+        DispatchQueue.main.async {
+          op.orderOut (nil)
+          if response == .OK {
+            let baseDirectory : String = op.urls [0].path
+            let fm = FileManager ()
+            let dc = NSDocumentController ()
+            var retainedFiles = [String] ()
+            if let subPathes = fm.subpaths (atPath: baseDirectory) {
+              for f in subPathes {
+                if f.first! != "." {
+                  let fullpath = baseDirectory + "/" + f
+                  if fullpath.pathExtension.lowercased() == ElCanariDevice_EXTENSION {
+                    retainedFiles.append (fullpath)
+                  }
                 }
               }
             }
-          }
-          if retainedFiles.count == 0 {
-            let alert = NSAlert ()
-            alert.messageText = "No device to Open"
-            alert.beginSheetModal (for: window)
-          }else{
-            let alert = NSAlert ()
-            alert.messageText = "Update \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            _ = alert.addButton (withTitle: "Ok")
-            _ = alert.addButton (withTitle: "Cancel")
-            alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
-              if response == .alertFirstButtonReturn {
-                self.mMaintenanceLogTextField?.stringValue = "No updated device"
-                self.mMaintenanceLogTextView?.appendMessageString ("Updating \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")\n")
-                for fullPath in retainedFiles {
-                  dc.openDocument (
-                    withContentsOf: URL (fileURLWithPath: fullPath),
-                    display: true // animating,
-                  ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                    if let deviceDocument = document as? AutoLayoutDeviceDocument {
-                      var okMessages = [String] ()
-                      var errorMessages = [String] ()
-                      deviceDocument.performSymbolsUpdate (deviceDocument.rootObject.mSymbolTypes, okMessages: &okMessages, errorMessages: &errorMessages)
-                      deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, okMessages: &okMessages, errorMessages: &errorMessages)
-                      deviceDocument.save (nil)
-                      deviceDocument.close ()
-                      if errorMessages.count == 0 {
-                        DispatchQueue.main.async { self.mCount += 1 }
-                        let message = (self.mCount > 1)
-                          ? "\(self.mCount) devices have been updated."
-                          : "1 device has been updated."
-                        self.mMaintenanceLogTextField?.stringValue = message
-                      }else{
-                        self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(fullPath)\n")
-                        self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
+            if retainedFiles.count == 0 {
+              let alert = NSAlert ()
+              alert.messageText = "No device to Open"
+              alert.beginSheetModal (for: window)
+            }else{
+              let alert = NSAlert ()
+              alert.messageText = "Update \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
+              _ = alert.addButton (withTitle: "Ok")
+              _ = alert.addButton (withTitle: "Cancel")
+              alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+                if response == .alertFirstButtonReturn {
+                  DispatchQueue.main.async {
+                    self.mMaintenanceLogTextField?.stringValue = "No updated device"
+                    self.mMaintenanceLogTextView?.appendMessageString ("Updating \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")\n")
+                    for fullPath in retainedFiles {
+                      dc.openDocument (
+                        withContentsOf: URL (fileURLWithPath: fullPath),
+                        display: true // animating,
+                      ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                        if let deviceDocument = document as? AutoLayoutDeviceDocument {
+                          DispatchQueue.main.async {
+                            var okMessages = [String] ()
+                            var errorMessages = [String] ()
+                            deviceDocument.performSymbolsUpdate (deviceDocument.rootObject.mSymbolTypes, okMessages: &okMessages, errorMessages: &errorMessages)
+                            deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, okMessages: &okMessages, errorMessages: &errorMessages)
+                            deviceDocument.save (nil)
+                            deviceDocument.close ()
+                            if errorMessages.count == 0 {
+                              self.mCount += 1
+                              let message = (self.mCount > 1)
+                                ? "\(self.mCount) devices have been updated."
+                                : "1 device has been updated."
+                              self.mMaintenanceLogTextField?.stringValue = message
+                            }else{
+                              self.mMaintenanceLogTextView?.appendErrorString ("Cannot update \(fullPath)\n")
+                              self.mMaintenanceLogTextView?.appendMessageString (errorMessages.joined (separator: "\n"))
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -281,39 +297,43 @@ extension ApplicationDelegate {
       op.canChooseDirectories = true
       op.canChooseFiles = false
       op.beginSheetModal (for: window) { (_ response : NSApplication.ModalResponse) in
-        op.orderOut (nil)
-        if response == .OK {
-          let baseDirectory : String = op.urls [0].path
-          let fm = FileManager ()
-          var retainedFiles = [String] ()
-          if let subPathes = fm.subpaths (atPath: baseDirectory) {
-            for f in subPathes {
-              if f.first! != "." {
-                let fullpath = baseDirectory + "/" + f
-                if inExtensionSet.contains (fullpath.pathExtension.lowercased ()) {
-                  retainedFiles.append (fullpath)
+        DispatchQueue.main.async {
+          op.orderOut (nil)
+          if response == .OK {
+            let baseDirectory : String = op.urls [0].path
+            let fm = FileManager ()
+            var retainedFiles = [String] ()
+            if let subPathes = fm.subpaths (atPath: baseDirectory) {
+              for f in subPathes {
+                if f.first! != "." {
+                  let fullpath = baseDirectory + "/" + f
+                  if inExtensionSet.contains (fullpath.pathExtension.lowercased ()) {
+                    retainedFiles.append (fullpath)
+                  }
                 }
               }
             }
-          }
-          if retainedFiles.count == 0 {
-            let alert = NSAlert ()
-            alert.messageText = "No Document to Examine"
-            alert.beginSheetModal (for: window)
-          }else{
-            let alert = NSAlert ()
-            alert.messageText = "Examine \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            _ = alert.addButton (withTitle: "Ok")
-            _ = alert.addButton (withTitle: "Cancel")
-            alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
-              if response == .alertFirstButtonReturn {
-                self.mMaintenanceLogTextField?.stringValue = "0 document has been converted to \(inFormat.string) format."
-                self.mMaintenanceLogTextView?.appendMessageString ("Examining \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")\n")
-                self.mHandledFiles = retainedFiles
-                self.mTotalFileCount = retainedFiles.count
-                self.mHandledFileCount = 0
-                self.mStartDate = Date ()
-                self.examineAndConvertDocuments (toFormat: inFormat)
+            if retainedFiles.count == 0 {
+              let alert = NSAlert ()
+              alert.messageText = "No Document to Examine"
+              alert.beginSheetModal (for: window)
+            }else{
+              let alert = NSAlert ()
+              alert.messageText = "Examine \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
+              _ = alert.addButton (withTitle: "Ok")
+              _ = alert.addButton (withTitle: "Cancel")
+              alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+                if response == .alertFirstButtonReturn {
+                  DispatchQueue.main.async {
+                    self.mMaintenanceLogTextField?.stringValue = "0 document has been converted to \(inFormat.string) format."
+                    self.mMaintenanceLogTextView?.appendMessageString ("Examining \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")\n")
+                    self.mHandledFiles = retainedFiles
+                    self.mTotalFileCount = retainedFiles.count
+                    self.mHandledFileCount = 0
+                    self.mStartDate = Date ()
+                    self.examineAndConvertDocuments (toFormat: inFormat)
+                  }
+                }
               }
             }
           }

@@ -12,7 +12,7 @@ import AppKit
 
 @MainActor func openArtworkPanelInLibrary (windowForSheet inWindow : NSWindow?,
                                            validationButtonTitle inValidationButtonTitle : String,
-                                           callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
+                                           callBack inCallBack : @escaping @Sendable (_ inURL : URL, _ inName : String) -> Void) {
   gOpenArtworkPanelInLibrary = OpenArtworkPanelInLibrary (
     windowForSheet: inWindow,
     validationButtonTitle: inValidationButtonTitle,
@@ -32,7 +32,7 @@ import AppKit
 
   init (windowForSheet inWindow : NSWindow?,
         validationButtonTitle inValidationButtonTitle : String,
-        callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
+        callBack inCallBack : @escaping @Sendable (_ inURL : URL, _ inName : String) -> Void) {
     self.mArtworkStatus = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
     self.mArtworkPath = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
     let panel = NSPanel (
@@ -191,11 +191,13 @@ import AppKit
   //--- Sheet or dialog ?
     if let window = inWindow {
       window.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop {
-          let entry = self.mFilteredTableViewSource [self.mTableView.selectedRow]
-          inCallBack (URL (fileURLWithPath: entry.mFullPath), entry.mPartName)
+        DispatchQueue.main.async {
+          if inResponse == .stop {
+            let entry = self.mFilteredTableViewSource [self.mTableView.selectedRow]
+            inCallBack (URL (fileURLWithPath: entry.mFullPath), entry.mPartName)
+          }
+          gOpenArtworkPanelInLibrary = nil
         }
-        DispatchQueue.main.async { gOpenArtworkPanelInLibrary = nil }
       }
     }else{ // Dialog
       let response = NSApplication.shared.runModal (for: panel)
@@ -304,8 +306,10 @@ extension ApplicationDelegate {
       windowForSheet: nil,
       validationButtonTitle: "Open",
       callBack: { (_ inURL : URL, _ inName : String) -> Void in
-        let dc = NSDocumentController.shared
-        dc.openDocument (withContentsOf: inURL, display: true) { (_ : NSDocument?, _ : Bool, _ : Error?) in }
+        DispatchQueue.main.async {
+          let dc = NSDocumentController.shared
+          dc.openDocument (withContentsOf: inURL, display: true) { (_ : NSDocument?, _ : Bool, _ : Error?) in }
+        }
       }
     )
   }

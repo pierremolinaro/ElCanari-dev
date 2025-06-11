@@ -83,16 +83,18 @@ extension AutoLayoutProjectDocument {
     //---
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop, let newPackageName = popupButton.titleOfSelectedItem {
-          for component in selectedComponents.values {
-            var newPossiblePackage : DevicePackageInProject? = nil
-            for candidatePackage in component.mDevice?.mPackages_property.propval.values ?? [] {
-              if candidatePackage.mPackageName == newPackageName {
-                newPossiblePackage = candidatePackage
+        DispatchQueue.main.async {
+          if inResponse == .stop, let newPackageName = popupButton.titleOfSelectedItem {
+            for component in selectedComponents.values {
+              var newPossiblePackage : DevicePackageInProject? = nil
+              for candidatePackage in component.mDevice?.mPackages_property.propval.values ?? [] {
+                if candidatePackage.mPackageName == newPackageName {
+                  newPossiblePackage = candidatePackage
+                }
               }
-            }
-            if let newPackage = newPossiblePackage {
-              component.set (package: newPackage)
+              if let newPackage = newPossiblePackage {
+                component.set (package: newPackage)
+              }
             }
           }
         }

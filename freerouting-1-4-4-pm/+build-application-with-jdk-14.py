@@ -43,7 +43,7 @@ def runCommand (command) :
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 #--- Free routing dir
-FREEROUTING_DIR = scriptDir + "/freerouting"
+FREEROUTING_DIR = scriptDir + "/freerouting-jdk14"
 APP_VERSION = "1.4.5.a-pm"
 #--- Goto Freerouting dir
 os.chdir (FREEROUTING_DIR)

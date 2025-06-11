@@ -38,8 +38,7 @@ extension AutoLayoutProjectDocument {
     let savePanel = NSSavePanel ()
     let savedDirectoryURL = savePanel.directoryURL
   //--- Default directory
-    let ud = UserDefaults.standard
-    if let url = ud.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
+    if let url = UserDefaults.standard.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
       savePanel.directoryURL = url
     }
   //--- Save Panel
@@ -47,18 +46,21 @@ extension AutoLayoutProjectDocument {
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = self.rootObject.mDSNFileProposedName
     savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
-      savePanel.orderOut (nil)
-      if inResponse == .OK, let url = savePanel.url {
-        ud.set (savePanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
-        do{
-          let exportTracks = hasTrack && self.rootObject.mExportExistingTracksAndVias
-          let s = self.dsnContents (exportTracks)
-          try s.write (to: url, atomically: true, encoding: .utf8)
-        }catch (let error) {
-          _ = self.windowForSheet!.presentError (error)
+      DispatchQueue.main.async {
+        savePanel.orderOut (nil)
+        if inResponse == .OK, let url = savePanel.url {
+          let ud = UserDefaults.standard
+          ud.set (savePanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
+          do{
+            let exportTracks = hasTrack && self.rootObject.mExportExistingTracksAndVias
+            let s = self.dsnContents (exportTracks)
+            try s.write (to: url, atomically: true, encoding: .utf8)
+          }catch (let error) {
+            _ = self.windowForSheet!.presentError (error)
+          }
+          savePanel.directoryURL = savedDirectoryURL
+          self.rootObject.mDSNFileProposedName = savePanel.nameFieldStringValue
         }
-        savePanel.directoryURL = savedDirectoryURL
-        self.rootObject.mDSNFileProposedName = savePanel.nameFieldStringValue
       }
     }
   }

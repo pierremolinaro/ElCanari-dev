@@ -22,7 +22,11 @@ extension AutoLayoutProjectDocument {
       _ = alert.addButton (withTitle: "Continue")
       alert.beginSheetModal (
         for: window,
-        completionHandler: { if $0 == .alertSecondButtonReturn { self.performGenerateDSNFile () } }
+        completionHandler: {
+          if $0 == .alertSecondButtonReturn {
+            DispatchQueue.main.async { self.performGenerateDSNFile () }
+          }
+        }
       )
     }
 //--- END OF USER ZONE 2

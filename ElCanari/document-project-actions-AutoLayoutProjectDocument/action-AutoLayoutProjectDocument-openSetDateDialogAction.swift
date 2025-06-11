@@ -43,7 +43,9 @@ extension AutoLayoutProjectDocument {
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop {
-          self.rootObject.mSchematicDate = datePicker.dateValue
+          DispatchQueue.main.async {
+            self.rootObject.mSchematicDate = datePicker.dateValue
+          }
         }
       }
     }

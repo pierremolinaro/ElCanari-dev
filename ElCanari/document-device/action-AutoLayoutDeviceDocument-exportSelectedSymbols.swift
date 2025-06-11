@@ -20,8 +20,10 @@ extension AutoLayoutDeviceDocument {
       savePanel.allowsOtherFileTypes = false
       savePanel.nameFieldStringValue = symbolType.mTypeName + "." + ElCanariSymbol_EXTENSION
       savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in
-        if inResponse == .OK, let url = savePanel.url {
-          try? symbolType.mFileData.write (to: url)
+        DispatchQueue.main.async {
+          if inResponse == .OK, let url = savePanel.url {
+            try? symbolType.mFileData.write (to: url)
+          }
         }
       }
     }

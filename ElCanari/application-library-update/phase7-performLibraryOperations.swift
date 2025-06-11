@@ -87,7 +87,12 @@ extension Preferences {
         alert.messageText = "Update completed, the library is up to date"
         alert.beginSheetModal (
           for: window,
-          completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; self.enableItemsAfterCompletion () }
+          completionHandler: { (response : NSApplication.ModalResponse) in
+            DispatchQueue.main.async {
+              window.orderOut (nil)
+              self.enableItemsAfterCompletion ()
+            }
+          }
         )
       }catch let error {
         let alert = NSAlert ()
@@ -96,8 +101,10 @@ extension Preferences {
         alert.beginSheetModal (
           for: window,
           completionHandler: { (response : NSApplication.ModalResponse) in
-            window.orderOut (nil)
-            self.enableItemsAfterCompletion ()
+            DispatchQueue.main.async {
+              window.orderOut (nil)
+              self.enableItemsAfterCompletion ()
+            }
           }
         )
       }

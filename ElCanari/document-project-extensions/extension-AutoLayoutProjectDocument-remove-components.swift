@@ -42,7 +42,7 @@ extension AutoLayoutProjectDocument {
         _ = alert.addButton (withTitle: "Cancel")
         alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
           if response == .alertFirstButtonReturn {
-            self.performRemoveSelectedComponents ()
+            DispatchQueue.main.async { self.performRemoveSelectedComponents () }
           }
         }
       }

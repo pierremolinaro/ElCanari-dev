@@ -13,7 +13,6 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func moveSelectedToSheetInSchematicsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    let (selectedObjects, selectedPoints) = self.selectAllConnectedElementsInSchematics ()
   //--- Display dialog for selecting destination sheet
     if let selectedSheet = self.rootObject.mSelectedSheet,
        let window = self.windowForSheet {
@@ -54,16 +53,19 @@ extension AutoLayoutProjectDocument {
     //---
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { inResponse in
-        if inResponse == .stop,
-            let sheet = popUpButton.selectedItem?.representedObject as? SheetInProject {
-          for point in selectedPoints.values {
-            point.mSheet = sheet
+        DispatchQueue.main.async {
+          let (selectedObjects, selectedPoints) = self.selectAllConnectedElementsInSchematics ()
+          if inResponse == .stop,
+               let sheet = popUpButton.selectedItem?.representedObject as? SheetInProject {
+            for point in selectedPoints.values {
+              point.mSheet = sheet
+            }
+            for object in selectedObjects.values {
+              object.mSheet = sheet
+            }
+            self.rootObject.mSelectedSheet = sheet
+            self.schematicObjectsController.setSelection (Array (selectedObjects.values))
           }
-          for object in selectedObjects.values {
-            object.mSheet = sheet
-          }
-          self.rootObject.mSelectedSheet = sheet
-          self.schematicObjectsController.setSelection (Array (selectedObjects.values))
         }
       }
     }

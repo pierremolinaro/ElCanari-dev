@@ -25,7 +25,7 @@ extension AutoLayoutProjectDocument {
       _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse) in
         if inResponse == .alertFirstButtonReturn {
-          self.save (nil)
+          DispatchQueue.main.async { self.save (nil) }
         }
       }
     }
@@ -43,8 +43,10 @@ extension AutoLayoutProjectDocument {
       _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertFirstButtonReturn {
-          _ = self.performERCChecking ()
-          self.checkERCAndGenerate ()
+          DispatchQueue.main.async {
+            _ = self.performERCChecking ()
+            self.checkERCAndGenerate ()
+          }
         }
       }
     }
@@ -62,7 +64,7 @@ extension AutoLayoutProjectDocument {
       _ = alert.addButton (withTitle: "Continue")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
-          self.performProductFilesGeneration ()
+          DispatchQueue.main.async { self.performProductFilesGeneration () }
         }
       }
      }

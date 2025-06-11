@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutComboBox
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutComboBox : ALB_NSComboBox, NSComboBoxDelegate {
+final class AutoLayoutComboBox : ALB_NSComboBox, @MainActor NSComboBoxDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

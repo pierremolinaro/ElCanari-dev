@@ -16,7 +16,7 @@ extension AutoLayoutProjectDocument {
 
   fileprivate func netClassEditionPanel (with inNetClass : NetClassInProject,
                                          creation inCreation : Bool, // true -> creation, false -> edition
-                                         callBack inCallBack : @escaping () -> Void) {
+                                         callBack inCallBack : @escaping @Sendable () -> Void) {
     if let window = self.windowForSheet {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 400, height: 500),
@@ -157,22 +157,24 @@ extension AutoLayoutProjectDocument {
       panel.setContentView (AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
     //---  Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop {
-          inNetClass.mNetClassName = netClassNameTextField.stringValue
-          inNetClass.mNetClassColor = netColor_property.propval
-          inNetClass.mTrackWidth = width_property.propval
-          inNetClass.mTrackWidthUnit = widthUnit_property.propval
-          inNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
-          inNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
-          inNetClass.mViaPadDiameter = viaPadDiameter_property.propval
-          inNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
-          inNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
-          inNetClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
-          inNetClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
-          inNetClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
-          inNetClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
-          inNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
-          inCallBack ()
+        DispatchQueue.main.async {
+          if inResponse == .stop {
+            inNetClass.mNetClassName = netClassNameTextField.stringValue
+            inNetClass.mNetClassColor = netColor_property.propval
+            inNetClass.mTrackWidth = width_property.propval
+            inNetClass.mTrackWidthUnit = widthUnit_property.propval
+            inNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
+            inNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
+            inNetClass.mViaPadDiameter = viaPadDiameter_property.propval
+            inNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+            inNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+            inNetClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+            inNetClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+            inNetClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+            inNetClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
+            inNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
+            inCallBack ()
+          }
         }
       }
     }
@@ -183,23 +185,25 @@ extension AutoLayoutProjectDocument {
   func performAddNetClass () {
     let temporaryClass = NetClassInProject (nil)
     self.netClassEditionPanel (with: temporaryClass, creation: true) {
-      let newClass = NetClassInProject (self.undoManager)
-      newClass.mNetClassName = temporaryClass.mNetClassName
-      newClass.mNetClassColor = temporaryClass.mNetClassColor
-      newClass.mTrackWidth = temporaryClass.mTrackWidth
-      newClass.mTrackWidthUnit = temporaryClass.mTrackWidthUnit
-      newClass.mViaHoleDiameter = temporaryClass.mViaHoleDiameter
-      newClass.mViaHoleDiameterUnit = temporaryClass.mViaHoleDiameterUnit
-      newClass.mViaPadDiameter = temporaryClass.mViaPadDiameter
-      newClass.mViaPadDiameterUnit = temporaryClass.mViaPadDiameterUnit
-      newClass.mAllowTracksOnFrontSide = temporaryClass.mAllowTracksOnFrontSide
-      newClass.mAllowTracksOnInner1Layer = temporaryClass.mAllowTracksOnInner1Layer
-      newClass.mAllowTracksOnInner2Layer = temporaryClass.mAllowTracksOnInner2Layer
-      newClass.mAllowTracksOnInner3Layer = temporaryClass.mAllowTracksOnInner3Layer
-      newClass.mAllowTracksOnInner4Layer = temporaryClass.mAllowTracksOnInner4Layer
-      newClass.mAllowTracksOnBackSide = temporaryClass.mAllowTracksOnBackSide
-      self.rootObject.mNetClasses.append (newClass)
-      self.netClassController.setSelection ([newClass])
+      DispatchQueue.main.async {
+        let newClass = NetClassInProject (self.undoManager)
+        newClass.mNetClassName = temporaryClass.mNetClassName
+        newClass.mNetClassColor = temporaryClass.mNetClassColor
+        newClass.mTrackWidth = temporaryClass.mTrackWidth
+        newClass.mTrackWidthUnit = temporaryClass.mTrackWidthUnit
+        newClass.mViaHoleDiameter = temporaryClass.mViaHoleDiameter
+        newClass.mViaHoleDiameterUnit = temporaryClass.mViaHoleDiameterUnit
+        newClass.mViaPadDiameter = temporaryClass.mViaPadDiameter
+        newClass.mViaPadDiameterUnit = temporaryClass.mViaPadDiameterUnit
+        newClass.mAllowTracksOnFrontSide = temporaryClass.mAllowTracksOnFrontSide
+        newClass.mAllowTracksOnInner1Layer = temporaryClass.mAllowTracksOnInner1Layer
+        newClass.mAllowTracksOnInner2Layer = temporaryClass.mAllowTracksOnInner2Layer
+        newClass.mAllowTracksOnInner3Layer = temporaryClass.mAllowTracksOnInner3Layer
+        newClass.mAllowTracksOnInner4Layer = temporaryClass.mAllowTracksOnInner4Layer
+        newClass.mAllowTracksOnBackSide = temporaryClass.mAllowTracksOnBackSide
+        self.rootObject.mNetClasses.append (newClass)
+        self.netClassController.setSelection ([newClass])
+      }
     }
   }
   
@@ -225,20 +229,22 @@ extension AutoLayoutProjectDocument {
       temporaryClass.mAllowTracksOnInner4Layer = editedNetClass.mAllowTracksOnInner4Layer
       temporaryClass.mAllowTracksOnBackSide = editedNetClass.mAllowTracksOnBackSide
       self.netClassEditionPanel (with: temporaryClass, creation: false) {
-        editedNetClass.mNetClassName = temporaryClass.mNetClassName
-        editedNetClass.mNetClassColor = temporaryClass.mNetClassColor
-        editedNetClass.mTrackWidth = temporaryClass.mTrackWidth
-        editedNetClass.mTrackWidthUnit = temporaryClass.mTrackWidthUnit
-        editedNetClass.mViaHoleDiameter = temporaryClass.mViaHoleDiameter
-        editedNetClass.mViaHoleDiameterUnit = temporaryClass.mViaHoleDiameterUnit
-        editedNetClass.mViaPadDiameter = temporaryClass.mViaPadDiameter
-        editedNetClass.mViaPadDiameterUnit = temporaryClass.mViaPadDiameterUnit
-        editedNetClass.mAllowTracksOnFrontSide = temporaryClass.mAllowTracksOnFrontSide
-        editedNetClass.mAllowTracksOnInner1Layer = temporaryClass.mAllowTracksOnInner1Layer
-        editedNetClass.mAllowTracksOnInner2Layer = temporaryClass.mAllowTracksOnInner2Layer
-        editedNetClass.mAllowTracksOnInner3Layer = temporaryClass.mAllowTracksOnInner3Layer
-        editedNetClass.mAllowTracksOnInner4Layer = temporaryClass.mAllowTracksOnInner4Layer
-        editedNetClass.mAllowTracksOnBackSide = temporaryClass.mAllowTracksOnBackSide
+        DispatchQueue.main.async {
+          editedNetClass.mNetClassName = temporaryClass.mNetClassName
+          editedNetClass.mNetClassColor = temporaryClass.mNetClassColor
+          editedNetClass.mTrackWidth = temporaryClass.mTrackWidth
+          editedNetClass.mTrackWidthUnit = temporaryClass.mTrackWidthUnit
+          editedNetClass.mViaHoleDiameter = temporaryClass.mViaHoleDiameter
+          editedNetClass.mViaHoleDiameterUnit = temporaryClass.mViaHoleDiameterUnit
+          editedNetClass.mViaPadDiameter = temporaryClass.mViaPadDiameter
+          editedNetClass.mViaPadDiameterUnit = temporaryClass.mViaPadDiameterUnit
+          editedNetClass.mAllowTracksOnFrontSide = temporaryClass.mAllowTracksOnFrontSide
+          editedNetClass.mAllowTracksOnInner1Layer = temporaryClass.mAllowTracksOnInner1Layer
+          editedNetClass.mAllowTracksOnInner2Layer = temporaryClass.mAllowTracksOnInner2Layer
+          editedNetClass.mAllowTracksOnInner3Layer = temporaryClass.mAllowTracksOnInner3Layer
+          editedNetClass.mAllowTracksOnInner4Layer = temporaryClass.mAllowTracksOnInner4Layer
+          editedNetClass.mAllowTracksOnBackSide = temporaryClass.mAllowTracksOnBackSide
+        }
       }
     }
   }

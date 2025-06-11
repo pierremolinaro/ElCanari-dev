@@ -16,8 +16,7 @@ extension AutoLayoutProjectDocument {
     let openPanel = NSOpenPanel ()
   //--- Default directory
     let savedDirectoryURL = openPanel.directoryURL
-    let ud = UserDefaults.standard
-    if let url = ud.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
+    if let url = UserDefaults.standard.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
       openPanel.directoryURL = url
     }
     openPanel.allowsMultipleSelection = false
@@ -25,12 +24,15 @@ extension AutoLayoutProjectDocument {
     openPanel.canChooseFiles = true
     openPanel.allowedFileTypes = ["ses"]
     openPanel.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
-      openPanel.orderOut (nil)
-      if inReturnCode == .OK, let s = try? String (contentsOf: openPanel.urls [0]) {
-        ud.set (openPanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
-        self.handleSESFileContents (s)
+      DispatchQueue.main.async {
+        openPanel.orderOut (nil)
+        if inReturnCode == .OK, let s = try? String (contentsOf: openPanel.urls [0]) {
+          let ud = UserDefaults.standard
+          ud.set (openPanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
+          self.handleSESFileContents (s)
+        }
+        openPanel.directoryURL = savedDirectoryURL
       }
-      openPanel.directoryURL = savedDirectoryURL
     }
 //--- END OF USER ZONE 2
   }

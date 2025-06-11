@@ -532,7 +532,8 @@ final class StoredObject_PackagePad : ReadOnlyObject_PackagePad, EBSignatureObse
      // object: MyPrivateUndoer (inOldValue)
     // )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
-      MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+      selfTarget.setProp (inOldValue) // Ok in swift 6.2
+      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
     }
   //---
     if let object = inOldValue {

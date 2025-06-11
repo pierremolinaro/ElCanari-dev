@@ -12,7 +12,7 @@ import AppKit
 //   AutoLayoutSearchField
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
+final class AutoLayoutSearchField : NSSearchField, @MainActor NSSearchFieldDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

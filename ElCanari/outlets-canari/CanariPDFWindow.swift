@@ -134,8 +134,12 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = self.title
     savePanel.beginSheetModal (for: self) { inResponse in
-      if inResponse == .OK, let url = savePanel.url {
-        try? self.mData.write (to: url)
+      DispatchQueue.main.async {
+        DispatchQueue.main.async {
+          if inResponse == .OK, let url = savePanel.url {
+            try? self.mData.write (to: url)
+          }
+        }
       }
     }
   }

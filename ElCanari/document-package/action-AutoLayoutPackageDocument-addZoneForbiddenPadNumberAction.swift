@@ -111,32 +111,34 @@ extension AutoLayoutPackageDocument {
       panel.setContentView (mainVStack)
    //-------------------------- Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        observer.unregister ()
-//        intField.autoLayoutCleanUp ()
-        if inResponse == .stop {
-          let newForbiddenPadNumber = newFordiddenPadNumber_property.propval
-          let fpn = ForbiddenPadNumber (self.undoManager)
-          fpn.padNumber = newForbiddenPadNumber
-          selectedZone.forbiddenPadNumbers.append (fpn)
-        //---- Adjust pad number
-          var pads = [PackagePad] ()
-          for candidatePad in self.rootObject.packagePads.values {
-            if candidatePad.zone === selectedZone {
-              pads.append (candidatePad)
+        DispatchQueue.main.async {
+          observer.unregister ()
+  //        intField.autoLayoutCleanUp ()
+          if inResponse == .stop {
+            let newForbiddenPadNumber = newFordiddenPadNumber_property.propval
+            let fpn = ForbiddenPadNumber (self.undoManager)
+            fpn.padNumber = newForbiddenPadNumber
+            selectedZone.forbiddenPadNumbers.append (fpn)
+          //---- Adjust pad number
+            var pads = [PackagePad] ()
+            for candidatePad in self.rootObject.packagePads.values {
+              if candidatePad.zone === selectedZone {
+                pads.append (candidatePad)
+              }
             }
-          }
-          pads.sort { $0.padNumber < $1.padNumber }
-          var forbiddenPadNumberSet = Set <Int> ()
-          for forbiddenPadNumber in selectedZone.forbiddenPadNumbers.values {
-            forbiddenPadNumberSet.insert (forbiddenPadNumber.padNumber)
-          }
-          var newPadNumber = 1
-          for pad in pads {
-            while forbiddenPadNumberSet.contains (newPadNumber) {
+            pads.sort { $0.padNumber < $1.padNumber }
+            var forbiddenPadNumberSet = Set <Int> ()
+            for forbiddenPadNumber in selectedZone.forbiddenPadNumbers.values {
+              forbiddenPadNumberSet.insert (forbiddenPadNumber.padNumber)
+            }
+            var newPadNumber = 1
+            for pad in pads {
+              while forbiddenPadNumberSet.contains (newPadNumber) {
+                newPadNumber += 1
+              }
+              pad.padNumber = newPadNumber
               newPadNumber += 1
             }
-            pad.padNumber = newPadNumber
-            newPadNumber += 1
           }
         }
       }

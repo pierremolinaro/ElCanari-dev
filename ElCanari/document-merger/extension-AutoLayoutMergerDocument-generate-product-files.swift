@@ -61,7 +61,9 @@ extension AutoLayoutMergerDocument {
         for: self.windowForSheet!,
         completionHandler: {(response : NSApplication.ModalResponse) in
           if response == .alertSecondButtonReturn { // Proceed anyway
-            self.generateProductFiles ()
+            DispatchQueue.main.async {
+              self.generateProductFiles ()
+            }
           }
         }
       )

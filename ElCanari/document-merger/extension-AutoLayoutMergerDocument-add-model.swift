@@ -37,19 +37,21 @@ extension AutoLayoutMergerDocument {
       gPanel = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
       openPanel.delegate = gPanel
       openPanel.beginSheetModal (for: window) { (returnCode : NSApplication.ModalResponse) in
-        gPanel = nil
-        if returnCode == .OK {
-          if let url = openPanel.url, url.isFileURL {
-            let filePath = url.path
-            if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
-              self.loadBoardModelLegacy_ELCanariArchive (filePath : filePath, windowForSheet: window)
-            }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
-              self.loadBoardModelELCanariBoardArchive (filePath : filePath, windowForSheet: window)
-            }else if filePath.pathExtension == KICAD_PCB {
-              self.loadBoardModel_kicad (filePath : filePath, windowForSheet: window)
+        DispatchQueue.main.async {
+          gPanel = nil
+          if returnCode == .OK {
+            if let url = openPanel.url, url.isFileURL {
+              let filePath = url.path
+              if filePath.pathExtension == EL_CANARI_LEGACY_MERGER_ARCHIVE {
+                self.loadBoardModelLegacy_ELCanariArchive (filePath : filePath, windowForSheet: window)
+              }else if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
+                self.loadBoardModelELCanariBoardArchive (filePath : filePath, windowForSheet: window)
+              }else if filePath.pathExtension == KICAD_PCB {
+                self.loadBoardModel_kicad (filePath : filePath, windowForSheet: window)
+              }
+            }else{
+              NSLog ("Not a file URL!")
             }
-          }else{
-            NSLog ("Not a file URL!")
           }
         }
       }

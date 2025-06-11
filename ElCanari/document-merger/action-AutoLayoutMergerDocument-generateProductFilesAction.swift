@@ -27,16 +27,18 @@ extension AutoLayoutMergerDocument {
         _ = alert.addButton (withTitle: "Show issues")
         alert.beginSheetModal (
           for: self.windowForSheet!,
-          completionHandler: {(response : NSApplication.ModalResponse) in
-            if response == .alertSecondButtonReturn { // Proceed anyway
-              self.checkLayerConfigurationAndGenerateProductFiles ()
-            }else if response == .alertThirdButtonReturn { // Show issues
-            //--- Select board page
-              self.rootObject.selectedPageIndex = 1
-            //--- Select issue in tabview
-              self.mBoardInspectorSegmentedControl?.setSelectedSegment (atIndex: 1)
-            //--- Select first issue
-              self.mBoardIssueTableView?.selectRow (atIndex: 0)
+          completionHandler: { (response : NSApplication.ModalResponse) in
+            DispatchQueue.main.async {
+              if response == .alertSecondButtonReturn { // Proceed anyway
+                self.checkLayerConfigurationAndGenerateProductFiles ()
+              }else if response == .alertThirdButtonReturn { // Show issues
+              //--- Select board page
+                self.rootObject.selectedPageIndex = 1
+              //--- Select issue in tabview
+                self.mBoardInspectorSegmentedControl?.setSelectedSegment (atIndex: 1)
+              //--- Select first issue
+                self.mBoardIssueTableView?.selectRow (atIndex: 0)
+              }
             }
           }
         )

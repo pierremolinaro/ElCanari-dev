@@ -22,8 +22,10 @@ extension AutoLayoutProjectDocument {
             savePanel.allowsOtherFileTypes = false
             savePanel.nameFieldStringValue = device.mDeviceName + "." + ElCanariDevice_EXTENSION
             savePanel.beginSheetModal (for: self.windowForSheet!) { (_ inResponse : NSApplication.ModalResponse) in
-              if inResponse == .OK, let url = savePanel.url {
-                try? device.mDeviceFileData.write (to: url)
+              DispatchQueue.main.async {
+                if inResponse == .OK, let url = savePanel.url {
+                  try? device.mDeviceFileData.write (to: url)
+                }
               }
             }
           }else{

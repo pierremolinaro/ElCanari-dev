@@ -97,7 +97,7 @@ extension AutoLayoutProjectDocument {
       _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
         if (inReturnCode == .alertFirstButtonReturn) {
-          self.addFont (postAction: nil)
+          DispatchQueue.main.async { self.addFont (postAction: nil) }
         }
       }
     }

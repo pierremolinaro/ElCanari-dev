@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func checkSchematicsAndLaunchFreeRouteur (_ inCallBack : @escaping () -> Void) {
+  func checkSchematicsAndLaunchFreeRouteur (_ inCallBack : @escaping @Sendable () -> Void) {
      if !self.rootObject.schematicHasErrorOrWarning! {
       self.checkAllComponentsAreInBoard (inCallBack)
     }else{
@@ -24,7 +24,9 @@ extension AutoLayoutProjectDocument {
       _ = alert.addButton (withTitle: "Continue")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
-          self.checkAllComponentsAreInBoard (inCallBack)
+          DispatchQueue.main.async {
+            self.checkAllComponentsAreInBoard (inCallBack)
+          }
         }
       }
     }
@@ -32,7 +34,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkAllComponentsAreInBoard (_ inCallBack : @escaping () -> Void) {
+  fileprivate func checkAllComponentsAreInBoard (_ inCallBack : @escaping @Sendable () -> Void) {
     var unplacedComponentNames = [String] ()
     for component in self.rootObject.mComponents.values {
       if !component.isPlacedInBoard! {

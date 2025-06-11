@@ -154,7 +154,9 @@ import Sparkle
       alert.messageText = "The library is up to date"
       alert.beginSheetModal (
         for: window,
-        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) }
+        completionHandler: { (response : NSApplication.ModalResponse) in
+          DispatchQueue.main.async { window.orderOut (nil) }
+        }
       )
     }
   }
