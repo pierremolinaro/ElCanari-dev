@@ -1,0 +1,154 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://repo.grails.org/grails/core/' }
+  }
+
+  dependencies {
+
+  }
+}
+
+plugins {
+  id 'java'
+  id 'maven-publish' // Ne pas indiquer de version !
+  id 'net.nemerosa.versioning' version '3.1.0' // https://plugins.gradle.org/plugin/net.nemerosa.versioning
+  id 'com.jfrog.bintray' version '1.8.5' // https://plugins.gradle.org/plugin/com.jfrog.bintray
+}
+
+ext.mainClassName = 'eu.mihosoft.freerouting.gui.MainApplication'
+
+// https://docs.gradle.org/current/userguide/compatibility.html#compatibility
+wrapper {
+    gradleVersion = "7.3"
+}
+
+sourceCompatibility = '23'
+targetCompatibility = '23'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+}
+
+// javadoc is way too strict for my taste.
+if (JavaVersion.current().isJava8Compatible()) {
+  allprojects {
+    tasks.withType(Javadoc) {
+      options.addStringOption("encoding", "UTF-8")
+      options.addStringOption('Xdoclint:none', '-quiet')
+    }
+  }
+}
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  testImplementation group: 'junit', name: 'junit', version: '5.0.0' // https://github.com/junit-team/junit5/tags
+  implementation group: 'javax.help', name: 'javahelp', version: '2.0.05'
+}
+
+configurations {
+    implementation {
+        canBeResolved = true
+    }
+}
+
+Date buildTimeAndDate = new Date()
+ext {
+    buildDate = new java.text.SimpleDateFormat('yyyy-MM-dd').format(buildTimeAndDate)
+    buildTime = new java.text.SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
+}
+
+jar {
+    manifest {
+        attributes(
+          'Automatic-Module-Name': 'eu.mihosoft.freerouting',
+          'Built-By': System.properties['user.name'],
+          'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.properties['java.vm.version'] + ")",
+          'Build-Date': project.buildDate,
+          'Build-Time': project.buildTime,
+          'Build-Revision': versioning.info.commit,
+          'Specification-Title': project.name,
+          'Specification-Version': project.version,
+          'Implementation-Title': project.name,
+          'Implementation-Version': project.version
+        )
+    }
+}
+
+task executableJar(type: Jar) {
+    classifier = 'executable' // archiveClassifier in gradle 8
+    includeEmptyDirs = false
+
+    from {
+      configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+      exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
+    }
+
+    from sourceSets.main.output
+
+    manifest {
+
+        attributes(
+                'Automatic-Module-Name': 'eu.mihosoft.freerouting',
+                'Built-By': System.properties['user.name'],
+                'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.properties['java.vm.version'] + ")",
+                'Build-Date': project.buildDate,
+                'Build-Time': project.buildTime,
+                'Build-Revision': versioning.info.commit,
+                'Specification-Title': project.name,
+                'Specification-Version': project.version,
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Main-Class': mainClassName
+        )
+    }
+}
+
+apply from: 'gradle/publishing.gradle'
+
+// write constants to code
+task writeVersionInfo() {
+    doLast {
+        def buildInfoCode = new File("${project.buildDir}/generated-src/eu/mihosoft/freerouting/constants/Constants.java")
+        buildInfoCode.getParentFile().mkdirs()
+        buildInfoCode.write("package eu.mihosoft.freerouting.constants;\n"
+                + "public class Constants {\n"
+                + "  public static final String FREEROUTING_VERSION = \"${publishing.versionId}\";\n"
+                + "  public static final String FREEROUTING_BUILD_DATE = \"${buildDate}\";\n"
+                + "}\n"
+        )
+    }
+}
+
+// add the 'vmfconstants' src dir to the folders to compile (input to groovyc)
+sourceSets.main.java.srcDirs+=file("${project.buildDir}/generated-src/eu/mihosoft/freerouting/constants/")
+
+compileJava.dependsOn+="writeVersionInfo"
+
+
+task dist(type: Copy) {
+    from('build/libs/freerouting-executable.jar')
+    into('build/dist/')
+}
+
+dist.dependsOn+="assemble"
+
+task run(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = mainClassName
+
+    // arguments to pass to the application
+    //    args 'appArg1'
+    // jvmArgs 'arg1'
+}
+

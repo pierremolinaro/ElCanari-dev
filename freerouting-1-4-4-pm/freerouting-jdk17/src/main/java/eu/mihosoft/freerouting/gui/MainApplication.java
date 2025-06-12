@@ -476,7 +476,7 @@ public class MainApplication extends javax.swing.JFrame
     static final String WEB_FILE_BASE_NAME = "http://www.freerouting.mihosoft.eu";
 
     static final String VERSION_NUMBER_STRING =
-        "v" + Constants.FREEROUTING_VERSION
-            + " (build-date: "
-            + Constants.FREEROUTING_BUILD_DATE +")";
+        Constants.FREEROUTING_VERSION
+        + " (jdk17, puce Apple, "
+        + Constants.FREEROUTING_BUILD_DATE +")";
 }
