@@ -1,13 +1,13 @@
 buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-        maven { url 'https://repo.grails.org/grails/core/' }
-    }
+  repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://repo.grails.org/grails/core/' }
+  }
 
-    dependencies {
-        //
-    }
+  dependencies {
+
+  }
 }
 
 plugins {
@@ -24,8 +24,8 @@ wrapper {
     gradleVersion = "7.3"
 }
 
-sourceCompatibility = '11'
-targetCompatibility = '11'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 gradle.projectsEvaluated {
@@ -36,23 +36,31 @@ gradle.projectsEvaluated {
 
 // javadoc is way too strict for my taste.
 if (JavaVersion.current().isJava8Compatible()) {
-    allprojects {
-        tasks.withType(Javadoc) {
-            options.addStringOption("encoding", "UTF-8")
-            options.addStringOption('Xdoclint:none', '-quiet')
-        }
+  allprojects {
+    tasks.withType(Javadoc) {
+      options.addStringOption("encoding", "UTF-8")
+      options.addStringOption('Xdoclint:none', '-quiet')
     }
+  }
 }
 
 repositories {
-    mavenCentral()
-    jcenter()
+  mavenCentral()
+  jcenter()
 }
 
 dependencies {
-  testCompile group: 'junit', name: 'junit', version: '5.0.0' // https://github.com/junit-team/junit5/tags
-  compile group: 'javax.help', name: 'javahelp', version: '2.0.05'
+  testImplementation group: 'junit', name: 'junit', version: '5.0.0' // https://github.com/junit-team/junit5/tags
+  implementation group: 'javax.help', name: 'javahelp', version: '2.0.05'
 }
+
+
+configurations {
+    implementation {
+        canBeResolved = true
+    }
+}
+
 
 
 Date buildTimeAndDate = new Date()
@@ -79,11 +87,12 @@ jar {
 }
 
 task executableJar(type: Jar) {
-    classifier = 'executable'
+    classifier = 'executable' // archiveClassifier in gradle 8
+    includeEmptyDirs = false
 
-    from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+    from configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) }
 
-    from files(sourceSets.main.output)
+    from sourceSets.main.output
 
     manifest {
 

@@ -2,7 +2,6 @@
 # -*- coding: UTF-8 -*-
 #-------------------------------------------------------------------------------
 # https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Procedures/Procedures.html
-# https://www.oracle.com/java/technologies/downloads/#java17
 #-------------------------------------------------------------------------------
 #  Exemple d'exécution
 # /Volumes/dev-git/freerouting-pm/jdk-17.0.6.jdk/Contents/Home/bin/java -jar /Volumes/dev-git/freerouting-pm/freerouting/build/dist/freerouting-executable.jar -trace 2 -de /Users/pierremolinaro/Desktop/design.dsn
@@ -112,11 +111,14 @@ def removeTranslationInDir (inDirectory) :
 SCRIPT_DIR = os.path.dirname (os.path.abspath (sys.argv [0]))
 #----------------------------2- SELECT VERSION
 
-#-------- Version 2.1.0 (14 avril 2025)
-APP_VERSION = "1.4.5.b"
-JAVA_SDK_ARCHIVE = "jdk-17.0.12_macos-aarch64_bin.tar.gz"
-# JAVA_SDK_DISTRIBUTION_URL = "https://download.oracle.com/java/21/latest/" + JAVA_SDK_ARCHIVE
-JAVA_SDK_DIR = SCRIPT_DIR + "/jdk-17.0.12.jdk"
+#--------
+APP_VERSION = "1.4.5"
+# https://jdk.java.net/17/
+# https://www.oracle.com/java/technologies/downloads/#java17
+JAVA_SDK_ARCHIVE = "jdk-17.0.15_macos-aarch64_bin.tar.gz"
+# JAVA_SDK_DISTRIBUTION_URL = "https://download.oracle.com/otn/java/jdk/17.0.15%2B9/4f092786cec841d58ae21840b10204d7/" + JAVA_SDK_ARCHIVE
+
+JAVA_SDK_DIR = SCRIPT_DIR + "/jdk-17.0.15.jdk"
 FREEROUTING_DIR = "freerouting-jdk17"
 
 #----------------------------3- Goto script dir

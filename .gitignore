@@ -259,15 +259,16 @@ TSWLatexianTemp*
 *-tags.tex
 
 # Freerouting
-freerouting-1-4-4-pm/freerouting/.gradle/
-freerouting-1-4-4-pm/freerouting/build/
-freerouting-1-4-4-pm/Freerouting-1.4.4-pm.app/
-freerouting-1-4-4-pm/Freerouting-1.4.4-pm.dmg
-freerouting-1-4-4-pm/Freerouting-1.4.4-pm.pkg
+freerouting-1-4-4-pm/freerouting-jdk*/.gradle
+freerouting-1-4-4-pm/freerouting-jdk*/.gradle/build/*
+freerouting-1-4-4-pm/freerouting-jdk*/build/
+freerouting-1-4-4-pm/*.app/
+freerouting-1-4-4-pm/*.dmg
+freerouting-1-4-4-pm/*.pkg
 freerouting-1-4-4-pm/jdk14/
-freerouting-1-4-4-pm/jdk14-14.jdk/
-freerouting-1-4-4-pm/jdk-17.0.12.jdk/
+freerouting-1-4-4-pm/jdk-*.jdk/
+freerouting-1-4-4-pm/jdk-*.tar.gz
+
 *.xcscheme
 *.xcshareddata
 ElCanari/free-router-application/*
-freerouting-1-4-4-pm/jdk-17.0.12_macos-aarch64_bin.tar.gz
