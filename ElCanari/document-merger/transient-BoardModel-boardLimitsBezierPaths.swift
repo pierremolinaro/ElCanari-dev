@@ -26,7 +26,7 @@ import AppKit
   let right   = modelWidth - limitWidth / 2.0
   let bottom  = limitWidth / 2.0
   let top     = modelHeight - limitWidth / 2.0
-  var bp = EBBezierPath ()
+  var bp = BézierPath ()
   bp.move (to : NSPoint (x: left,  y: bottom))
   bp.line (to : NSPoint (x: left,  y: top))
   bp.line (to : NSPoint (x: right, y: top))

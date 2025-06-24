@@ -213,12 +213,12 @@ handlingOpposite entity SlavePadInDevice {
   property @signature @generateDirectAccess PadShape mShape default octo ;
   property @signature @generateDirectAccess SlavePadStyle mStyle default traversing ;
 
-  transient EBBezierPath frontSideFilledBezierPath dependsFrom
+  transient BézierPath frontSideFilledBezierPath dependsFrom
      self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
      self.mShape, self.mStyle
   ;
 
-  transient EBBezierPath backSideFilledBezierPath dependsFrom
+  transient BézierPath backSideFilledBezierPath dependsFrom
      self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleWidth, self.mHoleHeight,
      self.mShape, self.mStyle
   ;

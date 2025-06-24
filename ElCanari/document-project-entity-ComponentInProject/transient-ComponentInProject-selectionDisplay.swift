@@ -25,7 +25,7 @@ import AppKit
        _ self_mY : Int,                                        
        _ self_mRotation : Int,                                 
        _ self_mSide : ComponentSide,                           
-       _ self_strokeBezierPath : EBBezierPath,                 
+       _ self_strokeBezierPath : BézierPath,                   
        _ self_mDisplayLegend : Bool,                           
        _ self_mNameIsVisibleInBoard : Bool,                    
        _ self_mXName : Int,                                    
@@ -113,7 +113,7 @@ import AppKit
           oblique: false,
           extraWidth: 0.0
         )
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.move (to: absoluteCenter)
         bp.line (to: origin)
         bp.lineWidth = lineWidth
@@ -147,7 +147,7 @@ import AppKit
           oblique: false,
           extraWidth: 0.0
         )
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.move (to: absoluteCenter)
         bp.line (to: origin)
         bp.lineWidth = lineWidth

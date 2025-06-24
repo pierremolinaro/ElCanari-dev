@@ -112,7 +112,7 @@ import Foundation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addToStrokeBezierPaths (_ ioBezierPaths : inout [EBBezierPath],
+  func addToStrokeBezierPaths (_ ioBezierPaths : inout [BézierPath],
                                dx inDx : Int,
                                dy inDy: Int,
                                horizontalMirror inHorizontalMirror : Bool,
@@ -152,7 +152,7 @@ import Foundation
       let x2f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x2) : x2)
       let y2f = canariUnitToCocoa (y2)
       let width = canariUnitToCocoa (segment.width)
-      var bp = EBBezierPath ()
+      var bp = BézierPath ()
       bp.move (to: NSPoint (x: x1f, y: y1f))
       bp.line (to: NSPoint (x: x2f, y: y2f))
       bp.lineWidth = width

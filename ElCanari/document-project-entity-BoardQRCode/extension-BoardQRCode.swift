@@ -211,8 +211,8 @@ extension BoardQRCode {
 
 struct QRCodeDisplayInfos {
   let rotationKnobLocation : NSPoint
-  let backgroundBP : EBBezierPath
-  let qrCodeBP : EBBezierPath
+  let backgroundBP : BézierPath
+  let qrCodeBP : BézierPath
   let productRectangles : [ProductRectangle]
   let transformedRectangles : [AffineTransform]
 }
@@ -240,9 +240,9 @@ struct QRCodeDisplayInfos {
     af.scale (x: -1.0, y: 1.0)
   }
 //--- Background
-  let backgroundBP = EBBezierPath (rect: qrRect).transformed (by: af)
+  let backgroundBP = BézierPath (rect: qrRect).transformed (by: af)
 //--- QR code
-  var filledBP = EBBezierPath ()
+  var filledBP = BézierPath ()
   var productRectangles = [ProductRectangle] ()
   var transformedRectangles = [AffineTransform] ()
   for rect in inQRCodeDescriptor.blackRectangles {

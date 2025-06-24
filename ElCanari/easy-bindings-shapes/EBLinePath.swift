@@ -1,5 +1,5 @@
 //
-//  EBBezierPath.swift
+//  BézierPath.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 22/06/2019.

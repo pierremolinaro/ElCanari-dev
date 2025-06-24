@@ -22,21 +22,21 @@ import AppKit
        _ self_mHoleHeight : Int,                                     
        _ self_mShape : PadShape,                                     
        _ self_mStyle : SlavePadStyle
-) -> EBBezierPath {
+) -> BézierPath {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_mCenterX)
     let yCenter = canariUnitToCocoa (self_mCenterY)
     let width = canariUnitToCocoa (self_mWidth)
     let height = canariUnitToCocoa (self_mHeight)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
-    var bp : EBBezierPath
+    var bp : BézierPath
     switch self_mShape {
     case .rect :
-      bp = EBBezierPath (rect: rPad)
+      bp = BézierPath (rect: rPad)
     case .round :
-      bp = EBBezierPath (oblongInRect: rPad)
+      bp = BézierPath (oblongInRect: rPad)
     case .octo :
-      bp = EBBezierPath (octogonInRect: rPad)
+      bp = BézierPath (octogonInRect: rPad)
     }
     switch self_mStyle {
     case .traversing :
@@ -46,7 +46,7 @@ import AppKit
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
     case .componentSide :
-      bp = EBBezierPath ()
+      bp = BézierPath ()
     case .oppositeSide :
       ()
     }

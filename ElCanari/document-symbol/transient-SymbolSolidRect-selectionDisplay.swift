@@ -26,7 +26,7 @@ import AppKit
   let width = canariUnitToCocoa (self_width)
   let height = canariUnitToCocoa (self_height)
   var shape = EBShape ()
-  var bp = EBBezierPath (rect: NSRect (x: x, y:y, width: width, height: height))
+  var bp = BézierPath (rect: NSRect (x: x, y:y, width: width, height: height))
   bp.lineWidth = 0.25
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
   shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: SYMBOL_SOLID_RECT_BOTTOM, .diamond, 2.0)

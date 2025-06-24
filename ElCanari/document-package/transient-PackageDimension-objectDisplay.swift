@@ -36,7 +36,7 @@ import AppKit
  //--- Compute angle
   let angle = NSPoint.angleInRadian (p1, p2)
  //--- Draw line
-  var bp = EBBezierPath ()
+  var bp = BézierPath ()
   if length <= (4.0 * arrowSize) {
     bp.move (to: p1)
     bp.line (to: p2)
@@ -61,7 +61,7 @@ import AppKit
   var tr = AffineTransform ()
   tr.translate (x: p1.x, y: p1.y)
   tr.rotate (byRadians: angle + rotationIfSmall)
-  var path1 = EBBezierPath ()
+  var path1 = BézierPath ()
   path1.move (to: NSPoint (x: 0.0, y: 0.0))
   path1.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
   path1.curve (to: NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
@@ -73,7 +73,7 @@ import AppKit
   tr = AffineTransform ()
   tr.translate (x: p2.x, y: p2.y)
   tr.rotate (byRadians: angle + .pi + rotationIfSmall)
-  var path2 = EBBezierPath ()
+  var path2 = BézierPath ()
   path2.move (to: NSPoint (x: 0.0, y: 0.0))
   path2.line (to:NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
   path2.curve (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),

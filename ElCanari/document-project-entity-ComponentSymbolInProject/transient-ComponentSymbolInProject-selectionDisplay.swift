@@ -28,7 +28,7 @@ import AppKit
 //--- START OF USER ZONE 2
         var shape = EBShape ()
       //--- Frame symbol
-        var strokeBezierPath = EBBezierPath ()
+        var strokeBezierPath = BézierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
         shape.add (stroke: [strokeBezierPath], prefs_selectionHiliteColor)
@@ -39,7 +39,7 @@ import AppKit
           y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
         )
         if self_mDisplayComponentValue {
-          var bp = EBBezierPath ()
+          var bp = BézierPath ()
           bp.move (to: symbolCenter)
           bp.line (to: componentValueCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
@@ -53,7 +53,7 @@ import AppKit
           y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY
         )
         do{
-          var bp = EBBezierPath ()
+          var bp = BézierPath ()
           bp.move (to: symbolCenter)
           bp.line (to: componentNameCenter.cocoaPoint)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
@@ -101,7 +101,7 @@ import AppKit
           x: canariUnitToCocoa (self_symbolInfo.center.x) + d * cos (symbolRotationInRadians),
           y: canariUnitToCocoa (self_symbolInfo.center.y) + d * sin (symbolRotationInRadians)
         )
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.move (to: symbolCenter)
         bp.line (to: rotationKnobCenter)
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH

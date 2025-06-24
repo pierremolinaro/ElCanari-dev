@@ -205,7 +205,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol ComponentInProject_strokeBezierPath : AnyObject {
-  var strokeBezierPath : EBBezierPath? { get }
+  var strokeBezierPath : BézierPath? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -842,11 +842,11 @@ final class ComponentInProject : BoardObject,
   //   Transient property: strokeBezierPath
   //································································································
 
-  final let strokeBezierPath_property = EBTransientProperty <EBBezierPath> ()
+  final let strokeBezierPath_property = EBTransientProperty <BézierPath> ()
 
   //································································································
 
-  final var strokeBezierPath : EBBezierPath? {
+  final var strokeBezierPath : BézierPath? {
     return self.strokeBezierPath_property.optionalValue
   }
 

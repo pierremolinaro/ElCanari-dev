@@ -25,7 +25,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Oval Width is null", pathes: [bp]))
   }
@@ -39,7 +39,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Oval Height is null", pathes: [bp]))
   }
@@ -53,7 +53,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Zone Width is null", pathes: [bp]))
   }
@@ -67,7 +67,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Zone Height is null", pathes: [bp]))
   }
@@ -81,7 +81,7 @@ extension Array where Element == CanariIssue {
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Zone Name is empty", pathes: [bp]))
   }
@@ -89,7 +89,7 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendZoneIntersectionIssueIn (rect: CanariRect) {
-    var bp = EBBezierPath (rect: rect.cocoaRect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
+    var bp = BézierPath (rect: rect.cocoaRect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Zone Intersection", pathes: [bp]))
   }
@@ -97,7 +97,7 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendDuplicatedZoneNameIssueIn (rect: NSRect) {
-    var bp = EBBezierPath (rect: rect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
+    var bp = BézierPath (rect: rect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Duplicated Zone Name", pathes: [bp]))
   }

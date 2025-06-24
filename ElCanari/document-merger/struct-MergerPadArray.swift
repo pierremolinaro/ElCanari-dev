@@ -56,20 +56,20 @@ struct MergerPadArray : Hashable {
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
       let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
-      var bp : EBBezierPath
+      var bp : BézierPath
       switch pad.shape {
       case .rect :
-        bp = EBBezierPath (rect:r)
+        bp = BézierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = EBBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+          bp = BézierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
-          bp = EBBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+          bp = BézierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
-          bp = EBBezierPath (ovalIn:r)
+          bp = BézierPath (ovalIn:r)
         }
       case .octo :
-        bp = EBBezierPath (octogonInRect: r)
+        bp = BézierPath (octogonInRect: r)
       }
       var transform = AffineTransform (translationByX: canariUnitToCocoa (pad.x), byY: canariUnitToCocoa (pad.y))
       transform.rotate (byRadians: canariRotationToRadians (pad.rotation))
@@ -81,7 +81,7 @@ struct MergerPadArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addPads (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
+  func addPads (toFilledBezierPaths ioBezierPaths : inout [BézierPath],
                 dx inDx : Int,
                 dy inDy: Int,
                 horizontalMirror inHorizontalMirror : Bool,
@@ -118,20 +118,20 @@ struct MergerPadArray : Hashable {
         transform.scale (x: -1.0, y: 1.0)
       }
       transform.rotate (byRadians:canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
-      var bp : EBBezierPath
+      var bp : BézierPath
       switch pad.shape {
       case .rect :
-        bp = EBBezierPath (rect:r)
+        bp = BézierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = EBBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+          bp = BézierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
-          bp = EBBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+          bp = BézierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
-          bp = EBBezierPath (ovalIn:r)
+          bp = BézierPath (ovalIn:r)
         }
       case .octo :
-        bp = EBBezierPath (octogonInRect: r)
+        bp = BézierPath (octogonInRect: r)
       }
       ioBezierPaths.append (bp.transformed (by: transform))
     }
@@ -139,7 +139,7 @@ struct MergerPadArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func addHoles (toFilledBezierPaths ioBezierPaths : inout [EBBezierPath],
+//  func addHoles (toFilledBezierPaths ioBezierPaths : inout [BézierPath],
 //                 dx inDx : Int,
 //                 dy inDy: Int,
 //                 pdfHoleDiameter inHoleDiameter : CGFloat,
@@ -168,7 +168,7 @@ struct MergerPadArray : Hashable {
 //      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
 //      let yf = canariUnitToCocoa (y)
 //      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
-//      let bp = EBBezierPath (ovalIn: r)
+//      let bp = BézierPath (ovalIn: r)
 //      ioBezierPaths.append (bp)
 //    }
 //  }
@@ -244,7 +244,7 @@ struct MergerPadArray : Hashable {
         af.translate (x: CGFloat (xmt), y: CGFloat (ymt))
         af.rotate (byRadians: padRotationInRadians)
         let r = NSRect (x:-widthTenthMilF / 2.0, y: -heightTenthMilF / 2.0, width: widthTenthMilF, height: heightTenthMilF)
-        let bp = EBBezierPath (octogonInRect: r).transformed (by: af)
+        let bp = BézierPath (octogonInRect: r).transformed (by: af)
         var points = [NSPoint] (repeating: .zero, count: 3)
         var drawings = [String] ()
         var origin = NSPoint ()

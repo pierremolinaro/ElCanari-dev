@@ -53,7 +53,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
 
   transient String componentIsPlacedInBoardString dependsFrom self.componentIsPlacedInBoard ;
 
-  transient EBBezierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
+  transient BézierPath strokeBezierPath dependsFrom self.mSelectedPackage.one.mStrokeBezierPath ;
 
   transient PadNetDictionary padNetDictionary dependsFrom self.mSymbols.all.symbolInfo ;
  

@@ -27,22 +27,22 @@ import AppKit
   let y = canariUnitToCocoa (self_y)
   let width = canariUnitToCocoa (self_width)
   let height = canariUnitToCocoa (self_height)
-  var bp : EBBezierPath
+  var bp : BézierPath
   if (self_width <= 0) && (self_height <= 0) { // Oval is a point
-    bp = EBBezierPath ()
+    bp = BézierPath ()
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x, y: y))
   }else if self_width <= 0 { // Vertical line
-    bp = EBBezierPath ()
+    bp = BézierPath ()
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x, y: y + height))
   }else if self_height <= 0 { // Horizontal line
-    bp = EBBezierPath ()
+    bp = BézierPath ()
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x + width, y: y))
   }else{
     let r = NSRect (x: x, y: y, width: width, height: height)
-    bp = EBBezierPath (ovalIn: r)
+    bp = BézierPath (ovalIn: r)
   }
   bp.lineWidth = 0.25
   shape.add (stroke: [bp], prefs_selectionHiliteColor)

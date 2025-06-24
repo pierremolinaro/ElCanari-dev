@@ -8,7 +8,7 @@ import AppKit
 
 //--- START OF USER ZONE 1
 
-@MainActor private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : inout EBBezierPath) {
+@MainActor private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : inout BézierPath) {
   if inPointArray.count >= 2 {
     var points = inPointArray
   //------------------------------- Find the two nearest points
@@ -87,7 +87,7 @@ import AppKit
             }
           }
         }
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.lineWidth = 0.5
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -106,7 +106,7 @@ import AppKit
             }
           }
         }
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.lineWidth = 0.5
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -144,7 +144,7 @@ import AppKit
             }
           }
         }
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.lineWidth = 0.5
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -177,7 +177,7 @@ import AppKit
             }
           }
         }
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.lineWidth = 0.5
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round

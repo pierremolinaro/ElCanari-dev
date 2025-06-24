@@ -1,5 +1,5 @@
 //
-//  EBBezierPath.swift
+//  BézierPath.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 22/06/2019.
@@ -9,10 +9,10 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
-// EBBezierPath
+// BézierPath
 //--------------------------------------------------------------------------------------------------
 
-struct EBBezierPath : Hashable {
+struct BézierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -48,8 +48,8 @@ struct EBBezierPath : Hashable {
 
   init (withString inString : String,
         at inOrigin : NSPoint,
-        _ inHorizontalAlignment : EBBezierPath.TextHorizontalAlignment,
-        _ inVerticalAlignment : EBBezierPath.TextVerticalAlignment,
+        _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
+        _ inVerticalAlignment : BézierPath.TextVerticalAlignment,
         withAttributes inTextAttributes : [NSAttributedString.Key : Any]) {
     self.mPath = NSBezierPath ()
     if inString != "" {
@@ -117,13 +117,13 @@ struct EBBezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  nonisolated static func == (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
+  nonisolated static func == (lhs : BézierPath, rhs : BézierPath) -> Bool {
     return ObjectIdentifier (lhs.mPath) == ObjectIdentifier (rhs.mPath)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func >= (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
+  static func >= (lhs : BézierPath, rhs : BézierPath) -> Bool {
     return ObjectIdentifier (lhs.mPath) >= ObjectIdentifier (rhs.mPath)
   }
 
@@ -283,7 +283,7 @@ struct EBBezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by transform: AffineTransform) -> EBBezierPath {
+  func transformed (by transform: AffineTransform) -> BézierPath {
     var result = self
     result.transform (using: transform)
     return result
@@ -340,7 +340,7 @@ struct EBBezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func append (_ inBezierPath : EBBezierPath) {
+  mutating func append (_ inBezierPath : BézierPath) {
     if !isKnownUniquelyReferenced (&self.mPath) {
       self.mPath = self.mPath.copy () as! NSBezierPath
     }
@@ -395,7 +395,7 @@ struct EBBezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var pathToFillByStroking : EBBezierPath {
+  var pathToFillByStroking : BézierPath {
     let lineCap : CGLineCap
     switch self.lineCapStyle {
     case .butt : lineCap = .butt
@@ -418,7 +418,7 @@ struct EBBezierPath : Hashable {
       lineJoin: lineJoin,
       miterLimit: self.mPath.miterLimit
     )
-    var path = EBBezierPath ()
+    var path = BézierPath ()
     // https://forums.swift.org/t/handling-the-new-forming-unsaferawpointer-warning/65523/4
 //    public typealias CGPathApplierFunction = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void
     let callBack : @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void = {
@@ -543,8 +543,8 @@ struct EBBezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var reversed : EBBezierPath {
-    var result = EBBezierPath ()
+  var reversed : BézierPath {
+    var result = BézierPath ()
     result.mPath = self.mPath.reversed
     return result
   }
@@ -718,7 +718,7 @@ private func pathByStrokingCallback (_ inInfo : UnsafeMutableRawPointer?, _ inEl
 
 //--------------------------------------------------------------------------------------------------
 
-extension Array where Element == EBBezierPath {
+extension Array where Element == BézierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -104,7 +104,7 @@ import AppKit
   //   Selection observable property: strokeBezierPath
   //································································································
 
-  final let strokeBezierPath_property = EBTransientProperty <EBBezierPath> ()
+  final let strokeBezierPath_property = EBTransientProperty <BézierPath> ()
 
   //································································································
   //   Selection observable property: objectDisplay
@@ -906,7 +906,7 @@ import AppKit
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <EBBezierPath> ()
+          var s = Set <BézierPath> ()
           var isMultipleSelection = false
           for object in v {
             switch object.strokeBezierPath_property.selection {

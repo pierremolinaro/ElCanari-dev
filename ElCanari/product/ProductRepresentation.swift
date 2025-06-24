@@ -95,7 +95,7 @@ struct ProductRepresentation : Codable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func append (flattenedStrokeBezierPath inBezierPath : EBBezierPath,
+  mutating func append (flattenedStrokeBezierPath inBezierPath : BézierPath,
                         transformedBy inAT : AffineTransform,
                         clippedBy inClipRect : NSRect,
                         width inWidth : ProductLength,

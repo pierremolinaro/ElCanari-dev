@@ -682,7 +682,7 @@ extension AutoLayoutProjectDocument {
       }
       var descriptor = self.rootObject.mBorderCurves [0].descriptor!
       let p = descriptor.p1
-      var bp = EBBezierPath ()
+      var bp = BézierPath ()
       bp.move (to: p.cocoaPoint)
       var loop = true
       while loop {
@@ -705,7 +705,7 @@ extension AutoLayoutProjectDocument {
       let strokeBP = bp.pathToFillByStroking
       var closedPathCount = 0
       let retainedClosedPath = 2
-      var retainedBP = EBBezierPath ()
+      var retainedBP = BézierPath ()
       var points = [NSPoint] (repeating: .zero, count: 3)
       for i in 0 ..< strokeBP.nsBezierPath.elementCount {
         let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)

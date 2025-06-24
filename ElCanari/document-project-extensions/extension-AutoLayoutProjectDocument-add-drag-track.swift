@@ -165,7 +165,7 @@ extension AutoLayoutProjectDocument {
         excludedConnectors.append (objects: self.findAllConnectorsConnectedTo (c))
       }
     //--- Build shape
-      var bpArray = [EBBezierPath] ()
+      var bpArray = [BézierPath] ()
       for object in self.rootObject.mBoardObjects.values {
         if let connector = object as? BoardConnector,
               !excludedConnectors.contains (connector),
@@ -193,7 +193,7 @@ extension AutoLayoutProjectDocument {
           width: d,
           height: d
         )
-        var bp = EBBezierPath (ovalIn: r)
+        var bp = BézierPath (ovalIn: r)
         bp.lineWidth = 1.0 / boardView.actualScale
         if shape == nil {
           shape = EBShape ()

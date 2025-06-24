@@ -284,7 +284,7 @@ graphic entity PackageArc : PackageObject {
   property @signature @generateDirectAccess Int startTangentUnit default 2_286 ;
   property @signature @generateDirectAccess Int endTangentUnit default 2_286 ;
 
-  transient EBBezierPath strokeBezierPath dependsFrom
+  transient BézierPath strokeBezierPath dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
      self.pathIsClosed, self.startTangent, self.endTangent
   ;

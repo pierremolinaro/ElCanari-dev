@@ -22,7 +22,7 @@ import AppKit
        _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    var bp = EBBezierPath ()
+    var bp = BézierPath ()
     bp.move (to: NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
     bp.line (to: NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
     bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0

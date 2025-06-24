@@ -298,8 +298,8 @@ extension BoardTrack {
   //  Bezier path
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bezierPath (extraWidth inExtraWidth : Int) -> EBBezierPath {
-    var bp = EBBezierPath ()
+  func bezierPath (extraWidth inExtraWidth : Int) -> BézierPath {
+    var bp = BézierPath ()
     bp.lineWidth = canariUnitToCocoa (self.actualTrackWidth! + inExtraWidth)
     switch self.mEndStyle {
     case .round :

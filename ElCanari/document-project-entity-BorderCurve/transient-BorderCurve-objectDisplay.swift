@@ -37,7 +37,7 @@ import AppKit
            let boardClearance = self_mRoot_mBoardClearance {
           let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
-          var bp = EBBezierPath ()
+          var bp = BézierPath ()
           bp.move (to: p1)
           switch self_mShape {
           case .line :

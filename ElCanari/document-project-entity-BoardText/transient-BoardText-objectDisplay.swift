@@ -68,7 +68,7 @@ import AppKit
         var shape = EBShape ()
         if display {
           let textShape = EBShape (stroke: [textBP], textColor)
-          let backgroundBP = EBBezierPath (rect: textShape.boundingBox) //--- Transparent background
+          let backgroundBP = BézierPath (rect: textShape.boundingBox) //--- Transparent background
           shape.add (filled: [backgroundBP], nil)
           shape.add (textShape)
         }

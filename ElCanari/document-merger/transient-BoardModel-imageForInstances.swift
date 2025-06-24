@@ -101,7 +101,7 @@ import AppKit
 //--- Background
   if prefs_mergerShowInstanceBackground {
     let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa (self_modelHeight))
-    shapes.add (filled: [EBBezierPath (rect: backRect)], prefs_mergerColorBackground)
+    shapes.add (filled: [BézierPath (rect: backRect)], prefs_mergerColorBackground)
   }
 //--- Back Legend Lines, images and QR Codes
   if (prefs_mergerBoardViewDisplayBackLegendLines) {
@@ -201,7 +201,7 @@ import AppKit
   do{
     let color = prefs_mergerBoardViewDisplayModelBoardsLimits ? prefs_mergerColorInternalBoardsLimits : .clear
     let boardRect = CanariRect (left: 0, bottom: 0, width: self_modelWidth, height: self_modelHeight)
-    let boardRectBP = EBBezierPath (rect: boardRect.cocoaRect)
+    let boardRectBP = BézierPath (rect: boardRect.cocoaRect)
     shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
     shapes.add (stroke: self_boardLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
   }

@@ -66,7 +66,7 @@ import AppKit
         shape.add (stroke: [textBP], textColor)
       //--- Rotation knob
         if prefs_mShowTextRotationKnobInBoard {
-          var knobLine = EBBezierPath ()
+          var knobLine = BézierPath ()
           knobLine.move (to : origin)
           knobLine.line (to : rotationKnob)
           knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0

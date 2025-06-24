@@ -56,8 +56,8 @@ struct GeometricCircle {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bezierPath : EBBezierPath {
-    return EBBezierPath (ovalIn: self.bounds)
+  var bezierPath : BézierPath {
+    return BézierPath (ovalIn: self.bounds)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -55,13 +55,13 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SlavePadInDevice_frontSideFilledBezierPath : AnyObject {
-  var frontSideFilledBezierPath : EBBezierPath? { get }
+  var frontSideFilledBezierPath : BézierPath? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SlavePadInDevice_backSideFilledBezierPath : AnyObject {
-  var backSideFilledBezierPath : EBBezierPath? { get }
+  var backSideFilledBezierPath : BézierPath? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -224,11 +224,11 @@ final class SlavePadInDevice : EBManagedObject,
   //   Transient property: frontSideFilledBezierPath
   //································································································
 
-  final let frontSideFilledBezierPath_property = EBTransientProperty <EBBezierPath> ()
+  final let frontSideFilledBezierPath_property = EBTransientProperty <BézierPath> ()
 
   //································································································
 
-  final var frontSideFilledBezierPath : EBBezierPath? {
+  final var frontSideFilledBezierPath : BézierPath? {
     return self.frontSideFilledBezierPath_property.optionalValue
   }
 
@@ -236,11 +236,11 @@ final class SlavePadInDevice : EBManagedObject,
   //   Transient property: backSideFilledBezierPath
   //································································································
 
-  final let backSideFilledBezierPath_property = EBTransientProperty <EBBezierPath> ()
+  final let backSideFilledBezierPath_property = EBTransientProperty <BézierPath> ()
 
   //································································································
 
-  final var backSideFilledBezierPath : EBBezierPath? {
+  final var backSideFilledBezierPath : BézierPath? {
     return self.backSideFilledBezierPath_property.optionalValue
   }
 

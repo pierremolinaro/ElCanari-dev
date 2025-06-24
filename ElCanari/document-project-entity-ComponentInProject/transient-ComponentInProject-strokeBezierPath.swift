@@ -15,14 +15,14 @@ import AppKit
 
 @MainActor func transient_ComponentInProject_strokeBezierPath (
        _ self_mSelectedPackage_mStrokeBezierPath : NSBezierPath?
-) -> EBBezierPath {
+) -> BézierPath {
 //--- START OF USER ZONE 2
         if let bp = self_mSelectedPackage_mStrokeBezierPath {
-          return EBBezierPath (bp)
+          return BézierPath (bp)
         }else{
-          return EBBezierPath ()
+          return BézierPath ()
         }
-//        return self_mSelectedPackage_mStrokeBezierPath ?? EBBezierPath ()
+//        return self_mSelectedPackage_mStrokeBezierPath ?? BézierPath ()
 //--- END OF USER ZONE 2
 }
 

@@ -90,8 +90,8 @@ struct GeometricOblong {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bezierPath : EBBezierPath {
-    var bp = EBBezierPath ()
+  var bezierPath : BézierPath {
+    var bp = BézierPath ()
     bp.lineWidth = self.width
     bp.move (to: self.p1)
     bp.line (to: self.p2)

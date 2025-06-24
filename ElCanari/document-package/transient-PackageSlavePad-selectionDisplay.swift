@@ -27,20 +27,20 @@ import AppKit
     let width = canariUnitToCocoa (self_width)
     let height = canariUnitToCocoa (self_height)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
-    var bp : EBBezierPath
+    var bp : BézierPath
     switch self_padShape {
     case .rect :
-      bp = EBBezierPath (rect: rPad)
+      bp = BézierPath (rect: rPad)
     case .round :
       if width < height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
+        bp = BézierPath (roundedRect: rPad, xRadius: width / 2.0, yRadius: width / 2.0)
       }else if width > height {
-        bp = EBBezierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
+        bp = BézierPath (roundedRect: rPad, xRadius: height / 2.0, yRadius: height / 2.0)
       }else{
-        bp = EBBezierPath (ovalIn: rPad)
+        bp = BézierPath (ovalIn: rPad)
       }
     case .octo :
-      bp = EBBezierPath (octogonInRect: rPad)
+      bp = BézierPath (octogonInRect: rPad)
     }
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round

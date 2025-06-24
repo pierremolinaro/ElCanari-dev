@@ -12,15 +12,15 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mPathes = [EBBezierPath] ()
+  private var mPathes = [BézierPath] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var array : [EBBezierPath] { return self.mPathes }
+  var array : [BézierPath] { return self.mPathes }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func append (_ inBP : EBBezierPath) {
+  mutating func append (_ inBP : BézierPath) {
     if !inBP.isEmpty {
       self.mPathes.append (inBP)
     }
@@ -77,7 +77,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     let array = try! NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: object as! Data) as! [NSBezierPath]
     var result = BezierPathArray ()
     for bp in array {
-      result.append (EBBezierPath (bp))
+      result.append (BézierPath (bp))
     }
     return result
   }
@@ -102,7 +102,7 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
     if let array = try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: inData [inRange.location ..< inRange.location + inRange.length]) as? [NSBezierPath] {
       var result = BezierPathArray ()
       for bp in array {
-        result.append (EBBezierPath (bp))
+        result.append (BézierPath (bp))
       }
       return result
     }else{

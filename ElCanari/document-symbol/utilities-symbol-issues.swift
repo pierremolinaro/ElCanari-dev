@@ -25,7 +25,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .warning, message: "Empty Pin Name", pathes: [bp]))
   }
@@ -39,7 +39,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .warning, message: "Empty Text", pathes: [bp]))
   }
@@ -53,7 +53,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Several pin at the same location", pathes: [bp]))
   }
@@ -61,7 +61,7 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolDuplicatedPinNameIssueAt (rect: NSRect) {
-    var bp = EBBezierPath (rect: rect)
+    var bp = BézierPath (rect: rect)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Duplicated Pin Name", pathes: [bp]))
   }
@@ -81,7 +81,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Pin Horizontal Alignment", pathes: [bp]))
   }
@@ -95,7 +95,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Pin Vertical Alignment", pathes: [bp]))
   }
@@ -109,7 +109,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Horizontal Alignment", pathes: [bp]))
   }
@@ -123,7 +123,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (ovalIn: r)
+    var bp = BézierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Vertical Alignment", pathes: [bp]))
   }
@@ -137,7 +137,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: canariUnitToCocoa (width) + CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
+    var bp = BézierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Width Alignment", pathes: [bp]))
   }
@@ -151,7 +151,7 @@ private let LINE_WIDTH : CGFloat = 0.75
       width: CANARI_ISSUE_HILITE_SIZE,
       height: canariUnitToCocoa (height) + CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = EBBezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
+    var bp = BézierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Height Alignment", pathes: [bp]))
   }

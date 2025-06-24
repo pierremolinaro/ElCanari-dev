@@ -19,7 +19,7 @@ import AppKit
 //--- START OF USER ZONE 2
         var issueArray = CanariIssueArray ()
         for schematicIssue in self_schematicIssues {
-          let path = EBBezierPath (ovalIn: schematicIssue.rect)
+          let path = BézierPath (ovalIn: schematicIssue.rect)
           let issue = CanariIssue (kind: schematicIssue.kind, message: schematicIssue.message, pathes: [path])
           issueArray.append (issue)
         }

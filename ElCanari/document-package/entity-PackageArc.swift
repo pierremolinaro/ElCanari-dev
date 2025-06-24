@@ -85,7 +85,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol PackageArc_strokeBezierPath : AnyObject {
-  var strokeBezierPath : EBBezierPath? { get }
+  var strokeBezierPath : BézierPath? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -301,11 +301,11 @@ final class PackageArc : PackageObject,
   //   Transient property: strokeBezierPath
   //································································································
 
-  final let strokeBezierPath_property = EBTransientProperty <EBBezierPath> ()
+  final let strokeBezierPath_property = EBTransientProperty <BézierPath> ()
 
   //································································································
 
-  final var strokeBezierPath : EBBezierPath? {
+  final var strokeBezierPath : BézierPath? {
     return self.strokeBezierPath_property.optionalValue
   }
 

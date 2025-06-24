@@ -31,10 +31,10 @@ extension Array where Element == ProductRectangle {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bezierPathArray : [EBBezierPath] {
-    var result = [EBBezierPath] ()
+  var bezierPathArray : [BézierPath] {
+    var result = [BézierPath] ()
     for rect in self {
-      var bp = EBBezierPath ()
+      var bp = BézierPath ()
       bp.move (to: rect.p0)
       bp.line (to: rect.p1)
       bp.line (to: rect.p2)

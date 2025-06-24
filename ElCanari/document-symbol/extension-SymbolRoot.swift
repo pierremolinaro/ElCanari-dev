@@ -48,7 +48,7 @@ extension SymbolRoot {
           NSAttributedString.Key.font : preferences_pinNameFont_property.propval
         ]
         let origin = CanariPoint (x: object.x, y: object.y).cocoaPoint
-        let bp = EBBezierPath (
+        let bp = BézierPath (
           withString: object.text,
           at: origin,
           object.horizontalAlignment.ebTextShapeHorizontalAlignment,

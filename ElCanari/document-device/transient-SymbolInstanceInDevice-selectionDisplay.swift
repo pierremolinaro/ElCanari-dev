@@ -61,7 +61,7 @@ import AppKit
         r.size.height += nameShapeSize.height + 2.0 * VERTICAL_MARGIN
         let frameRadius : CGFloat = 3.0
         r = r.insetBy (dx: -frameRadius - CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0, dy: -CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0)
-        var bp = EBBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+        var bp = BézierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
         bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
         bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
         bp.lineWidth = 0.5

@@ -24,7 +24,7 @@ import AppKit
 //--- START OF USER ZONE 2
         var shape = EBShape ()
         if let p = self_mPoint_location?.cocoaPoint {
-          var bp = EBBezierPath ()
+          var bp = BézierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
@@ -49,8 +49,8 @@ import AppKit
             NSAttributedString.Key.font : prefs_pinNameFont,
             NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
           ]
-          let horizontalAlignment : EBBezierPath.TextHorizontalAlignment
-          let verticalAlignment : EBBezierPath.TextVerticalAlignment
+          let horizontalAlignment : BézierPath.TextHorizontalAlignment
+          let verticalAlignment : BézierPath.TextVerticalAlignment
           switch self_mOrientation {
           case .rotation0 :
             horizontalAlignment = .onTheRight

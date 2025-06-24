@@ -28,7 +28,7 @@ import AppKit
       NSAttributedString.Key.font : prefs_pinNameFont
     ]
     let textShape = EBShape (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
-    var bp = EBBezierPath (rect: textShape.boundingBox)
+    var bp = BézierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
     shape.add (knobAt:  origin, knobIndex: 0, .rect, 2.0)

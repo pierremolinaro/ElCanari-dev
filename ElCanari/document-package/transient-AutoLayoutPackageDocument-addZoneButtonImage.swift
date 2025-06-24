@@ -17,7 +17,7 @@ import AppKit
        _ prefs_padZoneColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2
-        var bp = EBBezierPath (rect: NSRect (x: 0, y: 0, width: 16, height: 16))
+        var bp = BézierPath (rect: NSRect (x: 0, y: 0, width: 16, height: 16))
         bp.lineWidth = 1.0
         bp.lineJoinStyle = .round
         let shape = EBShape (stroke: [bp], prefs_padZoneColor)

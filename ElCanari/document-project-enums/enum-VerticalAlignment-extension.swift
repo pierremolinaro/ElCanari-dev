@@ -10,7 +10,7 @@ extension VerticalAlignment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var ebTextShapeVerticalAlignment : EBBezierPath.TextVerticalAlignment {
+  var ebTextShapeVerticalAlignment : BézierPath.TextVerticalAlignment {
     switch self {
       case .above :
         return .above

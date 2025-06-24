@@ -36,7 +36,7 @@ import AppKit
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
           let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
           let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
-          var bp = EBBezierPath ()
+          var bp = BézierPath ()
           bp.move (to: p1)
           switch self_mShape {
           case .line :

@@ -224,7 +224,7 @@ extension PackagePad {
 
 //--------------------------------------------------------------------------------------------------
 
-extension EBBezierPath {
+extension BézierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -232,17 +232,17 @@ extension EBBezierPath {
                    centerY inCenterY : Int,
                    width inWidth : Int,
                    height inHeight : Int,
-                   shape inShape : PadShape) -> EBBezierPath {
+                   shape inShape : PadShape) -> BézierPath {
     let center = CanariPoint (x: inCenterX, y: inCenterY).cocoaPoint
     let size = CanariSize (width: inWidth, height: inHeight).cocoaSize
     let r = NSRect (center: center, size: size)
     switch inShape {
     case .rect :
-      return EBBezierPath (rect: r)
+      return BézierPath (rect: r)
     case .round :
-      return EBBezierPath (oblongInRect: r)
+      return BézierPath (oblongInRect: r)
     case .octo :
-      return EBBezierPath (octogonInRect: r)
+      return BézierPath (octogonInRect: r)
     }
   }
 
@@ -256,7 +256,7 @@ final class PadGeometryForERC {
   let id : Int
   let circles : [GeometricCircle]
   let rectangles : [GeometricRect]
-  let bezierPath : EBBezierPath
+  let bezierPath : BézierPath
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -343,7 +343,7 @@ final class PadGeometryForERC {
     }
     self.circles = c
     self.rectangles = rects
-    self.bezierPath = EBBezierPath.pad (
+    self.bezierPath = BézierPath.pad (
       centerX: inCenterX,
       centerY: inCenterY,
       width: inWidth + inClearance,
@@ -357,7 +357,7 @@ final class PadGeometryForERC {
   private init (_ inID : Int,
                 _ inCircles : [GeometricCircle],
                 _ inRectangles : [GeometricRect],
-                _ inBezierPath : EBBezierPath) {
+                _ inBezierPath : BézierPath) {
     self.id = inID
     self.circles = inCircles
     self.rectangles = inRectangles
@@ -510,8 +510,8 @@ final class PadGeometryForERC {
 //
 //  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
-//  func bezierPathes () -> [EBBezierPath] {
-//    var result = [EBBezierPath] ()
+//  func bezierPathes () -> [BézierPath] {
+//    var result = [BézierPath] ()
 //    for entry in self {
 //      result.append (entry.bezierPath)
 //    }

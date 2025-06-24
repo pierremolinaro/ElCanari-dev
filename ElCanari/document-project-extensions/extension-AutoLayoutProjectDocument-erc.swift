@@ -54,7 +54,7 @@ extension AutoLayoutProjectDocument {
       var padID = 0
       self.checkTracksLayer (&issues, artworkClearance: artwork.minPPTPTTTW)
       self.buildPadNetDictionary (&issues, &padID, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
-      var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
+      var netConnectorsDictionary = [String : [(BoardConnector, BézierPath)]] ()
       self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
       self.checkNetConnectivity (&issues, netConnectorsDictionary)
       self.checkTrackInsulation (&issues, padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
@@ -228,7 +228,7 @@ extension AutoLayoutProjectDocument {
           let center = connector.location!.cocoaPoint
           let w = canariUnitToCocoa (connector.actualPadDiameter! + inArtworkClearance)
           let r = NSRect (center: center, size: NSSize (width: w, height: w))
-          let bp = EBBezierPath (ovalIn: r)
+          let bp = BézierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Hole diameter should be greater or equal to artwork PHD", pathes: [bp])
           ioIssues.append (issue)
           errorCount += 1
@@ -237,7 +237,7 @@ extension AutoLayoutProjectDocument {
           let center = connector.location!.cocoaPoint
           let w = canariUnitToCocoa (connector.actualPadDiameter! + inArtworkClearance)
           let r = NSRect (center: center, size: NSSize (width: w, height: w))
-          let bp = EBBezierPath (ovalIn: r)
+          let bp = BézierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Annular ring should be greater or equal to artwork OAR", pathes: [bp])
           ioIssues.append (issue)
           errorCount += 1
@@ -271,7 +271,7 @@ extension AutoLayoutProjectDocument {
           case .traversing :
             let phd = min (padDescriptor.holeSize.width, padDescriptor.holeSize.height)
             if phd < inPHD {
-              let bp = EBBezierPath.pad (
+              let bp = BézierPath.pad (
                 centerX: padDescriptor.center.x,
                 centerY: padDescriptor.center.y,
                 width: padDescriptor.padSize.width + inArtworkClearance,
@@ -284,7 +284,7 @@ extension AutoLayoutProjectDocument {
             }
             let oar = min (padDescriptor.padSize.width - padDescriptor.holeSize.width, padDescriptor.padSize.height - padDescriptor.holeSize.height) / 2
             if oar < inOAR {
-              let bp = EBBezierPath.pad (
+              let bp = BézierPath.pad (
                 centerX: padDescriptor.center.x,
                 centerY: padDescriptor.center.y,
                 width: padDescriptor.padSize.width + inArtworkClearance,
@@ -303,7 +303,7 @@ extension AutoLayoutProjectDocument {
             case .traversing :
               let phd = min (slavePad.holeSize.width, slavePad.holeSize.height)
               if phd < inPHD {
-                let bp = EBBezierPath.pad (
+                let bp = BézierPath.pad (
                   centerX: slavePad.center.x,
                   centerY: slavePad.center.y,
                   width: slavePad.padSize.width + inArtworkClearance,
@@ -316,7 +316,7 @@ extension AutoLayoutProjectDocument {
               }
               let oar = min (slavePad.padSize.width - slavePad.holeSize.width, slavePad.padSize.height - slavePad.holeSize.height) / 2
               if oar < inOAR {
-                let bp = EBBezierPath.pad (
+                let bp = BézierPath.pad (
                   centerX: slavePad.center.x,
                   centerY: slavePad.center.y,
                   width: slavePad.padSize.width + inArtworkClearance,
@@ -552,7 +552,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkPadConnectivity (_ ioIssues : inout [CanariIssue],
-                                     _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, EBBezierPath)]],
+                                     _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, BézierPath)]],
                                      artworkClearance inArtworkClearance : Int) {
     self.mERCLogTextViewArray.appendMessage ("Pad connection… ")
     var connectionErrorCount = 0
@@ -705,7 +705,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkNetConnectivity (_ ioIssues : inout [CanariIssue],
-                                     _ inNetConnectorsDictionary : [String : [(BoardConnector, EBBezierPath)]]) {
+                                     _ inNetConnectorsDictionary : [String : [(BoardConnector, BézierPath)]]) {
     self.mERCLogTextViewArray.appendMessage ("Net connection… ")
     var connectivityErrorCount = 0
     for (netName, padConnectors) in inNetConnectorsDictionary {

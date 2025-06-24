@@ -28,7 +28,7 @@ import AppKit
     width: canariUnitToCocoa (self_width),
     height: canariUnitToCocoa (self_height)
   )
-  var bp = EBBezierPath (ovalIn: r)
+  var bp = BézierPath (ovalIn: r)
   bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   var shape = EBShape ()

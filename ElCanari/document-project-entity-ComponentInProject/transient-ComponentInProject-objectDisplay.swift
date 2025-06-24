@@ -20,7 +20,7 @@ import AppKit
        _ self_mSide : ComponentSide,                        
        _ self_packagePadDictionary : PackageMasterPadDictionary,
        _ self_padNetDictionary : PadNetDictionary,          
-       _ self_strokeBezierPath : EBBezierPath,              
+       _ self_strokeBezierPath : BézierPath,                
        _ self_mDisplayLegend : Bool,                        
        _ prefs_frontSideLayoutColorForBoard : NSColor,      
        _ prefs_backSideLayoutColorForBoard : NSColor,       
@@ -131,7 +131,7 @@ import AppKit
             extraWidth: 0.0
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-          nonRotatedShape.add (filled: [EBBezierPath (rect: textBP.bounds)], nil)
+          nonRotatedShape.add (filled: [BézierPath (rect: textBP.bounds)], nil)
           nonRotatedShape.add (stroke: [textBP], color)
         }
       //--- Value
@@ -151,7 +151,7 @@ import AppKit
             extraWidth: 0.0
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-          nonRotatedShape.add (filled: [EBBezierPath (rect: textBP.bounds)], nil)
+          nonRotatedShape.add (filled: [BézierPath (rect: textBP.bounds)], nil)
           nonRotatedShape.add (stroke: [textBP], color)
         }
       //---

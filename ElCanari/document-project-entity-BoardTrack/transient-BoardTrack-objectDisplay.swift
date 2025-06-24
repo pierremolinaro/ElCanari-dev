@@ -74,7 +74,7 @@ import AppKit
          }
          if display {
            let w = canariUnitToCocoa (max (self_actualTrackWidth, milsToCanariUnit (fromInt: 10)))
-           var bp = EBBezierPath ()
+           var bp = BézierPath ()
            bp.lineWidth = w
            switch self_mEndStyle {
            case .round :

@@ -14,12 +14,12 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageArc_objectDisplay (
-       _ self_strokeBezierPath : EBBezierPath,      
+       _ self_strokeBezierPath : BézierPath,        
        _ prefs_packageColor : NSColor,              
        _ prefs_packageDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  var bp = EBBezierPath ()
+  var bp = BézierPath ()
   bp.append (self_strokeBezierPath)
   bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round

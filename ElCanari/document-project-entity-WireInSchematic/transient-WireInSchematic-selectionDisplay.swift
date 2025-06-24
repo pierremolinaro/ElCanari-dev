@@ -24,7 +24,7 @@ import AppKit
         let p1 = (self_mP1_location ?? .zero).cocoaPoint
         let p2 = (self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)).cocoaPoint
       //--- Hilite wire
-        var bp = EBBezierPath ()
+        var bp = BézierPath ()
         bp.move (to: p1)
         bp.line (to: p2)
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH
