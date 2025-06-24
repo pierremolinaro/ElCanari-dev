@@ -11,6 +11,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 fileprivate let CATEGORY_SUFFIX = " ✸"
+fileprivate let DEBUG_CATEGORY = false
 
 //--------------------------------------------------------------------------------------------------
 
@@ -49,7 +50,7 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
 
   init () {
   //--- Dialog
-    self.mWindow = NSPanel (
+    self.mWindow = NSWindow (
       contentRect: NSRect (x: 0, y: 0, width: 700, height: 600),
       styleMask: [.titled, .closable],
       backing: .buffered,
@@ -170,7 +171,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
       item.representedObject = CategoryMenuItemRepresentedObject (
         categoryFullName: CATEGORY_SUFFIX,
         subCategories: [],
-        baseCategoryName: CATEGORY_SUFFIX,
         baseCategoryCount: inCategoryNameSet.totalCount
       )
       item.action = #selector (Self.categoryPullDownButtonAction (_:))
@@ -184,7 +184,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
         item.representedObject = CategoryMenuItemRepresentedObject (
           categoryFullName: "",
           subCategories: [],
-          baseCategoryName: "",
           baseCategoryCount: noCategoryCount
         )
         item.action = #selector (Self.categoryPullDownButtonAction (_:))
@@ -206,7 +205,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
           item.representedObject = CategoryMenuItemRepresentedObject (
             categoryFullName: category,
             subCategories: subCategoryArray,
-            baseCategoryName: category,
             baseCategoryCount: baseCategoryCount
           )
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
@@ -229,7 +227,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
           menuItem.representedObject = CategoryMenuItemRepresentedObject(
             categoryFullName: subCategoryDescriptor.category,
             subCategories: subCategoryArray,
-            baseCategoryName: subCategoryDescriptor.category,
             baseCategoryCount: subCategoryDescriptor.subCount
           )
           submenu.addItem (menuItem)
@@ -244,7 +241,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
           item.representedObject = CategoryMenuItemRepresentedObject (
             categoryFullName: title,
             subCategories: subCategoryArray,
-            baseCategoryName: title,
             baseCategoryCount: baseCategoryCount
           )
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
@@ -256,7 +252,6 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
           CategoryMenuItemRepresentedObject (
             categoryFullName: self.mSelectedCategory.propval,
             subCategories: subCategoryArray,
-            baseCategoryName: self.mSelectedCategory.propval,
             baseCategoryCount: baseCategoryCount
           )
         )
@@ -497,14 +492,14 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
     self.mSubCategoryPullDownButton.isHidden = inCategoryDescriptor.subCategories.count <= 1
     if inCategoryDescriptor.subCategories.count > 1 {
     //--- First item: all parts of this category
-      let title = CATEGORY_SUFFIX + " (\(inCategoryDescriptor.baseCategoryCount))" // | \(inCategoryDescriptor)")
+      let baseCategory = String (inCategoryDescriptor.categoryFullName.split (separator: " ", maxSplits: 1) [0]) + CATEGORY_SUFFIX
+      let title = baseCategory + " (\(inCategoryDescriptor.baseCategoryCount))"
+        + (DEBUG_CATEGORY ? " | \(inCategoryDescriptor)" : "")
       self.mSubCategoryPullDownButton.addItem (withTitle: title)
       if let item = self.mSubCategoryPullDownButton.lastItem {
-        let baseCategory = String (inCategoryDescriptor.categoryFullName.split (separator: " ", maxSplits: 1) [0]) + CATEGORY_SUFFIX
         item.representedObject = CategoryMenuItemRepresentedObject (
           categoryFullName: baseCategory,
           subCategories: inCategoryDescriptor.subCategories,
-          baseCategoryName: inCategoryDescriptor.baseCategoryName,
           baseCategoryCount: inCategoryDescriptor.baseCategoryCount
         )
         item.action = #selector (Self.categoryPullDownButtonAction (_:))
@@ -515,10 +510,10 @@ fileprivate let CATEGORY_SUFFIX = " ✸"
         let representedObject = CategoryMenuItemRepresentedObject (
           categoryFullName: subCategoryDescriptor.subCategory,
           subCategories: inCategoryDescriptor.subCategories,
-          baseCategoryName: inCategoryDescriptor.baseCategoryName,
           baseCategoryCount: inCategoryDescriptor.baseCategoryCount
         )
-        let title = subCategoryDescriptor.subCategory + " (\(subCategoryDescriptor.subCount))" // | \(representedObject)"
+        let title = subCategoryDescriptor.subCategory + " (\(subCategoryDescriptor.subCount))"
+          + (DEBUG_CATEGORY ? " | \(representedObject)" : "")
         self.mSubCategoryPullDownButton.addItem (withTitle: title)
         if let button = self.mSubCategoryPullDownButton.lastItem {
           button.representedObject = representedObject
@@ -822,7 +817,6 @@ fileprivate struct SubCategoryDescriptor {
 fileprivate struct CategoryMenuItemRepresentedObject : CustomStringConvertible {
   let categoryFullName  : String
   let subCategories     : [SubCategoryDescriptor]
-  let baseCategoryName  : String
   let baseCategoryCount : Int
 
   var description : String {
@@ -832,7 +826,7 @@ fileprivate struct CategoryMenuItemRepresentedObject : CustomStringConvertible {
       if first { first = false } else { s += ", " }
       s += "'\(subCategory.subCategory)':\(subCategory.subCount)"
     }
-    s += "] ('\(self.baseCategoryName)' \(self.baseCategoryCount))"
+    s += "] (\(self.baseCategoryCount))"
     return s
   }
 

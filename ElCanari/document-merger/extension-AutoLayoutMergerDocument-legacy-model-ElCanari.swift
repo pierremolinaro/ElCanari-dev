@@ -71,7 +71,7 @@ extension AutoLayoutMergerDocument {
       _ = alert.addButton (withTitle: "Ignore Version Error and Continue")
       _ = alert.addButton (withTitle: "Cancel")
       alert.messageText = "Cannot Analyse file contents, archive version is #\(version)."
-      alert.informativeText = "Merger requires archive version #\(MERGER_ARCHIVE_VERSION) ; update your archive by generating the production files again."
+      alert.informativeText = "Merger requires archive version #\(MERGER_ARCHIVE_VERSION); update your archive by generating the production files again."
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
         if inResponse == .alertFirstButtonReturn {
           DispatchQueue.main.async {
@@ -86,17 +86,23 @@ extension AutoLayoutMergerDocument {
         }
       }
     }else{
-      self.internalParseBoardModelLegacyELCanariArchive (inBoardArchiveDict, version: version, ignoreVersionError: false, named: inName, callBack: inCallBack)
+      self.internalParseBoardModelLegacyELCanariArchive (
+        inBoardArchiveDict,
+        version: version,
+        ignoreVersionError: false,
+        named: inName,
+        callBack: inCallBack
+      )
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func internalParseBoardModelLegacyELCanariArchive (_ inBoardArchiveDict : [String : Any],
-                                                             version inVersion : Int,
-                                                             ignoreVersionError inIgnoreVersionError : Bool,
-                                                             named inName : String,
-                                                             callBack inCallBack : @escaping (BoardModel) -> Void) {
+                                                                 version inVersion : Int,
+                                                                 ignoreVersionError inIgnoreVersionError : Bool,
+                                                                 named inName : String,
+                                                                 callBack inCallBack : @escaping (BoardModel) -> Void) {
     let boardModel = BoardModel (self.undoManager)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     var errorArray = [String] ()
@@ -132,54 +138,6 @@ extension AutoLayoutMergerDocument {
       }
       boardModel.internalBoardsLimits = internalBoardsLimitsEntities
     }
-  //--- Front tracks, no silkscreen
-//    do{
-//      var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
-//      let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_FRONT_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
-//      for str in frontTracks {
-//        let track = SegmentEntity (self.undoManager)
-//        let ints = array6int (fromString: str, #line, &errorArray)
-//        track.x1 = ints [0]
-//        track.y1 = ints [1]
-//        track.x2 = ints [2]
-//        track.y2 = ints [3]
-//        track.width = ints [4]
-//        let endStyle = ints [5]
-//        if endStyle == 0 {
-//          track.endStyle = .round
-//        }else if endStyle == 1 {
-//          track.endStyle = .square
-//        }else{
-//          errorArray.append ("Invalid end style (line \(#line))")
-//        }
-//        frontTrackEntities.append (track)
-//      }
-//      boardModel.frontTracksNoSilkScreen = frontTrackEntities
-//    }
-  //--- Back tracks, no silk screen
-//    do{
-//      var backTrackEntities = EBReferenceArray <SegmentEntity> ()
-//      let backTracks = stringArray (fromDict: inBoardArchiveDict, key: ARCHIVE_BACK_TRACKS_WITH_NO_SILK_SCREEN_KEY, &errorArray)
-//      for str in backTracks {
-//        let track = SegmentEntity (self.undoManager)
-//        let ints = array6int (fromString: str, #line, &errorArray)
-//        track.x1 = ints [0]
-//        track.y1 = ints [1]
-//        track.x2 = ints [2]
-//        track.y2 = ints [3]
-//        track.width = ints [4]
-//        let endStyle = ints [5]
-//        if endStyle == 0 {
-//          track.endStyle = .round
-//        }else if endStyle == 1 {
-//          track.endStyle = .square
-//        }else{
-//          errorArray.append ("Invalid end style (line \(#line))")
-//        }
-//       backTrackEntities.append (track)
-//      }
-//      boardModel.backTracksNoSilkScreen = backTrackEntities
-//    }
   //--- Front tracks
     do{
       var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
