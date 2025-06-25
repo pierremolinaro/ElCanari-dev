@@ -46,8 +46,8 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
       }
       space
       vStack set (spacing: .zero) $hidden prefs.fileSystemLibraryIsOk {
-        Button (title: "Show Consistency Window", size: .regular)  { 
-          $run prefs.showLibraryConsistencyLogWindowAction
+        Button (title: "Show Library Status Window", size: .regular)  { 
+          $run prefs.showLibraryStatusLogWindowAction
           $image prefs.fileSystemLibraryStatusImage
         }
         gutter

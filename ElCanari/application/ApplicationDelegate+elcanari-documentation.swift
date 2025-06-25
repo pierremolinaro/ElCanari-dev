@@ -31,11 +31,11 @@ extension ApplicationDelegate {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   OPEN LIBRARY CONSISTENCY WINDOW
+  //   OPEN LIBRARY STATUS WINDOW
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @IBAction func openLibraryConsistencyWindowAction (_ inSender : Any?) {
-    self.mLibraryConsistencyLogWindow?.makeKeyAndOrderFront (inSender)
+  @IBAction func openLibraryStatusWindowAction (_ inSender : Any?) {
+    self.mLibraryStatusLogWindow?.makeKeyAndOrderFront (inSender)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

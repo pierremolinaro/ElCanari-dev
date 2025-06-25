@@ -80,8 +80,8 @@ import Sparkle
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final var mLibraryConsistencyLogWindow : CanariWindow? = nil
-  final var mLibraryConsistencyLogTabView : AutoLayoutTabView? = nil
+  final var mLibraryStatusLogWindow : CanariWindow? = nil
+  final var mLibraryStatusLogTabView : AutoLayoutTabView? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

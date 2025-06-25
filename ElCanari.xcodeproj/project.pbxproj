@@ -2702,8 +2702,8 @@
 		CFB8DDB327A6CFF20097DF9A /* Preferences-SuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDB127A6CFF20097DF9A /* Preferences-SuperClass.swift */; };
 		CFB8DDBA27A6DE030097DF9A /* AutoLayoutDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */; };
 		CFB8DDBB27A6DE030097DF9A /* AutoLayoutDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */; };
-		CFB8DDBE27A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */; };
-		CFB8DDBF27A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */; };
+		CFB8DDBE27A6E4440097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift */; };
+		CFB8DDBF27A6E4440097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift */; };
 		CFB8DEB227A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
 		CFB8DEB327A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
 		CFB9E20222D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
@@ -5006,7 +5006,7 @@
 		CFB82C23276B918100BAD56E /* AutoLayoutTableView-column-NSImage-Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayoutTableView-column-NSImage-Int.swift"; sourceTree = "<group>"; };
 		CFB8DDB127A6CFF20097DF9A /* Preferences-SuperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preferences-SuperClass.swift"; sourceTree = "<group>"; };
 		CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutDateLabel.swift; sourceTree = "<group>"; };
-		CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-showLibraryConsistencyLogWindowAction.swift"; sourceTree = "<group>"; };
+		CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-showLibraryStatusLogWindowAction.swift"; sourceTree = "<group>"; };
 		CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-Preferences-userLibraryArrayController.swift"; sourceTree = "<group>"; };
 		CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackSide.swift"; sourceTree = "<group>"; };
 		CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "canari-conversions.swift"; sourceTree = "<group>"; };
@@ -6236,7 +6236,7 @@
 				CFD04CA827A83B2E00BD769F /* action-Preferences-removeLibraryEntryAction.swift */,
 				CFD04D9A27A8438900BD769F /* action-Preferences-revealInFinderLibraryFolderAction.swift */,
 				CF62175D27A19E4D00D02368 /* action-Preferences-revealUserLibraryInFinderAction.swift */,
-				CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */,
+				CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift */,
 				CF52219727A2F558004FEEB2 /* action-Preferences-showSystemLibraryLogAction.swift */,
 				CF62187A27A1A3E900D02368 /* configurator-Preferences-automaticallyCheckForUpdatesConfigurator.swift */,
 				CF5220A827A2EF49004FEEB2 /* configurator-Preferences-lastSystemLibraryCheckTimeButtonConfigurator.swift */,
@@ -10034,7 +10034,7 @@
 				CF22F198275A73ED009C6FAC /* transient-BoardModel-inner4TracksSegments.swift in Sources */,
 				CF59C42E29BE36AB004CA404 /* property-SlavePadDescriptor.swift in Sources */,
 				CFB7D8E92683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift in Sources */,
-				CFB8DDBE27A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */,
+				CFB8DDBE27A6E4440097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift in Sources */,
 				CFBAB0B420DE786C00476FB7 /* canari-conversions.swift in Sources */,
 				CF13CDAD2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */,
 				CF001F6A21F8AAE10091518E /* func-sha1.swift in Sources */,
@@ -11809,7 +11809,7 @@
 				CF4D083521C2F10E00380ACA /* entity-PackageObject.swift in Sources */,
 				CF2B24802B4C437700F2624F /* transient-BoardTrack-trackIsOnFrontOrBackLayer.swift in Sources */,
 				CF22F199275A73ED009C6FAC /* transient-BoardModel-inner4TracksSegments.swift in Sources */,
-				CFB8DDBF27A6E4440097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift in Sources */,
+				CFB8DDBF27A6E4440097DF9A /* action-Preferences-showLibraryStatusLogWindowAction.swift in Sources */,
 				CF13CDAE2A06628900870156 /* transient-ProjectRoot-schematicTooltips.swift in Sources */,
 				CFB7D8EA2683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift in Sources */,
 				CFEB7B5B233A25EC0060A97A /* transient-ComponentInProject-componentNameFontName.swift in Sources */,

@@ -352,10 +352,10 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       do{
-        let vStackView_view_view = AutoLayoutButton (title: "Show Library Consistency Window", size: .regular)
+        let vStackView_view_view = AutoLayoutButton (title: "Show Library Library Status Window", size: .regular)
           .bind_run (
             target: self,
-            selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
+            selector: #selector (Preferences.showLibraryStatusLogWindowAction (_:))
           )
         _ = vStackView_view .appendView (vStackView_view_view)
       }

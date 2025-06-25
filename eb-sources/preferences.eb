@@ -414,7 +414,7 @@ prefs {
     hStack {
       StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular, alignment: .left)
       ImageObserverView (size: .small) { $image self.fileSystemLibraryStatusImage }
-      Button (title: "Show Library Consistency Window", size: .regular) { $run showLibraryConsistencyLogWindowAction }
+      Button (title: "Show Library Library Status Window", size: .regular) { $run showLibraryStatusLogWindowAction }
       space
     }
   }
@@ -422,7 +422,7 @@ prefs {
   action showSystemLibraryLogAction ;
   action removeLibraryEntryAction ;
   action revealInFinderLibraryFolderAction ;
-  action showLibraryConsistencyLogWindowAction ;
+  action showLibraryStatusLogWindowAction ;
   action revealUserLibraryInFinderAction ;
   action checkSystemLibraryUpdateAction ;
 

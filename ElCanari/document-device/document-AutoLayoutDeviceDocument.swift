@@ -301,11 +301,11 @@ import AppKit
           .set (spacing: .zero)
           .bind_hidden (.prop (preferences_fileSystemLibraryIsOk_property))
         do{
-          let vStackView_view_view_view = AutoLayoutButton (title: "Show Consistency Window", size: .regular)
+          let vStackView_view_view_view = AutoLayoutButton (title: "Show Library Status Window", size: .regular)
             .bind_image (preferences_fileSystemLibraryStatusImage_property)
             .bind_run (
               target: gPreferences!,
-              selector: #selector (Preferences.showLibraryConsistencyLogWindowAction (_:))
+              selector: #selector (Preferences.showLibraryStatusLogWindowAction (_:))
             )
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }

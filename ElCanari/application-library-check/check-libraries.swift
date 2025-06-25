@@ -17,7 +17,7 @@ extension Preferences {
 
   @MainActor func checkFileSystemLibrary () {
     let window : CanariWindow
-    if let w = self.mLibraryConsistencyLogWindow {
+    if let w = self.mLibraryStatusLogWindow {
       window = w
     }else{
       window = CanariWindow (
@@ -26,14 +26,14 @@ extension Preferences {
         backing: .buffered,
         defer: false
       )
-      _ = window.setFrameAutosaveName ("LibraryConsistencyLogWindowSettings")
-      window.title = "Library Consistency"
+      _ = window.setFrameAutosaveName ("LibraryStatusLogWindowSettings")
+      window.title = "Library Status"
       window.isReleasedWhenClosed = false
-      self.mLibraryConsistencyLogWindow = window
+      self.mLibraryStatusLogWindow = window
     }
     var errorCount = 0
   //---------- Previous Tab View selection
-    let optionalPreviousSelectedTab = self.mLibraryConsistencyLogTabView?.indexOfSelectedItem
+    let optionalPreviousSelectedTab = self.mLibraryStatusLogTabView?.indexOfSelectedItem
     var optionalTabWithErrorIndex : Int? = nil
   //---------- Comment
     let comment = AutoLayoutStaticLabel (
@@ -46,7 +46,7 @@ extension Preferences {
     let tabView = AutoLayoutTabView (size: .regular)
       .expandableWidth ()
       .expandableHeight ()
-    self.mLibraryConsistencyLogTabView = tabView
+    self.mLibraryStatusLogTabView = tabView
     window.setContentView (AutoLayoutVerticalStackView ().set (margins: .large).appendView (comment).appendView (tabView))
   //---------- Checking Symbols
     let symbolTabContents = MessageStackView ().set (margins: .large)

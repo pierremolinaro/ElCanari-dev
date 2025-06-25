@@ -21,7 +21,7 @@ fileprivate let DEBUG_CATEGORY = false
 
   private final let mWindow : NSWindow
 
-  private final let mCancelButton : AutoLayoutSheetCancelButton
+  private final let mCloseButton : AutoLayoutSheetCancelButton
   private final let mOpenButton : AutoLayoutButton
 
   private final let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
@@ -59,7 +59,7 @@ fileprivate let DEBUG_CATEGORY = false
     self.mWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
     self.mWindow.setFrameAutosaveName ("OpenInLibraryWindowFrame")
     self.mWindow.hasShadow = true
-    self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
+    self.mCloseButton = AutoLayoutSheetCancelButton (title: "Close", size: .regular)
     self.mOpenButton = AutoLayoutButton (title: "Open", size: .regular)
   //--- First column
     let firstColumn = AutoLayoutVerticalStackView ().appendView (self.mSearchField.setRecentsAutosaveName (self.recentSearchAutosaveName ()))
@@ -97,7 +97,7 @@ fileprivate let DEBUG_CATEGORY = false
     )
     _ = mainView.appendView (gridView)
   //--- Bottom view
-    _ = mainView.append (hStackWith: [self.mCancelButton, nil, self.mOpenButton])
+    _ = mainView.append (hStackWith: [self.mCloseButton, nil, self.mOpenButton])
   //--- Set content view
     self.mWindow.setContentView (mainView)
     _ = self.mOpenButton.respondsToValidationKeyDown (self.mWindow)
@@ -153,20 +153,21 @@ fileprivate let DEBUG_CATEGORY = false
       $0.0.lowercased () < $1.0.lowercased ()
     }
   //---
-    var categoryDictionary = [String : [SubCategoryDescriptor]] () // FirstName : (secondName, category, count)
+    var categoryDictionary = [String : [SubCategoryDescriptor]] ()
     for (str, n) in sortedCategoryArray {
       let names = str.split (separator: " ", maxSplits: 1)
       let firstName = String (names [0])
       let secondName = (names.count > 1) ? String (names [1]) : "—"
-      categoryDictionary [firstName, default: []] += [SubCategoryDescriptor (category: secondName, subCategory: str, subCount: n)]
+      categoryDictionary [firstName, default: []] += [SubCategoryDescriptor (categoryFullName: str, subCategory: secondName, subCount: n)]
     }
   //--- Populate pull down button
     var foundCurrentSelectedCategory = self.mSelectedCategory.propval == CATEGORY_SUFFIX
+//    Swift.print ("Selected category : \(self.mSelectedCategory.propval) \(foundCurrentSelectedCategory)")
     while self.mCategoryPullDownButton.numberOfItems > 1 {
       self.mCategoryPullDownButton.removeItem (at: self.mCategoryPullDownButton.numberOfItems - 1)
     }
   //--- First item : all
-    self.mCategoryPullDownButton.addItem (withItalicTitle: "— all — (\(inCategoryNameSet.totalCount))")
+    self.mCategoryPullDownButton.addItem (withItalicTitle: "(Any Category, \(inCategoryNameSet.totalCount))")
     if let item = self.mCategoryPullDownButton.lastItem {
       item.representedObject = CategoryMenuItemRepresentedObject (
         categoryFullName: CATEGORY_SUFFIX,
@@ -179,7 +180,7 @@ fileprivate let DEBUG_CATEGORY = false
   //--- Second item : none
     let noCategoryCount = inCategoryNameSet.count(for: "")
     if noCategoryCount > 0 {
-      self.mCategoryPullDownButton.addItem (withItalicTitle: "— none — (\(noCategoryCount))")
+      self.mCategoryPullDownButton.addItem (withItalicTitle: "(Empty Category, \(noCategoryCount))")
       if let item = self.mCategoryPullDownButton.lastItem {
         item.representedObject = CategoryMenuItemRepresentedObject (
           categoryFullName: "",
@@ -192,21 +193,26 @@ fileprivate let DEBUG_CATEGORY = false
     }
   //--- Enumerate category dictionary entries
     for firstName in categoryDictionary.keys.sorted (by: { $0.lowercased () < $1.lowercased () }) {
-      let subCategoryArray : [SubCategoryDescriptor] = categoryDictionary [firstName]!.sorted { $0.category.lowercased () < $1.category.lowercased () }
+      let subCategoryArray : [SubCategoryDescriptor] = categoryDictionary [firstName]!.sorted {
+        $0.subCategory.lowercased () < $1.subCategory.lowercased ()
+      }
       var baseCategoryCount = 0
       if subCategoryArray.count == 1 {
-        let category = subCategoryArray [0].subCategory
+        let category = subCategoryArray [0].categoryFullName
         baseCategoryCount = subCategoryArray [0].subCount
         if category == self.mSelectedCategory.propval {
           foundCurrentSelectedCategory = true
         }
-        self.mCategoryPullDownButton.addItem (withTitle: category + " (\(baseCategoryCount))")
+//        Swift.print ("  Candidate1 : \(category) \(foundCurrentSelectedCategory)")
+        let representedObject = CategoryMenuItemRepresentedObject (
+          categoryFullName: category,
+          subCategories: subCategoryArray,
+          baseCategoryCount: baseCategoryCount
+        )
+        let title =  category + " (\(baseCategoryCount))" + (DEBUG_CATEGORY ? " | \(representedObject)" : "")
+        self.mCategoryPullDownButton.addItem (withTitle: title)
         if let item = self.mCategoryPullDownButton.lastItem {
-          item.representedObject = CategoryMenuItemRepresentedObject (
-            categoryFullName: category,
-            subCategories: subCategoryArray,
-            baseCategoryCount: baseCategoryCount
-          )
+          item.representedObject = representedObject
           item.action = #selector (Self.categoryPullDownButtonAction (_:))
           item.target = self
         }
@@ -215,26 +221,31 @@ fileprivate let DEBUG_CATEGORY = false
         submenu.autoenablesItems = false
         for subCategoryDescriptor in subCategoryArray {
           baseCategoryCount += subCategoryDescriptor.subCount
-          if subCategoryDescriptor.category == self.mSelectedCategory.propval {
+          if subCategoryDescriptor.categoryFullName == self.mSelectedCategory.propval {
             foundCurrentSelectedCategory = true
           }
+//          Swift.print ("  Candidate2 : \(subCategoryDescriptor.category) \(foundCurrentSelectedCategory)")
+          let representedObject = CategoryMenuItemRepresentedObject(
+            categoryFullName: subCategoryDescriptor.categoryFullName,
+            subCategories: subCategoryArray,
+            baseCategoryCount: subCategoryDescriptor.subCount
+          )
+          let title = subCategoryDescriptor.categoryFullName + " (\(subCategoryDescriptor.subCount))"
+           + (DEBUG_CATEGORY ? " | \(representedObject)" : "")
           let menuItem = NSMenuItem (
-            title: subCategoryDescriptor.subCategory + " (\(subCategoryDescriptor.subCount))",
+            title: title,
             action: #selector (Self.categoryPullDownButtonAction (_:)),
             keyEquivalent: ""
           )
           menuItem.target = self
-          menuItem.representedObject = CategoryMenuItemRepresentedObject(
-            categoryFullName: subCategoryDescriptor.category,
-            subCategories: subCategoryArray,
-            baseCategoryCount: subCategoryDescriptor.subCount
-          )
+          menuItem.representedObject = representedObject
           submenu.addItem (menuItem)
         }
         let title = firstName + CATEGORY_SUFFIX
         if title == self.mSelectedCategory.propval {
           foundCurrentSelectedCategory = true
         }
+//        Swift.print ("  Candidate3 : \(title) \(foundCurrentSelectedCategory)")
         self.mCategoryPullDownButton.addItem (withTitle: firstName + " (\(baseCategoryCount))")
         if let item = self.mCategoryPullDownButton.lastItem {
           item.submenu = submenu
@@ -436,7 +447,8 @@ fileprivate let DEBUG_CATEGORY = false
     if selectedRow >= 0 {
       let selectedPart = self.mTableViewFilteredDataSource [selectedRow]
       self.mStatusTextField.stringValue = selectedPart.statusString ()
-      self.mCategoryTextField.stringValue = selectedPart.partCategory (self.categoryKey) ?? ""
+      let categoryName = selectedPart.partCategory (self.categoryKey) ?? ""
+      self.mCategoryTextField.stringValue = categoryName.isEmpty ? "(Empty Category)" : categoryName
       self.mFullPathTextField.stringValue = selectedPart.mFullPath
       self.mOpenButton.isEnabled = true
       self.mPartImage.image = selectedPart.image
@@ -508,11 +520,11 @@ fileprivate let DEBUG_CATEGORY = false
     //--- Following items : subcategories
       for subCategoryDescriptor in inCategoryDescriptor.subCategories {
         let representedObject = CategoryMenuItemRepresentedObject (
-          categoryFullName: subCategoryDescriptor.subCategory,
+          categoryFullName: subCategoryDescriptor.categoryFullName,
           subCategories: inCategoryDescriptor.subCategories,
           baseCategoryCount: inCategoryDescriptor.baseCategoryCount
         )
-        let title = subCategoryDescriptor.subCategory + " (\(subCategoryDescriptor.subCount))"
+        let title = subCategoryDescriptor.categoryFullName + " (\(subCategoryDescriptor.subCount))"
           + (DEBUG_CATEGORY ? " | \(representedObject)" : "")
         self.mSubCategoryPullDownButton.addItem (withTitle: title)
         if let button = self.mSubCategoryPullDownButton.lastItem {
@@ -807,8 +819,8 @@ extension Array where Element == OpenInLibraryDialogFlatItem {
 //--------------------------------------------------------------------------------------------------
 
 fileprivate struct SubCategoryDescriptor {
-  let category : String
-  let subCategory : String
+  let categoryFullName : String
+  let subCategory : String // categoryFullName with first name removed
   let subCount : Int
 }
 
@@ -824,7 +836,7 @@ fileprivate struct CategoryMenuItemRepresentedObject : CustomStringConvertible {
     var first = true
     for subCategory in self.subCategories {
       if first { first = false } else { s += ", " }
-      s += "'\(subCategory.subCategory)':\(subCategory.subCount)"
+      s += "'\(subCategory.categoryFullName)':\(subCategory.subCount)"
     }
     s += "] (\(self.baseCategoryCount))"
     return s
