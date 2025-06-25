@@ -27,10 +27,10 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.8.11"
+let VERSION_CANARI = "1.9.0"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.0 beta"
+  "Construit avec Xcode 26.0 beta 2, Sparkle 2.7.1"
 ]
 let BUGFIXES : [String] = [
 ]
