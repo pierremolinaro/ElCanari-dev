@@ -1,0 +1,14 @@
+eu.mihosoft.freerouting
+eu.mihosoft.freerouting.autoroute
+eu.mihosoft.freerouting.board
+eu.mihosoft.freerouting.boardgraphics
+eu.mihosoft.freerouting.constants
+eu.mihosoft.freerouting.datastructures
+eu.mihosoft.freerouting.designforms.specctra
+eu.mihosoft.freerouting.geometry.planar
+eu.mihosoft.freerouting.gui
+eu.mihosoft.freerouting.interactive
+eu.mihosoft.freerouting.library
+eu.mihosoft.freerouting.logger
+eu.mihosoft.freerouting.rules
+eu.mihosoft.freerouting.tests
