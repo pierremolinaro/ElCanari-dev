@@ -260,8 +260,8 @@ TSWLatexianTemp*
 
 # Freerouting
 freerouting-1-4-4-pm/z-*
+freerouting-1-4-4-pm/freerouting-sources/build/*
 
 *.xcscheme
 *.xcshareddata
 ElCanari/free-router-application/*
-freerouting-1-4-4-pm/z-products-built-with-jdk24/Freerouting-x64.app/Contents/runtime/Contents/MacOS/libjli.dylib
