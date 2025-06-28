@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 #-------------------------------------------------------------------------------
 
-import sys, os, subprocess, plistlib
+import sys, os, subprocess, plistlib, shutil
 
 #-------------------------------------------------------------------------------
 #   FOR PRINTING IN COLOR
@@ -83,12 +83,24 @@ def runHiddenCommand (cmd, logUtilityTool=False) :
       return result
 
 #-------------------------------------------------------------------------------
+#   myDeleteDir
+#-------------------------------------------------------------------------------
+# http://unix.stackexchange.com/questions/77127/rm-rf-all-files-and-all-hidden-files-without-error
+# http://unix.stackexchange.com/questions/233576/recursively-delete-subdirectories-not-containing-pattern-on-osx
+
+def myDeleteDir (directory):
+  while os.path.exists (directory):
+    print (MAGENTA + BLUE + "+ Remove '" + directory + "' directory" + ENDC)
+    shutil.rmtree (directory, True) # Ignore errors
+
+#-------------------------------------------------------------------------------
 #   buildProductForArchitureAndJDK
 #-------------------------------------------------------------------------------
 
 def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
   #----------------------------1- Constants
   JDK_MAIN_VERSION = JDK_VERSION.split (".") [0]
+  JDK_MAIN_VERSION_AS_INT = int (JDK_MAIN_VERSION)
   APP_VERSION = "1.4.4"
   SCRIPT_DIR = os.path.dirname (os.path.abspath (sys.argv [0]))
   ARCHIVE_DIRECTORY = SCRIPT_DIR + "/z-archives"
@@ -104,8 +116,7 @@ def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
     runCommand (["mkdir", "-p", JAVA_ALL_JDK_DIR])
   JAVA_JDK_DIR = JAVA_ALL_JDK_DIR + "/jdk-" + JDK_VERSION + "-" + ARCHITECTURE + ".jdk"
   FREEROUTING_SOURCE_DIR = "freerouting-sources"
-  if os.path.exists (FREEROUTING_SOURCE_DIR + "/build") :
-    runCommand (["rm", "-dfr", FREEROUTING_SOURCE_DIR + "/build"])
+  myDeleteDir (FREEROUTING_SOURCE_DIR + "/build")
   if not os.path.exists (PRODUCT_DIRECTORY + "/" + FREE_ROUTING_NAME + ".app") :
     runCommand (["rm", "-f", PRODUCT_DIRECTORY + "/" + FREE_ROUTING_NAME + ".app.tar.xz"])
     runCommand (["mkdir", "-p", PRODUCT_DIRECTORY])
@@ -149,7 +160,6 @@ def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
     if os.path.exists (JAVA_RUNTIME_DIR) :
       print (BLUE + BOLD + "Java runtime already installed" + ENDC)
     else:
-      JDK_MAIN_VERSION_AS_INT = int (JDK_MAIN_VERSION)
       COMPRESS_ARG = "zip-9" if JDK_MAIN_VERSION_AS_INT >= 21 else "2"
       runCommand ([
         JAVA_JDK_HOME + "/bin/jlink",
@@ -167,7 +177,6 @@ def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
     #----------------------------7- Compile for distribution
     print (BLUE + BOLD + "Compile with gradle" + ENDC)
     os.chdir (SCRIPT_DIR + "/" + FREEROUTING_SOURCE_DIR)
-    runCommand (["rm", "-dfr", FREEROUTING_SOURCE_DIR + "/build"])
     runCommand (["./gradlew", "--version"])
     runCommand (["./gradlew", "--stop"])
     runCommand (["./gradlew", "--status"])
@@ -185,9 +194,28 @@ def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
       "--name", FREE_ROUTING_NAME,
       "--main-jar", "freerouting-executable.jar",
       "--type", "app-image",
+#       "--verbose",
       "--runtime-image", JAVA_RUNTIME_DIR,
        "--app-version", APP_VERSION
     ])
+    #---------------------------14- Get application Info.plist
+    # Strangely, the Info.plist shows the application can request the microphone!
+    PLIST_FILE_PATH = PRODUCT_DIRECTORY + "/" + FREE_ROUTING_NAME + ".app/Contents/Info.plist"
+    fp = open (PLIST_FILE_PATH, mode='rb') # b is important -> binary
+    plistAsDictionary = plistlib.load (fp)
+    fp.close ()
+    # print (plistAsDictionary)
+    writeInfoPlList = False
+    if "NSMicrophoneUsageDescription" in plistAsDictionary :
+      del plistAsDictionary ["NSMicrophoneUsageDescription"]
+      writeInfoPlList = True
+    #print (plistAsDictionary)
+    minimumVersion = plistAsDictionary ["LSMinimumSystemVersion"] # ridicule, "10.11" est toujours retourné
+    plistAsDictionary ["LSMinimumSystemVersion"] = "11.0" if JDK_MAIN_VERSION_AS_INT > 21 else "10.15"
+    # print (minimumVersion)
+    if writeInfoPlList :
+      with open (PLIST_FILE_PATH, 'wb') as fp:
+        plistlib.dump (plistAsDictionary, fp)
     #----------------------------9- Sign executable
     runCommand ([
       "/usr/bin/codesign",
@@ -220,13 +248,6 @@ def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
   os.chdir (SCRIPT_DIR + "/" + FREEROUTING_SOURCE_DIR)
   if os.path.exists (FREEROUTING_SOURCE_DIR + "/build") :
     runCommand (["rm", "-dfr", FREEROUTING_SOURCE_DIR + "/build"])
-  #---------------------------14- Get OX X minimum version
-  PLIST_FILE_PATH = PRODUCT_DIRECTORY + "/" + FREE_ROUTING_NAME + ".app/Contents/Info.plist"
-  fp = open (PLIST_FILE_PATH, mode='rb') # b is important -> binary
-  plistAsDictionary = plistlib.load (fp)
-  fp.close ()
-  minimumVersion = plistAsDictionary ["LSMinimumSystemVersion"]
-  print (minimumVersion)
   #---------------------------15- Done
   print (BOLD + BLUE + FREE_ROUTING_NAME + ".app with JDK " + JDK_VERSION + " for " + ARCHITECTURE + ": Done!" + ENDC)
   os.chdir (SCRIPT_DIR)

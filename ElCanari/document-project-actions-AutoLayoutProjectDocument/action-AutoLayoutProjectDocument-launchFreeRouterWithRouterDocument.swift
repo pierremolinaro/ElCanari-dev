@@ -11,12 +11,10 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutProjectDocument {
-  @objc func launchFreeRouterWithRouterDocument (_ inSender : NSObject?) {
+  @MainActor @objc func launchFreeRouterWithRouterDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.checkSchematicsAndLaunchFreeRouteur {
-      DispatchQueue.main.async {
-        self.performLaunchFreeRouterWithRouterDocument ()
-      }
+      self.performLaunchFreeRouterWithRouterDocument ()
     }
 //--- END OF USER ZONE 2
   }

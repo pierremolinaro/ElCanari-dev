@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performLaunchFreeRouterWithRouterDocument () {
+  @MainActor func performLaunchFreeRouterWithRouterDocument () {
     if let mainWindow = self.windowForSheet {
       let fm = FileManager ()
     //---------- Install freeRouter application

@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func checkSchematicsAndLaunchFreeRouteur (_ inCallBack : @escaping @Sendable () -> Void) {
+  @MainActor func checkSchematicsAndLaunchFreeRouteur (_ inCallBack : @MainActor @escaping @Sendable () -> Void) {
      if !self.rootObject.schematicHasErrorOrWarning! {
       self.checkAllComponentsAreInBoard (inCallBack)
     }else{
@@ -34,7 +34,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func checkAllComponentsAreInBoard (_ inCallBack : @escaping @Sendable () -> Void) {
+  @MainActor fileprivate func checkAllComponentsAreInBoard (_ inCallBack : @MainActor @escaping @Sendable () -> Void) {
     var unplacedComponentNames = [String] ()
     for component in self.rootObject.mComponents.values {
       if !component.isPlacedInBoard! {
@@ -52,9 +52,9 @@ extension AutoLayoutProjectDocument {
       alert.informativeText = unplacedComponentNames.joined (separator: ", ")
       _ = alert.addButton (withTitle: "Cancel")
       _ = alert.addButton (withTitle: "Continue")
-      alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
-        if response == .alertSecondButtonReturn {
-          inCallBack ()
+      alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in
+        if inResponse == .alertSecondButtonReturn {
+          DispatchQueue.main.async { inCallBack () }
         }
       }
     }
