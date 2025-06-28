@@ -97,7 +97,7 @@ def myDeleteDir (directory):
 #   buildProductForArchitureAndJDK
 #-------------------------------------------------------------------------------
 
-def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
+def buildProductForArchitureAndJDK (ARCHIVE_ARCH, ARCHITECTURE, JDK_VERSION) :
   #----------------------------1- Constants
   JDK_MAIN_VERSION = JDK_VERSION.split (".") [0]
   JDK_MAIN_VERSION_AS_INT = int (JDK_MAIN_VERSION)
@@ -107,14 +107,14 @@ def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
   PRODUCT_DIRECTORY = SCRIPT_DIR + "/z-products-built-with-jdk" + JDK_VERSION
   FREE_ROUTING_NAME = "Freerouting-" + ARCHITECTURE
   #----------------------------2- Java JDK
-  JAVA_JDK_ARCHIVE = ARCHIVE_DIRECTORY + "/jdk-" + JDK_VERSION + "_macos-" + ARCHITECTURE + "_bin.tar.gz"
+  JAVA_JDK_ARCHIVE = ARCHIVE_DIRECTORY + "/jdk-" + JDK_VERSION + "_macos-" + ARCHIVE_ARCH + "_bin.tar.gz"
   TEMPORARY_ARCHIVE = ARCHIVE_DIRECTORY + "/downloading-temporary"
-  JAVA_JDK_DISTRIBUTION_URL = "https://download.oracle.com/java/" + JDK_MAIN_VERSION + "/archive/jdk-" + JDK_VERSION + "_macos-" + ARCHITECTURE + "_bin.tar.gz"
+  JAVA_JDK_DISTRIBUTION_URL = "https://download.oracle.com/java/" + JDK_MAIN_VERSION + "/archive/jdk-" + JDK_VERSION + "_macos-" + ARCHIVE_ARCH + "_bin.tar.gz"
   JAVA_JDK_EXTRACTION_DIR = ARCHIVE_DIRECTORY + "/jdk-" + JDK_VERSION + ".jdk"
   JAVA_ALL_JDK_DIR = SCRIPT_DIR + "/z-all-jdk"
   if not os.path.exists (JAVA_ALL_JDK_DIR) :
     runCommand (["mkdir", "-p", JAVA_ALL_JDK_DIR])
-  JAVA_JDK_DIR = JAVA_ALL_JDK_DIR + "/jdk-" + JDK_VERSION + "-" + ARCHITECTURE + ".jdk"
+  JAVA_JDK_DIR = JAVA_ALL_JDK_DIR + "/jdk-" + JDK_VERSION + "-" + ARCHIVE_ARCH + ".jdk"
   FREEROUTING_SOURCE_DIR = "freerouting-sources"
   myDeleteDir (FREEROUTING_SOURCE_DIR + "/build")
   if not os.path.exists (PRODUCT_DIRECTORY + "/" + FREE_ROUTING_NAME + ".app") :
@@ -257,20 +257,20 @@ def buildProductForArchitureAndJDK (ARCHITECTURE, JDK_VERSION) :
 #-------------------------------------------------------------------------------
 
 def buildProductsForJDK (JDK_VERSION) :
-  buildProductForArchitureAndJDK ("x64", JDK_VERSION)
-  buildProductForArchitureAndJDK ("aarch64", JDK_VERSION)
+  buildProductForArchitureAndJDK (ARCHIVE_ARCH="x64", ARCHITECTURE="x86_64", JDK_VERSION=JDK_VERSION)
+  buildProductForArchitureAndJDK (ARCHIVE_ARCH="aarch64", ARCHITECTURE="arm64", JDK_VERSION=JDK_VERSION)
 
 #-------------------------------------------------------------------------------
 #   MAIN
 #-------------------------------------------------------------------------------
 
-buildProductsForJDK ("17.0.12")
-buildProductsForJDK ("18.0.2.1")
-buildProductsForJDK ("19.0.2")
-buildProductsForJDK ("20.0.2")
-buildProductsForJDK ("21.0.6")
-buildProductsForJDK ("22.0.2")
-buildProductsForJDK ("23.0.2")
-buildProductsForJDK ("24")
+buildProductsForJDK (JDK_VERSION="17.0.12")
+buildProductsForJDK (JDK_VERSION="18.0.2.1")
+buildProductsForJDK (JDK_VERSION="19.0.2")
+buildProductsForJDK (JDK_VERSION="20.0.2")
+buildProductsForJDK (JDK_VERSION="21.0.6")
+buildProductsForJDK (JDK_VERSION="22.0.2")
+buildProductsForJDK (JDK_VERSION="23.0.2")
+buildProductsForJDK (JDK_VERSION="24")
 
 #-------------------------------------------------------------------------------

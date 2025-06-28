@@ -23,13 +23,13 @@ extension AutoLayoutProjectDocument {
     let FREEROUTING_LEGACY_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
     let CHECKSUM_LEGACY_FILE_PATH = FREEROUTING_DIR + "/release.txt"
 
-    let FREEROUTING_X86_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-x86.app"
-    let FREEROUTING_X86_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-x86.app.tar.xz"
-    let CHECKSUM_X86_FILE_PATH = FREEROUTING_DIR + "/release-x86.txt"
+    let FREEROUTING_X86_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-x86_64.app"
+    let FREEROUTING_X86_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-x86_64.app.tar.xz"
+    let CHECKSUM_X86_FILE_PATH = FREEROUTING_DIR + "/release-x86_64.txt"
 
-    let FREEROUTING_AARCH64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-aarch64.app"
-    let FREEROUTING_AARCH64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-aarch64.app.tar.xz"
-    let CHECKSUM_AARCH64_FILE_PATH = FREEROUTING_DIR + "/release-aarch64.txt"
+    let FREEROUTING_ARM64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-arm64.app"
+    let FREEROUTING_ARM64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-arm64.app.tar.xz"
+    let CHECKSUM_ARM64_FILE_PATH = FREEROUTING_DIR + "/release-arm64.txt"
   //------------- FreeRouting directory
     guard self.checkExistsFreeroutingDirectoryOrCreateIt (inMainWindow) else {
       return nil
@@ -37,9 +37,9 @@ extension AutoLayoutProjectDocument {
   //------------- AARCH64 or X86_64 ?
     #if arch(arm64)
       if let url = self.internalInstallFreeRouter (
-          fromArchivePath: FREEROUTING_AARCH64_ARCHIVE_PATH,
-          checksumFilePath: CHECKSUM_AARCH64_FILE_PATH,
-          freeRoutingApplicationPath: FREEROUTING_AARCH64_APPLICATION_PATH,
+          fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH,
+          checksumFilePath: CHECKSUM_ARM64_FILE_PATH,
+          freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH,
           inMainWindow
         ) {
         return url
