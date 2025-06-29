@@ -27,9 +27,9 @@ extension AutoLayoutProjectDocument {
     let FREEROUTING_X86_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-x86_64.app.tar.xz"
     let CHECKSUM_X86_FILE_PATH = FREEROUTING_DIR + "/release-x86_64.txt"
 
-    let FREEROUTING_ARM64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-arm64.app"
-    let FREEROUTING_ARM64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-arm64.app.tar.xz"
-    let CHECKSUM_ARM64_FILE_PATH = FREEROUTING_DIR + "/release-arm64.txt"
+    let FREEROUTING_ARM64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-aarch64.app"
+    let FREEROUTING_ARM64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-aarch64.app.tar.xz"
+    let CHECKSUM_ARM64_FILE_PATH = FREEROUTING_DIR + "/release-aarch64.txt"
   //------------- FreeRouting directory
     guard self.checkExistsFreeroutingDirectoryOrCreateIt (inMainWindow) else {
       return nil

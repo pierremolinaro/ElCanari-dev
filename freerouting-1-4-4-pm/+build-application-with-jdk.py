@@ -180,6 +180,7 @@ def buildProductForArchitureAndJDK (ARCHIVE_ARCH, ARCHITECTURE, JDK_VERSION) :
     runCommand (["./gradlew", "--version"])
     runCommand (["./gradlew", "--stop"])
     runCommand (["./gradlew", "--status"])
+    myDeleteDir (SCRIPT_DIR + "/" + FREEROUTING_SOURCE_DIR + "/build")
     runCommand (["./gradlew", "clean"])
     runCommandWithEnvironment (["./gradlew", "build"], {"JAVA_HOME": JAVA_JDK_HOME})
     runCommandWithEnvironment (["./gradlew", "dist", "--stacktrace"], {"JAVA_HOME": JAVA_JDK_HOME})
@@ -195,6 +196,7 @@ def buildProductForArchitureAndJDK (ARCHIVE_ARCH, ARCHITECTURE, JDK_VERSION) :
       "--main-jar", "freerouting-executable.jar",
       "--type", "app-image",
 #       "--verbose",
+      "--icon", SCRIPT_DIR + "/" + FREEROUTING_SOURCE_DIR + "/freerouting.icns",
       "--runtime-image", JAVA_RUNTIME_DIR,
        "--app-version", APP_VERSION
     ])
@@ -245,9 +247,7 @@ def buildProductForArchitureAndJDK (ARCHIVE_ARCH, ARCHITECTURE, JDK_VERSION) :
   if not os.path.exists (FREE_ROUTING_NAME + ".app.tar.xz") :
     runCommand (["tar", "cfJ", FREE_ROUTING_NAME + ".app.tar.xz", FREE_ROUTING_NAME + ".app"])
   #---------------------------13- Clean
-  os.chdir (SCRIPT_DIR + "/" + FREEROUTING_SOURCE_DIR)
-  if os.path.exists (FREEROUTING_SOURCE_DIR + "/build") :
-    runCommand (["rm", "-dfr", FREEROUTING_SOURCE_DIR + "/build"])
+  myDeleteDir (SCRIPT_DIR + "/" + FREEROUTING_SOURCE_DIR + "/build")
   #---------------------------15- Done
   print (BOLD + BLUE + FREE_ROUTING_NAME + ".app with JDK " + JDK_VERSION + " for " + ARCHITECTURE + ": Done!" + ENDC)
   os.chdir (SCRIPT_DIR)
@@ -258,7 +258,7 @@ def buildProductForArchitureAndJDK (ARCHIVE_ARCH, ARCHITECTURE, JDK_VERSION) :
 
 def buildProductsForJDK (JDK_VERSION) :
   buildProductForArchitureAndJDK (ARCHIVE_ARCH="x64", ARCHITECTURE="x86_64", JDK_VERSION=JDK_VERSION)
-  buildProductForArchitureAndJDK (ARCHIVE_ARCH="aarch64", ARCHITECTURE="arm64", JDK_VERSION=JDK_VERSION)
+  buildProductForArchitureAndJDK (ARCHIVE_ARCH="aarch64", ARCHITECTURE="aarch64", JDK_VERSION=JDK_VERSION)
 
 #-------------------------------------------------------------------------------
 #   MAIN
