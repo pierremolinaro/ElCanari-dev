@@ -11,7 +11,7 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 extension AutoLayoutProjectDocument {
-  @MainActor @objc func launchFreeRouterWithRouterDocument (_ inSender : NSObject?) {
+  @objc func launchFreeRouterWithRouterDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.checkSchematicsAndLaunchFreeRouteur {
       self.performLaunchFreeRouterWithRouterDocument ()

@@ -258,7 +258,7 @@ def buildProductForArchitureAndJDK (ARCHIVE_ARCH, ARCHITECTURE, JDK_VERSION) :
 
 def buildProductsForJDK (JDK_VERSION) :
   buildProductForArchitureAndJDK (ARCHIVE_ARCH="x64", ARCHITECTURE="x86_64", JDK_VERSION=JDK_VERSION)
-  buildProductForArchitureAndJDK (ARCHIVE_ARCH="aarch64", ARCHITECTURE="aarch64", JDK_VERSION=JDK_VERSION)
+  buildProductForArchitureAndJDK (ARCHIVE_ARCH="aarch64", ARCHITECTURE="arm64", JDK_VERSION=JDK_VERSION)
 
 #-------------------------------------------------------------------------------
 #   MAIN

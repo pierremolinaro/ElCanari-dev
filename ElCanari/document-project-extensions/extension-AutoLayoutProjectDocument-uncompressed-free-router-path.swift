@@ -19,48 +19,44 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func installFreeRouter (_ inMainWindow : NSWindow) -> URL? {
-    let FREEROUTING_LEGACY_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting.app"
-    let FREEROUTING_LEGACY_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
-    let CHECKSUM_LEGACY_FILE_PATH = FREEROUTING_DIR + "/release.txt"
+//    let FREEROUTING_LEGACY_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting.app"
+//    let FREEROUTING_LEGACY_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
+//    let CHECKSUM_LEGACY_FILE_PATH = FREEROUTING_DIR + "/release.txt"
 
     let FREEROUTING_X86_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-x86_64.app"
     let FREEROUTING_X86_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-x86_64.app.tar.xz"
     let CHECKSUM_X86_FILE_PATH = FREEROUTING_DIR + "/release-x86_64.txt"
 
-    let FREEROUTING_ARM64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-aarch64.app"
-    let FREEROUTING_ARM64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-aarch64.app.tar.xz"
-    let CHECKSUM_ARM64_FILE_PATH = FREEROUTING_DIR + "/release-aarch64.txt"
+    let FREEROUTING_ARM64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-arm64.app"
+    let FREEROUTING_ARM64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-arm64.app.tar.xz"
+    let CHECKSUM_ARM64_FILE_PATH = FREEROUTING_DIR + "/release-arm64.txt"
   //------------- FreeRouting directory
     guard self.checkExistsFreeroutingDirectoryOrCreateIt (inMainWindow) else {
       return nil
     }
   //------------- AARCH64 or X86_64 ?
     #if arch(arm64)
-      if let url = self.internalInstallFreeRouter (
-          fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH,
-          checksumFilePath: CHECKSUM_ARM64_FILE_PATH,
-          freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH,
-          inMainWindow
-        ) {
-        return url
-      }
+      return self.internalInstallFreeRouter (
+        fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH,
+        checksumFilePath: CHECKSUM_ARM64_FILE_PATH,
+        freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH,
+        inMainWindow
+      )
     #else
-      if let url = self.internalInstallFreeRouter (
-          fromArchivePath: FREEROUTING_X86_ARCHIVE_PATH,
-          checksumFilePath: CHECKSUM_X86_FILE_PATH,
-          freeRoutingApplicationPath: FREEROUTING_X86_APPLICATION_PATH,
-          inMainWindow
-        ) {
-        return url
-      }
+      return self.internalInstallFreeRouter (
+        fromArchivePath: FREEROUTING_X86_ARCHIVE_PATH,
+        checksumFilePath: CHECKSUM_X86_FILE_PATH,
+        freeRoutingApplicationPath: FREEROUTING_X86_APPLICATION_PATH,
+        inMainWindow
+      )
     #endif
   //------------- Install legacy application
-    return self.internalInstallFreeRouter (
-      fromArchivePath: FREEROUTING_LEGACY_ARCHIVE_PATH,
-      checksumFilePath: CHECKSUM_LEGACY_FILE_PATH,
-      freeRoutingApplicationPath: FREEROUTING_LEGACY_APPLICATION_PATH,
-      inMainWindow
-    )
+//    return self.internalInstallFreeRouter (
+//      fromArchivePath: FREEROUTING_LEGACY_ARCHIVE_PATH,
+//      checksumFilePath: CHECKSUM_LEGACY_FILE_PATH,
+//      freeRoutingApplicationPath: FREEROUTING_LEGACY_APPLICATION_PATH,
+//      inMainWindow
+//    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
