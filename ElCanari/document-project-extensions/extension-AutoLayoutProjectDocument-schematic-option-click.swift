@@ -37,12 +37,12 @@ extension AutoLayoutProjectDocument {
         let wire = WireInSchematic (self.undoManager)
         self.mWireCreatedByOptionClick = wire
         wire.mP1 = pointsAtP [0]
-        let point = PointInSchematic (self.undoManager)
-        point.mX = p.x
-        point.mY = p.y
-        point.mNet = wire.mP1?.mNet
-        wire.mP2 = point
-        selectedSheet.mPoints.append (point)
+        let newPoint = PointInSchematic (self.undoManager)
+        newPoint.mX = pointsAtP [0].mX // p.x
+        newPoint.mY = pointsAtP [0].mY // p.y
+        newPoint.mNet = wire.mP1?.mNet
+        wire.mP2 = newPoint
+        selectedSheet.mPoints.append (newPoint)
       }else{ // Assign no net
         let wire = WireInSchematic (self.undoManager)
         self.mWireCreatedByOptionClick = wire

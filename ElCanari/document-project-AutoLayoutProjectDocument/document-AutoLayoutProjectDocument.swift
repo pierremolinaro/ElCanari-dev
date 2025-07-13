@@ -6001,15 +6001,12 @@ do{
           let vStackView_view_view_view = AutoLayoutTextObserverView (size: .small)
             .expandableWidth ()
             .setNoBackground ()
-            .setNoVerticalScroller ()
-            .setNoHorizontalScroller ()
             .bind_observedValue (self.incorrectDocumentFileDetailedErrorMessage_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendFlexibleSpace ()
         _ = vStackView_view.appendView (vStackView_view_view)
       }
-      _ = vStackView_view.appendFlexibleSpace ()
       _ = vStackView .appendView (vStackView_view)
     }
     _ = vStackView.appendSeparator ()

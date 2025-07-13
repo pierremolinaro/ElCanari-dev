@@ -30,6 +30,8 @@ extension AutoLayoutProjectDocument {
         self.rootObject.mSheets.remove (at: idx)
         let newSelectedSheetIndex = min (idx, self.rootObject.mSheets.count - 1)
         self.rootObject.mSelectedSheet = self.rootObject.mSheets [newSelectedSheetIndex]
+      //--- Remove unused nets
+        self.removeUnusedNets ()
       }
 //--- END OF USER ZONE 2
   }

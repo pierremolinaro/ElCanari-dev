@@ -2878,13 +2878,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         TextObserverView (size: .small) {
           expandableWidth ()
           setNoBackground ()
-          setNoVerticalScroller ()
-          setNoHorizontalScroller ()
+//          setNoVerticalScroller ()
+//          setNoHorizontalScroller ()
           $observedValue self.incorrectDocumentFileDetailedErrorMessage
         }
         space
       }
-      space    
     }
     separator
     hStack $hidden !root.mArtwork.none {

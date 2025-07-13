@@ -83,6 +83,9 @@ extension AutoLayoutProjectDocument {
         self.rootObject.mDevices_property.remove (device)
       }
     }
+  //--- Remove unused nets
+    self.removeUnusedNets ()
+  //---
     self.triggerStandAlonePropertyComputationForProject ()
   }
 
