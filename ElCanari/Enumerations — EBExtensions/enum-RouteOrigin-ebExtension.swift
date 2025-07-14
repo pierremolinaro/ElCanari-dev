@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_RouteOrigin  = EBEnumReadWriteProperty <RouteOrigi
 typealias EBStoredProperty_RouteOrigin     = EBEnumStoredProperty <RouteOrigin>
 typealias EBStandAloneProperty_RouteOrigin = EBEnumStandAloneProperty <RouteOrigin>
 typealias EBComputedProperty_RouteOrigin   = EBEnumGenericComputedProperty <RouteOrigin>
+typealias EBPreferenceProperty_RouteOrigin = EBEnumPreferenceProperty <RouteOrigin>
 
 //--------------------------------------------------------------------------------------------------

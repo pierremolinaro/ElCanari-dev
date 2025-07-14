@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_HorizontalAlignment  = EBEnumReadWriteProperty <Ho
 typealias EBStoredProperty_HorizontalAlignment     = EBEnumStoredProperty <HorizontalAlignment>
 typealias EBStandAloneProperty_HorizontalAlignment = EBEnumStandAloneProperty <HorizontalAlignment>
 typealias EBComputedProperty_HorizontalAlignment   = EBEnumGenericComputedProperty <HorizontalAlignment>
+typealias EBPreferenceProperty_HorizontalAlignment = EBEnumPreferenceProperty <HorizontalAlignment>
 
 //--------------------------------------------------------------------------------------------------

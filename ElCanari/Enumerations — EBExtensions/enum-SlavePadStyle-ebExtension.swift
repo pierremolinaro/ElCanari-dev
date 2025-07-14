@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_SlavePadStyle  = EBEnumReadWriteProperty <SlavePad
 typealias EBStoredProperty_SlavePadStyle     = EBEnumStoredProperty <SlavePadStyle>
 typealias EBStandAloneProperty_SlavePadStyle = EBEnumStandAloneProperty <SlavePadStyle>
 typealias EBComputedProperty_SlavePadStyle   = EBEnumGenericComputedProperty <SlavePadStyle>
+typealias EBPreferenceProperty_SlavePadStyle = EBEnumPreferenceProperty <SlavePadStyle>
 
 //--------------------------------------------------------------------------------------------------

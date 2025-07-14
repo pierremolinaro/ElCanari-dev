@@ -164,25 +164,25 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   fileprivate func setupImagePointsAndTheirObservers () {
   //--- Add model observers
     do{
-      let observer = EBOutletEvent () //§ EBModelEvent ()
+      let observer = EBOutletEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImageFirstPointXDidChange () }
       self.rootObject.mModelImageFirstPointX_property.startsBeingObserved (by: observer)
       self.mModelImageFirstPointXObserver = observer
     }
     do{
-      let observer = EBOutletEvent () //§ EBModelEvent ()
+      let observer = EBOutletEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImageFirstPointYDidChange () }
       self.rootObject.mModelImageFirstPointY_property.startsBeingObserved (by: observer)
       self.mModelImageFirstPointYObserver = observer
     }
     do{
-      let observer = EBOutletEvent () //§ EBModelEvent ()
+      let observer = EBOutletEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImagePointsDxDidChange () }
       self.rootObject.mModelImageSecondPointDx_property.startsBeingObserved (by: observer)
       self.mModelImagePointsDxObserver = observer
     }
     do{
-      let observer = EBOutletEvent () //§ EBModelEvent ()
+      let observer = EBOutletEvent ()
       observer.mEventCallBack = { [weak self] in self?.modelImagePointsDyDidChange () }
       self.rootObject.mModelImageSecondPointDy_property.startsBeingObserved (by: observer)
       self.mModelImagePointsDyObserver = observer
@@ -286,7 +286,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate var mPadNumberingObserver = EBOutletEvent () //§ EBModelEvent ()
+  fileprivate var mPadNumberingObserver = EBOutletEvent ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

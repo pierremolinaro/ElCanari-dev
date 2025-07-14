@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_BoardTextLayer  = EBEnumReadWriteProperty <BoardTe
 typealias EBStoredProperty_BoardTextLayer     = EBEnumStoredProperty <BoardTextLayer>
 typealias EBStandAloneProperty_BoardTextLayer = EBEnumStandAloneProperty <BoardTextLayer>
 typealias EBComputedProperty_BoardTextLayer   = EBEnumGenericComputedProperty <BoardTextLayer>
+typealias EBPreferenceProperty_BoardTextLayer = EBEnumPreferenceProperty <BoardTextLayer>
 
 //--------------------------------------------------------------------------------------------------

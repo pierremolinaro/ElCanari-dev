@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_RastnetDisplay  = EBEnumReadWriteProperty <Rastnet
 typealias EBStoredProperty_RastnetDisplay     = EBEnumStoredProperty <RastnetDisplay>
 typealias EBStandAloneProperty_RastnetDisplay = EBEnumStandAloneProperty <RastnetDisplay>
 typealias EBComputedProperty_RastnetDisplay   = EBEnumGenericComputedProperty <RastnetDisplay>
+typealias EBPreferenceProperty_RastnetDisplay = EBEnumPreferenceProperty <RastnetDisplay>
 
 //--------------------------------------------------------------------------------------------------

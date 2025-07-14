@@ -81,5 +81,6 @@ typealias EBReadWriteProperty_BoardTextVerticalAlignment  = EBEnumReadWritePrope
 typealias EBStoredProperty_BoardTextVerticalAlignment     = EBEnumStoredProperty <BoardTextVerticalAlignment>
 typealias EBStandAloneProperty_BoardTextVerticalAlignment = EBEnumStandAloneProperty <BoardTextVerticalAlignment>
 typealias EBComputedProperty_BoardTextVerticalAlignment   = EBEnumGenericComputedProperty <BoardTextVerticalAlignment>
+typealias EBPreferenceProperty_BoardTextVerticalAlignment = EBEnumPreferenceProperty <BoardTextVerticalAlignment>
 
 //--------------------------------------------------------------------------------------------------

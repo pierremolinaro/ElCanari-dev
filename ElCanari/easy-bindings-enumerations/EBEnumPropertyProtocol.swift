@@ -7,6 +7,9 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 protocol EBEnumPropertyProtocol : EBStoredPropertyProtocol, EBEnumProtocol {
+
+  init? (rawValue inRawValue : Int)
+
 }
 
 //--------------------------------------------------------------------------------------------------

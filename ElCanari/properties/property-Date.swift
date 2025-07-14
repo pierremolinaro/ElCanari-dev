@@ -12,5 +12,6 @@ typealias EBReadWriteProperty_Date = EBObservableMutableProperty <Date>
 typealias EBComputedProperty_Date   = EBComputedProperty <Date>
 typealias EBStoredProperty_Date     = EBStoredProperty <Date>
 typealias EBStandAloneProperty_Date = EBStandAloneProperty <Date>
+typealias EBPreferenceProperty_Date = EBPreferenceProperty <Date>
 
 //--------------------------------------------------------------------------------------------------

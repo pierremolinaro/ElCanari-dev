@@ -97,5 +97,6 @@ typealias EBReadWriteProperty_QuadrantRotation  = EBEnumReadWriteProperty <Quadr
 typealias EBStoredProperty_QuadrantRotation     = EBEnumStoredProperty <QuadrantRotation>
 typealias EBStandAloneProperty_QuadrantRotation = EBEnumStandAloneProperty <QuadrantRotation>
 typealias EBComputedProperty_QuadrantRotation   = EBEnumGenericComputedProperty <QuadrantRotation>
+typealias EBPreferenceProperty_QuadrantRotation = EBEnumPreferenceProperty <QuadrantRotation>
 
 //--------------------------------------------------------------------------------------------------

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_PadStyle  = EBEnumReadWriteProperty <PadStyle>
 typealias EBStoredProperty_PadStyle     = EBEnumStoredProperty <PadStyle>
 typealias EBStandAloneProperty_PadStyle = EBEnumStandAloneProperty <PadStyle>
 typealias EBComputedProperty_PadStyle   = EBEnumGenericComputedProperty <PadStyle>
+typealias EBPreferenceProperty_PadStyle = EBEnumPreferenceProperty <PadStyle>
 
 //--------------------------------------------------------------------------------------------------

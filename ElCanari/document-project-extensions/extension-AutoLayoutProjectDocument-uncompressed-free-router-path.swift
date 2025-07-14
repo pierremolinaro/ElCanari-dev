@@ -19,9 +19,9 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func installFreeRouter (_ inMainWindow : NSWindow) -> URL? {
-//    let FREEROUTING_LEGACY_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting.app"
-//    let FREEROUTING_LEGACY_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
-//    let CHECKSUM_LEGACY_FILE_PATH = FREEROUTING_DIR + "/release.txt"
+    let FREEROUTING_LEGACY_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting.app"
+    let FREEROUTING_LEGACY_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
+    let CHECKSUM_LEGACY_FILE_PATH = FREEROUTING_DIR + "/release.txt"
 
     let FREEROUTING_X86_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-x86_64.app"
     let FREEROUTING_X86_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-x86_64.app.tar.xz"
@@ -30,33 +30,43 @@ extension AutoLayoutProjectDocument {
     let FREEROUTING_ARM64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-arm64.app"
     let FREEROUTING_ARM64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-arm64.app.tar.xz"
     let CHECKSUM_ARM64_FILE_PATH = FREEROUTING_DIR + "/release-arm64.txt"
+
   //------------- FreeRouting directory
     guard self.checkExistsFreeroutingDirectoryOrCreateIt (inMainWindow) else {
       return nil
     }
-  //------------- AARCH64 or X86_64 ?
-    #if arch(arm64)
-      return self.internalInstallFreeRouter (
-        fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH,
-        checksumFilePath: CHECKSUM_ARM64_FILE_PATH,
-        freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH,
-        inMainWindow
-      )
-    #else
+  //------------- Launch
+    switch preferences_freeRoutingAppSelection_property.propval {
+    case .arm64 :
+      #if arch (x86_64)
+        let alert = NSAlert ()
+        alert.messageText = "Cannot run an arm64 application on an Intel Mac"
+        alert.informativeText = "Select x86_64 or Legacy FreeRouting Application"
+        alert.beginSheetModal (for: inMainWindow)
+        return nil
+      #else
+        return self.internalInstallFreeRouter (
+          fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH,
+          checksumFilePath: CHECKSUM_ARM64_FILE_PATH,
+          freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH,
+          inMainWindow
+        )
+      #endif
+    case .x86 :
       return self.internalInstallFreeRouter (
         fromArchivePath: FREEROUTING_X86_ARCHIVE_PATH,
         checksumFilePath: CHECKSUM_X86_FILE_PATH,
         freeRoutingApplicationPath: FREEROUTING_X86_APPLICATION_PATH,
         inMainWindow
       )
-    #endif
-  //------------- Install legacy application
-//    return self.internalInstallFreeRouter (
-//      fromArchivePath: FREEROUTING_LEGACY_ARCHIVE_PATH,
-//      checksumFilePath: CHECKSUM_LEGACY_FILE_PATH,
-//      freeRoutingApplicationPath: FREEROUTING_LEGACY_APPLICATION_PATH,
-//      inMainWindow
-//    )
+    case .legacy :
+      return self.internalInstallFreeRouter (
+        fromArchivePath: FREEROUTING_LEGACY_ARCHIVE_PATH,
+        checksumFilePath: CHECKSUM_LEGACY_FILE_PATH,
+        freeRoutingApplicationPath: FREEROUTING_LEGACY_APPLICATION_PATH,
+        inMainWindow
+      )
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,7 +76,11 @@ extension AutoLayoutProjectDocument {
     var ok = fm.fileExists (atPath: FREEROUTING_DIR)
     if !ok {
       do {
-        try fm.createDirectory (at: URL (fileURLWithPath: FREEROUTING_DIR), withIntermediateDirectories: false, attributes: nil)
+        try fm.createDirectory (
+          at: URL (fileURLWithPath: FREEROUTING_DIR),
+          withIntermediateDirectories: false,
+          attributes: nil
+        )
       }catch _ {
         let alert = NSAlert ()
         alert.messageText = "Cannot install FreeRouting application"
@@ -112,7 +126,6 @@ extension AutoLayoutProjectDocument {
       task.launch ()
       task.waitUntilExit ()
       let status = task.terminationStatus
-      // Swift.print ("STATUS \(status)")
       if status != 0 {
         let alert = NSAlert ()
         alert.messageText = "Cannot launch FreeRouting application"
@@ -134,7 +147,6 @@ extension AutoLayoutProjectDocument {
       }
     }
   //---
- //   Swift.print (ok ? "SUCCESS" : "FAILURE")
     return ok ? URL (fileURLWithPath: inApplicationPath) : nil
   }
 

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_PDFProductGrid  = EBEnumReadWriteProperty <PDFProd
 typealias EBStoredProperty_PDFProductGrid     = EBEnumStoredProperty <PDFProductGrid>
 typealias EBStandAloneProperty_PDFProductGrid = EBEnumStandAloneProperty <PDFProductGrid>
 typealias EBComputedProperty_PDFProductGrid   = EBEnumGenericComputedProperty <PDFProductGrid>
+typealias EBPreferenceProperty_PDFProductGrid = EBEnumPreferenceProperty <PDFProductGrid>
 
 //--------------------------------------------------------------------------------------------------

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_BorderCurveShape  = EBEnumReadWriteProperty <Borde
 typealias EBStoredProperty_BorderCurveShape     = EBEnumStoredProperty <BorderCurveShape>
 typealias EBStandAloneProperty_BorderCurveShape = EBEnumStandAloneProperty <BorderCurveShape>
 typealias EBComputedProperty_BorderCurveShape   = EBEnumGenericComputedProperty <BorderCurveShape>
+typealias EBPreferenceProperty_BorderCurveShape = EBEnumPreferenceProperty <BorderCurveShape>
 
 //--------------------------------------------------------------------------------------------------

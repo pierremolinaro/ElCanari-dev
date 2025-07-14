@@ -12,4 +12,5 @@ typealias EBReadWriteProperty_NSBezierPath   = EBObservableMutableProperty <NSBe
 typealias EBComputedProperty_NSBezierPath    = EBComputedProperty <NSBezierPath>
 typealias EBStoredProperty_NSBezierPath      = EBStoredProperty <NSBezierPath>
 typealias EBStandAloneProperty_NSBezierPath  = EBStandAloneProperty <NSBezierPath>
+typealias EBPreferenceProperty_NSBezierPath  = EBPreferenceProperty <NSBezierPath>
 

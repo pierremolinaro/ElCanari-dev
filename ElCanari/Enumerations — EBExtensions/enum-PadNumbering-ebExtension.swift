@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_PadNumbering  = EBEnumReadWriteProperty <PadNumber
 typealias EBStoredProperty_PadNumbering     = EBEnumStoredProperty <PadNumbering>
 typealias EBStandAloneProperty_PadNumbering = EBEnumStandAloneProperty <PadNumbering>
 typealias EBComputedProperty_PadNumbering   = EBEnumGenericComputedProperty <PadNumbering>
+typealias EBPreferenceProperty_PadNumbering = EBEnumPreferenceProperty <PadNumbering>
 
 //--------------------------------------------------------------------------------------------------

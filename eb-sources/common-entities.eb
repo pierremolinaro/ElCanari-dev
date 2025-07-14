@@ -306,3 +306,15 @@ func enum GerberUnit.popupTitles {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+enum FreeRoutingAppSelection {
+  arm64, x86, legacy
+}
+
+func enum FreeRoutingAppSelection.popupTitles {
+  arm64 : "arm64 FreeRouting" ;
+  x86 : "x86_64 FreeRouting" ;
+  legacy : "Legacy FreeRouting" ;
+}
+
+//--------------------------------------------------------------------------------------------------

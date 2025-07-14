@@ -3903,6 +3903,11 @@ do{
   _ = contentView .appendView (contentView_view)
 }
 do{
+  let contentView_view = AutoLayoutEnumPopUpButton (titles: FreeRoutingAppSelection.popupTitles (), size: .small)
+    .bind_selectedIndex (preferences_freeRoutingAppSelection_property)
+  _ = contentView .appendView (contentView_view)
+}
+do{
   let contentView_view = AutoLayoutHorizontalStackView ()
   _ = contentView_view.appendFlexibleSpace ()
   do{
@@ -3951,6 +3956,11 @@ do{
     _ = contentView_view .appendView (contentView_view_view)
   }
   _ = contentView_view.appendFlexibleSpace ()
+  _ = contentView .appendView (contentView_view)
+}
+do{
+  let contentView_view = AutoLayoutEnumPopUpButton (titles: FreeRoutingAppSelection.popupTitles (), size: .small)
+    .bind_selectedIndex (preferences_freeRoutingAppSelection_property)
   _ = contentView .appendView (contentView_view)
 }
 do{

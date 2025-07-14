@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_ComponentSide  = EBEnumReadWriteProperty <Componen
 typealias EBStoredProperty_ComponentSide     = EBEnumStoredProperty <ComponentSide>
 typealias EBStandAloneProperty_ComponentSide = EBEnumStandAloneProperty <ComponentSide>
 typealias EBComputedProperty_ComponentSide   = EBEnumGenericComputedProperty <ComponentSide>
+typealias EBPreferenceProperty_ComponentSide = EBEnumPreferenceProperty <ComponentSide>
 
 //--------------------------------------------------------------------------------------------------

@@ -6,14 +6,22 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-extension BoardShape : EBEnumPropertyProtocol, Hashable {
+extension FreeRoutingAppSelection : EBEnumPropertyProtocol, Hashable {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Function popupTitles
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  static func popupTitles () -> [String] {
+    return ["arm64 FreeRouting", "x86_64 FreeRouting", "Legacy FreeRouting"]
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Enum generic bindings utility functions
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func buildfromRawValue (rawValue : Int) -> BoardShape? {
-    if let v = BoardShape (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> FreeRoutingAppSelection? {
+    if let v = FreeRoutingAppSelection (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -22,9 +30,9 @@ extension BoardShape : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> BoardShape {
+  func enumfromRawValue (rawValue : Int) -> FreeRoutingAppSelection {
     var result = self
-    let v : BoardShape? = BoardShape (rawValue:rawValue) ;
+    let v : FreeRoutingAppSelection? = FreeRoutingAppSelection (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -47,9 +55,9 @@ extension BoardShape : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func convertFromNSObject (object : NSObject) -> BoardShape {
-    var result = BoardShape.rectangular
-    if let number = object as? NSNumber, let v = BoardShape (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> FreeRoutingAppSelection {
+    var result = FreeRoutingAppSelection.arm64
+    if let number = object as? NSNumber, let v = FreeRoutingAppSelection (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -57,8 +65,8 @@ extension BoardShape : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BoardShape? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = BoardShape (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> FreeRoutingAppSelection? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = FreeRoutingAppSelection (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -77,10 +85,10 @@ extension BoardShape : EBEnumPropertyProtocol, Hashable {
 
 //--------------------------------------------------------------------------------------------------
 
-typealias EBReadWriteProperty_BoardShape  = EBEnumReadWriteProperty <BoardShape>
-typealias EBStoredProperty_BoardShape     = EBEnumStoredProperty <BoardShape>
-typealias EBStandAloneProperty_BoardShape = EBEnumStandAloneProperty <BoardShape>
-typealias EBComputedProperty_BoardShape   = EBEnumGenericComputedProperty <BoardShape>
-typealias EBPreferenceProperty_BoardShape = EBEnumPreferenceProperty <BoardShape>
+typealias EBReadWriteProperty_FreeRoutingAppSelection  = EBEnumReadWriteProperty <FreeRoutingAppSelection>
+typealias EBStoredProperty_FreeRoutingAppSelection     = EBEnumStoredProperty <FreeRoutingAppSelection>
+typealias EBStandAloneProperty_FreeRoutingAppSelection = EBEnumStandAloneProperty <FreeRoutingAppSelection>
+typealias EBComputedProperty_FreeRoutingAppSelection   = EBEnumGenericComputedProperty <FreeRoutingAppSelection>
+typealias EBPreferenceProperty_FreeRoutingAppSelection = EBEnumPreferenceProperty <FreeRoutingAppSelection>
 
 //--------------------------------------------------------------------------------------------------

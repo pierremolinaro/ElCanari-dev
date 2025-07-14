@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_VerticalAlignment  = EBEnumReadWriteProperty <Vert
 typealias EBStoredProperty_VerticalAlignment     = EBEnumStoredProperty <VerticalAlignment>
 typealias EBStandAloneProperty_VerticalAlignment = EBEnumStandAloneProperty <VerticalAlignment>
 typealias EBComputedProperty_VerticalAlignment   = EBEnumGenericComputedProperty <VerticalAlignment>
+typealias EBPreferenceProperty_VerticalAlignment = EBEnumPreferenceProperty <VerticalAlignment>
 
 //--------------------------------------------------------------------------------------------------

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_AutorouterPreferredDirections  = EBEnumReadWritePr
 typealias EBStoredProperty_AutorouterPreferredDirections     = EBEnumStoredProperty <AutorouterPreferredDirections>
 typealias EBStandAloneProperty_AutorouterPreferredDirections = EBEnumStandAloneProperty <AutorouterPreferredDirections>
 typealias EBComputedProperty_AutorouterPreferredDirections   = EBEnumGenericComputedProperty <AutorouterPreferredDirections>
+typealias EBPreferenceProperty_AutorouterPreferredDirections = EBEnumPreferenceProperty <AutorouterPreferredDirections>
 
 //--------------------------------------------------------------------------------------------------

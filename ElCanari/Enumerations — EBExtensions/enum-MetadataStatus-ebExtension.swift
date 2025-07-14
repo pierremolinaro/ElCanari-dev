@@ -81,5 +81,6 @@ typealias EBReadWriteProperty_MetadataStatus  = EBEnumReadWriteProperty <Metadat
 typealias EBStoredProperty_MetadataStatus     = EBEnumStoredProperty <MetadataStatus>
 typealias EBStandAloneProperty_MetadataStatus = EBEnumStandAloneProperty <MetadataStatus>
 typealias EBComputedProperty_MetadataStatus   = EBEnumGenericComputedProperty <MetadataStatus>
+typealias EBPreferenceProperty_MetadataStatus = EBEnumPreferenceProperty <MetadataStatus>
 
 //--------------------------------------------------------------------------------------------------

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_QRCodeCorrectionLevel  = EBEnumReadWriteProperty <
 typealias EBStoredProperty_QRCodeCorrectionLevel     = EBEnumStoredProperty <QRCodeCorrectionLevel>
 typealias EBStandAloneProperty_QRCodeCorrectionLevel = EBEnumStandAloneProperty <QRCodeCorrectionLevel>
 typealias EBComputedProperty_QRCodeCorrectionLevel   = EBEnumGenericComputedProperty <QRCodeCorrectionLevel>
+typealias EBPreferenceProperty_QRCodeCorrectionLevel = EBEnumPreferenceProperty <QRCodeCorrectionLevel>
 
 //--------------------------------------------------------------------------------------------------

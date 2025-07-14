@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_GridStyle  = EBEnumReadWriteProperty <GridStyle>
 typealias EBStoredProperty_GridStyle     = EBEnumStoredProperty <GridStyle>
 typealias EBStandAloneProperty_GridStyle = EBEnumStandAloneProperty <GridStyle>
 typealias EBComputedProperty_GridStyle   = EBEnumGenericComputedProperty <GridStyle>
+typealias EBPreferenceProperty_GridStyle = EBEnumPreferenceProperty <GridStyle>
 
 //--------------------------------------------------------------------------------------------------

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_GerberUnit  = EBEnumReadWriteProperty <GerberUnit>
 typealias EBStoredProperty_GerberUnit     = EBEnumStoredProperty <GerberUnit>
 typealias EBStandAloneProperty_GerberUnit = EBEnumStandAloneProperty <GerberUnit>
 typealias EBComputedProperty_GerberUnit   = EBEnumGenericComputedProperty <GerberUnit>
+typealias EBPreferenceProperty_GerberUnit = EBEnumPreferenceProperty <GerberUnit>
 
 //--------------------------------------------------------------------------------------------------

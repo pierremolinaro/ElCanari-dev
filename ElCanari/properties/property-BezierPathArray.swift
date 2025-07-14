@@ -12,5 +12,6 @@ typealias EBReadWriteProperty_BezierPathArray = EBObservableMutableProperty <Bez
 typealias EBComputedProperty_BezierPathArray   = EBComputedProperty <BezierPathArray>
 typealias EBStoredProperty_BezierPathArray     = EBStoredProperty <BezierPathArray>
 typealias EBStandAloneProperty_BezierPathArray = EBStandAloneProperty <BezierPathArray>
+typealias EBPreferenceProperty_BezierPathArray = EBPreferenceProperty <BezierPathArray>
 
 //--------------------------------------------------------------------------------------------------

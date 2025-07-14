@@ -81,5 +81,6 @@ typealias EBReadWriteProperty_PadSide  = EBEnumReadWriteProperty <PadSide>
 typealias EBStoredProperty_PadSide     = EBEnumStoredProperty <PadSide>
 typealias EBStandAloneProperty_PadSide = EBEnumStandAloneProperty <PadSide>
 typealias EBComputedProperty_PadSide   = EBEnumGenericComputedProperty <PadSide>
+typealias EBPreferenceProperty_PadSide = EBEnumPreferenceProperty <PadSide>
 
 //--------------------------------------------------------------------------------------------------

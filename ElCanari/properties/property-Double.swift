@@ -12,5 +12,6 @@ typealias EBReadWriteProperty_Double = EBObservableMutableProperty <Double>
 typealias EBComputedProperty_Double   = EBComputedProperty <Double>
 typealias EBStoredProperty_Double     = EBStoredProperty <Double>
 typealias EBStandAloneProperty_Double = EBStandAloneProperty <Double>
+typealias EBPreferenceProperty_Double = EBPreferenceProperty <Double>
 
 //--------------------------------------------------------------------------------------------------

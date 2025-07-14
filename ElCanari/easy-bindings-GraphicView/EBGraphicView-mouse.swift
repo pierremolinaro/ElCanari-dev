@@ -209,12 +209,25 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func flagsChanged (with inEvent : NSEvent) {
-    let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+  // 13 juillet 2025 : sur osx 15.5, flagsChanged(with:) ne contient pas de valeur
+  // valide pour les coordonnées de la souris, contrairement à ox 10.15… La description
+  // dans la documentation Apple indique que inEvent.locationInWindow s'applique uniquement
+  // aux « mouse events ». Il faut donc récupérer directement les coordonnées écran de la position
+  // de la souris et les traduire en coordonnées de la vue.
+    let mouseLocationInScreenCoordinates = NSEvent.mouseLocation
+    let mouseLocationInWindowCoordinates = self.window!.convertPoint (fromScreen: mouseLocationInScreenCoordinates)
+    let unalignedLocationInView = self.convert (mouseLocationInWindowCoordinates, from: nil)
   //---
     self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
-    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation: unalignedLocationInView, inEvent.modifierFlags, self)
+    self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (
+      mouseDraggedUnalignedLocation: unalignedLocationInView,
+      inEvent.modifierFlags,
+      self
+    )
   //--- XY
-    let locationOnGridInView = unalignedLocationInView.aligned (onGrid: canariUnitToCocoa (self.mMouseGridInCanariUnit))
+    let locationOnGridInView = unalignedLocationInView.aligned (
+      onGrid: canariUnitToCocoa (self.mMouseGridInCanariUnit)
+    )
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
   //--- Helper string
     self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))

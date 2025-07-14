@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_BoardQRCodeLayer  = EBEnumReadWriteProperty <Board
 typealias EBStoredProperty_BoardQRCodeLayer     = EBEnumStoredProperty <BoardQRCodeLayer>
 typealias EBStandAloneProperty_BoardQRCodeLayer = EBEnumStandAloneProperty <BoardQRCodeLayer>
 typealias EBComputedProperty_BoardQRCodeLayer   = EBEnumGenericComputedProperty <BoardQRCodeLayer>
+typealias EBPreferenceProperty_BoardQRCodeLayer = EBEnumPreferenceProperty <BoardQRCodeLayer>
 
 //--------------------------------------------------------------------------------------------------

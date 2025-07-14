@@ -81,5 +81,6 @@ typealias EBReadWriteProperty_MarginSize  = EBEnumReadWriteProperty <MarginSize>
 typealias EBStoredProperty_MarginSize     = EBEnumStoredProperty <MarginSize>
 typealias EBStandAloneProperty_MarginSize = EBEnumStandAloneProperty <MarginSize>
 typealias EBComputedProperty_MarginSize   = EBEnumGenericComputedProperty <MarginSize>
+typealias EBPreferenceProperty_MarginSize = EBEnumPreferenceProperty <MarginSize>
 
 //--------------------------------------------------------------------------------------------------

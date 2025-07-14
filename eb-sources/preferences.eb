@@ -100,8 +100,17 @@ prefs {
         gutter
         Checkbox (title: "Show Debug Menu", size: .regular) [configurator showDebugMenu]
       }
-      StaticLabel (title: "FreeRouting Application Directory", bold: yes, size: .regular, alignment: .left)
-      Button (title: "", size: .regular) [configurator configureFreeRoutingPath]
+      StaticLabel (title: "FreeRouting", bold: yes, size: .regular, alignment: .left)
+      hStack {
+        StaticLabel (title: "Application", bold: no, size: .regular, alignment: .left)
+        EnumPopUpButton (titles: enum FreeRoutingAppSelection.popupTitles, size: .regular) {
+          $selectedIndex prefs.freeRoutingAppSelection
+        }
+      }
+      hStack {
+        StaticLabel (title: "Directory", bold: no, size: .regular, alignment: .left)
+        Button (title: "", size: .regular) [configurator configureFreeRoutingPath]
+      }
     }
     space
   }
@@ -547,6 +556,12 @@ prefs {
 
 prefs {
   property String artworkDialogFilterString default "" ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+prefs {
+  property FreeRoutingAppSelection freeRoutingAppSelection default legacy ;
 }
 
 //--------------------------------------------------------------------------------------------------

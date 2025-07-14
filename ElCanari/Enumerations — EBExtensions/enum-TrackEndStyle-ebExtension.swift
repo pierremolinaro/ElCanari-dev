@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_TrackEndStyle  = EBEnumReadWriteProperty <TrackEnd
 typealias EBStoredProperty_TrackEndStyle     = EBEnumStoredProperty <TrackEndStyle>
 typealias EBStandAloneProperty_TrackEndStyle = EBEnumStandAloneProperty <TrackEndStyle>
 typealias EBComputedProperty_TrackEndStyle   = EBEnumGenericComputedProperty <TrackEndStyle>
+typealias EBPreferenceProperty_TrackEndStyle = EBEnumPreferenceProperty <TrackEndStyle>
 
 //--------------------------------------------------------------------------------------------------

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_TrackSide  = EBEnumReadWriteProperty <TrackSide>
 typealias EBStoredProperty_TrackSide     = EBEnumStoredProperty <TrackSide>
 typealias EBStandAloneProperty_TrackSide = EBEnumStandAloneProperty <TrackSide>
 typealias EBComputedProperty_TrackSide   = EBEnumGenericComputedProperty <TrackSide>
+typealias EBPreferenceProperty_TrackSide = EBEnumPreferenceProperty <TrackSide>
 
 //--------------------------------------------------------------------------------------------------

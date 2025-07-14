@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_BoardImageDisplay  = EBEnumReadWriteProperty <Boar
 typealias EBStoredProperty_BoardImageDisplay     = EBEnumStoredProperty <BoardImageDisplay>
 typealias EBStandAloneProperty_BoardImageDisplay = EBEnumStandAloneProperty <BoardImageDisplay>
 typealias EBComputedProperty_BoardImageDisplay   = EBEnumGenericComputedProperty <BoardImageDisplay>
+typealias EBPreferenceProperty_BoardImageDisplay = EBEnumPreferenceProperty <BoardImageDisplay>
 
 //--------------------------------------------------------------------------------------------------

@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_LayerConfiguration  = EBEnumReadWriteProperty <Lay
 typealias EBStoredProperty_LayerConfiguration     = EBEnumStoredProperty <LayerConfiguration>
 typealias EBStandAloneProperty_LayerConfiguration = EBEnumStandAloneProperty <LayerConfiguration>
 typealias EBComputedProperty_LayerConfiguration   = EBEnumGenericComputedProperty <LayerConfiguration>
+typealias EBPreferenceProperty_LayerConfiguration = EBEnumPreferenceProperty <LayerConfiguration>
 
 //--------------------------------------------------------------------------------------------------

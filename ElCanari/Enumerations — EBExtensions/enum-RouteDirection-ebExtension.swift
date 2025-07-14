@@ -89,5 +89,6 @@ typealias EBReadWriteProperty_RouteDirection  = EBEnumReadWriteProperty <RouteDi
 typealias EBStoredProperty_RouteDirection     = EBEnumStoredProperty <RouteDirection>
 typealias EBStandAloneProperty_RouteDirection = EBEnumStandAloneProperty <RouteDirection>
 typealias EBComputedProperty_RouteDirection   = EBEnumGenericComputedProperty <RouteDirection>
+typealias EBPreferenceProperty_RouteDirection = EBEnumPreferenceProperty <RouteDirection>
 
 //--------------------------------------------------------------------------------------------------

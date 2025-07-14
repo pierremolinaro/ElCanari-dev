@@ -2709,6 +2709,12 @@
 		CFB9E20222D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFB9E20322D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFBAB0B420DE786C00476FB7 /* canari-conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */; };
+		CFBAC8DB2E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAC8D92E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift */; };
+		CFBAC8DC2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAC8DA2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift */; };
+		CFBAC8DD2E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAC8D92E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift */; };
+		CFBAC8DE2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAC8DA2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift */; };
+		CFBAC9692E24E97A00042C97 /* EBEnumPreferenceProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAC9682E24E97200042C97 /* EBEnumPreferenceProperty.swift */; };
+		CFBAC96A2E24E97A00042C97 /* EBEnumPreferenceProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAC9682E24E97200042C97 /* EBEnumPreferenceProperty.swift */; };
 		CFBC202B275E14B60076697D /* extension-MergerBoardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC202A275E14B60076697D /* extension-MergerBoardInstance.swift */; };
 		CFBC202C275E14B60076697D /* extension-MergerBoardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC202A275E14B60076697D /* extension-MergerBoardInstance.swift */; };
 		CFBC202F275E14D40076697D /* extension-SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC202E275E14D30076697D /* extension-SegmentForFontCharacter.swift */; };
@@ -5010,6 +5016,9 @@
 		CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-Preferences-userLibraryArrayController.swift"; sourceTree = "<group>"; };
 		CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackSide.swift"; sourceTree = "<group>"; };
 		CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "canari-conversions.swift"; sourceTree = "<group>"; };
+		CFBAC8D92E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-FreeRoutingAppSelection.swift"; sourceTree = "<group>"; };
+		CFBAC8DA2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "enum-FreeRoutingAppSelection-ebExtension.swift"; sourceTree = "<group>"; };
+		CFBAC9682E24E97200042C97 /* EBEnumPreferenceProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBEnumPreferenceProperty.swift; sourceTree = "<group>"; };
 		CFBC202A275E14B60076697D /* extension-MergerBoardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerBoardInstance.swift"; sourceTree = "<group>"; };
 		CFBC202E275E14D30076697D /* extension-SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-SegmentForFontCharacter.swift"; sourceTree = "<group>"; };
 		CFBC2032275E14EE0076697D /* extension-BoardConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-BoardConnector.swift"; sourceTree = "<group>"; };
@@ -6245,6 +6254,8 @@
 				CF62187E27A1A57B00D02368 /* configurator-Preferences-updateCheckIntervalPopUpButtonConfigurator.swift */,
 				CF62187627A1A10C00D02368 /* configurator-Preferences-usingSparkleTextFieldConfigurator.swift */,
 				CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */,
+				CFBAC8D92E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift */,
+				CFBAC8DA2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift */,
 				CF62175E27A19E4D00D02368 /* Preferences.swift */,
 				CFB8DDB127A6CFF20097DF9A /* Preferences-SuperClass.swift */,
 				CF62175827A19E4C00D02368 /* Preferences+libraryFileSystemObserving.swift */,
@@ -6749,6 +6760,7 @@
 		CF8B9D262AD17ECD002169DC /* EB — enumerations */ = {
 			isa = PBXGroup;
 			children = (
+				CFBAC9682E24E97200042C97 /* EBEnumPreferenceProperty.swift */,
 				CF0777E3235216F700F56EAB /* EBEnumGenericComputedProperty.swift */,
 				CF841C45275BB3880000EA26 /* EBEnumGenericReadWritePropertyController.swift */,
 				CF0777F623521A4E00F56EAB /* EBEnumPropertyProtocol.swift */,
@@ -8868,6 +8880,8 @@
 				CFEB7CD1233A28860060A97A /* transient-ProjectRoot-signatureForERCChecking.swift in Sources */,
 				CFB39D6D29F41EC700AA7716 /* computed-BoardImage-computedDataImage.swift in Sources */,
 				CF9F8BEA2852689400E313C7 /* action-AutoLayoutMergerDocument-stackSelectionDownAction.swift in Sources */,
+				CFBAC8DD2E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift in Sources */,
+				CFBAC8DE2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift in Sources */,
 				CF62178527A19E4E00D02368 /* transient-Preferences-mValueRevealInFinder_devices.swift in Sources */,
 				CF2A01F721DE7C4200F3A379 /* transient-PackageSlavePad-padNumberDisplay.swift in Sources */,
 				CFAB36A523786D69000C9954 /* transient-PackageObject-knobSize.swift in Sources */,
@@ -9682,6 +9696,7 @@
 				CF49910128D8C9430099F871 /* enum-HorizontalAlignment-extension.swift in Sources */,
 				CF22F213275A73EE009C6FAC /* transient-MergerRoot-boardWidth.swift in Sources */,
 				CF3494AE29EAB36F006AB1EB /* transient-BoardQRCode-objectDisplay.swift in Sources */,
+				CFBAC96A2E24E97A00042C97 /* EBEnumPreferenceProperty.swift in Sources */,
 				CFDD6D5B26A1B0F20050CB78 /* AutoLayoutCanariDimensionAndPopUp.swift in Sources */,
 				CFA80DE425C0616900966D91 /* compute-BoardTrack-computedP2X.swift in Sources */,
 				CFFEC1BB2804818B00E5E8DD /* tomany-SymbolObject.swift in Sources */,
@@ -10233,6 +10248,7 @@
 				CFEB7BA3233A26F20060A97A /* transient-DevicePinInProject-pinQualifiedName.swift in Sources */,
 				CF315512275CC90700ED1FA8 /* transient-MergerRoot-hasSixLayers.swift in Sources */,
 				CF59C43529BE36AB004CA404 /* property-String.swift in Sources */,
+				CFBAC9692E24E97A00042C97 /* EBEnumPreferenceProperty.swift in Sources */,
 				CF22F1C9275A73ED009C6FAC /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
 				CF711FEF275E1EA300280069 /* extension-SheetInProject-add-label.swift in Sources */,
 				CFB4C0642794662800C509A9 /* AutoLayoutEnumPopUpButton.swift in Sources */,
@@ -11347,6 +11363,8 @@
 				CF39CCDF268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-removeDocumentationAction.swift in Sources */,
 				CFAFA54424F26F2C002D48BE /* ElCanariCursors.swift in Sources */,
 				CFEAAD5922317C0300F69A12 /* transient-SymbolOval-strokeBezierPath.swift in Sources */,
+				CFBAC8DB2E24E56B00042C97 /* enum-FreeRoutingAppSelection.swift in Sources */,
+				CFBAC8DC2E24E56B00042C97 /* enum-FreeRoutingAppSelection-ebExtension.swift in Sources */,
 				CF22F220275A73EE009C6FAC /* transient-BoardModel-frontComponentValueSegments.swift in Sources */,
 				CFEB7B61233A25EC0060A97A /* transient-ComponentInProject-objectDisplay.swift in Sources */,
 				CF39CCE2268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSelectedSymbols.swift in Sources */,

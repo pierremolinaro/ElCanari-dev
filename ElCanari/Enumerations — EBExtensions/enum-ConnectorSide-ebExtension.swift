@@ -81,5 +81,6 @@ typealias EBReadWriteProperty_ConnectorSide  = EBEnumReadWriteProperty <Connecto
 typealias EBStoredProperty_ConnectorSide     = EBEnumStoredProperty <ConnectorSide>
 typealias EBStandAloneProperty_ConnectorSide = EBEnumStandAloneProperty <ConnectorSide>
 typealias EBComputedProperty_ConnectorSide   = EBEnumGenericComputedProperty <ConnectorSide>
+typealias EBPreferenceProperty_ConnectorSide = EBEnumPreferenceProperty <ConnectorSide>
 
 //--------------------------------------------------------------------------------------------------

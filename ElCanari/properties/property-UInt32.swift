@@ -12,5 +12,6 @@ typealias EBReadWriteProperty_UInt32 = EBObservableMutableProperty <UInt32>
 typealias EBComputedProperty_UInt32   = EBComputedProperty <UInt32>
 typealias EBStoredProperty_UInt32     = EBStoredProperty <UInt32>
 typealias EBStandAloneProperty_UInt32 = EBStandAloneProperty <UInt32>
+typealias EBPreferenceProperty_UInt32 = EBPreferenceProperty <UInt32>
 
 //--------------------------------------------------------------------------------------------------
