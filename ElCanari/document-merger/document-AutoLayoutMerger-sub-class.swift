@@ -51,7 +51,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
 
   let mInsertArrayOfBoardsXCount = EBStandAloneProperty <Int> (1)
   let mInsertArrayOfBoardsYCount = EBStandAloneProperty <Int> (1)
-  let mInsertArrayOfBoardsOrientation = EBStoredProperty_QuadrantRotation (defaultValue: .rotation0, undoManager: nil, key: nil)
+  let mInsertArrayOfBoardsOrientation = EBStandAloneProperty_QuadrantRotation (.rotation0)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Drag and drop destination

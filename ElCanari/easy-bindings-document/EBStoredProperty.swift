@@ -63,9 +63,7 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMut
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
-//    if let key = self.mKey {
-      ioDictionary [self.mKey] = self.mValue.convertToNSObject ()
-//    }
+    ioDictionary [self.mKey] = self.mValue.convertToNSObject ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -89,19 +87,11 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMut
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // §
-  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject]) {
-    if let value = TYPE.unarchiveFromDataRange (inData, inRange) {
-      self.setProp (value)
-    }
-  }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func initialize (withRangeDictionary inRangeDictionary : [String : NSRange],
+  func initialize (fromRange inRange : NSRange,
                    ofData inData : Data,
                    _ inManagedObjectArray : [RawObject]) {
-    if let range = inRangeDictionary [self.mKey], let value = TYPE.unarchiveFromDataRange (inData, range) {
+    if let value = TYPE.unarchiveFromDataRange (inData, inRange) {
       self.setProp (value)
     }
   }

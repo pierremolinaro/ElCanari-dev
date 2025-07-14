@@ -16,12 +16,14 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mKey : String?
+  private var mKey : String
   var key : String? { return self.mKey }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (defaultValue inValue : TYPE, undoManager inEBUndoManager : UndoManager?, key inKey : String?) {
+  init (defaultValue inValue : TYPE,
+        undoManager inEBUndoManager : UndoManager?,
+        key inKey : String) {
     self.mValue = inValue
     self.mKey = inKey
     self.mUndoManager = inEBUndoManager
@@ -61,13 +63,13 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
 
   func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let key = self.mKey, let value = inDictionary [key] as? NSObject {
+    if let value = inDictionary [self.mKey] as? NSObject {
       self.setProp (TYPE.convertFromNSObject (object: value))
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // §
+
   func initialize (fromRange inRange : NSRange,
                    ofData inData : Data,
                    _ inManagedObjectArray : [RawObject]) {
@@ -78,20 +80,8 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initialize (withRangeDictionary inRangeDictionary : [String : NSRange],
-                   ofData inData : Data,
-                   _ inManagedObjectArray : [RawObject]) {
-    if let key = self.mKey, let range = inRangeDictionary [key], let value = TYPE.unarchiveFromDataRange (inData, range) {
-      self.setProp (value)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func store (inDictionary ioDictionary : inout [String : Any]) {
-    if let key = self.mKey {
-      ioDictionary [key] = self.mValue.convertToNSObject ()
-    }
+    ioDictionary [self.mKey] = self.mValue.convertToNSObject ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

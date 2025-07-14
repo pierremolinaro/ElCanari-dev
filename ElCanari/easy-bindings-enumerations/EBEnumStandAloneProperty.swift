@@ -16,7 +16,7 @@ final class EBEnumStandAloneProperty <TYPE : EBEnumPropertyProtocol> : EBEnumRea
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (defaultValue inValue : TYPE) {
+  init (_ inValue : TYPE) {
     self.mValue = inValue
     super.init ()
   }

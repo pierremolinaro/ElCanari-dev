@@ -89,22 +89,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
         storedProperty.initialize (fromValueDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
       }
     }
-//    let mirror = Mirror (reflecting: self)
-//    for property in mirror.children {
-//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
-//        storedProperty.initialize (fromValueDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
-//      }
-//    }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Setup with range dictionary (text format)
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func setUpProperties (withRangeDictionary inRangeDictionary : [String : NSRange],
-//                        rawObjectArray inRawObjectArray : [RawObject],
-//                        data inData : Data) {
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -120,23 +105,10 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
         storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
       }
     }
-//    let mirror = Mirror (reflecting: self)
-//    for property in mirror.children {
-//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol,
-//         let key = storedProperty.key,
-//         let range = inRangeDictionary [key] {
-//        storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
-//      }
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   accessibleObjectsForSaveOperation
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
-//  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
@@ -147,12 +119,6 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
         storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
       }
     }
-//    let mirror = Mirror (reflecting: self)
-//    for property in mirror.children {
-//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
-//        storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
-//      }
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,12 +134,6 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
         storedProperty.store (inDictionary: &ioDictionary)
       }
     }
-//    let mirror = Mirror (reflecting: self)
-//    for property in mirror.children {
-//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
-//        storedProperty.store (inDictionary: &ioDictionary)
-//      }
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -189,12 +149,6 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
         storedProperty.store (inDictionary: &ioDictionary)
       }
     }
-//    let mirror = Mirror (reflecting: self)
-//    for property in mirror.children {
-//      if let storedProperty = property.value as? any EBDocumentStorablePropertyProtocol, storedProperty.key != nil {
-//        storedProperty.store (inDictionary: &ioDictionary)
-//      }
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -209,12 +163,6 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
         ioString += key + "\n"
       }
     }
-//    let mirror = Mirror (reflecting: self)
-//    for property in mirror.children {
-//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
-//        ioString += key + "\n"
-//      }
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -230,13 +178,6 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
         ioData.append (ascii: .lineFeed)
       }
     }
-//    let mirror = Mirror (reflecting: self)
-//    for property in mirror.children {
-//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
-//        storedProperty.appendValueTo (data: &ioData)
-//        ioData.append (ascii: .lineFeed)
-//      }
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
