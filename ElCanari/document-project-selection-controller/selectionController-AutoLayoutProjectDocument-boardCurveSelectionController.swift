@@ -214,7 +214,7 @@ import AppKit
     self.mModel = nil
   } */
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_descriptor (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_descriptor_StartsBeingObserved (by: self.descriptor_property)
@@ -254,7 +254,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_isLine (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_isLine_StartsBeingObserved (by: self.isLine_property)
@@ -294,7 +294,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mCPX1 (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mCPX1_StartsBeingObserved (by: self.mCPX1_property)
@@ -346,7 +346,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mCPX2 (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mCPX2_StartsBeingObserved (by: self.mCPX2_property)
@@ -398,7 +398,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mCPY1 (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mCPY1_StartsBeingObserved (by: self.mCPY1_property)
@@ -450,7 +450,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mCPY2 (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mCPY2_StartsBeingObserved (by: self.mCPY2_property)
@@ -502,7 +502,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mNextX (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mNextX_StartsBeingObserved (by: self.mNextX_property)
@@ -554,7 +554,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mNextY (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mNextY_StartsBeingObserved (by: self.mNextY_property)
@@ -606,7 +606,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mShape (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mShape_StartsBeingObserved (by: self.mShape_property)
@@ -658,7 +658,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mX (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mX_StartsBeingObserved (by: self.mX_property)
@@ -710,7 +710,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mY (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_mY_StartsBeingObserved (by: self.mY_property)
@@ -762,7 +762,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
@@ -802,7 +802,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_p2Xvalue (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_p2Xvalue_StartsBeingObserved (by: self.p2Xvalue_property)
@@ -842,7 +842,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_p2Yvalue (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_p2Yvalue_StartsBeingObserved (by: self.p2Yvalue_property)
@@ -882,7 +882,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_BorderCurve) {
     model.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)

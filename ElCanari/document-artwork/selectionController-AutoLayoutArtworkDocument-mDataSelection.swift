@@ -396,7 +396,7 @@ import AppKit
     self.mModel = nil
   } */
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawBoardLimits_StartsBeingObserved (by: self.drawBoardLimits_property)
@@ -448,7 +448,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawComponentNamesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawComponentNamesBottomSide_StartsBeingObserved (by: self.drawComponentNamesBottomSide_property)
@@ -500,7 +500,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawComponentNamesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawComponentNamesTopSide_StartsBeingObserved (by: self.drawComponentNamesTopSide_property)
@@ -552,7 +552,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawComponentValuesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawComponentValuesBottomSide_StartsBeingObserved (by: self.drawComponentValuesBottomSide_property)
@@ -604,7 +604,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawComponentValuesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawComponentValuesTopSide_StartsBeingObserved (by: self.drawComponentValuesTopSide_property)
@@ -656,7 +656,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawImagesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawImagesBottomSide_StartsBeingObserved (by: self.drawImagesBottomSide_property)
@@ -708,7 +708,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawImagesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawImagesTopSide_StartsBeingObserved (by: self.drawImagesTopSide_property)
@@ -760,7 +760,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawInternalBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawInternalBoardLimits_StartsBeingObserved (by: self.drawInternalBoardLimits_property)
@@ -812,7 +812,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawPackageLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawPackageLegendBottomSide_StartsBeingObserved (by: self.drawPackageLegendBottomSide_property)
@@ -864,7 +864,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawPackageLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawPackageLegendTopSide_StartsBeingObserved (by: self.drawPackageLegendTopSide_property)
@@ -916,7 +916,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawPadsBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawPadsBottomSide_StartsBeingObserved (by: self.drawPadsBottomSide_property)
@@ -968,7 +968,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawPadsTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawPadsTopSide_StartsBeingObserved (by: self.drawPadsTopSide_property)
@@ -1020,7 +1020,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawQRCodesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawQRCodesBottomSide_StartsBeingObserved (by: self.drawQRCodesBottomSide_property)
@@ -1072,7 +1072,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawQRCodesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawQRCodesTopSide_StartsBeingObserved (by: self.drawQRCodesTopSide_property)
@@ -1124,7 +1124,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTextsLayoutBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTextsLayoutBottomSide_StartsBeingObserved (by: self.drawTextsLayoutBottomSide_property)
@@ -1176,7 +1176,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTextsLayoutTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTextsLayoutTopSide_StartsBeingObserved (by: self.drawTextsLayoutTopSide_property)
@@ -1228,7 +1228,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTextsLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTextsLegendBottomSide_StartsBeingObserved (by: self.drawTextsLegendBottomSide_property)
@@ -1280,7 +1280,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTextsLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTextsLegendTopSide_StartsBeingObserved (by: self.drawTextsLegendTopSide_property)
@@ -1332,7 +1332,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTracksBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTracksBottomSide_StartsBeingObserved (by: self.drawTracksBottomSide_property)
@@ -1384,7 +1384,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTracksInner1Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTracksInner1Layer_StartsBeingObserved (by: self.drawTracksInner1Layer_property)
@@ -1436,7 +1436,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTracksInner2Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTracksInner2Layer_StartsBeingObserved (by: self.drawTracksInner2Layer_property)
@@ -1488,7 +1488,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTracksInner3Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTracksInner3Layer_StartsBeingObserved (by: self.drawTracksInner3Layer_property)
@@ -1540,7 +1540,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTracksInner4Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTracksInner4Layer_StartsBeingObserved (by: self.drawTracksInner4Layer_property)
@@ -1592,7 +1592,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTracksTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTracksTopSide_StartsBeingObserved (by: self.drawTracksTopSide_property)
@@ -1644,7 +1644,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawTraversingPads (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawTraversingPads_StartsBeingObserved (by: self.drawTraversingPads_property)
@@ -1696,7 +1696,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drawVias (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_drawVias_StartsBeingObserved (by: self.drawVias_property)
@@ -1748,7 +1748,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_emptyFileExtensionImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_emptyFileExtensionImage_StartsBeingObserved (by: self.emptyFileExtensionImage_property)
@@ -1788,7 +1788,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_fileExtension (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_fileExtension_StartsBeingObserved (by: self.fileExtension_property)
@@ -1840,7 +1840,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_hasNoData (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_hasNoData_StartsBeingObserved (by: self.hasNoData_property)
@@ -1880,7 +1880,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_horizontalMirror (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_horizontalMirror_StartsBeingObserved (by: self.horizontalMirror_property)
@@ -1932,7 +1932,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_name (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_name_StartsBeingObserved (by: self.name_property)
@@ -1984,7 +1984,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_parameterStatusImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.toMany_parameterStatusImage_StartsBeingObserved (by: self.parameterStatusImage_property)

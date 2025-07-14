@@ -178,7 +178,7 @@ import AppKit
     self.mModel = nil
   } */
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_documentSize (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_documentSize_StartsBeingObserved (by: self.documentSize_property)
@@ -218,7 +218,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_fileSystemStatusImage (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_fileSystemStatusImage_StartsBeingObserved (by: self.fileSystemStatusImage_property)
@@ -258,7 +258,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_instanceCount_StartsBeingObserved (by: self.instanceCount_property)
@@ -298,7 +298,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mFileData (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_mFileData_StartsBeingObserved (by: self.mFileData_property)
@@ -350,7 +350,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mFileSystemStatusMessageForSymbolTypeInDevice (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_mFileSystemStatusMessageForSymbolTypeInDevice_StartsBeingObserved (by: self.mFileSystemStatusMessageForSymbolTypeInDevice_property)
@@ -402,7 +402,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_StartsBeingObserved (by: self.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice_property)
@@ -454,7 +454,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mFilledBezierPath (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_mFilledBezierPath_StartsBeingObserved (by: self.mFilledBezierPath_property)
@@ -506,7 +506,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mStrokeBezierPath (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_mStrokeBezierPath_StartsBeingObserved (by: self.mStrokeBezierPath_property)
@@ -558,7 +558,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mTypeName (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_mTypeName_StartsBeingObserved (by: self.mTypeName_property)
@@ -610,7 +610,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mVersion (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_mVersion_StartsBeingObserved (by: self.mVersion_property)
@@ -662,7 +662,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_pinNameShape (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_pinNameShape_StartsBeingObserved (by: self.pinNameShape_property)
@@ -702,7 +702,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_versionString (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
     model.toMany_versionString_StartsBeingObserved (by: self.versionString_property)

@@ -131,7 +131,7 @@ import AppKit
     self.mModel = nil
   } */
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_advance (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_advance_StartsBeingObserved (by: self.advance_property)
@@ -183,7 +183,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_codePoint (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_codePoint_StartsBeingObserved (by: self.codePoint_property)
@@ -235,7 +235,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_gerberCode (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_gerberCode_StartsBeingObserved (by: self.gerberCode_property)
@@ -275,7 +275,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_gerberCodeInstructionCountMessage (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_gerberCodeInstructionCountMessage_StartsBeingObserved (by: self.gerberCodeInstructionCountMessage_property)
@@ -315,7 +315,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_issues_StartsBeingObserved (by: self.issues_property)
@@ -355,7 +355,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mWarnsWhenAdvanceIsZero (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_mWarnsWhenAdvanceIsZero_StartsBeingObserved (by: self.mWarnsWhenAdvanceIsZero_property)
@@ -407,7 +407,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mWarnsWhenNoSegment (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_mWarnsWhenNoSegment_StartsBeingObserved (by: self.mWarnsWhenNoSegment_property)
@@ -459,7 +459,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_segmentArrayForDrawing (model : ReadOnlyArrayOf_FontCharacter) {
     model.toMany_segmentArrayForDrawing_StartsBeingObserved (by: self.segmentArrayForDrawing_property)

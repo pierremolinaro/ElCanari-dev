@@ -134,7 +134,7 @@ import AppKit
     self.mModel = nil
   } */
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_boardLimitWidth_StartsBeingObserved (by: self.boardLimitWidth_property)
@@ -174,7 +174,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_instanceRect (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_instanceRect_StartsBeingObserved (by: self.instanceRect_property)
@@ -214,7 +214,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_instanceRotation (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_instanceRotation_StartsBeingObserved (by: self.instanceRotation_property)
@@ -266,7 +266,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelName (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_modelName_StartsBeingObserved (by: self.modelName_property)
@@ -306,7 +306,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
@@ -346,7 +346,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
@@ -386,7 +386,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_x (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_x_StartsBeingObserved (by: self.x_property)
@@ -438,7 +438,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_y (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.toMany_y_StartsBeingObserved (by: self.y_property)

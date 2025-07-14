@@ -912,7 +912,7 @@ import AppKit
     self.mModel = nil
   } */
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_artworkName_StartsBeingObserved (by: self.artworkName_property)
@@ -964,7 +964,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backComponentNameSegments_StartsBeingObserved (by: self.backComponentNameSegments_property)
@@ -1004,7 +1004,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backComponentNamesBezierPaths_StartsBeingObserved (by: self.backComponentNamesBezierPaths_property)
@@ -1044,7 +1044,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backComponentValueSegments_StartsBeingObserved (by: self.backComponentValueSegments_property)
@@ -1084,7 +1084,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backComponentValuesBezierPaths_StartsBeingObserved (by: self.backComponentValuesBezierPaths_property)
@@ -1124,7 +1124,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLayoutTextsBezierPaths_StartsBeingObserved (by: self.backLayoutTextsBezierPaths_property)
@@ -1164,7 +1164,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLayoutTextsSegments_StartsBeingObserved (by: self.backLayoutTextsSegments_property)
@@ -1204,7 +1204,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLegendBoardImageRectangles (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLegendBoardImageRectangles_StartsBeingObserved (by: self.backLegendBoardImageRectangles_property)
@@ -1244,7 +1244,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLegendLinesBezierPaths_StartsBeingObserved (by: self.backLegendLinesBezierPaths_property)
@@ -1284,7 +1284,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLegendLinesSegments_StartsBeingObserved (by: self.backLegendLinesSegments_property)
@@ -1324,7 +1324,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLegendQRCodeRectangles (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLegendQRCodeRectangles_StartsBeingObserved (by: self.backLegendQRCodeRectangles_property)
@@ -1364,7 +1364,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLegendTextsBezierPaths_StartsBeingObserved (by: self.backLegendTextsBezierPaths_property)
@@ -1404,7 +1404,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backLegendTextsSegments_StartsBeingObserved (by: self.backLegendTextsSegments_property)
@@ -1444,7 +1444,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backPackagesBezierPaths_StartsBeingObserved (by: self.backPackagesBezierPaths_property)
@@ -1484,7 +1484,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backPackagesSegments_StartsBeingObserved (by: self.backPackagesSegments_property)
@@ -1524,7 +1524,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backPadArray (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backPadArray_StartsBeingObserved (by: self.backPadArray_property)
@@ -1564,7 +1564,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backPadsBezierPaths_StartsBeingObserved (by: self.backPadsBezierPaths_property)
@@ -1604,7 +1604,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backTrackSegments_StartsBeingObserved (by: self.backTrackSegments_property)
@@ -1644,7 +1644,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_backTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_backTracksBezierPaths_StartsBeingObserved (by: self.backTracksBezierPaths_property)
@@ -1684,7 +1684,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_boardLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_boardLimitsBezierPaths_StartsBeingObserved (by: self.boardLimitsBezierPaths_property)
@@ -1724,7 +1724,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_drillSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_drillSegments_StartsBeingObserved (by: self.drillSegments_property)
@@ -1764,7 +1764,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_errorArchiveLabelColor (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_errorArchiveLabelColor_StartsBeingObserved (by: self.errorArchiveLabelColor_property)
@@ -1804,7 +1804,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_errorArchiveLabelSize (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_errorArchiveLabelSize_StartsBeingObserved (by: self.errorArchiveLabelSize_property)
@@ -1844,7 +1844,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_errorArchiveVersionMessage (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_errorArchiveVersionMessage_StartsBeingObserved (by: self.errorArchiveVersionMessage_property)
@@ -1884,7 +1884,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_errorArchiveVersionMessageIsHidden (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_errorArchiveVersionMessageIsHidden_StartsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property)
@@ -1924,7 +1924,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontComponentNameSegments_StartsBeingObserved (by: self.frontComponentNameSegments_property)
@@ -1964,7 +1964,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontComponentNamesBezierPaths_StartsBeingObserved (by: self.frontComponentNamesBezierPaths_property)
@@ -2004,7 +2004,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontComponentValueSegments_StartsBeingObserved (by: self.frontComponentValueSegments_property)
@@ -2044,7 +2044,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontComponentValuesBezierPaths_StartsBeingObserved (by: self.frontComponentValuesBezierPaths_property)
@@ -2084,7 +2084,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLayoutTextsBezierPaths_StartsBeingObserved (by: self.frontLayoutTextsBezierPaths_property)
@@ -2124,7 +2124,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLayoutTextsSegments_StartsBeingObserved (by: self.frontLayoutTextsSegments_property)
@@ -2164,7 +2164,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLegendBoardImageRectangles (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLegendBoardImageRectangles_StartsBeingObserved (by: self.frontLegendBoardImageRectangles_property)
@@ -2204,7 +2204,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLegendLinesBezierPaths_StartsBeingObserved (by: self.frontLegendLinesBezierPaths_property)
@@ -2244,7 +2244,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLegendLinesSegments_StartsBeingObserved (by: self.frontLegendLinesSegments_property)
@@ -2284,7 +2284,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLegendQRCodeRectangles (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLegendQRCodeRectangles_StartsBeingObserved (by: self.frontLegendQRCodeRectangles_property)
@@ -2324,7 +2324,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLegendTextsBezierPaths_StartsBeingObserved (by: self.frontLegendTextsBezierPaths_property)
@@ -2364,7 +2364,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontLegendTextsSegments_StartsBeingObserved (by: self.frontLegendTextsSegments_property)
@@ -2404,7 +2404,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontPackagesBezierPaths_StartsBeingObserved (by: self.frontPackagesBezierPaths_property)
@@ -2444,7 +2444,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontPackagesSegments_StartsBeingObserved (by: self.frontPackagesSegments_property)
@@ -2484,7 +2484,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontPadArray (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontPadArray_StartsBeingObserved (by: self.frontPadArray_property)
@@ -2524,7 +2524,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontPadsBezierPaths_StartsBeingObserved (by: self.frontPadsBezierPaths_property)
@@ -2564,7 +2564,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontTrackSegments_StartsBeingObserved (by: self.frontTrackSegments_property)
@@ -2604,7 +2604,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_frontTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_frontTracksBezierPaths_StartsBeingObserved (by: self.frontTracksBezierPaths_property)
@@ -2644,7 +2644,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_holesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_holesBezierPaths_StartsBeingObserved (by: self.holesBezierPaths_property)
@@ -2684,7 +2684,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_ignoreModelVersionError (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_ignoreModelVersionError_StartsBeingObserved (by: self.ignoreModelVersionError_property)
@@ -2736,7 +2736,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_imageForInstances (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_imageForInstances_StartsBeingObserved (by: self.imageForInstances_property)
@@ -2776,7 +2776,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_imageForModel (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_imageForModel_StartsBeingObserved (by: self.imageForModel_property)
@@ -2816,7 +2816,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner1TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner1TracksBezierPaths_StartsBeingObserved (by: self.inner1TracksBezierPaths_property)
@@ -2856,7 +2856,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner1TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner1TracksSegments_StartsBeingObserved (by: self.inner1TracksSegments_property)
@@ -2896,7 +2896,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner2TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner2TracksBezierPaths_StartsBeingObserved (by: self.inner2TracksBezierPaths_property)
@@ -2936,7 +2936,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner2TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner2TracksSegments_StartsBeingObserved (by: self.inner2TracksSegments_property)
@@ -2976,7 +2976,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner3TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner3TracksBezierPaths_StartsBeingObserved (by: self.inner3TracksBezierPaths_property)
@@ -3016,7 +3016,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner3TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner3TracksSegments_StartsBeingObserved (by: self.inner3TracksSegments_property)
@@ -3056,7 +3056,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner4TracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner4TracksBezierPaths_StartsBeingObserved (by: self.inner4TracksBezierPaths_property)
@@ -3096,7 +3096,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_inner4TracksSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_inner4TracksSegments_StartsBeingObserved (by: self.inner4TracksSegments_property)
@@ -3136,7 +3136,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_instanceCount_StartsBeingObserved (by: self.instanceCount_property)
@@ -3176,7 +3176,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_internalBoardsLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_internalBoardsLimitsBezierPaths_StartsBeingObserved (by: self.internalBoardsLimitsBezierPaths_property)
@@ -3216,7 +3216,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_internalBoardsLimitsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_internalBoardsLimitsSegments_StartsBeingObserved (by: self.internalBoardsLimitsSegments_property)
@@ -3256,7 +3256,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_layerConfiguration (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_layerConfiguration_StartsBeingObserved (by: self.layerConfiguration_property)
@@ -3308,7 +3308,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_layerConfigurationString (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_layerConfigurationString_StartsBeingObserved (by: self.layerConfigurationString_property)
@@ -3348,7 +3348,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelData (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelData_StartsBeingObserved (by: self.modelData_property)
@@ -3400,7 +3400,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelHeight_StartsBeingObserved (by: self.modelHeight_property)
@@ -3452,7 +3452,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelHeightUnit_StartsBeingObserved (by: self.modelHeightUnit_property)
@@ -3504,7 +3504,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelLimitWidth_StartsBeingObserved (by: self.modelLimitWidth_property)
@@ -3556,7 +3556,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelLimitWidthUnit_StartsBeingObserved (by: self.modelLimitWidthUnit_property)
@@ -3608,7 +3608,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelVersion (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelVersion_StartsBeingObserved (by: self.modelVersion_property)
@@ -3660,7 +3660,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelWidth_StartsBeingObserved (by: self.modelWidth_property)
@@ -3712,7 +3712,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_modelWidthUnit_StartsBeingObserved (by: self.modelWidthUnit_property)
@@ -3764,7 +3764,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_name_StartsBeingObserved (by: self.name_property)
@@ -3816,7 +3816,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_traversingPadArray (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_traversingPadArray_StartsBeingObserved (by: self.traversingPadArray_property)
@@ -3856,7 +3856,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_traversingPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_traversingPadsBezierPaths_StartsBeingObserved (by: self.traversingPadsBezierPaths_property)
@@ -3896,7 +3896,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_viaShapes_StartsBeingObserved (by: self.viaShapes_property)
@@ -3936,7 +3936,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_viasBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_viasBezierPaths_StartsBeingObserved (by: self.viasBezierPaths_property)
@@ -3976,7 +3976,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModel) {
     model.toMany_zoom_StartsBeingObserved (by: self.zoom_property)

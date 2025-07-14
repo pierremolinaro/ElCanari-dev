@@ -22,21 +22,21 @@ import AppKit
     noteObjectDeallocation (self)
   }
 
-  //································································································
+  //------------------------------------------------------------------------------------------------
   //   Selection observable property: mOrientation
-  //································································································
+  //------------------------------------------------------------------------------------------------
 
   final let mOrientation_property = EBComputedProperty_QuadrantRotation ()
 
-  //································································································
+  //------------------------------------------------------------------------------------------------
   //   Selection observable property: objectDisplay
-  //································································································
+  //------------------------------------------------------------------------------------------------
 
   final let objectDisplay_property = EBTransientProperty <EBShape> ()
 
-  //································································································
+  //------------------------------------------------------------------------------------------------
   //   Selection observable property: selectionDisplay
-  //································································································
+  //------------------------------------------------------------------------------------------------
 
   final let selectionDisplay_property = EBTransientProperty <EBShape> ()
 
@@ -79,7 +79,7 @@ import AppKit
     self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   } */
 
-  //································································································
+  //------------------------------------------------------------------------------------------------
 
   private final func bind_property_mOrientation () {
     self.selectedArray_property.toMany_mOrientation_StartsBeingObserved (by: self.mOrientation_property)
@@ -130,7 +130,7 @@ import AppKit
       }
     }
   }
-  //································································································
+  //------------------------------------------------------------------------------------------------
 
   private final func bind_property_objectDisplay () {
     self.selectedArray_property.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
@@ -169,7 +169,7 @@ import AppKit
       }
     }
   }
-  //································································································
+  //------------------------------------------------------------------------------------------------
 
   private final func bind_property_selectionDisplay () {
     self.selectedArray_property.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)

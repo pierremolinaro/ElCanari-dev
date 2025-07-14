@@ -193,10 +193,6 @@ do{
   runCommand ("/bin/rm", ["-fr", "build"])
   runCommand (
     "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
-    ["-version"]
-  )
-  runCommand (
-    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
     [ "-target", "ElCanari-" + BUILD_KIND.string,
       "-configuration", BUILD_KIND.string,
       "-verbose"

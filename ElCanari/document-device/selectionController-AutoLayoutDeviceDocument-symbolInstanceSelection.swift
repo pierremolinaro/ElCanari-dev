@@ -148,7 +148,7 @@ import AppKit
     self.mModel = nil
   } */
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mInstanceName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_mInstanceName_StartsBeingObserved (by: self.mInstanceName_property)
@@ -200,7 +200,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mX (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_mX_StartsBeingObserved (by: self.mX_property)
@@ -252,7 +252,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_mY (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_mY_StartsBeingObserved (by: self.mY_property)
@@ -304,7 +304,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_objectDisplay_StartsBeingObserved (by: self.objectDisplay_property)
@@ -344,7 +344,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_pinSymbolQualifiedNames (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_pinSymbolQualifiedNames_StartsBeingObserved (by: self.pinSymbolQualifiedNames_property)
@@ -384,7 +384,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_selectionDisplay_StartsBeingObserved (by: self.selectionDisplay_property)
@@ -424,7 +424,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_symbolQualifiedName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_symbolQualifiedName_StartsBeingObserved (by: self.symbolQualifiedName_property)
@@ -464,7 +464,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_symbolTypeName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_symbolTypeName_StartsBeingObserved (by: self.symbolTypeName_property)
@@ -504,7 +504,7 @@ import AppKit
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -···················*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private final func bind_property_unconnectedPins (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
     model.toMany_unconnectedPins_StartsBeingObserved (by: self.unconnectedPins_property)
