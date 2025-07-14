@@ -1051,6 +1051,29 @@ final class BoardConnector : BoardObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mComponentPadName_property)
+    ioArray.append (self.mPadIndex_property)
+    ioArray.append (self.mX_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mTracksP2_property)
+    ioArray.append (self.mDefaultHoleDiameterUnit_property)
+    ioArray.append (self.mCustomHoleDiameter_property)
+    ioArray.append (self.mCustomHoleDiameterUnit_property)
+    ioArray.append (self.mUsesCustomHoleDiameter_property)
+    ioArray.append (self.mDefaultPadDiameterUnit_property)
+    ioArray.append (self.mCustomPadDiameter_property)
+    ioArray.append (self.mCustomPadDiameterUnit_property)
+    ioArray.append (self.mUsesCustomPadDiameter_property)
+    ioArray.append (self.mTracksP1_property)
+    ioArray.append (self.mComponent_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

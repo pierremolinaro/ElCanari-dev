@@ -346,6 +346,22 @@ final class SymbolBezierCurve : SymbolObject {
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.y1_property)
+    ioArray.append (self.x2_property)
+    ioArray.append (self.y2_property)
+    ioArray.append (self.cpx1_property)
+    ioArray.append (self.cpy1_property)
+    ioArray.append (self.cpx2_property)
+    ioArray.append (self.cpy2_property)
+    ioArray.append (self.x1_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

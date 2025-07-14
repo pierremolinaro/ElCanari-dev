@@ -582,6 +582,30 @@ final class PackageBezier : PackageObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.y1_property)
+    ioArray.append (self.x2_property)
+    ioArray.append (self.y2_property)
+    ioArray.append (self.cpx1_property)
+    ioArray.append (self.cpy1_property)
+    ioArray.append (self.cpx2_property)
+    ioArray.append (self.cpy2_property)
+    ioArray.append (self.x1Unit_property)
+    ioArray.append (self.y1Unit_property)
+    ioArray.append (self.x2Unit_property)
+    ioArray.append (self.y2Unit_property)
+    ioArray.append (self.cpx1Unit_property)
+    ioArray.append (self.cpy1Unit_property)
+    ioArray.append (self.cpx2Unit_property)
+    ioArray.append (self.cpy2Unit_property)
+    ioArray.append (self.x1_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -174,6 +174,25 @@ final class SymbolRoot : EBManagedObject {
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.selectedInspector_property)
+    ioArray.append (self.comments_property)
+    ioArray.append (self.horizontalFlip_property)
+    ioArray.append (self.verticalFlip_property)
+    ioArray.append (self.gridStyle_property)
+    ioArray.append (self.gridDisplay_property)
+    ioArray.append (self.zoom_property)
+    ioArray.append (self.xPlacardUnit_property)
+    ioArray.append (self.yPlacardUnit_property)
+    ioArray.append (self.symbolObjects_property)
+    ioArray.append (self.selectedPageIndex_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

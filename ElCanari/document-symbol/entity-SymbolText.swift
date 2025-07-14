@@ -228,6 +228,18 @@ final class SymbolText : SymbolObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.y_property)
+    ioArray.append (self.text_property)
+    ioArray.append (self.horizontalAlignment_property)
+    ioArray.append (self.x_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

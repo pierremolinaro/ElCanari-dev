@@ -8,9 +8,8 @@ import AppKit
 //   EBStoredProperty <TYPE>
 //--------------------------------------------------------------------------------------------------
 
-final class EBStoredProperty <TYPE : EBStoredPropertyProtocol>
-   : EBObservableMutableProperty <TYPE>,
-     EBDocumentStorablePropertyProtocol {
+final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMutableProperty <TYPE>,
+                                                                 EBDocumentStorablePropertyProtocol {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -18,14 +17,14 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol>
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mKey : String?
+  private let mKey : String
   var key : String? { return self.mKey }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (defaultValue inValue : TYPE,
         undoManager inUndoManager : UndoManager?,
-        key inKey : String?) {
+        key inKey : String) {
     self.mValue = inValue
     self.mUndoManager = inUndoManager
     self.mKey = inKey
@@ -64,9 +63,9 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol>
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
-    if let key = self.mKey {
-      ioDictionary [key] = self.mValue.convertToNSObject ()
-    }
+//    if let key = self.mKey {
+      ioDictionary [self.mKey] = self.mValue.convertToNSObject ()
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -82,17 +81,27 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol>
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initialize (fromDictionary inDictionary : [String : Any],
+  func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let key = self.mKey, let value = inDictionary [key] as? NSObject {
+    if let value = inDictionary [self.mKey] as? NSObject {
       self.setProp (TYPE.convertFromNSObject (object: value))
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+  // §
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject]) {
     if let value = TYPE.unarchiveFromDataRange (inData, inRange) {
+      self.setProp (value)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (withRangeDictionary inRangeDictionary : [String : NSRange],
+                   ofData inData : Data,
+                   _ inManagedObjectArray : [RawObject]) {
+    if let range = inRangeDictionary [self.mKey], let value = TYPE.unarchiveFromDataRange (inData, range) {
       self.setProp (value)
     }
   }

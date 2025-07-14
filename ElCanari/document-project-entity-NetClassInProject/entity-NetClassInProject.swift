@@ -838,6 +838,29 @@ final class NetClassInProject : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mNetClassName_property)
+    ioArray.append (self.mNetClassColor_property)
+    ioArray.append (self.mTrackWidth_property)
+    ioArray.append (self.mTrackWidthUnit_property)
+    ioArray.append (self.mViaHoleDiameter_property)
+    ioArray.append (self.mViaHoleDiameterUnit_property)
+    ioArray.append (self.mViaPadDiameter_property)
+    ioArray.append (self.mViaPadDiameterUnit_property)
+    ioArray.append (self.mAllowTracksOnFrontSide_property)
+    ioArray.append (self.mAllowTracksOnBackSide_property)
+    ioArray.append (self.mAllowTracksOnInner1Layer_property)
+    ioArray.append (self.mAllowTracksOnInner2Layer_property)
+    ioArray.append (self.mAllowTracksOnInner3Layer_property)
+    ioArray.append (self.mAllowTracksOnInner4Layer_property)
+    ioArray.append (self.mNets_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

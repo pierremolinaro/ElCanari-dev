@@ -321,6 +321,25 @@ final class SymbolPinTypeInDevice : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mPinX_property)
+    ioArray.append (self.mPinY_property)
+    ioArray.append (self.mXName_property)
+    ioArray.append (self.mYName_property)
+    ioArray.append (self.mName_property)
+    ioArray.append (self.mNameHorizontalAlignment_property)
+    ioArray.append (self.mPinNameIsDisplayedInSchematics_property)
+    ioArray.append (self.mXNumber_property)
+    ioArray.append (self.mYNumber_property)
+    ioArray.append (self.mNumberHorizontalAlignment_property)
+    ioArray.append (self.mInstances_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

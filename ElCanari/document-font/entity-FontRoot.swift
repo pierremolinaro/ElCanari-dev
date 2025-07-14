@@ -300,6 +300,20 @@ final class FontRoot : EBManagedObject {
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.comments_property)
+    ioArray.append (self.nominalSize_property)
+    ioArray.append (self.selectedTab_property)
+    ioArray.append (self.selectedInspector_property)
+    ioArray.append (self.currentCharacterCodePoint_property)
+    ioArray.append (self.characters_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

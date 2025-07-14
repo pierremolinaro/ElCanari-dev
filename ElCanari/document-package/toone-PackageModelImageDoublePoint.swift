@@ -152,7 +152,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageMo
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initialize (fromDictionary inDictionary : [String : Any],
+  func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let objectSavingIndex = inDictionary [key] as? Int {
       let object = inManagedObjectArray [objectSavingIndex] as! PackageModelImageDoublePoint

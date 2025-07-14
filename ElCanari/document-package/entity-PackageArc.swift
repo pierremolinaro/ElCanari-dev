@@ -507,6 +507,27 @@ final class PackageArc : PackageObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.yCenter_property)
+    ioArray.append (self.radius_property)
+    ioArray.append (self.startAngle_property)
+    ioArray.append (self.arcAngle_property)
+    ioArray.append (self.startTangent_property)
+    ioArray.append (self.endTangent_property)
+    ioArray.append (self.pathIsClosed_property)
+    ioArray.append (self.xCenterUnit_property)
+    ioArray.append (self.yCenterUnit_property)
+    ioArray.append (self.radiusUnit_property)
+    ioArray.append (self.startTangentUnit_property)
+    ioArray.append (self.endTangentUnit_property)
+    ioArray.append (self.xCenter_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

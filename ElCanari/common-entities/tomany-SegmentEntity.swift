@@ -290,7 +290,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initialize (fromDictionary inDictionary : [String : Any],
+  func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let objectSavingIndexArray = inDictionary [key] as? [Int] {
       var objectArray = EBReferenceArray <SegmentEntity> ()

@@ -55,7 +55,11 @@ import AppKit
     for rawObject in rawObjectArray.reversed () {
       let valueDictionary = rawObject.propertyDictionary
       let managedObject = rawObject.object
-      managedObject.setUpPropertiesWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
+      managedObject.setUpProperties (
+        withRangeDictionary: valueDictionary,
+        rawObjectArray: rawObjectArray,
+        data : scannerData
+      )
     }
     appendDocumentFileOperationInfo ("setup done")
   //--- Scanner error ?

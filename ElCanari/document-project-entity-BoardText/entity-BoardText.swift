@@ -621,6 +621,27 @@ final class BoardText : BoardObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mX_property)
+    ioArray.append (self.mXUnit_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mYUnit_property)
+    ioArray.append (self.mFontSize_property)
+    ioArray.append (self.mLayer_property)
+    ioArray.append (self.mText_property)
+    ioArray.append (self.mHorizontalAlignment_property)
+    ioArray.append (self.mVerticalAlignment_property)
+    ioArray.append (self.mRotation_property)
+    ioArray.append (self.mWeight_property)
+    ioArray.append (self.mOblique_property)
+    ioArray.append (self.mFont_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

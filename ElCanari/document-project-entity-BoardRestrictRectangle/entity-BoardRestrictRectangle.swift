@@ -700,6 +700,32 @@ final class BoardRestrictRectangle : BoardObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mXUnit_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mYUnit_property)
+    ioArray.append (self.mWidth_property)
+    ioArray.append (self.mWidthUnit_property)
+    ioArray.append (self.mHeight_property)
+    ioArray.append (self.mHeightUnit_property)
+    ioArray.append (self.mIsInFrontLayer_property)
+    ioArray.append (self.mIsInBackLayer_property)
+    ioArray.append (self.mIsInInner1Layer_property)
+    ioArray.append (self.mIsInInner2Layer_property)
+    ioArray.append (self.mIsInInner3Layer_property)
+    ioArray.append (self.mIsInInner4Layer_property)
+    ioArray.append (self.mAllowPadsInside_property)
+    ioArray.append (self.mAllowTracksInside_property)
+    ioArray.append (self.mExposeTrackCopper_property)
+    ioArray.append (self.mRectTrackEnd_property)
+    ioArray.append (self.mX_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

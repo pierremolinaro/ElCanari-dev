@@ -1164,6 +1164,38 @@ final class MergerRoot : EBManagedObject {
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.boardModels_property)
+    ioArray.append (self.boardInstances_property)
+    ioArray.append (self.selectedPageIndex_property)
+    ioArray.append (self.zoom_property)
+    ioArray.append (self.showDisplaySettingView_property)
+    ioArray.append (self.modelInsertionRotation_property)
+    ioArray.append (self.automaticBoardSize_property)
+    ioArray.append (self.boardManualWidth_property)
+    ioArray.append (self.boardManualHeight_property)
+    ioArray.append (self.boardWidthUnit_property)
+    ioArray.append (self.boardHeightUnit_property)
+    ioArray.append (self.overlapingArrangment_property)
+    ioArray.append (self.selectedBoardXUnit_property)
+    ioArray.append (self.selectedBoardYUnit_property)
+    ioArray.append (self.boardLimitWidth_property)
+    ioArray.append (self.boardLimitWidthUnit_property)
+    ioArray.append (self.mPDFBoardBackgroundColor_property)
+    ioArray.append (self.mGenerateMergerArchive_property)
+    ioArray.append (self.mGenerateGerberAndPDF_property)
+    ioArray.append (self.mPDFProductGrid_property)
+    ioArray.append (self.mGerberProductUnit_property)
+    ioArray.append (self.mArtworkName_property)
+    ioArray.append (self.mArtworkVersion_property)
+    ioArray.append (self.mArtwork_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

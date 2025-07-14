@@ -59,7 +59,7 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initialize (fromDictionary inDictionary : [String : Any],
+  func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let value = inDictionary [key] as? NSObject {
       self.setProp (TYPE.convertFromNSObject (object: value))
@@ -67,11 +67,21 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+  // §
   func initialize (fromRange inRange : NSRange,
                    ofData inData : Data,
                    _ inManagedObjectArray : [RawObject]) {
     if let value = TYPE.unarchiveFromDataRange (inData, inRange) {
+      self.setProp (value)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (withRangeDictionary inRangeDictionary : [String : NSRange],
+                   ofData inData : Data,
+                   _ inManagedObjectArray : [RawObject]) {
+    if let key = self.mKey, let range = inRangeDictionary [key], let value = TYPE.unarchiveFromDataRange (inData, range) {
       self.setProp (value)
     }
   }

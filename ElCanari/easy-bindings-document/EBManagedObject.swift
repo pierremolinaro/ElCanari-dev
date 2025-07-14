@@ -77,45 +77,82 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   final var undoManager : UndoManager? { self.mUndoManager }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Setup
+  //  Setup from value dictionary (binary format)
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setUpProperties (withDictionary inDictionary : [String : Any],
+  final func setUpProperties (fromValueDictionary inDictionary : [String : Any],
                               managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    let mirror = Mirror (reflecting: self)
-    for property in mirror.children {
-      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
-        storedProperty.initialize (fromDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
+    var propertyArray = [AnyObject] ()
+    self.accumulateProperties (into: &propertyArray)
+    for property in propertyArray {
+      if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+        storedProperty.initialize (fromValueDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
       }
     }
+//    let mirror = Mirror (reflecting: self)
+//    for property in mirror.children {
+//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+//        storedProperty.initialize (fromValueDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Setup with range dictionary (text format)
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setUpPropertiesWithTextDictionary (_ inRangeDictionary : [String : NSRange],
-                                                _ inRawObjectArray : [RawObject],
-                                                _ inData : Data) {
-    let mirror = Mirror (reflecting: self)
-    for property in mirror.children {
-      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol,
+//  func setUpProperties (withRangeDictionary inRangeDictionary : [String : NSRange],
+//                        rawObjectArray inRawObjectArray : [RawObject],
+//                        data inData : Data) {
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func setUpProperties (withRangeDictionary inRangeDictionary : [String : NSRange],
+                              rawObjectArray inRawObjectArray : [RawObject],
+                              data inData : Data) {
+    var propertyArray = [AnyObject] ()
+    self.accumulateProperties (into: &propertyArray)
+    for property in propertyArray {
+      if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol,
          let key = storedProperty.key,
          let range = inRangeDictionary [key] {
         storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
       }
     }
+//    let mirror = Mirror (reflecting: self)
+//    for property in mirror.children {
+//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol,
+//         let key = storedProperty.key,
+//         let range = inRangeDictionary [key] {
+//        storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   accessibleObjectsForSaveOperation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+//  func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
-    let mirror = Mirror (reflecting: self)
-    for property in mirror.children {
-      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+    var propertyArray = [AnyObject] ()
+    self.accumulateProperties (into: &propertyArray)
+    for property in propertyArray {
+      if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
       }
     }
+//    let mirror = Mirror (reflecting: self)
+//    for property in mirror.children {
+//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+//        storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -124,12 +161,19 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
 
   final func savePropertiesAndRelationshipsIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
-    let mirror = Mirror (reflecting: self)
-    for property in mirror.children {
-      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+    var propertyArray = [AnyObject] ()
+    self.accumulateProperties (into: &propertyArray)
+    for property in propertyArray {
+      if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
       }
     }
+//    let mirror = Mirror (reflecting: self)
+//    for property in mirror.children {
+//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+//        storedProperty.store (inDictionary: &ioDictionary)
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -138,12 +182,19 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
 
   final func savePropertiesIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
-    let mirror = Mirror (reflecting: self)
-    for property in mirror.children {
-      if let storedProperty = property.value as? any EBDocumentStorablePropertyProtocol, storedProperty.key != nil {
+    var propertyArray = [AnyObject] ()
+    self.accumulateProperties (into: &propertyArray)
+    for property in propertyArray {
+      if let storedProperty = property as? any EBDocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
       }
     }
+//    let mirror = Mirror (reflecting: self)
+//    for property in mirror.children {
+//      if let storedProperty = property.value as? any EBDocumentStorablePropertyProtocol, storedProperty.key != nil {
+//        storedProperty.store (inDictionary: &ioDictionary)
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -151,12 +202,19 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendPropertyNamesTo (string ioString : inout String) {
-    let mirror = Mirror (reflecting: self)
-    for property in mirror.children {
-      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
+    var propertyArray = [AnyObject] ()
+    self.accumulateProperties (into: &propertyArray)
+    for property in propertyArray {
+      if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
         ioString += key + "\n"
       }
     }
+//    let mirror = Mirror (reflecting: self)
+//    for property in mirror.children {
+//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
+//        ioString += key + "\n"
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -164,15 +222,30 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendPropertyValuesTo (data ioData : inout Data) {
-    let mirror = Mirror (reflecting: self)
-    for property in mirror.children {
-      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+    var propertyArray = [AnyObject] ()
+    self.accumulateProperties (into: &propertyArray)
+    for property in propertyArray {
+      if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.appendValueTo (data: &ioData)
         ioData.append (ascii: .lineFeed)
       }
     }
+//    let mirror = Mirror (reflecting: self)
+//    for property in mirror.children {
+//      if let storedProperty = property.value as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
+//        storedProperty.appendValueTo (data: &ioData)
+//        ioData.append (ascii: .lineFeed)
+//      }
+//    }
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func accumulateProperties (into ioArray : inout [AnyObject]) {
+  }
+  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   setSignatureObserver
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -353,11 +353,11 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   //    Version
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final var mVersion = EBStoredProperty_Int (defaultValue: 0, undoManager: nil, key: nil)
+  private final var mVersion = EBStandAloneProperty_Int (0)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final var versionObserver_property : EBStoredProperty_Int { return self.mVersion }
+  final var versionObserver_property : EBStandAloneProperty_Int { return self.mVersion }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Version observer

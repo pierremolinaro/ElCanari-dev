@@ -4098,6 +4098,56 @@ final class BoardModel : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.name_property)
+    ioArray.append (self.modelWidth_property)
+    ioArray.append (self.modelWidthUnit_property)
+    ioArray.append (self.modelHeight_property)
+    ioArray.append (self.modelHeightUnit_property)
+    ioArray.append (self.zoom_property)
+    ioArray.append (self.modelVersion_property)
+    ioArray.append (self.ignoreModelVersionError_property)
+    ioArray.append (self.legendFrontImages_property)
+    ioArray.append (self.legendBackImages_property)
+    ioArray.append (self.legendFrontQRCodes_property)
+    ioArray.append (self.legendBackQRCodes_property)
+    ioArray.append (self.layerConfiguration_property)
+    ioArray.append (self.frontLegendLines_property)
+    ioArray.append (self.backLegendLines_property)
+    ioArray.append (self.frontLegendTexts_property)
+    ioArray.append (self.frontLayoutTexts_property)
+    ioArray.append (self.backLegendTexts_property)
+    ioArray.append (self.backLayoutTexts_property)
+    ioArray.append (self.internalBoardsLimits_property)
+    ioArray.append (self.drills_property)
+    ioArray.append (self.vias_property)
+    ioArray.append (self.frontPads_property)
+    ioArray.append (self.backPads_property)
+    ioArray.append (self.traversingPads_property)
+    ioArray.append (self.modelLimitWidth_property)
+    ioArray.append (self.modelLimitWidthUnit_property)
+    ioArray.append (self.backComponentNames_property)
+    ioArray.append (self.frontComponentNames_property)
+    ioArray.append (self.frontComponentValues_property)
+    ioArray.append (self.backComponentValues_property)
+    ioArray.append (self.backTracks_property)
+    ioArray.append (self.frontTracks_property)
+    ioArray.append (self.inner1Tracks_property)
+    ioArray.append (self.inner2Tracks_property)
+    ioArray.append (self.inner3Tracks_property)
+    ioArray.append (self.inner4Tracks_property)
+    ioArray.append (self.frontPackages_property)
+    ioArray.append (self.backPackages_property)
+    ioArray.append (self.artworkName_property)
+    ioArray.append (self.modelData_property)
+    ioArray.append (self.myInstances_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

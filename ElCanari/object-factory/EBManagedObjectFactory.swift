@@ -103,7 +103,7 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
                                                  _ inDictionary : [String : Any]) -> EBManagedObject {
   let entityName = inDictionary [ENTITY_KEY] as! String
   let object = newInstanceOfEntityNamed (inUndoManager, entityName)
-  object.setUpProperties (withDictionary: inDictionary, managedObjectArray: [])
+  object.setUpProperties (fromValueDictionary: inDictionary, managedObjectArray: [])
   return object
 }
 

@@ -712,6 +712,24 @@ final class BorderCurve : EBGraphicManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mX_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mCPX1_property)
+    ioArray.append (self.mCPY1_property)
+    ioArray.append (self.mCPX2_property)
+    ioArray.append (self.mCPY2_property)
+    ioArray.append (self.mShape_property)
+    ioArray.append (self.mRoot_property)
+    ioArray.append (self.mNext_property)
+    ioArray.append (self.mPrevious_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

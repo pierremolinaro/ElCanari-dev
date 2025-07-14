@@ -735,6 +735,27 @@ final class ComponentSymbolInProject : SchematicObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mCenterX_property)
+    ioArray.append (self.mCenterY_property)
+    ioArray.append (self.mRotation_property)
+    ioArray.append (self.mMirror_property)
+    ioArray.append (self.mSymbolInstanceName_property)
+    ioArray.append (self.mSymbolTypeName_property)
+    ioArray.append (self.mDisplayComponentNameOffsetX_property)
+    ioArray.append (self.mDisplayComponentNameOffsetY_property)
+    ioArray.append (self.mDisplayComponentValue_property)
+    ioArray.append (self.mDisplayComponentValueOffsetX_property)
+    ioArray.append (self.mDisplayComponentValueOffsetY_property)
+    ioArray.append (self.mPoints_property)
+    ioArray.append (self.mComponent_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -621,6 +621,22 @@ final class PackageInDevice : EBGraphicManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mFileData_property)
+    ioArray.append (self.mName_property)
+    ioArray.append (self.mVersion_property)
+    ioArray.append (self.mStrokeBezierPath_property)
+    ioArray.append (self.mX_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mMasterPads_property)
+    ioArray.append (self.mRoot_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -347,6 +347,25 @@ final class BoardLine : BoardObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mWidthUnit_property)
+    ioArray.append (self.mX1_property)
+    ioArray.append (self.mX1Unit_property)
+    ioArray.append (self.mY1_property)
+    ioArray.append (self.mY1Unit_property)
+    ioArray.append (self.mX2_property)
+    ioArray.append (self.mX2Unit_property)
+    ioArray.append (self.mY2_property)
+    ioArray.append (self.mY2Unit_property)
+    ioArray.append (self.mLayer_property)
+    ioArray.append (self.mWidth_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

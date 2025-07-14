@@ -990,6 +990,32 @@ final class PackagePad : PackageObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.xCenter_property)
+    ioArray.append (self.yCenter_property)
+    ioArray.append (self.width_property)
+    ioArray.append (self.height_property)
+    ioArray.append (self.holeWidth_property)
+    ioArray.append (self.holeHeight_property)
+    ioArray.append (self.padShape_property)
+    ioArray.append (self.padStyle_property)
+    ioArray.append (self.padNumber_property)
+    ioArray.append (self.xCenterUnit_property)
+    ioArray.append (self.yCenterUnit_property)
+    ioArray.append (self.widthUnit_property)
+    ioArray.append (self.heightUnit_property)
+    ioArray.append (self.holeWidthUnit_property)
+    ioArray.append (self.holeHeightUnit_property)
+    ioArray.append (self.annularRingUnit_property)
+    ioArray.append (self.slaves_property)
+    ioArray.append (self.zone_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

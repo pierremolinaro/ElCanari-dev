@@ -608,6 +608,23 @@ final class DeviceInProject : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mDeviceName_property)
+    ioArray.append (self.mCategory_property)
+    ioArray.append (self.mPrefix_property)
+    ioArray.append (self.mDeviceVersion_property)
+    ioArray.append (self.mDeviceFileData_property)
+    ioArray.append (self.mPackages_property)
+    ioArray.append (self.mSymbols_property)
+    ioArray.append (self.mComponents_property)
+    ioArray.append (self.mPadAssignments_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

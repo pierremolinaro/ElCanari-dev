@@ -324,6 +324,23 @@ final class CommentInSchematic : SchematicObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mColor_property)
+    ioArray.append (self.mSize_property)
+    ioArray.append (self.mHorizontalAlignment_property)
+    ioArray.append (self.mVerticalAlignment_property)
+    ioArray.append (self.mRotation_property)
+    ioArray.append (self.mBold_property)
+    ioArray.append (self.mX_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mComment_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

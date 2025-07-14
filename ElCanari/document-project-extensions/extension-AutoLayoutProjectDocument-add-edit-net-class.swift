@@ -43,31 +43,31 @@ extension AutoLayoutProjectDocument {
          .expandableWidth ().set (alignment: .right).setRedTextColor ()
       _ = gridView.appendView (netClassNameErrorLabel)
     //--- Color
-      let netColor_property = EBStoredProperty_NSColor (defaultValue: inNetClass.mNetClassColor, undoManager: nil, key: nil)
+      let netColor_property = EBStandAloneProperty_NSColor (inNetClass.mNetClassColor)
       let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (wireColorWell))
       }
     //---  Width
-      let width_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidth, undoManager: nil, key: nil) // 20 mils
-      let widthUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidthUnit, undoManager: nil, key: nil) // mils
+      let width_property = EBStandAloneProperty_Int (inNetClass.mTrackWidth) // 20 mils
+      let widthUnit_property = EBStandAloneProperty_Int (inNetClass.mTrackWidthUnit) // mils
       let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: widthFields)
       }
     //--- Hole Diameter
-      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameter, undoManager: nil, key: nil)
-      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameterUnit, undoManager: nil, key: nil)
+      let viaHoleDiameter_property = EBStandAloneProperty_Int (inNetClass.mViaHoleDiameter)
+      let viaHoleDiameterUnit_property = EBStandAloneProperty_Int (inNetClass.mViaHoleDiameterUnit)
       let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: holeDiameterFields)
       }
     //--- Pad Diameter
-      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameter, undoManager: nil, key: nil)
-      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameterUnit, undoManager: nil, key: nil)
+      let viaPadDiameter_property = EBStandAloneProperty_Int (inNetClass.mViaPadDiameter)
+      let viaPadDiameterUnit_property = EBStandAloneProperty_Int (inNetClass.mViaPadDiameterUnit)
       let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular, alignment: .right)
@@ -75,27 +75,27 @@ extension AutoLayoutProjectDocument {
       }
       _ = layoutView.appendView (gridView)
     //---  Allow front track
-      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnFrontSide, undoManager: nil, key: nil)
+      let allowFrontTrack_property = EBStandAloneProperty_Bool (inNetClass.mAllowTracksOnFrontSide)
       let allowFrontTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Layer", size: .regular).bind_value (allowFrontTrack_property).expandableWidth ()
       _ = layoutView.appendView (allowFrontTrackCheckBox)
     //---  Allow Inner 1 Layer
-      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner1Layer, undoManager: nil, key: nil)
+      let allowInner1Layer_property = EBStandAloneProperty_Bool (inNetClass.mAllowTracksOnInner1Layer)
       let allowInner1TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Layer", size: .regular).bind_value (allowInner1Layer_property).expandableWidth ()
       _ = layoutView.appendView (allowInner1TrackCheckBox)
     //---  Allow Inner 2 Layer
-      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner2Layer, undoManager: nil, key: nil)
+      let allowInner2Layer_property = EBStandAloneProperty_Bool (inNetClass.mAllowTracksOnInner2Layer)
       let allowInner2TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 2 Layer", size: .regular).bind_value (allowInner2Layer_property).expandableWidth ()
       _ = layoutView.appendView (allowInner2TrackCheckBox)
     //---  Allow Inner 3 Layer
-      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner3Layer, undoManager: nil, key: nil)
+      let allowInner3Layer_property = EBStandAloneProperty_Bool (inNetClass.mAllowTracksOnInner3Layer)
       let allowInner3TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 3 Layer", size: .regular).bind_value (allowInner3Layer_property).expandableWidth ()
       _ = layoutView.appendView (allowInner3TrackCheckBox)
     //---  Allow Inner 4 Layer
-      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner4Layer, undoManager: nil, key: nil)
+      let allowInner4Layer_property = EBStandAloneProperty_Bool (inNetClass.mAllowTracksOnInner4Layer)
       let allowInner4TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 4 Layer", size: .regular).bind_value (allowInner4Layer_property).expandableWidth ()
       _ = layoutView.appendView (allowInner4TrackCheckBox)
     //---  Allow Back track
-      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnBackSide, undoManager: nil, key: nil)
+      let allowBackTrack_property = EBStandAloneProperty_Bool (inNetClass.mAllowTracksOnBackSide)
       let allowBackTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Back Layer", size: .regular).bind_value (allowBackTrack_property).expandableWidth ()
       _ = layoutView.appendView (allowBackTrackCheckBox)
     //---

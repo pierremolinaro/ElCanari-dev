@@ -355,6 +355,28 @@ final class ArtworkRoot : EBManagedObject {
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.layerConfiguration_property)
+    ioArray.append (self.selectedTab_property)
+    ioArray.append (self.comments_property)
+    ioArray.append (self.minPPTPTTTWdisplayUnit_property)
+    ioArray.append (self.minPPTPTTTW_property)
+    ioArray.append (self.minValueForOARdisplayUnit_property)
+    ioArray.append (self.minValueForOARinEBUnit_property)
+    ioArray.append (self.minValueForPHDdisplayUnit_property)
+    ioArray.append (self.minValueForPHDinEBUnit_property)
+    ioArray.append (self.minValueForBoardLimitWidthDisplayUnit_property)
+    ioArray.append (self.minValueForBoardLimitWidth_property)
+    ioArray.append (self.title_property)
+    ioArray.append (self.drillDataFileExtension_property)
+    ioArray.append (self.fileGenerationParameterArray_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

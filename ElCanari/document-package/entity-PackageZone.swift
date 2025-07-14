@@ -686,6 +686,31 @@ final class PackageZone : PackageObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.x_property)
+    ioArray.append (self.y_property)
+    ioArray.append (self.width_property)
+    ioArray.append (self.height_property)
+    ioArray.append (self.xUnit_property)
+    ioArray.append (self.yUnit_property)
+    ioArray.append (self.widthUnit_property)
+    ioArray.append (self.heightUnit_property)
+    ioArray.append (self.zoneName_property)
+    ioArray.append (self.displayZoneName_property)
+    ioArray.append (self.displayZoneNameWithPadNumbers_property)
+    ioArray.append (self.xName_property)
+    ioArray.append (self.yName_property)
+    ioArray.append (self.xNameUnit_property)
+    ioArray.append (self.yNameUnit_property)
+    ioArray.append (self.zoneNumbering_property)
+    ioArray.append (self.forbiddenPadNumbers_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

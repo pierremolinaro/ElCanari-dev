@@ -190,6 +190,22 @@ final class RectangleEntity : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.p0y_property)
+    ioArray.append (self.p1x_property)
+    ioArray.append (self.p1y_property)
+    ioArray.append (self.p2x_property)
+    ioArray.append (self.p2y_property)
+    ioArray.append (self.p3x_property)
+    ioArray.append (self.p3y_property)
+    ioArray.append (self.p0x_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

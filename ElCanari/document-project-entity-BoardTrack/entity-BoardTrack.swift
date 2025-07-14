@@ -1359,6 +1359,32 @@ final class BoardTrack : BoardObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mSide_property)
+    ioArray.append (self.mDefaultTrackWidthUnit_property)
+    ioArray.append (self.mCustomTrackWidth_property)
+    ioArray.append (self.mCustomTrackWidthUnit_property)
+    ioArray.append (self.mUsesCustomTrackWidth_property)
+    ioArray.append (self.mIsPreservedByAutoRouter_property)
+    ioArray.append (self.mP1XUnit_property)
+    ioArray.append (self.mP1YUnit_property)
+    ioArray.append (self.mP2XUnit_property)
+    ioArray.append (self.mP2YUnit_property)
+    ioArray.append (self.mManualLockP1_property)
+    ioArray.append (self.mManualLockP2_property)
+    ioArray.append (self.mAddedToSolderMask_property)
+    ioArray.append (self.mEndStyle_property)
+    ioArray.append (self.mDirectionLockOnKnobDragging_property)
+    ioArray.append (self.mConnectorP1_property)
+    ioArray.append (self.mConnectorP2_property)
+    ioArray.append (self.mNet_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

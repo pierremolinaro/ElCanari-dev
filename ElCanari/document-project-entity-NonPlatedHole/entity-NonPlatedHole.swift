@@ -366,6 +366,24 @@ final class NonPlatedHole : BoardObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mXUnit_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mYUnit_property)
+    ioArray.append (self.mWidth_property)
+    ioArray.append (self.mWidthUnit_property)
+    ioArray.append (self.mHeight_property)
+    ioArray.append (self.mHeightUnit_property)
+    ioArray.append (self.mRotation_property)
+    ioArray.append (self.mShowTextRotationKnobInBoard_property)
+    ioArray.append (self.mX_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

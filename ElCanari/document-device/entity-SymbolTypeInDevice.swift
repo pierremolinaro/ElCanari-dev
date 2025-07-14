@@ -392,6 +392,21 @@ final class SymbolTypeInDevice : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mInstances_property)
+    ioArray.append (self.mTypeName_property)
+    ioArray.append (self.mVersion_property)
+    ioArray.append (self.mFileData_property)
+    ioArray.append (self.mStrokeBezierPath_property)
+    ioArray.append (self.mFilledBezierPath_property)
+    ioArray.append (self.mPinTypes_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

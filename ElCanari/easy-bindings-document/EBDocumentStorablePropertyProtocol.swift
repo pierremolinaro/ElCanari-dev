@@ -14,7 +14,7 @@ import AppKit
 
   var key : String? { get }
 
-  func initialize (fromDictionary inDictionary : [String : Any],
+  func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject])
 
   func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject])

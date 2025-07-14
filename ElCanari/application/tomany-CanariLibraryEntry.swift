@@ -383,7 +383,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initialize (fromDictionary inDictionary : [String : Any],
+  func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let objectSavingIndexArray = inDictionary [key] as? [Int] {
       var objectArray = EBReferenceArray <CanariLibraryEntry> ()
@@ -621,7 +621,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
       var objectArray = EBReferenceArray <CanariLibraryEntry> ()
       for dictionary in array {
         let object = newInstanceOfEntityNamed (self.undoManager, "CanariLibraryEntry") as! CanariLibraryEntry
-        object.setUpProperties (withDictionary: dictionary, managedObjectArray: [])
+        object.setUpProperties (fromValueDictionary: dictionary, managedObjectArray: [])
         objectArray.append (object)
       }
       self.setProp (objectArray)

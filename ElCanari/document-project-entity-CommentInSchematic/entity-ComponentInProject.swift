@@ -1849,6 +1849,45 @@ final class ComponentInProject : BoardObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mSlavePadsShouldBeRouted_property)
+    ioArray.append (self.mX_property)
+    ioArray.append (self.mY_property)
+    ioArray.append (self.mRotation_property)
+    ioArray.append (self.mSide_property)
+    ioArray.append (self.mDisplayLegend_property)
+    ioArray.append (self.mConnectors_property)
+    ioArray.append (self.mSymbols_property)
+    ioArray.append (self.mNameIsVisibleInBoard_property)
+    ioArray.append (self.mXName_property)
+    ioArray.append (self.mYName_property)
+    ioArray.append (self.mNameFontSize_property)
+    ioArray.append (self.mNameRotation_property)
+    ioArray.append (self.mValueIsVisibleInBoard_property)
+    ioArray.append (self.mXValue_property)
+    ioArray.append (self.mYValue_property)
+    ioArray.append (self.mValueFontSize_property)
+    ioArray.append (self.mValueRotation_property)
+    ioArray.append (self.mComponentValue_property)
+    ioArray.append (self.mNamePrefix_property)
+    ioArray.append (self.mNameIndex_property)
+    ioArray.append (self.mXUnit_property)
+    ioArray.append (self.mYUnit_property)
+    ioArray.append (self.mXNameUnit_property)
+    ioArray.append (self.mYNameUnit_property)
+    ioArray.append (self.mXValueUnit_property)
+    ioArray.append (self.mYValueUnit_property)
+    ioArray.append (self.mDevice_property)
+    ioArray.append (self.mSelectedPackage_property)
+    ioArray.append (self.mNameFont_property)
+    ioArray.append (self.mValueFont_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

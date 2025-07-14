@@ -494,6 +494,24 @@ final class SymbolPin : SymbolObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.yPin_property)
+    ioArray.append (self.xName_property)
+    ioArray.append (self.yName_property)
+    ioArray.append (self.xNumber_property)
+    ioArray.append (self.yNumber_property)
+    ioArray.append (self.name_property)
+    ioArray.append (self.nameHorizontalAlignment_property)
+    ioArray.append (self.numberHorizontalAlignment_property)
+    ioArray.append (self.pinNameIsDisplayedInSchematics_property)
+    ioArray.append (self.xPin_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

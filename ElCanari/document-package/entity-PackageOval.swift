@@ -358,6 +358,22 @@ final class PackageOval : PackageObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.y_property)
+    ioArray.append (self.width_property)
+    ioArray.append (self.height_property)
+    ioArray.append (self.xUnit_property)
+    ioArray.append (self.yUnit_property)
+    ioArray.append (self.widthUnit_property)
+    ioArray.append (self.heightUnit_property)
+    ioArray.append (self.x_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

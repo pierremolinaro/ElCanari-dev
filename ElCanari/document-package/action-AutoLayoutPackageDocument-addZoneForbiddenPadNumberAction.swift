@@ -2,8 +2,8 @@
 
 extension AutoLayoutPackageDocument : NSTextFieldDelegate {
 
-  func proposedPadNumberDidChange (_ padNumberProperty : EBStoredProperty <Int>,
-                                   _ errorMessage_property : EBStoredProperty <String>,
+  func proposedPadNumberDidChange (_ padNumberProperty : EBStandAloneProperty <Int>,
+                                   _ errorMessage_property : EBStandAloneProperty <String>,
                                    _ okButton : AutoLayoutSheetDefaultOkButton) {
     let proposedValue = padNumberProperty.propval
     let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]
@@ -47,8 +47,8 @@ extension AutoLayoutPackageDocument {
         initialValue += 1
       }
     //-------------------------- Models
-      let newFordiddenPadNumber_property = EBStoredProperty <Int> (defaultValue: initialValue, undoManager: nil, key: nil)
-      let errorMessage_property = EBStoredProperty <String> (defaultValue: "", undoManager: nil, key: nil)
+      let newFordiddenPadNumber_property = EBStandAloneProperty <Int> (initialValue)
+      let errorMessage_property = EBStandAloneProperty <String> ("")
     //-------------------------- Build Panel
       let panel = NSPanel ()
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", size: .small, sheet: panel)

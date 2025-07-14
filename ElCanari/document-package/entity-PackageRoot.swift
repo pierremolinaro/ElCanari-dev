@@ -1142,6 +1142,58 @@ final class PackageRoot : EBManagedObject {
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.selectedPageIndex_property)
+    ioArray.append (self.selectedInspector_property)
+    ioArray.append (self.comments_property)
+    ioArray.append (self.program_property)
+    ioArray.append (self.horizontalFlip_property)
+    ioArray.append (self.verticalFlip_property)
+    ioArray.append (self.gridStyle_property)
+    ioArray.append (self.gridStep_property)
+    ioArray.append (self.gridStepUnit_property)
+    ioArray.append (self.gridDisplayFactor_property)
+    ioArray.append (self.zoom_property)
+    ioArray.append (self.mModelImageOpacity_property)
+    ioArray.append (self.mModelImagePageHorizontalFlip_property)
+    ioArray.append (self.mModelImagePageVerticalFlip_property)
+    ioArray.append (self.mModelImagePageGridStyle_property)
+    ioArray.append (self.mModelImagePageGridStep_property)
+    ioArray.append (self.mModelImagePageGridStepUnit_property)
+    ioArray.append (self.mModelImagePageGridDisplayFactor_property)
+    ioArray.append (self.mModelImagePageZoom_property)
+    ioArray.append (self.mModelImagePageXPlacardUnit_property)
+    ioArray.append (self.mModelImagePageYPlacardUnit_property)
+    ioArray.append (self.mModelImageSecondPointXUnit_property)
+    ioArray.append (self.mModelImageSecondPointYUnit_property)
+    ioArray.append (self.mModelImageData_property)
+    ioArray.append (self.mModelImageFirstPointXOnLock_property)
+    ioArray.append (self.mModelImageFirstPointYOnLock_property)
+    ioArray.append (self.mModelImagePointsDxOnLock_property)
+    ioArray.append (self.mModelImagePointsDyOnLock_property)
+    ioArray.append (self.mModelImageScale_property)
+    ioArray.append (self.mModelImageRotationInRadians_property)
+    ioArray.append (self.mModelPointsCircleRadius_property)
+    ioArray.append (self.mPointsAreLocked_property)
+    ioArray.append (self.mDimensionUnitFirstModelPointX_property)
+    ioArray.append (self.mDimensionUnitFirstModelPointY_property)
+    ioArray.append (self.mDimensionUnitSecondModelPointDx_property)
+    ioArray.append (self.mDimensionUnitSecondModelPointDy_property)
+    ioArray.append (self.knobSizeMultpliedByTen_property)
+    ioArray.append (self.padNumbering_property)
+    ioArray.append (self.counterClockNumberingStartAngle_property)
+    ioArray.append (self.xPlacardUnit_property)
+    ioArray.append (self.yPlacardUnit_property)
+    ioArray.append (self.mModelImageObjects_property)
+    ioArray.append (self.packageObjects_property)
+    ioArray.append (self.mModelImageDoublePoint_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

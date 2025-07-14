@@ -332,7 +332,7 @@ final class StoredObject_PointInSchematic : ReadOnlyObject_PointInSchematic, EBS
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initialize (fromDictionary inDictionary : [String : Any],
+  func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let objectSavingIndex = inDictionary [key] as? Int {
       let object = inManagedObjectArray [objectSavingIndex] as! PointInSchematic

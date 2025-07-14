@@ -492,6 +492,21 @@ final class FontInProject : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mTexts_property)
+    ioArray.append (self.mNominalSize_property)
+    ioArray.append (self.mFontName_property)
+    ioArray.append (self.mFontVersion_property)
+    ioArray.append (self.mDescriptiveString_property)
+    ioArray.append (self.mComponentNames_property)
+    ioArray.append (self.mComponentValues_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

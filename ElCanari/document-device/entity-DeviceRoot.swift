@@ -629,6 +629,35 @@ final class DeviceRoot : EBManagedObject {
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mSelectedPageIndex_property)
+    ioArray.append (self.mSelectedSymbolInspectorIndex_property)
+    ioArray.append (self.mSelectedPackageInspectorIndex_property)
+    ioArray.append (self.mTitle_property)
+    ioArray.append (self.mCategory_property)
+    ioArray.append (self.mImageData_property)
+    ioArray.append (self.mPrefix_property)
+    ioArray.append (self.mComments_property)
+    ioArray.append (self.mPackageDisplayZoom_property)
+    ioArray.append (self.mPackageDisplayHorizontalFlip_property)
+    ioArray.append (self.mPackageDisplayVerticalFlip_property)
+    ioArray.append (self.mShowPackages_property)
+    ioArray.append (self.mShowPackagePadNumbers_property)
+    ioArray.append (self.mShowPackageFrontPads_property)
+    ioArray.append (self.mShowPackageBackPads_property)
+    ioArray.append (self.mSymbolDisplayZoom_property)
+    ioArray.append (self.mDocs_property)
+    ioArray.append (self.mSymbolInstances_property)
+    ioArray.append (self.mPackages_property)
+    ioArray.append (self.mSymbolTypes_property)
+    ioArray.append (self.mPadProxies_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

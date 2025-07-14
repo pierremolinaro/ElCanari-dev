@@ -285,6 +285,21 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mFirstX_property)
+    ioArray.append (self.mFirstY_property)
+    ioArray.append (self.mFirstColor_property)
+    ioArray.append (self.mSecondDx_property)
+    ioArray.append (self.mSecondDy_property)
+    ioArray.append (self.mSecondColor_property)
+    ioArray.append (self.mRoot_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

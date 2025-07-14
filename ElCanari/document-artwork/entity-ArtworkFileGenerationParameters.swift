@@ -895,6 +895,44 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.drawBoardLimits_property)
+    ioArray.append (self.drawInternalBoardLimits_property)
+    ioArray.append (self.drawComponentNamesTopSide_property)
+    ioArray.append (self.drawComponentNamesBottomSide_property)
+    ioArray.append (self.drawComponentValuesTopSide_property)
+    ioArray.append (self.drawComponentValuesBottomSide_property)
+    ioArray.append (self.drawPackageLegendTopSide_property)
+    ioArray.append (self.drawPackageLegendBottomSide_property)
+    ioArray.append (self.drawPadsTopSide_property)
+    ioArray.append (self.drawPadsBottomSide_property)
+    ioArray.append (self.drawTextsLayoutTopSide_property)
+    ioArray.append (self.drawTextsLayoutBottomSide_property)
+    ioArray.append (self.drawTextsLegendTopSide_property)
+    ioArray.append (self.drawTextsLegendBottomSide_property)
+    ioArray.append (self.drawTracksTopSide_property)
+    ioArray.append (self.drawTracksInner1Layer_property)
+    ioArray.append (self.drawTracksInner2Layer_property)
+    ioArray.append (self.drawTracksInner3Layer_property)
+    ioArray.append (self.drawTracksInner4Layer_property)
+    ioArray.append (self.drawTracksBottomSide_property)
+    ioArray.append (self.drawTraversingPads_property)
+    ioArray.append (self.drawImagesTopSide_property)
+    ioArray.append (self.drawImagesBottomSide_property)
+    ioArray.append (self.drawQRCodesTopSide_property)
+    ioArray.append (self.drawQRCodesBottomSide_property)
+    ioArray.append (self.drawVias_property)
+    ioArray.append (self.fileExtension_property)
+    ioArray.append (self.horizontalMirror_property)
+    ioArray.append (self.name_property)
+    ioArray.append (self.mArtwork_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

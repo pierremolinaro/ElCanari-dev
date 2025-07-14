@@ -431,6 +431,24 @@ final class MasterPadInDevice : EBManagedObject,
    }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   accumulateProperties
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func accumulateProperties (into ioArray : inout [AnyObject]) {
+    super.accumulateProperties (into: &ioArray)
+    ioArray.append (self.mCenterX_property)
+    ioArray.append (self.mCenterY_property)
+    ioArray.append (self.mWidth_property)
+    ioArray.append (self.mHeight_property)
+    ioArray.append (self.mHoleWidth_property)
+    ioArray.append (self.mHoleHeight_property)
+    ioArray.append (self.mShape_property)
+    ioArray.append (self.mStyle_property)
+    ioArray.append (self.mName_property)
+    ioArray.append (self.mSlavePads_property)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
