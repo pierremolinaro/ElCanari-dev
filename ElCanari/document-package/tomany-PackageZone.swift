@@ -1003,29 +1003,8 @@ class StandAloneArrayOf_PackageZone : ReadWriteArrayOf_PackageZone { // , EBSign
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <PackageZone>
-
-    init (_ inOldValue : EBReferenceArray <PackageZone>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageZone>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -1225,29 +1204,8 @@ class StoredArrayOf_PackageZone : StandAloneArrayOf_PackageZone, EBSignatureObse
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <PackageZone>
-
-    init (_ inOldValue : EBReferenceArray <PackageZone>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 /*  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageZone>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -1271,6 +1229,24 @@ class StoredArrayOf_PackageZone : StandAloneArrayOf_PackageZone, EBSignatureObse
   // Update observers
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+/*  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageZone>,
+                                 addedSet inAddedSet : EBReferenceSet <PackageZone>) {
+    for managedObject in inRemovedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
+    }
+    for managedObject in inAddedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageZone>,
                                  addedSet inAddedSet : EBReferenceSet <PackageZone>) {
     if self.mUsedForSignature {
@@ -1281,7 +1257,6 @@ class StoredArrayOf_PackageZone : StandAloneArrayOf_PackageZone, EBSignatureObse
         managedObject.setSignatureObserver (observer: self)
       }
     }
-  //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 

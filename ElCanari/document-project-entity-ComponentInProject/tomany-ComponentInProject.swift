@@ -2000,29 +2000,8 @@ class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <ComponentInProject>
-
-    init (_ inOldValue : EBReferenceArray <ComponentInProject>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentInProject>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -2051,11 +2030,9 @@ class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject
     for managedObject in inRemovedSet.values {
       self.mResetOppositeRelationship? (managedObject)
     }
-  //---
-    for managedObject in inRemovedSet.values {
+    for managedObject in inAddedSet.values {
       self.mSetOppositeRelationship? (managedObject)
     }
-  //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
@@ -2234,7 +2211,7 @@ class StoredArrayOf_ComponentInProject : StandAloneArrayOf_ComponentInProject, E
   //   Opposite relationship management
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
- // private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+//  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
 //  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -2249,29 +2226,8 @@ class StoredArrayOf_ComponentInProject : StandAloneArrayOf_ComponentInProject, E
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <ComponentInProject>
-
-    init (_ inOldValue : EBReferenceArray <ComponentInProject>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 /*  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentInProject>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -2295,19 +2251,36 @@ class StoredArrayOf_ComponentInProject : StandAloneArrayOf_ComponentInProject, E
   // Update observers
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+/*  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <ComponentInProject>) {
+    for managedObject in inRemovedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
+   //    self.mResetOppositeRelationship? (managedObject) // Done in super method
+    }
+    for managedObject in inAddedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
+   //   self.mSetOppositeRelationship? (managedObject) // Done in super method
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentInProject>,
                                  addedSet inAddedSet : EBReferenceSet <ComponentInProject>) {
     if self.mUsedForSignature {
       for managedObject in inRemovedSet.values {
         managedObject.setSignatureObserver (observer: nil)
-        //  self.mResetOppositeRelationship? (managedObject) // Done in super method
       }
       for managedObject in inAddedSet.values {
         managedObject.setSignatureObserver (observer: self)
-        //  self.mSetOppositeRelationship? (managedObject)  // Done in super method
       }
     }
-  //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 

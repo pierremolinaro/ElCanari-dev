@@ -188,29 +188,8 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPinIns
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
- /* private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : SymbolPinInstanceInDevice?
-
-    init (_ inOldValue : SymbolPinInstanceInDevice?) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  // @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-  //   self.setProp (inObject.mOldValue)
-  // }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolPinInstanceInDevice?) {
   //--- Register old value in undo manager
-     // self.undoManager?.registerUndo (  // For Swift 6
-     //  withTarget: self,
-     // selector: #selector (Self.myPerformUndo (_:)),
-     // object: MyPrivateUndoer (inOldValue)
-    // )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }

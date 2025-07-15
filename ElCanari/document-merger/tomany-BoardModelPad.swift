@@ -356,29 +356,8 @@ class StandAloneArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad { // , EB
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <BoardModelPad>
-
-    init (_ inOldValue : EBReferenceArray <BoardModelPad>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardModelPad>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -578,29 +557,8 @@ class StoredArrayOf_BoardModelPad : StandAloneArrayOf_BoardModelPad, EBSignature
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <BoardModelPad>
-
-    init (_ inOldValue : EBReferenceArray <BoardModelPad>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 /*  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardModelPad>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -624,6 +582,24 @@ class StoredArrayOf_BoardModelPad : StandAloneArrayOf_BoardModelPad, EBSignature
   // Update observers
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+/*  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelPad>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardModelPad>) {
+    for managedObject in inRemovedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
+    }
+    for managedObject in inAddedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelPad>,
                                  addedSet inAddedSet : EBReferenceSet <BoardModelPad>) {
     if self.mUsedForSignature {
@@ -634,7 +610,6 @@ class StoredArrayOf_BoardModelPad : StandAloneArrayOf_BoardModelPad, EBSignature
         managedObject.setSignatureObserver (observer: self)
       }
     }
-  //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 

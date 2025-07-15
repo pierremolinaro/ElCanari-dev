@@ -321,29 +321,8 @@ class StandAloneArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceS
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>
-
-    init (_ inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -543,29 +522,8 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : StandAloneArrayOf_DeviceSymb
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>
-
-    init (_ inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 /*  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
   //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
     self.undoManager?.registerUndo (withTarget: self) { selfTarget in
       selfTarget.setProp (inOldValue) // Ok in Swift 6.2
       // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
@@ -589,6 +547,24 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : StandAloneArrayOf_DeviceSymb
   // Update observers
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+/*  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceSymbolInstanceInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
+    for managedObject in inRemovedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: nil)
+      }
+    }
+    for managedObject in inAddedSet.values {
+      if self.mUsedForSignature {
+        managedObject.setSignatureObserver (observer: self)
+      }
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   override func updateObservers (removedSet inRemovedSet : EBReferenceSet <DeviceSymbolInstanceInProject>,
                                  addedSet inAddedSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     if self.mUsedForSignature {
@@ -599,7 +575,6 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : StandAloneArrayOf_DeviceSymb
         managedObject.setSignatureObserver (observer: self)
       }
     }
-  //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
  }
 
