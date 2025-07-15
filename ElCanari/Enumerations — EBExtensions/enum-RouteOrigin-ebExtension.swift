@@ -30,14 +30,14 @@ extension RouteOrigin : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> RouteOrigin {
+ /* func enumfromRawValue (rawValue : Int) -> RouteOrigin {
     var result = self
     let v : RouteOrigin? = RouteOrigin (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

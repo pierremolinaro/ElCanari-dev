@@ -30,14 +30,14 @@ extension PadShape : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> PadShape {
+ /* func enumfromRawValue (rawValue : Int) -> PadShape {
     var result = self
     let v : PadShape? = PadShape (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

@@ -30,14 +30,14 @@ extension TrackSide : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> TrackSide {
+ /* func enumfromRawValue (rawValue : Int) -> TrackSide {
     var result = self
     let v : TrackSide? = TrackSide (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

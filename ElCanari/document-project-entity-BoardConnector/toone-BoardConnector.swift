@@ -540,13 +540,13 @@ final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSigna
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : BoardConnector?
 
     init (_ inOldValue : BoardConnector?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

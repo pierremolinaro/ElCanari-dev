@@ -392,13 +392,13 @@ final class StoredObject_FontInProject : ReadOnlyObject_FontInProject, EBSignatu
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : FontInProject?
 
     init (_ inOldValue : FontInProject?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

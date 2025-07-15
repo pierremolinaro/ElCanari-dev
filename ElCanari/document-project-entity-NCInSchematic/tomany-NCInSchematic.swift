@@ -151,14 +151,6 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -179,8 +171,6 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -254,16 +244,16 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
 // ProxyArrayOf_NCInSchematic is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: NCInSchematic
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_NCInSchematic is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: NCInSchematic
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_NCInSchematic is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: NCInSchematic
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_NCInSchematic is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: NCInSchematic

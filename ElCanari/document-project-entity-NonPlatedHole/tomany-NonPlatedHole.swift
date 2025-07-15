@@ -501,14 +501,6 @@ final class TransientArrayOfSuperOf_NonPlatedHole <SUPER : EBManagedObject> : Re
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -529,8 +521,6 @@ final class TransientArrayOfSuperOf_NonPlatedHole <SUPER : EBManagedObject> : Re
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -604,16 +594,16 @@ final class TransientArrayOfSuperOf_NonPlatedHole <SUPER : EBManagedObject> : Re
 // ProxyArrayOf_NonPlatedHole is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: NonPlatedHole
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_NonPlatedHole is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: NonPlatedHole
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_NonPlatedHole is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: NonPlatedHole
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_NonPlatedHole is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: NonPlatedHole

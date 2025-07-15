@@ -431,14 +431,6 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -459,8 +451,6 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -534,16 +524,16 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
 // ProxyArrayOf_CommentInSchematic is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: CommentInSchematic
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_CommentInSchematic is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: CommentInSchematic
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_CommentInSchematic is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: CommentInSchematic
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_CommentInSchematic is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: CommentInSchematic

@@ -22,14 +22,14 @@ extension BoardTextVerticalAlignment : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> BoardTextVerticalAlignment {
+ /* func enumfromRawValue (rawValue : Int) -> BoardTextVerticalAlignment {
     var result = self
     let v : BoardTextVerticalAlignment? = BoardTextVerticalAlignment (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

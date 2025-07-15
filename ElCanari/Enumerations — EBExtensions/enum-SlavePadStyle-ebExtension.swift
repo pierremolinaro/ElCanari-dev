@@ -30,14 +30,14 @@ extension SlavePadStyle : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> SlavePadStyle {
+ /* func enumfromRawValue (rawValue : Int) -> SlavePadStyle {
     var result = self
     let v : SlavePadStyle? = SlavePadStyle (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

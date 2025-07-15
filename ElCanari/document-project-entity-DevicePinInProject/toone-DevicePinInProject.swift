@@ -281,13 +281,13 @@ final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject,
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : DevicePinInProject?
 
     init (_ inOldValue : DevicePinInProject?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

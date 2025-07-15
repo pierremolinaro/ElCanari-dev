@@ -30,14 +30,14 @@ extension BorderCurveShape : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> BorderCurveShape {
+ /* func enumfromRawValue (rawValue : Int) -> BorderCurveShape {
     var result = self
     let v : BorderCurveShape? = BorderCurveShape (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

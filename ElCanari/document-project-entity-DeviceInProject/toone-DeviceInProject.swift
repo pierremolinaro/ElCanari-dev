@@ -460,13 +460,13 @@ final class StoredObject_DeviceInProject : ReadOnlyObject_DeviceInProject, EBSig
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : DeviceInProject?
 
     init (_ inOldValue : DeviceInProject?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

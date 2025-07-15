@@ -268,13 +268,13 @@ final class StoredObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceI
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : SymbolInstanceInDevice?
 
     init (_ inOldValue : SymbolInstanceInDevice?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

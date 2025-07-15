@@ -107,7 +107,7 @@ struct MergerViaShapeArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addPad (toApertures ioApertureDictionary : inout [String : [String]],
+/*  func addPad (toApertures ioApertureDictionary : inout [String : [String]],
                dx inDx : Int,
                dy inDy: Int,
                horizontalMirror inHorizontalMirror : Bool,
@@ -144,7 +144,7 @@ struct MergerViaShapeArray : Hashable {
         ioApertureDictionary [apertureString] = [flash]
       }
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

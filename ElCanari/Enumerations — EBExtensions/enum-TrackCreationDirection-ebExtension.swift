@@ -22,14 +22,14 @@ extension TrackCreationDirection : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> TrackCreationDirection {
+ /* func enumfromRawValue (rawValue : Int) -> TrackCreationDirection {
     var result = self
     let v : TrackCreationDirection? = TrackCreationDirection (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

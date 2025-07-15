@@ -30,14 +30,14 @@ extension AutorouterPreferredDirections : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> AutorouterPreferredDirections {
+ /* func enumfromRawValue (rawValue : Int) -> AutorouterPreferredDirections {
     var result = self
     let v : AutorouterPreferredDirections? = AutorouterPreferredDirections (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

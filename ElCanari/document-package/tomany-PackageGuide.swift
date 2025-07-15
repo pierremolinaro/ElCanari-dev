@@ -431,14 +431,6 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -459,8 +451,6 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -534,16 +524,16 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
 // ProxyArrayOf_PackageGuide is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: PackageGuide
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_PackageGuide is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: PackageGuide
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_PackageGuide is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: PackageGuide
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_PackageGuide is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageGuide

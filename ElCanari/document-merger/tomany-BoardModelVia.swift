@@ -165,244 +165,6 @@ class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 // ProxyArrayOf_BoardModelVia is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: BoardModelVia
-//--------------------------------------------------------------------------------------------------
-
-class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (usedForSignature inUsedForSignature : Bool, key inKey : String) {
-    self.mUsedForSignature = inUsedForSignature
-    self.key = inKey
-    super.init ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-  final let key : String
-  
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func initialize (fromValueDictionary inDictionary : [String : Any],
-                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let objectSavingIndexArray = inDictionary [self.key] as? [Int] {
-      var objectArray = EBReferenceArray <BoardModelVia> ()
-      for idx in objectSavingIndexArray {
-        objectArray.append (inManagedObjectArray [idx] as! BoardModelVia)
-      }
-      self.setProp (objectArray)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    var objectArray = EBReferenceArray <BoardModelVia> ()
-    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-    for idx in indexArray {
-      objectArray.append (inRawObjectArray [idx].object as! BoardModelVia)
-    }
-    self.setProp (objectArray)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func store (inDictionary ioDictionary : inout [String : Any]) {
-    if self.mInternalArrayValue.count > 0 {
-      var array = [Int] ()
-      for object in self.mInternalArrayValue.values {
-        array.append (object.savingIndex)
-      }
-      ioDictionary [self.key] = array
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
-    if self.mInternalArrayValue.count > 0 {
-      for object in self.mInternalArrayValue.values {
-        ioArray.append (object)
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func appendValueTo (data ioData : inout Data) {
-    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Signature ?
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final private let mUsedForSignature : Bool
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Undo manager
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Model will change
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <BoardModelVia>
-
-    init (_ inOldValue : EBReferenceArray <BoardModelVia>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardModelVia>) {
-  //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
-    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
-      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
-      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
-    }
-  //---
-    super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Model did change
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func notifyModelDidChange () {
-  //--- Notify observers
-    self.observedObjectDidChange ()
-  //---
-    super.notifyModelDidChange ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Update observers
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelVia>,
-                                 addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
-    for managedObject in inRemovedSet.values {
-      if self.mUsedForSignature {
-        managedObject.setSignatureObserver (observer: nil)
-      }
-   }
-  //---
-    for managedObject in inAddedSet.values {
-      if self.mUsedForSignature {
-        managedObject.setSignatureObserver (observer: self)
-      }
-    }
-  //---
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
- }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override final var selection : EBSelection < [BoardModelVia] > {
-    return .single (self.mInternalArrayValue.values)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func setProp (_ inValue : EBReferenceArray <BoardModelVia>) {
-    self.mInternalArrayValue = inValue
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final override var propval : EBReferenceArray <BoardModelVia> {
-    return self.mInternalArrayValue
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func remove (_ inObject : BoardModelVia) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func add (_ inObject : BoardModelVia) {
-    if !self.internalSetValue.contains (inObject) {
-      self.mInternalArrayValue.append (inObject)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   signature
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mSignatureCache : UInt32? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
-    self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = inObserver
-    inObserver?.clearSignatureCache ()
-    self.clearSignatureCache ()
- }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func signature () -> UInt32 {
-    let computedSignature : UInt32
-    if let s = self.mSignatureCache {
-      computedSignature = s
-    }else{
-      computedSignature = self.computeSignature ()
-      self.mSignatureCache = computedSignature
-    }
-    return computedSignature
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final private func computeSignature () -> UInt32 {
-    var crc : UInt32 = 0
-    for object in self.mInternalArrayValue.values {
-      crc.accumulate (u32: object.signature ())
-    }
-    return crc
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func clearSignatureCache () {
-    if self.mSignatureCache != nil {
-      self.mSignatureCache = nil
-      self.mSignatureObserver?.clearSignatureCache ()
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: BoardModelVia
 //--------------------------------------------------------------------------------------------------
 
@@ -620,6 +382,241 @@ class StandAloneArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia { // , EB
       self.mSignatureObserver?.clearSignatureCache ()
     }
   } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: BoardModelVia
+//--------------------------------------------------------------------------------------------------
+
+class StoredArrayOf_BoardModelVia : StandAloneArrayOf_BoardModelVia, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (usedForSignature inUsedForSignature : Bool, key inKey : String) {
+    self.mUsedForSignature = inUsedForSignature
+    self.key = inKey
+    super.init ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  final let key : String
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (fromValueDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let objectSavingIndexArray = inDictionary [self.key] as? [Int] {
+      var objectArray = EBReferenceArray <BoardModelVia> ()
+      for idx in objectSavingIndexArray {
+        objectArray.append (inManagedObjectArray [idx] as! BoardModelVia)
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    var objectArray = EBReferenceArray <BoardModelVia> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! BoardModelVia)
+    }
+    self.setProp (objectArray)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if self.mInternalArrayValue.count > 0 {
+      var array = [Int] ()
+      for object in self.mInternalArrayValue.values {
+        array.append (object.savingIndex)
+      }
+      ioDictionary [self.key] = array
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mInternalArrayValue.count > 0 {
+      for object in self.mInternalArrayValue.values {
+        ioArray.append (object)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func appendValueTo (data ioData : inout Data) {
+    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Signature ?
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private let mUsedForSignature : Bool
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Undo manager
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model will change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
+    let mOldValue : EBReferenceArray <BoardModelVia>
+
+    init (_ inOldValue : EBReferenceArray <BoardModelVia>) {
+      self.mOldValue = inOldValue
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+//    self.setProp (inObject.mOldValue)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <BoardModelVia>) {
+  //--- Register old value in undo manager
+  //   self.undoManager?.registerUndo (  // For Swift 6
+  //    withTarget: self,
+  //    selector: #selector (Self.myPerformUndo (_:)),
+  //    object: MyPrivateUndoer (inOldValue)
+  //  )
+    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
+      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
+      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model did change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func notifyModelDidChange () {
+  //--- Notify observers
+    self.observedObjectDidChange ()
+  //---
+    super.notifyModelDidChange ()
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Update observers
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelVia>,
+                                 addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
+    if self.mUsedForSignature {
+      for managedObject in inRemovedSet.values {
+        managedObject.setSignatureObserver (observer: nil)
+      }
+      for managedObject in inAddedSet.values {
+        managedObject.setSignatureObserver (observer: self)
+      }
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override final var selection : EBSelection < [BoardModelVia] > {
+    return .single (self.mInternalArrayValue.values)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func setProp (_ inValue : EBReferenceArray <BoardModelVia>) {
+    self.mInternalArrayValue = inValue
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final override var propval : EBReferenceArray <BoardModelVia> {
+    return self.mInternalArrayValue
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func remove (_ inObject : BoardModelVia) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func add (_ inObject : BoardModelVia) {
+    if !self.internalSetValue.contains (inObject) {
+      self.mInternalArrayValue.append (inObject)
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   signature
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mSignatureCache : UInt32? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
+    self.mSignatureObserver?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = self.computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in self.mInternalArrayValue.values {
+      crc.accumulate (u32: object.signature ())
+    }
+    return crc
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

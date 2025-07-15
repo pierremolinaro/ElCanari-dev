@@ -30,14 +30,14 @@ extension TrackLockDirection : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> TrackLockDirection {
+ /* func enumfromRawValue (rawValue : Int) -> TrackLockDirection {
     var result = self
     let v : TrackLockDirection? = TrackLockDirection (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

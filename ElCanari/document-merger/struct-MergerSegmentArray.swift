@@ -252,7 +252,7 @@ struct MergerSegmentArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func add (toApertures ioApertures : inout [String : [String]],
+/*  func add (toApertures ioApertures : inout [String : [String]],
             dx inDx : Int,
             dy inDy: Int,
             horizontalMirror inHorizontalMirror : Bool,
@@ -313,7 +313,7 @@ struct MergerSegmentArray : Hashable {
         ioApertures [apertureString] = [moveTo, lineTo]
       }
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

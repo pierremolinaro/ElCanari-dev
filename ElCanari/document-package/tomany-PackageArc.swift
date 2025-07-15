@@ -641,14 +641,6 @@ final class TransientArrayOfSuperOf_PackageArc <SUPER : EBManagedObject> : ReadO
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -669,8 +661,6 @@ final class TransientArrayOfSuperOf_PackageArc <SUPER : EBManagedObject> : ReadO
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -744,16 +734,16 @@ final class TransientArrayOfSuperOf_PackageArc <SUPER : EBManagedObject> : ReadO
 // ProxyArrayOf_PackageArc is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: PackageArc
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_PackageArc is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: PackageArc
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_PackageArc is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: PackageArc
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_PackageArc is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageArc

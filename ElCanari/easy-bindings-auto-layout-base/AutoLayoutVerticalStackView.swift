@@ -275,70 +275,70 @@ class AutoLayoutVerticalStackView : ALB_NSStackView {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate final class InternalClipView : NSClipView {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init () {
-    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
-    noteObjectAllocation (self)
-  //--- Do not set drawsBackground and backgroundColor of a clip view !!!
-  // It is also important to note that setting drawsBackground to false in an NSScrollView
-  // has the added effect of setting the NSClipView property copiesOnScroll to false.
-  // The side effect of setting the drawsBackground property directly to the NSClipView is the
-  // appearance of “trails” (vestiges of previous drawing) in the document view as it is scrolled.
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final override var isFlipped : Bool { true } // So document view is at top
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//fileprivate final class InternalClipView : NSClipView {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  init () {
+//    super.init (frame: NSRect (x: 0, y: 0, width: 10, height: 10))
+//    noteObjectAllocation (self)
+//  //--- Do not set drawsBackground and backgroundColor of a clip view !!!
+//  // It is also important to note that setting drawsBackground to false in an NSScrollView
+//  // has the added effect of setting the NSClipView property copiesOnScroll to false.
+//  // The side effect of setting the drawsBackground property directly to the NSClipView is the
+//  // appearance of “trails” (vestiges of previous drawing) in the document view as it is scrolled.
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  required init? (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  final override var isFlipped : Bool { true } // So document view is at top
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate final class InternalReceiverView : ALB_NSView {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private weak var mRootView : AutoLayoutVerticalStackView? // Should be WEAK
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (rootView inRootView : AutoLayoutVerticalStackView) {
-    self.mRootView = inRootView
-    super.init ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func invalidateIntrinsicContentSize () {
-    self.mRootView?.invalidateIntrinsicContentSize ()
-    super.invalidateIntrinsicContentSize ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//fileprivate final class InternalReceiverView : ALB_NSView {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  private weak var mRootView : AutoLayoutVerticalStackView? // Should be WEAK
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  init (rootView inRootView : AutoLayoutVerticalStackView) {
+//    self.mRootView = inRootView
+//    super.init ()
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  required init? (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  override func invalidateIntrinsicContentSize () {
+//    self.mRootView?.invalidateIntrinsicContentSize ()
+//    super.invalidateIntrinsicContentSize ()
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------

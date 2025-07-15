@@ -30,14 +30,14 @@ extension TrackEndStyle : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> TrackEndStyle {
+ /* func enumfromRawValue (rawValue : Int) -> TrackEndStyle {
     var result = self
     let v : TrackEndStyle? = TrackEndStyle (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

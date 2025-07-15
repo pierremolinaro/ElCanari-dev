@@ -445,261 +445,6 @@ class ReadWriteArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
 // ProxyArrayOf_SlavePadInDevice is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: SlavePadInDevice
-//--------------------------------------------------------------------------------------------------
-
-class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (usedForSignature inUsedForSignature : Bool, key inKey : String) {
-    self.mUsedForSignature = inUsedForSignature
-    self.key = inKey
-    super.init ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-  final let key : String
-  
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func initialize (fromValueDictionary inDictionary : [String : Any],
-                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let objectSavingIndexArray = inDictionary [self.key] as? [Int] {
-      var objectArray = EBReferenceArray <SlavePadInDevice> ()
-      for idx in objectSavingIndexArray {
-        objectArray.append (inManagedObjectArray [idx] as! SlavePadInDevice)
-      }
-      self.setProp (objectArray)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    var objectArray = EBReferenceArray <SlavePadInDevice> ()
-    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-    for idx in indexArray {
-      objectArray.append (inRawObjectArray [idx].object as! SlavePadInDevice)
-    }
-    self.setProp (objectArray)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func store (inDictionary ioDictionary : inout [String : Any]) {
-    if self.mInternalArrayValue.count > 0 {
-      var array = [Int] ()
-      for object in self.mInternalArrayValue.values {
-        array.append (object.savingIndex)
-      }
-      ioDictionary [self.key] = array
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
-    if self.mInternalArrayValue.count > 0 {
-      for object in self.mInternalArrayValue.values {
-        ioArray.append (object)
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func appendValueTo (data ioData : inout Data) {
-    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Signature ?
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final private let mUsedForSignature : Bool
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Undo manager
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Opposite relationship management
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
-  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void,
-                                               resetter inResetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Model will change
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <SlavePadInDevice>
-
-    init (_ inOldValue : EBReferenceArray <SlavePadInDevice>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SlavePadInDevice>) {
-  //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
-    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
-      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
-      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
-    }
-  //---
-    super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Model did change
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func notifyModelDidChange () {
-  //--- Notify observers
-    self.observedObjectDidChange ()
-  //---
-    super.notifyModelDidChange ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Update observers
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SlavePadInDevice>,
-                                 addedSet inAddedSet : EBReferenceSet <SlavePadInDevice>) {
-    for managedObject in inRemovedSet.values {
-      if self.mUsedForSignature {
-        managedObject.setSignatureObserver (observer: nil)
-      }
-      self.mResetOppositeRelationship? (managedObject)
-   }
-  //---
-    for managedObject in inAddedSet.values {
-      if self.mUsedForSignature {
-        managedObject.setSignatureObserver (observer: self)
-      }
-      self.mSetOppositeRelationship? (managedObject)
-    }
-  //---
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
- }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override final var selection : EBSelection < [SlavePadInDevice] > {
-    return .single (self.mInternalArrayValue.values)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func setProp (_ inValue : EBReferenceArray <SlavePadInDevice>) {
-    self.mInternalArrayValue = inValue
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final override var propval : EBReferenceArray <SlavePadInDevice> {
-    return self.mInternalArrayValue
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func remove (_ inObject : SlavePadInDevice) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func add (_ inObject : SlavePadInDevice) {
-    if !self.internalSetValue.contains (inObject) {
-      self.mInternalArrayValue.append (inObject)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   signature
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mSignatureCache : UInt32? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
-    self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = inObserver
-    inObserver?.clearSignatureCache ()
-    self.clearSignatureCache ()
- }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func signature () -> UInt32 {
-    let computedSignature : UInt32
-    if let s = self.mSignatureCache {
-      computedSignature = s
-    }else{
-      computedSignature = self.computeSignature ()
-      self.mSignatureCache = computedSignature
-    }
-    return computedSignature
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final private func computeSignature () -> UInt32 {
-    var crc : UInt32 = 0
-    for object in self.mInternalArrayValue.values {
-      crc.accumulate (u32: object.signature ())
-    }
-    return crc
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func clearSignatureCache () {
-    if self.mSignatureCache != nil {
-      self.mSignatureCache = nil
-      self.mSignatureObserver?.clearSignatureCache ()
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: SlavePadInDevice
 //--------------------------------------------------------------------------------------------------
 
@@ -944,6 +689,258 @@ class StandAloneArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice { /
       self.mSignatureObserver?.clearSignatureCache ()
     }
   } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: SlavePadInDevice
+//--------------------------------------------------------------------------------------------------
+
+class StoredArrayOf_SlavePadInDevice : StandAloneArrayOf_SlavePadInDevice, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (usedForSignature inUsedForSignature : Bool, key inKey : String) {
+    self.mUsedForSignature = inUsedForSignature
+    self.key = inKey
+    super.init ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  final let key : String
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (fromValueDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let objectSavingIndexArray = inDictionary [self.key] as? [Int] {
+      var objectArray = EBReferenceArray <SlavePadInDevice> ()
+      for idx in objectSavingIndexArray {
+        objectArray.append (inManagedObjectArray [idx] as! SlavePadInDevice)
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    var objectArray = EBReferenceArray <SlavePadInDevice> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! SlavePadInDevice)
+    }
+    self.setProp (objectArray)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if self.mInternalArrayValue.count > 0 {
+      var array = [Int] ()
+      for object in self.mInternalArrayValue.values {
+        array.append (object.savingIndex)
+      }
+      ioDictionary [self.key] = array
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mInternalArrayValue.count > 0 {
+      for object in self.mInternalArrayValue.values {
+        ioArray.append (object)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func appendValueTo (data ioData : inout Data) {
+    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Signature ?
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private let mUsedForSignature : Bool
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Undo manager
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Opposite relationship management
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ // private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
+//  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model will change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
+    let mOldValue : EBReferenceArray <SlavePadInDevice>
+
+    init (_ inOldValue : EBReferenceArray <SlavePadInDevice>) {
+      self.mOldValue = inOldValue
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+//    self.setProp (inObject.mOldValue)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SlavePadInDevice>) {
+  //--- Register old value in undo manager
+  //   self.undoManager?.registerUndo (  // For Swift 6
+  //    withTarget: self,
+  //    selector: #selector (Self.myPerformUndo (_:)),
+  //    object: MyPrivateUndoer (inOldValue)
+  //  )
+    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
+      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
+      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model did change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func notifyModelDidChange () {
+  //--- Notify observers
+    self.observedObjectDidChange ()
+  //---
+    super.notifyModelDidChange ()
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Update observers
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SlavePadInDevice>,
+                                 addedSet inAddedSet : EBReferenceSet <SlavePadInDevice>) {
+    if self.mUsedForSignature {
+      for managedObject in inRemovedSet.values {
+        managedObject.setSignatureObserver (observer: nil)
+        //  self.mResetOppositeRelationship? (managedObject) // Done in super method
+      }
+      for managedObject in inAddedSet.values {
+        managedObject.setSignatureObserver (observer: self)
+        //  self.mSetOppositeRelationship? (managedObject)  // Done in super method
+      }
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override final var selection : EBSelection < [SlavePadInDevice] > {
+    return .single (self.mInternalArrayValue.values)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func setProp (_ inValue : EBReferenceArray <SlavePadInDevice>) {
+    self.mInternalArrayValue = inValue
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final override var propval : EBReferenceArray <SlavePadInDevice> {
+    return self.mInternalArrayValue
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func remove (_ inObject : SlavePadInDevice) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func add (_ inObject : SlavePadInDevice) {
+    if !self.internalSetValue.contains (inObject) {
+      self.mInternalArrayValue.append (inObject)
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   signature
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mSignatureCache : UInt32? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
+    self.mSignatureObserver?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = self.computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in self.mInternalArrayValue.values {
+      crc.accumulate (u32: object.signature ())
+    }
+    return crc
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

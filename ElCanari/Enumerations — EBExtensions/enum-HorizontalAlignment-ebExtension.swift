@@ -30,14 +30,14 @@ extension HorizontalAlignment : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> HorizontalAlignment {
+ /* func enumfromRawValue (rawValue : Int) -> HorizontalAlignment {
     var result = self
     let v : HorizontalAlignment? = HorizontalAlignment (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

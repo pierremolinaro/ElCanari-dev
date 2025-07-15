@@ -30,14 +30,14 @@ extension RastnetDisplay : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> RastnetDisplay {
+ /* func enumfromRawValue (rawValue : Int) -> RastnetDisplay {
     var result = self
     let v : RastnetDisplay? = RastnetDisplay (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

@@ -54,7 +54,7 @@ import Foundation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addToApertureDictionary (_ ioApertures : inout [String : [String]],
+/*  func addToApertureDictionary (_ ioApertures : inout [String : [String]],
                                 dx inDx : Int,
                                 dy inDy: Int,
                                 horizontalMirror inHorizontalMirror : Bool,
@@ -108,7 +108,7 @@ import Foundation
         ioApertures [apertureString] = [moveTo, lineTo]
       }
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

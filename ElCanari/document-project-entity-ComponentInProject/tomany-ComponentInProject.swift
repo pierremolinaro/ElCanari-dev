@@ -1684,14 +1684,6 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
 
   private var mIsOrderedBefore : Optional < (_ left : ComponentInProject, _ right : ComponentInProject) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Data provider
@@ -1728,17 +1720,6 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/*  func resetDataProvider () {
-    if self.mDataProvider != nil {
-      self.mSortObserver = nil
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = nil
-      self.mIsOrderedBefore = nil
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func notifyModelDidChange () {
     if !self.mModelArrayShouldBeComputed {
       self.mModelArrayShouldBeComputed = true
@@ -1746,8 +1727,6 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -1819,14 +1798,6 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1847,8 +1818,6 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -1928,261 +1897,6 @@ class ReadWriteArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInProject {
 //--------------------------------------------------------------------------------------------------
 
 // ProxyArrayOf_ComponentInProject is useless.
-
-//--------------------------------------------------------------------------------------------------
-//    Stored Array: ComponentInProject
-//--------------------------------------------------------------------------------------------------
-
-class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (usedForSignature inUsedForSignature : Bool, key inKey : String) {
-    self.mUsedForSignature = inUsedForSignature
-    self.key = inKey
-    super.init ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-  final let key : String
-  
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func initialize (fromValueDictionary inDictionary : [String : Any],
-                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let objectSavingIndexArray = inDictionary [self.key] as? [Int] {
-      var objectArray = EBReferenceArray <ComponentInProject> ()
-      for idx in objectSavingIndexArray {
-        objectArray.append (inManagedObjectArray [idx] as! ComponentInProject)
-      }
-      self.setProp (objectArray)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
-    var objectArray = EBReferenceArray <ComponentInProject> ()
-    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
-    for idx in indexArray {
-      objectArray.append (inRawObjectArray [idx].object as! ComponentInProject)
-    }
-    self.setProp (objectArray)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func store (inDictionary ioDictionary : inout [String : Any]) {
-    if self.mInternalArrayValue.count > 0 {
-      var array = [Int] ()
-      for object in self.mInternalArrayValue.values {
-        array.append (object.savingIndex)
-      }
-      ioDictionary [self.key] = array
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
-    if self.mInternalArrayValue.count > 0 {
-      for object in self.mInternalArrayValue.values {
-        ioArray.append (object)
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func appendValueTo (data ioData : inout Data) {
-    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Signature ?
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final private let mUsedForSignature : Bool
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Undo manager
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Opposite relationship management
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
-  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentInProject) -> Void,
-                                               resetter inResetter : @escaping (_ inManagedObject : ComponentInProject) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Model will change
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBReferenceArray <ComponentInProject>
-
-    init (_ inOldValue : EBReferenceArray <ComponentInProject>) {
-      self.mOldValue = inOldValue
-    }
-  } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-//    self.setProp (inObject.mOldValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentInProject>) {
-  //--- Register old value in undo manager
-  //   self.undoManager?.registerUndo (  // For Swift 6
-  //    withTarget: self,
-  //    selector: #selector (Self.myPerformUndo (_:)),
-  //    object: MyPrivateUndoer (inOldValue)
-  //  )
-    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
-      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
-      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
-    }
-  //---
-    super.notifyModelDidChangeFrom (oldValue: inOldValue)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Model did change
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func notifyModelDidChange () {
-  //--- Notify observers
-    self.observedObjectDidChange ()
-  //---
-    super.notifyModelDidChange ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Update observers
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentInProject>,
-                                 addedSet inAddedSet : EBReferenceSet <ComponentInProject>) {
-    for managedObject in inRemovedSet.values {
-      if self.mUsedForSignature {
-        managedObject.setSignatureObserver (observer: nil)
-      }
-      self.mResetOppositeRelationship? (managedObject)
-   }
-  //---
-    for managedObject in inAddedSet.values {
-      if self.mUsedForSignature {
-        managedObject.setSignatureObserver (observer: self)
-      }
-      self.mSetOppositeRelationship? (managedObject)
-    }
-  //---
-    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
- }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override final var selection : EBSelection < [ComponentInProject] > {
-    return .single (self.mInternalArrayValue.values)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func setProp (_ inValue : EBReferenceArray <ComponentInProject>) {
-    self.mInternalArrayValue = inValue
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final override var propval : EBReferenceArray <ComponentInProject> {
-    return self.mInternalArrayValue
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func remove (_ inObject : ComponentInProject) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func add (_ inObject : ComponentInProject) {
-    if !self.internalSetValue.contains (inObject) {
-      self.mInternalArrayValue.append (inObject)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   signature
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mSignatureCache : UInt32? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
-    self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = inObserver
-    inObserver?.clearSignatureCache ()
-    self.clearSignatureCache ()
- }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func signature () -> UInt32 {
-    let computedSignature : UInt32
-    if let s = self.mSignatureCache {
-      computedSignature = s
-    }else{
-      computedSignature = self.computeSignature ()
-      self.mSignatureCache = computedSignature
-    }
-    return computedSignature
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final private func computeSignature () -> UInt32 {
-    var crc : UInt32 = 0
-    for object in self.mInternalArrayValue.values {
-      crc.accumulate (u32: object.signature ())
-    }
-    return crc
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func clearSignatureCache () {
-    if self.mSignatureCache != nil {
-      self.mSignatureCache = nil
-      self.mSignatureObserver?.clearSignatureCache ()
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
 
 //--------------------------------------------------------------------------------------------------
 //    StandAlone Array: ComponentInProject
@@ -2429,6 +2143,258 @@ class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject
       self.mSignatureObserver?.clearSignatureCache ()
     }
   } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: ComponentInProject
+//--------------------------------------------------------------------------------------------------
+
+class StoredArrayOf_ComponentInProject : StandAloneArrayOf_ComponentInProject, EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (usedForSignature inUsedForSignature : Bool, key inKey : String) {
+    self.mUsedForSignature = inUsedForSignature
+    self.key = inKey
+    super.init ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  final let key : String
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (fromValueDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let objectSavingIndexArray = inDictionary [self.key] as? [Int] {
+      var objectArray = EBReferenceArray <ComponentInProject> ()
+      for idx in objectSavingIndexArray {
+        objectArray.append (inManagedObjectArray [idx] as! ComponentInProject)
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    var objectArray = EBReferenceArray <ComponentInProject> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! ComponentInProject)
+    }
+    self.setProp (objectArray)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if self.mInternalArrayValue.count > 0 {
+      var array = [Int] ()
+      for object in self.mInternalArrayValue.values {
+        array.append (object.savingIndex)
+      }
+      ioDictionary [self.key] = array
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mInternalArrayValue.count > 0 {
+      for object in self.mInternalArrayValue.values {
+        ioArray.append (object)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func appendValueTo (data ioData : inout Data) {
+    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Signature ?
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private let mUsedForSignature : Bool
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Undo manager
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Opposite relationship management
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ // private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+//  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : ComponentInProject) -> Void) {
+    self.mSetOppositeRelationship = inSetter
+    self.mResetOppositeRelationship = inResetter
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model will change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
+    let mOldValue : EBReferenceArray <ComponentInProject>
+
+    init (_ inOldValue : EBReferenceArray <ComponentInProject>) {
+      self.mOldValue = inOldValue
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+//    self.setProp (inObject.mOldValue)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentInProject>) {
+  //--- Register old value in undo manager
+  //   self.undoManager?.registerUndo (  // For Swift 6
+  //    withTarget: self,
+  //    selector: #selector (Self.myPerformUndo (_:)),
+  //    object: MyPrivateUndoer (inOldValue)
+  //  )
+    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
+      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
+      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model did change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func notifyModelDidChange () {
+  //--- Notify observers
+    self.observedObjectDidChange ()
+  //---
+    super.notifyModelDidChange ()
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Update observers
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentInProject>,
+                                 addedSet inAddedSet : EBReferenceSet <ComponentInProject>) {
+    if self.mUsedForSignature {
+      for managedObject in inRemovedSet.values {
+        managedObject.setSignatureObserver (observer: nil)
+        //  self.mResetOppositeRelationship? (managedObject) // Done in super method
+      }
+      for managedObject in inAddedSet.values {
+        managedObject.setSignatureObserver (observer: self)
+        //  self.mSetOppositeRelationship? (managedObject)  // Done in super method
+      }
+    }
+  //---
+    super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
+ }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override final var selection : EBSelection < [ComponentInProject] > {
+    return .single (self.mInternalArrayValue.values)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override func setProp (_ inValue : EBReferenceArray <ComponentInProject>) {
+    self.mInternalArrayValue = inValue
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final override var propval : EBReferenceArray <ComponentInProject> {
+    return self.mInternalArrayValue
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func remove (_ inObject : ComponentInProject) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func add (_ inObject : ComponentInProject) {
+    if !self.internalSetValue.contains (inObject) {
+      self.mInternalArrayValue.append (inObject)
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   signature
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mSignatureCache : UInt32? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
+    self.mSignatureObserver?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = self.computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final private func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in self.mInternalArrayValue.values {
+      crc.accumulate (u32: object.signature ())
+    }
+    return crc
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

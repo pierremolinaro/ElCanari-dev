@@ -30,14 +30,14 @@ extension BoardImageDisplay : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> BoardImageDisplay {
+ /* func enumfromRawValue (rawValue : Int) -> BoardImageDisplay {
     var result = self
     let v : BoardImageDisplay? = BoardImageDisplay (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

@@ -501,14 +501,6 @@ final class TransientArrayOfSuperOf_BoardLine <SUPER : EBManagedObject> : ReadOn
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -529,8 +521,6 @@ final class TransientArrayOfSuperOf_BoardLine <SUPER : EBManagedObject> : ReadOn
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -604,16 +594,16 @@ final class TransientArrayOfSuperOf_BoardLine <SUPER : EBManagedObject> : ReadOn
 // ProxyArrayOf_BoardLine is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: BoardLine
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_BoardLine is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: BoardLine
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_BoardLine is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: BoardLine
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_BoardLine is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: BoardLine

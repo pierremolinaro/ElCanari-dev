@@ -30,14 +30,14 @@ extension QRCodeCorrectionLevel : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> QRCodeCorrectionLevel {
+ /* func enumfromRawValue (rawValue : Int) -> QRCodeCorrectionLevel {
     var result = self
     let v : QRCodeCorrectionLevel? = QRCodeCorrectionLevel (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

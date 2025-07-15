@@ -291,14 +291,6 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -319,8 +311,6 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -394,16 +384,16 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
 // ProxyArrayOf_SymbolText is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: SymbolText
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_SymbolText is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: SymbolText
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_SymbolText is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: SymbolText
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_SymbolText is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: SymbolText

@@ -175,7 +175,7 @@ struct MergerPadArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addPads (toApertures ioApertureDictionary : inout [String : [String]],
+/*  func addPads (toApertures ioApertureDictionary : inout [String : [String]],
                 toPolygones ioPolygons : inout [[String]],
                 dx inDx : Int,
                 dy inDy: Int,
@@ -329,7 +329,7 @@ struct MergerPadArray : Hashable {
         }
       }
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

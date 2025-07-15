@@ -22,14 +22,14 @@ extension RestrictRectangleLayer : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> RestrictRectangleLayer {
+ /* func enumfromRawValue (rawValue : Int) -> RestrictRectangleLayer {
     var result = self
     let v : RestrictRectangleLayer? = RestrictRectangleLayer (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

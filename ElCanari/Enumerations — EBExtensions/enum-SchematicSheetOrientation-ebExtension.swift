@@ -30,14 +30,14 @@ extension SchematicSheetOrientation : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> SchematicSheetOrientation {
+ /* func enumfromRawValue (rawValue : Int) -> SchematicSheetOrientation {
     var result = self
     let v : SchematicSheetOrientation? = SchematicSheetOrientation (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

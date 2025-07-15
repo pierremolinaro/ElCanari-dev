@@ -30,14 +30,14 @@ extension BoardLineLayer : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> BoardLineLayer {
+ /* func enumfromRawValue (rawValue : Int) -> BoardLineLayer {
     var result = self
     let v : BoardLineLayer? = BoardLineLayer (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

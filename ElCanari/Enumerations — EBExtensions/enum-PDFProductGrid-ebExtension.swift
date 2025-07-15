@@ -30,14 +30,14 @@ extension PDFProductGrid : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> PDFProductGrid {
+ /* func enumfromRawValue (rawValue : Int) -> PDFProductGrid {
     var result = self
     let v : PDFProductGrid? = PDFProductGrid (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

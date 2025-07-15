@@ -536,14 +536,6 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -564,8 +556,6 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -639,16 +629,16 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
 // ProxyArrayOf_PackageSegment is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: PackageSegment
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_PackageSegment is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: PackageSegment
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_PackageSegment is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: PackageSegment
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_PackageSegment is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageSegment

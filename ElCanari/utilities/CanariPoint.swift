@@ -84,9 +84,9 @@ struct CanariPoint : Equatable, Hashable {
   //   mil thenth Point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var milTenthPoint : NSPoint {
-    return NSPoint (x: canariUnitToMilTenth (self.x), y: canariUnitToMilTenth (self.y))
-  }
+//  var milTenthPoint : NSPoint {
+//    return NSPoint (x: canariUnitToMilTenth (self.x), y: canariUnitToMilTenth (self.y))
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Aligned Point

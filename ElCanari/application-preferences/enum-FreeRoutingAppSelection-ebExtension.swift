@@ -30,14 +30,14 @@ extension FreeRoutingAppSelection : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> FreeRoutingAppSelection {
+ /* func enumfromRawValue (rawValue : Int) -> FreeRoutingAppSelection {
     var result = self
     let v : FreeRoutingAppSelection? = FreeRoutingAppSelection (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

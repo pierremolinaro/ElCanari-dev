@@ -816,14 +816,6 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -844,8 +836,6 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -919,16 +909,16 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
 // ProxyArrayOf_BoardRestrictRectangle is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: BoardRestrictRectangle
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_BoardRestrictRectangle is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: BoardRestrictRectangle
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_BoardRestrictRectangle is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: BoardRestrictRectangle
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_BoardRestrictRectangle is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: BoardRestrictRectangle

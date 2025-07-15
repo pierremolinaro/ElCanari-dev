@@ -292,13 +292,13 @@ final class StoredObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInD
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : SymbolPinTypeInDevice?
 
     init (_ inOldValue : SymbolPinTypeInDevice?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

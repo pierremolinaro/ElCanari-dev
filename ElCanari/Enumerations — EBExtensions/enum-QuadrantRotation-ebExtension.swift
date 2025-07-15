@@ -38,14 +38,14 @@ extension QuadrantRotation : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> QuadrantRotation {
+ /* func enumfromRawValue (rawValue : Int) -> QuadrantRotation {
     var result = self
     let v : QuadrantRotation? = QuadrantRotation (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

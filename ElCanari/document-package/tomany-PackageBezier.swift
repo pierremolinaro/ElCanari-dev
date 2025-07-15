@@ -746,14 +746,6 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -774,8 +766,6 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -849,16 +839,16 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
 // ProxyArrayOf_PackageBezier is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: PackageBezier
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_PackageBezier is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: PackageBezier
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_PackageBezier is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: PackageBezier
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_PackageBezier is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageBezier

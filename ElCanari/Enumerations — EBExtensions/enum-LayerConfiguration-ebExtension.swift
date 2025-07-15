@@ -30,14 +30,14 @@ extension LayerConfiguration : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> LayerConfiguration {
+ /* func enumfromRawValue (rawValue : Int) -> LayerConfiguration {
     var result = self
     let v : LayerConfiguration? = LayerConfiguration (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

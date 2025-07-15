@@ -676,14 +676,6 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -704,8 +696,6 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -779,16 +769,16 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
 // ProxyArrayOf_BoardQRCode is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: BoardQRCode
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_BoardQRCode is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: BoardQRCode
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_BoardQRCode is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: BoardQRCode
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_BoardQRCode is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: BoardQRCode

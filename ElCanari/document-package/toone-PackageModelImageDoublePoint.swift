@@ -224,13 +224,13 @@ final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageMo
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : PackageModelImageDoublePoint?
 
     init (_ inOldValue : PackageModelImageDoublePoint?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

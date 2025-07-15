@@ -466,14 +466,6 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
   private weak var mDataProvider : EBReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
-//  private let mModelEvent = EBModelEvent ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-/*  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -494,8 +486,6 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
         self.computeModelArray ()
       }
     }
-//    self.mModelArrayShouldBeComputed = true
-//    self.mModelEvent.observedObjectDidChange ()
     super.notifyModelDidChange ()
   }
 
@@ -569,16 +559,16 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
 // ProxyArrayOf_PackageOval is useless.
 
 //--------------------------------------------------------------------------------------------------
-//    Stored Array: PackageOval
-//--------------------------------------------------------------------------------------------------
-
-// StoredArrayOf_PackageOval is useless.
-
-//--------------------------------------------------------------------------------------------------
 //    StandAlone Array: PackageOval
 //--------------------------------------------------------------------------------------------------
 
 // StandAloneArrayOf_PackageOval is useless.
+
+//--------------------------------------------------------------------------------------------------
+//    Stored Array: PackageOval
+//--------------------------------------------------------------------------------------------------
+
+// StoredArrayOf_PackageOval is useless.
 
 //--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageOval

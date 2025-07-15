@@ -149,13 +149,13 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbol
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+ /* private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : DeviceSymbolTypeInProject?
 
     init (_ inOldValue : DeviceSymbolTypeInProject?) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

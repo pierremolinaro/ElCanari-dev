@@ -106,9 +106,9 @@ func cocoaToCanariUnit (_ inValue : CGFloat) -> Int {
 
 //--------------------------------------------------------------------------------------------------
 
-func cocoaToInch (_ inValue : CGFloat) -> CGFloat {
-  return inValue / CGFloat (PIXELS_PER_INCH)
-}
+//func cocoaToInch (_ inValue : CGFloat) -> CGFloat {
+//  return inValue / CGFloat (PIXELS_PER_INCH)
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -118,22 +118,22 @@ func cocoaToInch (_ inValue : CGFloat) -> CGFloat {
 
 //--------------------------------------------------------------------------------------------------
 
-func cocoaToMilTenth (_ inValue : CGFloat) -> Int {
-  return Int (inValue * 10_000.0 / CGFloat (PIXELS_PER_INCH))
-}
+//func cocoaToMilTenth (_ inValue : CGFloat) -> Int {
+//  return Int (inValue * 10_000.0 / CGFloat (PIXELS_PER_INCH))
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-func canariUnitToInch (_ inValue : Int) -> CGFloat {
-  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_INCH)
-}
+//func canariUnitToInch (_ inValue : Int) -> CGFloat {
+//  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_INCH)
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-func canariUnitToMilTenth (_ inValue : Int) -> Int { // 1/10 mil = 1 / 10 000 inch
-  let v = CGFloat (inValue) * 10.0 / CGFloat (CANARI_UNITS_PER_MIL)
-  return Int (v.rounded ())
-}
+//func canariUnitToMilTenth (_ inValue : Int) -> Int { // 1/10 mil = 1 / 10 000 inch
+//  let v = CGFloat (inValue) * 10.0 / CGFloat (CANARI_UNITS_PER_MIL)
+//  return Int (v.rounded ())
+//}
 
 //--------------------------------------------------------------------------------------------------
 //   Conversion to Cocoa Unit (72 dots per inch)

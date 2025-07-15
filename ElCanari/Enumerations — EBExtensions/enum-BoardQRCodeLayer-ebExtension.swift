@@ -30,14 +30,14 @@ extension BoardQRCodeLayer : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> BoardQRCodeLayer {
+ /* func enumfromRawValue (rawValue : Int) -> BoardQRCodeLayer {
     var result = self
     let v : BoardQRCodeLayer? = BoardQRCodeLayer (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol

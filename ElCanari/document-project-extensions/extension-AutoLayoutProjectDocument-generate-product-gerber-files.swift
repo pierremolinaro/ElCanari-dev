@@ -10,10 +10,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-struct ApertureKey : Hashable, Comparable {
+/*fileprivate struct ApertureKey : Hashable, Comparable {
 
-  public let value : CGFloat
-  public let shape : Shape
+  let value : CGFloat
+  let shape : Shape
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -24,17 +24,17 @@ struct ApertureKey : Hashable, Comparable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (circular inValue : CGFloat) {
-    self.value = inValue
-    self.shape = .circular
-  }
+//  init (circular inValue : CGFloat) {
+//    self.value = inValue
+//    self.shape = .circular
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (square inValue : CGFloat) {
-    self.value = inValue
-    self.shape = .square
-  }
+//  init (square inValue : CGFloat) {
+//    self.value = inValue
+//    self.shape = .square
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -55,7 +55,7 @@ struct ApertureKey : Hashable, Comparable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
@@ -103,21 +103,21 @@ extension EBLinePath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func appendGerberCodeTo (_ ioStringArray : inout [String], _ inAffineTransform : AffineTransform) {
-    let to = inAffineTransform.transform (self.origin)
-    let x = cocoaToMilTenth (to.x)
-    let y = cocoaToMilTenth (to.y)
-    ioStringArray.append ("X\(x)Y\(y)D02")
-    for p in self.lines {
-      let tp = inAffineTransform.transform (p)
-      let x = cocoaToMilTenth (tp.x)
-      let y = cocoaToMilTenth (tp.y)
-      ioStringArray.append ("X\(x)Y\(y)D01")
-    }
-    if self.closed {
-      ioStringArray.append ("X\(x)Y\(y)D01")
-    }
-  }
+//  func appendGerberCodeTo (_ ioStringArray : inout [String], _ inAffineTransform : AffineTransform) {
+//    let to = inAffineTransform.transform (self.origin)
+//    let x = cocoaToMilTenth (to.x)
+//    let y = cocoaToMilTenth (to.y)
+//    ioStringArray.append ("X\(x)Y\(y)D02")
+//    for p in self.lines {
+//      let tp = inAffineTransform.transform (p)
+//      let x = cocoaToMilTenth (tp.x)
+//      let y = cocoaToMilTenth (tp.y)
+//      ioStringArray.append ("X\(x)Y\(y)D01")
+//    }
+//    if self.closed {
+//      ioStringArray.append ("X\(x)Y\(y)D01")
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -126,7 +126,7 @@ extension EBLinePath {
 //--------------------------------------------------------------------------------------------------
 
 
-extension Dictionary where Key == ApertureKey, Value == [String] {
+/* extension Dictionary where Key == ApertureKey, Value == [String] {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -148,6 +148,6 @@ extension Dictionary where Key == ApertureKey, Value == [String] {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-}
+} */
 
 //--------------------------------------------------------------------------------------------------

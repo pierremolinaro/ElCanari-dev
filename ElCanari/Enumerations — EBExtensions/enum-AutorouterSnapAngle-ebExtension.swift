@@ -30,14 +30,14 @@ extension AutorouterSnapAngle : EBEnumPropertyProtocol, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func enumfromRawValue (rawValue : Int) -> AutorouterSnapAngle {
+ /* func enumfromRawValue (rawValue : Int) -> AutorouterSnapAngle {
     var result = self
     let v : AutorouterSnapAngle? = AutorouterSnapAngle (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
     return result
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  EBStoredPropertyProtocol
