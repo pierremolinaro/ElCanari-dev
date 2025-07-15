@@ -92,7 +92,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : NSObject, Aut
   //   Selected Array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_ArtworkFileGenerationParameters (usedForSignature: false, key: nil)
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_ArtworkFileGenerationParameters ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

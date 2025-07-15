@@ -575,6 +575,12 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
 // StoredArrayOf_PackageOval is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: PackageOval
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_PackageOval is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageOval
 //--------------------------------------------------------------------------------------------------
 

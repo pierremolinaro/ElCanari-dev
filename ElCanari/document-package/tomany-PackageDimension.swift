@@ -785,6 +785,12 @@ final class TransientArrayOfSuperOf_PackageDimension <SUPER : EBManagedObject> :
 // StoredArrayOf_PackageDimension is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: PackageDimension
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_PackageDimension is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageDimension
 //--------------------------------------------------------------------------------------------------
 

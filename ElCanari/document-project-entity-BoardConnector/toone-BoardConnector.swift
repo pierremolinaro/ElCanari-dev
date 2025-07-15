@@ -454,7 +454,7 @@ final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSigna
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String) {
     self.mUsedForSignature = inUsedForSignature
     self.mIsStrongReference = inStrongReference
     self.mKey = inKey
@@ -463,14 +463,14 @@ final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSigna
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mKey : String?
-  var key : String? { return self.mKey }
+  private let mKey : String
+  var key : String { return self.mKey }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let key = self.mKey, let objectSavingIndex = inDictionary [key] as? Int {
+    if let objectSavingIndex = inDictionary [self.mKey] as? Int {
       let object = inManagedObjectArray [objectSavingIndex] as! BoardConnector
       self.setProp (object)
     }
@@ -488,15 +488,15 @@ final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSigna
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
-    if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
-      ioDictionary [key] = idx
+    if let idx = self.mWeakInternalValue?.savingIndex {
+      ioDictionary [self.mKey] = idx
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
-    if self.mKey != nil, let object = self.mWeakInternalValue {
+    if let object = self.mWeakInternalValue {
       ioArray.append (object)
     }
   }

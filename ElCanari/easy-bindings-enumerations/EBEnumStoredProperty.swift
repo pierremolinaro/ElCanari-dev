@@ -16,8 +16,7 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mKey : String
-  var key : String? { return self.mKey }
+  let key : String
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -25,7 +24,7 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
         undoManager inEBUndoManager : UndoManager?,
         key inKey : String) {
     self.mValue = inValue
-    self.mKey = inKey
+    self.key = inKey
     self.mUndoManager = inEBUndoManager
     super.init ()
   }
@@ -63,7 +62,7 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
 
   func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let value = inDictionary [self.mKey] as? NSObject {
+    if let value = inDictionary [self.key] as? NSObject {
       self.setProp (TYPE.convertFromNSObject (object: value))
     }
   }
@@ -81,7 +80,7 @@ final class EBEnumStoredProperty <TYPE : EBEnumPropertyProtocol> : EBEnumReadWri
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
-    ioDictionary [self.mKey] = self.mValue.convertToNSObject ()
+    ioDictionary [self.key] = self.mValue.convertToNSObject ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

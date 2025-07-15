@@ -17,8 +17,7 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMut
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mKey : String
-  var key : String? { return self.mKey }
+  let key : String
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -27,7 +26,7 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMut
         key inKey : String) {
     self.mValue = inValue
     self.mUndoManager = inUndoManager
-    self.mKey = inKey
+    self.key = inKey
     super.init ()
   }
 
@@ -63,7 +62,7 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMut
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
-    ioDictionary [self.mKey] = self.mValue.convertToNSObject ()
+    ioDictionary [self.key] = self.mValue.convertToNSObject ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -81,7 +80,7 @@ final class EBStoredProperty <TYPE : EBStoredPropertyProtocol> : EBObservableMut
 
   func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let value = inDictionary [self.mKey] as? NSObject {
+    if let value = inDictionary [self.key] as? NSObject {
       self.setProp (TYPE.convertFromNSObject (object: value))
     }
   }

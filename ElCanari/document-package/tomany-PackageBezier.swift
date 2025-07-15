@@ -855,6 +855,12 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
 // StoredArrayOf_PackageBezier is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: PackageBezier
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_PackageBezier is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageBezier
 //--------------------------------------------------------------------------------------------------
 

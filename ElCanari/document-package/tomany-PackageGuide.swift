@@ -540,6 +540,12 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
 // StoredArrayOf_PackageGuide is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: PackageGuide
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_PackageGuide is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageGuide
 //--------------------------------------------------------------------------------------------------
 

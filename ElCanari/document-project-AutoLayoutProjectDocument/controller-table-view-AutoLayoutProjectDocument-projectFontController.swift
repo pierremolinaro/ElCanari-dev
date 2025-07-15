@@ -104,7 +104,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : NSObjec
   //   Selected Array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_FontInProject (usedForSignature: false, key: nil)
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_FontInProject ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

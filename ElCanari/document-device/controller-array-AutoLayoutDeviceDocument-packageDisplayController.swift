@@ -70,7 +70,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : EBRea
   // Selected Array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageInDevice (usedForSignature: false, key: nil)
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageInDevice ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

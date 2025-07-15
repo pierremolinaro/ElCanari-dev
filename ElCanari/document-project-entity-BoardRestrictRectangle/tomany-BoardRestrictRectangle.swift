@@ -925,6 +925,12 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
 // StoredArrayOf_BoardRestrictRectangle is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: BoardRestrictRectangle
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_BoardRestrictRectangle is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: BoardRestrictRectangle
 //--------------------------------------------------------------------------------------------------
 

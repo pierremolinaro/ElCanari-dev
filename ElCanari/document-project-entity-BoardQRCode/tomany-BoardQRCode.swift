@@ -785,6 +785,12 @@ final class TransientArrayOfSuperOf_BoardQRCode <SUPER : EBManagedObject> : Read
 // StoredArrayOf_BoardQRCode is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: BoardQRCode
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_BoardQRCode is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: BoardQRCode
 //--------------------------------------------------------------------------------------------------
 

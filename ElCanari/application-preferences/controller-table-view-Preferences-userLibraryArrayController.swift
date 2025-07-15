@@ -78,7 +78,7 @@ final class Controller_Preferences_userLibraryArrayController : NSObject, AutoLa
   //   Selected Array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mInternalSelectedArrayProperty = StoredArrayOf_CanariLibraryEntry (usedForSignature: false, key: nil)
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_CanariLibraryEntry ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

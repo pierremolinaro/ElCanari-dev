@@ -260,6 +260,12 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
 // StoredArrayOf_NCInSchematic is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: NCInSchematic
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_NCInSchematic is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: NCInSchematic
 //--------------------------------------------------------------------------------------------------
 

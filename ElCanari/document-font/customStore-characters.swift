@@ -22,7 +22,7 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
 
   override func initialize (fromValueDictionary inDictionary : [String : Any],
                             managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let key = self.key, let string = inDictionary [key] as? String {
+    if let string = inDictionary [self.key] as? String {
       let objectArray = self.customRead_FontCharacter_characters (fromString: string)
       self.setProp (objectArray)
     }
@@ -95,9 +95,9 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func store (inDictionary ioDictionary : inout [String : Any]) {
-    if let key = self.key, self.mInternalArrayValue.count > 0 {
+    if self.mInternalArrayValue.count > 0 {
       let s = self.customStore_FontCharacter_characters ()
-      ioDictionary [key] = s
+      ioDictionary [self.key] = s
     }
   }
 

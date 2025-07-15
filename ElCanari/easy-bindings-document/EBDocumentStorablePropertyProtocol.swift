@@ -12,7 +12,7 @@ import AppKit
 
 @MainActor protocol EBDocumentStorablePropertyAndRelationshipProtocol : AnyObject {
 
-  var key : String? { get }
+  var key : String { get }
 
   func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject])

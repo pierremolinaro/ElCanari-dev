@@ -242,22 +242,21 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
+  init (usedForSignature inUsedForSignature : Bool, key inKey : String) {
     self.mUsedForSignature = inUsedForSignature
-    self.mKey = inKey
+    self.key = inKey
     super.init ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  private final let mKey : String?
-  final var key : String? { return self.mKey }
+  final let key : String
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func initialize (fromValueDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    if let key = self.mKey, let objectSavingIndexArray = inDictionary [key] as? [Int] {
+    if let objectSavingIndexArray = inDictionary [self.key] as? [Int] {
       var objectArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
       for idx in objectSavingIndexArray {
         objectArray.append (inManagedObjectArray [idx] as! DeviceSymbolInstanceInProject)
@@ -280,19 +279,19 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func store (inDictionary ioDictionary : inout [String : Any]) {
-    if let key = self.mKey, self.mInternalArrayValue.count > 0 {
+    if self.mInternalArrayValue.count > 0 {
       var array = [Int] ()
       for object in self.mInternalArrayValue.values {
         array.append (object.savingIndex)
       }
-      ioDictionary [key] = array
+      ioDictionary [self.key] = array
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
-    if self.mKey != nil, self.mInternalArrayValue.count > 0 {
+    if self.mInternalArrayValue.count > 0 {
       for object in self.mInternalArrayValue.values {
         ioArray.append (object)
       }
@@ -321,13 +320,13 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   // Model will change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
+/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
     let mOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>
 
     init (_ inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
       self.mOldValue = inOldValue
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -468,6 +467,229 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
       self.mSignatureObserver?.clearSignatureCache ()
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//    StandAlone Array: DeviceSymbolInstanceInProject
+//--------------------------------------------------------------------------------------------------
+
+class StandAloneArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject { // , EBSignatureObserverProtocol, EBDocumentStorablePropertyAndRelationshipProtocol, Sendable {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  override init () {
+    self.mUsedForSignature = false
+    self.mKey = ""
+    super.init ()
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+/*  private final let mKey : String
+  final var key : String { return self.mKey } */
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  func initialize (fromValueDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let objectSavingIndexArray = inDictionary [self.mKey] as? [Int] {
+      var objectArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
+      for idx in objectSavingIndexArray {
+        objectArray.append (inManagedObjectArray [idx] as! DeviceSymbolInstanceInProject)
+      }
+      self.setProp (objectArray)
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    var objectArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
+    let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+    for idx in indexArray {
+      objectArray.append (inRawObjectArray [idx].object as! DeviceSymbolInstanceInProject)
+    }
+    self.setProp (objectArray)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if self.mInternalArrayValue.count > 0 {
+      var array = [Int] ()
+      for object in self.mInternalArrayValue.values {
+        array.append (object.savingIndex)
+      }
+      ioDictionary [self.mKey] = array
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mInternalArrayValue.count > 0 {
+      for object in self.mInternalArrayValue.values {
+        ioArray.append (object)
+      }
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  func appendValueTo (data ioData : inout Data) {
+    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Signature ?
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  final private let mUsedForSignature : Bool
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Undo manager
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model will change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  private final class MyPrivateUndoer : NSObject { // For Swift 6
+    let mOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>
+
+    init (_ inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
+      self.mOldValue = inOldValue
+    }
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+//    self.setProp (inObject.mOldValue)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
+  //--- Register old value in undo manager
+  //   self.undoManager?.registerUndo (  // For Swift 6
+  //    withTarget: self,
+  //    selector: #selector (Self.myPerformUndo (_:)),
+  //    object: MyPrivateUndoer (inOldValue)
+  //  )
+    self.undoManager?.registerUndo (withTarget: self) { selfTarget in
+      selfTarget.setProp (inOldValue) // Ok in Swift 6.2
+      // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+    }
+  //---
+    super.notifyModelDidChangeFrom (oldValue: inOldValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Model did change
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func notifyModelDidChange () {
+  //--- Notify observers
+    self.observedObjectDidChange ()
+  //---
+    super.notifyModelDidChange ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Update observers
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override final var selection : EBSelection < [DeviceSymbolInstanceInProject] > {
+    return .single (self.mInternalArrayValue.values)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func setProp (_ inValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
+    self.mInternalArrayValue = inValue
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final override var propval : EBReferenceArray <DeviceSymbolInstanceInProject> {
+    return self.mInternalArrayValue
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func remove (_ inObject : DeviceSymbolInstanceInProject) {
+    if let idx = self.mInternalArrayValue.firstIndex (of: inObject) {
+      self.mInternalArrayValue.remove (at: idx)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func add (_ inObject : DeviceSymbolInstanceInProject) {
+    if !self.internalSetValue.contains (inObject) {
+      self.mInternalArrayValue.append (inObject)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   signature
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  private weak final var mSignatureObserver : (any EBSignatureObserverProtocol)? = nil // SOULD BE WEAK
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+ // private final var mSignatureCache : UInt32? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func setSignatureObserver (observer inObserver : (any EBSignatureObserverProtocol)?) {
+    self.mSignatureObserver?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
+    self.clearSignatureCache ()
+ } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = self.mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = self.computeSignature ()
+      self.mSignatureCache = computedSignature
+    }
+    return computedSignature
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final private func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in self.mInternalArrayValue.values {
+      crc.accumulate (u32: object.signature ())
+    }
+    return crc
+  } */
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/*  final func clearSignatureCache () {
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
+    }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

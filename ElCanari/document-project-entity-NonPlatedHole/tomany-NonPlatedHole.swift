@@ -610,6 +610,12 @@ final class TransientArrayOfSuperOf_NonPlatedHole <SUPER : EBManagedObject> : Re
 // StoredArrayOf_NonPlatedHole is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: NonPlatedHole
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_NonPlatedHole is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: NonPlatedHole
 //--------------------------------------------------------------------------------------------------
 

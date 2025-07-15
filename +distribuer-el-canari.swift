@@ -27,18 +27,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.1"
+let VERSION_CANARI = "1.9.2"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
   "Construit avec Xcode 26.0 beta 3, Sparkle 2.7.1"
 ]
 let BUGFIXES : [String] = [
-  "quand on relâchait la touche « option » lors d'un tracé de piste, un tracé erroné apparaissait"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Freerouting : application pour puce Apple et application pour Intel"
 ]
 
 //------------------------------------------------------------------------------

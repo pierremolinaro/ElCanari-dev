@@ -645,6 +645,12 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
 // StoredArrayOf_PackageSegment is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: PackageSegment
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_PackageSegment is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: PackageSegment
 //--------------------------------------------------------------------------------------------------
 

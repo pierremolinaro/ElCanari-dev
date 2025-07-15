@@ -540,6 +540,12 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
 // StoredArrayOf_CommentInSchematic is useless.
 
 //--------------------------------------------------------------------------------------------------
+//    StandAlone Array: CommentInSchematic
+//--------------------------------------------------------------------------------------------------
+
+// StandAloneArrayOf_CommentInSchematic is useless.
+
+//--------------------------------------------------------------------------------------------------
 //    Preferences array: CommentInSchematic
 //--------------------------------------------------------------------------------------------------
 
