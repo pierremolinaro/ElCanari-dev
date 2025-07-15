@@ -37,21 +37,13 @@ final class ForbiddenPadNumber : EBManagedObject,
   required init (_ inUndoManager : UndoManager?) {
     self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "padNumber")
     super.init (inUndoManager)
+    self.accumulateProperty (self.padNumber_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.padNumber_property.setSignatureObserver (observer: self)
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.padNumber_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

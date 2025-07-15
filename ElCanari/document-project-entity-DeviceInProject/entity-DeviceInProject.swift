@@ -404,18 +404,27 @@ final class DeviceInProject : EBManagedObject,
     self.mFileSystemStatusMessageForDeviceInProject_property = EBStandAloneProperty_String ("")
     self.mFileSystemStatusRequiresAttentionForDeviceInProject_property = EBStandAloneProperty_Bool (false)
     super.init (inUndoManager)
+    self.accumulateProperty (self.mDeviceName_property)
+    self.accumulateProperty (self.mCategory_property)
+    self.accumulateProperty (self.mPrefix_property)
+    self.accumulateProperty (self.mDeviceVersion_property)
+    self.accumulateProperty (self.mDeviceFileData_property)
   //--- To many property: mPackages (no option)
     self.mPackages_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mPackages_property)
   //--- To many property: mSymbols (no option)
     self.mSymbols_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mSymbols_property)
   //--- To many property: mComponents (has opposite relationship)
     self.mComponents_property.undoManager = inUndoManager
     self.mComponents_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },
       resetter: { inObject in inObject.mDevice_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mComponents_property)
   //--- To many property: mPadAssignments (no option)
     self.mPadAssignments_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mPadAssignments_property)
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -607,23 +616,6 @@ final class DeviceInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mDeviceName_property)
-    ioArray.append (self.mCategory_property)
-    ioArray.append (self.mPrefix_property)
-    ioArray.append (self.mDeviceVersion_property)
-    ioArray.append (self.mDeviceFileData_property)
-    ioArray.append (self.mPackages_property)
-    ioArray.append (self.mSymbols_property)
-    ioArray.append (self.mComponents_property)
-    ioArray.append (self.mPadAssignments_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

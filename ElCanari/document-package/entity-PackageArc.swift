@@ -328,6 +328,19 @@ final class PackageArc : PackageObject,
     self.endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "endTangentUnit")
     self.xCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager, key: "xCenter")
     super.init (inUndoManager)
+    self.accumulateProperty (self.yCenter_property)
+    self.accumulateProperty (self.radius_property)
+    self.accumulateProperty (self.startAngle_property)
+    self.accumulateProperty (self.arcAngle_property)
+    self.accumulateProperty (self.startTangent_property)
+    self.accumulateProperty (self.endTangent_property)
+    self.accumulateProperty (self.pathIsClosed_property)
+    self.accumulateProperty (self.xCenterUnit_property)
+    self.accumulateProperty (self.yCenterUnit_property)
+    self.accumulateProperty (self.radiusUnit_property)
+    self.accumulateProperty (self.startTangentUnit_property)
+    self.accumulateProperty (self.endTangentUnit_property)
+    self.accumulateProperty (self.xCenter_property)
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -506,27 +519,6 @@ final class PackageArc : PackageObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.yCenter_property)
-    ioArray.append (self.radius_property)
-    ioArray.append (self.startAngle_property)
-    ioArray.append (self.arcAngle_property)
-    ioArray.append (self.startTangent_property)
-    ioArray.append (self.endTangent_property)
-    ioArray.append (self.pathIsClosed_property)
-    ioArray.append (self.xCenterUnit_property)
-    ioArray.append (self.yCenterUnit_property)
-    ioArray.append (self.radiusUnit_property)
-    ioArray.append (self.startTangentUnit_property)
-    ioArray.append (self.endTangentUnit_property)
-    ioArray.append (self.xCenter_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

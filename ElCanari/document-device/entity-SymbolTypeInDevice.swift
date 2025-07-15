@@ -289,8 +289,15 @@ final class SymbolTypeInDevice : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
       resetter: { inObject in inObject.mType_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mInstances_property)
+    self.accumulateProperty (self.mTypeName_property)
+    self.accumulateProperty (self.mVersion_property)
+    self.accumulateProperty (self.mFileData_property)
+    self.accumulateProperty (self.mStrokeBezierPath_property)
+    self.accumulateProperty (self.mFilledBezierPath_property)
   //--- To many property: mPinTypes (no option)
     self.mPinTypes_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mPinTypes_property)
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -391,21 +398,6 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mInstances_property)
-    ioArray.append (self.mTypeName_property)
-    ioArray.append (self.mVersion_property)
-    ioArray.append (self.mFileData_property)
-    ioArray.append (self.mStrokeBezierPath_property)
-    ioArray.append (self.mFilledBezierPath_property)
-    ioArray.append (self.mPinTypes_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

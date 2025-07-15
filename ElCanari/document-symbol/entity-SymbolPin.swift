@@ -281,6 +281,16 @@ final class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "pinNameIsDisplayedInSchematics")
     self.xPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xPin")
     super.init (inUndoManager)
+    self.accumulateProperty (self.yPin_property)
+    self.accumulateProperty (self.xName_property)
+    self.accumulateProperty (self.yName_property)
+    self.accumulateProperty (self.xNumber_property)
+    self.accumulateProperty (self.yNumber_property)
+    self.accumulateProperty (self.name_property)
+    self.accumulateProperty (self.nameHorizontalAlignment_property)
+    self.accumulateProperty (self.numberHorizontalAlignment_property)
+    self.accumulateProperty (self.pinNameIsDisplayedInSchematics_property)
+    self.accumulateProperty (self.xPin_property)
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -493,24 +503,6 @@ final class SymbolPin : SymbolObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.yPin_property)
-    ioArray.append (self.xName_property)
-    ioArray.append (self.yName_property)
-    ioArray.append (self.xNumber_property)
-    ioArray.append (self.yNumber_property)
-    ioArray.append (self.name_property)
-    ioArray.append (self.nameHorizontalAlignment_property)
-    ioArray.append (self.numberHorizontalAlignment_property)
-    ioArray.append (self.pinNameIsDisplayedInSchematics_property)
-    ioArray.append (self.xPin_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

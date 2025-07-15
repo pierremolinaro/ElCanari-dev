@@ -569,12 +569,27 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnInner3Layer")
     self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnInner4Layer")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mNetClassName_property)
+    self.accumulateProperty (self.mNetClassColor_property)
+    self.accumulateProperty (self.mTrackWidth_property)
+    self.accumulateProperty (self.mTrackWidthUnit_property)
+    self.accumulateProperty (self.mViaHoleDiameter_property)
+    self.accumulateProperty (self.mViaHoleDiameterUnit_property)
+    self.accumulateProperty (self.mViaPadDiameter_property)
+    self.accumulateProperty (self.mViaPadDiameterUnit_property)
+    self.accumulateProperty (self.mAllowTracksOnFrontSide_property)
+    self.accumulateProperty (self.mAllowTracksOnBackSide_property)
+    self.accumulateProperty (self.mAllowTracksOnInner1Layer_property)
+    self.accumulateProperty (self.mAllowTracksOnInner2Layer_property)
+    self.accumulateProperty (self.mAllowTracksOnInner3Layer_property)
+    self.accumulateProperty (self.mAllowTracksOnInner4Layer_property)
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.undoManager = inUndoManager
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
       resetter: { inObject in inObject.mNetClass_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mNets_property)
   //--- Atomic property: trackWidthString
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -837,29 +852,6 @@ final class NetClassInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mNetClassName_property)
-    ioArray.append (self.mNetClassColor_property)
-    ioArray.append (self.mTrackWidth_property)
-    ioArray.append (self.mTrackWidthUnit_property)
-    ioArray.append (self.mViaHoleDiameter_property)
-    ioArray.append (self.mViaHoleDiameterUnit_property)
-    ioArray.append (self.mViaPadDiameter_property)
-    ioArray.append (self.mViaPadDiameterUnit_property)
-    ioArray.append (self.mAllowTracksOnFrontSide_property)
-    ioArray.append (self.mAllowTracksOnBackSide_property)
-    ioArray.append (self.mAllowTracksOnInner1Layer_property)
-    ioArray.append (self.mAllowTracksOnInner2Layer_property)
-    ioArray.append (self.mAllowTracksOnInner3Layer_property)
-    ioArray.append (self.mAllowTracksOnInner4Layer_property)
-    ioArray.append (self.mNets_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

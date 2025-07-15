@@ -228,18 +228,21 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.remove (me) } }
     )
+    self.accumulateProperty (self.mSymbolInstance_property)
   //--- To one property: mType (has opposite to many relationship: mInstances)
     self.mType_property.undoManager = inUndoManager
     self.mType_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
     )
+    self.accumulateProperty (self.mType_property)
   //--- To one property: mPadProxy (has opposite to one relationship: mPinInstance)
     self.mPadProxy_property.undoManager = inUndoManager
     self.mPadProxy_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPinInstance_property.setProp (me) } },
       resetter: { inObject in inObject.mPinInstance_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPadProxy_property)
   //--- Atomic property: pinName
     self.pinName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -350,17 +353,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mSymbolInstance_property)
-    ioArray.append (self.mType_property)
-    ioArray.append (self.mPadProxy_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

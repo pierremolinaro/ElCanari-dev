@@ -212,6 +212,15 @@ final class CommentInSchematic : SchematicObject,
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
     self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComment")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mColor_property)
+    self.accumulateProperty (self.mSize_property)
+    self.accumulateProperty (self.mHorizontalAlignment_property)
+    self.accumulateProperty (self.mVerticalAlignment_property)
+    self.accumulateProperty (self.mRotation_property)
+    self.accumulateProperty (self.mBold_property)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mY_property)
+    self.accumulateProperty (self.mComment_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -323,23 +332,6 @@ final class CommentInSchematic : SchematicObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mColor_property)
-    ioArray.append (self.mSize_property)
-    ioArray.append (self.mHorizontalAlignment_property)
-    ioArray.append (self.mVerticalAlignment_property)
-    ioArray.append (self.mRotation_property)
-    ioArray.append (self.mBold_property)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mComment_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

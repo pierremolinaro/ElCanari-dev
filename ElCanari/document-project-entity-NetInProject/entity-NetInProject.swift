@@ -260,18 +260,23 @@ final class NetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPoints_property)
+    self.accumulateProperty (self.mNetName_property)
+    self.accumulateProperty (self.mWarnsExactlyOneLabel_property)
   //--- To many property: mTracks (has opposite relationship)
     self.mTracks_property.undoManager = inUndoManager
     self.mTracks_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mTracks_property)
   //--- To one property: mNetClass (has opposite to many relationship: mNets)
     self.mNetClass_property.undoManager = inUndoManager
     self.mNetClass_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }
     )
+    self.accumulateProperty (self.mNetClass_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -404,19 +409,6 @@ final class NetInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mPoints_property)
-    ioArray.append (self.mNetName_property)
-    ioArray.append (self.mWarnsExactlyOneLabel_property)
-    ioArray.append (self.mTracks_property)
-    ioArray.append (self.mNetClass_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

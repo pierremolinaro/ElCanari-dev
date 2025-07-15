@@ -79,22 +79,14 @@ final class BoardModelVia : EBManagedObject,
     self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "padDiameter")
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
+    self.accumulateProperty (self.y_property)
+    self.accumulateProperty (self.padDiameter_property)
+    self.accumulateProperty (self.x_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.y_property)
-    ioArray.append (self.padDiameter_property)
-    ioArray.append (self.x_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

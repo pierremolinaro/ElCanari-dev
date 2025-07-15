@@ -92,6 +92,9 @@ final class DevicePackageInProject : EBManagedObject,
     super.init (inUndoManager)
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mMasterPads_property)
+    self.accumulateProperty (self.mPackageName_property)
+    self.accumulateProperty (self.mStrokeBezierPath_property)
   //--- Atomic property: packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -114,17 +117,6 @@ final class DevicePackageInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mMasterPads_property)
-    ioArray.append (self.mPackageName_property)
-    ioArray.append (self.mStrokeBezierPath_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

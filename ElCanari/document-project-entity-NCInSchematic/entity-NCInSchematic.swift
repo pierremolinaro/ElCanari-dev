@@ -88,12 +88,14 @@ final class NCInSchematic : SchematicObject,
       }
     }
     self.mPoint_property.startsBeingObserved (by: self.mPoint_none)
+    self.accumulateProperty (self.mOrientation_property)
   //--- To one property: mPoint (has opposite to one relationship: mNC)
     self.mPoint_property.undoManager = inUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNC_property.setProp (me) } },
       resetter: { inObject in inObject.mNC_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPoint_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -161,16 +163,6 @@ final class NCInSchematic : SchematicObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mOrientation_property)
-    ioArray.append (self.mPoint_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

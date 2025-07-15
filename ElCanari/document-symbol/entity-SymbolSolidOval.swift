@@ -84,6 +84,10 @@ final class SymbolSolidOval : SymbolObject {
     self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "height")
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
+    self.accumulateProperty (self.y_property)
+    self.accumulateProperty (self.width_property)
+    self.accumulateProperty (self.height_property)
+    self.accumulateProperty (self.x_property)
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -217,18 +221,6 @@ final class SymbolSolidOval : SymbolObject {
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.y_property)
-    ioArray.append (self.width_property)
-    ioArray.append (self.height_property)
-    ioArray.append (self.x_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

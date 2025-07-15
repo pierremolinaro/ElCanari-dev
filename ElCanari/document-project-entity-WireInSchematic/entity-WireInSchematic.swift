@@ -174,12 +174,14 @@ final class WireInSchematic : SchematicObject,
       setter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.remove (me) } }
     )
+    self.accumulateProperty (self.mP1_property)
   //--- To one property: mP2 (has opposite to many relationship: mWiresP2s)
     self.mP2_property.undoManager = inUndoManager
     self.mP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.remove (me) } }
     )
+    self.accumulateProperty (self.mP2_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -323,16 +325,6 @@ final class WireInSchematic : SchematicObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mP1_property)
-    ioArray.append (self.mP2_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

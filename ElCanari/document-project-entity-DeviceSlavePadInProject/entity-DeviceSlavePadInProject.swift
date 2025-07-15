@@ -203,6 +203,14 @@ final class DeviceSlavePadInProject : EBManagedObject,
     self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager, key: "mShape")
     self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager, key: "mStyle")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mCenterX_property)
+    self.accumulateProperty (self.mCenterY_property)
+    self.accumulateProperty (self.mWidth_property)
+    self.accumulateProperty (self.mHeight_property)
+    self.accumulateProperty (self.mHoleWidth_property)
+    self.accumulateProperty (self.mHoleHeight_property)
+    self.accumulateProperty (self.mShape_property)
+    self.accumulateProperty (self.mStyle_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -253,22 +261,6 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mCenterX_property)
-    ioArray.append (self.mCenterY_property)
-    ioArray.append (self.mWidth_property)
-    ioArray.append (self.mHeight_property)
-    ioArray.append (self.mHoleWidth_property)
-    ioArray.append (self.mHoleHeight_property)
-    ioArray.append (self.mShape_property)
-    ioArray.append (self.mStyle_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

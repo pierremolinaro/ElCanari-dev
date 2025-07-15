@@ -578,18 +578,32 @@ final class BoardConnector : BoardObject,
       }
     }
     self.mComponent_property.startsBeingObserved (by: self.mComponent_none)
+    self.accumulateProperty (self.mComponentPadName_property)
+    self.accumulateProperty (self.mPadIndex_property)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mY_property)
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.undoManager = inUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
       resetter: { inObject in inObject.mConnectorP2_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mTracksP2_property)
+    self.accumulateProperty (self.mDefaultHoleDiameterUnit_property)
+    self.accumulateProperty (self.mCustomHoleDiameter_property)
+    self.accumulateProperty (self.mCustomHoleDiameterUnit_property)
+    self.accumulateProperty (self.mUsesCustomHoleDiameter_property)
+    self.accumulateProperty (self.mDefaultPadDiameterUnit_property)
+    self.accumulateProperty (self.mCustomPadDiameter_property)
+    self.accumulateProperty (self.mCustomPadDiameterUnit_property)
+    self.accumulateProperty (self.mUsesCustomPadDiameter_property)
   //--- To many property: mTracksP1 (has opposite relationship)
     self.mTracksP1_property.undoManager = inUndoManager
     self.mTracksP1_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP1_property.setProp (me) } },
       resetter: { inObject in inObject.mConnectorP1_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mTracksP1_property)
   //--- Atomic property: isConnectedToSomePad
     self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -613,6 +627,7 @@ final class BoardConnector : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.remove (me) } }
     )
+    self.accumulateProperty (self.mComponent_property)
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1050,29 +1065,6 @@ final class BoardConnector : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mComponentPadName_property)
-    ioArray.append (self.mPadIndex_property)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mTracksP2_property)
-    ioArray.append (self.mDefaultHoleDiameterUnit_property)
-    ioArray.append (self.mCustomHoleDiameter_property)
-    ioArray.append (self.mCustomHoleDiameterUnit_property)
-    ioArray.append (self.mUsesCustomHoleDiameter_property)
-    ioArray.append (self.mDefaultPadDiameterUnit_property)
-    ioArray.append (self.mCustomPadDiameter_property)
-    ioArray.append (self.mCustomPadDiameterUnit_property)
-    ioArray.append (self.mUsesCustomPadDiameter_property)
-    ioArray.append (self.mTracksP1_property)
-    ioArray.append (self.mComponent_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

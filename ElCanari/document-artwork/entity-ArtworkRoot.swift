@@ -233,12 +233,26 @@ final class ArtworkRoot : EBManagedObject {
     self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "title")
     self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: inUndoManager, key: "drillDataFileExtension")
     super.init (inUndoManager)
+    self.accumulateProperty (self.layerConfiguration_property)
+    self.accumulateProperty (self.selectedTab_property)
+    self.accumulateProperty (self.comments_property)
+    self.accumulateProperty (self.minPPTPTTTWdisplayUnit_property)
+    self.accumulateProperty (self.minPPTPTTTW_property)
+    self.accumulateProperty (self.minValueForOARdisplayUnit_property)
+    self.accumulateProperty (self.minValueForOARinEBUnit_property)
+    self.accumulateProperty (self.minValueForPHDdisplayUnit_property)
+    self.accumulateProperty (self.minValueForPHDinEBUnit_property)
+    self.accumulateProperty (self.minValueForBoardLimitWidthDisplayUnit_property)
+    self.accumulateProperty (self.minValueForBoardLimitWidth_property)
+    self.accumulateProperty (self.title_property)
+    self.accumulateProperty (self.drillDataFileExtension_property)
   //--- To many property: fileGenerationParameterArray (has opposite relationship)
     self.fileGenerationParameterArray_property.undoManager = inUndoManager
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mArtwork_property.setProp (me) } },
       resetter: { inObject in inObject.mArtwork_property.setProp (nil) }
     )
+    self.accumulateProperty (self.fileGenerationParameterArray_property)
   //--- Atomic property: hasInnerElements
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -354,28 +368,6 @@ final class ArtworkRoot : EBManagedObject {
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.layerConfiguration_property)
-    ioArray.append (self.selectedTab_property)
-    ioArray.append (self.comments_property)
-    ioArray.append (self.minPPTPTTTWdisplayUnit_property)
-    ioArray.append (self.minPPTPTTTW_property)
-    ioArray.append (self.minValueForOARdisplayUnit_property)
-    ioArray.append (self.minValueForOARinEBUnit_property)
-    ioArray.append (self.minValueForPHDdisplayUnit_property)
-    ioArray.append (self.minValueForPHDinEBUnit_property)
-    ioArray.append (self.minValueForBoardLimitWidthDisplayUnit_property)
-    ioArray.append (self.minValueForBoardLimitWidth_property)
-    ioArray.append (self.title_property)
-    ioArray.append (self.drillDataFileExtension_property)
-    ioArray.append (self.fileGenerationParameterArray_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

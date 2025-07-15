@@ -77,6 +77,8 @@ final class DeviceDocumentation : EBManagedObject,
     self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mFileName")
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mFileName_property)
+    self.accumulateProperty (self.mFileData_property)
   //--- Atomic property: fileSize
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -101,16 +103,6 @@ final class DeviceDocumentation : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mFileName_property)
-    ioArray.append (self.mFileData_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

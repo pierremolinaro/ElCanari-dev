@@ -1817,68 +1817,110 @@ final class BoardModel : EBManagedObject,
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "artworkName")
     self.modelData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "modelData")
     super.init (inUndoManager)
+    self.accumulateProperty (self.name_property)
+    self.accumulateProperty (self.modelWidth_property)
+    self.accumulateProperty (self.modelWidthUnit_property)
+    self.accumulateProperty (self.modelHeight_property)
+    self.accumulateProperty (self.modelHeightUnit_property)
+    self.accumulateProperty (self.zoom_property)
+    self.accumulateProperty (self.modelVersion_property)
+    self.accumulateProperty (self.ignoreModelVersionError_property)
   //--- To many property: legendFrontImages (no option)
     self.legendFrontImages_property.undoManager = inUndoManager
+    self.accumulateProperty (self.legendFrontImages_property)
   //--- To many property: legendBackImages (no option)
     self.legendBackImages_property.undoManager = inUndoManager
+    self.accumulateProperty (self.legendBackImages_property)
   //--- To many property: legendFrontQRCodes (no option)
     self.legendFrontQRCodes_property.undoManager = inUndoManager
+    self.accumulateProperty (self.legendFrontQRCodes_property)
   //--- To many property: legendBackQRCodes (no option)
     self.legendBackQRCodes_property.undoManager = inUndoManager
+    self.accumulateProperty (self.legendBackQRCodes_property)
+    self.accumulateProperty (self.layerConfiguration_property)
   //--- To many property: frontLegendLines (no option)
     self.frontLegendLines_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontLegendLines_property)
   //--- To many property: backLegendLines (no option)
     self.backLegendLines_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backLegendLines_property)
   //--- To many property: frontLegendTexts (no option)
     self.frontLegendTexts_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontLegendTexts_property)
   //--- To many property: frontLayoutTexts (no option)
     self.frontLayoutTexts_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontLayoutTexts_property)
   //--- To many property: backLegendTexts (no option)
     self.backLegendTexts_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backLegendTexts_property)
   //--- To many property: backLayoutTexts (no option)
     self.backLayoutTexts_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backLayoutTexts_property)
   //--- To many property: internalBoardsLimits (no option)
     self.internalBoardsLimits_property.undoManager = inUndoManager
+    self.accumulateProperty (self.internalBoardsLimits_property)
   //--- To many property: drills (no option)
     self.drills_property.undoManager = inUndoManager
+    self.accumulateProperty (self.drills_property)
   //--- To many property: vias (no option)
     self.vias_property.undoManager = inUndoManager
+    self.accumulateProperty (self.vias_property)
   //--- To many property: frontPads (no option)
     self.frontPads_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontPads_property)
   //--- To many property: backPads (no option)
     self.backPads_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backPads_property)
   //--- To many property: traversingPads (no option)
     self.traversingPads_property.undoManager = inUndoManager
+    self.accumulateProperty (self.traversingPads_property)
+    self.accumulateProperty (self.modelLimitWidth_property)
+    self.accumulateProperty (self.modelLimitWidthUnit_property)
   //--- To many property: backComponentNames (no option)
     self.backComponentNames_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backComponentNames_property)
   //--- To many property: frontComponentNames (no option)
     self.frontComponentNames_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontComponentNames_property)
   //--- To many property: frontComponentValues (no option)
     self.frontComponentValues_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontComponentValues_property)
   //--- To many property: backComponentValues (no option)
     self.backComponentValues_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backComponentValues_property)
   //--- To many property: backTracks (no option)
     self.backTracks_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backTracks_property)
   //--- To many property: frontTracks (no option)
     self.frontTracks_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontTracks_property)
   //--- To many property: inner1Tracks (no option)
     self.inner1Tracks_property.undoManager = inUndoManager
+    self.accumulateProperty (self.inner1Tracks_property)
   //--- To many property: inner2Tracks (no option)
     self.inner2Tracks_property.undoManager = inUndoManager
+    self.accumulateProperty (self.inner2Tracks_property)
   //--- To many property: inner3Tracks (no option)
     self.inner3Tracks_property.undoManager = inUndoManager
+    self.accumulateProperty (self.inner3Tracks_property)
   //--- To many property: inner4Tracks (no option)
     self.inner4Tracks_property.undoManager = inUndoManager
+    self.accumulateProperty (self.inner4Tracks_property)
   //--- To many property: frontPackages (no option)
     self.frontPackages_property.undoManager = inUndoManager
+    self.accumulateProperty (self.frontPackages_property)
   //--- To many property: backPackages (no option)
     self.backPackages_property.undoManager = inUndoManager
+    self.accumulateProperty (self.backPackages_property)
+    self.accumulateProperty (self.artworkName_property)
+    self.accumulateProperty (self.modelData_property)
   //--- To many property: myInstances (has opposite relationship)
     self.myInstances_property.undoManager = inUndoManager
     self.myInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
       resetter: { inObject in inObject.myModel_property.setProp (nil) }
     )
+    self.accumulateProperty (self.myInstances_property)
   //--- Atomic property: errorArchiveVersionMessage
     self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4097,56 +4139,6 @@ final class BoardModel : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.name_property)
-    ioArray.append (self.modelWidth_property)
-    ioArray.append (self.modelWidthUnit_property)
-    ioArray.append (self.modelHeight_property)
-    ioArray.append (self.modelHeightUnit_property)
-    ioArray.append (self.zoom_property)
-    ioArray.append (self.modelVersion_property)
-    ioArray.append (self.ignoreModelVersionError_property)
-    ioArray.append (self.legendFrontImages_property)
-    ioArray.append (self.legendBackImages_property)
-    ioArray.append (self.legendFrontQRCodes_property)
-    ioArray.append (self.legendBackQRCodes_property)
-    ioArray.append (self.layerConfiguration_property)
-    ioArray.append (self.frontLegendLines_property)
-    ioArray.append (self.backLegendLines_property)
-    ioArray.append (self.frontLegendTexts_property)
-    ioArray.append (self.frontLayoutTexts_property)
-    ioArray.append (self.backLegendTexts_property)
-    ioArray.append (self.backLayoutTexts_property)
-    ioArray.append (self.internalBoardsLimits_property)
-    ioArray.append (self.drills_property)
-    ioArray.append (self.vias_property)
-    ioArray.append (self.frontPads_property)
-    ioArray.append (self.backPads_property)
-    ioArray.append (self.traversingPads_property)
-    ioArray.append (self.modelLimitWidth_property)
-    ioArray.append (self.modelLimitWidthUnit_property)
-    ioArray.append (self.backComponentNames_property)
-    ioArray.append (self.frontComponentNames_property)
-    ioArray.append (self.frontComponentValues_property)
-    ioArray.append (self.backComponentValues_property)
-    ioArray.append (self.backTracks_property)
-    ioArray.append (self.frontTracks_property)
-    ioArray.append (self.inner1Tracks_property)
-    ioArray.append (self.inner2Tracks_property)
-    ioArray.append (self.inner3Tracks_property)
-    ioArray.append (self.inner4Tracks_property)
-    ioArray.append (self.frontPackages_property)
-    ioArray.append (self.backPackages_property)
-    ioArray.append (self.artworkName_property)
-    ioArray.append (self.modelData_property)
-    ioArray.append (self.myInstances_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

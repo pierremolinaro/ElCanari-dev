@@ -682,12 +682,35 @@ final class MergerRoot : EBManagedObject {
     self.mArtwork_property.startsBeingObserved (by: self.mArtwork_none)
   //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = inUndoManager
+    self.accumulateProperty (self.boardModels_property)
   //--- To many property: boardInstances (has opposite relationship)
     self.boardInstances_property.undoManager = inUndoManager
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
       resetter: { inObject in inObject.myRoot_property.setProp (nil) }
     )
+    self.accumulateProperty (self.boardInstances_property)
+    self.accumulateProperty (self.selectedPageIndex_property)
+    self.accumulateProperty (self.zoom_property)
+    self.accumulateProperty (self.showDisplaySettingView_property)
+    self.accumulateProperty (self.modelInsertionRotation_property)
+    self.accumulateProperty (self.automaticBoardSize_property)
+    self.accumulateProperty (self.boardManualWidth_property)
+    self.accumulateProperty (self.boardManualHeight_property)
+    self.accumulateProperty (self.boardWidthUnit_property)
+    self.accumulateProperty (self.boardHeightUnit_property)
+    self.accumulateProperty (self.overlapingArrangment_property)
+    self.accumulateProperty (self.selectedBoardXUnit_property)
+    self.accumulateProperty (self.selectedBoardYUnit_property)
+    self.accumulateProperty (self.boardLimitWidth_property)
+    self.accumulateProperty (self.boardLimitWidthUnit_property)
+    self.accumulateProperty (self.mPDFBoardBackgroundColor_property)
+    self.accumulateProperty (self.mGenerateMergerArchive_property)
+    self.accumulateProperty (self.mGenerateGerberAndPDF_property)
+    self.accumulateProperty (self.mPDFProductGrid_property)
+    self.accumulateProperty (self.mGerberProductUnit_property)
+    self.accumulateProperty (self.mArtworkName_property)
+    self.accumulateProperty (self.mArtworkVersion_property)
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -1002,6 +1025,7 @@ final class MergerRoot : EBManagedObject {
     self.boardRect_property.startsBeingObserved (by: self.boardHeight_property)
   //--- To one property: mArtwork
     self.mArtwork_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mArtwork_property)
   //--- Atomic property: segmentedControlArtworkAttentionImage
     self.segmentedControlArtworkAttentionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1163,38 +1187,6 @@ final class MergerRoot : EBManagedObject {
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.boardModels_property)
-    ioArray.append (self.boardInstances_property)
-    ioArray.append (self.selectedPageIndex_property)
-    ioArray.append (self.zoom_property)
-    ioArray.append (self.showDisplaySettingView_property)
-    ioArray.append (self.modelInsertionRotation_property)
-    ioArray.append (self.automaticBoardSize_property)
-    ioArray.append (self.boardManualWidth_property)
-    ioArray.append (self.boardManualHeight_property)
-    ioArray.append (self.boardWidthUnit_property)
-    ioArray.append (self.boardHeightUnit_property)
-    ioArray.append (self.overlapingArrangment_property)
-    ioArray.append (self.selectedBoardXUnit_property)
-    ioArray.append (self.selectedBoardYUnit_property)
-    ioArray.append (self.boardLimitWidth_property)
-    ioArray.append (self.boardLimitWidthUnit_property)
-    ioArray.append (self.mPDFBoardBackgroundColor_property)
-    ioArray.append (self.mGenerateMergerArchive_property)
-    ioArray.append (self.mGenerateGerberAndPDF_property)
-    ioArray.append (self.mPDFProductGrid_property)
-    ioArray.append (self.mGerberProductUnit_property)
-    ioArray.append (self.mArtworkName_property)
-    ioArray.append (self.mArtworkVersion_property)
-    ioArray.append (self.mArtwork_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

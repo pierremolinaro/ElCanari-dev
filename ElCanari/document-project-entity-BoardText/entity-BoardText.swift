@@ -337,12 +337,25 @@ final class BoardText : BoardObject,
       }
     }
     self.mFont_property.startsBeingObserved (by: self.mFont_none)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mXUnit_property)
+    self.accumulateProperty (self.mY_property)
+    self.accumulateProperty (self.mYUnit_property)
+    self.accumulateProperty (self.mFontSize_property)
+    self.accumulateProperty (self.mLayer_property)
+    self.accumulateProperty (self.mText_property)
+    self.accumulateProperty (self.mHorizontalAlignment_property)
+    self.accumulateProperty (self.mVerticalAlignment_property)
+    self.accumulateProperty (self.mRotation_property)
+    self.accumulateProperty (self.mWeight_property)
+    self.accumulateProperty (self.mOblique_property)
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.undoManager = inUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTexts_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTexts_property.remove (me) } }
     )
+    self.accumulateProperty (self.mFont_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -620,27 +633,6 @@ final class BoardText : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mXUnit_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mYUnit_property)
-    ioArray.append (self.mFontSize_property)
-    ioArray.append (self.mLayer_property)
-    ioArray.append (self.mText_property)
-    ioArray.append (self.mHorizontalAlignment_property)
-    ioArray.append (self.mVerticalAlignment_property)
-    ioArray.append (self.mRotation_property)
-    ioArray.append (self.mWeight_property)
-    ioArray.append (self.mOblique_property)
-    ioArray.append (self.mFont_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

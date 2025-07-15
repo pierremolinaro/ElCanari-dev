@@ -142,25 +142,17 @@ final class BoardModelPad : EBManagedObject,
     self.rotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "rotation")
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
+    self.accumulateProperty (self.y_property)
+    self.accumulateProperty (self.width_property)
+    self.accumulateProperty (self.height_property)
+    self.accumulateProperty (self.shape_property)
+    self.accumulateProperty (self.rotation_property)
+    self.accumulateProperty (self.x_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.y_property)
-    ioArray.append (self.width_property)
-    ioArray.append (self.height_property)
-    ioArray.append (self.shape_property)
-    ioArray.append (self.rotation_property)
-    ioArray.append (self.x_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

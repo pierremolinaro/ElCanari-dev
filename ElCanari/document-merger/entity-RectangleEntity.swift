@@ -184,27 +184,19 @@ final class RectangleEntity : EBManagedObject,
     self.p3y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p3y")
     self.p0x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p0x")
     super.init (inUndoManager)
+    self.accumulateProperty (self.p0y_property)
+    self.accumulateProperty (self.p1x_property)
+    self.accumulateProperty (self.p1y_property)
+    self.accumulateProperty (self.p2x_property)
+    self.accumulateProperty (self.p2y_property)
+    self.accumulateProperty (self.p3x_property)
+    self.accumulateProperty (self.p3y_property)
+    self.accumulateProperty (self.p0x_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.p0y_property)
-    ioArray.append (self.p1x_property)
-    ioArray.append (self.p1y_property)
-    ioArray.append (self.p2x_property)
-    ioArray.append (self.p2y_property)
-    ioArray.append (self.p3x_property)
-    ioArray.append (self.p3y_property)
-    ioArray.append (self.p0x_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

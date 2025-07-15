@@ -416,6 +416,13 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mPrevious_property.startsBeingObserved (by: self.mPrevious_none)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mY_property)
+    self.accumulateProperty (self.mCPX1_property)
+    self.accumulateProperty (self.mCPY1_property)
+    self.accumulateProperty (self.mCPX2_property)
+    self.accumulateProperty (self.mCPY2_property)
+    self.accumulateProperty (self.mShape_property)
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext_property {
@@ -468,18 +475,21 @@ final class BorderCurve : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mBorderCurves_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mBorderCurves_property.remove (me) } }
     )
+    self.accumulateProperty (self.mRoot_property)
   //--- To one property: mNext (has opposite to one relationship: mPrevious)
     self.mNext_property.undoManager = inUndoManager
     self.mNext_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPrevious_property.setProp (me) } },
       resetter: { inObject in inObject.mPrevious_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mNext_property)
   //--- To one property: mPrevious (has opposite to one relationship: mNext)
     self.mPrevious_property.undoManager = inUndoManager
     self.mPrevious_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNext_property.setProp (me) } },
       resetter: { inObject in inObject.mNext_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPrevious_property)
   //--- Atomic property: p2Xvalue
     self.p2Xvalue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -711,24 +721,6 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mCPX1_property)
-    ioArray.append (self.mCPY1_property)
-    ioArray.append (self.mCPX2_property)
-    ioArray.append (self.mCPY2_property)
-    ioArray.append (self.mShape_property)
-    ioArray.append (self.mRoot_property)
-    ioArray.append (self.mNext_property)
-    ioArray.append (self.mPrevious_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

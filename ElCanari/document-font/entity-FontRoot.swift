@@ -154,8 +154,14 @@ final class FontRoot : EBManagedObject {
     self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedInspector")
     self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: inUndoManager, key: "currentCharacterCodePoint")
     super.init (inUndoManager)
+    self.accumulateProperty (self.comments_property)
+    self.accumulateProperty (self.nominalSize_property)
+    self.accumulateProperty (self.selectedTab_property)
+    self.accumulateProperty (self.selectedInspector_property)
+    self.accumulateProperty (self.currentCharacterCodePoint_property)
   //--- To many property: characters (no option)
     self.characters_property.undoManager = inUndoManager
+    self.accumulateProperty (self.characters_property)
   //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -299,20 +305,6 @@ final class FontRoot : EBManagedObject {
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.comments_property)
-    ioArray.append (self.nominalSize_property)
-    ioArray.append (self.selectedTab_property)
-    ioArray.append (self.selectedInspector_property)
-    ioArray.append (self.currentCharacterCodePoint_property)
-    ioArray.append (self.characters_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

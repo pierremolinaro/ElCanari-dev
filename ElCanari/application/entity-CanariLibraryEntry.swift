@@ -119,6 +119,10 @@ final class CanariLibraryEntry : EBManagedObject,
     self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mLibraryRepositoryURL")
     self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mUserAndPasswordTag")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mPath_property)
+    self.accumulateProperty (self.mUses_property)
+    self.accumulateProperty (self.mLibraryRepositoryURL_property)
+    self.accumulateProperty (self.mUserAndPasswordTag_property)
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -142,18 +146,6 @@ final class CanariLibraryEntry : EBManagedObject,
     self.mExternDelegate0 = CanariLibraryEntryDelegate (object: self)
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mPath_property)
-    ioArray.append (self.mUses_property)
-    ioArray.append (self.mLibraryRepositoryURL_property)
-    ioArray.append (self.mUserAndPasswordTag_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

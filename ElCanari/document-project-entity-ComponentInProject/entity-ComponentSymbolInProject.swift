@@ -431,12 +431,24 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.mComponent_property.startsBeingObserved (by: self.mComponent_none)
+    self.accumulateProperty (self.mCenterX_property)
+    self.accumulateProperty (self.mCenterY_property)
+    self.accumulateProperty (self.mRotation_property)
+    self.accumulateProperty (self.mMirror_property)
+    self.accumulateProperty (self.mSymbolInstanceName_property)
+    self.accumulateProperty (self.mSymbolTypeName_property)
+    self.accumulateProperty (self.mDisplayComponentNameOffsetX_property)
+    self.accumulateProperty (self.mDisplayComponentNameOffsetY_property)
+    self.accumulateProperty (self.mDisplayComponentValue_property)
+    self.accumulateProperty (self.mDisplayComponentValueOffsetX_property)
+    self.accumulateProperty (self.mDisplayComponentValueOffsetY_property)
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
       resetter: { inObject in inObject.mSymbol_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPoints_property)
   //--- Atomic proxy property: componentValueProxy
     self.componentValueProxy_property.mReadModelFunction = { [weak self] in
       if let object = self?.mComponent_property {
@@ -466,6 +478,7 @@ final class ComponentSymbolInProject : SchematicObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }
     )
+    self.accumulateProperty (self.mComponent_property)
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -734,27 +747,6 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mCenterX_property)
-    ioArray.append (self.mCenterY_property)
-    ioArray.append (self.mRotation_property)
-    ioArray.append (self.mMirror_property)
-    ioArray.append (self.mSymbolInstanceName_property)
-    ioArray.append (self.mSymbolTypeName_property)
-    ioArray.append (self.mDisplayComponentNameOffsetX_property)
-    ioArray.append (self.mDisplayComponentNameOffsetY_property)
-    ioArray.append (self.mDisplayComponentValue_property)
-    ioArray.append (self.mDisplayComponentValueOffsetX_property)
-    ioArray.append (self.mDisplayComponentValueOffsetY_property)
-    ioArray.append (self.mPoints_property)
-    ioArray.append (self.mComponent_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1079,18 +1079,45 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mValueFont_property.startsBeingObserved (by: self.mValueFont_none)
+    self.accumulateProperty (self.mSlavePadsShouldBeRouted_property)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mY_property)
+    self.accumulateProperty (self.mRotation_property)
+    self.accumulateProperty (self.mSide_property)
+    self.accumulateProperty (self.mDisplayLegend_property)
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.undoManager = inUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mConnectors_property)
   //--- To many property: mSymbols (has opposite relationship)
     self.mSymbols_property.undoManager = inUndoManager
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mSymbols_property)
+    self.accumulateProperty (self.mNameIsVisibleInBoard_property)
+    self.accumulateProperty (self.mXName_property)
+    self.accumulateProperty (self.mYName_property)
+    self.accumulateProperty (self.mNameFontSize_property)
+    self.accumulateProperty (self.mNameRotation_property)
+    self.accumulateProperty (self.mValueIsVisibleInBoard_property)
+    self.accumulateProperty (self.mXValue_property)
+    self.accumulateProperty (self.mYValue_property)
+    self.accumulateProperty (self.mValueFontSize_property)
+    self.accumulateProperty (self.mValueRotation_property)
+    self.accumulateProperty (self.mComponentValue_property)
+    self.accumulateProperty (self.mNamePrefix_property)
+    self.accumulateProperty (self.mNameIndex_property)
+    self.accumulateProperty (self.mXUnit_property)
+    self.accumulateProperty (self.mYUnit_property)
+    self.accumulateProperty (self.mXNameUnit_property)
+    self.accumulateProperty (self.mYNameUnit_property)
+    self.accumulateProperty (self.mXValueUnit_property)
+    self.accumulateProperty (self.mYValueUnit_property)
   //--- Array controller property: componentAvailablePackagesController
     self.componentAvailablePackagesController.bind_model (self.mPackages_property, self.undoManager)
   //--- ToMany proxy: mPackages
@@ -1112,6 +1139,7 @@ final class ComponentInProject : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
     )
+    self.accumulateProperty (self.mDevice_property)
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1148,6 +1176,7 @@ final class ComponentInProject : BoardObject,
     self.mSlavePadsShouldBeRouted_property.startsBeingObserved (by: self.signatureForERCChecking_property)
   //--- To one property: mSelectedPackage
     self.mSelectedPackage_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mSelectedPackage_property)
   //--- Atomic property: packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1273,12 +1302,14 @@ final class ComponentInProject : BoardObject,
       setter: { [weak self] inObject in if let me = self { inObject.mComponentNames_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponentNames_property.remove (me) } }
     )
+    self.accumulateProperty (self.mNameFont_property)
   //--- To one property: mValueFont (has opposite to many relationship: mComponentValues)
     self.mValueFont_property.undoManager = inUndoManager
     self.mValueFont_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.remove (me) } }
     )
+    self.accumulateProperty (self.mValueFont_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1848,45 +1879,6 @@ final class ComponentInProject : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mSlavePadsShouldBeRouted_property)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mRotation_property)
-    ioArray.append (self.mSide_property)
-    ioArray.append (self.mDisplayLegend_property)
-    ioArray.append (self.mConnectors_property)
-    ioArray.append (self.mSymbols_property)
-    ioArray.append (self.mNameIsVisibleInBoard_property)
-    ioArray.append (self.mXName_property)
-    ioArray.append (self.mYName_property)
-    ioArray.append (self.mNameFontSize_property)
-    ioArray.append (self.mNameRotation_property)
-    ioArray.append (self.mValueIsVisibleInBoard_property)
-    ioArray.append (self.mXValue_property)
-    ioArray.append (self.mYValue_property)
-    ioArray.append (self.mValueFontSize_property)
-    ioArray.append (self.mValueRotation_property)
-    ioArray.append (self.mComponentValue_property)
-    ioArray.append (self.mNamePrefix_property)
-    ioArray.append (self.mNameIndex_property)
-    ioArray.append (self.mXUnit_property)
-    ioArray.append (self.mYUnit_property)
-    ioArray.append (self.mXNameUnit_property)
-    ioArray.append (self.mYNameUnit_property)
-    ioArray.append (self.mXValueUnit_property)
-    ioArray.append (self.mYValueUnit_property)
-    ioArray.append (self.mDevice_property)
-    ioArray.append (self.mSelectedPackage_property)
-    ioArray.append (self.mNameFont_property)
-    ioArray.append (self.mValueFont_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

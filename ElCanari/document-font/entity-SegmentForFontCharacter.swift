@@ -114,6 +114,10 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: inUndoManager, key: "x2")
     self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: inUndoManager, key: "y2")
     super.init (inUndoManager)
+    self.accumulateProperty (self.x1_property)
+    self.accumulateProperty (self.y1_property)
+    self.accumulateProperty (self.x2_property)
+    self.accumulateProperty (self.y2_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -185,18 +189,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.x1_property)
-    ioArray.append (self.y1_property)
-    ioArray.append (self.x2_property)
-    ioArray.append (self.y2_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -168,6 +168,7 @@ class SchematicObject : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }
     )
+    self.accumulateProperty (self.mSheet_property)
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -207,15 +208,6 @@ class SchematicObject : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mSheet_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

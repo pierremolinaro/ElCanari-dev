@@ -111,6 +111,7 @@ class PackageObject : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.packageObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.packageObjects_property.remove (me) } }
     )
+    self.accumulateProperty (self.mRoot_property)
   //--- Atomic property: knobSize
     self.knobSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -133,15 +134,6 @@ class PackageObject : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mRoot_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

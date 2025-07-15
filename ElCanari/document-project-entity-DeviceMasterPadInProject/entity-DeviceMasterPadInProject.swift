@@ -237,8 +237,18 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: inUndoManager, key: "mStyle")
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mCenterX_property)
+    self.accumulateProperty (self.mCenterY_property)
+    self.accumulateProperty (self.mWidth_property)
+    self.accumulateProperty (self.mHeight_property)
+    self.accumulateProperty (self.mHoleWidth_property)
+    self.accumulateProperty (self.mHoleHeight_property)
+    self.accumulateProperty (self.mShape_property)
+    self.accumulateProperty (self.mStyle_property)
+    self.accumulateProperty (self.mName_property)
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mSlavePads_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -297,24 +307,6 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mCenterX_property)
-    ioArray.append (self.mCenterY_property)
-    ioArray.append (self.mWidth_property)
-    ioArray.append (self.mHeight_property)
-    ioArray.append (self.mHoleWidth_property)
-    ioArray.append (self.mHoleHeight_property)
-    ioArray.append (self.mShape_property)
-    ioArray.append (self.mStyle_property)
-    ioArray.append (self.mName_property)
-    ioArray.append (self.mSlavePads_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

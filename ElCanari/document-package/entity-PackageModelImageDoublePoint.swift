@@ -191,12 +191,19 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
+    self.accumulateProperty (self.mFirstX_property)
+    self.accumulateProperty (self.mFirstY_property)
+    self.accumulateProperty (self.mFirstColor_property)
+    self.accumulateProperty (self.mSecondDx_property)
+    self.accumulateProperty (self.mSecondDy_property)
+    self.accumulateProperty (self.mSecondColor_property)
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mModelImageObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mModelImageObjects_property.remove (me) } }
     )
+    self.accumulateProperty (self.mRoot_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -284,21 +291,6 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mFirstX_property)
-    ioArray.append (self.mFirstY_property)
-    ioArray.append (self.mFirstColor_property)
-    ioArray.append (self.mSecondDx_property)
-    ioArray.append (self.mSecondDy_property)
-    ioArray.append (self.mSecondColor_property)
-    ioArray.append (self.mRoot_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

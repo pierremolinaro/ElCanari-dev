@@ -362,14 +362,22 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.startsBeingObserved (by: self.mRoot_none)
+    self.accumulateProperty (self.mFileData_property)
+    self.accumulateProperty (self.mName_property)
+    self.accumulateProperty (self.mVersion_property)
+    self.accumulateProperty (self.mStrokeBezierPath_property)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mY_property)
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mMasterPads_property)
   //--- To one property: mRoot (has opposite to many relationship: mPackages)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPackages_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPackages_property.remove (me) } }
     )
+    self.accumulateProperty (self.mRoot_property)
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -620,22 +628,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mFileData_property)
-    ioArray.append (self.mName_property)
-    ioArray.append (self.mVersion_property)
-    ioArray.append (self.mStrokeBezierPath_property)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mMasterPads_property)
-    ioArray.append (self.mRoot_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

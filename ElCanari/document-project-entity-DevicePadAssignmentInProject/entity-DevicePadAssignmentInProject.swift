@@ -112,8 +112,10 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     }
     self.mPin_property.startsBeingObserved (by: self.mPin_none)
+    self.accumulateProperty (self.mPadName_property)
   //--- To one property: mPin
     self.mPin_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mPin_property)
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -165,16 +167,6 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mPadName_property)
-    ioArray.append (self.mPin_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

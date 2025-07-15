@@ -494,42 +494,51 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mSheet_property.startsBeingObserved (by: self.mSheet_none)
+    self.accumulateProperty (self.mSymbolPinName_property)
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.undoManager = inUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
       resetter: { inObject in inObject.mPoint_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mLabels_property)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mY_property)
   //--- To many property: mWiresP2s (has opposite relationship)
     self.mWiresP2s_property.undoManager = inUndoManager
     self.mWiresP2s_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mP2_property.setProp (me) } },
       resetter: { inObject in inObject.mP2_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mWiresP2s_property)
   //--- To many property: mWiresP1s (has opposite relationship)
     self.mWiresP1s_property.undoManager = inUndoManager
     self.mWiresP1s_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mP1_property.setProp (me) } },
       resetter: { inObject in inObject.mP1_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mWiresP1s_property)
   //--- To one property: mSymbol (has opposite to many relationship: mPoints)
     self.mSymbol_property.undoManager = inUndoManager
     self.mSymbol_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
+    self.accumulateProperty (self.mSymbol_property)
   //--- To one property: mNet (has opposite to many relationship: mPoints)
     self.mNet_property.undoManager = inUndoManager
     self.mNet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
+    self.accumulateProperty (self.mNet_property)
   //--- To one property: mNC (has opposite to one relationship: mPoint)
     self.mNC_property.undoManager = inUndoManager
     self.mNC_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
       resetter: { inObject in inObject.mPoint_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mNC_property)
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -675,6 +684,7 @@ final class PointInSchematic : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
+    self.accumulateProperty (self.mSheet_property)
   //--- Atomic property: symbolNameNetName
     self.symbolNameNetName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -837,24 +847,6 @@ final class PointInSchematic : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mSymbolPinName_property)
-    ioArray.append (self.mLabels_property)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mWiresP2s_property)
-    ioArray.append (self.mWiresP1s_property)
-    ioArray.append (self.mSymbol_property)
-    ioArray.append (self.mNet_property)
-    ioArray.append (self.mNC_property)
-    ioArray.append (self.mSheet_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

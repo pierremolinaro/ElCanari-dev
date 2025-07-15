@@ -224,6 +224,14 @@ final class PackageOval : PackageObject,
     self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "heightUnit")
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
+    self.accumulateProperty (self.y_property)
+    self.accumulateProperty (self.width_property)
+    self.accumulateProperty (self.height_property)
+    self.accumulateProperty (self.xUnit_property)
+    self.accumulateProperty (self.yUnit_property)
+    self.accumulateProperty (self.widthUnit_property)
+    self.accumulateProperty (self.heightUnit_property)
+    self.accumulateProperty (self.x_property)
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -357,22 +365,6 @@ final class PackageOval : PackageObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.y_property)
-    ioArray.append (self.width_property)
-    ioArray.append (self.height_property)
-    ioArray.append (self.xUnit_property)
-    ioArray.append (self.yUnit_property)
-    ioArray.append (self.widthUnit_property)
-    ioArray.append (self.heightUnit_property)
-    ioArray.append (self.x_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

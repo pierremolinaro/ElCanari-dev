@@ -441,8 +441,25 @@ final class PackageZone : PackageObject,
     self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yNameUnit")
     self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager, key: "zoneNumbering")
     super.init (inUndoManager)
+    self.accumulateProperty (self.x_property)
+    self.accumulateProperty (self.y_property)
+    self.accumulateProperty (self.width_property)
+    self.accumulateProperty (self.height_property)
+    self.accumulateProperty (self.xUnit_property)
+    self.accumulateProperty (self.yUnit_property)
+    self.accumulateProperty (self.widthUnit_property)
+    self.accumulateProperty (self.heightUnit_property)
+    self.accumulateProperty (self.zoneName_property)
+    self.accumulateProperty (self.displayZoneName_property)
+    self.accumulateProperty (self.displayZoneNameWithPadNumbers_property)
+    self.accumulateProperty (self.xName_property)
+    self.accumulateProperty (self.yName_property)
+    self.accumulateProperty (self.xNameUnit_property)
+    self.accumulateProperty (self.yNameUnit_property)
+    self.accumulateProperty (self.zoneNumbering_property)
   //--- To many property: forbiddenPadNumbers (no option)
     self.forbiddenPadNumbers_property.undoManager = inUndoManager
+    self.accumulateProperty (self.forbiddenPadNumbers_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -685,31 +702,6 @@ final class PackageZone : PackageObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.x_property)
-    ioArray.append (self.y_property)
-    ioArray.append (self.width_property)
-    ioArray.append (self.height_property)
-    ioArray.append (self.xUnit_property)
-    ioArray.append (self.yUnit_property)
-    ioArray.append (self.widthUnit_property)
-    ioArray.append (self.heightUnit_property)
-    ioArray.append (self.zoneName_property)
-    ioArray.append (self.displayZoneName_property)
-    ioArray.append (self.displayZoneNameWithPadNumbers_property)
-    ioArray.append (self.xName_property)
-    ioArray.append (self.yName_property)
-    ioArray.append (self.xNameUnit_property)
-    ioArray.append (self.yNameUnit_property)
-    ioArray.append (self.zoneNumbering_property)
-    ioArray.append (self.forbiddenPadNumbers_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -560,6 +560,24 @@ final class BoardImage : BoardObject,
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
     self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mXUnit_property)
+    self.accumulateProperty (self.mCenterY_property)
+    self.accumulateProperty (self.mYUnit_property)
+    self.accumulateProperty (self.mThreshold_property)
+    self.accumulateProperty (self.mImageData_property)
+    self.accumulateProperty (self.mInvert_property)
+    self.accumulateProperty (self.mHorizontalFlip_property)
+    self.accumulateProperty (self.mVerticalFlip_property)
+    self.accumulateProperty (self.mScale_property)
+    self.accumulateProperty (self.mPixelSize_property)
+    self.accumulateProperty (self.mPixelSizeUnit_property)
+    self.accumulateProperty (self.mActualWidthUnit_property)
+    self.accumulateProperty (self.mActualHeightUnit_property)
+    self.accumulateProperty (self.mImageDisplay_property)
+    self.accumulateProperty (self.mLayer_property)
+    self.accumulateProperty (self.mText_property)
+    self.accumulateProperty (self.mRotation_property)
+    self.accumulateProperty (self.mCenterX_property)
   //--- Computed property: computedDataImage
     self.computedDataImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -910,32 +928,6 @@ final class BoardImage : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mXUnit_property)
-    ioArray.append (self.mCenterY_property)
-    ioArray.append (self.mYUnit_property)
-    ioArray.append (self.mThreshold_property)
-    ioArray.append (self.mImageData_property)
-    ioArray.append (self.mInvert_property)
-    ioArray.append (self.mHorizontalFlip_property)
-    ioArray.append (self.mVerticalFlip_property)
-    ioArray.append (self.mScale_property)
-    ioArray.append (self.mPixelSize_property)
-    ioArray.append (self.mPixelSizeUnit_property)
-    ioArray.append (self.mActualWidthUnit_property)
-    ioArray.append (self.mActualHeightUnit_property)
-    ioArray.append (self.mImageDisplay_property)
-    ioArray.append (self.mLayer_property)
-    ioArray.append (self.mText_property)
-    ioArray.append (self.mRotation_property)
-    ioArray.append (self.mCenterX_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -219,18 +219,22 @@ final class SheetInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mObjects_property)
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPoints_property)
+    self.accumulateProperty (self.mSheetTitle_property)
   //--- To one property: mRoot (has opposite to many relationship: mSheets)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheets_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mSheets_property.remove (me) } }
     )
+    self.accumulateProperty (self.mRoot_property)
   //--- Atomic property: schematicIssues
     self.schematicIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -365,18 +369,6 @@ final class SheetInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mObjects_property)
-    ioArray.append (self.mPoints_property)
-    ioArray.append (self.mSheetTitle_property)
-    ioArray.append (self.mRoot_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -430,6 +430,24 @@ final class BoardRestrictRectangle : BoardObject,
     self.mRectTrackEnd_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mRectTrackEnd")
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mXUnit_property)
+    self.accumulateProperty (self.mY_property)
+    self.accumulateProperty (self.mYUnit_property)
+    self.accumulateProperty (self.mWidth_property)
+    self.accumulateProperty (self.mWidthUnit_property)
+    self.accumulateProperty (self.mHeight_property)
+    self.accumulateProperty (self.mHeightUnit_property)
+    self.accumulateProperty (self.mIsInFrontLayer_property)
+    self.accumulateProperty (self.mIsInBackLayer_property)
+    self.accumulateProperty (self.mIsInInner1Layer_property)
+    self.accumulateProperty (self.mIsInInner2Layer_property)
+    self.accumulateProperty (self.mIsInInner3Layer_property)
+    self.accumulateProperty (self.mIsInInner4Layer_property)
+    self.accumulateProperty (self.mAllowPadsInside_property)
+    self.accumulateProperty (self.mAllowTracksInside_property)
+    self.accumulateProperty (self.mExposeTrackCopper_property)
+    self.accumulateProperty (self.mRectTrackEnd_property)
+    self.accumulateProperty (self.mX_property)
   //--- Atomic property: exposeTrackCopperAvailable
     self.exposeTrackCopperAvailable_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -699,32 +717,6 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mXUnit_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mYUnit_property)
-    ioArray.append (self.mWidth_property)
-    ioArray.append (self.mWidthUnit_property)
-    ioArray.append (self.mHeight_property)
-    ioArray.append (self.mHeightUnit_property)
-    ioArray.append (self.mIsInFrontLayer_property)
-    ioArray.append (self.mIsInBackLayer_property)
-    ioArray.append (self.mIsInInner1Layer_property)
-    ioArray.append (self.mIsInInner2Layer_property)
-    ioArray.append (self.mIsInInner3Layer_property)
-    ioArray.append (self.mIsInInner4Layer_property)
-    ioArray.append (self.mAllowPadsInside_property)
-    ioArray.append (self.mAllowTracksInside_property)
-    ioArray.append (self.mExposeTrackCopper_property)
-    ioArray.append (self.mRectTrackEnd_property)
-    ioArray.append (self.mX_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

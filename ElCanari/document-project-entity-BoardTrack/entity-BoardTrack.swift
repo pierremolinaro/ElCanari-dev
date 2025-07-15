@@ -728,24 +728,42 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.startsBeingObserved (by: self.mNet_none)
+    self.accumulateProperty (self.mSide_property)
+    self.accumulateProperty (self.mDefaultTrackWidthUnit_property)
+    self.accumulateProperty (self.mCustomTrackWidth_property)
+    self.accumulateProperty (self.mCustomTrackWidthUnit_property)
+    self.accumulateProperty (self.mUsesCustomTrackWidth_property)
+    self.accumulateProperty (self.mIsPreservedByAutoRouter_property)
+    self.accumulateProperty (self.mP1XUnit_property)
+    self.accumulateProperty (self.mP1YUnit_property)
+    self.accumulateProperty (self.mP2XUnit_property)
+    self.accumulateProperty (self.mP2YUnit_property)
+    self.accumulateProperty (self.mManualLockP1_property)
+    self.accumulateProperty (self.mManualLockP2_property)
+    self.accumulateProperty (self.mAddedToSolderMask_property)
+    self.accumulateProperty (self.mEndStyle_property)
+    self.accumulateProperty (self.mDirectionLockOnKnobDragging_property)
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.undoManager = inUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.remove (me) } }
     )
+    self.accumulateProperty (self.mConnectorP1_property)
   //--- To one property: mConnectorP2 (has opposite to many relationship: mTracksP2)
     self.mConnectorP2_property.undoManager = inUndoManager
     self.mConnectorP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.remove (me) } }
     )
+    self.accumulateProperty (self.mConnectorP2_property)
   //--- To one property: mNet (has opposite to many relationship: mTracks)
     self.mNet_property.undoManager = inUndoManager
     self.mNet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracks_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracks_property.remove (me) } }
     )
+    self.accumulateProperty (self.mNet_property)
   //--- Atomic property: actualTrackWidth
     self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1358,32 +1376,6 @@ final class BoardTrack : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mSide_property)
-    ioArray.append (self.mDefaultTrackWidthUnit_property)
-    ioArray.append (self.mCustomTrackWidth_property)
-    ioArray.append (self.mCustomTrackWidthUnit_property)
-    ioArray.append (self.mUsesCustomTrackWidth_property)
-    ioArray.append (self.mIsPreservedByAutoRouter_property)
-    ioArray.append (self.mP1XUnit_property)
-    ioArray.append (self.mP1YUnit_property)
-    ioArray.append (self.mP2XUnit_property)
-    ioArray.append (self.mP2YUnit_property)
-    ioArray.append (self.mManualLockP1_property)
-    ioArray.append (self.mManualLockP2_property)
-    ioArray.append (self.mAddedToSolderMask_property)
-    ioArray.append (self.mEndStyle_property)
-    ioArray.append (self.mDirectionLockOnKnobDragging_property)
-    ioArray.append (self.mConnectorP1_property)
-    ioArray.append (self.mConnectorP2_property)
-    ioArray.append (self.mNet_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

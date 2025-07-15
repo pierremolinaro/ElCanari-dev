@@ -318,18 +318,25 @@ final class FontInProject : EBManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
       resetter: { inObject in inObject.mFont_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mTexts_property)
+    self.accumulateProperty (self.mNominalSize_property)
+    self.accumulateProperty (self.mFontName_property)
+    self.accumulateProperty (self.mFontVersion_property)
+    self.accumulateProperty (self.mDescriptiveString_property)
   //--- To many property: mComponentNames (has opposite relationship)
     self.mComponentNames_property.undoManager = inUndoManager
     self.mComponentNames_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNameFont_property.setProp (me) } },
       resetter: { inObject in inObject.mNameFont_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mComponentNames_property)
   //--- To many property: mComponentValues (has opposite relationship)
     self.mComponentValues_property.undoManager = inUndoManager
     self.mComponentValues_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mValueFont_property.setProp (me) } },
       resetter: { inObject in inObject.mValueFont_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mComponentValues_property)
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -491,21 +498,6 @@ final class FontInProject : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mTexts_property)
-    ioArray.append (self.mNominalSize_property)
-    ioArray.append (self.mFontName_property)
-    ioArray.append (self.mFontVersion_property)
-    ioArray.append (self.mDescriptiveString_property)
-    ioArray.append (self.mComponentNames_property)
-    ioArray.append (self.mComponentValues_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

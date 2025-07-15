@@ -224,12 +224,16 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     }
     self.myRoot_property.startsBeingObserved (by: self.myRoot_none)
+    self.accumulateProperty (self.x_property)
+    self.accumulateProperty (self.y_property)
+    self.accumulateProperty (self.instanceRotation_property)
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.undoManager = inUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.myInstances_property.remove (me) } }
     )
+    self.accumulateProperty (self.myModel_property)
   //--- Atomic property: instanceRect
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -340,6 +344,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
     )
+    self.accumulateProperty (self.myRoot_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -366,19 +371,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.x_property)
-    ioArray.append (self.y_property)
-    ioArray.append (self.instanceRotation_property)
-    ioArray.append (self.myModel_property)
-    ioArray.append (self.myRoot_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

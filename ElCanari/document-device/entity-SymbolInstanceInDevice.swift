@@ -260,18 +260,24 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
       resetter: { inObject in inObject.mSymbolInstance_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPinInstances_property)
+    self.accumulateProperty (self.mInstanceName_property)
+    self.accumulateProperty (self.mX_property)
+    self.accumulateProperty (self.mY_property)
   //--- To one property: mDeviceRoot (has opposite to many relationship: mSymbolInstances)
     self.mDeviceRoot_property.undoManager = inUndoManager
     self.mDeviceRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mSymbolInstances_property.remove (me) } }
     )
+    self.accumulateProperty (self.mDeviceRoot_property)
   //--- To one property: mType (has opposite to many relationship: mInstances)
     self.mType_property.undoManager = inUndoManager
     self.mType_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
     )
+    self.accumulateProperty (self.mType_property)
   //--- Atomic property: symbolQualifiedName
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -465,20 +471,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mPinInstances_property)
-    ioArray.append (self.mInstanceName_property)
-    ioArray.append (self.mX_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mDeviceRoot_property)
-    ioArray.append (self.mType_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

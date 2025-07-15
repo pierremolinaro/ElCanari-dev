@@ -586,6 +586,7 @@ class BoardObject : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.remove (me) } }
     )
+    self.accumulateProperty (self.mRoot_property)
   //--- Atomic property: isPlacedInBoard
     self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -931,15 +932,6 @@ class BoardObject : EBGraphicManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mRoot_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

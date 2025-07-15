@@ -332,24 +332,45 @@ final class DeviceRoot : EBManagedObject {
     self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mShowPackageBackPads")
     self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager, key: "mSymbolDisplayZoom")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mSelectedPageIndex_property)
+    self.accumulateProperty (self.mSelectedSymbolInspectorIndex_property)
+    self.accumulateProperty (self.mSelectedPackageInspectorIndex_property)
+    self.accumulateProperty (self.mTitle_property)
+    self.accumulateProperty (self.mCategory_property)
+    self.accumulateProperty (self.mImageData_property)
+    self.accumulateProperty (self.mPrefix_property)
+    self.accumulateProperty (self.mComments_property)
+    self.accumulateProperty (self.mPackageDisplayZoom_property)
+    self.accumulateProperty (self.mPackageDisplayHorizontalFlip_property)
+    self.accumulateProperty (self.mPackageDisplayVerticalFlip_property)
+    self.accumulateProperty (self.mShowPackages_property)
+    self.accumulateProperty (self.mShowPackagePadNumbers_property)
+    self.accumulateProperty (self.mShowPackageFrontPads_property)
+    self.accumulateProperty (self.mShowPackageBackPads_property)
+    self.accumulateProperty (self.mSymbolDisplayZoom_property)
   //--- To many property: mDocs (no option)
     self.mDocs_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mDocs_property)
   //--- To many property: mSymbolInstances (has opposite relationship)
     self.mSymbolInstances_property.undoManager = inUndoManager
     self.mSymbolInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDeviceRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mDeviceRoot_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mSymbolInstances_property)
   //--- To many property: mPackages (has opposite relationship)
     self.mPackages_property.undoManager = inUndoManager
     self.mPackages_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPackages_property)
   //--- To many property: mSymbolTypes (no option)
     self.mSymbolTypes_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mSymbolTypes_property)
   //--- To many property: mPadProxies (no option)
     self.mPadProxies_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mPadProxies_property)
   //--- Atomic property: imageIsValid
     self.imageIsValid_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -628,35 +649,6 @@ final class DeviceRoot : EBManagedObject {
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mSelectedPageIndex_property)
-    ioArray.append (self.mSelectedSymbolInspectorIndex_property)
-    ioArray.append (self.mSelectedPackageInspectorIndex_property)
-    ioArray.append (self.mTitle_property)
-    ioArray.append (self.mCategory_property)
-    ioArray.append (self.mImageData_property)
-    ioArray.append (self.mPrefix_property)
-    ioArray.append (self.mComments_property)
-    ioArray.append (self.mPackageDisplayZoom_property)
-    ioArray.append (self.mPackageDisplayHorizontalFlip_property)
-    ioArray.append (self.mPackageDisplayVerticalFlip_property)
-    ioArray.append (self.mShowPackages_property)
-    ioArray.append (self.mShowPackagePadNumbers_property)
-    ioArray.append (self.mShowPackageFrontPads_property)
-    ioArray.append (self.mShowPackageBackPads_property)
-    ioArray.append (self.mSymbolDisplayZoom_property)
-    ioArray.append (self.mDocs_property)
-    ioArray.append (self.mSymbolInstances_property)
-    ioArray.append (self.mPackages_property)
-    ioArray.append (self.mSymbolTypes_property)
-    ioArray.append (self.mPadProxies_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

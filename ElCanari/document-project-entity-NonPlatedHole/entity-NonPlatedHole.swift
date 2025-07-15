@@ -241,6 +241,16 @@ final class NonPlatedHole : BoardObject,
     self.mShowTextRotationKnobInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mShowTextRotationKnobInBoard")
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mXUnit_property)
+    self.accumulateProperty (self.mY_property)
+    self.accumulateProperty (self.mYUnit_property)
+    self.accumulateProperty (self.mWidth_property)
+    self.accumulateProperty (self.mWidthUnit_property)
+    self.accumulateProperty (self.mHeight_property)
+    self.accumulateProperty (self.mHeightUnit_property)
+    self.accumulateProperty (self.mRotation_property)
+    self.accumulateProperty (self.mShowTextRotationKnobInBoard_property)
+    self.accumulateProperty (self.mX_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -365,24 +375,6 @@ final class NonPlatedHole : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mXUnit_property)
-    ioArray.append (self.mY_property)
-    ioArray.append (self.mYUnit_property)
-    ioArray.append (self.mWidth_property)
-    ioArray.append (self.mWidthUnit_property)
-    ioArray.append (self.mHeight_property)
-    ioArray.append (self.mHeightUnit_property)
-    ioArray.append (self.mRotation_property)
-    ioArray.append (self.mShowTextRotationKnobInBoard_property)
-    ioArray.append (self.mX_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -154,12 +154,16 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.startsBeingObserved (by: self.mPinInstance_none)
+    self.accumulateProperty (self.mPinInstanceName_property)
+    self.accumulateProperty (self.mPadName_property)
+    self.accumulateProperty (self.mIsNC_property)
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.undoManager = inUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPadProxy_property.setProp (me) } },
       resetter: { inObject in inObject.mPadProxy_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mPinInstance_property)
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -206,18 +210,6 @@ final class PadProxyInDevice : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mPinInstanceName_property)
-    ioArray.append (self.mPadName_property)
-    ioArray.append (self.mIsNC_property)
-    ioArray.append (self.mPinInstance_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

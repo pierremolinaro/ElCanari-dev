@@ -691,12 +691,42 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.mArtwork_property.startsBeingObserved (by: self.mArtwork_none)
+    self.accumulateProperty (self.drawBoardLimits_property)
+    self.accumulateProperty (self.drawInternalBoardLimits_property)
+    self.accumulateProperty (self.drawComponentNamesTopSide_property)
+    self.accumulateProperty (self.drawComponentNamesBottomSide_property)
+    self.accumulateProperty (self.drawComponentValuesTopSide_property)
+    self.accumulateProperty (self.drawComponentValuesBottomSide_property)
+    self.accumulateProperty (self.drawPackageLegendTopSide_property)
+    self.accumulateProperty (self.drawPackageLegendBottomSide_property)
+    self.accumulateProperty (self.drawPadsTopSide_property)
+    self.accumulateProperty (self.drawPadsBottomSide_property)
+    self.accumulateProperty (self.drawTextsLayoutTopSide_property)
+    self.accumulateProperty (self.drawTextsLayoutBottomSide_property)
+    self.accumulateProperty (self.drawTextsLegendTopSide_property)
+    self.accumulateProperty (self.drawTextsLegendBottomSide_property)
+    self.accumulateProperty (self.drawTracksTopSide_property)
+    self.accumulateProperty (self.drawTracksInner1Layer_property)
+    self.accumulateProperty (self.drawTracksInner2Layer_property)
+    self.accumulateProperty (self.drawTracksInner3Layer_property)
+    self.accumulateProperty (self.drawTracksInner4Layer_property)
+    self.accumulateProperty (self.drawTracksBottomSide_property)
+    self.accumulateProperty (self.drawTraversingPads_property)
+    self.accumulateProperty (self.drawImagesTopSide_property)
+    self.accumulateProperty (self.drawImagesBottomSide_property)
+    self.accumulateProperty (self.drawQRCodesTopSide_property)
+    self.accumulateProperty (self.drawQRCodesBottomSide_property)
+    self.accumulateProperty (self.drawVias_property)
+    self.accumulateProperty (self.fileExtension_property)
+    self.accumulateProperty (self.horizontalMirror_property)
+    self.accumulateProperty (self.name_property)
   //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
     self.mArtwork_property.undoManager = inUndoManager
     self.mArtwork_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.fileGenerationParameterArray_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.fileGenerationParameterArray_property.remove (me) } }
     )
+    self.accumulateProperty (self.mArtwork_property)
   //--- Atomic property: hasNoData
     self.hasNoData_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -894,44 +924,6 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.drawBoardLimits_property)
-    ioArray.append (self.drawInternalBoardLimits_property)
-    ioArray.append (self.drawComponentNamesTopSide_property)
-    ioArray.append (self.drawComponentNamesBottomSide_property)
-    ioArray.append (self.drawComponentValuesTopSide_property)
-    ioArray.append (self.drawComponentValuesBottomSide_property)
-    ioArray.append (self.drawPackageLegendTopSide_property)
-    ioArray.append (self.drawPackageLegendBottomSide_property)
-    ioArray.append (self.drawPadsTopSide_property)
-    ioArray.append (self.drawPadsBottomSide_property)
-    ioArray.append (self.drawTextsLayoutTopSide_property)
-    ioArray.append (self.drawTextsLayoutBottomSide_property)
-    ioArray.append (self.drawTextsLegendTopSide_property)
-    ioArray.append (self.drawTextsLegendBottomSide_property)
-    ioArray.append (self.drawTracksTopSide_property)
-    ioArray.append (self.drawTracksInner1Layer_property)
-    ioArray.append (self.drawTracksInner2Layer_property)
-    ioArray.append (self.drawTracksInner3Layer_property)
-    ioArray.append (self.drawTracksInner4Layer_property)
-    ioArray.append (self.drawTracksBottomSide_property)
-    ioArray.append (self.drawTraversingPads_property)
-    ioArray.append (self.drawImagesTopSide_property)
-    ioArray.append (self.drawImagesBottomSide_property)
-    ioArray.append (self.drawQRCodesTopSide_property)
-    ioArray.append (self.drawQRCodesBottomSide_property)
-    ioArray.append (self.drawVias_property)
-    ioArray.append (self.fileExtension_property)
-    ioArray.append (self.horizontalMirror_property)
-    ioArray.append (self.name_property)
-    ioArray.append (self.mArtwork_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

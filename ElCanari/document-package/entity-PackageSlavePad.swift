@@ -502,12 +502,28 @@ final class PackageSlavePad : PackageObject,
       }
     }
     self.master_property.startsBeingObserved (by: self.master_none)
+    self.accumulateProperty (self.xCenter_property)
+    self.accumulateProperty (self.yCenter_property)
+    self.accumulateProperty (self.width_property)
+    self.accumulateProperty (self.height_property)
+    self.accumulateProperty (self.holeWidth_property)
+    self.accumulateProperty (self.holeHeight_property)
+    self.accumulateProperty (self.padShape_property)
+    self.accumulateProperty (self.padStyle_property)
+    self.accumulateProperty (self.xCenterUnit_property)
+    self.accumulateProperty (self.yCenterUnit_property)
+    self.accumulateProperty (self.widthUnit_property)
+    self.accumulateProperty (self.heightUnit_property)
+    self.accumulateProperty (self.holeWidthUnit_property)
+    self.accumulateProperty (self.holeHeightUnit_property)
+    self.accumulateProperty (self.annularRingUnit_property)
   //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.undoManager = inUndoManager
     self.master_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.slaves_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.slaves_property.remove (me) } }
     )
+    self.accumulateProperty (self.master_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -793,30 +809,6 @@ final class PackageSlavePad : PackageObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.xCenter_property)
-    ioArray.append (self.yCenter_property)
-    ioArray.append (self.width_property)
-    ioArray.append (self.height_property)
-    ioArray.append (self.holeWidth_property)
-    ioArray.append (self.holeHeight_property)
-    ioArray.append (self.padShape_property)
-    ioArray.append (self.padStyle_property)
-    ioArray.append (self.xCenterUnit_property)
-    ioArray.append (self.yCenterUnit_property)
-    ioArray.append (self.widthUnit_property)
-    ioArray.append (self.heightUnit_property)
-    ioArray.append (self.holeWidthUnit_property)
-    ioArray.append (self.holeHeightUnit_property)
-    ioArray.append (self.annularRingUnit_property)
-    ioArray.append (self.master_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -765,18 +765,64 @@ final class PackageRoot : EBManagedObject {
       }
     }
     self.mModelImageDoublePoint_property.startsBeingObserved (by: self.mModelImageDoublePoint_none)
+    self.accumulateProperty (self.selectedPageIndex_property)
+    self.accumulateProperty (self.selectedInspector_property)
+    self.accumulateProperty (self.comments_property)
+    self.accumulateProperty (self.program_property)
+    self.accumulateProperty (self.horizontalFlip_property)
+    self.accumulateProperty (self.verticalFlip_property)
+    self.accumulateProperty (self.gridStyle_property)
+    self.accumulateProperty (self.gridStep_property)
+    self.accumulateProperty (self.gridStepUnit_property)
+    self.accumulateProperty (self.gridDisplayFactor_property)
+    self.accumulateProperty (self.zoom_property)
+    self.accumulateProperty (self.mModelImageOpacity_property)
+    self.accumulateProperty (self.mModelImagePageHorizontalFlip_property)
+    self.accumulateProperty (self.mModelImagePageVerticalFlip_property)
+    self.accumulateProperty (self.mModelImagePageGridStyle_property)
+    self.accumulateProperty (self.mModelImagePageGridStep_property)
+    self.accumulateProperty (self.mModelImagePageGridStepUnit_property)
+    self.accumulateProperty (self.mModelImagePageGridDisplayFactor_property)
+    self.accumulateProperty (self.mModelImagePageZoom_property)
+    self.accumulateProperty (self.mModelImagePageXPlacardUnit_property)
+    self.accumulateProperty (self.mModelImagePageYPlacardUnit_property)
+    self.accumulateProperty (self.mModelImageSecondPointXUnit_property)
+    self.accumulateProperty (self.mModelImageSecondPointYUnit_property)
+    self.accumulateProperty (self.mModelImageData_property)
+    self.accumulateProperty (self.mModelImageFirstPointXOnLock_property)
+    self.accumulateProperty (self.mModelImageFirstPointYOnLock_property)
+    self.accumulateProperty (self.mModelImagePointsDxOnLock_property)
+    self.accumulateProperty (self.mModelImagePointsDyOnLock_property)
+    self.accumulateProperty (self.mModelImageScale_property)
+    self.accumulateProperty (self.mModelImageRotationInRadians_property)
+    self.accumulateProperty (self.mModelPointsCircleRadius_property)
+    self.accumulateProperty (self.mPointsAreLocked_property)
+    self.accumulateProperty (self.mDimensionUnitFirstModelPointX_property)
+    self.accumulateProperty (self.mDimensionUnitFirstModelPointY_property)
+    self.accumulateProperty (self.mDimensionUnitSecondModelPointDx_property)
+    self.accumulateProperty (self.mDimensionUnitSecondModelPointDy_property)
+    self.accumulateProperty (self.knobSizeMultpliedByTen_property)
+    self.accumulateProperty (self.padNumbering_property)
+    self.accumulateProperty (self.counterClockNumberingStartAngle_property)
+    self.accumulateProperty (self.xPlacardUnit_property)
+    self.accumulateProperty (self.yPlacardUnit_property)
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.undoManager = inUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mModelImageObjects_property)
   //--- To many property: packageObjects (has opposite relationship)
     self.packageObjects_property.undoManager = inUndoManager
     self.packageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
+    self.accumulateProperty (self.packageObjects_property)
+    self.accumulateProperty (self.packagePads_property)
+    self.accumulateProperty (self.packageSlavePads_property)
+    self.accumulateProperty (self.packageZones_property)
   //--- Atomic proxy property: mModelImageFirstPointX
     self.mModelImageFirstPointX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint_property {
@@ -1019,6 +1065,7 @@ final class PackageRoot : EBManagedObject {
     self.mPointsAreLocked_property.startsBeingObserved (by: self.lockImageView_property)
   //--- To one property: mModelImageDoublePoint
     self.mModelImageDoublePoint_property.undoManager = inUndoManager
+    self.accumulateProperty (self.mModelImageDoublePoint_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1141,58 +1188,6 @@ final class PackageRoot : EBManagedObject {
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.selectedPageIndex_property)
-    ioArray.append (self.selectedInspector_property)
-    ioArray.append (self.comments_property)
-    ioArray.append (self.program_property)
-    ioArray.append (self.horizontalFlip_property)
-    ioArray.append (self.verticalFlip_property)
-    ioArray.append (self.gridStyle_property)
-    ioArray.append (self.gridStep_property)
-    ioArray.append (self.gridStepUnit_property)
-    ioArray.append (self.gridDisplayFactor_property)
-    ioArray.append (self.zoom_property)
-    ioArray.append (self.mModelImageOpacity_property)
-    ioArray.append (self.mModelImagePageHorizontalFlip_property)
-    ioArray.append (self.mModelImagePageVerticalFlip_property)
-    ioArray.append (self.mModelImagePageGridStyle_property)
-    ioArray.append (self.mModelImagePageGridStep_property)
-    ioArray.append (self.mModelImagePageGridStepUnit_property)
-    ioArray.append (self.mModelImagePageGridDisplayFactor_property)
-    ioArray.append (self.mModelImagePageZoom_property)
-    ioArray.append (self.mModelImagePageXPlacardUnit_property)
-    ioArray.append (self.mModelImagePageYPlacardUnit_property)
-    ioArray.append (self.mModelImageSecondPointXUnit_property)
-    ioArray.append (self.mModelImageSecondPointYUnit_property)
-    ioArray.append (self.mModelImageData_property)
-    ioArray.append (self.mModelImageFirstPointXOnLock_property)
-    ioArray.append (self.mModelImageFirstPointYOnLock_property)
-    ioArray.append (self.mModelImagePointsDxOnLock_property)
-    ioArray.append (self.mModelImagePointsDyOnLock_property)
-    ioArray.append (self.mModelImageScale_property)
-    ioArray.append (self.mModelImageRotationInRadians_property)
-    ioArray.append (self.mModelPointsCircleRadius_property)
-    ioArray.append (self.mPointsAreLocked_property)
-    ioArray.append (self.mDimensionUnitFirstModelPointX_property)
-    ioArray.append (self.mDimensionUnitFirstModelPointY_property)
-    ioArray.append (self.mDimensionUnitSecondModelPointDx_property)
-    ioArray.append (self.mDimensionUnitSecondModelPointDy_property)
-    ioArray.append (self.knobSizeMultpliedByTen_property)
-    ioArray.append (self.padNumbering_property)
-    ioArray.append (self.counterClockNumberingStartAngle_property)
-    ioArray.append (self.xPlacardUnit_property)
-    ioArray.append (self.yPlacardUnit_property)
-    ioArray.append (self.mModelImageObjects_property)
-    ioArray.append (self.packageObjects_property)
-    ioArray.append (self.mModelImageDoublePoint_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

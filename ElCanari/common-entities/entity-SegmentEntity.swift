@@ -142,25 +142,17 @@ final class SegmentEntity : EBManagedObject,
     self.endStyle_property = EBStoredProperty_TrackEndStyle (defaultValue: TrackEndStyle.round, undoManager: inUndoManager, key: "endStyle")
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
+    self.accumulateProperty (self.y1_property)
+    self.accumulateProperty (self.x2_property)
+    self.accumulateProperty (self.y2_property)
+    self.accumulateProperty (self.width_property)
+    self.accumulateProperty (self.endStyle_property)
+    self.accumulateProperty (self.x1_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.y1_property)
-    ioArray.append (self.x2_property)
-    ioArray.append (self.y2_property)
-    ioArray.append (self.width_property)
-    ioArray.append (self.endStyle_property)
-    ioArray.append (self.x1_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

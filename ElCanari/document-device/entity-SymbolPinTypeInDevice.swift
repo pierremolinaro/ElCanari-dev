@@ -258,12 +258,23 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYNumber")
     self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNumberHorizontalAlignment")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mPinX_property)
+    self.accumulateProperty (self.mPinY_property)
+    self.accumulateProperty (self.mXName_property)
+    self.accumulateProperty (self.mYName_property)
+    self.accumulateProperty (self.mName_property)
+    self.accumulateProperty (self.mNameHorizontalAlignment_property)
+    self.accumulateProperty (self.mPinNameIsDisplayedInSchematics_property)
+    self.accumulateProperty (self.mXNumber_property)
+    self.accumulateProperty (self.mYNumber_property)
+    self.accumulateProperty (self.mNumberHorizontalAlignment_property)
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.undoManager = inUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
       resetter: { inObject in inObject.mType_property.setProp (nil) }
     )
+    self.accumulateProperty (self.mInstances_property)
   //--- Atomic property: nameShape
     self.nameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -320,25 +331,6 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mPinX_property)
-    ioArray.append (self.mPinY_property)
-    ioArray.append (self.mXName_property)
-    ioArray.append (self.mYName_property)
-    ioArray.append (self.mName_property)
-    ioArray.append (self.mNameHorizontalAlignment_property)
-    ioArray.append (self.mPinNameIsDisplayedInSchematics_property)
-    ioArray.append (self.mXNumber_property)
-    ioArray.append (self.mYNumber_property)
-    ioArray.append (self.mNumberHorizontalAlignment_property)
-    ioArray.append (self.mInstances_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

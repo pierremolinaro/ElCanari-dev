@@ -278,12 +278,21 @@ final class SlavePadInDevice : EBManagedObject,
       }
     }
     self.mMasterPad_property.startsBeingObserved (by: self.mMasterPad_none)
+    self.accumulateProperty (self.mCenterX_property)
+    self.accumulateProperty (self.mCenterY_property)
+    self.accumulateProperty (self.mWidth_property)
+    self.accumulateProperty (self.mHeight_property)
+    self.accumulateProperty (self.mHoleWidth_property)
+    self.accumulateProperty (self.mHoleHeight_property)
+    self.accumulateProperty (self.mShape_property)
+    self.accumulateProperty (self.mStyle_property)
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.undoManager = inUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mSlavePads_property.remove (me) } }
     )
+    self.accumulateProperty (self.mMasterPad_property)
   //--- Atomic property: frontSideFilledBezierPath
     self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -420,23 +429,6 @@ final class SlavePadInDevice : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mCenterX_property)
-    ioArray.append (self.mCenterY_property)
-    ioArray.append (self.mWidth_property)
-    ioArray.append (self.mHeight_property)
-    ioArray.append (self.mHoleWidth_property)
-    ioArray.append (self.mHoleHeight_property)
-    ioArray.append (self.mShape_property)
-    ioArray.append (self.mStyle_property)
-    ioArray.append (self.mMasterPad_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

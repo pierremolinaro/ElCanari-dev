@@ -338,6 +338,18 @@ final class BoardQRCode : BoardObject,
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
     self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mXUnit_property)
+    self.accumulateProperty (self.mCenterY_property)
+    self.accumulateProperty (self.mYUnit_property)
+    self.accumulateProperty (self.mDrawFrame_property)
+    self.accumulateProperty (self.mModuleSize_property)
+    self.accumulateProperty (self.mModuleSizeUnit_property)
+    self.accumulateProperty (self.mActualSizeUnit_property)
+    self.accumulateProperty (self.mLayer_property)
+    self.accumulateProperty (self.mText_property)
+    self.accumulateProperty (self.mCorrectionLevel_property)
+    self.accumulateProperty (self.mRotation_property)
+    self.accumulateProperty (self.mCenterX_property)
   //--- Atomic property: qrCodeDescriptor
     self.qrCodeDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -569,26 +581,6 @@ final class BoardQRCode : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mXUnit_property)
-    ioArray.append (self.mCenterY_property)
-    ioArray.append (self.mYUnit_property)
-    ioArray.append (self.mDrawFrame_property)
-    ioArray.append (self.mModuleSize_property)
-    ioArray.append (self.mModuleSizeUnit_property)
-    ioArray.append (self.mActualSizeUnit_property)
-    ioArray.append (self.mLayer_property)
-    ioArray.append (self.mText_property)
-    ioArray.append (self.mCorrectionLevel_property)
-    ioArray.append (self.mRotation_property)
-    ioArray.append (self.mCenterX_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

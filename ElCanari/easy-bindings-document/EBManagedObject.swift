@@ -77,14 +77,24 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   final var undoManager : UndoManager? { self.mUndoManager }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  Property accumulator
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mPropertyArray = [AnyObject] ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func accumulateProperty (_ inProperty : AnyObject) {
+    self.mPropertyArray.append (inProperty)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Setup from value dictionary (binary format)
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func setUpProperties (fromValueDictionary inDictionary : [String : Any],
                               managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    var propertyArray = [AnyObject] ()
-    self.accumulateProperties (into: &propertyArray)
-    for property in propertyArray {
+    for property in self.mPropertyArray {
       if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.initialize (fromValueDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
       }
@@ -96,9 +106,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   final func setUpProperties (withRangeDictionary inRangeDictionary : [String : NSRange],
                               rawObjectArray inRawObjectArray : [RawObject],
                               data inData : Data) {
-    var propertyArray = [AnyObject] ()
-    self.accumulateProperties (into: &propertyArray)
-    for property in propertyArray {
+    for property in self.mPropertyArray {
       if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol,
          let key = storedProperty.key,
          let range = inRangeDictionary [key] {
@@ -112,9 +120,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
-    var propertyArray = [AnyObject] ()
-    self.accumulateProperties (into: &propertyArray)
-    for property in propertyArray {
+    for property in self.mPropertyArray {
       if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
       }
@@ -127,9 +133,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
 
   final func savePropertiesAndRelationshipsIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
-    var propertyArray = [AnyObject] ()
-    self.accumulateProperties (into: &propertyArray)
-    for property in propertyArray {
+    for property in self.mPropertyArray {
       if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
       }
@@ -142,9 +146,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
 
   final func savePropertiesIntoDictionary (_ ioDictionary : inout [String : Any]) {
     ioDictionary [ENTITY_KEY] = self.className
-    var propertyArray = [AnyObject] ()
-    self.accumulateProperties (into: &propertyArray)
-    for property in propertyArray {
+    for property in self.mPropertyArray {
       if let storedProperty = property as? any EBDocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
       }
@@ -156,9 +158,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendPropertyNamesTo (string ioString : inout String) {
-    var propertyArray = [AnyObject] ()
-    self.accumulateProperties (into: &propertyArray)
-    for property in propertyArray {
+    for property in self.mPropertyArray {
       if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, let key = storedProperty.key {
         ioString += key + "\n"
       }
@@ -170,9 +170,7 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func appendPropertyValuesTo (data ioData : inout Data) {
-    var propertyArray = [AnyObject] ()
-    self.accumulateProperties (into: &propertyArray)
-    for property in propertyArray {
+    for property in self.mPropertyArray {
       if let storedProperty = property as? any EBDocumentStorablePropertyAndRelationshipProtocol, storedProperty.key != nil {
         storedProperty.appendValueTo (data: &ioData)
         ioData.append (ascii: .lineFeed)
@@ -180,13 +178,6 @@ class EBManagedObject : EBSignatureObserverProtocol, AnySendableObject {
     }
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func accumulateProperties (into ioArray : inout [AnyObject]) {
-  }
-  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   setSignatureObserver
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

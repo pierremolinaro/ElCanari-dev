@@ -259,6 +259,17 @@ final class BoardLine : BoardObject,
     self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mWidth")
     super.init (inUndoManager)
+    self.accumulateProperty (self.mWidthUnit_property)
+    self.accumulateProperty (self.mX1_property)
+    self.accumulateProperty (self.mX1Unit_property)
+    self.accumulateProperty (self.mY1_property)
+    self.accumulateProperty (self.mY1Unit_property)
+    self.accumulateProperty (self.mX2_property)
+    self.accumulateProperty (self.mX2Unit_property)
+    self.accumulateProperty (self.mY2_property)
+    self.accumulateProperty (self.mY2Unit_property)
+    self.accumulateProperty (self.mLayer_property)
+    self.accumulateProperty (self.mWidth_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -346,25 +357,6 @@ final class BoardLine : BoardObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.mWidthUnit_property)
-    ioArray.append (self.mX1_property)
-    ioArray.append (self.mX1Unit_property)
-    ioArray.append (self.mY1_property)
-    ioArray.append (self.mY1Unit_property)
-    ioArray.append (self.mX2_property)
-    ioArray.append (self.mX2Unit_property)
-    ioArray.append (self.mY2_property)
-    ioArray.append (self.mY2Unit_property)
-    ioArray.append (self.mLayer_property)
-    ioArray.append (self.mWidth_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

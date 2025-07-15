@@ -128,8 +128,20 @@ final class SymbolRoot : EBManagedObject {
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yPlacardUnit")
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedPageIndex")
     super.init (inUndoManager)
+    self.accumulateProperty (self.selectedInspector_property)
+    self.accumulateProperty (self.comments_property)
+    self.accumulateProperty (self.horizontalFlip_property)
+    self.accumulateProperty (self.verticalFlip_property)
+    self.accumulateProperty (self.gridStyle_property)
+    self.accumulateProperty (self.gridDisplay_property)
+    self.accumulateProperty (self.zoom_property)
+    self.accumulateProperty (self.xPlacardUnit_property)
+    self.accumulateProperty (self.yPlacardUnit_property)
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.undoManager = inUndoManager
+    self.accumulateProperty (self.symbolObjects_property)
+    self.accumulateProperty (self.symbolPins_property)
+    self.accumulateProperty (self.selectedPageIndex_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -173,25 +185,6 @@ final class SymbolRoot : EBManagedObject {
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.selectedInspector_property)
-    ioArray.append (self.comments_property)
-    ioArray.append (self.horizontalFlip_property)
-    ioArray.append (self.verticalFlip_property)
-    ioArray.append (self.gridStyle_property)
-    ioArray.append (self.gridDisplay_property)
-    ioArray.append (self.zoom_property)
-    ioArray.append (self.xPlacardUnit_property)
-    ioArray.append (self.yPlacardUnit_property)
-    ioArray.append (self.symbolObjects_property)
-    ioArray.append (self.selectedPageIndex_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

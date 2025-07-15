@@ -182,8 +182,13 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mWarnsWhenNoSegment")
     self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mWarnsWhenAdvanceIsZero")
     super.init (inUndoManager)
+    self.accumulateProperty (self.codePoint_property)
+    self.accumulateProperty (self.advance_property)
+    self.accumulateProperty (self.mWarnsWhenNoSegment_property)
+    self.accumulateProperty (self.mWarnsWhenAdvanceIsZero_property)
   //--- To many property: segments (no option)
     self.segments_property.undoManager = inUndoManager
+    self.accumulateProperty (self.segments_property)
   //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -290,19 +295,6 @@ final class FontCharacter : EBManagedObject,
   //--- Extern delegates
    }
   
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   accumulateProperties
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func accumulateProperties (into ioArray : inout [AnyObject]) {
-    super.accumulateProperties (into: &ioArray)
-    ioArray.append (self.codePoint_property)
-    ioArray.append (self.advance_property)
-    ioArray.append (self.mWarnsWhenNoSegment_property)
-    ioArray.append (self.mWarnsWhenAdvanceIsZero_property)
-    ioArray.append (self.segments_property)
-  }
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Extern delegates
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
