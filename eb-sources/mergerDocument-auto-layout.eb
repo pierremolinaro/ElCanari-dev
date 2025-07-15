@@ -169,7 +169,7 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       }
       Label (bold: yes, size : .small) {
         setRedTextColor ()
-        $title #mBoardModelSelection.errorArchiveVersionMessage
+//  §     $title #mBoardModelSelection.errorArchiveVersionMessage
         $size #mBoardModelSelection.errorArchiveLabelSize
         $textColor #mBoardModelSelection.errorArchiveLabelColor
         $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden

@@ -20,7 +20,7 @@ final class OpenSymbolInLibrary : OpenInLibrary {
   //   Dialog
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func openSymbolInLibrary (_ inSender : Any?) {
+  @objc func openSymbolInLibrary (_ /* inUnusedSender */ : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Symbol in Library")
   }
 

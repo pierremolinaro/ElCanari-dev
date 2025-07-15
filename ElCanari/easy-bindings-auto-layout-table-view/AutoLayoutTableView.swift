@@ -150,13 +150,13 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc final func addEntryAction (_ inUnusedSender : Any?) {
+  @objc final func addEntryAction (_ /* inUnusedSender */ : Any?) {
     self.mDelegate?.tableViewDelegate_addEntry ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc final func removeSelectedEntriesAction (_ _ : Any?) {
+  @objc final func removeSelectedEntriesAction (_ /* inUnusedSender */ : Any?) {
     self.mDelegate?.tableViewDelegate_removeSelectedEntries ()
   }
 

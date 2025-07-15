@@ -46,7 +46,7 @@ import Sparkle
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func checkForUpdatesAction (_ inUnusedSender : Any?) {
+  @objc func checkForUpdatesAction (_ /* inUnusedSender */ : Any?) {
     self.mUpdaterController.updater.checkForUpdates ()
   }
 

@@ -76,7 +76,7 @@ extension AutoLayoutProjectDocument {
 
   func writeGerberProductFile (atURL inURL : URL,
                                _ inDescriptor : ArtworkFileGenerationParameters,
-                               _ inLayerConfiguration : LayerConfiguration,
+//                               _ inLayerConfiguration : LayerConfiguration,
                                _ inProductRepresentation : ProductRepresentation) throws {
     let url = inURL.appendingPathExtension (inDescriptor.fileExtension)
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(url.lastPathComponent)…")

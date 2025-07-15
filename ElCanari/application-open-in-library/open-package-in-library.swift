@@ -20,7 +20,7 @@ final class OpenPackageInLibrary : OpenInLibrary {
   //   Dialog
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func openPackageInLibrary (_ inSender : Any?) {
+  @objc func openPackageInLibrary (_ /* inUnusedSender */ : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Package in Library")
   }
 

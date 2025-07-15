@@ -56,9 +56,6 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       if let relay = self.mObserversOf_modelData { // Stored property
         managedObject.modelData_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_errorArchiveVersionMessage { // Transient property
-        managedObject.errorArchiveVersionMessage_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_errorArchiveLabelSize { // Transient property
         managedObject.errorArchiveLabelSize_property.stopsBeingObserved (by: relay)
       }
@@ -280,9 +277,6 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       }
       if let relay = self.mObserversOf_modelData { // Stored property
         managedObject.modelData_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_errorArchiveVersionMessage { // Transient property
-        managedObject.errorArchiveVersionMessage_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_errorArchiveLabelSize { // Transient property
         managedObject.errorArchiveLabelSize_property.startsBeingObserved (by: relay)
@@ -842,35 +836,6 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
 
   final func toMany_modelData_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
     self.mObserversOf_modelData?.stopsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'errorArchiveVersionMessage' transient property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mObserversOf_errorArchiveVersionMessage : EBObservedObserver? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_errorArchiveVersionMessage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_errorArchiveVersionMessage {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.errorArchiveVersionMessage_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_errorArchiveVersionMessage = relay
-    }
-    relay.startsBeingObserved (by:  inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_errorArchiveVersionMessage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
-    self.mObserversOf_errorArchiveVersionMessage?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

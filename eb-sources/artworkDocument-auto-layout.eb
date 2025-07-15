@@ -70,16 +70,16 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
 
   transient Int statusWarningCount dependsFrom
     root.fileGenerationParameterArray.all.fileExtension,
-    root.fileGenerationParameterArray.all.name,
-    root.fileGenerationParameterArray.all.hasNoData,
-    root.emptyDrillFileExtension,
-    self.documentFileName
+//    root.fileGenerationParameterArray.all.name,
+    root.fileGenerationParameterArray.all.hasNoData
+//    root.emptyDrillFileExtension,
+//    self.documentFileName
   ;
 
   transient Int statusErrorCount dependsFrom
     root.fileGenerationParameterArray.all.fileExtension,
     root.fileGenerationParameterArray.all.name,
-    root.fileGenerationParameterArray.all.hasNoData,
+//    root.fileGenerationParameterArray.all.hasNoData,
     root.emptyDrillFileExtension,
     self.documentFileName
   ;

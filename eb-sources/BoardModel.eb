@@ -15,7 +15,7 @@ handlingOpposite entity BoardModel {
   property @generateDirectAccess Int modelVersion default 0 ;
   property @generateDirectAccess Bool ignoreModelVersionError default no ;
 
-  transient String errorArchiveVersionMessage dependsFrom self.modelVersion ;
+//  transient String errorArchiveVersionMessage dependsFrom self.modelVersion ;
 
   transient EBControlSize errorArchiveLabelSize dependsFrom self.ignoreModelVersionError ;
 

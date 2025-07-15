@@ -84,12 +84,6 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_errorArchiveVersionMessage : AnyObject {
-  var errorArchiveVersionMessage : String? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 @MainActor protocol BoardModel_errorArchiveLabelSize : AnyObject {
   var errorArchiveLabelSize : EBControlSize? { get }
 }
@@ -466,7 +460,6 @@ final class BoardModel : EBManagedObject,
          BoardModel_modelLimitWidthUnit,
          BoardModel_artworkName,
          BoardModel_modelData,
-         BoardModel_errorArchiveVersionMessage,
          BoardModel_errorArchiveLabelSize,
          BoardModel_errorArchiveLabelColor,
          BoardModel_errorArchiveVersionMessageIsHidden,
@@ -1065,18 +1058,6 @@ final class BoardModel : EBManagedObject,
   //------------------------------------------------------------------------------------------------
 
   final let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false, key: "myInstances")
-
-  //------------------------------------------------------------------------------------------------
-  //   Transient property: errorArchiveVersionMessage
-  //------------------------------------------------------------------------------------------------
-
-  final let errorArchiveVersionMessage_property = EBTransientProperty <String> ()
-
-  //------------------------------------------------------------------------------------------------
-
-  final var errorArchiveVersionMessage : String? {
-    return self.errorArchiveVersionMessage_property.optionalValue
-  }
 
   //------------------------------------------------------------------------------------------------
   //   Transient property: errorArchiveLabelSize
@@ -1921,23 +1902,6 @@ final class BoardModel : EBManagedObject,
       resetter: { inObject in inObject.myModel_property.setProp (nil) }
     )
     self.accumulateProperty (self.myInstances_property)
-  //--- Atomic property: errorArchiveVersionMessage
-    self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.modelVersion_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_BoardModel_errorArchiveVersionMessage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelVersion_property.startsBeingObserved (by: self.errorArchiveVersionMessage_property)
   //--- Atomic property: errorArchiveLabelSize
     self.errorArchiveLabelSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

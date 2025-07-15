@@ -76,21 +76,21 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func toggleDebugAutoLayout (_ inUnusedSender : Any?) {
+  @objc func toggleDebugAutoLayout (_ /* inUnusedSender */ : Any?) {
     setDebugAutoLayout (!getDebugAutoLayout ())
     self.mDebugMenuItem.state = getDebugAutoLayout () ? .on : .off
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func toggleShowKeyResponderChain (_ inUnusedSender : Any?) {
+  @objc func toggleShowKeyResponderChain (_ /* inUnusedSender */ : Any?) {
     setDebugResponderChain (!getDebugResponderChain ())
     self.responderKeyChainItem.state = getDebugResponderChain () ? .on : .off
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func toggleViewCurrentValues (_ inUnusedSender : Any?) {
+  @objc func toggleViewCurrentValues (_ /* inUnusedSender */ : Any?) {
     setShowViewCurrentSettings (!getShowViewCurrentSettings ())
     self.showViewCurrentValuesItem.state = getShowViewCurrentSettings () ? .on : .off
   }

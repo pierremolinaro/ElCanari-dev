@@ -73,20 +73,20 @@ struct EBLinePath {
 
 //--------------------------------------------------------------------------------------------------
 
-extension Array where Element == EBLinePath {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func linePathArrayClipped (by inRect : NSRect) -> [EBLinePath] {
-    var result = [EBLinePath] ()
-    for linePath in self {
-      result += linePath.linePathClipped (by: inRect)
-    }
-    return result
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//extension Array where Element == EBLinePath {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  func linePathArrayClipped (by inRect : NSRect) -> [EBLinePath] {
+//    var result = [EBLinePath] ()
+//    for linePath in self {
+//      result += linePath.linePathClipped (by: inRect)
+//    }
+//    return result
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------

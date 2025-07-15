@@ -341,11 +341,11 @@ fileprivate let DEBUG_CATEGORY = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final func removeAllEntries () {
-    self.mTableViewDataSource = []
-    self.mTableViewFilteredDataSource = []
-    self.mTableView.sortAndReloadData ()
-  }
+//  private final func removeAllEntries () {
+//    self.mTableViewDataSource = []
+//    self.mTableViewFilteredDataSource = []
+//    self.mTableView.sortAndReloadData ()
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -552,7 +552,7 @@ fileprivate let DEBUG_CATEGORY = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc private func filterAction (_ inUnusedSender : Any?) {
+  @objc private func filterAction (_ /* inUnusedSender */ : Any?) {
     let filter = self.mSearchField.stringValue.uppercased ()
     let category = self.mSelectedCategory.propval
     var dataSource = self.mTableViewDataSource

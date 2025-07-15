@@ -20,7 +20,7 @@ final class OpenDeviceInLibrary : OpenInLibrary {
   //   Dialog
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc func openDeviceInLibrary (_ inSender : Any?) {
+  @objc func openDeviceInLibrary (_ /* inUnusedSender */ : Any?) {
     super.openDocumentInLibrary (windowTitle: "Open Device in Library")
   }
 

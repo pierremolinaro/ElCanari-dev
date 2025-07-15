@@ -15,10 +15,7 @@ import AppKit
 
 @MainActor func transient_AutoLayoutArtworkDocument_statusWarningCount (
        _ root_fileGenerationParameterArray_fileExtension : [any ArtworkFileGenerationParameters_fileExtension],
-       _ root_fileGenerationParameterArray_name : [any ArtworkFileGenerationParameters_name],
-       _ root_fileGenerationParameterArray_hasNoData : [any ArtworkFileGenerationParameters_hasNoData],
-       _ root_emptyDrillFileExtension : Bool,                           
-       _ self_documentFileName : String
+       _ root_fileGenerationParameterArray_hasNoData : [any ArtworkFileGenerationParameters_hasNoData]
 ) -> Int {
 //--- START OF USER ZONE 2
         let n = root_fileGenerationParameterArray_fileExtension.count

@@ -71,8 +71,7 @@ extension AutoLayoutDeviceDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func performSymbolsUpdate (_ inSymbols : EBReferenceArray <SymbolTypeInDevice>,
-                                   okMessages ioOkMessages : inout [String],
+  final func performSymbolsUpdate (okMessages ioOkMessages : inout [String],
                                    errorMessages ioErrorMessages : inout [String]) {
     let fm = FileManager ()
     for symbolType in self.rootObject.mSymbolTypes.values {

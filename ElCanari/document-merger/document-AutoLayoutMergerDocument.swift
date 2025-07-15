@@ -510,7 +510,6 @@ import AppKit
       do{
         let hStackView_view_view = AutoLayoutLabel (bold: true, size: .small)
           .setRedTextColor ()
-          .bind_title (self.mBoardModelSelection.errorArchiveVersionMessage_property)
           .bind_size (self.mBoardModelSelection.errorArchiveLabelSize_property)
           .bind_textColor (self.mBoardModelSelection.errorArchiveLabelColor_property)
           .bind_hidden (.prop (self.mBoardModelSelection.errorArchiveVersionMessageIsHidden_property))

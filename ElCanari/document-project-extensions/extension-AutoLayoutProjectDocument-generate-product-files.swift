@@ -116,7 +116,7 @@ extension AutoLayoutProjectDocument {
         try self.writeGerberProductFile (
           atURL: generatedGerberFileURL,
           productDescriptor,
-          inArtwork.layerConfiguration,
+//          inArtwork.layerConfiguration,
           productRepresentation
         )
       }
@@ -131,7 +131,12 @@ extension AutoLayoutProjectDocument {
     if generateGerberAndPDF {
       try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productRepresentation)
       for productDescriptor in inArtwork.fileGenerationParameterArray.values {
-        try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productRepresentation)
+        try self.writePDFProductFile (
+          atPath: generatedPDFFilePath,
+          productDescriptor,
+//          inArtwork.layerConfiguration,
+          productRepresentation
+        )
       }
     }
   //--- Write board archive

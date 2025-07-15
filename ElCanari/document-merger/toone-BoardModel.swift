@@ -29,7 +29,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       oldValue.modelLimitWidthUnit_property.stopsBeingObserved (by: self.modelLimitWidthUnit_property) // Stored property
       oldValue.artworkName_property.stopsBeingObserved (by: self.artworkName_property) // Stored property
       oldValue.modelData_property.stopsBeingObserved (by: self.modelData_property) // Stored property
-      oldValue.errorArchiveVersionMessage_property.stopsBeingObserved (by: self.errorArchiveVersionMessage_property) // Transient property
       oldValue.errorArchiveLabelSize_property.stopsBeingObserved (by: self.errorArchiveLabelSize_property) // Transient property
       oldValue.errorArchiveLabelColor_property.stopsBeingObserved (by: self.errorArchiveLabelColor_property) // Transient property
       oldValue.errorArchiveVersionMessageIsHidden_property.stopsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
@@ -193,7 +192,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       newValue.modelLimitWidthUnit_property.startsBeingObserved (by: self.modelLimitWidthUnit_property) // Stored property
       newValue.artworkName_property.startsBeingObserved (by: self.artworkName_property) // Stored property
       newValue.modelData_property.startsBeingObserved (by: self.modelData_property) // Stored property
-      newValue.errorArchiveVersionMessage_property.startsBeingObserved (by: self.errorArchiveVersionMessage_property) // Transient property
       newValue.errorArchiveLabelSize_property.startsBeingObserved (by: self.errorArchiveLabelSize_property) // Transient property
       newValue.errorArchiveLabelColor_property.startsBeingObserved (by: self.errorArchiveLabelColor_property) // Transient property
       newValue.errorArchiveVersionMessageIsHidden_property.startsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property) // Transient property
@@ -421,12 +419,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let modelData_property = EBTransientProperty <Data?> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'errorArchiveVersionMessage' transient property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final let errorArchiveVersionMessage_property = EBTransientProperty <String?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'errorArchiveLabelSize' transient property
@@ -1599,10 +1591,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   //--- Configure modelData simple stored property
     self.modelData_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.modelData_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure errorArchiveVersionMessage transient property
-    self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.errorArchiveVersionMessage_property.optionalSelection ?? .single (nil)
     }
   //--- Configure errorArchiveLabelSize transient property
     self.errorArchiveLabelSize_property.mReadModelFunction = { [weak self] in

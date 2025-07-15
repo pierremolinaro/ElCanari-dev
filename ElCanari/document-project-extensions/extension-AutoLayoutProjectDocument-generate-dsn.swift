@@ -1028,20 +1028,22 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
 //--- Write components
   ioString += "  (placement\n"
   for component in components {
-    let x = inConverter.dsnUnitFromCanariUnit (component.originX)
-    let y = inConverter.dsnUnitFromCanariUnit (component.originY)
-    let side : String
-    switch component.side {
-    case .back : side = "back"
-    case .front : side = "front"
+    if component.placed {
+      let x = inConverter.dsnUnitFromCanariUnit (component.originX)
+      let y = inConverter.dsnUnitFromCanariUnit (component.originY)
+      let side : String
+      switch component.side {
+      case .back : side = "back"
+      case .front : side = "front"
+      }
+      ioString += "    (component \"\(inPackageArrayForRouting [component.packageIndex].typeName)\"\n"
+      ioString += "      (place \"\(component.componentName)\" \(x) \(y) \(side) \(component.rotationInDegrees)\n"
+      for padDescriptor in component.netList {
+        ioString += "        (pin \"\(padDescriptor.padString)\" (clearance_class default))\n"
+      }
+      ioString += "      )\n"
+      ioString += "    )\n"
     }
-    ioString += "    (component \"\(inPackageArrayForRouting [component.packageIndex].typeName)\"\n"
-    ioString += "      (place \"\(component.componentName)\" \(x) \(y) \(side) \(component.rotationInDegrees)\n"
-    for padDescriptor in component.netList {
-      ioString += "        (pin \"\(padDescriptor.padString)\" (clearance_class default))\n"
-    }
-    ioString += "      )\n"
-    ioString += "    )\n"
   }
   ioString += "  )\n"
 }

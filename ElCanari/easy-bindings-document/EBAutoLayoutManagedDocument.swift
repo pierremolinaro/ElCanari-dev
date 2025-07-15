@@ -98,76 +98,79 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingUpdated (_ inDraggingInfo : any NSDraggingInfo,
-                        _ inScrollView : NSScrollView) -> NSDragOperation {
+  func draggingUpdated (_ /* inDraggingInfo */ : any NSDraggingInfo,
+                        _ /* inScrollView */ : NSScrollView) -> NSDragOperation {
     // NSLog ("draggingUpdated")
     return .copy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func draggingExited (_ inDraggingInfo : (any NSDraggingInfo)?,
-                       _ inScrollView : NSScrollView) {
+  func draggingExited (_ /* inDraggingInfo */ : (any NSDraggingInfo)?,
+                       _ /* inScrollView */ : NSScrollView) {
     // NSLog ("draggingExited")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func prepareForDragOperation (_ inDraggingInfo : any NSDraggingInfo,
-                                _ inScrollView : NSScrollView) -> Bool {
+  func prepareForDragOperation (_ /* inDraggingInfo */ : any NSDraggingInfo,
+                                _ /* inScrollView */ : NSScrollView) -> Bool {
     // NSLog ("prepareForDragOperation")
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func performDragOperation (_ inDraggingInfo : any NSDraggingInfo,
-                             _ inScrollView : NSScrollView) -> Bool {
+  func performDragOperation (_ /* inDraggingInfo */ : any NSDraggingInfo,
+                             _ /* inScrollView */ : NSScrollView) -> Bool {
     // NSLog ("performDragOperation")
     return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func concludeDragOperation (_ inDraggingInfo : (any NSDraggingInfo)?,
-                              _ inScrollView : NSScrollView) {
+  func concludeDragOperation (_ /* inDraggingInfo */ : (any NSDraggingInfo)?,
+                              _ /* inScrollView */ : NSScrollView) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    Document File Format
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final class MyPrivateUndoer : NSObject { // For Swift 6
-    let mOldValue : EBManagedDocumentFileFormat
-
-    init (_ inOldValue : EBManagedDocumentFileFormat) {
-      self.mOldValue = inOldValue
-    }
-  }
+//  private final class MyPrivateUndoer : NSObject { // For Swift 6
+//    let mOldValue : EBManagedDocumentFileFormat
+//
+//    init (_ inOldValue : EBManagedDocumentFileFormat) {
+//      self.mOldValue = inOldValue
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
-    self.mManagedDocumentFileFormat = inObject.mOldValue
-  }
+//  @objc private final func myPerformUndo (_ inObject : MyPrivateUndoer) {  // For Swift 6
+//    self.mManagedDocumentFileFormat = inObject.mOldValue
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
     didSet {
       if self.mManagedDocumentFileFormat != oldValue {
-         self.undoManager?.registerUndo (  // For Swift 6
-          withTarget: self,
-          selector: #selector (Self.myPerformUndo (_:)),
-          object: MyPrivateUndoer (oldValue)
-        )
-//        self.undoManager?.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
+        self.undoManager?.registerUndo (withTarget: self) { selfTarget in
+          selfTarget.mManagedDocumentFileFormat = oldValue // Ok in Swift 6.2
+          // MainActor.assumeIsolated { selfTarget.setProp (inOldValue) }
+        }
+//         self.undoManager?.registerUndo (  // For Swift 6
+//          withTarget: self,
+//          selector: #selector (Self.myPerformUndo (_:)),
+//          object: MyPrivateUndoer (oldValue)
+//        )
       }
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //-  SAVE
+  //   SAVE
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func metadataStatusForSaving () -> UInt8 {

@@ -197,12 +197,6 @@ import AppKit
   var errorArchiveLabelSize_property = EBTransientProperty <EBControlSize> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Selection observable property: errorArchiveVersionMessage
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var errorArchiveVersionMessage_property = EBTransientProperty <String> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: errorArchiveVersionMessageIsHidden
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -615,7 +609,6 @@ import AppKit
     self.bind_property_drillSegments (model: model)
     self.bind_property_errorArchiveLabelColor (model: model)
     self.bind_property_errorArchiveLabelSize (model: model)
-    self.bind_property_errorArchiveVersionMessage (model: model)
     self.bind_property_errorArchiveVersionMessageIsHidden (model: model)
     self.bind_property_frontComponentNameSegments (model: model)
     self.bind_property_frontComponentNamesBezierPaths (model: model)
@@ -743,9 +736,6 @@ import AppKit
   //--- errorArchiveLabelSize
     self.errorArchiveLabelSize_property.mReadModelFunction = nil 
     self.mModel?.toMany_errorArchiveLabelSize_StopsBeingObserved (by: self.errorArchiveLabelSize_property)
-  //--- errorArchiveVersionMessage
-    self.errorArchiveVersionMessage_property.mReadModelFunction = nil 
-    self.mModel?.toMany_errorArchiveVersionMessage_StopsBeingObserved (by: self.errorArchiveVersionMessage_property)
   //--- errorArchiveVersionMessageIsHidden
     self.errorArchiveVersionMessageIsHidden_property.mReadModelFunction = nil 
     self.mModel?.toMany_errorArchiveVersionMessageIsHidden_StopsBeingObserved (by: self.errorArchiveVersionMessageIsHidden_property)
@@ -1820,46 +1810,6 @@ import AppKit
           var isMultipleSelection = false
           for object in v {
             switch object.errorArchiveLabelSize_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func bind_property_errorArchiveVersionMessage (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_errorArchiveVersionMessage_StartsBeingObserved (by: self.errorArchiveVersionMessage_property)
-    self.errorArchiveVersionMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.errorArchiveVersionMessage_property.selection {
             case .empty :
               return .empty
             case .multiple :

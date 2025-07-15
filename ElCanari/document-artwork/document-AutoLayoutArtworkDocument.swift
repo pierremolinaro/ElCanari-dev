@@ -21,6 +21,18 @@ import AppKit
   final var mDataSelection = SelectionController_AutoLayoutArtworkDocument_mDataSelection ()
 
   //------------------------------------------------------------------------------------------------
+  //   Transient property: statusWarningCount
+  //------------------------------------------------------------------------------------------------
+
+  final let statusWarningCount_property = EBTransientProperty <Int> ()
+
+  //------------------------------------------------------------------------------------------------
+
+  final var statusWarningCount : Int? {
+    return self.statusWarningCount_property.optionalValue
+  }
+
+  //------------------------------------------------------------------------------------------------
   //   Transient property: documentFileName
   //------------------------------------------------------------------------------------------------
 
@@ -30,18 +42,6 @@ import AppKit
 
   final var documentFileName : String? {
     return self.documentFileName_property.optionalValue
-  }
-
-  //------------------------------------------------------------------------------------------------
-  //   Transient property: statusErrorCount
-  //------------------------------------------------------------------------------------------------
-
-  final let statusErrorCount_property = EBTransientProperty <Int> ()
-
-  //------------------------------------------------------------------------------------------------
-
-  final var statusErrorCount : Int? {
-    return self.statusErrorCount_property.optionalValue
   }
 
   //------------------------------------------------------------------------------------------------
@@ -93,15 +93,15 @@ import AppKit
   }
 
   //------------------------------------------------------------------------------------------------
-  //   Transient property: statusWarningCount
+  //   Transient property: statusErrorCount
   //------------------------------------------------------------------------------------------------
 
-  final let statusWarningCount_property = EBTransientProperty <Int> ()
+  final let statusErrorCount_property = EBTransientProperty <Int> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var statusWarningCount : Int? {
-    return self.statusWarningCount_property.optionalValue
+  final var statusErrorCount : Int? {
+    return self.statusErrorCount_property.optionalValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -918,26 +918,16 @@ import AppKit
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)
 
-
-  //--- Atomic property: statusErrorCount
-    self.statusErrorCount_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusWarningCount
+    self.statusWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
         let s1 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
-        let s2 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
-        let s3 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
-        let s4 = unwSelf.documentFileName_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        switch (s0, s1) {
         case (.single (let v0),
-              .single (let v1),
-              .single (let v2),
-              .single (let v3),
-              .single (let v4)) :
-          return .single (transient_AutoLayoutArtworkDocument_statusErrorCount (v0, v1, v2, v3, v4))
+              .single (let v1)) :
+          return .single (transient_AutoLayoutArtworkDocument_statusWarningCount (v0, v1))
         case (.multiple,
-              .multiple,
-              .multiple,
-              .multiple,
               .multiple) :
           return .multiple
         default :
@@ -947,11 +937,9 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.statusErrorCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsBeingObserved (by: self.statusErrorCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsBeingObserved (by: self.statusErrorCount_property)
-    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.statusErrorCount_property)
-    self.documentFileName_property.startsBeingObserved (by: self.statusErrorCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.statusWarningCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsBeingObserved (by: self.statusWarningCount_property)
+
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -1053,23 +1041,20 @@ import AppKit
     self.rootObject.hasDataWarning_property.startsBeingObserved (by: self.segmentedControlDataIssueImage_property)
     self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.segmentedControlDataIssueImage_property)
 
-  //--- Atomic property: statusWarningCount
-    self.statusWarningCount_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusErrorCount
+    self.statusErrorCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
         let s1 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
-        let s2 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
-        let s3 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
-        let s4 = unwSelf.documentFileName_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        let s2 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
+        let s3 = unwSelf.documentFileName_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3),
-              .single (let v4)) :
-          return .single (transient_AutoLayoutArtworkDocument_statusWarningCount (v0, v1, v2, v3, v4))
+              .single (let v3)) :
+          return .single (transient_AutoLayoutArtworkDocument_statusErrorCount (v0, v1, v2, v3))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -1081,11 +1066,10 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.statusWarningCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsBeingObserved (by: self.statusWarningCount_property)
-    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsBeingObserved (by: self.statusWarningCount_property)
-    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.statusWarningCount_property)
-    self.documentFileName_property.startsBeingObserved (by: self.statusWarningCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsBeingObserved (by: self.statusErrorCount_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsBeingObserved (by: self.statusErrorCount_property)
+    self.rootObject.emptyDrillFileExtension_property.startsBeingObserved (by: self.statusErrorCount_property)
+    self.documentFileName_property.startsBeingObserved (by: self.statusErrorCount_property)
 
   }
 

@@ -242,7 +242,7 @@ extension ApplicationDelegate {
                           DispatchQueue.main.async {
                             var okMessages = [String] ()
                             var errorMessages = [String] ()
-                            deviceDocument.performSymbolsUpdate (deviceDocument.rootObject.mSymbolTypes, okMessages: &okMessages, errorMessages: &errorMessages)
+                            deviceDocument.performSymbolsUpdate (okMessages: &okMessages, errorMessages: &errorMessages)
                             deviceDocument.performPackagesUpdate (deviceDocument.rootObject.mPackages, okMessages: &okMessages, errorMessages: &errorMessages)
                             deviceDocument.save (nil)
                             deviceDocument.close ()

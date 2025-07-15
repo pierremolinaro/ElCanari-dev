@@ -123,7 +123,7 @@ class ALB_NSPopUpButton : NSPopUpButton {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   @objc private final func runClosureAction (_ inUnusedSender : Any?) {
+   @objc private final func runClosureAction (_ /* inUnusedSender */ : Any?) {
      self.mClosureAction? ()
   }
 

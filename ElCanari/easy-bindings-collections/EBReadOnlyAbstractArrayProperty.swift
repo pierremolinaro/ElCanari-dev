@@ -66,10 +66,6 @@ class EBReadOnlyAbstractArrayProperty <T : AnySendableObject> : EBReadOnlyAbstra
   final var internalSetValue : EBReferenceSet <T> { return self.mInternalSetValue }
 
   private final var mInternalSetValue = EBReferenceSet <T> ()
-
-  func setOldValue (_ inOldValue : EBReferenceArray <T>) {
-    self.mInternalArrayValue = inOldValue
-  }
   
   final var mInternalArrayValue = EBReferenceArray <T> () {
     didSet {

@@ -103,12 +103,12 @@ extension Preferences {
 //--------------------------------------------------------------------------------------------------
 
 @MainActor fileprivate
-func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
-                         clientCallBackInfo : UnsafeMutableRawPointer?,
-                         numEvents : Int,
-                         eventPaths : UnsafeMutableRawPointer,
-                         eventFlags : UnsafePointer <FSEventStreamEventFlags>?,
-                         eventIds : UnsafePointer <FSEventStreamEventId>?) {
+func callbackForFSEvent (streamRef /*inStreamRef*/ : ConstFSEventStreamRef,
+                         clientCallBackInfo /*inClientCallBackInfo*/ : UnsafeMutableRawPointer?,
+                         numEvents /*inNumEvents*/ : Int,
+                         eventPaths /*inEventPaths*/ : UnsafeMutableRawPointer,
+                         eventFlags /*inEventFlags*/ : UnsafePointer <FSEventStreamEventFlags>?,
+                         eventIds /*inEventIds*/ : UnsafePointer <FSEventStreamEventId>?) {
   runCallbackForFSEvent ()
 }
 
