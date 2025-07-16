@@ -6,9 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_mFileSystemStatusMessageForSymbolTypeInDevice : AnyObject {
-  var mFileSystemStatusMessageForSymbolTypeInDevice : String { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_mFileSystemStatusMessageForSymbolTypeInDevice : AnyObject {
+//   var mFileSystemStatusMessageForSymbolTypeInDevice : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,27 +31,31 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_mFileData : AnyObject {
-  var mFileData : Data { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_mFileData : AnyObject {
+//   var mFileData : Data { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_mStrokeBezierPath : AnyObject {
-  var mStrokeBezierPath : NSBezierPath { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_mStrokeBezierPath : AnyObject {
+//   var mStrokeBezierPath : NSBezierPath { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_mFilledBezierPath : AnyObject {
-  var mFilledBezierPath : NSBezierPath { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_mFilledBezierPath : AnyObject {
+//   var mFilledBezierPath : NSBezierPath { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_versionString : AnyObject {
-  var versionString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_versionString : AnyObject {
+//   var versionString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -60,39 +65,43 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_documentSize : AnyObject {
-  var documentSize : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_documentSize : AnyObject {
+//   var documentSize : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_fileSystemStatusImage : AnyObject {
-  var fileSystemStatusImage : NSImage? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_fileSystemStatusImage : AnyObject {
+//   var fileSystemStatusImage : NSImage? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolTypeInDevice_pinNameShape : AnyObject {
-  var pinNameShape : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolTypeInDevice_pinNameShape : AnyObject {
+//   var pinNameShape : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: SymbolTypeInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolTypeInDevice : EBManagedObject,
-         SymbolTypeInDevice_mFileSystemStatusMessageForSymbolTypeInDevice,
-         SymbolTypeInDevice_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice,
-         SymbolTypeInDevice_mTypeName,
-         SymbolTypeInDevice_mVersion,
-         SymbolTypeInDevice_mFileData,
-         SymbolTypeInDevice_mStrokeBezierPath,
-         SymbolTypeInDevice_mFilledBezierPath,
-         SymbolTypeInDevice_versionString,
-         SymbolTypeInDevice_instanceCount,
-         SymbolTypeInDevice_documentSize,
-         SymbolTypeInDevice_fileSystemStatusImage,
-         SymbolTypeInDevice_pinNameShape {
+final class SymbolTypeInDevice : EBManagedObject
+    // SymbolTypeInDevice_mFileSystemStatusMessageForSymbolTypeInDevice // Commented out, not used
+    , SymbolTypeInDevice_mFileSystemStatusRequiresAttentionForSymbolTypeInDevice
+    , SymbolTypeInDevice_mTypeName
+    , SymbolTypeInDevice_mVersion
+    // SymbolTypeInDevice_mFileData // Commented out, not used
+    // SymbolTypeInDevice_mStrokeBezierPath // Commented out, not used
+    // SymbolTypeInDevice_mFilledBezierPath // Commented out, not used
+    // SymbolTypeInDevice_versionString // Commented out, not used
+    , SymbolTypeInDevice_instanceCount
+    // SymbolTypeInDevice_documentSize // Commented out, not used
+    // SymbolTypeInDevice_fileSystemStatusImage // Commented out, not used
+    // SymbolTypeInDevice_pinNameShape // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mInstances

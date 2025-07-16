@@ -6,51 +6,59 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mCenterX : AnyObject {
-  var mCenterX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mCenterX : AnyObject {
+//   var mCenterX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mCenterY : AnyObject {
-  var mCenterY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mCenterY : AnyObject {
+//   var mCenterY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mWidth : AnyObject {
-  var mWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mWidth : AnyObject {
+//   var mWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mHeight : AnyObject {
-  var mHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mHeight : AnyObject {
+//   var mHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mHoleWidth : AnyObject {
-  var mHoleWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mHoleWidth : AnyObject {
+//   var mHoleWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mHoleHeight : AnyObject {
-  var mHoleHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mHoleHeight : AnyObject {
+//   var mHoleHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mShape : AnyObject {
-  var mShape : PadShape { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mShape : AnyObject {
+//   var mShape : PadShape { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSlavePadInProject_mStyle : AnyObject {
-  var mStyle : SlavePadStyle { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSlavePadInProject_mStyle : AnyObject {
+//   var mStyle : SlavePadStyle { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -62,16 +70,17 @@ import AppKit
 //    Entity: DeviceSlavePadInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DeviceSlavePadInProject : EBManagedObject,
-         DeviceSlavePadInProject_mCenterX,
-         DeviceSlavePadInProject_mCenterY,
-         DeviceSlavePadInProject_mWidth,
-         DeviceSlavePadInProject_mHeight,
-         DeviceSlavePadInProject_mHoleWidth,
-         DeviceSlavePadInProject_mHoleHeight,
-         DeviceSlavePadInProject_mShape,
-         DeviceSlavePadInProject_mStyle,
-         DeviceSlavePadInProject_descriptor {
+final class DeviceSlavePadInProject : EBManagedObject
+    // DeviceSlavePadInProject_mCenterX // Commented out, not used
+    // DeviceSlavePadInProject_mCenterY // Commented out, not used
+    // DeviceSlavePadInProject_mWidth // Commented out, not used
+    // DeviceSlavePadInProject_mHeight // Commented out, not used
+    // DeviceSlavePadInProject_mHoleWidth // Commented out, not used
+    // DeviceSlavePadInProject_mHoleHeight // Commented out, not used
+    // DeviceSlavePadInProject_mShape // Commented out, not used
+    // DeviceSlavePadInProject_mStyle // Commented out, not used
+    , DeviceSlavePadInProject_descriptor
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mCenterX

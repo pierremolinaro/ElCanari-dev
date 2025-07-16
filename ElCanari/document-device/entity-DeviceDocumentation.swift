@@ -6,30 +6,34 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceDocumentation_mFileName : AnyObject {
-  var mFileName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceDocumentation_mFileName : AnyObject {
+//   var mFileName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceDocumentation_mFileData : AnyObject {
-  var mFileData : Data { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceDocumentation_mFileData : AnyObject {
+//   var mFileData : Data { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceDocumentation_fileSize : AnyObject {
-  var fileSize : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceDocumentation_fileSize : AnyObject {
+//   var fileSize : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: DeviceDocumentation
 //--------------------------------------------------------------------------------------------------
 
-final class DeviceDocumentation : EBManagedObject,
-         DeviceDocumentation_mFileName,
-         DeviceDocumentation_mFileData,
-         DeviceDocumentation_fileSize {
+final class DeviceDocumentation : EBManagedObject
+    // DeviceDocumentation_mFileName // Commented out, not used
+    // DeviceDocumentation_mFileData // Commented out, not used
+    // DeviceDocumentation_fileSize // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mFileName

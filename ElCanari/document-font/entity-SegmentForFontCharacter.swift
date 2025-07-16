@@ -30,27 +30,30 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SegmentForFontCharacter_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SegmentForFontCharacter_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SegmentForFontCharacter_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SegmentForFontCharacter_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: SegmentForFontCharacter
 //--------------------------------------------------------------------------------------------------
 
-final class SegmentForFontCharacter : EBGraphicManagedObject,
-         SegmentForFontCharacter_x1,
-         SegmentForFontCharacter_y1,
-         SegmentForFontCharacter_x2,
-         SegmentForFontCharacter_y2,
-         SegmentForFontCharacter_objectDisplay,
-         SegmentForFontCharacter_selectionDisplay {
+final class SegmentForFontCharacter : EBGraphicManagedObject
+    , SegmentForFontCharacter_x1
+    , SegmentForFontCharacter_y1
+    , SegmentForFontCharacter_x2
+    , SegmentForFontCharacter_y2
+    // SegmentForFontCharacter_objectDisplay // Commented out, not used
+    // SegmentForFontCharacter_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: x1

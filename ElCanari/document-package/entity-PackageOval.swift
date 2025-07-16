@@ -6,93 +6,106 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_y : AnyObject {
-  var y : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_y : AnyObject {
+//   var y : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_width : AnyObject {
-  var width : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_width : AnyObject {
+//   var width : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_height : AnyObject {
-  var height : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_height : AnyObject {
+//   var height : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_xUnit : AnyObject {
-  var xUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_xUnit : AnyObject {
+//   var xUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_yUnit : AnyObject {
-  var yUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_yUnit : AnyObject {
+//   var yUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_widthUnit : AnyObject {
-  var widthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_widthUnit : AnyObject {
+//   var widthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_heightUnit : AnyObject {
-  var heightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_heightUnit : AnyObject {
+//   var heightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_x : AnyObject {
-  var x : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_x : AnyObject {
+//   var x : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_strokeBezierPath : AnyObject {
-  var strokeBezierPath : NSBezierPath? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_strokeBezierPath : AnyObject {
+//   var strokeBezierPath : NSBezierPath? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageOval_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageOval_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageOval
 //--------------------------------------------------------------------------------------------------
 
-final class PackageOval : PackageObject,
-         PackageOval_y,
-         PackageOval_width,
-         PackageOval_height,
-         PackageOval_xUnit,
-         PackageOval_yUnit,
-         PackageOval_widthUnit,
-         PackageOval_heightUnit,
-         PackageOval_x,
-         PackageOval_strokeBezierPath,
-         PackageOval_objectDisplay,
-         PackageOval_selectionDisplay,
-         PackageOval_issues {
+final class PackageOval : PackageObject
+    // PackageOval_y // Commented out, not used
+    // PackageOval_width // Commented out, not used
+    // PackageOval_height // Commented out, not used
+    // PackageOval_xUnit // Commented out, not used
+    // PackageOval_yUnit // Commented out, not used
+    // PackageOval_widthUnit // Commented out, not used
+    // PackageOval_heightUnit // Commented out, not used
+    // PackageOval_x // Commented out, not used
+    // PackageOval_strokeBezierPath // Commented out, not used
+    // PackageOval_objectDisplay // Commented out, not used
+    // PackageOval_selectionDisplay // Commented out, not used
+    // PackageOval_issues // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y

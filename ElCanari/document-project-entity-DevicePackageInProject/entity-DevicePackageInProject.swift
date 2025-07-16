@@ -12,24 +12,27 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DevicePackageInProject_mStrokeBezierPath : AnyObject {
-  var mStrokeBezierPath : NSBezierPath { get }
-}
+// Commented out, not used
+// @MainActor protocol DevicePackageInProject_mStrokeBezierPath : AnyObject {
+//   var mStrokeBezierPath : NSBezierPath { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DevicePackageInProject_packagePadDictionary : AnyObject {
-  var packagePadDictionary : PackageMasterPadDictionary? { get }
-}
+// Commented out, not used
+// @MainActor protocol DevicePackageInProject_packagePadDictionary : AnyObject {
+//   var packagePadDictionary : PackageMasterPadDictionary? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: DevicePackageInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DevicePackageInProject : EBManagedObject,
-         DevicePackageInProject_mPackageName,
-         DevicePackageInProject_mStrokeBezierPath,
-         DevicePackageInProject_packagePadDictionary {
+final class DevicePackageInProject : EBManagedObject
+    , DevicePackageInProject_mPackageName
+    // DevicePackageInProject_mStrokeBezierPath // Commented out, not used
+    // DevicePackageInProject_packagePadDictionary // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mMasterPads

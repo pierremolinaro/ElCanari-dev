@@ -6,212 +6,242 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mXUnit : AnyObject {
-  var mXUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mXUnit : AnyObject {
+//   var mXUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mCenterY : AnyObject {
-  var mCenterY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mCenterY : AnyObject {
+//   var mCenterY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mYUnit : AnyObject {
-  var mYUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mYUnit : AnyObject {
+//   var mYUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mThreshold : AnyObject {
-  var mThreshold : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mThreshold : AnyObject {
+//   var mThreshold : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mImageData : AnyObject {
-  var mImageData : Data { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mImageData : AnyObject {
+//   var mImageData : Data { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mInvert : AnyObject {
-  var mInvert : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mInvert : AnyObject {
+//   var mInvert : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mHorizontalFlip : AnyObject {
-  var mHorizontalFlip : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mHorizontalFlip : AnyObject {
+//   var mHorizontalFlip : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mVerticalFlip : AnyObject {
-  var mVerticalFlip : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mVerticalFlip : AnyObject {
+//   var mVerticalFlip : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mScale : AnyObject {
-  var mScale : Double { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mScale : AnyObject {
+//   var mScale : Double { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mPixelSize : AnyObject {
-  var mPixelSize : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mPixelSize : AnyObject {
+//   var mPixelSize : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mPixelSizeUnit : AnyObject {
-  var mPixelSizeUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mPixelSizeUnit : AnyObject {
+//   var mPixelSizeUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mActualWidthUnit : AnyObject {
-  var mActualWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mActualWidthUnit : AnyObject {
+//   var mActualWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mActualHeightUnit : AnyObject {
-  var mActualHeightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mActualHeightUnit : AnyObject {
+//   var mActualHeightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mImageDisplay : AnyObject {
-  var mImageDisplay : BoardImageDisplay { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mImageDisplay : AnyObject {
+//   var mImageDisplay : BoardImageDisplay { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mLayer : AnyObject {
-  var mLayer : BoardQRCodeLayer { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mLayer : AnyObject {
+//   var mLayer : BoardQRCodeLayer { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mText : AnyObject {
-  var mText : String { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mText : AnyObject {
+//   var mText : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mRotation : AnyObject {
-  var mRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mRotation : AnyObject {
+//   var mRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_mCenterX : AnyObject {
-  var mCenterX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_mCenterX : AnyObject {
+//   var mCenterX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_imageDataByteCount : AnyObject {
-  var imageDataByteCount : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_imageDataByteCount : AnyObject {
+//   var imageDataByteCount : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_boardImageCodeDescriptor : AnyObject {
-  var boardImageCodeDescriptor : BoardImageDescriptor? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_boardImageCodeDescriptor : AnyObject {
+//   var boardImageCodeDescriptor : BoardImageDescriptor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_boardOriginalImageWidth : AnyObject {
-  var boardOriginalImageWidth : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_boardOriginalImageWidth : AnyObject {
+//   var boardOriginalImageWidth : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_boardOriginalImageHeight : AnyObject {
-  var boardOriginalImageHeight : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_boardOriginalImageHeight : AnyObject {
+//   var boardOriginalImageHeight : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_boardScaledImageWidth : AnyObject {
-  var boardScaledImageWidth : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_boardScaledImageWidth : AnyObject {
+//   var boardScaledImageWidth : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_boardScaledImageHeight : AnyObject {
-  var boardScaledImageHeight : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_boardScaledImageHeight : AnyObject {
+//   var boardScaledImageHeight : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_boardActualImageWidth : AnyObject {
-  var boardActualImageWidth : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_boardActualImageWidth : AnyObject {
+//   var boardActualImageWidth : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_boardActualImageHeight : AnyObject {
-  var boardActualImageHeight : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_boardActualImageHeight : AnyObject {
+//   var boardActualImageHeight : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardImage_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardImage_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardImage
 //--------------------------------------------------------------------------------------------------
 
-final class BoardImage : BoardObject,
-         BoardImage_mXUnit,
-         BoardImage_mCenterY,
-         BoardImage_mYUnit,
-         BoardImage_mThreshold,
-         BoardImage_mImageData,
-         BoardImage_mInvert,
-         BoardImage_mHorizontalFlip,
-         BoardImage_mVerticalFlip,
-         BoardImage_mScale,
-         BoardImage_mPixelSize,
-         BoardImage_mPixelSizeUnit,
-         BoardImage_mActualWidthUnit,
-         BoardImage_mActualHeightUnit,
-         BoardImage_mImageDisplay,
-         BoardImage_mLayer,
-         BoardImage_mText,
-         BoardImage_mRotation,
-         BoardImage_mCenterX,
-         BoardImage_imageDataByteCount,
-         BoardImage_boardImageCodeDescriptor,
-         BoardImage_boardOriginalImageWidth,
-         BoardImage_boardOriginalImageHeight,
-         BoardImage_boardScaledImageWidth,
-         BoardImage_boardScaledImageHeight,
-         BoardImage_boardActualImageWidth,
-         BoardImage_boardActualImageHeight,
-         BoardImage_objectDisplay,
-         BoardImage_selectionDisplay,
-         BoardImage_signatureForERCChecking {
+final class BoardImage : BoardObject
+    // BoardImage_mXUnit // Commented out, not used
+    // BoardImage_mCenterY // Commented out, not used
+    // BoardImage_mYUnit // Commented out, not used
+    // BoardImage_mThreshold // Commented out, not used
+    // BoardImage_mImageData // Commented out, not used
+    // BoardImage_mInvert // Commented out, not used
+    // BoardImage_mHorizontalFlip // Commented out, not used
+    // BoardImage_mVerticalFlip // Commented out, not used
+    // BoardImage_mScale // Commented out, not used
+    // BoardImage_mPixelSize // Commented out, not used
+    // BoardImage_mPixelSizeUnit // Commented out, not used
+    // BoardImage_mActualWidthUnit // Commented out, not used
+    // BoardImage_mActualHeightUnit // Commented out, not used
+    // BoardImage_mImageDisplay // Commented out, not used
+    // BoardImage_mLayer // Commented out, not used
+    // BoardImage_mText // Commented out, not used
+    // BoardImage_mRotation // Commented out, not used
+    // BoardImage_mCenterX // Commented out, not used
+    // BoardImage_imageDataByteCount // Commented out, not used
+    // BoardImage_boardImageCodeDescriptor // Commented out, not used
+    // BoardImage_boardOriginalImageWidth // Commented out, not used
+    // BoardImage_boardOriginalImageHeight // Commented out, not used
+    // BoardImage_boardScaledImageWidth // Commented out, not used
+    // BoardImage_boardScaledImageHeight // Commented out, not used
+    // BoardImage_boardActualImageWidth // Commented out, not used
+    // BoardImage_boardActualImageHeight // Commented out, not used
+    // BoardImage_objectDisplay // Commented out, not used
+    // BoardImage_selectionDisplay // Commented out, not used
+    // BoardImage_signatureForERCChecking // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mXUnit

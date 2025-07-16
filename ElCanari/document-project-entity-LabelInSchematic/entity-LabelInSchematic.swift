@@ -6,51 +6,58 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol LabelInSchematic_mOrientation : AnyObject {
-  var mOrientation : QuadrantRotation { get }
-}
+// Commented out, not used
+// @MainActor protocol LabelInSchematic_mOrientation : AnyObject {
+//   var mOrientation : QuadrantRotation { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol LabelInSchematic_location : AnyObject {
-  var location : CanariPoint? { get }
-}
+// Commented out, not used
+// @MainActor protocol LabelInSchematic_location : AnyObject {
+//   var location : CanariPoint? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol LabelInSchematic_netName : AnyObject {
-  var netName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol LabelInSchematic_netName : AnyObject {
+//   var netName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol LabelInSchematic_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol LabelInSchematic_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol LabelInSchematic_netClassName : AnyObject {
-  var netClassName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol LabelInSchematic_netClassName : AnyObject {
+//   var netClassName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol LabelInSchematic_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol LabelInSchematic_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: LabelInSchematic
 //--------------------------------------------------------------------------------------------------
 
-final class LabelInSchematic : SchematicObject,
-         LabelInSchematic_mOrientation,
-         LabelInSchematic_location,
-         LabelInSchematic_netName,
-         LabelInSchematic_selectionDisplay,
-         LabelInSchematic_netClassName,
-         LabelInSchematic_objectDisplay {
+final class LabelInSchematic : SchematicObject
+    // LabelInSchematic_mOrientation // Commented out, not used
+    // LabelInSchematic_location // Commented out, not used
+    // LabelInSchematic_netName // Commented out, not used
+    // LabelInSchematic_selectionDisplay // Commented out, not used
+    // LabelInSchematic_netClassName // Commented out, not used
+    // LabelInSchematic_objectDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mOrientation

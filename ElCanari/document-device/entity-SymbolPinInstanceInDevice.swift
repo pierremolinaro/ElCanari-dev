@@ -12,15 +12,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinInstanceInDevice_symbolName : AnyObject {
-  var symbolName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinInstanceInDevice_symbolName : AnyObject {
+//   var symbolName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinInstanceInDevice_pinQualifiedName : AnyObject {
-  var pinQualifiedName : PinQualifiedNameStruct? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinInstanceInDevice_pinQualifiedName : AnyObject {
+//   var pinQualifiedName : PinQualifiedNameStruct? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,12 +40,13 @@ import AppKit
 //    Entity: SymbolPinInstanceInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolPinInstanceInDevice : EBManagedObject,
-         SymbolPinInstanceInDevice_pinName,
-         SymbolPinInstanceInDevice_symbolName,
-         SymbolPinInstanceInDevice_pinQualifiedName,
-         SymbolPinInstanceInDevice_isConnected,
-         SymbolPinInstanceInDevice_numberShape {
+final class SymbolPinInstanceInDevice : EBManagedObject
+    , SymbolPinInstanceInDevice_pinName
+    // SymbolPinInstanceInDevice_symbolName // Commented out, not used
+    // SymbolPinInstanceInDevice_pinQualifiedName // Commented out, not used
+    , SymbolPinInstanceInDevice_isConnected
+    , SymbolPinInstanceInDevice_numberShape
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To one property: mSymbolInstance

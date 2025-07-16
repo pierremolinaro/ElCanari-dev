@@ -6,159 +6,185 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawBoardLimits : AnyObject {
-  var drawBoardLimits : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawBoardLimits : AnyObject {
+//   var drawBoardLimits : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : AnyObject {
-  var drawInternalBoardLimits : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : AnyObject {
+//   var drawInternalBoardLimits : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : AnyObject {
-  var drawComponentNamesTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : AnyObject {
+//   var drawComponentNamesTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : AnyObject {
-  var drawComponentNamesBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : AnyObject {
+//   var drawComponentNamesBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : AnyObject {
-  var drawComponentValuesTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : AnyObject {
+//   var drawComponentValuesTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : AnyObject {
-  var drawComponentValuesBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : AnyObject {
+//   var drawComponentValuesBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : AnyObject {
-  var drawPackageLegendTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : AnyObject {
+//   var drawPackageLegendTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : AnyObject {
-  var drawPackageLegendBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : AnyObject {
+//   var drawPackageLegendBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawPadsTopSide : AnyObject {
-  var drawPadsTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawPadsTopSide : AnyObject {
+//   var drawPadsTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawPadsBottomSide : AnyObject {
-  var drawPadsBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawPadsBottomSide : AnyObject {
+//   var drawPadsBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : AnyObject {
-  var drawTextsLayoutTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : AnyObject {
+//   var drawTextsLayoutTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : AnyObject {
-  var drawTextsLayoutBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : AnyObject {
+//   var drawTextsLayoutBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : AnyObject {
-  var drawTextsLegendTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : AnyObject {
+//   var drawTextsLegendTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : AnyObject {
-  var drawTextsLegendBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : AnyObject {
+//   var drawTextsLegendBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTracksTopSide : AnyObject {
-  var drawTracksTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTracksTopSide : AnyObject {
+//   var drawTracksTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner1Layer : AnyObject {
-  var drawTracksInner1Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTracksInner1Layer : AnyObject {
+//   var drawTracksInner1Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner2Layer : AnyObject {
-  var drawTracksInner2Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTracksInner2Layer : AnyObject {
+//   var drawTracksInner2Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner3Layer : AnyObject {
-  var drawTracksInner3Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTracksInner3Layer : AnyObject {
+//   var drawTracksInner3Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner4Layer : AnyObject {
-  var drawTracksInner4Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTracksInner4Layer : AnyObject {
+//   var drawTracksInner4Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTracksBottomSide : AnyObject {
-  var drawTracksBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTracksBottomSide : AnyObject {
+//   var drawTracksBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawTraversingPads : AnyObject {
-  var drawTraversingPads : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawTraversingPads : AnyObject {
+//   var drawTraversingPads : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawImagesTopSide : AnyObject {
-  var drawImagesTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawImagesTopSide : AnyObject {
+//   var drawImagesTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawImagesBottomSide : AnyObject {
-  var drawImagesBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawImagesBottomSide : AnyObject {
+//   var drawImagesBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawQRCodesTopSide : AnyObject {
-  var drawQRCodesTopSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawQRCodesTopSide : AnyObject {
+//   var drawQRCodesTopSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawQRCodesBottomSide : AnyObject {
-  var drawQRCodesBottomSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawQRCodesBottomSide : AnyObject {
+//   var drawQRCodesBottomSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_drawVias : AnyObject {
-  var drawVias : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_drawVias : AnyObject {
+//   var drawVias : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -168,9 +194,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_horizontalMirror : AnyObject {
-  var horizontalMirror : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_horizontalMirror : AnyObject {
+//   var horizontalMirror : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -186,53 +213,56 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_parameterStatusImage : AnyObject {
-  var parameterStatusImage : NSImage? { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_parameterStatusImage : AnyObject {
+//   var parameterStatusImage : NSImage? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ArtworkFileGenerationParameters_emptyFileExtensionImage : AnyObject {
-  var emptyFileExtensionImage : NSImage? { get }
-}
+// Commented out, not used
+// @MainActor protocol ArtworkFileGenerationParameters_emptyFileExtensionImage : AnyObject {
+//   var emptyFileExtensionImage : NSImage? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: ArtworkFileGenerationParameters
 //--------------------------------------------------------------------------------------------------
 
-final class ArtworkFileGenerationParameters : EBManagedObject,
-         ArtworkFileGenerationParameters_drawBoardLimits,
-         ArtworkFileGenerationParameters_drawInternalBoardLimits,
-         ArtworkFileGenerationParameters_drawComponentNamesTopSide,
-         ArtworkFileGenerationParameters_drawComponentNamesBottomSide,
-         ArtworkFileGenerationParameters_drawComponentValuesTopSide,
-         ArtworkFileGenerationParameters_drawComponentValuesBottomSide,
-         ArtworkFileGenerationParameters_drawPackageLegendTopSide,
-         ArtworkFileGenerationParameters_drawPackageLegendBottomSide,
-         ArtworkFileGenerationParameters_drawPadsTopSide,
-         ArtworkFileGenerationParameters_drawPadsBottomSide,
-         ArtworkFileGenerationParameters_drawTextsLayoutTopSide,
-         ArtworkFileGenerationParameters_drawTextsLayoutBottomSide,
-         ArtworkFileGenerationParameters_drawTextsLegendTopSide,
-         ArtworkFileGenerationParameters_drawTextsLegendBottomSide,
-         ArtworkFileGenerationParameters_drawTracksTopSide,
-         ArtworkFileGenerationParameters_drawTracksInner1Layer,
-         ArtworkFileGenerationParameters_drawTracksInner2Layer,
-         ArtworkFileGenerationParameters_drawTracksInner3Layer,
-         ArtworkFileGenerationParameters_drawTracksInner4Layer,
-         ArtworkFileGenerationParameters_drawTracksBottomSide,
-         ArtworkFileGenerationParameters_drawTraversingPads,
-         ArtworkFileGenerationParameters_drawImagesTopSide,
-         ArtworkFileGenerationParameters_drawImagesBottomSide,
-         ArtworkFileGenerationParameters_drawQRCodesTopSide,
-         ArtworkFileGenerationParameters_drawQRCodesBottomSide,
-         ArtworkFileGenerationParameters_drawVias,
-         ArtworkFileGenerationParameters_fileExtension,
-         ArtworkFileGenerationParameters_horizontalMirror,
-         ArtworkFileGenerationParameters_name,
-         ArtworkFileGenerationParameters_hasNoData,
-         ArtworkFileGenerationParameters_parameterStatusImage,
-         ArtworkFileGenerationParameters_emptyFileExtensionImage {
+final class ArtworkFileGenerationParameters : EBManagedObject
+    // ArtworkFileGenerationParameters_drawBoardLimits // Commented out, not used
+    // ArtworkFileGenerationParameters_drawInternalBoardLimits // Commented out, not used
+    // ArtworkFileGenerationParameters_drawComponentNamesTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawComponentNamesBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawComponentValuesTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawComponentValuesBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawPackageLegendTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawPackageLegendBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawPadsTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawPadsBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTextsLayoutTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTextsLayoutBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTextsLegendTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTextsLegendBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTracksTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTracksInner1Layer // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTracksInner2Layer // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTracksInner3Layer // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTracksInner4Layer // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTracksBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawTraversingPads // Commented out, not used
+    // ArtworkFileGenerationParameters_drawImagesTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawImagesBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawQRCodesTopSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawQRCodesBottomSide // Commented out, not used
+    // ArtworkFileGenerationParameters_drawVias // Commented out, not used
+    , ArtworkFileGenerationParameters_fileExtension
+    // ArtworkFileGenerationParameters_horizontalMirror // Commented out, not used
+    , ArtworkFileGenerationParameters_name
+    , ArtworkFileGenerationParameters_hasNoData
+    // ArtworkFileGenerationParameters_parameterStatusImage // Commented out, not used
+    // ArtworkFileGenerationParameters_emptyFileExtensionImage // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: drawBoardLimits

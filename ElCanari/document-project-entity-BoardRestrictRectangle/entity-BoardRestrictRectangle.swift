@@ -6,163 +6,186 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mXUnit : AnyObject {
-  var mXUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mXUnit : AnyObject {
+//   var mXUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mYUnit : AnyObject {
-  var mYUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mYUnit : AnyObject {
+//   var mYUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mWidth : AnyObject {
-  var mWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mWidth : AnyObject {
+//   var mWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mWidthUnit : AnyObject {
-  var mWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mWidthUnit : AnyObject {
+//   var mWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mHeight : AnyObject {
-  var mHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mHeight : AnyObject {
+//   var mHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mHeightUnit : AnyObject {
-  var mHeightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mHeightUnit : AnyObject {
+//   var mHeightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mIsInFrontLayer : AnyObject {
-  var mIsInFrontLayer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mIsInFrontLayer : AnyObject {
+//   var mIsInFrontLayer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mIsInBackLayer : AnyObject {
-  var mIsInBackLayer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mIsInBackLayer : AnyObject {
+//   var mIsInBackLayer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mIsInInner1Layer : AnyObject {
-  var mIsInInner1Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mIsInInner1Layer : AnyObject {
+//   var mIsInInner1Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mIsInInner2Layer : AnyObject {
-  var mIsInInner2Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mIsInInner2Layer : AnyObject {
+//   var mIsInInner2Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mIsInInner3Layer : AnyObject {
-  var mIsInInner3Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mIsInInner3Layer : AnyObject {
+//   var mIsInInner3Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mIsInInner4Layer : AnyObject {
-  var mIsInInner4Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mIsInInner4Layer : AnyObject {
+//   var mIsInInner4Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mAllowPadsInside : AnyObject {
-  var mAllowPadsInside : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mAllowPadsInside : AnyObject {
+//   var mAllowPadsInside : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mAllowTracksInside : AnyObject {
-  var mAllowTracksInside : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mAllowTracksInside : AnyObject {
+//   var mAllowTracksInside : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mExposeTrackCopper : AnyObject {
-  var mExposeTrackCopper : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mExposeTrackCopper : AnyObject {
+//   var mExposeTrackCopper : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mRectTrackEnd : AnyObject {
-  var mRectTrackEnd : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mRectTrackEnd : AnyObject {
+//   var mRectTrackEnd : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_exposeTrackCopperAvailable : AnyObject {
-  var exposeTrackCopperAvailable : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_exposeTrackCopperAvailable : AnyObject {
+//   var exposeTrackCopperAvailable : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardRestrictRectangle_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardRestrictRectangle_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardRestrictRectangle
 //--------------------------------------------------------------------------------------------------
 
-final class BoardRestrictRectangle : BoardObject,
-         BoardRestrictRectangle_mXUnit,
-         BoardRestrictRectangle_mY,
-         BoardRestrictRectangle_mYUnit,
-         BoardRestrictRectangle_mWidth,
-         BoardRestrictRectangle_mWidthUnit,
-         BoardRestrictRectangle_mHeight,
-         BoardRestrictRectangle_mHeightUnit,
-         BoardRestrictRectangle_mIsInFrontLayer,
-         BoardRestrictRectangle_mIsInBackLayer,
-         BoardRestrictRectangle_mIsInInner1Layer,
-         BoardRestrictRectangle_mIsInInner2Layer,
-         BoardRestrictRectangle_mIsInInner3Layer,
-         BoardRestrictRectangle_mIsInInner4Layer,
-         BoardRestrictRectangle_mAllowPadsInside,
-         BoardRestrictRectangle_mAllowTracksInside,
-         BoardRestrictRectangle_mExposeTrackCopper,
-         BoardRestrictRectangle_mRectTrackEnd,
-         BoardRestrictRectangle_mX,
-         BoardRestrictRectangle_exposeTrackCopperAvailable,
-         BoardRestrictRectangle_objectDisplay,
-         BoardRestrictRectangle_selectionDisplay,
-         BoardRestrictRectangle_signatureForERCChecking {
+final class BoardRestrictRectangle : BoardObject
+    // BoardRestrictRectangle_mXUnit // Commented out, not used
+    // BoardRestrictRectangle_mY // Commented out, not used
+    // BoardRestrictRectangle_mYUnit // Commented out, not used
+    // BoardRestrictRectangle_mWidth // Commented out, not used
+    // BoardRestrictRectangle_mWidthUnit // Commented out, not used
+    // BoardRestrictRectangle_mHeight // Commented out, not used
+    // BoardRestrictRectangle_mHeightUnit // Commented out, not used
+    // BoardRestrictRectangle_mIsInFrontLayer // Commented out, not used
+    // BoardRestrictRectangle_mIsInBackLayer // Commented out, not used
+    // BoardRestrictRectangle_mIsInInner1Layer // Commented out, not used
+    // BoardRestrictRectangle_mIsInInner2Layer // Commented out, not used
+    // BoardRestrictRectangle_mIsInInner3Layer // Commented out, not used
+    // BoardRestrictRectangle_mIsInInner4Layer // Commented out, not used
+    // BoardRestrictRectangle_mAllowPadsInside // Commented out, not used
+    // BoardRestrictRectangle_mAllowTracksInside // Commented out, not used
+    // BoardRestrictRectangle_mExposeTrackCopper // Commented out, not used
+    // BoardRestrictRectangle_mRectTrackEnd // Commented out, not used
+    // BoardRestrictRectangle_mX // Commented out, not used
+    // BoardRestrictRectangle_exposeTrackCopperAvailable // Commented out, not used
+    // BoardRestrictRectangle_objectDisplay // Commented out, not used
+    // BoardRestrictRectangle_selectionDisplay // Commented out, not used
+    // BoardRestrictRectangle_signatureForERCChecking // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mXUnit

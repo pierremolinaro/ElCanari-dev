@@ -6,86 +6,98 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_y1 : AnyObject {
-  var y1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_y1 : AnyObject {
+//   var y1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_x2 : AnyObject {
-  var x2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_x2 : AnyObject {
+//   var x2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_y2 : AnyObject {
-  var y2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_y2 : AnyObject {
+//   var y2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_x1Unit : AnyObject {
-  var x1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_x1Unit : AnyObject {
+//   var x1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_y1Unit : AnyObject {
-  var y1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_y1Unit : AnyObject {
+//   var y1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_x2Unit : AnyObject {
-  var x2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_x2Unit : AnyObject {
+//   var x2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_y2Unit : AnyObject {
-  var y2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_y2Unit : AnyObject {
+//   var y2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_x1 : AnyObject {
-  var x1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_x1 : AnyObject {
+//   var x1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageGuide_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageGuide_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageGuide
 //--------------------------------------------------------------------------------------------------
 
-final class PackageGuide : PackageObject,
-         PackageGuide_y1,
-         PackageGuide_x2,
-         PackageGuide_y2,
-         PackageGuide_x1Unit,
-         PackageGuide_y1Unit,
-         PackageGuide_x2Unit,
-         PackageGuide_y2Unit,
-         PackageGuide_x1,
-         PackageGuide_objectDisplay,
-         PackageGuide_selectionDisplay,
-         PackageGuide_issues {
+final class PackageGuide : PackageObject
+    // PackageGuide_y1 // Commented out, not used
+    // PackageGuide_x2 // Commented out, not used
+    // PackageGuide_y2 // Commented out, not used
+    // PackageGuide_x1Unit // Commented out, not used
+    // PackageGuide_y1Unit // Commented out, not used
+    // PackageGuide_x2Unit // Commented out, not used
+    // PackageGuide_y2Unit // Commented out, not used
+    // PackageGuide_x1 // Commented out, not used
+    // PackageGuide_objectDisplay // Commented out, not used
+    // PackageGuide_selectionDisplay // Commented out, not used
+    // PackageGuide_issues // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y1

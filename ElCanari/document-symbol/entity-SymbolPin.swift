@@ -12,27 +12,31 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_xName : AnyObject {
-  var xName : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_xName : AnyObject {
+//   var xName : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_yName : AnyObject {
-  var yName : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_yName : AnyObject {
+//   var yName : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_xNumber : AnyObject {
-  var xNumber : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_xNumber : AnyObject {
+//   var xNumber : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_yNumber : AnyObject {
-  var yNumber : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_yNumber : AnyObject {
+//   var yNumber : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,21 +46,24 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_nameHorizontalAlignment : AnyObject {
-  var nameHorizontalAlignment : HorizontalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_nameHorizontalAlignment : AnyObject {
+//   var nameHorizontalAlignment : HorizontalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_numberHorizontalAlignment : AnyObject {
-  var numberHorizontalAlignment : HorizontalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_numberHorizontalAlignment : AnyObject {
+//   var numberHorizontalAlignment : HorizontalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_pinNameIsDisplayedInSchematics : AnyObject {
-  var pinNameIsDisplayedInSchematics : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_pinNameIsDisplayedInSchematics : AnyObject {
+//   var pinNameIsDisplayedInSchematics : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -66,27 +73,31 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_filledBezierPath : AnyObject {
-  var filledBezierPath : NSBezierPath? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_filledBezierPath : AnyObject {
+//   var filledBezierPath : NSBezierPath? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPin_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPin_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -98,22 +109,23 @@ import AppKit
 //    Entity: SymbolPin
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolPin : SymbolObject,
-         SymbolPin_yPin,
-         SymbolPin_xName,
-         SymbolPin_yName,
-         SymbolPin_xNumber,
-         SymbolPin_yNumber,
-         SymbolPin_name,
-         SymbolPin_nameHorizontalAlignment,
-         SymbolPin_numberHorizontalAlignment,
-         SymbolPin_pinNameIsDisplayedInSchematics,
-         SymbolPin_xPin,
-         SymbolPin_filledBezierPath,
-         SymbolPin_objectDisplay,
-         SymbolPin_selectionDisplay,
-         SymbolPin_issues,
-         SymbolPin_nameRect {
+final class SymbolPin : SymbolObject
+    , SymbolPin_yPin
+    // SymbolPin_xName // Commented out, not used
+    // SymbolPin_yName // Commented out, not used
+    // SymbolPin_xNumber // Commented out, not used
+    // SymbolPin_yNumber // Commented out, not used
+    , SymbolPin_name
+    // SymbolPin_nameHorizontalAlignment // Commented out, not used
+    // SymbolPin_numberHorizontalAlignment // Commented out, not used
+    // SymbolPin_pinNameIsDisplayedInSchematics // Commented out, not used
+    , SymbolPin_xPin
+    // SymbolPin_filledBezierPath // Commented out, not used
+    // SymbolPin_objectDisplay // Commented out, not used
+    // SymbolPin_selectionDisplay // Commented out, not used
+    // SymbolPin_issues // Commented out, not used
+    , SymbolPin_nameRect
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: yPin

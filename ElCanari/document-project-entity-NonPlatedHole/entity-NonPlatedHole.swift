@@ -6,100 +6,114 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mXUnit : AnyObject {
-  var mXUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mXUnit : AnyObject {
+//   var mXUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mYUnit : AnyObject {
-  var mYUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mYUnit : AnyObject {
+//   var mYUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mWidth : AnyObject {
-  var mWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mWidth : AnyObject {
+//   var mWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mWidthUnit : AnyObject {
-  var mWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mWidthUnit : AnyObject {
+//   var mWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mHeight : AnyObject {
-  var mHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mHeight : AnyObject {
+//   var mHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mHeightUnit : AnyObject {
-  var mHeightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mHeightUnit : AnyObject {
+//   var mHeightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mRotation : AnyObject {
-  var mRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mRotation : AnyObject {
+//   var mRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mShowTextRotationKnobInBoard : AnyObject {
-  var mShowTextRotationKnobInBoard : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mShowTextRotationKnobInBoard : AnyObject {
+//   var mShowTextRotationKnobInBoard : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NonPlatedHole_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol NonPlatedHole_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: NonPlatedHole
 //--------------------------------------------------------------------------------------------------
 
-final class NonPlatedHole : BoardObject,
-         NonPlatedHole_mXUnit,
-         NonPlatedHole_mY,
-         NonPlatedHole_mYUnit,
-         NonPlatedHole_mWidth,
-         NonPlatedHole_mWidthUnit,
-         NonPlatedHole_mHeight,
-         NonPlatedHole_mHeightUnit,
-         NonPlatedHole_mRotation,
-         NonPlatedHole_mShowTextRotationKnobInBoard,
-         NonPlatedHole_mX,
-         NonPlatedHole_objectDisplay,
-         NonPlatedHole_selectionDisplay,
-         NonPlatedHole_signatureForERCChecking {
+final class NonPlatedHole : BoardObject
+    // NonPlatedHole_mXUnit // Commented out, not used
+    // NonPlatedHole_mY // Commented out, not used
+    // NonPlatedHole_mYUnit // Commented out, not used
+    // NonPlatedHole_mWidth // Commented out, not used
+    // NonPlatedHole_mWidthUnit // Commented out, not used
+    // NonPlatedHole_mHeight // Commented out, not used
+    // NonPlatedHole_mHeightUnit // Commented out, not used
+    // NonPlatedHole_mRotation // Commented out, not used
+    // NonPlatedHole_mShowTextRotationKnobInBoard // Commented out, not used
+    // NonPlatedHole_mX // Commented out, not used
+    // NonPlatedHole_objectDisplay // Commented out, not used
+    // NonPlatedHole_selectionDisplay // Commented out, not used
+    // NonPlatedHole_signatureForERCChecking // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mXUnit

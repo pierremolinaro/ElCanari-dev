@@ -6,57 +6,66 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mCenterX : AnyObject {
-  var mCenterX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mCenterX : AnyObject {
+//   var mCenterX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mCenterY : AnyObject {
-  var mCenterY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mCenterY : AnyObject {
+//   var mCenterY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mWidth : AnyObject {
-  var mWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mWidth : AnyObject {
+//   var mWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mHeight : AnyObject {
-  var mHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mHeight : AnyObject {
+//   var mHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mHoleWidth : AnyObject {
-  var mHoleWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mHoleWidth : AnyObject {
+//   var mHoleWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mHoleHeight : AnyObject {
-  var mHoleHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mHoleHeight : AnyObject {
+//   var mHoleHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mShape : AnyObject {
-  var mShape : PadShape { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mShape : AnyObject {
+//   var mShape : PadShape { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mStyle : AnyObject {
-  var mStyle : PadStyle { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mStyle : AnyObject {
+//   var mStyle : PadStyle { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceMasterPadInProject_mName : AnyObject {
-  var mName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceMasterPadInProject_mName : AnyObject {
+//   var mName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -68,17 +77,18 @@ import AppKit
 //    Entity: DeviceMasterPadInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DeviceMasterPadInProject : EBManagedObject,
-         DeviceMasterPadInProject_mCenterX,
-         DeviceMasterPadInProject_mCenterY,
-         DeviceMasterPadInProject_mWidth,
-         DeviceMasterPadInProject_mHeight,
-         DeviceMasterPadInProject_mHoleWidth,
-         DeviceMasterPadInProject_mHoleHeight,
-         DeviceMasterPadInProject_mShape,
-         DeviceMasterPadInProject_mStyle,
-         DeviceMasterPadInProject_mName,
-         DeviceMasterPadInProject_descriptor {
+final class DeviceMasterPadInProject : EBManagedObject
+    // DeviceMasterPadInProject_mCenterX // Commented out, not used
+    // DeviceMasterPadInProject_mCenterY // Commented out, not used
+    // DeviceMasterPadInProject_mWidth // Commented out, not used
+    // DeviceMasterPadInProject_mHeight // Commented out, not used
+    // DeviceMasterPadInProject_mHoleWidth // Commented out, not used
+    // DeviceMasterPadInProject_mHoleHeight // Commented out, not used
+    // DeviceMasterPadInProject_mShape // Commented out, not used
+    // DeviceMasterPadInProject_mStyle // Commented out, not used
+    // DeviceMasterPadInProject_mName // Commented out, not used
+    , DeviceMasterPadInProject_descriptor
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mCenterX

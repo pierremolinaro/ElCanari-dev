@@ -6,69 +6,78 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mCPX1 : AnyObject {
-  var mCPX1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mCPX1 : AnyObject {
+//   var mCPX1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mCPY1 : AnyObject {
-  var mCPY1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mCPY1 : AnyObject {
+//   var mCPY1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mCPX2 : AnyObject {
-  var mCPX2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mCPX2 : AnyObject {
+//   var mCPX2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mCPY2 : AnyObject {
-  var mCPY2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mCPY2 : AnyObject {
+//   var mCPY2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mShape : AnyObject {
-  var mShape : BorderCurveShape { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mShape : AnyObject {
+//   var mShape : BorderCurveShape { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mNextX : AnyObject {
-  var mNextX : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_mNextX : AnyObject {
+//  var mNextX : Int? { get }
+// }
+//--------------------------------------------------------------------------------------------------
+
+// Commented out, not used
+// @MainActor protocol BorderCurve_mNextY : AnyObject {
+//  var mNextY : Int? { get }
+// }
+//--------------------------------------------------------------------------------------------------
+
+// Commented out, not used
+// @MainActor protocol BorderCurve_p2Xvalue : AnyObject {
+//   var p2Xvalue : Double? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_mNextY : AnyObject {
-  var mNextY : Int? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor protocol BorderCurve_p2Xvalue : AnyObject {
-  var p2Xvalue : Double? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor protocol BorderCurve_p2Yvalue : AnyObject {
-  var p2Yvalue : Double? { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_p2Yvalue : AnyObject {
+//   var p2Yvalue : Double? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -78,42 +87,46 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_isLine : AnyObject {
-  var isLine : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_isLine : AnyObject {
+//   var isLine : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BorderCurve_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BorderCurve_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BorderCurve
 //--------------------------------------------------------------------------------------------------
 
-final class BorderCurve : EBGraphicManagedObject,
-         BorderCurve_mX,
-         BorderCurve_mY,
-         BorderCurve_mCPX1,
-         BorderCurve_mCPY1,
-         BorderCurve_mCPX2,
-         BorderCurve_mCPY2,
-         BorderCurve_mShape,
-         BorderCurve_mNextX,
-         BorderCurve_mNextY,
-         BorderCurve_p2Xvalue,
-         BorderCurve_p2Yvalue,
-         BorderCurve_descriptor,
-         BorderCurve_objectDisplay,
-         BorderCurve_isLine,
-         BorderCurve_selectionDisplay {
+final class BorderCurve : EBGraphicManagedObject
+    // BorderCurve_mX // Commented out, not used
+    // BorderCurve_mY // Commented out, not used
+    // BorderCurve_mCPX1 // Commented out, not used
+    // BorderCurve_mCPY1 // Commented out, not used
+    // BorderCurve_mCPX2 // Commented out, not used
+    // BorderCurve_mCPY2 // Commented out, not used
+    // BorderCurve_mShape // Commented out, not used
+    // BorderCurve_mNextX // Commented out, not used
+    // BorderCurve_mNextY // Commented out, not used
+    // BorderCurve_p2Xvalue // Commented out, not used
+    // BorderCurve_p2Yvalue // Commented out, not used
+    , BorderCurve_descriptor
+    // BorderCurve_objectDisplay // Commented out, not used
+    // BorderCurve_isLine // Commented out, not used
+    // BorderCurve_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mX

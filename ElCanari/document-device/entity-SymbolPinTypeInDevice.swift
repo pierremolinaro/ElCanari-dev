@@ -6,63 +6,73 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mPinX : AnyObject {
-  var mPinX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mPinX : AnyObject {
+//   var mPinX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mPinY : AnyObject {
-  var mPinY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mPinY : AnyObject {
+//   var mPinY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mXName : AnyObject {
-  var mXName : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mXName : AnyObject {
+//   var mXName : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mYName : AnyObject {
-  var mYName : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mYName : AnyObject {
+//   var mYName : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mName : AnyObject {
-  var mName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mName : AnyObject {
+//   var mName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mNameHorizontalAlignment : AnyObject {
-  var mNameHorizontalAlignment : HorizontalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mNameHorizontalAlignment : AnyObject {
+//   var mNameHorizontalAlignment : HorizontalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics : AnyObject {
-  var mPinNameIsDisplayedInSchematics : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics : AnyObject {
+//   var mPinNameIsDisplayedInSchematics : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mXNumber : AnyObject {
-  var mXNumber : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mXNumber : AnyObject {
+//   var mXNumber : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mYNumber : AnyObject {
-  var mYNumber : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mYNumber : AnyObject {
+//   var mYNumber : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolPinTypeInDevice_mNumberHorizontalAlignment : AnyObject {
-  var mNumberHorizontalAlignment : HorizontalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolPinTypeInDevice_mNumberHorizontalAlignment : AnyObject {
+//   var mNumberHorizontalAlignment : HorizontalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -74,18 +84,19 @@ import AppKit
 //    Entity: SymbolPinTypeInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolPinTypeInDevice : EBManagedObject,
-         SymbolPinTypeInDevice_mPinX,
-         SymbolPinTypeInDevice_mPinY,
-         SymbolPinTypeInDevice_mXName,
-         SymbolPinTypeInDevice_mYName,
-         SymbolPinTypeInDevice_mName,
-         SymbolPinTypeInDevice_mNameHorizontalAlignment,
-         SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics,
-         SymbolPinTypeInDevice_mXNumber,
-         SymbolPinTypeInDevice_mYNumber,
-         SymbolPinTypeInDevice_mNumberHorizontalAlignment,
-         SymbolPinTypeInDevice_nameShape {
+final class SymbolPinTypeInDevice : EBManagedObject
+    // SymbolPinTypeInDevice_mPinX // Commented out, not used
+    // SymbolPinTypeInDevice_mPinY // Commented out, not used
+    // SymbolPinTypeInDevice_mXName // Commented out, not used
+    // SymbolPinTypeInDevice_mYName // Commented out, not used
+    // SymbolPinTypeInDevice_mName // Commented out, not used
+    // SymbolPinTypeInDevice_mNameHorizontalAlignment // Commented out, not used
+    // SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics // Commented out, not used
+    // SymbolPinTypeInDevice_mXNumber // Commented out, not used
+    // SymbolPinTypeInDevice_mYNumber // Commented out, not used
+    // SymbolPinTypeInDevice_mNumberHorizontalAlignment // Commented out, not used
+    , SymbolPinTypeInDevice_nameShape
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mPinX

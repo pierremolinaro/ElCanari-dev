@@ -18,33 +18,38 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetInProject_netClassName : AnyObject {
-  var netClassName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetInProject_netClassName : AnyObject {
+//   var netClassName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetInProject_netClassTrackWidth : AnyObject {
-  var netClassTrackWidth : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetInProject_netClassTrackWidth : AnyObject {
+//   var netClassTrackWidth : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetInProject_netClassViaHoleDiameter : AnyObject {
-  var netClassViaHoleDiameter : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetInProject_netClassViaHoleDiameter : AnyObject {
+//   var netClassViaHoleDiameter : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetInProject_netClassViaPadDiameter : AnyObject {
-  var netClassViaPadDiameter : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetInProject_netClassViaPadDiameter : AnyObject {
+//   var netClassViaPadDiameter : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetInProject_wireColor : AnyObject {
-  var wireColor : NSColor? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetInProject_wireColor : AnyObject {
+//   var wireColor : NSColor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -62,16 +67,17 @@ import AppKit
 //    Entity: NetInProject
 //--------------------------------------------------------------------------------------------------
 
-final class NetInProject : EBManagedObject,
-         NetInProject_mNetName,
-         NetInProject_mWarnsExactlyOneLabel,
-         NetInProject_netClassName,
-         NetInProject_netClassTrackWidth,
-         NetInProject_netClassViaHoleDiameter,
-         NetInProject_netClassViaPadDiameter,
-         NetInProject_wireColor,
-         NetInProject_netSchematicPointsInfo,
-         NetInProject_trackCount {
+final class NetInProject : EBManagedObject
+    , NetInProject_mNetName
+    , NetInProject_mWarnsExactlyOneLabel
+    // NetInProject_netClassName // Commented out, not used
+    // NetInProject_netClassTrackWidth // Commented out, not used
+    // NetInProject_netClassViaHoleDiameter // Commented out, not used
+    // NetInProject_netClassViaPadDiameter // Commented out, not used
+    // NetInProject_wireColor // Commented out, not used
+    , NetInProject_netSchematicPointsInfo
+    , NetInProject_trackCount
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mPoints

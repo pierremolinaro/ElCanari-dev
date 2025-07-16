@@ -6,100 +6,114 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mWidthUnit : AnyObject {
-  var mWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mWidthUnit : AnyObject {
+//   var mWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mX1 : AnyObject {
-  var mX1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mX1 : AnyObject {
+//   var mX1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mX1Unit : AnyObject {
-  var mX1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mX1Unit : AnyObject {
+//   var mX1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mY1 : AnyObject {
-  var mY1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mY1 : AnyObject {
+//   var mY1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mY1Unit : AnyObject {
-  var mY1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mY1Unit : AnyObject {
+//   var mY1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mX2 : AnyObject {
-  var mX2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mX2 : AnyObject {
+//   var mX2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mX2Unit : AnyObject {
-  var mX2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mX2Unit : AnyObject {
+//   var mX2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mY2 : AnyObject {
-  var mY2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mY2 : AnyObject {
+//   var mY2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mY2Unit : AnyObject {
-  var mY2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mY2Unit : AnyObject {
+//   var mY2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mLayer : AnyObject {
-  var mLayer : BoardLineLayer { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mLayer : AnyObject {
+//   var mLayer : BoardLineLayer { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_mWidth : AnyObject {
-  var mWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_mWidth : AnyObject {
+//   var mWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardLine_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardLine_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardLine
 //--------------------------------------------------------------------------------------------------
 
-final class BoardLine : BoardObject,
-         BoardLine_mWidthUnit,
-         BoardLine_mX1,
-         BoardLine_mX1Unit,
-         BoardLine_mY1,
-         BoardLine_mY1Unit,
-         BoardLine_mX2,
-         BoardLine_mX2Unit,
-         BoardLine_mY2,
-         BoardLine_mY2Unit,
-         BoardLine_mLayer,
-         BoardLine_mWidth,
-         BoardLine_objectDisplay,
-         BoardLine_selectionDisplay {
+final class BoardLine : BoardObject
+    // BoardLine_mWidthUnit // Commented out, not used
+    // BoardLine_mX1 // Commented out, not used
+    // BoardLine_mX1Unit // Commented out, not used
+    // BoardLine_mY1 // Commented out, not used
+    // BoardLine_mY1Unit // Commented out, not used
+    // BoardLine_mX2 // Commented out, not used
+    // BoardLine_mX2Unit // Commented out, not used
+    // BoardLine_mY2 // Commented out, not used
+    // BoardLine_mY2Unit // Commented out, not used
+    // BoardLine_mLayer // Commented out, not used
+    // BoardLine_mWidth // Commented out, not used
+    // BoardLine_objectDisplay // Commented out, not used
+    // BoardLine_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mWidthUnit

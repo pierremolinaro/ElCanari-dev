@@ -8,7 +8,8 @@ import AppKit
 //    Entity: SymbolBezierCurve
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolBezierCurve : SymbolObject {
+final class SymbolBezierCurve : SymbolObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y1

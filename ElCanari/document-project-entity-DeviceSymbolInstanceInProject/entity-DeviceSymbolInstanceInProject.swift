@@ -6,9 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSymbolInstanceInProject_mSymbolInstanceName : AnyObject {
-  var mSymbolInstanceName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSymbolInstanceInProject_mSymbolInstanceName : AnyObject {
+//   var mSymbolInstanceName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,9 +19,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceSymbolInstanceInProject_symbolTypeName : AnyObject {
-  var symbolTypeName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceSymbolInstanceInProject_symbolTypeName : AnyObject {
+//   var symbolTypeName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,12 +40,13 @@ import AppKit
 //    Entity: DeviceSymbolInstanceInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DeviceSymbolInstanceInProject : EBManagedObject,
-         DeviceSymbolInstanceInProject_mSymbolInstanceName,
-         DeviceSymbolInstanceInProject_symbolAndTypeName,
-         DeviceSymbolInstanceInProject_symbolTypeName,
-         DeviceSymbolInstanceInProject_filledBezierPath,
-         DeviceSymbolInstanceInProject_strokeBezierPath {
+final class DeviceSymbolInstanceInProject : EBManagedObject
+    // DeviceSymbolInstanceInProject_mSymbolInstanceName // Commented out, not used
+    , DeviceSymbolInstanceInProject_symbolAndTypeName
+    // DeviceSymbolInstanceInProject_symbolTypeName // Commented out, not used
+    , DeviceSymbolInstanceInProject_filledBezierPath
+    , DeviceSymbolInstanceInProject_strokeBezierPath
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mSymbolInstanceName

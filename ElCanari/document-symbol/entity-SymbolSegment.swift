@@ -8,7 +8,8 @@ import AppKit
 //    Entity: SymbolSegment
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolSegment : SymbolObject {
+final class SymbolSegment : SymbolObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y1

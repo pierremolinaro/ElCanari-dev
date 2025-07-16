@@ -6,21 +6,24 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolInstanceInDevice_mInstanceName : AnyObject {
-  var mInstanceName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolInstanceInDevice_mInstanceName : AnyObject {
+//   var mInstanceName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolInstanceInDevice_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolInstanceInDevice_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolInstanceInDevice_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolInstanceInDevice_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,9 +33,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolInstanceInDevice_symbolTypeName : AnyObject {
-  var symbolTypeName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolInstanceInDevice_symbolTypeName : AnyObject {
+//   var symbolTypeName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -48,30 +52,33 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolInstanceInDevice_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolInstanceInDevice_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolInstanceInDevice_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolInstanceInDevice_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: SymbolInstanceInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolInstanceInDevice : EBGraphicManagedObject,
-         SymbolInstanceInDevice_mInstanceName,
-         SymbolInstanceInDevice_mX,
-         SymbolInstanceInDevice_mY,
-         SymbolInstanceInDevice_symbolQualifiedName,
-         SymbolInstanceInDevice_symbolTypeName,
-         SymbolInstanceInDevice_pinSymbolQualifiedNames,
-         SymbolInstanceInDevice_unconnectedPins,
-         SymbolInstanceInDevice_objectDisplay,
-         SymbolInstanceInDevice_selectionDisplay {
+final class SymbolInstanceInDevice : EBGraphicManagedObject
+    // SymbolInstanceInDevice_mInstanceName // Commented out, not used
+    // SymbolInstanceInDevice_mX // Commented out, not used
+    // SymbolInstanceInDevice_mY // Commented out, not used
+    , SymbolInstanceInDevice_symbolQualifiedName
+    // SymbolInstanceInDevice_symbolTypeName // Commented out, not used
+    , SymbolInstanceInDevice_pinSymbolQualifiedNames
+    , SymbolInstanceInDevice_unconnectedPins
+    // SymbolInstanceInDevice_objectDisplay // Commented out, not used
+    // SymbolInstanceInDevice_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mPinInstances

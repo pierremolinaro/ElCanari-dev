@@ -14,8 +14,9 @@ import AppKit
 //    Entity: ForbiddenPadNumber
 //--------------------------------------------------------------------------------------------------
 
-final class ForbiddenPadNumber : EBManagedObject,
-         ForbiddenPadNumber_padNumber {
+final class ForbiddenPadNumber : EBManagedObject
+    , ForbiddenPadNumber_padNumber
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: padNumber

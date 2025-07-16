@@ -12,9 +12,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageObject_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageObject_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -24,19 +25,21 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageObject_knobSize : AnyObject {
-  var knobSize : Double? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageObject_knobSize : AnyObject {
+//   var knobSize : Double? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageObject
 //--------------------------------------------------------------------------------------------------
 
-class PackageObject : EBGraphicManagedObject,
-         PackageObject_issues,
-         PackageObject_selectionDisplay,
-         PackageObject_objectDisplay,
-         PackageObject_knobSize {
+class PackageObject : EBGraphicManagedObject
+    , PackageObject_issues
+    // PackageObject_selectionDisplay // Commented out, not used
+    , PackageObject_objectDisplay
+    // PackageObject_knobSize // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Transient property: issues

@@ -6,135 +6,154 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mXUnit : AnyObject {
-  var mXUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mXUnit : AnyObject {
+//   var mXUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mCenterY : AnyObject {
-  var mCenterY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mCenterY : AnyObject {
+//   var mCenterY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mYUnit : AnyObject {
-  var mYUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mYUnit : AnyObject {
+//   var mYUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mDrawFrame : AnyObject {
-  var mDrawFrame : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mDrawFrame : AnyObject {
+//   var mDrawFrame : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mModuleSize : AnyObject {
-  var mModuleSize : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mModuleSize : AnyObject {
+//   var mModuleSize : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mModuleSizeUnit : AnyObject {
-  var mModuleSizeUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mModuleSizeUnit : AnyObject {
+//   var mModuleSizeUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mActualSizeUnit : AnyObject {
-  var mActualSizeUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mActualSizeUnit : AnyObject {
+//   var mActualSizeUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mLayer : AnyObject {
-  var mLayer : BoardQRCodeLayer { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mLayer : AnyObject {
+//   var mLayer : BoardQRCodeLayer { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mText : AnyObject {
-  var mText : String { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mText : AnyObject {
+//   var mText : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mCorrectionLevel : AnyObject {
-  var mCorrectionLevel : QRCodeCorrectionLevel { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mCorrectionLevel : AnyObject {
+//   var mCorrectionLevel : QRCodeCorrectionLevel { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mRotation : AnyObject {
-  var mRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mRotation : AnyObject {
+//   var mRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_mCenterX : AnyObject {
-  var mCenterX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_mCenterX : AnyObject {
+//   var mCenterX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_qrCodeDescriptor : AnyObject {
-  var qrCodeDescriptor : QRCodeDescriptor? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_qrCodeDescriptor : AnyObject {
+//   var qrCodeDescriptor : QRCodeDescriptor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_moduleCount : AnyObject {
-  var moduleCount : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_moduleCount : AnyObject {
+//   var moduleCount : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_actualImageSize : AnyObject {
-  var actualImageSize : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_actualImageSize : AnyObject {
+//   var actualImageSize : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardQRCode_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardQRCode_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardQRCode
 //--------------------------------------------------------------------------------------------------
 
-final class BoardQRCode : BoardObject,
-         BoardQRCode_mXUnit,
-         BoardQRCode_mCenterY,
-         BoardQRCode_mYUnit,
-         BoardQRCode_mDrawFrame,
-         BoardQRCode_mModuleSize,
-         BoardQRCode_mModuleSizeUnit,
-         BoardQRCode_mActualSizeUnit,
-         BoardQRCode_mLayer,
-         BoardQRCode_mText,
-         BoardQRCode_mCorrectionLevel,
-         BoardQRCode_mRotation,
-         BoardQRCode_mCenterX,
-         BoardQRCode_qrCodeDescriptor,
-         BoardQRCode_moduleCount,
-         BoardQRCode_actualImageSize,
-         BoardQRCode_objectDisplay,
-         BoardQRCode_selectionDisplay,
-         BoardQRCode_signatureForERCChecking {
+final class BoardQRCode : BoardObject
+    // BoardQRCode_mXUnit // Commented out, not used
+    // BoardQRCode_mCenterY // Commented out, not used
+    // BoardQRCode_mYUnit // Commented out, not used
+    // BoardQRCode_mDrawFrame // Commented out, not used
+    // BoardQRCode_mModuleSize // Commented out, not used
+    // BoardQRCode_mModuleSizeUnit // Commented out, not used
+    // BoardQRCode_mActualSizeUnit // Commented out, not used
+    // BoardQRCode_mLayer // Commented out, not used
+    // BoardQRCode_mText // Commented out, not used
+    // BoardQRCode_mCorrectionLevel // Commented out, not used
+    // BoardQRCode_mRotation // Commented out, not used
+    // BoardQRCode_mCenterX // Commented out, not used
+    // BoardQRCode_qrCodeDescriptor // Commented out, not used
+    // BoardQRCode_moduleCount // Commented out, not used
+    // BoardQRCode_actualImageSize // Commented out, not used
+    // BoardQRCode_objectDisplay // Commented out, not used
+    // BoardQRCode_selectionDisplay // Commented out, not used
+    // BoardQRCode_signatureForERCChecking // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mXUnit

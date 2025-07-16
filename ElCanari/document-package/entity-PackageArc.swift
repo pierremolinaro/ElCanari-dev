@@ -6,128 +6,146 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_yCenter : AnyObject {
-  var yCenter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_yCenter : AnyObject {
+//   var yCenter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_radius : AnyObject {
-  var radius : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_radius : AnyObject {
+//   var radius : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_startAngle : AnyObject {
-  var startAngle : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_startAngle : AnyObject {
+//   var startAngle : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_arcAngle : AnyObject {
-  var arcAngle : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_arcAngle : AnyObject {
+//   var arcAngle : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_startTangent : AnyObject {
-  var startTangent : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_startTangent : AnyObject {
+//   var startTangent : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_endTangent : AnyObject {
-  var endTangent : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_endTangent : AnyObject {
+//   var endTangent : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_pathIsClosed : AnyObject {
-  var pathIsClosed : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_pathIsClosed : AnyObject {
+//   var pathIsClosed : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_xCenterUnit : AnyObject {
-  var xCenterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_xCenterUnit : AnyObject {
+//   var xCenterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_yCenterUnit : AnyObject {
-  var yCenterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_yCenterUnit : AnyObject {
+//   var yCenterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_radiusUnit : AnyObject {
-  var radiusUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_radiusUnit : AnyObject {
+//   var radiusUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_startTangentUnit : AnyObject {
-  var startTangentUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_startTangentUnit : AnyObject {
+//   var startTangentUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_endTangentUnit : AnyObject {
-  var endTangentUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_endTangentUnit : AnyObject {
+//   var endTangentUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_xCenter : AnyObject {
-  var xCenter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_xCenter : AnyObject {
+//   var xCenter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_strokeBezierPath : AnyObject {
-  var strokeBezierPath : BézierPath? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_strokeBezierPath : AnyObject {
+//   var strokeBezierPath : BézierPath? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageArc_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageArc_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageArc
 //--------------------------------------------------------------------------------------------------
 
-final class PackageArc : PackageObject,
-         PackageArc_yCenter,
-         PackageArc_radius,
-         PackageArc_startAngle,
-         PackageArc_arcAngle,
-         PackageArc_startTangent,
-         PackageArc_endTangent,
-         PackageArc_pathIsClosed,
-         PackageArc_xCenterUnit,
-         PackageArc_yCenterUnit,
-         PackageArc_radiusUnit,
-         PackageArc_startTangentUnit,
-         PackageArc_endTangentUnit,
-         PackageArc_xCenter,
-         PackageArc_strokeBezierPath,
-         PackageArc_objectDisplay,
-         PackageArc_selectionDisplay,
-         PackageArc_issues {
+final class PackageArc : PackageObject
+    // PackageArc_yCenter // Commented out, not used
+    // PackageArc_radius // Commented out, not used
+    // PackageArc_startAngle // Commented out, not used
+    // PackageArc_arcAngle // Commented out, not used
+    // PackageArc_startTangent // Commented out, not used
+    // PackageArc_endTangent // Commented out, not used
+    // PackageArc_pathIsClosed // Commented out, not used
+    // PackageArc_xCenterUnit // Commented out, not used
+    // PackageArc_yCenterUnit // Commented out, not used
+    // PackageArc_radiusUnit // Commented out, not used
+    // PackageArc_startTangentUnit // Commented out, not used
+    // PackageArc_endTangentUnit // Commented out, not used
+    // PackageArc_xCenter // Commented out, not used
+    // PackageArc_strokeBezierPath // Commented out, not used
+    // PackageArc_objectDisplay // Commented out, not used
+    // PackageArc_selectionDisplay // Commented out, not used
+    // PackageArc_issues // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: yCenter

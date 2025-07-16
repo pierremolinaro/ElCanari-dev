@@ -6,149 +6,170 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_y1 : AnyObject {
-  var y1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_y1 : AnyObject {
+//   var y1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_x2 : AnyObject {
-  var x2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_x2 : AnyObject {
+//   var x2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_y2 : AnyObject {
-  var y2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_y2 : AnyObject {
+//   var y2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpx1 : AnyObject {
-  var cpx1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpx1 : AnyObject {
+//   var cpx1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpy1 : AnyObject {
-  var cpy1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpy1 : AnyObject {
+//   var cpy1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpx2 : AnyObject {
-  var cpx2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpx2 : AnyObject {
+//   var cpx2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpy2 : AnyObject {
-  var cpy2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpy2 : AnyObject {
+//   var cpy2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_x1Unit : AnyObject {
-  var x1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_x1Unit : AnyObject {
+//   var x1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_y1Unit : AnyObject {
-  var y1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_y1Unit : AnyObject {
+//   var y1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_x2Unit : AnyObject {
-  var x2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_x2Unit : AnyObject {
+//   var x2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_y2Unit : AnyObject {
-  var y2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_y2Unit : AnyObject {
+//   var y2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpx1Unit : AnyObject {
-  var cpx1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpx1Unit : AnyObject {
+//   var cpx1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpy1Unit : AnyObject {
-  var cpy1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpy1Unit : AnyObject {
+//   var cpy1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpx2Unit : AnyObject {
-  var cpx2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpx2Unit : AnyObject {
+//   var cpx2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_cpy2Unit : AnyObject {
-  var cpy2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_cpy2Unit : AnyObject {
+//   var cpy2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_x1 : AnyObject {
-  var x1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_x1 : AnyObject {
+//   var x1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_strokeBezierPath : AnyObject {
-  var strokeBezierPath : NSBezierPath? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_strokeBezierPath : AnyObject {
+//   var strokeBezierPath : NSBezierPath? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageBezier_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageBezier_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageBezier
 //--------------------------------------------------------------------------------------------------
 
-final class PackageBezier : PackageObject,
-         PackageBezier_y1,
-         PackageBezier_x2,
-         PackageBezier_y2,
-         PackageBezier_cpx1,
-         PackageBezier_cpy1,
-         PackageBezier_cpx2,
-         PackageBezier_cpy2,
-         PackageBezier_x1Unit,
-         PackageBezier_y1Unit,
-         PackageBezier_x2Unit,
-         PackageBezier_y2Unit,
-         PackageBezier_cpx1Unit,
-         PackageBezier_cpy1Unit,
-         PackageBezier_cpx2Unit,
-         PackageBezier_cpy2Unit,
-         PackageBezier_x1,
-         PackageBezier_strokeBezierPath,
-         PackageBezier_objectDisplay,
-         PackageBezier_selectionDisplay,
-         PackageBezier_issues {
+final class PackageBezier : PackageObject
+    // PackageBezier_y1 // Commented out, not used
+    // PackageBezier_x2 // Commented out, not used
+    // PackageBezier_y2 // Commented out, not used
+    // PackageBezier_cpx1 // Commented out, not used
+    // PackageBezier_cpy1 // Commented out, not used
+    // PackageBezier_cpx2 // Commented out, not used
+    // PackageBezier_cpy2 // Commented out, not used
+    // PackageBezier_x1Unit // Commented out, not used
+    // PackageBezier_y1Unit // Commented out, not used
+    // PackageBezier_x2Unit // Commented out, not used
+    // PackageBezier_y2Unit // Commented out, not used
+    // PackageBezier_cpx1Unit // Commented out, not used
+    // PackageBezier_cpy1Unit // Commented out, not used
+    // PackageBezier_cpx2Unit // Commented out, not used
+    // PackageBezier_cpy2Unit // Commented out, not used
+    // PackageBezier_x1 // Commented out, not used
+    // PackageBezier_strokeBezierPath // Commented out, not used
+    // PackageBezier_objectDisplay // Commented out, not used
+    // PackageBezier_selectionDisplay // Commented out, not used
+    // PackageBezier_issues // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y1

@@ -18,15 +18,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontCharacter_mWarnsWhenNoSegment : AnyObject {
-  var mWarnsWhenNoSegment : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol FontCharacter_mWarnsWhenNoSegment : AnyObject {
+//   var mWarnsWhenNoSegment : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontCharacter_mWarnsWhenAdvanceIsZero : AnyObject {
-  var mWarnsWhenAdvanceIsZero : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol FontCharacter_mWarnsWhenAdvanceIsZero : AnyObject {
+//   var mWarnsWhenAdvanceIsZero : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -36,15 +38,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontCharacter_gerberCode : AnyObject {
-  var gerberCode : CharacterGerberCode? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontCharacter_gerberCode : AnyObject {
+//   var gerberCode : CharacterGerberCode? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontCharacter_gerberCodeInstructionCountMessage : AnyObject {
-  var gerberCodeInstructionCountMessage : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontCharacter_gerberCodeInstructionCountMessage : AnyObject {
+//   var gerberCodeInstructionCountMessage : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -56,15 +60,16 @@ import AppKit
 //    Entity: FontCharacter
 //--------------------------------------------------------------------------------------------------
 
-final class FontCharacter : EBManagedObject,
-         FontCharacter_codePoint,
-         FontCharacter_advance,
-         FontCharacter_mWarnsWhenNoSegment,
-         FontCharacter_mWarnsWhenAdvanceIsZero,
-         FontCharacter_segmentArrayForDrawing,
-         FontCharacter_gerberCode,
-         FontCharacter_gerberCodeInstructionCountMessage,
-         FontCharacter_issues {
+final class FontCharacter : EBManagedObject
+    , FontCharacter_codePoint
+    , FontCharacter_advance
+    // FontCharacter_mWarnsWhenNoSegment // Commented out, not used
+    // FontCharacter_mWarnsWhenAdvanceIsZero // Commented out, not used
+    , FontCharacter_segmentArrayForDrawing
+    // FontCharacter_gerberCode // Commented out, not used
+    // FontCharacter_gerberCodeInstructionCountMessage // Commented out, not used
+    , FontCharacter_issues
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: codePoint

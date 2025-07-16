@@ -12,33 +12,38 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_mCategory : AnyObject {
-  var mCategory : String { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_mCategory : AnyObject {
+//   var mCategory : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_mPrefix : AnyObject {
-  var mPrefix : String { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_mPrefix : AnyObject {
+//   var mPrefix : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_mDeviceVersion : AnyObject {
-  var mDeviceVersion : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_mDeviceVersion : AnyObject {
+//   var mDeviceVersion : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_mDeviceFileData : AnyObject {
-  var mDeviceFileData : Data { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_mDeviceFileData : AnyObject {
+//   var mDeviceFileData : Data { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_mFileSystemStatusMessageForDeviceInProject : AnyObject {
-  var mFileSystemStatusMessageForDeviceInProject : String { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_mFileSystemStatusMessageForDeviceInProject : AnyObject {
+//   var mFileSystemStatusMessageForDeviceInProject : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -48,21 +53,24 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_versionString : AnyObject {
-  var versionString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_versionString : AnyObject {
+//   var versionString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_sizeString : AnyObject {
-  var sizeString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_sizeString : AnyObject {
+//   var sizeString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_canExport : AnyObject {
-  var canExport : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_canExport : AnyObject {
+//   var canExport : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -72,15 +80,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_fileSystemStatusImage : AnyObject {
-  var fileSystemStatusImage : NSImage? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_fileSystemStatusImage : AnyObject {
+//   var fileSystemStatusImage : NSImage? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_deviceComponentCountString : AnyObject {
-  var deviceComponentCountString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_deviceComponentCountString : AnyObject {
+//   var deviceComponentCountString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -102,32 +112,34 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DeviceInProject_deviceSymbolDictionary : AnyObject {
-  var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
-}
+// Commented out, not used
+// @MainActor protocol DeviceInProject_deviceSymbolDictionary : AnyObject {
+//   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: DeviceInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DeviceInProject : EBManagedObject,
-         DeviceInProject_mDeviceName,
-         DeviceInProject_mCategory,
-         DeviceInProject_mPrefix,
-         DeviceInProject_mDeviceVersion,
-         DeviceInProject_mDeviceFileData,
-         DeviceInProject_mFileSystemStatusMessageForDeviceInProject,
-         DeviceInProject_mFileSystemStatusRequiresAttentionForDeviceInProject,
-         DeviceInProject_versionString,
-         DeviceInProject_sizeString,
-         DeviceInProject_canExport,
-         DeviceInProject_packageNames,
-         DeviceInProject_fileSystemStatusImage,
-         DeviceInProject_deviceComponentCountString,
-         DeviceInProject_canRemove,
-         DeviceInProject_symbolAndTypesNames,
-         DeviceInProject_pinPadAssignments,
-         DeviceInProject_deviceSymbolDictionary {
+final class DeviceInProject : EBManagedObject
+    , DeviceInProject_mDeviceName
+    // DeviceInProject_mCategory // Commented out, not used
+    // DeviceInProject_mPrefix // Commented out, not used
+    // DeviceInProject_mDeviceVersion // Commented out, not used
+    // DeviceInProject_mDeviceFileData // Commented out, not used
+    // DeviceInProject_mFileSystemStatusMessageForDeviceInProject // Commented out, not used
+    , DeviceInProject_mFileSystemStatusRequiresAttentionForDeviceInProject
+    // DeviceInProject_versionString // Commented out, not used
+    // DeviceInProject_sizeString // Commented out, not used
+    // DeviceInProject_canExport // Commented out, not used
+    , DeviceInProject_packageNames
+    // DeviceInProject_fileSystemStatusImage // Commented out, not used
+    // DeviceInProject_deviceComponentCountString // Commented out, not used
+    , DeviceInProject_canRemove
+    , DeviceInProject_symbolAndTypesNames
+    , DeviceInProject_pinPadAssignments
+    // DeviceInProject_deviceSymbolDictionary // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mDeviceName

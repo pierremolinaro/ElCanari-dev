@@ -12,135 +12,157 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mNetClassColor : AnyObject {
-  var mNetClassColor : NSColor { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mNetClassColor : AnyObject {
+//   var mNetClassColor : NSColor { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mTrackWidth : AnyObject {
-  var mTrackWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mTrackWidth : AnyObject {
+//   var mTrackWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mTrackWidthUnit : AnyObject {
-  var mTrackWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mTrackWidthUnit : AnyObject {
+//   var mTrackWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mViaHoleDiameter : AnyObject {
-  var mViaHoleDiameter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mViaHoleDiameter : AnyObject {
+//   var mViaHoleDiameter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mViaHoleDiameterUnit : AnyObject {
-  var mViaHoleDiameterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mViaHoleDiameterUnit : AnyObject {
+//   var mViaHoleDiameterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mViaPadDiameter : AnyObject {
-  var mViaPadDiameter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mViaPadDiameter : AnyObject {
+//   var mViaPadDiameter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mViaPadDiameterUnit : AnyObject {
-  var mViaPadDiameterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mViaPadDiameterUnit : AnyObject {
+//   var mViaPadDiameterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mAllowTracksOnFrontSide : AnyObject {
-  var mAllowTracksOnFrontSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mAllowTracksOnFrontSide : AnyObject {
+//   var mAllowTracksOnFrontSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mAllowTracksOnBackSide : AnyObject {
-  var mAllowTracksOnBackSide : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mAllowTracksOnBackSide : AnyObject {
+//   var mAllowTracksOnBackSide : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mAllowTracksOnInner1Layer : AnyObject {
-  var mAllowTracksOnInner1Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mAllowTracksOnInner1Layer : AnyObject {
+//   var mAllowTracksOnInner1Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mAllowTracksOnInner2Layer : AnyObject {
-  var mAllowTracksOnInner2Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mAllowTracksOnInner2Layer : AnyObject {
+//   var mAllowTracksOnInner2Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mAllowTracksOnInner3Layer : AnyObject {
-  var mAllowTracksOnInner3Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mAllowTracksOnInner3Layer : AnyObject {
+//   var mAllowTracksOnInner3Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_mAllowTracksOnInner4Layer : AnyObject {
-  var mAllowTracksOnInner4Layer : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_mAllowTracksOnInner4Layer : AnyObject {
+//   var mAllowTracksOnInner4Layer : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_trackWidthString : AnyObject {
-  var trackWidthString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_trackWidthString : AnyObject {
+//   var trackWidthString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_viaHoleDiameter : AnyObject {
-  var viaHoleDiameter : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_viaHoleDiameter : AnyObject {
+//   var viaHoleDiameter : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_viaPadDiameter : AnyObject {
-  var viaPadDiameter : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_viaPadDiameter : AnyObject {
+//   var viaPadDiameter : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_allowTracksOnFrontSideString : AnyObject {
-  var allowTracksOnFrontSideString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_allowTracksOnFrontSideString : AnyObject {
+//   var allowTracksOnFrontSideString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_allowTracksOnBackSideString : AnyObject {
-  var allowTracksOnBackSideString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_allowTracksOnBackSideString : AnyObject {
+//   var allowTracksOnBackSideString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_allowTracksOnInner1LayerString : AnyObject {
-  var allowTracksOnInner1LayerString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_allowTracksOnInner1LayerString : AnyObject {
+//   var allowTracksOnInner1LayerString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_allowTracksOnInner2LayerString : AnyObject {
-  var allowTracksOnInner2LayerString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_allowTracksOnInner2LayerString : AnyObject {
+//   var allowTracksOnInner2LayerString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_allowTracksOnInner3LayerString : AnyObject {
-  var allowTracksOnInner3LayerString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_allowTracksOnInner3LayerString : AnyObject {
+//   var allowTracksOnInner3LayerString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_allowTracksOnInner4LayerString : AnyObject {
-  var allowTracksOnInner4LayerString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_allowTracksOnInner4LayerString : AnyObject {
+//   var allowTracksOnInner4LayerString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -150,9 +172,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NetClassInProject_netUsage : AnyObject {
-  var netUsage : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol NetClassInProject_netUsage : AnyObject {
+//   var netUsage : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -170,34 +193,35 @@ import AppKit
 //    Entity: NetClassInProject
 //--------------------------------------------------------------------------------------------------
 
-final class NetClassInProject : EBManagedObject,
-         NetClassInProject_mNetClassName,
-         NetClassInProject_mNetClassColor,
-         NetClassInProject_mTrackWidth,
-         NetClassInProject_mTrackWidthUnit,
-         NetClassInProject_mViaHoleDiameter,
-         NetClassInProject_mViaHoleDiameterUnit,
-         NetClassInProject_mViaPadDiameter,
-         NetClassInProject_mViaPadDiameterUnit,
-         NetClassInProject_mAllowTracksOnFrontSide,
-         NetClassInProject_mAllowTracksOnBackSide,
-         NetClassInProject_mAllowTracksOnInner1Layer,
-         NetClassInProject_mAllowTracksOnInner2Layer,
-         NetClassInProject_mAllowTracksOnInner3Layer,
-         NetClassInProject_mAllowTracksOnInner4Layer,
-         NetClassInProject_trackWidthString,
-         NetClassInProject_viaHoleDiameter,
-         NetClassInProject_viaPadDiameter,
-         NetClassInProject_allowTracksOnFrontSideString,
-         NetClassInProject_allowTracksOnBackSideString,
-         NetClassInProject_allowTracksOnInner1LayerString,
-         NetClassInProject_allowTracksOnInner2LayerString,
-         NetClassInProject_allowTracksOnInner3LayerString,
-         NetClassInProject_allowTracksOnInner4LayerString,
-         NetClassInProject_canRemove,
-         NetClassInProject_netUsage,
-         NetClassInProject_netsDescription,
-         NetClassInProject_netWarningCount {
+final class NetClassInProject : EBManagedObject
+    , NetClassInProject_mNetClassName
+    // NetClassInProject_mNetClassColor // Commented out, not used
+    // NetClassInProject_mTrackWidth // Commented out, not used
+    // NetClassInProject_mTrackWidthUnit // Commented out, not used
+    // NetClassInProject_mViaHoleDiameter // Commented out, not used
+    // NetClassInProject_mViaHoleDiameterUnit // Commented out, not used
+    // NetClassInProject_mViaPadDiameter // Commented out, not used
+    // NetClassInProject_mViaPadDiameterUnit // Commented out, not used
+    // NetClassInProject_mAllowTracksOnFrontSide // Commented out, not used
+    // NetClassInProject_mAllowTracksOnBackSide // Commented out, not used
+    // NetClassInProject_mAllowTracksOnInner1Layer // Commented out, not used
+    // NetClassInProject_mAllowTracksOnInner2Layer // Commented out, not used
+    // NetClassInProject_mAllowTracksOnInner3Layer // Commented out, not used
+    // NetClassInProject_mAllowTracksOnInner4Layer // Commented out, not used
+    // NetClassInProject_trackWidthString // Commented out, not used
+    // NetClassInProject_viaHoleDiameter // Commented out, not used
+    // NetClassInProject_viaPadDiameter // Commented out, not used
+    // NetClassInProject_allowTracksOnFrontSideString // Commented out, not used
+    // NetClassInProject_allowTracksOnBackSideString // Commented out, not used
+    // NetClassInProject_allowTracksOnInner1LayerString // Commented out, not used
+    // NetClassInProject_allowTracksOnInner2LayerString // Commented out, not used
+    // NetClassInProject_allowTracksOnInner3LayerString // Commented out, not used
+    // NetClassInProject_allowTracksOnInner4LayerString // Commented out, not used
+    , NetClassInProject_canRemove
+    // NetClassInProject_netUsage // Commented out, not used
+    , NetClassInProject_netsDescription
+    , NetClassInProject_netWarningCount
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mNetClassName

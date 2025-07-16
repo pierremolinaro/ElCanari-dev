@@ -26,10 +26,11 @@ import AppKit
 //    Entity: BoardModelVia
 //--------------------------------------------------------------------------------------------------
 
-final class BoardModelVia : EBManagedObject,
-         BoardModelVia_y,
-         BoardModelVia_padDiameter,
-         BoardModelVia_x {
+final class BoardModelVia : EBManagedObject
+    , BoardModelVia_y
+    , BoardModelVia_padDiameter
+    , BoardModelVia_x
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y

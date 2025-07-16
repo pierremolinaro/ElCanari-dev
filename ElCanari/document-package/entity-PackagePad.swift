@@ -6,153 +6,178 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_xCenter : AnyObject {
-  var xCenter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_xCenter : AnyObject {
+//   var xCenter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_yCenter : AnyObject {
-  var yCenter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_yCenter : AnyObject {
+//   var yCenter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_width : AnyObject {
-  var width : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_width : AnyObject {
+//   var width : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_height : AnyObject {
-  var height : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_height : AnyObject {
+//   var height : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_holeWidth : AnyObject {
-  var holeWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_holeWidth : AnyObject {
+//   var holeWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_holeHeight : AnyObject {
-  var holeHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_holeHeight : AnyObject {
+//   var holeHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_padShape : AnyObject {
-  var padShape : PadShape { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_padShape : AnyObject {
+//   var padShape : PadShape { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_padStyle : AnyObject {
-  var padStyle : PadStyle { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_padStyle : AnyObject {
+//   var padStyle : PadStyle { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_padNumber : AnyObject {
-  var padNumber : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_padNumber : AnyObject {
+//   var padNumber : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_xCenterUnit : AnyObject {
-  var xCenterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_xCenterUnit : AnyObject {
+//   var xCenterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_yCenterUnit : AnyObject {
-  var yCenterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_yCenterUnit : AnyObject {
+//   var yCenterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_widthUnit : AnyObject {
-  var widthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_widthUnit : AnyObject {
+//   var widthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_heightUnit : AnyObject {
-  var heightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_heightUnit : AnyObject {
+//   var heightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_holeWidthUnit : AnyObject {
-  var holeWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_holeWidthUnit : AnyObject {
+//   var holeWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_holeHeightUnit : AnyObject {
-  var holeHeightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_holeHeightUnit : AnyObject {
+//   var holeHeightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_annularRingUnit : AnyObject {
-  var annularRingUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_annularRingUnit : AnyObject {
+//   var annularRingUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_padNameForDisplay : AnyObject {
-  var padNameForDisplay : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_padNameForDisplay : AnyObject {
+//   var padNameForDisplay : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_padIsTraversing : AnyObject {
-  var padIsTraversing : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_padIsTraversing : AnyObject {
+//   var padIsTraversing : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_annularRing : AnyObject {
-  var annularRing : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_annularRing : AnyObject {
+//   var annularRing : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_padNameWithZoneName : AnyObject {
-  var padNameWithZoneName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_padNameWithZoneName : AnyObject {
+//   var padNameWithZoneName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_zoneName : AnyObject {
-  var zoneName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_zoneName : AnyObject {
+//   var zoneName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_noZone : AnyObject {
-  var noZone : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_noZone : AnyObject {
+//   var noZone : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_zoneAllowsManualRenumbering : AnyObject {
-  var zoneAllowsManualRenumbering : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_zoneAllowsManualRenumbering : AnyObject {
+//   var zoneAllowsManualRenumbering : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_slavePadCount : AnyObject {
-  var slavePadCount : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_slavePadCount : AnyObject {
+//   var slavePadCount : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -162,15 +187,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackagePad_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackagePad_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -182,36 +209,37 @@ import AppKit
 //    Entity: PackagePad
 //--------------------------------------------------------------------------------------------------
 
-final class PackagePad : PackageObject,
-         PackagePad_xCenter,
-         PackagePad_yCenter,
-         PackagePad_width,
-         PackagePad_height,
-         PackagePad_holeWidth,
-         PackagePad_holeHeight,
-         PackagePad_padShape,
-         PackagePad_padStyle,
-         PackagePad_padNumber,
-         PackagePad_xCenterUnit,
-         PackagePad_yCenterUnit,
-         PackagePad_widthUnit,
-         PackagePad_heightUnit,
-         PackagePad_holeWidthUnit,
-         PackagePad_holeHeightUnit,
-         PackagePad_annularRingUnit,
-         PackagePad_padNameForDisplay,
-         PackagePad_issues,
-         PackagePad_padIsTraversing,
-         PackagePad_annularRing,
-         PackagePad_padNameWithZoneName,
-         PackagePad_zoneName,
-         PackagePad_noZone,
-         PackagePad_zoneAllowsManualRenumbering,
-         PackagePad_slavePadCount,
-         PackagePad_masterPadObjectIndex,
-         PackagePad_objectDisplay,
-         PackagePad_selectionDisplay,
-         PackagePad_padNumberDisplay {
+final class PackagePad : PackageObject
+    // PackagePad_xCenter // Commented out, not used
+    // PackagePad_yCenter // Commented out, not used
+    // PackagePad_width // Commented out, not used
+    // PackagePad_height // Commented out, not used
+    // PackagePad_holeWidth // Commented out, not used
+    // PackagePad_holeHeight // Commented out, not used
+    // PackagePad_padShape // Commented out, not used
+    // PackagePad_padStyle // Commented out, not used
+    // PackagePad_padNumber // Commented out, not used
+    // PackagePad_xCenterUnit // Commented out, not used
+    // PackagePad_yCenterUnit // Commented out, not used
+    // PackagePad_widthUnit // Commented out, not used
+    // PackagePad_heightUnit // Commented out, not used
+    // PackagePad_holeWidthUnit // Commented out, not used
+    // PackagePad_holeHeightUnit // Commented out, not used
+    // PackagePad_annularRingUnit // Commented out, not used
+    // PackagePad_padNameForDisplay // Commented out, not used
+    // PackagePad_issues // Commented out, not used
+    // PackagePad_padIsTraversing // Commented out, not used
+    // PackagePad_annularRing // Commented out, not used
+    // PackagePad_padNameWithZoneName // Commented out, not used
+    // PackagePad_zoneName // Commented out, not used
+    // PackagePad_noZone // Commented out, not used
+    // PackagePad_zoneAllowsManualRenumbering // Commented out, not used
+    // PackagePad_slavePadCount // Commented out, not used
+    , PackagePad_masterPadObjectIndex
+    // PackagePad_objectDisplay // Commented out, not used
+    // PackagePad_selectionDisplay // Commented out, not used
+    , PackagePad_padNumberDisplay
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: xCenter

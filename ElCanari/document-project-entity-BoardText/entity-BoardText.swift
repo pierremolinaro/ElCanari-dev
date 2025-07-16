@@ -6,121 +6,138 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mXUnit : AnyObject {
-  var mXUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mXUnit : AnyObject {
+//   var mXUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mYUnit : AnyObject {
-  var mYUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mYUnit : AnyObject {
+//   var mYUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mFontSize : AnyObject {
-  var mFontSize : Double { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mFontSize : AnyObject {
+//   var mFontSize : Double { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mLayer : AnyObject {
-  var mLayer : BoardTextLayer { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mLayer : AnyObject {
+//   var mLayer : BoardTextLayer { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mText : AnyObject {
-  var mText : String { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mText : AnyObject {
+//   var mText : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mHorizontalAlignment : AnyObject {
-  var mHorizontalAlignment : HorizontalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mHorizontalAlignment : AnyObject {
+//   var mHorizontalAlignment : HorizontalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mVerticalAlignment : AnyObject {
-  var mVerticalAlignment : BoardTextVerticalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mVerticalAlignment : AnyObject {
+//   var mVerticalAlignment : BoardTextVerticalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mRotation : AnyObject {
-  var mRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mRotation : AnyObject {
+//   var mRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mWeight : AnyObject {
-  var mWeight : Double { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mWeight : AnyObject {
+//   var mWeight : Double { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_mOblique : AnyObject {
-  var mOblique : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_mOblique : AnyObject {
+//   var mOblique : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_fontName : AnyObject {
-  var fontName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_fontName : AnyObject {
+//   var fontName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardText_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardText_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardText
 //--------------------------------------------------------------------------------------------------
 
-final class BoardText : BoardObject,
-         BoardText_mX,
-         BoardText_mXUnit,
-         BoardText_mY,
-         BoardText_mYUnit,
-         BoardText_mFontSize,
-         BoardText_mLayer,
-         BoardText_mText,
-         BoardText_mHorizontalAlignment,
-         BoardText_mVerticalAlignment,
-         BoardText_mRotation,
-         BoardText_mWeight,
-         BoardText_mOblique,
-         BoardText_objectDisplay,
-         BoardText_selectionDisplay,
-         BoardText_fontName,
-         BoardText_signatureForERCChecking {
+final class BoardText : BoardObject
+    // BoardText_mX // Commented out, not used
+    // BoardText_mXUnit // Commented out, not used
+    // BoardText_mY // Commented out, not used
+    // BoardText_mYUnit // Commented out, not used
+    // BoardText_mFontSize // Commented out, not used
+    // BoardText_mLayer // Commented out, not used
+    // BoardText_mText // Commented out, not used
+    // BoardText_mHorizontalAlignment // Commented out, not used
+    // BoardText_mVerticalAlignment // Commented out, not used
+    // BoardText_mRotation // Commented out, not used
+    // BoardText_mWeight // Commented out, not used
+    // BoardText_mOblique // Commented out, not used
+    // BoardText_objectDisplay // Commented out, not used
+    // BoardText_selectionDisplay // Commented out, not used
+    // BoardText_fontName // Commented out, not used
+    // BoardText_signatureForERCChecking // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mX

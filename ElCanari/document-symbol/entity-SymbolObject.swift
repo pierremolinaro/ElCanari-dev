@@ -6,15 +6,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolObject_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolObject_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolObject_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolObject_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -26,10 +28,11 @@ import AppKit
 //    Entity: SymbolObject
 //--------------------------------------------------------------------------------------------------
 
-class SymbolObject : EBGraphicManagedObject,
-         SymbolObject_selectionDisplay,
-         SymbolObject_objectDisplay,
-         SymbolObject_issues {
+class SymbolObject : EBGraphicManagedObject
+    // SymbolObject_selectionDisplay // Commented out, not used
+    // SymbolObject_objectDisplay // Commented out, not used
+    , SymbolObject_issues
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Transient property: issues

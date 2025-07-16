@@ -6,135 +6,154 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_y1 : AnyObject {
-  var y1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_y1 : AnyObject {
+//   var y1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_x2 : AnyObject {
-  var x2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_x2 : AnyObject {
+//   var x2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_y2 : AnyObject {
-  var y2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_y2 : AnyObject {
+//   var y2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_xDimension : AnyObject {
-  var xDimension : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_xDimension : AnyObject {
+//   var xDimension : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_yDimension : AnyObject {
-  var yDimension : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_yDimension : AnyObject {
+//   var yDimension : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_x1Unit : AnyObject {
-  var x1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_x1Unit : AnyObject {
+//   var x1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_y1Unit : AnyObject {
-  var y1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_y1Unit : AnyObject {
+//   var y1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_x2Unit : AnyObject {
-  var x2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_x2Unit : AnyObject {
+//   var x2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_y2Unit : AnyObject {
-  var y2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_y2Unit : AnyObject {
+//   var y2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_xDimensionUnit : AnyObject {
-  var xDimensionUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_xDimensionUnit : AnyObject {
+//   var xDimensionUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_yDimensionUnit : AnyObject {
-  var yDimensionUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_yDimensionUnit : AnyObject {
+//   var yDimensionUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_distanceUnit : AnyObject {
-  var distanceUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_distanceUnit : AnyObject {
+//   var distanceUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_drawDimensionBackground : AnyObject {
-  var drawDimensionBackground : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_drawDimensionBackground : AnyObject {
+//   var drawDimensionBackground : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_x1 : AnyObject {
-  var x1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_x1 : AnyObject {
+//   var x1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_distanceInCanariUnit : AnyObject {
-  var distanceInCanariUnit : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_distanceInCanariUnit : AnyObject {
+//   var distanceInCanariUnit : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageDimension_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageDimension_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageDimension
 //--------------------------------------------------------------------------------------------------
 
-final class PackageDimension : PackageObject,
-         PackageDimension_y1,
-         PackageDimension_x2,
-         PackageDimension_y2,
-         PackageDimension_xDimension,
-         PackageDimension_yDimension,
-         PackageDimension_x1Unit,
-         PackageDimension_y1Unit,
-         PackageDimension_x2Unit,
-         PackageDimension_y2Unit,
-         PackageDimension_xDimensionUnit,
-         PackageDimension_yDimensionUnit,
-         PackageDimension_distanceUnit,
-         PackageDimension_drawDimensionBackground,
-         PackageDimension_x1,
-         PackageDimension_distanceInCanariUnit,
-         PackageDimension_objectDisplay,
-         PackageDimension_selectionDisplay,
-         PackageDimension_issues {
+final class PackageDimension : PackageObject
+    // PackageDimension_y1 // Commented out, not used
+    // PackageDimension_x2 // Commented out, not used
+    // PackageDimension_y2 // Commented out, not used
+    // PackageDimension_xDimension // Commented out, not used
+    // PackageDimension_yDimension // Commented out, not used
+    // PackageDimension_x1Unit // Commented out, not used
+    // PackageDimension_y1Unit // Commented out, not used
+    // PackageDimension_x2Unit // Commented out, not used
+    // PackageDimension_y2Unit // Commented out, not used
+    // PackageDimension_xDimensionUnit // Commented out, not used
+    // PackageDimension_yDimensionUnit // Commented out, not used
+    // PackageDimension_distanceUnit // Commented out, not used
+    // PackageDimension_drawDimensionBackground // Commented out, not used
+    // PackageDimension_x1 // Commented out, not used
+    // PackageDimension_distanceInCanariUnit // Commented out, not used
+    // PackageDimension_objectDisplay // Commented out, not used
+    // PackageDimension_selectionDisplay // Commented out, not used
+    // PackageDimension_issues // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y1

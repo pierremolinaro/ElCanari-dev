@@ -6,15 +6,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SchematicObject_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol SchematicObject_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SchematicObject_connectedPoints : AnyObject {
-  var connectedPoints : CanariPointArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol SchematicObject_connectedPoints : AnyObject {
+//   var connectedPoints : CanariPointArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -24,40 +26,45 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SchematicObject_sheetDescriptor : AnyObject {
-  var sheetDescriptor : SchematicSheetDescriptor? { get }
-}
+// Commented out, not used
+// @MainActor protocol SchematicObject_sheetDescriptor : AnyObject {
+//   var sheetDescriptor : SchematicSheetDescriptor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SchematicObject_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SchematicObject_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SchematicObject_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SchematicObject_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SchematicObject_isPlacedInSchematic : AnyObject {
-  var isPlacedInSchematic : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol SchematicObject_isPlacedInSchematic : AnyObject {
+//   var isPlacedInSchematic : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: SchematicObject
 //--------------------------------------------------------------------------------------------------
 
-class SchematicObject : EBGraphicManagedObject,
-         SchematicObject_issues,
-         SchematicObject_connectedPoints,
-         SchematicObject_wires,
-         SchematicObject_sheetDescriptor,
-         SchematicObject_selectionDisplay,
-         SchematicObject_objectDisplay,
-         SchematicObject_isPlacedInSchematic {
+class SchematicObject : EBGraphicManagedObject
+    // SchematicObject_issues // Commented out, not used
+    // SchematicObject_connectedPoints // Commented out, not used
+    , SchematicObject_wires
+    // SchematicObject_sheetDescriptor // Commented out, not used
+    // SchematicObject_selectionDisplay // Commented out, not used
+    // SchematicObject_objectDisplay // Commented out, not used
+    // SchematicObject_isPlacedInSchematic // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To one property: mSheet

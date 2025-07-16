@@ -6,21 +6,24 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MergerBoardInstance_x : AnyObject {
-  var x : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MergerBoardInstance_x : AnyObject {
+//   var x : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MergerBoardInstance_y : AnyObject {
-  var y : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MergerBoardInstance_y : AnyObject {
+//   var y : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MergerBoardInstance_instanceRotation : AnyObject {
-  var instanceRotation : QuadrantRotation { get }
-}
+// Commented out, not used
+// @MainActor protocol MergerBoardInstance_instanceRotation : AnyObject {
+//   var instanceRotation : QuadrantRotation { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,9 +33,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MergerBoardInstance_modelName : AnyObject {
-  var modelName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol MergerBoardInstance_modelName : AnyObject {
+//   var modelName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,29 +46,32 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MergerBoardInstance_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol MergerBoardInstance_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MergerBoardInstance_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol MergerBoardInstance_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: MergerBoardInstance
 //--------------------------------------------------------------------------------------------------
 
-final class MergerBoardInstance : EBGraphicManagedObject,
-         MergerBoardInstance_x,
-         MergerBoardInstance_y,
-         MergerBoardInstance_instanceRotation,
-         MergerBoardInstance_instanceRect,
-         MergerBoardInstance_modelName,
-         MergerBoardInstance_boardLimitWidth,
-         MergerBoardInstance_objectDisplay,
-         MergerBoardInstance_selectionDisplay {
+final class MergerBoardInstance : EBGraphicManagedObject
+    // MergerBoardInstance_x // Commented out, not used
+    // MergerBoardInstance_y // Commented out, not used
+    // MergerBoardInstance_instanceRotation // Commented out, not used
+    , MergerBoardInstance_instanceRect
+    // MergerBoardInstance_modelName // Commented out, not used
+    , MergerBoardInstance_boardLimitWidth
+    // MergerBoardInstance_objectDisplay // Commented out, not used
+    // MergerBoardInstance_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: x

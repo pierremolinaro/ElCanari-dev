@@ -8,7 +8,8 @@ import AppKit
 //    Entity: DevicePinInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DevicePinInProject : EBManagedObject {
+final class DevicePinInProject : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mPinName

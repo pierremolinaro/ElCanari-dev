@@ -6,9 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_mFileSystemStatusMessageForFontInProject : AnyObject {
-  var mFileSystemStatusMessageForFontInProject : String { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_mFileSystemStatusMessageForFontInProject : AnyObject {
+//   var mFileSystemStatusMessageForFontInProject : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,9 +19,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_mNominalSize : AnyObject {
-  var mNominalSize : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_mNominalSize : AnyObject {
+//   var mNominalSize : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,45 +32,52 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_mFontVersion : AnyObject {
-  var mFontVersion : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_mFontVersion : AnyObject {
+//   var mFontVersion : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_mDescriptiveString : AnyObject {
-  var mDescriptiveString : String { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_mDescriptiveString : AnyObject {
+//   var mDescriptiveString : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_versionString : AnyObject {
-  var versionString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_versionString : AnyObject {
+//   var versionString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_sizeString : AnyObject {
-  var sizeString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_sizeString : AnyObject {
+//   var sizeString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_descriptor : AnyObject {
-  var descriptor : BoardFontDescriptor? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_descriptor : AnyObject {
+//   var descriptor : BoardFontDescriptor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_textCount : AnyObject {
-  var textCount : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_textCount : AnyObject {
+//   var textCount : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_fileSystemStatusImage : AnyObject {
-  var fileSystemStatusImage : NSImage? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_fileSystemStatusImage : AnyObject {
+//   var fileSystemStatusImage : NSImage? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -78,35 +87,38 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_componentNamesCount : AnyObject {
-  var componentNamesCount : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_componentNamesCount : AnyObject {
+//   var componentNamesCount : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol FontInProject_componentValuesCount : AnyObject {
-  var componentValuesCount : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol FontInProject_componentValuesCount : AnyObject {
+//   var componentValuesCount : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: FontInProject
 //--------------------------------------------------------------------------------------------------
 
-final class FontInProject : EBManagedObject,
-         FontInProject_mFileSystemStatusMessageForFontInProject,
-         FontInProject_mFileSystemStatusRequiresAttentionForFontInProject,
-         FontInProject_mNominalSize,
-         FontInProject_mFontName,
-         FontInProject_mFontVersion,
-         FontInProject_mDescriptiveString,
-         FontInProject_versionString,
-         FontInProject_sizeString,
-         FontInProject_descriptor,
-         FontInProject_textCount,
-         FontInProject_fileSystemStatusImage,
-         FontInProject_canRemoveFont,
-         FontInProject_componentNamesCount,
-         FontInProject_componentValuesCount {
+final class FontInProject : EBManagedObject
+    // FontInProject_mFileSystemStatusMessageForFontInProject // Commented out, not used
+    , FontInProject_mFileSystemStatusRequiresAttentionForFontInProject
+    // FontInProject_mNominalSize // Commented out, not used
+    , FontInProject_mFontName
+    // FontInProject_mFontVersion // Commented out, not used
+    // FontInProject_mDescriptiveString // Commented out, not used
+    // FontInProject_versionString // Commented out, not used
+    // FontInProject_sizeString // Commented out, not used
+    // FontInProject_descriptor // Commented out, not used
+    // FontInProject_textCount // Commented out, not used
+    // FontInProject_fileSystemStatusImage // Commented out, not used
+    , FontInProject_canRemoveFont
+    // FontInProject_componentNamesCount // Commented out, not used
+    // FontInProject_componentValuesCount // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mTexts

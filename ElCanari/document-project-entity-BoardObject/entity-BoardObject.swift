@@ -6,9 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_isPlacedInBoard : AnyObject {
-  var isPlacedInBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_isPlacedInBoard : AnyObject {
+//   var isPlacedInBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -48,117 +49,136 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayFrontLegendForBoard : AnyObject {
-  var displayFrontLegendForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayFrontLegendForBoard : AnyObject {
+//   var displayFrontLegendForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayBackLegendForBoard : AnyObject {
-  var displayBackLegendForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayBackLegendForBoard : AnyObject {
+//   var displayBackLegendForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayFrontLayoutForBoard : AnyObject {
-  var displayFrontLayoutForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayFrontLayoutForBoard : AnyObject {
+//   var displayFrontLayoutForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayBackLayoutForBoard : AnyObject {
-  var displayBackLayoutForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayBackLayoutForBoard : AnyObject {
+//   var displayBackLayoutForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner1LayoutForBoard : AnyObject {
-  var displayInner1LayoutForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner1LayoutForBoard : AnyObject {
+//   var displayInner1LayoutForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner2LayoutForBoard : AnyObject {
-  var displayInner2LayoutForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner2LayoutForBoard : AnyObject {
+//   var displayInner2LayoutForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner3LayoutForBoard : AnyObject {
-  var displayInner3LayoutForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner3LayoutForBoard : AnyObject {
+//   var displayInner3LayoutForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner4LayoutForBoard : AnyObject {
-  var displayInner4LayoutForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner4LayoutForBoard : AnyObject {
+//   var displayInner4LayoutForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayFrontPadsForBoard : AnyObject {
-  var displayFrontPadsForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayFrontPadsForBoard : AnyObject {
+//   var displayFrontPadsForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayBackPadsForBoard : AnyObject {
-  var displayBackPadsForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayBackPadsForBoard : AnyObject {
+//   var displayBackPadsForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayPadNumbersForBoard : AnyObject {
-  var displayPadNumbersForBoard : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayPadNumbersForBoard : AnyObject {
+//   var displayPadNumbersForBoard : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayFrontRestrictRectangles : AnyObject {
-  var displayFrontRestrictRectangles : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayFrontRestrictRectangles : AnyObject {
+//   var displayFrontRestrictRectangles : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayBackRestrictRectangles : AnyObject {
-  var displayBackRestrictRectangles : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayBackRestrictRectangles : AnyObject {
+//   var displayBackRestrictRectangles : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner1RestrictRectangles : AnyObject {
-  var displayInner1RestrictRectangles : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner1RestrictRectangles : AnyObject {
+//   var displayInner1RestrictRectangles : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner2RestrictRectangles : AnyObject {
-  var displayInner2RestrictRectangles : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner2RestrictRectangles : AnyObject {
+//   var displayInner2RestrictRectangles : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner3RestrictRectangles : AnyObject {
-  var displayInner3RestrictRectangles : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner3RestrictRectangles : AnyObject {
+//   var displayInner3RestrictRectangles : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_displayInner4RestrictRectangles : AnyObject {
-  var displayInner4RestrictRectangles : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_displayInner4RestrictRectangles : AnyObject {
+//   var displayInner4RestrictRectangles : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
-  var packageDrawingWidthMultpliedByTenForBoard : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
+//   var packageDrawingWidthMultpliedByTenForBoard : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -168,9 +188,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardObject_errorOrWarningIssueSize : AnyObject {
-  var errorOrWarningIssueSize : Double? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardObject_errorOrWarningIssueSize : AnyObject {
+//   var errorOrWarningIssueSize : Double? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -182,36 +203,37 @@ import AppKit
 //    Entity: BoardObject
 //--------------------------------------------------------------------------------------------------
 
-class BoardObject : EBGraphicManagedObject,
-         BoardObject_isPlacedInBoard,
-         BoardObject_issues,
-         BoardObject_isVia,
-         BoardObject_trackLengthInCanariUnit,
-         BoardObject_signatureForERCChecking,
-         BoardObject_netNameAndPadLocation,
-         BoardObject_componentName,
-         BoardObject_displayFrontLegendForBoard,
-         BoardObject_displayBackLegendForBoard,
-         BoardObject_displayFrontLayoutForBoard,
-         BoardObject_displayBackLayoutForBoard,
-         BoardObject_displayInner1LayoutForBoard,
-         BoardObject_displayInner2LayoutForBoard,
-         BoardObject_displayInner3LayoutForBoard,
-         BoardObject_displayInner4LayoutForBoard,
-         BoardObject_displayFrontPadsForBoard,
-         BoardObject_displayBackPadsForBoard,
-         BoardObject_displayPadNumbersForBoard,
-         BoardObject_displayFrontRestrictRectangles,
-         BoardObject_displayBackRestrictRectangles,
-         BoardObject_displayInner1RestrictRectangles,
-         BoardObject_displayInner2RestrictRectangles,
-         BoardObject_displayInner3RestrictRectangles,
-         BoardObject_displayInner4RestrictRectangles,
-         BoardObject_packageDrawingWidthMultpliedByTenForBoard,
-         BoardObject_selectionDisplay,
-         BoardObject_objectDisplay,
-         BoardObject_errorOrWarningIssueSize,
-         BoardObject_trackSide {
+class BoardObject : EBGraphicManagedObject
+    // BoardObject_isPlacedInBoard // Commented out, not used
+    , BoardObject_issues
+    , BoardObject_isVia
+    , BoardObject_trackLengthInCanariUnit
+    , BoardObject_signatureForERCChecking
+    , BoardObject_netNameAndPadLocation
+    , BoardObject_componentName
+    // BoardObject_displayFrontLegendForBoard // Commented out, not used
+    // BoardObject_displayBackLegendForBoard // Commented out, not used
+    // BoardObject_displayFrontLayoutForBoard // Commented out, not used
+    // BoardObject_displayBackLayoutForBoard // Commented out, not used
+    // BoardObject_displayInner1LayoutForBoard // Commented out, not used
+    // BoardObject_displayInner2LayoutForBoard // Commented out, not used
+    // BoardObject_displayInner3LayoutForBoard // Commented out, not used
+    // BoardObject_displayInner4LayoutForBoard // Commented out, not used
+    // BoardObject_displayFrontPadsForBoard // Commented out, not used
+    // BoardObject_displayBackPadsForBoard // Commented out, not used
+    // BoardObject_displayPadNumbersForBoard // Commented out, not used
+    // BoardObject_displayFrontRestrictRectangles // Commented out, not used
+    // BoardObject_displayBackRestrictRectangles // Commented out, not used
+    // BoardObject_displayInner1RestrictRectangles // Commented out, not used
+    // BoardObject_displayInner2RestrictRectangles // Commented out, not used
+    // BoardObject_displayInner3RestrictRectangles // Commented out, not used
+    // BoardObject_displayInner4RestrictRectangles // Commented out, not used
+    // BoardObject_packageDrawingWidthMultpliedByTenForBoard // Commented out, not used
+    // BoardObject_selectionDisplay // Commented out, not used
+    , BoardObject_objectDisplay
+    // BoardObject_errorOrWarningIssueSize // Commented out, not used
+    , BoardObject_trackSide
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To one property: mRoot

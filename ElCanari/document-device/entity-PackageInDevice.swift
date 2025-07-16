@@ -6,9 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_mFileSystemStatusMessageForPackageInDevice : AnyObject {
-  var mFileSystemStatusMessageForPackageInDevice : String { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_mFileSystemStatusMessageForPackageInDevice : AnyObject {
+//   var mFileSystemStatusMessageForPackageInDevice : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,9 +19,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_mFileData : AnyObject {
-  var mFileData : Data { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_mFileData : AnyObject {
+//   var mFileData : Data { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -36,63 +38,73 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_mStrokeBezierPath : AnyObject {
-  var mStrokeBezierPath : NSBezierPath { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_mStrokeBezierPath : AnyObject {
+//   var mStrokeBezierPath : NSBezierPath { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_versionString : AnyObject {
-  var versionString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_versionString : AnyObject {
+//   var versionString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_documentSize : AnyObject {
-  var documentSize : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_documentSize : AnyObject {
+//   var documentSize : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_fileSystemStatusImage : AnyObject {
-  var fileSystemStatusImage : NSImage? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_fileSystemStatusImage : AnyObject {
+//   var fileSystemStatusImage : NSImage? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_frontSidePadFilledBezierPathArray : AnyObject {
-  var frontSidePadFilledBezierPathArray : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_frontSidePadFilledBezierPathArray : AnyObject {
+//   var frontSidePadFilledBezierPathArray : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_backSidePadFilledBezierPathArray : AnyObject {
-  var backSidePadFilledBezierPathArray : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_backSidePadFilledBezierPathArray : AnyObject {
+//   var backSidePadFilledBezierPathArray : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageInDevice_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageInDevice_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -104,23 +116,24 @@ import AppKit
 //    Entity: PackageInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class PackageInDevice : EBGraphicManagedObject,
-         PackageInDevice_mFileSystemStatusMessageForPackageInDevice,
-         PackageInDevice_mFileSystemStatusRequiresAttentionForPackageInDevice,
-         PackageInDevice_mFileData,
-         PackageInDevice_mName,
-         PackageInDevice_mVersion,
-         PackageInDevice_mStrokeBezierPath,
-         PackageInDevice_mX,
-         PackageInDevice_mY,
-         PackageInDevice_versionString,
-         PackageInDevice_documentSize,
-         PackageInDevice_fileSystemStatusImage,
-         PackageInDevice_frontSidePadFilledBezierPathArray,
-         PackageInDevice_backSidePadFilledBezierPathArray,
-         PackageInDevice_objectDisplay,
-         PackageInDevice_selectionDisplay,
-         PackageInDevice_padNameSet {
+final class PackageInDevice : EBGraphicManagedObject
+    // PackageInDevice_mFileSystemStatusMessageForPackageInDevice // Commented out, not used
+    , PackageInDevice_mFileSystemStatusRequiresAttentionForPackageInDevice
+    // PackageInDevice_mFileData // Commented out, not used
+    , PackageInDevice_mName
+    , PackageInDevice_mVersion
+    // PackageInDevice_mStrokeBezierPath // Commented out, not used
+    // PackageInDevice_mX // Commented out, not used
+    // PackageInDevice_mY // Commented out, not used
+    // PackageInDevice_versionString // Commented out, not used
+    // PackageInDevice_documentSize // Commented out, not used
+    // PackageInDevice_fileSystemStatusImage // Commented out, not used
+    // PackageInDevice_frontSidePadFilledBezierPathArray // Commented out, not used
+    // PackageInDevice_backSidePadFilledBezierPathArray // Commented out, not used
+    // PackageInDevice_objectDisplay // Commented out, not used
+    // PackageInDevice_selectionDisplay // Commented out, not used
+    , PackageInDevice_padNameSet
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mFileSystemStatusMessageForPackageInDevice

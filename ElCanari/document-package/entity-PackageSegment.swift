@@ -6,107 +6,122 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_y1 : AnyObject {
-  var y1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_y1 : AnyObject {
+//   var y1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_x2 : AnyObject {
-  var x2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_x2 : AnyObject {
+//   var x2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_y2 : AnyObject {
-  var y2 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_y2 : AnyObject {
+//   var y2 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_x1Unit : AnyObject {
-  var x1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_x1Unit : AnyObject {
+//   var x1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_y1Unit : AnyObject {
-  var y1Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_y1Unit : AnyObject {
+//   var y1Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_x2Unit : AnyObject {
-  var x2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_x2Unit : AnyObject {
+//   var x2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_y2Unit : AnyObject {
-  var y2Unit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_y2Unit : AnyObject {
+//   var y2Unit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_lengthUnit : AnyObject {
-  var lengthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_lengthUnit : AnyObject {
+//   var lengthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_x1 : AnyObject {
-  var x1 : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_x1 : AnyObject {
+//   var x1 : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_strokeBezierPath : AnyObject {
-  var strokeBezierPath : NSBezierPath? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_strokeBezierPath : AnyObject {
+//   var strokeBezierPath : NSBezierPath? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageSegment_lengthInCanariUnit : AnyObject {
-  var lengthInCanariUnit : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageSegment_lengthInCanariUnit : AnyObject {
+//   var lengthInCanariUnit : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageSegment
 //--------------------------------------------------------------------------------------------------
 
-final class PackageSegment : PackageObject,
-         PackageSegment_y1,
-         PackageSegment_x2,
-         PackageSegment_y2,
-         PackageSegment_x1Unit,
-         PackageSegment_y1Unit,
-         PackageSegment_x2Unit,
-         PackageSegment_y2Unit,
-         PackageSegment_lengthUnit,
-         PackageSegment_x1,
-         PackageSegment_strokeBezierPath,
-         PackageSegment_objectDisplay,
-         PackageSegment_selectionDisplay,
-         PackageSegment_issues,
-         PackageSegment_lengthInCanariUnit {
+final class PackageSegment : PackageObject
+    // PackageSegment_y1 // Commented out, not used
+    // PackageSegment_x2 // Commented out, not used
+    // PackageSegment_y2 // Commented out, not used
+    // PackageSegment_x1Unit // Commented out, not used
+    // PackageSegment_y1Unit // Commented out, not used
+    // PackageSegment_x2Unit // Commented out, not used
+    // PackageSegment_y2Unit // Commented out, not used
+    // PackageSegment_lengthUnit // Commented out, not used
+    // PackageSegment_x1 // Commented out, not used
+    // PackageSegment_strokeBezierPath // Commented out, not used
+    // PackageSegment_objectDisplay // Commented out, not used
+    // PackageSegment_selectionDisplay // Commented out, not used
+    // PackageSegment_issues // Commented out, not used
+    // PackageSegment_lengthInCanariUnit // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y1

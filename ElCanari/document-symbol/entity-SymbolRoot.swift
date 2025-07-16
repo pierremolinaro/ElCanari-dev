@@ -8,7 +8,8 @@ import AppKit
 //    Entity: SymbolRoot
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolRoot : EBManagedObject {
+final class SymbolRoot : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: selectedInspector

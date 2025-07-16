@@ -8,7 +8,8 @@ import AppKit
 //    Entity: ProjectRoot
 //--------------------------------------------------------------------------------------------------
 
-final class ProjectRoot : EBManagedObject {
+final class ProjectRoot : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mArtworkName

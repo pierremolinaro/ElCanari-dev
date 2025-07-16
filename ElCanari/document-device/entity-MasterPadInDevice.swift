@@ -6,51 +6,59 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mCenterX : AnyObject {
-  var mCenterX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mCenterX : AnyObject {
+//   var mCenterX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mCenterY : AnyObject {
-  var mCenterY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mCenterY : AnyObject {
+//   var mCenterY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mWidth : AnyObject {
-  var mWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mWidth : AnyObject {
+//   var mWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mHeight : AnyObject {
-  var mHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mHeight : AnyObject {
+//   var mHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mHoleWidth : AnyObject {
-  var mHoleWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mHoleWidth : AnyObject {
+//   var mHoleWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mHoleHeight : AnyObject {
-  var mHoleHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mHoleHeight : AnyObject {
+//   var mHoleHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mShape : AnyObject {
-  var mShape : PadShape { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mShape : AnyObject {
+//   var mShape : PadShape { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MasterPadInDevice_mStyle : AnyObject {
-  var mStyle : PadStyle { get }
-}
+// Commented out, not used
+// @MainActor protocol MasterPadInDevice_mStyle : AnyObject {
+//   var mStyle : PadStyle { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -80,19 +88,20 @@ import AppKit
 //    Entity: MasterPadInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class MasterPadInDevice : EBManagedObject,
-         MasterPadInDevice_mCenterX,
-         MasterPadInDevice_mCenterY,
-         MasterPadInDevice_mWidth,
-         MasterPadInDevice_mHeight,
-         MasterPadInDevice_mHoleWidth,
-         MasterPadInDevice_mHoleHeight,
-         MasterPadInDevice_mShape,
-         MasterPadInDevice_mStyle,
-         MasterPadInDevice_mName,
-         MasterPadInDevice_padNumberDisplay,
-         MasterPadInDevice_frontSideFilledBezierPathArray,
-         MasterPadInDevice_backSideFilledBezierPathArray {
+final class MasterPadInDevice : EBManagedObject
+    // MasterPadInDevice_mCenterX // Commented out, not used
+    // MasterPadInDevice_mCenterY // Commented out, not used
+    // MasterPadInDevice_mWidth // Commented out, not used
+    // MasterPadInDevice_mHeight // Commented out, not used
+    // MasterPadInDevice_mHoleWidth // Commented out, not used
+    // MasterPadInDevice_mHoleHeight // Commented out, not used
+    // MasterPadInDevice_mShape // Commented out, not used
+    // MasterPadInDevice_mStyle // Commented out, not used
+    , MasterPadInDevice_mName
+    , MasterPadInDevice_padNumberDisplay
+    , MasterPadInDevice_frontSideFilledBezierPathArray
+    , MasterPadInDevice_backSideFilledBezierPathArray
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mCenterX

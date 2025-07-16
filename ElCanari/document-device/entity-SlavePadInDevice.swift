@@ -6,51 +6,59 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mCenterX : AnyObject {
-  var mCenterX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mCenterX : AnyObject {
+//   var mCenterX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mCenterY : AnyObject {
-  var mCenterY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mCenterY : AnyObject {
+//   var mCenterY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mWidth : AnyObject {
-  var mWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mWidth : AnyObject {
+//   var mWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mHeight : AnyObject {
-  var mHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mHeight : AnyObject {
+//   var mHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mHoleWidth : AnyObject {
-  var mHoleWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mHoleWidth : AnyObject {
+//   var mHoleWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mHoleHeight : AnyObject {
-  var mHoleHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mHoleHeight : AnyObject {
+//   var mHoleHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mShape : AnyObject {
-  var mShape : PadShape { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mShape : AnyObject {
+//   var mShape : PadShape { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_mStyle : AnyObject {
-  var mStyle : SlavePadStyle { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_mStyle : AnyObject {
+//   var mStyle : SlavePadStyle { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -66,26 +74,28 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SlavePadInDevice_padNumberDisplay : AnyObject {
-  var padNumberDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SlavePadInDevice_padNumberDisplay : AnyObject {
+//   var padNumberDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: SlavePadInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class SlavePadInDevice : EBManagedObject,
-         SlavePadInDevice_mCenterX,
-         SlavePadInDevice_mCenterY,
-         SlavePadInDevice_mWidth,
-         SlavePadInDevice_mHeight,
-         SlavePadInDevice_mHoleWidth,
-         SlavePadInDevice_mHoleHeight,
-         SlavePadInDevice_mShape,
-         SlavePadInDevice_mStyle,
-         SlavePadInDevice_frontSideFilledBezierPath,
-         SlavePadInDevice_backSideFilledBezierPath,
-         SlavePadInDevice_padNumberDisplay {
+final class SlavePadInDevice : EBManagedObject
+    // SlavePadInDevice_mCenterX // Commented out, not used
+    // SlavePadInDevice_mCenterY // Commented out, not used
+    // SlavePadInDevice_mWidth // Commented out, not used
+    // SlavePadInDevice_mHeight // Commented out, not used
+    // SlavePadInDevice_mHoleWidth // Commented out, not used
+    // SlavePadInDevice_mHoleHeight // Commented out, not used
+    // SlavePadInDevice_mShape // Commented out, not used
+    // SlavePadInDevice_mStyle // Commented out, not used
+    , SlavePadInDevice_frontSideFilledBezierPath
+    , SlavePadInDevice_backSideFilledBezierPath
+    // SlavePadInDevice_padNumberDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mCenterX

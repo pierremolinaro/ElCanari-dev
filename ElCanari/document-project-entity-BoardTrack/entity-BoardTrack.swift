@@ -12,93 +12,108 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mDefaultTrackWidthUnit : AnyObject {
-  var mDefaultTrackWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mDefaultTrackWidthUnit : AnyObject {
+//   var mDefaultTrackWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mCustomTrackWidth : AnyObject {
-  var mCustomTrackWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mCustomTrackWidth : AnyObject {
+//   var mCustomTrackWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mCustomTrackWidthUnit : AnyObject {
-  var mCustomTrackWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mCustomTrackWidthUnit : AnyObject {
+//   var mCustomTrackWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mUsesCustomTrackWidth : AnyObject {
-  var mUsesCustomTrackWidth : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mUsesCustomTrackWidth : AnyObject {
+//   var mUsesCustomTrackWidth : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mIsPreservedByAutoRouter : AnyObject {
-  var mIsPreservedByAutoRouter : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mIsPreservedByAutoRouter : AnyObject {
+//   var mIsPreservedByAutoRouter : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mP1XUnit : AnyObject {
-  var mP1XUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mP1XUnit : AnyObject {
+//   var mP1XUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mP1YUnit : AnyObject {
-  var mP1YUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mP1YUnit : AnyObject {
+//   var mP1YUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mP2XUnit : AnyObject {
-  var mP2XUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mP2XUnit : AnyObject {
+//   var mP2XUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mP2YUnit : AnyObject {
-  var mP2YUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mP2YUnit : AnyObject {
+//   var mP2YUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mManualLockP1 : AnyObject {
-  var mManualLockP1 : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mManualLockP1 : AnyObject {
+//   var mManualLockP1 : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mManualLockP2 : AnyObject {
-  var mManualLockP2 : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mManualLockP2 : AnyObject {
+//   var mManualLockP2 : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mAddedToSolderMask : AnyObject {
-  var mAddedToSolderMask : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mAddedToSolderMask : AnyObject {
+//   var mAddedToSolderMask : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mEndStyle : AnyObject {
-  var mEndStyle : TrackEndStyle { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mEndStyle : AnyObject {
+//   var mEndStyle : TrackEndStyle { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_mDirectionLockOnKnobDragging : AnyObject {
-  var mDirectionLockOnKnobDragging : TrackLockDirection { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_mDirectionLockOnKnobDragging : AnyObject {
+//   var mDirectionLockOnKnobDragging : TrackLockDirection { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_actualTrackWidth : AnyObject {
-  var actualTrackWidth : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_actualTrackWidth : AnyObject {
+//   var actualTrackWidth : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -114,9 +129,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_netClassTrackWidth : AnyObject {
-  var netClassTrackWidth : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_netClassTrackWidth : AnyObject {
+//   var netClassTrackWidth : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -132,107 +148,119 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_trackLengthInCanariUnit : AnyObject {
-  var trackLengthInCanariUnit : Double? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_trackLengthInCanariUnit : AnyObject {
+//   var trackLengthInCanariUnit : Double? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_trackSide : AnyObject {
-  var trackSide : TrackSide? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_trackSide : AnyObject {
+//   var trackSide : TrackSide? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_trackIsOnFrontOrBackLayer : AnyObject {
-  var trackIsOnFrontOrBackLayer : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_trackIsOnFrontOrBackLayer : AnyObject {
+//   var trackIsOnFrontOrBackLayer : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_p1ConnectedToSomePad : AnyObject {
-  var p1ConnectedToSomePad : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_p1ConnectedToSomePad : AnyObject {
+//   var p1ConnectedToSomePad : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_p2ConnectedToSomePad : AnyObject {
-  var p2ConnectedToSomePad : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_p2ConnectedToSomePad : AnyObject {
+//   var p2ConnectedToSomePad : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_p1CanMove : AnyObject {
-  var p1CanMove : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_p1CanMove : AnyObject {
+//   var p1CanMove : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_p2CanMove : AnyObject {
-  var p2CanMove : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_p2CanMove : AnyObject {
+//   var p2CanMove : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_trackCanRotate : AnyObject {
-  var trackCanRotate : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_trackCanRotate : AnyObject {
+//   var trackCanRotate : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardTrack_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardTrack_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardTrack
 //--------------------------------------------------------------------------------------------------
 
-final class BoardTrack : BoardObject,
-         BoardTrack_mSide,
-         BoardTrack_mDefaultTrackWidthUnit,
-         BoardTrack_mCustomTrackWidth,
-         BoardTrack_mCustomTrackWidthUnit,
-         BoardTrack_mUsesCustomTrackWidth,
-         BoardTrack_mIsPreservedByAutoRouter,
-         BoardTrack_mP1XUnit,
-         BoardTrack_mP1YUnit,
-         BoardTrack_mP2XUnit,
-         BoardTrack_mP2YUnit,
-         BoardTrack_mManualLockP1,
-         BoardTrack_mManualLockP2,
-         BoardTrack_mAddedToSolderMask,
-         BoardTrack_mEndStyle,
-         BoardTrack_mDirectionLockOnKnobDragging,
-         BoardTrack_actualTrackWidth,
-         BoardTrack_netName,
-         BoardTrack_netClassName,
-         BoardTrack_netClassTrackWidth,
-         BoardTrack_netClassViaHoleDiameter,
-         BoardTrack_netClassViaPadDiameter,
-         BoardTrack_trackLengthInCanariUnit,
-         BoardTrack_trackSide,
-         BoardTrack_trackIsOnFrontOrBackLayer,
-         BoardTrack_signatureForERCChecking,
-         BoardTrack_p1ConnectedToSomePad,
-         BoardTrack_p2ConnectedToSomePad,
-         BoardTrack_objectDisplay,
-         BoardTrack_p1CanMove,
-         BoardTrack_p2CanMove,
-         BoardTrack_trackCanRotate,
-         BoardTrack_selectionDisplay {
+final class BoardTrack : BoardObject
+    , BoardTrack_mSide
+    // BoardTrack_mDefaultTrackWidthUnit // Commented out, not used
+    // BoardTrack_mCustomTrackWidth // Commented out, not used
+    // BoardTrack_mCustomTrackWidthUnit // Commented out, not used
+    // BoardTrack_mUsesCustomTrackWidth // Commented out, not used
+    // BoardTrack_mIsPreservedByAutoRouter // Commented out, not used
+    // BoardTrack_mP1XUnit // Commented out, not used
+    // BoardTrack_mP1YUnit // Commented out, not used
+    // BoardTrack_mP2XUnit // Commented out, not used
+    // BoardTrack_mP2YUnit // Commented out, not used
+    // BoardTrack_mManualLockP1 // Commented out, not used
+    // BoardTrack_mManualLockP2 // Commented out, not used
+    // BoardTrack_mAddedToSolderMask // Commented out, not used
+    // BoardTrack_mEndStyle // Commented out, not used
+    // BoardTrack_mDirectionLockOnKnobDragging // Commented out, not used
+    // BoardTrack_actualTrackWidth // Commented out, not used
+    , BoardTrack_netName
+    , BoardTrack_netClassName
+    // BoardTrack_netClassTrackWidth // Commented out, not used
+    , BoardTrack_netClassViaHoleDiameter
+    , BoardTrack_netClassViaPadDiameter
+    // BoardTrack_trackLengthInCanariUnit // Commented out, not used
+    // BoardTrack_trackSide // Commented out, not used
+    // BoardTrack_trackIsOnFrontOrBackLayer // Commented out, not used
+    // BoardTrack_signatureForERCChecking // Commented out, not used
+    // BoardTrack_p1ConnectedToSomePad // Commented out, not used
+    // BoardTrack_p2ConnectedToSomePad // Commented out, not used
+    // BoardTrack_objectDisplay // Commented out, not used
+    // BoardTrack_p1CanMove // Commented out, not used
+    // BoardTrack_p2CanMove // Commented out, not used
+    // BoardTrack_trackCanRotate // Commented out, not used
+    // BoardTrack_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mSide

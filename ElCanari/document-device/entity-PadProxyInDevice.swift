@@ -18,9 +18,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PadProxyInDevice_mIsNC : AnyObject {
-  var mIsNC : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol PadProxyInDevice_mIsNC : AnyObject {
+//   var mIsNC : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,12 +39,13 @@ import AppKit
 //    Entity: PadProxyInDevice
 //--------------------------------------------------------------------------------------------------
 
-final class PadProxyInDevice : EBManagedObject,
-         PadProxyInDevice_mPinInstanceName,
-         PadProxyInDevice_mPadName,
-         PadProxyInDevice_mIsNC,
-         PadProxyInDevice_isConnected,
-         PadProxyInDevice_symbolName {
+final class PadProxyInDevice : EBManagedObject
+    , PadProxyInDevice_mPinInstanceName
+    , PadProxyInDevice_mPadName
+    // PadProxyInDevice_mIsNC // Commented out, not used
+    , PadProxyInDevice_isConnected
+    , PadProxyInDevice_symbolName
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mPinInstanceName

@@ -6,86 +6,98 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mColor : AnyObject {
-  var mColor : NSColor { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mColor : AnyObject {
+//   var mColor : NSColor { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mSize : AnyObject {
-  var mSize : Double { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mSize : AnyObject {
+//   var mSize : Double { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mHorizontalAlignment : AnyObject {
-  var mHorizontalAlignment : HorizontalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mHorizontalAlignment : AnyObject {
+//   var mHorizontalAlignment : HorizontalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mVerticalAlignment : AnyObject {
-  var mVerticalAlignment : VerticalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mVerticalAlignment : AnyObject {
+//   var mVerticalAlignment : VerticalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mRotation : AnyObject {
-  var mRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mRotation : AnyObject {
+//   var mRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mBold : AnyObject {
-  var mBold : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mBold : AnyObject {
+//   var mBold : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_mComment : AnyObject {
-  var mComment : String { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_mComment : AnyObject {
+//   var mComment : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CommentInSchematic_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol CommentInSchematic_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: CommentInSchematic
 //--------------------------------------------------------------------------------------------------
 
-final class CommentInSchematic : SchematicObject,
-         CommentInSchematic_mColor,
-         CommentInSchematic_mSize,
-         CommentInSchematic_mHorizontalAlignment,
-         CommentInSchematic_mVerticalAlignment,
-         CommentInSchematic_mRotation,
-         CommentInSchematic_mBold,
-         CommentInSchematic_mX,
-         CommentInSchematic_mY,
-         CommentInSchematic_mComment,
-         CommentInSchematic_objectDisplay,
-         CommentInSchematic_selectionDisplay {
+final class CommentInSchematic : SchematicObject
+    // CommentInSchematic_mColor // Commented out, not used
+    // CommentInSchematic_mSize // Commented out, not used
+    // CommentInSchematic_mHorizontalAlignment // Commented out, not used
+    // CommentInSchematic_mVerticalAlignment // Commented out, not used
+    // CommentInSchematic_mRotation // Commented out, not used
+    // CommentInSchematic_mBold // Commented out, not used
+    // CommentInSchematic_mX // Commented out, not used
+    // CommentInSchematic_mY // Commented out, not used
+    // CommentInSchematic_mComment // Commented out, not used
+    // CommentInSchematic_objectDisplay // Commented out, not used
+    // CommentInSchematic_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mColor

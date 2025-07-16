@@ -6,63 +6,73 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_mSymbolPinName : AnyObject {
-  var mSymbolPinName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_mSymbolPinName : AnyObject {
+//   var mSymbolPinName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_location : AnyObject {
-  var location : CanariPoint? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_location : AnyObject {
+//   var location : CanariPoint? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_netName : AnyObject {
-  var netName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_netName : AnyObject {
+//   var netName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_netClassName : AnyObject {
-  var netClassName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_netClassName : AnyObject {
+//   var netClassName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_hasNet : AnyObject {
-  var hasNet : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_hasNet : AnyObject {
+//   var hasNet : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_canMove : AnyObject {
-  var canMove : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_canMove : AnyObject {
+//   var canMove : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_wireColor : AnyObject {
-  var wireColor : NSColor? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_wireColor : AnyObject {
+//   var wireColor : NSColor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_symbolRotation : AnyObject {
-  var symbolRotation : QuadrantRotation? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_symbolRotation : AnyObject {
+//   var symbolRotation : QuadrantRotation? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -72,9 +82,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PointInSchematic_isConnected : AnyObject {
-  var isConnected : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol PointInSchematic_isConnected : AnyObject {
+//   var isConnected : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -98,22 +109,23 @@ import AppKit
 //    Entity: PointInSchematic
 //--------------------------------------------------------------------------------------------------
 
-final class PointInSchematic : EBManagedObject,
-         PointInSchematic_mSymbolPinName,
-         PointInSchematic_mX,
-         PointInSchematic_mY,
-         PointInSchematic_location,
-         PointInSchematic_netName,
-         PointInSchematic_netClassName,
-         PointInSchematic_hasNet,
-         PointInSchematic_canMove,
-         PointInSchematic_wireColor,
-         PointInSchematic_symbolRotation,
-         PointInSchematic_symbolNameNetName,
-         PointInSchematic_isConnected,
-         PointInSchematic_status,
-         PointInSchematic_connectedPoints,
-         PointInSchematic_netInfoForPoint {
+final class PointInSchematic : EBManagedObject
+    // PointInSchematic_mSymbolPinName // Commented out, not used
+    // PointInSchematic_mX // Commented out, not used
+    // PointInSchematic_mY // Commented out, not used
+    // PointInSchematic_location // Commented out, not used
+    // PointInSchematic_netName // Commented out, not used
+    // PointInSchematic_netClassName // Commented out, not used
+    // PointInSchematic_hasNet // Commented out, not used
+    // PointInSchematic_canMove // Commented out, not used
+    // PointInSchematic_wireColor // Commented out, not used
+    // PointInSchematic_symbolRotation // Commented out, not used
+    , PointInSchematic_symbolNameNetName
+    // PointInSchematic_isConnected // Commented out, not used
+    , PointInSchematic_status
+    , PointInSchematic_connectedPoints
+    , PointInSchematic_netInfoForPoint
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mSymbolPinName

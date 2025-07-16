@@ -8,7 +8,8 @@ import AppKit
 //    Entity: SymbolSolidRect
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolSolidRect : SymbolObject {
+final class SymbolSolidRect : SymbolObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y

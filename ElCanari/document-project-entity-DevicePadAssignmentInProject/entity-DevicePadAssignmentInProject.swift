@@ -6,9 +6,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol DevicePadAssignmentInProject_mPadName : AnyObject {
-  var mPadName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol DevicePadAssignmentInProject_mPadName : AnyObject {
+//   var mPadName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -26,10 +27,11 @@ import AppKit
 //    Entity: DevicePadAssignmentInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DevicePadAssignmentInProject : EBManagedObject,
-         DevicePadAssignmentInProject_mPadName,
-         DevicePadAssignmentInProject_pinPadAssignment,
-         DevicePadAssignmentInProject_descriptor {
+final class DevicePadAssignmentInProject : EBManagedObject
+    // DevicePadAssignmentInProject_mPadName // Commented out, not used
+    , DevicePadAssignmentInProject_pinPadAssignment
+    , DevicePadAssignmentInProject_descriptor
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mPadName

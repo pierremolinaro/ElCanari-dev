@@ -18,32 +18,36 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CanariLibraryEntry_mLibraryRepositoryURL : AnyObject {
-  var mLibraryRepositoryURL : String { get }
-}
+// Commented out, not used
+// @MainActor protocol CanariLibraryEntry_mLibraryRepositoryURL : AnyObject {
+//   var mLibraryRepositoryURL : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CanariLibraryEntry_mUserAndPasswordTag : AnyObject {
-  var mUserAndPasswordTag : String { get }
-}
+// Commented out, not used
+// @MainActor protocol CanariLibraryEntry_mUserAndPasswordTag : AnyObject {
+//   var mUserAndPasswordTag : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol CanariLibraryEntry_mStatusImage : AnyObject {
-  var mStatusImage : NSImage? { get }
-}
+// Commented out, not used
+// @MainActor protocol CanariLibraryEntry_mStatusImage : AnyObject {
+//   var mStatusImage : NSImage? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: CanariLibraryEntry
 //--------------------------------------------------------------------------------------------------
 
-final class CanariLibraryEntry : EBManagedObject,
-         CanariLibraryEntry_mPath,
-         CanariLibraryEntry_mUses,
-         CanariLibraryEntry_mLibraryRepositoryURL,
-         CanariLibraryEntry_mUserAndPasswordTag,
-         CanariLibraryEntry_mStatusImage {
+final class CanariLibraryEntry : EBManagedObject
+    , CanariLibraryEntry_mPath
+    , CanariLibraryEntry_mUses
+    // CanariLibraryEntry_mLibraryRepositoryURL // Commented out, not used
+    // CanariLibraryEntry_mUserAndPasswordTag // Commented out, not used
+    // CanariLibraryEntry_mStatusImage // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mPath

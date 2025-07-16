@@ -8,7 +8,8 @@ import AppKit
 //    Entity: MergerRoot
 //--------------------------------------------------------------------------------------------------
 
-final class MergerRoot : EBManagedObject {
+final class MergerRoot : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To many property: boardModels

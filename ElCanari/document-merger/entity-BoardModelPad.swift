@@ -44,13 +44,14 @@ import AppKit
 //    Entity: BoardModelPad
 //--------------------------------------------------------------------------------------------------
 
-final class BoardModelPad : EBManagedObject,
-         BoardModelPad_y,
-         BoardModelPad_width,
-         BoardModelPad_height,
-         BoardModelPad_shape,
-         BoardModelPad_rotation,
-         BoardModelPad_x {
+final class BoardModelPad : EBManagedObject
+    , BoardModelPad_y
+    , BoardModelPad_width
+    , BoardModelPad_height
+    , BoardModelPad_shape
+    , BoardModelPad_rotation
+    , BoardModelPad_x
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y

@@ -8,7 +8,8 @@ import AppKit
 //    Entity: FontRoot
 //--------------------------------------------------------------------------------------------------
 
-final class FontRoot : EBManagedObject {
+final class FontRoot : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: comments

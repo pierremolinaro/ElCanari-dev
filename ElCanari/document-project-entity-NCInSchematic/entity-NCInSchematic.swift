@@ -6,30 +6,34 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NCInSchematic_mOrientation : AnyObject {
-  var mOrientation : QuadrantRotation { get }
-}
+// Commented out, not used
+// @MainActor protocol NCInSchematic_mOrientation : AnyObject {
+//   var mOrientation : QuadrantRotation { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NCInSchematic_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol NCInSchematic_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol NCInSchematic_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol NCInSchematic_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: NCInSchematic
 //--------------------------------------------------------------------------------------------------
 
-final class NCInSchematic : SchematicObject,
-         NCInSchematic_mOrientation,
-         NCInSchematic_objectDisplay,
-         NCInSchematic_selectionDisplay {
+final class NCInSchematic : SchematicObject
+    // NCInSchematic_mOrientation // Commented out, not used
+    // NCInSchematic_objectDisplay // Commented out, not used
+    // NCInSchematic_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mOrientation

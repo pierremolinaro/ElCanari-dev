@@ -6,58 +6,66 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolText_y : AnyObject {
-  var y : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolText_y : AnyObject {
+//   var y : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolText_text : AnyObject {
-  var text : String { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolText_text : AnyObject {
+//   var text : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolText_horizontalAlignment : AnyObject {
-  var horizontalAlignment : HorizontalAlignment { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolText_horizontalAlignment : AnyObject {
+//   var horizontalAlignment : HorizontalAlignment { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolText_x : AnyObject {
-  var x : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolText_x : AnyObject {
+//   var x : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolText_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolText_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolText_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolText_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SymbolText_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol SymbolText_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: SymbolText
 //--------------------------------------------------------------------------------------------------
 
-final class SymbolText : SymbolObject,
-         SymbolText_y,
-         SymbolText_text,
-         SymbolText_horizontalAlignment,
-         SymbolText_x,
-         SymbolText_objectDisplay,
-         SymbolText_selectionDisplay,
-         SymbolText_issues {
+final class SymbolText : SymbolObject
+    // SymbolText_y // Commented out, not used
+    // SymbolText_text // Commented out, not used
+    // SymbolText_horizontalAlignment // Commented out, not used
+    // SymbolText_x // Commented out, not used
+    // SymbolText_objectDisplay // Commented out, not used
+    // SymbolText_selectionDisplay // Commented out, not used
+    // SymbolText_issues // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y

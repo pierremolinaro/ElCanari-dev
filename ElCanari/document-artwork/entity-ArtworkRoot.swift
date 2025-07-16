@@ -8,7 +8,8 @@ import AppKit
 //    Entity: ArtworkRoot
 //--------------------------------------------------------------------------------------------------
 
-final class ArtworkRoot : EBManagedObject {
+final class ArtworkRoot : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: layerConfiguration

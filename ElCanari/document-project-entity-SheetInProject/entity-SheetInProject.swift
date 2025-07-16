@@ -6,27 +6,31 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SheetInProject_mSheetTitle : AnyObject {
-  var mSheetTitle : String { get }
-}
+// Commented out, not used
+// @MainActor protocol SheetInProject_mSheetTitle : AnyObject {
+//   var mSheetTitle : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SheetInProject_schematicIssues : AnyObject {
-  var schematicIssues : GraphicViewTooltipArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol SheetInProject_schematicIssues : AnyObject {
+//   var schematicIssues : GraphicViewTooltipArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SheetInProject_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol SheetInProject_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SheetInProject_connectedPoints : AnyObject {
-  var connectedPoints : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol SheetInProject_connectedPoints : AnyObject {
+//   var connectedPoints : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,22 +46,24 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol SheetInProject_sheetDescriptor : AnyObject {
-  var sheetDescriptor : SchematicSheetDescriptor? { get }
-}
+// Commented out, not used
+// @MainActor protocol SheetInProject_sheetDescriptor : AnyObject {
+//   var sheetDescriptor : SchematicSheetDescriptor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: SheetInProject
 //--------------------------------------------------------------------------------------------------
 
-final class SheetInProject : EBManagedObject,
-         SheetInProject_mSheetTitle,
-         SheetInProject_schematicIssues,
-         SheetInProject_issues,
-         SheetInProject_connectedPoints,
-         SheetInProject_schematicConnexionWarnings,
-         SheetInProject_schematicConnexionErrors,
-         SheetInProject_sheetDescriptor {
+final class SheetInProject : EBManagedObject
+    // SheetInProject_mSheetTitle // Commented out, not used
+    // SheetInProject_schematicIssues // Commented out, not used
+    // SheetInProject_issues // Commented out, not used
+    // SheetInProject_connectedPoints // Commented out, not used
+    , SheetInProject_schematicConnexionWarnings
+    , SheetInProject_schematicConnexionErrors
+    // SheetInProject_sheetDescriptor // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mObjects

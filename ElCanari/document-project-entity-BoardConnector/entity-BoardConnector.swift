@@ -6,111 +6,129 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mComponentPadName : AnyObject {
-  var mComponentPadName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mComponentPadName : AnyObject {
+//   var mComponentPadName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mPadIndex : AnyObject {
-  var mPadIndex : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mPadIndex : AnyObject {
+//   var mPadIndex : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mDefaultHoleDiameterUnit : AnyObject {
-  var mDefaultHoleDiameterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mDefaultHoleDiameterUnit : AnyObject {
+//   var mDefaultHoleDiameterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mCustomHoleDiameter : AnyObject {
-  var mCustomHoleDiameter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mCustomHoleDiameter : AnyObject {
+//   var mCustomHoleDiameter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mCustomHoleDiameterUnit : AnyObject {
-  var mCustomHoleDiameterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mCustomHoleDiameterUnit : AnyObject {
+//   var mCustomHoleDiameterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mUsesCustomHoleDiameter : AnyObject {
-  var mUsesCustomHoleDiameter : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mUsesCustomHoleDiameter : AnyObject {
+//   var mUsesCustomHoleDiameter : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mDefaultPadDiameterUnit : AnyObject {
-  var mDefaultPadDiameterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mDefaultPadDiameterUnit : AnyObject {
+//   var mDefaultPadDiameterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mCustomPadDiameter : AnyObject {
-  var mCustomPadDiameter : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mCustomPadDiameter : AnyObject {
+//   var mCustomPadDiameter : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mCustomPadDiameterUnit : AnyObject {
-  var mCustomPadDiameterUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mCustomPadDiameterUnit : AnyObject {
+//   var mCustomPadDiameterUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_mUsesCustomPadDiameter : AnyObject {
-  var mUsesCustomPadDiameter : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_mUsesCustomPadDiameter : AnyObject {
+//   var mUsesCustomPadDiameter : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_isConnectedToSomePad : AnyObject {
-  var isConnectedToSomePad : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_isConnectedToSomePad : AnyObject {
+//   var isConnectedToSomePad : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_location : AnyObject {
-  var location : CanariPoint? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_location : AnyObject {
+//   var location : CanariPoint? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_netNameFromComponentPad : AnyObject {
-  var netNameFromComponentPad : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_netNameFromComponentPad : AnyObject {
+//   var netNameFromComponentPad : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_netNameAndPadLocation : AnyObject {
-  var netNameAndPadLocation : RastnetInfoArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_netNameAndPadLocation : AnyObject {
+//   var netNameAndPadLocation : RastnetInfoArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_side : AnyObject {
-  var side : ConnectorSide? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_side : AnyObject {
+//   var side : ConnectorSide? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_isVia : AnyObject {
-  var isVia : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_isVia : AnyObject {
+//   var isVia : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -120,98 +138,109 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_viaDefaultHoleDiameter : AnyObject {
-  var viaDefaultHoleDiameter : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_viaDefaultHoleDiameter : AnyObject {
+//   var viaDefaultHoleDiameter : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_viaDefaultPadDiameter : AnyObject {
-  var viaDefaultPadDiameter : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_viaDefaultPadDiameter : AnyObject {
+//   var viaDefaultPadDiameter : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_netNameFromTracks : AnyObject {
-  var netNameFromTracks : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_netNameFromTracks : AnyObject {
+//   var netNameFromTracks : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_netClassName : AnyObject {
-  var netClassName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_netClassName : AnyObject {
+//   var netClassName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_connectedToComponent : AnyObject {
-  var connectedToComponent : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_connectedToComponent : AnyObject {
+//   var connectedToComponent : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_actualHoleDiameter : AnyObject {
-  var actualHoleDiameter : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_actualHoleDiameter : AnyObject {
+//   var actualHoleDiameter : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_actualPadDiameter : AnyObject {
-  var actualPadDiameter : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_actualPadDiameter : AnyObject {
+//   var actualPadDiameter : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardConnector_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardConnector_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardConnector
 //--------------------------------------------------------------------------------------------------
 
-final class BoardConnector : BoardObject,
-         BoardConnector_mComponentPadName,
-         BoardConnector_mPadIndex,
-         BoardConnector_mX,
-         BoardConnector_mY,
-         BoardConnector_mDefaultHoleDiameterUnit,
-         BoardConnector_mCustomHoleDiameter,
-         BoardConnector_mCustomHoleDiameterUnit,
-         BoardConnector_mUsesCustomHoleDiameter,
-         BoardConnector_mDefaultPadDiameterUnit,
-         BoardConnector_mCustomPadDiameter,
-         BoardConnector_mCustomPadDiameterUnit,
-         BoardConnector_mUsesCustomPadDiameter,
-         BoardConnector_isConnectedToSomePad,
-         BoardConnector_location,
-         BoardConnector_netNameFromComponentPad,
-         BoardConnector_netNameAndPadLocation,
-         BoardConnector_side,
-         BoardConnector_isVia,
-         BoardConnector_issues,
-         BoardConnector_viaDefaultHoleDiameter,
-         BoardConnector_viaDefaultPadDiameter,
-         BoardConnector_netNameFromTracks,
-         BoardConnector_netClassName,
-         BoardConnector_connectedToComponent,
-         BoardConnector_actualHoleDiameter,
-         BoardConnector_actualPadDiameter,
-         BoardConnector_objectDisplay,
-         BoardConnector_selectionDisplay,
-         BoardConnector_signatureForERCChecking {
+final class BoardConnector : BoardObject
+    // BoardConnector_mComponentPadName // Commented out, not used
+    // BoardConnector_mPadIndex // Commented out, not used
+    // BoardConnector_mX // Commented out, not used
+    // BoardConnector_mY // Commented out, not used
+    // BoardConnector_mDefaultHoleDiameterUnit // Commented out, not used
+    // BoardConnector_mCustomHoleDiameter // Commented out, not used
+    // BoardConnector_mCustomHoleDiameterUnit // Commented out, not used
+    // BoardConnector_mUsesCustomHoleDiameter // Commented out, not used
+    // BoardConnector_mDefaultPadDiameterUnit // Commented out, not used
+    // BoardConnector_mCustomPadDiameter // Commented out, not used
+    // BoardConnector_mCustomPadDiameterUnit // Commented out, not used
+    // BoardConnector_mUsesCustomPadDiameter // Commented out, not used
+    // BoardConnector_isConnectedToSomePad // Commented out, not used
+    // BoardConnector_location // Commented out, not used
+    // BoardConnector_netNameFromComponentPad // Commented out, not used
+    // BoardConnector_netNameAndPadLocation // Commented out, not used
+    // BoardConnector_side // Commented out, not used
+    // BoardConnector_isVia // Commented out, not used
+    , BoardConnector_issues
+    // BoardConnector_viaDefaultHoleDiameter // Commented out, not used
+    // BoardConnector_viaDefaultPadDiameter // Commented out, not used
+    // BoardConnector_netNameFromTracks // Commented out, not used
+    // BoardConnector_netClassName // Commented out, not used
+    // BoardConnector_connectedToComponent // Commented out, not used
+    // BoardConnector_actualHoleDiameter // Commented out, not used
+    // BoardConnector_actualPadDiameter // Commented out, not used
+    // BoardConnector_objectDisplay // Commented out, not used
+    // BoardConnector_selectionDisplay // Commented out, not used
+    // BoardConnector_signatureForERCChecking // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mComponentPadName

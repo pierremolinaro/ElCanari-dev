@@ -6,65 +6,74 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_mFirstX : AnyObject {
-  var mFirstX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_mFirstX : AnyObject {
+//   var mFirstX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_mFirstY : AnyObject {
-  var mFirstY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_mFirstY : AnyObject {
+//   var mFirstY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_mFirstColor : AnyObject {
-  var mFirstColor : NSColor { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_mFirstColor : AnyObject {
+//   var mFirstColor : NSColor { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_mSecondDx : AnyObject {
-  var mSecondDx : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_mSecondDx : AnyObject {
+//   var mSecondDx : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_mSecondDy : AnyObject {
-  var mSecondDy : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_mSecondDy : AnyObject {
+//   var mSecondDy : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_mSecondColor : AnyObject {
-  var mSecondColor : NSColor { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_mSecondColor : AnyObject {
+//   var mSecondColor : NSColor { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageModelImageDoublePoint_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageModelImageDoublePoint_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageModelImageDoublePoint
 //--------------------------------------------------------------------------------------------------
 
-final class PackageModelImageDoublePoint : EBGraphicManagedObject,
-         PackageModelImageDoublePoint_mFirstX,
-         PackageModelImageDoublePoint_mFirstY,
-         PackageModelImageDoublePoint_mFirstColor,
-         PackageModelImageDoublePoint_mSecondDx,
-         PackageModelImageDoublePoint_mSecondDy,
-         PackageModelImageDoublePoint_mSecondColor,
-         PackageModelImageDoublePoint_objectDisplay,
-         PackageModelImageDoublePoint_selectionDisplay {
+final class PackageModelImageDoublePoint : EBGraphicManagedObject
+    // PackageModelImageDoublePoint_mFirstX // Commented out, not used
+    // PackageModelImageDoublePoint_mFirstY // Commented out, not used
+    // PackageModelImageDoublePoint_mFirstColor // Commented out, not used
+    // PackageModelImageDoublePoint_mSecondDx // Commented out, not used
+    // PackageModelImageDoublePoint_mSecondDy // Commented out, not used
+    // PackageModelImageDoublePoint_mSecondColor // Commented out, not used
+    // PackageModelImageDoublePoint_objectDisplay // Commented out, not used
+    // PackageModelImageDoublePoint_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mFirstX

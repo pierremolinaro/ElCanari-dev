@@ -8,7 +8,8 @@ import AppKit
 //    Entity: PackageRoot
 //--------------------------------------------------------------------------------------------------
 
-final class PackageRoot : EBManagedObject {
+final class PackageRoot : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: selectedPageIndex

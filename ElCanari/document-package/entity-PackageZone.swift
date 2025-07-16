@@ -6,51 +6,59 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_x : AnyObject {
-  var x : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_x : AnyObject {
+//   var x : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_y : AnyObject {
-  var y : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_y : AnyObject {
+//   var y : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_width : AnyObject {
-  var width : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_width : AnyObject {
+//   var width : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_height : AnyObject {
-  var height : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_height : AnyObject {
+//   var height : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_xUnit : AnyObject {
-  var xUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_xUnit : AnyObject {
+//   var xUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_yUnit : AnyObject {
-  var yUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_yUnit : AnyObject {
+//   var yUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_widthUnit : AnyObject {
-  var widthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_widthUnit : AnyObject {
+//   var widthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_heightUnit : AnyObject {
-  var heightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_heightUnit : AnyObject {
+//   var heightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -60,15 +68,17 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_displayZoneName : AnyObject {
-  var displayZoneName : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_displayZoneName : AnyObject {
+//   var displayZoneName : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_displayZoneNameWithPadNumbers : AnyObject {
-  var displayZoneNameWithPadNumbers : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_displayZoneNameWithPadNumbers : AnyObject {
+//   var displayZoneNameWithPadNumbers : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -84,33 +94,38 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_xNameUnit : AnyObject {
-  var xNameUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_xNameUnit : AnyObject {
+//   var xNameUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_yNameUnit : AnyObject {
-  var yNameUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_yNameUnit : AnyObject {
+//   var yNameUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_zoneNumbering : AnyObject {
-  var zoneNumbering : PadNumbering { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_zoneNumbering : AnyObject {
+//   var zoneNumbering : PadNumbering { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -120,49 +135,53 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_forbiddenPadArray : AnyObject {
-  var forbiddenPadArray : StringArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_forbiddenPadArray : AnyObject {
+//   var forbiddenPadArray : StringArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol PackageZone_emptyForbiddenPadArray : AnyObject {
-  var emptyForbiddenPadArray : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol PackageZone_emptyForbiddenPadArray : AnyObject {
+//   var emptyForbiddenPadArray : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: PackageZone
 //--------------------------------------------------------------------------------------------------
 
-final class PackageZone : PackageObject,
-         PackageZone_x,
-         PackageZone_y,
-         PackageZone_width,
-         PackageZone_height,
-         PackageZone_xUnit,
-         PackageZone_yUnit,
-         PackageZone_widthUnit,
-         PackageZone_heightUnit,
-         PackageZone_zoneName,
-         PackageZone_displayZoneName,
-         PackageZone_displayZoneNameWithPadNumbers,
-         PackageZone_xName,
-         PackageZone_yName,
-         PackageZone_xNameUnit,
-         PackageZone_yNameUnit,
-         PackageZone_zoneNumbering,
-         PackageZone_objectDisplay,
-         PackageZone_issues,
-         PackageZone_rect,
-         PackageZone_selectionDisplay,
-         PackageZone_forbiddenPadArray,
-         PackageZone_emptyForbiddenPadArray {
+final class PackageZone : PackageObject
+    // PackageZone_x // Commented out, not used
+    // PackageZone_y // Commented out, not used
+    // PackageZone_width // Commented out, not used
+    // PackageZone_height // Commented out, not used
+    // PackageZone_xUnit // Commented out, not used
+    // PackageZone_yUnit // Commented out, not used
+    // PackageZone_widthUnit // Commented out, not used
+    // PackageZone_heightUnit // Commented out, not used
+    , PackageZone_zoneName
+    // PackageZone_displayZoneName // Commented out, not used
+    // PackageZone_displayZoneNameWithPadNumbers // Commented out, not used
+    , PackageZone_xName
+    , PackageZone_yName
+    // PackageZone_xNameUnit // Commented out, not used
+    // PackageZone_yNameUnit // Commented out, not used
+    // PackageZone_zoneNumbering // Commented out, not used
+    // PackageZone_objectDisplay // Commented out, not used
+    // PackageZone_issues // Commented out, not used
+    , PackageZone_rect
+    // PackageZone_selectionDisplay // Commented out, not used
+    // PackageZone_forbiddenPadArray // Commented out, not used
+    // PackageZone_emptyForbiddenPadArray // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: x

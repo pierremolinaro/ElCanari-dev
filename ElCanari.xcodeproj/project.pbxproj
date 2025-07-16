@@ -8152,7 +8152,6 @@
 			mainGroup = 4B5CE2FE28308FD9F2A7BAF3;
 			packageReferences = (
 				CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */,
-				CF2134372E26557800179368 /* XCRemoteSwiftPackageReference "periphery" */,
 			);
 			productRefGroup = CF747FB01B3C3D8D00140C49 /* Products */;
 			projectDirPath = "";
@@ -12177,7 +12176,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
-				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -12233,14 +12231,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CF2134372E26557800179368 /* XCRemoteSwiftPackageReference "periphery" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/peripheryapp/periphery";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		CF50656527490E7F009A99B6 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";

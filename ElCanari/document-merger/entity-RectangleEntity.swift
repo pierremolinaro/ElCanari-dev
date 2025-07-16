@@ -56,15 +56,16 @@ import AppKit
 //    Entity: RectangleEntity
 //--------------------------------------------------------------------------------------------------
 
-final class RectangleEntity : EBManagedObject,
-         RectangleEntity_p0y,
-         RectangleEntity_p1x,
-         RectangleEntity_p1y,
-         RectangleEntity_p2x,
-         RectangleEntity_p2y,
-         RectangleEntity_p3x,
-         RectangleEntity_p3y,
-         RectangleEntity_p0x {
+final class RectangleEntity : EBManagedObject
+    , RectangleEntity_p0y
+    , RectangleEntity_p1x
+    , RectangleEntity_p1y
+    , RectangleEntity_p2x
+    , RectangleEntity_p2y
+    , RectangleEntity_p3x
+    , RectangleEntity_p3y
+    , RectangleEntity_p0x
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: p0y

@@ -6,51 +6,58 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol WireInSchematic_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol WireInSchematic_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol WireInSchematic_netName : AnyObject {
-  var netName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol WireInSchematic_netName : AnyObject {
+//   var netName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol WireInSchematic_netClassName : AnyObject {
-  var netClassName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol WireInSchematic_netClassName : AnyObject {
+//   var netClassName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol WireInSchematic_hasNet : AnyObject {
-  var hasNet : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol WireInSchematic_hasNet : AnyObject {
+//   var hasNet : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol WireInSchematic_wires : AnyObject {
-  var wires : CanariWireArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol WireInSchematic_wires : AnyObject {
+//   var wires : CanariWireArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol WireInSchematic_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol WireInSchematic_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: WireInSchematic
 //--------------------------------------------------------------------------------------------------
 
-final class WireInSchematic : SchematicObject,
-         WireInSchematic_objectDisplay,
-         WireInSchematic_netName,
-         WireInSchematic_netClassName,
-         WireInSchematic_hasNet,
-         WireInSchematic_wires,
-         WireInSchematic_selectionDisplay {
+final class WireInSchematic : SchematicObject
+    // WireInSchematic_objectDisplay // Commented out, not used
+    // WireInSchematic_netName // Commented out, not used
+    // WireInSchematic_netClassName // Commented out, not used
+    // WireInSchematic_hasNet // Commented out, not used
+    // WireInSchematic_wires // Commented out, not used
+    // WireInSchematic_selectionDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   To one property: mP1

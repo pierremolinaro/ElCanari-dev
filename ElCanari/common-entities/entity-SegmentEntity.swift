@@ -44,13 +44,14 @@ import AppKit
 //    Entity: SegmentEntity
 //--------------------------------------------------------------------------------------------------
 
-final class SegmentEntity : EBManagedObject,
-         SegmentEntity_y1,
-         SegmentEntity_x2,
-         SegmentEntity_y2,
-         SegmentEntity_width,
-         SegmentEntity_endStyle,
-         SegmentEntity_x1 {
+final class SegmentEntity : EBManagedObject
+    , SegmentEntity_y1
+    , SegmentEntity_x2
+    , SegmentEntity_y2
+    , SegmentEntity_width
+    , SegmentEntity_endStyle
+    , SegmentEntity_x1
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: y1

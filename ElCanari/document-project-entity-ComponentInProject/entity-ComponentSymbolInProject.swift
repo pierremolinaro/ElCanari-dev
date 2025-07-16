@@ -6,27 +6,31 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mCenterX : AnyObject {
-  var mCenterX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mCenterX : AnyObject {
+//   var mCenterX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mCenterY : AnyObject {
-  var mCenterY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mCenterY : AnyObject {
+//   var mCenterY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mRotation : AnyObject {
-  var mRotation : QuadrantRotation { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mRotation : AnyObject {
+//   var mRotation : QuadrantRotation { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mMirror : AnyObject {
-  var mMirror : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mMirror : AnyObject {
+//   var mMirror : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,51 +46,58 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : AnyObject {
-  var mDisplayComponentNameOffsetX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : AnyObject {
+//   var mDisplayComponentNameOffsetX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : AnyObject {
-  var mDisplayComponentNameOffsetY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : AnyObject {
+//   var mDisplayComponentNameOffsetY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mDisplayComponentValue : AnyObject {
-  var mDisplayComponentValue : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mDisplayComponentValue : AnyObject {
+//   var mDisplayComponentValue : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : AnyObject {
-  var mDisplayComponentValueOffsetX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : AnyObject {
+//   var mDisplayComponentValueOffsetX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : AnyObject {
-  var mDisplayComponentValueOffsetY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : AnyObject {
+//   var mDisplayComponentValueOffsetY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_componentValueProxy : AnyObject {
-  var componentValueProxy : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_componentValueProxy : AnyObject {
+//  var componentValueProxy : String? { get }
+// }
+//--------------------------------------------------------------------------------------------------
+
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_componentName : AnyObject {
+//   var componentName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_componentName : AnyObject {
-  var componentName : String? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@MainActor protocol ComponentSymbolInProject_deviceName : AnyObject {
-  var deviceName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_deviceName : AnyObject {
+//   var deviceName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -96,21 +107,24 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_pinPadAssignments : AnyObject {
-  var pinPadAssignments : ThreeStringArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_pinPadAssignments : AnyObject {
+//   var pinPadAssignments : ThreeStringArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentSymbolInProject_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentSymbolInProject_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -122,26 +136,27 @@ import AppKit
 //    Entity: ComponentSymbolInProject
 //--------------------------------------------------------------------------------------------------
 
-final class ComponentSymbolInProject : SchematicObject,
-         ComponentSymbolInProject_mCenterX,
-         ComponentSymbolInProject_mCenterY,
-         ComponentSymbolInProject_mRotation,
-         ComponentSymbolInProject_mMirror,
-         ComponentSymbolInProject_mSymbolInstanceName,
-         ComponentSymbolInProject_mSymbolTypeName,
-         ComponentSymbolInProject_mDisplayComponentNameOffsetX,
-         ComponentSymbolInProject_mDisplayComponentNameOffsetY,
-         ComponentSymbolInProject_mDisplayComponentValue,
-         ComponentSymbolInProject_mDisplayComponentValueOffsetX,
-         ComponentSymbolInProject_mDisplayComponentValueOffsetY,
-         ComponentSymbolInProject_componentValueProxy,
-         ComponentSymbolInProject_componentName,
-         ComponentSymbolInProject_deviceName,
-         ComponentSymbolInProject_symbolInfo,
-         ComponentSymbolInProject_pinPadAssignments,
-         ComponentSymbolInProject_objectDisplay,
-         ComponentSymbolInProject_selectionDisplay,
-         ComponentSymbolInProject_symbolInSchematic {
+final class ComponentSymbolInProject : SchematicObject
+    // ComponentSymbolInProject_mCenterX // Commented out, not used
+    // ComponentSymbolInProject_mCenterY // Commented out, not used
+    // ComponentSymbolInProject_mRotation // Commented out, not used
+    // ComponentSymbolInProject_mMirror // Commented out, not used
+    , ComponentSymbolInProject_mSymbolInstanceName
+    , ComponentSymbolInProject_mSymbolTypeName
+    // ComponentSymbolInProject_mDisplayComponentNameOffsetX // Commented out, not used
+    // ComponentSymbolInProject_mDisplayComponentNameOffsetY // Commented out, not used
+    // ComponentSymbolInProject_mDisplayComponentValue // Commented out, not used
+    // ComponentSymbolInProject_mDisplayComponentValueOffsetX // Commented out, not used
+    // ComponentSymbolInProject_mDisplayComponentValueOffsetY // Commented out, not used
+    // ComponentSymbolInProject_componentValueProxy // Commented out, not used
+    // ComponentSymbolInProject_componentName // Commented out, not used
+    // ComponentSymbolInProject_deviceName // Commented out, not used
+    , ComponentSymbolInProject_symbolInfo
+    // ComponentSymbolInProject_pinPadAssignments // Commented out, not used
+    // ComponentSymbolInProject_objectDisplay // Commented out, not used
+    // ComponentSymbolInProject_selectionDisplay // Commented out, not used
+    , ComponentSymbolInProject_symbolInSchematic
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mCenterX

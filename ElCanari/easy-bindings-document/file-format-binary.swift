@@ -9,7 +9,7 @@ import AppKit
 @MainActor func loadEasyBindingBinaryFile (_ inUndoManager : UndoManager?,
                                            documentName inDocumentName : String,
                                            from ioDataScanner: inout EBDataScanner) -> EBDocumentReadData {
-  appendDocumentFileOperationInfo ("Read Binary Document file: \(inDocumentName)\n")
+  setStartOperationDateToNow ("Read Binary Document file: \(inDocumentName)")
   do{
     var operationStartDate = Date ()
     let startDate = operationStartDate
@@ -26,7 +26,7 @@ import AppKit
   //--- Read data
     let dataFormat = ioDataScanner.parseByte ()
     let fileData = ioDataScanner.parseAutosizedData ()
-    appendDocumentFileOperationInfo ("  Read file: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+    appendDocumentFileOperationInfo ("  Read file: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
     operationStartDate = Date ()
   //--- if ok, check final byte (0)
     ioDataScanner.acceptRequired (byte: 0)
@@ -45,7 +45,7 @@ import AppKit
     }else{
       try raiseInvalidDataFormatError (dataFormat: dataFormat)
     }
-    appendDocumentFileOperationInfo ("  Analyze read data: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+    appendDocumentFileOperationInfo ("  Analyze read data: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
     operationStartDate = Date ()
   //---
     if rootObject == nil {
@@ -56,7 +56,7 @@ import AppKit
       throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
     }
   //---
-    appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
+    appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms")
     let documentData = EBDocumentData (
       documentMetadataStatus: metadataStatus,
       documentMetadataDictionary: metadataDictionary,

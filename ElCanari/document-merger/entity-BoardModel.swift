@@ -12,33 +12,38 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_modelWidth : AnyObject {
-  var modelWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_modelWidth : AnyObject {
+//   var modelWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_modelWidthUnit : AnyObject {
-  var modelWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_modelWidthUnit : AnyObject {
+//   var modelWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_modelHeight : AnyObject {
-  var modelHeight : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_modelHeight : AnyObject {
+//   var modelHeight : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_modelHeightUnit : AnyObject {
-  var modelHeightUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_modelHeightUnit : AnyObject {
+//   var modelHeightUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_zoom : AnyObject {
-  var zoom : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_zoom : AnyObject {
+//   var zoom : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -60,466 +65,531 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_modelLimitWidth : AnyObject {
-  var modelLimitWidth : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_modelLimitWidth : AnyObject {
+//   var modelLimitWidth : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_modelLimitWidthUnit : AnyObject {
-  var modelLimitWidthUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_modelLimitWidthUnit : AnyObject {
+//   var modelLimitWidthUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_artworkName : AnyObject {
-  var artworkName : String { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_artworkName : AnyObject {
+//   var artworkName : String { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_modelData : AnyObject {
-  var modelData : Data { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_modelData : AnyObject {
+//   var modelData : Data { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_errorArchiveLabelSize : AnyObject {
-  var errorArchiveLabelSize : EBControlSize? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_errorArchiveLabelSize : AnyObject {
+//   var errorArchiveLabelSize : EBControlSize? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_errorArchiveLabelColor : AnyObject {
-  var errorArchiveLabelColor : NSColor? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_errorArchiveLabelColor : AnyObject {
+//   var errorArchiveLabelColor : NSColor? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_errorArchiveVersionMessageIsHidden : AnyObject {
-  var errorArchiveVersionMessageIsHidden : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_errorArchiveVersionMessageIsHidden : AnyObject {
+//   var errorArchiveVersionMessageIsHidden : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLegendBoardImageRectangles : AnyObject {
-  var frontLegendBoardImageRectangles : MergerRectangleArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLegendBoardImageRectangles : AnyObject {
+//   var frontLegendBoardImageRectangles : MergerRectangleArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLegendBoardImageRectangles : AnyObject {
-  var backLegendBoardImageRectangles : MergerRectangleArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLegendBoardImageRectangles : AnyObject {
+//   var backLegendBoardImageRectangles : MergerRectangleArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLegendQRCodeRectangles : AnyObject {
-  var frontLegendQRCodeRectangles : MergerRectangleArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLegendQRCodeRectangles : AnyObject {
+//   var frontLegendQRCodeRectangles : MergerRectangleArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLegendQRCodeRectangles : AnyObject {
-  var backLegendQRCodeRectangles : MergerRectangleArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLegendQRCodeRectangles : AnyObject {
+//   var backLegendQRCodeRectangles : MergerRectangleArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_layerConfigurationString : AnyObject {
-  var layerConfigurationString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_layerConfigurationString : AnyObject {
+//   var layerConfigurationString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLegendLinesSegments : AnyObject {
-  var frontLegendLinesSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLegendLinesSegments : AnyObject {
+//   var frontLegendLinesSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLegendLinesSegments : AnyObject {
-  var backLegendLinesSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLegendLinesSegments : AnyObject {
+//   var backLegendLinesSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLegendLinesBezierPaths : AnyObject {
-  var backLegendLinesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLegendLinesBezierPaths : AnyObject {
+//   var backLegendLinesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLegendTextsSegments : AnyObject {
-  var frontLegendTextsSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLegendTextsSegments : AnyObject {
+//   var frontLegendTextsSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLegendTextsBezierPaths : AnyObject {
-  var frontLegendTextsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLegendTextsBezierPaths : AnyObject {
+//   var frontLegendTextsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLayoutTextsSegments : AnyObject {
-  var frontLayoutTextsSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLayoutTextsSegments : AnyObject {
+//   var frontLayoutTextsSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLayoutTextsBezierPaths : AnyObject {
-  var frontLayoutTextsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLayoutTextsBezierPaths : AnyObject {
+//   var frontLayoutTextsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLegendTextsSegments : AnyObject {
-  var backLegendTextsSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLegendTextsSegments : AnyObject {
+//   var backLegendTextsSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLegendTextsBezierPaths : AnyObject {
-  var backLegendTextsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLegendTextsBezierPaths : AnyObject {
+//   var backLegendTextsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLayoutTextsSegments : AnyObject {
-  var backLayoutTextsSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLayoutTextsSegments : AnyObject {
+//   var backLayoutTextsSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backLayoutTextsBezierPaths : AnyObject {
-  var backLayoutTextsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backLayoutTextsBezierPaths : AnyObject {
+//   var backLayoutTextsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_internalBoardsLimitsSegments : AnyObject {
-  var internalBoardsLimitsSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_internalBoardsLimitsSegments : AnyObject {
+//   var internalBoardsLimitsSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_internalBoardsLimitsBezierPaths : AnyObject {
-  var internalBoardsLimitsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_internalBoardsLimitsBezierPaths : AnyObject {
+//   var internalBoardsLimitsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_drillSegments : AnyObject {
-  var drillSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_drillSegments : AnyObject {
+//   var drillSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_holesBezierPaths : AnyObject {
-  var holesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_holesBezierPaths : AnyObject {
+//   var holesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_viaShapes : AnyObject {
-  var viaShapes : MergerViaShapeArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_viaShapes : AnyObject {
+//   var viaShapes : MergerViaShapeArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_viasBezierPaths : AnyObject {
-  var viasBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_viasBezierPaths : AnyObject {
+//   var viasBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontPadArray : AnyObject {
-  var frontPadArray : MergerPadArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontPadArray : AnyObject {
+//   var frontPadArray : MergerPadArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontPadsBezierPaths : AnyObject {
-  var frontPadsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontPadsBezierPaths : AnyObject {
+//   var frontPadsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backPadArray : AnyObject {
-  var backPadArray : MergerPadArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backPadArray : AnyObject {
+//   var backPadArray : MergerPadArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backPadsBezierPaths : AnyObject {
-  var backPadsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backPadsBezierPaths : AnyObject {
+//   var backPadsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_traversingPadArray : AnyObject {
-  var traversingPadArray : MergerPadArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_traversingPadArray : AnyObject {
+//   var traversingPadArray : MergerPadArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_traversingPadsBezierPaths : AnyObject {
-  var traversingPadsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_traversingPadsBezierPaths : AnyObject {
+//   var traversingPadsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_boardLimitsBezierPaths : AnyObject {
-  var boardLimitsBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_boardLimitsBezierPaths : AnyObject {
+//   var boardLimitsBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backComponentNameSegments : AnyObject {
-  var backComponentNameSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backComponentNameSegments : AnyObject {
+//   var backComponentNameSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backComponentNamesBezierPaths : AnyObject {
-  var backComponentNamesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backComponentNamesBezierPaths : AnyObject {
+//   var backComponentNamesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontComponentNameSegments : AnyObject {
-  var frontComponentNameSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontComponentNameSegments : AnyObject {
+//   var frontComponentNameSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontComponentNamesBezierPaths : AnyObject {
-  var frontComponentNamesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontComponentNamesBezierPaths : AnyObject {
+//   var frontComponentNamesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontComponentValueSegments : AnyObject {
-  var frontComponentValueSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontComponentValueSegments : AnyObject {
+//   var frontComponentValueSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontComponentValuesBezierPaths : AnyObject {
-  var frontComponentValuesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontComponentValuesBezierPaths : AnyObject {
+//   var frontComponentValuesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backComponentValueSegments : AnyObject {
-  var backComponentValueSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backComponentValueSegments : AnyObject {
+//   var backComponentValueSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backComponentValuesBezierPaths : AnyObject {
-  var backComponentValuesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backComponentValuesBezierPaths : AnyObject {
+//   var backComponentValuesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backTrackSegments : AnyObject {
-  var backTrackSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backTrackSegments : AnyObject {
+//   var backTrackSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backTracksBezierPaths : AnyObject {
-  var backTracksBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backTracksBezierPaths : AnyObject {
+//   var backTracksBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontTrackSegments : AnyObject {
-  var frontTrackSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontTrackSegments : AnyObject {
+//   var frontTrackSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontTracksBezierPaths : AnyObject {
-  var frontTracksBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontTracksBezierPaths : AnyObject {
+//   var frontTracksBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner1TracksSegments : AnyObject {
-  var inner1TracksSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner1TracksSegments : AnyObject {
+//   var inner1TracksSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner1TracksBezierPaths : AnyObject {
-  var inner1TracksBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner1TracksBezierPaths : AnyObject {
+//   var inner1TracksBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner2TracksSegments : AnyObject {
-  var inner2TracksSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner2TracksSegments : AnyObject {
+//   var inner2TracksSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner2TracksBezierPaths : AnyObject {
-  var inner2TracksBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner2TracksBezierPaths : AnyObject {
+//   var inner2TracksBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner3TracksSegments : AnyObject {
-  var inner3TracksSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner3TracksSegments : AnyObject {
+//   var inner3TracksSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner3TracksBezierPaths : AnyObject {
-  var inner3TracksBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner3TracksBezierPaths : AnyObject {
+//   var inner3TracksBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner4TracksSegments : AnyObject {
-  var inner4TracksSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner4TracksSegments : AnyObject {
+//   var inner4TracksSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_inner4TracksBezierPaths : AnyObject {
-  var inner4TracksBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_inner4TracksBezierPaths : AnyObject {
+//   var inner4TracksBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontPackagesSegments : AnyObject {
-  var frontPackagesSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontPackagesSegments : AnyObject {
+//   var frontPackagesSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontPackagesBezierPaths : AnyObject {
-  var frontPackagesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontPackagesBezierPaths : AnyObject {
+//   var frontPackagesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backPackagesSegments : AnyObject {
-  var backPackagesSegments : MergerSegmentArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backPackagesSegments : AnyObject {
+//   var backPackagesSegments : MergerSegmentArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_backPackagesBezierPaths : AnyObject {
-  var backPackagesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_backPackagesBezierPaths : AnyObject {
+//   var backPackagesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_instanceCount : AnyObject {
-  var instanceCount : Int? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_instanceCount : AnyObject {
+//   var instanceCount : Int? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_frontLegendLinesBezierPaths : AnyObject {
-  var frontLegendLinesBezierPaths : BezierPathArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_frontLegendLinesBezierPaths : AnyObject {
+//   var frontLegendLinesBezierPaths : BezierPathArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_imageForModel : AnyObject {
-  var imageForModel : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_imageForModel : AnyObject {
+//   var imageForModel : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModel_imageForInstances : AnyObject {
-  var imageForInstances : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol BoardModel_imageForInstances : AnyObject {
+//   var imageForInstances : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: BoardModel
 //--------------------------------------------------------------------------------------------------
 
-final class BoardModel : EBManagedObject,
-         BoardModel_name,
-         BoardModel_modelWidth,
-         BoardModel_modelWidthUnit,
-         BoardModel_modelHeight,
-         BoardModel_modelHeightUnit,
-         BoardModel_zoom,
-         BoardModel_modelVersion,
-         BoardModel_ignoreModelVersionError,
-         BoardModel_layerConfiguration,
-         BoardModel_modelLimitWidth,
-         BoardModel_modelLimitWidthUnit,
-         BoardModel_artworkName,
-         BoardModel_modelData,
-         BoardModel_errorArchiveLabelSize,
-         BoardModel_errorArchiveLabelColor,
-         BoardModel_errorArchiveVersionMessageIsHidden,
-         BoardModel_frontLegendBoardImageRectangles,
-         BoardModel_backLegendBoardImageRectangles,
-         BoardModel_frontLegendQRCodeRectangles,
-         BoardModel_backLegendQRCodeRectangles,
-         BoardModel_layerConfigurationString,
-         BoardModel_frontLegendLinesSegments,
-         BoardModel_backLegendLinesSegments,
-         BoardModel_backLegendLinesBezierPaths,
-         BoardModel_frontLegendTextsSegments,
-         BoardModel_frontLegendTextsBezierPaths,
-         BoardModel_frontLayoutTextsSegments,
-         BoardModel_frontLayoutTextsBezierPaths,
-         BoardModel_backLegendTextsSegments,
-         BoardModel_backLegendTextsBezierPaths,
-         BoardModel_backLayoutTextsSegments,
-         BoardModel_backLayoutTextsBezierPaths,
-         BoardModel_internalBoardsLimitsSegments,
-         BoardModel_internalBoardsLimitsBezierPaths,
-         BoardModel_drillSegments,
-         BoardModel_holesBezierPaths,
-         BoardModel_viaShapes,
-         BoardModel_viasBezierPaths,
-         BoardModel_frontPadArray,
-         BoardModel_frontPadsBezierPaths,
-         BoardModel_backPadArray,
-         BoardModel_backPadsBezierPaths,
-         BoardModel_traversingPadArray,
-         BoardModel_traversingPadsBezierPaths,
-         BoardModel_boardLimitsBezierPaths,
-         BoardModel_backComponentNameSegments,
-         BoardModel_backComponentNamesBezierPaths,
-         BoardModel_frontComponentNameSegments,
-         BoardModel_frontComponentNamesBezierPaths,
-         BoardModel_frontComponentValueSegments,
-         BoardModel_frontComponentValuesBezierPaths,
-         BoardModel_backComponentValueSegments,
-         BoardModel_backComponentValuesBezierPaths,
-         BoardModel_backTrackSegments,
-         BoardModel_backTracksBezierPaths,
-         BoardModel_frontTrackSegments,
-         BoardModel_frontTracksBezierPaths,
-         BoardModel_inner1TracksSegments,
-         BoardModel_inner1TracksBezierPaths,
-         BoardModel_inner2TracksSegments,
-         BoardModel_inner2TracksBezierPaths,
-         BoardModel_inner3TracksSegments,
-         BoardModel_inner3TracksBezierPaths,
-         BoardModel_inner4TracksSegments,
-         BoardModel_inner4TracksBezierPaths,
-         BoardModel_frontPackagesSegments,
-         BoardModel_frontPackagesBezierPaths,
-         BoardModel_backPackagesSegments,
-         BoardModel_backPackagesBezierPaths,
-         BoardModel_instanceCount,
-         BoardModel_frontLegendLinesBezierPaths,
-         BoardModel_imageForModel,
-         BoardModel_imageForInstances {
+final class BoardModel : EBManagedObject
+    , BoardModel_name
+    // BoardModel_modelWidth // Commented out, not used
+    // BoardModel_modelWidthUnit // Commented out, not used
+    // BoardModel_modelHeight // Commented out, not used
+    // BoardModel_modelHeightUnit // Commented out, not used
+    // BoardModel_zoom // Commented out, not used
+    , BoardModel_modelVersion
+    , BoardModel_ignoreModelVersionError
+    , BoardModel_layerConfiguration
+    // BoardModel_modelLimitWidth // Commented out, not used
+    // BoardModel_modelLimitWidthUnit // Commented out, not used
+    // BoardModel_artworkName // Commented out, not used
+    // BoardModel_modelData // Commented out, not used
+    // BoardModel_errorArchiveLabelSize // Commented out, not used
+    // BoardModel_errorArchiveLabelColor // Commented out, not used
+    // BoardModel_errorArchiveVersionMessageIsHidden // Commented out, not used
+    // BoardModel_frontLegendBoardImageRectangles // Commented out, not used
+    // BoardModel_backLegendBoardImageRectangles // Commented out, not used
+    // BoardModel_frontLegendQRCodeRectangles // Commented out, not used
+    // BoardModel_backLegendQRCodeRectangles // Commented out, not used
+    // BoardModel_layerConfigurationString // Commented out, not used
+    // BoardModel_frontLegendLinesSegments // Commented out, not used
+    // BoardModel_backLegendLinesSegments // Commented out, not used
+    // BoardModel_backLegendLinesBezierPaths // Commented out, not used
+    // BoardModel_frontLegendTextsSegments // Commented out, not used
+    // BoardModel_frontLegendTextsBezierPaths // Commented out, not used
+    // BoardModel_frontLayoutTextsSegments // Commented out, not used
+    // BoardModel_frontLayoutTextsBezierPaths // Commented out, not used
+    // BoardModel_backLegendTextsSegments // Commented out, not used
+    // BoardModel_backLegendTextsBezierPaths // Commented out, not used
+    // BoardModel_backLayoutTextsSegments // Commented out, not used
+    // BoardModel_backLayoutTextsBezierPaths // Commented out, not used
+    // BoardModel_internalBoardsLimitsSegments // Commented out, not used
+    // BoardModel_internalBoardsLimitsBezierPaths // Commented out, not used
+    // BoardModel_drillSegments // Commented out, not used
+    // BoardModel_holesBezierPaths // Commented out, not used
+    // BoardModel_viaShapes // Commented out, not used
+    // BoardModel_viasBezierPaths // Commented out, not used
+    // BoardModel_frontPadArray // Commented out, not used
+    // BoardModel_frontPadsBezierPaths // Commented out, not used
+    // BoardModel_backPadArray // Commented out, not used
+    // BoardModel_backPadsBezierPaths // Commented out, not used
+    // BoardModel_traversingPadArray // Commented out, not used
+    // BoardModel_traversingPadsBezierPaths // Commented out, not used
+    // BoardModel_boardLimitsBezierPaths // Commented out, not used
+    // BoardModel_backComponentNameSegments // Commented out, not used
+    // BoardModel_backComponentNamesBezierPaths // Commented out, not used
+    // BoardModel_frontComponentNameSegments // Commented out, not used
+    // BoardModel_frontComponentNamesBezierPaths // Commented out, not used
+    // BoardModel_frontComponentValueSegments // Commented out, not used
+    // BoardModel_frontComponentValuesBezierPaths // Commented out, not used
+    // BoardModel_backComponentValueSegments // Commented out, not used
+    // BoardModel_backComponentValuesBezierPaths // Commented out, not used
+    // BoardModel_backTrackSegments // Commented out, not used
+    // BoardModel_backTracksBezierPaths // Commented out, not used
+    // BoardModel_frontTrackSegments // Commented out, not used
+    // BoardModel_frontTracksBezierPaths // Commented out, not used
+    // BoardModel_inner1TracksSegments // Commented out, not used
+    // BoardModel_inner1TracksBezierPaths // Commented out, not used
+    // BoardModel_inner2TracksSegments // Commented out, not used
+    // BoardModel_inner2TracksBezierPaths // Commented out, not used
+    // BoardModel_inner3TracksSegments // Commented out, not used
+    // BoardModel_inner3TracksBezierPaths // Commented out, not used
+    // BoardModel_inner4TracksSegments // Commented out, not used
+    // BoardModel_inner4TracksBezierPaths // Commented out, not used
+    // BoardModel_frontPackagesSegments // Commented out, not used
+    // BoardModel_frontPackagesBezierPaths // Commented out, not used
+    // BoardModel_backPackagesSegments // Commented out, not used
+    // BoardModel_backPackagesBezierPaths // Commented out, not used
+    // BoardModel_instanceCount // Commented out, not used
+    // BoardModel_frontLegendLinesBezierPaths // Commented out, not used
+    // BoardModel_imageForModel // Commented out, not used
+    // BoardModel_imageForInstances // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: name

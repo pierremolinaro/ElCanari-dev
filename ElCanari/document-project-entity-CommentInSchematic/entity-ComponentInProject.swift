@@ -6,99 +6,115 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mSlavePadsShouldBeRouted : AnyObject {
-  var mSlavePadsShouldBeRouted : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mSlavePadsShouldBeRouted : AnyObject {
+//   var mSlavePadsShouldBeRouted : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mX : AnyObject {
-  var mX : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mX : AnyObject {
+//   var mX : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mY : AnyObject {
-  var mY : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mY : AnyObject {
+//   var mY : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mRotation : AnyObject {
-  var mRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mRotation : AnyObject {
+//   var mRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mSide : AnyObject {
-  var mSide : ComponentSide { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mSide : AnyObject {
+//   var mSide : ComponentSide { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mDisplayLegend : AnyObject {
-  var mDisplayLegend : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mDisplayLegend : AnyObject {
+//   var mDisplayLegend : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mNameIsVisibleInBoard : AnyObject {
-  var mNameIsVisibleInBoard : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mNameIsVisibleInBoard : AnyObject {
+//   var mNameIsVisibleInBoard : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mXName : AnyObject {
-  var mXName : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mXName : AnyObject {
+//   var mXName : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mYName : AnyObject {
-  var mYName : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mYName : AnyObject {
+//   var mYName : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mNameFontSize : AnyObject {
-  var mNameFontSize : Double { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mNameFontSize : AnyObject {
+//   var mNameFontSize : Double { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mNameRotation : AnyObject {
-  var mNameRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mNameRotation : AnyObject {
+//   var mNameRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mValueIsVisibleInBoard : AnyObject {
-  var mValueIsVisibleInBoard : Bool { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mValueIsVisibleInBoard : AnyObject {
+//   var mValueIsVisibleInBoard : Bool { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mXValue : AnyObject {
-  var mXValue : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mXValue : AnyObject {
+//   var mXValue : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mYValue : AnyObject {
-  var mYValue : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mYValue : AnyObject {
+//   var mYValue : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mValueFontSize : AnyObject {
-  var mValueFontSize : Double { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mValueFontSize : AnyObject {
+//   var mValueFontSize : Double { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mValueRotation : AnyObject {
-  var mValueRotation : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mValueRotation : AnyObject {
+//   var mValueRotation : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -120,63 +136,73 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mXUnit : AnyObject {
-  var mXUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mXUnit : AnyObject {
+//   var mXUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mYUnit : AnyObject {
-  var mYUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mYUnit : AnyObject {
+//   var mYUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mXNameUnit : AnyObject {
-  var mXNameUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mXNameUnit : AnyObject {
+//   var mXNameUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mYNameUnit : AnyObject {
-  var mYNameUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mYNameUnit : AnyObject {
+//   var mYNameUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mXValueUnit : AnyObject {
-  var mXValueUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mXValueUnit : AnyObject {
+//   var mXValueUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_mYValueUnit : AnyObject {
-  var mYValueUnit : Int { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_mYValueUnit : AnyObject {
+//   var mYValueUnit : Int { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_deviceName : AnyObject {
-  var deviceName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_deviceName : AnyObject {
+//   var deviceName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_signatureForERCChecking : AnyObject {
-  var signatureForERCChecking : UInt32? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_signatureForERCChecking : AnyObject {
+//   var signatureForERCChecking : UInt32? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_packagePadDictionary : AnyObject {
-  var packagePadDictionary : PackageMasterPadDictionary? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_packagePadDictionary : AnyObject {
+//   var packagePadDictionary : PackageMasterPadDictionary? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_selectedPackageName : AnyObject {
-  var selectedPackageName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_selectedPackageName : AnyObject {
+//   var selectedPackageName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -186,9 +212,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_issues : AnyObject {
-  var issues : CanariIssueArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_issues : AnyObject {
+//   var issues : CanariIssueArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -198,63 +225,73 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_componentIsPlacedInBoardString : AnyObject {
-  var componentIsPlacedInBoardString : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_componentIsPlacedInBoardString : AnyObject {
+//   var componentIsPlacedInBoardString : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_strokeBezierPath : AnyObject {
-  var strokeBezierPath : BézierPath? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_strokeBezierPath : AnyObject {
+//   var strokeBezierPath : BézierPath? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_pinPadAssignments : AnyObject {
-  var pinPadAssignments : ThreeStringArray? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_pinPadAssignments : AnyObject {
+//   var pinPadAssignments : ThreeStringArray? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_hasSlavePads : AnyObject {
-  var hasSlavePads : Bool? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_hasSlavePads : AnyObject {
+//   var hasSlavePads : Bool? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_placementInSchematic : AnyObject {
-  var placementInSchematic : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_placementInSchematic : AnyObject {
+//   var placementInSchematic : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_deviceSymbolDictionary : AnyObject {
-  var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_deviceSymbolDictionary : AnyObject {
+//   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_componentNameFontName : AnyObject {
-  var componentNameFontName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_componentNameFontName : AnyObject {
+//   var componentNameFontName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_componentValueFontName : AnyObject {
-  var componentValueFontName : String? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_componentValueFontName : AnyObject {
+//   var componentValueFontName : String? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_componentPadDictionary : AnyObject {
-  var componentPadDictionary : ComponentPadDescriptorDictionary? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_componentPadDictionary : AnyObject {
+//   var componentPadDictionary : ComponentPadDescriptorDictionary? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_padNetDictionary : AnyObject {
-  var padNetDictionary : PadNetDictionary? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_padNetDictionary : AnyObject {
+//   var padNetDictionary : PadNetDictionary? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -264,9 +301,10 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_selectionDisplay : AnyObject {
-  var selectionDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_selectionDisplay : AnyObject {
+//   var selectionDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -276,61 +314,63 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol ComponentInProject_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
+// Commented out, not used
+// @MainActor protocol ComponentInProject_objectDisplay : AnyObject {
+//   var objectDisplay : EBShape? { get }
+// }
 
 //--------------------------------------------------------------------------------------------------
 //    Entity: ComponentInProject
 //--------------------------------------------------------------------------------------------------
 
-final class ComponentInProject : BoardObject,
-         ComponentInProject_mSlavePadsShouldBeRouted,
-         ComponentInProject_mX,
-         ComponentInProject_mY,
-         ComponentInProject_mRotation,
-         ComponentInProject_mSide,
-         ComponentInProject_mDisplayLegend,
-         ComponentInProject_mNameIsVisibleInBoard,
-         ComponentInProject_mXName,
-         ComponentInProject_mYName,
-         ComponentInProject_mNameFontSize,
-         ComponentInProject_mNameRotation,
-         ComponentInProject_mValueIsVisibleInBoard,
-         ComponentInProject_mXValue,
-         ComponentInProject_mYValue,
-         ComponentInProject_mValueFontSize,
-         ComponentInProject_mValueRotation,
-         ComponentInProject_mComponentValue,
-         ComponentInProject_mNamePrefix,
-         ComponentInProject_mNameIndex,
-         ComponentInProject_mXUnit,
-         ComponentInProject_mYUnit,
-         ComponentInProject_mXNameUnit,
-         ComponentInProject_mYNameUnit,
-         ComponentInProject_mXValueUnit,
-         ComponentInProject_mYValueUnit,
-         ComponentInProject_deviceName,
-         ComponentInProject_signatureForERCChecking,
-         ComponentInProject_packagePadDictionary,
-         ComponentInProject_selectedPackageName,
-         ComponentInProject_availablePackages,
-         ComponentInProject_issues,
-         ComponentInProject_componentIsPlacedInBoard,
-         ComponentInProject_componentIsPlacedInBoardString,
-         ComponentInProject_strokeBezierPath,
-         ComponentInProject_pinPadAssignments,
-         ComponentInProject_hasSlavePads,
-         ComponentInProject_placementInSchematic,
-         ComponentInProject_deviceSymbolDictionary,
-         ComponentInProject_componentNameFontName,
-         ComponentInProject_componentValueFontName,
-         ComponentInProject_componentPadDictionary,
-         ComponentInProject_padNetDictionary,
-         ComponentInProject_componentName,
-         ComponentInProject_selectionDisplay,
-         ComponentInProject_unplacedSymbols,
-         ComponentInProject_objectDisplay {
+final class ComponentInProject : BoardObject
+    // ComponentInProject_mSlavePadsShouldBeRouted // Commented out, not used
+    // ComponentInProject_mX // Commented out, not used
+    // ComponentInProject_mY // Commented out, not used
+    // ComponentInProject_mRotation // Commented out, not used
+    // ComponentInProject_mSide // Commented out, not used
+    // ComponentInProject_mDisplayLegend // Commented out, not used
+    // ComponentInProject_mNameIsVisibleInBoard // Commented out, not used
+    // ComponentInProject_mXName // Commented out, not used
+    // ComponentInProject_mYName // Commented out, not used
+    // ComponentInProject_mNameFontSize // Commented out, not used
+    // ComponentInProject_mNameRotation // Commented out, not used
+    // ComponentInProject_mValueIsVisibleInBoard // Commented out, not used
+    // ComponentInProject_mXValue // Commented out, not used
+    // ComponentInProject_mYValue // Commented out, not used
+    // ComponentInProject_mValueFontSize // Commented out, not used
+    // ComponentInProject_mValueRotation // Commented out, not used
+    , ComponentInProject_mComponentValue
+    , ComponentInProject_mNamePrefix
+    , ComponentInProject_mNameIndex
+    // ComponentInProject_mXUnit // Commented out, not used
+    // ComponentInProject_mYUnit // Commented out, not used
+    // ComponentInProject_mXNameUnit // Commented out, not used
+    // ComponentInProject_mYNameUnit // Commented out, not used
+    // ComponentInProject_mXValueUnit // Commented out, not used
+    // ComponentInProject_mYValueUnit // Commented out, not used
+    // ComponentInProject_deviceName // Commented out, not used
+    // ComponentInProject_signatureForERCChecking // Commented out, not used
+    // ComponentInProject_packagePadDictionary // Commented out, not used
+    // ComponentInProject_selectedPackageName // Commented out, not used
+    , ComponentInProject_availablePackages
+    // ComponentInProject_issues // Commented out, not used
+    , ComponentInProject_componentIsPlacedInBoard
+    // ComponentInProject_componentIsPlacedInBoardString // Commented out, not used
+    // ComponentInProject_strokeBezierPath // Commented out, not used
+    // ComponentInProject_pinPadAssignments // Commented out, not used
+    // ComponentInProject_hasSlavePads // Commented out, not used
+    // ComponentInProject_placementInSchematic // Commented out, not used
+    // ComponentInProject_deviceSymbolDictionary // Commented out, not used
+    // ComponentInProject_componentNameFontName // Commented out, not used
+    // ComponentInProject_componentValueFontName // Commented out, not used
+    // ComponentInProject_componentPadDictionary // Commented out, not used
+    // ComponentInProject_padNetDictionary // Commented out, not used
+    , ComponentInProject_componentName
+    // ComponentInProject_selectionDisplay // Commented out, not used
+    , ComponentInProject_unplacedSymbols
+    // ComponentInProject_objectDisplay // Commented out, not used
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mSlavePadsShouldBeRouted

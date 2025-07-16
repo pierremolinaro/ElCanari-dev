@@ -8,7 +8,8 @@ import AppKit
 //    Entity: DeviceSymbolTypeInProject
 //--------------------------------------------------------------------------------------------------
 
-final class DeviceSymbolTypeInProject : EBManagedObject {
+final class DeviceSymbolTypeInProject : EBManagedObject
+    {
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mSymbolTypeName
