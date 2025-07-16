@@ -241,7 +241,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
     }
     if let document = self.mDocument, inRowIndexes.count == 1, let rowIndex = inRowIndexes.first {
       let (image, imageOffset) = document.image (forDragSource: self, forDragRowIndex: rowIndex)
-      inSession.enumerateDraggingItems (
+      unsafe inSession.enumerateDraggingItems (
         options: .concurrent,
         for: nil,
         classes: [NSPasteboardItem.self],

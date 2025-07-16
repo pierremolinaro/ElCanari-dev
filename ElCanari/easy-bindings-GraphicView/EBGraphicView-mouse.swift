@@ -215,7 +215,7 @@ extension EBGraphicView {
   // aux « mouse events ». Il faut donc récupérer directement les coordonnées écran de la position
   // de la souris et les traduire en coordonnées de la vue.
     let mouseLocationInScreenCoordinates = NSEvent.mouseLocation
-    let mouseLocationInWindowCoordinates = self.window!.convertPoint (fromScreen: mouseLocationInScreenCoordinates)
+    let mouseLocationInWindowCoordinates = unsafe self.window!.convertPoint (fromScreen: mouseLocationInScreenCoordinates)
     let unalignedLocationInView = self.convert (mouseLocationInWindowCoordinates, from: nil)
   //---
     self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)

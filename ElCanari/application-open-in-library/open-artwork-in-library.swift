@@ -66,7 +66,7 @@ import AppKit
       for path in existingLibraryPathArray () {
         let baseDirectory = artworkLibraryPathForPath (path)
         var isDirectory : ObjCBool = false
-        if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
+        if unsafe fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try? fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files ?? [] {
             if f.pathExtension.lowercased () == ElCanariArtwork_EXTENSION {
@@ -82,7 +82,7 @@ import AppKit
       let fm = FileManager ()
       let baseDirectory = artworkLibraryPathForPath (path)
       var isDirectory : ObjCBool = false
-      if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
+      if unsafe fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
         let files = try? fm.subpathsOfDirectory (atPath: baseDirectory)
         for f in files ?? [] {
           if f.pathExtension.lowercased() == ElCanariArtwork_EXTENSION {

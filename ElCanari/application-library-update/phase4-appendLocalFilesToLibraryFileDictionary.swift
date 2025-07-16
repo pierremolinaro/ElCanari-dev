@@ -33,7 +33,7 @@ extension Preferences {
           if enter {
             let fullPath = systemLibraryPath () + "/" + filePath
             var isDirectory : ObjCBool = false
-            _ = fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
+            _ = unsafe fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
             enter = !isDirectory.boolValue
           }
           if enter {

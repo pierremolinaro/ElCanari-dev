@@ -163,7 +163,7 @@ final class VerticalStackDivider : NSView, VerticalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseDown (with inEvent : NSEvent) {
-    if let vStack = self.superview as? AutoLayoutVerticalStackView {
+    if let vStack = unsafe self.superview as? AutoLayoutVerticalStackView {
       if vStack.isFlipped {
         self.mDividerInitialTopLocationY = NSMinY (vStack.bounds) + vStack.convert (self.bounds.origin, from: self).y
       }else{
@@ -179,7 +179,7 @@ final class VerticalStackDivider : NSView, VerticalStackHierarchyProtocol {
 
   override func mouseDragged (with inEvent: NSEvent) {
     NSCursor.resizeUpDown.set ()
-    if let vStack = self.superview as? AutoLayoutVerticalStackView {
+    if let vStack = unsafe self.superview as? AutoLayoutVerticalStackView {
       self.mCurrentMouseDraggedLocationY = vStack.convert (inEvent.locationInWindow, from: nil).y
       self.needsUpdateConstraints = true
     }
@@ -194,7 +194,7 @@ final class VerticalStackDivider : NSView, VerticalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func updateConstraints () {
-    if let vStack = self.superview as? AutoLayoutVerticalStackView {
+    if let vStack = unsafe self.superview as? AutoLayoutVerticalStackView {
       vStack.removeConstraints (self.mDividerConstraints)
       self.mDividerConstraints.removeAll (keepingCapacity: true)
       let priority : LayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow

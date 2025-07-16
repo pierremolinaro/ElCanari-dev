@@ -39,8 +39,8 @@ class ALB_NSTextView : NSScrollView {
     let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
     self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
     self.mTextView.maxSize = NSSize (width: MAX_SIZE, height: MAX_SIZE)
-    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
-    self.mTextView.textContainer?.widthTracksTextView = true
+    unsafe self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: MAX_SIZE)
+    unsafe self.mTextView.textContainer?.widthTracksTextView = true
 
     self.drawsBackground = false // Scroll view has no background
     self.documentView = self.mTextView
@@ -63,7 +63,7 @@ class ALB_NSTextView : NSScrollView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final var textStorage : NSTextStorage? { self.mTextView.textStorage }
+  final var textStorage : NSTextStorage? { unsafe self.mTextView.textStorage }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -147,8 +147,8 @@ final class InternalTextView : NSTextView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override var intrinsicContentSize : NSSize {
-    let textContainer = self.textContainer!
-    let layoutManager = self.layoutManager!
+    let textContainer = unsafe self.textContainer!
+    let layoutManager = unsafe self.layoutManager!
     layoutManager.ensureLayout (for: textContainer)
     return layoutManager.usedRect (for: textContainer).size
   }
@@ -167,7 +167,7 @@ final class InternalTextView : NSTextView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidHide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
       buildResponderKeyChainForWindowThatContainsView (self)
     }
@@ -177,7 +177,7 @@ final class InternalTextView : NSTextView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidUnhide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()

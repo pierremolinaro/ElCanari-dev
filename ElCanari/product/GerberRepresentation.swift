@@ -181,9 +181,9 @@ fileprivate extension ProductLength {
   func apertureLengthString (_ inUnit : GerberUnit) -> String {
     switch inUnit {
     case .imperial :
-      return String (format: "%.4f", self.value (in: .inch))
+      return unsafe String (format: "%.4f", self.value (in: .inch))
     case .metric :
-      return String (format: "%.6f", self.value (in: .mm))
+      return unsafe String (format: "%.6f", self.value (in: .mm))
     }
   }
 

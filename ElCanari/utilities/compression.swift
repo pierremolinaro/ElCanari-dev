@@ -16,9 +16,9 @@ func compressedData (_ inData : Data,
   var sourceBuffer : [UInt8] = [UInt8] (inData)
   let destinationBuffer = UnsafeMutablePointer<UInt8>.allocate (capacity: sourceBuffer.count)
   defer {
-    destinationBuffer.deallocate ()
+    unsafe destinationBuffer.deallocate ()
   }
-  let compressedSize = compression_encode_buffer (
+  let compressedSize = unsafe compression_encode_buffer (
     destinationBuffer,
     sourceBuffer.count,
     &sourceBuffer,
@@ -26,7 +26,7 @@ func compressedData (_ inData : Data,
     nil,
     inAlgorithm
   )
-  let compressedData = Data (bytes: destinationBuffer, count: compressedSize)
+  let compressedData = unsafe Data (bytes: destinationBuffer, count: compressedSize)
   return compressedData
 }
 
@@ -43,9 +43,9 @@ func uncompressedData (_ inCompressedData : Data,
     let destinationBufferSize = sourceBuffer.count * expansionFactor
     let destinationBuffer = UnsafeMutablePointer <UInt8>.allocate (capacity: destinationBufferSize)
     defer {
-      destinationBuffer.deallocate ()
+      unsafe destinationBuffer.deallocate ()
     }
-    let uncompressedSize = compression_decode_buffer (
+    let uncompressedSize = unsafe compression_decode_buffer (
       destinationBuffer,
       destinationBufferSize,
       &sourceBuffer,
@@ -54,7 +54,7 @@ func uncompressedData (_ inCompressedData : Data,
       inAlgorithm
     )
     if (uncompressedSize > 0) && (uncompressedSize < destinationBufferSize) {
-      uncompressedData = Data (bytes: destinationBuffer, count: uncompressedSize)
+      uncompressedData = unsafe Data (bytes: destinationBuffer, count: uncompressedSize)
       loop = false
     }else{  // Means overflow, destination buffer too small
       expansionFactor *= 2

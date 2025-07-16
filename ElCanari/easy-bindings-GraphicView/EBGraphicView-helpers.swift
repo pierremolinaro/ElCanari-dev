@@ -69,7 +69,7 @@ extension EBGraphicView {
 
   final func updateXYHelperWindow (mouseLocationInView inLocationInView : NSPoint) {
     let commandKey = NSEvent.modifierFlags.contains (.command)
-    if commandKey, let myWindow = self.window, self.visibleRect.contains (inLocationInView) {
+    if commandKey, let myWindow = unsafe self.window, self.visibleRect.contains (inLocationInView) {
       let xyWindow : NSWindow
       if let window = self.mXYwindow {
         xyWindow = window
@@ -135,7 +135,7 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final private func performLiveScrolling (_ _ : Notification) {
-    if let myWindow = self.window {
+    if let myWindow = unsafe self.window {
       let mouseLocationInScreen = NSEvent.mouseLocation
     //--- Note: NSWindow.convertPoint (fromScreen:) is available from 10.12
     //   So we use NSWindow.convertFromScreen for NSRect (available from 10.7)

@@ -181,7 +181,7 @@ private class InternalNewCharacterView : NSView {
       }else{
         dict = [:]
       }
-      let title = String (format: "%04X", (line + 2) * 16)
+      let title = unsafe String (format: "%04X", (line + 2) * 16)
       let titleAttributedString = NSAttributedString (string: title, attributes: dict)
       titleAttributedString.draw (at: NSPoint (x:5.0, y: y + 3.0))
       var x = ADDRESS_COLUMN_WIDTH
@@ -192,7 +192,7 @@ private class InternalNewCharacterView : NSView {
           NSColor.lightGray.setFill ()
           NSBezierPath.fill (rChar)
         }
-        let title = String (format: "%C", code)
+        let title = unsafe String (format: "%C", code)
         let dict = [NSAttributedString.Key.foregroundColor : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]
         let attributedString = NSAttributedString (string: title, attributes: dict)
         let size = attributedString.size ()

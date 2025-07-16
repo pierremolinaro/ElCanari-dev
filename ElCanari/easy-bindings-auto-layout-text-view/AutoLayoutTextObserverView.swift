@@ -155,7 +155,7 @@ final class AutoLayoutTextObserverView : ALB_NSTextView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func clear () {
-    if let ts = self.mTextView.layoutManager?.textStorage {
+    if let ts = unsafe self.mTextView.layoutManager?.textStorage {
       let str = NSAttributedString (string: "", attributes: nil)
       ts.setAttributedString (str)
       RunLoop.current.run (until: Date ())
@@ -165,7 +165,7 @@ final class AutoLayoutTextObserverView : ALB_NSTextView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendAttributedString (_ inAttributedString : NSAttributedString) {
-    if let ts = self.mTextView.layoutManager?.textStorage {
+    if let ts = unsafe self.mTextView.layoutManager?.textStorage {
       ts.append (inAttributedString)
       let endOfText = NSRange (location: ts.length, length: 0)
       self.mTextView.scrollRangeToVisible (endOfText)

@@ -12,7 +12,7 @@ extension EBGraphicView {
 
   final override func keyDown (with inEvent : NSEvent) {
     if let characters = inEvent.characters,
-       let myWindow = self.window,
+       let myWindow = unsafe self.window,
        !inEvent.modifierFlags.contains (.option),
        !inEvent.modifierFlags.contains (.control),
        !inEvent.modifierFlags.contains (.command) {

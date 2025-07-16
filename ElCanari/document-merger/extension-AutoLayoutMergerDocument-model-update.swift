@@ -242,7 +242,7 @@ fileprivate final class OpenPanelDelegateForUpdatingBoardModels : NSObject, NSOp
     let path = url.path
     let fm = FileManager ()
     var isDirectory : ObjCBool = false
-    _ = fm.fileExists (atPath: path, isDirectory: &isDirectory)
+    _ = unsafe fm.fileExists (atPath: path, isDirectory: &isDirectory)
     return isDirectory.boolValue || (self.mBoardModelName == path.lastPathComponent.deletingPathExtension)
   }
 

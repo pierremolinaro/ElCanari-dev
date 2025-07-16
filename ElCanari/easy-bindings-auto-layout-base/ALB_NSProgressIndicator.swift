@@ -41,7 +41,7 @@ class ALB_NSProgressIndicator : NSProgressIndicator {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidHide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidHide ()
@@ -50,7 +50,7 @@ class ALB_NSProgressIndicator : NSProgressIndicator {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidUnhide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()

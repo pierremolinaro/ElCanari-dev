@@ -14,7 +14,7 @@ extension Double : EBStoredPropertyProtocol {
 
   func ebHashValue () -> UInt32 {
     var value = self.bitPattern.bigEndian
-    let array = withUnsafeBytes (of: &value) { Array ($0) }
+    let array = unsafe withUnsafeBytes (of: &value) { unsafe Array ($0) }
     return array.ebHashValue ()
   }
 

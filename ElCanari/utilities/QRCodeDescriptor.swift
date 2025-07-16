@@ -243,7 +243,7 @@ fileprivate func bitMap (forImageRep inImageRep : NSCIImageRep) -> [[Bool]] {
           var greenComponent : CGFloat = 0.0
           var blueComponent : CGFloat = 0.0
           var alphaComponent : CGFloat = 0.0
-          color.getRed (&redComponent, green:&greenComponent, blue:&blueComponent, alpha:&alphaComponent)
+          unsafe color.getRed (&redComponent, green:&greenComponent, blue:&blueComponent, alpha:&alphaComponent)
           boolArray.append (redComponent < 0.5)
         }else{
           boolArray.append (false)

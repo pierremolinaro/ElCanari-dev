@@ -165,7 +165,7 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
   // · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·
 
   override func mouseDown (with inEvent : NSEvent) {
-    if let hStack = self.superview as? AutoLayoutHorizontalStackView {
+    if let hStack = unsafe self.superview as? AutoLayoutHorizontalStackView {
       self.mDividerInitialLeftLocationX = hStack.convert (NSPoint (), from: self).x
       self.mInitialMouseDownLocationX = hStack.convert (inEvent.locationInWindow, from: nil).x
       self.mCurrentMouseDraggedLocationX = 0.0
@@ -177,7 +177,7 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
 
   override func mouseDragged (with inEvent: NSEvent) {
     NSCursor.resizeLeftRight.set ()
-    if let hStack = self.superview as? AutoLayoutHorizontalStackView {
+    if let hStack = unsafe self.superview as? AutoLayoutHorizontalStackView {
       self.mCurrentMouseDraggedLocationX = hStack.convert (inEvent.locationInWindow, from: nil).x
       self.needsUpdateConstraints = true
     }
@@ -192,7 +192,7 @@ final class HorizontalStackDivider : NSView, HorizontalStackHierarchyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func updateConstraints () {
-    if let hStack = self.superview as? AutoLayoutHorizontalStackView {
+    if let hStack = unsafe self.superview as? AutoLayoutHorizontalStackView {
       hStack.removeConstraints (self.mDividerConstraints)
       self.mDividerConstraints.removeAll (keepingCapacity: true)
       let priority : LayoutCompressionConstraintPriority = self.mCanResizeWindow ? .canResizeWindow : .cannotResizeWindow

@@ -122,7 +122,7 @@ final class FontCharacterSelectView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func mouseDraggedAtScreenPoint (_ inEventLocationInScreenCoordinates : NSRect) {
-    if let unwWindow = self.window {
+    if let unwWindow = unsafe self.window {
       let eventLocationInWindowCoordinates = unwWindow.convertFromScreen (inEventLocationInScreenCoordinates).origin ;
       let eventLocationInLocalCoordinates = self.convert (eventLocationInWindowCoordinates, from:nil)
       if (eventLocationInLocalCoordinates.y > 0.0) && (eventLocationInLocalCoordinates.y < self.bounds.maxY) {
@@ -166,7 +166,7 @@ final class FontCharacterSelectView : NSView {
       for c : UInt in 0 ... 15 {
         let r = rectangleForColumnTitle (c)
         let pointCode = (c < 10) ? (c + 0x30) : (c + 0x37)
-        let s = String (format:"%C", arguments: [pointCode])
+        let s = unsafe String (format:"%C", arguments: [pointCode])
         let size = s.size (withAttributes: titleAttributes)
         let p = NSPoint (x:r.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y: r.origin.y)
         s.draw (at: p, withAttributes: titleAttributes)
@@ -178,7 +178,7 @@ final class FontCharacterSelectView : NSView {
       let p = originForRowTitle (lineIndex)
       lineIndex += 1
       if (p.y >= inDirtyRect.minY) && (p.y <= inDirtyRect.maxY) {
-        let s = String (format:"%04hX:", arguments: [line * 16])
+        let s = unsafe String (format:"%04hX:", arguments: [line * 16])
         s.draw (at: p, withAttributes: titleAttributes)
       }
     }
@@ -272,7 +272,7 @@ final class FontCharacterSelectView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func timerScrollAction (_ : Timer) {
-    if let myWindow = self.window {
+    if let myWindow = unsafe self.window {
       let mouseRect = NSRect (origin: NSEvent.mouseLocation, size: NSSize ())
       let eventLocationInWindowCoordinates = myWindow.convertFromScreen (mouseRect).origin
       let eventLocationInLocalCoordinates = self.convert (eventLocationInWindowCoordinates, from:nil)

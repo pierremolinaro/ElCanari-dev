@@ -72,10 +72,10 @@ struct BézierPath : Hashable {
     //--- Get CCGlyph array
       let glyphRange : NSRange = myLayout.glyphRange (for: textContainer)
       var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
-      _ = myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
+      _ = unsafe myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
     //--- Enter in Bezier path
       self.mPath.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))
-      self.mPath.append (withCGGlyphs: &cgGlyphArray, count: glyphRange.length, in: font)
+      unsafe self.mPath.append (withCGGlyphs: &cgGlyphArray, count: glyphRange.length, in: font)
     //--- Alignment
       let width = self.mPath.bounds.width
       let height = self.mPath.bounds.height
@@ -368,7 +368,7 @@ struct BézierPath : Hashable {
         let flattenedPath = self.mPath.flattened
         var idx = 0
         while (idx < flattenedPath.elementCount) && !intersect {
-          let type = flattenedPath.element (at: idx, associatedPoints: &points)
+          let type = unsafe flattenedPath.element (at: idx, associatedPoints: &points)
           idx += 1
           switch type {
           case .moveTo:
@@ -422,11 +422,11 @@ struct BézierPath : Hashable {
     // https://forums.swift.org/t/handling-the-new-forming-unsaferawpointer-warning/65523/4
 //    public typealias CGPathApplierFunction = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void
     let callBack : @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void = {
-      pathByStrokingCallback ($0, $1)
+      unsafe pathByStrokingCallback ($0, $1)
     }
-    withUnsafeMutablePointer (to: &path.mPath) {
+    unsafe withUnsafeMutablePointer (to: &path.mPath) {
    //   cgPath.apply (info: $0, function: pathByStrokingCallback)
-      cgPath.apply (info: $0, function: callBack)
+      unsafe cgPath.apply (info: $0, function: callBack)
     }
     return path
   }
@@ -561,7 +561,7 @@ struct BézierPath : Hashable {
     var optionalStartPoint : NSPoint? = nil
     var linePoints = [NSPoint] ()
     for idx in 0 ..< flattenedBP.elementCount {
-      let type = flattenedBP.element (at: idx, associatedPoints: &curvePoints)
+      let type = unsafe flattenedBP.element (at: idx, associatedPoints: &curvePoints)
       switch type {
       case .moveTo:
         if let startPoint = optionalStartPoint, linePoints.count > 0 {
@@ -658,7 +658,7 @@ extension NSBezierPath {
     let path = CGMutablePath ()
     var points = [NSPoint] (repeating: .zero, count: 3)
     for idx in 0 ..< self.elementCount {
-      let type = self.element (at: idx, associatedPoints: &points)
+      let type = unsafe self.element (at: idx, associatedPoints: &points)
       switch type {
       case .moveTo:
         path.move (to: points[0])
@@ -686,17 +686,17 @@ extension NSBezierPath {
 //--------------------------------------------------------------------------------------------------
 
 private func pathByStrokingCallback (_ inInfo : UnsafeMutableRawPointer?, _ inElement : UnsafePointer<CGPathElement>) {
-  if let bezierPath : NSBezierPath = inInfo?.load (as: NSBezierPath.self) {
-    let points = inElement.pointee.points
-    switch inElement.pointee.type {
+  if let bezierPath : NSBezierPath = unsafe inInfo?.load (as: NSBezierPath.self) {
+    let points = unsafe inElement.pointee.points
+    switch unsafe inElement.pointee.type {
     case .moveToPoint:
-      bezierPath.move (to: points [0])
+      unsafe bezierPath.move (to: points [0])
     case .addLineToPoint:
-      bezierPath.line (to: points [0])
+      unsafe bezierPath.line (to: points [0])
     case .addQuadCurveToPoint:
       let qp0 = bezierPath.currentPoint
-      let qp1 = points [0]
-      let qp2 = points [1]
+      let qp1 = unsafe points [0]
+      let qp2 = unsafe points [1]
     //  NSPoint qp0 = bezierPath.currentPoint, qp1 = points[0], qp2 = points[1], cp1, cp2;
       let m : CGFloat = 2.0 / 3.0
       let cp1 = NSPoint (x: qp0.x + ((qp1.x - qp0.x) * m), y: qp0.y + ((qp1.y - qp0.y) * m))
@@ -707,7 +707,7 @@ private func pathByStrokingCallback (_ inInfo : UnsafeMutableRawPointer?, _ inEl
 //        cp2.y = (qp2.y + ((qp1.y - qp2.y) * m));
       bezierPath.curve (to: qp2, controlPoint1: cp1, controlPoint2: cp2)
     case .addCurveToPoint:
-      bezierPath.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
+      unsafe bezierPath.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
     case .closeSubpath:
       bezierPath.close ()
     @unknown default:

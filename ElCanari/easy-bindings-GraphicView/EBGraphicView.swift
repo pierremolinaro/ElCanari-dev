@@ -37,7 +37,7 @@ final class EBGraphicView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidMoveToWindow () {
-    if self.window == nil { // Remove from window
+    if unsafe self.window == nil { // Remove from window
       self.removeXYHelperWindow ()
     }
   }
@@ -59,7 +59,7 @@ final class EBGraphicView : NSView {
     self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] (inEvent) in
       if let me = self {
         let unalignedLocationInView = me.convert (inEvent.locationInWindow, from: nil)
-        if me.bounds.contains (unalignedLocationInView), let isKeyWindow = me.window?.isKeyWindow, isKeyWindow {
+        if me.bounds.contains (unalignedLocationInView), let isKeyWindow = unsafe me.window?.isKeyWindow, isKeyWindow {
           me.flagsChanged (with: inEvent)
         }else{
           me.removeXYHelperWindow ()
@@ -345,7 +345,7 @@ final class EBGraphicView : NSView {
   var mBackColor : NSColor = NSColor.white {
     didSet {
       self.needsDisplay = true
-      if let scrollView = self.superview?.superview as? NSScrollView {
+      if let scrollView = unsafe self.superview?.superview as? NSScrollView {
         scrollView.backgroundColor = self.mBackColor
       }
     }
@@ -588,7 +588,7 @@ final class EBGraphicView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func flip (horizontal inHorizontalFlip : Bool, vertical inVerticalFlip : Bool) {
-     if let clipView = self.superview as? NSClipView {
+    if let clipView = unsafe self.superview as? NSClipView {
        let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0
        let toggleVerticalFlip   : CGFloat = (inVerticalFlip   != self.mVerticalFlip)   ? -1.0 : 1.0
        clipView.scaleUnitSquare (to: NSSize (width: toggleHorizontalFlip, height: toggleVerticalFlip))

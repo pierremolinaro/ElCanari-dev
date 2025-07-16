@@ -38,7 +38,7 @@ extension NSBezierPath : EBStoredPropertyProtocol, @unchecked @retroactive Senda
     var idx = 0
     var points = [NSPoint] (repeating: .zero, count: 3)
     while idx < self.elementCount {
-      let type = self.element (at: idx, associatedPoints: &points)
+      let type = unsafe self.element (at: idx, associatedPoints: &points)
       idx += 1
       switch type {
       case .moveTo:
@@ -105,7 +105,7 @@ extension NSBezierPath : EBStoredPropertyProtocol, @unchecked @retroactive Senda
     }
     if ok {
       var windingRuleRawValue = 0
-      ok = scanner.scanInt (&windingRuleRawValue)
+      ok = unsafe scanner.scanInt (&windingRuleRawValue)
       if ok, let windingRule = NSBezierPath.WindingRule (rawValue: UInt (windingRuleRawValue)) {
         bp.windingRule = windingRule
       }else{
@@ -114,7 +114,7 @@ extension NSBezierPath : EBStoredPropertyProtocol, @unchecked @retroactive Senda
     }
     if ok {
       var lineCapStyleRawValue = 0
-      ok = scanner.scanInt (&lineCapStyleRawValue)
+      ok = unsafe scanner.scanInt (&lineCapStyleRawValue)
       if ok, let lineCapStyle = NSBezierPath.LineCapStyle (rawValue: UInt (lineCapStyleRawValue)) {
         bp.lineCapStyle = lineCapStyle
       }else{
@@ -123,7 +123,7 @@ extension NSBezierPath : EBStoredPropertyProtocol, @unchecked @retroactive Senda
     }
     if ok {
       var lineJoinStyleRawValue = 0
-      ok = scanner.scanInt (&lineJoinStyleRawValue)
+      ok = unsafe scanner.scanInt (&lineJoinStyleRawValue)
       if ok, let lineJoinStyle = NSBezierPath.LineJoinStyle (rawValue: UInt (lineJoinStyleRawValue)) {
         bp.lineJoinStyle = lineJoinStyle
       }else{

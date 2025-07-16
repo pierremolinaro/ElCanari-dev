@@ -207,7 +207,7 @@ class ALB_NSStackView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidHide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
       buildResponderKeyChainForWindowThatContainsView (self)
     }
@@ -217,7 +217,7 @@ class ALB_NSStackView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidUnhide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
@@ -234,7 +234,7 @@ class ALB_NSStackView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func layout () {
-    self.window?.triggerDecoration ()
+    unsafe self.window?.triggerDecoration ()
     super.layout ()
   }
 

@@ -61,7 +61,7 @@ class ALB_NSSlider : NSSlider {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidHide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
       buildResponderKeyChainForWindowThatContainsView (self)
     }
@@ -71,7 +71,7 @@ class ALB_NSSlider : NSSlider {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidUnhide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()

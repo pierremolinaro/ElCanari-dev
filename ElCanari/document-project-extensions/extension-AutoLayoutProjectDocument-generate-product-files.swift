@@ -164,7 +164,7 @@ extension AutoLayoutProjectDocument {
     let fm = FileManager ()
     var isDir : ObjCBool = false
     let directoryPath = inDirectoryURL.path
-    if fm.fileExists (atPath: directoryPath, isDirectory: &isDir) {
+    if unsafe fm.fileExists (atPath: directoryPath, isDirectory: &isDir) {
       self.mProductFileGenerationLogTextView?.appendMessage ("Remove recursively \(directoryPath)...")
       try fm.removeItem (atPath: directoryPath) // Remove dir recursively
       self.mProductFileGenerationLogTextView?.appendSuccess (" ok.\n")
@@ -713,7 +713,7 @@ extension AutoLayoutProjectDocument {
       var retainedBP = BézierPath ()
       var points = [NSPoint] (repeating: .zero, count: 3)
       for i in 0 ..< strokeBP.nsBezierPath.elementCount {
-        let type = strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
+        let type = unsafe strokeBP.nsBezierPath.element (at: i, associatedPoints: &points)
         switch type {
         case .moveTo:
           closedPathCount += 1

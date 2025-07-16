@@ -17,9 +17,11 @@ func writeZipArchiveFile (at inTargetZipURL : URL,
   var myError2 : NSError? = nil
 // coordinateReadingItemAtURL is invoked synchronously, but the passed in zippedURL is only valid
 // for the duration of the block, so it needs to be copied out
-  coord.coordinate (readingItemAt: inSourceDirectoryURL,
-                    options: NSFileCoordinator.ReadingOptions.forUploading,
-                    error: &myError1) { (inZippedURL : URL) in
+  unsafe coord.coordinate (
+    readingItemAt: inSourceDirectoryURL,
+    options: NSFileCoordinator.ReadingOptions.forUploading,
+    error: &myError1
+  ) { (inZippedURL : URL) in
     do{
       let fm = FileManager ()
       if fm.fileExists (atPath: inTargetZipURL.path) {

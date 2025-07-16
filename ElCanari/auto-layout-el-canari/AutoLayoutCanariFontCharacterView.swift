@@ -910,7 +910,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     var loop = true
     while loop {
     //--- Wait for mouse dragged or mouse up
-      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
+      let event : NSEvent = unsafe self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from: nil)
@@ -934,7 +934,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     var loop = true
     while loop {
     //--- Wait for mouse dragged or mouse up
-      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
+      let event : NSEvent = unsafe self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
@@ -957,7 +957,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     while loop {
       self.display ()
     //--- Wait for mouse dragged or mouse up
-      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
+      let event : NSEvent = unsafe self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
@@ -982,7 +982,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     while loop {
       self.display ()
     //--- Wait for mouse dragged or mouse up
-      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
+      let event : NSEvent = unsafe self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
       loop = event.type == .leftMouseDragged
       if loop {
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)

@@ -26,11 +26,11 @@ extension Preferences {
   final func configureLibraryFileSystemObservation () {
     self.updateLibrariesUserInterfaceStatus ()
   //--- If the stream was already created, remove it
-    if let previousStream = gStream {
-      FSEventStreamStop (previousStream)
-      FSEventStreamInvalidate (previousStream)
-      FSEventStreamRelease (previousStream)
-      gStream = nil
+    if let previousStream = unsafe gStream {
+      unsafe FSEventStreamStop (previousStream)
+      unsafe FSEventStreamInvalidate (previousStream)
+      unsafe FSEventStreamRelease (previousStream)
+      unsafe gStream = nil
     }
   //--- Use an FSEvent for tracking Canari System Library changes
     let pathsToWatch : [String] = [systemLibraryPath ()] + existingLibraryPathArray ()
@@ -44,7 +44,7 @@ extension Preferences {
     let callback: FSEventStreamCallback = {
       (streamRef, clientCallBackInfo, numEvents, eventPaths, eventFlags, eventIds) -> Void
     in
-      callbackForFSEvent (
+      unsafe callbackForFSEvent (
         streamRef: streamRef,
         clientCallBackInfo: clientCallBackInfo,
         numEvents: numEvents,
@@ -54,7 +54,7 @@ extension Preferences {
       )
     }
   //--- Create the stream
-    gStream = FSEventStreamCreate (
+    unsafe gStream = unsafe FSEventStreamCreate (
       kCFAllocatorDefault,
       callback,
       nil,
@@ -63,9 +63,9 @@ extension Preferences {
       latency,
       streamCreationFlags
     )
-    if let stream = gStream {
-      FSEventStreamSetDispatchQueue (stream, DispatchQueue.main)
-      FSEventStreamStart (stream)
+    if let stream = unsafe gStream {
+      unsafe FSEventStreamSetDispatchQueue (stream, DispatchQueue.main)
+      unsafe FSEventStreamStart (stream)
       runCallbackForFSEvent ()
 //      Swift.print ("Start observing \(pathsToWatch)")
     }

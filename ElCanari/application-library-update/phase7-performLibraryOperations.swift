@@ -122,7 +122,7 @@ extension Preferences {
     for relativePath in currentLibraryContents {
       let fullPath = systemLibraryPath () + "/" + relativePath
       var isDirectory : ObjCBool = false
-      fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
+      unsafe fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
       if (isDirectory.boolValue) {
         directoryArray.append (fullPath)
       }

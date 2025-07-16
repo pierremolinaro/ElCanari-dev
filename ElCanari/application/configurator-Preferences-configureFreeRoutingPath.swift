@@ -24,7 +24,7 @@ extension Preferences {
           let alert = NSAlert ()
           alert.messageText = "Cannot open the FreeRouting directory"
           alert.informativeText = "This directory does not exist."
-          alert.beginSheetModal (for: inOutlet.window!) { (response : NSApplication.ModalResponse) in }
+          unsafe alert.beginSheetModal (for: inOutlet.window!) { (response : NSApplication.ModalResponse) in }
         }
       }
 //--- END OF USER ZONE 2

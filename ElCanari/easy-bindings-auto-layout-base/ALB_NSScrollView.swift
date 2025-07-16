@@ -39,7 +39,7 @@ class ALB_NSScrollView : NSScrollView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidHide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
       buildResponderKeyChainForWindowThatContainsView (self)
     }
@@ -49,7 +49,7 @@ class ALB_NSScrollView : NSScrollView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func viewDidUnhide () {
-    if let superview = self.superview, !superview.isHidden {
+    if let superview = unsafe self.superview, !superview.isHidden {
       superview.invalidateIntrinsicContentSize ()
     }
     super.viewDidUnhide ()
@@ -65,7 +65,7 @@ class ALB_NSScrollView : NSScrollView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func reflectScrolledClipView (_ inClipView : NSClipView) {
-    if let window = self.window {
+    if let window = unsafe self.window {
       window.triggerDecoration ()
     }
     super.reflectScrolledClipView (inClipView)

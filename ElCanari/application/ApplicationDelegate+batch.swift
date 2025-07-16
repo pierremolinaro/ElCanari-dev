@@ -55,7 +55,7 @@ extension ApplicationDelegate {
                                                              _ inTitle : String,
                                                              _ inSender : Any?) {
     self.instanciatedBatchWindow ()
-    if let button = inSender as? NSButton, let window = button.window {
+    if let button = inSender as? NSButton, let window = unsafe button.window {
       self.mMaintenanceLogTextView?.string = ""
       self.mMaintenanceLogTextField?.stringValue = ""
       let op = NSOpenPanel ()
@@ -130,7 +130,7 @@ extension ApplicationDelegate {
 
   @MainActor @objc func updateAllProjectsInDirectory (_ inSender : Any?) {
     self.instanciatedBatchWindow ()
-    if let button = inSender as? NSButton, let window = button.window {
+    if let button = inSender as? NSButton, let window = unsafe button.window {
       self.mMaintenanceLogTextView?.string = ""
       self.mMaintenanceLogTextField?.stringValue = ""
       self.mCount = 0
@@ -193,7 +193,7 @@ extension ApplicationDelegate {
 
   @MainActor @objc func updateAllDevicesInDirectory (_ inSender : Any?) {
     self.instanciatedBatchWindow ()
-    if let button = inSender as? NSButton, let window = button.window {
+    if let button = inSender as? NSButton, let window = unsafe button.window {
       self.mMaintenanceLogTextView?.string = ""
       self.mMaintenanceLogTextField?.stringValue = ""
       self.mCount = 0
@@ -288,7 +288,7 @@ extension ApplicationDelegate {
                                         toFormat inFormat : EBManagedDocumentFileFormat,
                                         sender inSender : AnyObject) {
     self.instanciatedBatchWindow ()
-    if let button = inSender as? NSButton, let window = button.window {
+    if let button = inSender as? NSButton, let window = unsafe button.window {
       self.mMaintenanceLogTextView?.string = ""
       self.mMaintenanceLogTextField?.stringValue = ""
       self.mCount = 0

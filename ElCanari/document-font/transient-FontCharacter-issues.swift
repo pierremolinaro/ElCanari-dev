@@ -25,7 +25,7 @@ import AppKit
   if (self_advance == 0) && self_mWarnsWhenAdvanceIsZero {
     let s = CanariIssue (
       kind: .warning,
-      message: "+u\(String (format: "%04X", self_codePoint)): zero advancement",
+      message: unsafe "+u\(String (format: "%04X", self_codePoint)): zero advancement",
       representativeValue: self_codePoint
     )
     issues.append (s)
@@ -33,7 +33,7 @@ import AppKit
   if (self_segments_count == 0) && self_mWarnsWhenNoSegment {
     let s = CanariIssue (
       kind: .warning,
-      message: "+u\(String (format: "%04X", self_codePoint)): no segment",
+      message: unsafe "+u\(String (format: "%04X", self_codePoint)): no segment",
       representativeValue: self_codePoint
     )
     issues.append (s)

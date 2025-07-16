@@ -75,7 +75,7 @@ final class AutoLayoutFontButton : ALB_NSButton {
 
   func mySetFont (font : NSFont) {
     self.mFont = font
-    let newTitle = String (format:"%@ - %g pt.", font.displayName ?? "?", font.pointSize)
+    let newTitle = unsafe String (format:"%@ - %g pt.", font.displayName ?? "?", font.pointSize)
     self.title = newTitle
     self.toolTip = newTitle
   }

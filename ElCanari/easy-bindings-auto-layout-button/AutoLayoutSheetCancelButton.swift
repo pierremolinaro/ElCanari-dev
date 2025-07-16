@@ -46,13 +46,13 @@ final class AutoLayoutSheetCancelButton : NSButton {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func dismissSheetAction (_ sender : Any?) {
-    if let mySheet = self.window {
+    if let mySheet = unsafe self.window {
       mySheet.endEditing (for: nil)
       if let parent = mySheet.sheetParent {
         parent.endSheet (mySheet, returnCode: .cancel)
       }else{
         NSApplication.shared.abortModal ()
-        self.window?.orderOut (nil)
+        unsafe self.window?.orderOut (nil)
       }
     }
   }

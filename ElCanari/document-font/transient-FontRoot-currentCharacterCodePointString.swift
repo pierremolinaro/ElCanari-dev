@@ -17,7 +17,7 @@ import AppKit
        _ self_currentCharacterCodePoint : Int
 ) -> String {
 //--- START OF USER ZONE 2
-    return "+u" + String (format: "%04X", self_currentCharacterCodePoint)
+  return unsafe "+u" + String (format: "%04X", self_currentCharacterCodePoint)
 //--- END OF USER ZONE 2
 }
 

@@ -175,7 +175,7 @@ extension Scanner {
 
   func myScanInt (_ ioOk : inout Bool) -> Int {
     var value = 0
-    let b = self.scanInt (&value)
+    let b = unsafe self.scanInt (&value)
     ioOk = ioOk && b
     return value
   }

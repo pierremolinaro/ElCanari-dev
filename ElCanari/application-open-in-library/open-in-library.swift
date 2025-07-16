@@ -396,7 +396,7 @@ fileprivate let DEBUG_CATEGORY = false
       for path in existingLibraryPathArray () {
         let baseDirectory = self.partLibraryPathForPath (path)
         var isDirectory : ObjCBool = false
-        if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
+        if unsafe fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files {
             if f.pathExtension.lowercased() == inFileExtension {
@@ -411,7 +411,7 @@ fileprivate let DEBUG_CATEGORY = false
       for path in existingLibraryPathArray () {
         let baseDirectory = self.partLibraryPathForPath (path)
         var isDirectory : ObjCBool = false
-        if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
+        if unsafe fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files {
             if f.pathExtension.lowercased () == inFileExtension {

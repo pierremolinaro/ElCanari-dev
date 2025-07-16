@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func appendNewBoardSettingsInspectorAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        if let hBaseStack = self.mBoardView?.superview as? AutoLayoutHorizontalStackView {
+    if let hBaseStack = unsafe self.mBoardView?.superview as? AutoLayoutHorizontalStackView {
           append (inspector: self.boardRouterInspectorView (), toHStack: hBaseStack)
         }
 //--- END OF USER ZONE 2

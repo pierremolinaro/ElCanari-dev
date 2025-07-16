@@ -160,7 +160,7 @@ extension CanariLibraryEntry {
           let fullPath = self.mPath + "/" + relativePath
           if enter {
             var isDirectory : ObjCBool = false
-            _ = fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
+            _ = unsafe fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
             enter = !isDirectory.boolValue
           }
           if enter {

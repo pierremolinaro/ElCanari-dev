@@ -66,7 +66,7 @@ struct BoardImageDescriptor : Hashable {
         let originY = inVerticalFlip ? y : (grayImageBitMap.pixelsHigh - y - 1)
         var width = 0 // Empty rect
         for x in 0 ..< grayImageBitMap.pixelsWide {
-          grayImageBitMap.getPixel (&peek, atX: x, y: y)
+          unsafe grayImageBitMap.getPixel (&peek, atX: x, y: y)
           let blackPixel = (peek [0] <= inThreshold) != inInvert
           if blackPixel {
             if width == 0 { // Begin a new rect

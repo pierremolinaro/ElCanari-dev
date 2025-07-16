@@ -42,7 +42,7 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton {
 
   override func mouseDown (with inEvent : NSEvent) {
     let eventLocationInWindowCoordinates = inEvent.locationInWindow
-    let s = FontCharacterSelectView.requiredSizeForCharacterSet (self.mDefinedCharacterSet, self.window)
+    let s = unsafe FontCharacterSelectView.requiredSizeForCharacterSet (self.mDefinedCharacterSet, self.window)
     let r = NSRect (x:eventLocationInWindowCoordinates.x + 30.0,
                     y:eventLocationInWindowCoordinates.y - s.height / 2.0,
                     width:s.width,
@@ -64,12 +64,14 @@ final class AutoLayoutCanariFontCharacterSelectButton : ALB_NSButton {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func mouseDragged (with inEvent : NSEvent) {
-    if let unwWindow = self.window {
+    if let unwWindow = unsafe self.window {
       let eventLocationInWindowCoordinates = inEvent.locationInWindow
-      let r = NSRect (x:eventLocationInWindowCoordinates.x,
-                      y:eventLocationInWindowCoordinates.y,
-                      width:0.0,
-                      height:0.0)
+      let r = NSRect (
+        x: eventLocationInWindowCoordinates.x,
+        y: eventLocationInWindowCoordinates.y,
+        width: 0.0,
+        height: 0.0
+      )
       let rr = unwWindow.convertToScreen (r)
       self.mSelectionView?.mouseDraggedAtScreenPoint (rr)
     }

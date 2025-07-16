@@ -17,7 +17,7 @@ import AppKit
        _ self_sampleStringBezierPath : NSBezierPath
 ) -> String {
 //--- START OF USER ZONE 2
-  return self_sampleStringBezierPath.isEmpty ? "—" : "\(String (format: "%.2f", self_sampleStringBezierPath.bounds.maxY))"
+  return self_sampleStringBezierPath.isEmpty ? "—" : "\(unsafe String (format: "%.2f", self_sampleStringBezierPath.bounds.maxY))"
 //--- END OF USER ZONE 2
 }
 

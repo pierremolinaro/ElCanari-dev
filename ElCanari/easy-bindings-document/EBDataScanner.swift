@@ -69,7 +69,7 @@ struct EBDataScanner {
         }else{
           var message = ""
           for b in self.mExpectedBytes {
-            message += String (format:"0x%02hhx, ", b)
+            unsafe message += String (format:"0x%02hhx, ", b)
           }
           NSLog ("invalid current byte (0x%02x): expected byte:%@0x%02x", byte, message, self.mData [mReadIndex]) ;
           self.mReadOk = false

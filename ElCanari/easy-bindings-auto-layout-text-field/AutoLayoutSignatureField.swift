@@ -47,7 +47,7 @@ final class AutoLayoutSignatureField : ALB_NSTextField {
     case .empty, .multiple :
       self.stringValue = "—"
     case .single (let v) :
-      self.stringValue = String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
+      self.stringValue = unsafe String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
     }
   }
 

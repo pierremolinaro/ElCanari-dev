@@ -25,7 +25,7 @@ import AppKit
           }
         }
         let trackLength = trackLengthInCanariUnit / Double (self_mTrackLengthUnit)
-        return String (format: "%.3f", trackLength)
+  return unsafe String (format: "%.3f", trackLength)
 //--- END OF USER ZONE 2
 }
 

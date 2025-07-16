@@ -17,7 +17,7 @@ extension Preferences {
     op.allowsMultipleSelection = false
     op.canChooseDirectories = true
     op.canChooseFiles = false
-    op.beginSheetModal (
+    unsafe op.beginSheetModal (
       for: (inSender as! NSButton).window!,
       completionHandler: { (inReturnCode : NSApplication.ModalResponse) in
         DispatchQueue.main.async {

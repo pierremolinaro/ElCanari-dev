@@ -127,7 +127,7 @@ extension AutoLayoutMergerDocument {
     let fm = FileManager ()
     var isDir : ObjCBool = false
     let directoryPath = inDirectoryURL.path
-    if fm.fileExists (atPath: directoryPath, isDirectory: &isDir) {
+    if unsafe fm.fileExists (atPath: directoryPath, isDirectory: &isDir) {
       self.mLogTextView?.appendMessage ("Remove recursively \(directoryPath)...")
       try fm.removeItem (atPath: directoryPath) // Remove dir recursively
       self.mLogTextView?.appendSuccess (" ok.\n")

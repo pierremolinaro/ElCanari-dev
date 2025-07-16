@@ -104,7 +104,7 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
     textField.controlSize = .small
     textField.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
     result.addSubview (textField)
-    result.textField = textField
+    unsafe result.textField = textField
     var constraints = [NSLayoutConstraint] ()
     constraints.add (dim: textField.widthAnchor, equalTo: result.widthAnchor)
     constraints.add (dim: textField.heightAnchor, equalTo: result.heightAnchor)

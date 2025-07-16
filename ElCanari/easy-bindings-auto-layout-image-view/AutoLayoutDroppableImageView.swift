@@ -103,7 +103,7 @@ final class AutoLayoutDroppableImageView : AutoLayoutVerticalStackView {
       self.setModel (tiffData)
     }else if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
       self.setModel (tiffData)
-    }else if let window = self.window {
+    }else if let window = unsafe self.window {
       NSSound.beep ()
       let alert = NSAlert ()
       alert.messageText = "Cannot paste an image."

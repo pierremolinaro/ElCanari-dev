@@ -16,9 +16,9 @@ import CommonCrypto
 
 func sha1 (data inData : Data) -> String {
   var shaValue = [UInt8] (repeating: 0, count: Int (CC_SHA1_DIGEST_LENGTH))
-  inData.withUnsafeBytes { (bufferPtr) in
+  unsafe inData.withUnsafeBytes { (bufferPtr) in
     let base : UnsafeRawPointer? = bufferPtr.baseAddress
-    CC_SHA1 (base, CC_LONG (inData.count), &shaValue)
+    unsafe CC_SHA1 (base, CC_LONG (inData.count), &shaValue)
   }
   var s = ""
   for byte in shaValue {

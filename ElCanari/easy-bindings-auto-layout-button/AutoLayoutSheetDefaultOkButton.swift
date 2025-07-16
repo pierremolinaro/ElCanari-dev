@@ -37,7 +37,7 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
     self.action = #selector (Self.dismissSheetAction (_:))
 
     self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .keyDown) {  [weak self] inEvent in
-      if let me = self, let myWindow = me.window, myWindow.isVisible, let characters = inEvent.characters, characters.contains ("\u{0D}") {
+      if let me = self, let myWindow = unsafe me.window, myWindow.isVisible, let characters = inEvent.characters, characters.contains ("\u{0D}") {
         DispatchQueue.main.async { if me.isEnabled { me.dismissSheetAction (nil) } }
       }
       return inEvent
@@ -60,13 +60,13 @@ final class AutoLayoutSheetDefaultOkButton : ALB_NSButton {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func dismissSheetAction (_ sender : Any?) {
-    if self.mDismissSheet, let mySheet = self.window {
+    if self.mDismissSheet, let mySheet = unsafe self.window {
       mySheet.endEditing (for: nil)
       if let parent = mySheet.sheetParent {
         parent.endSheet (mySheet, returnCode: .stop)
       }else{
         NSApplication.shared.stopModal ()
-        self.window?.orderOut (nil)
+        unsafe self.window?.orderOut (nil)
       }
     }
   }

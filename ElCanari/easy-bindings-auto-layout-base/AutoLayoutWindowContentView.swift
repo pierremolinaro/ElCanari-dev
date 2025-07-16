@@ -126,7 +126,7 @@ fileprivate let DEBUG_AUTOLAYOUT_PREFERENCES_KEY = "debug.autolayout"
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func buildResponderKeyChainForWindowThatContainsView (_ inView : NSView?) {
-  if let windowContentView = inView?.window?.contentView as? AutoLayoutWindowContentView {
+  if let windowContentView = unsafe inView?.window?.contentView as? AutoLayoutWindowContentView {
     windowContentView.triggerNextKeyViewSettingComputation ()
   }
 }
@@ -223,13 +223,13 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
           if outLastView == nil {
             outLastView = view
           }
-          view.nextKeyView = ioCurrentNextKeyView
+          unsafe view.nextKeyView = ioCurrentNextKeyView
           ioCurrentNextKeyView = view
         }else{
           self.buildAutoLayoutKeyViewChain (view, &ioCurrentNextKeyView, &outLastView)
         }
       }else{
-        view.nextResponder = nil
+        unsafe view.nextResponder = nil
       }
     }
   }
@@ -240,8 +240,8 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
     for view in inView.subviews {
       if !view.isHidden {
         if view.canBecomeKeyView && view.acceptsFirstResponder {
-          inLastView.nextKeyView = view
-          self.window?.initialFirstResponder = view
+          unsafe inLastView.nextKeyView = view
+          unsafe self.window?.initialFirstResponder = view
           return true
         }else{
           let found = self.setAutoLayoutFirstKeyViewInChain (view, inLastView)
@@ -319,7 +319,7 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
           self.mDisplayWindow?.orderFront (nil)
         }
       }
-      var p = self.window!.convertPoint (toScreen: inEvent.locationInWindow)
+      var p = unsafe self.window!.convertPoint (toScreen: inEvent.locationInWindow)
       p.x += 10.0
       p.y += 10.0
       self.mDisplayWindow?.setFrameOrigin (p)
@@ -339,7 +339,7 @@ final fileprivate class AutoLayoutWindowContentView : NSView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func buildHelperWindow (forView inView : NSView) -> NSWindow {
-    let window = NSPanel (
+    let window = unsafe NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 10, height: 10),
       styleMask: [.utilityWindow, .borderless, .resizable],
       backing: .buffered,
@@ -492,19 +492,19 @@ fileprivate final class FilePrivateHiliteView : NSView {
     if getDebugResponderChain () {
       let strokeBP = NSBezierPath ()
       let filledBP = NSBezierPath ()
-      var optionalResponder = self.window?.initialFirstResponder
+      var optionalResponder = unsafe self.window?.initialFirstResponder
       var loop = true
       while let responder = optionalResponder, loop {
         let r = responder.convert (responder.bounds, to: self)
         strokeBP.appendRect (r)
-        let optionalNextResponder = responder.nextKeyView
+        let optionalNextResponder = unsafe responder.nextKeyView
         if let nextResponder = optionalNextResponder {
           strokeBP.move (to: responder.convert (responder.bounds.center, to: nil))
           let p = nextResponder.convert (nextResponder.bounds.center, to: nil)
           strokeBP.addArrow (withFilledPath: filledBP, to: p, arrowSize: 6.0)
         }
         optionalResponder = optionalNextResponder
-        loop = optionalResponder !== self.window?.initialFirstResponder
+        loop = unsafe optionalResponder !== self.window?.initialFirstResponder
       }
       DEBUG_KEY_CHAIN_STROKE_COLOR.withAlphaComponent (0.125).setStroke ()
       strokeBP.lineWidth = 11.0
