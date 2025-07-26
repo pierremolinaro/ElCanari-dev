@@ -1,0 +1,126 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'net.nemerosa.versioning' version '3.0.0'
+    id 'com.github.ben-manes.versions' version '0.49.0'
+}
+
+java.toolchain {
+    languageVersion = JavaLanguageVersion.of 21
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
+}
+
+// javadoc is way too strict for my taste.
+tasks.withType(Javadoc).configureEach {
+    options.addStringOption 'encoding', 'UTF-8'
+    options.addStringOption 'Xdoclint:none', '-quiet'
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+
+    // https://mvnrepository.com/artifact/javax.help/javahelp
+    implementation group: 'javax.help', name: 'javahelp', version: '2.0.05'
+
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.21.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.21.1'
+
+    // https://github.com/google/gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // https://segment.com/docs - this one doesn't work because it's missing the Java 9+ module-info.class
+    //implementation 'com.segment.analytics.java:analytics:+'
+}
+
+ext {
+    mainClassName = 'app.freerouting.gui.MainApplication'
+
+    def buildDateTime = new Date()
+    buildDate = buildDateTime.format('yyyy-MM-dd')
+    buildTime = buildDateTime.format('HH:mm:ss.SSSZ')
+}
+
+def manifestAttributes = [
+    'Automatic-Module-Name': 'app.freerouting',
+    'Built-By': System.properties['user.name'],
+    'Created-By': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+    'Build-Date': project.buildDate,
+    'Build-Time': project.buildTime,
+    'Build-Revision': versioning.info.commit,
+    'Specification-Title': project.name,
+    'Specification-Version': project.version,
+    'Implementation-Title': project.name,
+    'Implementation-Version': project.version
+].asImmutable()
+
+jar {
+    manifest {
+        attributes manifestAttributes
+    }
+}
+
+tasks.register('executableJar', Jar) {
+    archiveClassifier = 'executable'
+
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+
+    from configurations.runtimeClasspath.collect { zipTree(it) }
+
+    from files(sourceSets.main.output)
+
+    manifest {
+        attributes manifestAttributes + ['Main-Class': project.mainClassName]
+    }
+}
+
+apply from: 'gradle/publishing.gradle'
+
+// write constants to code
+tasks.register('writeVersionInfo') {
+    doLast {
+        def buildInfoCode = file("${project.buildDir}/generated-src/app/freerouting/constants/Constants.java")
+        buildInfoCode.getParentFile().mkdirs()
+        buildInfoCode.write(
+            """
+            package app.freerouting.constants;
+            public final class Constants {
+              public static final String FREEROUTING_VERSION = \"${publishing.versionId}\";
+              public static final String FREEROUTING_BUILD_DATE = \"${project.buildDate}\";
+            }
+            """.stripIndent().trim()
+        )
+    }
+}
+
+// add the 'vmfconstants' src dir to the folders to compile (input to groovyc)
+sourceSets.main.java.srcDirs += "${project.buildDir}/generated-src/"
+
+compileJava.dependsOn += 'writeVersionInfo'
+
+
+tasks.register('dist', Copy) {
+    dependsOn assemble
+    from 'build/libs/freerouting-executable.jar'
+    into 'build/dist/'
+}
+
+tasks.register('run', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    mainClass = project.mainClassName
+
+    // arguments to pass to the application
+    //    args 'appArg1'
+    // jvmArgs 'arg1'
+}
+

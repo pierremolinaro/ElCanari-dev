@@ -13,7 +13,7 @@ extension FreeRoutingAppSelection : EBEnumPropertyProtocol, Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func popupTitles () -> [String] {
-    return ["arm64 FreeRouting", "x86_64 FreeRouting", "Legacy FreeRouting"]
+    return ["arm64 FreeRouting (1.4.4)", "x86_64 FreeRouting (1.4.4)", "Legacy FreeRouting (1.4.4)", "arm64 FreeRouting (1.9.0)", "x86_64 FreeRouting (1.9.0)"]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,7 +56,7 @@ extension FreeRoutingAppSelection : EBEnumPropertyProtocol, Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func convertFromNSObject (object : NSObject) -> FreeRoutingAppSelection {
-    var result = FreeRoutingAppSelection.arm64
+    var result = FreeRoutingAppSelection.arm64_1_4_4
     if let number = object as? NSNumber, let v = FreeRoutingAppSelection (rawValue: number.intValue) {
       result = v
     }

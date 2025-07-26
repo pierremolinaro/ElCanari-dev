@@ -799,10 +799,10 @@ final class PreferencesArrayOf_CanariLibraryEntry : StandAloneArrayOf_CanariLibr
       }
       self.setProp (objectArray)
     }
-    toMany_mPath_StartsBeingObserved (by: self.mObserverForWritingPreferences)
-    toMany_mUses_StartsBeingObserved (by: self.mObserverForWritingPreferences)
-    toMany_mLibraryRepositoryURL_StartsBeingObserved (by: self.mObserverForWritingPreferences)
-    toMany_mUserAndPasswordTag_StartsBeingObserved (by: self.mObserverForWritingPreferences)
+    self.toMany_mPath_StartsBeingObserved (by: self.mObserverForWritingPreferences)
+    self.toMany_mUses_StartsBeingObserved (by: self.mObserverForWritingPreferences)
+    self.toMany_mLibraryRepositoryURL_StartsBeingObserved (by: self.mObserverForWritingPreferences)
+    self.toMany_mUserAndPasswordTag_StartsBeingObserved (by: self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 

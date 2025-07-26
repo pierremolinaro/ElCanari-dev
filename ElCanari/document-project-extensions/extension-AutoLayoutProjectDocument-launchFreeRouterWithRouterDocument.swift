@@ -53,18 +53,7 @@ extension AutoLayoutProjectDocument {
         if let freeRouterApplication : URL = optionalFreeRouterApplication {
           let openConfiguration = NSWorkspace.OpenConfiguration ()
           openConfiguration.arguments = ["-de", dsnFilePath, "-oit", "0.0"]
-          NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) // (Crash on 15.3) { (_, _) in }
-        // Completion handler --> crash on 15.3
-//          NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (_, optionalError) in
-//            if optionalError != nil {
-//              DispatchQueue.main.async {
-//                let alert = NSAlert ()
-//                alert.messageText = "Cannot launch FreeRouting application"
-//                alert.informativeText = "FreeRouting application does not exist."
-//                alert.beginSheetModal (for: mainWindow)
-//              }
-//            }
-//          }
+          NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration)
         }
       }catch (_) {
         DispatchQueue.main.async {

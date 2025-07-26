@@ -261,6 +261,8 @@ TSWLatexianTemp*
 # Freerouting
 freerouting-1-4-4-pm/z-*
 freerouting-1-4-4-pm/freerouting-sources/build/*
+freerouting-1-9-0-pm/z-*
+freerouting-1-9-0-pm/freerouting-sources/build/*
 
 *.xcscheme
 *.xcshareddata

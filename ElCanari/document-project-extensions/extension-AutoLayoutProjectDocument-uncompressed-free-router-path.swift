@@ -19,17 +19,25 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func installFreeRouter (_ inMainWindow : NSWindow) -> URL? {
-    let FREEROUTING_LEGACY_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting.app"
-    let FREEROUTING_LEGACY_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
-    let CHECKSUM_LEGACY_FILE_PATH = FREEROUTING_DIR + "/release.txt"
+    let FREEROUTING_LEGACY_APPLICATION_PATH_1_4_4 = FREEROUTING_DIR + "/Freerouting.app"
+    let FREEROUTING_LEGACY_ARCHIVE_PATH_1_4_4 = systemLibraryPath () + "/freerouter/Freerouting.app.tar.xz"
+    let CHECKSUM_LEGACY_FILE_PATH_1_4_4 = FREEROUTING_DIR + "/release.txt"
 
-    let FREEROUTING_X86_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-x86_64.app"
-    let FREEROUTING_X86_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-x86_64.app.tar.xz"
-    let CHECKSUM_X86_FILE_PATH = FREEROUTING_DIR + "/release-x86_64.txt"
+    let FREEROUTING_X86_APPLICATION_PATH_1_4_4 = FREEROUTING_DIR + "/Freerouting-x86_64.app"
+    let FREEROUTING_X86_ARCHIVE_PATH_1_4_4 = systemLibraryPath () + "/freerouter/Freerouting-x86_64.app.tar.xz"
+    let CHECKSUM_X86_FILE_PATH_1_4_4 = FREEROUTING_DIR + "/release-x86_64.txt"
 
-    let FREEROUTING_ARM64_APPLICATION_PATH = FREEROUTING_DIR + "/Freerouting-arm64.app"
-    let FREEROUTING_ARM64_ARCHIVE_PATH = systemLibraryPath () + "/freerouter/Freerouting-arm64.app.tar.xz"
-    let CHECKSUM_ARM64_FILE_PATH = FREEROUTING_DIR + "/release-arm64.txt"
+    let FREEROUTING_ARM64_APPLICATION_PATH_1_4_4 = FREEROUTING_DIR + "/Freerouting-arm64.app"
+    let FREEROUTING_ARM64_ARCHIVE_PATH_1_4_4 = systemLibraryPath () + "/freerouter/Freerouting-arm64.app.tar.xz"
+    let CHECKSUM_ARM64_FILE_PATH_1_4_4 = FREEROUTING_DIR + "/release-arm64.txt"
+
+    let FREEROUTING_X86_APPLICATION_PATH_1_9_0 = FREEROUTING_DIR + "/Freerouting-x86_64-1-9-0.app"
+    let FREEROUTING_X86_ARCHIVE_PATH_1_9_0 = systemLibraryPath () + "/freerouter/Freerouting-x86_64-1-9-0.app.tar.xz"
+    let CHECKSUM_X86_FILE_PATH_1_9_0 = FREEROUTING_DIR + "/release-x86_64-1-9-0.txt"
+
+    let FREEROUTING_ARM64_APPLICATION_PATH_1_9_0 = FREEROUTING_DIR + "/Freerouting-arm64-1-9-0.app"
+    let FREEROUTING_ARM64_ARCHIVE_PATH_1_9_0 = systemLibraryPath () + "/freerouter/Freerouting-arm64-1-9-0.app.tar.xz"
+    let CHECKSUM_ARM64_FILE_PATH_1_9_0 = FREEROUTING_DIR + "/release-arm64-1-9-0.txt"
 
   //------------- FreeRouting directory
     guard self.checkExistsFreeroutingDirectoryOrCreateIt (inMainWindow) else {
@@ -37,7 +45,7 @@ extension AutoLayoutProjectDocument {
     }
   //------------- Launch
     switch preferences_freeRoutingAppSelection_property.propval {
-    case .arm64 :
+    case .arm64_1_9_0 :
       #if arch (x86_64)
         let alert = NSAlert ()
         alert.messageText = "Cannot run an arm64 application on an Intel Mac"
@@ -46,24 +54,46 @@ extension AutoLayoutProjectDocument {
         return nil
       #else
         return self.internalInstallFreeRouter (
-          fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH,
-          checksumFilePath: CHECKSUM_ARM64_FILE_PATH,
-          freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH,
+          fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH_1_9_0,
+          checksumFilePath: CHECKSUM_ARM64_FILE_PATH_1_9_0,
+          freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH_1_9_0,
           inMainWindow
         )
       #endif
-    case .x86 :
+    case .x86_1_9_0 :
       return self.internalInstallFreeRouter (
-        fromArchivePath: FREEROUTING_X86_ARCHIVE_PATH,
-        checksumFilePath: CHECKSUM_X86_FILE_PATH,
-        freeRoutingApplicationPath: FREEROUTING_X86_APPLICATION_PATH,
+        fromArchivePath: FREEROUTING_X86_ARCHIVE_PATH_1_9_0,
+        checksumFilePath: CHECKSUM_X86_FILE_PATH_1_9_0,
+        freeRoutingApplicationPath: FREEROUTING_X86_APPLICATION_PATH_1_9_0,
         inMainWindow
       )
-    case .legacy :
+    case .arm64_1_4_4 :
+      #if arch (x86_64)
+        let alert = NSAlert ()
+        alert.messageText = "Cannot run an arm64 application on an Intel Mac"
+        alert.informativeText = "Select x86_64 or Legacy FreeRouting Application"
+        alert.beginSheetModal (for: inMainWindow)
+        return nil
+      #else
+        return self.internalInstallFreeRouter (
+          fromArchivePath: FREEROUTING_ARM64_ARCHIVE_PATH_1_4_4,
+          checksumFilePath: CHECKSUM_ARM64_FILE_PATH_1_4_4,
+          freeRoutingApplicationPath: FREEROUTING_ARM64_APPLICATION_PATH_1_4_4,
+          inMainWindow
+        )
+      #endif
+    case .x86_1_4_4 :
       return self.internalInstallFreeRouter (
-        fromArchivePath: FREEROUTING_LEGACY_ARCHIVE_PATH,
-        checksumFilePath: CHECKSUM_LEGACY_FILE_PATH,
-        freeRoutingApplicationPath: FREEROUTING_LEGACY_APPLICATION_PATH,
+        fromArchivePath: FREEROUTING_X86_ARCHIVE_PATH_1_4_4,
+        checksumFilePath: CHECKSUM_X86_FILE_PATH_1_4_4,
+        freeRoutingApplicationPath: FREEROUTING_X86_APPLICATION_PATH_1_4_4,
+        inMainWindow
+      )
+    case .legacy_1_4_4 :
+      return self.internalInstallFreeRouter (
+        fromArchivePath: FREEROUTING_LEGACY_ARCHIVE_PATH_1_4_4,
+        checksumFilePath: CHECKSUM_LEGACY_FILE_PATH_1_4_4,
+        freeRoutingApplicationPath: FREEROUTING_LEGACY_APPLICATION_PATH_1_4_4,
         inMainWindow
       )
     }

@@ -1,0 +1,103 @@
+// -----------------------------------------------------------------------------
+// Collect publishing information
+// -----------------------------------------------------------------------------
+ext.publishing = [:]
+
+apply from: 'gradle/project-info.gradle'
+
+// -----------------------------------------------------------------------------
+// Performs publishing
+// -----------------------------------------------------------------------------
+
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// create one jar for the source files
+tasks.register('sourcesJar', Jar) {
+    dependsOn classes
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+
+    archives executableJar
+}
+
+
+def pomConfig = {
+    name ext.publishing.pomName
+    description ext.publishing.desc
+    url ext.publishing.websiteUrl
+    inceptionYear ext.publishing.inceptionYear
+    licenses {
+        license([:]) {
+            name ext.publishing.license
+            url ext.publishing.licenseUrl
+            distribution 'repo'
+        }
+    }
+    scm {
+        url ext.publishing.vcsUrl
+        connection ext.publishing.vcsUrl
+        developerConnection ext.publishing.vcsUrl
+    }
+    developers {
+        developer {
+            id ext.publishing.developerNameAlias
+            name ext.publishing.developerName
+        }
+    }
+}
+
+tasks.register('verifyVersion') {
+    doLast {
+        if (version.toString().toUpperCase().contains("SNAPSHOT")) {
+            throw new GradleException("Can't publish a SNAPSHOT version to Maven Central.")
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenCustom(MavenPublication) {
+            groupId publishing.groupId
+            artifactId publishing.artifactId
+            version publishing.versionId
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            afterEvaluate {
+                artifact executableJar
+            }
+
+            pom.withXml {
+                def root = asNode()
+                root.appendNode 'description', publishing.desc
+                root.children().last() + pomConfig
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = 'OSSRH'
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+
+            credentials {
+                username = project.findProperty("sonatypeUsername") ?: System.getenv("SONATYPE_USERNAME")
+                password = project.findProperty("sonatypePassword") ?: System.getenv("SONATYPE_PASSWORD")
+            }
+        }
+    }
+}
+
+tasks.named("publish").configure {
+    dependsOn verifyVersion
+}

@@ -561,7 +561,7 @@ prefs {
 //--------------------------------------------------------------------------------------------------
 
 prefs {
-  property FreeRoutingAppSelection freeRoutingAppSelection default legacy ;
+  property FreeRoutingAppSelection freeRoutingAppSelection default legacy_1_4_4 ;
 }
 
 //--------------------------------------------------------------------------------------------------
