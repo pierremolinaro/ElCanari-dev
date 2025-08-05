@@ -107,59 +107,8 @@ par
 136:     this.mouse_position.setText(p_pos.to_string(this.locale)) ; // , 1, 10));
 ---
 --------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
---------------------------------------------------------------------------------
-2: Supprimer le dialogue "Please confirm imported stored rules", lors de
+8: (5 août 2025) Supprimer le dialogue "Please confirm imported stored rules", lors de
    l'importation d'un fichier DSN
 
-Dans freerouting/src/main/java/eu/mihosoft/freerouting/gui/MainApplication.java, commenter les lignes 366 à 390.
-
---------------------------------------------------------------------------------
-6: (13 mai 2025) Réduire le temps de démarrage sous OSX 15.4
-
-À partir de OSX 15.4, le temps de démarrage peut être très long (40s).
-Il apparaît que l'application « recherche des appareils sur le réseau local »
-Si on active ce réglage dans le système (Confidentialité et sécurité > Réseau Local),
-l'attente disparaît.
-Du coup, j’ai investigué les sources Java de FreeRouter, et je me suis aperçu
-qu’il implémente une fonction de Log via le réseau (qui utilise org.apache.logging.log4j),
-que l’on n’a jamais utilisée. J’ai éliminé sauvagement tout le contenu
-des fonctions correspondantes (dans FRLogger.java), et j’ai l’impression que le
-démarrage rapide est maintenant systématique.
-
---------------------------------------------------------------------------------
-7: (12 juin 2025) Le dialogue d'ouverture « Open Your Own Design » affiche
-une liste vide pour le bureau ! Il apparaît que c'est un bug de JFileChooser.
-En le remplaçant par FileDialog, le problème disparaît.
-
-la routine open_dialog (ligne 58) dans
-  src/main/java/eu/mihosoft/freerouting/gui/DesignFile.java
-est réécrite, et renommée open_dialog_dsn
-
-    public static DesignFile open_dialog_dsn (String p_design_dir_name) {
-      java.awt.Frame mainFrame = new java.awt.Frame ("");
-      mainFrame.setSize (400, 400) ;
-      FileDialog fd = new FileDialog (mainFrame, "", FileDialog.LOAD);
-      fd.setDirectory (p_design_dir_name);
-      java.io.FilenameFilter filter = new java.io.FilenameFilter () {
-        @Override public boolean accept(java.io.File file, String s) {
-          return s.endsWith (".dsn") ;
-        }
-      } ;
-      fd.setFilenameFilter (filter) ;
-      fd.setVisible (true);
-      String filename = fd.getFile () ;
-      if (filename == null) {
-        return null ;
-      }else{
-        return new DesignFile (new java.io.File (fd.getDirectory () + "/" + filename), null);
-      }
+Dans freerouting-sources/src/main/java/app/freerouting/gui/MainApplication.java, commenter les lignes 593 à 638.
 

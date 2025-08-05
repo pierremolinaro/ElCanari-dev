@@ -590,52 +590,52 @@ public class MainApplication extends WindowBase {
       return null;
     }
     new_frame.menubar.add_design_dependent_items();
-    if (p_design_file.is_created_from_text_file()) {
-      // Read the file  with the saved rules, if it is existing.
-
-      String file_name = p_design_file.get_name();
-      String[] name_parts = file_name.split("\\.");
-
-      String design_name = name_parts[0];
-
-      String rules_file_name;
-      String parent_folder_name;
-      String confirm_import_rules_message;
-      if (p_design_rules_file == null) {
-        rules_file_name = design_name + ".rules";
-        parent_folder_name = p_design_file.get_parent();
-        confirm_import_rules_message = resources.getString("confirm_import_rules");
-      } else {
-        rules_file_name = p_design_rules_file;
-        parent_folder_name = null;
-        confirm_import_rules_message = null;
-      }
-
-      File rules_file = new File(parent_folder_name, rules_file_name);
-      if (rules_file.exists()) {
-        // load the .rules file
-        DesignFile.read_rules_file(
-            design_name,
-            parent_folder_name,
-            rules_file_name,
-            new_frame.board_panel.board_handling,
-            confirm_import_rules_message);
-      }
-
-      // ignore net classes if they were defined by a command line argument
-      for (String net_class_name : p_ignore_net_classes_by_autorouter) {
-        NetClasses netClasses =
-            new_frame.board_panel.board_handling.get_routing_board().rules.net_classes;
-
-        for (int i = 0; i < netClasses.count(); i++) {
-          if (netClasses.get(i).get_name().equalsIgnoreCase(net_class_name)) {
-            netClasses.get(i).is_ignored_by_autorouter = true;
-          }
-        }
-      }
-
-      new_frame.refresh_windows();
-    }
+//     if (p_design_file.is_created_from_text_file()) {
+//       // Read the file  with the saved rules, if it is existing.
+//
+//       String file_name = p_design_file.get_name();
+//       String[] name_parts = file_name.split("\\.");
+//
+//       String design_name = name_parts[0];
+//
+//       String rules_file_name;
+//       String parent_folder_name;
+//       String confirm_import_rules_message;
+//       if (p_design_rules_file == null) {
+//         rules_file_name = design_name + ".rules";
+//         parent_folder_name = p_design_file.get_parent();
+//         confirm_import_rules_message = resources.getString("confirm_import_rules");
+//       } else {
+//         rules_file_name = p_design_rules_file;
+//         parent_folder_name = null;
+//         confirm_import_rules_message = null;
+//       }
+//
+//       File rules_file = new File(parent_folder_name, rules_file_name);
+//       if (rules_file.exists()) {
+//         // load the .rules file
+//         DesignFile.read_rules_file(
+//             design_name,
+//             parent_folder_name,
+//             rules_file_name,
+//             new_frame.board_panel.board_handling,
+//             confirm_import_rules_message);
+//       }
+//
+//       // ignore net classes if they were defined by a command line argument
+//       for (String net_class_name : p_ignore_net_classes_by_autorouter) {
+//         NetClasses netClasses =
+//             new_frame.board_panel.board_handling.get_routing_board().rules.net_classes;
+//
+//         for (int i = 0; i < netClasses.count(); i++) {
+//           if (netClasses.get(i).get_name().equalsIgnoreCase(net_class_name)) {
+//             netClasses.get(i).is_ignored_by_autorouter = true;
+//           }
+//         }
+//       }
+//
+//       new_frame.refresh_windows();
+//     }
     return new_frame;
   }
 
