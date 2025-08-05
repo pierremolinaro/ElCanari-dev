@@ -15,7 +15,8 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) -> Bool {
-     if let selectedSheet = self.rootObject.mSelectedSheet {
+    self.mWireCreatedByOptionClick = nil
+    if let selectedSheet = self.rootObject.mSelectedSheet {
        _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint.canariPoint)
        let p = inUnalignedMousePoint.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     //--- Find points at p
@@ -38,8 +39,8 @@ extension AutoLayoutProjectDocument {
         self.mWireCreatedByOptionClick = wire
         wire.mP1 = pointsAtP [0]
         let newPoint = PointInSchematic (self.undoManager)
-        newPoint.mX = pointsAtP [0].mX // p.x
-        newPoint.mY = pointsAtP [0].mY // p.y
+        newPoint.mX = p.x // pointsAtP [0].mX
+        newPoint.mY = p.y // pointsAtP [0].mY
         newPoint.mNet = wire.mP1?.mNet
         wire.mP2 = newPoint
         selectedSheet.mPoints.append (newPoint)

@@ -61,7 +61,9 @@ import AppKit
   override func ebBuildUserInterface () {
     super.ebBuildUserInterface ()
     self.boardObjectsController.set (document: self)
-    self.boardObjectsController.mAfterObjectRemovingCallback = { [weak self] in self?.updateBoardConnectors () }
+    self.boardObjectsController.mAfterObjectRemovingCallback = { [weak self] in
+      self?.updateBoardConnectors ()
+    }
     self.mSchematicsView?.mGraphicView.mMouseDownInterceptor = { [weak self] in
       return self?.schematicMouseDownInterception ($0) ?? false
     }
@@ -74,7 +76,7 @@ import AppKit
   //  Schematic mouse down interception
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func schematicMouseDownInterception (_ inUnalignedPoint : NSPoint) -> Bool {
+  private final func schematicMouseDownInterception (_ inUnalignedPoint : NSPoint) -> Bool {
     var result = false
     if self.rootObject.mSchematicEnableHiliteColumnAndRow {
       let sheetGeometrySelection : EBSelection <SchematicSheetGeometry> = self.rootObject.sheetGeometry_property.selection

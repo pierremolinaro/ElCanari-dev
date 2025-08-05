@@ -98,7 +98,6 @@ extension EBGraphicView {
                          alignedLastMouseDraggedLocation inAlignedLastMouseDraggedLocation : CanariPoint,
                          unalignedLastMouseDraggedLocation inUnalignedLastMouseDraggedLocation : CanariPoint) {
     let objects = self.mViewController?.graphicObjectArray ?? []
-//    let shift = NSApplication.shared.currentEvent?.modifierFlags.contains (.shift) ?? false
     let shift = NSEvent.modifierFlags.contains (.shift)
     if let knobIndex = inPossibleKnobIndex { // Mode knob
       let translation = objects [objectIndex].canMove (
