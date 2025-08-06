@@ -31,9 +31,9 @@ import AppKit
   let secondX = canariUnitToCocoa (self_mFirstX + self_mSecondDx)
   let secondY = canariUnitToCocoa (self_mFirstY + self_mSecondDy)
   let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
-  var bp1 = BézierPath (ovalIn: firstR)
+  var bp1 = BezierPath (ovalIn: firstR)
   bp1.lineWidth = 1.0
-  var bp2 = BézierPath (ovalIn: secondR)
+  var bp2 = BezierPath (ovalIn: secondR)
   bp2.lineWidth = 1.0
   shape.add (stroke: [bp1, bp2], prefs_selectionHiliteColor)
   shape.add (knobAt: NSPoint (x: firstX, y: firstY), knobIndex: MODEL_IMAGE_FIRST_POINT, .transparentCircle, firstPointRadiusInCocoaUnit * 2.0 + IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH)

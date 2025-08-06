@@ -31,10 +31,10 @@ import AppKit
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
-        let strokeShape = EBShape (stroke: [BézierPath (self_symbolInfo.strokeBezierPath)], prefs_symbolColorForSchematic)
-        let filledPath = EBShape (filled: [BézierPath (self_symbolInfo.filledBezierPath)], prefs_symbolColorForSchematic)
+        let strokeShape = EBShape (stroke: [BezierPath (self_symbolInfo.strokeBezierPath)], prefs_symbolColorForSchematic)
+        let filledPath = EBShape (filled: [BezierPath (self_symbolInfo.filledBezierPath)], prefs_symbolColorForSchematic)
         let box = filledPath.boundingBox.union (strokeShape.boundingBox)
-        shape.add (filled: [BézierPath (rect: box)], nil)
+        shape.add (filled: [BezierPath (rect: box)], nil)
         shape.add (strokeShape)
         shape.add (filledPath)
      

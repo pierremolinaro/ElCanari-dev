@@ -25,7 +25,7 @@ struct CanariIssue : Hashable {
 
   init (kind inKind : CanariIssue.Kind,
         message inMessage : String,
-        pathes inBezierPathes : [BézierPath] = [],
+        pathes inBezierPathes : [BezierPath] = [],
         representativeValue inValue : Int = 0) {
     self.message = inMessage
     self.pathes = inBezierPathes
@@ -48,7 +48,7 @@ struct CanariIssue : Hashable {
 
   let kind : CanariIssue.Kind
   let message : String
-  let pathes : [BézierPath]
+  let pathes : [BezierPath]
   let representativeValue : Int
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

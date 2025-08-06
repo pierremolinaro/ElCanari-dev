@@ -36,7 +36,7 @@ import AppKit
       width: SYMBOL_GRID_IN_COCOA_UNIT * 2.0,
       height: SYMBOL_GRID_IN_COCOA_UNIT * 2.0
     )
-    let filledBP = BézierPath (ovalIn: pinRect)
+    let filledBP = BezierPath (ovalIn: pinRect)
     shape.add (filled: [filledBP], prefs_symbolColor)
   //--- Name
     let nameTextAttributes : [NSAttributedString.Key : Any] = [

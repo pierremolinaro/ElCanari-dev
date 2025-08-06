@@ -35,14 +35,14 @@ import AppKit
           center: .zero,
           size: CanariSize (width: self_mWidth, height: self_mHeight)
         )
-        var bp = BézierPath (oblongInRect: r.cocoaRect)
+        var bp = BezierPath (oblongInRect: r.cocoaRect)
         bp.appendOblong (in: r.cocoaRect.insetBy (dx: 2.0, dy: 2.0))
         bp.windingRule = .evenOdd
         shape.add (filled: [bp.transformed (by: af)], prefs_selectionHiliteColor)
       //--- Rotation knob
         let center = NSPoint (x: startX, y: startY)
         if self_mShowTextRotationKnobInBoard {
-          var knobLine = BézierPath ()
+          var knobLine = BezierPath ()
           knobLine.move (to : center)
           let rotationKnobLocation = center + NSPoint (length: NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE, angleInDegrees: rotationInDegrees)
           knobLine.line (to : rotationKnobLocation)

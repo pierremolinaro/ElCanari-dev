@@ -40,9 +40,9 @@ import AppKit
 //--- START OF USER ZONE 2
         let GRID_INTERVAL : CGFloat = 2.0
         let GRID_LINE_WIDTH : CGFloat = 0.5
-        func buildLines (_ inRect : NSRect, _ inOffset : CGFloat)  -> BézierPath {
+        func buildLines (_ inRect : NSRect, _ inOffset : CGFloat)  -> BezierPath {
           let lg = max (inRect.size.width, inRect.size.height)
-          var bp = BézierPath ()
+          var bp = BezierPath ()
           bp.lineWidth = GRID_LINE_WIDTH
           bp.lineJoinStyle = .round
           bp.lineCapStyle = .round
@@ -69,7 +69,7 @@ import AppKit
           || (self_mIsInInner3Layer && self_BoardObject_displayInner3RestrictRectangles)
           || (self_mIsInInner4Layer && self_BoardObject_displayInner4RestrictRectangles)
         if display {
-          let rectBP = BézierPath (rect: cocoaRect)
+          let rectBP = BezierPath (rect: cocoaRect)
         //--- Transparent background (for selection)
           shape.add (filled: [rectBP], nil)
         //--- Front layer
@@ -105,7 +105,7 @@ import AppKit
         }
       //--- Append rect frame
         do{
-          var bp = BézierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
+          var bp = BezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
           bp.lineWidth = 0.5
           bp.lineJoinStyle = .round
           bp.lineCapStyle = .round

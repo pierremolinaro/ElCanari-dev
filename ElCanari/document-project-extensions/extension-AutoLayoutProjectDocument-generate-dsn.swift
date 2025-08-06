@@ -249,7 +249,7 @@ extension AutoLayoutProjectDocument {
         let descriptor = curve.descriptor!
         curveDictionary [descriptor.p1] = descriptor
       }
-      var clearanceBP = BézierPath ()
+      var clearanceBP = BezierPath ()
       var descriptor = self.rootObject.mBorderCurves [0].descriptor!
       let p = descriptor.p1
       clearanceBP.move (to: inConverter.dsnPointFromCanariPoint (p))
@@ -275,7 +275,7 @@ extension AutoLayoutProjectDocument {
         width: self.rootObject.mRectangularBoardWidth - 2 * d,
         height: self.rootObject.mRectangularBoardHeight - 2 * d
       )
-      return BézierPath (rect: inConverter.dsnRectFromCanariRect (r)).linePathesByFlattening (withFlatness: 0.1) [0]
+      return BezierPath (rect: inConverter.dsnRectFromCanariRect (r)).linePathesByFlattening (withFlatness: 0.1) [0]
     }
   }
 

@@ -23,8 +23,8 @@ import AppKit
 //--- START OF USER ZONE 2
         var point = self_mPoint_location!.cocoaPoint
         let ncRotation = self_mOrientation + (self_mPoint_symbolRotation ?? .rotation0)
-        let horizontalAlignment : BézierPath.TextHorizontalAlignment
-        let verticalAlignment : BézierPath.TextVerticalAlignment
+        let horizontalAlignment : BezierPath.TextHorizontalAlignment
+        let verticalAlignment : BezierPath.TextVerticalAlignment
         switch ncRotation {
         case .rotation0 :
           point.x += NC_DISTANCE_IN_COCOA_UNIT
@@ -48,8 +48,8 @@ import AppKit
         ]
         let textShape = EBShape (text: NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
       //--- Add line
-        var frameBP = BézierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
-        var line = BézierPath ()
+        var frameBP = BezierPath (rect: textShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
+        var line = BezierPath ()
         line.move (to: self_mPoint_location!.cocoaPoint)
         line.line (to: textShape.boundingBox.center)
         line.lineWidth = 0.5

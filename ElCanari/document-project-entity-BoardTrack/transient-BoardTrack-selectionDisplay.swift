@@ -59,7 +59,7 @@ import AppKit
         case .inner4 :
           color = prefs_inner4LayoutColorForBoard
         }
-        var bp = BézierPath ()
+        var bp = BezierPath ()
         bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 1.0
         switch self_mEndStyle {
         case .round :

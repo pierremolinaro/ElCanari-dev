@@ -26,7 +26,7 @@ import AppKit
        _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  var bp = BézierPath ()
+  var bp = BezierPath ()
   bp.move (to: NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
   bp.curve (
     to: NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)),

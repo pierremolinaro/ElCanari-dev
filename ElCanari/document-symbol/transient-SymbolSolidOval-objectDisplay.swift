@@ -27,7 +27,7 @@ import AppKit
     width: canariUnitToCocoa (self_width),
     height: canariUnitToCocoa (self_height)
   )
-  let bp = BézierPath (ovalIn: r)
+  let bp = BezierPath (ovalIn: r)
   var shape = EBShape ()
   shape.add (filled: [bp], prefs_symbolColor)
   return shape

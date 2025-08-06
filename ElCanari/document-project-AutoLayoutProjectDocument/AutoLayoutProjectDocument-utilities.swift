@@ -461,9 +461,9 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bezierPath (index inIndex : Int, extraWidth : Int = 0) -> BézierPath {
+  func bezierPath (index inIndex : Int, extraWidth : Int = 0) -> BezierPath {
     if inIndex == 0 {
-      return BézierPath.pad (
+      return BezierPath.pad (
         centerX: self.center.x,
         centerY: self.center.y,
         width: self.padSize.width + extraWidth,
@@ -472,7 +472,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
       )
     }else{
       let slavePad = self.slavePads [inIndex - 1]
-      return BézierPath.pad (
+      return BezierPath.pad (
         centerX: slavePad.center.x,
         centerY: slavePad.center.y,
         width: slavePad.padSize.width + extraWidth,
@@ -494,14 +494,14 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     let center = self.center.cocoaPoint
     let padSize = self.padSize.cocoaSize
     let rPad = NSRect (x: center.x - padSize.width / 2.0, y: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
-    var bp : BézierPath
+    var bp : BezierPath
     switch self.shape {
     case .rect :
-      bp = BézierPath (rect: rPad)
+      bp = BezierPath (rect: rPad)
     case .round :
-      bp = BézierPath (oblongInRect: rPad)
+      bp = BezierPath (oblongInRect: rPad)
     case .octo :
-      bp = BézierPath (octogonInRect: rPad)
+      bp = BezierPath (octogonInRect: rPad)
     }
     switch self.style {
     case .traversing :
@@ -578,14 +578,14 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     let center = self.center.cocoaPoint
     let padSize = self.padSize.cocoaSize
     let rPad = NSRect (x: center.x - padSize.width / 2.0, y: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
-    var bp : BézierPath
+    var bp : BezierPath
     switch self.shape {
     case .rect :
-      bp = BézierPath (rect: rPad)
+      bp = BezierPath (rect: rPad)
     case .round :
-      bp = BézierPath (oblongInRect: rPad)
+      bp = BezierPath (oblongInRect: rPad)
     case .octo :
-      bp = BézierPath (octogonInRect: rPad)
+      bp = BezierPath (octogonInRect: rPad)
     }
     switch self.style {
     case .traversing :

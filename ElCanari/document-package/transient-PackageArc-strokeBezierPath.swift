@@ -22,7 +22,7 @@ import AppKit
        _ self_pathIsClosed : Bool,                     
        _ self_startTangent : Int,                      
        _ self_endTangent : Int
-) -> BézierPath {
+) -> BezierPath {
 //--- START OF USER ZONE 2
   let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint
   let radius = canariUnitToCocoa (self_radius)
@@ -30,7 +30,7 @@ import AppKit
   let endTangentLength = canariUnitToCocoa (self_endTangent)
   let startAngle = CGFloat (self_startAngle) / 1000.0
   let arcAngle = CGFloat (self_arcAngle) / 1000.0
-  let bp = BézierPath (
+  let bp = BezierPath (
     arcWithTangentFromCenter: center,
     radius: radius,
     startAngleInDegrees: startAngle,

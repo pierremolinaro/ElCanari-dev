@@ -1,5 +1,5 @@
 //
-//  BézierPath.swift
+//  BezierPath.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 22/06/2019.
@@ -9,10 +9,10 @@
 import AppKit
 
 //--------------------------------------------------------------------------------------------------
-// BézierPath
+// BezierPath
 //--------------------------------------------------------------------------------------------------
 
-struct BézierPath : Hashable {
+struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -48,8 +48,8 @@ struct BézierPath : Hashable {
 
   init (withString inString : String,
         at inOrigin : NSPoint,
-        _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
-        _ inVerticalAlignment : BézierPath.TextVerticalAlignment,
+        _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
+        _ inVerticalAlignment : BezierPath.TextVerticalAlignment,
         withAttributes inTextAttributes : [NSAttributedString.Key : Any]) {
     self.mPath = NSBezierPath ()
     if inString != "" {
@@ -117,13 +117,13 @@ struct BézierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  nonisolated static func == (lhs : BézierPath, rhs : BézierPath) -> Bool {
+  nonisolated static func == (lhs : BezierPath, rhs : BezierPath) -> Bool {
     return ObjectIdentifier (lhs.mPath) == ObjectIdentifier (rhs.mPath)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func >= (lhs : BézierPath, rhs : BézierPath) -> Bool {
+  static func >= (lhs : BezierPath, rhs : BezierPath) -> Bool {
     return ObjectIdentifier (lhs.mPath) >= ObjectIdentifier (rhs.mPath)
   }
 
@@ -283,7 +283,7 @@ struct BézierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by transform: AffineTransform) -> BézierPath {
+  func transformed (by transform: AffineTransform) -> BezierPath {
     var result = self
     result.transform (using: transform)
     return result
@@ -340,7 +340,7 @@ struct BézierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func append (_ inBezierPath : BézierPath) {
+  mutating func append (_ inBezierPath : BezierPath) {
     if !isKnownUniquelyReferenced (&self.mPath) {
       self.mPath = self.mPath.copy () as! NSBezierPath
     }
@@ -395,7 +395,7 @@ struct BézierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var pathToFillByStroking : BézierPath {
+  var pathToFillByStroking : BezierPath {
     let lineCap : CGLineCap
     switch self.lineCapStyle {
     case .butt : lineCap = .butt
@@ -418,7 +418,7 @@ struct BézierPath : Hashable {
       lineJoin: lineJoin,
       miterLimit: self.mPath.miterLimit
     )
-    var path = BézierPath ()
+    var path = BezierPath ()
     // https://forums.swift.org/t/handling-the-new-forming-unsaferawpointer-warning/65523/4
 //    public typealias CGPathApplierFunction = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void
     let callBack : @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void = {
@@ -543,8 +543,8 @@ struct BézierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var reversed : BézierPath {
-    var result = BézierPath ()
+  var reversed : BezierPath {
+    var result = BezierPath ()
     result.mPath = self.mPath.reversed
     return result
   }
@@ -718,7 +718,7 @@ private func pathByStrokingCallback (_ inInfo : UnsafeMutableRawPointer?, _ inEl
 
 //--------------------------------------------------------------------------------------------------
 
-extension Array where Element == BézierPath {
+extension Array where Element == BezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

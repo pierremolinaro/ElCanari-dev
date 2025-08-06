@@ -41,7 +41,7 @@ import AppKit
           let location = self_location.cocoaPoint
           let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
           let r = NSRect (x: location.x - issueSize / 2.0, y: location.y - issueSize / 2.0, width: issueSize, height: issueSize)
-          let bp = BézierPath (ovalIn: r)
+          let bp = BezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .warning, message: "No Connection", pathes: [bp])
           issues.append (issue)
         }

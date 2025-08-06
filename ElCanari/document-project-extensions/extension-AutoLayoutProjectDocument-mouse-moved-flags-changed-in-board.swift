@@ -25,7 +25,7 @@ extension AutoLayoutProjectDocument {
         let connectorUnderMouse = connectorsUnderMouse [0]
         if let netName = connectorUnderMouse.netName () {
           let connectedConnectors = self.findAllConnectorsConnectedTo (connectorUnderMouse)
-          var bpArray = [BézierPath] ()
+          var bpArray = [BezierPath] ()
           for object in self.rootObject.mBoardObjects.values {
             if let connector = object as? BoardConnector,
                   !connectedConnectors.contains (connector),
@@ -57,7 +57,7 @@ extension AutoLayoutProjectDocument {
           width: d,
           height: d
         )
-        var bp = BézierPath (ovalIn: r)
+        var bp = BezierPath (ovalIn: r)
         bp.lineWidth = 1.0 / boardView.actualScale
         if shape == nil {
           shape = EBShape ()
@@ -116,7 +116,7 @@ extension BoardConnector {
 
   func buildBezierPathArrayForHilitingOnOptionFlag (trackSide inTrackSide : TrackSide,
                                                     controlKeyHiliteDiameter inDiameter : CGFloat,
-                                                    bezierPathArray ioArray : inout [BézierPath]) {
+                                                    bezierPathArray ioArray : inout [BezierPath]) {
     if let padCenter = self.location, let connectorSide = self.side {
       let accepts : Bool
       switch connectorSide {
@@ -142,7 +142,7 @@ extension BoardConnector {
           width: inDiameter,
           height: inDiameter
         )
-        ioArray.append (BézierPath (ovalIn: r))
+        ioArray.append (BezierPath (ovalIn: r))
       }
     }
   }

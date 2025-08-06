@@ -545,7 +545,7 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mIssueBezierPathes = [BézierPath] ()
+  var mIssueBezierPathes = [BezierPath] ()
   var mIssueKind : CanariIssue.Kind = .error // Any value, not used if mIssueBezierPathes is empty
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -24,7 +24,7 @@ import AppKit
        _ prefs_boardClearanceColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var bp = BézierPath ()
+        var bp = BezierPath ()
         switch self_mBoardShape {
         case .rectangular :
           let d = self_mBoardClearance + self_mBoardLimitsWidth

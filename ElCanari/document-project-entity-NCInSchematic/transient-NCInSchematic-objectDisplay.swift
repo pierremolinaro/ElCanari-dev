@@ -22,8 +22,8 @@ import AppKit
 //--- START OF USER ZONE 2
         var point = self_mPoint_location!.cocoaPoint
         let ncRotation = self_mOrientation + (self_mPoint_symbolRotation ?? .rotation0)
-        let horizontalAlignment : BézierPath.TextHorizontalAlignment
-        let verticalAlignment : BézierPath.TextVerticalAlignment
+        let horizontalAlignment : BezierPath.TextHorizontalAlignment
+        let verticalAlignment : BezierPath.TextVerticalAlignment
         switch ncRotation {
         case .rotation0 :
           point.x += NC_DISTANCE_IN_COCOA_UNIT

@@ -51,7 +51,7 @@ import AppKit
       //--- Rotation knob
         let center = NSPoint (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
         if prefs_mShowTextRotationKnobInBoard {
-          var knobLine = BézierPath ()
+          var knobLine = BezierPath ()
           knobLine.move (to : center)
           knobLine.line (to : displayInfos.rotationKnobLocation)
           knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0

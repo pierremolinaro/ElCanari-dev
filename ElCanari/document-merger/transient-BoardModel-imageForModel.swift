@@ -101,7 +101,7 @@ import AppKit
 //--- Background
   if prefs_mergerShowModelBackground {
     let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
-    shapes.add (filled: [BézierPath (rect: backRect)], prefs_mergerColorBackground)
+    shapes.add (filled: [BezierPath (rect: backRect)], prefs_mergerColorBackground)
   }
 //--- Back Legend Lines, images and QR Codes
   if (prefs_mergerModelViewDisplayBackLegendLines) {

@@ -20,8 +20,8 @@ import AppKit
 //--- START OF USER ZONE 2
         var shape = EBShape ()
       //--- Issues
-        var warningPathes = [BézierPath] ()
-        var errorPathes = [BézierPath] ()
+        var warningPathes = [BezierPath] ()
+        var errorPathes = [BezierPath] ()
         for issue in self_selectedSheetIssues {
           switch issue.kind {
           case .warning :

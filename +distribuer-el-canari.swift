@@ -30,13 +30,14 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.9.2"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.0 beta 3, Sparkle 2.7.1"
+  "Construit avec Xcode 26.0 beta 5, Sparkle 2.7.1"
 ]
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Ajout FreeRouting 1.9.0"
 ]
 
 //------------------------------------------------------------------------------

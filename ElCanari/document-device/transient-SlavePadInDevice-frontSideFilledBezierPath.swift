@@ -22,21 +22,21 @@ import AppKit
        _ self_mHoleHeight : Int,                                      
        _ self_mShape : PadShape,                                      
        _ self_mStyle : SlavePadStyle
-) -> BézierPath {
+) -> BezierPath {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_mCenterX)
     let yCenter = canariUnitToCocoa (self_mCenterY)
     let width = canariUnitToCocoa (self_mWidth)
     let height = canariUnitToCocoa (self_mHeight)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
-    var bp : BézierPath
+    var bp : BezierPath
     switch self_mShape {
     case .rect :
-      bp = BézierPath (rect: rPad)
+      bp = BezierPath (rect: rPad)
     case .round :
-      bp = BézierPath (oblongInRect: rPad)
+      bp = BezierPath (oblongInRect: rPad)
     case .octo :
-      bp = BézierPath (octogonInRect: rPad)
+      bp = BezierPath (octogonInRect: rPad)
     }
     switch self_mStyle {
     case .traversing :
@@ -48,7 +48,7 @@ import AppKit
     case .componentSide :
       ()
     case .oppositeSide :
-      bp = BézierPath ()
+      bp = BezierPath ()
     }
     return bp
 

@@ -55,7 +55,7 @@ extension AutoLayoutProjectDocument {
         case .bezier :
           let cp1 = CanariPoint (x: borderCurve.mCPX1, y: borderCurve.mCPY1).cocoaPoint
           let cp2 = CanariPoint (x: borderCurve.mCPX2, y: borderCurve.mCPY2).cocoaPoint
-          var bp = BézierPath ()
+          var bp = BezierPath ()
           bp.move (to: p1.cocoaPoint)
           bp.curve (to: p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
           bp.lineWidth = 2.0 * canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance)

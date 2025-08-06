@@ -328,7 +328,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
   //   Observers of 'strokeBezierPath' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let strokeBezierPath_property = EBTransientProperty <BézierPath?> ()
+  final let strokeBezierPath_property = EBTransientProperty <BezierPath?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'pinPadAssignments' transient property

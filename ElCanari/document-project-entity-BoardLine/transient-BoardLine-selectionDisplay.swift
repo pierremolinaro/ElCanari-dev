@@ -22,7 +22,7 @@ import AppKit
        _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      var bp = BézierPath ()
+      var bp = BezierPath ()
       bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round

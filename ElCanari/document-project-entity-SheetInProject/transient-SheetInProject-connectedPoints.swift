@@ -18,7 +18,7 @@ import AppKit
        _ self_mPoints_connectedPoints : [any PointInSchematic_connectedPoints]
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var bp = BézierPath ()
+        var bp = BezierPath ()
         for object in self_mPoints_connectedPoints {
           if let a = object.connectedPoints {
             for point in a {

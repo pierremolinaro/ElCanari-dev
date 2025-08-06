@@ -224,7 +224,7 @@ extension PackagePad {
 
 //--------------------------------------------------------------------------------------------------
 
-extension BézierPath {
+extension BezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -232,17 +232,17 @@ extension BézierPath {
                    centerY inCenterY : Int,
                    width inWidth : Int,
                    height inHeight : Int,
-                   shape inShape : PadShape) -> BézierPath {
+                   shape inShape : PadShape) -> BezierPath {
     let center = CanariPoint (x: inCenterX, y: inCenterY).cocoaPoint
     let size = CanariSize (width: inWidth, height: inHeight).cocoaSize
     let r = NSRect (center: center, size: size)
     switch inShape {
     case .rect :
-      return BézierPath (rect: r)
+      return BezierPath (rect: r)
     case .round :
-      return BézierPath (oblongInRect: r)
+      return BezierPath (oblongInRect: r)
     case .octo :
-      return BézierPath (octogonInRect: r)
+      return BezierPath (octogonInRect: r)
     }
   }
 
@@ -256,7 +256,7 @@ final class PadGeometryForERC {
   let id : Int
   let circles : [GeometricCircle]
   let rectangles : [GeometricRect]
-  let bezierPath : BézierPath
+  let bezierPath : BezierPath
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -343,7 +343,7 @@ final class PadGeometryForERC {
     }
     self.circles = c
     self.rectangles = rects
-    self.bezierPath = BézierPath.pad (
+    self.bezierPath = BezierPath.pad (
       centerX: inCenterX,
       centerY: inCenterY,
       width: inWidth + inClearance,
@@ -357,7 +357,7 @@ final class PadGeometryForERC {
   private init (_ inID : Int,
                 _ inCircles : [GeometricCircle],
                 _ inRectangles : [GeometricRect],
-                _ inBezierPath : BézierPath) {
+                _ inBezierPath : BezierPath) {
     self.id = inID
     self.circles = inCircles
     self.rectangles = inRectangles
@@ -510,8 +510,8 @@ final class PadGeometryForERC {
 //
 //  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //
-//  func bezierPathes () -> [BézierPath] {
-//    var result = [BézierPath] ()
+//  func bezierPathes () -> [BezierPath] {
+//    var result = [BezierPath] ()
 //    for entry in self {
 //      result.append (entry.bezierPath)
 //    }

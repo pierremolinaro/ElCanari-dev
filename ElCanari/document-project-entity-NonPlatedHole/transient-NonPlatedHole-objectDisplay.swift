@@ -33,7 +33,7 @@ import AppKit
           center: .zero,
           size: CanariSize (width: self_mWidth, height: self_mHeight)
         )
-        let bp = BézierPath (oblongInRect: r.cocoaRect).transformed (by: af)
+        let bp = BezierPath (oblongInRect: r.cocoaRect).transformed (by: af)
         shape.add (filled: [bp], prefs_nonPlatedHoleColorForBoard)
         return shape
 //--- END OF USER ZONE 2

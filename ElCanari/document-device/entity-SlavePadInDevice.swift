@@ -63,13 +63,13 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SlavePadInDevice_frontSideFilledBezierPath : AnyObject {
-  var frontSideFilledBezierPath : BézierPath? { get }
+  var frontSideFilledBezierPath : BezierPath? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SlavePadInDevice_backSideFilledBezierPath : AnyObject {
-  var backSideFilledBezierPath : BézierPath? { get }
+  var backSideFilledBezierPath : BezierPath? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -234,11 +234,11 @@ final class SlavePadInDevice : EBManagedObject
   //   Transient property: frontSideFilledBezierPath
   //------------------------------------------------------------------------------------------------
 
-  final let frontSideFilledBezierPath_property = EBTransientProperty <BézierPath> ()
+  final let frontSideFilledBezierPath_property = EBTransientProperty <BezierPath> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var frontSideFilledBezierPath : BézierPath? {
+  final var frontSideFilledBezierPath : BezierPath? {
     return self.frontSideFilledBezierPath_property.optionalValue
   }
 
@@ -246,11 +246,11 @@ final class SlavePadInDevice : EBManagedObject
   //   Transient property: backSideFilledBezierPath
   //------------------------------------------------------------------------------------------------
 
-  final let backSideFilledBezierPath_property = EBTransientProperty <BézierPath> ()
+  final let backSideFilledBezierPath_property = EBTransientProperty <BezierPath> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var backSideFilledBezierPath : BézierPath? {
+  final var backSideFilledBezierPath : BezierPath? {
     return self.backSideFilledBezierPath_property.optionalValue
   }
 

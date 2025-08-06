@@ -56,20 +56,20 @@ struct MergerPadArray : Hashable {
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
       let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
-      var bp : BézierPath
+      var bp : BezierPath
       switch pad.shape {
       case .rect :
-        bp = BézierPath (rect:r)
+        bp = BezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = BézierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+          bp = BezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
-          bp = BézierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+          bp = BezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
-          bp = BézierPath (ovalIn:r)
+          bp = BezierPath (ovalIn:r)
         }
       case .octo :
-        bp = BézierPath (octogonInRect: r)
+        bp = BezierPath (octogonInRect: r)
       }
       var transform = AffineTransform (translationByX: canariUnitToCocoa (pad.x), byY: canariUnitToCocoa (pad.y))
       transform.rotate (byRadians: canariRotationToRadians (pad.rotation))
@@ -81,7 +81,7 @@ struct MergerPadArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func addPads (toFilledBezierPaths ioBezierPaths : inout [BézierPath],
+  func addPads (toFilledBezierPaths ioBezierPaths : inout [BezierPath],
                 dx inDx : Int,
                 dy inDy: Int,
                 horizontalMirror inHorizontalMirror : Bool,
@@ -118,20 +118,20 @@ struct MergerPadArray : Hashable {
         transform.scale (x: -1.0, y: 1.0)
       }
       transform.rotate (byRadians:canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
-      var bp : BézierPath
+      var bp : BezierPath
       switch pad.shape {
       case .rect :
-        bp = BézierPath (rect:r)
+        bp = BezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = BézierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+          bp = BezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
-          bp = BézierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+          bp = BezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
-          bp = BézierPath (ovalIn:r)
+          bp = BezierPath (ovalIn:r)
         }
       case .octo :
-        bp = BézierPath (octogonInRect: r)
+        bp = BezierPath (octogonInRect: r)
       }
       ioBezierPaths.append (bp.transformed (by: transform))
     }
@@ -139,7 +139,7 @@ struct MergerPadArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func addHoles (toFilledBezierPaths ioBezierPaths : inout [BézierPath],
+//  func addHoles (toFilledBezierPaths ioBezierPaths : inout [BezierPath],
 //                 dx inDx : Int,
 //                 dy inDy: Int,
 //                 pdfHoleDiameter inHoleDiameter : CGFloat,
@@ -168,7 +168,7 @@ struct MergerPadArray : Hashable {
 //      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
 //      let yf = canariUnitToCocoa (y)
 //      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
-//      let bp = BézierPath (ovalIn: r)
+//      let bp = BezierPath (ovalIn: r)
 //      ioBezierPaths.append (bp)
 //    }
 //  }
@@ -244,7 +244,7 @@ struct MergerPadArray : Hashable {
         af.translate (x: CGFloat (xmt), y: CGFloat (ymt))
         af.rotate (byRadians: padRotationInRadians)
         let r = NSRect (x:-widthTenthMilF / 2.0, y: -heightTenthMilF / 2.0, width: widthTenthMilF, height: heightTenthMilF)
-        let bp = BézierPath (octogonInRect: r).transformed (by: af)
+        let bp = BezierPath (octogonInRect: r).transformed (by: af)
         var points = [NSPoint] (repeating: .zero, count: 3)
         var drawings = [String] ()
         var origin = NSPoint ()

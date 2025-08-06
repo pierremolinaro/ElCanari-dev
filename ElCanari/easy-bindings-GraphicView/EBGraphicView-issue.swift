@@ -10,7 +10,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setIssue (_ inBezierPathes : [BézierPath], _ issueKind : CanariIssue.Kind) {
+  final func setIssue (_ inBezierPathes : [BezierPath], _ issueKind : CanariIssue.Kind) {
     if self.mIssueBezierPathes != inBezierPathes {
       let box = self.mIssueBezierPathes.boundingBox
       self.mIssueBezierPathes = inBezierPathes

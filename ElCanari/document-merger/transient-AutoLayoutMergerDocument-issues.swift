@@ -35,7 +35,7 @@ import AppKit
           let intersection = instanceRect.intersection (otherInstanceRect.insetBy (dx: inset, dy: inset))
           if !intersection.isEmpty {
             let intersectionEnlarged : NSRect = intersection.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
-            var bp = BézierPath (rect: intersectionEnlarged)
+            var bp = BezierPath (rect: intersectionEnlarged)
             bp.lineWidth = 3.0
             let issue = CanariIssue (kind: .error, message: "Intersection", pathes: [bp])
             array.append (issue)
@@ -52,7 +52,7 @@ import AppKit
         let instanceLimits = root_boardInstances_boardLimitWidth [idx].boardLimitWidth!
         let instanceRectInsetByInstanceLimitWidth = instanceRect.insetBy (dx: instanceLimits, dy: instanceLimits)
         for r in instanceRectInsetByInstanceLimitWidth.subtracting (boardInteriorRect) {
-          var bp = BézierPath (roundedRect: r.cocoaRect.insetBy (dx: -3.0, dy: -3.0), xRadius: 3.0, yRadius: 3.0)
+          var bp = BezierPath (roundedRect: r.cocoaRect.insetBy (dx: -3.0, dy: -3.0), xRadius: 3.0, yRadius: 3.0)
           bp.lineWidth = 1.0
           bp.lineCapStyle = .round
           let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])

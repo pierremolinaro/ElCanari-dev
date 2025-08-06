@@ -24,7 +24,7 @@ import AppKit
     if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
       let limitWidth = canariUnitToCocoa (self_boardLimitWidth)
       let r = self_boardRect.cocoaRect
-      var bp = BézierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
+      var bp = BezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
       bp.lineWidth = limitWidth
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round

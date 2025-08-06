@@ -33,14 +33,14 @@ import AppKit
     let width = canariUnitToCocoa (self_width)
     let height = canariUnitToCocoa (self_height)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
-    var bp : BézierPath
+    var bp : BezierPath
     switch self_padShape {
     case .rect :
-      bp = BézierPath (rect: rPad)
+      bp = BezierPath (rect: rPad)
     case .round :
-      bp = BézierPath (oblongInRect: rPad)
+      bp = BezierPath (oblongInRect: rPad)
     case .octo :
-      bp = BézierPath (octogonInRect: rPad)
+      bp = BezierPath (octogonInRect: rPad)
     }
     switch self_padStyle {
     case .traversing :

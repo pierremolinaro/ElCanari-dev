@@ -30,14 +30,14 @@ import AppKit
     let width = canariUnitToCocoa (self_mWidth)
     let height = canariUnitToCocoa (self_mHeight)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
-    var bp : BézierPath
+    var bp : BezierPath
     switch self_mShape {
     case .rect :
-      bp = BézierPath (rect: rPad)
+      bp = BezierPath (rect: rPad)
     case .round :
-      bp = BézierPath (oblongInRect: rPad)
+      bp = BezierPath (oblongInRect: rPad)
     case .octo :
-      bp = BézierPath (octogonInRect: rPad)
+      bp = BezierPath (octogonInRect: rPad)
     }
     switch self_mStyle {
     case .traversing :
@@ -47,7 +47,7 @@ import AppKit
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
     case .surface :
-      bp = BézierPath ()
+      bp = BezierPath ()
     }
     var array = BezierPathArray ()
     array.append (bp)

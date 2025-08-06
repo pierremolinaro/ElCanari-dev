@@ -62,7 +62,7 @@ import AppKit
           let frameRadius : CGFloat = 3.0
           r = r.insetBy (dx: -frameRadius - CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0, dy: -CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0)
           let nameOrigin = NSPoint (x: r.midX, y: horizontalSeparatorY + MARGIN)
-          var bp = BézierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+          var bp = BezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
           shape.add (filled: [bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
           bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
           bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
@@ -73,9 +73,9 @@ import AppKit
         //--- Stroke Bezier path
           strokeBezierPath.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
           strokeBezierPath.lineCapStyle = .round
-          shape.add (stroke: [BézierPath (strokeBezierPath)], prefs_symbolColor)
+          shape.add (stroke: [BezierPath (strokeBezierPath)], prefs_symbolColor)
         //--- Filled Bezier path
-          shape.add (filled: [BézierPath (filledBezierPath)], prefs_symbolColor)
+          shape.add (filled: [BezierPath (filledBezierPath)], prefs_symbolColor)
         //--- Pin names
           shape.add (pinNameShape)
         //--- Pin numbers

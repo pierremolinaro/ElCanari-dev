@@ -211,8 +211,8 @@ extension BoardImage {
 
 struct BoardImageDisplayInfos {
   let rotationKnobLocation : NSPoint
-  let backgroundBP : BézierPath
-  let imageBP : BézierPath
+  let backgroundBP : BezierPath
+  let imageBP : BezierPath
   let productRectangles : [ProductRectangle]
   let transformedRectangles : [AffineTransform]
 }
@@ -240,9 +240,9 @@ struct BoardImageDisplayInfos {
     af.scale (x: -1.0, y: 1.0)
   }
 //--- Background
-  let backgroundBP = BézierPath (rect: qrRect).transformed (by: af)
+  let backgroundBP = BezierPath (rect: qrRect).transformed (by: af)
 //--- Board image
-  var filledBP = BézierPath ()
+  var filledBP = BezierPath ()
   var productRectangles = [ProductRectangle] ()
   var transformedRectangles = [AffineTransform] ()
   for rect in inBoardImageDescriptor.blackRectangles {

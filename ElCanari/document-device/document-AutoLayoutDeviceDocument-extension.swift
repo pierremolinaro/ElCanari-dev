@@ -161,7 +161,7 @@ extension AutoLayoutDeviceDocument {
       if let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int,
          let packageRoot = documentData.documentRootObject as? PackageRoot {
         ok = true
-        var strokeBezierPathes = BézierPath ()
+        var strokeBezierPathes = BezierPath ()
         var masterPads = EBReferenceArray <MasterPadInDevice> ()
         packageRoot.accumulate (
           withUndoManager: self.undoManager,
@@ -221,7 +221,7 @@ extension AutoLayoutDeviceDocument {
               if version <= package.mVersion {
                 ioOkMessages.append ("Package \(package.mName) is up-to-date.")
               }else{
-                var strokeBezierPathes = BézierPath ()
+                var strokeBezierPathes = BezierPath ()
                 var masterPads = EBReferenceArray <MasterPadInDevice> ()
                 packageRoot.accumulate (
                   withUndoManager: self.undoManager,

@@ -24,7 +24,7 @@ import AppKit
        _ prefs_backSideLegendColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      var bp = BézierPath ()
+      var bp = BezierPath ()
       bp.lineWidth = canariUnitToCocoa (self_mWidth)
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round

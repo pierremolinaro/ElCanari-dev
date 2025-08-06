@@ -172,8 +172,8 @@ final class GeometricRect {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bezierPath : BézierPath {
-    var bp = BézierPath ()
+  var bezierPath : BezierPath {
+    var bp = BezierPath ()
     let v = self.vertices
     bp.move (to: v [0])
     for idx in 1 ..< v.count {

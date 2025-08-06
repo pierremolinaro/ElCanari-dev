@@ -28,7 +28,7 @@ import AppKit
        _ prefs_displayPackageBackSidePads : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    var bp = BézierPath.pad (
+    var bp = BezierPath.pad (
       centerX: self_xCenter,
       centerY: self_yCenter,
       width: self_width,

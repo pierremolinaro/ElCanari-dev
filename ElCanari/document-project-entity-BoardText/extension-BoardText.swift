@@ -233,7 +233,7 @@ extension BoardText {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func displayInfos (extraWidth inExtraWidth : CGFloat) -> (BézierPath, BézierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+  func displayInfos (extraWidth inExtraWidth : CGFloat) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
     return boardText_displayInfos (
       x: self.mX,
       y: self.mY,
@@ -266,13 +266,13 @@ extension BoardText {
        weight self_mWeight : Double,
        oblique self_mOblique : Bool,
        extraWidth inExtraWidth : CGFloat // Used for ERC checking
-) -> (BézierPath, BézierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText.isEmpty) ? "Empty" : self_mText
   var stringWidth : CGFloat = 0.0
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
   let lineThickness = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth
-  var bp = BézierPath ()
+  var bp = BezierPath ()
   bp.lineWidth = lineThickness
   bp.lineCapStyle = .round
   bp.lineJoinStyle = .round
@@ -293,7 +293,7 @@ extension BoardText {
       stringWidth += CGFloat (characterDescriptor.advancement) * fontFactor
     }
   }
-  var frameBP = BézierPath ()
+  var frameBP = BezierPath ()
   if !bp.isEmpty {
     frameBP.appendRect (bp.bounds.insetBy (dx: -1.0, dy: -1.0))
   }

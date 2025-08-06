@@ -27,7 +27,7 @@ import AppKit
     let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
     let namePoint = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     let numberPoint = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
-    var bp = BézierPath ()
+    var bp = BezierPath ()
     bp.move (to: numberPoint)
     bp.line (to: pinPoint)
     bp.line (to: namePoint)

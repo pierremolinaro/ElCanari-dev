@@ -6,7 +6,7 @@
 transient property struct QRCodeDescriptor ;
 transient property struct BoardImageDescriptor ;
 transient property struct CanariRect ;
-transient property struct BézierPath ;
+transient property struct BezierPath ;
 transient property struct BoardFontDescriptor ;
 transient property struct BorderCurveDescriptor ;
 transient property struct NetInfoPoint ;

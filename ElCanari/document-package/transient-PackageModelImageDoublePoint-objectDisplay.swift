@@ -35,32 +35,32 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
   let secondY = canariUnitToCocoa (self_mFirstY + self_mSecondDy)
   let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
   if let locked = self_mRoot_mPointsAreLocked, locked {
-    shape.add (filled: [BézierPath (ovalIn: firstR)], self_mFirstColor)
-    shape.add (filled: [BézierPath (ovalIn: secondR)], self_mSecondColor)
+    shape.add (filled: [BezierPath (ovalIn: firstR)], self_mFirstColor)
+    shape.add (filled: [BezierPath (ovalIn: secondR)], self_mSecondColor)
   }else{
     let firstPointDelta = firstPointRadiusInCocoaUnit / sqrt (2.0)
     let secondPointDelta = secondPointRadiusInCocoaUnit / sqrt (2.0)
   //--- First Point
-    var lines = BézierPath ()
+    var lines = BezierPath ()
     lines.lineCapStyle = .round
     lines.move (to: NSPoint (x: firstX - firstPointDelta, y: firstY - firstPointDelta))
     lines.relativeLine (to: NSPoint (x: firstPointDelta * 2.0, y: firstPointDelta * 2.0))
     lines.move (to: NSPoint (x: firstX + firstPointDelta, y: firstY - firstPointDelta))
     lines.relativeLine (to: NSPoint (x: -firstPointDelta * 2.0, y: firstPointDelta * 2.0))
     lines.lineWidth = 0.0
-    var circle = BézierPath (ovalIn: firstR)
+    var circle = BezierPath (ovalIn: firstR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH
     shape.add (filled: [circle], .clear)
     shape.add (stroke: [lines, circle], self_mFirstColor)
   //--- Second Point
-    lines = BézierPath ()
+    lines = BezierPath ()
     lines.lineCapStyle = .round
     lines.move (to: NSPoint (x: secondX - secondPointDelta, y: secondY - secondPointDelta))
     lines.relativeLine (to: NSPoint (x: secondPointDelta * 2.0, y: secondPointDelta * 2.0))
     lines.move (to: NSPoint (x: secondX + secondPointDelta, y: secondY - secondPointDelta))
     lines.relativeLine (to: NSPoint (x: -secondPointDelta * 2.0, y: secondPointDelta * 2.0))
     lines.lineWidth = 0.0
-    circle = BézierPath (ovalIn: secondR)
+    circle = BezierPath (ovalIn: secondR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH
     shape.add (filled: [circle], .clear)
     shape.add (stroke: [lines, circle], self_mSecondColor)

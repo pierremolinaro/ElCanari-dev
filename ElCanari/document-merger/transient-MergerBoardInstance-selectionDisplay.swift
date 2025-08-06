@@ -22,8 +22,8 @@ import AppKit
       let r : NSRect = self_instanceRect.cocoaRect
 //      Swift.print ("R \(self_instanceRect.origin.x) \(self_instanceRect.origin.y) \(self_instanceRect.size.width) \(self_instanceRect.size.height)")
       var shapes = EBShape ()
-      shapes.add (filled: [BézierPath (rect: r)], prefs_selectionHiliteColor.withAlphaComponent (0.15))
-      var bp = BézierPath (rect: r.insetBy (dx: frameWidth / 2.0, dy: frameWidth / 2.0))
+      shapes.add (filled: [BezierPath (rect: r)], prefs_selectionHiliteColor.withAlphaComponent (0.15))
+      var bp = BezierPath (rect: r.insetBy (dx: frameWidth / 2.0, dy: frameWidth / 2.0))
       bp.lineWidth = frameWidth
       bp.lineJoinStyle = .round
       shapes.add (stroke: [bp], prefs_selectionHiliteColor)

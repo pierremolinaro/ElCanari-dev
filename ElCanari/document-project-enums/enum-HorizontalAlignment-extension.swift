@@ -6,7 +6,7 @@ extension HorizontalAlignment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var ebTextShapeHorizontalAlignment : BézierPath.TextHorizontalAlignment {
+  var ebTextShapeHorizontalAlignment : BezierPath.TextHorizontalAlignment {
     switch self {
       case .onTheRight :
         return .onTheRight

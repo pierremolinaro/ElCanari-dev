@@ -45,7 +45,7 @@ struct EBShape : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (stroke inStrokePaths : [BézierPath],
+  init (stroke inStrokePaths : [BezierPath],
         _ inColor : NSColor?,
         knobIndex inKnobIndex : Int? = nil,
         clip inClipRule : EBClipRule = .none) {
@@ -55,7 +55,7 @@ struct EBShape : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (filled inFilledPaths : [BézierPath],
+  init (filled inFilledPaths : [BezierPath],
         _ inColor : NSColor?,
         knobIndex inKnobIndex : Int? = nil,
         clip inClipRule : EBClipRule = .none) {
@@ -68,8 +68,8 @@ struct EBShape : Hashable {
   init (text inString: String,
         _ inOrigin : NSPoint,
         _ inTextAttributes : [NSAttributedString.Key : Any],
-        _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
-        _ inVerticalAlignment : BézierPath.TextVerticalAlignment) {
+        _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
+        _ inVerticalAlignment : BezierPath.TextVerticalAlignment) {
     self.mSharedObject = EBShapeObject ()
     self.mSharedObject?.add (text: inString, inOrigin, inTextAttributes, inHorizontalAlignment, inVerticalAlignment)
   }
@@ -81,8 +81,8 @@ struct EBShape : Hashable {
         _ inFont : NSFont,
         foreColor inForeColor : NSColor,
         backColor inBackColor : NSColor,
-        _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
-        _ inVerticalAlignment : BézierPath.TextVerticalAlignment,
+        _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
+        _ inVerticalAlignment : BezierPath.TextVerticalAlignment,
         _ inKnobKind : EBKnobKind,
         knobIndex inKnobIndex : Int) {
     self.mSharedObject = EBShapeObject ()
@@ -103,7 +103,7 @@ struct EBShape : Hashable {
   //  add
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func add (stroke inStrokePathes : [BézierPath],
+  mutating func add (stroke inStrokePathes : [BezierPath],
                      _ inColor : NSColor?,
                      knobIndex inKnobIndex : Int? = nil,
                      clip inClipRule : EBClipRule = .none) {
@@ -117,7 +117,7 @@ struct EBShape : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func add (filled inFilledPathes : [BézierPath],
+  mutating func add (filled inFilledPathes : [BezierPath],
                      _ inColor : NSColor?,
                      knobIndex inKnobIndex : Int? = nil,
                      clip inClipRule : EBClipRule = .none) {
@@ -145,8 +145,8 @@ struct EBShape : Hashable {
   mutating func add (text inString : String,
                      _ inOrigin : NSPoint,
                      _ inTextAttributes : [NSAttributedString.Key : Any],
-                     _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
-                     _ inVerticalAlignment : BézierPath.TextVerticalAlignment) {
+                     _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
+                     _ inVerticalAlignment : BezierPath.TextVerticalAlignment) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
     }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
@@ -162,8 +162,8 @@ struct EBShape : Hashable {
                      _ inFont : NSFont,
                      foreColor inForeColor : NSColor,
                      backColor inBackColor : NSColor,
-                     _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
-                     _ inVerticalAlignment : BézierPath.TextVerticalAlignment,
+                     _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
+                     _ inVerticalAlignment : BezierPath.TextVerticalAlignment,
                     _ inKnobKind : EBKnobKind,
                     knobIndex inKnobIndex : Int) {
     if self.mSharedObject == nil {
@@ -366,11 +366,11 @@ fileprivate final class EBShapeObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func add (filled inFilledPaths : [BézierPath],
+  func add (filled inFilledPaths : [BezierPath],
             _ inColor : NSColor?,
             knobIndex inKnobIndex : Int?,
             clip inClipRule : EBClipRule) {
-    var nonEmptyBezierPathes = [BézierPath] ()
+    var nonEmptyBezierPathes = [BezierPath] ()
     for path in inFilledPaths {
       if !path.isEmpty {
         nonEmptyBezierPathes.append (path)
@@ -385,12 +385,12 @@ fileprivate final class EBShapeObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func add (stroke inStrokePathes : [BézierPath],
+  func add (stroke inStrokePathes : [BezierPath],
             _ inColor : NSColor?,
             knobIndex inKnobIndex : Int?,
             clip inClipRule : EBClipRule) {
-    var filledBezierPathes = [BézierPath] ()
-    var strokeBezierPathes = [BézierPath] ()
+    var filledBezierPathes = [BezierPath] ()
+    var strokeBezierPathes = [BezierPath] ()
     for path in inStrokePathes {
       if !path.isEmpty {
         if path.lineWidth > 0.0 {
@@ -416,16 +416,16 @@ fileprivate final class EBShapeObject {
 
   func add (knobAt inPoint: NSPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
     let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
-    var bp : BézierPath
+    var bp : BezierPath
     let backColor : NSColor
     let frameColor : NSColor
     switch inKind {
     case .rect :
-      bp = BézierPath (rect: r)
+      bp = BezierPath (rect: r)
       backColor = .white
       frameColor = .black
     case .diamond :
-      bp = BézierPath ()
+      bp = BezierPath ()
       bp.move (to: NSPoint (x: r.minX, y: r.midY))
       bp.line (to: NSPoint (x: r.midX, y: r.minY))
       bp.line (to: NSPoint (x: r.maxX, y: r.midY))
@@ -434,11 +434,11 @@ fileprivate final class EBShapeObject {
       backColor = .white
       frameColor = .black
     case .circ :
-      bp = BézierPath (ovalIn: r)
+      bp = BezierPath (ovalIn: r)
       backColor = .white
       frameColor = .black
     case .transparentCircle :
-      bp = BézierPath (ovalIn: r)
+      bp = BezierPath (ovalIn: r)
       backColor = .clear
       frameColor = .clear
     }
@@ -458,8 +458,8 @@ fileprivate final class EBShapeObject {
   func add (text inString: String,
             _ inOrigin : NSPoint,
             _ inTextAttributes : [NSAttributedString.Key : Any],
-            _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
-            _ inVerticalAlignment : BézierPath.TextVerticalAlignment) {
+            _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
+            _ inVerticalAlignment : BezierPath.TextVerticalAlignment) {
     if inString != "" {
     //--- Forecolor
       let textColor : NSColor
@@ -469,7 +469,7 @@ fileprivate final class EBShapeObject {
         textColor = .black
       }
     //--- Transform text into filled bezier path
-      let filledBezierPath = BézierPath (
+      let filledBezierPath = BezierPath (
         withString: inString,
         at: inOrigin,
         inHorizontalAlignment,
@@ -478,12 +478,12 @@ fileprivate final class EBShapeObject {
       )
     //--- Append background ?
       if let backColor = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
-        let bp = BézierPath (rect: filledBezierPath.bounds)
+        let bp = BezierPath (rect: filledBezierPath.bounds)
         let e = EBShapeElement ([bp], .fill, backColor, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
       }else{
-        let bp = BézierPath (rect: filledBezierPath.bounds)
+        let bp = BezierPath (rect: filledBezierPath.bounds)
         let e = EBShapeElement ([bp], .fill, nil, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
@@ -504,8 +504,8 @@ fileprivate final class EBShapeObject {
             _ inFont : NSFont,
             foreColor inForeColor : NSColor,
             backColor inBackColor : NSColor,
-            _ inHorizontalAlignment : BézierPath.TextHorizontalAlignment,
-            _ inVerticalAlignment : BézierPath.TextVerticalAlignment,
+            _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
+            _ inVerticalAlignment : BezierPath.TextVerticalAlignment,
             _ inKnobKind : EBKnobKind,
             knobIndex inKnobIndex : Int) {
     let string = (inString.isEmpty) ? " " : inString
@@ -513,7 +513,7 @@ fileprivate final class EBShapeObject {
       NSAttributedString.Key.font : inFont
     ]
   //--- Transform text into filled bezier path
-    let filledBezierPath = BézierPath (
+    let filledBezierPath = BezierPath (
       withString: string,
       at: inOrigin,
       inHorizontalAlignment,
@@ -524,7 +524,7 @@ fileprivate final class EBShapeObject {
     do{
       switch inKnobKind {
       case .circ :
-        var bp = BézierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
+        var bp = BezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
         bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -534,7 +534,7 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .diamond :
-        var bp = BézierPath (octogonInRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
+        var bp = BezierPath (octogonInRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
         bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -544,7 +544,7 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .rect :
-        var bp = BézierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
+        var bp = BezierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
         bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -554,7 +554,7 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .transparentCircle :
-        var bp = BézierPath (rect: filledBezierPath.bounds)
+        var bp = BezierPath (rect: filledBezierPath.bounds)
         bp.lineWidth = 0.1
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -574,7 +574,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendToolTip (_ inRect : NSRect, _ inText : String) {
-    self.mToolTips.append (EBToolTip (path: BézierPath (rect: inRect), string: inText))
+    self.mToolTips.append (EBToolTip (path: BezierPath (rect: inRect), string: inText))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -719,7 +719,7 @@ enum EBKnobKind {
 //--------------------------------------------------------------------------------------------------
 
 fileprivate struct EBToolTip {
-  let path : BézierPath
+  let path : BezierPath
   let string : String
 }
 
@@ -729,8 +729,8 @@ fileprivate struct EBToolTip {
 
 enum EBClipRule {
   case none
-  case inside (BézierPath)
-  case outside (BézierPath)
+  case inside (BezierPath)
+  case outside (BezierPath)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -752,7 +752,7 @@ fileprivate final class EBShapeElement {
   // Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mPathes : [BézierPath]
+  private let mPathes : [BezierPath]
   private let mKind : EBPathKind
   private let mColor : NSColor?
   private let mKnobIndex : Int?
@@ -762,7 +762,7 @@ fileprivate final class EBShapeElement {
   //  init
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inPathes : [BézierPath],
+  init (_ inPathes : [BezierPath],
         _ inKind : EBPathKind,
         _ inColor : NSColor?,
         _ inKnobIndex : Int?,
@@ -908,7 +908,7 @@ fileprivate final class EBShapeElement {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransform : AffineTransform) -> EBShapeElement {
-    var paths = [BézierPath] ()
+    var paths = [BezierPath] ()
     for path in self.mPathes {
       paths.append (path.transformed (by: inAffineTransform))
     }

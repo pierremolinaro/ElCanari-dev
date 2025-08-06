@@ -41,14 +41,14 @@ import AppKit
         if self_mSchematicEnableHiliteColumnAndRow, self_mSchematicHilitedColumnIndex >= 0 {
           let bottomLeft = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + CGFloat (self_mSchematicHilitedColumnIndex) * hIncrement + OFFSET, y: 0.0)
           let size = NSSize (width: hIncrement, height: sheetHeight)
-          let bp = BézierPath (rect: NSRect (origin: bottomLeft, size: size))
+          let bp = BezierPath (rect: NSRect (origin: bottomLeft, size: size))
           shape.add (filled: [bp], hiliteColor)
         }
       //--- Hilite row ?
         if self_mSchematicEnableHiliteColumnAndRow, self_mSchematicHilitedRowIndex >= 0 {
           let bottomLeft = NSPoint (x: 0.0, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + CGFloat (self_mSchematicHilitedRowIndex) * vIncrement + OFFSET)
           let size = NSSize (width: sheetWidth, height: vIncrement)
-          let bp = BézierPath (rect: NSRect (origin: bottomLeft, size: size))
+          let bp = BezierPath (rect: NSRect (origin: bottomLeft, size: size))
           shape.add (filled: [bp], hiliteColor)
         }
       //---
@@ -64,7 +64,7 @@ import AppKit
         let RIGHT_COLUMN : CGFloat =  32.0
         let LINE_HEIGHT  : CGFloat =  18.0
       //---
-        var filledBP = BézierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
+        var filledBP = BezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
         filledBP.appendRect (NSRect (x: OFFSET, y: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
         filledBP.appendRect (NSRect (x: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: OFFSET, width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
         filledBP.appendRect (NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
@@ -74,7 +74,7 @@ import AppKit
         if self_mSchematicEnableHiliteColumnAndRow {
           var p = NSPoint (x: OFFSET, y: OFFSET + PAPER_GUTTER_HEIGHT_COCOA_UNIT)
           var s = NSSize (width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT)
-          var filledBP = BézierPath (rect: NSRect (origin: p, size: s))
+          var filledBP = BezierPath (rect: NSRect (origin: p, size: s))
           p.x += sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT
           filledBP.appendRect (NSRect (origin: p, size: s))
           p = NSPoint (x: OFFSET + PAPER_GUTTER_WIDTH_COCOA_UNIT, y: OFFSET)
@@ -85,7 +85,7 @@ import AppKit
           shape.add (filled: [filledBP], hiliteColor)
         }
       //---
-        var bp = BézierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: sheetHeight))
+        var bp = BezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: sheetHeight))
         bp.appendRect (NSRect (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0, height: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0))
         bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
         bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 3.0))

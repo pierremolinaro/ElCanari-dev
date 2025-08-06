@@ -32,7 +32,7 @@ import AppKit
     let endTangentLength = canariUnitToCocoa (self_endTangent)
     let startAngle = CGFloat (self_startAngle) / 1000.0
     let arcAngle = CGFloat (self_arcAngle) / 1000.0
-    var bp = BézierPath (
+    var bp = BezierPath (
       arcWithTangentFromCenter: center,
       radius: radius,
       startAngleInDegrees: startAngle,

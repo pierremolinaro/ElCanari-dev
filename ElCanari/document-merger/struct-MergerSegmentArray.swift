@@ -35,7 +35,7 @@ struct MergerSegmentArray : Hashable {
   func bezierPathArray () -> BezierPathArray {
     var result = BezierPathArray ()
     for segment in self.segmentArray {
-      var bp = BézierPath ()
+      var bp = BezierPath ()
       bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
       bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
       bp.lineWidth = canariUnitToCocoa (segment.width)
@@ -97,7 +97,7 @@ struct MergerSegmentArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func add (toStrokeBezierPaths ioBezierPaths : inout [BézierPath],
+//  func add (toStrokeBezierPaths ioBezierPaths : inout [BezierPath],
 //            dx inDx : Int,
 //            dy inDy: Int,
 //            horizontalMirror inHorizontalMirror : Bool,
@@ -137,7 +137,7 @@ struct MergerSegmentArray : Hashable {
 //      let x2f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x2) : x2)
 //      let y2f = canariUnitToCocoa (y2)
 //      let width = canariUnitToCocoa (segment.width)
-//      var bp = BézierPath ()
+//      var bp = BezierPath ()
 //      bp.move (to: NSPoint (x: x1f, y: y1f))
 //      bp.line (to: NSPoint (x: x2f, y: y2f))
 //      bp.lineWidth = width
@@ -153,7 +153,7 @@ struct MergerSegmentArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [BézierPath],
+//  func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [BezierPath],
 //                       dx inDx : Int,
 //                       dy inDy: Int,
 //                       modelWidth inModelWidth : Int,
@@ -190,7 +190,7 @@ struct MergerSegmentArray : Hashable {
 //      let y1f = canariUnitToCocoa (y1)
 //      let x2f = canariUnitToCocoa (x2)
 //      let y2f = canariUnitToCocoa (y2)
-//      var bp = BézierPath ()
+//      var bp = BezierPath ()
 //      bp.move (to: NSPoint (x: x1f, y: y1f))
 //      bp.line (to: NSPoint (x: x2f, y: y2f))
 //      bp.lineWidth = canariUnitToCocoa (segment.width)
@@ -201,7 +201,7 @@ struct MergerSegmentArray : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [BézierPath],
+//  func addDrillForPDF (toStrokeBezierPaths ioBezierPaths : inout [BezierPath],
 //                       dx inDx : Int,
 //                       dy inDy: Int,
 //                       horizontalMirror inHorizontalMirror : Bool,
@@ -241,7 +241,7 @@ struct MergerSegmentArray : Hashable {
 //      let y1f = canariUnitToCocoa (y1)
 //      let x2f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x2) : x2)
 //      let y2f = canariUnitToCocoa (y2)
-//      var bp = BézierPath ()
+//      var bp = BezierPath ()
 //      bp.move (to:NSPoint (x:x1f, y:y1f))
 //      bp.line (to:NSPoint (x:x2f, y:y2f))
 //      bp.lineWidth = pdfDrillDiameter

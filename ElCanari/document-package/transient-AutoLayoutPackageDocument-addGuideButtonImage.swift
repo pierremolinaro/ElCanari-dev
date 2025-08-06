@@ -17,7 +17,7 @@ import AppKit
        _ prefs_packageGuideColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2
-        var bp = BézierPath ()
+        var bp = BezierPath ()
         bp.lineWidth = 2.0
         bp.move (to: NSPoint (x: 0, y: 0))
         bp.line (to: NSPoint (x: 10, y: 10))

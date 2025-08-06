@@ -42,7 +42,7 @@ import AppKit
               case .bezier :
                 let cp1 = descriptor.cp1.cocoaPoint
                 let cp2 = descriptor.cp2.cocoaPoint
-                var bp = BézierPath ()
+                var bp = BezierPath ()
                 bp.move (to: p1)
                 bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
                 let r = bp.bounds

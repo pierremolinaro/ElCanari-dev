@@ -143,7 +143,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         resultOffset = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
       //--- Build image
         let r = NSRect (x: 0.0, y: 0.0, width: width, height: height)
-        var bp = BézierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
+        var bp = BezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
         bp.lineWidth = 1.0
         var shape = EBShape ()
         shape.add (stroke: [bp], NSColor.gray)
