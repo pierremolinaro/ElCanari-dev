@@ -189,7 +189,7 @@ do{
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
 //-------------------- Compiler le projet Xcode
-  let debutCompilation = Date ()
+  let débutCompilation = Date ()
   runCommand ("/bin/rm", ["-fr", "build"])
   runCommand (
     "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
@@ -198,7 +198,7 @@ do{
       "-verbose"
     ]
   )
-  let DureeCompilation = Date ().timeIntervalSince (debutCompilation)
+  let duréeCompilation = Date ().timeIntervalSince (débutCompilation)
   let PRODUCT_NAME : String
   switch BUILD_KIND {
   case .debug :
@@ -278,7 +278,7 @@ do{
     runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/" + CANARI_DIR])
   }
   //---
-  let durée = Int (DureeCompilation)
+  let durée = Int (duréeCompilation)
   print ("Durée de compilation : \(durée / 60) min \(durée % 60) s")
 }catch (let error) {
   print ("Exception \(error)")
