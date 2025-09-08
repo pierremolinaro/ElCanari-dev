@@ -268,7 +268,7 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_slaves_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_slaves_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_slaves {
       relay = r
@@ -282,7 +282,7 @@ class ReadOnlyObject_PackagePad : EBReadOnlyAbstractObjectProperty <PackagePad> 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_slaves_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_slaves_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_slaves?.stopsBeingObserved (by: inObserver)
   }
 

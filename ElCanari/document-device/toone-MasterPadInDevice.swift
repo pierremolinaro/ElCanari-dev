@@ -132,7 +132,7 @@ class ReadOnlyObject_MasterPadInDevice : EBReadOnlyAbstractObjectProperty <Maste
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSlavePads_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSlavePads_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSlavePads {
       relay = r
@@ -146,7 +146,7 @@ class ReadOnlyObject_MasterPadInDevice : EBReadOnlyAbstractObjectProperty <Maste
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSlavePads_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSlavePads_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mSlavePads?.stopsBeingObserved (by: inObserver)
   }
 

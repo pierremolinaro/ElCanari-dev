@@ -109,7 +109,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mXUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mXUnit_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mXUnit {
       relay = r
@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mXUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mXUnit_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mXUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mY_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mY_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mYUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mYUnit_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mYUnit {
       relay = r
@@ -184,7 +184,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mYUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mYUnit_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mYUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -196,7 +196,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWidth_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidth {
       relay = r
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWidth_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidthUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWidthUnit_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidthUnit {
       relay = r
@@ -242,7 +242,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidthUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWidthUnit_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mWidthUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -254,7 +254,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeight_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHeight_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHeight {
       relay = r
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeight_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHeight_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mHeight?.stopsBeingObserved (by: inObserver)
   }
 
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeightUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHeightUnit_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHeightUnit {
       relay = r
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeightUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHeightUnit_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mHeightUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -312,7 +312,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mRotation_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mRotation_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mRotation {
       relay = r
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mRotation_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mRotation_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mRotation?.stopsBeingObserved (by: inObserver)
   }
 
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mShowTextRotationKnobInBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mShowTextRotationKnobInBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mShowTextRotationKnobInBoard {
       relay = r
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mShowTextRotationKnobInBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mShowTextRotationKnobInBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mShowTextRotationKnobInBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -370,7 +370,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mX_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
@@ -387,7 +387,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mX_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -428,7 +428,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -445,7 +445,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
@@ -474,7 +474,7 @@ class ReadOnlyArrayOf_NonPlatedHole : EBReadOnlyAbstractArrayProperty <NonPlated
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_signatureForERCChecking?.stopsBeingObserved (by: inObserver)
   }
 

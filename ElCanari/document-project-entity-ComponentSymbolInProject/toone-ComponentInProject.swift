@@ -410,7 +410,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mConnectors_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mConnectors_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mConnectors {
       relay = r
@@ -424,7 +424,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mConnectors_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mConnectors_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mConnectors?.stopsBeingObserved (by: inObserver)
   }
 
@@ -436,7 +436,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSymbols_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSymbols_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbols {
       relay = r
@@ -450,7 +450,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSymbols_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSymbols_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mSymbols?.stopsBeingObserved (by: inObserver)
   }
 

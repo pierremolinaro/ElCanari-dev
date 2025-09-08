@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mColor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mColor_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mColor {
       relay = r
@@ -114,7 +114,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mColor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mColor_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mColor?.stopsBeingObserved (by: inObserver)
   }
 
@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSize_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSize_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSize {
       relay = r
@@ -143,7 +143,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSize_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSize_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mSize?.stopsBeingObserved (by: inObserver)
   }
 
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHorizontalAlignment_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHorizontalAlignment_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHorizontalAlignment {
       relay = r
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHorizontalAlignment_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHorizontalAlignment_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mHorizontalAlignment?.stopsBeingObserved (by: inObserver)
   }
 
@@ -184,7 +184,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mVerticalAlignment_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mVerticalAlignment_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mVerticalAlignment {
       relay = r
@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mVerticalAlignment_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mVerticalAlignment_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mVerticalAlignment?.stopsBeingObserved (by: inObserver)
   }
 
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mRotation_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mRotation_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mRotation {
       relay = r
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mRotation_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mRotation_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mRotation?.stopsBeingObserved (by: inObserver)
   }
 
@@ -242,7 +242,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mBold_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mBold_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mBold {
       relay = r
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mBold_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mBold_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mBold?.stopsBeingObserved (by: inObserver)
   }
 
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mX_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mX_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mY_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
@@ -317,7 +317,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mY_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComment_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComment_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComment {
       relay = r
@@ -346,7 +346,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComment_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComment_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mComment?.stopsBeingObserved (by: inObserver)
   }
 
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -375,7 +375,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -387,7 +387,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_CommentInSchematic : EBReadOnlyAbstractArrayProperty <Comm
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 

@@ -98,7 +98,7 @@ class ReadOnlyObject_SheetInProject : EBReadOnlyAbstractObjectProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mObjects_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mObjects_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mObjects {
       relay = r
@@ -112,7 +112,7 @@ class ReadOnlyObject_SheetInProject : EBReadOnlyAbstractObjectProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mObjects_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mObjects_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mObjects?.stopsBeingObserved (by: inObserver)
   }
 
@@ -124,7 +124,7 @@ class ReadOnlyObject_SheetInProject : EBReadOnlyAbstractObjectProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPoints_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPoints_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
@@ -138,7 +138,7 @@ class ReadOnlyObject_SheetInProject : EBReadOnlyAbstractObjectProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPoints_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPoints_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mPoints?.stopsBeingObserved (by: inObserver)
   }
 

@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawBoardLimits_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawBoardLimits_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawBoardLimits {
       relay = r
@@ -240,7 +240,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawBoardLimits_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawBoardLimits_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawBoardLimits?.stopsBeingObserved (by: inObserver)
   }
 
@@ -252,7 +252,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawInternalBoardLimits_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawInternalBoardLimits_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawInternalBoardLimits {
       relay = r
@@ -269,7 +269,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawInternalBoardLimits_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawInternalBoardLimits_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawInternalBoardLimits?.stopsBeingObserved (by: inObserver)
   }
 
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentNamesTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentNamesTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentNamesTopSide {
       relay = r
@@ -298,7 +298,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentNamesTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentNamesTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawComponentNamesTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -310,7 +310,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentNamesBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentNamesBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentNamesBottomSide {
       relay = r
@@ -327,7 +327,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentNamesBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentNamesBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawComponentNamesBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -339,7 +339,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentValuesTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentValuesTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentValuesTopSide {
       relay = r
@@ -356,7 +356,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentValuesTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentValuesTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawComponentValuesTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -368,7 +368,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentValuesBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentValuesBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawComponentValuesBottomSide {
       relay = r
@@ -385,7 +385,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawComponentValuesBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawComponentValuesBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawComponentValuesBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -397,7 +397,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPackageLegendTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPackageLegendTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPackageLegendTopSide {
       relay = r
@@ -414,7 +414,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPackageLegendTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPackageLegendTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawPackageLegendTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -426,7 +426,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPackageLegendBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPackageLegendBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPackageLegendBottomSide {
       relay = r
@@ -443,7 +443,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPackageLegendBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPackageLegendBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawPackageLegendBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPadsTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPadsTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPadsTopSide {
       relay = r
@@ -472,7 +472,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPadsTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPadsTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawPadsTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -484,7 +484,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPadsBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPadsBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawPadsBottomSide {
       relay = r
@@ -501,7 +501,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawPadsBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawPadsBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawPadsBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -513,7 +513,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLayoutTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLayoutTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLayoutTopSide {
       relay = r
@@ -530,7 +530,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLayoutTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLayoutTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTextsLayoutTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -542,7 +542,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLayoutBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLayoutBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLayoutBottomSide {
       relay = r
@@ -559,7 +559,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLayoutBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLayoutBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTextsLayoutBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -571,7 +571,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLegendTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLegendTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLegendTopSide {
       relay = r
@@ -588,7 +588,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLegendTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLegendTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTextsLegendTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -600,7 +600,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLegendBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLegendBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTextsLegendBottomSide {
       relay = r
@@ -617,7 +617,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTextsLegendBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTextsLegendBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTextsLegendBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -629,7 +629,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksTopSide {
       relay = r
@@ -646,7 +646,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTracksTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -658,7 +658,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner1Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner1Layer_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner1Layer {
       relay = r
@@ -675,7 +675,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner1Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner1Layer_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTracksInner1Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -687,7 +687,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner2Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner2Layer_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner2Layer {
       relay = r
@@ -704,7 +704,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner2Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner2Layer_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTracksInner2Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -716,7 +716,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner3Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner3Layer_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner3Layer {
       relay = r
@@ -733,7 +733,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner3Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner3Layer_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTracksInner3Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -745,7 +745,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner4Layer_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner4Layer_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksInner4Layer {
       relay = r
@@ -762,7 +762,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksInner4Layer_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksInner4Layer_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTracksInner4Layer?.stopsBeingObserved (by: inObserver)
   }
 
@@ -774,7 +774,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTracksBottomSide {
       relay = r
@@ -791,7 +791,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTracksBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTracksBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTracksBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -803,7 +803,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTraversingPads_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTraversingPads_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawTraversingPads {
       relay = r
@@ -820,7 +820,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawTraversingPads_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawTraversingPads_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawTraversingPads?.stopsBeingObserved (by: inObserver)
   }
 
@@ -832,7 +832,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawImagesTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawImagesTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawImagesTopSide {
       relay = r
@@ -849,7 +849,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawImagesTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawImagesTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawImagesTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -861,7 +861,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawImagesBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawImagesBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawImagesBottomSide {
       relay = r
@@ -878,7 +878,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawImagesBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawImagesBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawImagesBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -890,7 +890,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawQRCodesTopSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawQRCodesTopSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawQRCodesTopSide {
       relay = r
@@ -907,7 +907,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawQRCodesTopSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawQRCodesTopSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawQRCodesTopSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -919,7 +919,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawQRCodesBottomSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawQRCodesBottomSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawQRCodesBottomSide {
       relay = r
@@ -936,7 +936,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawQRCodesBottomSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawQRCodesBottomSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawQRCodesBottomSide?.stopsBeingObserved (by: inObserver)
   }
 
@@ -948,7 +948,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawVias_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawVias_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_drawVias {
       relay = r
@@ -965,7 +965,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_drawVias_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_drawVias_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_drawVias?.stopsBeingObserved (by: inObserver)
   }
 
@@ -977,7 +977,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileExtension_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_fileExtension_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_fileExtension {
       relay = r
@@ -994,7 +994,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileExtension_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_fileExtension_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_fileExtension?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1006,7 +1006,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_horizontalMirror_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_horizontalMirror_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_horizontalMirror {
       relay = r
@@ -1023,7 +1023,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_horizontalMirror_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_horizontalMirror_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_horizontalMirror?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1035,7 +1035,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_name_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_name_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_name {
       relay = r
@@ -1052,7 +1052,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_name_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_name_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_name?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1064,7 +1064,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_hasNoData_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_hasNoData_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_hasNoData {
       relay = r
@@ -1081,7 +1081,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_hasNoData_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_hasNoData_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_hasNoData?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1093,7 +1093,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_parameterStatusImage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_parameterStatusImage_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_parameterStatusImage {
       relay = r
@@ -1110,7 +1110,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_parameterStatusImage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_parameterStatusImage_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_parameterStatusImage?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1122,7 +1122,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_emptyFileExtensionImage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_emptyFileExtensionImage_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_emptyFileExtensionImage {
       relay = r
@@ -1139,7 +1139,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : EBReadOnlyAbstractArrayP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_emptyFileExtensionImage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_emptyFileExtensionImage_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_emptyFileExtensionImage?.stopsBeingObserved (by: inObserver)
   }
 

@@ -212,7 +212,7 @@ class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_forbiddenPadNumbers_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_forbiddenPadNumbers_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_forbiddenPadNumbers {
       relay = r
@@ -226,7 +226,7 @@ class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_forbiddenPadNumbers_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_forbiddenPadNumbers_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers?.stopsBeingObserved (by: inObserver)
   }
 

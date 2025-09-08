@@ -55,7 +55,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_issues_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
@@ -84,7 +84,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -130,7 +130,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -142,7 +142,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_knobSize_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_knobSize_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_knobSize {
       relay = r
@@ -159,7 +159,7 @@ class ReadOnlyArrayOf_PackageObject : EBReadOnlyAbstractArrayProperty <PackageOb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_knobSize_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_knobSize_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_knobSize?.stopsBeingObserved (by: inObserver)
   }
 

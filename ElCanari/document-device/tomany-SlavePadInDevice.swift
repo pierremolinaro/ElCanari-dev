@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mCenterX_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mCenterX_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mCenterX {
       relay = r
@@ -114,7 +114,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mCenterX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mCenterX_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mCenterX?.stopsBeingObserved (by: inObserver)
   }
 
@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mCenterY_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mCenterY_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mCenterY {
       relay = r
@@ -143,7 +143,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mCenterY_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mCenterY_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mCenterY?.stopsBeingObserved (by: inObserver)
   }
 
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWidth_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWidth {
       relay = r
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWidth_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -184,7 +184,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeight_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHeight_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHeight {
       relay = r
@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHeight_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHeight_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mHeight?.stopsBeingObserved (by: inObserver)
   }
 
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHoleWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHoleWidth_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHoleWidth {
       relay = r
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHoleWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHoleWidth_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mHoleWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -242,7 +242,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHoleHeight_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHoleHeight_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mHoleHeight {
       relay = r
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mHoleHeight_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mHoleHeight_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mHoleHeight?.stopsBeingObserved (by: inObserver)
   }
 
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mShape_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mShape_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mShape {
       relay = r
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mShape_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mShape_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mShape?.stopsBeingObserved (by: inObserver)
   }
 
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mStyle_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mStyle_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mStyle {
       relay = r
@@ -317,7 +317,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mStyle_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mStyle_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mStyle?.stopsBeingObserved (by: inObserver)
   }
 
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_frontSideFilledBezierPath_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_frontSideFilledBezierPath_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_frontSideFilledBezierPath {
       relay = r
@@ -346,7 +346,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_frontSideFilledBezierPath_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_frontSideFilledBezierPath_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_frontSideFilledBezierPath?.stopsBeingObserved (by: inObserver)
   }
 
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_backSideFilledBezierPath_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_backSideFilledBezierPath_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_backSideFilledBezierPath {
       relay = r
@@ -375,7 +375,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_backSideFilledBezierPath_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_backSideFilledBezierPath_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_backSideFilledBezierPath?.stopsBeingObserved (by: inObserver)
   }
 
@@ -387,7 +387,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padNumberDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_padNumberDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_padNumberDisplay {
       relay = r
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : EBReadOnlyAbstractArrayProperty <SlaveP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padNumberDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_padNumberDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_padNumberDisplay?.stopsBeingObserved (by: inObserver)
   }
 

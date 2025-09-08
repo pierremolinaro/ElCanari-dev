@@ -484,7 +484,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mModelImageObjects_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mModelImageObjects_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mModelImageObjects {
       relay = r
@@ -498,7 +498,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mModelImageObjects_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mModelImageObjects_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mModelImageObjects?.stopsBeingObserved (by: inObserver)
   }
 
@@ -510,7 +510,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageObjects_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageObjects_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageObjects {
       relay = r
@@ -524,7 +524,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageObjects_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageObjects_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_packageObjects?.stopsBeingObserved (by: inObserver)
   }
 
@@ -536,7 +536,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packagePads_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packagePads_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packagePads {
       relay = r
@@ -550,7 +550,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packagePads_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packagePads_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_packagePads?.stopsBeingObserved (by: inObserver)
   }
 
@@ -562,7 +562,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageSlavePads_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageSlavePads_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageSlavePads {
       relay = r
@@ -576,7 +576,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageSlavePads_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageSlavePads_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_packageSlavePads?.stopsBeingObserved (by: inObserver)
   }
 
@@ -588,7 +588,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageZones_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageZones_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageZones {
       relay = r
@@ -602,7 +602,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageZones_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageZones_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_packageZones?.stopsBeingObserved (by: inObserver)
   }
 

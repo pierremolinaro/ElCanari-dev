@@ -124,7 +124,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : EBReadOnlyAbstractObjectProperty <S
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mInstances_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mInstances_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mInstances {
       relay = r
@@ -138,7 +138,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : EBReadOnlyAbstractObjectProperty <S
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mInstances_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mInstances_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mInstances?.stopsBeingObserved (by: inObserver)
   }
 

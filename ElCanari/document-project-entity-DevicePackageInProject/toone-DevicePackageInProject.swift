@@ -60,7 +60,7 @@ class ReadOnlyObject_DevicePackageInProject : EBReadOnlyAbstractObjectProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mMasterPads_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mMasterPads_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mMasterPads {
       relay = r
@@ -74,7 +74,7 @@ class ReadOnlyObject_DevicePackageInProject : EBReadOnlyAbstractObjectProperty <
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mMasterPads_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mMasterPads_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mMasterPads?.stopsBeingObserved (by: inObserver)
   }
 

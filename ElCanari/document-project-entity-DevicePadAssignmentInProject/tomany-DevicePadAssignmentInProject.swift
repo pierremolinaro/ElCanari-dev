@@ -49,7 +49,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPadName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPadName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadName {
       relay = r
@@ -66,7 +66,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPadName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPadName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mPadName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -78,7 +78,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_pinPadAssignment_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_pinPadAssignment_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_pinPadAssignment {
       relay = r
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_pinPadAssignment_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_pinPadAssignment_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_pinPadAssignment?.stopsBeingObserved (by: inObserver)
   }
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_descriptor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_descriptor_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_descriptor {
       relay = r
@@ -124,7 +124,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : EBReadOnlyAbstractArrayProp
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_descriptor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_descriptor_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_descriptor?.stopsBeingObserved (by: inObserver)
   }
 

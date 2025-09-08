@@ -180,7 +180,7 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPoints_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPoints_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPoints {
       relay = r
@@ -194,7 +194,7 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPoints_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPoints_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mPoints?.stopsBeingObserved (by: inObserver)
   }
 

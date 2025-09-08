@@ -37,7 +37,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : EBReadOnlyAbstractArrayProperty <Forb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padNumber_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_padNumber_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_padNumber {
       relay = r
@@ -54,7 +54,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : EBReadOnlyAbstractArrayProperty <Forb
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padNumber_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_padNumber_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_padNumber?.stopsBeingObserved (by: inObserver)
   }
 

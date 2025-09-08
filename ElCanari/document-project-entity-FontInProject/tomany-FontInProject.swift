@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusMessageForFontInProject_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFileSystemStatusMessageForFontInProject_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileSystemStatusMessageForFontInProject {
       relay = r
@@ -132,7 +132,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusMessageForFontInProject_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFileSystemStatusMessageForFontInProject_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mFileSystemStatusMessageForFontInProject?.stopsBeingObserved (by: inObserver)
   }
 
@@ -144,7 +144,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusRequiresAttentionForFontInProject_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFileSystemStatusRequiresAttentionForFontInProject_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFileSystemStatusRequiresAttentionForFontInProject {
       relay = r
@@ -161,7 +161,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFileSystemStatusRequiresAttentionForFontInProject_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFileSystemStatusRequiresAttentionForFontInProject_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mFileSystemStatusRequiresAttentionForFontInProject?.stopsBeingObserved (by: inObserver)
   }
 
@@ -173,7 +173,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNominalSize_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mNominalSize_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNominalSize {
       relay = r
@@ -190,7 +190,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNominalSize_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mNominalSize_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mNominalSize?.stopsBeingObserved (by: inObserver)
   }
 
@@ -202,7 +202,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFontName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFontName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFontName {
       relay = r
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFontName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFontName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mFontName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFontVersion_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFontVersion_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mFontVersion {
       relay = r
@@ -248,7 +248,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mFontVersion_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mFontVersion_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mFontVersion?.stopsBeingObserved (by: inObserver)
   }
 
@@ -260,7 +260,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mDescriptiveString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mDescriptiveString_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mDescriptiveString {
       relay = r
@@ -277,7 +277,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mDescriptiveString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mDescriptiveString_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mDescriptiveString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -289,7 +289,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_versionString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_versionString_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_versionString {
       relay = r
@@ -306,7 +306,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_versionString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_versionString_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_versionString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -318,7 +318,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_sizeString_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_sizeString_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_sizeString {
       relay = r
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_sizeString_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_sizeString_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_sizeString?.stopsBeingObserved (by: inObserver)
   }
 
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_descriptor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_descriptor_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_descriptor {
       relay = r
@@ -364,7 +364,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_descriptor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_descriptor_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_descriptor?.stopsBeingObserved (by: inObserver)
   }
 
@@ -376,7 +376,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_textCount_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_textCount_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_textCount {
       relay = r
@@ -393,7 +393,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_textCount_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_textCount_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_textCount?.stopsBeingObserved (by: inObserver)
   }
 
@@ -405,7 +405,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileSystemStatusImage_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_fileSystemStatusImage_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_fileSystemStatusImage {
       relay = r
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileSystemStatusImage_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_fileSystemStatusImage_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_fileSystemStatusImage?.stopsBeingObserved (by: inObserver)
   }
 
@@ -434,7 +434,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_canRemoveFont_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_canRemoveFont_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_canRemoveFont {
       relay = r
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_canRemoveFont_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_canRemoveFont_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_canRemoveFont?.stopsBeingObserved (by: inObserver)
   }
 
@@ -463,7 +463,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_componentNamesCount_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_componentNamesCount_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_componentNamesCount {
       relay = r
@@ -480,7 +480,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_componentNamesCount_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_componentNamesCount_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_componentNamesCount?.stopsBeingObserved (by: inObserver)
   }
 
@@ -492,7 +492,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_componentValuesCount_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_componentValuesCount_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_componentValuesCount {
       relay = r
@@ -509,7 +509,7 @@ class ReadOnlyArrayOf_FontInProject : EBReadOnlyAbstractArrayProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_componentValuesCount_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_componentValuesCount_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_componentValuesCount?.stopsBeingObserved (by: inObserver)
   }
 

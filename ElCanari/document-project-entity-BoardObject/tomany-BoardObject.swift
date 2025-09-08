@@ -205,7 +205,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isPlacedInBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isPlacedInBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_isPlacedInBoard {
       relay = r
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isPlacedInBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isPlacedInBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_isPlacedInBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -234,7 +234,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
@@ -251,7 +251,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_issues_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
@@ -263,7 +263,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isVia_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isVia_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_isVia {
       relay = r
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isVia_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isVia_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_isVia?.stopsBeingObserved (by: inObserver)
   }
 
@@ -292,7 +292,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackLengthInCanariUnit_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_trackLengthInCanariUnit_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_trackLengthInCanariUnit {
       relay = r
@@ -309,7 +309,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackLengthInCanariUnit_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_trackLengthInCanariUnit_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_trackLengthInCanariUnit?.stopsBeingObserved (by: inObserver)
   }
 
@@ -321,7 +321,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_signatureForERCChecking?.stopsBeingObserved (by: inObserver)
   }
 
@@ -350,7 +350,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netNameAndPadLocation_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netNameAndPadLocation_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netNameAndPadLocation {
       relay = r
@@ -367,7 +367,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netNameAndPadLocation_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netNameAndPadLocation_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netNameAndPadLocation?.stopsBeingObserved (by: inObserver)
   }
 
@@ -379,7 +379,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_componentName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_componentName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_componentName {
       relay = r
@@ -396,7 +396,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_componentName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_componentName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_componentName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -408,7 +408,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontLegendForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontLegendForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayFrontLegendForBoard {
       relay = r
@@ -425,7 +425,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontLegendForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontLegendForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayFrontLegendForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -437,7 +437,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackLegendForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackLegendForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayBackLegendForBoard {
       relay = r
@@ -454,7 +454,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackLegendForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackLegendForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayBackLegendForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -466,7 +466,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontLayoutForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontLayoutForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayFrontLayoutForBoard {
       relay = r
@@ -483,7 +483,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontLayoutForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontLayoutForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayFrontLayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -495,7 +495,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackLayoutForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackLayoutForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayBackLayoutForBoard {
       relay = r
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackLayoutForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackLayoutForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayBackLayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -524,7 +524,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner1LayoutForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner1LayoutForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner1LayoutForBoard {
       relay = r
@@ -541,7 +541,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner1LayoutForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner1LayoutForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner1LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -553,7 +553,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner2LayoutForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner2LayoutForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner2LayoutForBoard {
       relay = r
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner2LayoutForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner2LayoutForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner2LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -582,7 +582,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner3LayoutForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner3LayoutForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner3LayoutForBoard {
       relay = r
@@ -599,7 +599,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner3LayoutForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner3LayoutForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner3LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -611,7 +611,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner4LayoutForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner4LayoutForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner4LayoutForBoard {
       relay = r
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner4LayoutForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner4LayoutForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner4LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -640,7 +640,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontPadsForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontPadsForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayFrontPadsForBoard {
       relay = r
@@ -657,7 +657,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontPadsForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontPadsForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayFrontPadsForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -669,7 +669,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackPadsForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackPadsForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayBackPadsForBoard {
       relay = r
@@ -686,7 +686,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackPadsForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackPadsForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayBackPadsForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -698,7 +698,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayPadNumbersForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayPadNumbersForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayPadNumbersForBoard {
       relay = r
@@ -715,7 +715,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayPadNumbersForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayPadNumbersForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayPadNumbersForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -727,7 +727,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontRestrictRectangles_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontRestrictRectangles_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayFrontRestrictRectangles {
       relay = r
@@ -744,7 +744,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayFrontRestrictRectangles_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayFrontRestrictRectangles_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayFrontRestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
@@ -756,7 +756,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackRestrictRectangles_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackRestrictRectangles_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayBackRestrictRectangles {
       relay = r
@@ -773,7 +773,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayBackRestrictRectangles_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayBackRestrictRectangles_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayBackRestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
@@ -785,7 +785,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner1RestrictRectangles_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner1RestrictRectangles_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner1RestrictRectangles {
       relay = r
@@ -802,7 +802,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner1RestrictRectangles_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner1RestrictRectangles_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner1RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
@@ -814,7 +814,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner2RestrictRectangles_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner2RestrictRectangles_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner2RestrictRectangles {
       relay = r
@@ -831,7 +831,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner2RestrictRectangles_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner2RestrictRectangles_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner2RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
@@ -843,7 +843,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner3RestrictRectangles_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner3RestrictRectangles_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner3RestrictRectangles {
       relay = r
@@ -860,7 +860,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner3RestrictRectangles_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner3RestrictRectangles_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner3RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
@@ -872,7 +872,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner4RestrictRectangles_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner4RestrictRectangles_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_displayInner4RestrictRectangles {
       relay = r
@@ -889,7 +889,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_displayInner4RestrictRectangles_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_displayInner4RestrictRectangles_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_displayInner4RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
@@ -901,7 +901,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageDrawingWidthMultpliedByTenForBoard_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageDrawingWidthMultpliedByTenForBoard_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard {
       relay = r
@@ -918,7 +918,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_packageDrawingWidthMultpliedByTenForBoard_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_packageDrawingWidthMultpliedByTenForBoard_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard?.stopsBeingObserved (by: inObserver)
   }
 
@@ -930,7 +930,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
@@ -947,7 +947,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -959,7 +959,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_objectDisplay {
       relay = r
@@ -976,7 +976,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
@@ -988,7 +988,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_errorOrWarningIssueSize_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_errorOrWarningIssueSize_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_errorOrWarningIssueSize {
       relay = r
@@ -1005,7 +1005,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_errorOrWarningIssueSize_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_errorOrWarningIssueSize_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_errorOrWarningIssueSize?.stopsBeingObserved (by: inObserver)
   }
 
@@ -1017,7 +1017,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackSide_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_trackSide_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_trackSide {
       relay = r
@@ -1034,7 +1034,7 @@ class ReadOnlyArrayOf_BoardObject : EBReadOnlyAbstractArrayProperty <BoardObject
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackSide_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_trackSide_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_trackSide?.stopsBeingObserved (by: inObserver)
   }
 

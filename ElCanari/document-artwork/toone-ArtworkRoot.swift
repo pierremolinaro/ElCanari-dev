@@ -180,7 +180,7 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileGenerationParameterArray_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_fileGenerationParameterArray_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_fileGenerationParameterArray {
       relay = r
@@ -194,7 +194,7 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_fileGenerationParameterArray_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_fileGenerationParameterArray_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_fileGenerationParameterArray?.stopsBeingObserved (by: inObserver)
   }
 

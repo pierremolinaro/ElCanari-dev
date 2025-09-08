@@ -252,7 +252,7 @@ class ReadOnlyObject_NetClassInProject : EBReadOnlyAbstractObjectProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNets_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mNets_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNets {
       relay = r
@@ -266,7 +266,7 @@ class ReadOnlyObject_NetClassInProject : EBReadOnlyAbstractObjectProperty <NetCl
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNets_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mNets_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mNets?.stopsBeingObserved (by: inObserver)
   }
 

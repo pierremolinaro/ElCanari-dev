@@ -61,7 +61,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPinInstanceName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPinInstanceName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPinInstanceName {
       relay = r
@@ -78,7 +78,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPinInstanceName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPinInstanceName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mPinInstanceName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -90,7 +90,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPadName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPadName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadName {
       relay = r
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPadName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPadName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mPadName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsNC_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mIsNC_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mIsNC {
       relay = r
@@ -136,7 +136,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mIsNC_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mIsNC_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mIsNC?.stopsBeingObserved (by: inObserver)
   }
 
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isConnected_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isConnected_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_isConnected {
       relay = r
@@ -165,7 +165,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isConnected_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isConnected_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_isConnected?.stopsBeingObserved (by: inObserver)
   }
 
@@ -177,7 +177,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_symbolName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolName {
       relay = r
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : EBReadOnlyAbstractArrayProperty <PadPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_symbolName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_symbolName?.stopsBeingObserved (by: inObserver)
   }
 

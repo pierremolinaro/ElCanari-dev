@@ -49,7 +49,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_y_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_y {
       relay = r
@@ -66,7 +66,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_y_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_y_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_y?.stopsBeingObserved (by: inObserver)
   }
 
@@ -78,7 +78,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_padDiameter_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_padDiameter {
       relay = r
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_padDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_padDiameter_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_padDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_x_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_x {
       relay = r
@@ -124,7 +124,7 @@ class ReadOnlyArrayOf_BoardModelVia : EBReadOnlyAbstractArrayProperty <BoardMode
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_x_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_x_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_x?.stopsBeingObserved (by: inObserver)
   }
 

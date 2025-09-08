@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mNetName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mNetName {
       relay = r
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mNetName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mNetName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mNetName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -114,7 +114,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWarnsExactlyOneLabel_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWarnsExactlyOneLabel_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mWarnsExactlyOneLabel {
       relay = r
@@ -131,7 +131,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mWarnsExactlyOneLabel_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mWarnsExactlyOneLabel_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mWarnsExactlyOneLabel?.stopsBeingObserved (by: inObserver)
   }
 
@@ -143,7 +143,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netClassName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassTrackWidth_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassTrackWidth_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassTrackWidth {
       relay = r
@@ -189,7 +189,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassTrackWidth_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassTrackWidth_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netClassTrackWidth?.stopsBeingObserved (by: inObserver)
   }
 
@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassViaHoleDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassViaHoleDiameter_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassViaHoleDiameter {
       relay = r
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassViaHoleDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassViaHoleDiameter_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netClassViaHoleDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassViaPadDiameter_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassViaPadDiameter_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassViaPadDiameter {
       relay = r
@@ -247,7 +247,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassViaPadDiameter_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassViaPadDiameter_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netClassViaPadDiameter?.stopsBeingObserved (by: inObserver)
   }
 
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_wireColor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_wireColor_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_wireColor {
       relay = r
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_wireColor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_wireColor_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_wireColor?.stopsBeingObserved (by: inObserver)
   }
 
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netSchematicPointsInfo_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netSchematicPointsInfo_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netSchematicPointsInfo {
       relay = r
@@ -305,7 +305,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netSchematicPointsInfo_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netSchematicPointsInfo_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netSchematicPointsInfo?.stopsBeingObserved (by: inObserver)
   }
 
@@ -317,7 +317,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackCount_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_trackCount_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_trackCount {
       relay = r
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_NetInProject : EBReadOnlyAbstractArrayProperty <NetInProje
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_trackCount_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_trackCount_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_trackCount?.stopsBeingObserved (by: inObserver)
   }
 

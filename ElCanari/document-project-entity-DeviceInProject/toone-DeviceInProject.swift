@@ -190,7 +190,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPackages_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPackages_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPackages {
       relay = r
@@ -204,7 +204,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPackages_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPackages_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mPackages?.stopsBeingObserved (by: inObserver)
   }
 
@@ -216,7 +216,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSymbols_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSymbols_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbols {
       relay = r
@@ -230,7 +230,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSymbols_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSymbols_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mSymbols?.stopsBeingObserved (by: inObserver)
   }
 
@@ -242,7 +242,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponents_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComponents_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponents {
       relay = r
@@ -256,7 +256,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponents_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComponents_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mComponents?.stopsBeingObserved (by: inObserver)
   }
 
@@ -268,7 +268,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPadAssignments_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPadAssignments_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mPadAssignments {
       relay = r
@@ -282,7 +282,7 @@ class ReadOnlyObject_DeviceInProject : EBReadOnlyAbstractObjectProperty <DeviceI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mPadAssignments_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mPadAssignments_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mPadAssignments?.stopsBeingObserved (by: inObserver)
   }
 

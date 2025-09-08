@@ -274,7 +274,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP2_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mTracksP2_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP2 {
       relay = r
@@ -288,7 +288,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP2_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mTracksP2_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mTracksP2?.stopsBeingObserved (by: inObserver)
   }
 
@@ -300,7 +300,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP1_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mTracksP1_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTracksP1 {
       relay = r
@@ -314,7 +314,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTracksP1_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mTracksP1_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mTracksP1?.stopsBeingObserved (by: inObserver)
   }
 

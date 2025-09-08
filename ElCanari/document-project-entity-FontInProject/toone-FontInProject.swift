@@ -160,7 +160,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTexts_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mTexts_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mTexts {
       relay = r
@@ -174,7 +174,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mTexts_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mTexts_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mTexts?.stopsBeingObserved (by: inObserver)
   }
 
@@ -186,7 +186,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentNames_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComponentNames_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentNames {
       relay = r
@@ -200,7 +200,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentNames_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComponentNames_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mComponentNames?.stopsBeingObserved (by: inObserver)
   }
 
@@ -212,7 +212,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentValues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComponentValues_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mComponentValues {
       relay = r
@@ -226,7 +226,7 @@ class ReadOnlyObject_FontInProject : EBReadOnlyAbstractObjectProperty <FontInPro
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mComponentValues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mComponentValues_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mComponentValues?.stopsBeingObserved (by: inObserver)
   }
 

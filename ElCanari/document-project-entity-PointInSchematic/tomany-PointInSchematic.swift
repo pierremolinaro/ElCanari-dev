@@ -121,7 +121,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSymbolPinName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSymbolPinName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSymbolPinName {
       relay = r
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSymbolPinName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSymbolPinName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mSymbolPinName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mX_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mX {
       relay = r
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mX_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mX_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mX?.stopsBeingObserved (by: inObserver)
   }
 
@@ -179,7 +179,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mY_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mY {
       relay = r
@@ -196,7 +196,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mY_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mY_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mY?.stopsBeingObserved (by: inObserver)
   }
 
@@ -208,7 +208,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_location_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_location_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_location {
       relay = r
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_location_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_location_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_location?.stopsBeingObserved (by: inObserver)
   }
 
@@ -237,7 +237,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netName {
       relay = r
@@ -254,7 +254,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netClassName {
       relay = r
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netClassName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netClassName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netClassName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -295,7 +295,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_hasNet_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_hasNet_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_hasNet {
       relay = r
@@ -312,7 +312,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_hasNet_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_hasNet_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_hasNet?.stopsBeingObserved (by: inObserver)
   }
 
@@ -324,7 +324,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_canMove_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_canMove_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_canMove {
       relay = r
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_canMove_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_canMove_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_canMove?.stopsBeingObserved (by: inObserver)
   }
 
@@ -353,7 +353,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_wireColor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_wireColor_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_wireColor {
       relay = r
@@ -370,7 +370,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_wireColor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_wireColor_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_wireColor?.stopsBeingObserved (by: inObserver)
   }
 
@@ -382,7 +382,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolRotation_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_symbolRotation_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolRotation {
       relay = r
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolRotation_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_symbolRotation_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_symbolRotation?.stopsBeingObserved (by: inObserver)
   }
 
@@ -411,7 +411,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolNameNetName_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_symbolNameNetName_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_symbolNameNetName {
       relay = r
@@ -428,7 +428,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_symbolNameNetName_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_symbolNameNetName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_symbolNameNetName?.stopsBeingObserved (by: inObserver)
   }
 
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isConnected_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isConnected_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_isConnected {
       relay = r
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_isConnected_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_isConnected_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_isConnected?.stopsBeingObserved (by: inObserver)
   }
 
@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_status_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_status_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_status {
       relay = r
@@ -486,7 +486,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_status_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_status_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_status?.stopsBeingObserved (by: inObserver)
   }
 
@@ -498,7 +498,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_connectedPoints_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_connectedPoints_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_connectedPoints {
       relay = r
@@ -515,7 +515,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_connectedPoints_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_connectedPoints_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_connectedPoints?.stopsBeingObserved (by: inObserver)
   }
 
@@ -527,7 +527,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netInfoForPoint_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netInfoForPoint_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_netInfoForPoint {
       relay = r
@@ -544,7 +544,7 @@ class ReadOnlyArrayOf_PointInSchematic : EBReadOnlyAbstractArrayProperty <PointI
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_netInfoForPoint_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_netInfoForPoint_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_netInfoForPoint?.stopsBeingObserved (by: inObserver)
   }
 

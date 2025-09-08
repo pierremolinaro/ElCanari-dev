@@ -73,7 +73,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSheetTitle_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSheetTitle_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_mSheetTitle {
       relay = r
@@ -90,7 +90,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_mSheetTitle?.stopsBeingObserved (by: inObserver)
   }
 
@@ -102,7 +102,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_schematicIssues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_schematicIssues_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_schematicIssues {
       relay = r
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_schematicIssues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_schematicIssues_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_schematicIssues?.stopsBeingObserved (by: inObserver)
   }
 
@@ -131,7 +131,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_issues_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_issues {
       relay = r
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_issues_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_issues_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_connectedPoints_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_connectedPoints_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_connectedPoints {
       relay = r
@@ -177,7 +177,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_connectedPoints_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_connectedPoints_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_connectedPoints?.stopsBeingObserved (by: inObserver)
   }
 
@@ -189,7 +189,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_schematicConnexionWarnings_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_schematicConnexionWarnings_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_schematicConnexionWarnings {
       relay = r
@@ -206,7 +206,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_schematicConnexionWarnings_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_schematicConnexionWarnings_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_schematicConnexionWarnings?.stopsBeingObserved (by: inObserver)
   }
 
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_schematicConnexionErrors_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_schematicConnexionErrors_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_schematicConnexionErrors {
       relay = r
@@ -235,7 +235,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_schematicConnexionErrors_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_schematicConnexionErrors_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_schematicConnexionErrors?.stopsBeingObserved (by: inObserver)
   }
 
@@ -247,7 +247,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_sheetDescriptor_StartsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_sheetDescriptor_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
     let relay : EBObservedObserver
     if let r = self.mObserversOf_sheetDescriptor {
       relay = r
@@ -264,7 +264,7 @@ class ReadOnlyArrayOf_SheetInProject : EBReadOnlyAbstractArrayProperty <SheetInP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func toMany_sheetDescriptor_StopsBeingObserved (by inObserver : any EBObserverProtocol) {
+  final func toMany_sheetDescriptor_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_sheetDescriptor?.stopsBeingObserved (by: inObserver)
   }
 
