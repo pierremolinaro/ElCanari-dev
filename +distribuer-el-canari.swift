@@ -27,17 +27,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.2"
+let VERSION_CANARI = "1.9.3"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.0 beta 5, Sparkle 2.7.1"
+  "Construit avec Xcode 26.0, Sparkle 2.8.0"
 ]
 let BUGFIXES : [String] = [
+  "Merger: correction bug de génération des QRCodes"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Ajout FreeRouting 1.9.0"
 ]
 
 //------------------------------------------------------------------------------

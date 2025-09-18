@@ -169,8 +169,10 @@ struct ProductRepresentation : Codable {
       self.squareSegments.append (s)
     }
     for r in inProduct.rectangles {
-      var af = modelAffineTransform
-      af.append (r.af)
+//      var af = modelAffineTransform // Correction du bug le 18 septembre 2025
+//      af.append (r.af)
+      var af = r.af
+      af.append (modelAffineTransform)
       let s = LayeredProductRectangle (af: af, layers: r.layers)
       self.rectangles.append (s)
     }
