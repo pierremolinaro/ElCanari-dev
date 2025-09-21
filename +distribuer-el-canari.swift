@@ -27,7 +27,7 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.3"
+let VERSION_CANARI = "1.9.4"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
   "Construit avec Xcode 26.0, Sparkle 2.8.0"
@@ -38,6 +38,7 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Device: la mise à jour d'un symbole est réalisée si l'ancien et le nouveau symbole diffèrent d'un seul nom de pin"
 ]
 
 //------------------------------------------------------------------------------
