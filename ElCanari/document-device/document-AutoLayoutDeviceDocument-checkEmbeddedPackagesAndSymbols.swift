@@ -165,8 +165,15 @@ extension AutoLayoutDeviceDocument {
                   newPinNameDictionary [pinType.mName] = pinType
                 }
                 symbolType.mFileSystemStatusRequiresAttentionForSymbolTypeInDevice = true
-                if currentPinNameSet != Set (newPinNameDictionary.keys) {
-                  symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Cannot update: pin name set has changed"
+                let newPinNameSet = Set (newPinNameDictionary.keys)
+                if currentPinNameSet != newPinNameSet {
+                  let addedPinNameSet = newPinNameSet.subtracting (currentPinNameSet)
+                  let removedPinNameSet = currentPinNameSet.subtracting (newPinNameSet)
+                  if removedPinNameSet.count == 1, addedPinNameSet.count == 1 {
+                    symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Updatable to version \(version), one pin has changed its name"
+                  }else{
+                    symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Cannot update: several pin names have changed"
+                  }
                 }else{ // Ok, make update
                   symbolType.mFileSystemStatusMessageForSymbolTypeInDevice = "Updatable to version \(version)"
                 }

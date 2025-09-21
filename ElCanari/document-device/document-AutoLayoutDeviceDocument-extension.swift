@@ -106,8 +106,13 @@ extension AutoLayoutDeviceDocument {
                 for pinType in newSymbolPinTypes.values {
                   newPinNameDictionary [pinType.mName] = pinType
                 }
-                if currentPinNameSet != Set (newPinNameDictionary.keys) {
-                  ioErrorMessages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
+                let newPinNameSet = Set (newPinNameDictionary.keys)
+                if currentPinNameSet != newPinNameSet {
+                  let removedPinNameSet = newPinNameSet.subtracting (currentPinNameSet)
+                  let addedPinNameSet = currentPinNameSet.subtracting (newPinNameSet)
+                  ioErrorMessages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed \(removedPinNameSet.count) \(addedPinNameSet.count).")
+//                if currentPinNameSet != Set (newPinNameDictionary.keys) {
+//                  ioErrorMessages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
                 }else{ // Ok, make update
                 //-- Set properties
                   symbolType.mVersion = version

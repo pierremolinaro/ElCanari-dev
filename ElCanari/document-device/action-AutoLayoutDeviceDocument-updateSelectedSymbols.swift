@@ -50,9 +50,20 @@ extension AutoLayoutDeviceDocument {
                 for pinType in newSymbolPinTypes.values {
                   newPinNameDictionary [pinType.mName] = pinType
                 }
-                if currentPinNameSet != Set (newPinNameDictionary.keys) {
-                  messages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
-                }else{ // Ok, make update
+                let newPinNameSet = Set (newPinNameDictionary.keys)
+                var removedPinName = ""
+                var addedPinName = ""
+                if currentPinNameSet != newPinNameSet {
+                  let addedPinNameSet = newPinNameSet.subtracting (currentPinNameSet)
+                  let removedPinNameSet = currentPinNameSet.subtracting (newPinNameSet)
+                  if removedPinNameSet.count == 1, addedPinNameSet.count == 1 {
+                    removedPinName = removedPinNameSet.first!
+                    addedPinName = addedPinNameSet.first!
+                  }else{
+                    messages.append ("Cannot update \(symbolType.mTypeName) symbol: several pin names have been changed.")
+                  }
+                }
+                if messages.isEmpty { // Ok, make update
                 //-- Set properties
                   symbolType.mVersion = version
                   symbolType.mFileData = data
@@ -60,7 +71,11 @@ extension AutoLayoutDeviceDocument {
                   symbolType.mFilledBezierPath = filledBezierPathes
                 //--- Update pin types
                   for pinType in symbolType.mPinTypes_property.propval.values {
-                    let newPinType = newPinNameDictionary [pinType.mName]!
+                    var pinTypeName = pinType.mName
+                    if pinTypeName == removedPinName {
+                      pinTypeName = addedPinName
+                    }
+                    let newPinType = newPinNameDictionary [pinTypeName]!
                     pinType.mXName = newPinType.mXName
                     pinType.mYName = newPinType.mYName
                     pinType.mName = newPinType.mName
@@ -71,7 +86,7 @@ extension AutoLayoutDeviceDocument {
                     pinType.mNumberHorizontalAlignment = newPinType.mNumberHorizontalAlignment
                  }
                 //---
-                  messages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
+//                  messages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
                 }
               }
             }
@@ -91,7 +106,7 @@ extension AutoLayoutDeviceDocument {
     self.triggerStandAlonePropertyComputationForDeviceDocument ()
 //    if messages.count > 0 {
 //      let alert = NSAlert ()
-//      alert.messageText = "Done."
+//      alert.messageText = "Update cannot be performed."
 //      alert.informativeText = messages.joined (separator: "\n")
 //      alert.beginSheetModal (for: self.windowForSheet!)
 //    }
