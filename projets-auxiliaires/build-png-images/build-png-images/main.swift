@@ -16,6 +16,7 @@ func writePNGImage (_ image: NSImage, to destinationURL: URL) {
   let size = image.size
   image.lockFocus ()
   let rep = NSBitmapImageRep (focusedViewRect: NSRect (x: 0.0, y: 0.0,width: size.width, height: size.height))
+//  let rep = NSView.cacheDisplayInRect (NSRect (x: 0.0, y: 0.0,width: size.width, height: size.height))
   image.unlockFocus ()
   let data = rep?.representation (using: .png, properties: [:])
   let directoryURL = destinationURL.deletingLastPathComponent ()

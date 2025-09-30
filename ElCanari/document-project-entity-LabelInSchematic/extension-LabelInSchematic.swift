@@ -173,7 +173,9 @@ extension LabelInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_LabelInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
+    if self.location == nil {
+      accumulatedPoints.insertCanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
+    }
     return true
   }
 

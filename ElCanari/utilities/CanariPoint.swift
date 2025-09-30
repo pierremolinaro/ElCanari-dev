@@ -30,7 +30,7 @@ extension Set where Element == CanariPoint {
 //  Struct CanariPoint
 //--------------------------------------------------------------------------------------------------
 
-struct CanariPoint : Equatable, Hashable {
+struct CanariPoint : Equatable, Hashable, CustomStringConvertible {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -70,6 +70,12 @@ struct CanariPoint : Equatable, Hashable {
 
   var cocoaPoint : NSPoint {
     return NSPoint (x: canariUnitToCocoa (self.x), y: canariUnitToCocoa (self.y))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var description : String {
+    return "x: \(self.x), y: \(self.y)"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
