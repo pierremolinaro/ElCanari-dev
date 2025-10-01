@@ -30,6 +30,7 @@ extension AutoLayoutProjectDocument {
           from: deviceRoot,
           version: version,
           category: newDevice.mCategory,
+          pinNameSusbstitution: nil,
           data: inData
         )
       //--- Add to device list
@@ -60,15 +61,21 @@ extension AutoLayoutProjectDocument {
             if let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
                let candidateDeviceRoot = documentData.documentRootObject as? DeviceRoot {
               if deviceInProject.mDeviceVersion < version {
+                var pinNameSusbstitution : PinNameSusbstitution? = nil
                 var errorMessage = self.checkCandidateDevicePads (deviceInProject, candidateDeviceRoot)
-                errorMessage += self.checkCandidateDeviceSymbolTypes (deviceInProject, candidateDeviceRoot)
+                errorMessage += self.checkCandidateDeviceSymbolTypes (deviceInProject, candidateDeviceRoot, pinNameSusbstitution: &pinNameSusbstitution)
                 errorMessage += self.checkCandidateDeviceSymbolInstances (deviceInProject, candidateDeviceRoot)
                 deviceInProject.mFileSystemStatusRequiresAttentionForDeviceInProject = true
                 if errorMessage == "" {
-                  deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Device is updatable"
+                  if pinNameSusbstitution != nil {
+                    deviceInProject.mFileSystemStatusMessageForDeviceInProject = "One symbol pin name differs, device is updatable"
+                  }else{
+                    deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Device is updatable"
+                  }
                 }else{
                  deviceInProject.mFileSystemStatusMessageForDeviceInProject = "Cannot update: new device is incompatible"
                  ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
+                 Swift.print (errorMessage)
                 }
               }
             }else{
@@ -150,7 +157,8 @@ extension AutoLayoutProjectDocument {
                             category inCategory : String,
                             data inData : Data) -> String { // Return "" if new device is compatible
    var errorMessage = self.checkCandidateDevicePads (inCurrentDeviceInProject, inCandidateDeviceRoot)
-   errorMessage += self.checkCandidateDeviceSymbolTypes (inCurrentDeviceInProject, inCandidateDeviceRoot)
+   var pinNameSusbstitution : PinNameSusbstitution? = nil
+   errorMessage += self.checkCandidateDeviceSymbolTypes (inCurrentDeviceInProject, inCandidateDeviceRoot, pinNameSusbstitution: &pinNameSusbstitution)
    errorMessage += self.checkCandidateDeviceSymbolInstances (inCurrentDeviceInProject, inCandidateDeviceRoot)
    if errorMessage.isEmpty {
       self.performUpdateDevice (
@@ -158,6 +166,7 @@ extension AutoLayoutProjectDocument {
         from: inCandidateDeviceRoot,
         version: inVersion,
         category: inCategory,
+        pinNameSusbstitution: pinNameSusbstitution,
         data: inData
       )
     }
@@ -250,8 +259,10 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkCandidateDeviceSymbolTypes (_ inCurrentDeviceInProject : DeviceInProject,
-                                                _ inCandidateDeviceRoot : DeviceRoot) -> String {
+                                                _ inCandidateDeviceRoot : DeviceRoot,
+                                                pinNameSusbstitution ioPinNameSusbstitution : inout PinNameSusbstitution?) -> String {
     var errorMessage = ""
+    ioPinNameSusbstitution = nil
   //--- Compute current symbol type dictionary
     var currentSymbolTypeDictionary = [String : Set <String>] () // Symbol type name, set of pin names
     for padAssignment in inCurrentDeviceInProject.mPadAssignments.values {
@@ -300,11 +311,19 @@ extension AutoLayoutProjectDocument {
         let candidatePinSet = candidateSymbolTypeDictionary [symbolTypeName]!
         let missingPins = currentPinSet.subtracting (candidatePinSet)
         let unknownPins = candidatePinSet.subtracting (currentPinSet)
-        for p in missingPins {
-          errorMessage += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has no '\(p)' pin"
-        }
-        for p in unknownPins {
-          errorMessage += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has a new '\(p)' pin"
+        if (missingPins.count == 1) && (unknownPins.count == 1) {
+          ioPinNameSusbstitution = PinNameSusbstitution (
+            symbolTypeName: symbolTypeName,
+            oldPinName: missingPins.first!,
+            newPinName: unknownPins.first!
+          )
+        }else{
+          for p in missingPins {
+            errorMessage += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has no '\(p)' pin"
+          }
+          for p in unknownPins {
+            errorMessage += "\n  - the '\(symbolTypeName)' symbol type of the candidate device has a new '\(p)' pin"
+          }
         }
       }
     }
@@ -314,10 +333,19 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  struct PinNameSusbstitution {
+    let symbolTypeName : String
+    let oldPinName : String
+    let newPinName : String
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func performUpdateDevice (_ inCurrentDeviceInProject : DeviceInProject,
                             from inCandidateDeviceRoot : DeviceRoot,
                             version inVersion : Int,
                             category inCategory : String,
+                            pinNameSusbstitution inPinNameSusbstitution : PinNameSusbstitution?,
                             data inData : Data) {
     inCurrentDeviceInProject.mDeviceVersion = inVersion
     inCurrentDeviceInProject.mCategory = inCategory
@@ -369,55 +397,65 @@ extension AutoLayoutProjectDocument {
       }
     }
   //--- Remove current symbols
-//    let currentSymbols = inCurrentDeviceInProject.mSymbols
     inCurrentDeviceInProject.mSymbols = EBReferenceArray ()
-//    for s in currentSymbols.values {
-//      s.removeRecursivelyAllRelationsShips ()
-//    }
   //--- Append symbols
-    var devicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
-    for symbolTypeInDevice in inCandidateDeviceRoot.mSymbolTypes.values {
-      let symbolTypeInProject = DeviceSymbolTypeInProject (self.undoManager)
-      symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
-      symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath
-      symbolTypeInProject.mSymbolTypeName = symbolTypeInDevice.mTypeName
-      for symbolInstanceInDevice in symbolTypeInDevice.mInstances.values {
-        let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.undoManager)
-        symbolInstanceInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
-        symbolInstanceInProject.mSymbolType = symbolTypeInProject
-        inCurrentDeviceInProject.mSymbols.append (symbolInstanceInProject)
-        for pinInDevice in symbolTypeInDevice.mPinTypes.values {
-          let pinInProject = DevicePinInProject (self.undoManager)
-          pinInProject.mPinName = pinInDevice.mName
-          pinInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
-          pinInProject.mSymbolTypeName = symbolTypeInProject.mSymbolTypeName
-          pinInProject.mNameHorizontalAlignment = pinInDevice.mNameHorizontalAlignment
-          pinInProject.mNumberHorizontalAlignment = pinInDevice.mNumberHorizontalAlignment
-          pinInProject.mPinNameIsDisplayedInSchematic = pinInDevice.mPinNameIsDisplayedInSchematics
-          pinInProject.mPinX = pinInDevice.mPinX
-          pinInProject.mPinY = pinInDevice.mPinY
-          pinInProject.mXName = pinInDevice.mXName
-          pinInProject.mYName = pinInDevice.mYName
-          pinInProject.mXNumber = pinInDevice.mXNumber
-          pinInProject.mYNumber = pinInDevice.mYNumber
-          let pinQualifiedName = pinInProject.pinQualifiedName!
-          // Swift.print ("pinQualifiedName \(pinQualifiedName)")
-          devicePinDictionary [pinQualifiedName] = pinInProject
+    var newDevicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
+    for candidateSymbolTypeInDevice in inCandidateDeviceRoot.mSymbolTypes.values {
+      let newSymbolTypeInProject = DeviceSymbolTypeInProject (self.undoManager)
+      newSymbolTypeInProject.mFilledBezierPath = candidateSymbolTypeInDevice.mFilledBezierPath
+      newSymbolTypeInProject.mStrokeBezierPath = candidateSymbolTypeInDevice.mStrokeBezierPath
+      newSymbolTypeInProject.mSymbolTypeName = candidateSymbolTypeInDevice.mTypeName
+      for candidateSymbolInstanceInDevice in candidateSymbolTypeInDevice.mInstances.values {
+        let newSymbolInstanceInProject = DeviceSymbolInstanceInProject (self.undoManager)
+        newSymbolInstanceInProject.mSymbolInstanceName = candidateSymbolInstanceInDevice.mInstanceName
+        newSymbolInstanceInProject.mSymbolType = newSymbolTypeInProject
+        inCurrentDeviceInProject.mSymbols.append (newSymbolInstanceInProject)
+        for candidatePinInDevice in candidateSymbolTypeInDevice.mPinTypes.values {
+          let newPinInProject = DevicePinInProject (self.undoManager)
+          newPinInProject.mPinName = candidatePinInDevice.mName
+          newPinInProject.mSymbolInstanceName = candidateSymbolInstanceInDevice.mInstanceName
+          newPinInProject.mSymbolTypeName = newSymbolTypeInProject.mSymbolTypeName
+          newPinInProject.mNameHorizontalAlignment = candidatePinInDevice.mNameHorizontalAlignment
+          newPinInProject.mNumberHorizontalAlignment = candidatePinInDevice.mNumberHorizontalAlignment
+          newPinInProject.mPinNameIsDisplayedInSchematic = candidatePinInDevice.mPinNameIsDisplayedInSchematics
+          newPinInProject.mPinX = candidatePinInDevice.mPinX
+          newPinInProject.mPinY = candidatePinInDevice.mPinY
+          newPinInProject.mXName = candidatePinInDevice.mXName
+          newPinInProject.mYName = candidatePinInDevice.mYName
+          newPinInProject.mXNumber = candidatePinInDevice.mXNumber
+          newPinInProject.mYNumber = candidatePinInDevice.mYNumber
+          let pinQualifiedName : PinQualifiedNameStruct = newPinInProject.pinQualifiedName!
+          newDevicePinDictionary [pinQualifiedName] = newPinInProject
         }
       }
     }
   //--- Append pin/pad assignments
     inCurrentDeviceInProject.mPadAssignments = EBReferenceArray ()
-    for pinPadAssignmentInDevice in inCandidateDeviceRoot.mPadProxies.values {
-      let assignment = DevicePadAssignmentInProject (self.undoManager)
-      let padName = pinPadAssignmentInDevice.mPadName
-      assignment.mPadName = padName
-      if let pinInstanceInDevice = pinPadAssignmentInDevice.mPinInstance { // If nil, pad is NC
-        let qualifiedPinName = pinInstanceInDevice.pinQualifiedName!
-        let pinInProject = devicePinDictionary [qualifiedPinName]!
-        assignment.mPin = pinInProject
+    for candidatePinPadAssignmentInDevice in inCandidateDeviceRoot.mPadProxies.values {
+      let newPadAssignment = DevicePadAssignmentInProject (self.undoManager)
+      let padName = candidatePinPadAssignmentInDevice.mPadName
+      newPadAssignment.mPadName = padName
+      if let candidatePinInstanceInDevice = candidatePinPadAssignmentInDevice.mPinInstance { // If nil, pad is NC
+        let qualifiedPinName = candidatePinInstanceInDevice.pinQualifiedName!
+        let newPinInProject = newDevicePinDictionary [qualifiedPinName]!
+        // Swift.print ("qualifiedPinName [\(qualifiedPinName)] pinInProject [\(newPinInProject.mPinName)]")
+        newPadAssignment.mPin = newPinInProject
       }
-      inCurrentDeviceInProject.mPadAssignments.append (assignment)
+      inCurrentDeviceInProject.mPadAssignments.append (newPadAssignment)
+    }
+  //--- Handle one pin name change ?
+    if let pinNameSusbstitution = inPinNameSusbstitution {
+      for componentInProject : ComponentInProject in inCurrentDeviceInProject.mComponents.values {
+        for symbolInProject : ComponentSymbolInProject in componentInProject.mSymbols.values {
+          if symbolInProject.mSymbolTypeName == pinNameSusbstitution.symbolTypeName {
+            for point : PointInSchematic in symbolInProject.mPoints.values {
+              if point.mSymbolPinName == pinNameSusbstitution.oldPinName {
+                point.mSymbolPinName = pinNameSusbstitution.newPinName
+              }
+            }
+          }
+        }
+      }
     }
   }
 

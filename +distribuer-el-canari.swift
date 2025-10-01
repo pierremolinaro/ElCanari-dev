@@ -30,15 +30,16 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.9.4"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.0, Sparkle 2.8.0"
+  "Construit avec Xcode 26.1 beta 1, Sparkle 2.8.0"
 ]
 let BUGFIXES : [String] = [
-  "Merger: correction bug de génération des QRCodes"
+  "Project: correction bug de la rotation d'un composant et d'un label dans le schéma"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Device: la mise à jour d'un symbole est réalisée si l'ancien et le nouveau symbole diffèrent d'un seul nom de pin"
+  "Device: la mise à jour d'un symbole est réalisée si l'ancien et le nouveau symbole ne diffèrent que d'un seul nom de pin"
+  "Project: la mise à jour d'un device est réalisée si un ancien et son nouveau symbole ne diffèrent que d'un seul nom de pin"
 ]
 
 //------------------------------------------------------------------------------

@@ -11,14 +11,26 @@ import Foundation
 //   PinQualifiedNameStruct
 //--------------------------------------------------------------------------------------------------
 
-struct PinQualifiedNameStruct : Hashable {
+struct PinQualifiedNameStruct : Hashable, CustomStringConvertible {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   let mSymbolName : String
   let mPinName : String
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   init (symbolName inSymbolName : String, pinName inPinName : String) {
-    mSymbolName = inSymbolName
-    mPinName = inPinName
+    self.mSymbolName = inSymbolName
+    self.mPinName = inPinName
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var description : String {
+    return "symbolName \(self.mSymbolName) pinName \(self.mPinName)"
+  }
+
 }
 
 //--------------------------------------------------------------------------------------------------
