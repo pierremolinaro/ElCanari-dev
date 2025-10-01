@@ -38,7 +38,7 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Device: la mise à jour d'un symbole est réalisée si l'ancien et le nouveau symbole ne diffèrent que d'un seul nom de pin"
+  "Device: la mise à jour d'un symbole est réalisée si l'ancien et le nouveau symbole ne diffèrent que d'un seul nom de pin",
   "Project: la mise à jour d'un device est réalisée si un ancien et son nouveau symbole ne diffèrent que d'un seul nom de pin"
 ]
 
