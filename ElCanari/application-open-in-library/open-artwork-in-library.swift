@@ -304,7 +304,7 @@ extension ApplicationDelegate {
   @IBAction func actionOpenArtworkInLibrary (_ inSender : Any?) {
     openArtworkPanelInLibrary (
       windowForSheet: nil,
-      validationButtonTitle: "Open",
+      validationButtonTitle: "Open Artwork",
       callBack: { (_ inURL : URL, _ inName : String) -> Void in
         DispatchQueue.main.async {
           let dc = NSDocumentController.shared

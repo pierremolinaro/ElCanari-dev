@@ -16,7 +16,7 @@ extension AutoLayoutProjectDocument {
         if let window = self.windowForSheet {
           openArtworkPanelInLibrary (
             windowForSheet: window,
-            validationButtonTitle: "Import",
+            validationButtonTitle: "Import Artwork",
             callBack: { (_ inURL : URL, _ inName : String) -> Void in
               if let data = try? Data (contentsOf: inURL) {
                 DispatchQueue.main.async {

@@ -21,7 +21,11 @@ final class OpenFontInLibrary : OpenInLibrary {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func openFontInLibrary (_ /* inUnusedSender */ : Any?) {
-    super.openDocumentInLibrary (windowTitle: "Open Font in Library")
+    super.openDocumentInLibrary (
+      windowTitle: "Open Font in Library",
+      openButtonTitle: "Open Font",
+      closeButtonTitle: "Close"
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

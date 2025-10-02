@@ -19,6 +19,9 @@ extension AutoLayoutDeviceDocument {
    }
    gOpenSymbolInLibrary.loadDocumentFromLibrary (
      windowForSheet: self.windowForSheet!,
+     validationButtonTitle : "Add Symbol",
+     closeAfterValidation: false,
+     cancelButtonTitle : "Done",
      alreadyLoadedDocuments: currentSymbolNames,
      callBack: self.symbolTypeFromLoadSymbolDialog,
      postAction: nil

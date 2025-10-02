@@ -19,6 +19,9 @@ extension AutoLayoutDeviceDocument {
    }
    gOpenPackageInLibrary.loadDocumentFromLibrary (
      windowForSheet: self.windowForSheet!,
+     validationButtonTitle : "Add Package",
+     closeAfterValidation: false,
+     cancelButtonTitle : "Done",
      alreadyLoadedDocuments: currentPackageNames,
      callBack: self.packageFromLoadPackageDialog,
      postAction: nil

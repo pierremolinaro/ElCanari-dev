@@ -19,7 +19,7 @@ fileprivate let DEBUG_CATEGORY = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final let mWindow : NSWindow
+  private final let mOpenInLibraryWindow : NSWindow
 
   private final let mCloseButton : AutoLayoutSheetCancelButton
   private final let mOpenButton : AutoLayoutButton
@@ -50,15 +50,15 @@ fileprivate let DEBUG_CATEGORY = false
 
   init () {
   //--- Dialog
-    self.mWindow = NSWindow (
+    self.mOpenInLibraryWindow = NSWindow (
       contentRect: NSRect (x: 0, y: 0, width: 700, height: 600),
       styleMask: [.titled, .closable],
       backing: .buffered,
       defer: false
     )
-    self.mWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-    self.mWindow.setFrameAutosaveName ("OpenInLibraryWindowFrame")
-    self.mWindow.hasShadow = true
+    self.mOpenInLibraryWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+    self.mOpenInLibraryWindow.setFrameAutosaveName ("OpenInLibraryWindowFrame")
+    self.mOpenInLibraryWindow.hasShadow = true
     self.mCloseButton = AutoLayoutSheetCancelButton (title: "Close", size: .regular)
     self.mOpenButton = AutoLayoutButton (title: "Open", size: .regular)
   //--- First column
@@ -99,8 +99,8 @@ fileprivate let DEBUG_CATEGORY = false
   //--- Bottom view
     _ = mainView.append (hStackWith: [self.mCloseButton, nil, self.mOpenButton])
   //--- Set content view
-    self.mWindow.setContentView (mainView)
-    _ = self.mOpenButton.respondsToValidationKeyDown (self.mWindow)
+    self.mOpenInLibraryWindow.setContentView (mainView)
+    _ = self.mOpenButton.respondsToValidationKeyDown (self.mOpenInLibraryWindow)
   //--- Configure table view
     self.mTableView.configure (
       allowsEmptySelection: false,
@@ -284,16 +284,27 @@ fileprivate let DEBUG_CATEGORY = false
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
+                                      validationButtonTitle inValidationButtonTitle : String,
+                                      closeAfterValidation inCloseAfterValidation : Bool,
+                                      cancelButtonTitle inCancelButtonTitle : String,
                                       alreadyLoadedDocuments inNames : Set <String>,
                                       callBack inCallBack : @MainActor @escaping (_ inData : Data, _ inName : String) -> Bool,
                                       postAction inPostAction : Optional <@MainActor () -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
+    self.mOpenButton.title = inValidationButtonTitle
+    self.mCloseButton.title = inCancelButtonTitle
     self.mOpenButton.setClosureAction { [weak self] in
-      self?.sheetWindowOpenDocumentButtonAction (callBack: inCallBack, postAction: inPostAction)
+      if inCloseAfterValidation {
+        self?.mOpenInLibraryWindow.orderOut (nil)
+      }
+      self?.sheetWindowOpenDocumentButtonAction (
+        callBack: inCallBack,
+        postAction: inPostAction
+      )
     }
   //--- Dialog
-    inWindow.beginSheet (self.mWindow)
+    inWindow.beginSheet (self.mOpenInLibraryWindow)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -326,26 +337,22 @@ fileprivate let DEBUG_CATEGORY = false
   //   Open document in library, displayed as regular window
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func openDocumentInLibrary (windowTitle inTitle : String) {
+  final func openDocumentInLibrary (windowTitle inTitle : String,
+                                    openButtonTitle inOpenButtonTitle : String,
+                                    closeButtonTitle inCloseButtonTitle : String) {
   //--- Configure
-    self.mWindow.title = inTitle
+    self.mOpenInLibraryWindow.title = inTitle
+    self.mOpenButton.title = inOpenButtonTitle
+    self.mCloseButton.title = inCloseButtonTitle
     self.configureWith (alreadyLoadedDocuments: [])
     self.mOpenButton.setClosureAction { [weak self] in
       self?.regularWindowOpenDocumentButtonAction ()
     }
   //---
-    self.mWindow.makeKeyAndOrderFront (nil)
+    self.mOpenInLibraryWindow.makeKeyAndOrderFront (nil)
   //--- Par défaut, le TextField de recherche est activé, ce qui inhibe l'action par
   // de validation du bouton par défaut
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  private final func removeAllEntries () {
-//    self.mTableViewDataSource = []
-//    self.mTableViewFilteredDataSource = []
-//    self.mTableView.sortAndReloadData ()
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

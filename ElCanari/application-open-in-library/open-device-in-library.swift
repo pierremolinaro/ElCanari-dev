@@ -21,7 +21,11 @@ final class OpenDeviceInLibrary : OpenInLibrary {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func openDeviceInLibrary (_ /* inUnusedSender */ : Any?) {
-    super.openDocumentInLibrary (windowTitle: "Open Device in Library")
+    super.openDocumentInLibrary (
+      windowTitle: "Open Device in Library",
+      openButtonTitle: "Open Device",
+      closeButtonTitle: "Close"
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

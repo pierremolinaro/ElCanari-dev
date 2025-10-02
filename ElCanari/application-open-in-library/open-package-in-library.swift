@@ -21,7 +21,11 @@ final class OpenPackageInLibrary : OpenInLibrary {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc func openPackageInLibrary (_ /* inUnusedSender */ : Any?) {
-    super.openDocumentInLibrary (windowTitle: "Open Package in Library")
+    super.openDocumentInLibrary (
+      windowTitle: "Open Package in Library",
+      openButtonTitle: "Open Package",
+      closeButtonTitle: "Close"
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
