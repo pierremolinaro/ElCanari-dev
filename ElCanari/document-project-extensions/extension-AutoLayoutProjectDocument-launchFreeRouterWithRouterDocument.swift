@@ -20,22 +20,37 @@ extension AutoLayoutProjectDocument {
     //---------- Install freeRouter application
       let optionalFreeRouterApplication = self.installFreeRouter (mainWindow)
     //---------- Get freerouter temporary directory
+      if self.mFreerouterTemporaryDirectorySelection != preferences_mFreeRouterWorkingDirectorySelection_property.propval {
+        self.mFreerouterTemporaryDirectory = nil
+        self.mFreerouterTemporaryDirectorySelection = preferences_mFreeRouterWorkingDirectorySelection_property.propval
+      }
       let freerouterTemporaryBaseFilePath : String
-      if let d = self.mFreerouterTemporaryDocumentDirectory {
+      if let d = self.mFreerouterTemporaryDirectory {
         freerouterTemporaryBaseFilePath = d
       }else{
-        let h = UInt (bitPattern: Date ().hashValue)
-        freerouterTemporaryBaseFilePath = NSTemporaryDirectory () + "\(h)/"
+        let df = DateFormatter()
+        df.dateFormat = "yyyy'-'MM'-'dd'-'HH'h-'mm'min-'ss's"
+        let baseName = df.string (from: Date ())
+        if preferences_mFreeRouterWorkingDirectorySelection_property.propval == 0 {
+          freerouterTemporaryBaseFilePath = NSTemporaryDirectory () + baseName + "/"
+        }else{
+          let documentAbsolutePath = NSHomeDirectory() + "/Documents"
+          freerouterTemporaryBaseFilePath = documentAbsolutePath + "/freerouting/" + baseName + "/"
+        }
         do {
-          try fm.createDirectory (at: URL (fileURLWithPath: freerouterTemporaryBaseFilePath), withIntermediateDirectories: false, attributes: nil)
-        }catch (_) {
+          try fm.createDirectory (
+            at: URL (fileURLWithPath: freerouterTemporaryBaseFilePath),
+            withIntermediateDirectories: true,
+            attributes: nil
+          )
+        }catch{
           let alert = NSAlert ()
           alert.messageText = "Cannot launch FreeRouting application"
           alert.informativeText = "Cannot create \"\(freerouterTemporaryBaseFilePath)\" directory"
           alert.beginSheetModal (for: mainWindow)
           return
         }
-        self.mFreerouterTemporaryDocumentDirectory = freerouterTemporaryBaseFilePath
+        self.mFreerouterTemporaryDirectory = freerouterTemporaryBaseFilePath
       }
     //---------- Write gui_default.par
       if preferences_mFreeRouterGuiDefaultFileContents_property.propval != "" {

@@ -3908,6 +3908,18 @@ do{
   _ = contentView .appendView (contentView_view)
 }
 do{
+  let contentView_view = AutoLayoutStaticLabel (title: "Freerouting files location", bold: false, size: .small, alignment: .center)
+  _ = contentView .appendView (contentView_view)
+}
+do{
+  let contentView_view = AutoLayoutTaggedPopUpButton (size: .small)
+    .add (title: "Temporary Directory", withTag: 0)
+    .add (title: "~/Documents/freerouting", withTag: 1)
+    .expandableWidth ()
+    .bind_selectedTag (preferences_mFreeRouterWorkingDirectorySelection_property)
+  _ = contentView .appendView (contentView_view)
+}
+do{
   let contentView_view = AutoLayoutHorizontalStackView ()
   _ = contentView_view.appendFlexibleSpace ()
   do{

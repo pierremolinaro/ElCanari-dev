@@ -679,6 +679,7 @@ class Preferences : Preferences_SuperClass, NSWindowDelegate {
 @MainActor let Preferences_workingAreaColorForBoard = "Preferences:workingAreaColorForBoard"
 @MainActor let Preferences_mShowComponentRotationKnobInBoard = "Preferences:mShowComponentRotationKnobInBoard"
 @MainActor let Preferences_mShowTextRotationKnobInBoard = "Preferences:mShowTextRotationKnobInBoard"
+@MainActor let Preferences_mFreeRouterWorkingDirectorySelection = "Preferences:mFreeRouterWorkingDirectorySelection"
 @MainActor let Preferences_sampleString = "Preferences:sampleString"
 @MainActor let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 @MainActor let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
@@ -1294,6 +1295,12 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //--------------------------------------------------------------------------------------------------
 
 @MainActor let preferences_mShowTextRotationKnobInBoard_property = EBPreferenceProperty_Bool (defaultValue: true, prefKey: Preferences_mShowTextRotationKnobInBoard)
+
+//--------------------------------------------------------------------------------------------------
+//   Atomic property: mFreeRouterWorkingDirectorySelection
+//--------------------------------------------------------------------------------------------------
+
+@MainActor let preferences_mFreeRouterWorkingDirectorySelection_property = EBPreferenceProperty_Int (defaultValue: 0, prefKey: Preferences_mFreeRouterWorkingDirectorySelection)
 
 //--------------------------------------------------------------------------------------------------
 //   Atomic property: sampleString

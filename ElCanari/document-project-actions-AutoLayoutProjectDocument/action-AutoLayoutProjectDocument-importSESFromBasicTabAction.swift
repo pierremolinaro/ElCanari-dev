@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func importSESFromBasicTabAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let freerouterTemporaryBaseFilePath = self.mFreerouterTemporaryDocumentDirectory {
+    if let freerouterTemporaryBaseFilePath = self.mFreerouterTemporaryDirectory {
       self.importGuiDefaultFileThenSESFile (fileBasePath: freerouterTemporaryBaseFilePath)
     }else{
       let alert = NSAlert ()

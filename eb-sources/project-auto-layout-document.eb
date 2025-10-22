@@ -1307,8 +1307,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         DragSourceButtonWithMenus (tooltip: "Add Property Rectangle; the layers are set by the contextual menu.")
          [configurator addRestrictRectangleButton]
         space
-//      }
-//      hStack set (margins: .regular) set (topMargin: .zero) set (spacing: .small) {
         DragSourceButtonWithMenus (tooltip: "Add Line;  the layer is set by the contextual menu.")
          [configurator addLineButton]
         space
@@ -1774,6 +1772,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             }
             EnumPopUpButton (titles: enum FreeRoutingAppSelection.popupTitles, size: .small) {
               $selectedIndex prefs.freeRoutingAppSelection
+            }
+            StaticLabel (title: "Freerouting files location", bold: no, size: .small, alignment: .center)
+            TaggedPopUpButton (size: .small) {
+               add (title: "Temporary Directory", withTag: 0)
+               add (title: "~/Documents/freerouting", withTag: 1)
+               expandableWidth ()
+               $selectedTag prefs.mFreeRouterWorkingDirectorySelection
             }
             hStack {
               space

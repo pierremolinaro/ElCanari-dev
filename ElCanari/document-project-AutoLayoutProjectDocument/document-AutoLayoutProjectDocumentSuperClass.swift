@@ -49,7 +49,8 @@ class AutoLayoutProjectDocumentSuperClass : EBAutoLayoutManagedDocument {
   //  FREE ROUTER TEMPORARY DOCUMENT DIRECTORY
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mFreerouterTemporaryDocumentDirectory : String? = nil
+  var mFreerouterTemporaryDirectory : String? = nil
+  var mFreerouterTemporaryDirectorySelection : Int = 0
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

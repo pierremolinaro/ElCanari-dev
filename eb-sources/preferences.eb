@@ -350,6 +350,8 @@ prefs {
   property Bool mShowTextRotationKnobInBoard default yes ;
 //--- Freerouter "gui_default.par" file contents
   property String mFreeRouterGuiDefaultFileContents default "" ;
+//--- Freerouting Working directory
+  property Int mFreeRouterWorkingDirectorySelection default 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------
