@@ -27,17 +27,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.5"
+let VERSION_CANARI = "1.9.6"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
   "Construit avec Xcode 26.1 beta 3, Sparkle 2.8.0"
 ]
 let BUGFIXES : [String] = [
+  "Project: correction du bug qui empêchait l'enregistrement du document après avoir ajouté une « Font »"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Project: sélection du répertoire utilisé par Freerouting lors du routage"
 ]
 
 //------------------------------------------------------------------------------

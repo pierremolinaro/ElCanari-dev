@@ -97,7 +97,7 @@ fileprivate let DEBUG_CATEGORY = false
     )
     _ = mainView.appendView (gridView)
   //--- Bottom view
-    _ = mainView.append (hStackWith: [self.mCloseButton, nil, self.mOpenButton])
+    _ = mainView.append (hStackWith: [nil, self.mCloseButton, self.mOpenButton])
   //--- Set content view
     self.mOpenInLibraryWindow.setContentView (mainView)
     _ = self.mOpenButton.respondsToValidationKeyDown (self.mOpenInLibraryWindow)
