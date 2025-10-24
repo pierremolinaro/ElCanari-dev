@@ -19,8 +19,8 @@ extension AutoLayoutProjectDocument {
     gOpenDeviceInLibrary.loadDocumentFromLibrary (
       windowForSheet: self.windowForSheet!,
       validationButtonTitle : "Add Device",
-      closeAfterValidation: false,
-      cancelButtonTitle : "Done",
+      closeAfterValidation: true,
+      cancelButtonTitle : "Cancel",
       alreadyLoadedDocuments: [], // currentDeviceNames,
       callBack: self.addComponent,
       postAction: nil

@@ -19,7 +19,7 @@ extension AutoLayoutProjectDocument {
      gOpenFontInLibrary.loadDocumentFromLibrary (
        windowForSheet: self.windowForSheet!,
        validationButtonTitle : "Add Font",
-       closeAfterValidation: false,
+       closeAfterValidation: true,
        cancelButtonTitle : "Cancel",
        alreadyLoadedDocuments: currentFontNames,
        callBack: self.addFontFromLoadFontDialog,

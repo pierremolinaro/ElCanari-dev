@@ -295,7 +295,8 @@ fileprivate let DEBUG_CATEGORY = false
     self.mOpenButton.title = inValidationButtonTitle
     self.mCloseButton.title = inCancelButtonTitle
     self.mOpenButton.setClosureAction { [weak self] in
-      if inCloseAfterValidation {
+      if inCloseAfterValidation, let uwSelf = self {
+        inWindow.endSheet (uwSelf.mOpenInLibraryWindow)
         self?.mOpenInLibraryWindow.orderOut (nil)
       }
       self?.sheetWindowOpenDocumentButtonAction (
