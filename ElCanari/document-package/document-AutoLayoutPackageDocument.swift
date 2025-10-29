@@ -429,7 +429,6 @@ import AppKit
       do{
         let vStackView_view_view = AutoLayoutVerticalStackView ()
           .set (spacing: .zero)
-          .bind_hidden (.prop (preferences_fileSystemLibraryIsOk_property))
         do{
           let vStackView_view_view_view = AutoLayoutButton (title: "Show Library Status Window", size: .regular)
             .bind_image (preferences_fileSystemLibraryStatusImage_property)
@@ -441,7 +440,7 @@ import AppKit
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "File System Library requires attention", bold: false, size: .regular, alignment: .center)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "File System Library", bold: false, size: .regular, alignment: .center)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view.appendView (vStackView_view_view)

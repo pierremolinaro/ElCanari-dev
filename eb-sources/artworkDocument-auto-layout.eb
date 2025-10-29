@@ -45,13 +45,13 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         StaticLabel (title: "Version", bold: no, size : .regular, alignment: .center)
       }
       space
-      vStack set (spacing: .zero) $hidden prefs.fileSystemLibraryIsOk {
+      vStack set (spacing: .zero) { // $hidden prefs.fileSystemLibraryIsOk {
         Button (title: "Show Library Status Window", size: .regular)  { 
           $run prefs.showLibraryStatusLogWindowAction
           $image prefs.fileSystemLibraryStatusImage
         }
         gutter
-        StaticLabel (title: "File System Library requires attention", bold: no, size : .regular, alignment: .center)
+        StaticLabel (title: "File System Library", bold: no, size : .regular, alignment: .center)
       }
       space
       vStack set (spacing: .zero) {
