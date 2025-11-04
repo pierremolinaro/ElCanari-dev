@@ -8118,7 +8118,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -11960,7 +11960,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
-				ONLY_ACTIVE_ARCH = NO;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
@@ -11983,6 +11984,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
@@ -12084,6 +12087,7 @@
 				LLVM_LTO = YES;
 				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				ONLY_ACTIVE_ARCH = YES;
 				OSACOMPILE_EXECUTE_ONLY = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
@@ -12137,6 +12141,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -12177,6 +12182,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
