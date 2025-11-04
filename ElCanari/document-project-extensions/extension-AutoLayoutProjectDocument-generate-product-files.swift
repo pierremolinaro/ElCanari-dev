@@ -116,7 +116,6 @@ extension AutoLayoutProjectDocument {
         try self.writeGerberProductFile (
           atURL: generatedGerberFileURL,
           productDescriptor,
-//          inArtwork.layerConfiguration,
           productRepresentation
         )
       }
@@ -134,7 +133,6 @@ extension AutoLayoutProjectDocument {
         try self.writePDFProductFile (
           atPath: generatedPDFFilePath,
           productDescriptor,
-//          inArtwork.layerConfiguration,
           productRepresentation
         )
       }

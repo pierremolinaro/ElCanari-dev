@@ -44,7 +44,7 @@ extension AutoLayoutMergerDocument {
                                 named inName : String,
                                 callBack inCallBack : @escaping @Sendable (BoardModel) -> Void) {
     do{
-      let optionalBoardArchiveDictionary = try PropertyListSerialization.propertyList (
+      let optionalBoardArchiveDictionary = unsafe try PropertyListSerialization.propertyList (
         from: inData,
         options: [],
         format: nil

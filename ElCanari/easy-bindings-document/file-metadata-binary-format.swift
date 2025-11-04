@@ -33,7 +33,7 @@ func getBinaryFileMetadata (forFileHandle inFileHandle : FileHandle) -> EBFileMe
   }
 //--- Read metadata dictionary
   let dictionaryData : Data = inFileHandle.readAutosizedData ()
-  if let possibleDictionary : Any = try? PropertyListSerialization.propertyList (from: dictionaryData, options: PropertyListSerialization.MutabilityOptions (), format: nil),
+  if let possibleDictionary : Any = unsafe try? PropertyListSerialization.propertyList (from: dictionaryData, options: PropertyListSerialization.MutabilityOptions (), format: nil),
      let dict = possibleDictionary as? [String : Any] {
     return EBFileMetadata (metadataStatus: status, metadataDictionary: dict)
   }else{

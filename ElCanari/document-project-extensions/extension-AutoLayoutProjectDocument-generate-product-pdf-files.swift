@@ -31,7 +31,6 @@ extension AutoLayoutProjectDocument {
 
   func writePDFProductFile (atPath inPath : String,
                             _ inDescriptor : ArtworkFileGenerationParameters,
-//                            _ inLayerConfiguration : LayerConfiguration,
                             _ inProductRepresentation : ProductRepresentation) throws {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(path.lastPathComponent)…")

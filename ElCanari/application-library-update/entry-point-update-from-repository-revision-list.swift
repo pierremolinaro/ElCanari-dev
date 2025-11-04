@@ -97,7 +97,7 @@ extension Preferences {
     //--- Loop for getting commit description
       for i in 1 ... remoteCurrentCommit {
         if let data = self.getRemoteFileData ("commits/commit-\(i).plist", &ioPossibleAlert, inProxy) {
-          if let possibleDict = try? PropertyListSerialization.propertyList (from: data, format: nil),
+          if let possibleDict = unsafe try? PropertyListSerialization.propertyList (from: data, format: nil),
              let dict = possibleDict as? [String : Any],
              let commitDate = dict ["date"] as? Date,
              let commitMessage = dict ["message"] as? String {

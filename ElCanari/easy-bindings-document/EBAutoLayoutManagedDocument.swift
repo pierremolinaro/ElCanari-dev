@@ -443,7 +443,7 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
       let printOperation = NSPrintOperation (view: view, printInfo: self.printInfo)
       let printPanel = printOperation.printPanel
       printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling]
-      self.runModalPrintOperation (printOperation, delegate: nil, didRun: nil, contextInfo: nil)
+      unsafe self.runModalPrintOperation (printOperation, delegate: nil, didRun: nil, contextInfo: nil)
     }
   }
 

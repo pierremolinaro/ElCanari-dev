@@ -581,7 +581,7 @@ fileprivate final class EBShapeObject {
 
   @MainActor func installToolTips (toView inView : EBGraphicView) {
     for tooltip in self.mToolTips {
-      _ = inView.addToolTip (tooltip.path.bounds, owner: tooltip.string, userData: nil)
+      _ = unsafe inView.addToolTip (tooltip.path.bounds, owner: tooltip.string, userData: nil)
     }
   }
 

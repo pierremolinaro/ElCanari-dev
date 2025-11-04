@@ -19,7 +19,7 @@ extension Preferences_SuperClass {
     if let frameworkURL = Bundle.main.privateFrameworksURL {
       let infoPlistURL = frameworkURL.appendingPathComponent ("Sparkle.framework/Versions/Current/Resources/Info.plist")
       if let data : Data = try? Data (contentsOf: infoPlistURL),
-         let plist = try? PropertyListSerialization.propertyList (from: data, format: nil) as? [String : Any],
+         let plist = unsafe try? PropertyListSerialization.propertyList (from: data, format: nil) as? [String : Any],
          let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
             result = sparkleVersionString
       }

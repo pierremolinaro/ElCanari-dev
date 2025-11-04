@@ -22,7 +22,7 @@ extension Preferences {
     if let storedCurrentCommit = inPossibleStoredCurrentCommit, storedCurrentCommit == inRemoteCurrentCommit {
       let localDescriptionFile = systemLibraryPath () + "/" + REPOSITORY_DESCRIPTION_PLIST_FILE_NAME
       if let data = try? Data (contentsOf: URL (fileURLWithPath: localDescriptionFile)) {
-        let possibleDictArray = try? PropertyListSerialization.propertyList (from: data, format: nil)
+        let possibleDictArray = unsafe try? PropertyListSerialization.propertyList (from: data, format: nil)
         if let dictArray = possibleDictArray as? [[String : Any]] {
           needsToDowloadDescriptionFile = false
           for dictionary : [String : Any] in dictArray {
@@ -41,7 +41,7 @@ extension Preferences {
   //--- Download from repository
     if needsToDowloadDescriptionFile, let data = self.getRemoteFileData ("contents/contents-\(inRemoteCurrentCommit).plist", &ioPossibleAlert, inProxy) {
       libraryFileDictionary = [String : LibraryContentsDescriptor] ()
-      let possibleDictArray = try? PropertyListSerialization.propertyList (from: data, format: nil)
+      let possibleDictArray = unsafe try? PropertyListSerialization.propertyList (from: data, format: nil)
       if let dictArray = possibleDictArray as? [[String : Any]] {
         for dictionary : [String : Any] in dictArray {
           if let entry = LibraryContentsDescriptor (withDictionary: dictionary) {

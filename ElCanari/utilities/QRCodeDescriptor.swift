@@ -215,7 +215,7 @@ fileprivate extension CIQRCodeDescriptor.ErrorCorrectionLevel {
 fileprivate func bitMap (forImageRep inImageRep : NSCIImageRep) -> [[Bool]] {
   let w = inImageRep.pixelsWide
   let h = inImageRep.pixelsHigh
-  let possibleOffscreenRep = NSBitmapImageRep (
+  let possibleOffscreenRep = unsafe NSBitmapImageRep (
     bitmapDataPlanes: nil,
     pixelsWide: w,
     pixelsHigh: h,

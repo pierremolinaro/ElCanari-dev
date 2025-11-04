@@ -26,7 +26,7 @@ extension EBGraphicView {
       shape.installToolTips (toView: self)
     }
     for tooltip in self.mTooltipArray {
-       _ = self.addToolTip (tooltip.rect, owner: tooltip, userData: nil)
+       _ = unsafe self.addToolTip (tooltip.rect, owner: tooltip, userData: nil)
     }
   }
 

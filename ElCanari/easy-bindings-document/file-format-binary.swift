@@ -19,7 +19,7 @@ import AppKit
     ioDataScanner.acceptRequired (byte: 1)
   //--- Read metadata dictionary
     let dictionaryData = ioDataScanner.parseAutosizedData ()
-    let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
+    let metadataDictionary = unsafe try PropertyListSerialization.propertyList (from: dictionaryData as Data,
       options: [],
       format: nil
     ) as! [String : Any]
@@ -83,7 +83,7 @@ private func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
 
 @MainActor fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : UndoManager?, inData : Data) throws -> EBManagedObject? {
   var resultRootObject : EBManagedObject? = nil
-  if let dictionaryArray = try PropertyListSerialization.propertyList (from: inData as Data, options: [], format: nil) as? [[String : Any]] {
+  if let dictionaryArray = unsafe try PropertyListSerialization.propertyList (from: inData as Data, options: [], format: nil) as? [[String : Any]] {
     var objectArray = [EBManagedObject] ()
     for d in dictionaryArray {
       let className = d [ENTITY_KEY] as! String

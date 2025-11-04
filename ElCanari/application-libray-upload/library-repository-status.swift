@@ -126,7 +126,7 @@ extension CanariLibraryEntry {
           possibleCurrentRepositoryContents = nil
         case .ok (let data) :
           inLogTextView.appendSuccessString ("ok\n")
-          let possibleDictArray = try? PropertyListSerialization.propertyList (from: data, format: nil)
+          let possibleDictArray = unsafe try? PropertyListSerialization.propertyList (from: data, format: nil)
           if let dictArray = possibleDictArray as? [[String : Any]] {
             for dictionary : [String : Any] in dictArray {
               if let entry = LibraryContentsDescriptor (withDictionary: dictionary) {

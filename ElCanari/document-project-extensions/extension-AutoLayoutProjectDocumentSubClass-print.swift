@@ -122,7 +122,7 @@ extension AutoLayoutProjectDocumentSubClass {
       let printPanel = printOperation.printPanel
       printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling, .showsCopies]
     //---
-      self.runModalPrintOperation (
+      unsafe self.runModalPrintOperation (
         printOperation,
         delegate: self,
         didRun: #selector (Self.documentDidRunModalPrintOperation (_:success:contextInfo:)),
@@ -180,7 +180,7 @@ extension AutoLayoutProjectDocumentSubClass {
       let printPanel = printOperation.printPanel
       printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling, .showsCopies]
    //---
-      self.runModalPrintOperation (
+      unsafe self.runModalPrintOperation (
         printOperation,
         delegate: self,
         didRun: #selector (Self.documentDidRunModalPrintOperation (_:success:contextInfo:)),
