@@ -136,6 +136,8 @@
 		CF171D8B26FB999B00A1BCB2 /* EBReferenceArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */; };
 		CF1821432772769600068AD6 /* AutoLayoutProjectDocument-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D3E45276A423800013196 /* AutoLayoutProjectDocument-utilities.swift */; };
 		CF1821442772769700068AD6 /* AutoLayoutProjectDocument-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D3E45276A423800013196 /* AutoLayoutProjectDocument-utilities.swift */; };
+		CF1889092EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1889082EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift */; };
+		CF18890A2EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1889082EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift */; };
 		CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
 		CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
 		CF18963921F9F5FE00F94354 /* entry-point-update-from-repository-revision-list.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18963821F9F5FE00F94354 /* entry-point-update-from-repository-revision-list.swift */; };
@@ -3712,6 +3714,7 @@
 		CF17028528158D6700819B0F /* menu-select-default-net-class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "menu-select-default-net-class.swift"; sourceTree = "<group>"; };
 		CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBReferenceArray.swift; sourceTree = "<group>"; };
 		CF182099277249BE00068AD6 /* AutoLayoutCanariBoardOperationPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariBoardOperationPullDownButton.swift; sourceTree = "<group>"; };
+		CF1889082EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift"; sourceTree = "<group>"; };
 		CF1893A72202EEC600EF2308 /* library-repository-status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-status.swift"; sourceTree = "<group>"; };
 		CF18963821F9F5FE00F94354 /* entry-point-update-from-repository-revision-list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "entry-point-update-from-repository-revision-list.swift"; sourceTree = "<group>"; };
 		CF193CB229C33A8A003FE5A5 /* action-AutoLayoutMergerDocument-explodeSelectionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutMergerDocument-explodeSelectionAction.swift"; sourceTree = "<group>"; };
@@ -6884,6 +6887,7 @@
 		CFB1F87A2940ED8000C1E120 /* project — ProjectDocument - actions */ = {
 			isa = PBXGroup;
 			children = (
+				CF1889082EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift */,
 				CFB1F8932940EDD300C1E120 /* action-AutoLayoutProjectDocument-addComponentFromEmbeddedLibraryAction.swift */,
 				CFB1F88F2940EDD200C1E120 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift */,
 				CFB1F8B32940EDD900C1E120 /* action-AutoLayoutProjectDocument-addFontAction.swift */,
@@ -8713,6 +8717,7 @@
 				CF379168269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift in Sources */,
 				CFD1EAAF274EE23B000AED8E /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */,
 				CFEDE5B61B4677C500036ACF /* EBDataScanner.swift in Sources */,
+				CF18890A2EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift in Sources */,
 				CF1D9C7821BBEA6400FFF459 /* EBGraphicView-binding-underObjectsDisplay.swift in Sources */,
 				CF784E56275E3581001BC885 /* ProjectRoot-customized-connectors.swift in Sources */,
 				CFCD3AD021FC85FA00DE503C /* phase5-buildLibraryOperations.swift in Sources */,
@@ -11505,6 +11510,7 @@
 				CFB7D77426839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addPinButtonImage.swift in Sources */,
 				CFA952492391888700C1612A /* transient-ComponentInProject-pinPadAssignments.swift in Sources */,
 				CF0B7B7B250271370080642D /* file-metadata-binary-format.swift in Sources */,
+				CF1889092EBB7A5000C9F25F /* action-AutoLayoutProjectDocument-revealComponentsInBoardAction.swift in Sources */,
 				CF61915326F76B2B003B75FF /* transient-AutoLayoutArtworkDocument-segmentedControlDataIssueImage.swift in Sources */,
 				CF85859521C5124300082CE3 /* transient-PackageArc-objectDisplay.swift in Sources */,
 				CF42D145275CF1A900B83712 /* transient-AutoLayoutMergerDocument-issues.swift in Sources */,
@@ -11960,8 +11966,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
@@ -11984,8 +11988,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
@@ -12141,7 +12144,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -12182,7 +12184,6 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";

@@ -36,6 +36,8 @@ extension AutoLayoutProjectDocument {
       self.appendDisconnectItemTo (menu: menu, points: points)
     //--- Add Exchange
       self.appendExchangeSymbolItemTo (menu: menu, at: inUnalignedMouseDownPoint)
+    //--- Add Reveal Component in Board
+      self.appendRevealComponentInBoard (menu: menu, at: inUnalignedMouseDownPoint)
     //--- Add Labels
       self.appendCreateLabelsItemTo (menu: menu, mouseDownLocation: canariAlignedMouseDownLocation, points: points)
     }
@@ -74,7 +76,11 @@ extension AutoLayoutProjectDocument {
       if menu.numberOfItems > 0 {
         menu.addItem (.separator ())
       }
-      let menuItem = NSMenuItem (title: "Exchange Symbol…", action: #selector (Self.exchangeSymbolAction (_:)), keyEquivalent: "")
+      let menuItem = NSMenuItem (
+        title: "Exchange Symbol…",
+        action: #selector (Self.exchangeSymbolAction (_:)),
+        keyEquivalent: ""
+      )
       menuItem.target = self
       menuItem.representedObject = symbol
       menu.addItem (menuItem)
@@ -153,6 +159,45 @@ extension AutoLayoutProjectDocument {
           }
         }
       }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendRevealComponentInBoard (menu : NSMenu, at inUnalignedMouseDownPoint : CanariPoint) {
+    let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
+    if symbolsUnderMouse.count == 1, let component = symbolsUnderMouse [0].mComponent {
+      if menu.numberOfItems > 0 {
+        menu.addItem (.separator ())
+      }
+      if let isInBoard = component.isPlacedInBoard, isInBoard {
+        let menuItem = NSMenuItem (
+          title: "Reveal Component in Board",
+          action: #selector (Self.revealComponentInBoardAction (_:)),
+          keyEquivalent: ""
+        )
+        menuItem.target = self
+        menuItem.representedObject = component
+        menu.addItem (menuItem)
+      }else{
+        let menuItem = NSMenuItem (
+          title: "Cannot Reveal Component in Board (not placed)",
+          action: nil,
+          keyEquivalent: ""
+        )
+        menuItem.target = nil
+        menu.addItem (menuItem)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func revealComponentInBoardAction (_ inSender : NSMenuItem) {
+    if let component = inSender.representedObject as? ComponentInProject {
+      self.rootObject.mSelectedPageIndex_property.setProp (6) // Page « Board »
+      self.boardObjectsController.select (object: component)
+      self.mBoardView?.mScrollView?.contentView.scroll (to: CanariPoint (x: component.mX, y: component.mY).cocoaPoint)
     }
   }
 

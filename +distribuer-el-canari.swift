@@ -27,17 +27,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.7"
+let VERSION_CANARI = "1.9.8"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.1 beta 3, Sparkle 2.8.0"
+  "Construit avec Xcode 26.2 beta, Sparkle 2.8.0"
 ]
 let BUGFIXES : [String] = [
-  "Project: correction du bug qui empêchait l'enregistrement du document après avoir ajouté une « Font »"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Projet : ajout d'un menu permettant de sélectionner des composants à partir de leurs symboles sélectionnés dans le schéma"
 ]
 
 //------------------------------------------------------------------------------
@@ -195,6 +195,7 @@ do{
     "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
     [ "-target", "ElCanari-" + BUILD_KIND.string,
       "-configuration", BUILD_KIND.string,
+//      "ONLY_ACTIVE_ARCH=YES", "ARCHS=arm64",
       "-verbose"
     ]
   )

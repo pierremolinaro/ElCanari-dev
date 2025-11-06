@@ -1181,6 +1181,7 @@ import AppKit
         .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutPullDownButton (title: "", size: .small)
   .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), enableBinding: .alwaysTrue))
   .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), enableBinding: .alwaysTrue))
+  .add (item: AutoLayoutMenuItemDescriptor (title: "Reveal Components in Board", target: self, selector: #selector (AutoLayoutProjectDocument.revealComponentsInBoardAction (_:)), enableBinding: .alwaysTrue))
 self.configure_schematicPullDownButtonConfigurator (toTopHStack) // Configurator
  ; return toTopHStack } ())
         .prepend (toTopHStack: { () -> NSView in let toTopHStack = AutoLayoutPopUpButton (size: .small)

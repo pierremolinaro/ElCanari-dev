@@ -455,6 +455,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   arrayController #schematicObjectsController : root.selectedSheetObjects ;
   action selectAllConnectedElementsInSchematicsAction ;
   action moveSelectedToSheetInSchematicsAction ;
+  action revealComponentsInBoardAction ;
 
   stackView \schematicsPage hStack {
     newView schematicLateralBar = \schematicsLateralBar ()
@@ -463,10 +464,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView configurator schematicView] {
       prepend (toTopHStack:
         PullDownButton (title: "", size: .small) [configurator schematicPullDownButtonConfigurator] {
-          add (item: menuItem "Select all Connected Elements"
-               $run selectAllConnectedElementsInSchematicsAction )
-          add (item: menuItem "Move Selected Elements to Sheet…"
-               $run moveSelectedToSheetInSchematicsAction )
+          add (
+            item: menuItem "Select all Connected Elements"
+            $run selectAllConnectedElementsInSchematicsAction
+          )
+          add (
+            item: menuItem "Move Selected Elements to Sheet…"
+            $run moveSelectedToSheetInSchematicsAction
+          )
+          add (
+            item: menuItem "Reveal Components in Board"
+            $run revealComponentsInBoardAction
+          )
         }
       )
       prepend (toTopHStack: PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator2])
