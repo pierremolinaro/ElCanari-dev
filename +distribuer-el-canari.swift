@@ -27,7 +27,7 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.8"
+let VERSION_CANARI = "1.9.9"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
   "Construit avec Xcode 26.2 beta, Sparkle 2.8.0"
@@ -37,7 +37,7 @@ let BUGFIXES : [String] = [
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Projet : ajout d'un menu permettant de sélectionner des composants à partir de leurs symboles sélectionnés dans le schéma"
+  "Projet : l'ERC détecte maintenant les pistes trop étroites"
 ]
 
 //------------------------------------------------------------------------------

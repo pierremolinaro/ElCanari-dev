@@ -121,6 +121,16 @@ extension AutoLayoutProjectDocument {
     let layerConfiguration = self.rootObject.mLayerConfiguration
     for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
+      //--- Check width
+        if let actualTrackWidth = track.actualTrackWidth,
+               let minPPTPTTTW = self.rootObject.minPPTPTTTW,
+               actualTrackWidth < minPPTPTTTW {
+          let bp = track.bezierPath (extraWidth: inArtworkClearance)
+          let issue = CanariIssue (kind: .error, message: "track width < minimum track Width", pathes: [bp])
+          ioIssues.append (issue)
+          errorCount += 1
+        }
+      //--- Check side
         switch track.mSide {
         case .back, .front :
           () // Always accepted
