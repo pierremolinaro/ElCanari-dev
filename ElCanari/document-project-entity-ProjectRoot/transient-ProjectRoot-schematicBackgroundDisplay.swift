@@ -156,6 +156,7 @@ import AppKit
         let dateFormatter = DateFormatter ()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
+        dateFormatter.locale = .current
         p = NSPoint (x: sheetWidth - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0 - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 0.5 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
         shape.add (text: dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center)
      //--- Sheet index
