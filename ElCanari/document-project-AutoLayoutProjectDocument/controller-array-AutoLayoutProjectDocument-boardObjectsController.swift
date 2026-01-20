@@ -423,9 +423,9 @@ final class Controller_AutoLayoutProjectDocument_boardObjectsController : EBRead
       case .empty, .multiple :
         break
       case .single (let objectArray) :
-        let array = EBReferenceArray (objectArray)
-        if array.contains (inObject) {
-          self.selectedSet = EBReferenceSet (inObject)
+       let array = EBReferenceArray (objectArray)
+       if array.contains (inObject) {
+           self.selectedSet = EBReferenceSet (inObject)
         }
       }
     }

@@ -32,39 +32,3 @@ extension AutoLayoutProjectDocument {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-//    let symbolsUnderMouse = self.schematicSymbols (at: inUnalignedMouseDownPoint)
-//    if symbolsUnderMouse.count == 1, let component = symbolsUnderMouse [0].mComponent {
-//      if menu.numberOfItems > 0 {
-//        menu.addItem (.separator ())
-//      }
-//      if let isInBoard = component.isPlacedInBoard, isInBoard {
-//        let menuItem = NSMenuItem (
-//          title: "Reveal Component in Board",
-//          action: #selector (Self.revealComponentInBoardAction (_:)),
-//          keyEquivalent: ""
-//        )
-//        menuItem.target = self
-//        menuItem.representedObject = component
-//        menu.addItem (menuItem)
-//      }else{
-//        let menuItem = NSMenuItem (
-//          title: "Cannot Reveal Component in Board (not placed)",
-//          action: nil,
-//          keyEquivalent: ""
-//        )
-//        menuItem.target = nil
-//        menu.addItem (menuItem)
-//      }
-//    }
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  @objc private func revealComponentInBoardAction (_ inSender : NSMenuItem) {
-//    if let component = inSender.representedObject as? ComponentInProject {
-//      self.rootObject.mSelectedPageIndex_property.setProp (6) // Page « Board »
-//      self.boardObjectsController.select (object: component)
-//      self.mBoardView?.mScrollView?.contentView.scroll (to: CanariPoint (x: component.mX, y: component.mY).cocoaPoint)
-//    }
-//  }

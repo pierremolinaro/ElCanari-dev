@@ -1,0 +1,73 @@
+include "sources/canari-outlet-class-declaration.eb" ;
+include "sources/auto-layout-outlet-class-declaration.eb" ;
+include "sources/transient-property-classes-structs.eb" ;
+include "sources/common-entities.eb" ;
+//--- Preferences
+include "sources/preferences.eb" ;
+//--- Font
+include "sources/font-FontCharacter.eb" ;
+include "sources/font-SegmentForFontCharacter.eb" ;
+include "sources/font-FontRoot.eb" ;
+include "sources/FontDocument-auto-layout.eb" ;
+//--- Artwork
+include "sources/artworkDocument-auto-layout.eb" ;
+//--- Merger
+include "sources/BoardModelPad.eb" ;
+include "sources/SegmentEntity.eb" ;
+include "sources/RectangleEntity.eb" ;
+include "sources/BoardModelVia.eb" ;
+include "sources/BoardModel.eb" ;
+include "sources/MergerBoardInstance.eb" ;
+include "sources/MergerRoot.eb" ;
+include "sources/mergerDocument-auto-layout.eb" ;
+//--- Symbol
+include "sources/symbol-symbolRoot.eb" ;
+include "sources/symbol-auto-layout-Document.eb" ;
+//--- Package
+include "sources/package-autoLayoutDocument.eb" ;
+include "sources/package-packageRoot.eb" ;
+//--- Device
+include "sources/device-deviceDocument-auto-layout.eb" ;
+include "sources/device-deviceRoot.eb" ;
+//--- Project
+include "sources/project-auto-layout-document.eb" ;
+include "sources/project-BoardConnector.eb" ;
+include "sources/project-BoardLine.eb" ;
+include "sources/project-BoardObject.eb" ;
+include "sources/project-BoardQRCode.eb" ;
+include "sources/project-BoardImage.eb" ;
+include "sources/project-BoardRestrictRectangle.eb" ;
+include "sources/project-BoardText.eb" ;
+include "sources/project-BoardTrack.eb" ;
+include "sources/project-BorderCurve.eb" ;
+include "sources/project-CommentInSchematic.eb" ;
+include "sources/project-ComponentInProject.eb" ;
+include "sources/project-ComponentSymbolInProject.eb" ;
+include "sources/project-DeviceInProject.eb" ;
+include "sources/project-DeviceMasterPadInProject.eb" ;
+include "sources/project-DevicePackageInProject.eb" ;
+include "sources/project-DevicePadAssignmentInProject.eb" ;
+include "sources/project-DevicePinInProject.eb" ;
+include "sources/project-DeviceSlavePadInProject.eb" ;
+include "sources/project-DeviceSymbolInstanceInProject.eb" ;
+include "sources/project-DeviceSymbolTypeInProject.eb" ;
+include "sources/project-FontInProject.eb" ;
+include "sources/project-LabelInSchematic.eb" ;
+include "sources/project-NCInSchematic.eb" ;
+include "sources/project-NetClassInProject.eb" ;
+include "sources/project-NetInProject.eb" ;
+include "sources/project-NonPlatedHole.eb" ;
+include "sources/project-PointInSchematic.eb" ;
+include "sources/project-ProjectRoot.eb" ;
+include "sources/project-SchematicObject.eb" ;
+include "sources/project-SheetInProject.eb" ;
+include "sources/project-WireInSchematic.eb" ;
+
+//---
+graphviz SymbolRoot ;
+graphviz PackageRoot ;
+graphviz DeviceRoot ;
+graphviz FontRoot ;
+graphviz MergerRoot ;
+graphviz ArtworkRoot ;
+graphviz ProjectRoot ;
