@@ -288,14 +288,15 @@ extension AutoLayoutProjectDocument {
     let currentSymbolTypeSet = Set (currentSymbolTypeDictionary.keys)
     let candidateSymbolTypeSet = Set (candidateSymbolTypeDictionary.keys)
     let missingSymbols = currentSymbolTypeSet.subtracting (candidateSymbolTypeSet)
-    let unknownSymbols = candidateSymbolTypeSet.subtracting (currentSymbolTypeSet)
+    let unusedSymbols = candidateSymbolTypeSet.subtracting (currentSymbolTypeSet)
+    Swift.print (currentSymbolTypeSet, candidateSymbolTypeSet)
     for p in missingSymbols {
       errorMessage += "\n  - the candidate device has no '\(p)' symbol type"
     }
-    for p in unknownSymbols {
-      errorMessage += "\n  - the candidate device has unknown '\(p)' symbol type (available: "
+    for p in unusedSymbols {
+      errorMessage += "\n  - the candidate device has unknown '\(p)' symbol type (required: "
       var first = true
-      for symbol in candidateSymbolTypeSet {
+      for symbol in currentSymbolTypeSet {
         if first {
           first = false
         }else{

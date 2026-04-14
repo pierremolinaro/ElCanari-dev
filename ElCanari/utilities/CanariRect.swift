@@ -71,7 +71,7 @@ struct CanariRect : Equatable, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (left inLeft : Int, bottom inBottom: Int, width inWidth : Int, height inHeight : Int) {
+  init (left inLeft : Int, bottom inBottom : Int, width inWidth : Int, height inHeight : Int) {
     if (inWidth > 0) && (inHeight > 0) {
       self.origin = CanariPoint (x: inLeft, y: inBottom)
       self.size = CanariSize (width: inWidth, height: inHeight)
