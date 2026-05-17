@@ -41,7 +41,7 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (_ inBezierPath : NSBezierPath) {
-    self.mPath = inBezierPath.copy () as! NSBezierPath
+    self.mPath = Self.cloning (nsBezierPath: inBezierPath)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -112,7 +112,7 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var nsBezierPath : NSBezierPath {
-    return self.mPath.copy () as! NSBezierPath
+    return Self.cloning (nsBezierPath: self.mPath)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -136,15 +136,41 @@ struct BezierPath : Hashable {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // À partir de Sonoma, self.mPath.copy () plante si le self.mPath est vide !!
+  // On contourne le pb avec la fonction suivante
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private static func cloning (nsBezierPath inBezierPath : NSBezierPath) -> NSBezierPath {
+//    return inBezierPath.copy () as! NSBezierPath
+    let bp = NSBezierPath ()
+    bp.lineWidth = inBezierPath.lineWidth
+    bp.lineCapStyle = inBezierPath.lineCapStyle
+    bp.lineJoinStyle = inBezierPath.lineJoinStyle
+    bp.miterLimit = inBezierPath.miterLimit
+    bp.flatness = inBezierPath.flatness
+    bp.windingRule = inBezierPath.windingRule
+    if !inBezierPath.isEmpty {
+      bp.append (inBezierPath)
+    }
+    return bp
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private mutating func internalInsulatePath () {
+    if !isKnownUniquelyReferenced (&self.mPath) {
+      self.mPath = Self.cloning (nsBezierPath: self.mPath)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var lineWidth : CGFloat {
     get {
       return self.mPath.lineWidth
     }
     set {
-      if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! NSBezierPath
-      }
+      self.internalInsulatePath ()
       self.mPath.lineWidth = newValue
     }
   }
@@ -156,9 +182,7 @@ struct BezierPath : Hashable {
       return self.mPath.lineCapStyle
     }
     set {
-      if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! NSBezierPath
-      }
+      self.internalInsulatePath ()
       self.mPath.lineCapStyle = newValue
     }
   }
@@ -170,9 +194,7 @@ struct BezierPath : Hashable {
       return self.mPath.lineJoinStyle
     }
     set {
-      if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! NSBezierPath
-      }
+      self.internalInsulatePath ()
       self.mPath.lineJoinStyle = newValue
     }
   }
@@ -184,9 +206,7 @@ struct BezierPath : Hashable {
       return self.mPath.windingRule
     }
     set {
-      if !isKnownUniquelyReferenced (&self.mPath) {
-        self.mPath = self.mPath.copy () as! NSBezierPath
-      }
+      self.internalInsulatePath ()
       self.mPath.windingRule = newValue
     }
   }
@@ -194,90 +214,63 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendRect (_ inRect : NSRect) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.appendRect (inRect)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendOval (in inRect : NSRect) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.appendOval (in: inRect)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func move (to inPoint : NSPoint) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.move (to: inPoint)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func relativeMove (to inPoint : NSPoint) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.relativeMove (to: inPoint)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func line (to inPoint : NSPoint) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.line (to: inPoint)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func relativeLine (to inPoint : NSPoint) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.relativeLine (to: inPoint)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func curve (to inPoint : NSPoint, controlPoint1 inCP1 : NSPoint, controlPoint2 inCP2 : NSPoint) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.curve (to: inPoint, controlPoint1: inCP1, controlPoint2: inCP2)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func close () {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.close ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  mutating func relativeLine (to inPoint : NSPoint) {
-//    if !isKnownUniquelyReferenced (&self.mPath) {
-//      self.mPath = self.mPath.copy () as! NSBezierPath
-//    }
-//    self.mPath.relativeLine (to: inPoint)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   mutating func transform (using transform: AffineTransform) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.transform (using: transform)
   }
 
@@ -332,18 +325,14 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inBezierPath : NSBezierPath) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.append (inBezierPath)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (_ inBezierPath : BezierPath) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     self.mPath.append (inBezierPath.nsBezierPath)
   }
 
@@ -420,12 +409,10 @@ struct BezierPath : Hashable {
     )
     var path = BezierPath ()
     // https://forums.swift.org/t/handling-the-new-forming-unsaferawpointer-warning/65523/4
-//    public typealias CGPathApplierFunction = @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void
     let callBack : @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void = {
       unsafe pathByStrokingCallback ($0, $1)
     }
     unsafe withUnsafeMutablePointer (to: &path.mPath) {
-   //   cgPath.apply (info: $0, function: pathByStrokingCallback)
       unsafe cgPath.apply (info: $0, function: callBack)
     }
     return path
@@ -506,9 +493,7 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendOblong (in inRect : NSRect) {
-    if !isKnownUniquelyReferenced (&self.mPath) {
-      self.mPath = self.mPath.copy () as! NSBezierPath
-    }
+    self.internalInsulatePath ()
     let width = inRect.size.width
     let height = inRect.size.height
     if width < height {
