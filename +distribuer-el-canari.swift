@@ -27,17 +27,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.9"
+let VERSION_CANARI = "1.9.10"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.2 beta, Sparkle 2.8.0"
+  "Construit avec Xcode 26.5, Sparkle 2.9.2"
 ]
 let BUGFIXES : [String] = [
+  "Crash sur 14.x (Sonoma) et ultérieur : « text » vide dans le document « symbole »"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Projet : l'ERC détecte maintenant les pistes trop étroites"
 ]
 
 //------------------------------------------------------------------------------
