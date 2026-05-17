@@ -213,8 +213,8 @@ final class Controller_AutoLayoutProjectDocument_componentController : NSObject,
         self?.mSortDescriptorArray.append ({ (_ left : ComponentInProject, _ right : ComponentInProject) in return compare_String_properties (left.deviceName_property, ascending, right.deviceName_property) })
       },
       title: "Device",
-      minWidth: 60,
-      maxWidth: 300,
+      minWidth: 300,
+      maxWidth: 400,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -226,7 +226,7 @@ final class Controller_AutoLayoutProjectDocument_componentController : NSObject,
         self?.mSortDescriptorArray.append ({ (_ left : ComponentInProject, _ right : ComponentInProject) in return compare_String_properties (left.selectedPackageName_property, ascending, right.selectedPackageName_property) })
       },
       title: "Package",
-      minWidth: 60,
+      minWidth: 150,
       maxWidth: 300,
       headerAlignment: .left,
       contentAlignment: .left
@@ -239,7 +239,7 @@ final class Controller_AutoLayoutProjectDocument_componentController : NSObject,
         self?.mSortDescriptorArray.append ({ (_ left : ComponentInProject, _ right : ComponentInProject) in return compare_String_properties (left.mComponentValue_property, ascending, right.mComponentValue_property) })
       },
       title: "Value",
-      minWidth: 60,
+      minWidth: 100,
       maxWidth: 200,
       headerAlignment: .left,
       contentAlignment: .left

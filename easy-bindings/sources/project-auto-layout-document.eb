@@ -147,11 +147,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   tableViewController #componentController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mComponents {
      column componentName (title: "Name", minWidth: 60, maxWidth: 150, headerAlignment: .left, contentAlignment: .left)
        sortkey componentName
-     column deviceName (title: "Device", minWidth: 60, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
+     column deviceName (title: "Device", minWidth: 300, maxWidth: 400, headerAlignment: .left, contentAlignment: .left)
        sortkey deviceName
-     column selectedPackageName (title: "Package", minWidth: 60, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
+     column selectedPackageName (title: "Package", minWidth: 150, maxWidth: 300, headerAlignment: .left, contentAlignment: .left)
        sortkey selectedPackageName
-     editableColumn mComponentValue (title: "Value", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left)
+     editableColumn mComponentValue (title: "Value", minWidth: 100, maxWidth: 200, headerAlignment: .left, contentAlignment: .left)
        sortkey mComponentValue
      column placementInSchematic (title: "inSchematics", minWidth: 60, maxWidth: 200, headerAlignment: .center, contentAlignment: .center)
        sortkey placementInSchematic

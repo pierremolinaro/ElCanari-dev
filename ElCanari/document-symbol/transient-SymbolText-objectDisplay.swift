@@ -28,7 +28,8 @@ import AppKit
     ]
     let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
     var shape = EBShape ()
-    shape.add (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
+    let text = self_text.isEmpty ? "?" : self_text
+    shape.add (text: text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2
 }

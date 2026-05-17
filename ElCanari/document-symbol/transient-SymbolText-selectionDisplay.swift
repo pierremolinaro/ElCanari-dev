@@ -27,7 +27,8 @@ import AppKit
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont
     ]
-    let textShape = EBShape (text: self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
+    let text = self_text.isEmpty ? "?" : self_text
+    let textShape = EBShape (text: text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     var bp = BezierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
     shape.add (stroke: [bp], prefs_selectionHiliteColor)

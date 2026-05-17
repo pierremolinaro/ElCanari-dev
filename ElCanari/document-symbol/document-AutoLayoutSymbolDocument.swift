@@ -589,20 +589,16 @@ import AppKit
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutHorizontalStackView ()
-      do{
-        let vStackView_view_view = AutoLayoutStaticLabel (title: "Value", bold: false, size: .small, alignment: .right)
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
-      _ = vStackView_view.appendGutter ()
-      do{
-        let vStackView_view_view = AutoLayoutTextField (minWidth: 56, size: .small)
-          .automaticallyAdjustHeight (maxWidth: 100)
-          .bind_value (self.mSymbolPinSelectionController.name_property, sendContinously:true)
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
+      let vStackView_view = AutoLayoutStaticLabel (title: "Value", bold: false, size: .small, alignment: .center)
       _ = vStackView .appendView (vStackView_view)
     }
+    do{
+      let vStackView_view = AutoLayoutTextField (minWidth: 56, size: .small)
+        .automaticallyAdjustHeight (maxWidth: 100)
+        .bind_value (self.mSymbolPinSelectionController.name_property, sendContinously:true)
+      _ = vStackView .appendView (vStackView_view)
+    }
+    _ = vStackView.appendSeparator ()
     do{
       let vStackView_view = AutoLayoutHorizontalStackView ()
       do{

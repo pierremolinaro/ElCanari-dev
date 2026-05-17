@@ -182,14 +182,20 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentM
 
   stackView \SymbolPinInspectorView vStack {
     StaticLabel (title: "Pin Inspector", bold: yes, size: .small, alignment: .center)
-    hStack { 
-      StaticLabel (title: "Value", bold: no, size: .small, alignment: .right)
-      gutter
-      TextField (minWidth: 56, size: .small) {
-        automaticallyAdjustHeight (maxWidth: 100)
-        $value #mSymbolPinSelectionController.name (sendContinously : yes)
-      }
+    StaticLabel (title: "Value", bold: no, size: .small, alignment: .center)
+    TextField (minWidth: 56, size: .small) {
+      automaticallyAdjustHeight (maxWidth: 100)
+      $value #mSymbolPinSelectionController.name (sendContinously : yes)
     }
+    separator
+//    hStack { 
+//      StaticLabel (title: "Value", bold: no, size: .small, alignment: .right)
+//      gutter
+//      TextField (minWidth: 56, size: .small) {
+//        automaticallyAdjustHeight (maxWidth: 100)
+//        $value #mSymbolPinSelectionController.name (sendContinously : yes)
+//      }
+//    }
     hStack { 
       StaticLabel (title: "Name Alignment", bold: no, size: .small, alignment: .right)
       gutter
