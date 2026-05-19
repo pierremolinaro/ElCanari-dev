@@ -2814,8 +2814,6 @@
 		CFCD3AD721FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD521FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift */; };
 		CFCD46C22A0573E100DC1D63 /* property-CanariWireArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD46C12A0573E100DC1D63 /* property-CanariWireArray.swift */; };
 		CFCD46C32A0573E200DC1D63 /* property-CanariWireArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD46C12A0573E100DC1D63 /* property-CanariWireArray.swift */; };
-		CFCD46C62A0573F800DC1D63 /* transient-WireInSchematic-wires.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD46C52A0573F800DC1D63 /* transient-WireInSchematic-wires.swift */; };
-		CFCD46C72A0573F800DC1D63 /* transient-WireInSchematic-wires.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD46C52A0573F800DC1D63 /* transient-WireInSchematic-wires.swift */; };
 		CFCD53112C0DCB7400D17128 /* extension-AutoLayoutMergerDocument-model-ElCanari.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD53102C0DCB7400D17128 /* extension-AutoLayoutMergerDocument-model-ElCanari.swift */; };
 		CFCD53122C0DCB7400D17128 /* extension-AutoLayoutMergerDocument-model-ElCanari.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD53102C0DCB7400D17128 /* extension-AutoLayoutMergerDocument-model-ElCanari.swift */; };
 		CFCDA84F2C09D6E3005424E8 /* compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDA84E2C09D6E3005424E8 /* compression.swift */; };
@@ -5067,7 +5065,6 @@
 		CFCD3AD221FC91A000DE503C /* phase7-performLibraryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase7-performLibraryOperations.swift"; sourceTree = "<group>"; };
 		CFCD3AD521FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase3-readLibraryDescriptionFileContents.swift"; sourceTree = "<group>"; };
 		CFCD46C12A0573E100DC1D63 /* property-CanariWireArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "property-CanariWireArray.swift"; sourceTree = "<group>"; };
-		CFCD46C52A0573F800DC1D63 /* transient-WireInSchematic-wires.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-WireInSchematic-wires.swift"; sourceTree = "<group>"; };
 		CFCD53102C0DCB7400D17128 /* extension-AutoLayoutMergerDocument-model-ElCanari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutMergerDocument-model-ElCanari.swift"; sourceTree = "<group>"; };
 		CFCDA84E2C09D6E3005424E8 /* compression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = compression.swift; sourceTree = "<group>"; };
 		CFCE57B12343CEC900D96E40 /* transient-ProjectRoot-allClassNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectRoot-allClassNames.swift"; sourceTree = "<group>"; };
@@ -7955,7 +7952,6 @@
 				CFEB7CE2233A28A00060A97A /* transient-WireInSchematic-netName.swift */,
 				CFEB7CE0233A28A00060A97A /* transient-WireInSchematic-objectDisplay.swift */,
 				CFEB7CDF233A28A00060A97A /* transient-WireInSchematic-selectionDisplay.swift */,
-				CFCD46C52A0573F800DC1D63 /* transient-WireInSchematic-wires.swift */,
 			);
 			name = "project — entity — WireInSchematic";
 			path = "ElCanari/document-project-entity-WireInSchematic";
@@ -8122,7 +8118,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 2650;
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
@@ -8610,7 +8606,6 @@
 				CF59C44629BE36AB004CA404 /* property-NetInfoPointArray.swift in Sources */,
 				CFB4C0DA2794674800C509A9 /* AutoLayoutLabel.swift in Sources */,
 				CFDE5DA529EED1AB005A5EC6 /* transient-BoardImage-boardScaledImageHeight.swift in Sources */,
-				CFCD46C62A0573F800DC1D63 /* transient-WireInSchematic-wires.swift in Sources */,
 				CF3DAD1D2AD096CA003830F4 /* EBObservableMutableProperty.swift in Sources */,
 				CF35A54621A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */,
 				CF2804992BE14206006758CC /* AutoLayoutViewByPrefixingAppIcon.swift in Sources */,
@@ -10406,7 +10401,6 @@
 				CFDD6D4D26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionField.swift in Sources */,
 				CFDE5DA629EED1AB005A5EC6 /* transient-BoardImage-boardScaledImageHeight.swift in Sources */,
 				CF4B39D721D4E8B1001217C6 /* transient-PackagePad-zoneAllowsManualRenumbering.swift in Sources */,
-				CFCD46C72A0573F800DC1D63 /* transient-WireInSchematic-wires.swift in Sources */,
 				CF3DAD1E2AD096CA003830F4 /* EBObservableMutableProperty.swift in Sources */,
 				CF8BE748235112CC00F95B3A /* EBReadOnlyAbstractGenericRelationshipProperty.swift in Sources */,
 				CFEB7AF8233A249E0060A97A /* transient-BoardText-fontName.swift in Sources */,

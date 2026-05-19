@@ -35,13 +35,6 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
-// @MainActor protocol WireInSchematic_wires : AnyObject {
-//   var wires : CanariWireArray? { get }
-// }
-
-//--------------------------------------------------------------------------------------------------
-
-// Commented out, not used
 // @MainActor protocol WireInSchematic_selectionDisplay : AnyObject {
 //   var selectionDisplay : EBShape? { get }
 // }
@@ -55,7 +48,6 @@ final class WireInSchematic : SchematicObject
     // WireInSchematic_netName // Commented out, not used
     // WireInSchematic_netClassName // Commented out, not used
     // WireInSchematic_hasNet // Commented out, not used
-    // WireInSchematic_wires // Commented out, not used
     // WireInSchematic_selectionDisplay // Commented out, not used
     {
 
@@ -273,27 +265,6 @@ final class WireInSchematic : SchematicObject
       }
     }
     self.mP1_property.hasNet_property.startsBeingObserved (by: self.hasNet_property)
-  //--- Atomic property: wires
-    self.wires_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mP1_property.location_property.selection
-        let s1 = unwSelf.mP2_property.location_property.selection
-        switch (s0, s1) {
-        case (.single (let v0),
-              .single (let v1)) :
-          return .single (transient_WireInSchematic_wires (v0, v1))
-        case (.multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mP1_property.location_property.startsBeingObserved (by: self.wires_property)
-    self.mP2_property.location_property.startsBeingObserved (by: self.wires_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
