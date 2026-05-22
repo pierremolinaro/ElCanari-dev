@@ -36,8 +36,8 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
         self?.mDataSource.sort { return values_String_are_ordered ($0.netName, ascending, $1.netName) }
       },
       title: "Net Name",
-      minWidth: 60,
-      maxWidth: 250,
+      minWidth: 250,
+      maxWidth: 500,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -48,7 +48,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
         self?.mDataSource.sort { return values_String_are_ordered ($0.netClassName, ascending, $1.netClassName) }
       },
       title: "Class Name",
-      minWidth: 60,
+      minWidth: 100,
       maxWidth: 250,
       headerAlignment: .left,
       contentAlignment: .left
@@ -111,7 +111,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
         }
       },
       title: "Warns One Label",
-      minWidth: 60,
+      minWidth: 100,
       maxWidth: 100,
       headerAlignment: .left,
       contentAlignment: .center
@@ -151,7 +151,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
         self?.mDataSource.sort { return ascending ? ($0.trackCount < $1.trackCount) : ($0.trackCount > $1.trackCount) }
       },
       title: "Tracks in Board",
-      minWidth: 60,
+      minWidth: 100,
       maxWidth: 100,
       headerAlignment: .left,
       contentAlignment: .left

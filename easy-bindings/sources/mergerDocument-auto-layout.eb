@@ -169,7 +169,6 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       }
       Label (bold: yes, size : .small) {
         setRedTextColor ()
-//  §     $title #mBoardModelSelection.errorArchiveVersionMessage
         $size #mBoardModelSelection.errorArchiveLabelSize
         $textColor #mBoardModelSelection.errorArchiveLabelColor
         $hidden #mBoardModelSelection.errorArchiveVersionMessageIsHidden
@@ -464,8 +463,6 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       $verticalFlip prefs.mergerBoardViewVerticalFlip
       $overObjectsDisplay root.boardOutlineRectDisplay
       $graphicController #mBoardInstanceController
-//      $arrowKeyMagnitude root.arrowMagnitude
-//      $shiftArrowKeyMagnitude root.shiftArrowMagnitude
       $xPlacardUnit root.boardWidthUnit
       $yPlacardUnit root.boardHeightUnit
     }
@@ -772,49 +769,6 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       }
       space    
     }
-
-
-
-
-//    hStack {
-//      vStack {
-//        Button (title: "Import Artwork…", size : .regular) {
-//          expandableWidth ()
-//          $hidden !root.mArtwork.none
-//          $run importArtworkAction 
-//        }
-//        Button (title: "Detach Artwork", size : .regular) {
-//          expandableWidth ()
-//          $hidden root.mArtwork.none
-//          $run detachArtworkAction 
-//        }
-//        Label (bold: yes, size : .regular) { expandableWidth () set (alignment: .center) $title root.mArtworkName }
-//        hStack {
-//          Checkbox (title: "Merger Archive", size : .regular) { $value root.mGenerateMergerArchive }
-//          Checkbox (title: "Gerber, PDF", size : .regular) { $value root.mGenerateGerberAndPDF }
-//          Button (title: "Generate Files", size : .regular) {
-//            expandableWidth ()
-//            $enabled !root.mArtwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
-//            $run generateProductFilesAction
-//          }
-//        }
-//      }
-//      vStack {
-//        Label (bold: yes, size: .regular) {
-//          set (alignment: .left)
-//          expandableWidth ()
-//          $title self.documentFileShouldBeRenamedErrorMessage
-//        }
-//        TextObserverView (size: .small) {
-//          expandableWidth ()
-//          setNoBackground ()
-//          setNoVerticalScroller ()
-//          setNoHorizontalScroller ()
-//          $observedValue self.incorrectDocumentFileDetailedErrorMessage
-//        }
-//        space
-//      }
-//    }
     hStack $hidden !root.mArtwork.none {
       space
       vStack {
