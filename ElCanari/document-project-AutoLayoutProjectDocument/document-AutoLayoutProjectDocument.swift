@@ -6129,6 +6129,7 @@ do{
       }
       _ = vStackView .appendView (vStackView_view)
     }
+    _ = vStackView.appendFlexibleSpace ()
     return vStackView
   }
 

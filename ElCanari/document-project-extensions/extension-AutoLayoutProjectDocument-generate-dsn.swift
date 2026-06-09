@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,7 +43,7 @@ extension AutoLayoutProjectDocument {
       savePanel.directoryURL = url
     }
   //--- Save Panel
-    savePanel.allowedFileTypes = ["dsn"]
+    savePanel.allowedContentTypes = [UTType (filenameExtension: "dsn")!]
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = self.rootObject.mDSNFileProposedName
     savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in

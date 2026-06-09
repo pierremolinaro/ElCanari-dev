@@ -2964,6 +2964,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       gutter
       TextObserverView (size: .small) { expandableWidth () $observedValue root.artworkComments }
     }
+    space
   }
 
   //············································································

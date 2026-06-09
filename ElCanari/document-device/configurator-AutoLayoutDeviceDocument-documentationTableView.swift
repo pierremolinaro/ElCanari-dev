@@ -8,6 +8,7 @@ import AppKit
 
 //--- START OF USER ZONE 1
 
+import UniformTypeIdentifiers
 
 //--- END OF USER ZONE 1
 
@@ -17,7 +18,7 @@ extension AutoLayoutDeviceDocument {
   final func configure_documentationTableView (_ inOutlet : AutoLayoutTableView) {
 //--- START OF USER ZONE 2
       //  NSPasteboard.PasteboardType.fileURL is available from 10.13
-        let myFileURL =  NSPasteboard.PasteboardType (kUTTypeFileURL as String)
+        let myFileURL = NSPasteboard.PasteboardType (UTType.fileURL.identifier)
         inOutlet.set (
           draggedTypes: [myFileURL],
           dragFilterCallBack: { (urls : [URL]) -> Bool in
@@ -46,3 +47,4 @@ extension AutoLayoutDeviceDocument {
 }
 
 //--------------------------------------------------------------------------------------------------
+

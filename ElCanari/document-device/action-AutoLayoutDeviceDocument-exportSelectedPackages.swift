@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,7 +17,7 @@ extension AutoLayoutDeviceDocument {
     let selectedPackages = self.packageController.selectedArray
     for package in selectedPackages.values {
       let savePanel = NSSavePanel ()
-      savePanel.allowedFileTypes = [ElCanariPackage_EXTENSION]
+      savePanel.allowedContentTypes = [UTType (filenameExtension: ElCanariPackage_EXTENSION)!]
       savePanel.allowsOtherFileTypes = false
       savePanel.nameFieldStringValue = package.mName + "." + ElCanariPackage_EXTENSION
       savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in

@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Quartz
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -130,7 +131,7 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
 
   @objc func saveDocumentAs (_ inSender : Any?) {
     let savePanel = NSSavePanel ()
-    savePanel.allowedFileTypes = ["pdf"]
+    savePanel.allowedContentTypes = [.pdf]
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = self.title
     savePanel.beginSheetModal (for: self) { inResponse in

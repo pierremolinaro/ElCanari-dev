@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,7 +17,7 @@ extension AutoLayoutDeviceDocument {
     let selectedSymbolTypes = self.symbolTypeController.selectedArray
     for symbolType in selectedSymbolTypes.values {
       let savePanel = NSSavePanel ()
-      savePanel.allowedFileTypes = [ElCanariSymbol_EXTENSION]
+      savePanel.allowedContentTypes = [UTType (filenameExtension: ElCanariSymbol_EXTENSION)!]
       savePanel.allowsOtherFileTypes = false
       savePanel.nameFieldStringValue = symbolType.mTypeName + "." + ElCanariSymbol_EXTENSION
       savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in

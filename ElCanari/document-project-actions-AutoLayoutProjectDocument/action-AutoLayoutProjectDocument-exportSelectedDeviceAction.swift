@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,7 +19,7 @@ extension AutoLayoutProjectDocument {
         for device in selectedDevices.values {
           if device.mDeviceFileData.count > 0 {
             let savePanel = NSSavePanel ()
-            savePanel.allowedFileTypes = [ElCanariDevice_EXTENSION]
+            savePanel.allowedContentTypes = [UTType (filenameExtension: ElCanariDevice_EXTENSION)!]
             savePanel.allowsOtherFileTypes = false
             savePanel.nameFieldStringValue = device.mDeviceName + "." + ElCanariDevice_EXTENSION
             savePanel.beginSheetModal (for: self.windowForSheet!) { (_ inResponse : NSApplication.ModalResponse) in

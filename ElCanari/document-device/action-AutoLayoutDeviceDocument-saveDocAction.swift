@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -17,7 +18,7 @@ extension AutoLayoutDeviceDocument {
     if selectedDocArray.count == 1 {
       let selectedDoc = selectedDocArray [0]
       let savePanel = NSSavePanel ()
-      savePanel.allowedFileTypes = ["pdf"]
+      savePanel.allowedContentTypes = [.pdf]
       savePanel.allowsOtherFileTypes = false
       savePanel.nameFieldStringValue = selectedDoc.mFileName + ".pdf"
       savePanel.beginSheetModal (for: self.windowForSheet!) { inResponse in

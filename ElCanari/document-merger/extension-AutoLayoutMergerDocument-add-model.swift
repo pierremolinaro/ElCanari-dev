@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -28,10 +29,10 @@ extension AutoLayoutMergerDocument {
       openPanel.canChooseFiles = true
       openPanel.canChooseDirectories = false
       openPanel.allowsMultipleSelection = false
-      openPanel.allowedFileTypes = [
-        EL_CANARI_LEGACY_MERGER_ARCHIVE,
-        EL_CANARI_MERGER_ARCHIVE,
-        KICAD_PCB
+      openPanel.allowedContentTypes = [
+        UTType (filenameExtension: EL_CANARI_LEGACY_MERGER_ARCHIVE)!,
+        UTType (filenameExtension: EL_CANARI_MERGER_ARCHIVE)!,
+        UTType (filenameExtension: KICAD_PCB)!
       ]
     //--- MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       gPanel = OpenPanelDelegateForFilteringBoardModels (boardModelNames)

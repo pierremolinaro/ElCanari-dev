@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import UniformTypeIdentifiers
 
 //--------------------------------------------------------------------------------------------------
 
@@ -22,7 +23,7 @@ extension AutoLayoutProjectDocument {
     openPanel.allowsMultipleSelection = false
     openPanel.canChooseDirectories = false
     openPanel.canChooseFiles = true
-    openPanel.allowedFileTypes = ["ses"]
+    openPanel.allowedContentTypes = [UTType (filenameExtension: "ses")!]
     openPanel.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
       DispatchQueue.main.async {
         openPanel.orderOut (nil)

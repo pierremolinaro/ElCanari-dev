@@ -412,7 +412,7 @@ struct BezierPath : Hashable {
     let callBack : @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<CGPathElement>) -> Void = {
       unsafe pathByStrokingCallback ($0, $1)
     }
-    unsafe withUnsafeMutablePointer (to: &path.mPath) {
+    withUnsafeMutablePointer (to: &path.mPath) {
       unsafe cgPath.apply (info: $0, function: callBack)
     }
     return path
