@@ -27,15 +27,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.9.10"
-let MAC_OS_MINIMUM_VERSION = "10.15"
+let VERSION_CANARI = "1.12.0"
+let MAC_OS_MINIMUM_VERSION = "12"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.5, Sparkle 2.9.2"
+  "Construit avec Xcode 26.7 beta, Sparkle 2.9.3"
 ]
 let BUGFIXES : [String] = [
-  "Crash sur 14.x (Sonoma) et ultérieur : « text » vide dans le document « symbole »"
 ]
 let CHANGES : [String] = [
+  "Version système minimum : 12 (Monterey)",
+  "Uniquement pour puce Apple"
 ]
 let NEWS : [String] = [
 ]
@@ -195,7 +196,7 @@ do{
     "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
     [ "-target", "ElCanari-" + BUILD_KIND.string,
       "-configuration", BUILD_KIND.string,
-//      "ONLY_ACTIVE_ARCH=YES", "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES", "ARCHS=arm64",
       "-verbose"
     ]
   )
