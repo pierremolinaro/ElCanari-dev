@@ -101,7 +101,7 @@ struct ProductRepresentation : Codable {
                         width inWidth : ProductLength,
                         layers inLayerSet : ProductLayerSet) {
     let segmentArray = inBezierPath.productSegments (
-      withFlatness: 0.1,
+      withFlatness: 0.025,
       transformedBy: inAT,
       clippedBy: inClipRect
     )

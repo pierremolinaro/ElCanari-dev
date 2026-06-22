@@ -738,7 +738,7 @@ extension AutoLayoutProjectDocument {
           ()
         }
       }
-      let linePath = retainedBP.linePathesByFlattening (withFlatness: 0.1) [0]
+      let linePath = retainedBP.linePathesByFlattening (withFlatness: 0.025) [0]
       result.append (ProductPoint (cocoaPoint: linePath.origin))
       for p in linePath.lines {
         result.append (ProductPoint (cocoaPoint: p))
@@ -747,10 +747,30 @@ extension AutoLayoutProjectDocument {
       let halfBorderLineWidth = ProductLength (valueInCanariUnit: self.rootObject.mBoardLimitsWidth / 2)
       let boardWidth = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardWidth)
       let boardHeight = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardHeight)
-      result.append (ProductPoint (x: halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom left
-      result.append (ProductPoint (x: halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top left
-      result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top right
-      result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom right
+      let d = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
+      if self.rootObject.mBoardCornerRadius < d {
+        result.append (ProductPoint (x: halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom left
+        result.append (ProductPoint (x: halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top left
+        result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top right
+        result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom right
+      }else{
+        let r = CanariRect (
+          left: self.rootObject.mBoardLimitsWidth / 2,
+          bottom: self.rootObject.mBoardLimitsWidth / 2,
+          width: self.rootObject.mRectangularBoardWidth - self.rootObject.mBoardLimitsWidth,
+          height: self.rootObject.mRectangularBoardHeight - self.rootObject.mBoardLimitsWidth
+        )
+        let roundedRect = BezierPath (
+          roundedRect: r.cocoaRect,
+          xRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2),
+          yRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2)
+        )
+        let linePath = roundedRect.linePathesByFlattening (withFlatness: 0.025) [0]
+        result.append (ProductPoint (cocoaPoint: linePath.origin))
+        for p in linePath.lines {
+          result.append (ProductPoint (cocoaPoint: p))
+        }
+      }
     }
     return result
   }

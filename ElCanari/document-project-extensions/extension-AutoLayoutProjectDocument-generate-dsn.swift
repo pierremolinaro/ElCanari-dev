@@ -71,13 +71,11 @@ extension AutoLayoutProjectDocument {
   func dsnContents (_ inExportTracks : Bool) -> String {
   //--- Selecting DSN Unit
     let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
-//    let converter = CanariUnitToDSNUnitConverter (unit: .mil)
-//    let converter = CanariUnitToDSNUnitConverter (unit: .micrometer)
     let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance)
   //--- Border
     let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
     let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
-    let signalPolygonVertices = self.buildSignalPolygon (converter)
+    let boardBoundaryPolygonVertices = self.buildBoardBoundaryPolygon (converter)
   //--- Layer configuration
     let layerConfiguration = self.rootObject.mLayerConfiguration
   //--- Restrict rectangles
@@ -205,7 +203,7 @@ extension AutoLayoutProjectDocument {
     s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
     s += "  (unit \(converter.unitString))\n"
     s += "  (structure\n"
-    addBoardBoundary (&s, signalPolygonVertices)
+    addBoardBoundary (&s, boardBoundaryPolygonVertices)
     autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections, layerConfiguration)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
@@ -242,7 +240,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func buildSignalPolygon (_ inConverter : CanariUnitToDSNUnitConverter) -> EBLinePath { // Points in DSN Unit
+  private func buildBoardBoundaryPolygon (_ inConverter : CanariUnitToDSNUnitConverter) -> EBLinePath { // Points in DSN Unit
     switch self.rootObject.mBoardShape {
     case .bezierPathes :
       var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
@@ -267,7 +265,7 @@ extension AutoLayoutProjectDocument {
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
       }
-      return clearanceBP.linePathesByFlattening (withFlatness: 0.1) [0]
+      return clearanceBP.linePathesByFlattening (withFlatness: 0.025) [0]
     case .rectangular :
       let d = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
       let r = CanariRect (
@@ -276,7 +274,17 @@ extension AutoLayoutProjectDocument {
         width: self.rootObject.mRectangularBoardWidth - 2 * d,
         height: self.rootObject.mRectangularBoardHeight - 2 * d
       )
-      return BezierPath (rect: inConverter.dsnRectFromCanariRect (r)).linePathesByFlattening (withFlatness: 0.1) [0]
+      let bp : BezierPath
+      if self.rootObject.mBoardCornerRadius <= d {
+        bp = BezierPath (rect: inConverter.dsnRectFromCanariRect (r))
+      }else{
+        bp = BezierPath (
+          roundedRect: inConverter.dsnRectFromCanariRect (r),
+          xRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d),
+          yRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d)
+        )
+      }
+      return bp.linePathesByFlattening (withFlatness: 0.025) [0]
     }
   }
 
@@ -792,9 +800,7 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
 //--------------------------------------------------------------------------------------------------
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
-//                                   _ inBoardBoundBox : CanariRect,
                                    _ inSignalPolygonVertices : EBLinePath) { // In DSN Unit
-//                                   _ inConverter : CanariUnitToDSNUnitConverter) {
 
   ioString += "    (boundary\n"
   ioString += "      (path pcb 0\n"

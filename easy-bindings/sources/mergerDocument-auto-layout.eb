@@ -199,11 +199,9 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       $xPlacardUnit #mBoardModelSelection.modelWidthUnit
       $yPlacardUnit #mBoardModelSelection.modelHeightUnit
     }
-    vStack {
+    vStack $hidden root.boardModels.count > 0 {
       space
-      StaticLabel (title: "No Model", bold: yes, size: .regular, alignment: .center) {
-        $hidden root.boardModels.count > 0
-      }
+      StaticLabel (title: "No Model", bold: yes, size: .regular, alignment: .center)
       space
     }
   }

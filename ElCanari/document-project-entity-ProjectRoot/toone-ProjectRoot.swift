@@ -69,6 +69,8 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mDSNFileProposedName_property.stopsBeingObserved (by: self.mDSNFileProposedName_property) // Stored property
       oldValue.mBoardLimitsWidth_property.stopsBeingObserved (by: self.mBoardLimitsWidth_property) // Stored property
       oldValue.mBoardLimitsWidthUnit_property.stopsBeingObserved (by: self.mBoardLimitsWidthUnit_property) // Stored property
+      oldValue.mBoardCornerRadius_property.stopsBeingObserved (by: self.mBoardCornerRadius_property) // Stored property
+      oldValue.mBoardCornerRadiusUnit_property.stopsBeingObserved (by: self.mBoardCornerRadiusUnit_property) // Stored property
       oldValue.mBoardClearance_property.stopsBeingObserved (by: self.mBoardClearance_property) // Stored property
       oldValue.mBoardClearanceUnit_property.stopsBeingObserved (by: self.mBoardClearanceUnit_property) // Stored property
       oldValue.mBoardLimitsSelectedInspector_property.stopsBeingObserved (by: self.mBoardLimitsSelectedInspector_property) // Stored property
@@ -273,6 +275,8 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mDSNFileProposedName_property.startsBeingObserved (by: self.mDSNFileProposedName_property) // Stored property
       newValue.mBoardLimitsWidth_property.startsBeingObserved (by: self.mBoardLimitsWidth_property) // Stored property
       newValue.mBoardLimitsWidthUnit_property.startsBeingObserved (by: self.mBoardLimitsWidthUnit_property) // Stored property
+      newValue.mBoardCornerRadius_property.startsBeingObserved (by: self.mBoardCornerRadius_property) // Stored property
+      newValue.mBoardCornerRadiusUnit_property.startsBeingObserved (by: self.mBoardCornerRadiusUnit_property) // Stored property
       newValue.mBoardClearance_property.startsBeingObserved (by: self.mBoardClearance_property) // Stored property
       newValue.mBoardClearanceUnit_property.startsBeingObserved (by: self.mBoardClearanceUnit_property) // Stored property
       newValue.mBoardLimitsSelectedInspector_property.startsBeingObserved (by: self.mBoardLimitsSelectedInspector_property) // Stored property
@@ -741,6 +745,18 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let mBoardLimitsWidthUnit_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mBoardCornerRadius' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mBoardCornerRadius_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mBoardCornerRadiusUnit' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mBoardCornerRadiusUnit_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardClearance' stored property
@@ -1903,6 +1919,14 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure mBoardLimitsWidthUnit simple stored property
     self.mBoardLimitsWidthUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mBoardLimitsWidthUnit_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mBoardCornerRadius simple stored property
+    self.mBoardCornerRadius_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mBoardCornerRadius_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mBoardCornerRadiusUnit simple stored property
+    self.mBoardCornerRadiusUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mBoardCornerRadiusUnit_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mBoardClearance simple stored property
     self.mBoardClearance_property.mReadModelFunction = { [weak self] in

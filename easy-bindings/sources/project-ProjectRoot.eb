@@ -191,6 +191,9 @@ handlingOpposite entity ProjectRoot {
   property @generateDirectRead Int mBoardLimitsWidth default 90_000 ; // 1 mm
   property @generateDirectRead Int mBoardLimitsWidthUnit default 90_000 ; // mm
 
+  property @generateDirectRead Int mBoardCornerRadius default 0 ; // 1 mm
+  property Int mBoardCornerRadiusUnit default 90_000 ; // mm
+
   property @generateDirectRead Int mBoardClearance default 90_000 ; // 1 mm
   property Int mBoardClearanceUnit default 90_000 ; // mm
 
@@ -249,6 +252,7 @@ handlingOpposite entity ProjectRoot {
     self.mBorderCurves.all.descriptor,
     self.mBoardShape,
     self.mRectangularBoardWidth, self.mRectangularBoardHeight,
+    self.mBoardCornerRadius,
     self.mBoardLimitsWidth, prefs.boardLimitsColorForBoard,
     self.mBoardClearance, prefs.boardClearanceColorForBoard
   ;

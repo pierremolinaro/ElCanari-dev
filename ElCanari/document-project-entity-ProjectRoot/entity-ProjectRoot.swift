@@ -532,6 +532,24 @@ final class ProjectRoot : EBManagedObject
   }
 
   //------------------------------------------------------------------------------------------------
+  //   Atomic property: mBoardCornerRadius
+  //------------------------------------------------------------------------------------------------
+
+  final let mBoardCornerRadius_property : EBStoredProperty_Int
+
+  //------------------------------------------------------------------------------------------------
+
+  final var mBoardCornerRadius : Int {
+    get { return self.mBoardCornerRadius_property.propval }
+  }
+
+  //------------------------------------------------------------------------------------------------
+  //   Atomic property: mBoardCornerRadiusUnit
+  //------------------------------------------------------------------------------------------------
+
+  final let mBoardCornerRadiusUnit_property : EBStoredProperty_Int
+
+  //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardClearance
   //------------------------------------------------------------------------------------------------
 
@@ -2286,6 +2304,8 @@ final class ProjectRoot : EBManagedObject
     self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: inUndoManager, key: "mDSNFileProposedName")
     self.mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsWidth")
     self.mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsWidthUnit")
+    self.mBoardCornerRadius_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardCornerRadius")
+    self.mBoardCornerRadiusUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardCornerRadiusUnit")
     self.mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardClearance")
     self.mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardClearanceUnit")
     self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardLimitsSelectedInspector")
@@ -2415,6 +2435,8 @@ final class ProjectRoot : EBManagedObject
     self.accumulateProperty (self.mDSNFileProposedName_property)
     self.accumulateProperty (self.mBoardLimitsWidth_property)
     self.accumulateProperty (self.mBoardLimitsWidthUnit_property)
+    self.accumulateProperty (self.mBoardCornerRadius_property)
+    self.accumulateProperty (self.mBoardCornerRadiusUnit_property)
     self.accumulateProperty (self.mBoardClearance_property)
     self.accumulateProperty (self.mBoardClearanceUnit_property)
     self.accumulateProperty (self.mBoardLimitsSelectedInspector_property)
@@ -3691,11 +3713,12 @@ final class ProjectRoot : EBManagedObject
         let s1 = unwSelf.mBoardShape_property.selection
         let s2 = unwSelf.mRectangularBoardWidth_property.selection
         let s3 = unwSelf.mRectangularBoardHeight_property.selection
-        let s4 = unwSelf.mBoardLimitsWidth_property.selection
-        let s5 = preferences_boardLimitsColorForBoard_property.selection
-        let s6 = unwSelf.mBoardClearance_property.selection
-        let s7 = preferences_boardClearanceColorForBoard_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
+        let s4 = unwSelf.mBoardCornerRadius_property.selection
+        let s5 = unwSelf.mBoardLimitsWidth_property.selection
+        let s6 = preferences_boardLimitsColorForBoard_property.selection
+        let s7 = unwSelf.mBoardClearance_property.selection
+        let s8 = preferences_boardClearanceColorForBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3703,9 +3726,11 @@ final class ProjectRoot : EBManagedObject
               .single (let v4),
               .single (let v5),
               .single (let v6),
-              .single (let v7)) :
-          return .single (transient_ProjectRoot_borderOutlineBackground (v0, v1, v2, v3, v4, v5, v6, v7))
+              .single (let v7),
+              .single (let v8)) :
+          return .single (transient_ProjectRoot_borderOutlineBackground (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3725,6 +3750,7 @@ final class ProjectRoot : EBManagedObject
     self.mBoardShape_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     self.mRectangularBoardWidth_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     self.mRectangularBoardHeight_property.startsBeingObserved (by: self.borderOutlineBackground_property)
+    self.mBoardCornerRadius_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     self.mBoardLimitsWidth_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     preferences_boardLimitsColorForBoard_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     self.mBoardClearance_property.startsBeingObserved (by: self.borderOutlineBackground_property)

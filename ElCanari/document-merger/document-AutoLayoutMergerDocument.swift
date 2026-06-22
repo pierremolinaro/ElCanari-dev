@@ -554,10 +554,10 @@ import AppKit
     }
     do{
       let hStackView_view = AutoLayoutVerticalStackView ()
+        .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)))
       _ = hStackView_view.appendFlexibleSpace ()
       do{
         let hStackView_view_view = AutoLayoutStaticLabel (title: "No Model", bold: true, size: .regular, alignment: .center)
-          .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)))
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       _ = hStackView_view.appendFlexibleSpace ()
