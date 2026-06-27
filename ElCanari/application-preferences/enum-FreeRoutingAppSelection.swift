@@ -8,10 +8,7 @@ import Foundation
 
 enum FreeRoutingAppSelection : Int, Sendable {
   case arm64_1_4_4 = 0
-  case x86_1_4_4 = 1
-  case legacy_1_4_4 = 2
-  case arm64_1_9_0 = 3
-  case x86_1_9_0 = 4
+  case arm64_1_9_0 = 1
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ extension FreeRoutingAppSelection : EBEnumPropertyProtocol, Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func popupTitles () -> [String] {
-    return ["arm64 FreeRouting (1.4.4)", "x86_64 FreeRouting (1.4.4)", "Legacy FreeRouting (1.4.4)", "arm64 FreeRouting (1.9.0)", "x86_64 FreeRouting (1.9.0)"]
+    return ["arm64 FreeRouting (1.4.4)", "arm64 FreeRouting (1.9.0)"]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

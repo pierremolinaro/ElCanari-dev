@@ -1840,7 +1840,7 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //   Atomic property: freeRoutingAppSelection
 //--------------------------------------------------------------------------------------------------
 
-@MainActor let preferences_freeRoutingAppSelection_property = EBPreferenceProperty_FreeRoutingAppSelection (defaultValue: FreeRoutingAppSelection.legacy_1_4_4, prefKey: Preferences_freeRoutingAppSelection)
+@MainActor let preferences_freeRoutingAppSelection_property = EBPreferenceProperty_FreeRoutingAppSelection (defaultValue: FreeRoutingAppSelection.arm64_1_4_4, prefKey: Preferences_freeRoutingAppSelection)
 
 //--------------------------------------------------------------------------------------------------
 //   Atomic property: mSelectedPrefsPage
