@@ -2679,20 +2679,6 @@ do{
       }
       _ = vStackView .appendView (vStackView_view)
     }
-    do{
-      let vStackView_view = AutoLayoutHorizontalStackView ()
-      do{
-        let vStackView_view_view = AutoLayoutStaticLabel (title: "Corner Radius", bold: false, size: .small, alignment: .right)
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
-      _ = vStackView_view.appendGutter ()
-      do{
-        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-          .bind_dimensionAndUnit (self.rootObject.mBoardCornerRadius_property, self.rootObject.mBoardCornerRadiusUnit_property)
-        _ = vStackView_view .appendView (vStackView_view_view)
-      }
-      _ = vStackView .appendView (vStackView_view)
-    }
     return vStackView
   }
 

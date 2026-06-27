@@ -313,6 +313,32 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @objc func selectTracksPreservedByRouter (_ inSender : Any?) {
+    var newSelectedObjects = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack, track.mIsPreservedByAutoRouter {
+        newSelectedObjects.append (track)
+      }
+    }
+    self.boardObjectsController.addToSelection (objects: newSelectedObjects)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc func selectTracksNotPreservedByRouter (_ inSender : Any?) {
+    var newSelectedObjects = [BoardObject] ()
+    for object in self.rootObject.mBoardObjects.values {
+      if let track = object as? BoardTrack, !track.mIsPreservedByAutoRouter {
+        newSelectedObjects.append (track)
+      }
+    }
+    self.boardObjectsController.addToSelection (objects: newSelectedObjects)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   @objc func renameComponentsLeftToRightUpwardsAction (_ inSender : Any?) {
     self.renameComponents (by: compareLefToRightUpwardsComponentLocation)
   }

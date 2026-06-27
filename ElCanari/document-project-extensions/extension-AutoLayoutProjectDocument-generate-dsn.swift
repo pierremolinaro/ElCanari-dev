@@ -326,7 +326,8 @@ extension AutoLayoutProjectDocument {
       if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
         let p = inConverter.dsnPointFromCanariPoint (via.location!)
         let netName = via.netNameFromTracks!
-        ioString += "    (via \"viaForClassDefault\" \(p.x) \(p.y)\n"
+        let netClassName = via.netClassName!
+        ioString += "    (via \"viaForClass\(netClassName)\" \(p.x) \(p.y)\n"
         ioString += "      (net \"\(netName)\")\n"
         ioString += "      (clearance_class default)\n"
         ioString += "    )\n"

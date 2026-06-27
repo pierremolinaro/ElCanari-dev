@@ -99,6 +99,14 @@ final class AutoLayoutCanariBoardOperationPullDownButton : ALB_NSPopUpButton {
   //--- Select Tracks of Net
     self.addItem (withTitle: "Select Tracks of Net")
     self.lastItem?.submenu = self.mSelectNetTrackSubMenu
+  //--- Select preserved by router Tracks
+    self.addItem (withTitle: "Select Tracks preserved by Router")
+    self.lastItem?.target = inDocument
+    self.lastItem?.action = #selector (AutoLayoutProjectDocument.selectTracksPreservedByRouter (_:))
+  //--- Select preserved by router Tracks
+    self.addItem (withTitle: "Select Tracks not preserved by Router ")
+    self.lastItem?.target = inDocument
+    self.lastItem?.action = #selector (AutoLayoutProjectDocument.selectTracksNotPreservedByRouter (_:))
   //--- Select All Vias
     self.addItem (withTitle: "Select all Vias")
     self.lastItem?.target = inDocument
