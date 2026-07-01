@@ -93,6 +93,7 @@ fileprivate class InternalAttributedStringTableColumn : AutoLayoutTableColumn {
     textField.isBordered = false
     textField.drawsBackground = false
     textField.isEnabled = true
+    textField.clipsToBounds = true
 //-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
 //    if let tableView = self.tableView {
 //      textField.controlSize = tableView.controlSize

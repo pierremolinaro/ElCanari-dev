@@ -1196,13 +1196,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
       }
     }
-//    hStack {
-//      StaticLabel (title: "Corner Radius", bold: no, size : .small, alignment: .right)
-//      gutter
-//      CanariDimensionAndPopUp (size : .small) {
-//        $dimensionAndUnit root.mBoardCornerRadius, root.mBoardCornerRadiusUnit
-//      }
-//    }
+    hStack {
+      StaticLabel (title: "Corner Radius", bold: no, size : .small, alignment: .right)
+      gutter
+      CanariDimensionAndPopUp (size : .small) {
+        $dimensionAndUnit root.mBoardCornerRadius, root.mBoardCornerRadiusUnit
+      }
+    }
   }
   
   stackView \BoardBezierPathOutlineView vStack {
