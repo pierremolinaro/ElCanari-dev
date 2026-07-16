@@ -23,7 +23,7 @@ struct QRCodeDescriptor : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  struct QRCodePoint {
+  private struct QRCodePoint {
     let x : Int
     let y : Int
   }
@@ -61,7 +61,7 @@ struct QRCodeDescriptor : Hashable {
         self.imageWidth  = ciImageRep.pixelsWide + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
         self.imageHeight = ciImageRep.pixelsHigh + (inFramed ? 2 : 0) + QR_CODE_MARGIN * 2
       //--- Build bit map representation
-        let bitMap : [[Bool]] = bitMap (forImageRep : ciImageRep)
+        let bitMap : [[Bool]] = Self.computeBitMap (forImageRep : ciImageRep)
       //--- Trace
         if PRINT_BIT_MAP {
           Swift.print ("*** BIT MAP ***")
@@ -117,7 +117,7 @@ struct QRCodeDescriptor : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate static func buildPixelAndRectArray (
+  private static func buildPixelAndRectArray (
                  from inBitMap : [[Bool]],
                  hOrigin inHorizontalOrigin : Int,
                  vOrigin inVerticalOrigin : Int) -> ([QRCodePoint], [QRCodeRectangle]) {
@@ -162,8 +162,8 @@ struct QRCodeDescriptor : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate static func groupVerticalPixels (from inSortedPixelArray : [QRCodePoint],
-                                               _ ioRectArray : inout [QRCodeRectangle]) {
+  private static func groupVerticalPixels (from inSortedPixelArray : [QRCodePoint],
+                                           _ ioRectArray : inout [QRCodeRectangle]) {
     var x = 0
     var y = 0
     var height = 0 // Empty rect
@@ -188,6 +188,52 @@ struct QRCodeDescriptor : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  private static func computeBitMap (forImageRep inImageRep : NSCIImageRep) -> [[Bool]] {
+    let w = inImageRep.pixelsWide
+    let h = inImageRep.pixelsHigh
+    let possibleOffscreenRep = unsafe NSBitmapImageRep (
+      bitmapDataPlanes: nil,
+      pixelsWide: w,
+      pixelsHigh: h,
+      bitsPerSample: 8,
+      samplesPerPixel: 4,
+      hasAlpha: true,
+      isPlanar: false,
+      colorSpaceName: NSColorSpaceName.deviceRGB,
+      bitmapFormat: NSBitmapImageRep.Format.alphaFirst,
+      bytesPerRow: 0,
+      bitsPerPixel: 0
+    )
+    var result = [[Bool]] ()
+    if let offscreenRep = possibleOffscreenRep,
+       let graphicContext = NSGraphicsContext (bitmapImageRep: offscreenRep) {
+      NSGraphicsContext.saveGraphicsState ()
+      NSGraphicsContext.current = graphicContext
+      graphicContext.imageInterpolation = .none
+      inImageRep.draw (in: NSRect (origin: .zero, size: inImageRep.size))
+      for y in 0 ..< h {
+        var boolArray = [Bool] ()
+        for x in 0 ..< w {
+          if let color = offscreenRep.colorAt (x:x, y:y) {
+            var redComponent : CGFloat = 0.0
+            var greenComponent : CGFloat = 0.0
+            var blueComponent : CGFloat = 0.0
+            var alphaComponent : CGFloat = 0.0
+            unsafe color.getRed (&redComponent, green:&greenComponent, blue:&blueComponent, alpha:&alphaComponent)
+            boolArray.append (redComponent < 0.5)
+          }else{
+            boolArray.append (false)
+          }
+        }
+        result.append (boolArray)
+      }
+      NSGraphicsContext.restoreGraphicsState ()
+    }
+    return result
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -208,52 +254,6 @@ fileprivate extension CIQRCodeDescriptor.ErrorCorrectionLevel {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-}
-
-//--------------------------------------------------------------------------------------------------
-
-fileprivate func bitMap (forImageRep inImageRep : NSCIImageRep) -> [[Bool]] {
-  let w = inImageRep.pixelsWide
-  let h = inImageRep.pixelsHigh
-  let possibleOffscreenRep = unsafe NSBitmapImageRep (
-    bitmapDataPlanes: nil,
-    pixelsWide: w,
-    pixelsHigh: h,
-    bitsPerSample: 8,
-    samplesPerPixel: 4,
-    hasAlpha: true,
-    isPlanar: false,
-    colorSpaceName: NSColorSpaceName.deviceRGB,
-    bitmapFormat: NSBitmapImageRep.Format.alphaFirst,
-    bytesPerRow: 0,
-    bitsPerPixel: 0
-  )
-  var result = [[Bool]] ()
-  if let offscreenRep = possibleOffscreenRep,
-     let graphicContext = NSGraphicsContext (bitmapImageRep: offscreenRep) {
-    NSGraphicsContext.saveGraphicsState ()
-    NSGraphicsContext.current = graphicContext
-    graphicContext.imageInterpolation = .none
-    inImageRep.draw (in: NSRect (origin: .zero, size: inImageRep.size))
-    for y in 0 ..< h {
-      var boolArray = [Bool] ()
-      for x in 0 ..< w {
-        if let color = offscreenRep.colorAt (x:x, y:y) {
-          var redComponent : CGFloat = 0.0
-          var greenComponent : CGFloat = 0.0
-          var blueComponent : CGFloat = 0.0
-          var alphaComponent : CGFloat = 0.0
-          unsafe color.getRed (&redComponent, green:&greenComponent, blue:&blueComponent, alpha:&alphaComponent)
-          boolArray.append (redComponent < 0.5)
-        }else{
-          boolArray.append (false)
-        }
-      }
-      result.append (boolArray)
-    }
-    NSGraphicsContext.restoreGraphicsState ()
-  }
-  return result
 }
 
 //--------------------------------------------------------------------------------------------------
