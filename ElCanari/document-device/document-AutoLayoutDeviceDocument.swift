@@ -473,7 +473,7 @@ import AppKit
     do{
       let hStackView_view = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
         .bind_horizontalFlip (preferences_mSymbolHorizontalFlipForDevice_property)
-        .bind_verticalFlip (preferences_mSymbolHorizontalFlipForDevice_property)
+        .bind_verticalFlip (preferences_mSymbolVerticalFlipForDevice_property)
         .bind_zoom (self.rootObject.mSymbolDisplayZoom_property)
         .bind_backColor (preferences_mSymbolBackColorForDevice_property)
         .bind_graphic_controller (self.symbolDisplayController)
@@ -895,9 +895,9 @@ import AppKit
       _ = vStackView .appendView (vStackView_view)
     }
     do{
-      let vStackView_view = AutoLayoutCheckbox (title: "Horizontal Flip", size: .small)
+      let vStackView_view = AutoLayoutCheckbox (title: "Vertical Flip", size: .small)
         .expandableWidth ()
-        .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
+        .bind_value (self.rootObject.mPackageDisplayVerticalFlip_property)
       _ = vStackView .appendView (vStackView_view)
     }
     do{

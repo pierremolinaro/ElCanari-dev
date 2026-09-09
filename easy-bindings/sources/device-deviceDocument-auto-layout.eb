@@ -157,7 +157,7 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
     separator
     GraphicView (minZoom: 10, maxZoom: 4000) {
       $horizontalFlip prefs.mSymbolHorizontalFlipForDevice
-      $verticalFlip prefs.mSymbolHorizontalFlipForDevice
+      $verticalFlip prefs.mSymbolVerticalFlipForDevice
       $graphicController #symbolDisplayController
       $zoom root.mSymbolDisplayZoom
       $backColor prefs.mSymbolBackColorForDevice
@@ -343,9 +343,9 @@ autoLayoutDocument AutoLayoutDeviceDocument  : AutoLayoutDeviceDocumentSuperClas
       expandableWidth ()
       $value root.mPackageDisplayHorizontalFlip
     }
-    Checkbox (title: "Horizontal Flip", size : .small) {
+    Checkbox (title: "Vertical Flip", size : .small) {
       expandableWidth ()
-      $value root.mPackageDisplayHorizontalFlip
+      $value root.mPackageDisplayVerticalFlip
     }
     hStack {
       ColorWell {
