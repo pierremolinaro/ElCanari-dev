@@ -148,8 +148,8 @@ extension AutoLayoutMergerDocument {
       boardWidthUnit : self.rootObject.boardWidthUnit, // Canari Unit
       boardHeight : ProductLength (valueInCanariUnit: self.rootObject.boardHeight!),
       boardHeightUnit: self.rootObject.boardHeightUnit, // Canari Unit
-      boardLimitWidth: boardLimitWidth,
-      boardLimitWidthUnit: self.rootObject.boardLimitWidthUnit, // Canari Unit
+//      boardLimitWidth: boardLimitWidth,
+//      boardLimitWidthUnit: self.rootObject.boardLimitWidthUnit, // Canari Unit
       artworkName: self.rootObject.mArtworkName,
       layerConfiguration: self.rootObject.mArtwork!.layerConfiguration
     )

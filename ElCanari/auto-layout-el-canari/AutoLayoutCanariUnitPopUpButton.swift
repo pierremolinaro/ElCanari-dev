@@ -23,7 +23,7 @@ final class AutoLayoutCanariUnitPopUpButton : ALB_NSPopUpButton {
     self.addItem (forUnit: CANARI_UNITS_PER_MM)
     self.addItem (forUnit: CANARI_UNITS_PER_CM)
     self.addItem (forUnit: CANARI_UNITS_PER_M)
-    self.addItem (forUnit: CANARI_UNITS_PER_PIXEL)
+    self.addItem (forUnit: CANARI_UNITS_PER_POINT)
     self.addItem (forUnit: CANARI_UNITS_PER_PC)
   }
 

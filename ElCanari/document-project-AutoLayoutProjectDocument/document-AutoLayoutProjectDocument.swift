@@ -2452,21 +2452,7 @@ do{
       _ = hStackView_view.appendView (boardShapeBaseView)
       _ = hStackView_view.appendSeparator ()
       do{
-        let hStackView_view_view = AutoLayoutStaticLabel (title: "Outlines", bold: true, size: .small, alignment: .center)
-        _ = hStackView_view .appendView (hStackView_view_view)
-      }
-      do{
-        let hStackView_view_view = AutoLayoutHorizontalStackView ()
-        do{
-          let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Board Limit Width", bold: false, size: .small, alignment: .right)
-          _ = hStackView_view_view .appendView (hStackView_view_view_view)
-        }
-        _ = hStackView_view_view.appendGutter ()
-        do{
-          let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-            .bind_dimensionAndUnit (self.rootObject.mBoardLimitsWidth_property, self.rootObject.mBoardLimitsWidthUnit_property)
-          _ = hStackView_view_view .appendView (hStackView_view_view_view)
-        }
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "Outline", bold: true, size: .small, alignment: .center)
         _ = hStackView_view .appendView (hStackView_view_view)
       }
       do{

@@ -75,12 +75,13 @@ struct GerberRepresentation {
     var s : String
     switch inUnit {
     case .imperial :
-      s = "%FSLAX2\(IMPERIAL_DIGIT_COUNT)Y2\(IMPERIAL_DIGIT_COUNT)*%\n"
+      s = "%FSLAX4\(IMPERIAL_DIGIT_COUNT)Y4\(IMPERIAL_DIGIT_COUNT)*%\n"
       s += "%MOIN*%\n" // Unit is inch
     case .metric :
-      s = "%FSLAX2\(METRIC_DIGIT_COUNT)Y2\(METRIC_DIGIT_COUNT)*%\n"
+      s = "%FSLAX4\(METRIC_DIGIT_COUNT)Y4\(METRIC_DIGIT_COUNT)*%\n"
       s += "%MOMM*%\n" // Unit is mm
     }
+    s += "%LPD*%\n" // §
   //--- Write aperture declarations
     var idx = 10
     for aperture in apertureArray {

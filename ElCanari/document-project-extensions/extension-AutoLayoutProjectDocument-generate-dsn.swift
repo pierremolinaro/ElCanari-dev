@@ -73,7 +73,7 @@ extension AutoLayoutProjectDocument {
     let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
     let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance)
   //--- Border
-    let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
+    let boardLimitExtend = 0 // §-self.rootObject.mBoardLimitsWidth / 2
     let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
     let boardBoundaryPolygonVertices = self.buildBoardBoundaryPolygon (converter)
   //--- Layer configuration
@@ -267,7 +267,7 @@ extension AutoLayoutProjectDocument {
       }
       return clearanceBP.linePathesByFlattening (withFlatness: 0.025) [0]
     case .rectangular :
-      let d = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
+      let d = self.rootObject.mBoardClearance // § + self.rootObject.mBoardLimitsWidth
       let r = CanariRect (
         left: d,
         bottom: d,

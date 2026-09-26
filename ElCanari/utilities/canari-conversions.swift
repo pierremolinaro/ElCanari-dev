@@ -15,22 +15,20 @@ import Foundation
 // 1 cm = 900 000 cu
 // 1 pouce = 2,54 cm = 2 286 000 cu
 // 1 mil = 0,001 pouce = 2 286 cu
-// Le pixel Cocoa est 1/72 pouce
-// 1 px = 1/72 pouce = 31 750 cu
+// Le point est 1/72 pouce
+// 1 pt = 1/72 pouce = 31 750 cu
 //--------------------------------------------------------------------------------------------------
 
 let CANARI_UNITS_PER_µM    = 90
 let CANARI_UNITS_PER_MIL   = 2_286
-let CANARI_UNITS_PER_PIXEL = 31_750
+let CANARI_UNITS_PER_POINT = 31_750
 let CANARI_UNITS_PER_PC    = 381_000
 let CANARI_UNITS_PER_MM    = CANARI_UNITS_PER_µM * 1000
 let CANARI_UNITS_PER_CM    = CANARI_UNITS_PER_MM * 10
 let CANARI_UNITS_PER_M     = CANARI_UNITS_PER_MM * 1000
 let CANARI_UNITS_PER_INCH  = CANARI_UNITS_PER_MIL * 1000
 
-let PIXELS_PER_INCH = CANARI_UNITS_PER_INCH / CANARI_UNITS_PER_PIXEL
-
-//let PIXELS_PER_MM = CANARI_UNITS_PER_MM / CANARI_UNITS_PER_PIXEL
+let PIXELS_PER_INCH = CANARI_UNITS_PER_INCH / CANARI_UNITS_PER_POINT
 
 //--------------------------------------------------------------------------------------------------
 //  Display string
@@ -69,11 +67,11 @@ fileprivate func displayComponentsFrom (valueInCanariUnit inValue : Int, unit in
     }else{
       return unsafe DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_INCH)), unit: "in")
     }
-  }else if inUnit == CANARI_UNITS_PER_PIXEL {
-    if (inValue % CANARI_UNITS_PER_PIXEL) == 0 {
-      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_PIXEL), unit: "pt")
+  }else if inUnit == CANARI_UNITS_PER_POINT {
+    if (inValue % CANARI_UNITS_PER_POINT) == 0 {
+      return DisplayComponents (value: String (inValue / CANARI_UNITS_PER_POINT), unit: "pt")
     }else{
-      return unsafe DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_PIXEL)), unit: "pt")
+      return unsafe DisplayComponents (value: String (format:"%.2f", value / CGFloat (CANARI_UNITS_PER_POINT)), unit: "pt")
     }
   }else if inUnit == CANARI_UNITS_PER_PC {
     if (inValue % CANARI_UNITS_PER_PC) == 0 {
@@ -95,13 +93,13 @@ fileprivate func displayComponentsFrom (valueInCanariUnit inValue : Int, unit in
 //--------------------------------------------------------------------------------------------------
 
 func canariUnitToCocoa (_ inValue : Int) -> CGFloat {
-  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_PIXEL)
+  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_POINT)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 func cocoaToCanariUnit (_ inValue : CGFloat) -> Int {
-  return Int (inValue *  CGFloat (CANARI_UNITS_PER_PIXEL))
+  return Int (inValue *  CGFloat (CANARI_UNITS_PER_POINT))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -194,34 +192,8 @@ func unitStringFrom (displayUnit inUnit : Int) -> String {
 //--------------------------------------------------------------------------------------------------
 
 func intValueAndUnitStringFrom (valueInCanariUnit inValue : Int, displayUnit inUnit : Int) -> String {
-//  if (inValue % inUnit) == 0 {
     let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: inUnit)
     return v.value + " " + v.unit
-//  }else if (inValue % CANARI_UNITS_PER_INCH) == 0 {
-//    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_INCH)
-//    return v.value + " " + v.unit
-//  }else if (inValue % CANARI_UNITS_PER_MIL) == 0 {
-//    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_MIL)
-//    return v.value + " " + v.unit
-//  }else if (inValue % CANARI_UNITS_PER_M) == 0 {
-//    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_M)
-//    return v.value + " " + v.unit
-//  }else if (inValue % CANARI_UNITS_PER_CM) == 0 {
-//    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_CM)
-//    return v.value + " " + v.unit
-//  }else if (inValue % CANARI_UNITS_PER_MM) == 0 {
-//    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_MM)
-//    return v.value + " " + v.unit
-////  }else if (inValue % CANARI_UNITS_PER_PIXEL) == 0 {
-////    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_PIXEL)
-////    return v.value + " " + v.unit
-////  }else if (inValue % CANARI_UNITS_PER_PC) == 0 {
-////    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_PC)
-////    return v.value + " " + v.unit
-//  }else{
-//    let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: CANARI_UNITS_PER_µM)
-//    return v.value + " " + v.unit
-//  }
 }
 
 //--------------------------------------------------------------------------------------------------

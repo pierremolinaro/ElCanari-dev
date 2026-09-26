@@ -606,10 +606,9 @@ final class BorderCurve : EBGraphicManagedObject
         let s6 = unwSelf.mCPX2_property.selection
         let s7 = unwSelf.mCPY2_property.selection
         let s8 = unwSelf.mShape_property.selection
-        let s9 = unwSelf.mRoot_property.mBoardLimitsWidth_property.selection
-        let s10 = unwSelf.mRoot_property.mBoardClearance_property.selection
-        let s11 = unwSelf.mRoot_property.mBoardShape_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
+        let s9 = unwSelf.mRoot_property.mBoardClearance_property.selection
+        let s10 = unwSelf.mRoot_property.mBoardShape_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -620,11 +619,9 @@ final class BorderCurve : EBGraphicManagedObject
               .single (let v7),
               .single (let v8),
               .single (let v9),
-              .single (let v10),
-              .single (let v11)) :
-          return .single (transient_BorderCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+              .single (let v10)) :
+          return .single (transient_BorderCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -652,7 +649,6 @@ final class BorderCurve : EBGraphicManagedObject
     self.mCPX2_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mCPY2_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mShape_property.startsBeingObserved (by: self.objectDisplay_property)
-    self.mRoot_property.mBoardLimitsWidth_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mRoot_property.mBoardClearance_property.startsBeingObserved (by: self.objectDisplay_property)
     self.mRoot_property.mBoardShape_property.startsBeingObserved (by: self.objectDisplay_property)
   //--- Atomic property: isLine

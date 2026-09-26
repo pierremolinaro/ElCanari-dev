@@ -18,8 +18,7 @@ import AppKit
        _ self_mBoardShape : BoardShape,                 
        _ self_mRectangularBoardWidth : Int,             
        _ self_mRectangularBoardHeight : Int,            
-       _ self_mBoardClearance : Int,                    
-       _ self_mBoardLimitsWidth : Int
+       _ self_mBoardClearance : Int
 ) -> CanariRect {
 //--- START OF USER ZONE 2
         switch self_mBoardShape {
@@ -58,7 +57,7 @@ import AppKit
             return .zero
           }
         case .rectangular :
-          let d = self_mBoardClearance + self_mBoardLimitsWidth
+          let d = self_mBoardClearance //  + self_mBoardLimitsWidth
           return CanariRect (
             left: d,
             bottom: d,

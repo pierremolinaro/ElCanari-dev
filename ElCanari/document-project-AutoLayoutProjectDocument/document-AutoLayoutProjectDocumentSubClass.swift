@@ -27,7 +27,7 @@ import AppKit
     self.rootObject.mSheets.append (sheet)
     self.rootObject.mSelectedSheet = sheet
   //--- Add board limits
-    let boardCumulatedWidth = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
+    let boardCumulatedWidth = self.rootObject.mBoardClearance // § + self.rootObject.mBoardLimitsWidth
     // Swift.print (boardCumulatedWidth)
     let boardRight = millimeterToCanariUnit (100.0) - boardCumulatedWidth
     let boardTop = millimeterToCanariUnit (100.0) - boardCumulatedWidth

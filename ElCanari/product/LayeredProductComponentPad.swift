@@ -45,8 +45,8 @@ struct LayeredProductComponentPad : Codable {
   private func appendRoundPad () -> (stroke: NSBezierPath?, filled: NSBezierPath?) {
     var strokeBezierPath : NSBezierPath? = nil
     var filledBezierPath : NSBezierPath? = nil
-    let width = self.width.value (in: .cocoa)
-    let height = self.height.value (in: .cocoa)
+    let width = self.width.value (in: .pt)
+    let height = self.height.value (in: .pt)
     if width > height { // Oblong
       let bp = NSBezierPath ()
       bp.move (to: self.af.transform (NSPoint (x: -(width - height) / 2.0, y: 0.0)))
@@ -74,8 +74,8 @@ struct LayeredProductComponentPad : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendRectPad () -> NSBezierPath {
-    let w = self.width.value (in: .cocoa) / 2.0
-    let h = self.height.value (in: .cocoa) / 2.0
+    let w = self.width.value (in: .pt) / 2.0
+    let h = self.height.value (in: .pt) / 2.0
     let bp = NSBezierPath ()
     bp.move (to: self.af.transform (NSPoint (x: -w, y: -h)))
     bp.line (to: self.af.transform (NSPoint (x: +w, y: -h)))
@@ -88,8 +88,8 @@ struct LayeredProductComponentPad : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendOctoPad () -> NSBezierPath {
-    let w = self.width.value (in: .cocoa) / 2.0
-    let h = self.height.value (in: .cocoa) / 2.0
+    let w = self.width.value (in: .pt) / 2.0
+    let h = self.height.value (in: .pt) / 2.0
     let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
     let bp = NSBezierPath ()
     bp.move (to: self.af.transform (NSPoint (x: +w - lg, y: +h)))
@@ -124,20 +124,20 @@ struct LayeredProductComponentPad : Codable {
 
   private func appendRoundPadToGerber (_ ioGerber : inout GerberRepresentation,
                                        mirror inMirror : ProductHorizontalMirror) {
-    let width = self.width.value (in: .cocoa)
-    let height = self.height.value (in: .cocoa)
+    let width = self.width.value (in: .pt)
+    let height = self.height.value (in: .pt)
     if width > height { // Oblong
       let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -(width - height) / 2.0, y: 0.0))))
       let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +(width - height) / 2.0, y: 0.0))))
-      ioGerber.addRoundSegment (p1: p1, p2: p2, width: ProductLength (height, .cocoa))
+      ioGerber.addRoundSegment (p1: p1, p2: p2, width: ProductLength (height, .pt))
     }else if width < height { // Oblong
       let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: 0.0, y: -(height - width) / 2.0))))
       let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: 0.0, y: +(height - width) / 2.0))))
-      ioGerber.addRoundSegment (p1: p1, p2: p2, width: ProductLength (width, .cocoa))
+      ioGerber.addRoundSegment (p1: p1, p2: p2, width: ProductLength (width, .pt))
     }else{ // circular
       ioGerber.addCircle (
         center: inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (.zero))),
-        diameter: ProductLength (width, .cocoa)
+        diameter: ProductLength (width, .pt)
       )
     }
   }
@@ -146,8 +146,8 @@ struct LayeredProductComponentPad : Codable {
 
   private func appendRectPadToGerber (_ ioGerber : inout GerberRepresentation,
                                       mirror inMirror : ProductHorizontalMirror) {
-    let w = self.width.value (in: .cocoa) / 2.0
-    let h = self.height.value (in: .cocoa) / 2.0
+    let w = self.width.value (in: .pt) / 2.0
+    let h = self.height.value (in: .pt) / 2.0
     let p0 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w, y: -h))))
     let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: -h))))
     let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: +h))))
@@ -159,8 +159,8 @@ struct LayeredProductComponentPad : Codable {
 
   private func appendOctoPadToGerber (_ ioGerber : inout GerberRepresentation,
                                       mirror inMirror : ProductHorizontalMirror) {
-    let w = self.width.value (in: .cocoa) / 2.0
-    let h = self.height.value (in: .cocoa) / 2.0
+    let w = self.width.value (in: .pt) / 2.0
+    let h = self.height.value (in: .pt) / 2.0
     let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
     let p0 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w - lg, y: +h))))
     let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w,      y: +h - lg))))

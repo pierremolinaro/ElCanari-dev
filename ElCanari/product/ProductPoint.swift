@@ -48,13 +48,13 @@ struct ProductPoint : Codable, Equatable, CustomStringConvertible {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (cocoaPoint inPoint : NSPoint) {
-    self.x = ProductLength (inPoint.x, .cocoa)
-    self.y = ProductLength (inPoint.y, .cocoa)
+    self.x = ProductLength (inPoint.x, .pt)
+    self.y = ProductLength (inPoint.y, .pt)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var cocoaPoint : NSPoint { NSPoint (x: self.x.value (in: .cocoa), y: self.y.value (in: .cocoa)) }
+  var cocoaPoint : NSPoint { NSPoint (x: self.x.value (in: .pt), y: self.y.value (in: .pt)) }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

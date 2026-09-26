@@ -508,30 +508,6 @@ final class ProjectRoot : EBManagedObject
   }
 
   //------------------------------------------------------------------------------------------------
-  //   Atomic property: mBoardLimitsWidth
-  //------------------------------------------------------------------------------------------------
-
-  final let mBoardLimitsWidth_property : EBStoredProperty_Int
-
-  //------------------------------------------------------------------------------------------------
-
-  final var mBoardLimitsWidth : Int {
-    get { return self.mBoardLimitsWidth_property.propval }
-  }
-
-  //------------------------------------------------------------------------------------------------
-  //   Atomic property: mBoardLimitsWidthUnit
-  //------------------------------------------------------------------------------------------------
-
-  final let mBoardLimitsWidthUnit_property : EBStoredProperty_Int
-
-  //------------------------------------------------------------------------------------------------
-
-  final var mBoardLimitsWidthUnit : Int {
-    get { return self.mBoardLimitsWidthUnit_property.propval }
-  }
-
-  //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardCornerRadius
   //------------------------------------------------------------------------------------------------
 
@@ -2302,8 +2278,6 @@ final class ProjectRoot : EBManagedObject
     self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: inUndoManager, key: "mErrorOrWarningIssueSize")
     self.mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100, undoManager: inUndoManager, key: "mControlKeyHiliteDiameter")
     self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: inUndoManager, key: "mDSNFileProposedName")
-    self.mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsWidth")
-    self.mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsWidthUnit")
     self.mBoardCornerRadius_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardCornerRadius")
     self.mBoardCornerRadiusUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardCornerRadiusUnit")
     self.mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardClearance")
@@ -2433,8 +2407,6 @@ final class ProjectRoot : EBManagedObject
     self.accumulateProperty (self.mErrorOrWarningIssueSize_property)
     self.accumulateProperty (self.mControlKeyHiliteDiameter_property)
     self.accumulateProperty (self.mDSNFileProposedName_property)
-    self.accumulateProperty (self.mBoardLimitsWidth_property)
-    self.accumulateProperty (self.mBoardLimitsWidthUnit_property)
     self.accumulateProperty (self.mBoardCornerRadius_property)
     self.accumulateProperty (self.mBoardCornerRadiusUnit_property)
     self.accumulateProperty (self.mBoardClearance_property)
@@ -3467,17 +3439,14 @@ final class ProjectRoot : EBManagedObject
         let s2 = unwSelf.mRectangularBoardWidth_property.selection
         let s3 = unwSelf.mRectangularBoardHeight_property.selection
         let s4 = unwSelf.mBoardClearance_property.selection
-        let s5 = unwSelf.mBoardLimitsWidth_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
               .single (let v3),
-              .single (let v4),
-              .single (let v5)) :
-          return .single (transient_ProjectRoot_interiorBoundBox (v0, v1, v2, v3, v4, v5))
+              .single (let v4)) :
+          return .single (transient_ProjectRoot_interiorBoundBox (v0, v1, v2, v3, v4))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3495,20 +3464,16 @@ final class ProjectRoot : EBManagedObject
     self.mRectangularBoardWidth_property.startsBeingObserved (by: self.interiorBoundBox_property)
     self.mRectangularBoardHeight_property.startsBeingObserved (by: self.interiorBoundBox_property)
     self.mBoardClearance_property.startsBeingObserved (by: self.interiorBoundBox_property)
-    self.mBoardLimitsWidth_property.startsBeingObserved (by: self.interiorBoundBox_property)
   //--- Atomic property: boardBoundBox
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.interiorBoundBox_property.selection
-        let s1 = unwSelf.mBoardLimitsWidth_property.selection
-        let s2 = unwSelf.mBoardClearance_property.selection
-        switch (s0, s1, s2) {
+        let s1 = unwSelf.mBoardClearance_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
-              .single (let v1),
-              .single (let v2)) :
-          return .single (transient_ProjectRoot_boardBoundBox (v0, v1, v2))
+              .single (let v1)) :
+          return .single (transient_ProjectRoot_boardBoundBox (v0, v1))
         case (.multiple,
-              .multiple,
               .multiple) :
           return .multiple
         default :
@@ -3519,7 +3484,6 @@ final class ProjectRoot : EBManagedObject
       }
     }
     self.interiorBoundBox_property.startsBeingObserved (by: self.boardBoundBox_property)
-    self.mBoardLimitsWidth_property.startsBeingObserved (by: self.boardBoundBox_property)
     self.mBoardClearance_property.startsBeingObserved (by: self.boardBoundBox_property)
   //--- Atomic property: boardInteriorTop
     self.boardInteriorTop_property.mReadModelFunction = { [weak self] in
@@ -3714,11 +3678,10 @@ final class ProjectRoot : EBManagedObject
         let s2 = unwSelf.mRectangularBoardWidth_property.selection
         let s3 = unwSelf.mRectangularBoardHeight_property.selection
         let s4 = unwSelf.mBoardCornerRadius_property.selection
-        let s5 = unwSelf.mBoardLimitsWidth_property.selection
-        let s6 = preferences_boardLimitsColorForBoard_property.selection
-        let s7 = unwSelf.mBoardClearance_property.selection
-        let s8 = preferences_boardClearanceColorForBoard_property.selection
-        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
+        let s5 = preferences_boardLimitsColorForBoard_property.selection
+        let s6 = unwSelf.mBoardClearance_property.selection
+        let s7 = preferences_boardClearanceColorForBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3726,11 +3689,9 @@ final class ProjectRoot : EBManagedObject
               .single (let v4),
               .single (let v5),
               .single (let v6),
-              .single (let v7),
-              .single (let v8)) :
-          return .single (transient_ProjectRoot_borderOutlineBackground (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+              .single (let v7)) :
+          return .single (transient_ProjectRoot_borderOutlineBackground (v0, v1, v2, v3, v4, v5, v6, v7))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple,
@@ -3751,7 +3712,6 @@ final class ProjectRoot : EBManagedObject
     self.mRectangularBoardWidth_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     self.mRectangularBoardHeight_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     self.mBoardCornerRadius_property.startsBeingObserved (by: self.borderOutlineBackground_property)
-    self.mBoardLimitsWidth_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     preferences_boardLimitsColorForBoard_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     self.mBoardClearance_property.startsBeingObserved (by: self.borderOutlineBackground_property)
     preferences_boardClearanceColorForBoard_property.startsBeingObserved (by: self.borderOutlineBackground_property)

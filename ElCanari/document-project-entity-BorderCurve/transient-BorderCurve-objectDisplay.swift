@@ -23,7 +23,6 @@ import AppKit
        _ self_mCPX2 : Int,                           
        _ self_mCPY2 : Int,                           
        _ self_mShape : BorderCurveShape,             
-       _ self_mRoot_mBoardLimitsWidth : Int?,        
        _ self_mRoot_mBoardClearance : Int?,          
        _ self_mRoot_mBoardShape : BoardShape?
 ) -> EBShape {
@@ -33,7 +32,7 @@ import AppKit
            boardShape == .bezierPathes,
            let x2 = self_mNext_mX,
            let y2 = self_mNext_mY,
-           let boardWidth = self_mRoot_mBoardLimitsWidth,
+//           let boardWidth = self_mRoot_mBoardLimitsWidth,
            let boardClearance = self_mRoot_mBoardClearance {
           let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
           let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
@@ -49,7 +48,7 @@ import AppKit
           }
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = 2.0 * canariUnitToCocoa (boardWidth + boardClearance)
+          bp.lineWidth = 2.0 * canariUnitToCocoa (boardClearance /* + boardWidth */)
           result.add (stroke: [bp], nil)
         }
         return result

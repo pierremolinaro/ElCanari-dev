@@ -19,16 +19,30 @@ import AppKit
        _ self_mRectangularBoardWidth : Int,                    
        _ self_mRectangularBoardHeight : Int,                   
        _ self_mBoardCornerRadius : Int,                        
-       _ self_mBoardLimitsWidth : Int,                         
        _ prefs_boardLimitsColorForBoard : NSColor,             
        _ self_mBoardClearance : Int,                           
        _ prefs_boardClearanceColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
+        var outlinePath = BezierPath ()
         var bp = BezierPath ()
         switch self_mBoardShape {
         case .rectangular :
-          let d = self_mBoardClearance + self_mBoardLimitsWidth
+        //--- Outline
+          let boardRect = CanariRect (
+            left: .zero,
+            bottom: .zero,
+            width: self_mRectangularBoardWidth,
+            height: self_mRectangularBoardHeight
+          )
+          let roundedRect = BezierPath (
+            roundedRect: boardRect.cocoaRect,
+            xRadius: canariUnitToCocoa (self_mBoardCornerRadius),
+            yRadius: canariUnitToCocoa (self_mBoardCornerRadius)
+          )
+          outlinePath.append (roundedRect)
+        //--- Board clearance
+          let d = self_mBoardClearance
           let r = CanariRect (
             left: d,
             bottom: d,
@@ -71,14 +85,14 @@ import AppKit
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()
-      //---
-        var outlineFrame = bp
-        outlineFrame.lineWidth = 2.0 * canariUnitToCocoa (self_mBoardLimitsWidth + self_mBoardClearance)
-        shape.add (filled: [outlineFrame.pathToFillByStroking], prefs_boardLimitsColorForBoard, clip: .outside (bp))
-      //---
+      //--- Board Clearance
         var clearanceFrame = bp
         clearanceFrame.lineWidth = 2.0 * canariUnitToCocoa (self_mBoardClearance)
         shape.add (filled: [clearanceFrame.pathToFillByStroking], prefs_boardClearanceColorForBoard, clip: .outside (bp))
+      //--- Board outline
+        outlinePath.lineWidth = BOARD_LIMIT_WIDTH.value (in: .pt)
+        shape.add (filled: [outlinePath.pathToFillByStroking], prefs_boardLimitsColorForBoard, clip: .outside (bp))
+      //---
         return shape
 //--- END OF USER ZONE 2
 }

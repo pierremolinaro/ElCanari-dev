@@ -27,7 +27,7 @@ extension ProductRepresentation {
         let bp = NSBezierPath ()
         bp.move (to: inMirror.mirrored (oblong.p1).cocoaPoint)
         bp.line (to: inMirror.mirrored (oblong.p2).cocoaPoint)
-        bp.lineWidth = oblong.width.value (in: .cocoa)
+        bp.lineWidth = oblong.width.value (in: .pt)
         bp.lineCapStyle = .round
         strokeBezierPathes.append (bp)
       }
@@ -37,7 +37,7 @@ extension ProductRepresentation {
     for circle in self.circles {
       if !inItemSet.intersection (circle.layers).isEmpty {
         let center = inMirror.mirrored (circle.center).cocoaPoint
-        let diameter = circle.d.value (in: .cocoa)
+        let diameter = circle.d.value (in: .pt)
         let r = NSRect (center: center, size: NSSize (width: diameter, height: diameter))
         let bp = NSBezierPath (ovalIn: r)
         filledBezierPathes.append (bp)
@@ -80,8 +80,8 @@ extension ProductRepresentation {
     }
   //---
     let size = NSSize (
-      width: self.boardWidth.value (in: .cocoa),
-      height: self.boardHeight.value (in: .cocoa)
+      width: self.boardWidth.value (in: .pt),
+      height: self.boardHeight.value (in: .pt)
     )
     let view = OffscreenView (
       frame: NSRect (origin: .zero, size: size),

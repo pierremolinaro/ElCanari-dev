@@ -46,7 +46,8 @@ extension AutoLayoutProjectDocument {
             y1: p1.y,
             x2: p2.x,
             y2: p2.y,
-            width: 2 * (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance),
+        //    width: 2 * (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance), §
+            width: 2 * self.rootObject.mBoardClearance,
             endStyle: .round
           )
           if segment.strictlyContains (point: inUnalignedMouseDownPoint) {
@@ -58,7 +59,8 @@ extension AutoLayoutProjectDocument {
           var bp = BezierPath ()
           bp.move (to: p1.cocoaPoint)
           bp.curve (to: p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
-          bp.lineWidth = 2.0 * canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance)
+     //     bp.lineWidth = 2.0 * canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance)
+          bp.lineWidth = 2.0 * canariUnitToCocoa (self.rootObject.mBoardClearance)
           bp = bp.pathToFillByStroking
           if bp.contains (inUnalignedMouseDownPoint.cocoaPoint) {
             return borderCurve

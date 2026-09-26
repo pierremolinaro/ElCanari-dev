@@ -1072,14 +1072,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       view boardShapeBaseView
       separator
-      StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
-      hStack {
-        StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right)
-        gutter
-        CanariDimensionAndPopUp (size : .small) {
-          $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
-        }
-      }
+      StaticLabel (title: "Outline", bold: yes, size : .small, alignment: .center)
+//      hStack {
+//        StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right)
+//        gutter
+//        CanariDimensionAndPopUp (size : .small) {
+//          $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
+//        }
+//      }
       hStack {
         StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right)
         gutter

@@ -113,7 +113,7 @@ struct ProductLength : Codable, Hashable, Comparable, CustomStringConvertible {
     case inch
     case mil
     case µm
-    case cocoa // Cocoa point, Cocoa Pixel, 1/72 inch
+    case pt // Cocoa point, Cocoa Pixel, 1/72 inch
 
     var canariUnits : Double {
       switch self {
@@ -121,8 +121,8 @@ struct ProductLength : Codable, Hashable, Comparable, CustomStringConvertible {
         case .cm   : return Double (CANARI_UNITS_PER_CM)
         case .inch : return Double (CANARI_UNITS_PER_INCH)
         case .mil  : return Double (CANARI_UNITS_PER_MIL)
-        case .µm  : return Double (CANARI_UNITS_PER_µM)
-        case .cocoa  : return Double (CANARI_UNITS_PER_PIXEL)
+        case .µm   : return Double (CANARI_UNITS_PER_µM)
+        case .pt   : return Double (CANARI_UNITS_PER_POINT)
       }
     }
 

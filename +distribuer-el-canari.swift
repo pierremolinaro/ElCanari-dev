@@ -27,19 +27,19 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.12.0"
+let VERSION_CANARI = "1.12.1"
 let MAC_OS_MINIMUM_VERSION = "12"
 let NOTES : [String] = [
-  "Construit avec Xcode 26.7 beta 2, Sparkle 2.9.3"
+  "Construit avec Xcode 27.2 beta, Sparkle 2.10.0"
 ]
 let BUGFIXES : [String] = [
-  "Correction exportation des vias dans un fichier DSN"
+  "Correction dimension des fichiers Gerber produits"
 ]
 let CHANGES : [String] = [
-  "Version système minimum : 12 (Monterey)",
-  "Uniquement pour puce Apple"
+  "Projet, onglet « Board Outline » : supprimer du réglage « Board Limit Width »"
 ]
 let NEWS : [String] = [
+  "Projet, onglet « Board Outline » : ajout « Corner Radius » dans l'édition du contour"
 ]
 
 //------------------------------------------------------------------------------

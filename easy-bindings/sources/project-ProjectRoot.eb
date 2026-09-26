@@ -188,8 +188,8 @@ handlingOpposite entity ProjectRoot {
 //--- Board border
   toMany @generateDirectAccess BorderCurve mBorderCurves inverse toOne mRoot ;
 
-  property @generateDirectRead Int mBoardLimitsWidth default 90_000 ; // 1 mm
-  property @generateDirectRead Int mBoardLimitsWidthUnit default 90_000 ; // mm
+//  property @generateDirectRead Int mBoardLimitsWidth default 90_000 ; // 1 mm
+//  property @generateDirectRead Int mBoardLimitsWidthUnit default 90_000 ; // mm
 
   property @generateDirectRead Int mBoardCornerRadius default 0 ; // 1 mm
   property Int mBoardCornerRadiusUnit default 90_000 ; // mm
@@ -230,11 +230,11 @@ handlingOpposite entity ProjectRoot {
     self.mBorderCurves.all.descriptor,
     self.mBoardShape,
     self.mRectangularBoardWidth, self.mRectangularBoardHeight,
-    self.mBoardClearance, self.mBoardLimitsWidth
+    self.mBoardClearance //, self.mBoardLimitsWidth
   ;
     
   transient CanariRect boardBoundBox dependsFrom
-    self.interiorBoundBox, self.mBoardLimitsWidth, self.mBoardClearance ;
+    self.interiorBoundBox, self.mBoardClearance ; // , self.mBoardLimitsWidth ;
     
   transient String boardInteriorTop dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
   transient String boardInteriorBottom dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
@@ -253,7 +253,8 @@ handlingOpposite entity ProjectRoot {
     self.mBoardShape,
     self.mRectangularBoardWidth, self.mRectangularBoardHeight,
     self.mBoardCornerRadius,
-    self.mBoardLimitsWidth, prefs.boardLimitsColorForBoard,
+//    self.mBoardLimitsWidth,
+    prefs.boardLimitsColorForBoard,
     self.mBoardClearance, prefs.boardClearanceColorForBoard
   ;
 

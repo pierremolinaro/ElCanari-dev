@@ -11,6 +11,10 @@ import Compression
 
 //--------------------------------------------------------------------------------------------------
 
+let BOARD_LIMIT_WIDTH = ProductLength (0.05, .mm)
+
+//--------------------------------------------------------------------------------------------------
+
 extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,8 +99,8 @@ extension AutoLayoutProjectDocument {
       boardWidthUnit: self.rootObject.mRectangularBoardWidthUnit_property.propval, // Canari Unit
       boardHeight: ProductLength (valueInCanariUnit: boardBoundBox.height),
       boardHeightUnit: self.rootObject.mRectangularBoardHeightUnit_property.propval, // Canari Unit
-      boardLimitWidth: ProductLength (valueInCanariUnit: self.rootObject.mBoardLimitsWidth),
-      boardLimitWidthUnit: self.rootObject.mBoardLimitsWidthUnit, // Canari Unit
+//      boardLimitWidth: ProductLength (valueInCanariUnit: self.rootObject.mBoardLimitsWidth),
+//      boardLimitWidthUnit: self.rootObject.mBoardLimitsWidthUnit, // Canari Unit
       artworkName: self.rootObject.mArtworkName,
       layerConfiguration: self.rootObject.mLayerConfiguration
     )
@@ -189,7 +193,7 @@ extension AutoLayoutProjectDocument {
         let oblong = LayeredProductSegment (
           p1: currentPoint,
           p2: p,
-          width: ioProduct.boardLimitWidth,
+          width: BOARD_LIMIT_WIDTH, // ioProduct.boardLimitWidth,
           layers: .boardLimits
         )
         ioProduct.append (roundSegment: oblong)
@@ -198,7 +202,7 @@ extension AutoLayoutProjectDocument {
       let oblong = LayeredProductSegment (
         p1: currentPoint,
         p2: firstPoint,
-        width: ioProduct.boardLimitWidth,
+        width: BOARD_LIMIT_WIDTH, // ioProduct.boardLimitWidth,
         layers: .boardLimits
       )
       ioProduct.append (roundSegment: oblong)
@@ -221,7 +225,7 @@ extension AutoLayoutProjectDocument {
 
   private func appendPackageLegends (to ioProduct : inout ProductRepresentation) {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
-    let width = ProductLength (Double (self.rootObject.packageDrawingWidthMultpliedByTenForBoard) / 10.0, .cocoa)
+    let width = ProductLength (Double (self.rootObject.packageDrawingWidthMultpliedByTenForBoard) / 10.0, .pt)
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject, component.mDisplayLegend {
         let strokeBezierPath = component.strokeBezierPath!
@@ -267,7 +271,7 @@ extension AutoLayoutProjectDocument {
             oblique: false,
             extraWidth: 0.0
           )
-          let width = ProductLength (textBP.lineWidth, .cocoa)
+          let width = ProductLength (textBP.lineWidth, .pt)
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
@@ -308,7 +312,7 @@ extension AutoLayoutProjectDocument {
             oblique: false,
             extraWidth: 0.0
           )
-          let width = ProductLength (textBP.lineWidth, .cocoa)
+          let width = ProductLength (textBP.lineWidth, .pt)
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
@@ -348,7 +352,7 @@ extension AutoLayoutProjectDocument {
           oblique: text.mOblique,
           extraWidth: 0.0
         )
-        let width = ProductLength (textBP.lineWidth, .cocoa)
+        let width = ProductLength (textBP.lineWidth, .pt)
         let layer : ProductLayerSet
         switch text.mLayer {
         case .legendFront :
@@ -704,7 +708,8 @@ extension AutoLayoutProjectDocument {
     //---
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
-      bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
+ //     bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
+      bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardClearance * 2)
       let strokeBP = bp.pathToFillByStroking
       var closedPathCount = 0
       let retainedClosedPath = 2
@@ -744,26 +749,41 @@ extension AutoLayoutProjectDocument {
         result.append (ProductPoint (cocoaPoint: p))
       }
     case .rectangular :
-      let halfBorderLineWidth = ProductLength (valueInCanariUnit: self.rootObject.mBoardLimitsWidth / 2)
+//      let halfBorderLineWidth = ProductLength (valueInCanariUnit: self.rootObject.mBoardLimitsWidth / 2)
       let boardWidth = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardWidth)
       let boardHeight = ProductLength (valueInCanariUnit: self.rootObject.mRectangularBoardHeight)
-      let d = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
-      if self.rootObject.mBoardCornerRadius < d {
-        result.append (ProductPoint (x: halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom left
-        result.append (ProductPoint (x: halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top left
-        result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top right
-        result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom right
-      }else{
+//      let d = self.rootObject.mBoardClearance + self.rootObject.mBoardLimitsWidth
+      if self.rootObject.mBoardCornerRadius == .zero { // Rectangle
+//        result.append (ProductPoint (x: halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom left
+//        result.append (ProductPoint (x: halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top left
+//        result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: boardHeight - halfBorderLineWidth)) // Top right
+//        result.append (ProductPoint (x: boardWidth - halfBorderLineWidth, y: halfBorderLineWidth)) // Bottom right
+        result.append (ProductPoint (x: .zero, y: .zero)) // Bottom left
+        result.append (ProductPoint (x: .zero, y: boardHeight)) // Top left
+        result.append (ProductPoint (x: boardWidth, y: boardHeight)) // Top right
+        result.append (ProductPoint (x: boardWidth, y: .zero)) // Bottom right
+      }else{ // Round rectangle
+//        let r = CanariRect (
+//          left: self.rootObject.mBoardLimitsWidth / 2,
+//          bottom: self.rootObject.mBoardLimitsWidth / 2,
+//          width: self.rootObject.mRectangularBoardWidth - self.rootObject.mBoardLimitsWidth,
+//          height: self.rootObject.mRectangularBoardHeight - self.rootObject.mBoardLimitsWidth
+//        )
+//        let roundedRect = BezierPath (
+//          roundedRect: r.cocoaRect,
+//          xRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2),
+//          yRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2)
+//        )
         let r = CanariRect (
-          left: self.rootObject.mBoardLimitsWidth / 2,
-          bottom: self.rootObject.mBoardLimitsWidth / 2,
-          width: self.rootObject.mRectangularBoardWidth - self.rootObject.mBoardLimitsWidth,
-          height: self.rootObject.mRectangularBoardHeight - self.rootObject.mBoardLimitsWidth
+          left: .zero,
+          bottom: .zero,
+          width: self.rootObject.mRectangularBoardWidth,
+          height: self.rootObject.mRectangularBoardHeight
         )
         let roundedRect = BezierPath (
           roundedRect: r.cocoaRect,
-          xRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2),
-          yRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2)
+          xRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius),
+          yRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius)
         )
         let linePath = roundedRect.linePathesByFlattening (withFlatness: 0.025) [0]
         result.append (ProductPoint (cocoaPoint: linePath.origin))

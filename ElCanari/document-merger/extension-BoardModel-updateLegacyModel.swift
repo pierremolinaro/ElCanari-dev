@@ -49,14 +49,14 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func internalUpdateLegacyModel (legacyBoardModel inLegacyBoardModel : BoardModel) {
-    let boardLimitWidth = ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelLimitWidth)
+//    let boardLimitWidth = ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelLimitWidth)
     var product = ProductRepresentation (
       boardWidth : ProductLength (valueInCanariUnit: inLegacyBoardModel.modelWidth),
       boardWidthUnit: inLegacyBoardModel.modelWidthUnit, // Canari Unit
       boardHeight: ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelHeight),
       boardHeightUnit: inLegacyBoardModel.modelHeightUnit, // Canari Unit
-      boardLimitWidth : boardLimitWidth,
-      boardLimitWidthUnit: inLegacyBoardModel.modelLimitWidthUnit, // Canari Unit
+//      boardLimitWidth : boardLimitWidth,
+//      boardLimitWidthUnit: inLegacyBoardModel.modelLimitWidthUnit, // Canari Unit
       artworkName: inLegacyBoardModel.artworkName,
       layerConfiguration: inLegacyBoardModel.layerConfiguration
     )

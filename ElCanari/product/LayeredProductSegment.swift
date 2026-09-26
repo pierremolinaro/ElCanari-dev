@@ -48,7 +48,7 @@ struct LayeredProductSegment : Codable {
   func gerberPolygon () -> (ProductPoint, [ProductPoint]) {
     let p1 = ProductPoint (x: self.x1, y: self.y1).cocoaPoint
     let p2 = ProductPoint (x: self.x2, y: self.y2).cocoaPoint
-    let w = self.width.value (in: .cocoa)
+    let w = self.width.value (in: .pt)
     let d = NSPoint.distance (p1, p2)
     let angleRadian = NSPoint.angleInRadian (p1, p2)
     var t = Turtle (p: p1, angleInRadian: angleRadian)

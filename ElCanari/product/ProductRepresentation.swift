@@ -25,8 +25,8 @@ struct ProductRepresentation : Codable {
   private(set) var boardWidthUnit : Int // Canari Unit
   private(set) var boardHeight : ProductLength
   private(set) var boardHeightUnit : Int // Canari Unit
-  private(set) var boardLimitWidth : ProductLength
-  private(set) var boardLimitWidthUnit : Int // Canari Unit
+//  private(set) var boardLimitWidth : ProductLength
+//  private(set) var boardLimitWidthUnit : Int // Canari Unit
   private(set) var artworkName = ""
   private(set) var roundSegments = [LayeredProductSegment] ()
   private(set) var squareSegments = [LayeredProductSegment] ()
@@ -43,16 +43,16 @@ struct ProductRepresentation : Codable {
         boardWidthUnit inBoardWidthUnit : Int, // Canari Unit
         boardHeight inBoardHeight : ProductLength,
         boardHeightUnit inBoardHeightUnit : Int, // Canari Unit
-        boardLimitWidth inBoardLimitWidth : ProductLength,
-        boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
+//        boardLimitWidth inBoardLimitWidth : ProductLength,
+//        boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
         artworkName inArtworkName : String,
         layerConfiguration inLayerConfiguration : LayerConfiguration) {
     self.boardWidth = inBoardWidth
     self.boardWidthUnit = inBoardWidthUnit
     self.boardHeight = inBoardHeight
     self.boardHeightUnit = inBoardHeightUnit
-    self.boardLimitWidth = inBoardLimitWidth
-    self.boardLimitWidthUnit = inBoardLimitWidthUnit
+//    self.boardLimitWidth = inBoardLimitWidth
+//    self.boardLimitWidthUnit = inBoardLimitWidthUnit
     self.artworkName = inArtworkName
     self.layerConfiguration = inLayerConfiguration
   }
@@ -120,15 +120,15 @@ struct ProductRepresentation : Codable {
                      y inY : ProductLength,
                      quadrantRotation inRotation : QuadrantRotation) {
     var modelAffineTransform = AffineTransform ()
-    let width = inProduct.boardWidth.value (in: .cocoa)
-    let height = inProduct.boardHeight.value (in: .cocoa)
+    let width = inProduct.boardWidth.value (in: .pt)
+    let height = inProduct.boardHeight.value (in: .pt)
     switch inRotation {
     case .rotation0, .rotation180 :
       modelAffineTransform.translate (x: width / 2.0, y: height / 2.0)
     case .rotation90, .rotation270 :
       modelAffineTransform.translate (x: height / 2.0, y: width / 2.0)
     }
-    modelAffineTransform.translate (x: inX.value (in: .cocoa), y: inY.value (in: .cocoa))
+    modelAffineTransform.translate (x: inX.value (in: .pt), y: inY.value (in: .pt))
     let angleInDegrees = Double (inRotation.rawValue * 90)
     modelAffineTransform.rotate (byDegrees: angleInDegrees)
     modelAffineTransform.translate (x: -width / 2.0, y: -height / 2.0)
@@ -169,8 +169,6 @@ struct ProductRepresentation : Codable {
       self.squareSegments.append (s)
     }
     for r in inProduct.rectangles {
-//      var af = modelAffineTransform // Correction du bug le 18 septembre 2025
-//      af.append (r.af)
       var af = r.af
       af.append (modelAffineTransform)
       let s = LayeredProductRectangle (af: af, layers: r.layers)

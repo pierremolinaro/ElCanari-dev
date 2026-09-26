@@ -59,10 +59,10 @@ extension AutoLayoutMergerDocument {
     boardModel.artworkName = inProduct.artworkName
     boardModel.modelWidth = inProduct.boardWidth.valueInCanariUnit
     boardModel.modelHeight = inProduct.boardHeight.valueInCanariUnit
-    boardModel.modelLimitWidth = inProduct.boardLimitWidth.valueInCanariUnit
+    boardModel.modelLimitWidth = 0 // § inProduct.boardLimitWidth.valueInCanariUnit
+    boardModel.modelLimitWidthUnit = 2286 // § inProduct.boardLimitWidthUnit
     boardModel.modelWidthUnit = inProduct.boardWidthUnit
     boardModel.modelHeightUnit = inProduct.boardHeightUnit
-    boardModel.modelLimitWidthUnit = inProduct.boardLimitWidthUnit
     boardModel.layerConfiguration = inProduct.layerConfiguration
   //--- Internal board limits
     boardModel.internalBoardsLimits = inProduct.segmentEntities (self.undoManager, forLayers: .boardLimits)
@@ -70,10 +70,6 @@ extension AutoLayoutMergerDocument {
     boardModel.frontTracks = inProduct.segmentEntities (self.undoManager, forLayers: .frontSideTrack)
   //--- Back tracks
     boardModel.backTracks = inProduct.segmentEntities (self.undoManager, forLayers: .backSideTrack)
-  //--- Front exposed tracks
-// §    boardModel.frontTracksNoSilkScreen = inProduct.segmentEntities (self.undoManager, forLayers: .frontSideExposedTrack)
-  //--- Back exposed tracks
-// §    boardModel.backTracksNoSilkScreen = inProduct.segmentEntities (self.undoManager, forLayers: .backSideExposedTrack)
   //--- Back pads
     boardModel.backPads = inProduct.pads (self.undoManager, forLayers: .backSideComponentPad)
   //--- Front pads

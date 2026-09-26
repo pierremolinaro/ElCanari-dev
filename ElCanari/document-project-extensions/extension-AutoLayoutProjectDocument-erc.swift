@@ -88,12 +88,12 @@ extension AutoLayoutProjectDocument {
         ioIssues.append (issue)
         errorCount += 1
       }
-    //--- Board limit width
-      if artwork.minValueForBoardLimitWidth > self.rootObject.mBoardLimitsWidth {
-        let issue = CanariIssue (kind: .error, message: "Board limits width should be greater or equal to Artwork board limits", pathes: [])
-        ioIssues.append (issue)
-        errorCount += 1
-      }
+    //--- Board limit width §
+//      if artwork.minValueForBoardLimitWidth > self.rootObject.mBoardLimitsWidth {
+//        let issue = CanariIssue (kind: .error, message: "Board limits width should be greater or equal to Artwork board limits", pathes: [])
+//        ioIssues.append (issue)
+//        errorCount += 1
+//      }
       if errorCount == 0 {
         self.mERCLogTextViewArray.appendSuccess ("ok\n")
       }else if errorCount == 1 {
