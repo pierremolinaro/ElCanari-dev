@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -31,7 +32,7 @@ struct GerberRepresentation {
 
   mutating func addRoundSegment (p1 inP1 : ProductPoint,
                                  p2 inP2 : ProductPoint,
-                                 width inWidth : ProductLength) {
+                                 width inWidth : CanariLength) {
     if inP1 == inP2 {
       let circle = Self.Circle (center: inP1, diameter: inWidth)
       self.mFilledCircles.append (circle)
@@ -44,7 +45,7 @@ struct GerberRepresentation {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func addCircle (center inCenter : ProductPoint,
-                           diameter inDiameter : ProductLength) {
+                           diameter inDiameter : CanariLength) {
     let circle = Self.Circle (center: inCenter, diameter: inDiameter)
     self.mFilledCircles.append (circle)
   }
@@ -63,7 +64,7 @@ struct GerberRepresentation {
 
   func gerberString (unit inUnit : GerberUnit) -> String {
   //--- Aperture inventory
-    var apertureSet = Set <ProductLength> ()
+    var apertureSet = Set <CanariLength> ()
     for oblong in self.mRoundSegments {
       apertureSet.insert (oblong.width)
     }
@@ -141,14 +142,14 @@ struct GerberRepresentation {
   struct Oblong {
     let p1 : ProductPoint
     let p2 : ProductPoint
-    let width : ProductLength
+    let width : CanariLength
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct Circle {
     let center : ProductPoint
-    let diameter : ProductLength
+    let diameter : CanariLength
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -164,7 +165,7 @@ struct GerberRepresentation {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate extension ProductLength {
+fileprivate extension CanariLength {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

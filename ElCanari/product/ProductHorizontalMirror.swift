@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -25,7 +26,7 @@ enum ProductHorizontalMirror {
       return inPoint
     case .mirror (let boardWidth) :
       return ProductPoint (
-        x: ProductLength (valueInCanariUnit: boardWidth - inPoint.x.valueInCanariUnit),
+        x: CanariLength.cu (boardWidth - inPoint.x.cuValue),
         y: inPoint.y
       )
     }

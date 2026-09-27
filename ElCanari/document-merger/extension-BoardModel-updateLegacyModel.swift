@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -49,14 +50,11 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func internalUpdateLegacyModel (legacyBoardModel inLegacyBoardModel : BoardModel) {
-//    let boardLimitWidth = ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelLimitWidth)
     var product = ProductRepresentation (
-      boardWidth : ProductLength (valueInCanariUnit: inLegacyBoardModel.modelWidth),
+      boardWidth : CanariLength.cu (inLegacyBoardModel.modelWidth),
       boardWidthUnit: inLegacyBoardModel.modelWidthUnit, // Canari Unit
-      boardHeight: ProductLength  (valueInCanariUnit: inLegacyBoardModel.modelHeight),
+      boardHeight: CanariLength.cu (inLegacyBoardModel.modelHeight),
       boardHeightUnit: inLegacyBoardModel.modelHeightUnit, // Canari Unit
-//      boardLimitWidth : boardLimitWidth,
-//      boardLimitWidthUnit: inLegacyBoardModel.modelLimitWidthUnit, // Canari Unit
       artworkName: inLegacyBoardModel.artworkName,
       layerConfiguration: inLegacyBoardModel.layerConfiguration
     )
@@ -144,7 +142,7 @@ extension AutoLayoutMergerDocument {
       if p1 == p2 {
         let s = LayeredProductCircle (
           center: p1,
-          diameter: ProductLength (valueInCanariUnit: segment.width),
+          diameter: CanariLength.cu (segment.width),
           layers: inLayer
         )
         ioProduct.append (circle: s)
@@ -152,7 +150,7 @@ extension AutoLayoutMergerDocument {
         let s = LayeredProductSegment (
           p1: p1,
           p2: p2,
-          width: ProductLength (valueInCanariUnit: segment.width),
+          width: CanariLength.cu (segment.width),
           layers: inLayer
         )
         switch segment.endStyle {
@@ -172,7 +170,7 @@ extension AutoLayoutMergerDocument {
     for segment in inArray.values {
       let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
       let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
-      let width = ProductLength (valueInCanariUnit: segment.width)
+      let width = CanariLength.cu (segment.width)
       if p1 == p2 {
         let s = LayeredProductCircle (
           center: p1,
@@ -198,7 +196,7 @@ extension AutoLayoutMergerDocument {
                                to ioProduct : inout ProductRepresentation) {
     for via in inArray.values {
       let center = ProductPoint (canariPoint: CanariPoint (x: via.x, y: via.y))
-      let padDiameter = ProductLength (valueInCanariUnit: via.padDiameter)
+      let padDiameter = CanariLength.cu (via.padDiameter)
       let s = LayeredProductCircle (
         center: center,
         diameter: padDiameter,
@@ -214,8 +212,8 @@ extension AutoLayoutMergerDocument {
                                layer inLayer : ProductLayerSet,
                                to ioProduct : inout ProductRepresentation) {
     for pad in inArray.values {
-      let width = ProductLength (valueInCanariUnit: pad.width)
-      let height = ProductLength (valueInCanariUnit: pad.height)
+      let width = CanariLength.cu (pad.width)
+      let height = CanariLength.cu (pad.height)
       let angleDegrees = Double (pad.rotation) / 1000.0
       var af = AffineTransform ()
       af.translate (x: canariUnitToCocoa (pad.x), y: canariUnitToCocoa (pad.y))

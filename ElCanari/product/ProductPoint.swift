@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,8 +17,8 @@ struct ProductPoint : Codable, Equatable, CustomStringConvertible {
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let x : ProductLength
-  let y : ProductLength
+  let x : CanariLength
+  let y : CanariLength
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -25,31 +26,31 @@ struct ProductPoint : Codable, Equatable, CustomStringConvertible {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (x inX : ProductLength, y inY : ProductLength) {
+  init (x inX : CanariLength, y inY : CanariLength) {
     self.x = inX
     self.y = inY
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (x inX : Double, _ inXUnit : ProductLength.Unit,
-        y inY : Double, _ inYUnit : ProductLength.Unit) {
-    self.x = ProductLength (inX, inXUnit)
-    self.y = ProductLength (inY, inYUnit)
+  init (x inX : Double, _ inXUnit : CanariLength.Unit,
+        y inY : Double, _ inYUnit : CanariLength.Unit) {
+    self.x = CanariLength (inX, in: inXUnit)
+    self.y = CanariLength (inY, in: inYUnit)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (canariPoint inCanariPoint : CanariPoint) {
-    self.x = ProductLength (valueInCanariUnit: inCanariPoint.x)
-    self.y = ProductLength (valueInCanariUnit: inCanariPoint.y)
+    self.x = CanariLength.cu (inCanariPoint.x)
+    self.y = CanariLength.cu (inCanariPoint.y)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (cocoaPoint inPoint : NSPoint) {
-    self.x = ProductLength (inPoint.x, .pt)
-    self.y = ProductLength (inPoint.y, .pt)
+    self.x = CanariLength.pt (inPoint.x)
+    self.y = CanariLength.pt (inPoint.y)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

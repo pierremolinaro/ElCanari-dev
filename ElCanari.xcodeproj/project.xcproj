@@ -21,7 +21,7 @@
       "kind": "remote",
       "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
       "version": {
-        "revision": "7e5baab3bb8ff4ef0029c51ce5c7c61f5b01de5f",
+        "revision": "9b419fb4ed2e80fe29c3386037b92d53232cb850",
       },
     },
   ],
@@ -7340,12 +7340,6 @@
           ],
         }, {
           "path": "ProductLayerSet.swift",
-          "target-membership": [
-            "ElCanari-Debug/compile-sources",
-            "ElCanari-Release/compile-sources",
-          ],
-        }, {
-          "path": "ProductLength.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
             "ElCanari-Release/compile-sources",

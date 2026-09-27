@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -75,7 +76,7 @@ extension ProductRepresentation {
       s += "METRIC\n"
     }
  //--- Make inventory of apertures
-    var apertureSet = Set <ProductLength> ()
+    var apertureSet = Set <CanariLength> ()
     for circle in self.circles {
       if circle.layers.contains (.hole) {
         apertureSet.insert (circle.d)
@@ -131,7 +132,7 @@ extension ProductRepresentation {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate extension ProductLength {
+fileprivate extension CanariLength {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -8,6 +8,7 @@
 
 import AppKit
 import Compression
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -21,12 +22,10 @@ struct ProductRepresentation : Codable {
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var boardWidth : ProductLength
+  private(set) var boardWidth : CanariLength
   private(set) var boardWidthUnit : Int // Canari Unit
-  private(set) var boardHeight : ProductLength
+  private(set) var boardHeight : CanariLength
   private(set) var boardHeightUnit : Int // Canari Unit
-//  private(set) var boardLimitWidth : ProductLength
-//  private(set) var boardLimitWidthUnit : Int // Canari Unit
   private(set) var artworkName = ""
   private(set) var roundSegments = [LayeredProductSegment] ()
   private(set) var squareSegments = [LayeredProductSegment] ()
@@ -39,11 +38,11 @@ struct ProductRepresentation : Codable {
   //  Init
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (boardWidth inBoardWidth : ProductLength,
+  init (boardWidth inBoardWidth : CanariLength,
         boardWidthUnit inBoardWidthUnit : Int, // Canari Unit
-        boardHeight inBoardHeight : ProductLength,
+        boardHeight inBoardHeight : CanariLength,
         boardHeightUnit inBoardHeightUnit : Int, // Canari Unit
-//        boardLimitWidth inBoardLimitWidth : ProductLength,
+//        boardLimitWidth inBoardLimitWidth : CanariLength,
 //        boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
         artworkName inArtworkName : String,
         layerConfiguration inLayerConfiguration : LayerConfiguration) {
@@ -98,7 +97,7 @@ struct ProductRepresentation : Codable {
   mutating func append (flattenedStrokeBezierPath inBezierPath : BezierPath,
                         transformedBy inAT : AffineTransform,
                         clippedBy inClipRect : NSRect,
-                        width inWidth : ProductLength,
+                        width inWidth : CanariLength,
                         layers inLayerSet : ProductLayerSet) {
     let segmentArray = inBezierPath.productSegments (
       withFlatness: 0.025,
@@ -116,8 +115,8 @@ struct ProductRepresentation : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (_ inProduct : ProductRepresentation,
-                     x inX : ProductLength,
-                     y inY : ProductLength,
+                     x inX : CanariLength,
+                     y inY : CanariLength,
                      quadrantRotation inRotation : QuadrantRotation) {
     var modelAffineTransform = AffineTransform ()
     let width = inProduct.boardWidth.value (in: .pt)
@@ -259,11 +258,11 @@ struct ProductRepresentation : Codable {
     for circle in self.circles {
       if !circle.layers.intersection (inLayers).isEmpty {
         let s = SegmentEntity (inUndoManager)
-        s.x1 = circle.x.valueInCanariUnit
-        s.y1 = circle.y.valueInCanariUnit
-        s.x2 = circle.x.valueInCanariUnit
-        s.y2 = circle.y.valueInCanariUnit
-        s.width = circle.d.valueInCanariUnit
+        s.x1 = circle.x.cuValue
+        s.y1 = circle.y.cuValue
+        s.x2 = circle.x.cuValue
+        s.y2 = circle.y.cuValue
+        s.width = circle.d.cuValue
         s.endStyle = .round
         result.append (s)
       }
@@ -292,14 +291,14 @@ struct ProductRepresentation : Codable {
       if !rect.layers.intersection (inLayers).isEmpty {
         let (origin, points) = rect.polygon ()
         let r = RectangleEntity (inUndoManager)
-        r.p0x = origin.x.valueInCanariUnit
-        r.p0y = origin.y.valueInCanariUnit
-        r.p1x = points [0].x.valueInCanariUnit
-        r.p1y = points [0].y.valueInCanariUnit
-        r.p2x = points [1].x.valueInCanariUnit
-        r.p2y = points [1].y.valueInCanariUnit
-        r.p3x = points [2].x.valueInCanariUnit
-        r.p3y = points [2].y.valueInCanariUnit
+        r.p0x = origin.x.cuValue
+        r.p0y = origin.y.cuValue
+        r.p1x = points [0].x.cuValue
+        r.p1y = points [0].y.cuValue
+        r.p2x = points [1].x.cuValue
+        r.p2y = points [1].y.cuValue
+        r.p3x = points [2].x.cuValue
+        r.p3y = points [2].y.cuValue
         result.append (r)
       }
     }
@@ -317,10 +316,10 @@ struct ProductRepresentation : Codable {
         let pad = BoardModelPad (inUndoManager)
         let relativeCenter = NSPoint ()
         let absoluteCenter = ProductPoint (cocoaPoint: componentPad.af.transform (relativeCenter))
-        pad.x = absoluteCenter.x.valueInCanariUnit
-        pad.y = absoluteCenter.y.valueInCanariUnit
-        pad.width = componentPad.width.valueInCanariUnit
-        pad.height = componentPad.height.valueInCanariUnit
+        pad.x = absoluteCenter.x.cuValue
+        pad.y = absoluteCenter.y.cuValue
+        pad.width = componentPad.width.cuValue
+        pad.height = componentPad.height.cuValue
         pad.rotation = Int (componentPad.af.angleInDegrees * 1000.0)
         pad.shape = componentPad.shape
         padEntities.append (pad)
@@ -356,11 +355,11 @@ fileprivate extension SegmentEntity {
                     _ inProductSegment : LayeredProductSegment,
                     endStyle inEndStyle : TrackEndStyle) {
     self.init (inUndoManager)
-    self.x1 = inProductSegment.p1.x.valueInCanariUnit
-    self.y1 = inProductSegment.p1.y.valueInCanariUnit
-    self.x2 = inProductSegment.p2.x.valueInCanariUnit
-    self.y2 = inProductSegment.p2.y.valueInCanariUnit
-    self.width = inProductSegment.width.valueInCanariUnit
+    self.x1 = inProductSegment.p1.x.cuValue
+    self.y1 = inProductSegment.p1.y.cuValue
+    self.x2 = inProductSegment.p2.x.cuValue
+    self.y2 = inProductSegment.p2.y.cuValue
+    self.width = inProductSegment.width.cuValue
     self.endStyle = inEndStyle
   }
 

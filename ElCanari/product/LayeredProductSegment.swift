@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,18 +17,18 @@ struct LayeredProductSegment : Codable {
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let x1 : ProductLength
-  let y1 : ProductLength
-  let x2 : ProductLength
-  let y2 : ProductLength
-  let width : ProductLength
+  let x1 : CanariLength
+  let y1 : CanariLength
+  let x2 : CanariLength
+  let y2 : CanariLength
+  let width : CanariLength
   let layers : ProductLayerSet
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (p1 inP1 : ProductPoint,
         p2 inP2 : ProductPoint,
-        width inWidth : ProductLength,
+        width inWidth : CanariLength,
         layers inLayers : ProductLayerSet) {
     self.x1 = inP1.x
     self.y1 = inP1.y
@@ -83,10 +84,10 @@ struct LayeredProductSegment : Codable {
     let angleInDegrees = NSPoint.angleInDegrees (p1, p2)
 
     let pad = BoardModelPad (inUndoManager)
-    pad.x = center.x.valueInCanariUnit
-    pad.y = center.y.valueInCanariUnit
-    pad.width = cocoaToCanariUnit (d) + self.width.valueInCanariUnit
-    pad.height = self.width.valueInCanariUnit
+    pad.x = center.x.cuValue
+    pad.y = center.y.cuValue
+    pad.width = cocoaToCanariUnit (d) + self.width.cuValue
+    pad.height = self.width.cuValue
     pad.rotation = Int (angleInDegrees * 1000.0)
     switch inEndStyle {
     case .round :

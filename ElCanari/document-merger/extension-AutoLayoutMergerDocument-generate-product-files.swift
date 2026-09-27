@@ -9,6 +9,7 @@
 
 import AppKit
 import Compression
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -142,14 +143,11 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func generateProductRepresentation () -> ProductRepresentation {
- // §   let boardLimitWidth = ProductLength  (valueInCanariUnit: self.rootObject.boardLimitWidth)
     var product = ProductRepresentation (
-      boardWidth : ProductLength (valueInCanariUnit: self.rootObject.boardWidth!),
+      boardWidth : CanariLength.cu (self.rootObject.boardWidth!),
       boardWidthUnit : self.rootObject.boardWidthUnit, // Canari Unit
-      boardHeight : ProductLength (valueInCanariUnit: self.rootObject.boardHeight!),
+      boardHeight : CanariLength.cu (self.rootObject.boardHeight!),
       boardHeightUnit: self.rootObject.boardHeightUnit, // Canari Unit
-//      boardLimitWidth: boardLimitWidth,
-//      boardLimitWidthUnit: self.rootObject.boardLimitWidthUnit, // Canari Unit
       artworkName: self.rootObject.mArtworkName,
       layerConfiguration: self.rootObject.mArtwork!.layerConfiguration
     )
@@ -157,7 +155,7 @@ extension AutoLayoutMergerDocument {
     let boardRect = CanariRect (
       origin: .zero,
       size: CanariSize (width: self.rootObject.boardWidth!, height: self.rootObject.boardHeight!)
-    ) // §.insetBy (dx: self.rootObject.boardLimitWidth / 2, dy: self.rootObject.boardLimitWidth / 2)
+    )
     let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
     let p1 = ProductPoint (canariPoint: boardRect.bottomRight)
     let p2 = ProductPoint (canariPoint: boardRect.topRight)
@@ -174,8 +172,8 @@ extension AutoLayoutMergerDocument {
         fromJSONCompressedData: compressedJSONData,
         using: COMPRESSION_LZMA
       )!
-      let x = ProductLength (valueInCanariUnit: element.x)
-      let y = ProductLength (valueInCanariUnit: element.y)
+      let x = CanariLength.cu (element.x)
+      let y = CanariLength.cu (element.y)
       product.add (modelProduct, x: x, y: y, quadrantRotation: element.instanceRotation)
     }
     return product

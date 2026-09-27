@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,8 +17,8 @@ struct LayeredProductComponentPad : Codable {
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let width : ProductLength
-  let height : ProductLength
+  let width : CanariLength
+  let height : CanariLength
   let af : AffineTransform
   let shape : PadShape
   let layers : ProductLayerSet
@@ -129,15 +130,15 @@ struct LayeredProductComponentPad : Codable {
     if width > height { // Oblong
       let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -(width - height) / 2.0, y: 0.0))))
       let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +(width - height) / 2.0, y: 0.0))))
-      ioGerber.addRoundSegment (p1: p1, p2: p2, width: ProductLength (height, .pt))
+      ioGerber.addRoundSegment (p1: p1, p2: p2, width: CanariLength.pt (height))
     }else if width < height { // Oblong
       let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: 0.0, y: -(height - width) / 2.0))))
       let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: 0.0, y: +(height - width) / 2.0))))
-      ioGerber.addRoundSegment (p1: p1, p2: p2, width: ProductLength (width, .pt))
+      ioGerber.addRoundSegment (p1: p1, p2: p2, width: CanariLength.pt (width))
     }else{ // circular
       ioGerber.addCircle (
         center: inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (.zero))),
-        diameter: ProductLength (width, .pt)
+        diameter: CanariLength.pt (width)
       )
     }
   }
