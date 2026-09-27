@@ -17,6 +17,12 @@
       "version": {
         "up-to-next-major-version": "2.0.0",
       },
+    }, {
+      "kind": "remote",
+      "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
+      "version": {
+        "revision": "7e5baab3bb8ff4ef0029c51ce5c7c61f5b01de5f",
+      },
     },
   ],
   "files": [
@@ -12929,6 +12935,10 @@
           "package": "Sparkle",
           "product-name": "Sparkle",
           "build-phase": { "build-phase": "frameworks", "platforms": [ "macos" ] },
+        }, {
+          "package": "Swift-Package-CanariGeometry",
+          "product-name": "CanariGeometry",
+          "build-phase": { "build-phase": "frameworks" },
         },
       ],
       "build-settings": {
@@ -12985,6 +12995,10 @@
         {
           "package": "Sparkle",
           "product-name": "Sparkle",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
+          "package": "Swift-Package-CanariGeometry",
+          "product-name": "CanariGeometry",
           "build-phase": { "build-phase": "frameworks" },
         },
       ],
