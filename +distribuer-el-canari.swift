@@ -36,7 +36,7 @@ let BUGFIXES : [String] = [
   "Correction dimension des fichiers Gerber produits"
 ]
 let CHANGES : [String] = [
-  "Projet, onglet « Board Outline » : suppression du réglage « Board Limit Width »"
+  "Projet, onglet « Board Outline » : suppression du réglage « Board Limit Width »",
   "Merger, onglet « Board » : suppression du réglage « Board Limit Width »"
 ]
 let NEWS : [String] = [
@@ -135,6 +135,25 @@ struct VersionDescriptor : Codable {
 }
 
 //------------------------------------------------------------------------------
+//   Remove Directory
+//------------------------------------------------------------------------------
+
+func removeDirectory (_ inDirectory : String) {
+  print (BOLD_MAGENTA + "Remove directory \"" + inDirectory + "\"" + ENDC)
+  var loop = true
+  while loop {
+    print (BOLD_MAGENTA + "+ /bin/rm -fr " + inDirectory + ENDC)
+    let task = Process.launchedProcess (
+      launchPath: "/bin/rm",
+      arguments: ["-fr", inDirectory]
+    )
+    task.waitUntilExit ()
+    let status = task.terminationStatus
+    loop = status != 0
+  }
+}
+
+//------------------------------------------------------------------------------
 
 let fm = FileManager ()
 //-------------------- Get script absolute path
@@ -146,15 +165,13 @@ runCommand (
 )
 //-------------------- Supprimer une distribution existante
 let DISTRIBUTION_DIR = scriptDir + "/../EL_CANARI_DISTRIBUTION_" + VERSION_CANARI
-while fm.fileExists (atPath: DISTRIBUTION_DIR) {
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR])
-}
+removeDirectory (DISTRIBUTION_DIR)
 //-------------------- Créer le répertoire contenant la distribution
 runCommand ("/bin/mkdir", [DISTRIBUTION_DIR])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Importer ElCanari
 let CANARI_DIR = "ElCanari-dev"
-runCommand ("/bin/rm", ["-fr", CANARI_DIR])
+removeDirectory (CANARI_DIR)
 runCommand ("/usr/bin/git", ["clone", "--depth=1", "https://github.com/pierremolinaro/ElCanari-dev.git"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/" + CANARI_DIR)
 //-------------------- Obtenir l'année
@@ -194,7 +211,7 @@ do{
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
 //-------------------- Compiler le projet Xcode
   let débutCompilation = Date ()
-  runCommand ("/bin/rm", ["-fr", "build"])
+  removeDirectory ("build")
   runCommand (
     "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
     [ "-target", "ElCanari-" + BUILD_KIND.string,
@@ -279,10 +296,8 @@ do{
   runCommand ("/usr/bin/codesign", argumentsSignatureCode)
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  while fm.fileExists (atPath: DISTRIBUTION_DIR + "/" + CANARI_DIR) {
-    runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/" + CANARI_DIR])
-  }
-  //---
+  removeDirectory (DISTRIBUTION_DIR + "/" + CANARI_DIR)
+//---
   let durée = Int (duréeCompilation)
   print ("Durée de compilation : \(durée / 60) min \(durée % 60) s")
 }catch (let error) {
