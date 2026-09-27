@@ -114,8 +114,8 @@ extension AutoLayoutMergerDocument {
     boardModel.modelWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_UNIT_KEY, &errorArray)
     boardModel.modelHeight = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_KEY, &errorArray)
     boardModel.modelHeightUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_UNIT_KEY, &errorArray)
-    boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_KEY, &errorArray)
-    boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_UNIT_KEY, &errorArray)
+// §   boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_KEY, &errorArray)
+//    boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_UNIT_KEY, &errorArray)
     let boardRect_mm = NSRect (
       x: 0.0,
       y: 0.0,

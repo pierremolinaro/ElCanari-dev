@@ -36,10 +36,12 @@ let BUGFIXES : [String] = [
   "Correction dimension des fichiers Gerber produits"
 ]
 let CHANGES : [String] = [
-  "Projet, onglet « Board Outline » : supprimer du réglage « Board Limit Width »"
+  "Projet, onglet « Board Outline » : suppression du réglage « Board Limit Width »"
+  "Merger, onglet « Board » : suppression du réglage « Board Limit Width »"
 ]
 let NEWS : [String] = [
-  "Projet, onglet « Board Outline » : ajout « Corner Radius » dans l'édition du contour"
+  "Projet, onglet « Board Outline » : ajout « Corner Radius » dans l'édition du contour",
+  "Merger, onglet « Board » : ajout des réglages de séparation"
 ]
 
 //------------------------------------------------------------------------------

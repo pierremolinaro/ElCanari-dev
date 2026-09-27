@@ -137,10 +137,10 @@ struct CanariRect : Equatable, Hashable {
 //  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   cocoaRect
+  //   ptValue
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var cocoaRect : NSRect {
+  var ptValue : NSRect {
     return NSRect (
       x: canariUnitToCocoa (self.origin.x),
       y: canariUnitToCocoa (self.origin.y),
@@ -191,7 +191,7 @@ struct CanariRect : Equatable, Hashable {
   //   Inset
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func insetBy (dx inDx : Int, dy inDy : Int) -> CanariRect {
+  func insetBy (dx inDx : Int = 0, dy inDy : Int = 0) -> CanariRect {
     let result : CanariRect
     if self.isEmpty {
       result = .zero // Empty Rect

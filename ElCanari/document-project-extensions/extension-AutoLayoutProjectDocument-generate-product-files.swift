@@ -11,7 +11,7 @@ import Compression
 
 //--------------------------------------------------------------------------------------------------
 
-let BOARD_LIMIT_WIDTH = ProductLength (0.05, .mm)
+let BOARD_LIMIT_WIDTH = ProductLength (0.15, .mm)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -224,7 +224,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendPackageLegends (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
+    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
     let width = ProductLength (Double (self.rootObject.packageDrawingWidthMultpliedByTenForBoard) / 10.0, .pt)
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject, component.mDisplayLegend {
@@ -253,7 +253,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendComponentNamePathes (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
+    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont?.descriptor {
@@ -294,7 +294,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendComponentValuePathes (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
+    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont?.descriptor {
@@ -335,7 +335,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendTextPathes (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
+    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
     for object in self.rootObject.mBoardObjects.values {
       if let text = object as? BoardText {
         let (textBP, _, _, _, _) = boardText_displayInfos (
@@ -378,7 +378,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendLegendLines (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.cocoaRect
+    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
     for object in self.rootObject.mBoardObjects.values {
       if let line = object as? BoardLine {
         let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
@@ -770,7 +770,7 @@ extension AutoLayoutProjectDocument {
 //          height: self.rootObject.mRectangularBoardHeight - self.rootObject.mBoardLimitsWidth
 //        )
 //        let roundedRect = BezierPath (
-//          roundedRect: r.cocoaRect,
+//          roundedRect: r.ptValue,
 //          xRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2),
 //          yRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius - self.rootObject.mBoardLimitsWidth / 2)
 //        )
@@ -781,7 +781,7 @@ extension AutoLayoutProjectDocument {
           height: self.rootObject.mRectangularBoardHeight
         )
         let roundedRect = BezierPath (
-          roundedRect: r.cocoaRect,
+          roundedRect: r.ptValue,
           xRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius),
           yRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius)
         )

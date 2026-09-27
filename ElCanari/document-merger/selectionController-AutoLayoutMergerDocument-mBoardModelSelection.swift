@@ -499,18 +499,6 @@ import AppKit
   var modelHeightUnit_property = EBComputedProperty_Int ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Selection observable property: modelLimitWidth
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var modelLimitWidth_property = EBComputedProperty_Int ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Selection observable property: modelLimitWidthUnit
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var modelLimitWidthUnit_property = EBComputedProperty_Int ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: modelVersion
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -648,8 +636,6 @@ import AppKit
     self.bind_property_modelData (model: model)
     self.bind_property_modelHeight (model: model)
     self.bind_property_modelHeightUnit (model: model)
-    self.bind_property_modelLimitWidth (model: model)
-    self.bind_property_modelLimitWidthUnit (model: model)
     self.bind_property_modelVersion (model: model)
     self.bind_property_modelWidth (model: model)
     self.bind_property_modelWidthUnit (model: model)
@@ -858,14 +844,6 @@ import AppKit
     self.modelHeightUnit_property.mReadModelFunction = nil 
     self.modelHeightUnit_property.mWriteModelFunction = nil 
     self.mModel?.toMany_modelHeightUnit_StopsBeingObserved (by: self.modelHeightUnit_property)
-  //--- modelLimitWidth
-    self.modelLimitWidth_property.mReadModelFunction = nil 
-    self.modelLimitWidth_property.mWriteModelFunction = nil 
-    self.mModel?.toMany_modelLimitWidth_StopsBeingObserved (by: self.modelLimitWidth_property)
-  //--- modelLimitWidthUnit
-    self.modelLimitWidthUnit_property.mReadModelFunction = nil 
-    self.modelLimitWidthUnit_property.mWriteModelFunction = nil 
-    self.mModel?.toMany_modelLimitWidthUnit_StopsBeingObserved (by: self.modelLimitWidthUnit_property)
   //--- modelVersion
     self.modelVersion_property.mReadModelFunction = nil 
     self.modelVersion_property.mWriteModelFunction = nil 
@@ -3448,110 +3426,6 @@ import AppKit
         case .single (let v) :
           for object in v {
             object.modelHeightUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelLimitWidth_StartsBeingObserved (by: self.modelLimitWidth_property)
-    self.modelLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.modelLimitWidth_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelLimitWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelLimitWidth_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.toMany_modelLimitWidthUnit_StartsBeingObserved (by: self.modelLimitWidthUnit_property)
-    self.modelLimitWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.modelLimitWidthUnit_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelLimitWidthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelLimitWidthUnit_property.setProp (inValue)
           }
         }
       }

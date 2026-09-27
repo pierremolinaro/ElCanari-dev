@@ -123,7 +123,7 @@ extension AutoLayoutMergerDocumentSubClass {
             // Swift.print ("xCount \(xCount), yCount \(yCount)")
             let boardModelWidth = boardModel.modelWidth
             let boardModelHeight = boardModel.modelHeight
-            let overlapAmount = self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
+            let overlapAmount = 0 // § self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
             let rotation = self.mInsertArrayOfBoardsOrientation.propval
             var newBoardArray = [MergerBoardInstance] ()
             var y = mouseDownLocationInView.y

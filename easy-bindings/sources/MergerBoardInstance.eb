@@ -20,7 +20,7 @@ graphic handlingOpposite entity MergerBoardInstance {
   transient String modelName dependsFrom self.myModel.one.name ;
 
 //--- Limit width
-  transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
+//  transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
 
 //--- Selection layer
   transient EBShape selectionDisplay dependsFrom

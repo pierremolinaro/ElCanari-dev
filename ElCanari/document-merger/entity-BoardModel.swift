@@ -66,20 +66,6 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
-// @MainActor protocol BoardModel_modelLimitWidth : AnyObject {
-//   var modelLimitWidth : Int { get }
-// }
-
-//--------------------------------------------------------------------------------------------------
-
-// Commented out, not used
-// @MainActor protocol BoardModel_modelLimitWidthUnit : AnyObject {
-//   var modelLimitWidthUnit : Int { get }
-// }
-
-//--------------------------------------------------------------------------------------------------
-
-// Commented out, not used
 // @MainActor protocol BoardModel_artworkName : AnyObject {
 //   var artworkName : String { get }
 // }
@@ -525,8 +511,6 @@ final class BoardModel : EBManagedObject
     , BoardModel_modelVersion
     , BoardModel_ignoreModelVersionError
     , BoardModel_layerConfiguration
-    // BoardModel_modelLimitWidth // Commented out, not used
-    // BoardModel_modelLimitWidthUnit // Commented out, not used
     // BoardModel_artworkName // Commented out, not used
     // BoardModel_modelData // Commented out, not used
     // BoardModel_errorArchiveLabelSize // Commented out, not used
@@ -913,32 +897,6 @@ final class BoardModel : EBManagedObject
   final var traversingPads : EBReferenceArray <BoardModelPad> {
     get { return self.traversingPads_property.propval }
     set { self.traversingPads_property.setProp (newValue) }
-  }
-
-  //------------------------------------------------------------------------------------------------
-  //   Atomic property: modelLimitWidth
-  //------------------------------------------------------------------------------------------------
-
-  final let modelLimitWidth_property : EBStoredProperty_Int
-
-  //------------------------------------------------------------------------------------------------
-
-  final var modelLimitWidth : Int {
-    get { return self.modelLimitWidth_property.propval }
-    set { self.modelLimitWidth_property.setProp (newValue) }
-  }
-
-  //------------------------------------------------------------------------------------------------
-  //   Atomic property: modelLimitWidthUnit
-  //------------------------------------------------------------------------------------------------
-
-  final let modelLimitWidthUnit_property : EBStoredProperty_Int
-
-  //------------------------------------------------------------------------------------------------
-
-  final var modelLimitWidthUnit : Int {
-    get { return self.modelLimitWidthUnit_property.propval }
-    set { self.modelLimitWidthUnit_property.setProp (newValue) }
   }
 
   //------------------------------------------------------------------------------------------------
@@ -1863,8 +1821,6 @@ final class BoardModel : EBManagedObject
     self.modelVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelVersion")
     self.ignoreModelVersionError_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "ignoreModelVersionError")
     self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager, key: "layerConfiguration")
-    self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidth")
-    self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidthUnit")
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "artworkName")
     self.modelData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "modelData")
     super.init (inUndoManager)
@@ -1925,8 +1881,6 @@ final class BoardModel : EBManagedObject
   //--- To many property: traversingPads (no option)
     self.traversingPads_property.undoManager = inUndoManager
     self.accumulateProperty (self.traversingPads_property)
-    self.accumulateProperty (self.modelLimitWidth_property)
-    self.accumulateProperty (self.modelLimitWidthUnit_property)
   //--- To many property: backComponentNames (no option)
     self.backComponentNames_property.undoManager = inUndoManager
     self.accumulateProperty (self.backComponentNames_property)
@@ -2812,14 +2766,11 @@ final class BoardModel : EBManagedObject
       if let unwSelf = self {
         let s0 = unwSelf.modelWidth_property.selection
         let s1 = unwSelf.modelHeight_property.selection
-        let s2 = unwSelf.modelLimitWidth_property.selection
-        switch (s0, s1, s2) {
+        switch (s0, s1) {
         case (.single (let v0),
-              .single (let v1),
-              .single (let v2)) :
-          return .single (transient_BoardModel_boardLimitsBezierPaths (v0, v1, v2))
+              .single (let v1)) :
+          return .single (transient_BoardModel_boardLimitsBezierPaths (v0, v1))
         case (.multiple,
-              .multiple,
               .multiple) :
           return .multiple
         default :
@@ -2831,7 +2782,6 @@ final class BoardModel : EBManagedObject
     }
     self.modelWidth_property.startsBeingObserved (by: self.boardLimitsBezierPaths_property)
     self.modelHeight_property.startsBeingObserved (by: self.boardLimitsBezierPaths_property)
-    self.modelLimitWidth_property.startsBeingObserved (by: self.boardLimitsBezierPaths_property)
   //--- Atomic property: backComponentNameSegments
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

@@ -142,7 +142,7 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func generateProductRepresentation () -> ProductRepresentation {
-    let boardLimitWidth = ProductLength  (valueInCanariUnit: self.rootObject.boardLimitWidth)
+ // §   let boardLimitWidth = ProductLength  (valueInCanariUnit: self.rootObject.boardLimitWidth)
     var product = ProductRepresentation (
       boardWidth : ProductLength (valueInCanariUnit: self.rootObject.boardWidth!),
       boardWidthUnit : self.rootObject.boardWidthUnit, // Canari Unit
@@ -157,15 +157,15 @@ extension AutoLayoutMergerDocument {
     let boardRect = CanariRect (
       origin: .zero,
       size: CanariSize (width: self.rootObject.boardWidth!, height: self.rootObject.boardHeight!)
-    ).insetBy (dx: self.rootObject.boardLimitWidth / 2, dy: self.rootObject.boardLimitWidth / 2)
+    ) // §.insetBy (dx: self.rootObject.boardLimitWidth / 2, dy: self.rootObject.boardLimitWidth / 2)
     let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
     let p1 = ProductPoint (canariPoint: boardRect.bottomRight)
     let p2 = ProductPoint (canariPoint: boardRect.topRight)
     let p3 = ProductPoint (canariPoint: boardRect.topLeft)
-    product.append (roundSegment: LayeredProductSegment (p1: p0, p2: p1, width: boardLimitWidth, layers: .boardLimits))
-    product.append (roundSegment: LayeredProductSegment (p1: p1, p2: p2, width: boardLimitWidth, layers: .boardLimits))
-    product.append (roundSegment: LayeredProductSegment (p1: p2, p2: p3, width: boardLimitWidth, layers: .boardLimits))
-    product.append (roundSegment: LayeredProductSegment (p1: p3, p2: p0, width: boardLimitWidth, layers: .boardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p0, p2: p1, width: BOARD_LIMIT_WIDTH, layers: .boardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p1, p2: p2, width: BOARD_LIMIT_WIDTH, layers: .boardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p2, p2: p3, width: BOARD_LIMIT_WIDTH, layers: .boardLimits))
+    product.append (roundSegment: LayeredProductSegment (p1: p3, p2: p0, width: BOARD_LIMIT_WIDTH, layers: .boardLimits))
   //--- board instances
     for element in self.rootObject.boardInstances.values {
       let boardModel : BoardModel = element.myModel!

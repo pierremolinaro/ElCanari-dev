@@ -80,7 +80,7 @@ extension AutoLayoutMergerDocument {
     inModelToUpdate.artworkName = inLoadedModel.artworkName
     inModelToUpdate.modelWidth = inLoadedModel.modelWidth
     inModelToUpdate.modelHeight = inLoadedModel.modelHeight
-    inModelToUpdate.modelLimitWidth = inLoadedModel.modelLimitWidth
+//    inModelToUpdate.modelLimitWidth = inLoadedModel.modelLimitWidth
     inModelToUpdate.modelVersion = inLoadedModel.modelVersion
     inModelToUpdate.ignoreModelVersionError = inLoadedModel.ignoreModelVersionError
     inModelToUpdate.layerConfiguration = inLoadedModel.layerConfiguration

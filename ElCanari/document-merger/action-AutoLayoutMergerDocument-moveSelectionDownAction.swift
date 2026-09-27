@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutMergerDocument {
   @objc func moveSelectionDownAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.moveDown (overlap: self.rootObject.overlapingArrangment, objectSet: self.mBoardInstanceController.selectedSet)
+        self.moveDown (objectSet: self.mBoardInstanceController.selectedSet)
 //--- END OF USER ZONE 2
   }
 }

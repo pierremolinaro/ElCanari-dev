@@ -25,8 +25,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       oldValue.modelVersion_property.stopsBeingObserved (by: self.modelVersion_property) // Stored property
       oldValue.ignoreModelVersionError_property.stopsBeingObserved (by: self.ignoreModelVersionError_property) // Stored property
       oldValue.layerConfiguration_property.stopsBeingObserved (by: self.layerConfiguration_property) // Stored property
-      oldValue.modelLimitWidth_property.stopsBeingObserved (by: self.modelLimitWidth_property) // Stored property
-      oldValue.modelLimitWidthUnit_property.stopsBeingObserved (by: self.modelLimitWidthUnit_property) // Stored property
       oldValue.artworkName_property.stopsBeingObserved (by: self.artworkName_property) // Stored property
       oldValue.modelData_property.stopsBeingObserved (by: self.modelData_property) // Stored property
       oldValue.errorArchiveLabelSize_property.stopsBeingObserved (by: self.errorArchiveLabelSize_property) // Transient property
@@ -188,8 +186,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       newValue.modelVersion_property.startsBeingObserved (by: self.modelVersion_property) // Stored property
       newValue.ignoreModelVersionError_property.startsBeingObserved (by: self.ignoreModelVersionError_property) // Stored property
       newValue.layerConfiguration_property.startsBeingObserved (by: self.layerConfiguration_property) // Stored property
-      newValue.modelLimitWidth_property.startsBeingObserved (by: self.modelLimitWidth_property) // Stored property
-      newValue.modelLimitWidthUnit_property.startsBeingObserved (by: self.modelLimitWidthUnit_property) // Stored property
       newValue.artworkName_property.startsBeingObserved (by: self.artworkName_property) // Stored property
       newValue.modelData_property.startsBeingObserved (by: self.modelData_property) // Stored property
       newValue.errorArchiveLabelSize_property.startsBeingObserved (by: self.errorArchiveLabelSize_property) // Transient property
@@ -395,18 +391,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let layerConfiguration_property = EBTransientProperty <LayerConfiguration?> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'modelLimitWidth' stored property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final let modelLimitWidth_property = EBTransientProperty <Int?> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'modelLimitWidthUnit' stored property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final let modelLimitWidthUnit_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'artworkName' stored property
@@ -1575,14 +1559,6 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   //--- Configure layerConfiguration simple stored property
     self.layerConfiguration_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.layerConfiguration_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure modelLimitWidth simple stored property
-    self.modelLimitWidth_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.modelLimitWidth_property.optionalSelection ?? .single (nil)
-    }
-  //--- Configure modelLimitWidthUnit simple stored property
-    self.modelLimitWidthUnit_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.modelLimitWidthUnit_property.optionalSelection ?? .single (nil)
     }
   //--- Configure artworkName simple stored property
     self.artworkName_property.mReadModelFunction = { [weak self] in

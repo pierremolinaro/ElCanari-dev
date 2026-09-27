@@ -15,21 +15,20 @@ import AppKit
 
 @MainActor func transient_MergerRoot_boardRect (
        _ self_automaticBoardSize : Bool,        
-       _ self_boardLimitWidth : Int,            
        _ self_boardManualWidth : Int,           
        _ self_boardManualHeight : Int,          
-       _ self_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect],
-       _ self_boardInstances_boardLimitWidth : [any MergerBoardInstance_boardLimitWidth]
+       _ self_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect]
 ) -> CanariRect {
 //--- START OF USER ZONE 2
     if self_automaticBoardSize {
       var r = CanariRect.zero // Empty rect
       var idx = 0
       while idx < self_boardInstances_instanceRect.count {
-        if let rect = self_boardInstances_instanceRect [idx].instanceRect,
-           let boardLimitWidth = self_boardInstances_boardLimitWidth [idx].boardLimitWidth {
-          let inset = min (0, boardLimitWidth - self_boardLimitWidth)
-          r = r.union (rect.insetBy (dx: inset, dy: inset))
+        if let rect = self_boardInstances_instanceRect [idx].instanceRect {
+//           let boardLimitWidth = self_boardInstances_boardLimitWidth [idx].boardLimitWidth {
+          r = r.union (rect)
+//     §     let inset = min (0, boardLimitWidth - self_boardLimitWidth)
+//          r = r.union (rect.insetBy (dx: inset, dy: inset))
         }
         idx += 1
       }

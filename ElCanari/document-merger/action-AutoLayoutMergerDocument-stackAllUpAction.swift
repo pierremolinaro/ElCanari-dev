@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutMergerDocument {
   @objc func stackAllUpAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.stackUp (overlap: self.rootObject.overlapingArrangment, objectArray: self.rootObject.boardInstances)
+        self.stackUp (objectArray: self.rootObject.boardInstances)
 //--- END OF USER ZONE 2
   }
 }

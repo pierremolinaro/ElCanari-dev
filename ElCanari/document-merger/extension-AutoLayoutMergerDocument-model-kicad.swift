@@ -178,8 +178,8 @@ extension AutoLayoutMergerDocument {
       boardModel.modelWidthUnit = CANARI_UNITS_PER_MM
       boardModel.modelHeight = millimeterToCanariUnit (modelHeightMM)
       boardModel.modelHeightUnit = CANARI_UNITS_PER_MM
-      boardModel.modelLimitWidth = boardModelWidth
-      boardModel.modelLimitWidthUnit = CANARI_UNITS_PER_MM
+//      boardModel.modelLimitWidth = boardModelWidth
+//      boardModel.modelLimitWidthUnit = CANARI_UNITS_PER_MM
     //--- Collect datas
       var temporaryBoardModel = TemporaryBoardModel (
         boardRectMM: boardRect_mm,

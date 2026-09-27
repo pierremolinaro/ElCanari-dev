@@ -44,12 +44,6 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       if let relay = self.mObserversOf_layerConfiguration { // Stored property
         managedObject.layerConfiguration_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_modelLimitWidth { // Stored property
-        managedObject.modelLimitWidth_property.stopsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_modelLimitWidthUnit { // Stored property
-        managedObject.modelLimitWidthUnit_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_artworkName { // Stored property
         managedObject.artworkName_property.stopsBeingObserved (by: relay)
       }
@@ -265,12 +259,6 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       }
       if let relay = self.mObserversOf_layerConfiguration { // Stored property
         managedObject.layerConfiguration_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_modelLimitWidth { // Stored property
-        managedObject.modelLimitWidth_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_modelLimitWidthUnit { // Stored property
-        managedObject.modelLimitWidthUnit_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_artworkName { // Stored property
         managedObject.artworkName_property.startsBeingObserved (by: relay)
@@ -720,64 +708,6 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
 
   final func toMany_layerConfiguration_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_layerConfiguration?.stopsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'modelLimitWidth' stored property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mObserversOf_modelLimitWidth : EBObservedObserver? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_modelLimitWidth_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_modelLimitWidth {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.modelLimitWidth_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_modelLimitWidth = relay
-    }
-    relay.startsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_modelLimitWidth_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
-    self.mObserversOf_modelLimitWidth?.stopsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'modelLimitWidthUnit' stored property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mObserversOf_modelLimitWidthUnit : EBObservedObserver? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_modelLimitWidthUnit_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_modelLimitWidthUnit {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.modelLimitWidthUnit_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_modelLimitWidthUnit = relay
-    }
-    relay.startsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_modelLimitWidthUnit_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
-    self.mObserversOf_modelLimitWidthUnit?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

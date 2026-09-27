@@ -60,7 +60,7 @@ import AppKit
           }
           return bp
         }
-        let cocoaRect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight).cocoaRect
+        let cocoaRect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight).ptValue
         var shape = EBShape ()
         let display = (self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles)
           || (self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles)

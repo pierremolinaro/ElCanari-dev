@@ -16,9 +16,9 @@ extension AutoLayoutMergerDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func moveDown (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+  func moveDown (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardHeight = self.rootObject.boardHeight!
-    let boardLimitWidth = self.rootObject.boardLimitWidth
+    let verticalSeparator = self.rootObject.verticalSeparator
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
@@ -27,16 +27,14 @@ extension AutoLayoutMergerDocument {
     var deltaY = -boardHeight
     for selectedInstance in ySortedArray {
       let instanceRect = selectedInstance.instanceRect!
-      let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
-        bottom: max (boardLimitWidth - instanceLimit, 0),
+        bottom: 0,
         width: instanceRect.width,
         height: instanceRect.bottom
       )
       for otherInstance in otherObjectSet.values {
-        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
-        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: inset, dy: inset))
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dy: -verticalSeparator))
         if !intersection.isEmpty {
           acceptableNewRect = CanariRect (
             left: instanceRect.left,
@@ -61,9 +59,10 @@ extension AutoLayoutMergerDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func moveUp (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+  func moveUp (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardHeight = self.rootObject.boardHeight!
-  //--- Non selected set
+    let verticalSeparator = self.rootObject.verticalSeparator
+ //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
     let ySortedArray = inMoveObjectSet.values.sorted { $0.y > $1.y }
@@ -71,7 +70,6 @@ extension AutoLayoutMergerDocument {
     var deltaY = boardHeight
     for selectedInstance in ySortedArray {
       let instanceRect = selectedInstance.instanceRect!
-      let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
         bottom: instanceRect.bottom,
@@ -79,8 +77,7 @@ extension AutoLayoutMergerDocument {
         height: boardHeight - instanceRect.bottom
       )
       for otherInstance in otherObjectSet.values {
-        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
-        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: inset, dy: inset))
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dy: -verticalSeparator))
         if !intersection.isEmpty {
           acceptableNewRect = CanariRect (
             left: acceptableNewRect.left,
@@ -105,8 +102,9 @@ extension AutoLayoutMergerDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func moveRight (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+  func moveRight (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardWidth = self.rootObject.boardWidth!
+    let horizontalSeparator = self.rootObject.horizontalSeparator
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
@@ -115,7 +113,6 @@ extension AutoLayoutMergerDocument {
     var deltaX = boardWidth
     for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
-      let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
         bottom: instanceRect.bottom,
@@ -123,8 +120,7 @@ extension AutoLayoutMergerDocument {
         height: instanceRect.height
       )
       for otherInstance in otherObjectSet.values {
-        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
-        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: inset, dy: inset))
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: -horizontalSeparator))
         if !intersection.isEmpty {
           acceptableNewRect = CanariRect (
             left: acceptableNewRect.left,
@@ -149,9 +145,9 @@ extension AutoLayoutMergerDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func moveLeft (overlap inOverlap : Bool, objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
+  func moveLeft (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
     let boardWidth = self.rootObject.boardWidth!
-    let boardLimitWidth = self.rootObject.boardLimitWidth
+    let horizontalSeparator = self.rootObject.horizontalSeparator
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
   //--- Sort objects
@@ -160,16 +156,14 @@ extension AutoLayoutMergerDocument {
     var deltaX = -boardWidth
     for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
-      let instanceLimit = selectedInstance.boardLimitWidth!
       var acceptableNewRect = CanariRect (
-        left: max (boardLimitWidth - instanceLimit, 0),
+        left: 0,
         bottom: instanceRect.bottom,
         width: instanceRect.left,
         height: instanceRect.height
       )
       for otherInstance in otherObjectSet.values {
-        let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
-        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx:inset, dy: inset))
+        let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dx: -horizontalSeparator))
         if !intersection.isEmpty {
           acceptableNewRect = CanariRect (
             left: intersection.right,
@@ -194,50 +188,51 @@ extension AutoLayoutMergerDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func stackDown (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
+  func stackDown (objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.y < $1.y }
     for object in sortedArray {
-      moveDown (overlap: inOverlap, objectSet: EBReferenceSet (object))
+      moveDown (objectSet: EBReferenceSet (object))
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func stackLeft (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
+  func stackLeft (objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.x < $1.x }
     for object in sortedArray {
-      moveLeft (overlap: inOverlap, objectSet: EBReferenceSet (object))
+      moveLeft (objectSet: EBReferenceSet (object))
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func stackUp (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
+  func stackUp (objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.y > $1.y }
     for object in sortedArray {
-      moveUp (overlap: inOverlap, objectSet: EBReferenceSet (object))
+      moveUp (objectSet: EBReferenceSet (object))
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func stackRight (overlap inOverlap : Bool, objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
+  func stackRight (objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
     let sortedArray = inObjectArray.values.sorted { $0.x > $1.x }
     for object in sortedArray {
-      moveRight (overlap: inOverlap, objectSet: EBReferenceSet (object))
+      moveRight (objectSet: EBReferenceSet (object))
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func explodeSelection (objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
-    let translation = self.rootObject.boardLimitWidth * (self.rootObject.overlapingArrangment ? 2 : 1)
+    let hTranslation = self.rootObject.horizontalSeparator + millimeterToCanariUnit (1.0)
+    let vTranslation = self.rootObject.verticalSeparator + millimeterToCanariUnit (1.0)
     let xSortedArray = inObjectArray.values.sorted {
       ($0.x < $1.x) || (($0.x == $1.x) && ($0.y < $1.y))
     }
     var idx = 1
     for object in xSortedArray {
-      object.x += idx * translation
+      object.x += idx * hTranslation
       idx += 1
     }
     let ySortedArray = inObjectArray.values.sorted {
@@ -245,7 +240,7 @@ extension AutoLayoutMergerDocument {
     }
     idx = 1
     for object in ySortedArray {
-      object.y += idx * translation
+      object.y += idx * vTranslation
       idx += 1
     }
   }

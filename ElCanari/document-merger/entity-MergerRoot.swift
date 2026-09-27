@@ -122,18 +122,6 @@ final class MergerRoot : EBManagedObject
   }
 
   //------------------------------------------------------------------------------------------------
-  //   Atomic property: overlapingArrangment
-  //------------------------------------------------------------------------------------------------
-
-  final let overlapingArrangment_property : EBStoredProperty_Bool
-
-  //------------------------------------------------------------------------------------------------
-
-  final var overlapingArrangment : Bool {
-    get { return self.overlapingArrangment_property.propval }
-  }
-
-  //------------------------------------------------------------------------------------------------
   //   Atomic property: selectedBoardXUnit
   //------------------------------------------------------------------------------------------------
 
@@ -146,27 +134,51 @@ final class MergerRoot : EBManagedObject
   final let selectedBoardYUnit_property : EBStoredProperty_Int
 
   //------------------------------------------------------------------------------------------------
-  //   Atomic property: boardLimitWidth
+  //   Atomic property: horizontalSeparator
   //------------------------------------------------------------------------------------------------
 
-  final let boardLimitWidth_property : EBStoredProperty_Int
+  final let horizontalSeparator_property : EBStoredProperty_Int
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardLimitWidth : Int {
-    get { return self.boardLimitWidth_property.propval }
+  final var horizontalSeparator : Int {
+    get { return self.horizontalSeparator_property.propval }
   }
 
   //------------------------------------------------------------------------------------------------
-  //   Atomic property: boardLimitWidthUnit
+  //   Atomic property: horizontalSeparatorUnit
   //------------------------------------------------------------------------------------------------
 
-  final let boardLimitWidthUnit_property : EBStoredProperty_Int
+  final let horizontalSeparatorUnit_property : EBStoredProperty_Int
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardLimitWidthUnit : Int {
-    get { return self.boardLimitWidthUnit_property.propval }
+  final var horizontalSeparatorUnit : Int {
+    get { return self.horizontalSeparatorUnit_property.propval }
+  }
+
+  //------------------------------------------------------------------------------------------------
+  //   Atomic property: verticalSeparator
+  //------------------------------------------------------------------------------------------------
+
+  final let verticalSeparator_property : EBStoredProperty_Int
+
+  //------------------------------------------------------------------------------------------------
+
+  final var verticalSeparator : Int {
+    get { return self.verticalSeparator_property.propval }
+  }
+
+  //------------------------------------------------------------------------------------------------
+  //   Atomic property: verticalSeparatorUnit
+  //------------------------------------------------------------------------------------------------
+
+  final let verticalSeparatorUnit_property : EBStoredProperty_Int
+
+  //------------------------------------------------------------------------------------------------
+
+  final var verticalSeparatorUnit : Int {
+    get { return self.verticalSeparatorUnit_property.propval }
   }
 
   //------------------------------------------------------------------------------------------------
@@ -657,11 +669,12 @@ final class MergerRoot : EBManagedObject
     self.boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "boardManualHeight")
     self.boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardWidthUnit")
     self.boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardHeightUnit")
-    self.overlapingArrangment_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "overlapingArrangment")
     self.selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "selectedBoardXUnit")
     self.selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "selectedBoardYUnit")
-    self.boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardLimitWidth")
-    self.boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardLimitWidthUnit")
+    self.horizontalSeparator_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "horizontalSeparator")
+    self.horizontalSeparatorUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "horizontalSeparatorUnit")
+    self.verticalSeparator_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "verticalSeparator")
+    self.verticalSeparatorUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "verticalSeparatorUnit")
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
     self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
     self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
@@ -700,11 +713,12 @@ final class MergerRoot : EBManagedObject
     self.accumulateProperty (self.boardManualHeight_property)
     self.accumulateProperty (self.boardWidthUnit_property)
     self.accumulateProperty (self.boardHeightUnit_property)
-    self.accumulateProperty (self.overlapingArrangment_property)
     self.accumulateProperty (self.selectedBoardXUnit_property)
     self.accumulateProperty (self.selectedBoardYUnit_property)
-    self.accumulateProperty (self.boardLimitWidth_property)
-    self.accumulateProperty (self.boardLimitWidthUnit_property)
+    self.accumulateProperty (self.horizontalSeparator_property)
+    self.accumulateProperty (self.horizontalSeparatorUnit_property)
+    self.accumulateProperty (self.verticalSeparator_property)
+    self.accumulateProperty (self.verticalSeparatorUnit_property)
     self.accumulateProperty (self.mPDFBoardBackgroundColor_property)
     self.accumulateProperty (self.mGenerateMergerArchive_property)
     self.accumulateProperty (self.mGenerateGerberAndPDF_property)
@@ -957,22 +971,16 @@ final class MergerRoot : EBManagedObject
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.automaticBoardSize_property.selection
-        let s1 = unwSelf.boardLimitWidth_property.selection
-        let s2 = unwSelf.boardManualWidth_property.selection
-        let s3 = unwSelf.boardManualHeight_property.selection
-        let s4 = unwSelf.boardInstances_property.selection
-        let s5 = unwSelf.boardInstances_property.selection
-        switch (s0, s1, s2, s3, s4, s5) {
+        let s1 = unwSelf.boardManualWidth_property.selection
+        let s2 = unwSelf.boardManualHeight_property.selection
+        let s3 = unwSelf.boardInstances_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3),
-              .single (let v4),
-              .single (let v5)) :
-          return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3, v4, v5))
+              .single (let v3)) :
+          return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3))
         case (.multiple,
-              .multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -985,11 +993,9 @@ final class MergerRoot : EBManagedObject
       }
     }
     self.automaticBoardSize_property.startsBeingObserved (by: self.boardRect_property)
-    self.boardLimitWidth_property.startsBeingObserved (by: self.boardRect_property)
     self.boardManualWidth_property.startsBeingObserved (by: self.boardRect_property)
     self.boardManualHeight_property.startsBeingObserved (by: self.boardRect_property)
     self.boardInstances_property.toMany_instanceRect_StartsBeingObserved (by: self.boardRect_property)
-    self.boardInstances_property.toMany_boardLimitWidth_StartsBeingObserved (by: self.boardRect_property)
   //--- Atomic property: boardWidth
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1154,17 +1160,14 @@ final class MergerRoot : EBManagedObject
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.boardRect_property.selection
-        let s1 = unwSelf.boardLimitWidth_property.selection
-        let s2 = preferences_mergerBoardViewDisplayBoardLimits_property.selection
-        let s3 = preferences_mergerColorBoardLimits_property.selection
-        switch (s0, s1, s2, s3) {
+        let s1 = preferences_mergerBoardViewDisplayBoardLimits_property.selection
+        let s2 = preferences_mergerColorBoardLimits_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
-              .single (let v2),
-              .single (let v3)) :
-          return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2, v3))
+              .single (let v2)) :
+          return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple) :
           return .multiple
@@ -1176,7 +1179,6 @@ final class MergerRoot : EBManagedObject
       }
     }
     self.boardRect_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
-    self.boardLimitWidth_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
     preferences_mergerBoardViewDisplayBoardLimits_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
     preferences_mergerColorBoardLimits_property.startsBeingObserved (by: self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships

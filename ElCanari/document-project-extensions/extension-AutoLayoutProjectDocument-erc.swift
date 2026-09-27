@@ -805,7 +805,7 @@ extension AutoLayoutProjectDocument {
           width: propertyRectangle.mWidth,
           height: propertyRectangle.mHeight
         )
-        let r = GeometricRect (cocoaRect: canariRect.cocoaRect)
+        let r = GeometricRect (cocoaRect: canariRect.ptValue)
         let allowPadsInside = propertyRectangle.mAllowPadsInside
         if propertyRectangle.mIsInFrontLayer {
           let pr = PropertyRectForERC (

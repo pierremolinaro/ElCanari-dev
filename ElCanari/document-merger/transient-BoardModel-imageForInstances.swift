@@ -201,7 +201,7 @@ import AppKit
   do{
     let color = prefs_mergerBoardViewDisplayModelBoardsLimits ? prefs_mergerColorInternalBoardsLimits : .clear
     let boardRect = CanariRect (left: 0, bottom: 0, width: self_modelWidth, height: self_modelHeight)
-    let boardRectBP = BezierPath (rect: boardRect.cocoaRect)
+    let boardRectBP = BezierPath (rect: boardRect.ptValue)
     shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
     shapes.add (stroke: self_boardLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
   }

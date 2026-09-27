@@ -59,8 +59,8 @@ extension AutoLayoutMergerDocument {
     boardModel.artworkName = inProduct.artworkName
     boardModel.modelWidth = inProduct.boardWidth.valueInCanariUnit
     boardModel.modelHeight = inProduct.boardHeight.valueInCanariUnit
-    boardModel.modelLimitWidth = 0 // § inProduct.boardLimitWidth.valueInCanariUnit
-    boardModel.modelLimitWidthUnit = 2286 // § inProduct.boardLimitWidthUnit
+//    boardModel.modelLimitWidth = 0 // § inProduct.boardLimitWidth.valueInCanariUnit
+//    boardModel.modelLimitWidthUnit = 2286 // § inProduct.boardLimitWidthUnit
     boardModel.modelWidthUnit = inProduct.boardWidthUnit
     boardModel.modelHeightUnit = inProduct.boardHeightUnit
     boardModel.layerConfiguration = inProduct.layerConfiguration

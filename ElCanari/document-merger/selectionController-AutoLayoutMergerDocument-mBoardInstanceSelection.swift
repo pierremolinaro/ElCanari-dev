@@ -23,12 +23,6 @@ import AppKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Selection observable property: boardLimitWidth
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var boardLimitWidth_property = EBTransientProperty <Int> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: instanceRect
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -88,7 +82,6 @@ import AppKit
 
   final func bind_selection (model : ReadOnlyArrayOf_MergerBoardInstance) {
     self.mModel = model
-    self.bind_property_boardLimitWidth (model: model)
     self.bind_property_instanceRect (model: model)
     self.bind_property_instanceRotation (model: model)
     self.bind_property_modelName (model: model)
@@ -103,9 +96,6 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   /* final func unbind_selection () {
-  //--- boardLimitWidth
-    self.boardLimitWidth_property.mReadModelFunction = nil 
-    self.mModel?.toMany_boardLimitWidth_StopsBeingObserved (by: self.boardLimitWidth_property)
   //--- instanceRect
     self.instanceRect_property.mReadModelFunction = nil 
     self.mModel?.toMany_instanceRect_StopsBeingObserved (by: self.instanceRect_property)
@@ -133,46 +123,6 @@ import AppKit
   //---
     self.mModel = nil
   } */
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.toMany_boardLimitWidth_StartsBeingObserved (by: self.boardLimitWidth_property)
-    self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.boardLimitWidth_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

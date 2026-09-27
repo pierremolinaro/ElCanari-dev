@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutMergerDocument {
   @objc func stackAllLeftAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.stackLeft (overlap: self.rootObject.overlapingArrangment, objectArray: self.rootObject.boardInstances)
+        self.stackLeft (objectArray: self.rootObject.boardInstances)
 //--- END OF USER ZONE 2
   }
 }

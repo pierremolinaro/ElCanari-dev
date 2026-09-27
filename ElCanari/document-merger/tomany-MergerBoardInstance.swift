@@ -32,9 +32,6 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
       if let relay = self.mObserversOf_modelName { // Transient property
         managedObject.modelName_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_boardLimitWidth { // Transient property
-        managedObject.boardLimitWidth_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.stopsBeingObserved (by: relay)
       }
@@ -58,9 +55,6 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
       }
       if let relay = self.mObserversOf_modelName { // Transient property
         managedObject.modelName_property.startsBeingObserved (by: relay)
-      }
-      if let relay = self.mObserversOf_boardLimitWidth { // Transient property
-        managedObject.boardLimitWidth_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_objectDisplay { // Transient property
         managedObject.objectDisplay_property.startsBeingObserved (by: relay)
@@ -214,35 +208,6 @@ class ReadOnlyArrayOf_MergerBoardInstance : EBReadOnlyAbstractArrayProperty <Mer
 
   final func toMany_modelName_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_modelName?.stopsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'boardLimitWidth' transient property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mObserversOf_boardLimitWidth : EBObservedObserver? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_boardLimitWidth_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_boardLimitWidth {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.boardLimitWidth_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_boardLimitWidth = relay
-    }
-    relay.startsBeingObserved (by:  inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_boardLimitWidth_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
-    self.mObserversOf_boardLimitWidth?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

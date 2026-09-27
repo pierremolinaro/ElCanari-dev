@@ -370,7 +370,7 @@ extension AutoLayoutProjectDocument {
         for pr in inPropertyRects {
           var found = pr.layers.contains (track.mSide)
           if found {
-            found = oblong.intersects (rect: GeometricRect (cocoaRect: pr.rect.cocoaRect))
+            found = oblong.intersects (rect: GeometricRect (cocoaRect: pr.rect.ptValue))
           }
           if found {
             if pr.requireRectTrackEnds {

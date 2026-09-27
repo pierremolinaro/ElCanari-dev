@@ -85,8 +85,11 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
   transient String boardDispositionStatusTitle dependsFrom self.issues ;
 
   transient CanariIssueArray issues dependsFrom
-    root.overlapingArrangment, root.boardRect, root.boardLimitWidth,
-    root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth
+  //  root.overlapingArrangment, root.boardLimitWidth,
+    root.boardRect,
+    root.horizontalSeparator, root.verticalSeparator,
+    root.boardInstances.all.instanceRect
+//    root.boardInstances.all.boardLimitWidth
   ;
 
   tableViewController #mBoardModelController (allowsEmptySelection: no, allowsMultipleSelection: no) root.boardModels {
@@ -151,13 +154,13 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
           $dimensionAndUnit #mBoardModelSelection.modelHeight, #mBoardModelSelection.modelHeightUnit
         }
       }
-      hStack {
-        StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right)
-        gutter
-        CanariObservedDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
-        }
-      }
+//      hStack {
+//        StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right)
+//        gutter
+//        CanariObservedDimensionAndPopUp (size: .small) {
+//          $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
+//        }
+//      }
       separator
       hStack {
         StaticLabel (title: "Archive Version", bold: no, size : .small, alignment: .right)
@@ -491,12 +494,9 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
     vStack withVScroller {
       StaticLabel (title: "Board", bold: yes, size : .small, alignment: .left)
       hStack {
-        Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
         space
-        Checkbox (title: "Limits Overlap", size: .small) {
-          $enabled root.boardInstances.count > 0
-          $value root.overlapingArrangment
-        }
+        gutter
+        Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
       }
       hStack {
         StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
@@ -522,11 +522,20 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
           $hidden !root.automaticBoardSize
         }
       }
+      separator
+      StaticLabel (title: "Element Separation", bold: yes, size : .small, alignment: .left)
       hStack {
-        StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right)
+        StaticLabel (title: "Horizontal", bold: no, size : .small, alignment: .right)
         gutter
         CanariDimensionAndPopUp (size: .small) {
-          $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
+          $dimensionAndUnit root.horizontalSeparator, root.horizontalSeparatorUnit
+        }
+      }
+      hStack {
+        StaticLabel (title: "Vertical", bold: no, size : .small, alignment: .right)
+        gutter
+        CanariDimensionAndPopUp (size: .small) {
+          $dimensionAndUnit root.verticalSeparator, root.verticalSeparatorUnit
         }
       }
       separator

@@ -476,20 +476,6 @@ import AppKit
         }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
-      do{
-        let hStackView_view_view = AutoLayoutHorizontalStackView ()
-        do{
-          let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small, alignment: .right)
-          _ = hStackView_view_view .appendView (hStackView_view_view_view)
-        }
-        _ = hStackView_view_view.appendGutter ()
-        do{
-          let hStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-            .bind_dimensionAndUnit (self.mBoardModelSelection.modelLimitWidth_property, self.mBoardModelSelection.modelLimitWidthUnit_property)
-          _ = hStackView_view_view .appendView (hStackView_view_view_view)
-        }
-        _ = hStackView_view .appendView (hStackView_view_view)
-      }
       _ = hStackView_view.appendSeparator ()
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()
@@ -1419,16 +1405,11 @@ import AppKit
       }
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        _ = vStackView_view_view.appendFlexibleSpace ()
+        _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutCheckbox (title: "Automatic Size", size: .small)
             .bind_value (self.rootObject.automaticBoardSize_property)
-          _ = vStackView_view_view .appendView (vStackView_view_view_view)
-        }
-        _ = vStackView_view_view.appendFlexibleSpace ()
-        do{
-          let vStackView_view_view_view = AutoLayoutCheckbox (title: "Limits Overlap", size: .small)
-            .bind_value (self.rootObject.overlapingArrangment_property)
-            .bind_enabled (.intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0)))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view .appendView (vStackView_view_view)
@@ -1475,16 +1456,35 @@ import AppKit
         }
         _ = vStackView_view .appendView (vStackView_view_view)
       }
+      _ = vStackView_view.appendSeparator ()
+      do{
+        let vStackView_view_view = AutoLayoutStaticLabel (title: "Element Separation", bold: true, size: .small, alignment: .left)
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
       do{
         let vStackView_view_view = AutoLayoutHorizontalStackView ()
         do{
-          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Limit Width", bold: false, size: .small, alignment: .right)
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Horizontal", bold: false, size: .small, alignment: .right)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view_view.appendGutter ()
         do{
           let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-            .bind_dimensionAndUnit (self.rootObject.boardLimitWidth_property, self.rootObject.boardLimitWidthUnit_property)
+            .bind_dimensionAndUnit (self.rootObject.horizontalSeparator_property, self.rootObject.horizontalSeparatorUnit_property)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view .appendView (vStackView_view_view)
+      }
+      do{
+        let vStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let vStackView_view_view_view = AutoLayoutStaticLabel (title: "Vertical", bold: false, size: .small, alignment: .right)
+          _ = vStackView_view_view .appendView (vStackView_view_view_view)
+        }
+        _ = vStackView_view_view.appendGutter ()
+        do{
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+            .bind_dimensionAndUnit (self.rootObject.verticalSeparator_property, self.rootObject.verticalSeparatorUnit_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         _ = vStackView_view .appendView (vStackView_view_view)
@@ -2728,20 +2728,17 @@ import AppKit
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.rootObject.overlapingArrangment_property.selection
-        let s1 = unwSelf.rootObject.boardRect_property.selection
-        let s2 = unwSelf.rootObject.boardLimitWidth_property.selection
+        let s0 = unwSelf.rootObject.boardRect_property.selection
+        let s1 = unwSelf.rootObject.horizontalSeparator_property.selection
+        let s2 = unwSelf.rootObject.verticalSeparator_property.selection
         let s3 = unwSelf.rootObject.boardInstances_property.selection
-        let s4 = unwSelf.rootObject.boardInstances_property.selection
-        switch (s0, s1, s2, s3, s4) {
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3),
-              .single (let v4)) :
-          return .single (transient_AutoLayoutMergerDocument_issues (v0, v1, v2, v3, v4))
+              .single (let v3)) :
+          return .single (transient_AutoLayoutMergerDocument_issues (v0, v1, v2, v3))
         case (.multiple,
-              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -2753,11 +2750,10 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.overlapingArrangment_property.startsBeingObserved (by: self.issues_property)
     self.rootObject.boardRect_property.startsBeingObserved (by: self.issues_property)
-    self.rootObject.boardLimitWidth_property.startsBeingObserved (by: self.issues_property)
+    self.rootObject.horizontalSeparator_property.startsBeingObserved (by: self.issues_property)
+    self.rootObject.verticalSeparator_property.startsBeingObserved (by: self.issues_property)
     self.rootObject.boardInstances_property.toMany_instanceRect_StartsBeingObserved (by: self.issues_property)
-    self.rootObject.boardInstances_property.toMany_boardLimitWidth_StartsBeingObserved (by: self.issues_property)
 
   //--- Atomic property: statusWarningCount
     self.statusWarningCount_property.mReadModelFunction = { [weak self] in

@@ -15,8 +15,6 @@ handlingOpposite entity BoardModel {
   property @generateDirectAccess Int modelVersion default 0 ;
   property @generateDirectAccess Bool ignoreModelVersionError default no ;
 
-//  transient String errorArchiveVersionMessage dependsFrom self.modelVersion ;
-
   transient EBControlSize errorArchiveLabelSize dependsFrom self.ignoreModelVersionError ;
 
   transient NSColor errorArchiveLabelColor dependsFrom self.ignoreModelVersionError ;
@@ -193,10 +191,14 @@ handlingOpposite entity BoardModel {
   transient BezierPathArray traversingPadsBezierPaths dependsFrom self.traversingPadArray ;
 
 //--- Board limits
-  property @generateDirectAccess Int modelLimitWidth default 0 ;
-  property @generateDirectAccess Int modelLimitWidthUnit default 0 ;
+//  property @generateDirectAccess Int modelLimitWidth default 0 ;
+//  property @generateDirectAccess Int modelLimitWidthUnit default 0 ;
 
-  transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
+  transient BezierPathArray boardLimitsBezierPaths dependsFrom
+    self.modelWidth,
+    self.modelHeight
+//    self.modelLimitWidth 
+  ;
 
 //--- Back component names
   toMany @generateDirectAccess SegmentEntity backComponentNames ;

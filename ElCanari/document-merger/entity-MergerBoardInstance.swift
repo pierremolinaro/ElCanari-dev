@@ -40,12 +40,6 @@ import AppKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol MergerBoardInstance_boardLimitWidth : AnyObject {
-  var boardLimitWidth : Int? { get }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 // Commented out, not used
 // @MainActor protocol MergerBoardInstance_objectDisplay : AnyObject {
 //   var objectDisplay : EBShape? { get }
@@ -68,7 +62,6 @@ final class MergerBoardInstance : EBGraphicManagedObject
     // MergerBoardInstance_instanceRotation // Commented out, not used
     , MergerBoardInstance_instanceRect
     // MergerBoardInstance_modelName // Commented out, not used
-    , MergerBoardInstance_boardLimitWidth
     // MergerBoardInstance_objectDisplay // Commented out, not used
     // MergerBoardInstance_selectionDisplay // Commented out, not used
     {
@@ -163,18 +156,6 @@ final class MergerBoardInstance : EBGraphicManagedObject
 
   final var modelName : String? {
     return self.modelName_property.optionalValue
-  }
-
-  //------------------------------------------------------------------------------------------------
-  //   Transient property: boardLimitWidth
-  //------------------------------------------------------------------------------------------------
-
-  final let boardLimitWidth_property = EBTransientProperty <Int> ()
-
-  //------------------------------------------------------------------------------------------------
-
-  final var boardLimitWidth : Int? {
-    return self.boardLimitWidth_property.optionalValue
   }
 
   //------------------------------------------------------------------------------------------------
@@ -291,23 +272,6 @@ final class MergerBoardInstance : EBGraphicManagedObject
       }
     }
     self.myModel_property.name_property.startsBeingObserved (by: self.modelName_property)
-  //--- Atomic property: boardLimitWidth
-    self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.myModel_property.modelLimitWidth_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_MergerBoardInstance_boardLimitWidth (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.myModel_property.modelLimitWidth_property.startsBeingObserved (by: self.boardLimitWidth_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

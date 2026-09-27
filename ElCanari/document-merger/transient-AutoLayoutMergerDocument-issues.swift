@@ -14,11 +14,10 @@ import AppKit
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_AutoLayoutMergerDocument_issues (
-       _ root_overlapingArrangment : Bool,                 
        _ root_boardRect : CanariRect,                      
-       _ root_boardLimitWidth : Int,                       
-       _ root_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect],
-       _ root_boardInstances_boardLimitWidth : [any MergerBoardInstance_boardLimitWidth]
+       _ root_horizontalSeparator : Int,                   
+       _ root_verticalSeparator : Int,                     
+       _ root_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
       var array = [CanariIssue] ()
@@ -26,15 +25,12 @@ import AppKit
       var idx = 0
       while idx < root_boardInstances_instanceRect.count {
         let instanceRect = root_boardInstances_instanceRect [idx].instanceRect!
-        let instanceLimits = root_boardInstances_boardLimitWidth [idx].boardLimitWidth!
         var idy = idx + 1
         while idy < root_boardInstances_instanceRect.count {
           let otherInstanceRect = root_boardInstances_instanceRect [idy].instanceRect!
-          let otherInstanceLimits = root_boardInstances_boardLimitWidth [idy].boardLimitWidth!
-          let inset = root_overlapingArrangment ? min (instanceLimits, otherInstanceLimits) : 0
-          let intersection = instanceRect.intersection (otherInstanceRect.insetBy (dx: inset, dy: inset))
+          let intersection = instanceRect.intersection (otherInstanceRect.insetBy (dx: -root_horizontalSeparator, dy: -root_verticalSeparator))
           if !intersection.isEmpty {
-            let intersectionEnlarged : NSRect = intersection.cocoaRect.insetBy (dx: -3.0, dy: -3.0)
+            let intersectionEnlarged : NSRect = intersection.ptValue.insetBy (dx: -3.0, dy: -3.0)
             var bp = BezierPath (rect: intersectionEnlarged)
             bp.lineWidth = 3.0
             let issue = CanariIssue (kind: .error, message: "Intersection", pathes: [bp])
@@ -45,14 +41,21 @@ import AppKit
         idx += 1
       }
     //-------------------- Check instances are within bounds
-      let boardInteriorRect = root_boardRect.insetBy (dx: root_boardLimitWidth, dy: root_boardLimitWidth)
       idx = 0
       while idx < root_boardInstances_instanceRect.count {
         let instanceRect = root_boardInstances_instanceRect [idx].instanceRect!
-        let instanceLimits = root_boardInstances_boardLimitWidth [idx].boardLimitWidth!
-        let instanceRectInsetByInstanceLimitWidth = instanceRect.insetBy (dx: instanceLimits, dy: instanceLimits)
-        for r in instanceRectInsetByInstanceLimitWidth.subtracting (boardInteriorRect) {
-          var bp = BezierPath (roundedRect: r.cocoaRect.insetBy (dx: -3.0, dy: -3.0), xRadius: 3.0, yRadius: 3.0)
+        var inside = instanceRect.left >= 0
+        if inside {
+          inside = instanceRect.bottom >= 0
+        }
+        if inside {
+          inside = instanceRect.right <= root_boardRect.right
+        }
+        if inside {
+          inside = instanceRect.top <= root_boardRect.top
+        }
+        if !inside {
+          var bp = BezierPath (roundedRect: instanceRect.ptValue.insetBy (dx: -3.0, dy: -3.0), xRadius: 3.0, yRadius: 3.0)
           bp.lineWidth = 1.0
           bp.lineCapStyle = .round
           let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
@@ -60,6 +63,21 @@ import AppKit
         }
         idx += 1
       }
+    //-------------------- Check instances are within bounds
+//      idx = 0
+//      while idx < root_boardInstances_instanceRect.count {
+//        let instanceRect = root_boardInstances_instanceRect [idx].instanceRect!
+//        let instanceLimits = root_boardInstances_boardLimitWidth [idx].boardLimitWidth!
+//        let instanceRectInsetByInstanceLimitWidth = instanceRect.insetBy (dx: instanceLimits, dy: instanceLimits)
+//        for r in instanceRectInsetByInstanceLimitWidth.subtracting (boardInteriorRect) {
+//          var bp = BezierPath (roundedRect: r.ptValue.insetBy (dx: -3.0, dy: -3.0), xRadius: 3.0, yRadius: 3.0)
+//          bp.lineWidth = 1.0
+//          bp.lineCapStyle = .round
+//          let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
+//          array.append (issue)
+//        }
+//        idx += 1
+//      }
     //--------------------
       return array
 //--- END OF USER ZONE 2

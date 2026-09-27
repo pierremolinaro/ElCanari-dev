@@ -25,11 +25,12 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       oldValue.boardManualHeight_property.stopsBeingObserved (by: self.boardManualHeight_property) // Stored property
       oldValue.boardWidthUnit_property.stopsBeingObserved (by: self.boardWidthUnit_property) // Stored property
       oldValue.boardHeightUnit_property.stopsBeingObserved (by: self.boardHeightUnit_property) // Stored property
-      oldValue.overlapingArrangment_property.stopsBeingObserved (by: self.overlapingArrangment_property) // Stored property
       oldValue.selectedBoardXUnit_property.stopsBeingObserved (by: self.selectedBoardXUnit_property) // Stored property
       oldValue.selectedBoardYUnit_property.stopsBeingObserved (by: self.selectedBoardYUnit_property) // Stored property
-      oldValue.boardLimitWidth_property.stopsBeingObserved (by: self.boardLimitWidth_property) // Stored property
-      oldValue.boardLimitWidthUnit_property.stopsBeingObserved (by: self.boardLimitWidthUnit_property) // Stored property
+      oldValue.horizontalSeparator_property.stopsBeingObserved (by: self.horizontalSeparator_property) // Stored property
+      oldValue.horizontalSeparatorUnit_property.stopsBeingObserved (by: self.horizontalSeparatorUnit_property) // Stored property
+      oldValue.verticalSeparator_property.stopsBeingObserved (by: self.verticalSeparator_property) // Stored property
+      oldValue.verticalSeparatorUnit_property.stopsBeingObserved (by: self.verticalSeparatorUnit_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.stopsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       oldValue.mGenerateMergerArchive_property.stopsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       oldValue.mGenerateGerberAndPDF_property.stopsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
@@ -70,11 +71,12 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
       newValue.boardManualHeight_property.startsBeingObserved (by: self.boardManualHeight_property) // Stored property
       newValue.boardWidthUnit_property.startsBeingObserved (by: self.boardWidthUnit_property) // Stored property
       newValue.boardHeightUnit_property.startsBeingObserved (by: self.boardHeightUnit_property) // Stored property
-      newValue.overlapingArrangment_property.startsBeingObserved (by: self.overlapingArrangment_property) // Stored property
       newValue.selectedBoardXUnit_property.startsBeingObserved (by: self.selectedBoardXUnit_property) // Stored property
       newValue.selectedBoardYUnit_property.startsBeingObserved (by: self.selectedBoardYUnit_property) // Stored property
-      newValue.boardLimitWidth_property.startsBeingObserved (by: self.boardLimitWidth_property) // Stored property
-      newValue.boardLimitWidthUnit_property.startsBeingObserved (by: self.boardLimitWidthUnit_property) // Stored property
+      newValue.horizontalSeparator_property.startsBeingObserved (by: self.horizontalSeparator_property) // Stored property
+      newValue.horizontalSeparatorUnit_property.startsBeingObserved (by: self.horizontalSeparatorUnit_property) // Stored property
+      newValue.verticalSeparator_property.startsBeingObserved (by: self.verticalSeparator_property) // Stored property
+      newValue.verticalSeparatorUnit_property.startsBeingObserved (by: self.verticalSeparatorUnit_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.startsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       newValue.mGenerateMergerArchive_property.startsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
       newValue.mGenerateGerberAndPDF_property.startsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
@@ -161,12 +163,6 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   final let boardHeightUnit_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'overlapingArrangment' stored property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final let overlapingArrangment_property = EBTransientProperty <Bool?> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'selectedBoardXUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -179,16 +175,28 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   final let selectedBoardYUnit_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'boardLimitWidth' stored property
+  //   Observers of 'horizontalSeparator' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let boardLimitWidth_property = EBTransientProperty <Int?> ()
+  final let horizontalSeparator_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'boardLimitWidthUnit' stored property
+  //   Observers of 'horizontalSeparatorUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let boardLimitWidthUnit_property = EBTransientProperty <Int?> ()
+  final let horizontalSeparatorUnit_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'verticalSeparator' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let verticalSeparator_property = EBTransientProperty <Int?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'verticalSeparatorUnit' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let verticalSeparatorUnit_property = EBTransientProperty <Int?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mPDFBoardBackgroundColor' stored property
@@ -416,10 +424,6 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
     self.boardHeightUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.boardHeightUnit_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure overlapingArrangment simple stored property
-    self.overlapingArrangment_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.overlapingArrangment_property.optionalSelection ?? .single (nil)
-    }
   //--- Configure selectedBoardXUnit simple stored property
     self.selectedBoardXUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.selectedBoardXUnit_property.optionalSelection ?? .single (nil)
@@ -428,13 +432,21 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
     self.selectedBoardYUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.selectedBoardYUnit_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure boardLimitWidth simple stored property
-    self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.boardLimitWidth_property.optionalSelection ?? .single (nil)
+  //--- Configure horizontalSeparator simple stored property
+    self.horizontalSeparator_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.horizontalSeparator_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure boardLimitWidthUnit simple stored property
-    self.boardLimitWidthUnit_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.boardLimitWidthUnit_property.optionalSelection ?? .single (nil)
+  //--- Configure horizontalSeparatorUnit simple stored property
+    self.horizontalSeparatorUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.horizontalSeparatorUnit_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure verticalSeparator simple stored property
+    self.verticalSeparator_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.verticalSeparator_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure verticalSeparatorUnit simple stored property
+    self.verticalSeparatorUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.verticalSeparatorUnit_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in

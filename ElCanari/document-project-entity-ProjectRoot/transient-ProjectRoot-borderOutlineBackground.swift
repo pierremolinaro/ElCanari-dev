@@ -36,7 +36,7 @@ import AppKit
             height: self_mRectangularBoardHeight
           )
           let roundedRect = BezierPath (
-            roundedRect: boardRect.cocoaRect,
+            roundedRect: boardRect.ptValue,
             xRadius: canariUnitToCocoa (self_mBoardCornerRadius),
             yRadius: canariUnitToCocoa (self_mBoardCornerRadius)
           )
@@ -50,10 +50,10 @@ import AppKit
             height: self_mRectangularBoardHeight - 2 * d
           )
           if self_mBoardCornerRadius <= d {
-            bp.appendRect (r.cocoaRect)
+            bp.appendRect (r.ptValue)
           }else{
             let roundedRect = BezierPath (
-              roundedRect: r.cocoaRect,
+              roundedRect: r.ptValue,
               xRadius: canariUnitToCocoa (self_mBoardCornerRadius - d),
               yRadius: canariUnitToCocoa (self_mBoardCornerRadius - d)
             )

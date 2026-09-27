@@ -31,12 +31,12 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var rect : NSRect { return self.mArea.cocoaRect }
+  var rect : NSRect { return self.mArea.ptValue }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func union (withRect ioRect : inout NSRect) {
-    ioRect = ioRect.union (self.mArea.cocoaRect.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize))
+    ioRect = ioRect.union (self.mArea.ptValue.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -86,7 +86,7 @@ import AppKit
 
   func drawWorkingArea (lineWidth inLineWidth : CGFloat) {
     if !self.mArea.isEmpty {
-      var bp = NSBezierPath (rect: self.mArea.cocoaRect)
+      var bp = NSBezierPath (rect: self.mArea.ptValue)
       bp.lineWidth = inLineWidth * 2.0
       bp.lineCapStyle = .round
       bp.stroke ()
@@ -116,7 +116,7 @@ import AppKit
   mutating func setZone (forLocationInView inLocation : NSPoint, withView inView : NSView) {
     var zone = WorkingAreaCursorZone.none
     if !self.mArea.isEmpty {
-      let r = self.mArea.cocoaRect
+      let r = self.mArea.ptValue
       let outerR = r.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
       let innerR = r.insetBy (dx:  self.mHiliteSize, dy:  self.mHiliteSize)
       if outerR.contains (inLocation) && !innerR.contains (inLocation) {
@@ -149,7 +149,7 @@ import AppKit
     if self.mArea.isEmpty {
       return NSRect ()
     }else{
-      let r = self.mArea.cocoaRect
+      let r = self.mArea.ptValue
       let outerR = r.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
       let innerR = r.insetBy (dx:  self.mHiliteSize, dy:  self.mHiliteSize)
       switch inZone {
@@ -169,7 +169,7 @@ import AppKit
                               _ inView : EBGraphicView) {
     let dx = cocoaToCanariUnit (inUnalignedLocationInView.x - self.mCurrentMouseLocation.x)
     let dy = cocoaToCanariUnit (inUnalignedLocationInView.y - self.mCurrentMouseLocation.y)
-    let oldRect = self.mArea.cocoaRect.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
+    let oldRect = self.mArea.ptValue.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
     let minimumSize = 2 * cocoaToCanariUnit (self.mHiliteSize)
     switch self.mAreaCursorZone {
     case .none :
@@ -199,7 +199,7 @@ import AppKit
     }
     if ioHandled {
       self.mCurrentMouseLocation = inUnalignedLocationInView
-      let newRect = self.mArea.cocoaRect.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
+      let newRect = self.mArea.ptValue.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
       inView.setNeedsDisplay (newRect.union (oldRect))
       inView.mWorkingAreaRectStringController?.updateModel (withValue: self.rectString ())
     }
