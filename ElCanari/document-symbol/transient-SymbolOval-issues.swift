@@ -15,23 +15,23 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolOval_issues (
-       _ self_x : Int,                       
-       _ self_y : Int,                       
-       _ self_width : Int,                   
-       _ self_height : Int
+       _ self_x : CanariLength,              
+       _ self_y : CanariLength,              
+       _ self_width : CanariLength,          
+       _ self_height : CanariLength
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  if (self_x % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+  if (self_x.cuValue % SYMBOL_GRID_LENGTH.cuValue) != 0 {
     issues.appendSymbolHorizontalIssueAt (x: self_x, y: self_y)
   }
-  if (self_y % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+  if (self_y.cuValue % SYMBOL_GRID_LENGTH.cuValue) != 0 {
     issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
   }
-  if (self_width % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+  if (self_width.cuValue % SYMBOL_GRID_LENGTH.cuValue) != 0 {
     issues.appendSymbolWidthIssueAt (x: self_x, y: self_y, width: self_width, height: self_height)
   }
-  if (self_height % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+  if (self_height.cuValue % SYMBOL_GRID_LENGTH.cuValue) != 0 {
     issues.appendSymbolHeightIssueAt (x: self_x, y: self_y, width: self_width, height: self_height)
   }
   return issues

@@ -15,16 +15,16 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolText_issues (
-       _ self_x : Int,                       
-       _ self_y : Int,                       
+       _ self_x : CanariLength,              
+       _ self_y : CanariLength,              
        _ self_text : String
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  if (self_x % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+  if (self_x.cuValue % SYMBOL_GRID_LENGTH.cuValue) != 0 {
     issues.appendSymbolHorizontalIssueAt (x: self_x, y: self_y)
   }
-  if (self_y % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+  if (self_y.cuValue % SYMBOL_GRID_LENGTH.cuValue) != 0 {
     issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
   }
   if self_text.isEmpty {

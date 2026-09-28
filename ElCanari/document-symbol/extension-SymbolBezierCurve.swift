@@ -66,14 +66,14 @@ extension SymbolBezierCurve {
   func translate_SymbolBezierCurve (xBy inDx: CanariLength,
                                     yBy inDy: CanariLength,
                                     userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x1 += inDx.cuValue
-    self.y1 += inDy.cuValue
-    self.x2 += inDx.cuValue
-    self.y2 += inDy.cuValue
-    self.cpx1 += inDx.cuValue
-    self.cpy1 += inDy.cuValue
-    self.cpx2 += inDx.cuValue
-    self.cpy2 += inDy.cuValue
+    self.x1 += inDx
+    self.y1 += inDy
+    self.x2 += inDx
+    self.y2 += inDy
+    self.cpx1 += inDx
+    self.cpy1 += inDy
+    self.cpx2 += inDx
+    self.cpy2 += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -99,17 +99,17 @@ extension SymbolBezierCurve {
                                alignedMouseLocationY _ : CanariLength,
                                shift _ : Bool) {
     if inKnobIndex == SYMBOL_BEZIER_CURVE_ENDPOINT_1 {
-      self.x1 += inDx.cuValue
-      self.y1 += inDy.cuValue
+      self.x1 += inDx
+      self.y1 += inDy
     }else if inKnobIndex == SYMBOL_BEZIER_CURVE_ENDPOINT_2 {
-      self.x2 += inDx.cuValue
-      self.y2 += inDy.cuValue
+      self.x2 += inDx
+      self.y2 += inDy
     }else if inKnobIndex == SYMBOL_BEZIER_CURVE_CONTROL_1 {
-      self.cpx1 += inDx.cuValue
-      self.cpy1 += inDy.cuValue
+      self.cpx1 += inDx
+      self.cpy1 += inDy
     }else if inKnobIndex == SYMBOL_BEZIER_CURVE_CONTROL_2 {
-      self.cpx2 += inDx.cuValue
-      self.cpy2 += inDy.cuValue
+      self.cpx2 += inDx
+      self.cpy2 += inDy
     }
   }
 
@@ -168,14 +168,14 @@ extension SymbolBezierCurve {
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90Clockwise (x: self.cpx1, y: self.cpy1)
     let cp2 = inRotationCenter.rotated90Clockwise (x: self.cpx2, y: self.cpy2)
-    self.x1 = p1.x.cuValue
-    self.y1 = p1.y.cuValue
-    self.cpx1 = cp1.x.cuValue
-    self.cpy1 = cp1.y.cuValue
-    self.x2 = p2.x.cuValue
-    self.y2 = p2.y.cuValue
-    self.cpx2 = cp2.x.cuValue
-    self.cpy2 = cp2.y.cuValue
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.cpx1 = cp1.x
+    self.cpy1 = cp1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
+    self.cpx2 = cp2.x
+    self.cpy2 = cp2.y
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -185,14 +185,14 @@ extension SymbolBezierCurve {
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90CounterClockwise (x: self.cpx1, y: self.cpy1)
     let cp2 = inRotationCenter.rotated90CounterClockwise (x: self.cpx2, y: self.cpy2)
-    self.x1 = p1.x.cuValue
-    self.y1 = p1.y.cuValue
-    self.cpx1 = cp1.x.cuValue
-    self.cpy1 = cp1.y.cuValue
-    self.x2 = p2.x.cuValue
-    self.y2 = p2.y.cuValue
-    self.cpx2 = cp2.x.cuValue
-    self.cpy2 = cp2.y.cuValue
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.cpx1 = cp1.x
+    self.cpy1 = cp1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
+    self.cpx2 = cp2.x
+    self.cpy2 = cp2.y
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -200,27 +200,27 @@ extension SymbolBezierCurve {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_SymbolBezierCurve (_ inGrid : Int) -> Bool {
-    var result = (self.x1 % inGrid) != 0
+    var result = (self.x1.cuValue % inGrid) != 0
     if !result {
-      result = (self.y1 % inGrid) != 0
+      result = (self.y1.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.x2 % inGrid) != 0
+      result = (self.x2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.y2 % inGrid) != 0
+      result = (self.y2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.cpx2 % inGrid) != 0
+      result = (self.cpx2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.cpy2 % inGrid) != 0
+      result = (self.cpy2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.cpx1 % inGrid) != 0
+      result = (self.cpx1.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.cpy1 % inGrid) != 0
+      result = (self.cpy1.cuValue % inGrid) != 0
     }
     return result
   }
@@ -228,14 +228,14 @@ extension SymbolBezierCurve {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_SymbolBezierCurve (_ inGrid : Int) {
-    self.x1 = ((self.x1 + inGrid / 2) / inGrid) * inGrid
-    self.y1 = ((self.y1 + inGrid / 2) / inGrid) * inGrid
-    self.x2 = ((self.x2 + inGrid / 2) / inGrid) * inGrid
-    self.y2 = ((self.y2 + inGrid / 2) / inGrid) * inGrid
-    self.cpx1 = ((self.cpx1 + inGrid / 2) / inGrid) * inGrid
-    self.cpy1 = ((self.cpy1 + inGrid / 2) / inGrid) * inGrid
-    self.cpx2 = ((self.cpx2 + inGrid / 2) / inGrid) * inGrid
-    self.cpy2 = ((self.cpy2 + inGrid / 2) / inGrid) * inGrid
+    self.x1 = ((self.x1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y1 = ((self.y1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.x2 = ((self.x2 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y2 = ((self.y2 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.cpx1 = ((self.cpx1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.cpy1 = ((self.cpy1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.cpx2 = ((self.cpx2 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.cpy2 = ((self.cpy2 + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

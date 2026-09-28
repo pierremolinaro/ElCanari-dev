@@ -16,11 +16,11 @@ final class SymbolSolidOval : SymbolObject
   //   Atomic property: y
   //------------------------------------------------------------------------------------------------
 
-  final let y_property : EBStoredProperty_Int
+  final let y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y : Int {
+  final var y : CanariLength {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
@@ -29,11 +29,11 @@ final class SymbolSolidOval : SymbolObject
   //   Atomic property: width
   //------------------------------------------------------------------------------------------------
 
-  final let width_property : EBStoredProperty_Int
+  final let width_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var width : Int {
+  final var width : CanariLength {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
@@ -42,11 +42,11 @@ final class SymbolSolidOval : SymbolObject
   //   Atomic property: height
   //------------------------------------------------------------------------------------------------
 
-  final let height_property : EBStoredProperty_Int
+  final let height_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var height : Int {
+  final var height : CanariLength {
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
@@ -55,11 +55,11 @@ final class SymbolSolidOval : SymbolObject
   //   Atomic property: x
   //------------------------------------------------------------------------------------------------
 
-  final let x_property : EBStoredProperty_Int
+  final let x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x : Int {
+  final var x : CanariLength {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
@@ -81,10 +81,10 @@ final class SymbolSolidOval : SymbolObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
-    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "width")
-    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "height")
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
+    self.y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y")
+    self.width_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "width")
+    self.height_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "height")
+    self.x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
     self.accumulateProperty (self.y_property)
     self.accumulateProperty (self.width_property)

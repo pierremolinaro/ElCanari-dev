@@ -87,10 +87,10 @@ extension SymbolSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_SymbolSegment (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x1 += inDx.cuValue
-    self.y1 += inDy.cuValue
-    self.x2 += inDx.cuValue
-    self.y2 += inDy.cuValue
+    self.x1 += inDx
+    self.y1 += inDy
+    self.x2 += inDx
+    self.y2 += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -116,11 +116,11 @@ extension SymbolSegment {
                            alignedMouseLocationY _ : CanariLength,
                            shift _ : Bool) {
     if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
-      self.x1 += inDx.cuValue
-      self.y1 += inDy.cuValue
+      self.x1 += inDx
+      self.y1 += inDy
     }else if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_2 {
-      self.x2 += inDx.cuValue
-      self.y2 += inDy.cuValue
+      self.x2 += inDx
+      self.y2 += inDy
     }
   }
 
@@ -157,15 +157,15 @@ extension SymbolSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_SymbolSegment (_ inGrid : Int) -> Bool {
-    var result = (self.x1 % inGrid) != 0
+    var result = (self.x1.cuValue % inGrid) != 0
     if !result {
-      result = (self.y1 % inGrid) != 0
+      result = (self.y1.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.x2 % inGrid) != 0
+      result = (self.x2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.y2 % inGrid) != 0
+      result = (self.y2.cuValue % inGrid) != 0
     }
     return result
   }
@@ -173,10 +173,10 @@ extension SymbolSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_SymbolSegment (_ inGrid : Int) {
-    self.x1 = ((self.x1 + inGrid / 2) / inGrid) * inGrid
-    self.y1 = ((self.y1 + inGrid / 2) / inGrid) * inGrid
-    self.x2 = ((self.x2 + inGrid / 2) / inGrid) * inGrid
-    self.y2 = ((self.y2 + inGrid / 2) / inGrid) * inGrid
+    self.x1 = ((self.x1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y1 = ((self.y1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.x2 = ((self.x2 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y2 = ((self.y2 + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

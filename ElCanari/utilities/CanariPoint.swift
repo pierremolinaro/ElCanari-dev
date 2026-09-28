@@ -25,6 +25,12 @@ extension Set where Element == CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  mutating func insertCanariPoint (x inX : CanariLength, y inY : CanariLength) {
+    self.insert (CanariPoint (x: inX, y: inY))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -157,9 +163,25 @@ extension CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func rotated90Clockwise (x inX : CanariLength, y inY : CanariLength) -> CanariPoint {
+    let dx = inX - self.x
+    let dy = inY - self.y
+    return CanariPoint (x: self.x + dy, y: self.y - dx)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func rotated90CounterClockwise (x inX : Int, y inY : Int) -> CanariPoint {
     let dx = .cu (inX) - self.x
     let dy = .cu (inY) - self.y
+    return CanariPoint (x: self.x - dy, y: self.y + dx)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func rotated90CounterClockwise (x inX : CanariLength, y inY : CanariLength) -> CanariPoint {
+    let dx = inX - self.x
+    let dy = inY - self.y
     return CanariPoint (x: self.x - dy, y: self.y + dx)
   }
 

@@ -16,20 +16,20 @@ import CanariGeometry
 
 @MainActor func transient_SymbolBezierCurve_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,                
-       _ self_x1 : Int,                                       
-       _ self_y1 : Int,                                       
-       _ self_x2 : Int,                                       
-       _ self_y2 : Int,                                       
-       _ self_cpx1 : Int,                                     
-       _ self_cpy1 : Int,                                     
-       _ self_cpx2 : Int,                                     
-       _ self_cpy2 : Int
+       _ self_x1 : CanariLength,                              
+       _ self_y1 : CanariLength,                              
+       _ self_x2 : CanariLength,                              
+       _ self_y2 : CanariLength,                              
+       _ self_cpx1 : CanariLength,                            
+       _ self_cpy1 : CanariLength,                            
+       _ self_cpx2 : CanariLength,                            
+       _ self_cpy2 : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let p1  = NSPoint (x: canariUnitToCocoa (self_x1),   y: canariUnitToCocoa (self_y1))
-  let p2  = NSPoint (x: canariUnitToCocoa (self_x2),   y: canariUnitToCocoa (self_y2))
-  let cp1 = NSPoint (x: canariUnitToCocoa (self_cpx1), y: canariUnitToCocoa (self_cpy1))
-  let cp2 = NSPoint (x: canariUnitToCocoa (self_cpx2), y: canariUnitToCocoa (self_cpy2))
+  let p1  = NSPoint (x: self_x1,   y: self_y1)
+  let p2  = NSPoint (x: self_x2,   y: self_y2)
+  let cp1 = NSPoint (x: self_cpx1, y: self_cpy1)
+  let cp2 = NSPoint (x: self_cpx2, y: self_cpy2)
   var bp = BezierPath ()
   bp.move (to: p1)
   bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)

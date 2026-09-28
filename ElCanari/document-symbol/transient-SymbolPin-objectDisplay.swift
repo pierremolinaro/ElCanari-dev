@@ -15,12 +15,12 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolPin_objectDisplay (
-       _ self_xPin : Int,                          
-       _ self_yPin : Int,                          
-       _ self_xName : Int,                         
-       _ self_yName : Int,                         
-       _ self_xNumber : Int,                       
-       _ self_yNumber : Int,                       
+       _ self_xPin : CanariLength,                 
+       _ self_yPin : CanariLength,                 
+       _ self_xName : CanariLength,                
+       _ self_yName : CanariLength,                
+       _ self_xNumber : CanariLength,              
+       _ self_yNumber : CanariLength,              
        _ self_name : String,                       
        _ self_pinNameIsDisplayedInSchematics : Bool,
        _ self_nameHorizontalAlignment : HorizontalAlignment,
@@ -32,10 +32,10 @@ import CanariGeometry
     var shape = EBShape ()
   //--- Pin
     let pinRect = NSRect (
-      x: canariUnitToCocoa (self_xPin) - SYMBOL_GRID_IN_COCOA_UNIT,
-      y: canariUnitToCocoa (self_yPin) - SYMBOL_GRID_IN_COCOA_UNIT,
-      width: SYMBOL_GRID_IN_COCOA_UNIT * 2.0,
-      height: SYMBOL_GRID_IN_COCOA_UNIT * 2.0
+      x: self_xPin - SYMBOL_GRID_LENGTH,
+      y: self_yPin - SYMBOL_GRID_LENGTH,
+      width: SYMBOL_GRID_LENGTH * 2.0,
+      height: SYMBOL_GRID_LENGTH * 2.0
     )
     let filledBP = BezierPath (ovalIn: pinRect)
     shape.add (filled: [filledBP], prefs_symbolColor)
@@ -44,7 +44,7 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : self_pinNameIsDisplayedInSchematics ? NSColor.black : NSColor.lightGray
     ]
-    let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
+    let labelOrigin = NSPoint (x: self_xName.ptValue, y: self_yName.ptValue)
     let label = (self_name.isEmpty) ? "?" : self_name
     shape.add (text: label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
   //--- Number
@@ -52,7 +52,7 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : NSColor.black
     ]
-    let numberOrigin = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
+    let numberOrigin = NSPoint (x: self_xNumber.ptValue, y: self_yNumber.ptValue)
     shape.add (text: "##", numberOrigin, numberTextAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2

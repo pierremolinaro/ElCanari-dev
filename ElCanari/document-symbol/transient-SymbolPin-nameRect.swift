@@ -15,14 +15,14 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolPin_nameRect (
-       _ self_xName : Int,                    
-       _ self_yName : Int,                    
+       _ self_xName : CanariLength,           
+       _ self_yName : CanariLength,           
        _ self_name : String,                  
        _ self_nameHorizontalAlignment : HorizontalAlignment,
        _ prefs_pinNameFont : NSFont
 ) -> NSRect {
 //--- START OF USER ZONE 2
-    var nameOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
+    var nameOrigin = NSPoint (x: self_xName.ptValue, y: self_yName.ptValue)
     let displayName = (self_name.isEmpty) ? "?" : self_name
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont

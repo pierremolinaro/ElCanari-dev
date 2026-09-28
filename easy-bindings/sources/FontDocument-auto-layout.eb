@@ -2,11 +2,6 @@
 //     F O N T    D O C U M E N T
 //--------------------------------------------------------------------------------------------------
 
-transient property struct CharacterGerberCode ;
-transient property struct CharacterSegmentList ;
-
-//--------------------------------------------------------------------------------------------------
-
 autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainView {
 
   stackView \PageMasterView vStack { }

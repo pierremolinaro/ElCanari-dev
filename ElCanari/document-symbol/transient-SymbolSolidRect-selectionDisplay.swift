@@ -16,16 +16,16 @@ import CanariGeometry
 
 @MainActor func transient_SymbolSolidRect_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,              
-       _ self_x : Int,                                      
-       _ self_y : Int,                                      
-       _ self_width : Int,                                  
-       _ self_height : Int
+       _ self_x : CanariLength,                             
+       _ self_y : CanariLength,                             
+       _ self_width : CanariLength,                         
+       _ self_height : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let x = canariUnitToCocoa (self_x)
-  let y = canariUnitToCocoa (self_y)
-  let width = canariUnitToCocoa (self_width)
-  let height = canariUnitToCocoa (self_height)
+  let x = self_x
+  let y = self_y
+  let width = self_width
+  let height = self_height
   var shape = EBShape ()
   var bp = BezierPath (rect: NSRect (x: x, y:y, width: width, height: height))
   bp.lineWidth = 0.25

@@ -9,7 +9,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol SymbolText_y : AnyObject {
-//   var y : Int { get }
+//   var y : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol SymbolText_x : AnyObject {
-//   var x : Int { get }
+//   var x : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -72,11 +72,11 @@ final class SymbolText : SymbolObject
   //   Atomic property: y
   //------------------------------------------------------------------------------------------------
 
-  final let y_property : EBStoredProperty_Int
+  final let y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y : Int {
+  final var y : CanariLength {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
@@ -109,11 +109,11 @@ final class SymbolText : SymbolObject
   //   Atomic property: x
   //------------------------------------------------------------------------------------------------
 
-  final let x_property : EBStoredProperty_Int
+  final let x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x : Int {
+  final var x : CanariLength {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
@@ -123,10 +123,10 @@ final class SymbolText : SymbolObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
+    self.y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y")
     self.text_property = EBStoredProperty_String (defaultValue: "text", undoManager: inUndoManager, key: "text")
     self.horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "horizontalAlignment")
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
+    self.x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
     self.accumulateProperty (self.y_property)
     self.accumulateProperty (self.text_property)

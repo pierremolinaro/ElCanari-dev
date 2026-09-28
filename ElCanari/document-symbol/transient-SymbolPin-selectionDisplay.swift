@@ -16,18 +16,18 @@ import CanariGeometry
 
 @MainActor func transient_SymbolPin_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,        
-       _ self_xPin : Int,                             
-       _ self_yPin : Int,                             
-       _ self_xName : Int,                            
-       _ self_yName : Int,                            
-       _ self_xNumber : Int,                          
-       _ self_yNumber : Int
+       _ self_xPin : CanariLength,                    
+       _ self_yPin : CanariLength,                    
+       _ self_xName : CanariLength,                   
+       _ self_yName : CanariLength,                   
+       _ self_xNumber : CanariLength,                 
+       _ self_yNumber : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var shape = EBShape ()
-    let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
-    let namePoint = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
-    let numberPoint = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
+    let pinPoint = NSPoint (x: self_xPin, y: self_yPin)
+    let namePoint = NSPoint (x: self_xName, y: self_yName)
+    let numberPoint = NSPoint (x: self_xNumber, y: self_yNumber)
     var bp = BezierPath ()
     bp.move (to: numberPoint)
     bp.line (to: pinPoint)

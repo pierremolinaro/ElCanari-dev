@@ -11,8 +11,7 @@ import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
-let SYMBOL_GRID_IN_COCOA_UNIT : CGFloat = milsToCocoaUnit (25.0)
-let SYMBOL_GRID_IN_CANARI_UNIT : Int    = milsToCanariUnit (fromInt: 25)
+let SYMBOL_GRID_LENGTH = CanariLength.mil (25)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -94,7 +93,7 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
     var ok = false
     if let documentView = destinationScrollView.documentView {
       let pointInWindow = sender.draggingLocation
-      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
+      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_LENGTH.ptValue)
       let pasteboard = sender.draggingPasteboard
       if pasteboard.availableType (from: [symbolPasteboardType]) != nil {
         if let dataDictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? [String : Any],

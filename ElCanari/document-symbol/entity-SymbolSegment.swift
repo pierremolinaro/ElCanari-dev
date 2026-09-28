@@ -16,11 +16,11 @@ final class SymbolSegment : SymbolObject
   //   Atomic property: y1
   //------------------------------------------------------------------------------------------------
 
-  final let y1_property : EBStoredProperty_Int
+  final let y1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y1 : Int {
+  final var y1 : CanariLength {
     get { return self.y1_property.propval }
     set { self.y1_property.setProp (newValue) }
   }
@@ -29,11 +29,11 @@ final class SymbolSegment : SymbolObject
   //   Atomic property: x2
   //------------------------------------------------------------------------------------------------
 
-  final let x2_property : EBStoredProperty_Int
+  final let x2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x2 : Int {
+  final var x2 : CanariLength {
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
@@ -42,11 +42,11 @@ final class SymbolSegment : SymbolObject
   //   Atomic property: y2
   //------------------------------------------------------------------------------------------------
 
-  final let y2_property : EBStoredProperty_Int
+  final let y2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y2 : Int {
+  final var y2 : CanariLength {
     get { return self.y2_property.propval }
     set { self.y2_property.setProp (newValue) }
   }
@@ -55,11 +55,11 @@ final class SymbolSegment : SymbolObject
   //   Atomic property: x1
   //------------------------------------------------------------------------------------------------
 
-  final let x1_property : EBStoredProperty_Int
+  final let x1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x1 : Int {
+  final var x1 : CanariLength {
     get { return self.x1_property.propval }
     set { self.x1_property.setProp (newValue) }
   }
@@ -81,10 +81,10 @@ final class SymbolSegment : SymbolObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y1")
-    self.x2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "x2")
-    self.y2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "y2")
-    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
+    self.y1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y1")
+    self.x2_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "x2")
+    self.y2_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "y2")
+    self.x1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
     self.accumulateProperty (self.y1_property)
     self.accumulateProperty (self.x2_property)

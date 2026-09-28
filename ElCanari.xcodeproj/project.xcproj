@@ -6811,6 +6811,12 @@
             "ElCanari-Release/compile-sources",
           ],
         }, {
+          "path": "extension-CanariLength-EBPropertyProtocol.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
           "path": "extension-Data-base62.swift",
           "encoding": "utf8",
           "target-membership": [
@@ -12040,6 +12046,12 @@
         }, {
           "path": "property-CanariIssueArray.swift",
           "encoding": "utf8",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
+          "path": "property-CanariLength.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
             "ElCanari-Release/compile-sources",

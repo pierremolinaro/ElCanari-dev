@@ -90,32 +90,32 @@ extension BoardRestrictRectangle {
                                        proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                                        unalignedMouseDraggedLocation _ : CanariPoint,
                                        shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x
-    var dy = inProposedAlignedTranslation.y
+    var dx = inProposedAlignedTranslation.x.cuValue
+    var dy = inProposedAlignedTranslation.y.cuValue
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
-      if (self.mX + dx.cuValue) < 0 {
-        dx = .cu (-self.mX)
+      if (self.mX + dx) < 0 {
+        dx = -self.mX
       }
-      if (self.mWidth - dx.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dx = .cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mWidth)
+      if (self.mWidth - dx) < SYMBOL_GRID_LENGTH.cuValue {
+        dx = SYMBOL_GRID_LENGTH.cuValue - self.mWidth
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_RIGHT {
-      if (self.mWidth + dx.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dx = -.cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mWidth)
+      if (self.mWidth + dx) < SYMBOL_GRID_LENGTH.cuValue {
+        dx = -(SYMBOL_GRID_LENGTH.cuValue - self.mWidth)
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM {
-      if (self.mY + dy.cuValue) < 0 {
-        dy = -.cu (self.mY)
+      if (self.mY + dy) < 0 {
+        dy = -self.mY
       }
-      if (self.mHeight - dy.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dy = .cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight)
+      if (self.mHeight - dy) < SYMBOL_GRID_LENGTH.cuValue {
+        dy = SYMBOL_GRID_LENGTH.cuValue - self.mHeight
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_TOP {
-      if (self.mHeight + dy.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dy = -.cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight)
+      if (self.mHeight + dy) < SYMBOL_GRID_LENGTH.cuValue {
+        dy = -(SYMBOL_GRID_LENGTH.cuValue - self.mHeight)
       }
     }
-    return CanariPoint (x: dx, y: dy)
+    return CanariPoint (x: .cu (dx), y: .cu (dy))
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

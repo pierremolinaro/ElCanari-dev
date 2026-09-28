@@ -15,19 +15,19 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolOval_objectDisplay (
-       _ self_x : Int,                              
-       _ self_y : Int,                              
-       _ self_width : Int,                          
-       _ self_height : Int,                         
+       _ self_x : CanariLength,                     
+       _ self_y : CanariLength,                     
+       _ self_width : CanariLength,                 
+       _ self_height : CanariLength,                
        _ prefs_symbolColor : NSColor,               
        _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let r = NSRect (
-    x: canariUnitToCocoa (self_x),
-    y: canariUnitToCocoa (self_y),
-    width: canariUnitToCocoa (self_width),
-    height: canariUnitToCocoa (self_height)
+    x: self_x,
+    y: self_y,
+    width: self_width,
+    height: self_height
   )
   var bp = BezierPath (ovalIn: r)
   bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0

@@ -101,8 +101,8 @@ extension SymbolText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_SymbolText (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x += inDx.cuValue
-    self.y += inDy.cuValue
+    self.x += inDx
+    self.y += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -127,8 +127,8 @@ extension SymbolText {
                         alignedMouseLocationX _ : CanariLength,
                         alignedMouseLocationY _ : CanariLength,
                         shift _ : Bool) {
-    self.x += inDx.cuValue
-    self.y += inDy.cuValue
+    self.x += inDx
+    self.y += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -136,9 +136,9 @@ extension SymbolText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_SymbolText (_ inGrid : Int) -> Bool {
-    var result = (self.x % inGrid) != 0
+    var result = (self.x.cuValue % inGrid) != 0
     if !result {
-      result = (self.y % inGrid) != 0
+      result = (self.y.cuValue % inGrid) != 0
     }
     return result
   }
@@ -146,8 +146,8 @@ extension SymbolText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_SymbolText (_ inGrid : Int) {
-    self.x = ((self.x + inGrid / 2) / inGrid) * inGrid
-    self.y = ((self.y + inGrid / 2) / inGrid) * inGrid
+    self.x = ((self.x + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y = ((self.y + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

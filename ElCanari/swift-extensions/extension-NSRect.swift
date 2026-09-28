@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -32,6 +33,20 @@ extension NSRect : @retroactive Hashable {
     self.origin.x = inCenter.x - inSize.width  / 2.0
     self.origin.y = inCenter.y - inSize.height / 2.0
     self.size = inSize
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (x inX : CanariLength,
+        y inY : CanariLength,
+        width inWidth : CanariLength,
+        height inHeight : CanariLength) {
+    self.init (
+      x: inX.ptValue,
+      y: inY.ptValue,
+      width: inWidth.ptValue,
+      height: inHeight.ptValue
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

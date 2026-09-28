@@ -23,15 +23,15 @@ extension SymbolRoot {
       if let object = symbolObject as? SymbolPin, let bp = object.filledBezierPath {
         filledBezierPathes.append (bp)
         let newPin = SymbolPinTypeInDevice (inUndoManager)
-        newPin.mPinX = object.xPin
-        newPin.mPinY = object.yPin
-        newPin.mXName = object.xName
-        newPin.mYName = object.yName
+        newPin.mPinX = object.xPin.cuValue
+        newPin.mPinY = object.yPin.cuValue
+        newPin.mXName = object.xName.cuValue
+        newPin.mYName = object.yName.cuValue
         newPin.mName = object.name
         newPin.mNameHorizontalAlignment = object.nameHorizontalAlignment
         newPin.mPinNameIsDisplayedInSchematics = object.pinNameIsDisplayedInSchematics
-        newPin.mXNumber = object.xNumber
-        newPin.mYNumber = object.yNumber
+        newPin.mXNumber = object.xNumber.cuValue
+        newPin.mYNumber = object.yNumber.cuValue
         newPin.mNumberHorizontalAlignment = object.numberHorizontalAlignment
         symbolPins.append (newPin)
       }else if let object = symbolObject as? SymbolSolidRect, let bp = object.filledBezierPath {
@@ -48,7 +48,7 @@ extension SymbolRoot {
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : preferences_pinNameFont_property.propval
         ]
-        let origin = CanariPoint (x: .cu (object.x), y: .cu (object.y)).ptValue
+        let origin = NSPoint (x: object.x, y: object.y)
         let bp = BezierPath (
           withString: object.text,
           at: origin,

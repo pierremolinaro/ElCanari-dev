@@ -57,12 +57,12 @@ extension SymbolPin {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_SymbolPin (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.xPin += inDx.cuValue
-    self.yPin += inDy.cuValue
-    self.xName += inDx.cuValue
-    self.yName += inDy.cuValue
-    self.xNumber += inDx.cuValue
-    self.yNumber += inDy.cuValue
+    self.xPin += inDx
+    self.yPin += inDy
+    self.xName += inDx
+    self.yName += inDy
+    self.xNumber += inDx
+    self.yNumber += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -132,18 +132,18 @@ extension SymbolPin {
                        alignedMouseLocationY _ : CanariLength,
                        shift _ : Bool) {
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
-      self.xPin += inDx.cuValue
-      self.yPin += inDy.cuValue
-      self.xName += inDx.cuValue
-      self.yName += inDy.cuValue
-      self.xNumber += inDx.cuValue
-      self.yNumber += inDy.cuValue
+      self.xPin += inDx
+      self.yPin += inDy
+      self.xName += inDx
+      self.yName += inDy
+      self.xNumber += inDx
+      self.yNumber += inDy
     }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      self.xName += inDx.cuValue
-      self.yName += inDy.cuValue
+      self.xName += inDx
+      self.yName += inDy
     }else if inKnobIndex == SYMBOL_PIN_NUMBER {
-      self.xNumber += inDx.cuValue
-      self.yNumber += inDy.cuValue
+      self.xNumber += inDx
+      self.yNumber += inDy
     }
   }
 
@@ -152,21 +152,21 @@ extension SymbolPin {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_SymbolPin (_ inGrid : Int) -> Bool {
-    var result = (self.xPin % inGrid) != 0
+    var result = (self.xPin.cuValue % inGrid) != 0
     if !result {
-      result = (self.yPin % inGrid) != 0
+      result = (self.yPin.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.xName % inGrid) != 0
+      result = (self.xName.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.yName % inGrid) != 0
+      result = (self.yName.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.xNumber % inGrid) != 0
+      result = (self.xNumber.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.yNumber % inGrid) != 0
+      result = (self.yNumber.cuValue % inGrid) != 0
     }
     return result
   }
@@ -174,12 +174,12 @@ extension SymbolPin {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_SymbolPin (_ inGrid : Int) {
-    self.xPin = ((self.xPin + inGrid / 2) / inGrid) * inGrid
-    self.yPin = ((self.yPin + inGrid / 2) / inGrid) * inGrid
-    self.xName = ((self.xName + inGrid / 2) / inGrid) * inGrid
-    self.yName = ((self.yName + inGrid / 2) / inGrid) * inGrid
-    self.xNumber = ((self.xNumber + inGrid / 2) / inGrid) * inGrid
-    self.yNumber = ((self.yNumber + inGrid / 2) / inGrid) * inGrid
+    self.xPin = ((self.xPin + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.yPin = ((self.yPin + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.xName = ((self.xName + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.yName = ((self.yName + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.xNumber = ((self.xNumber + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.yNumber = ((self.yNumber + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

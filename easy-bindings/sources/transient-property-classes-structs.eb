@@ -3,6 +3,8 @@
 //   they are system-defined or user-defined)
 //————————————————————————————————————————————————————————————————————————————
 
+transient property struct CharacterGerberCode ;
+transient property struct CharacterSegmentList ;
 transient property struct QRCodeDescriptor ;
 transient property struct BoardImageDescriptor ;
 transient property struct CanariRect ;

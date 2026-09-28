@@ -16,14 +16,14 @@ import CanariGeometry
 
 @MainActor func transient_SymbolSegment_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,            
-       _ self_x1 : Int,                                   
-       _ self_y1 : Int,                                   
-       _ self_x2 : Int,                                   
-       _ self_y2 : Int
+       _ self_x1 : CanariLength,                          
+       _ self_y1 : CanariLength,                          
+       _ self_x2 : CanariLength,                          
+       _ self_y2 : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
-  let p2 = NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
+  let p1 = NSPoint (x: self_x1, y: self_y1)
+  let p2 = NSPoint (x: self_x2, y: self_y2)
   var bp = BezierPath ()
   bp.move (to: p1)
   bp.line (to: p2)

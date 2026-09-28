@@ -15,15 +15,15 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolPin_filledBezierPath (
-       _ self_xPin : Int,                             
-       _ self_yPin : Int
+       _ self_xPin : CanariLength,                    
+       _ self_yPin : CanariLength
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
     let pinRect = NSRect (
-      x: canariUnitToCocoa (self_xPin) - SYMBOL_GRID_IN_COCOA_UNIT,
-      y: canariUnitToCocoa (self_yPin) - SYMBOL_GRID_IN_COCOA_UNIT,
-      width: SYMBOL_GRID_IN_COCOA_UNIT * 2.0,
-      height: SYMBOL_GRID_IN_COCOA_UNIT * 2.0
+      x: self_xPin - SYMBOL_GRID_LENGTH,
+      y: self_yPin - SYMBOL_GRID_LENGTH,
+      width: SYMBOL_GRID_LENGTH * 2.0,
+      height: SYMBOL_GRID_LENGTH * 2.0
     )
     return NSBezierPath (ovalIn: pinRect)
 //--- END OF USER ZONE 2

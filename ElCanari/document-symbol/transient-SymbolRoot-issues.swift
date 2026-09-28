@@ -27,7 +27,7 @@ import CanariGeometry
       var pinLocationDict = [CanariPoint : Int] ()
       var idx = 0
       while idx < self_symbolPins_xPin.count {
-        let p = CanariPoint (x: .cu (self_symbolPins_xPin [idx].xPin), y: .cu (self_symbolPins_yPin [idx].yPin))
+        let p = CanariPoint (x: self_symbolPins_xPin [idx].xPin, y: self_symbolPins_yPin [idx].yPin)
         idx += 1
         if let n = pinLocationDict [p] {
           pinLocationDict [p] = n + 1

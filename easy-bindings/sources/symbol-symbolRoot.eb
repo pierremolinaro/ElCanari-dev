@@ -9,12 +9,12 @@ abstract graphic entity SymbolObject {
 graphic entity SymbolPin : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature @generateDirectAccess Int xPin default 0 ;
-  property @signature @generateDirectAccess Int yPin default 0 ;
-  property @signature @generateDirectAccess Int xName default 0 ;
-  property @signature @generateDirectAccess Int yName default 2_286_00 ;
-  property @signature @generateDirectAccess Int xNumber default 0 ;
-  property @signature @generateDirectAccess Int yNumber default -2_286_00 ;
+  property @signature @generateDirectAccess CanariLength xPin default ".zero" ;
+  property @signature @generateDirectAccess CanariLength yPin default ".zero" ;
+  property @signature @generateDirectAccess CanariLength xName default ".zero" ;
+  property @signature @generateDirectAccess CanariLength yName default ".mil (100)" ;
+  property @signature @generateDirectAccess CanariLength xNumber default ".zero" ;
+  property @signature @generateDirectAccess CanariLength yNumber default "-.mil (100)" ;
   property @signature String name default "" ;
   property @signature HorizontalAlignment nameHorizontalAlignment default center ;
   property @signature HorizontalAlignment numberHorizontalAlignment default center ;
@@ -58,8 +58,8 @@ graphic entity SymbolPin : SymbolObject {
 graphic entity SymbolText : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature @generateDirectAccess Int x default 0 ;
-  property @signature @generateDirectAccess Int y default 0 ;
+  property @signature @generateDirectAccess CanariLength x default ".zero" ;
+  property @signature @generateDirectAccess CanariLength y default ".zero" ;
   property @signature @generateDirectRead String text default "text" ;
   property @signature HorizontalAlignment horizontalAlignment default center ;
 
@@ -81,10 +81,10 @@ graphic entity SymbolText : SymbolObject {
 graphic entity SymbolSolidRect : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature @generateDirectAccess Int x default 0 ;
-  property @signature @generateDirectAccess Int y default 0 ;
-  property @signature @generateDirectAccess Int width default 6_858_00 ;
-  property @signature @generateDirectAccess Int height default 6_858_00 ;
+  property @signature @generateDirectAccess CanariLength x default ".zero" ;
+  property @signature @generateDirectAccess CanariLength y default ".zero" ;
+  property @signature @generateDirectAccess CanariLength width default ".mil (300)" ;
+  property @signature @generateDirectAccess CanariLength height default ".mil (300)" ;
 
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
 
@@ -106,10 +106,10 @@ graphic entity SymbolSolidRect : SymbolObject {
 graphic entity SymbolOval : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature @generateDirectAccess Int x default 0 ;
-  property @signature @generateDirectAccess Int y default 0 ;
-  property @signature @generateDirectAccess Int width default 6_858_00 ;
-  property @signature @generateDirectAccess Int height default 6_858_00 ;
+  property @signature @generateDirectAccess CanariLength x default ".zero" ;
+  property @signature @generateDirectAccess CanariLength y default ".zero" ;
+  property @signature @generateDirectAccess CanariLength width default ".mil (300)" ;
+  property @signature @generateDirectAccess CanariLength height default ".mil (300)" ;
 
   transient NSBezierPath strokeBezierPath dependsFrom self.x, self.y, self.width, self.height ;
 
@@ -131,10 +131,10 @@ graphic entity SymbolOval : SymbolObject {
 graphic entity SymbolSolidOval : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature @generateDirectAccess Int x default 0 ;
-  property @signature @generateDirectAccess Int y default 0 ;
-  property @signature @generateDirectAccess Int width default 6_858_00 ;
-  property @signature @generateDirectAccess Int height default 6_858_00 ;
+  property @signature @generateDirectAccess CanariLength x default ".zero" ;
+  property @signature @generateDirectAccess CanariLength y default ".zero" ;
+  property @signature @generateDirectAccess CanariLength width default ".mil (300)" ;
+  property @signature @generateDirectAccess CanariLength height default ".mil (300)" ;
 
   transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
 
@@ -155,14 +155,14 @@ graphic entity SymbolSolidOval : SymbolObject {
 graphic entity SymbolBezierCurve : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @signature @generateDirectAccess Int x1 default 0 ;
-  property @signature @generateDirectAccess Int y1 default 6_858_00 ;
-  property @signature @generateDirectAccess Int x2 default 0 ;
-  property @signature @generateDirectAccess Int y2 default 0 ;
-  property @signature @generateDirectAccess Int cpx1 default 6_858_00 ;
-  property @signature @generateDirectAccess Int cpy1 default 6_858_00 ;
-  property @signature @generateDirectAccess Int cpx2 default 6_858_00 ;
-  property @signature @generateDirectAccess Int cpy2 default 0 ;
+  property @signature @generateDirectAccess CanariLength x1 default ".zero" ;
+  property @signature @generateDirectAccess CanariLength y1 default ".mil (300)" ;
+  property @signature @generateDirectAccess CanariLength x2 default ".zero" ;
+  property @signature @generateDirectAccess CanariLength y2 default ".zero" ;
+  property @signature @generateDirectAccess CanariLength cpx1 default ".mil (300)" ;
+  property @signature @generateDirectAccess CanariLength cpy1 default ".mil (300)" ;
+  property @signature @generateDirectAccess CanariLength cpx2 default ".mil (300)" ;
+  property @signature @generateDirectAccess CanariLength cpy2 default ".zero" ;
 
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x1, self.y1, self.x2, self.y2,
@@ -191,10 +191,10 @@ graphic entity SymbolBezierCurve : SymbolObject {
 graphic entity SymbolSegment : SymbolObject {
   graphic canCopyAndPaste ;
 
-  property @generateDirectAccess @signature Int x1 default 0 ;
-  property @generateDirectAccess @signature Int y1 default 0 ;
-  property @generateDirectAccess @signature Int x2 default 6_858_00 ;
-  property @generateDirectAccess @signature Int y2 default 6_858_00 ;
+  property @generateDirectAccess @signature CanariLength x1 default ".zero" ;
+  property @generateDirectAccess @signature CanariLength y1 default ".zero" ;
+  property @generateDirectAccess @signature CanariLength x2 default ".mil (300)" ;
+  property @generateDirectAccess @signature CanariLength y2 default ".mil (300)" ;
 
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 

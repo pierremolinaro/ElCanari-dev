@@ -19,10 +19,10 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolEmptyPinNameIssueAt (x: Int, y: Int) {
+  mutating func appendSymbolEmptyPinNameIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -33,10 +33,10 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolEmptyTextIssueAt (x: Int, y: Int) {
+  mutating func appendSymbolEmptyTextIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -75,10 +75,10 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolPinHorizontalIssueAt (x: Int, y: Int) {
+  mutating func appendSymbolPinHorizontalIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -89,10 +89,10 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolPinVerticalIssueAt (x: Int, y: Int) {
+  mutating func appendSymbolPinVerticalIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -103,10 +103,10 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolHorizontalIssueAt (x: Int, y: Int) {
+  mutating func appendSymbolHorizontalIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -117,10 +117,10 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolVerticalIssueAt (x: Int, y: Int) {
+  mutating func appendSymbolVerticalIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -131,11 +131,11 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolWidthIssueAt (x: Int, y: Int, width : Int, height : Int) {
+  mutating func appendSymbolWidthIssueAt (x: CanariLength, y: CanariLength, width : CanariLength, height : CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y + height / 2) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      width: canariUnitToCocoa (width) + CANARI_ISSUE_HILITE_SIZE,
+      x: x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: (y + height / 2).ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      width: width.ptValue + CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
     var bp = BezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
@@ -145,12 +145,12 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendSymbolHeightIssueAt (x: Int, y: Int, width : Int, height : Int) {
+  mutating func appendSymbolHeightIssueAt (x: CanariLength, y: CanariLength, width : CanariLength, height : CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x + width / 2) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: (x + width / 2).ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
-      height: canariUnitToCocoa (height) + CANARI_ISSUE_HILITE_SIZE
+      height: height.ptValue + CANARI_ISSUE_HILITE_SIZE
     )
     var bp = BezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH

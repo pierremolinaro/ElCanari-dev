@@ -8,35 +8,35 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SymbolPin_yPin : AnyObject {
-  var yPin : Int { get }
+  var yPin : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPin_xName : AnyObject {
-//   var xName : Int { get }
+//   var xName : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPin_yName : AnyObject {
-//   var yName : Int { get }
+//   var yName : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPin_xNumber : AnyObject {
-//   var xNumber : Int { get }
+//   var xNumber : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPin_yNumber : AnyObject {
-//   var yNumber : Int { get }
+//   var yNumber : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SymbolPin_xPin : AnyObject {
-  var xPin : Int { get }
+  var xPin : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -132,11 +132,11 @@ final class SymbolPin : SymbolObject
   //   Atomic property: yPin
   //------------------------------------------------------------------------------------------------
 
-  final let yPin_property : EBStoredProperty_Int
+  final let yPin_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var yPin : Int {
+  final var yPin : CanariLength {
     get { return self.yPin_property.propval }
     set { self.yPin_property.setProp (newValue) }
   }
@@ -145,11 +145,11 @@ final class SymbolPin : SymbolObject
   //   Atomic property: xName
   //------------------------------------------------------------------------------------------------
 
-  final let xName_property : EBStoredProperty_Int
+  final let xName_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var xName : Int {
+  final var xName : CanariLength {
     get { return self.xName_property.propval }
     set { self.xName_property.setProp (newValue) }
   }
@@ -158,11 +158,11 @@ final class SymbolPin : SymbolObject
   //   Atomic property: yName
   //------------------------------------------------------------------------------------------------
 
-  final let yName_property : EBStoredProperty_Int
+  final let yName_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var yName : Int {
+  final var yName : CanariLength {
     get { return self.yName_property.propval }
     set { self.yName_property.setProp (newValue) }
   }
@@ -171,11 +171,11 @@ final class SymbolPin : SymbolObject
   //   Atomic property: xNumber
   //------------------------------------------------------------------------------------------------
 
-  final let xNumber_property : EBStoredProperty_Int
+  final let xNumber_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var xNumber : Int {
+  final var xNumber : CanariLength {
     get { return self.xNumber_property.propval }
     set { self.xNumber_property.setProp (newValue) }
   }
@@ -184,11 +184,11 @@ final class SymbolPin : SymbolObject
   //   Atomic property: yNumber
   //------------------------------------------------------------------------------------------------
 
-  final let yNumber_property : EBStoredProperty_Int
+  final let yNumber_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var yNumber : Int {
+  final var yNumber : CanariLength {
     get { return self.yNumber_property.propval }
     set { self.yNumber_property.setProp (newValue) }
   }
@@ -245,11 +245,11 @@ final class SymbolPin : SymbolObject
   //   Atomic property: xPin
   //------------------------------------------------------------------------------------------------
 
-  final let xPin_property : EBStoredProperty_Int
+  final let xPin_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var xPin : Int {
+  final var xPin : CanariLength {
     get { return self.xPin_property.propval }
     set { self.xPin_property.setProp (newValue) }
   }
@@ -283,16 +283,16 @@ final class SymbolPin : SymbolObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.yPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "yPin")
-    self.xName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xName")
-    self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "yName")
-    self.xNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xNumber")
-    self.yNumber_property = EBStoredProperty_Int (defaultValue: -228600, undoManager: inUndoManager, key: "yNumber")
+    self.yPin_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "yPin")
+    self.xName_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "xName")
+    self.yName_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "yName")
+    self.xNumber_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "xNumber")
+    self.yNumber_property = EBStoredProperty_CanariLength (defaultValue: -.mil (100), undoManager: inUndoManager, key: "yNumber")
     self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "name")
     self.nameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "nameHorizontalAlignment")
     self.numberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "numberHorizontalAlignment")
     self.pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "pinNameIsDisplayedInSchematics")
-    self.xPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xPin")
+    self.xPin_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "xPin")
     super.init (inUndoManager)
     self.accumulateProperty (self.yPin_property)
     self.accumulateProperty (self.xName_property)

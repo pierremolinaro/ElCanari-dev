@@ -58,8 +58,8 @@ extension SymbolSolidRect {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_SymbolSolidRect (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x += inDx.cuValue
-    self.y += inDy.cuValue
+    self.x += inDx
+    self.y += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -115,26 +115,26 @@ extension SymbolSolidRect {
                                 proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                                 unalignedMouseDraggedLocation _ : CanariPoint,
                                 shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x.cuValue
-    var dy = inProposedAlignedTranslation.y.cuValue
+    var dx = inProposedAlignedTranslation.x
+    var dy = inProposedAlignedTranslation.y
     if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {
-      if (self.width - dx) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dx = SYMBOL_GRID_IN_CANARI_UNIT - self.width
+      if (self.width - dx) < SYMBOL_GRID_LENGTH {
+        dx = SYMBOL_GRID_LENGTH - self.width
       }
     }else if inKnobIndex == SYMBOL_SOLID_RECT_RIGHT {
-      if (self.width + dx) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dx = -(SYMBOL_GRID_IN_CANARI_UNIT - self.width)
+      if (self.width + dx) < SYMBOL_GRID_LENGTH {
+        dx = -(SYMBOL_GRID_LENGTH - self.width)
       }
     }else if inKnobIndex == SYMBOL_SOLID_RECT_BOTTOM {
-      if (self.height - dy) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dy = SYMBOL_GRID_IN_CANARI_UNIT - self.height
+      if (self.height - dy) < SYMBOL_GRID_LENGTH {
+        dy = SYMBOL_GRID_LENGTH - self.height
       }
     }else if inKnobIndex == SYMBOL_SOLID_RECT_TOP {
-      if (self.height + dy) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.height)
+      if (self.height + dy) < SYMBOL_GRID_LENGTH {
+        dy = -(SYMBOL_GRID_LENGTH - self.height)
       }
     }
-    return CanariPoint (x: .cu (dx), y: .cu (dy))
+    return CanariPoint (x: dx, y: dy)
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -148,15 +148,15 @@ extension SymbolSolidRect {
                              alignedMouseLocationY _ : CanariLength,
                              shift _ : Bool) {
     if inKnobIndex == SYMBOL_SOLID_RECT_RIGHT {
-      self.width += inDx.cuValue
+      self.width += inDx
     }else if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {
-      self.x += inDx.cuValue
-      self.width -= inDx.cuValue
+      self.x += inDx
+      self.width -= inDx
     }else if inKnobIndex == SYMBOL_SOLID_RECT_TOP {
-      self.height += inDy.cuValue
+      self.height += inDy
     }else if inKnobIndex == SYMBOL_SOLID_RECT_BOTTOM {
-      self.y += inDy.cuValue
-      self.height -= inDy.cuValue
+      self.y += inDy
+      self.height -= inDy
     }
   }
 
@@ -165,15 +165,15 @@ extension SymbolSolidRect {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_SymbolSolidRect (_ inGrid : Int) -> Bool {
-    var result = (self.x % inGrid) != 0
+    var result = (self.x.cuValue % inGrid) != 0
     if !result {
-      result = (self.y % inGrid) != 0
+      result = (self.y.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.width % inGrid) != 0
+      result = (self.width.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.height % inGrid) != 0
+      result = (self.height.cuValue % inGrid) != 0
     }
     return result
   }
@@ -181,10 +181,10 @@ extension SymbolSolidRect {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_SymbolSolidRect (_ inGrid : Int) {
-    self.x = ((self.x + inGrid / 2) / inGrid) * inGrid
-    self.y = ((self.y + inGrid / 2) / inGrid) * inGrid
-    self.width = ((self.width + inGrid / 2) / inGrid) * inGrid
-    self.height = ((self.height + inGrid / 2) / inGrid) * inGrid
+    self.x = ((self.x + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y = ((self.y + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.width = ((self.width + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.height = ((self.height + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

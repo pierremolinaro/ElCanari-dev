@@ -16,15 +16,15 @@ import CanariGeometry
 
 @MainActor func transient_SymbolText_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,         
-       _ self_x : Int,                                 
-       _ self_y : Int,                                 
+       _ self_x : CanariLength,                        
+       _ self_y : CanariLength,                        
        _ self_text : String,                           
        _ self_horizontalAlignment : HorizontalAlignment,
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var shape = EBShape ()
-    let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
+    let origin = NSPoint (x: self_x, y: self_y)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont
     ]

@@ -5,6 +5,7 @@
 import Foundation
 import CoreGraphics
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -24,6 +25,14 @@ extension NSPoint : @retroactive Hashable {
     self.init ()
     self.x = inLength * cos (inAngle * .pi / 180.0)
     self.y = inLength * sin (inAngle * .pi / 180.0)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (x inX : CanariLength, y inY : CanariLength) {
+    self.init ()
+    self.x = inX.ptValue
+    self.y = inY.ptValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

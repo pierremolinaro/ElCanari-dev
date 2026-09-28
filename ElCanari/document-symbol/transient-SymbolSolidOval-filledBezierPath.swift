@@ -15,17 +15,17 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolSolidOval_filledBezierPath (
-       _ self_x : Int,                                      
-       _ self_y : Int,                                      
-       _ self_width : Int,                                  
-       _ self_height : Int
+       _ self_x : CanariLength,                             
+       _ self_y : CanariLength,                             
+       _ self_width : CanariLength,                         
+       _ self_height : CanariLength
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
   let r = NSRect (
-    x: canariUnitToCocoa (self_x),
-    y: canariUnitToCocoa (self_y),
-    width: canariUnitToCocoa (self_width),
-    height: canariUnitToCocoa (self_height)
+    x: self_x,
+    y: self_y,
+    width: self_width,
+    height: self_height
   )
   return NSBezierPath (ovalIn: r)
 
