@@ -23,7 +23,7 @@ extension AutoLayoutProjectDocument {
   func keyDownInSchematic (_ inUnalignedMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
-      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
       switch inKey {
       case UnicodeScalar ("A"), UnicodeScalar ("a") :
         let connectableSymbols = self.canConnectSymbolPins (at: canariUnalignedMouseDownLocation)
@@ -113,7 +113,7 @@ extension AutoLayoutProjectDocument {
   func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
-      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
       let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
     //--- Connect

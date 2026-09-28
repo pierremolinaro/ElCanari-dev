@@ -118,8 +118,8 @@ extension BoardLine {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_BoardLine (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.mX1, y: self.mY1)
-    accumulatedPoints.insertCanariPoint (x: self.mX2, y: self.mY2)
+    accumulatedPoints.insert (x: self.mX1, y: self.mY1)
+    accumulatedPoints.insert (x: self.mX2, y: self.mY2)
     return true
   }
 

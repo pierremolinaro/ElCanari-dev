@@ -166,7 +166,7 @@ extension BoardText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_BoardText (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.mX, y: self.mY)
+    accumulatedPoints.insert (x: self.mX, y: self.mY)
     return true
   }
 

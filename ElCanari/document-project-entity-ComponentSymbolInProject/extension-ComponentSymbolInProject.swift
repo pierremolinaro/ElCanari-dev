@@ -168,7 +168,7 @@ extension ComponentSymbolInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_ComponentSymbolInProject (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.mCenterX, y: self.mCenterY)
+    accumulatedPoints.insert (x: self.mCenterX, y: self.mCenterY)
     return true
   }
 

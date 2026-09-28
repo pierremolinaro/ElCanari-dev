@@ -19,7 +19,7 @@ extension AutoLayoutProjectDocument {
     self.mWireCreatedByOptionClick = nil
     if let selectedSheet = self.rootObject.mSelectedSheet {
        _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint.canariPoint)
-       let p = inUnalignedMousePoint.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+       let p = inUnalignedMousePoint.canariPointAligned (onGrid: SCHEMATIC_GRID_LENGTH)
     //--- Find points at p
       let pointsAtP = selectedSheet.pointsInSchematics (at: p)
     //--- Check all points are not "nc"
@@ -72,7 +72,7 @@ extension AutoLayoutProjectDocument {
   func continueWireCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
                                                  _ inModifierFlags : NSEvent.ModifierFlags) {
     if let p2 = self.mWireCreatedByOptionClick?.mP2 {
-      var alignedMouseLocation = inUnalignedMousePoint.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      var alignedMouseLocation = inUnalignedMousePoint.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
       if inModifierFlags.contains (.shift), let p1 = self.mWireCreatedByOptionClick?.mP1 {
         alignedMouseLocation.constraintToOctolinearDirection (from: CanariPoint (x: .cu (p1.mX), y: .cu (p1.mY)))
       }

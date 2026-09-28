@@ -36,9 +36,7 @@ let TRACK_INITIAL_SIZE_IN_CANARI_UNIT = 500 * 2_286 // 500 mils
 
 //--------------------------------------------------------------------------------------------------
 
-let SCHEMATIC_GRID_IN_MILS = 50
-let SCHEMATIC_GRID_IN_CANARI_UNIT = milsToCanariUnit (fromInt: SCHEMATIC_GRID_IN_MILS)
-let SCHEMATIC_GRID_IN_COCOA_UNIT  = milsToCocoaUnit (CGFloat (SCHEMATIC_GRID_IN_MILS))
+let SCHEMATIC_GRID_LENGTH = CanariLength.mil (50)
 
 //--------------------------------------------------------------------------------------------------
 

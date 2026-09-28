@@ -134,8 +134,8 @@ extension PackageGuide {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_PackageGuide (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.x1, y: self.y1)
-    accumulatedPoints.insertCanariPoint (x: self.x2, y: self.y2)
+    accumulatedPoints.insert (x: self.x1, y: self.y1)
+    accumulatedPoints.insert (x: self.x2, y: self.y2)
     return true
   }
 
@@ -194,8 +194,8 @@ extension PackageGuide {
 
   func alignmentPoints_PackageGuide () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.x1, y: self.y1)
-    result.insertCanariPoint (x: self.x2, y: self.y2)
+    result.insert (x: self.x1, y: self.y1)
+    result.insert (x: self.x2, y: self.y2)
     return result
   }
 

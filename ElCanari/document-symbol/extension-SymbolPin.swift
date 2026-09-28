@@ -186,9 +186,9 @@ extension SymbolPin {
 
   func alignmentPoints_SymbolPin () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.xPin, y: self.yPin)
-    result.insertCanariPoint (x: self.xName, y: self.yName)
-    result.insertCanariPoint (x: self.xNumber, y: self.yNumber)
+    result.insert (x: self.xPin, y: self.yPin)
+    result.insert (x: self.xName, y: self.yName)
+    result.insert (x: self.xNumber, y: self.yNumber)
     return result
   }
 

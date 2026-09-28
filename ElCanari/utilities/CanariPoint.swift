@@ -19,13 +19,13 @@ extension Set where Element == CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func insertCanariPoint (x inX : Int, y inY : Int) {
+  mutating func insert (x inX : Int, y inY : Int) {
     self.insert (CanariPoint (x: .cu (inX), y: .cu (inY)))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func insertCanariPoint (x inX : CanariLength, y inY : CanariLength) {
+  mutating func insert (x inX : CanariLength, y inY : CanariLength) {
     self.insert (CanariPoint (x: inX, y: inY))
   }
 
@@ -41,31 +41,13 @@ extension CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  var x : Int
-//  var y : Int
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //   init
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  static var zero : CanariPoint { CanariPoint (x: 0, y: 0) }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  init (x inX : Int, y inY : Int) {
-//    self.x = inX
-//    self.y = inY
-//  }
-//
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   static func center (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariPoint {
     return CanariPoint (x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func squareOfCanariDistance (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariArea { // §
+  static func distanceSquare (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariArea { // §
     let dx = p1.x - p2.x
     let dy = p1.y - p2.y
     return dx * dx + dy * dy
@@ -79,51 +61,15 @@ extension CanariPoint {
     return .mm (sqrt ((dx * dx + dy * dy).mm2Value))
   }
 
-//  static func squareOfCanariDistance (_ p1 : CanariPoint, _ p2 : CanariPoint) -> Double {
-//    let dx = Double (p1.x - p2.x)
-//    let dy = Double (p1.y - p2.y)
-//    return dx * dx + dy * dy
-//  }
-
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //   Cocoa Point
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  var ptValue : NSPoint {
-//    return NSPoint (x: canariUnitToCocoa (self.x), y: canariUnitToCocoa (self.y))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  var description : String {
-//    return "x: \(self.x), y: \(self.y)"
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //   millimeter Point
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-////  var millimeterPoint : NSPoint {
-////    return NSPoint (x: canariUnitToMillimeter (self.x), y: canariUnitToMillimeter (self.y))
-////  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //   mil thenth Point
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-////  var milTenthPoint : NSPoint {
-////    return NSPoint (x: canariUnitToMilTenth (self.x), y: canariUnitToMilTenth (self.y))
-////  }
-//
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Aligned Point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func point (alignedOnGrid inGrid : Int) -> CanariPoint {
-    let grid = CanariLength.cu (inGrid)
+  func point (alignedOnGrid inGrid : CanariLength) -> CanariPoint {
+    let grid = inGrid.cuValue
     return CanariPoint (
-      x: ((self.x + grid / 2) / grid) * grid,
-      y: ((self.y + grid / 2) / grid) * grid
+      x: ((self.x + inGrid / 2) / grid) * grid,
+      y: ((self.y + inGrid / 2) / grid) * grid
     )
   }
 
@@ -307,10 +253,11 @@ extension NSPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canariPointAligned (onCanariGrid inCanariGrid : Int) -> CanariPoint {
+  func canariPointAligned (onGrid inCanariGrid : CanariLength) -> CanariPoint {
+    let canariGrid = inCanariGrid.cuValue
     let p = CanariPoint (
-     x: ((.pt (self.x) + .cu (inCanariGrid) / 2) / inCanariGrid) * inCanariGrid,
-     y: ((.pt (self.y) + .cu (inCanariGrid) / 2) / inCanariGrid) * inCanariGrid
+     x: ((.pt (self.x) + inCanariGrid / 2) / canariGrid) * canariGrid,
+     y: ((.pt (self.y) + inCanariGrid / 2) / canariGrid) * canariGrid
     )
     return p
   }

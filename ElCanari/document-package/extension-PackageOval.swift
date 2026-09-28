@@ -151,8 +151,8 @@ extension PackageOval {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_PackageOval (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.x, y: self.y)
-    accumulatedPoints.insertCanariPoint (x: self.x + self.width, y: self.y + self.height)
+    accumulatedPoints.insert (x: self.x, y: self.y)
+    accumulatedPoints.insert (x: self.x + self.width, y: self.y + self.height)
     return true
   }
 
@@ -207,8 +207,8 @@ extension PackageOval {
 
   func alignmentPoints_PackageOval () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.x, y: self.y)
-    result.insertCanariPoint (x: self.x + self.width, y: self.y + self.height)
+    result.insert (x: self.x, y: self.y)
+    result.insert (x: self.x + self.width, y: self.y + self.height)
     return result
   }
 

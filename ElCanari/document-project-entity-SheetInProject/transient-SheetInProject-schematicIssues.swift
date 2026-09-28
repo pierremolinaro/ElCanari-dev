@@ -36,18 +36,18 @@ import CanariGeometry
         for (location, pointArray) in pointDictionary {
           if pointArray.count > 1 {
             let r = NSRect (
-              x: location.x.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
-              y: location.y.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
-              width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
-              height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
+              x: location.x - SCHEMATIC_GRID_LENGTH,
+              y: location.y - SCHEMATIC_GRID_LENGTH,
+              width: SCHEMATIC_GRID_LENGTH * 2.0,
+              height: SCHEMATIC_GRID_LENGTH * 2.0
             )
             issues.append (GraphicViewTooltip (kind: .error, message: "\(pointArray.count) points at the same location", rect: r))
           }else if !pointArray [0].connected {
             let r = NSRect (
-              x: location.x.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
-              y: location.y.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
-              width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
-              height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
+              x: location.x - SCHEMATIC_GRID_LENGTH,
+              y: location.y - SCHEMATIC_GRID_LENGTH,
+              width: SCHEMATIC_GRID_LENGTH * 2.0,
+              height: SCHEMATIC_GRID_LENGTH * 2.0
             )
             issues.append (GraphicViewTooltip (kind: .warning, message: "Unconnected pin", rect: r))
           }
@@ -66,10 +66,10 @@ import CanariGeometry
             for (point, _) in pointDictionary {
               if segment.strictlyContains (point: point) {
                 let r = NSRect (
-                  x: point.x.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
-                  y: point.y.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
-                  width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
-                  height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
+                  x: point.x - SCHEMATIC_GRID_LENGTH,
+                  y: point.y - SCHEMATIC_GRID_LENGTH,
+                  width: SCHEMATIC_GRID_LENGTH * 2.0,
+                  height: SCHEMATIC_GRID_LENGTH * 2.0
                 )
                 issues.append (GraphicViewTooltip (kind: .error, message: "Point not connected to Wire", rect: r))
               }

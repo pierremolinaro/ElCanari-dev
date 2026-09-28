@@ -17,7 +17,7 @@ extension SheetInProject {
 
   func performAddWireDragOperation (_ inUnalignedDraggingLocation : NSPoint,
                                     newNetCreator inNewNetCreator : @MainActor () -> NetInProject) -> WireInSchematic? {
-    let p = inUnalignedDraggingLocation.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+    let p = inUnalignedDraggingLocation.canariPointAligned (onGrid: SCHEMATIC_GRID_LENGTH)
     let possibleWire : WireInSchematic?
     let p1 = CanariPoint (x: p.x, y: p.y)
     let p2 = CanariPoint (x: p.x + .cu (WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP), y: p.y + .cu (WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP))

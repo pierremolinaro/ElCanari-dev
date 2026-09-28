@@ -164,7 +164,7 @@ extension LabelInSchematic {
   func alignmentPoints_LabelInSchematic () -> Set <CanariPoint> {
     var s = Set <CanariPoint> ()
     if let point = self.mPoint {
-      s.insertCanariPoint (x: point.mX, y: point.mY)
+      s.insert (x: point.mX, y: point.mY)
     }
     return s
   }
@@ -175,7 +175,7 @@ extension LabelInSchematic {
 
   func canRotate90_LabelInSchematic (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     if self.location == nil {
-      accumulatedPoints.insertCanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
+      accumulatedPoints.insert (x: self.mPoint!.mX, y: self.mPoint!.mY)
     }
     return true
   }

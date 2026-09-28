@@ -280,7 +280,7 @@ import CanariGeometry
 
   private func performAddSymbolDragOperation (_ inSymbol : ComponentSymbolInProject, _ inDraggingLocationInDestinationView : NSPoint) {
   //--- Fix symbol location
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: milsToCanariUnit (fromInt: 50))
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .mil (50))
     inSymbol.mCenterX = p.x.cuValue
     inSymbol.mCenterY = p.y.cuValue
   //--- Create points in schematics
@@ -305,7 +305,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddCommentDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: SCHEMATIC_GRID_LENGTH)
     let comment = CommentInSchematic (self.undoManager)
     comment.mX = p.x.cuValue
     comment.mY = p.y.cuValue
@@ -317,7 +317,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddRestrictRectangleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .cu (self.mBoardView!.mGraphicView.mGridStepInCanariUnit))
     let restrictRectangle = BoardRestrictRectangle (self.undoManager)
     let layers = self.rootObject.mNewRestrictRectangleLayers
     restrictRectangle.mIsInFrontLayer  = (layers &  1) != 0
@@ -339,7 +339,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardTextDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .cu (self.mBoardView!.mGraphicView.mGridStepInCanariUnit))
     let boardText = BoardText (self.undoManager)
     boardText.mLayer = self.rootObject.mBoardLayerForNewText
     boardText.mX = p.x.cuValue
@@ -353,7 +353,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardImageDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .cu (self.mBoardView!.mGraphicView.mGridStepInCanariUnit))
     let boardImage = BoardImage (self.undoManager)
     boardImage.mLayer = self.rootObject.mBoardLayerForNewImage
     boardImage.mCenterX = p.x.cuValue
@@ -371,7 +371,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardQRCodeDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .cu (self.mBoardView!.mGraphicView.mGridStepInCanariUnit))
     let boardQRCode = BoardQRCode (self.undoManager)
     boardQRCode.mLayer = self.rootObject.mBoardLayerForNewQRCode
     boardQRCode.mCenterX = p.x.cuValue
@@ -384,7 +384,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardNonPlatedHoleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .cu (self.mBoardView!.mGraphicView.mGridStepInCanariUnit))
     let nph = NonPlatedHole (self.undoManager)
     nph.mX = p.x.cuValue
     nph.mY = p.y.cuValue
@@ -397,7 +397,7 @@ import CanariGeometry
 
   private func performAddBoardPackageDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     if let component = self.mPossibleDraggedComponent {
-      let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+      let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .cu (self.mBoardView!.mGraphicView.mGridStepInCanariUnit))
       component.mX = p.x.cuValue
       component.mY = p.y.cuValue
       self.rootObject.mBoardObjects.append (component)
@@ -420,7 +420,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performAddBoardLineDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
-    let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
+    let p = inDraggingLocationInDestinationView.canariPointAligned (onGrid: .cu (self.mBoardView!.mGraphicView.mGridStepInCanariUnit))
     let newLine = BoardLine (self.undoManager)
     newLine.mLayer = self.rootObject.mBoardLayerForNewLine
     newLine.mX1 += p.x.cuValue

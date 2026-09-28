@@ -136,8 +136,8 @@ extension PackageDimension {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_PackageDimension (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.x1, y: self.y1)
-    accumulatedPoints.insertCanariPoint (x: self.x2, y: self.y2)
+    accumulatedPoints.insert (x: self.x1, y: self.y1)
+    accumulatedPoints.insert (x: self.x2, y: self.y2)
     return true
   }
 
@@ -208,9 +208,9 @@ extension PackageDimension {
 
   func alignmentPoints_PackageDimension () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.x1, y: self.y1)
-    result.insertCanariPoint (x: self.x2, y: self.y2)
-    result.insertCanariPoint (x: self.xDimension, y: self.yDimension)
+    result.insert (x: self.x1, y: self.y1)
+    result.insert (x: self.x2, y: self.y2)
+    result.insert (x: self.xDimension, y: self.yDimension)
     return result
   }
 

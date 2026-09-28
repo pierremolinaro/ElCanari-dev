@@ -15,10 +15,10 @@ import CanariGeometry
   //------------------------------- Find the two nearest points
     var firstPointIndex = 0
     var secondPointIndex = 1
-    var d = CanariPoint.squareOfCanariDistance (points [0], points [1])
+    var d = CanariPoint.distanceSquare (points [0], points [1])
     for j in 0 ..< points.count {
       for k in j+1 ..< points.count {
-       let dd = CanariPoint.squareOfCanariDistance (points [j], points [k])
+       let dd = CanariPoint.distanceSquare (points [j], points [k])
         if dd < d {
           d = dd
           firstPointIndex = j
@@ -37,12 +37,12 @@ import CanariGeometry
     while points.count > 0 {
       firstPointIndex = 0
       secondPointIndex = 0
-      d = CanariPoint.squareOfCanariDistance (handledPoints [0], points [0])
+      d = CanariPoint.distanceSquare (handledPoints [0], points [0])
       for i in 0 ..< handledPoints.count {
         let p1 = handledPoints [i]
         for j in 0 ..< points.count {
           let p2 = points [j]
-          let dd = CanariPoint.squareOfCanariDistance (p1, p2)
+          let dd = CanariPoint.distanceSquare (p1, p2)
           if dd < d {
             d = dd
             firstPointIndex = i

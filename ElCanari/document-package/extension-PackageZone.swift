@@ -174,9 +174,9 @@ extension PackageZone {
 
   func alignmentPoints_PackageZone () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.x, y: self.y)
-    result.insertCanariPoint (x: self.x + self.width, y: self.y + self.height)
-    result.insertCanariPoint (x: self.xName, y: self.yName)
+    result.insert (x: self.x, y: self.y)
+    result.insert (x: self.x + self.width, y: self.y + self.height)
+    result.insert (x: self.xName, y: self.yName)
     return result
   }
 

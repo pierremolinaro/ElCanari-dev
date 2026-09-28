@@ -180,7 +180,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendDisconnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
-    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
+    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: .cu (self.rootObject.mBoardGridStep))
     let connectors = self.rootObject.connectors (at: alignedMouseDownPoint, trackSide: inSide)
     var connectedConnectors = [BoardConnector] ()
     for c in connectors {
@@ -425,8 +425,8 @@ extension AutoLayoutProjectDocument {
       if p0.y < p1.y {
         let topLeft = CanariPoint (x: p0.x, y: p1.y)
         let bottomRight = CanariPoint (x: p1.x, y: p0.y)
-        let dTopLeft = CanariPoint.squareOfCanariDistance (topLeft, connector.location!)
-        let dBottomRight = CanariPoint.squareOfCanariDistance (bottomRight, connector.location!)
+        let dTopLeft = CanariPoint.distanceSquare (topLeft, connector.location!)
+        let dBottomRight = CanariPoint.distanceSquare (bottomRight, connector.location!)
         if dTopLeft < dBottomRight {
           connector.mX = topLeft.x.cuValue
           connector.mY = topLeft.y.cuValue
@@ -437,8 +437,8 @@ extension AutoLayoutProjectDocument {
       }else{
         let topRight = CanariPoint (x: p1.x, y: p0.y)
         let bottomLeft = CanariPoint (x: p0.x, y: p1.y)
-        let dTopRight = CanariPoint.squareOfCanariDistance (topRight, connector.location!)
-        let dBottomLeft = CanariPoint.squareOfCanariDistance (bottomLeft, connector.location!)
+        let dTopRight = CanariPoint.distanceSquare (topRight, connector.location!)
+        let dBottomLeft = CanariPoint.distanceSquare (bottomLeft, connector.location!)
         if dTopRight < dBottomLeft {
           connector.mX = topRight.x.cuValue
           connector.mY = topRight.y.cuValue

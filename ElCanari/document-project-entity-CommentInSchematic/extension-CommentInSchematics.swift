@@ -179,7 +179,7 @@ extension CommentInSchematic {
 
   func alignmentPoints_CommentInSchematic () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.mX, y: self.mY)
+    result.insert (x: self.mX, y: self.mY)
     return result
   }
 

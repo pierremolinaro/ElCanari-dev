@@ -75,7 +75,7 @@ extension AutoLayoutProjectDocument {
     let side = self.rootObject.mBoardSideForNewTrack
     let shiftKeyDown = NSEvent.modifierFlags.contains (.shift)
     let p1 = shiftKeyDown
-      ? inUnalignedMousePoint.canariPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
+      ? inUnalignedMousePoint.canariPoint.point (alignedOnGrid: .cu (self.rootObject.mBoardGridStep))
       : inUnalignedMousePoint.canariPoint
     let connectorsAtP1 = self.rootObject.connectors (at: p1, trackSide: side)
   //--- Build connector at mouse click
@@ -130,7 +130,7 @@ extension AutoLayoutProjectDocument {
     if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2, let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location {
       let shiftKeyDown = inModifierFlags.contains (.shift)
       var canariUnalignedMouseLocation = shiftKeyDown
-        ? inUnalignedMouseLocation.canariPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
+        ? inUnalignedMouseLocation.canariPoint.point (alignedOnGrid: .cu (self.rootObject.mBoardGridStep))
         : inUnalignedMouseLocation.canariPoint
       switch self.rootObject.mDirectionForNewTrack {
       case .anyAngle :

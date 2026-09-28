@@ -135,7 +135,7 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_NonPlatedHole (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.mX, y: self.mY)
+    accumulatedPoints.insert (x: self.mX, y: self.mY)
     return true
   }
 

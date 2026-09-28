@@ -191,8 +191,8 @@ extension SymbolSolidRect {
 
   func alignmentPoints_SymbolSolidRect () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.x, y: self.y)
-    result.insertCanariPoint (x: self.x + self.width, y: self.y + self.height)
+    result.insert (x: self.x, y: self.y)
+    result.insert (x: self.x + self.width, y: self.y + self.height)
     return result
   }
 

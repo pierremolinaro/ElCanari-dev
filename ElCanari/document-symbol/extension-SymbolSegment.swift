@@ -183,8 +183,8 @@ extension SymbolSegment {
 
   func alignmentPoints_SymbolSegment () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.x1, y: self.y1)
-    result.insertCanariPoint (x: self.x2, y: self.y2)
+    result.insert (x: self.x1, y: self.y1)
+    result.insert (x: self.x2, y: self.y2)
     return result
   }
 

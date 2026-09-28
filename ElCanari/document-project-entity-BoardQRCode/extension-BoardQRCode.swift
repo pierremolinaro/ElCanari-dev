@@ -137,7 +137,7 @@ extension BoardQRCode {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canRotate90_BoardQRCode (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    accumulatedPoints.insertCanariPoint (x: self.mCenterX, y: self.mCenterY)
+    accumulatedPoints.insert (x: self.mCenterX, y: self.mCenterY)
     return true
   }
 

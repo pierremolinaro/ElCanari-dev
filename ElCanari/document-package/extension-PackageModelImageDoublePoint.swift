@@ -95,7 +95,7 @@ extension PackageModelImageDoublePoint {
 
   func alignmentPoints_PackageModelImageDoublePoint () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insertCanariPoint (x: self.mFirstX, y: self.mFirstY)
+    result.insert (x: self.mFirstX, y: self.mFirstY)
     return result
   }
 
