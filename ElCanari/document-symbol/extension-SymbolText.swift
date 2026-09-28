@@ -88,21 +88,21 @@ extension SymbolText {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_SymbolText (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_SymbolText (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_SymbolText (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_SymbolText (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_SymbolText (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x += inDx
-    self.y += inDy
+  func translate_SymbolText (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.x += inDx.cuValue
+    self.y += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

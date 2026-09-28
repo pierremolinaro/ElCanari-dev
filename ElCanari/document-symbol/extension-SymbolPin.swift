@@ -44,25 +44,25 @@ extension SymbolPin {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_SymbolPin (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_SymbolPin (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_SymbolPin (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_SymbolPin (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_SymbolPin (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.xPin += inDx
-    self.yPin += inDy
-    self.xName += inDx
-    self.yName += inDy
-    self.xNumber += inDx
-    self.yNumber += inDy
+  func translate_SymbolPin (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.xPin += inDx.cuValue
+    self.yPin += inDy.cuValue
+    self.xName += inDx.cuValue
+    self.yName += inDy.cuValue
+    self.xNumber += inDx.cuValue
+    self.yNumber += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

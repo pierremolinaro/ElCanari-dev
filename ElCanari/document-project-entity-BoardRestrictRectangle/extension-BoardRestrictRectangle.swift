@@ -35,33 +35,33 @@ extension BoardRestrictRectangle {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardRestrictRectangle (xBy inDx : Int, yBy inDy : Int) -> CanariPoint {
+  func acceptedTranslation_BoardRestrictRectangle (xBy inDx : CanariLength, yBy inDy : CanariLength) -> CanariPoint {
     var acceptedX = inDx
-    let newX = self.mX + acceptedX
-    if newX < 0 {
-      acceptedX = -self.mX
+    let newX = .cu (self.mX) + acceptedX
+    if newX < .zero {
+      acceptedX = -.cu (self.mX)
     }
     var acceptedY = inDy
-    let newY = self.mY + acceptedY
-    if newY < 0 {
-      acceptedY = -self.mY
+    let newY = .cu (self.mY) + acceptedY
+    if newY < .zero {
+      acceptedY = -.cu (self.mY)
     }
-    return CanariPoint (x: .cu (acceptedX), y: .cu (acceptedY))
+    return CanariPoint (x: acceptedX, y: acceptedY)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardRestrictRectangle (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_BoardRestrictRectangle (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardRestrictRectangle (xBy inDx : Int,
-                                         yBy inDy : Int,
+  func translate_BoardRestrictRectangle (xBy inDx : CanariLength,
+                                         yBy inDy : CanariLength,
                                          userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx
-    self.mY += inDy
+    self.mX += inDx.cuValue
+    self.mY += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -73,30 +73,30 @@ extension BoardTrack {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardTrack (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_BoardTrack (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardTrack (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_BoardTrack (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardTrack (xBy inDx : Int,
-                             yBy inDy : Int,
+  func translate_BoardTrack (xBy inDx : CanariLength,
+                             yBy inDy : CanariLength,
                              userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let connectorP1 = self.mConnectorP1, !ioSet.contains (connectorP1) {
       ioSet.insert (connectorP1)
-      connectorP1.mX += inDx
-      connectorP1.mY += inDy
+      connectorP1.mX += inDx.cuValue
+      connectorP1.mY += inDy.cuValue
     }
     if let connectorP2 = self.mConnectorP2, !ioSet.contains (connectorP2) {
       ioSet.insert (connectorP2)
-      connectorP2.mX += inDx
-      connectorP2.mY += inDy
+      connectorP2.mX += inDx.cuValue
+      connectorP2.mY += inDy.cuValue
     }
   }
 

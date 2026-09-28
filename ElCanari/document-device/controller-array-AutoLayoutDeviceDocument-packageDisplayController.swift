@@ -663,7 +663,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : EBRea
                                                          objectArray: self.objectArray.values)
           }
           if errorMessage.isEmpty {
-            object.translate (xBy: X, yBy: Y, userSet: &userSet)
+            object.translate (xBy: .cu (X), yBy: .cu (Y), userSet: &userSet)
             newObjects.append (object)
           }
         }

@@ -132,15 +132,15 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func dragSelection (_ proposedTranslation: CanariPoint) {
-    var dx = proposedTranslation.x.cuValue
-    var dy = proposedTranslation.y.cuValue
+    var dx = proposedTranslation.x
+    var dy = proposedTranslation.y
     if let controller = self.mViewController {
       for object in controller.selectedGraphicObjectSet.values {
         let p = object.acceptedTranslation (xBy: dx, yBy: dy)
-        dx = p.x.cuValue
-        dy = p.y.cuValue
+        dx = p.x
+        dy = p.y
       }
-      if (dx != 0) || (dy != 0) {
+      if (dx != .zero) || (dy != .zero) {
         var userSet = EBReferenceSet <EBManagedObject> ()
         for object in controller.selectedGraphicObjectSet.values {
           object.translate (xBy: dx, yBy: dy, userSet: &userSet)

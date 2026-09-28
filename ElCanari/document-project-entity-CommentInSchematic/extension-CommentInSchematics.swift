@@ -81,21 +81,21 @@ extension CommentInSchematic {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_CommentInSchematic (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_CommentInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_CommentInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_CommentInSchematic (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_CommentInSchematic (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx
-    self.mY += inDy
+  func translate_CommentInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.mX += inDx.cuValue
+    self.mY += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

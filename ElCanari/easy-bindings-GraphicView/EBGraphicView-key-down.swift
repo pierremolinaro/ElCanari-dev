@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,9 +17,9 @@ extension EBGraphicView {
        !inEvent.modifierFlags.contains (.option),
        !inEvent.modifierFlags.contains (.control),
        !inEvent.modifierFlags.contains (.command) {
-      let amount : Int = inEvent.modifierFlags.contains (.shift)
-        ? self.mShiftArrowKeyMagnitude
-        : self.mArrowKeyMagnitude
+      let amount : CanariLength = inEvent.modifierFlags.contains (.shift)
+        ? CanariLength.cu (self.mShiftArrowKeyMagnitude)
+        : CanariLength.cu (self.mArrowKeyMagnitude)
       for character in characters.unicodeScalars {
         switch (character) {
         case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
@@ -28,13 +29,13 @@ extension EBGraphicView {
         case NSEvent.SpecialKey (rawValue: 9).unicodeScalar : // Htab
           super.keyDown (with: inEvent)
         case NSEvent.SpecialKey.upArrow.unicodeScalar :
-          _ = self.wantsToTranslateSelection (byX: 0, byY: amount)
+          _ = self.wantsToTranslateSelection (byX: .zero, byY: amount)
         case NSEvent.SpecialKey.downArrow.unicodeScalar :
-          _ = self.wantsToTranslateSelection (byX: 0, byY: -amount)
+          _ = self.wantsToTranslateSelection (byX: .zero, byY: -amount)
         case NSEvent.SpecialKey.leftArrow.unicodeScalar :
-          _ = self.wantsToTranslateSelection (byX: -amount, byY: 0)
+          _ = self.wantsToTranslateSelection (byX: -amount, byY: .zero)
         case NSEvent.SpecialKey.rightArrow.unicodeScalar :
-          _ = self.wantsToTranslateSelection (byX: amount, byY: 0)
+          _ = self.wantsToTranslateSelection (byX: amount, byY: .zero)
         case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
           self.deleteSelection ()
         default :  // Note: inEvent.locationInWindow undefined on non-mouse event
@@ -48,9 +49,9 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private func wantsToTranslateSelection (byX inDx : Int, byY inDy : Int) -> Bool {
+  final private func wantsToTranslateSelection (byX inDx : CanariLength, byY inDy : CanariLength) -> Bool {
     var accepted = false
-    if inDx == 0, inDy == 0 {
+    if inDx == .zero, inDy == .zero {
       NSSound.beep ()
     }else{
       accepted = true

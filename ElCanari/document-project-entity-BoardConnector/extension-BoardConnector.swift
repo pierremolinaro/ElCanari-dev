@@ -83,25 +83,25 @@ extension BoardConnector {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardConnector (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_BoardConnector (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardConnector (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_BoardConnector (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardConnector (xBy inDx : Int,
-                                 yBy inDy : Int,
+  func translate_BoardConnector (xBy inDx : CanariLength,
+                                 yBy inDy : CanariLength,
                                  userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if !ioSet.contains (self) {
       ioSet.insert (self)
-      self.mX += inDx
-      self.mY += inDy
+      self.mX += inDx.cuValue
+      self.mY += inDy.cuValue
     }
   }
 

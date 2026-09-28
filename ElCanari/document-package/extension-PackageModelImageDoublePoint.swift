@@ -41,23 +41,23 @@ extension PackageModelImageDoublePoint {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_PackageModelImageDoublePoint  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_PackageModelImageDoublePoint  (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_PackageModelImageDoublePoint (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_PackageModelImageDoublePoint (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_PackageModelImageDoublePoint (xBy inDx: Int,
-                                               yBy inDy: Int,
+  func translate_PackageModelImageDoublePoint (xBy inDx: CanariLength,
+                                               yBy inDy: CanariLength,
                                                userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mFirstX += inDx
-    self.mFirstY += inDy
+    self.mFirstX += inDx.cuValue
+    self.mFirstY += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

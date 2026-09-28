@@ -105,8 +105,8 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? SymbolObject {
               newObject.translate (
-                xBy: CanariLength.pt (pointInDestinationView.x).cuValue - X,
-                yBy: CanariLength.pt (pointInDestinationView.y).cuValue - Y,
+                xBy: CanariLength.pt (pointInDestinationView.x) - .cu (X),
+                yBy: CanariLength.pt (pointInDestinationView.y) - .cu (Y),
                 userSet: &userSet
               )
               self.rootObject.symbolObjects_property.add (newObject)

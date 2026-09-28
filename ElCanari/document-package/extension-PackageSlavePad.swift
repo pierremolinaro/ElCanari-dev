@@ -31,23 +31,23 @@ extension PackageSlavePad {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_PackageSlavePad (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_PackageSlavePad (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_PackageSlavePad (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_PackageSlavePad (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_PackageSlavePad (xBy inDx: Int,
-                                  yBy inDy: Int,
+  func translate_PackageSlavePad (xBy inDx: CanariLength,
+                                  yBy inDy: CanariLength,
                                   userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.xCenter += inDx
-    self.yCenter += inDy
+    self.xCenter += inDx.cuValue
+    self.yCenter += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

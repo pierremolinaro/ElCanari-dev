@@ -66,20 +66,20 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate (xBy inDx: CanariLength, yBy inDy: CanariLength) -> Bool {
     return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate (xBy inDx: Int,
-                  yBy inDy: Int,
+  func translate (xBy inDx: CanariLength,
+                  yBy inDy: CanariLength,
                   userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 

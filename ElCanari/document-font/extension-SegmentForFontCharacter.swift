@@ -138,19 +138,19 @@ extension SegmentForFontCharacter {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_SegmentForFontCharacter (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_SegmentForFontCharacter (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_SegmentForFontCharacter (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_SegmentForFontCharacter (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_SegmentForFontCharacter (xBy _ : Int, yBy _ : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+  func translate_SegmentForFontCharacter (xBy _ : CanariLength, yBy _ : CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

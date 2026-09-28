@@ -36,23 +36,23 @@ extension LabelInSchematic {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_LabelInSchematic  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_LabelInSchematic  (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_LabelInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_LabelInSchematic (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_LabelInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_LabelInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let point = self.mPoint, point.mSymbol == nil, !ioSet.contains (point) {
       ioSet.insert (point)
-      point.mX += inDx
-      point.mY += inDy
+      point.mX += inDx.cuValue
+      point.mY += inDy.cuValue
     }
   }
 

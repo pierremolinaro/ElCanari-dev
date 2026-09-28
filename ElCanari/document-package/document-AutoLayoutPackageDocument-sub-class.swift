@@ -106,8 +106,8 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
             idx += 1
             if errorMessage.isEmpty {
               newObject.translate (
-                xBy: CanariLength.pt (pointInDestinationView.x).cuValue - X,
-                yBy: CanariLength.pt (pointInDestinationView.y).cuValue - Y,
+                xBy: CanariLength.pt (pointInDestinationView.x) - .cu (X),
+                yBy: CanariLength.pt (pointInDestinationView.y) - .cu (Y),
                 userSet: &userSet
               )
               newObjectArray.append (newObject)

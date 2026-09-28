@@ -58,22 +58,22 @@ extension BoardImage {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardImage (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_BoardImage (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardImage (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_BoardImage (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardImage (xBy inDx : Int, yBy inDy : Int,
+  func translate_BoardImage (xBy inDx : CanariLength, yBy inDy : CanariLength,
                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mCenterX += inDx
-    self.mCenterY += inDy
+    self.mCenterX += inDx.cuValue
+    self.mCenterY += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

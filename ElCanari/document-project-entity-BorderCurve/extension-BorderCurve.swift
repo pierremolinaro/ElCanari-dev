@@ -34,24 +34,24 @@ extension BorderCurve {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BorderCurve (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_BorderCurve (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BorderCurve (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_BorderCurve (xBy inDx: CanariLength, yBy inDy: CanariLength) -> Bool {
     var accept = false
     if let next = self.mNext, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       accept = true
-      if (self.mX + inDx) < 0 {
+      if (self.mX + inDx.cuValue) < 0 {
         accept = false
-      }else if (self.mY + inDy) < 0 {
+      }else if (self.mY + inDy.cuValue) < 0 {
         accept = false
       }
-      if (next.mX + inDx) < 0 {
+      if (next.mX + inDx.cuValue) < 0 {
         accept = false
-      }else if (next.mY + inDy) < 0 {
+      }else if (next.mY + inDy.cuValue) < 0 {
         accept = false
       }
     }
@@ -103,21 +103,23 @@ extension BorderCurve {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BorderCurve (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_BorderCurve (xBy inDx: CanariLength,
+                              yBy inDy: CanariLength,
+                              userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let next = self.mNext, let previous = self.mPrevious, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
-      let dx = max (inDx, -self.mX, -next.mX)
-      let dy = max (inDy, -self.mY, -next.mY)
+      let dx = max (inDx, -.cu (self.mX), -.cu (next.mX))
+      let dy = max (inDy, -.cu (self.mY), -.cu (next.mY))
       if !ioSet.contains (self) {
         ioSet.insert (self)
-        self.mX += dx
-        self.mY += dy
+        self.mX += dx.cuValue
+        self.mY += dy.cuValue
         self.setControlPointsDefaultValuesForLine ()
         previous.setControlPointsDefaultValuesForLine ()
       }
       if !ioSet.contains (next) {
         ioSet.insert (next)
-        next.mX += dx
-        next.mY += dy
+        next.mX += dx.cuValue
+        next.mY += dy.cuValue
         self.setControlPointsDefaultValuesForLine ()
         next.setControlPointsDefaultValuesForLine ()
       }

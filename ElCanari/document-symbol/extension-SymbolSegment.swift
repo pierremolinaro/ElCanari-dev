@@ -39,11 +39,9 @@ extension SymbolSegment {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_SymbolSegment (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_SymbolSegment (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
-
-
 
 //  func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
 //    var acceptedX = inDx
@@ -77,7 +75,7 @@ extension SymbolSegment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_SymbolSegment (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_SymbolSegment (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
 //    let newX1 = self.x1 + inDx
 //    let newY1 = self.y1 + inDy
@@ -88,11 +86,11 @@ extension SymbolSegment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_SymbolSegment (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x1 += inDx
-    self.y1 += inDy
-    self.x2 += inDx
-    self.y2 += inDy
+  func translate_SymbolSegment (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.x1 += inDx.cuValue
+    self.y1 += inDy.cuValue
+    self.x2 += inDx.cuValue
+    self.y2 += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

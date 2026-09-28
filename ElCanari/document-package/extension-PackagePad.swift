@@ -31,23 +31,23 @@ extension PackagePad {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_PackagePad  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_PackagePad  (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_PackagePad (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_PackagePad (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_PackagePad (xBy inDx: Int,
-                             yBy inDy: Int,
+  func translate_PackagePad (xBy inDx: CanariLength,
+                             yBy inDy: CanariLength,
                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.xCenter += inDx
-    self.yCenter += inDy
+    self.xCenter += inDx.cuValue
+    self.yCenter += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

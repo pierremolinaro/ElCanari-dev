@@ -756,19 +756,21 @@ final class BoardRestrictRectangle : BoardObject
   //  Translate
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+  override func acceptedTranslation (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
     return self.acceptedTranslation_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  override func acceptToTranslate (xBy inDx: CanariLength,
+                                   yBy inDy: CanariLength) -> Bool {
     return self.acceptToTranslate_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func translate (xBy inDx: Int, yBy inDy: Int,
+  override func translate (xBy inDx: CanariLength,
+                           yBy inDy: CanariLength,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     self.translate_BoardRestrictRectangle (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }

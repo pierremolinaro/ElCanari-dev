@@ -61,13 +61,13 @@ extension SymbolOval {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_SymbolOval (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_SymbolOval (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_SymbolOval (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_SymbolOval (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
 //    let newX = self.x + inDx
 //    let newY = self.y + inDy
@@ -76,9 +76,9 @@ extension SymbolOval {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_SymbolOval (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x += inDx
-    self.y += inDy
+  func translate_SymbolOval (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.x += inDx.cuValue
+    self.y += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -50,25 +50,25 @@ extension PackageZone {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_PackageZone (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_PackageZone (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_PackageZone (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_PackageZone (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_PackageZone (xBy inDx: Int,
-                              yBy inDy: Int,
+  func translate_PackageZone (xBy inDx: CanariLength,
+                              yBy inDy: CanariLength,
                               userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x += inDx
-    self.y += inDy
-    self.xName += inDx
-    self.yName += inDy
+    self.x += inDx.cuValue
+    self.y += inDy.cuValue
+    self.xName += inDx.cuValue
+    self.yName += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

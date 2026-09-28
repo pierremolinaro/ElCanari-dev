@@ -41,13 +41,13 @@ extension SymbolBezierCurve {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_SymbolBezierCurve (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_SymbolBezierCurve (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_SymbolBezierCurve (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
 //    let newX1 = self.x1 + inDx
 //    let newY1 = self.y1 + inDy
@@ -63,15 +63,17 @@ extension SymbolBezierCurve {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_SymbolBezierCurve (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x1 += inDx
-    self.y1 += inDy
-    self.x2 += inDx
-    self.y2 += inDy
-    self.cpx1 += inDx
-    self.cpy1 += inDy
-    self.cpx2 += inDx
-    self.cpy2 += inDy
+  func translate_SymbolBezierCurve (xBy inDx: CanariLength,
+                                    yBy inDy: CanariLength,
+                                    userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.x1 += inDx.cuValue
+    self.y1 += inDy.cuValue
+    self.x2 += inDx.cuValue
+    self.y2 += inDy.cuValue
+    self.cpx1 += inDx.cuValue
+    self.cpy1 += inDy.cuValue
+    self.cpx2 += inDx.cuValue
+    self.cpy2 += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

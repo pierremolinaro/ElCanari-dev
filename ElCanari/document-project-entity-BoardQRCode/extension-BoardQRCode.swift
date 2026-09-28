@@ -38,23 +38,23 @@ extension BoardQRCode {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardQRCode (xBy inDx : Int, yBy inDy : Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_BoardQRCode (xBy inDx : CanariLength, yBy inDy : CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardQRCode (xBy inDx : Int, yBy inDy : Int) -> Bool {
+  func acceptToTranslate_BoardQRCode (xBy inDx : CanariLength, yBy inDy : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardQRCode (xBy inDx : Int,
-                              yBy inDy : Int,
+  func translate_BoardQRCode (xBy inDx : CanariLength,
+                              yBy inDy : CanariLength,
                               userSet ioUserSet : inout EBReferenceSet <EBManagedObject>) {
-    self.mCenterX += inDx
-    self.mCenterY += inDy
+    self.mCenterX += inDx.cuValue
+    self.mCenterY += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

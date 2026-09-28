@@ -44,21 +44,21 @@ extension PackageInDevice {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_PackageInDevice  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_PackageInDevice  (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_PackageInDevice (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return ((self.mX + inDx) >= 0) && ((self.mY + inDy) >= 0)
+  func acceptToTranslate_PackageInDevice (xBy inDx: CanariLength, yBy inDy: CanariLength) -> Bool {
+    return ((self.mX + inDx.cuValue) >= 0) && ((self.mY + inDy.cuValue) >= 0)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_PackageInDevice (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx
-    self.mY += inDy
+  func translate_PackageInDevice (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.mX += inDx.cuValue
+    self.mY += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

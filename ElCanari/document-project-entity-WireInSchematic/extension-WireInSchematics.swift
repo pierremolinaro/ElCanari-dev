@@ -74,27 +74,27 @@ extension WireInSchematic {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_WireInSchematic (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_WireInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_WireInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_WireInSchematic (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_WireInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_WireInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let p1 = self.mP1, !ioSet.contains (p1) {
       ioSet.insert (p1)
-      p1.mX += inDx
-      p1.mY += inDy
+      p1.mX += inDx.cuValue
+      p1.mY += inDy.cuValue
     }
     if let p2 = self.mP2, !ioSet.contains (p2) {
       ioSet.insert (p2)
-      p2.mX += inDx
-      p2.mY += inDy
+      p2.mX += inDx.cuValue
+      p2.mY += inDy.cuValue
     }
   }
 

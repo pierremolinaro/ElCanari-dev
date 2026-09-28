@@ -39,21 +39,21 @@ extension BoardText {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardText (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_BoardText (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardText (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_BoardText (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardText (xBy inDx : Int, yBy inDy : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx
-    self.mY += inDy
+  func translate_BoardText (xBy inDx : CanariLength, yBy inDy : CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.mX += inDx.cuValue
+    self.mY += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

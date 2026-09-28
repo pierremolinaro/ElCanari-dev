@@ -48,24 +48,24 @@ extension BoardLine {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardLine (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_BoardLine (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardLine (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_BoardLine (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardLine (xBy inDx : Int, yBy inDy : Int,
+  func translate_BoardLine (xBy inDx : CanariLength, yBy inDy : CanariLength,
                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX1 += inDx
-    self.mY1 += inDy
-    self.mX2 += inDx
-    self.mY2 += inDy
+    self.mX1 += inDx.cuValue
+    self.mY1 += inDy.cuValue
+    self.mX2 += inDx.cuValue
+    self.mY2 += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

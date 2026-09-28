@@ -43,33 +43,33 @@ extension MergerBoardInstance {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+  func acceptedTranslation_MergerBoardInstance (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
     var acceptedX = inDx
-    let newX = self.x + acceptedX
-    if newX < 0 {
-      acceptedX = -self.x
+    let newX = .cu (self.x) + acceptedX
+    if newX < .zero {
+      acceptedX = -.cu (self.x)
     }
     var acceptedY = inDy
-    let newY = self.y + acceptedY
-    if newY < 0 {
-      acceptedY = -self.y
+    let newY = .cu (self.y) + acceptedY
+    if newY < .zero {
+      acceptedY = -.cu (self.y)
     }
-    return CanariPoint (x: .cu (acceptedX), y: .cu (acceptedY))
+    return CanariPoint (x: acceptedX, y: acceptedY)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    let newX = self.x + inDx
-    let newY = self.y + inDy
+  func acceptToTranslate_MergerBoardInstance (xBy inDx: CanariLength, yBy inDy: CanariLength) -> Bool {
+    let newX = self.x + inDx.cuValue
+    let newY = self.y + inDy.cuValue
     return (newX >= 0) && (newY >= 0)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x += inDx
-    self.y += inDy
+  func translate_MergerBoardInstance (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+    self.x += inDx.cuValue
+    self.y += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

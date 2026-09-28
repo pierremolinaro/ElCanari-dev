@@ -70,19 +70,19 @@ extension NCInSchematic {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_NCInSchematic (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
+  func acceptedTranslation_NCInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_NCInSchematic (xBy _ : Int, yBy _ : Int) -> Bool {
+  func acceptToTranslate_NCInSchematic (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_NCInSchematic (xBy _ : Int, yBy _ : Int, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+  func translate_NCInSchematic (xBy _ : CanariLength, yBy _ : CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
