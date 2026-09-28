@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -34,16 +36,16 @@ import AppKit
            let y2 = self_mNext_mY,
 //           let boardWidth = self_mRoot_mBoardLimitsWidth,
            let boardClearance = self_mRoot_mBoardClearance {
-          let p1 = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
-          let p2 = CanariPoint (x: x2, y: y2).cocoaPoint
+          let p1 = CanariPoint (x: .cu (self_mX), y: .cu (self_mY)).ptValue
+          let p2 = CanariPoint (x: .cu (x2), y: .cu (y2)).ptValue
           var bp = BezierPath ()
           bp.move (to: p1)
           switch self_mShape {
           case .line :
             bp.line (to: p2)
           case .bezier :
-            let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1).cocoaPoint
-            let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2).cocoaPoint
+            let cp1 = CanariPoint (x: .cu (self_mCPX1), y: .cu (self_mCPY1)).ptValue
+            let cp2 = CanariPoint (x: .cu (self_mCPX2), y: .cu (self_mCPY2)).ptValue
             bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
           }
           bp.lineCapStyle = .round

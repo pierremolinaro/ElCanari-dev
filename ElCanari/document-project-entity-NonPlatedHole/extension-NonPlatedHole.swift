@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,7 +39,7 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_NonPlatedHole (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -103,8 +104,8 @@ extension NonPlatedHole {
       self.mX += inDx
       self.mY += inDy
     }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
-      let origin = CanariPoint (x: self.mX, y: self.mY).cocoaPoint
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let origin = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
@@ -142,8 +143,8 @@ extension NonPlatedHole {
 
   func rotate90Clockwise_NonPlatedHole (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -152,8 +153,8 @@ extension NonPlatedHole {
 
   func rotate90CounterClockwise_NonPlatedHole (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }

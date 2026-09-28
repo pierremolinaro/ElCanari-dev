@@ -131,8 +131,8 @@ extension ComponentInProject {
         }
         if !found { // If not found, new package does not accept this slave pad: detach pad from component
           let p = currentConnector.location!
-          currentConnector.mX = p.x
-          currentConnector.mY = p.y
+          currentConnector.mX = p.x.cuValue
+          currentConnector.mY = p.y.cuValue
           currentConnector.mComponent = nil
           currentConnector.mComponentPadName = ""
           currentConnector.mPadIndex = 0

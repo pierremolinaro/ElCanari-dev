@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -23,7 +25,7 @@ import AppKit
 //--- START OF USER ZONE 2
         var shape = EBShape ()
         if self_isVia { // !self_connectedToComponent && (self_side == .both) {
-          let p = self_location.cocoaPoint
+          let p = self_location.ptValue
           let padDiameter = canariUnitToCocoa (self_actualPadDiameter)
           let rPad = NSRect (x: p.x - padDiameter / 2.0, y: p.y - padDiameter / 2.0, width: padDiameter, height: padDiameter)
           var bp = BezierPath (ovalIn: rPad)

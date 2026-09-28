@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -105,8 +106,8 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
             idx += 1
             if errorMessage.isEmpty {
               newObject.translate (
-                xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
-                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
+                xBy: CanariLength.pt (pointInDestinationView.x).cuValue - X,
+                yBy: CanariLength.pt (pointInDestinationView.y).cuValue - Y,
                 userSet: &userSet
               )
               newObjectArray.append (newObject)
@@ -391,7 +392,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
             yMax = pad.yCenter
           }
         }
-        let center = CanariPoint (x: (xMin + xMax) / 2, y: (yMin + yMax) / 2)
+        let center = CanariPoint (x: .cu (xMin + xMax) / 2, y: .cu (yMin + yMax) / 2)
         let startAngle = CGFloat (self.rootObject.counterClockNumberingStartAngle) * .pi / 180.0
         allPads.sort { $0.angleInRadian (from: center, from: startAngle) < $1.angleInRadian (from: center, from: startAngle) }
       }

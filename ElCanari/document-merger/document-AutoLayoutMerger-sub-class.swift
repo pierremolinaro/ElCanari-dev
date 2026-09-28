@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -89,8 +90,8 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         let rotation = self.rootObject.modelInsertionRotation
         let newBoard = MergerBoardInstance (self.undoManager)
         newBoard.myModel = boardModel
-        newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
-        newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)
+        newBoard.x = CanariLength.pt (draggingLocationInDestinationView.x).cuValue
+        newBoard.y = CanariLength.pt (draggingLocationInDestinationView.y).cuValue
         newBoard.instanceRotation = rotation
         self.rootObject.boardInstances_property.add (newBoard)
         self.mBoardInstanceController.setSelection ([newBoard])

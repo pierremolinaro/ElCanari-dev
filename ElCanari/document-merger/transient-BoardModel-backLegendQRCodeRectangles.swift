@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -27,10 +29,10 @@ import AppKit
         var result = MergerRectangleArray ()
         var idx = 0
         while idx < self_legendBackQRCodes_p0x.count {
-          let p0 = CanariPoint (x: self_legendBackQRCodes_p0x [idx].p0x, y: self_legendBackQRCodes_p0y [idx].p0y).cocoaPoint
-          let p1 = CanariPoint (x: self_legendBackQRCodes_p1x [idx].p1x, y: self_legendBackQRCodes_p1y [idx].p1y).cocoaPoint
-          let p2 = CanariPoint (x: self_legendBackQRCodes_p2x [idx].p2x, y: self_legendBackQRCodes_p2y [idx].p2y).cocoaPoint
-          let p3 = CanariPoint (x: self_legendBackQRCodes_p3x [idx].p3x, y: self_legendBackQRCodes_p3y [idx].p3y).cocoaPoint
+          let p0 = CanariPoint (x: .cu (self_legendBackQRCodes_p0x [idx].p0x), y: .cu (self_legendBackQRCodes_p0y [idx].p0y)).ptValue
+          let p1 = CanariPoint (x: .cu (self_legendBackQRCodes_p1x [idx].p1x), y: .cu (self_legendBackQRCodes_p1y [idx].p1y)).ptValue
+          let p2 = CanariPoint (x: .cu (self_legendBackQRCodes_p2x [idx].p2x), y: .cu (self_legendBackQRCodes_p2y [idx].p2y)).ptValue
+          let p3 = CanariPoint (x: .cu (self_legendBackQRCodes_p3x [idx].p3x), y: .cu (self_legendBackQRCodes_p3y [idx].p3y)).ptValue
           result.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
           idx += 1
         }

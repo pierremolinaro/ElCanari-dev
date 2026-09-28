@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -31,7 +32,7 @@ extension PackageSlavePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageSlavePad (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,8 +64,8 @@ extension PackageSlavePad {
   func rotate90Clockwise_PackageSlavePad (from inRotationCenter : CanariPoint,
                                           userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x
-    self.yCenter = newCenter.y
+    self.xCenter = newCenter.x.cuValue
+    self.yCenter = newCenter.y.cuValue
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
@@ -74,8 +75,8 @@ extension PackageSlavePad {
   func rotate90CounterClockwise_PackageSlavePad (from inRotationCenter : CanariPoint,
                                                  userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x
-    self.yCenter = newCenter.y
+    self.xCenter = newCenter.x.cuValue
+    self.yCenter = newCenter.y.cuValue
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }

@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -45,7 +46,7 @@ extension PackageDimension {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageDimension (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -144,28 +145,28 @@ extension PackageDimension {
 
   func rotate90Clockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
-    self.x1 = p1.x
-    self.y1 = p1.y
+    self.x1 = p1.x.cuValue
+    self.y1 = p1.y.cuValue
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
-    self.x2 = p2.x
-    self.y2 = p2.y
+    self.x2 = p2.x.cuValue
+    self.y2 = p2.y.cuValue
     let p = inRotationCenter.rotated90Clockwise (x: self.xDimension, y: self.yDimension)
-    self.xDimension = p.x
-    self.yDimension = p.y
+    self.xDimension = p.x.cuValue
+    self.yDimension = p.y.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
-    self.x1 = p1.x
-    self.y1 = p1.y
+    self.x1 = p1.x.cuValue
+    self.y1 = p1.y.cuValue
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
-    self.x2 = p2.x
-    self.y2 = p2.y
+    self.x2 = p2.x.cuValue
+    self.y2 = p2.y.cuValue
     let p = inRotationCenter.rotated90CounterClockwise (x: self.xDimension, y: self.yDimension)
-    self.xDimension = p.x
-    self.yDimension = p.y
+    self.xDimension = p.x.cuValue
+    self.yDimension = p.y.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

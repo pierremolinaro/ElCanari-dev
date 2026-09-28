@@ -116,10 +116,10 @@ extension AutoLayoutMergerDocument {
     for rect in inArray.values {
       let centerX = (rect.p0x + rect.p1x + rect.p2x + rect.p3x) / 4
       let centerY = (rect.p0y + rect.p1y + rect.p2y + rect.p3y) / 4
-      let p0 = CanariPoint (x: rect.p0x, y: rect.p0y).cocoaPoint
-      let p1 = CanariPoint (x: rect.p1x, y: rect.p1y).cocoaPoint
+      let p0 = CanariPoint (x: .cu (rect.p0x), y: .cu (rect.p0y)).ptValue
+      let p1 = CanariPoint (x: .cu (rect.p1x), y: .cu (rect.p1y)).ptValue
       let width = NSPoint.distance (p0, p1)
-      let p2 = CanariPoint (x: rect.p2x, y: rect.p2y).cocoaPoint
+      let p2 = CanariPoint (x: .cu (rect.p2x), y: .cu (rect.p2y)).ptValue
       let height = NSPoint.distance (p1, p2)
       let angleInDegrees = NSPoint.angleInDegrees (p0, p1)
       var af = AffineTransform ()
@@ -137,8 +137,8 @@ extension AutoLayoutMergerDocument {
                                    layer inLayer : ProductLayerSet,
                                    to ioProduct : inout ProductRepresentation) {
     for segment in inArray.values {
-      let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
-      let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
+      let p1 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x1), y: .cu (segment.y1)))
+      let p2 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x2), y: .cu (segment.y2)))
       if p1 == p2 {
         let s = LayeredProductCircle (
           center: p1,
@@ -168,8 +168,8 @@ extension AutoLayoutMergerDocument {
   fileprivate func appendHoles (from inArray : EBReferenceArray <SegmentEntity>,
                                 to ioProduct : inout ProductRepresentation) {
     for segment in inArray.values {
-      let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
-      let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
+      let p1 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x1), y: .cu (segment.y1)))
+      let p2 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x2), y: .cu (segment.y2)))
       let width = CanariLength.cu (segment.width)
       if p1 == p2 {
         let s = LayeredProductCircle (
@@ -195,7 +195,7 @@ extension AutoLayoutMergerDocument {
   fileprivate func appendVias (from inArray : EBReferenceArray <BoardModelVia>,
                                to ioProduct : inout ProductRepresentation) {
     for via in inArray.values {
-      let center = ProductPoint (canariPoint: CanariPoint (x: via.x, y: via.y))
+      let center = ProductPoint (canariPoint: CanariPoint (x: .cu (via.x), y: .cu (via.y)))
       let padDiameter = CanariLength.cu (via.padDiameter)
       let s = LayeredProductCircle (
         center: center,

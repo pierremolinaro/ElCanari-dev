@@ -3,10 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
+
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -23,7 +26,7 @@ import AppKit
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
-        if let p = self_mPoint_location?.cocoaPoint {
+        if let p = self_mPoint_location?.ptValue {
           var bp = BezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))

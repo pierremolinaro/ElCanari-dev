@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -19,7 +20,7 @@ extension SheetInProject {
     let p = inUnalignedDraggingLocation.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     let possibleWire : WireInSchematic?
     let p1 = CanariPoint (x: p.x, y: p.y)
-    let p2 = CanariPoint (x: p.x + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: p.y + WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
+    let p2 = CanariPoint (x: p.x + .cu (WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP), y: p.y + .cu (WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP))
   //--- Find points at p1 and p2
     let pointsAtP1 = self.pointsInSchematics (at: p1)
     let pointsAtP2 = self.pointsInSchematics (at: p2)
@@ -34,8 +35,8 @@ extension SheetInProject {
       possibleWire = wire
       wire.mP1 = pointsAtP1 [0]
       let point = PointInSchematic (self.undoManager)
-      point.mX = p2.x
-      point.mY = p2.y
+      point.mX = p2.x.cuValue
+      point.mY = p2.y.cuValue
       point.mNet = wire.mP1?.mNet
       wire.mP2 = point
       self.mPoints.append (point)
@@ -48,8 +49,8 @@ extension SheetInProject {
       possibleWire = wire
       wire.mP2 = pointsAtP2 [0]
       let point = PointInSchematic (self.undoManager)
-      point.mX = p1.x
-      point.mY = p1.y
+      point.mX = p1.x.cuValue
+      point.mY = p1.y.cuValue
       point.mNet = wire.mP2?.mNet
       wire.mP1 = point
       self.mPoints.append (point)
@@ -61,13 +62,13 @@ extension SheetInProject {
       let wire = WireInSchematic (self.undoManager)
       possibleWire = wire
       let point1 = PointInSchematic (self.undoManager)
-      point1.mX = p1.x
-      point1.mY = p1.y
+      point1.mX = p1.x.cuValue
+      point1.mY = p1.y.cuValue
       wire.mP1 = point1
       self.mPoints.append (point1)
       let point2 = PointInSchematic (self.undoManager)
-      point2.mX = p2.x
-      point2.mY = p2.y
+      point2.mX = p2.x.cuValue
+      point2.mY = p2.y.cuValue
       wire.mP2 = point2
       self.mPoints.append (point2)
       point1.mNet = inNewNetCreator ()

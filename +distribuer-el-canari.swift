@@ -7,7 +7,7 @@ import Foundation
 // Product Kind
 //------------------------------------------------------------------------------
 
-enum ProductKind {
+enum Configuration {
   case release
   case debug
 
@@ -21,7 +21,7 @@ enum ProductKind {
 
 //------------------------------------------------------------------------------
 
-let BUILD_KIND = ProductKind.release
+let CONFIGURATION = Configuration.release
 
 //------------------------------------------------------------------------------
 // Version ElCanari
@@ -190,7 +190,7 @@ do{
   let str2 = components.joined (separator: sha)
   try! str2.write (to: URL (fileURLWithPath: fileRelativePath), atomically: true, encoding: .utf8)
 //-------------------- Obtenir le numéro de build
-  let plistFileFullPath = DISTRIBUTION_DIR + "/" + CANARI_DIR + "/ElCanari/application/Info-" + BUILD_KIND.string + ".plist"
+  let plistFileFullPath = DISTRIBUTION_DIR + "/" + CANARI_DIR + "/ElCanari/application/Info-" + CONFIGURATION.string + ".plist"
   let data : Data = try Data (contentsOf: URL (fileURLWithPath: plistFileFullPath))
   var plistDictionary : [String : Any]
   if let d = try PropertyListSerialization.propertyList (from: data, format: nil) as? [String : Any] {
@@ -212,27 +212,36 @@ do{
 //-------------------- Compiler le projet Xcode
   let débutCompilation = Date ()
   removeDirectory ("build")
+  let jsonString = runHiddenCommand (
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+    ["-list", "-json"]
+  )
+  print (jsonString)
   runCommand (
     "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
-    [ "-target", "ElCanari-" + BUILD_KIND.string,
-      "-configuration", BUILD_KIND.string,
-      "ONLY_ACTIVE_ARCH=YES", "ARCHS=arm64",
-      "-verbose"
+    [ "-scheme", "ElCanari-" + CONFIGURATION.string,
+      "-target", "ElCanari-" + CONFIGURATION.string,
+      "-configuration", CONFIGURATION.string,
+      //"ONLY_ACTIVE_ARCH=YES", "ARCHS=arm64",
+      "-verbose",
+      "-arch", "arm64",
+      "-derivedDataPath", "XCode-DerivedData-Build"
     ]
   )
+  let PRODUCT_RELATIVE_DIR = "XCode-DerivedData-Build/Build/Products/" + CONFIGURATION.string
   let duréeCompilation = Date ().timeIntervalSince (débutCompilation)
   let PRODUCT_NAME : String
-  switch BUILD_KIND {
+  switch CONFIGURATION {
   case .debug :
     PRODUCT_NAME = "ElCanari-Debug"
   case .release:
     PRODUCT_NAME = "ElCanari"
   }
 //-------------------- Copier l'application dans la racine du répertoire de distribution
-  runCommand ("/bin/cp", ["-r", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", DISTRIBUTION_DIR])
+  runCommand ("/bin/cp", ["-r", PRODUCT_RELATIVE_DIR + "/" + PRODUCT_NAME + ".app", DISTRIBUTION_DIR])
 //-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
-  runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
+  runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", PRODUCT_RELATIVE_DIR + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
 //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI
@@ -291,7 +300,7 @@ do{
     "-dv",
 //    "--digest-algorithm=sha1,sha256",
     "--verbose=4",
-    DISTRIBUTION_DIR + "/" + CANARI_DIR + "/build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app"
+    DISTRIBUTION_DIR + "/" + CANARI_DIR + "/" + PRODUCT_RELATIVE_DIR + "/" + PRODUCT_NAME + ".app"
   ]
   runCommand ("/usr/bin/codesign", argumentsSignatureCode)
 //--- Supprimer les répertoires intermédiaires

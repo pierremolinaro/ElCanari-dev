@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -29,8 +31,7 @@ import AppKit
 //--- START OF USER ZONE 2
         let s = CGFloat (self_mSize)
         let font = self_mBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
-//        let font = NSFont (name: "LucidaGrande", size: s)!
-        let p = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
+        let p = CanariPoint (x: .cu (self_mX), y: .cu (self_mY)).ptValue
         var af = AffineTransform ()
         af.translate (x: p.x, y: p.y)
         af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)

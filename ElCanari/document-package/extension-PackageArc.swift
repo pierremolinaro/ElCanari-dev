@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -40,7 +41,7 @@ extension PackageArc {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageArc  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,7 +96,7 @@ extension PackageArc {
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift _ : Bool) {
-    let center = CanariPoint (x: self.xCenter, y: self.yCenter).cocoaPoint
+    let center = CanariPoint (x: .cu (self.xCenter), y: .cu (self.yCenter)).ptValue
     let radius = canariUnitToCocoa (self.radius)
     let startAngle = CGFloat (self.startAngle) / 1000.0
     let arcAngle = CGFloat (self.arcAngle) / 1000.0
@@ -114,7 +115,7 @@ extension PackageArc {
       let deltaX = center.x - newRadiusKnob.x
       let deltaY = center.y - newRadiusKnob.y
       let newRadius = sqrt (deltaX * deltaX + deltaY * deltaY)
-      self.radius = cocoaToCanariUnit (newRadius)
+      self.radius = CanariLength.pt (newRadius).cuValue
     }else if inKnobIndex == PACKAGE_ARC_START_ANGLE {
       let newStartAngleKnob = NSPoint (
         x: canariUnitToCocoa (inAlignedMouseLocationX),

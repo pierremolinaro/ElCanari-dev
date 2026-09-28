@@ -4,7 +4,9 @@
 //
 //  Created by Pierre Molinaro on 14/06/2019.
 //
+
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -44,7 +46,7 @@ extension BoardRestrictRectangle {
     if newY < 0 {
       acceptedY = -self.mY
     }
-    return CanariPoint (x: acceptedX, y: acceptedY)
+    return CanariPoint (x: .cu (acceptedX), y: .cu (acceptedY))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -91,26 +93,26 @@ extension BoardRestrictRectangle {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
-      if (self.mX + dx) < 0 {
-        dx = -self.mX
+      if (self.mX + dx.cuValue) < 0 {
+        dx = .cu (-self.mX)
       }
-      if (self.mWidth - dx) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dx = SYMBOL_GRID_IN_CANARI_UNIT - self.mWidth
+      if (self.mWidth - dx.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dx = .cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mWidth)
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_RIGHT {
-      if (self.mWidth + dx) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dx = -(SYMBOL_GRID_IN_CANARI_UNIT - self.mWidth)
+      if (self.mWidth + dx.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dx = -.cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mWidth)
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM {
-      if (self.mY + dy) < 0 {
-        dy = -self.mY
+      if (self.mY + dy.cuValue) < 0 {
+        dy = -.cu (self.mY)
       }
-      if (self.mHeight - dy) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dy = SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight
+      if (self.mHeight - dy.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dy = .cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight)
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_TOP {
-      if (self.mHeight + dy) < SYMBOL_GRID_IN_CANARI_UNIT {
-        dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight)
+      if (self.mHeight + dy.cuValue) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dy = -.cu (SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight)
       }
     }
     return CanariPoint (x: dx, y: dy)
@@ -196,8 +198,8 @@ extension BoardRestrictRectangle {
 
   func rotate90Clockwise_BoardRestrictRectangle (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     swap (&self.mWidth, &self.mHeight)
     ioSet.insert (self)
   }
@@ -206,8 +208,8 @@ extension BoardRestrictRectangle {
 
   func rotate90CounterClockwise_BoardRestrictRectangle (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     swap (&self.mWidth, &self.mHeight)
     ioSet.insert (self)
   }

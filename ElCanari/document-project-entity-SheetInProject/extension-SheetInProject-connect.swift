@@ -254,8 +254,8 @@ extension SheetInProject {
         newPoint.mSymbol = symbol
         newPoint.mSymbolPinName = symbolPinName
         newPoint.mNet = inNet
-        newPoint.mX = location.x
-        newPoint.mY = location.y
+        newPoint.mX = location.x.cuValue
+        newPoint.mY = location.y.cuValue
         self.mPoints.append (newPoint)
         for point in inPoints {
           let wireP1s = point.mWiresP1s

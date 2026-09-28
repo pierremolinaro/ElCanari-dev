@@ -42,20 +42,20 @@ struct ProductPoint : Codable, Equatable, CustomStringConvertible {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (canariPoint inCanariPoint : CanariPoint) {
-    self.x = CanariLength.cu (inCanariPoint.x)
-    self.y = CanariLength.cu (inCanariPoint.y)
+    self.x = inCanariPoint.x
+    self.y = inCanariPoint.y
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (cocoaPoint inPoint : NSPoint) {
+  init (ptValue inPoint : NSPoint) {
     self.x = CanariLength.pt (inPoint.x)
     self.y = CanariLength.pt (inPoint.y)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var cocoaPoint : NSPoint { NSPoint (x: self.x.value (in: .pt), y: self.y.value (in: .pt)) }
+  var ptValue : NSPoint { NSPoint (x: self.x.value (in: .pt), y: self.y.value (in: .pt)) }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -39,7 +40,7 @@ extension SymbolSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_SymbolSegment (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
 

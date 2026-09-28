@@ -6,6 +6,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -39,15 +40,15 @@ extension AutoLayoutDeviceDocument {
         symbolType.mPinTypes = symbolPinTypes
         var pinLocations = [CanariPoint] ()
         for pinType in symbolPinTypes.values {
-          pinLocations.append (CanariPoint (x: pinType.mPinX, y: pinType.mPinY))
+          pinLocations.append (CanariPoint (x: .cu (pinType.mPinX), y: .cu (pinType.mPinY)))
         }
         let pinsCenter = CanariRect (points: pinLocations).center
         self.rootObject.mSymbolTypes_property.add (symbolType)
         let symbolInstance = SymbolInstanceInDevice (self.undoManager)
         self.rootObject.mSymbolInstances_property.add (symbolInstance)
         symbolInstance.mType = symbolType
-        symbolInstance.mX = -pinsCenter.x
-        symbolInstance.mY = -pinsCenter.y
+        symbolInstance.mX = -pinsCenter.x.cuValue
+        symbolInstance.mY = -pinsCenter.y.cuValue
       //--- Add pin instances
         for pinType in symbolPinTypes.values {
           let pinInstance = SymbolPinInstanceInDevice (self.undoManager)
@@ -176,13 +177,13 @@ extension AutoLayoutDeviceDocument {
 
         var masterPadsLocations = [CanariPoint] ()
         for masterPad in masterPads.values {
-          masterPadsLocations.append (CanariPoint (x: masterPad.mCenterX, y: masterPad.mCenterY))
+          masterPadsLocations.append (CanariPoint (x: .cu (masterPad.mCenterX), y: .cu (masterPad.mCenterY)))
         }
         let masterPadsCenter = CanariRect (points: masterPadsLocations).center
 
         let package = PackageInDevice (self.undoManager)
-        package.mX = -masterPadsCenter.x
-        package.mY = -masterPadsCenter.y
+        package.mX = -masterPadsCenter.x.cuValue
+        package.mY = -masterPadsCenter.y.cuValue
         package.mVersion = version
         package.mName = inName
         package.mFileData = inData

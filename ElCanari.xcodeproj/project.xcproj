@@ -21,7 +21,7 @@
       "kind": "remote",
       "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
       "version": {
-        "revision": "9b419fb4ed2e80fe29c3386037b92d53232cb850",
+        "revision": "5240be1386cc68d899941ea819fc4fef54cfa6df",
       },
     },
   ],

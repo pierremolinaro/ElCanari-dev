@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -198,7 +199,7 @@ struct SchematicPointStatus : Hashable {
 //--------------------------------------------------------------------------------------------------
 
 struct SchematicSheetGeometry : Hashable {
-  let size : CanariSize // Canari Unit
+  let size : CanariSize
   let horizontalDivisions : Int
   let verticalDivisions : Int
 
@@ -213,18 +214,18 @@ struct SchematicSheetGeometry : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func locationInfo (forPointInSheet inPoint : CanariPoint) -> PointLocationInfo {
-    let gutterWidth = cocoaToCanariUnit (PAPER_GUTTER_WIDTH_COCOA_UNIT)
-    let gutterHeight = cocoaToCanariUnit (PAPER_GUTTER_HEIGHT_COCOA_UNIT)
+    let gutterWidth = CanariLength.pt (PAPER_GUTTER_WIDTH_COCOA_UNIT)
+    let gutterHeight = CanariLength.pt (PAPER_GUTTER_HEIGHT_COCOA_UNIT)
     var column = 0
     if inPoint.x >= gutterWidth {
-      column = (inPoint.x - gutterWidth) * self.horizontalDivisions / (self.size.width - 2 * gutterWidth)
+      column = Int ((inPoint.x - gutterWidth) * self.horizontalDivisions / (self.size.width - 2 * gutterWidth))
       if column >= self.horizontalDivisions {
         column = self.horizontalDivisions - 1
       }
     }
     var line = 0
     if inPoint.y >= gutterHeight {
-      line = (inPoint.y - gutterHeight) * self.verticalDivisions / (self.size.height - 2 * gutterHeight)
+      line = Int ((inPoint.y - gutterHeight) * self.verticalDivisions / (self.size.height - 2 * gutterHeight))
       if line >= self.verticalDivisions {
         line = self.verticalDivisions - 1
       }
@@ -247,7 +248,7 @@ struct SchematicSheetGeometry : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func pointInRowOrColumnHeader (_ inPoint : NSPoint) -> PointInRowOrColumnHeader {
-    let cocoaSize = self.size.cocoaSize
+    let cocoaSize = self.size.ptValue
     var result = PointInRowOrColumnHeader.outsideRowOrColumnHeader
     var pointInVerticalGutter = inPoint.y <= PAPER_GUTTER_HEIGHT_COCOA_UNIT // in bottom gutter
     if !pointInVerticalGutter {
@@ -464,19 +465,19 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
   func bezierPath (index inIndex : Int, extraWidth : Int = 0) -> BezierPath {
     if inIndex == 0 {
       return BezierPath.pad (
-        centerX: self.center.x,
-        centerY: self.center.y,
-        width: self.padSize.width + extraWidth,
-        height: self.padSize.height + extraWidth,
+        centerX: self.center.x.cuValue,
+        centerY: self.center.y.cuValue,
+        width: self.padSize.width.cuValue + extraWidth,
+        height: self.padSize.height.cuValue + extraWidth,
         shape: self.shape
       )
     }else{
       let slavePad = self.slavePads [inIndex - 1]
       return BezierPath.pad (
-        centerX: slavePad.center.x,
-        centerY: slavePad.center.y,
-        width: slavePad.padSize.width + extraWidth,
-        height: slavePad.padSize.height + extraWidth,
+        centerX: slavePad.center.x.cuValue,
+        centerY: slavePad.center.y.cuValue,
+        width: slavePad.padSize.width.cuValue + extraWidth,
+        height: slavePad.padSize.height.cuValue + extraWidth,
         shape: slavePad.shape
       )
     }
@@ -491,8 +492,8 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?,
                                   padNetDictionary inPadNetDictionary : [String : String]) {
-    let center = self.center.cocoaPoint
-    let padSize = self.padSize.cocoaSize
+    let center = self.center.ptValue
+    let padSize = self.padSize.ptValue
     let rPad = NSRect (x: center.x - padSize.width / 2.0, y: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
     var bp : BezierPath
     switch self.shape {
@@ -506,7 +507,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     switch self.style {
     case .traversing :
       ioShape.add (filled: [bp], nil) // Append a transparent layer, but that intercepts clicks
-      let holeSize = self.holeSize.cocoaSize
+      let holeSize = self.holeSize.ptValue
       let rHole = NSRect (x: center.x - holeSize.width / 2.0, y: center.y - holeSize.height / 2.0, width: holeSize.width, height: holeSize.height)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
@@ -575,8 +576,8 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
                                   padNumberAF : AffineTransform,
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?) {
-    let center = self.center.cocoaPoint
-    let padSize = self.padSize.cocoaSize
+    let center = self.center.ptValue
+    let padSize = self.padSize.ptValue
     let rPad = NSRect (x: center.x - padSize.width / 2.0, y: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
     var bp : BezierPath
     switch self.shape {
@@ -589,7 +590,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     }
     switch self.style {
     case .traversing :
-      let holeSize = self.holeSize.cocoaSize
+      let holeSize = self.holeSize.ptValue
       let rHole = NSRect (x: center.x - holeSize.width / 2.0, y: center.y - holeSize.height / 2.0, width: holeSize.width, height: holeSize.height)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd

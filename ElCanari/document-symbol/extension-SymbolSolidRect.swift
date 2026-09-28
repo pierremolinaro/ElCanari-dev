@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -45,7 +46,7 @@ extension SymbolSolidRect {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_SymbolSolidRect (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -113,8 +114,8 @@ extension SymbolSolidRect {
                                 proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                                 unalignedMouseDraggedLocation _ : CanariPoint,
                                 shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x
-    var dy = inProposedAlignedTranslation.y
+    var dx = inProposedAlignedTranslation.x.cuValue
+    var dy = inProposedAlignedTranslation.y.cuValue
     if inKnobIndex == SYMBOL_SOLID_RECT_LEFT {
       if (self.width - dx) < SYMBOL_GRID_IN_CANARI_UNIT {
         dx = SYMBOL_GRID_IN_CANARI_UNIT - self.width
@@ -132,7 +133,7 @@ extension SymbolSolidRect {
         dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.height)
       }
     }
-    return CanariPoint (x: dx, y: dy)
+    return CanariPoint (x: .cu (dx), y: .cu (dy))
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

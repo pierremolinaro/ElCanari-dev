@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -47,7 +48,7 @@ extension PackageOval {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageOval  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,8 +101,8 @@ extension PackageOval {
                             proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                             unalignedMouseDraggedLocation _ : CanariPoint,
                             shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x
-    var dy = inProposedAlignedTranslation.y
+    var dx = inProposedAlignedTranslation.x.cuValue
+    var dy = inProposedAlignedTranslation.y.cuValue
     if inKnobIndex == PACKAGE_OVAL_LEFT {
       if (self.width - dx) < 0 {
         dx = self.width
@@ -119,7 +120,7 @@ extension PackageOval {
         dy = -self.height
       }
     }
-    return CanariPoint (x: dx, y: dy)
+    return CanariPoint (x: .cu (dx), y: .cu (dy))
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -161,8 +162,8 @@ extension PackageOval {
                                       userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
-    self.x = newCenter.x - self.width / 2
-    self.y = newCenter.y - self.height / 2
+    self.x = newCenter.x.cuValue - self.width / 2
+    self.y = newCenter.y.cuValue - self.height / 2
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -171,8 +172,8 @@ extension PackageOval {
                                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.x + self.width / 2, y: self.y + self.height / 2)
     (self.width, self.height) = (self.height, self.width)
-    self.x = newCenter.x - self.width / 2
-    self.y = newCenter.y - self.height / 2
+    self.x = newCenter.x.cuValue - self.width / 2
+    self.y = newCenter.y.cuValue - self.height / 2
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

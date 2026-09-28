@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //  Struct CanariRect
@@ -46,10 +47,10 @@ struct CanariRect : Equatable, Hashable {
       self.origin = .zero
       self.size = .zero
     }else{
-      var xMin = Int.max
-      var yMin = Int.max
-      var xMax = Int.min
-      var yMax = Int.min
+      var xMin = CanariLength.max
+      var yMin = CanariLength.max
+      var xMax = CanariLength.min
+      var yMax = CanariLength.min
       for p in inPoints {
         if xMin > p.x {
           xMin = p.x
@@ -71,8 +72,11 @@ struct CanariRect : Equatable, Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (left inLeft : Int, bottom inBottom : Int, width inWidth : Int, height inHeight : Int) {
-    if (inWidth > 0) && (inHeight > 0) {
+  init (left inLeft : CanariLength,
+        bottom inBottom : CanariLength,
+        width inWidth : CanariLength,
+        height inHeight : CanariLength) {
+    if (inWidth > .zero) && (inHeight > .zero) {
       self.origin = CanariPoint (x: inLeft, y: inBottom)
       self.size = CanariSize (width: inWidth, height: inHeight)
     }else{
@@ -85,18 +89,18 @@ struct CanariRect : Equatable, Hashable {
   //   Accessors
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var left    : Int { return self.origin.x }
-  var midX    : Int { return self.origin.x + self.size.width / 2 }
-  var maxX    : Int { return self.origin.x + self.size.width }
-  var right   : Int { return self.origin.x + self.size.width }
+  var left    : CanariLength { return self.origin.x }
+  var midX    : CanariLength { return self.origin.x + self.size.width / 2 }
+  var maxX    : CanariLength { return self.origin.x + self.size.width }
+  var right   : CanariLength { return self.origin.x + self.size.width }
 
-  var bottom  : Int { return self.origin.y }
-  var midY    : Int { return self.origin.y + self.size.height / 2 }
-  var maxY    : Int { return self.origin.y + self.size.height }
-  var top     : Int { return self.origin.y + self.size.height }
+  var bottom  : CanariLength { return self.origin.y }
+  var midY    : CanariLength { return self.origin.y + self.size.height / 2 }
+  var maxY    : CanariLength { return self.origin.y + self.size.height }
+  var top     : CanariLength { return self.origin.y + self.size.height }
 
-  var height  : Int { return self.size.height }
-  var width   : Int { return self.size.width }
+  var height  : CanariLength { return self.size.height }
+  var width   : CanariLength { return self.size.width }
 
   var center : CanariPoint { return CanariPoint (x: self.left + self.width / 2, y: self.bottom + self.height / 2) }
 
@@ -116,7 +120,7 @@ struct CanariRect : Equatable, Hashable {
 
   var middleLeft : CanariPoint { return CanariPoint (x: self.left, y: self.midY) }
 
-  var isEmpty : Bool { return (self.size.width <= 0) || (self.size.height <= 0) }
+  var isEmpty : Bool { return (self.size.width <= .zero) || (self.size.height <= .zero) }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Rotation around rectangle center
@@ -142,10 +146,10 @@ struct CanariRect : Equatable, Hashable {
 
   var ptValue : NSRect {
     return NSRect (
-      x: canariUnitToCocoa (self.origin.x),
-      y: canariUnitToCocoa (self.origin.y),
-      width: canariUnitToCocoa (self.size.width),
-      height: canariUnitToCocoa (self.size.height)
+      x: self.origin.x.ptValue,
+      y: self.origin.y.ptValue,
+      width: self.size.width.ptValue,
+      height: self.size.height.ptValue
     )
   }
 
@@ -196,10 +200,10 @@ struct CanariRect : Equatable, Hashable {
     if self.isEmpty {
       result = .zero // Empty Rect
     }else{
-      let right = self.left + inDx
-      let bottom = self.bottom + inDy
-      let left = self.left + self.width - inDx
-      let top = self.bottom + self.height - inDy
+      let right = self.left + .cu (inDx)
+      let bottom = self.bottom + .cu (inDy)
+      let left = self.left + self.width - .cu (inDx)
+      let top = self.bottom + self.height - .cu (inDy)
       result = CanariRect (left: right, bottom: bottom, width: left - right, height: top - bottom)
     }
     return result
@@ -210,7 +214,9 @@ struct CanariRect : Equatable, Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (x inX : Int, y inY : Int) -> Bool {
-    return (inX >= self.left) && (inX <= self.right) && (inY >= self.bottom) && (inY <= self.top)
+    let x = CanariLength.cu (inX)
+    let y = CanariLength.cu (inY)
+    return (x >= self.left) && (x <= self.right) && (y >= self.bottom) && (y <= self.top)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -350,10 +356,10 @@ extension NSRect {
 
   var canariRect : CanariRect {
     return CanariRect (
-      left: cocoaToCanariUnit (self.origin.x),
-      bottom: cocoaToCanariUnit (self.origin.y),
-      width: cocoaToCanariUnit (self.size.width),
-      height: cocoaToCanariUnit (self.size.height)
+      left: .cu (self.origin.x),
+      bottom: .cu  (self.origin.y),
+      width: .cu  (self.size.width),
+      height: .cu  (self.size.height)
     )
   }
 

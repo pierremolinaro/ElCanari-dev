@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -25,25 +26,22 @@ import AppKit
       var idx = 0
       while idx < self_boardInstances_instanceRect.count {
         if let rect = self_boardInstances_instanceRect [idx].instanceRect {
-//           let boardLimitWidth = self_boardInstances_boardLimitWidth [idx].boardLimitWidth {
           r = r.union (rect)
-//     §     let inset = min (0, boardLimitWidth - self_boardLimitWidth)
-//          r = r.union (rect.insetBy (dx: inset, dy: inset))
         }
         idx += 1
       }
       return CanariRect (
-        left: 0,
-        bottom: 0,
+        left: .zero,
+        bottom: .zero,
         width: r.maxX,
         height: r.maxY
       )
     }else{
       return CanariRect (
-        left: 0,
-        bottom: 0,
-        width: self_boardManualWidth,
-        height: self_boardManualHeight
+        left: .zero,
+        bottom: .zero,
+        width: .cu (self_boardManualWidth),
+        height: .cu (self_boardManualHeight)
       )
     }
 //--- END OF USER ZONE 2

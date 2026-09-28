@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -27,7 +28,7 @@ import AppKit
         if self_mSide == .back {
           af.scale (x: -1.0, y: 1.0)
         }
-        let center = self_packagePadDictionary.padsRect.center.cocoaPoint
+        let center = self_packagePadDictionary.padsRect.center.ptValue
         af.translate (x: -center.x, y: -center.y)
         var result = ComponentPadDescriptorDictionary ()
         for (padName, descriptor) in self_packagePadDictionary {
@@ -44,7 +45,7 @@ import AppKit
             }
           }
           let p = PadLocationAndSide (
-            location: af.transform (descriptor.center.cocoaPoint),
+            location: af.transform (descriptor.center.ptValue),
             side: padSide
           )
           var pads = [p]
@@ -69,7 +70,7 @@ import AppKit
               }
             }
             let p = PadLocationAndSide (
-              location: af.transform (slavePad.center.cocoaPoint),
+              location: af.transform (slavePad.center.ptValue),
               side: padSide
             )
             pads.append (p)

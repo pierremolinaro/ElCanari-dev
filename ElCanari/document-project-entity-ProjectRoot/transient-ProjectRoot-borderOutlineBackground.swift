@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -32,8 +33,8 @@ import AppKit
           let boardRect = CanariRect (
             left: .zero,
             bottom: .zero,
-            width: self_mRectangularBoardWidth,
-            height: self_mRectangularBoardHeight
+            width: .cu (self_mRectangularBoardWidth),
+            height: .cu (self_mRectangularBoardHeight)
           )
           let roundedRect = BezierPath (
             roundedRect: boardRect.ptValue,
@@ -42,20 +43,20 @@ import AppKit
           )
           outlinePath.append (roundedRect)
         //--- Board clearance
-          let d = self_mBoardClearance
+          let d = CanariLength.cu (self_mBoardClearance)
           let r = CanariRect (
             left: d,
             bottom: d,
-            width: self_mRectangularBoardWidth - 2 * d,
-            height: self_mRectangularBoardHeight - 2 * d
+            width: .cu (self_mRectangularBoardWidth) - 2 * d,
+            height: .cu (self_mRectangularBoardHeight) - 2 * d
           )
-          if self_mBoardCornerRadius <= d {
+          if self_mBoardCornerRadius <= d.cuValue {
             bp.appendRect (r.ptValue)
           }else{
             let roundedRect = BezierPath (
               roundedRect: r.ptValue,
-              xRadius: canariUnitToCocoa (self_mBoardCornerRadius - d),
-              yRadius: canariUnitToCocoa (self_mBoardCornerRadius - d)
+              xRadius: (.cu (self_mBoardCornerRadius) - d).ptValue,
+              yRadius: (.cu (self_mBoardCornerRadius) - d).ptValue
             )
             bp.append (roundedRect)
           }
@@ -67,16 +68,16 @@ import AppKit
           }
           var descriptor = self_mBorderCurves_descriptor [0].descriptor!
           let p = descriptor.p1
-          bp.move (to: p.cocoaPoint)
+          bp.move (to: p.ptValue)
           var loop = true
           while loop {
             switch descriptor.shape {
             case .line :
-              bp.line (to: descriptor.p2.cocoaPoint)
+              bp.line (to: descriptor.p2.ptValue)
             case .bezier :
-              let cp1 = descriptor.cp1.cocoaPoint
-              let cp2 = descriptor.cp2.cocoaPoint
-              bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+              let cp1 = descriptor.cp1.ptValue
+              let cp2 = descriptor.cp2.ptValue
+              bp.curve (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
             }
             descriptor = curveDictionary [descriptor.p2]!
             loop = p != descriptor.p1

@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -33,15 +35,15 @@ import AppKit
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
         shape.add (stroke: [strokeBezierPath], prefs_selectionHiliteColor)
       //--- Line from center to component value
-        let symbolCenter = self_symbolInfo.center.cocoaPoint
+        let symbolCenter = self_symbolInfo.center.ptValue
         let componentValueCenter = CanariPoint (
-          x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
-          y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
+          x: self_symbolInfo.center.x + .cu (self_mDisplayComponentValueOffsetX),
+          y: self_symbolInfo.center.y + .cu (self_mDisplayComponentValueOffsetY)
         )
         if self_mDisplayComponentValue {
           var bp = BezierPath ()
           bp.move (to: symbolCenter)
-          bp.line (to: componentValueCenter.cocoaPoint)
+          bp.line (to: componentValueCenter.ptValue)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
@@ -49,13 +51,13 @@ import AppKit
         }
       //--- line from center to name
         let componentNameCenter = CanariPoint (
-          x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX,
-          y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY
+          x: self_symbolInfo.center.x + .cu (self_mDisplayComponentNameOffsetX),
+          y: self_symbolInfo.center.y + .cu (self_mDisplayComponentNameOffsetY)
         )
         do{
           var bp = BezierPath ()
           bp.move (to: symbolCenter)
-          bp.line (to: componentNameCenter.cocoaPoint)
+          bp.line (to: componentNameCenter.ptValue)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
@@ -66,7 +68,7 @@ import AppKit
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
           let componentValueShape = EBShape (
             textKnob: value,
-            componentValueCenter.cocoaPoint,
+            componentValueCenter.ptValue,
             prefs_pinNameFont,
             foreColor: .black,
             backColor: prefs_schematicBackColor,
@@ -81,7 +83,7 @@ import AppKit
         do{
           shape.add (textKnob: 
             self_symbolInfo.componentName,
-            componentNameCenter.cocoaPoint,
+            componentNameCenter.ptValue,
             prefs_pinNameFont,
             foreColor: .black,
             backColor: prefs_schematicBackColor,
@@ -98,8 +100,8 @@ import AppKit
       //--- Line from center to rotation knob
         let d = milsToCocoaUnit (200.0)
         let rotationKnobCenter = NSPoint (
-          x: canariUnitToCocoa (self_symbolInfo.center.x) + d * cos (symbolRotationInRadians),
-          y: canariUnitToCocoa (self_symbolInfo.center.y) + d * sin (symbolRotationInRadians)
+          x: self_symbolInfo.center.x.ptValue + d * cos (symbolRotationInRadians),
+          y: self_symbolInfo.center.y.ptValue + d * sin (symbolRotationInRadians)
         )
         var bp = BezierPath ()
         bp.move (to: symbolCenter)

@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,7 +19,7 @@ import AppKit
        _ self_mBoardLimitsBoundingBoxUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        return intValueAndUnitStringFrom (valueInCanariUnit: self_boardBoundBox.top, displayUnit: self_mBoardLimitsBoundingBoxUnit)
+        return intValueAndUnitStringFrom (valueInCanariUnit: self_boardBoundBox.top.cuValue, displayUnit: self_mBoardLimitsBoundingBoxUnit)
 //--- END OF USER ZONE 2
 }
 

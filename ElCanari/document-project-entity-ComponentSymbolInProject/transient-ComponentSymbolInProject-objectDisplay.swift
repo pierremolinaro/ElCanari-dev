@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -49,10 +51,10 @@ import AppKit
             NSAttributedString.Key.font : prefs_componentNameFontForSchematic,
             NSAttributedString.Key.foregroundColor : prefs_componentNameColorForSchematic
           ]
-          let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
+          let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + .cu (self_mDisplayComponentNameOffsetX), y: self_symbolInfo.center.y + .cu (self_mDisplayComponentNameOffsetY))
           let componentNameShape = EBShape (
             text: self_symbolInfo.componentName,
-            componentNameCenter.cocoaPoint,
+            componentNameCenter.ptValue,
             componentNameTextAttributes,
             .center,
             .center
@@ -67,12 +69,12 @@ import AppKit
           ]
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
           let componentValueCenter = CanariPoint (
-            x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
-            y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
+            x: self_symbolInfo.center.x + .cu (self_mDisplayComponentValueOffsetX),
+            y: self_symbolInfo.center.y + .cu (self_mDisplayComponentValueOffsetY)
           )
           let componentValueShape = EBShape (
             text: value,
-            componentValueCenter.cocoaPoint,
+            componentValueCenter.ptValue,
             componentValueTextAttributes,
             .center,
             .center

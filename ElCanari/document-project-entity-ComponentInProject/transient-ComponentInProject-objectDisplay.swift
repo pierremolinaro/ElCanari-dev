@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -88,7 +89,7 @@ import AppKit
         }
       //---
         let padRect = self_packagePadDictionary.padsRect
-        let center = padRect.center.cocoaPoint
+        let center = padRect.center.ptValue
         var padNumberAffineTransform = AffineTransform ()
         if self_mSide == .back {
           padNumberAffineTransform.scale (x: -1.0, y: 1.0)

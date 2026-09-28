@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -46,7 +47,7 @@ extension ComponentInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_ComponentInProject (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -141,8 +142,8 @@ extension ComponentInProject {
       self.mX += inDx
       self.mY += inDy
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
-      let absoluteCenter = CanariPoint (x: self.mX, y: self.mY).cocoaPoint
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let absoluteCenter = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
@@ -206,8 +207,8 @@ extension ComponentInProject {
 
   func rotate90Clockwise_ComponentInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     self.mRotation = (self.mRotation + 270_000) % 360_000
     ioSet.insert (self)
   }
@@ -216,8 +217,8 @@ extension ComponentInProject {
 
   func rotate90CounterClockwise_ComponentInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     self.mRotation = (self.mRotation + 90_000) % 360_000
     ioSet.insert (self)
   }
@@ -231,8 +232,8 @@ extension ComponentInProject {
     //--- Assign pad location to connector
       let descriptor : ComponentPadDescriptor = self.componentPadDictionary! [connector.mComponentPadName]!
       let pad = descriptor.pads [connector.mPadIndex]
-      connector.mX = cocoaToCanariUnit (pad.location.x)
-      connector.mY = cocoaToCanariUnit (pad.location.y)
+      connector.mX = CanariLength.pt (pad.location.x).cuValue
+      connector.mY = CanariLength.pt (pad.location.y).cuValue
     //--- Detach from component
       connector.mComponent = nil
       connector.mComponentPadName = ""
@@ -260,7 +261,7 @@ extension ComponentInProject {
   func affineTransformFromPackage () -> AffineTransform {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
     let padRect = packagePadDictionary.padsRect
-    let center = padRect.center.cocoaPoint
+    let center = padRect.center.ptValue
     var af = AffineTransform ()
     af.translate (x: canariUnitToCocoa (self.mX), y: canariUnitToCocoa (self.mY))
     af.rotate (byDegrees: CGFloat (self.mRotation) / 1000.0)
@@ -275,7 +276,7 @@ extension ComponentInProject {
 
   func packageToComponentAffineTransform () -> AffineTransform {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
-    let center = packagePadDictionary.padsRect.center.cocoaPoint
+    let center = packagePadDictionary.padsRect.center.ptValue
     var af = AffineTransform ()
     af.translate (x: canariUnitToCocoa (self.mX), y: canariUnitToCocoa (self.mY))
     let angleDegrees = Double (self.mRotation) / 1000.0
@@ -294,9 +295,9 @@ extension ComponentInProject {
       let af = self.packageToComponentAffineTransform ()
       var padCenters = [NSPoint] ()
       for (_, masterPad) in padDictionary {
-        padCenters.append (af.transform (masterPad.center.cocoaPoint))
+        padCenters.append (af.transform (masterPad.center.ptValue))
         for slavePad in masterPad.slavePads {
-          padCenters.append (af.transform (slavePad.center.cocoaPoint))
+          padCenters.append (af.transform (slavePad.center.ptValue))
         }
       }
       return NSRect (points: padCenters)

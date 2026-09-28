@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -52,14 +53,14 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func cut (_ : Any?) {
-    let translation = CanariPoint (x: self.mShiftArrowKeyMagnitude, y: self.mShiftArrowKeyMagnitude)
+    let translation = CanariPoint (x: .cu (self.mShiftArrowKeyMagnitude), y: .cu (self.mShiftArrowKeyMagnitude))
     self.mViewController?.cutSelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func copy (_ : Any?) {
-    let translation = CanariPoint (x: self.mShiftArrowKeyMagnitude, y: self.mShiftArrowKeyMagnitude)
+    let translation = CanariPoint (x: .cu (self.mShiftArrowKeyMagnitude), y: .cu (self.mShiftArrowKeyMagnitude))
     self.mViewController?.copySelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 

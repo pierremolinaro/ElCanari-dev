@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -19,7 +21,7 @@ import AppKit
 ) -> Double {
 //--- START OF USER ZONE 2
        if let p1 = self_mConnectorP1_location, let p2 = self_mConnectorP2_location {
-         return CanariPoint.squareOfCanariDistance (p1, p2).squareRoot()
+         return Double (CanariPoint.distance (p1, p2).cuValue)
        }else{
          return 0.0
        }

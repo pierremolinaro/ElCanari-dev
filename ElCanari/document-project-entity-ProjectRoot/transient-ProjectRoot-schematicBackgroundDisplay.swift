@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,8 +31,8 @@ import AppKit
 //--- START OF USER ZONE 2
         let vMarks = self_sheetGeometry.verticalDivisions
         let hMarks = self_sheetGeometry.horizontalDivisions
-        let sheetWidth = canariUnitToCocoa (self_sheetGeometry.size.width) - 2.0
-        let sheetHeight = canariUnitToCocoa (self_sheetGeometry.size.height) - 2.0
+        let sheetWidth = self_sheetGeometry.size.width.ptValue - 2.0
+        let sheetHeight = self_sheetGeometry.size.height.ptValue - 2.0
         let hIncrement = (sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0) / CGFloat (hMarks)
         let vIncrement = (sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0) / CGFloat (vMarks)
         let OFFSET : CGFloat =  0.5

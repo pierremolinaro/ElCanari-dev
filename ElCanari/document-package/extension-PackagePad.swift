@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -31,7 +32,7 @@ extension PackagePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackagePad  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -113,8 +114,8 @@ extension PackagePad {
   func rotate90Clockwise_PackagePad (from inRotationCenter : CanariPoint,
                                      userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x
-    self.yCenter = newCenter.y
+    self.xCenter = newCenter.x.cuValue
+    self.yCenter = newCenter.y.cuValue
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
@@ -124,8 +125,8 @@ extension PackagePad {
   func rotate90CounterClockwise_PackagePad (from inRotationCenter : CanariPoint,
                                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x
-    self.yCenter = newCenter.y
+    self.xCenter = newCenter.x.cuValue
+    self.yCenter = newCenter.y.cuValue
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
@@ -185,7 +186,7 @@ extension PackagePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func angleInRadian (from inCanariPoint : CanariPoint, from inStartAngleInRadian : CGFloat) -> CGFloat {
-    let a = CanariPoint.angleInRadian (inCanariPoint, CanariPoint (x: self.xCenter, y: self.yCenter))
+    let a = CanariPoint.angleInRadian (inCanariPoint, CanariPoint (x: .cu (self.xCenter), y: .cu (self.yCenter)))
     return (2.0 * CGFloat.pi + a - inStartAngleInRadian).truncatingRemainder (dividingBy: 2.0 * CGFloat.pi)
   }
 
@@ -233,8 +234,8 @@ extension BezierPath {
                    width inWidth : Int,
                    height inHeight : Int,
                    shape inShape : PadShape) -> BezierPath {
-    let center = CanariPoint (x: inCenterX, y: inCenterY).cocoaPoint
-    let size = CanariSize (width: inWidth, height: inHeight).cocoaSize
+    let center = CanariPoint (x: .cu (inCenterX), y: .cu (inCenterY)).ptValue
+    let size = CanariSize (width: .cu (inWidth), height: .cu (inHeight)).ptValue
     let r = NSRect (center: center, size: size)
     switch inShape {
     case .rect :
@@ -268,8 +269,8 @@ final class PadGeometryForERC {
         clearance inClearance : Int,
         shape inShape : PadShape) {
     self.id = inID
-    let center = CanariPoint (x: inCenterX, y: inCenterY).cocoaPoint
-    let size = CanariSize (width: inWidth, height: inHeight).cocoaSize
+    let center = CanariPoint (x: .cu (inCenterX), y: .cu (inCenterY)).ptValue
+    let size = CanariSize (width: .cu (inWidth), height: .cu (inHeight)).ptValue
     let clearance = canariUnitToCocoa (inClearance)
     var c = [GeometricCircle] ()
     var rects = [GeometricRect] ()

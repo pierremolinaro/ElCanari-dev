@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -51,7 +53,7 @@ import AppKit
   //--- Name
     if self_displayZoneName {
       let text = (self_zoneName.isEmpty) ? "?" : self_zoneName
-      let p = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
+      let p = CanariPoint (x: .cu (self_xName), y: .cu (self_yName)).ptValue
       let textAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : prefs_padZoneFont,
         NSAttributedString.Key.foregroundColor : prefs_padZoneColor

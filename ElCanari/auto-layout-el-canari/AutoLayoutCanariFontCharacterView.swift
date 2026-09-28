@@ -850,7 +850,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   //--- First check if mouse down occurs on a knob of a selected object
     for segment in self.mSegmentList.reversed () {
       if self.mSelection.contains (segment) {
-        possibleKnobIndex = segment.knobIndexFor (cocoaPoint: mouseDownLocation)
+        possibleKnobIndex = segment.knobIndexFor (ptValue: mouseDownLocation)
         if possibleKnobIndex != nil {
           self.mSelection.removeAll ()
           self.mSelection.insert (segment)
@@ -864,7 +864,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     var mouseDownInsideSegment = false
     if possibleKnobIndex == nil {
       for segment in self.mSegmentList.reversed () {
-        if segment.contains (cocoaPoint: mouseDownLocation) {
+        if segment.contains (ptValue: mouseDownLocation) {
           if shiftKeyOn {
             self.mSelection.insert (segment)
           }else if commandKeyOn {
@@ -1012,7 +1012,7 @@ extension FontCharacterSegment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func knobIndexFor (cocoaPoint p : NSPoint) -> Int? { // Return nil if point is outside a knob
+  func knobIndexFor (ptValue p : NSPoint) -> Int? { // Return nil if point is outside a knob
     var result : Int? = nil
     do{
       let r = knobRect (self.x1, self.y1)
@@ -1031,7 +1031,7 @@ extension FontCharacterSegment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (cocoaPoint p : NSPoint) -> Bool {
+  func contains (ptValue p : NSPoint) -> Bool {
     let oblong = GeometricOblong (
       p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
       p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)),

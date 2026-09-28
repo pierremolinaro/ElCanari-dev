@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -34,7 +36,7 @@ import AppKit
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var shape = EBShape ()
-      if let p1 = self_mConnectorP1_location?.cocoaPoint, let p2 = self_mConnectorP2_location?.cocoaPoint {
+      if let p1 = self_mConnectorP1_location?.ptValue, let p2 = self_mConnectorP2_location?.ptValue {
       //--- Hilite
         let color : NSColor
         switch self_mSide {

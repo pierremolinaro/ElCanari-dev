@@ -594,10 +594,10 @@ struct BezierPath : Hashable {
     }
     var result = [ProductSegment] ()
     for linePath in transformedLinePathArray {
-      let firstPoint = ProductPoint (cocoaPoint: linePath.origin)
+      let firstPoint = ProductPoint (ptValue: linePath.origin)
       var currentPoint = firstPoint
       for p in linePath.lines {
-        let pp = ProductPoint (cocoaPoint: p)
+        let pp = ProductPoint (ptValue: p)
         result.append (ProductSegment (p1: currentPoint, p2: pp))
         currentPoint = pp
       }

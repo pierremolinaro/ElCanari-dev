@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -50,7 +51,7 @@ extension PackageZone {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageZone (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,8 +80,8 @@ extension PackageZone {
                             proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                             unalignedMouseDraggedLocation _ : CanariPoint,
                             shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x
-    var dy = inProposedAlignedTranslation.y
+    var dx = inProposedAlignedTranslation.x.cuValue
+    var dy = inProposedAlignedTranslation.y.cuValue
     if inKnobIndex == PACKAGE_ZONE_LEFT {
       if (self.width - dx) < 0 {
         dx = self.width
@@ -105,7 +106,7 @@ extension PackageZone {
         dy = -self.yName
       }
     }
-    return CanariPoint (x: dx, y: dy)
+    return CanariPoint (x: .cu (dx), y: .cu (dy))
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

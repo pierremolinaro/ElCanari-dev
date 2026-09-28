@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,10 +31,10 @@ import AppKit
         for idx in 0 ..< self_mSymbols_symbolAndTypeName.count {
           let symbolTypeAndName = self_mSymbols_symbolAndTypeName [idx].symbolAndTypeName!
         //--- Compute symbol center
-          var minY = Int.max
-          var maxY = Int.min
-          var minX = Int.max
-          var maxX = Int.min
+          var minY = CanariLength.max
+          var maxY = CanariLength.min
+          var minX = CanariLength.max
+          var maxX = CanariLength.min
           for descriptor in pinPadDescriptorArray {
             if let pin = descriptor.pin, pin.symbol == symbolTypeAndName {
               minX = min (minX, pin.pinXY.x)

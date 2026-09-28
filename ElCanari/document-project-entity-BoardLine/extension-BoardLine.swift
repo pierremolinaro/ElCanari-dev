@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -48,7 +49,7 @@ extension BoardLine {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_BoardLine (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -127,11 +128,11 @@ extension BoardLine {
   func rotate90Clockwise_BoardLine (from inRotationCenter : CanariPoint,
                                     userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.mX1, y: self.mY1)
-    self.mX1 = p1.x
-    self.mY1 = p1.y
+    self.mX1 = p1.x.cuValue
+    self.mY1 = p1.y.cuValue
     let p2 = inRotationCenter.rotated90Clockwise (x: self.mX2, y: self.mY2)
-    self.mX2 = p2.x
-    self.mY2 = p2.y
+    self.mX2 = p2.x.cuValue
+    self.mY2 = p2.y.cuValue
     ioSet.insert (self)
   }
 
@@ -140,11 +141,11 @@ extension BoardLine {
   func rotate90CounterClockwise_BoardLine (from inRotationCenter : CanariPoint,
                                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mX1, y: self.mY1)
-    self.mX1 = p1.x
-    self.mY1 = p1.y
+    self.mX1 = p1.x.cuValue
+    self.mY1 = p1.y.cuValue
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.mX2, y: self.mY2)
-    self.mX2 = p2.x
-    self.mY2 = p2.y
+    self.mX2 = p2.x.cuValue
+    self.mY2 = p2.y.cuValue
     ioSet.insert (self)
   }
 

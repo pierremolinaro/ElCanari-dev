@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -25,9 +27,9 @@ import AppKit
 ) -> SlavePadDescriptor {
 //--- START OF USER ZONE 2
         return SlavePadDescriptor (
-          center: CanariPoint (x: self_mCenterX, y: self_mCenterY),
-          padSize: CanariSize (width: self_mWidth, height: self_mHeight),
-          holeSize: CanariSize (width: self_mHoleWidth, height: self_mHoleHeight),
+          center: CanariPoint (x: .cu (self_mCenterX), y: .cu (self_mCenterY)),
+          padSize: CanariSize (width: .cu (self_mWidth), height: .cu (self_mHeight)),
+          holeSize: CanariSize (width: .cu (self_mHoleWidth), height: .cu (self_mHoleHeight)),
           shape: self_mShape,
           style: self_mStyle
         )

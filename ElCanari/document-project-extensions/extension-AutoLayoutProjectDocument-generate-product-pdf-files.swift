@@ -35,7 +35,7 @@ extension AutoLayoutProjectDocument {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(path.lastPathComponent)…")
     let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror
-      ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width)
+      ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width.cuValue)
       : .noMirror
     let pdfData = inProductRepresentation.pdf (
       items: inDescriptor.layerItems,

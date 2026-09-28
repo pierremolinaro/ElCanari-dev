@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -58,7 +59,7 @@ extension BoardImage {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_BoardImage (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -115,8 +116,8 @@ extension BoardImage {
       self.mCenterX += inDx
       self.mCenterY += inDy
     }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
-      let origin = CanariPoint (x: self.mCenterX, y: self.mCenterY).cocoaPoint
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let origin = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
@@ -136,8 +137,8 @@ extension BoardImage {
   func rotate90Clockwise_BoardImage (from inRotationCenter : CanariPoint,
                                      userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p1.x
-    self.mCenterY = p1.y
+    self.mCenterX = p1.x.cuValue
+    self.mCenterY = p1.y.cuValue
     ioSet.insert (self)
   }
 
@@ -146,8 +147,8 @@ extension BoardImage {
   func rotate90CounterClockwise_BoardImage (from inRotationCenter : CanariPoint,
                                             userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p1.x
-    self.mCenterY = p1.y
+    self.mCenterX = p1.x.cuValue
+    self.mCenterY = p1.y.cuValue
     ioSet.insert (self)
   }
 

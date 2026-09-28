@@ -8,6 +8,7 @@
 
 import AppKit
 import UniformTypeIdentifiers
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -82,7 +83,12 @@ extension AutoLayoutProjectDocument {
     var restrictRectangles = [RestrictRectangleForDSNExport] ()
     for object in self.rootObject.mBoardObjects.values {
       if let propertyRectangle = object as? BoardRestrictRectangle, !propertyRectangle.mAllowTracksInside {
-        let r = CanariRect (left: propertyRectangle.mX, bottom: propertyRectangle.mY, width: propertyRectangle.mWidth, height: propertyRectangle.mHeight)
+        let r = CanariRect (
+          left: .cu (propertyRectangle.mX),
+          bottom: .cu (propertyRectangle.mY),
+          width: .cu (propertyRectangle.mWidth),
+          height: .cu (propertyRectangle.mHeight)
+        )
         let rr = RestrictRectangleForDSNExport (
           rect: r,
           rotationInDegrees: 0.0,
@@ -96,8 +102,8 @@ extension AutoLayoutProjectDocument {
         restrictRectangles.append (rr)
       }else if let nph = object as? NonPlatedHole {
         let r = CanariRect (
-          center: CanariPoint (x: nph.mX, y: nph.mY),
-          size: CanariSize (width: nph.mWidth, height: nph.mHeight)
+          center: CanariPoint (x: .cu (nph.mX), y: .cu (nph.mY)),
+          size: CanariSize (width: .cu (nph.mWidth), height: .cu (nph.mHeight))
         )
         let inner12 : Bool
         let inner34 : Bool
@@ -267,21 +273,21 @@ extension AutoLayoutProjectDocument {
       }
       return clearanceBP.linePathesByFlattening (withFlatness: 0.025) [0]
     case .rectangular :
-      let d = self.rootObject.mBoardClearance // § + self.rootObject.mBoardLimitsWidth
+      let d = CanariLength.cu (self.rootObject.mBoardClearance)
       let r = CanariRect (
         left: d,
         bottom: d,
-        width: self.rootObject.mRectangularBoardWidth - 2 * d,
-        height: self.rootObject.mRectangularBoardHeight - 2 * d
+        width: .cu (self.rootObject.mRectangularBoardWidth) - 2 * d,
+        height: .cu (self.rootObject.mRectangularBoardHeight) - 2 * d
       )
       let bp : BezierPath
-      if self.rootObject.mBoardCornerRadius <= d {
+      if self.rootObject.mBoardCornerRadius <= d.cuValue {
         bp = BezierPath (rect: inConverter.dsnRectFromCanariRect (r))
       }else{
         bp = BezierPath (
           roundedRect: inConverter.dsnRectFromCanariRect (r),
-          xRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d),
-          yRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d)
+          xRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d.cuValue),
+          yRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d.cuValue)
         )
       }
       return bp.linePathesByFlattening (withFlatness: 0.025) [0]
@@ -395,17 +401,17 @@ struct CanariUnitToDSNUnitConverter {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dsnPointFromCanariPoint (_ inP : CanariPoint) -> NSPoint {
-    return NSPoint (x: self.dsnUnitFromCanariUnit (inP.x), y: self.dsnUnitFromCanariUnit (inP.y))
+    return NSPoint (x: self.dsnUnitFromCanariUnit (inP.x.cuValue), y: self.dsnUnitFromCanariUnit (inP.y.cuValue))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func dsnRectFromCanariRect (_ inP : CanariRect) -> NSRect {
     return NSRect (
-      x: self.dsnUnitFromCanariUnit (inP.origin.x),
-      y: self.dsnUnitFromCanariUnit (inP.origin.y),
-      width: self.dsnUnitFromCanariUnit (inP.size.width),
-      height: self.dsnUnitFromCanariUnit (inP.size.height)
+      x: self.dsnUnitFromCanariUnit (inP.origin.x.cuValue),
+      y: self.dsnUnitFromCanariUnit (inP.origin.y.cuValue),
+      width: self.dsnUnitFromCanariUnit (inP.size.width.cuValue),
+      height: self.dsnUnitFromCanariUnit (inP.size.height.cuValue)
     )
   }
 
@@ -436,8 +442,8 @@ struct CanariUnitToDSNUnitConverter {
     for (_, masterPad) in padDictionary {
     //--- Enter master pad
       let masterPadForRouting = findOrAddPadType (
-        canariWidth: masterPad.padSize.width,
-        canariHeight: masterPad.padSize.height,
+        canariWidth: masterPad.padSize.width.cuValue,
+        canariHeight: masterPad.padSize.height.cuValue,
         onComponentSide: true,
         onBackSide: masterPad.style == .traversing,
         shape: masterPad.shape,
@@ -446,8 +452,8 @@ struct CanariUnitToDSNUnitConverter {
       let psr = PadInstanceForDSNExport (
         name: masterPad.name,
         pad: masterPadForRouting,
-        centerX: inConverter.dsnUnitFromCanariUnit (masterPad.center.x - deviceCenter.x),
-        centerY: inConverter.dsnUnitFromCanariUnit (masterPad.center.y - deviceCenter.y)
+        centerX: inConverter.dsnUnitFromCanariUnit ((masterPad.center.x - deviceCenter.x).cuValue),
+        centerY: inConverter.dsnUnitFromCanariUnit ((masterPad.center.y - deviceCenter.y).cuValue)
       )
       padArrayForRouting.append (psr)
     //--- Enter slave pads
@@ -460,8 +466,8 @@ struct CanariUnitToDSNUnitConverter {
         case .traversing : onComponentSide = true  ; onBackSide = true
         }
         let slavePadForRouting = findOrAddPadType (
-          canariWidth: slavePad.padSize.width,
-          canariHeight: slavePad.padSize.height,
+          canariWidth: slavePad.padSize.width.cuValue,
+          canariHeight: slavePad.padSize.height.cuValue,
           onComponentSide: onComponentSide,
           onBackSide: onBackSide,
           shape: slavePad.shape,
@@ -470,8 +476,8 @@ struct CanariUnitToDSNUnitConverter {
         let pir = PadInstanceForDSNExport (
           name: inRouteSlavePads ? masterPad.name : "nc::\(masterPad.name)",
           pad: slavePadForRouting,
-          centerX: inConverter.dsnUnitFromCanariUnit (slavePad.center.x - deviceCenter.x),
-          centerY: inConverter.dsnUnitFromCanariUnit (slavePad.center.y - deviceCenter.y)
+          centerX: inConverter.dsnUnitFromCanariUnit ((slavePad.center.x - deviceCenter.x).cuValue),
+          centerY: inConverter.dsnUnitFromCanariUnit ((slavePad.center.y - deviceCenter.y).cuValue)
         )
         padArrayForRouting.append (pir)
       }
@@ -579,20 +585,20 @@ fileprivate struct RestrictRectangleForDSNExport {
 
   func vertexString (_ inConverter : CanariUnitToDSNUnitConverter) -> String {
     var af = AffineTransform ()
-    let centerX = canariUnitToCocoa (self.rect.center.x)
-    let centerY = canariUnitToCocoa (self.rect.center.y)
+    let centerX = self.rect.center.x.ptValue
+    let centerY = self.rect.center.y.ptValue
     af.translate (x: centerX, y: centerY)
     af.rotate (byDegrees: self.rotationInDegrees)
-    let halfWidth  = canariUnitToCocoa (self.rect.width) / 2.0
-    let halfHeight = canariUnitToCocoa (self.rect.height) / 2.0
+    let halfWidth  = self.rect.width.ptValue / 2.0
+    let halfHeight = self.rect.height.ptValue / 2.0
     let bottomLeft  = af.transform (NSPoint (x: -halfWidth, y: -halfHeight)).canariPoint
     let bottomRight = af.transform (NSPoint (x: +halfWidth, y: -halfHeight)).canariPoint
     let topRight    = af.transform (NSPoint (x: +halfWidth, y: +halfHeight)).canariPoint
     let topLeft     = af.transform (NSPoint (x: -halfWidth, y: +halfHeight)).canariPoint
-    let bottomLeftStr  = "\(inConverter.dsnUnitFromCanariUnit (bottomLeft.x)) \(inConverter.dsnUnitFromCanariUnit (bottomLeft.y))"
-    let bottomRightStr = "\(inConverter.dsnUnitFromCanariUnit (bottomRight.x)) \(inConverter.dsnUnitFromCanariUnit (bottomRight.y))"
-    let topRightStr    = "\(inConverter.dsnUnitFromCanariUnit (topRight.x)) \(inConverter.dsnUnitFromCanariUnit (topRight.y))"
-    let topLeftStr     = "\(inConverter.dsnUnitFromCanariUnit (topLeft.x)) \(inConverter.dsnUnitFromCanariUnit (topLeft.y))"
+    let bottomLeftStr  = "\(inConverter.dsnUnitFromCanariUnit (bottomLeft.x.cuValue)) \(inConverter.dsnUnitFromCanariUnit (bottomLeft.y.cuValue))"
+    let bottomRightStr = "\(inConverter.dsnUnitFromCanariUnit (bottomRight.x.cuValue)) \(inConverter.dsnUnitFromCanariUnit (bottomRight.y.cuValue))"
+    let topRightStr    = "\(inConverter.dsnUnitFromCanariUnit (topRight.x.cuValue)) \(inConverter.dsnUnitFromCanariUnit (topRight.y.cuValue))"
+    let topLeftStr     = "\(inConverter.dsnUnitFromCanariUnit (topLeft.x.cuValue)) \(inConverter.dsnUnitFromCanariUnit (topLeft.y.cuValue))"
     return " \(bottomLeftStr) \(bottomRightStr) \(topRightStr) \(topLeftStr) \(bottomLeftStr)"
   }
 }
@@ -986,11 +992,11 @@ fileprivate func addDefaultRule (_ ioString : inout String,
 fileprivate func componentComparison (_ inLeft : ComponentForDSNExport,
                                       _ inOrigin : CanariPoint,
                                       _ inRight : ComponentForDSNExport) -> Bool {
-  let leftDx = inOrigin.x - inLeft.originX
-  let leftDy = inOrigin.y - inLeft.originY
+  let leftDx = inOrigin.x - .cu (inLeft.originX)
+  let leftDy = inOrigin.y - .cu (inLeft.originY)
   let squareDistanceLeft = leftDx * leftDx + leftDy * leftDy
-  let rightDx = inOrigin.x - inRight.originX
-  let rightDy = inOrigin.y - inRight.originY
+  let rightDx = inOrigin.x - .cu (inRight.originX)
+  let rightDy = inOrigin.y - .cu (inRight.originY)
   let squareDistanceRight = rightDx * rightDx + rightDy * rightDy
   return squareDistanceLeft < squareDistanceRight
 }

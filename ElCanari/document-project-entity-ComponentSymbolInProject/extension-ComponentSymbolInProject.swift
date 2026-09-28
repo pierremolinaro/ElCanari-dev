@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -42,7 +43,7 @@ extension ComponentSymbolInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -107,8 +108,8 @@ extension ComponentSymbolInProject {
       self.mDisplayComponentValueOffsetX += inDx
       self.mDisplayComponentValueOffsetY += inDy
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
-      let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
-      let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
+      let newKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY))
+      let p = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY))
       let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
       if angleInDegrees <= 45.0 {
         self.mRotation = .rotation0
@@ -175,8 +176,8 @@ extension ComponentSymbolInProject {
 
   func rotate90Clockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x
-    self.mCenterY = p.y
+    self.mCenterX = p.x.cuValue
+    self.mCenterY = p.y.cuValue
     if self.mMirror {
       self.mRotation.rotateCounterClockwise ()
     }else{
@@ -188,8 +189,8 @@ extension ComponentSymbolInProject {
 
   func rotate90CounterClockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x
-    self.mCenterY = p.y
+    self.mCenterX = p.x.cuValue
+    self.mCenterY = p.y.cuValue
     if self.mMirror {
       self.mRotation.rotateClockwise ()
     }else{
@@ -243,14 +244,14 @@ extension ComponentSymbolInProject {
     }
     if self.mDisplayComponentValue {
       let p = CanariPoint (
-        x: self.mCenterX + self.mDisplayComponentValueOffsetX,
-        y: self.mCenterY + self.mDisplayComponentValueOffsetY
+        x: .cu (self.mCenterX + self.mDisplayComponentValueOffsetX),
+        y: .cu (self.mCenterY + self.mDisplayComponentValueOffsetY)
       )
       result.insert (p)
     }
     let p = CanariPoint (
-      x: self.mCenterX + self.mDisplayComponentNameOffsetX,
-      y: self.mCenterY + self.mDisplayComponentNameOffsetY
+      x: .cu (self.mCenterX + self.mDisplayComponentNameOffsetX),
+      y: .cu (self.mCenterY + self.mDisplayComponentNameOffsetY)
     )
     result.insert (p)
     return result
@@ -266,8 +267,8 @@ extension ComponentSymbolInProject {
       point.mNC = nil // Detach from pin
     //---
       let pinLocation = point.location!
-      point.mX = pinLocation.x
-      point.mY = pinLocation.y
+      point.mX = pinLocation.x.cuValue
+      point.mY = pinLocation.y.cuValue
     //---
       point.mSymbolPinName = ""
       point.mSymbol = nil

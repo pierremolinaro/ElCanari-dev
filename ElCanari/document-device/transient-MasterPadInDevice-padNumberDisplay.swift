@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -27,7 +29,7 @@ import AppKit
       ]
       return EBShape (
         text: self_mName, // padString,
-        CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint,
+        CanariPoint (x: .cu (self_mCenterX), y: .cu (self_mCenterY)).ptValue,
         textAttributes,
         .center,
         .center

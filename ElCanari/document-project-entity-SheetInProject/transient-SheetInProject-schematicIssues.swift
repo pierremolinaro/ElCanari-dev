@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -35,16 +36,16 @@ import AppKit
         for (location, pointArray) in pointDictionary {
           if pointArray.count > 1 {
             let r = NSRect (
-              x: canariUnitToCocoa (location.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
-              y: canariUnitToCocoa (location.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              x: location.x.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              y: location.y.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
               width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
               height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
             )
             issues.append (GraphicViewTooltip (kind: .error, message: "\(pointArray.count) points at the same location", rect: r))
           }else if !pointArray [0].connected {
             let r = NSRect (
-              x: canariUnitToCocoa (location.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
-              y: canariUnitToCocoa (location.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              x: location.x.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
+              y: location.y.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
               width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
               height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
             )
@@ -55,18 +56,18 @@ import AppKit
         for wire in self_mObjects_wires {
           for wireDescriptor : CanariWireDescription in wire.wires ?? [] {
             let segment = CanariSegment (
-              x1: wireDescriptor.p1.x,
-              y1: wireDescriptor.p1.y,
-              x2: wireDescriptor.p2.x,
-              y2: wireDescriptor.p2.y,
+              x1: wireDescriptor.p1.x.cuValue,
+              y1: wireDescriptor.p1.y.cuValue,
+              x2: wireDescriptor.p2.x.cuValue,
+              y2: wireDescriptor.p2.y.cuValue,
               width: CANARI_UNITS_PER_POINT * prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10,
               endStyle: .round
             )
             for (point, _) in pointDictionary {
               if segment.strictlyContains (point: point) {
                 let r = NSRect (
-                  x: canariUnitToCocoa (point.x) - SCHEMATIC_GRID_IN_COCOA_UNIT,
-                  y: canariUnitToCocoa (point.y) - SCHEMATIC_GRID_IN_COCOA_UNIT,
+                  x: point.x.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
+                  y: point.y.ptValue - SCHEMATIC_GRID_IN_COCOA_UNIT,
                   width: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0,
                   height: SCHEMATIC_GRID_IN_COCOA_UNIT * 2.0
                 )

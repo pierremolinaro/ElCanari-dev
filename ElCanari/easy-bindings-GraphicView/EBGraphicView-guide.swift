@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -48,12 +49,12 @@ extension EBGraphicView {
           idx += 1
         }
         if minX < maxX {
-          bp.move (to: CanariPoint (x: minX, y: alignmentPoint.y).cocoaPoint)
-          bp.line (to: CanariPoint (x: maxX, y: alignmentPoint.y).cocoaPoint)
+          bp.move (to: CanariPoint (x: minX, y: alignmentPoint.y).ptValue)
+          bp.line (to: CanariPoint (x: maxX, y: alignmentPoint.y).ptValue)
         }
         if minY < maxY {
-          bp.move (to: CanariPoint (x: alignmentPoint.x, y: minY).cocoaPoint)
-          bp.line (to: CanariPoint (x: alignmentPoint.x, y: maxY).cocoaPoint)
+          bp.move (to: CanariPoint (x: alignmentPoint.x, y: minY).ptValue)
+          bp.line (to: CanariPoint (x: alignmentPoint.x, y: maxY).ptValue)
         }
       }
     }

@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -48,7 +50,7 @@ import AppKit
      while idx < self_packageZones_zoneName.count {
        let zoneName = self_packageZones_zoneName [idx].zoneName
        if let c = nameDictionary [zoneName], c > 1 {
-         let p = CanariPoint (x: self_packageZones_xName [idx].xName, y: self_packageZones_yName [idx].yName).cocoaPoint
+         let p = CanariPoint (x: .cu (self_packageZones_xName [idx].xName), y: .cu (self_packageZones_yName [idx].yName)).ptValue
            let textAttributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : prefs_padZoneFont
          ]

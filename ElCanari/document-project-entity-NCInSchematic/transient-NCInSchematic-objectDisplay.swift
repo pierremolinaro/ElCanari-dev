@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -20,7 +22,7 @@ import AppKit
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var point = self_mPoint_location!.cocoaPoint
+        var point = self_mPoint_location!.ptValue
         let ncRotation = self_mOrientation + (self_mPoint_symbolRotation ?? .rotation0)
         let horizontalAlignment : BezierPath.TextHorizontalAlignment
         let verticalAlignment : BezierPath.TextVerticalAlignment

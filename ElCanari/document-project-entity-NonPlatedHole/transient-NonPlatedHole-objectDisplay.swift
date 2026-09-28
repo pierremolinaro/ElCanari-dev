@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -31,7 +32,7 @@ import AppKit
         var shape = EBShape ()
         let r = CanariRect (
           center: .zero,
-          size: CanariSize (width: self_mWidth, height: self_mHeight)
+          size: CanariSize (width: .cu (self_mWidth), height: .cu (self_mHeight))
         )
         let bp = BezierPath (oblongInRect: r.ptValue).transformed (by: af)
         shape.add (filled: [bp], prefs_nonPlatedHoleColorForBoard)

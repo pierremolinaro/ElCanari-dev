@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -74,7 +75,7 @@ extension WireInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_WireInSchematic (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -155,13 +156,13 @@ extension WireInSchematic {
     if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
       return CanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
-      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
+      if ((point.mX + inProposedAlignedTranslation.x.cuValue) == other.mX) && ((point.mY + inProposedAlignedTranslation.y.cuValue) == other.mY) {
         return .zero
       }else{
         return inProposedAlignedTranslation
       }
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil, let other = self.mP1 {
-      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
+      if ((point.mX + inProposedAlignedTranslation.x.cuValue) == other.mX) && ((point.mY + inProposedAlignedTranslation.y.cuValue) == other.mY) {
         return .zero
       }else{
         return inProposedAlignedTranslation

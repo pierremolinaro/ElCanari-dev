@@ -27,10 +27,10 @@ struct LayeredProductRectangle : Codable {
   func polygon () -> (ProductPoint, [ProductPoint]) {
     let w = 0.5 // Moitié de la largeur
     let h = 0.5 // Moitié de la hauteur
-    let bottomLeft  = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w, y: -h)))
-    let bottomRight = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: -h)))
-    let topRight    = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: +h)))
-    let topLeft     = ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w, y: +h)))
+    let bottomLeft  = ProductPoint (ptValue: self.af.transform (NSPoint (x: -w, y: -h)))
+    let bottomRight = ProductPoint (ptValue: self.af.transform (NSPoint (x: +w, y: -h)))
+    let topRight    = ProductPoint (ptValue: self.af.transform (NSPoint (x: +w, y: +h)))
+    let topLeft     = ProductPoint (ptValue: self.af.transform (NSPoint (x: -w, y: +h)))
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 

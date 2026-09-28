@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -61,7 +62,7 @@ extension SymbolOval {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_SymbolOval (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -89,12 +90,9 @@ extension SymbolOval {
                            proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                            unalignedMouseDraggedLocation _ : CanariPoint,
                            shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x
-    var dy = inProposedAlignedTranslation.y
+    var dx = inProposedAlignedTranslation.x.cuValue
+    var dy = inProposedAlignedTranslation.y.cuValue
     if inKnobIndex == SYMBOL_OVAL_LEFT {
-//      if (self.x + dx) < 0 {
-//        dx = -self.x
-//      }
       if (self.width - dx) < SYMBOL_GRID_IN_CANARI_UNIT {
         dx = SYMBOL_GRID_IN_CANARI_UNIT - self.width
       }
@@ -103,9 +101,6 @@ extension SymbolOval {
         dx = -(SYMBOL_GRID_IN_CANARI_UNIT - self.width)
       }
     }else if inKnobIndex == SYMBOL_OVAL_BOTTOM {
-//      if (self.y + dy) < 0 {
-//        dy = -self.y
-//      }
       if (self.height - dy) < SYMBOL_GRID_IN_CANARI_UNIT {
         dy = SYMBOL_GRID_IN_CANARI_UNIT - self.height
       }
@@ -114,7 +109,7 @@ extension SymbolOval {
         dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.height)
       }
     }
-    return CanariPoint (x: dx, y: dy)
+    return CanariPoint (x: .cu (dx), y: .cu (dy))
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

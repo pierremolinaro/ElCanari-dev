@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -20,7 +21,7 @@ import AppKit
        _ self_height : Int
 ) -> CanariRect {
 //--- START OF USER ZONE 2
-    return CanariRect (left: self_x, bottom: self_y, width: self_width, height: self_height)
+    return CanariRect (left: .cu (self_x), bottom: .cu (self_y), width: .cu (self_width), height: .cu (self_height))
 //--- END OF USER ZONE 2
 }
 

@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -107,19 +108,19 @@ extension EBGraphicView {
         unalignedMouseDraggedLocation: inUnalignedLastMouseDraggedLocation,
         shift: shift
       )
-      if (translation.x != 0) || (translation.y != 0) {
+      if (translation.x != .zero) || (translation.y != .zero) {
         let mouseDraggedLocation = CanariPoint (
           x: translation.x + inAlignedLastMouseDraggedLocation.x,
           y: translation.y + inAlignedLastMouseDraggedLocation.y
         )
         objects [objectIndex].move (
           knob: knobIndex,
-          proposedDx: translation.x,
-          proposedDy: translation.y,
-          unalignedMouseLocationX: inUnalignedLastMouseDraggedLocation.x,
-          unalignedMouseLocationY: inUnalignedLastMouseDraggedLocation.y,
-          alignedMouseLocationX: mouseDraggedLocation.x,
-          alignedMouseLocationY: mouseDraggedLocation.y,
+          proposedDx: translation.x.cuValue,
+          proposedDy: translation.y.cuValue,
+          unalignedMouseLocationX: inUnalignedLastMouseDraggedLocation.x.cuValue,
+          unalignedMouseLocationY: inUnalignedLastMouseDraggedLocation.y.cuValue,
+          alignedMouseLocationX: mouseDraggedLocation.x.cuValue,
+          alignedMouseLocationY: mouseDraggedLocation.y.cuValue,
           shift: shift
         )
       }
@@ -131,13 +132,13 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func dragSelection (_ proposedTranslation: CanariPoint) {
-    var dx = proposedTranslation.x
-    var dy = proposedTranslation.y
+    var dx = proposedTranslation.x.cuValue
+    var dy = proposedTranslation.y.cuValue
     if let controller = self.mViewController {
       for object in controller.selectedGraphicObjectSet.values {
         let p = object.acceptedTranslation (xBy: dx, yBy: dy)
-        dx = p.x
-        dy = p.y
+        dx = p.x.cuValue
+        dy = p.y.cuValue
       }
       if (dx != 0) || (dy != 0) {
         var userSet = EBReferenceSet <EBManagedObject> ()

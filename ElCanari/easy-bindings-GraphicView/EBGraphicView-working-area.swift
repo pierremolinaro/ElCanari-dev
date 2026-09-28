@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16,10 +17,10 @@ import AppKit
   //   Private properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mArea = CanariRect (left: -CANARI_UNITS_PER_INCH / 2,
-                                  bottom: -CANARI_UNITS_PER_INCH / 2,
-                                  width: CANARI_UNITS_PER_INCH * 5,
-                                  height: CANARI_UNITS_PER_INCH * 5)
+  private var mArea = CanariRect (left: .cu (-CANARI_UNITS_PER_INCH / 2),
+                                  bottom: .cu (-CANARI_UNITS_PER_INCH / 2),
+                                  width: .cu (CANARI_UNITS_PER_INCH * 5),
+                                  height: .cu (CANARI_UNITS_PER_INCH * 5))
 
   private var mAreaCursorZone = WorkingAreaCursorZone.none
 
@@ -55,7 +56,7 @@ import AppKit
       let width   : Int? = Int (components [2])
       let height  : Int? = Int (components [3])
       if let x = originX, let y = originY, let w = width, let h = height {
-        self.mArea = CanariRect (left: x, bottom: y, width: w, height: h)
+        self.mArea = CanariRect (left: .cu (x), bottom: .cu (y), width: .cu (w), height: .cu (h))
         inView.needsDisplay = true
       }
     }
@@ -167,10 +168,10 @@ import AppKit
   mutating func mouseDragged (mouseDraggedUnalignedLocation inUnalignedLocationInView : NSPoint,
                               handled ioHandled : inout Bool,
                               _ inView : EBGraphicView) {
-    let dx = cocoaToCanariUnit (inUnalignedLocationInView.x - self.mCurrentMouseLocation.x)
-    let dy = cocoaToCanariUnit (inUnalignedLocationInView.y - self.mCurrentMouseLocation.y)
+    let dx = CanariLength.pt (inUnalignedLocationInView.x - self.mCurrentMouseLocation.x)
+    let dy = CanariLength.pt (inUnalignedLocationInView.y - self.mCurrentMouseLocation.y)
     let oldRect = self.mArea.ptValue.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
-    let minimumSize = 2 * cocoaToCanariUnit (self.mHiliteSize)
+    let minimumSize = 2 * CanariLength.pt (self.mHiliteSize)
     switch self.mAreaCursorZone {
     case .none :
       ioHandled = false

@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -25,7 +27,7 @@ import AppKit
           let pad = descriptor.pads [self_mPadIndex]
           return pad.location.canariPoint
         }else{
-          return CanariPoint (x: self_mX, y: self_mY)
+          return CanariPoint (x: .cu (self_mX), y: .cu (self_mY))
         }
 //--- END OF USER ZONE 2
 }

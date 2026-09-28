@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -197,7 +198,7 @@ extension AutoLayoutProjectDocument {
     if let component = inSender.representedObject as? ComponentInProject {
       self.rootObject.mSelectedPageIndex_property.setProp (6) // Page « Board »
       self.boardObjectsController.select (object: component)
-      self.mBoardView?.mScrollView?.contentView.scroll (to: CanariPoint (x: component.mX, y: component.mY).cocoaPoint)
+      self.mBoardView?.mScrollView?.contentView.scroll (to: CanariPoint (x: .cu (component.mX), y: .cu (component.mY)).ptValue)
     }
   }
 
@@ -366,7 +367,7 @@ extension AutoLayoutProjectDocument {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for object in selectedSheet.mObjects.values {
         if let symbol = object as? ComponentSymbolInProject, let shape = symbol.objectDisplay {
-          if shape.contains (point: inUnalignedMouseDownPoint.cocoaPoint) {
+          if shape.contains (point: inUnalignedMouseDownPoint.ptValue) {
             result.append (symbol)
           }
         }

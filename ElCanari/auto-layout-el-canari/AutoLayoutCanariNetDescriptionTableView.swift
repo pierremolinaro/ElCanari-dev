@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -342,7 +343,7 @@ fileprivate class SelectedNetButton : ALB_NSButton {
     self.mSheetIndex = inSheetIndex
     self.mRowIndex = inRowIndex
     self.mColumnIndex = inColumnIndex
-    self.mLocationInSheet = inPoint.cocoaPoint
+    self.mLocationInSheet = inPoint.ptValue
     self.mDocument = inDocument
     super.init (title: inTitle, size: .small)
     _ = self.expandableWidth ()

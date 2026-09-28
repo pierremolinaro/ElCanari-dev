@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -30,8 +31,8 @@ import AppKit
             var maxY = CGFloat.leastNormalMagnitude
             for limit in self_mBorderCurves_descriptor {
               let descriptor = limit.descriptor!
-              let p1 = descriptor.p1.cocoaPoint
-              let p2 = descriptor.p2.cocoaPoint
+              let p1 = descriptor.p1.ptValue
+              let p2 = descriptor.p2.ptValue
               switch descriptor.shape {
               case .line :
                 minX = min (minX, p1.x, p2.x)
@@ -39,8 +40,8 @@ import AppKit
                 minY = min (minY, p1.y, p2.y)
                 maxY = max (maxY, p1.y, p2.y)
               case .bezier :
-                let cp1 = descriptor.cp1.cocoaPoint
-                let cp2 = descriptor.cp2.cocoaPoint
+                let cp1 = descriptor.cp1.ptValue
+                let cp2 = descriptor.cp2.ptValue
                 var bp = BezierPath ()
                 bp.move (to: p1)
                 bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
@@ -57,12 +58,12 @@ import AppKit
             return .zero
           }
         case .rectangular :
-          let d = self_mBoardClearance //  + self_mBoardLimitsWidth
+          let d = CanariLength.cu (self_mBoardClearance) //  + self_mBoardLimitsWidth
           return CanariRect (
             left: d,
             bottom: d,
-            width: self_mRectangularBoardWidth - 2 * d,
-            height: self_mRectangularBoardHeight - 2 * d
+            width: .cu (self_mRectangularBoardWidth) - 2 * d,
+            height: .cu (self_mRectangularBoardHeight) - 2 * d
           )
         }
 //--- END OF USER ZONE 2

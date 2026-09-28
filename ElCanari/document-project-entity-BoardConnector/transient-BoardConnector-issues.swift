@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -38,7 +40,7 @@ import AppKit
           noConnectionWarning = false
         }
         if noConnectionWarning {
-          let location = self_location.cocoaPoint
+          let location = self_location.ptValue
           let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
           let r = NSRect (x: location.x - issueSize / 2.0, y: location.y - issueSize / 2.0, width: issueSize, height: issueSize)
           let bp = BezierPath (ovalIn: r)

@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -26,8 +28,8 @@ import AppKit
       bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
-      let p1 = CanariPoint (x: self_mX1, y: self_mY1).cocoaPoint
-      let p2 = CanariPoint (x: self_mX2, y: self_mY2).cocoaPoint
+      let p1 = CanariPoint (x: .cu (self_mX1), y: .cu (self_mY1)).ptValue
+      let p2 = CanariPoint (x: .cu (self_mX2), y: .cu (self_mY2)).ptValue
       bp.move (to: p1)
       bp.line (to: p2)
       var shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)

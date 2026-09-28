@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -24,7 +26,7 @@ import AppKit
        _ self_endTangent : Int
 ) -> BezierPath {
 //--- START OF USER ZONE 2
-  let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint
+  let center = CanariPoint (x: .cu (self_xCenter), y: .cu (self_yCenter)).ptValue
   let radius = canariUnitToCocoa (self_radius)
   let startTangentLength = canariUnitToCocoa (self_startTangent)
   let endTangentLength = canariUnitToCocoa (self_endTangent)

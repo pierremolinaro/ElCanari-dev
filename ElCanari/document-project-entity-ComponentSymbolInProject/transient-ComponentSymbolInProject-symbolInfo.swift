@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -62,8 +64,8 @@ import AppKit
                 trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
                 trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
                 trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-                trText.translate (x: -canariUnitToCocoa (deviceInfo.center.x), y: -canariUnitToCocoa (deviceInfo.center.y))
-                trText.translate (x: canariUnitToCocoa (pin.nameXY.x), y: canariUnitToCocoa (pin.nameXY.y))
+                trText.translate (x: -deviceInfo.center.x.ptValue, y: -deviceInfo.center.y.ptValue)
+                trText.translate (x: pin.nameXY.x.ptValue, y: pin.nameXY.y.ptValue)
                 trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
                 if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
                   trText.rotate (byDegrees: 180.0)
@@ -83,8 +85,8 @@ import AppKit
               trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
               trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
               trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-              trText.translate (x: -canariUnitToCocoa (deviceInfo.center.x), y: -canariUnitToCocoa (deviceInfo.center.y))
-              trText.translate (x: canariUnitToCocoa (pin.numberXY.x), y: canariUnitToCocoa (pin.numberXY.y))
+              trText.translate (x: -deviceInfo.center.x.ptValue, y: -deviceInfo.center.y.ptValue)
+              trText.translate (x: pin.numberXY.x.ptValue, y: pin.numberXY.y.ptValue)
               trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
               if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
                 trText.rotate (byDegrees: 180.0)
@@ -103,8 +105,8 @@ import AppKit
               pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
               pinLocationTransform.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
               pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-              pinLocationTransform.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
-              let cocoaPinLocation = pinLocationTransform.transform (pin.pinXY.cocoaPoint)
+              pinLocationTransform.translateX (by: -deviceInfo.center.x.ptValue, yBy: -deviceInfo.center.y.ptValue)
+              let cocoaPinLocation = pinLocationTransform.transform (pin.pinXY.ptValue)
               let pinLocation = cocoaPinLocation.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
            //--- Tooltip
               let toolTipRect = NSRect (
@@ -130,10 +132,10 @@ import AppKit
           tr.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
           tr.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
           tr.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-          tr.translateX (by: -canariUnitToCocoa (deviceInfo.center.x), yBy: -canariUnitToCocoa (deviceInfo.center.y))
+          tr.translateX (by: -deviceInfo.center.x.ptValue, yBy: -deviceInfo.center.y.ptValue)
           let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
           let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
-          let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
+          let componentSymbolCenter = CanariPoint (x: .cu (self_mCenterX), y: .cu (self_mCenterY))
           return ComponentSymbolInfo (
             filledBezierPath: transformedFilledBezierPath,
             strokeBezierPath: transformedStrokeBezierPath,

@@ -4,10 +4,13 @@
 
 import AppKit
 
+import CanariGeometry
+
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
@@ -24,34 +27,35 @@ extension BoardTrack {
     if p1CanMove && p2CanMove { // Rotation around center
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
-      let halfLength : Double = CanariPoint.squareOfCanariDistance (p1, p2).squareRoot () / 2.0
+      let halfLength = CanariPoint.distance (p1, p2) / 2.0
       let center = CanariPoint.center (p1, p2)
-      let dx = Int ((halfLength * cos (angleInRadian)).rounded ())
-      let dy = Int ((halfLength * sin (angleInRadian)).rounded ())
-      let newP1x = center.x - dx
-      let newP1y = center.y - dy
-      let newP2x = center.x + dx
-      let newP2y = center.y + dy
-      self.mConnectorP1?.mX = newP1x
-      self.mConnectorP1?.mY = newP1y
-      self.mConnectorP2?.mX = newP2x
-      self.mConnectorP2?.mY = newP2y
+      let dp = CanariPoint (length: halfLength, angle: .radians (angleInRadian))
+//      let dx = Int ((halfLength.cuValue * cos (angleInRadian)).rounded ())
+//      let dy = Int ((halfLength.cuValue * sin (angleInRadian)).rounded ())
+      let newP1x = center.x - dp.x
+      let newP1y = center.y - dp.y
+      let newP2x = center.x + dp.x
+      let newP2y = center.y + dp.y
+      self.mConnectorP1?.mX = newP1x.cuValue
+      self.mConnectorP1?.mY = newP1y.cuValue
+      self.mConnectorP2?.mX = newP2x.cuValue
+      self.mConnectorP2?.mY = newP2y.cuValue
     }else if p1CanMove { // Rotation around p2
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
-      let length : Double = CanariPoint.squareOfCanariDistance (p1, p2).squareRoot ()
-      let newP1x = p2.x - Int ((length * cos (angleInRadian)).rounded ())
-      let newP1y = p2.y - Int ((length * sin (angleInRadian)).rounded ())
-      self.mConnectorP1?.mX = newP1x
-      self.mConnectorP1?.mY = newP1y
+      let length = CanariPoint.distance (p1, p2)
+      let newP1x = p2.x - .cu (Int ((Double (length.cuValue) * cos (angleInRadian)).rounded ()))
+      let newP1y = p2.y - .cu (Int ((Double (length.cuValue) * sin (angleInRadian)).rounded ()))
+      self.mConnectorP1?.mX = newP1x.cuValue
+      self.mConnectorP1?.mY = newP1y.cuValue
     }else if p2CanMove {  // Rotation around p1
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
-      let length : Double = CanariPoint.squareOfCanariDistance (p1, p2).squareRoot ()
-      let newP2x = p1.x + Int ((length * cos (angleInRadian)).rounded ())
-      let newP2y = p1.y + Int ((length * sin (angleInRadian)).rounded ())
-      self.mConnectorP2?.mX = newP2x
-      self.mConnectorP2?.mY = newP2y
+      let length = CanariPoint.distance (p1, p2)
+      let newP2x = p1.x + .cu (Int ((Double (length.cuValue) * cos (angleInRadian)).rounded ()))
+      let newP2y = p1.y + .cu (Int ((Double (length.cuValue) * sin (angleInRadian)).rounded ()))
+      self.mConnectorP2?.mX = newP2x.cuValue
+      self.mConnectorP2?.mY = newP2y.cuValue
     }
 //--- END OF USER ZONE 2
   }

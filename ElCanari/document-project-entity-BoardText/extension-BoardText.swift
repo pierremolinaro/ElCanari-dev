@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -39,7 +40,7 @@ extension BoardText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_BoardText (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -135,7 +136,7 @@ extension BoardText {
         oblique: self.mOblique,
         extraWidth: 0.0
       )
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
@@ -173,8 +174,8 @@ extension BoardText {
 
   func rotate90Clockwise_BoardText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -183,8 +184,8 @@ extension BoardText {
 
   func rotate90CounterClockwise_BoardText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x
-    self.mY = p.y
+    self.mX = p.x.cuValue
+    self.mY = p.y.cuValue
     self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }

@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -21,7 +23,7 @@ import AppKit
 //--- START OF USER ZONE 2
         var shape = EBShape ()
         if self_isVia {
-          shape.add (knobAt: self_location.cocoaPoint, knobIndex: BOARD_CONNECTOR_KNOB, .rect, 2.0)
+          shape.add (knobAt: self_location.ptValue, knobIndex: BOARD_CONNECTOR_KNOB, .rect, 2.0)
         }
         return shape
 //--- END OF USER ZONE 2

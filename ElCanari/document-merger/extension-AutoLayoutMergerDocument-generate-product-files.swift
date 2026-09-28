@@ -154,7 +154,7 @@ extension AutoLayoutMergerDocument {
   //--- Add Board limits
     let boardRect = CanariRect (
       origin: .zero,
-      size: CanariSize (width: self.rootObject.boardWidth!, height: self.rootObject.boardHeight!)
+      size: CanariSize (width: .cu (self.rootObject.boardWidth!), height: .cu (self.rootObject.boardHeight!))
     )
     let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
     let p1 = ProductPoint (canariPoint: boardRect.bottomRight)

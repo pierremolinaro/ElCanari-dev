@@ -96,12 +96,10 @@ extension AutoLayoutProjectDocument {
     let generateGerberAndPDF = self.rootObject.mGenerateGerberAndPDF_property.propval
     let boardBoundBox = self.rootObject.boardBoundBox!
     var productRepresentation = ProductRepresentation (
-      boardWidth: CanariLength.cu (boardBoundBox.width),
+      boardWidth: boardBoundBox.width,
       boardWidthUnit: self.rootObject.mRectangularBoardWidthUnit_property.propval, // Canari Unit
-      boardHeight: CanariLength.cu (boardBoundBox.height),
+      boardHeight: boardBoundBox.height,
       boardHeightUnit: self.rootObject.mRectangularBoardHeightUnit_property.propval, // Canari Unit
-//      boardLimitWidth: CanariLength.cu (self.rootObject.mBoardLimitsWidth),
-//      boardLimitWidthUnit: self.rootObject.mBoardLimitsWidthUnit, // Canari Unit
       artworkName: self.rootObject.mArtworkName,
       layerConfiguration: self.rootObject.mLayerConfiguration
     )
@@ -382,8 +380,8 @@ extension AutoLayoutProjectDocument {
     let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
     for object in self.rootObject.mBoardObjects.values {
       if let line = object as? BoardLine {
-        let p1 = CanariPoint (x: line.mX1, y: line.mY1).cocoaPoint
-        let p2 = CanariPoint (x: line.mX2, y: line.mY2).cocoaPoint
+        let p1 = CanariPoint (x: .cu (line.mX1), y: .cu (line.mY1)).ptValue
+        let p2 = CanariPoint (x: .cu (line.mX2), y: .cu (line.mY2)).ptValue
         if let (clippedP1, clippedP2) = cocoaBoardRect.clippedSegment (p1: p1, p2: p2) {
           let width = CanariLength.cu (line.mWidth)
           let layer : ProductLayerSet
@@ -394,8 +392,8 @@ extension AutoLayoutProjectDocument {
             layer = .backSideLegendLine
           }
           let oblong = LayeredProductSegment (
-            p1: ProductPoint (cocoaPoint: clippedP1),
-            p2: ProductPoint (cocoaPoint: clippedP2),
+            p1: ProductPoint (ptValue: clippedP1),
+            p2: ProductPoint (ptValue: clippedP2),
             width: width,
             layers: layer
           )
@@ -464,7 +462,7 @@ extension AutoLayoutProjectDocument {
           ioProduct.append (roundSegment: oblong)
         }else{ // Circular
           let pad = LayeredProductCircle (
-            center: ProductPoint (canariPoint: CanariPoint (x: nph.mX, y: nph.mY)),
+            center: ProductPoint (canariPoint: CanariPoint (x: .cu (nph.mX), y: .cu (nph.mY))),
             diameter: CanariLength.cu (nph.mWidth),
             layers: .hole
           )
@@ -522,12 +520,12 @@ extension AutoLayoutProjectDocument {
                           transformedBy inAT : AffineTransform,
                           layers inLayers : ProductLayerSet,
                           to ioProduct : inout ProductRepresentation) {
-    let center = inCenter.cocoaPoint
+    let center = inCenter.ptValue
     var af = inAT
     af.translate (x: center.x, y: center.y)
     let p = LayeredProductComponentPad (
-      width: CanariLength.cu (inPadSize.width),
-      height: CanariLength.cu (inPadSize.height),
+      width: inPadSize.width,
+      height: inPadSize.height,
       af: af,
       shape: inShape,
       layers: inLayers
@@ -541,15 +539,15 @@ extension AutoLayoutProjectDocument {
                               holeSize inHoleSize : CanariSize,
                               transformedBy inAT : AffineTransform,
                               to ioProduct : inout ProductRepresentation) {
-    let p = inCenter.cocoaPoint
-    let holeSize = inHoleSize.cocoaSize
+    let p = inCenter.ptValue
+    let holeSize = inHoleSize.ptValue
     if inHoleSize.width < inHoleSize.height { // Vertical oblong
       let p1 = inAT.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
       let p2 = inAT.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
       let oblong = LayeredProductSegment (
-        p1: ProductPoint (cocoaPoint: p1),
-        p2: ProductPoint (cocoaPoint: p2),
-        width: CanariLength.cu (inHoleSize.width),
+        p1: ProductPoint (ptValue: p1),
+        p2: ProductPoint (ptValue: p2),
+        width: inHoleSize.width,
         layers: .hole
       )
       ioProduct.append (roundSegment: oblong)
@@ -557,15 +555,15 @@ extension AutoLayoutProjectDocument {
       let p1 = inAT.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
       let p2 = inAT.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
       let oblong = LayeredProductSegment (
-        p1: ProductPoint (cocoaPoint: p1),
-        p2: ProductPoint (cocoaPoint: p2),
-        width: CanariLength.cu (inHoleSize.height),
+        p1: ProductPoint (ptValue: p1),
+        p2: ProductPoint (ptValue: p2),
+        width: inHoleSize.height,
         layers: .hole
       )
       ioProduct.append (roundSegment: oblong)
     }else{ // Circular
-      let center = ProductPoint (cocoaPoint: inAT.transform (inCenter.cocoaPoint))
-      let padDiameter = CanariLength.cu (inHoleSize.width)
+      let center = ProductPoint (ptValue: inAT.transform (inCenter.ptValue))
+      let padDiameter = inHoleSize.width
       let pad = LayeredProductCircle (
         center: center,
         diameter: padDiameter,
@@ -691,16 +689,16 @@ extension AutoLayoutProjectDocument {
       var descriptor = self.rootObject.mBorderCurves [0].descriptor!
       let p = descriptor.p1
       var bp = BezierPath ()
-      bp.move (to: p.cocoaPoint)
+      bp.move (to: p.ptValue)
       var loop = true
       while loop {
         switch descriptor.shape {
         case .line :
-          bp.line (to: descriptor.p2.cocoaPoint)
+          bp.line (to: descriptor.p2.ptValue)
         case .bezier :
-          let cp1 = descriptor.cp1.cocoaPoint
-          let cp2 = descriptor.cp2.cocoaPoint
-          bp.curve (to: descriptor.p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+          let cp1 = descriptor.cp1.ptValue
+          let cp2 = descriptor.cp2.ptValue
+          bp.curve (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
         }
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
@@ -745,9 +743,9 @@ extension AutoLayoutProjectDocument {
         }
       }
       let linePath = retainedBP.linePathesByFlattening (withFlatness: 0.025) [0]
-      result.append (ProductPoint (cocoaPoint: linePath.origin))
+      result.append (ProductPoint (ptValue: linePath.origin))
       for p in linePath.lines {
-        result.append (ProductPoint (cocoaPoint: p))
+        result.append (ProductPoint (ptValue: p))
       }
     case .rectangular :
       let boardWidth = CanariLength.cu (self.rootObject.mRectangularBoardWidth)
@@ -761,8 +759,8 @@ extension AutoLayoutProjectDocument {
         let r = CanariRect (
           left: .zero,
           bottom: .zero,
-          width: self.rootObject.mRectangularBoardWidth,
-          height: self.rootObject.mRectangularBoardHeight
+          width: .cu (self.rootObject.mRectangularBoardWidth),
+          height: .cu (self.rootObject.mRectangularBoardHeight)
         )
         let roundedRect = BezierPath (
           roundedRect: r.ptValue,
@@ -770,9 +768,9 @@ extension AutoLayoutProjectDocument {
           yRadius: canariUnitToCocoa (self.rootObject.mBoardCornerRadius)
         )
         let linePath = roundedRect.linePathesByFlattening (withFlatness: 0.025) [0]
-        result.append (ProductPoint (cocoaPoint: linePath.origin))
+        result.append (ProductPoint (ptValue: linePath.origin))
         for p in linePath.lines {
-          result.append (ProductPoint (cocoaPoint: p))
+          result.append (ProductPoint (ptValue: p))
         }
       }
     }

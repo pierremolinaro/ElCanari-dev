@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -168,7 +169,7 @@ import AppKit
         var minY = CGFloat.greatestFiniteMagnitude
         var maxY = CGFloat.leastNormalMagnitude
         for pin in symbolInfo.pins {
-          let p = pin.pinLocation.cocoaPoint
+          let p = pin.pinLocation.ptValue
           minX = min (minX, p.x)
           maxX = max (maxX, p.x)
           minY = min (minY, p.y)
@@ -280,8 +281,8 @@ import AppKit
   private func performAddSymbolDragOperation (_ inSymbol : ComponentSymbolInProject, _ inDraggingLocationInDestinationView : NSPoint) {
   //--- Fix symbol location
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: milsToCanariUnit (fromInt: 50))
-    inSymbol.mCenterX = p.x
-    inSymbol.mCenterY = p.y
+    inSymbol.mCenterX = p.x.cuValue
+    inSymbol.mCenterY = p.y.cuValue
   //--- Create points in schematics
     let symbolInfo : ComponentSymbolInfo = inSymbol.symbolInfo!
     let symbolPins : [ComponentPinDescriptor] = symbolInfo.pins
@@ -306,8 +307,8 @@ import AppKit
   private func performAddCommentDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     let comment = CommentInSchematic (self.undoManager)
-    comment.mX = p.x
-    comment.mY = p.y
+    comment.mX = p.x.cuValue
+    comment.mY = p.y.cuValue
     self.rootObject.mSelectedSheet?.mObjects.append (comment)
     self.schematicObjectsController.setSelection ([comment])
     _ = self.windowForSheet?.makeFirstResponder (self.mSchematicsView?.mGraphicView)
@@ -325,8 +326,8 @@ import AppKit
     restrictRectangle.mIsInInner2Layer = (layers &  8) != 0
     restrictRectangle.mIsInInner3Layer = (layers & 16) != 0
     restrictRectangle.mIsInInner4Layer = (layers & 32) != 0
-    restrictRectangle.mX = p.x
-    restrictRectangle.mY = p.y
+    restrictRectangle.mX = p.x.cuValue
+    restrictRectangle.mY = p.y.cuValue
     let boardGridStep = self.rootObject.mBoardGridStep
     restrictRectangle.mWidth = (restrictRectangle.mWidth / boardGridStep) * boardGridStep
     restrictRectangle.mHeight = (restrictRectangle.mHeight / boardGridStep) * boardGridStep
@@ -341,8 +342,8 @@ import AppKit
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let boardText = BoardText (self.undoManager)
     boardText.mLayer = self.rootObject.mBoardLayerForNewText
-    boardText.mX = p.x
-    boardText.mY = p.y
+    boardText.mX = p.x.cuValue
+    boardText.mY = p.y.cuValue
     boardText.mFont = self.rootObject.mFonts.first!
     self.rootObject.mBoardObjects.append (boardText)
     self.boardObjectsController.setSelection ([boardText])
@@ -355,8 +356,8 @@ import AppKit
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let boardImage = BoardImage (self.undoManager)
     boardImage.mLayer = self.rootObject.mBoardLayerForNewImage
-    boardImage.mCenterX = p.x
-    boardImage.mCenterY = p.y
+    boardImage.mCenterX = p.x.cuValue
+    boardImage.mCenterY = p.y.cuValue
     let fm = FileManager ()
     if let imagePath = Bundle.main.pathForImageResource (DEFAULT_BOARD_IMAGE),
         let imageData : Data = fm.contents (atPath: imagePath) {
@@ -373,8 +374,8 @@ import AppKit
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let boardQRCode = BoardQRCode (self.undoManager)
     boardQRCode.mLayer = self.rootObject.mBoardLayerForNewQRCode
-    boardQRCode.mCenterX = p.x
-    boardQRCode.mCenterY = p.y
+    boardQRCode.mCenterX = p.x.cuValue
+    boardQRCode.mCenterY = p.y.cuValue
     self.rootObject.mBoardObjects.append (boardQRCode)
     self.boardObjectsController.setSelection ([boardQRCode])
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
@@ -385,8 +386,8 @@ import AppKit
   private func performAddBoardNonPlatedHoleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let nph = NonPlatedHole (self.undoManager)
-    nph.mX = p.x
-    nph.mY = p.y
+    nph.mX = p.x.cuValue
+    nph.mY = p.y.cuValue
     self.rootObject.mBoardObjects.append (nph)
     self.boardObjectsController.setSelection ([nph])
     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
@@ -397,8 +398,8 @@ import AppKit
   private func performAddBoardPackageDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     if let component = self.mPossibleDraggedComponent {
       let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
-      component.mX = p.x
-      component.mY = p.y
+      component.mX = p.x.cuValue
+      component.mY = p.y.cuValue
       self.rootObject.mBoardObjects.append (component)
       self.boardObjectsController.setSelection ([component])
       if let padDictionary = component.componentPadDictionary {
@@ -422,10 +423,10 @@ import AppKit
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
     let newLine = BoardLine (self.undoManager)
     newLine.mLayer = self.rootObject.mBoardLayerForNewLine
-    newLine.mX1 += p.x
-    newLine.mY1 += p.y
-    newLine.mX2 += p.x
-    newLine.mY2 += p.y
+    newLine.mX1 += p.x.cuValue
+    newLine.mY1 += p.y.cuValue
+    newLine.mX2 += p.x.cuValue
+    newLine.mY2 += p.y.cuValue
     let boardGridStep = self.rootObject.mBoardGridStep
     let boardGridUnit = self.rootObject.mBoardGridStepUnit
     newLine.mX1 = (newLine.mX1 / boardGridStep) * boardGridStep

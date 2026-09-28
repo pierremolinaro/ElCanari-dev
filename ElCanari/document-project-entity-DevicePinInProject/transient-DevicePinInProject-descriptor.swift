@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -31,11 +33,11 @@ import AppKit
         return PinInProjectDescriptor (
           pinName: self_mPinName,
           symbol: SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolTypeName),
-          pinXY: CanariPoint (x: self_mPinX, y: self_mPinY),
-          nameXY: CanariPoint (x: self_mXName, y: self_mYName),
+          pinXY: CanariPoint (x: .cu (self_mPinX), y: .cu (self_mPinY)),
+          nameXY: CanariPoint (x: .cu (self_mXName), y: .cu (self_mYName)),
           nameHorizontalAlignment: self_mNameHorizontalAlignment,
           pinNameIsDisplayedInSchematics: self_mPinNameIsDisplayedInSchematic,
-          numberXY : CanariPoint (x: self_mXNumber, y: self_mYNumber),
+          numberXY : CanariPoint (x: .cu (self_mXNumber), y: .cu (self_mYNumber)),
           numberHorizontalAlignment: self_mNumberHorizontalAlignment
         )
 //--- END OF USER ZONE 2

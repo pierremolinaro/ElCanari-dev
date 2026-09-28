@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -17,7 +18,7 @@ import AppKit
        _ self_boardRect : CanariRect
 ) -> Int {
 //--- START OF USER ZONE 2
-  return self_boardRect.width
+  return self_boardRect.width.cuValue
 //--- END OF USER ZONE 2
 }
 

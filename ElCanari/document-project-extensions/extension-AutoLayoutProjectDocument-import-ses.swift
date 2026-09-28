@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -21,8 +22,8 @@ fileprivate struct PropertyRectForImportingSES {
 
 fileprivate func isPointInSESCaptureArea (_ inP : CanariPoint, _ p : CanariPoint) -> Bool {
   let SQUARE_OF_CAPTURE_DISTANCE = 90.0 * 90.0 * 25.4 * 25.4 // Distance: 25.4 µm = 1 mil
-  let dx = Double (inP.x - p.x)
-  let dy = Double (inP.y - p.y)
+  let dx = Double ((inP.x - p.x).cuValue)
+  let dy = Double ((inP.y - p.y).cuValue)
   let dSquare = dx * dx + dy * dy
   let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
   return found
@@ -67,7 +68,7 @@ extension AutoLayoutProjectDocument {
     for object in self.rootObject.mBoardObjects.values {
       if let pr = object as? BoardRestrictRectangle {
         let sesPR = PropertyRectForImportingSES (
-          rect: CanariRect (left: pr.mX, bottom: pr.mY, width: pr.mWidth, height: pr.mHeight),
+          rect: CanariRect (left: .cu (pr.mX), bottom: .cu (pr.mY), width: .cu (pr.mWidth), height: .cu (pr.mHeight)),
           layers: pr.layers,
           exposeTrackCopper: pr.mExposeTrackCopper && !pr.hasInnerLayer,
           requireRectTrackEnds: pr.mRectTrackEnd
@@ -262,8 +263,8 @@ extension AutoLayoutProjectDocument {
       }
     }
     let newConnector = BoardConnector (self.undoManager)
-    newConnector.mX = inP.x
-    newConnector.mY = inP.y
+    newConnector.mX = inP.x.cuValue
+    newConnector.mY = inP.y.cuValue
     ioConnectorArray.append (newConnector)
     ioAddedObjectArray.append (newConnector)
     return newConnector
@@ -362,8 +363,8 @@ extension AutoLayoutProjectDocument {
         }
       //--- Explore property rects
         let oblong = GeometricOblong (
-          p1: t.p1.cocoaPoint,
-          p2: t.p2.cocoaPoint,
+          p1: t.p1.ptValue,
+          p2: t.p2.ptValue,
           width: canariUnitToCocoa (t.width),
           capStyle: .round
         )
@@ -482,8 +483,8 @@ fileprivate func enterSegments (_ inScanner : Scanner,
         if ok {
           if (x != currentX) || (y != currentY) {
             let rt = RoutedTrackForSESImporting (
-              p1: CanariPoint (x: Int (currentX * inResolution), y: Int (currentY * inResolution)),
-              p2: CanariPoint (x: Int (x * inResolution), y: Int (y * inResolution)),
+              p1: CanariPoint (x: .cu (Int (currentX * inResolution)), y: .cu (Int (currentY * inResolution))),
+              p2: CanariPoint (x: .cu (Int (x * inResolution)), y: .cu (Int (y * inResolution))),
               side: inSide,
               width: Int (wireWidth * inResolution),
               net: inNet,

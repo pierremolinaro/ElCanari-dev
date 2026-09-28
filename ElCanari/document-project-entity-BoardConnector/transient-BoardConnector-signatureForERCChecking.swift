@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -20,8 +21,8 @@ import AppKit
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
-        crc.accumulate (u32: self_location.x.ebHashValue ())
-        crc.accumulate (u32: self_location.y.ebHashValue ())
+        crc.accumulate (u32: self_location.x.cuValue.ebHashValue ())
+        crc.accumulate (u32: self_location.y.cuValue.ebHashValue ())
         crc.accumulate (u32: self_isVia.ebHashValue ())
         if self_isVia {
           crc.accumulate (u32: self_actualPadDiameter.ebHashValue ())

@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 // L'unité de longueur utilisée dans canari est le 1/90 µm [cu = Canari Unit]
@@ -98,9 +99,9 @@ func canariUnitToCocoa (_ inValue : Int) -> CGFloat {
 
 //--------------------------------------------------------------------------------------------------
 
-func cocoaToCanariUnit (_ inValue : CGFloat) -> Int {
-  return Int (inValue *  CGFloat (CANARI_UNITS_PER_POINT))
-}
+//func CanariLength.pt (_ inValue : CGFloat) -> Int {
+//  return Int (inValue *  CGFloat (CANARI_UNITS_PER_POINT))
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -179,7 +180,7 @@ func valueAndUnitStringFrom (valueInCanariUnit inValue : Int, displayUnit inUnit
 //--------------------------------------------------------------------------------------------------
 
 func valueAndUnitStringFrom (valueInCocoaUnit inValue : CGFloat, displayUnit inUnit : Int) -> String {
-  return valueAndUnitStringFrom (valueInCanariUnit: cocoaToCanariUnit (inValue), displayUnit: inUnit)
+  return valueAndUnitStringFrom (valueInCanariUnit: CanariLength.pt (inValue).cuValue, displayUnit: inUnit)
 }
 
 //--------------------------------------------------------------------------------------------------

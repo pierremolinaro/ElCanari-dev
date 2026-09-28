@@ -47,8 +47,8 @@ struct LayeredProductSegment : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func gerberPolygon () -> (ProductPoint, [ProductPoint]) {
-    let p1 = ProductPoint (x: self.x1, y: self.y1).cocoaPoint
-    let p2 = ProductPoint (x: self.x2, y: self.y2).cocoaPoint
+    let p1 = ProductPoint (x: self.x1, y: self.y1).ptValue
+    let p2 = ProductPoint (x: self.x2, y: self.y2).ptValue
     let w = self.width.value (in: .pt)
     let d = NSPoint.distance (p1, p2)
     let angleRadian = NSPoint.angleInRadian (p1, p2)
@@ -57,16 +57,16 @@ struct LayeredProductSegment : Codable {
     t.forward (w / 2.0)
     t.rotate270 ()
     t.forward (w / 2.0)
-    let bottomLeft = ProductPoint (cocoaPoint: t.location)
+    let bottomLeft = ProductPoint (ptValue: t.location)
     t.rotate180 ()
     t.forward (d + w)
-    let bottomRight = ProductPoint (cocoaPoint: t.location)
+    let bottomRight = ProductPoint (ptValue: t.location)
     t.rotate90 ()
     t.forward (w)
-    let topRight = ProductPoint (cocoaPoint: t.location)
+    let topRight = ProductPoint (ptValue: t.location)
     t.rotate90 ()
     t.forward (d + w)
-    let topLeft = ProductPoint (cocoaPoint: t.location)
+    let topLeft = ProductPoint (ptValue: t.location)
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 
@@ -78,15 +78,15 @@ struct LayeredProductSegment : Codable {
       x: (self.x1 + self.x2) / 2,
       y: (self.y1 + self.y2) / 2
     )
-    let p1 = ProductPoint (x: self.x1, y: self.y1).cocoaPoint
-    let p2 = ProductPoint (x: self.x2, y: self.y2).cocoaPoint
+    let p1 = ProductPoint (x: self.x1, y: self.y1).ptValue
+    let p2 = ProductPoint (x: self.x2, y: self.y2).ptValue
     let d = NSPoint.distance (p1, p2)
     let angleInDegrees = NSPoint.angleInDegrees (p1, p2)
 
     let pad = BoardModelPad (inUndoManager)
     pad.x = center.x.cuValue
     pad.y = center.y.cuValue
-    pad.width = cocoaToCanariUnit (d) + self.width.cuValue
+    pad.width = CanariLength.pt (d).cuValue + self.width.cuValue
     pad.height = self.width.cuValue
     pad.rotation = Int (angleInDegrees * 1000.0)
     switch inEndStyle {

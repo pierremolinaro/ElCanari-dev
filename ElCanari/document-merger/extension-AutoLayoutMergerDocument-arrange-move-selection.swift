@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   MOVE
@@ -29,7 +30,7 @@ extension AutoLayoutMergerDocument {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
-        bottom: 0,
+        bottom: .zero,
         width: instanceRect.width,
         height: instanceRect.bottom
       )
@@ -47,7 +48,7 @@ extension AutoLayoutMergerDocument {
       if acceptableNewRect.isEmpty {
         deltaY = 0
       }else{
-        deltaY = max (deltaY, acceptableNewRect.bottom - instanceRect.bottom)
+        deltaY = max (deltaY, acceptableNewRect.bottom.cuValue - instanceRect.bottom.cuValue)
       }
     }
     if deltaY < 0 {
@@ -74,7 +75,7 @@ extension AutoLayoutMergerDocument {
         left: instanceRect.left,
         bottom: instanceRect.bottom,
         width: instanceRect.width,
-        height: boardHeight - instanceRect.bottom
+        height: .cu (boardHeight) - instanceRect.bottom
       )
       for otherInstance in otherObjectSet.values {
         let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dy: -verticalSeparator))
@@ -90,7 +91,7 @@ extension AutoLayoutMergerDocument {
       if acceptableNewRect.isEmpty {
         deltaY = 0
       }else{
-        deltaY = min (deltaY, acceptableNewRect.top - instanceRect.top)
+        deltaY = min (deltaY, acceptableNewRect.top.cuValue - instanceRect.top.cuValue)
       }
     }
     if deltaY > 0 {
@@ -116,7 +117,7 @@ extension AutoLayoutMergerDocument {
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
         bottom: instanceRect.bottom,
-        width: boardWidth - instanceRect.left,
+        width: .cu (boardWidth) - instanceRect.left,
         height: instanceRect.height
       )
       for otherInstance in otherObjectSet.values {
@@ -133,7 +134,7 @@ extension AutoLayoutMergerDocument {
       if acceptableNewRect.isEmpty {
         deltaX = 0
       }else{
-        deltaX = min (deltaX, acceptableNewRect.right - instanceRect.right)
+        deltaX = min (deltaX, acceptableNewRect.right.cuValue - instanceRect.right.cuValue)
       }
     }
     if deltaX > 0 {
@@ -157,7 +158,7 @@ extension AutoLayoutMergerDocument {
     for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (
-        left: 0,
+        left: .zero,
         bottom: instanceRect.bottom,
         width: instanceRect.left,
         height: instanceRect.height
@@ -176,7 +177,7 @@ extension AutoLayoutMergerDocument {
       if acceptableNewRect.isEmpty {
         deltaX = 0
       }else{
-        deltaX = max (deltaX, acceptableNewRect.left - instanceRect.left)
+        deltaX = max (deltaX, acceptableNewRect.left.cuValue - instanceRect.left.cuValue)
       }
     }
     if deltaX < 0 {

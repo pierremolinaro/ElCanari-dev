@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -36,16 +37,16 @@ extension AutoLayoutProjectDocument {
   private func curve (at inUnalignedMouseDownPoint : CanariPoint) -> BorderCurve? {
     let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
     for borderCurve in self.rootObject.mBorderCurves.values {
-      let p1  = CanariPoint (x: borderCurve.mX, y: borderCurve.mY)
-      let p2  = CanariPoint (x: borderCurve.mNext!.mX, y: borderCurve.mNext!.mY)
+      let p1  = CanariPoint (x: .cu (borderCurve.mX), y: .cu (borderCurve.mY))
+      let p2  = CanariPoint (x: .cu (borderCurve.mNext!.mX), y: .cu (borderCurve.mNext!.mY))
       if (p1 != alignedMouseDownPoint) && (p2 != alignedMouseDownPoint) {
         switch borderCurve.mShape {
         case .line :
           let segment = CanariSegment (
-            x1: p1.x,
-            y1: p1.y,
-            x2: p2.x,
-            y2: p2.y,
+            x1: p1.x.cuValue,
+            y1: p1.y.cuValue,
+            x2: p2.x.cuValue,
+            y2: p2.y.cuValue,
         //    width: 2 * (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance), §
             width: 2 * self.rootObject.mBoardClearance,
             endStyle: .round
@@ -54,15 +55,15 @@ extension AutoLayoutProjectDocument {
             return borderCurve
           }
         case .bezier :
-          let cp1 = CanariPoint (x: borderCurve.mCPX1, y: borderCurve.mCPY1).cocoaPoint
-          let cp2 = CanariPoint (x: borderCurve.mCPX2, y: borderCurve.mCPY2).cocoaPoint
+          let cp1 = CanariPoint (x: .cu (borderCurve.mCPX1), y: .cu (borderCurve.mCPY1)).ptValue
+          let cp2 = CanariPoint (x: .cu (borderCurve.mCPX2), y: .cu (borderCurve.mCPY2)).ptValue
           var bp = BezierPath ()
-          bp.move (to: p1.cocoaPoint)
-          bp.curve (to: p2.cocoaPoint, controlPoint1: cp1, controlPoint2: cp2)
+          bp.move (to: p1.ptValue)
+          bp.curve (to: p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
      //     bp.lineWidth = 2.0 * canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance)
           bp.lineWidth = 2.0 * canariUnitToCocoa (self.rootObject.mBoardClearance)
           bp = bp.pathToFillByStroking
-          if bp.contains (inUnalignedMouseDownPoint.cocoaPoint) {
+          if bp.contains (inUnalignedMouseDownPoint.ptValue) {
             return borderCurve
           }
         }
@@ -98,8 +99,8 @@ extension AutoLayoutProjectDocument {
 
   @objc private func removePointFromBorderAction (_ inSender : NSMenuItem) {
     if let (removedBorderCurve, unalignedMouseDownPoint) = inSender.representedObject as? (BorderCurve, CanariPoint) {
-      let p1  = CanariPoint (x: removedBorderCurve.mX, y: removedBorderCurve.mY)
-      let p2  = CanariPoint (x: removedBorderCurve.mNext!.mX, y: removedBorderCurve.mNext!.mY)
+      let p1  = CanariPoint (x: .cu (removedBorderCurve.mX), y: .cu (removedBorderCurve.mY))
+      let p2  = CanariPoint (x: .cu (removedBorderCurve.mNext!.mX), y: .cu (removedBorderCurve.mNext!.mY))
       if CanariPoint.squareOfCanariDistance (p1, unalignedMouseDownPoint) < CanariPoint.squareOfCanariDistance (p2, unalignedMouseDownPoint) {
         let nextBorderCurve = removedBorderCurve.mNext!
         let previousBorderCurve = removedBorderCurve.mPrevious!
@@ -150,8 +151,8 @@ extension AutoLayoutProjectDocument {
     if let (curve, unalignedMouseDownPoint) = inSender.representedObject as? (BorderCurve, CanariPoint) {
       let alignedMouseDownPoint = unalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
       let newCurve = BorderCurve (self.undoManager)
-      newCurve.mX = alignedMouseDownPoint.x
-      newCurve.mY = alignedMouseDownPoint.y
+      newCurve.mX = alignedMouseDownPoint.x.cuValue
+      newCurve.mY = alignedMouseDownPoint.y.cuValue
       let nextCurve = curve.mNext!
       curve.mNext = nil
       curve.mNext = newCurve
@@ -169,13 +170,13 @@ extension AutoLayoutProjectDocument {
       switch curve.mShape {
       case .line :
         let unalignedMouseDownPoint = CanariPoint (
-          x: (curve.mX + curve.mNext!.mX) / 2,
-          y: (curve.mY + curve.mNext!.mY) / 2
+          x: .cu (curve.mX + curve.mNext!.mX) / 2,
+          y: .cu (curve.mY + curve.mNext!.mY) / 2
         )
         let alignedMouseDownPoint = unalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
         let newCurve = BorderCurve (self.undoManager)
-        newCurve.mX = alignedMouseDownPoint.x
-        newCurve.mY = alignedMouseDownPoint.y
+        newCurve.mX = alignedMouseDownPoint.x.cuValue
+        newCurve.mY = alignedMouseDownPoint.y.cuValue
         let nextCurve = curve.mNext!
         curve.mNext = nil
         curve.mNext = newCurve
@@ -184,10 +185,10 @@ extension AutoLayoutProjectDocument {
         curve.setControlPointsDefaultValuesForLine ()
         newCurve.setControlPointsDefaultValuesForLine ()
       case .bezier :
-        let p1 = CanariPoint (x: curve.mX, y: curve.mY)
-        let p2 = CanariPoint (x: curve.mNext!.mX, y: curve.mNext!.mY)
-        let cp1 = CanariPoint (x: curve.mCPX1, y: curve.mCPY1)
-        let cp2 = CanariPoint (x: curve.mCPX2, y: curve.mCPY2)
+        let p1 = CanariPoint (x: .cu (curve.mX), y: .cu (curve.mY))
+        let p2 = CanariPoint (x: .cu (curve.mNext!.mX), y: .cu (curve.mNext!.mY))
+        let cp1 = CanariPoint (x: .cu (curve.mCPX1), y: .cu (curve.mCPY1))
+        let cp2 = CanariPoint (x: .cu (curve.mCPX2), y: .cu (curve.mCPY2))
         let mid_P1_CP1 = CanariPoint.center (p1, cp1)
         let mid_P2_CP2 = CanariPoint.center (p2, cp2)
         let mid_CP1_CP2 = CanariPoint.center (cp1, cp2)
@@ -197,21 +198,21 @@ extension AutoLayoutProjectDocument {
       //---
         let newCurve = BorderCurve (self.undoManager)
         newCurve.mShape = .bezier
-        newCurve.mX = newP.x.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        newCurve.mY = newP.y.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        newCurve.mX = newP.x.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        newCurve.mY = newP.y.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
         let nextCurve = curve.mNext!
         curve.mNext = nil
         curve.mNext = newCurve
         newCurve.mNext = nextCurve
       //---
-        curve.mCPX2 = newCP1.x.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        curve.mCPY2 = newCP1.y.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        curve.mCPX1 = mid_P1_CP1.x.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        curve.mCPY1 = mid_P1_CP1.y.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        newCurve.mCPX1 = newCP2.x.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        newCurve.mCPY1 = newCP2.y.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        newCurve.mCPX2 = mid_P2_CP2.x.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
-        newCurve.mCPY2 = mid_P2_CP2.y.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        curve.mCPX2 = newCP1.x.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        curve.mCPY2 = newCP1.y.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        curve.mCPX1 = mid_P1_CP1.x.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        curve.mCPY1 = mid_P1_CP1.y.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        newCurve.mCPX1 = newCP2.x.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        newCurve.mCPY1 = newCP2.y.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        newCurve.mCPX2 = mid_P2_CP2.x.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        newCurve.mCPY2 = mid_P2_CP2.y.cuValue.value (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
         self.rootObject.mBorderCurves.append (newCurve)
       }
     }

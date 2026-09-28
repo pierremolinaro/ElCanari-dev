@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -60,7 +62,7 @@ import AppKit
   //--- Zone Name
     if self_displayZoneName {
       let text = (self_zoneName.isEmpty) ? "?" : self_zoneName
-      let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
+      let pText = CanariPoint (x: .cu (self_xName), y: .cu (self_yName)).ptValue
       shape.add (
         textKnob: text,
         pText,

@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -58,7 +59,7 @@ extension SheetInProject {
     if !symbolInfo.filledBezierPath.isEmpty {
       cocoaRect = cocoaRect.union (symbolInfo.filledBezierPath.bounds)
     }
-    let relativeLocation = cocoaRect.relativeLocation (of: inPoint.location!.cocoaPoint)
+    let relativeLocation = cocoaRect.relativeLocation (of: inPoint.location!.ptValue)
     switch relativeLocation {
     case .above :
       return .rotation90

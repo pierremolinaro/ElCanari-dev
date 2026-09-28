@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -27,7 +28,7 @@ import AppKit
            NSAttributedString.Key.font : NSFont.systemFont (ofSize: 9.0),
            NSAttributedString.Key.foregroundColor : prefs_boardLimitsColorForBoard.withAlphaComponent (self_mContentOpacityInBoardOutline)
          ]
-         shape.add (text: "(Empty Board Content)", self_boardBoundBox.center.cocoaPoint, textAttributes, .center, .center)
+         shape.add (text: "(Empty Board Content)", self_boardBoundBox.center.ptValue, textAttributes, .center, .center)
        }else{
          for object in self_mBoardObjects_objectDisplay {
            if let s = object.objectDisplay {

@@ -6,6 +6,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -23,8 +24,8 @@ extension SheetInProject {
       possiblePoint = points [0]
     }else if points.count == 0 {
       let point = PointInSchematic (self.undoManager)
-      point.mX = canariAlignedMouseDownLocation.x
-      point.mY = canariAlignedMouseDownLocation.y
+      point.mX = canariAlignedMouseDownLocation.x.cuValue
+      point.mY = canariAlignedMouseDownLocation.y.cuValue
       point.mNet = inNewNetCreator ()
       self.mPoints.append (point)
       possiblePoint = point

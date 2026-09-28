@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -48,8 +49,8 @@ private let LINE_WIDTH : CGFloat = 0.75
 
   mutating func appendSymbolSeveralPinAtSameLocationIssue (pinLocation inPoint: CanariPoint) {
     let r = NSRect (
-      x: canariUnitToCocoa (inPoint.x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (inPoint.y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      x: inPoint.x.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: inPoint.y.ptValue - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )

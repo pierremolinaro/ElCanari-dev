@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -36,7 +37,7 @@ extension LabelInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_LabelInSchematic  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -125,8 +126,8 @@ extension LabelInSchematic {
         point.mX += inDx
         point.mY += inDy
       }else if inKnobIndex == LABEL_IN_SCHEMATICS_ROTATION_KNOB {
-        let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
-        let p = CanariPoint (x: point.mX, y: point.mY)
+        let newKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY))
+        let p = CanariPoint (x: .cu (point.mX), y: .cu (point.mY))
         let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
         if angleInDegrees <= 45.0 {
           self.mOrientation = .rotation0

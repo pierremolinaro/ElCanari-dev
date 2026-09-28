@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -84,7 +86,7 @@ import AppKit
   shape.add (filled: [path1, path2], prefs_packageDimensionColor)
 //------- Add dimension text
   let dimensionText = valueAndUnitStringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
-  let p = CanariPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2).cocoaPoint
+  let p = CanariPoint (x: .cu (self_xDimension + (self_x1 + self_x2) / 2), y: .cu (self_yDimension + (self_y1 + self_y2) / 2)).ptValue
   var textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,
     NSAttributedString.Key.foregroundColor : prefs_packageDimensionColor

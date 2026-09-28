@@ -132,7 +132,7 @@ struct ProductRepresentation : Codable {
     modelAffineTransform.rotate (byDegrees: angleInDegrees)
     modelAffineTransform.translate (x: -width / 2.0, y: -height / 2.0)
     for circle in inProduct.circles {
-      let center = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: circle.x, y: circle.y).cocoaPoint))
+      let center = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: circle.x, y: circle.y).ptValue))
       let newCircle = LayeredProductCircle (
         center: center,
         diameter: circle.d,
@@ -146,8 +146,8 @@ struct ProductRepresentation : Codable {
         layers.remove (.boardLimits)
         layers.insert (.internalBoardLimits)
       }
-      let p1 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).cocoaPoint))
-      let p2 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).cocoaPoint))
+      let p1 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).ptValue))
+      let p2 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).ptValue))
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -157,8 +157,8 @@ struct ProductRepresentation : Codable {
       self.roundSegments.append (s)
     }
     for segment in inProduct.squareSegments {
-      let p1 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).cocoaPoint))
-      let p2 = ProductPoint (cocoaPoint: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).cocoaPoint))
+      let p1 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).ptValue))
+      let p2 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).ptValue))
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -315,7 +315,7 @@ struct ProductRepresentation : Codable {
       if !componentPad.layers.intersection (inLayers).isEmpty {
         let pad = BoardModelPad (inUndoManager)
         let relativeCenter = NSPoint ()
-        let absoluteCenter = ProductPoint (cocoaPoint: componentPad.af.transform (relativeCenter))
+        let absoluteCenter = ProductPoint (ptValue: componentPad.af.transform (relativeCenter))
         pad.x = absoluteCenter.x.cuValue
         pad.y = absoluteCenter.y.cuValue
         pad.width = componentPad.width.cuValue

@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -17,7 +19,7 @@ import AppKit
        _ self_mConnectorP1_location : CanariPoint?
 ) -> Int {
 //--- START OF USER ZONE 2
-        return self_mConnectorP1_location?.y ?? 0
+        return self_mConnectorP1_location?.y.cuValue ?? 0
 //--- END OF USER ZONE 2
 }
 

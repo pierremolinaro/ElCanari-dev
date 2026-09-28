@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION MergerBoardInstance
@@ -53,7 +54,7 @@ extension MergerBoardInstance {
     if newY < 0 {
       acceptedY = -self.y
     }
-    return CanariPoint (x: acceptedX, y: acceptedY)
+    return CanariPoint (x: .cu (acceptedX), y: .cu (acceptedY))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -48,8 +50,8 @@ import AppKit
 ) -> EBShape {
 //--- START OF USER ZONE 2
       let lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
-      let absoluteCenter = CanariPoint (x: self_mX, y: self_mY).cocoaPoint
-      let rPadsCenter = self_packagePadDictionary.padsRect.center.cocoaPoint
+      let absoluteCenter = CanariPoint (x: .cu (self_mX), y: .cu (self_mY)).ptValue
+      let rPadsCenter = self_packagePadDictionary.padsRect.center.ptValue
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
       var rotatedShape = EBShape ()

@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -81,7 +82,7 @@ extension CommentInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_CommentInSchematic (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -141,8 +142,8 @@ extension CommentInSchematic {
       self.mX += inDx
       self.mY += inDy
     }else if inKnobIndex == COMMENT_IN_SCHEMATIC_ROTATION_KNOB {
-      let absoluteCenter = CanariPoint (x: self.mX, y: self.mY).cocoaPoint
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let absoluteCenter = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
       self.mRotation_property.setProp (degreesToCanariRotation (newAngleInDegrees))
     }

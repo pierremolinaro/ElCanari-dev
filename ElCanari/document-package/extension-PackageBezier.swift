@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -41,7 +42,7 @@ extension PackageBezier {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageBezier  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -156,14 +157,14 @@ extension PackageBezier {
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90Clockwise (x: self.cpx1, y: self.cpy1)
     let cp2 = inRotationCenter.rotated90Clockwise (x: self.cpx2, y: self.cpy2)
-    self.x1 = p1.x
-    self.y1 = p1.y
-    self.cpx1 = cp1.x
-    self.cpy1 = cp1.y
-    self.x2 = p2.x
-    self.y2 = p2.y
-    self.cpx2 = cp2.x
-    self.cpy2 = cp2.y
+    self.x1 = p1.x.cuValue
+    self.y1 = p1.y.cuValue
+    self.cpx1 = cp1.x.cuValue
+    self.cpy1 = cp1.y.cuValue
+    self.x2 = p2.x.cuValue
+    self.y2 = p2.y.cuValue
+    self.cpx2 = cp2.x.cuValue
+    self.cpy2 = cp2.y.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -174,14 +175,14 @@ extension PackageBezier {
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90CounterClockwise (x: self.cpx1, y: self.cpy1)
     let cp2 = inRotationCenter.rotated90CounterClockwise (x: self.cpx2, y: self.cpy2)
-    self.x1 = p1.x
-    self.y1 = p1.y
-    self.cpx1 = cp1.x
-    self.cpy1 = cp1.y
-    self.x2 = p2.x
-    self.y2 = p2.y
-    self.cpx2 = cp2.x
-    self.cpy2 = cp2.y
+    self.x1 = p1.x.cuValue
+    self.y1 = p1.y.cuValue
+    self.cpx1 = cp1.x.cuValue
+    self.cpy1 = cp1.y.cuValue
+    self.x2 = p2.x.cuValue
+    self.y2 = p2.y.cuValue
+    self.cpx2 = cp2.x.cuValue
+    self.cpy2 = cp2.y.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -231,10 +232,10 @@ extension PackageBezier {
 
   func alignmentPoints_PackageBezier () -> Set <CanariPoint> {
     var result = Set <CanariPoint> ()
-    result.insert (CanariPoint (x: self.x1, y: self.y1))
-    result.insert (CanariPoint (x: self.x2, y: self.y2))
-    result.insert (CanariPoint (x: self.cpx1, y: self.cpy1))
-    result.insert (CanariPoint (x: self.cpx2, y: self.cpy2))
+    result.insert (CanariPoint (x: .cu (self.x1), y: .cu (self.y1)))
+    result.insert (CanariPoint (x: .cu (self.x2), y: .cu (self.y2)))
+    result.insert (CanariPoint (x: .cu (self.cpx1), y: .cu (self.cpy1)))
+    result.insert (CanariPoint (x: .cu (self.cpx2), y: .cu (self.cpy2)))
     return result
   }
 

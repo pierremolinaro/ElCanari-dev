@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -137,8 +138,8 @@ extension BoardConnector {
       }
       if accepts {
         let r = NSRect (
-          x: canariUnitToCocoa (padCenter.x) - inDiameter / 2.0,
-          y: canariUnitToCocoa (padCenter.y) - inDiameter / 2.0,
+          x: padCenter.x.ptValue - inDiameter / 2.0,
+          y: padCenter.y.ptValue - inDiameter / 2.0,
           width: inDiameter,
           height: inDiameter
         )

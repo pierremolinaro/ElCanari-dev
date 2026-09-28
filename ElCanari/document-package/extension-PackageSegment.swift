@@ -1,4 +1,5 @@
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -39,7 +40,7 @@ extension PackageSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_PackageSegment  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -134,10 +135,10 @@ extension PackageSegment {
                                          userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
-    self.x1 = p1.x
-    self.y1 = p1.y
-    self.x2 = p2.x
-    self.y2 = p2.y
+    self.x1 = p1.x.cuValue
+    self.y1 = p1.y.cuValue
+    self.x2 = p2.x.cuValue
+    self.y2 = p2.y.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -146,10 +147,10 @@ extension PackageSegment {
                                                 userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
-    self.x1 = p1.x
-    self.y1 = p1.y
-    self.x2 = p2.x
-    self.y2 = p2.y
+    self.x1 = p1.x.cuValue
+    self.y1 = p1.y.cuValue
+    self.x2 = p2.x.cuValue
+    self.y2 = p2.y.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

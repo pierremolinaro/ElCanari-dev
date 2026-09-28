@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -23,9 +24,9 @@ import AppKit
 //--- START OF USER ZONE 2
   switch self_instanceRotation {
   case .rotation0, .rotation180 :
-    return CanariRect (left:self_x, bottom:self_y, width: self_myModel_modelWidth!, height:self_myModel_modelHeight!)
+    return CanariRect (left: .cu (self_x), bottom: .cu (self_y), width: .cu (self_myModel_modelWidth!), height: .cu (self_myModel_modelHeight!))
   case .rotation90, .rotation270 :
-    return CanariRect (left:self_x, bottom:self_y, width: self_myModel_modelHeight!, height: self_myModel_modelWidth!)
+    return CanariRect (left: .cu (self_x), bottom: .cu (self_y), width: .cu (self_myModel_modelHeight!), height: .cu (self_myModel_modelWidth!))
   }
 //--- END OF USER ZONE 2
 }

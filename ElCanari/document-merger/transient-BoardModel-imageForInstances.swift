@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -200,7 +201,7 @@ import AppKit
 //--- Board limits tracks
   do{
     let color = prefs_mergerBoardViewDisplayModelBoardsLimits ? prefs_mergerColorInternalBoardsLimits : .clear
-    let boardRect = CanariRect (left: 0, bottom: 0, width: self_modelWidth, height: self_modelHeight)
+    let boardRect = CanariRect (left: .zero, bottom: .zero, width: .cu (self_modelWidth), height: .cu (self_modelHeight))
     let boardRectBP = BezierPath (rect: boardRect.ptValue)
     shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
     shapes.add (stroke: self_boardLimitsBezierPaths.array, color, clip: .inside (boardRectBP))

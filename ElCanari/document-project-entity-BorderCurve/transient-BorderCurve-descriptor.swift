@@ -3,11 +3,13 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
 //--- START OF USER ZONE 1
 
+import CanariGeometry
 
 //--- END OF USER ZONE 1
 
@@ -26,10 +28,10 @@ import AppKit
 ) -> BorderCurveDescriptor {
 //--- START OF USER ZONE 2
     return BorderCurveDescriptor (
-      p1: CanariPoint (x: self_mX, y: self_mY),
-      p2: CanariPoint (x: self_mNext_mX!, y: self_mNext_mY!),
-      cp1: CanariPoint (x: self_mCPX1, y: self_mCPY1),
-      cp2: CanariPoint (x: self_mCPX2, y: self_mCPY2),
+      p1: CanariPoint (x: .cu (self_mX), y: .cu (self_mY)),
+      p2: CanariPoint (x: .cu (self_mNext_mX!), y: .cu (self_mNext_mY!)),
+      cp1: CanariPoint (x: .cu (self_mCPX1), y: .cu (self_mCPY1)),
+      cp2: CanariPoint (x: .cu (self_mCPX2), y: .cu (self_mCPY2)),
       shape: self_mShape
     )
 //--- END OF USER ZONE 2

@@ -25,8 +25,8 @@ extension ProductRepresentation {
     for oblong in self.roundSegments {
       if !inItemSet.intersection (oblong.layers).isEmpty {
         let bp = NSBezierPath ()
-        bp.move (to: inMirror.mirrored (oblong.p1).cocoaPoint)
-        bp.line (to: inMirror.mirrored (oblong.p2).cocoaPoint)
+        bp.move (to: inMirror.mirrored (oblong.p1).ptValue)
+        bp.line (to: inMirror.mirrored (oblong.p2).ptValue)
         bp.lineWidth = oblong.width.value (in: .pt)
         bp.lineCapStyle = .round
         strokeBezierPathes.append (bp)
@@ -36,7 +36,7 @@ extension ProductRepresentation {
     var filledBezierPathes = [NSBezierPath] ()
     for circle in self.circles {
       if !inItemSet.intersection (circle.layers).isEmpty {
-        let center = inMirror.mirrored (circle.center).cocoaPoint
+        let center = inMirror.mirrored (circle.center).ptValue
         let diameter = circle.d.value (in: .pt)
         let r = NSRect (center: center, size: NSSize (width: diameter, height: diameter))
         let bp = NSBezierPath (ovalIn: r)
@@ -71,9 +71,9 @@ extension ProductRepresentation {
   //--- Handle polygons
     for (origin, points) in polygons {
       let bp = NSBezierPath ()
-      bp.move (to: inMirror.mirrored (origin).cocoaPoint)
+      bp.move (to: inMirror.mirrored (origin).ptValue)
       for point in points {
-        bp.line (to: inMirror.mirrored (point).cocoaPoint)
+        bp.line (to: inMirror.mirrored (point).ptValue)
       }
       bp.close ()
       filledBezierPathes.append (bp)

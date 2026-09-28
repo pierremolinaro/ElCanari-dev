@@ -128,16 +128,16 @@ struct LayeredProductComponentPad : Codable {
     let width = self.width.value (in: .pt)
     let height = self.height.value (in: .pt)
     if width > height { // Oblong
-      let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -(width - height) / 2.0, y: 0.0))))
-      let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +(width - height) / 2.0, y: 0.0))))
+      let p1 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: -(width - height) / 2.0, y: 0.0))))
+      let p2 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: +(width - height) / 2.0, y: 0.0))))
       ioGerber.addRoundSegment (p1: p1, p2: p2, width: CanariLength.pt (height))
     }else if width < height { // Oblong
-      let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: 0.0, y: -(height - width) / 2.0))))
-      let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: 0.0, y: +(height - width) / 2.0))))
+      let p1 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: 0.0, y: -(height - width) / 2.0))))
+      let p2 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: 0.0, y: +(height - width) / 2.0))))
       ioGerber.addRoundSegment (p1: p1, p2: p2, width: CanariLength.pt (width))
     }else{ // circular
       ioGerber.addCircle (
-        center: inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (.zero))),
+        center: inMirror.mirrored (ProductPoint (ptValue: self.af.transform (.zero))),
         diameter: CanariLength.pt (width)
       )
     }
@@ -149,10 +149,10 @@ struct LayeredProductComponentPad : Codable {
                                       mirror inMirror : ProductHorizontalMirror) {
     let w = self.width.value (in: .pt) / 2.0
     let h = self.height.value (in: .pt) / 2.0
-    let p0 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w, y: -h))))
-    let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: -h))))
-    let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w, y: +h))))
-    let p3 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w, y: +h))))
+    let p0 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: -w, y: -h))))
+    let p1 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: +w, y: -h))))
+    let p2 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: +w, y: +h))))
+    let p3 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: -w, y: +h))))
     ioGerber.addPolygon (origin: p0, points: [p1, p2, p3])
   }
 
@@ -163,14 +163,14 @@ struct LayeredProductComponentPad : Codable {
     let w = self.width.value (in: .pt) / 2.0
     let h = self.height.value (in: .pt) / 2.0
     let lg : CGFloat = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
-    let p0 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w - lg, y: +h))))
-    let p1 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w,      y: +h - lg))))
-    let p2 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w,      y: -h + lg))))
-    let p3 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: +w - lg, y: -h))))
-    let p4 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w + lg, y: -h))))
-    let p5 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w,      y: -h + lg))))
-    let p6 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w,      y: +h - lg))))
-    let p7 = inMirror.mirrored (ProductPoint (cocoaPoint: self.af.transform (NSPoint (x: -w + lg, y: +h))))
+    let p0 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: +w - lg, y: +h))))
+    let p1 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: +w,      y: +h - lg))))
+    let p2 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: +w,      y: -h + lg))))
+    let p3 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: +w - lg, y: -h))))
+    let p4 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: -w + lg, y: -h))))
+    let p5 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: -w,      y: -h + lg))))
+    let p6 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: -w,      y: +h - lg))))
+    let p7 = inMirror.mirrored (ProductPoint (ptValue: self.af.transform (NSPoint (x: -w + lg, y: +h))))
     ioGerber.addPolygon (origin: p0, points: [p1, p2, p3, p4, p5, p6, p7])
   }
 

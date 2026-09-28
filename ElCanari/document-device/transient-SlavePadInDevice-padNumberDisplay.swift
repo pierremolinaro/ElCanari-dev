@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -28,7 +29,7 @@ import AppKit
       var shape = EBShape ()
       shape.add (text: 
         "(\(self_mMasterPad_mName ?? ""))",
-        CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint,
+        CanariPoint (x: .cu (self_mCenterX), y: .cu (self_mCenterY)).ptValue,
         textAttributes,
         .center,
         .center

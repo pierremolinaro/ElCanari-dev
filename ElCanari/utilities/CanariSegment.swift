@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   CanariSegment
@@ -31,8 +32,8 @@ struct CanariSegment : Hashable {
     let y1 = Double (self.y1)
     let x2 = Double (self.x2)
     let y2 = Double (self.y2)
-    let x = Double (inPoint.x)
-    let y = Double (inPoint.y)
+    let x = Double (inPoint.x.cuValue)
+    let y = Double (inPoint.y.cuValue)
     let hw = Double (self.width / 2)
     var within : Bool
     if self.x1 == self.x2 { // vertical segment

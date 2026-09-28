@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -38,7 +39,7 @@ extension BoardQRCode {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_BoardQRCode (xBy inDx : Int, yBy inDy : Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -105,8 +106,8 @@ extension BoardQRCode {
       self.mCenterX += inDx
       self.mCenterY += inDy
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
-      let origin = CanariPoint (x: self.mCenterX, y: self.mCenterY).cocoaPoint
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).cocoaPoint
+      let origin = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }
@@ -145,8 +146,8 @@ extension BoardQRCode {
   func rotate90Clockwise_BoardQRCode (from inRotationCenter : CanariPoint,
                                       userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x
-    self.mCenterY = p.y
+    self.mCenterX = p.x.cuValue
+    self.mCenterY = p.y.cuValue
     self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -156,8 +157,8 @@ extension BoardQRCode {
   func rotate90CounterClockwise_BoardQRCode (from inRotationCenter : CanariPoint,
                                              userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x
-    self.mCenterY = p.y
+    self.mCenterX = p.x.cuValue
+    self.mCenterY = p.y.cuValue
     self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }

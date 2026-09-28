@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -104,8 +105,8 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? SymbolObject {
               newObject.translate (
-                xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
-                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
+                xBy: CanariLength.pt (pointInDestinationView.x).cuValue - X,
+                yBy: CanariLength.pt (pointInDestinationView.y).cuValue - Y,
                 userSet: &userSet
               )
               self.rootObject.symbolObjects_property.add (newObject)

@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -39,8 +40,8 @@ extension AutoLayoutMergerDocumentSubClass {
       let rotation = self.rootObject.modelInsertionRotation
       let newBoard = MergerBoardInstance (self.undoManager)
       newBoard.myModel_property.setProp (boardModel)
-      newBoard.x = mouseDownLocationInView.x
-      newBoard.y = mouseDownLocationInView.y
+      newBoard.x = mouseDownLocationInView.x.cuValue
+      newBoard.y = mouseDownLocationInView.y.cuValue
       newBoard.instanceRotation = rotation
       self.rootObject.boardInstances_property.add (newBoard)
       self.mBoardInstanceController.setSelection ([newBoard])
@@ -121,9 +122,9 @@ extension AutoLayoutMergerDocumentSubClass {
             let xCount = self.mInsertArrayOfBoardsXCount.propval
             let yCount = self.mInsertArrayOfBoardsYCount.propval
             // Swift.print ("xCount \(xCount), yCount \(yCount)")
-            let boardModelWidth = boardModel.modelWidth
+            let boardModelWidth : Int = boardModel.modelWidth
             let boardModelHeight = boardModel.modelHeight
-            let overlapAmount = 0 // § self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
+          //  let overlapAmount = 0 // § self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
             let rotation = self.mInsertArrayOfBoardsOrientation.propval
             var newBoardArray = [MergerBoardInstance] ()
             var y = mouseDownLocationInView.y
@@ -133,22 +134,22 @@ extension AutoLayoutMergerDocumentSubClass {
                 let newBoard = MergerBoardInstance (self.undoManager)
                 newBoard.myModel_property.setProp (boardModel)
                 newBoard.instanceRotation = rotation
-                newBoard.x = x
-                newBoard.y = y
+                newBoard.x = x.cuValue
+                newBoard.y = y.cuValue
                 self.rootObject.boardInstances_property.add (newBoard)
                 newBoardArray.append (newBoard)
                 switch rotation {
                 case .rotation0, .rotation180 :
-                  x += boardModelWidth - overlapAmount
+                  x += .cu (boardModelWidth)
                 case .rotation90, .rotation270 :
-                  x += boardModelHeight - overlapAmount
+                  x += .cu (boardModelHeight)
                 }
               }
               switch rotation {
               case .rotation0, .rotation180 :
-                y += boardModelHeight - overlapAmount
+                y += .cu (boardModelHeight)
               case .rotation90, .rotation270 :
-                y += boardModelWidth - overlapAmount
+                y += .cu (boardModelWidth)
               }
             }
             self.mBoardInstanceController.setSelection (newBoardArray)

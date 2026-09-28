@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -44,9 +45,9 @@ import AppKit
       idx = 0
       while idx < root_boardInstances_instanceRect.count {
         let instanceRect = root_boardInstances_instanceRect [idx].instanceRect!
-        var inside = instanceRect.left >= 0
+        var inside = instanceRect.left >= .zero
         if inside {
-          inside = instanceRect.bottom >= 0
+          inside = instanceRect.bottom >= .zero
         }
         if inside {
           inside = instanceRect.right <= root_boardRect.right

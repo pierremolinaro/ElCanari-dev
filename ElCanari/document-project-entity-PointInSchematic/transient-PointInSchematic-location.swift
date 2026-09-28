@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -27,9 +28,9 @@ import AppKit
               return pin.pinLocation
             }
           }
-          return CanariPoint (x: self_mX, y: self_mY)
+          return CanariPoint (x: .cu (self_mX), y: .cu (self_mY))
         }else{
-          return CanariPoint (x: self_mX, y: self_mY)
+          return CanariPoint (x: .cu (self_mX), y: .cu (self_mY))
         }
 //--- END OF USER ZONE 2
 }

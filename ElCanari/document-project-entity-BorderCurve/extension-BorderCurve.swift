@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -34,7 +35,7 @@ extension BorderCurve {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptedTranslation_BorderCurve (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+    return CanariPoint (x: .cu (inDx), y: .cu (inDy))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -135,20 +136,20 @@ extension BorderCurve {
                             shift _ : Bool) -> CanariPoint {
     if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
-        let dx = max (inProposedAlignedTranslation.x, -self.mX)
-        let dy = max (inProposedAlignedTranslation.y, -self.mY)
+        let dx = max (inProposedAlignedTranslation.x.cuValue, -self.mX)
+        let dy = max (inProposedAlignedTranslation.y.cuValue, -self.mY)
         if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
           return .zero
         }else{
-          return CanariPoint (x: dx, y: dy)
+          return CanariPoint (x: .cu (dx), y: .cu (dy))
         }
       }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext {
-        let dx = max (inProposedAlignedTranslation.x, -next.mX)
-        let dy = max (inProposedAlignedTranslation.y, -next.mY)
+        let dx = max (inProposedAlignedTranslation.x.cuValue, -next.mX)
+        let dy = max (inProposedAlignedTranslation.y.cuValue, -next.mY)
         if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
           return .zero
         }else{
-          return CanariPoint (x: dx, y: dy)
+          return CanariPoint (x: .cu (dx), y: .cu (dy))
         }
       }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
         return inProposedAlignedTranslation
