@@ -120,15 +120,15 @@ extension SymbolText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_SymbolText (knob _: Int,
-                        proposedDx inDx: Int,
-                        proposedDy inDy: Int,
-                        unalignedMouseLocationX _ : Int,
-                        unalignedMouseLocationY _ : Int,
-                        alignedMouseLocationX _ : Int,
-                        alignedMouseLocationY _ : Int,
+                        proposedDx inDx: CanariLength,
+                        proposedDy inDy: CanariLength,
+                        unalignedMouseLocationX _ : CanariLength,
+                        unalignedMouseLocationY _ : CanariLength,
+                        alignedMouseLocationX _ : CanariLength,
+                        alignedMouseLocationY _ : CanariLength,
                         shift _ : Bool) {
-    self.x += inDx
-    self.y += inDy
+    self.x += inDx.cuValue
+    self.y += inDy.cuValue
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

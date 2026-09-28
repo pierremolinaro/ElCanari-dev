@@ -124,26 +124,26 @@ extension SymbolPin {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_SymbolPin (knob inKnobIndex: Int,
-                       proposedDx inDx: Int,
-                       proposedDy inDy: Int,
-                       unalignedMouseLocationX _ : Int,
-                       unalignedMouseLocationY _ : Int,
-                       alignedMouseLocationX _ : Int,
-                       alignedMouseLocationY _ : Int,
+                       proposedDx inDx: CanariLength,
+                       proposedDy inDy: CanariLength,
+                       unalignedMouseLocationX _ : CanariLength,
+                       unalignedMouseLocationY _ : CanariLength,
+                       alignedMouseLocationX _ : CanariLength,
+                       alignedMouseLocationY _ : CanariLength,
                        shift _ : Bool) {
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
-      self.xPin += inDx
-      self.yPin += inDy
-      self.xName += inDx
-      self.yName += inDy
-      self.xNumber += inDx
-      self.yNumber += inDy
+      self.xPin += inDx.cuValue
+      self.yPin += inDy.cuValue
+      self.xName += inDx.cuValue
+      self.yName += inDy.cuValue
+      self.xNumber += inDx.cuValue
+      self.yNumber += inDy.cuValue
     }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      self.xName += inDx
-      self.yName += inDy
+      self.xName += inDx.cuValue
+      self.yName += inDy.cuValue
     }else if inKnobIndex == SYMBOL_PIN_NUMBER {
-      self.xNumber += inDx
-      self.yNumber += inDy
+      self.xNumber += inDx.cuValue
+      self.yNumber += inDy.cuValue
     }
   }
 

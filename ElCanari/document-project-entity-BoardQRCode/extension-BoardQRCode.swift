@@ -95,19 +95,19 @@ extension BoardQRCode {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_BoardQRCode (knob inKnobIndex : Int,
-                         proposedDx inDx : Int,
-                         proposedDy inDy : Int,
-                         unalignedMouseLocationX _ : Int,
-                         unalignedMouseLocationY _ : Int,
-                         alignedMouseLocationX inAlignedMouseLocationX : Int,
-                         alignedMouseLocationY inAlignedMouseLocationY : Int,
+                         proposedDx inDx : CanariLength,
+                         proposedDy inDy : CanariLength,
+                         unalignedMouseLocationX _ : CanariLength,
+                         unalignedMouseLocationY _ : CanariLength,
+                         alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
+                         alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                          shift _ : Bool) {
     if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
-      self.mCenterX += inDx
-      self.mCenterY += inDy
+      self.mCenterX += inDx.cuValue
+      self.mCenterY += inDy.cuValue
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
       let origin = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY)).ptValue
-      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }

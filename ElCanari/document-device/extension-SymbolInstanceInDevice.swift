@@ -163,12 +163,12 @@ extension SymbolInstanceInDevice {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_SymbolInstanceInDevice (knob _ : Int,
-                                    proposedDx _ : Int,
-                                    proposedDy _ : Int,
-                                    unalignedMouseLocationX _ : Int,
-                                    unalignedMouseLocationY _ : Int,
-                                    alignedMouseLocationX _ : Int,
-                                    alignedMouseLocationY _ : Int,
+                                    proposedDx _ : CanariLength,
+                                    proposedDy _ : CanariLength,
+                                    unalignedMouseLocationX _ : CanariLength,
+                                    unalignedMouseLocationY _ : CanariLength,
+                                    alignedMouseLocationX _ : CanariLength,
+                                    alignedMouseLocationY _ : CanariLength,
                                     shift _ : Bool) {
   }
 

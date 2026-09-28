@@ -124,16 +124,16 @@ extension BoardConnector {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_BoardConnector (knob inKnobIndex : Int,
-                            proposedDx inDx : Int,
-                            proposedDy inDy : Int,
-                            unalignedMouseLocationX _ : Int,
-                            unalignedMouseLocationY _ : Int,
-                            alignedMouseLocationX _ : Int,
-                            alignedMouseLocationY _ : Int,
+                            proposedDx inDx : CanariLength,
+                            proposedDy inDy : CanariLength,
+                            unalignedMouseLocationX _ : CanariLength,
+                            unalignedMouseLocationY _ : CanariLength,
+                            alignedMouseLocationX _ : CanariLength,
+                            alignedMouseLocationY _ : CanariLength,
                             shift _ : Bool) {
     if inKnobIndex == BOARD_CONNECTOR_KNOB {
-      self.mX += inDx
-      self.mY += inDy
+      self.mX += inDx.cuValue
+      self.mY += inDy.cuValue
     }
   }
 

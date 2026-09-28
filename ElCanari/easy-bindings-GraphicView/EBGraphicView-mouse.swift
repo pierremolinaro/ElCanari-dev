@@ -115,12 +115,12 @@ extension EBGraphicView {
         )
         objects [objectIndex].move (
           knob: knobIndex,
-          proposedDx: translation.x.cuValue,
-          proposedDy: translation.y.cuValue,
-          unalignedMouseLocationX: inUnalignedLastMouseDraggedLocation.x.cuValue,
-          unalignedMouseLocationY: inUnalignedLastMouseDraggedLocation.y.cuValue,
-          alignedMouseLocationX: mouseDraggedLocation.x.cuValue,
-          alignedMouseLocationY: mouseDraggedLocation.y.cuValue,
+          proposedDx: translation.x,
+          proposedDy: translation.y,
+          unalignedMouseLocationX: inUnalignedLastMouseDraggedLocation.x,
+          unalignedMouseLocationY: inUnalignedLastMouseDraggedLocation.y,
+          alignedMouseLocationX: mouseDraggedLocation.x,
+          alignedMouseLocationY: mouseDraggedLocation.y,
           shift: shift
         )
       }

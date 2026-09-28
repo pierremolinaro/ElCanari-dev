@@ -75,19 +75,19 @@ extension PackageModelImageDoublePoint {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_PackageModelImageDoublePoint (knob inKnobIndex : Int,
-                                          proposedDx inDx : Int,
-                                          proposedDy inDy : Int,
-                                          unalignedMouseLocationX _ : Int,
-                                          unalignedMouseLocationY _ : Int,
-                                          alignedMouseLocationX _ : Int,
-                                          alignedMouseLocationY _ : Int,
+                                          proposedDx inDx : CanariLength,
+                                          proposedDy inDy : CanariLength,
+                                          unalignedMouseLocationX _ : CanariLength,
+                                          unalignedMouseLocationY _ : CanariLength,
+                                          alignedMouseLocationX _ : CanariLength,
+                                          alignedMouseLocationY _ : CanariLength,
                                           shift _ : Bool) {
     if inKnobIndex == MODEL_IMAGE_FIRST_POINT {
-      self.mFirstX += inDx
-      self.mFirstY += inDy
+      self.mFirstX += inDx.cuValue
+      self.mFirstY += inDy.cuValue
     }else if inKnobIndex == MODEL_IMAGE_SECOND_POINT {
-      self.mSecondDx += inDx
-      self.mSecondDy += inDy
+      self.mSecondDx += inDx.cuValue
+      self.mSecondDy += inDy.cuValue
     }
   }
 

@@ -131,27 +131,27 @@ extension ComponentInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_ComponentInProject (knob inKnobIndex: Int,
-                                proposedDx inDx: Int,
-                                proposedDy inDy: Int,
-                                unalignedMouseLocationX _ : Int,
-                                unalignedMouseLocationY _ : Int,
-                                alignedMouseLocationX inAlignedMouseLocationX : Int,
-                                alignedMouseLocationY inAlignedMouseLocationY : Int,
+                                proposedDx inDx: CanariLength,
+                                proposedDy inDy: CanariLength,
+                                unalignedMouseLocationX _ : CanariLength,
+                                unalignedMouseLocationY _ : CanariLength,
+                                alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
+                                alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                                 shift _ : Bool) {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
-      self.mX += inDx
-      self.mY += inDy
+      self.mX += inDx.cuValue
+      self.mY += inDy.cuValue
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
       let absoluteCenter = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
-      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
-      self.mXName += inDx
-      self.mYName += inDy
+      self.mXName += inDx.cuValue
+      self.mYName += inDy.cuValue
     }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
-      self.mXValue += inDx
-      self.mYValue += inDy
+      self.mXValue += inDx.cuValue
+      self.mYValue += inDy.cuValue
     }
   }
 

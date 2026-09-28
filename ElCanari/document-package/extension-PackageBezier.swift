@@ -79,25 +79,25 @@ extension PackageBezier {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_PackageBezier (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX _ : Int,
-                      unalignedMouseLocationY _ : Int,
-                      alignedMouseLocationX _ : Int,
-                      alignedMouseLocationY _ : Int,
+                      proposedDx inDx: CanariLength,
+                      proposedDy inDy: CanariLength,
+                      unalignedMouseLocationX _ : CanariLength,
+                      unalignedMouseLocationY _ : CanariLength,
+                      alignedMouseLocationX _ : CanariLength,
+                      alignedMouseLocationY _ : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == PACKAGE_BEZIER_CURVE_ENDPOINT_1 {
-      self.x1 += inDx
-      self.y1 += inDy
+      self.x1 += inDx.cuValue
+      self.y1 += inDy.cuValue
     }else if inKnobIndex == PACKAGE_BEZIER_CURVE_ENDPOINT_2 {
-      self.x2 += inDx
-      self.y2 += inDy
+      self.x2 += inDx.cuValue
+      self.y2 += inDy.cuValue
     }else if inKnobIndex == PACKAGE_BEZIER_CURVE_CONTROL_1 {
-      self.cpx1 += inDx
-      self.cpy1 += inDy
+      self.cpx1 += inDx.cuValue
+      self.cpy1 += inDy.cuValue
     }else if inKnobIndex == PACKAGE_BEZIER_CURVE_CONTROL_2 {
-      self.cpx2 += inDx
-      self.cpy2 += inDy
+      self.cpx2 += inDx.cuValue
+      self.cpy2 += inDy.cuValue
     }
   }
 

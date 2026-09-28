@@ -115,23 +115,23 @@ extension SymbolOval {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_SymbolOval (knob inKnobIndex: Int,
-                        proposedDx inDx: Int,
-                        proposedDy inDy: Int,
-                        unalignedMouseLocationX _ : Int,
-                        unalignedMouseLocationY _ : Int,
-                        alignedMouseLocationX _ : Int,
-                        alignedMouseLocationY _ : Int,
+                        proposedDx inDx: CanariLength,
+                        proposedDy inDy: CanariLength,
+                        unalignedMouseLocationX _ : CanariLength,
+                        unalignedMouseLocationY _ : CanariLength,
+                        alignedMouseLocationX _ : CanariLength,
+                        alignedMouseLocationY _ : CanariLength,
                         shift _ : Bool) {
     if inKnobIndex == SYMBOL_OVAL_RIGHT {
-      self.width += inDx
+      self.width += inDx.cuValue
     }else if inKnobIndex == SYMBOL_OVAL_LEFT {
-      self.x += inDx
-      self.width -= inDx
+      self.x += inDx.cuValue
+      self.width -= inDx.cuValue
     }else if inKnobIndex == SYMBOL_OVAL_TOP {
-      self.height += inDy
+      self.height += inDy.cuValue
     }else if inKnobIndex == SYMBOL_OVAL_BOTTOM {
-      self.y += inDy
-      self.height -= inDy
+      self.y += inDy.cuValue
+      self.height -= inDy.cuValue
     }
   }
 

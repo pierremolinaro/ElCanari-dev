@@ -91,24 +91,24 @@ extension ComponentSymbolInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_ComponentSymbolInProject (knob inKnobIndex : Int,
-                                      proposedDx inDx : Int,
-                                      proposedDy inDy : Int,
-                                      unalignedMouseLocationX _ : Int,
-                                      unalignedMouseLocationY _ : Int,
-                                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                                      proposedDx inDx : CanariLength,
+                                      proposedDy inDy : CanariLength,
+                                      unalignedMouseLocationX _ : CanariLength,
+                                      unalignedMouseLocationY _ : CanariLength,
+                                      alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
+                                      alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                                       shift _ : Bool) {
     if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
-      self.mCenterX += inDx
-      self.mCenterY += inDy
+      self.mCenterX += inDx.cuValue
+      self.mCenterY += inDy.cuValue
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB {
-      self.mDisplayComponentNameOffsetX += inDx
-      self.mDisplayComponentNameOffsetY += inDy
+      self.mDisplayComponentNameOffsetX += inDx.cuValue
+      self.mDisplayComponentNameOffsetY += inDy.cuValue
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB {
-      self.mDisplayComponentValueOffsetX += inDx
-      self.mDisplayComponentValueOffsetY += inDy
+      self.mDisplayComponentValueOffsetX += inDx.cuValue
+      self.mDisplayComponentValueOffsetY += inDy.cuValue
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
-      let newKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY))
+      let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
       let p = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY))
       let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
       if angleInDegrees <= 45.0 {

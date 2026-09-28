@@ -121,23 +121,23 @@ extension BoardRestrictRectangle {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_BoardRestrictRectangle (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX _ : Int,
-                      unalignedMouseLocationY _ : Int,
-                      alignedMouseLocationX _ : Int,
-                      alignedMouseLocationY _ : Int,
+                      proposedDx inDx: CanariLength,
+                      proposedDy inDy: CanariLength,
+                      unalignedMouseLocationX _ : CanariLength,
+                      unalignedMouseLocationY _ : CanariLength,
+                      alignedMouseLocationX _ : CanariLength,
+                      alignedMouseLocationY _ : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == BOARD_RESTRICT_RECT_RIGHT {
-      self.mWidth += inDx
+      self.mWidth += inDx.cuValue
     }else if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
-      self.mX += inDx
-      self.mWidth -= inDx
+      self.mX += inDx.cuValue
+      self.mWidth -= inDx.cuValue
     }else if inKnobIndex == BOARD_RESTRICT_RECT_TOP {
-      self.mHeight += inDy
+      self.mHeight += inDy.cuValue
     }else if inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM {
-      self.mY += inDy
-      self.mHeight -= inDy
+      self.mY += inDy.cuValue
+      self.mHeight -= inDy.cuValue
     }
   }
 

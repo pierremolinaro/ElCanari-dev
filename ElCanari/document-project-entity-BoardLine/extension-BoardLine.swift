@@ -97,19 +97,19 @@ extension BoardLine {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_BoardLine (knob inKnobIndex : Int,
-                      proposedDx inDx : Int,
-                      proposedDy inDy : Int,
-                      unalignedMouseLocationX _ : Int,
-                      unalignedMouseLocationY _ : Int,
-                      alignedMouseLocationX _ : Int,
-                      alignedMouseLocationY _ : Int,
+                      proposedDx inDx : CanariLength,
+                      proposedDy inDy : CanariLength,
+                      unalignedMouseLocationX _ : CanariLength,
+                      unalignedMouseLocationY _ : CanariLength,
+                      alignedMouseLocationX _ : CanariLength,
+                      alignedMouseLocationY _ : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == BOARD_LINE_P1 {
-      self.mX1 += inDx
-      self.mY1 += inDy
+      self.mX1 += inDx.cuValue
+      self.mY1 += inDy.cuValue
     }else if inKnobIndex == BOARD_LINE_P2 {
-      self.mX2 += inDx
-      self.mY2 += inDy
+      self.mX2 += inDx.cuValue
+      self.mY2 += inDy.cuValue
     }
   }
 

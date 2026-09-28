@@ -223,12 +223,12 @@ final class NCInSchematic : SchematicObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func move (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      proposedDx inDx: CanariLength,
+                      proposedDy inDy: CanariLength,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : CanariLength,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : CanariLength,
+                      alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
+                      alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                       shift inShift : Bool) {
     self.move_NCInSchematic (
       knob: inKnobIndex,

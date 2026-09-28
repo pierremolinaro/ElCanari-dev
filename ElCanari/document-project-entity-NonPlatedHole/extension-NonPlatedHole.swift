@@ -93,19 +93,19 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_NonPlatedHole (knob inKnobIndex: Int,
-                      proposedDx inDx: Int,
-                      proposedDy inDy: Int,
-                      unalignedMouseLocationX _ : Int,
-                      unalignedMouseLocationY _ : Int,
-                      alignedMouseLocationX inAlignedMouseLocationX : Int,
-                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      proposedDx inDx: CanariLength,
+                      proposedDy inDy: CanariLength,
+                      unalignedMouseLocationX _ : CanariLength,
+                      unalignedMouseLocationY _ : CanariLength,
+                      alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
+                      alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == NON_PLATED_HOLE_ORIGIN_KNOB {
-      self.mX += inDx
-      self.mY += inDy
+      self.mX += inDx.cuValue
+      self.mY += inDy.cuValue
     }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
       let origin = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
-      let newRotationKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY)).ptValue
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }

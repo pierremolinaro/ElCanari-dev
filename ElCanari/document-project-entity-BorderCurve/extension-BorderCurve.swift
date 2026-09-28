@@ -168,29 +168,29 @@ extension BorderCurve {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_BorderCurve (knob inKnobIndex: Int,
-                         proposedDx inDx: Int,
-                         proposedDy inDy: Int,
-                         unalignedMouseLocationX _ : Int,
-                         unalignedMouseLocationY _ : Int,
-                         alignedMouseLocationX _ : Int,
-                         alignedMouseLocationY _ : Int,
+                         proposedDx inDx: CanariLength,
+                         proposedDy inDy: CanariLength,
+                         unalignedMouseLocationX _ : CanariLength,
+                         unalignedMouseLocationY _ : CanariLength,
+                         alignedMouseLocationX _ : CanariLength,
+                         alignedMouseLocationY _ : CanariLength,
                          shift _ : Bool) {
     if inKnobIndex == BOARD_LIMIT_P1_KNOB {
-      self.mX += inDx
-      self.mY += inDy
+      self.mX += inDx.cuValue
+      self.mY += inDy.cuValue
       self.setControlPointsDefaultValuesForLine ()
       self.mPrevious?.setControlPointsDefaultValuesForLine ()
     }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext{
-      next.mX += inDx
-      next.mY += inDy
+      next.mX += inDx.cuValue
+      next.mY += inDy.cuValue
       self.setControlPointsDefaultValuesForLine ()
       next.setControlPointsDefaultValuesForLine ()
     }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
-      self.mCPX1 += inDx
-      self.mCPY1 += inDy
+      self.mCPX1 += inDx.cuValue
+      self.mCPY1 += inDy.cuValue
     }else if inKnobIndex == BOARD_LIMIT_CP2_KNOB {
-      self.mCPX2 += inDx
-      self.mCPY2 += inDy
+      self.mCPX2 += inDx.cuValue
+      self.mCPY2 += inDy.cuValue
     }
   }
 

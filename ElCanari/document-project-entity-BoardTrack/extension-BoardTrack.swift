@@ -115,43 +115,43 @@ extension BoardTrack {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_BoardTrack (knob inKnobIndex : Int,
-                        proposedDx _ : Int,
-                        proposedDy _ : Int,
-                        unalignedMouseLocationX inUnalignedMouseCanariLocationX : Int,
-                        unalignedMouseLocationY inUnalignedMouseCanariLocationY : Int,
-                        alignedMouseLocationX inAlignedMouseCanariLocationX : Int,
-                        alignedMouseLocationY inAlignedMouseCanariLocationY : Int,
+                        proposedDx _ : CanariLength,
+                        proposedDy _ : CanariLength,
+                        unalignedMouseLocationX inUnalignedMouseCanariLocationX : CanariLength,
+                        unalignedMouseLocationY inUnalignedMouseCanariLocationY : CanariLength,
+                        alignedMouseLocationX inAlignedMouseCanariLocationX : CanariLength,
+                        alignedMouseLocationY inAlignedMouseCanariLocationY : CanariLength,
                         shift inShiftKey : Bool) {
     let mouseCanariLocationX = inShiftKey ? inAlignedMouseCanariLocationX : inUnalignedMouseCanariLocationX
     let mouseCanariLocationY = inShiftKey ? inAlignedMouseCanariLocationY : inUnalignedMouseCanariLocationY
     if inKnobIndex == BOARD_TRACK_P1 {
       switch self.mDirectionLockOnKnobDragging {
       case .unlocked :
-        self.mConnectorP1?.mX = mouseCanariLocationX
-        self.mConnectorP1?.mY = mouseCanariLocationY
+        self.mConnectorP1?.mX = mouseCanariLocationX.cuValue
+        self.mConnectorP1?.mY = mouseCanariLocationY.cuValue
       case .locked :
         let p1 = self.mConnectorP1!.location!
         let p2 = self.mConnectorP2!.location!
         let angle = Double (CanariPoint.angleInRadian (p1, p2))
-        let newLength : Double = Double (mouseCanariLocationX - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY - p2.y.cuValue) * sin (angle)
+        let newLength : Double = Double (mouseCanariLocationX.cuValue - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p2.y.cuValue) * sin (angle)
         let newP1X = p2.x.cuValue + Int ((newLength * cos (angle)).rounded ())
         let newP1Y = p2.y.cuValue + Int ((newLength * sin (angle)).rounded ())
         self.mConnectorP1?.mX = newP1X
         self.mConnectorP1?.mY = newP1Y
       case .octolinear :
         let p2 = self.mConnectorP2!.location!
-        let inUnalignedMouseLocation = CanariPoint (x: .cu (mouseCanariLocationX), y: .cu (mouseCanariLocationY))
+        let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.octolinearNearestAngleInDegrees (inUnalignedMouseLocation, p2)) * .pi / 180.0
-        let newLength : Double = Double (mouseCanariLocationX - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY - p2.y.cuValue) * sin (angle)
+        let newLength : Double = Double (mouseCanariLocationX.cuValue - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p2.y.cuValue) * sin (angle)
         let newP1X = p2.x.cuValue + Int ((newLength * cos (angle)).rounded ())
         let newP1Y = p2.y.cuValue + Int ((newLength * sin (angle)).rounded ())
         self.mConnectorP1?.mX = newP1X
         self.mConnectorP1?.mY = newP1Y
       case .rectilinear :
         let p2 = self.mConnectorP2!.location!
-        let inUnalignedMouseLocation = CanariPoint (x: .cu (mouseCanariLocationX), y: .cu (mouseCanariLocationY))
+        let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.rectilinearNearestAngleInDegrees (inUnalignedMouseLocation, p2)) * .pi / 180.0
-        let newLength : Double = Double (mouseCanariLocationX - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY - p2.y.cuValue) * sin (angle)
+        let newLength : Double = Double (mouseCanariLocationX.cuValue - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p2.y.cuValue) * sin (angle)
         let newP1X = p2.x.cuValue + Int ((newLength * cos (angle)).rounded ())
         let newP1Y = p2.y.cuValue + Int ((newLength * sin (angle)).rounded ())
         self.mConnectorP1?.mX = newP1X
@@ -159,31 +159,31 @@ extension BoardTrack {
     }else if inKnobIndex == BOARD_TRACK_P2 {
       switch self.mDirectionLockOnKnobDragging {
       case .unlocked :
-        self.mConnectorP2?.mX = mouseCanariLocationX
-        self.mConnectorP2?.mY = mouseCanariLocationY
+        self.mConnectorP2?.mX = mouseCanariLocationX.cuValue
+        self.mConnectorP2?.mY = mouseCanariLocationY.cuValue
       case .locked :
         let p1 = self.mConnectorP1!.location!
         let p2 = self.mConnectorP2!.location!
         let angle = CanariPoint.angleInRadian (p1, p2)
-        let newLength : Double = Double (mouseCanariLocationX - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY - p1.y.cuValue) * sin (angle)
+        let newLength : Double = Double (mouseCanariLocationX.cuValue - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p1.y.cuValue) * sin (angle)
         let newP2X = p1.x.cuValue + Int ((newLength * cos (angle)).rounded ())
         let newP2Y = p1.y.cuValue + Int ((newLength * sin (angle)).rounded ())
         self.mConnectorP2?.mX = newP2X
         self.mConnectorP2?.mY = newP2Y
       case .octolinear :
         let p1 = self.mConnectorP1!.location!
-        let inUnalignedMouseLocation = CanariPoint (x: .cu (mouseCanariLocationX), y: .cu (mouseCanariLocationY))
+        let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.octolinearNearestAngleInDegrees (p1, inUnalignedMouseLocation)) * .pi / 180.0
-        let newLength : Double = Double (mouseCanariLocationX - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY - p1.y.cuValue) * sin (angle)
+        let newLength : Double = Double (mouseCanariLocationX.cuValue - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p1.y.cuValue) * sin (angle)
         let newP2X = p1.x.cuValue + Int ((newLength * cos (angle)).rounded ())
         let newP2Y = p1.y.cuValue + Int ((newLength * sin (angle)).rounded ())
         self.mConnectorP2?.mX = newP2X
         self.mConnectorP2?.mY = newP2Y
       case .rectilinear :
         let p1 = self.mConnectorP1!.location!
-        let inUnalignedMouseLocation = CanariPoint (x: .cu (mouseCanariLocationX), y: .cu (mouseCanariLocationY))
+        let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.rectilinearNearestAngleInDegrees (p1, inUnalignedMouseLocation)) * .pi / 180.0
-        let newLength : Double = Double (mouseCanariLocationX - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY - p1.y.cuValue) * sin (angle)
+        let newLength : Double = Double (mouseCanariLocationX.cuValue - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p1.y.cuValue) * sin (angle)
         let newP2X = p1.x.cuValue + Int ((newLength * cos (angle)).rounded ())
         let newP2Y = p1.y.cuValue + Int ((newLength * sin (angle)).rounded ())
         self.mConnectorP2?.mX = newP2X

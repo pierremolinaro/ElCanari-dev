@@ -175,24 +175,24 @@ extension WireInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_WireInSchematic (knob inKnobIndex: Int,
-                             proposedDx inDx: Int,
-                             proposedDy inDy: Int,
-                             unalignedMouseLocationX _ : Int,
-                             unalignedMouseLocationY _ : Int,
-                             alignedMouseLocationX _ : Int,
-                             alignedMouseLocationY _ : Int,
+                             proposedDx inDx: CanariLength,
+                             proposedDy inDy: CanariLength,
+                             unalignedMouseLocationX _ : CanariLength,
+                             unalignedMouseLocationY _ : CanariLength,
+                             alignedMouseLocationX _ : CanariLength,
+                             alignedMouseLocationY _ : CanariLength,
                              shift _ : Bool) {
     if inKnobIndex == WIRE_CENTER_KNOB, let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
-      p1.mX += inDx
-      p1.mY += inDy
-      p2.mX += inDx
-      p2.mY += inDy
+      p1.mX += inDx.cuValue
+      p1.mY += inDy.cuValue
+      p2.mX += inDx.cuValue
+      p2.mY += inDy.cuValue
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil {
-      point.mX += inDx
-      point.mY += inDy
+      point.mX += inDx.cuValue
+      point.mY += inDy.cuValue
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil {
-      point.mX += inDx
-      point.mY += inDy
+      point.mX += inDx.cuValue
+      point.mY += inDy.cuValue
     }
   }
 

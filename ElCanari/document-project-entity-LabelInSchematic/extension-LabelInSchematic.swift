@@ -114,19 +114,19 @@ extension LabelInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_LabelInSchematic (knob inKnobIndex: Int,
-                              proposedDx inDx: Int,
-                              proposedDy inDy: Int,
-                              unalignedMouseLocationX _ : Int,
-                              unalignedMouseLocationY _ : Int,
-                              alignedMouseLocationX inAlignedMouseLocationX : Int,
-                              alignedMouseLocationY inAlignedMouseLocationY : Int,
+                              proposedDx inDx: CanariLength,
+                              proposedDy inDy: CanariLength,
+                              unalignedMouseLocationX _ : CanariLength,
+                              unalignedMouseLocationY _ : CanariLength,
+                              alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
+                              alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                               shift _ : Bool) {
     if let point = self.mPoint, point.mSymbol == nil {
       if inKnobIndex == LABEL_IN_SCHEMATICS_TRANSLATION_KNOB {
-        point.mX += inDx
-        point.mY += inDy
+        point.mX += inDx.cuValue
+        point.mY += inDy.cuValue
       }else if inKnobIndex == LABEL_IN_SCHEMATICS_ROTATION_KNOB {
-        let newKnobLocation = CanariPoint (x: .cu (inAlignedMouseLocationX), y: .cu (inAlignedMouseLocationY))
+        let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
         let p = CanariPoint (x: .cu (point.mX), y: .cu (point.mY))
         let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
         if angleInDegrees <= 45.0 {

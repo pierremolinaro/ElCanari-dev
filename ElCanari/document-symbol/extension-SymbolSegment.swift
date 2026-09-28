@@ -108,20 +108,19 @@ extension SymbolSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_SymbolSegment (knob inKnobIndex: Int,
-                           proposedDx inDx: Int,
-                           proposedDy inDy: Int,
-                           unalignedMouseLocationX _ : Int,
-                           unalignedMouseLocationY _ : Int,
-                           alignedMouseLocationX _ : Int,
-                           alignedMouseLocationY _ : Int,
+                           proposedDx inDx: CanariLength,
+                           proposedDy inDy: CanariLength,
+                           unalignedMouseLocationX _ : CanariLength,
+                           unalignedMouseLocationY _ : CanariLength,
+                           alignedMouseLocationX _ : CanariLength,
+                           alignedMouseLocationY _ : CanariLength,
                            shift _ : Bool) {
-//    Swift.print ("inDx \(inDx), inDy \(inDy)")
     if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
-      self.x1 += inDx
-      self.y1 += inDy
+      self.x1 += inDx.cuValue
+      self.y1 += inDy.cuValue
     }else if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_2 {
-      self.x2 += inDx
-      self.y2 += inDy
+      self.x2 += inDx.cuValue
+      self.y2 += inDy.cuValue
     }
   }
 
