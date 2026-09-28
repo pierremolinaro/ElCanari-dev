@@ -33,8 +33,8 @@ struct ProductPoint : Codable, Equatable, CustomStringConvertible {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (x inX : Double, _ inXUnit : CanariLength.Unit,
-        y inY : Double, _ inYUnit : CanariLength.Unit) {
+  init (x inX : Double, _ inXUnit : CanariLengthUnit,
+        y inY : Double, _ inYUnit : CanariLengthUnit) {
     self.x = CanariLength (inX, in: inXUnit)
     self.y = CanariLength (inY, in: inYUnit)
   }

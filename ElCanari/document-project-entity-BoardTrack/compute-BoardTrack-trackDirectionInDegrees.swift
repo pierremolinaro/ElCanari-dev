@@ -29,7 +29,7 @@ extension BoardTrack {
       let p2 = self.mConnectorP2!.location!
       let halfLength = CanariPoint.distance (p1, p2) / 2.0
       let center = CanariPoint.center (p1, p2)
-      let dp = CanariPoint (length: halfLength, angle: .radians (angleInRadian))
+      let dp = CanariPoint (length: halfLength, angle: .radian (angleInRadian))
 //      let dx = Int ((halfLength.cuValue * cos (angleInRadian)).rounded ())
 //      let dy = Int ((halfLength.cuValue * sin (angleInRadian)).rounded ())
       let newP1x = center.x - dp.x

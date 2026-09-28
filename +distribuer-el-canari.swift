@@ -211,7 +211,6 @@ do{
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
 //-------------------- Compiler le projet Xcode
   let débutCompilation = Date ()
-  removeDirectory ("build")
   let jsonString = runHiddenCommand (
     "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
     ["-list", "-json"]
@@ -222,7 +221,6 @@ do{
     [ "-scheme", "ElCanari-" + CONFIGURATION.string,
       "-target", "ElCanari-" + CONFIGURATION.string,
       "-configuration", CONFIGURATION.string,
-      //"ONLY_ACTIVE_ARCH=YES", "ARCHS=arm64",
       "-verbose",
       "-arch", "arm64",
       "-derivedDataPath", "XCode-DerivedData-Build"
