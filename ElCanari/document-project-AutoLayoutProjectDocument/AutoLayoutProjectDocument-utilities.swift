@@ -45,7 +45,7 @@ let NC_TITLE = "nc"
 
 //--------------------------------------------------------------------------------------------------
 
-let SCHEMATIC_CONNECTION_POINT_DIAMETER = milsToCocoaUnit (50.0)
+let SCHEMATIC_CONNECTION_POINT_DIAMETER = CanariLength.pt (50.0)
 
 //--------------------------------------------------------------------------------------------------
 

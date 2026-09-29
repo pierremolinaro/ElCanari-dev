@@ -98,10 +98,10 @@ import CanariGeometry
       //--- Center knob
         shape.add (knobAt:  symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
       //--- Line from center to rotation knob
-        let d = milsToCocoaUnit (200.0)
+        let d = CanariLength.mil (200.0)
         let rotationKnobCenter = NSPoint (
-          x: self_symbolInfo.center.x.ptValue + d * cos (symbolRotationInRadians),
-          y: self_symbolInfo.center.y.ptValue + d * sin (symbolRotationInRadians)
+          x: self_symbolInfo.center.x + d * cos (symbolRotationInRadians),
+          y: self_symbolInfo.center.y + d * sin (symbolRotationInRadians)
         )
         var bp = BezierPath ()
         bp.move (to: symbolCenter)

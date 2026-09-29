@@ -157,9 +157,9 @@ extension AutoLayoutMergerDocument {
                                     _ inKicadFont : [UInt32 : BoardFontCharacter],
                                     _ ioErrorArray : inout [(String, Int)]) {
   //--- Extract board bounding box
-    var left   =  Int.max ; var right  = -Int.max
-    var bottom = -Int.max ; var top = Int.max // in Kicad, the Y-axis is pointing down
-    var boardModelWidth = -Int.max
+    var left   =  CanariLength.max ; var right  = -CanariLength.max
+    var bottom = -CanariLength.max ; var top = CanariLength.max // in Kicad, the Y-axis is pointing down
+    var boardModelWidth = -CanariLength.max
     self.collectBoardLimits (inContentArray, &left, &right, &top, &bottom, &boardModelWidth, &ioErrorArray)
     if (left >= right) || (top >= bottom) {
       let alert = NSAlert ()
@@ -167,13 +167,13 @@ extension AutoLayoutMergerDocument {
       alert.informativeText = ""
       alert.beginSheetModal (for: self.windowForSheet!)
     }else{
-      let leftMM = canariUnitToMillimeter (left)
-      let rightMM = canariUnitToMillimeter (right)
-      let topMM = canariUnitToMillimeter (top)
-      let bottomMM = canariUnitToMillimeter (bottom)
+      let leftMM = left.mmValue
+      let rightMM = right.mmValue
+      let topMM = top.mmValue
+      let bottomMM = bottom.mmValue
       let modelWidthMM = rightMM - leftMM
       let modelHeightMM = bottomMM - topMM // in Kicad, the Y-axis is pointing down
-      let boardRect_mm = NSRect (x: 0.0, y: 0.0, width: canariUnitToMillimeter (right - left), height: canariUnitToMillimeter (bottom - top))
+      let boardRect_mm = NSRect (x: 0.0, y: 0.0, width: (right - left).mmValue, height: (bottom - top).mmValue)
       // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
       boardModel.modelWidth  = .mm (modelWidthMM)
       boardModel.modelWidthUnit = CANARI_UNITS_PER_MM
@@ -647,11 +647,11 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func collectBoardLimits (_ inContentArray : [KicadItem],
-                                       _ ioLeft : inout Int,
-                                       _ ioRight : inout Int,
-                                       _ ioTop : inout Int,
-                                       _ ioBottom : inout Int,
-                                       _ ioLineWidth : inout Int,
+                                       _ ioLeft : inout CanariLength,
+                                       _ ioRight : inout CanariLength,
+                                       _ ioTop : inout CanariLength,
+                                       _ ioBottom : inout CanariLength,
+                                       _ ioLineWidth : inout CanariLength,
                                        _ ioErrorArray : inout [(String, Int)]) {
     for item in inContentArray {
       if item.key == "gr_line" {
@@ -662,11 +662,11 @@ extension AutoLayoutMergerDocument {
            let width = item.getFloat (["gr_line", "width"], 0, &ioErrorArray, #line),
            let layer = item.getString (["gr_line", "layer"], 0, &ioErrorArray, #line) {
           if layer == "Edge.Cuts" {
-            let x1 = millimeterToCanariUnit (startX)
-            let y1 = millimeterToCanariUnit (startY)
-            let x2 = millimeterToCanariUnit (endX)
-            let y2 = millimeterToCanariUnit (endY)
-            let lineWidth = millimeterToCanariUnit (width)
+            let x1 = CanariLength.mm (startX)
+            let y1 = CanariLength.mm (startY)
+            let x2 = CanariLength.mm (endX)
+            let y2 = CanariLength.mm (endY)
+            let lineWidth = CanariLength.mm (width)
             if ioLeft > x1 {
               ioLeft = x1
             }

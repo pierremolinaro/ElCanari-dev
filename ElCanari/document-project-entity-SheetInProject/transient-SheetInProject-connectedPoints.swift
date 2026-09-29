@@ -23,7 +23,7 @@ import CanariGeometry
         for object in self_mPoints_connectedPoints {
           if let a = object.connectedPoints {
             for point in a {
-              let p = point.ptValue
+              let p = point
               let r = NSRect (
                 x: p.x - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,
                 y: p.y - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,

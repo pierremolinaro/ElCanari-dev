@@ -92,33 +92,7 @@ fileprivate func displayComponentsFrom (valueInCanariUnit inValue : Int, unit in
 }
 
 //--------------------------------------------------------------------------------------------------
-
-//func canariUnitToCocoa (_ inValue : Int) -> CGFloat {
-//  return CGFloat (inValue) / CGFloat (CANARI_UNITS_PER_POINT)
-//}
-
-//--------------------------------------------------------------------------------------------------
-//   Conversion to Cocoa Unit (72 dots per inch)
-//--------------------------------------------------------------------------------------------------
-
-func milsToCocoaUnit (_ inValueInMils : CGFloat) -> CGFloat {
-  return inValueInMils * CGFloat (PIXELS_PER_INCH) / 1000.0
-}
-
-//--------------------------------------------------------------------------------------------------
 //   Conversion to Canari Unit
-//--------------------------------------------------------------------------------------------------
-
-func millimeterToCanariUnit (_ inValue : CGFloat) -> Int {
-  return Int ((inValue * CGFloat (CANARI_UNITS_PER_MM)).rounded ())
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -······················
-
-func milsToCanariUnit (fromInt inValue : Int) -> Int {
-  return inValue * CANARI_UNITS_PER_MIL
-}
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -······················
 
 func milsToCanariUnit (fromDouble inValue : Double) -> Int {

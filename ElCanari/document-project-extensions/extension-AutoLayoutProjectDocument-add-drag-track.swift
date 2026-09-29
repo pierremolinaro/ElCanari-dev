@@ -152,7 +152,7 @@ extension AutoLayoutProjectDocument {
   fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : NSPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
-    let d = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter))
+    let d = CanariLength.pt (self.rootObject.mControlKeyHiliteDiameter)
   //--- Hilite connectors
     if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1, let netName = connector1.netName () {
     //--- Exclude connectors connected to connector 1
@@ -170,7 +170,7 @@ extension AutoLayoutProjectDocument {
               connector.netNameFromComponentPad == netName {
           connector.buildBezierPathArrayForHilitingOnOptionFlag (
             trackSide: newTrackSide,
-            controlKeyHiliteDiameter: d,
+            controlKeyHiliteDiameter: d.ptValue,
             bezierPathArray: &bpArray
           )
         }
@@ -183,11 +183,11 @@ extension AutoLayoutProjectDocument {
       }
     }
   //--- Control key ?
-    if NSEvent.modifierFlags.contains (.control), d > 0.0, let boardView = self.mBoardView?.mGraphicView {
+    if NSEvent.modifierFlags.contains (.control), d > .zero, let boardView = self.mBoardView?.mGraphicView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
         let r = NSRect (
-          x: inUnalignedMouseLocation.x - d / 2.0,
-          y: inUnalignedMouseLocation.y - d / 2.0,
+          x: .pt (inUnalignedMouseLocation.x) - d / 2.0,
+          y: .pt (inUnalignedMouseLocation.y) - d / 2.0,
           width: d,
           height: d
         )
@@ -218,7 +218,7 @@ extension AutoLayoutProjectDocument {
      //--- Retain track only if distance between P1 and P2 is greater than mControlKeyHiliteDiameterSlider
        let p1 = track.mConnectorP1!.location!.ptValue
        let p2 = track.mConnectorP2!.location!.ptValue
-       accepts =  NSPoint.distance (p1, p2) > (milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter)) / 2.0)
+       accepts = NSPoint.distance (p1, p2) > (CanariLength.mil (self.rootObject.mControlKeyHiliteDiameter) / 2.0).ptValue
        if accepts { // Try to connect at mouse up location
          let connectorsAt2 = self.rootObject.connectors (at: p2.canariPoint, trackSide: track.mSide)
          self.tryToConnect (connectorsAt2)

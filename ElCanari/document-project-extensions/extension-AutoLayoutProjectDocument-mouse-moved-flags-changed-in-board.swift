@@ -18,7 +18,7 @@ extension AutoLayoutProjectDocument {
   func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : NSPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
-    let d = milsToCocoaUnit (CGFloat (self.rootObject.mControlKeyHiliteDiameter))
+    let d = CanariLength.pt (self.rootObject.mControlKeyHiliteDiameter)
   //--- Option key ?
     if NSEvent.modifierFlags.contains (.option) {
       let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
@@ -33,7 +33,7 @@ extension AutoLayoutProjectDocument {
                   connector.netNameFromComponentPad == netName {
               connector.buildBezierPathArrayForHilitingOnOptionFlag (
                 trackSide: newTrackSide,
-                controlKeyHiliteDiameter: d,
+                controlKeyHiliteDiameter: d.ptValue,
                 bezierPathArray: &bpArray
               )
             }
@@ -49,12 +49,12 @@ extension AutoLayoutProjectDocument {
     }
   //--- Control key ?
     if NSEvent.modifierFlags.contains (.control),
-          !NSEvent.modifierFlags.contains (.shift), d > 0.0,
+          !NSEvent.modifierFlags.contains (.shift), d > .zero,
           let boardView = self.mBoardView?.mGraphicView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
         let r = NSRect (
-          x: inUnalignedMouseLocation.x - d / 2.0,
-          y: inUnalignedMouseLocation.y - d / 2.0,
+          x: .pt (inUnalignedMouseLocation.x) - d / 2.0,
+          y: .pt (inUnalignedMouseLocation.y) - d / 2.0,
           width: d,
           height: d
         )
