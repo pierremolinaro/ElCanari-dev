@@ -32,7 +32,7 @@ let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: "name.pcmoli
 
 //--------------------------------------------------------------------------------------------------
 
-let TRACK_INITIAL_SIZE_IN_CANARI_UNIT = 500 * 2_286 // 500 mils
+let TRACK_INITIAL_SIZE = CanariLength.mil (500)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ let SCHEMATIC_GRID_LENGTH = CanariLength.mil (50)
 
 //--------------------------------------------------------------------------------------------------
 
-let NC_DISTANCE_IN_COCOA_UNIT = milsToCocoaUnit (50.0)
+let NC_DISTANCE = CanariLength.mil (50)
 let NC_TITLE = "nc"
 
 //--------------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ let BOARD_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
 let SCHEMATIC_LABEL_SIZE : CGFloat = 3.6
 
-let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = milsToCanariUnit (fromInt: 400)
+let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = CanariLength.mil (400)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -460,22 +460,22 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bezierPath (index inIndex : Int, extraWidth : Int = 0) -> BezierPath {
+  func bezierPath (index inIndex : Int, extraWidth : CanariLength = .zero) -> BezierPath {
     if inIndex == 0 {
       return BezierPath.pad (
-        centerX: self.center.x.cuValue,
-        centerY: self.center.y.cuValue,
-        width: self.padSize.width.cuValue + extraWidth,
-        height: self.padSize.height.cuValue + extraWidth,
+        centerX: self.center.x,
+        centerY: self.center.y,
+        width: self.padSize.width + extraWidth,
+        height: self.padSize.height + extraWidth,
         shape: self.shape
       )
     }else{
       let slavePad = self.slavePads [inIndex - 1]
       return BezierPath.pad (
-        centerX: slavePad.center.x.cuValue,
-        centerY: slavePad.center.y.cuValue,
-        width: slavePad.padSize.width.cuValue + extraWidth,
-        height: slavePad.padSize.height.cuValue + extraWidth,
+        centerX: slavePad.center.x,
+        centerY: slavePad.center.y,
+        width: slavePad.padSize.width + extraWidth,
+        height: slavePad.padSize.height + extraWidth,
         shape: slavePad.shape
       )
     }

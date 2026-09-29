@@ -38,7 +38,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
   property @generateDirectAccess TrackSide mSide default front ;
 
   property Int mDefaultTrackWidthUnit default 2_286 ; // mil
-  property @generateDirectAccess Int mCustomTrackWidth default 45_720 ; // 20 mil
+  property @generateDirectAccess CanariLength mCustomTrackWidth default ".mil (20)" ;
   property Int mCustomTrackWidthUnit default 2_286 ; // mil
   property @generateDirectAccess Bool mUsesCustomTrackWidth default no ;
   property @generateDirectAccess Bool mIsPreservedByAutoRouter default no ;
@@ -94,16 +94,16 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
     self.actualTrackWidth
   ;
   
-  transient Int actualTrackWidth dependsFrom
+  transient CanariLength actualTrackWidth dependsFrom
     self.mNet.one.netClassTrackWidth,
     self.mUsesCustomTrackWidth, self.mCustomTrackWidth
   ;
 
   transient String netName dependsFrom self.mNet.one.mNetName ;
   transient String netClassName dependsFrom self.mNet.one.netClassName ;
-  transient Int netClassTrackWidth dependsFrom self.mNet.one.netClassTrackWidth ;
-  transient Int netClassViaHoleDiameter dependsFrom self.mNet.one.netClassViaHoleDiameter ;
-  transient Int netClassViaPadDiameter dependsFrom self.mNet.one.netClassViaPadDiameter ;
+  transient CanariLength netClassTrackWidth dependsFrom self.mNet.one.netClassTrackWidth ;
+  transient CanariLength netClassViaHoleDiameter dependsFrom self.mNet.one.netClassViaHoleDiameter ;
+  transient CanariLength netClassViaPadDiameter dependsFrom self.mNet.one.netClassViaPadDiameter ;
   
   override transient Double trackLengthInCanariUnit
     dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
@@ -135,13 +135,13 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
     self.mConnectorP2.one.location
   ;
   
-  computed Int computedP1X dependsFrom self.mConnectorP1.one.location ;
+  computed CanariLength computedP1X dependsFrom self.mConnectorP1.one.location ;
  
-  computed Int computedP1Y dependsFrom self.mConnectorP1.one.location ;
+  computed CanariLength computedP1Y dependsFrom self.mConnectorP1.one.location ;
   
-  computed Int computedP2X dependsFrom self.mConnectorP2.one.location ;
+  computed CanariLength computedP2X dependsFrom self.mConnectorP2.one.location ;
   
-  computed Int computedP2Y dependsFrom self.mConnectorP2.one.location ; 
+  computed CanariLength computedP2Y dependsFrom self.mConnectorP2.one.location ; 
 }
 
 //--------------------------------------------------------------------------------------------------

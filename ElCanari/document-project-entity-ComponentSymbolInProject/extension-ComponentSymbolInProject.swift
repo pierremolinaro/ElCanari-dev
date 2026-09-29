@@ -55,8 +55,8 @@ extension ComponentSymbolInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_ComponentSymbolInProject (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mCenterX += inDx.cuValue
-    self.mCenterY += inDy.cuValue
+    self.mCenterX += inDx
+    self.mCenterY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -99,17 +99,17 @@ extension ComponentSymbolInProject {
                                       alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                                       shift _ : Bool) {
     if inKnobIndex == SYMBOL_IN_SCHEMATICS_CENTER_KNOB {
-      self.mCenterX += inDx.cuValue
-      self.mCenterY += inDy.cuValue
+      self.mCenterX += inDx
+      self.mCenterY += inDy
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_NAME_KNOB {
-      self.mDisplayComponentNameOffsetX += inDx.cuValue
-      self.mDisplayComponentNameOffsetY += inDy.cuValue
+      self.mDisplayComponentNameOffsetX += inDx
+      self.mDisplayComponentNameOffsetY += inDy
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_COMPONENT_VALUE_KNOB {
-      self.mDisplayComponentValueOffsetX += inDx.cuValue
-      self.mDisplayComponentValueOffsetY += inDy.cuValue
+      self.mDisplayComponentValueOffsetX += inDx
+      self.mDisplayComponentValueOffsetY += inDy
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
       let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
-      let p = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY))
+      let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
       let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
       if angleInDegrees <= 45.0 {
         self.mRotation = .rotation0
@@ -176,8 +176,8 @@ extension ComponentSymbolInProject {
 
   func rotate90Clockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x.cuValue
-    self.mCenterY = p.y.cuValue
+    self.mCenterX = p.x
+    self.mCenterY = p.y
     if self.mMirror {
       self.mRotation.rotateCounterClockwise ()
     }else{
@@ -189,8 +189,8 @@ extension ComponentSymbolInProject {
 
   func rotate90CounterClockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x.cuValue
-    self.mCenterY = p.y.cuValue
+    self.mCenterX = p.x
+    self.mCenterY = p.y
     if self.mMirror {
       self.mRotation.rotateClockwise ()
     }else{
@@ -203,21 +203,21 @@ extension ComponentSymbolInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_ComponentSymbolInProject (_ inGrid : Int) -> Bool {
-    var result = (self.mCenterX % inGrid) != 0
+    var result = self.mCenterX.isAligned (on: inGrid)
     if !result {
-      result = (self.mCenterY % inGrid) != 0
+      result = self.mCenterY.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.mDisplayComponentNameOffsetX % inGrid) != 0
+      result = self.mDisplayComponentNameOffsetX.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.mDisplayComponentNameOffsetY % inGrid) != 0
+      result = self.mDisplayComponentNameOffsetY.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.mDisplayComponentValueOffsetX % inGrid) != 0
+      result = self.mDisplayComponentValueOffsetX.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.mDisplayComponentValueOffsetY % inGrid) != 0
+      result = self.mDisplayComponentValueOffsetY.isAligned (on: inGrid)
     }
     return result
   }
@@ -225,12 +225,12 @@ extension ComponentSymbolInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_ComponentSymbolInProject (_ inGrid : Int) {
-    self.mCenterX = ((self.mCenterX + inGrid / 2) / inGrid) * inGrid
-    self.mCenterY = ((self.mCenterY + inGrid / 2) / inGrid) * inGrid
-    self.mDisplayComponentNameOffsetX = ((self.mDisplayComponentNameOffsetX + inGrid / 2) / inGrid) * inGrid
-    self.mDisplayComponentNameOffsetY = ((self.mDisplayComponentNameOffsetY + inGrid / 2) / inGrid) * inGrid
-    self.mDisplayComponentValueOffsetX = ((self.mDisplayComponentValueOffsetX + inGrid / 2) / inGrid) * inGrid
-    self.mDisplayComponentValueOffsetY = ((self.mDisplayComponentValueOffsetY + inGrid / 2) / inGrid) * inGrid
+    self.mCenterX.align (on: inGrid)
+    self.mCenterY.align (on: inGrid)
+    self.mDisplayComponentNameOffsetX.align (on: inGrid)
+    self.mDisplayComponentNameOffsetY.align (on: inGrid)
+    self.mDisplayComponentValueOffsetX.align (on: inGrid)
+    self.mDisplayComponentValueOffsetY.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -244,14 +244,14 @@ extension ComponentSymbolInProject {
     }
     if self.mDisplayComponentValue {
       let p = CanariPoint (
-        x: .cu (self.mCenterX + self.mDisplayComponentValueOffsetX),
-        y: .cu (self.mCenterY + self.mDisplayComponentValueOffsetY)
+        x: self.mCenterX + self.mDisplayComponentValueOffsetX,
+        y: self.mCenterY + self.mDisplayComponentValueOffsetY
       )
       result.insert (p)
     }
     let p = CanariPoint (
-      x: .cu (self.mCenterX + self.mDisplayComponentNameOffsetX),
-      y: .cu (self.mCenterY + self.mDisplayComponentNameOffsetY)
+      x: self.mCenterX + self.mDisplayComponentNameOffsetX,
+      y: self.mCenterY + self.mDisplayComponentNameOffsetY
     )
     result.insert (p)
     return result
@@ -267,8 +267,8 @@ extension ComponentSymbolInProject {
       point.mNC = nil // Detach from pin
     //---
       let pinLocation = point.location!
-      point.mX = pinLocation.x.cuValue
-      point.mY = pinLocation.y.cuValue
+      point.mX = pinLocation.x
+      point.mY = pinLocation.y
     //---
       point.mSymbolPinName = ""
       point.mSymbol = nil

@@ -229,13 +229,13 @@ extension BezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func pad (centerX inCenterX : Int,
-                   centerY inCenterY : Int,
-                   width inWidth : Int,
-                   height inHeight : Int,
+  static func pad (centerX inCenterX : CanariLength,
+                   centerY inCenterY : CanariLength,
+                   width inWidth : CanariLength,
+                   height inHeight : CanariLength,
                    shape inShape : PadShape) -> BezierPath {
-    let center = CanariPoint (x: .cu (inCenterX), y: .cu (inCenterY)).ptValue
-    let size = CanariSize (width: .cu (inWidth), height: .cu (inHeight)).ptValue
+    let center = NSPoint (x: inCenterX, y: inCenterY)
+    let size = NSSize (width: inWidth, height: inHeight)
     let r = NSRect (center: center, size: size)
     switch inShape {
     case .rect :
@@ -262,16 +262,16 @@ final class PadGeometryForERC {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (padId inID : Int,
-        centerX inCenterX : Int,
-        centerY inCenterY : Int,
-        width inWidth : Int,
-        height inHeight : Int,
-        clearance inClearance : Int,
+        centerX inCenterX : CanariLength,
+        centerY inCenterY : CanariLength,
+        width inWidth : CanariLength,
+        height inHeight : CanariLength,
+        clearance inClearance : CanariLength,
         shape inShape : PadShape) {
     self.id = inID
-    let center = CanariPoint (x: .cu (inCenterX), y: .cu (inCenterY)).ptValue
-    let size = CanariSize (width: .cu (inWidth), height: .cu (inHeight)).ptValue
-    let clearance = canariUnitToCocoa (inClearance)
+    let center = NSPoint (x: inCenterX, y: inCenterY)
+    let size = NSSize (width: inWidth, height: inHeight)
+    let clearance = inClearance.ptValue
     var c = [GeometricCircle] ()
     var rects = [GeometricRect] ()
     switch inShape {

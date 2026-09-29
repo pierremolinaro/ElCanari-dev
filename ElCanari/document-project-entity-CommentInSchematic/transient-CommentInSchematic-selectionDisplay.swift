@@ -25,13 +25,13 @@ import CanariGeometry
        _ prefs_schematicBackColor : NSColor,                   
        _ self_mRotation : Int,                                 
        _ self_mBold : Bool,                                    
-       _ self_mX : Int,                                        
-       _ self_mY : Int
+       _ self_mX : CanariLength,                               
+       _ self_mY : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let s = CGFloat (self_mSize)
         let font = self_mBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
-        let p = CanariPoint (x: .cu (self_mX), y: .cu (self_mY)).ptValue
+        let p = NSPoint (x: self_mX, y: self_mY)
         var af = AffineTransform ()
         af.translate (x: p.x, y: p.y)
         af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)

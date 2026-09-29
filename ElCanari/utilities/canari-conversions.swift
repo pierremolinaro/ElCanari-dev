@@ -172,15 +172,15 @@ func canariUnitToMillimeter (_ inValue : Int) -> CGFloat {
 //   Display
 //--------------------------------------------------------------------------------------------------
 
-func valueAndUnitStringFrom (valueInCanariUnit inValue : Int, displayUnit inUnit : Int) -> String {
-  let v = displayComponentsFrom (valueInCanariUnit: inValue, unit: inUnit)
+func valueAndUnitStringFrom (valueInCanariUnit inValue : CanariLength, displayUnit inUnit : Int) -> String {
+  let v = displayComponentsFrom (valueInCanariUnit: inValue.cuValue, unit: inUnit)
   return v.value + " " + v.unit
 }
 
 //--------------------------------------------------------------------------------------------------
 
 func valueAndUnitStringFrom (valueInCocoaUnit inValue : CGFloat, displayUnit inUnit : Int) -> String {
-  return valueAndUnitStringFrom (valueInCanariUnit: CanariLength.pt (inValue).cuValue, displayUnit: inUnit)
+  return valueAndUnitStringFrom (valueInCanariUnit: CanariLength.pt (inValue), displayUnit: inUnit)
 }
 
 //--------------------------------------------------------------------------------------------------

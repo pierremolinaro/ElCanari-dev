@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -12,7 +13,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_gridStep (_ model : EBObservableProperty <Int>) {
+  final func bind_gridStep (_ model : EBObservableProperty <CanariLength>) {
     self.mGridStepController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateGridStep (from: model) }
@@ -28,10 +29,10 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private func updateGridStep (from model : EBObservableProperty <Int>) {
+  final private func updateGridStep (from model : EBObservableProperty <CanariLength>) {
     switch model.selection {
     case .empty, .multiple :
-      self.mGridStepInCanariUnit = milsToCanariUnit (fromInt: 25)
+      self.mGridStepInCanariUnit = .mil (25)
     case .single (let v) :
       self.mGridStepInCanariUnit = v
     }

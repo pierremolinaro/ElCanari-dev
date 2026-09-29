@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardRestrictRectangle_signatureForERCChecking (
-       _ self_mX : Int,                                                   
-       _ self_mY : Int,                                                   
-       _ self_mWidth : Int,                                               
-       _ self_mHeight : Int,                                              
+       _ self_mX : CanariLength,                                          
+       _ self_mY : CanariLength,                                          
+       _ self_mWidth : CanariLength,                                      
+       _ self_mHeight : CanariLength,                                     
        _ self_mIsInFrontLayer : Bool,                                     
        _ self_mIsInBackLayer : Bool,                                      
        _ self_mIsInInner1Layer : Bool,                                    

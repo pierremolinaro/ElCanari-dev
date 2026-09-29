@@ -16,12 +16,12 @@ import CanariGeometry
 
 @MainActor func transient_BoardImage_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,         
-       _ self_mCenterX : Int,                          
-       _ self_mCenterY : Int,                          
+       _ self_mCenterX : CanariLength,                 
+       _ self_mCenterY : CanariLength,                 
        _ self_boardImageCodeDescriptor : BoardImageDescriptor,
        _ self_mLayer : BoardQRCodeLayer,               
        _ self_mRotation : Int,                         
-       _ self_mPixelSize : Int,                        
+       _ self_mPixelSize : CanariLength,               
        _ prefs_frontSideLegendColorForBoard : NSColor, 
        _ prefs_backSideLegendColorForBoard : NSColor,  
        _ prefs_hiliteWidthMultipliedByTen : Int,       
@@ -50,7 +50,7 @@ import CanariGeometry
       //--- Image
         shape.add (filled: [displayInfos.imageBP], foreColor)
       //--- Rotation knob
-        let center = NSPoint (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
+        let center = NSPoint (x: self_mCenterX, y: self_mCenterY)
         if prefs_mShowTextRotationKnobInBoard {
           var knobLine = BezierPath ()
           knobLine.move (to : center)

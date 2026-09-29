@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -12,7 +13,7 @@ extension EBGraphicView {
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
-  final func bind_shiftArrowKeyMagnitude (_ model : EBObservableProperty <Int>) {
+  final func bind_shiftArrowKeyMagnitude (_ model : EBObservableProperty <CanariLength>) {
     self.mShiftArrowKeyMagnitudeController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
@@ -28,7 +29,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private func updateShiftArrowKeyMagnitude (from model : EBObservableProperty <Int>) {
+  final private func updateShiftArrowKeyMagnitude (from model : EBObservableProperty <CanariLength>) {
     switch model.selection {
     case .empty :
       break

@@ -90,13 +90,13 @@ extension BoardTrack {
                              userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let connectorP1 = self.mConnectorP1, !ioSet.contains (connectorP1) {
       ioSet.insert (connectorP1)
-      connectorP1.mX += inDx.cuValue
-      connectorP1.mY += inDy.cuValue
+      connectorP1.mX += inDx
+      connectorP1.mY += inDy
     }
     if let connectorP2 = self.mConnectorP2, !ioSet.contains (connectorP2) {
       ioSet.insert (connectorP2)
-      connectorP2.mX += inDx.cuValue
-      connectorP2.mY += inDy.cuValue
+      connectorP2.mX += inDx
+      connectorP2.mY += inDy
     }
   }
 
@@ -127,15 +127,15 @@ extension BoardTrack {
     if inKnobIndex == BOARD_TRACK_P1 {
       switch self.mDirectionLockOnKnobDragging {
       case .unlocked :
-        self.mConnectorP1?.mX = mouseCanariLocationX.cuValue
-        self.mConnectorP1?.mY = mouseCanariLocationY.cuValue
+        self.mConnectorP1?.mX = mouseCanariLocationX
+        self.mConnectorP1?.mY = mouseCanariLocationY
       case .locked :
         let p1 = self.mConnectorP1!.location!
         let p2 = self.mConnectorP2!.location!
         let angle = Double (CanariPoint.angleInRadian (p1, p2))
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p2.y.cuValue) * sin (angle)
-        let newP1X = p2.x.cuValue + Int ((newLength * cos (angle)).rounded ())
-        let newP1Y = p2.y.cuValue + Int ((newLength * sin (angle)).rounded ())
+        let newP1X = p2.x + .cu (Int ((newLength * cos (angle)).rounded ()))
+        let newP1Y = p2.y + .cu (Int ((newLength * sin (angle)).rounded ()))
         self.mConnectorP1?.mX = newP1X
         self.mConnectorP1?.mY = newP1Y
       case .octolinear :
@@ -143,8 +143,8 @@ extension BoardTrack {
         let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.octolinearNearestAngleInDegrees (inUnalignedMouseLocation, p2)) * .pi / 180.0
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p2.y.cuValue) * sin (angle)
-        let newP1X = p2.x.cuValue + Int ((newLength * cos (angle)).rounded ())
-        let newP1Y = p2.y.cuValue + Int ((newLength * sin (angle)).rounded ())
+        let newP1X = p2.x + .cu (Int ((newLength * cos (angle)).rounded ()))
+        let newP1Y = p2.y + .cu (Int ((newLength * sin (angle)).rounded ()))
         self.mConnectorP1?.mX = newP1X
         self.mConnectorP1?.mY = newP1Y
       case .rectilinear :
@@ -152,22 +152,23 @@ extension BoardTrack {
         let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.rectilinearNearestAngleInDegrees (inUnalignedMouseLocation, p2)) * .pi / 180.0
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p2.y.cuValue) * sin (angle)
-        let newP1X = p2.x.cuValue + Int ((newLength * cos (angle)).rounded ())
-        let newP1Y = p2.y.cuValue + Int ((newLength * sin (angle)).rounded ())
+        let newP1X = p2.x + .cu (Int ((newLength * cos (angle)).rounded ()))
+        let newP1Y = p2.y + .cu (Int ((newLength * sin (angle)).rounded ()))
         self.mConnectorP1?.mX = newP1X
-        self.mConnectorP1?.mY = newP1Y      }
+        self.mConnectorP1?.mY = newP1Y
+      }
     }else if inKnobIndex == BOARD_TRACK_P2 {
       switch self.mDirectionLockOnKnobDragging {
       case .unlocked :
-        self.mConnectorP2?.mX = mouseCanariLocationX.cuValue
-        self.mConnectorP2?.mY = mouseCanariLocationY.cuValue
+        self.mConnectorP2?.mX = mouseCanariLocationX
+        self.mConnectorP2?.mY = mouseCanariLocationY
       case .locked :
         let p1 = self.mConnectorP1!.location!
         let p2 = self.mConnectorP2!.location!
         let angle = CanariPoint.angleInRadian (p1, p2)
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p1.y.cuValue) * sin (angle)
-        let newP2X = p1.x.cuValue + Int ((newLength * cos (angle)).rounded ())
-        let newP2Y = p1.y.cuValue + Int ((newLength * sin (angle)).rounded ())
+        let newP2X = p1.x + .cu (Int ((newLength * cos (angle)).rounded ()))
+        let newP2Y = p1.y + .cu (Int ((newLength * sin (angle)).rounded ()))
         self.mConnectorP2?.mX = newP2X
         self.mConnectorP2?.mY = newP2Y
       case .octolinear :
@@ -175,8 +176,8 @@ extension BoardTrack {
         let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.octolinearNearestAngleInDegrees (p1, inUnalignedMouseLocation)) * .pi / 180.0
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p1.y.cuValue) * sin (angle)
-        let newP2X = p1.x.cuValue + Int ((newLength * cos (angle)).rounded ())
-        let newP2Y = p1.y.cuValue + Int ((newLength * sin (angle)).rounded ())
+        let newP2X = p1.x + .cu (Int ((newLength * cos (angle)).rounded ()))
+        let newP2Y = p1.y + .cu (Int ((newLength * sin (angle)).rounded ()))
         self.mConnectorP2?.mX = newP2X
         self.mConnectorP2?.mY = newP2Y
       case .rectilinear :
@@ -184,8 +185,8 @@ extension BoardTrack {
         let inUnalignedMouseLocation = CanariPoint (x: mouseCanariLocationX, y: mouseCanariLocationY)
         let angle = Double (CanariPoint.rectilinearNearestAngleInDegrees (p1, inUnalignedMouseLocation)) * .pi / 180.0
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p1.y.cuValue) * sin (angle)
-        let newP2X = p1.x.cuValue + Int ((newLength * cos (angle)).rounded ())
-        let newP2Y = p1.y.cuValue + Int ((newLength * sin (angle)).rounded ())
+        let newP2X = p1.x + .cu (Int ((newLength * cos (angle)).rounded ()))
+        let newP2Y = p1.y + .cu (Int ((newLength * sin (angle)).rounded ()))
         self.mConnectorP2?.mX = newP2X
         self.mConnectorP2?.mY = newP2Y
       }
@@ -213,14 +214,14 @@ extension BoardTrack {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90Clockwise (x: connectorP1.mX, y: connectorP1.mY)
-        connectorP1.mX = p.x.cuValue
-        connectorP1.mY = p.y.cuValue
+        connectorP1.mX = p.x
+        connectorP1.mY = p.y
         ioSet.insert (connectorP1)
       }
       if !ioSet.contains (connectorP2) {
         let p = inRotationCenter.rotated90Clockwise (x: connectorP2.mX, y: connectorP2.mY)
-        connectorP2.mX = p.x.cuValue
-        connectorP2.mY = p.y.cuValue
+        connectorP2.mX = p.x
+        connectorP2.mY = p.y
         ioSet.insert (connectorP2)
       }
     }
@@ -233,14 +234,14 @@ extension BoardTrack {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90CounterClockwise (x: connectorP1.mX, y: connectorP1.mY)
-        connectorP1.mX = p.x.cuValue
-        connectorP1.mY = p.y.cuValue
+        connectorP1.mX = p.x
+        connectorP1.mY = p.y
         ioSet.insert (connectorP1)
       }
       if !ioSet.contains (connectorP2) {
         let p = inRotationCenter.rotated90CounterClockwise (x: connectorP2.mX, y: connectorP2.mY)
-        connectorP2.mX = p.x.cuValue
-        connectorP2.mY = p.y.cuValue
+        connectorP2.mX = p.x
+        connectorP2.mY = p.y
         ioSet.insert (connectorP2)
       }
     }
@@ -259,15 +260,15 @@ extension BoardTrack {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_BoardTrack (_ inGrid : Int) -> Bool {
-    var isAligned = self.mConnectorP1?.mX.isAlignedOnGrid (inGrid) ?? true
+    var isAligned = self.mConnectorP1?.mX.isAligned (on: inGrid) ?? true
     if isAligned, let connectorP1 = self.mConnectorP1 {
-      isAligned = connectorP1.mY.isAlignedOnGrid (inGrid)
+      isAligned = connectorP1.mY.isAligned (on: inGrid)
     }
     if isAligned, let connectorP2 = self.mConnectorP2 {
-      isAligned = connectorP2.mX.isAlignedOnGrid (inGrid)
+      isAligned = connectorP2.mX.isAligned (on: inGrid)
     }
     if isAligned, let connectorP2 = self.mConnectorP2 {
-      isAligned = connectorP2.mY.isAlignedOnGrid (inGrid)
+      isAligned = connectorP2.mY.isAligned (on: inGrid)
     }
     return !isAligned
   }
@@ -275,10 +276,10 @@ extension BoardTrack {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_BoardTrack (_ inGrid : Int) {
-    self.mConnectorP1?.mX.align (onGrid: inGrid)
-    self.mConnectorP1?.mY.align (onGrid: inGrid)
-    self.mConnectorP2?.mX.align (onGrid: inGrid)
-    self.mConnectorP2?.mY.align (onGrid: inGrid)
+    self.mConnectorP1?.mX.align (on: inGrid)
+    self.mConnectorP1?.mY.align (on: inGrid)
+    self.mConnectorP2?.mX.align (on: inGrid)
+    self.mConnectorP2?.mY.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -299,9 +300,9 @@ extension BoardTrack {
   //  Bezier path
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bezierPath (extraWidth inExtraWidth : Int) -> BezierPath {
+  func bezierPath (extraWidth inExtraWidth : CanariLength) -> BezierPath {
     var bp = BezierPath ()
-    bp.lineWidth = canariUnitToCocoa (self.actualTrackWidth! + inExtraWidth)
+    bp.lineWidth = (self.actualTrackWidth! + inExtraWidth).ptValue
     switch self.mEndStyle {
     case .round :
       bp.lineCapStyle = .round

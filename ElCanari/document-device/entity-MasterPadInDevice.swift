@@ -9,42 +9,42 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol MasterPadInDevice_mCenterX : AnyObject {
-//   var mCenterX : Int { get }
+//   var mCenterX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol MasterPadInDevice_mCenterY : AnyObject {
-//   var mCenterY : Int { get }
+//   var mCenterY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol MasterPadInDevice_mWidth : AnyObject {
-//   var mWidth : Int { get }
+//   var mWidth : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol MasterPadInDevice_mHeight : AnyObject {
-//   var mHeight : Int { get }
+//   var mHeight : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol MasterPadInDevice_mHoleWidth : AnyObject {
-//   var mHoleWidth : Int { get }
+//   var mHoleWidth : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol MasterPadInDevice_mHoleHeight : AnyObject {
-//   var mHoleHeight : Int { get }
+//   var mHoleHeight : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -108,11 +108,11 @@ final class MasterPadInDevice : EBManagedObject
   //   Atomic property: mCenterX
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterX_property : EBStoredProperty_Int
+  final let mCenterX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterX : Int {
+  final var mCenterX : CanariLength {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
   }
@@ -121,11 +121,11 @@ final class MasterPadInDevice : EBManagedObject
   //   Atomic property: mCenterY
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterY_property : EBStoredProperty_Int
+  final let mCenterY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterY : Int {
+  final var mCenterY : CanariLength {
     get { return self.mCenterY_property.propval }
     set { self.mCenterY_property.setProp (newValue) }
   }
@@ -134,11 +134,11 @@ final class MasterPadInDevice : EBManagedObject
   //   Atomic property: mWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mWidth_property : EBStoredProperty_Int
+  final let mWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mWidth : Int {
+  final var mWidth : CanariLength {
     get { return self.mWidth_property.propval }
     set { self.mWidth_property.setProp (newValue) }
   }
@@ -147,11 +147,11 @@ final class MasterPadInDevice : EBManagedObject
   //   Atomic property: mHeight
   //------------------------------------------------------------------------------------------------
 
-  final let mHeight_property : EBStoredProperty_Int
+  final let mHeight_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mHeight : Int {
+  final var mHeight : CanariLength {
     get { return self.mHeight_property.propval }
     set { self.mHeight_property.setProp (newValue) }
   }
@@ -160,11 +160,11 @@ final class MasterPadInDevice : EBManagedObject
   //   Atomic property: mHoleWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mHoleWidth_property : EBStoredProperty_Int
+  final let mHoleWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mHoleWidth : Int {
+  final var mHoleWidth : CanariLength {
     get { return self.mHoleWidth_property.propval }
     set { self.mHoleWidth_property.setProp (newValue) }
   }
@@ -173,11 +173,11 @@ final class MasterPadInDevice : EBManagedObject
   //   Atomic property: mHoleHeight
   //------------------------------------------------------------------------------------------------
 
-  final let mHoleHeight_property : EBStoredProperty_Int
+  final let mHoleHeight_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mHoleHeight : Int {
+  final var mHoleHeight : CanariLength {
     get { return self.mHoleHeight_property.propval }
     set { self.mHoleHeight_property.setProp (newValue) }
   }
@@ -274,12 +274,12 @@ final class MasterPadInDevice : EBManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager, key: "mWidth")
-    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "mHeight")
-    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mHoleWidth")
-    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mHoleHeight")
+    self.mCenterX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterX")
+    self.mCenterY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterY")
+    self.mWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil (50), undoManager: inUndoManager, key: "mWidth")
+    self.mHeight_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "mHeight")
+    self.mHoleWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil(25), undoManager: inUndoManager, key: "mHoleWidth")
+    self.mHoleHeight_property = EBStoredProperty_CanariLength (defaultValue: .mil(25), undoManager: inUndoManager, key: "mHoleHeight")
     self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager, key: "mShape")
     self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: inUndoManager, key: "mStyle")
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")

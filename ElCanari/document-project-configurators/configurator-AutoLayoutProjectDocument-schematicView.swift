@@ -24,10 +24,10 @@ extension AutoLayoutProjectDocument {
     inOutlet.mGraphicView.register (pasteboardType: SCHEMATIC_PASTEBOARD_TYPE)
     inOutlet.mGraphicView.setUsesOptionKeyForDuplicatingSelectedObjects (false)
 
-    inOutlet.mGraphicView.mGridStepInCanariUnit = SCHEMATIC_GRID_LENGTH.cuValue
-    inOutlet.mGraphicView.set (mouseGridInCanariUnit: SCHEMATIC_GRID_LENGTH.cuValue)
-    inOutlet.mGraphicView.set (arrowKeyMagnitude : SCHEMATIC_GRID_LENGTH.cuValue)
-    inOutlet.mGraphicView.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_LENGTH.cuValue * 4)
+    inOutlet.mGraphicView.mGridStepInCanariUnit = SCHEMATIC_GRID_LENGTH
+    inOutlet.mGraphicView.set (mouseGridInCanariUnit: SCHEMATIC_GRID_LENGTH)
+    inOutlet.mGraphicView.set (arrowKeyMagnitude : SCHEMATIC_GRID_LENGTH)
+    inOutlet.mGraphicView.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_LENGTH * 4)
     inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnSchematics ($0) }
     inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new wire"
 

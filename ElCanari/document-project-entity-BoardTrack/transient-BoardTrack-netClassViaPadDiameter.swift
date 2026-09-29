@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardTrack_netClassViaPadDiameter (
-       _ self_mNet_netClassViaPadDiameter : Int?
-) -> Int {
+       _ self_mNet_netClassViaPadDiameter : CanariLength?
+) -> CanariLength {
 //--- START OF USER ZONE 2
-        return self_mNet_netClassViaPadDiameter ?? 0
+        return self_mNet_netClassViaPadDiameter ?? .zero
 //--- END OF USER ZONE 2
 }
 

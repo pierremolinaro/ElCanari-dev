@@ -51,14 +51,14 @@ extension PackageInDevice {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptToTranslate_PackageInDevice (xBy inDx: CanariLength, yBy inDy: CanariLength) -> Bool {
-    return ((self.mX + inDx.cuValue) >= 0) && ((self.mY + inDy.cuValue) >= 0)
+    return ((self.mX + inDx) >= .zero) && ((self.mY + inDy) >= .zero)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_PackageInDevice (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx.cuValue
-    self.mY += inDy.cuValue
+    self.mX += inDx
+    self.mY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

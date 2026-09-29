@@ -9,14 +9,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentSymbolInProject_mCenterX : AnyObject {
-//   var mCenterX : Int { get }
+//   var mCenterX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentSymbolInProject_mCenterY : AnyObject {
-//   var mCenterY : Int { get }
+//   var mCenterY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -49,14 +49,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : AnyObject {
-//   var mDisplayComponentNameOffsetX : Int { get }
+//   var mDisplayComponentNameOffsetX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : AnyObject {
-//   var mDisplayComponentNameOffsetY : Int { get }
+//   var mDisplayComponentNameOffsetY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -70,14 +70,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : AnyObject {
-//   var mDisplayComponentValueOffsetX : Int { get }
+//   var mDisplayComponentValueOffsetX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : AnyObject {
-//   var mDisplayComponentValueOffsetY : Int { get }
+//   var mDisplayComponentValueOffsetY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -163,11 +163,11 @@ final class ComponentSymbolInProject : SchematicObject
   //   Atomic property: mCenterX
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterX_property : EBStoredProperty_Int
+  final let mCenterX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterX : Int {
+  final var mCenterX : CanariLength {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
   }
@@ -176,11 +176,11 @@ final class ComponentSymbolInProject : SchematicObject
   //   Atomic property: mCenterY
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterY_property : EBStoredProperty_Int
+  final let mCenterY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterY : Int {
+  final var mCenterY : CanariLength {
     get { return self.mCenterY_property.propval }
     set { self.mCenterY_property.setProp (newValue) }
   }
@@ -241,11 +241,11 @@ final class ComponentSymbolInProject : SchematicObject
   //   Atomic property: mDisplayComponentNameOffsetX
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentNameOffsetX_property : EBStoredProperty_Int
+  final let mDisplayComponentNameOffsetX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mDisplayComponentNameOffsetX : Int {
+  final var mDisplayComponentNameOffsetX : CanariLength {
     get { return self.mDisplayComponentNameOffsetX_property.propval }
     set { self.mDisplayComponentNameOffsetX_property.setProp (newValue) }
   }
@@ -254,11 +254,11 @@ final class ComponentSymbolInProject : SchematicObject
   //   Atomic property: mDisplayComponentNameOffsetY
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentNameOffsetY_property : EBStoredProperty_Int
+  final let mDisplayComponentNameOffsetY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mDisplayComponentNameOffsetY : Int {
+  final var mDisplayComponentNameOffsetY : CanariLength {
     get { return self.mDisplayComponentNameOffsetY_property.propval }
     set { self.mDisplayComponentNameOffsetY_property.setProp (newValue) }
   }
@@ -280,11 +280,11 @@ final class ComponentSymbolInProject : SchematicObject
   //   Atomic property: mDisplayComponentValueOffsetX
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentValueOffsetX_property : EBStoredProperty_Int
+  final let mDisplayComponentValueOffsetX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mDisplayComponentValueOffsetX : Int {
+  final var mDisplayComponentValueOffsetX : CanariLength {
     get { return self.mDisplayComponentValueOffsetX_property.propval }
     set { self.mDisplayComponentValueOffsetX_property.setProp (newValue) }
   }
@@ -293,11 +293,11 @@ final class ComponentSymbolInProject : SchematicObject
   //   Atomic property: mDisplayComponentValueOffsetY
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentValueOffsetY_property : EBStoredProperty_Int
+  final let mDisplayComponentValueOffsetY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mDisplayComponentValueOffsetY : Int {
+  final var mDisplayComponentValueOffsetY : CanariLength {
     get { return self.mDisplayComponentValueOffsetY_property.propval }
     set { self.mDisplayComponentValueOffsetY_property.setProp (newValue) }
   }
@@ -427,17 +427,17 @@ final class ComponentSymbolInProject : SchematicObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
+    self.mCenterX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterX")
+    self.mCenterY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterY")
     self.mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager, key: "mRotation")
     self.mMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mMirror")
     self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolInstanceName")
     self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolTypeName")
-    self.mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDisplayComponentNameOffsetX")
-    self.mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mDisplayComponentNameOffsetY")
+    self.mDisplayComponentNameOffsetX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mDisplayComponentNameOffsetX")
+    self.mDisplayComponentNameOffsetY_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "mDisplayComponentNameOffsetY")
     self.mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDisplayComponentValue")
-    self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDisplayComponentValueOffsetX")
-    self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: inUndoManager, key: "mDisplayComponentValueOffsetY")
+    self.mDisplayComponentValueOffsetX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mDisplayComponentValueOffsetX")
+    self.mDisplayComponentValueOffsetY_property = EBStoredProperty_CanariLength (defaultValue: -.mil (200), undoManager: inUndoManager, key: "mDisplayComponentValueOffsetY")
     super.init (inUndoManager)
     self.mComponent_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {

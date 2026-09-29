@@ -366,26 +366,26 @@ extension AutoLayoutProjectDocument {
       for masterPadInDevice in packageInDevice.mMasterPads.values {
         let masterPadInProject = DeviceMasterPadInProject (self.undoManager)
         packageInProject.mMasterPads.append (masterPadInProject)
-        masterPadInProject.mCenterX = .cu (masterPadInDevice.mCenterX)
-        masterPadInProject.mCenterY = .cu (masterPadInDevice.mCenterY)
-        masterPadInProject.mHeight = .cu (masterPadInDevice.mHeight)
-        masterPadInProject.mHoleWidth = .cu (masterPadInDevice.mHoleWidth)
-        masterPadInProject.mHoleHeight = .cu (masterPadInDevice.mHoleHeight)
+        masterPadInProject.mCenterX = masterPadInDevice.mCenterX
+        masterPadInProject.mCenterY = masterPadInDevice.mCenterY
+        masterPadInProject.mHeight = masterPadInDevice.mHeight
+        masterPadInProject.mHoleWidth = masterPadInDevice.mHoleWidth
+        masterPadInProject.mHoleHeight = masterPadInDevice.mHoleHeight
         masterPadInProject.mName = masterPadInDevice.mName
         masterPadInProject.mShape = masterPadInDevice.mShape
         masterPadInProject.mStyle = masterPadInDevice.mStyle
-        masterPadInProject.mWidth = .cu (masterPadInDevice.mWidth)
+        masterPadInProject.mWidth = masterPadInDevice.mWidth
         for slavePadInDevice in masterPadInDevice.mSlavePads.values {
           let slavePadInProject = DeviceSlavePadInProject (self.undoManager)
           masterPadInProject.mSlavePads.append (slavePadInProject)
-          slavePadInProject.mCenterX = .cu (slavePadInDevice.mCenterX)
-          slavePadInProject.mCenterY = .cu (slavePadInDevice.mCenterY)
-          slavePadInProject.mHeight = .cu (slavePadInDevice.mHeight)
-          slavePadInProject.mHoleWidth = .cu (slavePadInDevice.mHoleWidth)
-          slavePadInProject.mHoleHeight = .cu (slavePadInDevice.mHoleHeight)
+          slavePadInProject.mCenterX = slavePadInDevice.mCenterX
+          slavePadInProject.mCenterY = slavePadInDevice.mCenterY
+          slavePadInProject.mHeight = slavePadInDevice.mHeight
+          slavePadInProject.mHoleWidth = slavePadInDevice.mHoleWidth
+          slavePadInProject.mHoleHeight = slavePadInDevice.mHoleHeight
           slavePadInProject.mShape = slavePadInDevice.mShape
           slavePadInProject.mStyle = slavePadInDevice.mStyle
-          slavePadInProject.mWidth = .cu (slavePadInDevice.mWidth)
+          slavePadInProject.mWidth = slavePadInDevice.mWidth
         }
       }
     }
@@ -419,10 +419,10 @@ extension AutoLayoutProjectDocument {
           newPinInProject.mNameHorizontalAlignment = candidatePinInDevice.mNameHorizontalAlignment
           newPinInProject.mNumberHorizontalAlignment = candidatePinInDevice.mNumberHorizontalAlignment
           newPinInProject.mPinNameIsDisplayedInSchematic = candidatePinInDevice.mPinNameIsDisplayedInSchematics
-          newPinInProject.mPinX = .cu (candidatePinInDevice.mPinX)
-          newPinInProject.mPinY = .cu (candidatePinInDevice.mPinY)
-          newPinInProject.mXName = .cu (candidatePinInDevice.mXName)
-          newPinInProject.mYName = .cu (candidatePinInDevice.mYName)
+          newPinInProject.mPinX = candidatePinInDevice.mPinX
+          newPinInProject.mPinY = candidatePinInDevice.mPinY
+          newPinInProject.mXName = candidatePinInDevice.mXName
+          newPinInProject.mYName = candidatePinInDevice.mYName
           newPinInProject.mXNumber = candidatePinInDevice.mXNumber
           newPinInProject.mYNumber = candidatePinInDevice.mYNumber
           let pinQualifiedName : PinQualifiedNameStruct = newPinInProject.pinQualifiedName!

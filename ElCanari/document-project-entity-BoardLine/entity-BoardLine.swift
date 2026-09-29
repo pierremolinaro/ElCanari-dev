@@ -16,7 +16,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardLine_mX1 : AnyObject {
-//   var mX1 : Int { get }
+//   var mX1 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardLine_mY1 : AnyObject {
-//   var mY1 : Int { get }
+//   var mY1 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardLine_mX2 : AnyObject {
-//   var mX2 : Int { get }
+//   var mX2 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardLine_mY2 : AnyObject {
-//   var mY2 : Int { get }
+//   var mY2 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardLine_mWidth : AnyObject {
-//   var mWidth : Int { get }
+//   var mWidth : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -132,11 +132,11 @@ final class BoardLine : BoardObject
   //   Atomic property: mX1
   //------------------------------------------------------------------------------------------------
 
-  final let mX1_property : EBStoredProperty_Int
+  final let mX1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mX1 : Int {
+  final var mX1 : CanariLength {
     get { return self.mX1_property.propval }
     set { self.mX1_property.setProp (newValue) }
   }
@@ -158,11 +158,11 @@ final class BoardLine : BoardObject
   //   Atomic property: mY1
   //------------------------------------------------------------------------------------------------
 
-  final let mY1_property : EBStoredProperty_Int
+  final let mY1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mY1 : Int {
+  final var mY1 : CanariLength {
     get { return self.mY1_property.propval }
     set { self.mY1_property.setProp (newValue) }
   }
@@ -184,11 +184,11 @@ final class BoardLine : BoardObject
   //   Atomic property: mX2
   //------------------------------------------------------------------------------------------------
 
-  final let mX2_property : EBStoredProperty_Int
+  final let mX2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mX2 : Int {
+  final var mX2 : CanariLength {
     get { return self.mX2_property.propval }
     set { self.mX2_property.setProp (newValue) }
   }
@@ -210,11 +210,11 @@ final class BoardLine : BoardObject
   //   Atomic property: mY2
   //------------------------------------------------------------------------------------------------
 
-  final let mY2_property : EBStoredProperty_Int
+  final let mY2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mY2 : Int {
+  final var mY2 : CanariLength {
     get { return self.mY2_property.propval }
     set { self.mY2_property.setProp (newValue) }
   }
@@ -249,11 +249,11 @@ final class BoardLine : BoardObject
   //   Atomic property: mWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mWidth_property : EBStoredProperty_Int
+  final let mWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mWidth : Int {
+  final var mWidth : CanariLength {
     get { return self.mWidth_property.propval }
   }
 
@@ -263,16 +263,16 @@ final class BoardLine : BoardObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mWidthUnit")
-    self.mX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX1")
+    self.mX1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX1")
     self.mX1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mX1Unit")
-    self.mY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY1")
+    self.mY1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY1")
     self.mY1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mY1Unit")
-    self.mX2_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mX2")
+    self.mX2_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "mX2")
     self.mX2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mX2Unit")
-    self.mY2_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mY2")
+    self.mY2_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "mY2")
     self.mY2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mY2Unit")
     self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mWidth")
+    self.mWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil (25), undoManager: inUndoManager, key: "mWidth")
     super.init (inUndoManager)
     self.accumulateProperty (self.mWidthUnit_property)
     self.accumulateProperty (self.mX1_property)

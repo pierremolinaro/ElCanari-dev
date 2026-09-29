@@ -16,7 +16,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardImage_mCenterY : AnyObject {
-//   var mCenterY : Int { get }
+//   var mCenterY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardImage_mPixelSize : AnyObject {
-//   var mPixelSize : Int { get }
+//   var mPixelSize : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardImage_mCenterX : AnyObject {
-//   var mCenterX : Int { get }
+//   var mCenterX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -177,14 +177,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardImage_boardActualImageWidth : AnyObject {
-//   var boardActualImageWidth : Int? { get }
+//   var boardActualImageWidth : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BoardImage_boardActualImageHeight : AnyObject {
-//   var boardActualImageHeight : Int? { get }
+//   var boardActualImageHeight : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -260,11 +260,11 @@ final class BoardImage : BoardObject
   //   Atomic property: mCenterY
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterY_property : EBStoredProperty_Int
+  final let mCenterY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterY : Int {
+  final var mCenterY : CanariLength {
     get { return self.mCenterY_property.propval }
     set { self.mCenterY_property.setProp (newValue) }
   }
@@ -358,11 +358,11 @@ final class BoardImage : BoardObject
   //   Atomic property: mPixelSize
   //------------------------------------------------------------------------------------------------
 
-  final let mPixelSize_property : EBStoredProperty_Int
+  final let mPixelSize_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mPixelSize : Int {
+  final var mPixelSize : CanariLength {
     get { return self.mPixelSize_property.propval }
   }
 
@@ -456,11 +456,11 @@ final class BoardImage : BoardObject
   //   Atomic property: mCenterX
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterX_property : EBStoredProperty_Int
+  final let mCenterX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterX : Int {
+  final var mCenterX : CanariLength {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
   }
@@ -547,11 +547,11 @@ final class BoardImage : BoardObject
   //   Transient property: boardActualImageWidth
   //------------------------------------------------------------------------------------------------
 
-  final let boardActualImageWidth_property = EBTransientProperty <Int> ()
+  final let boardActualImageWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardActualImageWidth : Int? {
+  final var boardActualImageWidth : CanariLength? {
     return self.boardActualImageWidth_property.optionalValue
   }
 
@@ -559,11 +559,11 @@ final class BoardImage : BoardObject
   //   Transient property: boardActualImageHeight
   //------------------------------------------------------------------------------------------------
 
-  final let boardActualImageHeight_property = EBTransientProperty <Int> ()
+  final let boardActualImageHeight_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardActualImageHeight : Int? {
+  final var boardActualImageHeight : CanariLength? {
     return self.boardActualImageHeight_property.optionalValue
   }
 
@@ -573,7 +573,7 @@ final class BoardImage : BoardObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
+    self.mCenterY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterY")
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
     self.mThreshold_property = EBStoredProperty_Int (defaultValue: 200, undoManager: inUndoManager, key: "mThreshold")
     self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mImageData")
@@ -581,7 +581,7 @@ final class BoardImage : BoardObject
     self.mHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mHorizontalFlip")
     self.mVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mVerticalFlip")
     self.mScale_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager, key: "mScale")
-    self.mPixelSize_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mPixelSize")
+    self.mPixelSize_property = EBStoredProperty_CanariLength (defaultValue: .pt (1), undoManager: inUndoManager, key: "mPixelSize")
     self.mPixelSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mPixelSizeUnit")
     self.mActualWidthUnit_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager, key: "mActualWidthUnit")
     self.mActualHeightUnit_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager, key: "mActualHeightUnit")
@@ -589,7 +589,7 @@ final class BoardImage : BoardObject
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
+    self.mCenterX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterX")
     super.init (inUndoManager)
     self.accumulateProperty (self.mXUnit_property)
     self.accumulateProperty (self.mCenterY_property)

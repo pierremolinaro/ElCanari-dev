@@ -1,8 +1,8 @@
 //
-//  ProductHorizontalMirror.swift
+//  CanariLength+extension.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 29/05/2024.
+//  Created by Pierre Molinaro on 29/09/2026.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -11,40 +11,30 @@ import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
-enum ProductHorizontalMirror {
+extension CanariLength {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  case noMirror
-  case mirror (boardWidth : CanariLength)
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func mirrored (_ inPoint : ProductPoint) -> ProductPoint {
-    switch self {
-    case .noMirror :
-      return inPoint
-    case .mirror (let boardWidth) :
-      return ProductPoint (
-        x: boardWidth - inPoint.x,
-        y: inPoint.y
-      )
-    }
+  func isAligned (on inGrid : Int) -> Bool {
+    return self.isAligned (.cu (inGrid))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func mirrored (_ inPoints : [ProductPoint]) -> [ProductPoint] {
-    switch self {
-    case .noMirror :
-      return inPoints
-    case .mirror (_) :
-      var points = [ProductPoint] ()
-      for p in inPoints {
-        points.append (self.mirrored (p))
-      }
-      return points
-    }
+  func aligning (on inGrid : Int) -> CanariLength {
+    return self.aligning (to: .cu (inGrid))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func aligning (on inGrid : CanariLength) -> CanariLength {
+    return self.aligning (to: inGrid)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func align (on inGrid : Int) {
+    self = self.aligning (to: .cu (inGrid))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

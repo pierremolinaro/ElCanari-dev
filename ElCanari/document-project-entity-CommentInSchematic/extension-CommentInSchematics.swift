@@ -94,8 +94,8 @@ extension CommentInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_CommentInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx.cuValue
-    self.mY += inDy.cuValue
+    self.mX += inDx
+    self.mY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -139,10 +139,10 @@ extension CommentInSchematic {
                                 alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                                 shift _ : Bool) {
     if inKnobIndex == COMMENT_IN_SCHEMATIC_DRAG_KNOB {
-      self.mX += inDx.cuValue
-      self.mY += inDy.cuValue
+      self.mX += inDx
+      self.mY += inDy
     }else if inKnobIndex == COMMENT_IN_SCHEMATIC_ROTATION_KNOB {
-      let absoluteCenter = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
+      let absoluteCenter = NSPoint (x: self.mX, y: self.mY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
       self.mRotation_property.setProp (degreesToCanariRotation (newAngleInDegrees))
@@ -161,9 +161,9 @@ extension CommentInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_CommentInSchematic (_ inGrid : Int) -> Bool {
-    var result = (self.mX % inGrid) != 0
+    var result = self.mX.isAligned (on: inGrid)
     if !result {
-      result = (self.mY % inGrid) != 0
+      result = self.mY.isAligned (on: inGrid)
     }
     return result
   }
@@ -171,8 +171,8 @@ extension CommentInSchematic {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_CommentInSchematic (_ inGrid : Int) {
-    self.mX = ((self.mX + inGrid / 2) / inGrid) * inGrid
-    self.mY = ((self.mY + inGrid / 2) / inGrid) * inGrid
+    self.mX.align (on: inGrid)
+    self.mY.align (on: inGrid)
    }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

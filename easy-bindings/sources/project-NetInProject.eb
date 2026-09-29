@@ -11,9 +11,9 @@ handlingOpposite entity NetInProject {
   property @generateDirectAccess Bool mWarnsExactlyOneLabel default yes ;
  
   transient String netClassName dependsFrom self.mNetClass.one.mNetClassName ;
-  transient Int netClassTrackWidth dependsFrom self.mNetClass.one.mTrackWidth ;
-  transient Int netClassViaHoleDiameter dependsFrom self.mNetClass.one.mViaHoleDiameter ;
-  transient Int netClassViaPadDiameter dependsFrom self.mNetClass.one.mViaPadDiameter ;
+  transient CanariLength netClassTrackWidth dependsFrom self.mNetClass.one.mTrackWidth ;
+  transient CanariLength netClassViaHoleDiameter dependsFrom self.mNetClass.one.mViaHoleDiameter ;
+  transient CanariLength netClassViaPadDiameter dependsFrom self.mNetClass.one.mViaPadDiameter ;
   
   transient NSColor wireColor dependsFrom self.mNetClass.one.mNetClassColor ;
 

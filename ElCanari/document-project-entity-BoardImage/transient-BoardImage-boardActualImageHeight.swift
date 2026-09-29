@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_BoardImage_boardActualImageHeight (
        _ self_boardImageCodeDescriptor : BoardImageDescriptor,
-       _ self_mPixelSize : Int
-) -> Int {
+       _ self_mPixelSize : CanariLength
+) -> CanariLength {
 //--- START OF USER ZONE 2
         return self_boardImageCodeDescriptor.scaledImageHeight * self_mPixelSize
 //--- END OF USER ZONE 2

@@ -72,8 +72,8 @@ extension BoardImage {
 
   func translate_BoardImage (xBy inDx : CanariLength, yBy inDy : CanariLength,
                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mCenterX += inDx.cuValue
-    self.mCenterY += inDy.cuValue
+    self.mCenterX += inDx
+    self.mCenterY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -113,10 +113,10 @@ extension BoardImage {
                         alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                         shift _ : Bool) {
     if inKnobIndex == BOARD_IMAGE_CENTER {
-      self.mCenterX += inDx.cuValue
-      self.mCenterY += inDy.cuValue
+      self.mCenterX += inDx
+      self.mCenterY += inDy
     }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
-      let origin = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY)).ptValue
+      let origin = NSPoint (x: self.mCenterX, y: self.mCenterY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
@@ -137,8 +137,8 @@ extension BoardImage {
   func rotate90Clockwise_BoardImage (from inRotationCenter : CanariPoint,
                                      userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p1.x.cuValue
-    self.mCenterY = p1.y.cuValue
+    self.mCenterX = p1.x
+    self.mCenterY = p1.y
     ioSet.insert (self)
   }
 
@@ -147,8 +147,8 @@ extension BoardImage {
   func rotate90CounterClockwise_BoardImage (from inRotationCenter : CanariPoint,
                                             userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p1.x.cuValue
-    self.mCenterY = p1.y.cuValue
+    self.mCenterX = p1.x
+    self.mCenterY = p1.y
     ioSet.insert (self)
   }
 
@@ -157,9 +157,9 @@ extension BoardImage {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_BoardImage (_ inGrid : Int) -> Bool {
-    var isAligned = self.mCenterX.isAlignedOnGrid (inGrid)
+    var isAligned = self.mCenterX.cuValue.isAlignedOnGrid (inGrid)
     if isAligned {
-      isAligned = self.mCenterY.isAlignedOnGrid (inGrid)
+      isAligned = self.mCenterY.cuValue.isAlignedOnGrid (inGrid)
     }
     return !isAligned
   }
@@ -167,8 +167,8 @@ extension BoardImage {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_BoardImage (_ inGrid : Int) {
-    self.mCenterX.align (onGrid: inGrid)
-    self.mCenterY.align (onGrid: inGrid)
+    self.mCenterX.align (on: inGrid)
+    self.mCenterY.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -220,20 +220,20 @@ struct BoardImageDisplayInfos {
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func boardImage_displayInfos (centerX inCenterX : Int,
-                                         centerY inCenterY : Int,
+@MainActor func boardImage_displayInfos (centerX inCenterX : CanariLength,
+                                         centerY inCenterY : CanariLength,
                                          _ inBoardImageDescriptor : BoardImageDescriptor,
                                          frontSide inFrontSide : Bool,
-                                         pixelSizeInCanariUnit inPixelSize : Int,
+                                         pixelSizeInCanariUnit inPixelSize : CanariLength,
                                          rotation inRotation : Int) -> BoardImageDisplayInfos {
-  let pixelSize = canariUnitToCocoa (inPixelSize)
+  let pixelSize = inPixelSize
   let width = CGFloat (inBoardImageDescriptor.scaledImageWidth) * pixelSize
   let height = CGFloat (inBoardImageDescriptor.scaledImageHeight) * pixelSize
   let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
 //--- Affine transform
   var af = AffineTransform ()
-  let centerX = canariUnitToCocoa (inCenterX)
-  let centerY = canariUnitToCocoa (inCenterY)
+  let centerX = inCenterX.ptValue
+  let centerY = inCenterY.ptValue
   af.translate (x: centerX, y: centerY)
   let rotationInDegrees = CGFloat (inRotation) / 1000.0
   af.rotate (byDegrees: rotationInDegrees)
@@ -260,8 +260,8 @@ struct BoardImageDisplayInfos {
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
   //---
     var rectAF = af
-    rectAF.translate (x: x + w / 2.0, y: y + h / 2.0)
-    rectAF.scale (x: w, y: h)
+    rectAF.translate (x: x.ptValue + w.ptValue / 2.0, y: y.ptValue + h.ptValue / 2.0)
+    rectAF.scale (x: w.ptValue, y: h.ptValue)
     transformedRectangles.append (rectAF)
   }
   let imageBP = filledBP.transformed (by: af)

@@ -16,17 +16,17 @@ import CanariGeometry
 
 @MainActor func transient_BoardRestrictRectangle_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,                     
-       _ self_mX : Int,                                            
-       _ self_mY : Int,                                            
-       _ self_mWidth : Int,                                        
-       _ self_mHeight : Int,                                       
+       _ self_mX : CanariLength,                                   
+       _ self_mY : CanariLength,                                   
+       _ self_mWidth : CanariLength,                               
+       _ self_mHeight : CanariLength,                              
        _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let x = canariUnitToCocoa (self_mX)
-        let y = canariUnitToCocoa (self_mY)
-        let width = canariUnitToCocoa (self_mWidth)
-        let height = canariUnitToCocoa (self_mHeight)
+        let x = self_mX
+        let y = self_mY
+        let width = self_mWidth
+        let height = self_mHeight
         let r = NSRect (x: x, y: y, width: width, height: height)
         var bp = BezierPath (rect: r)
         bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0

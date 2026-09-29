@@ -28,21 +28,21 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol NetInProject_netClassTrackWidth : AnyObject {
-//   var netClassTrackWidth : Int? { get }
+//   var netClassTrackWidth : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol NetInProject_netClassViaHoleDiameter : AnyObject {
-//   var netClassViaHoleDiameter : Int? { get }
+//   var netClassViaHoleDiameter : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol NetInProject_netClassViaPadDiameter : AnyObject {
-//   var netClassViaPadDiameter : Int? { get }
+//   var netClassViaPadDiameter : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -177,11 +177,11 @@ final class NetInProject : EBManagedObject
   //   Transient property: netClassTrackWidth
   //------------------------------------------------------------------------------------------------
 
-  final let netClassTrackWidth_property = EBTransientProperty <Int> ()
+  final let netClassTrackWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var netClassTrackWidth : Int? {
+  final var netClassTrackWidth : CanariLength? {
     return self.netClassTrackWidth_property.optionalValue
   }
 
@@ -189,11 +189,11 @@ final class NetInProject : EBManagedObject
   //   Transient property: netClassViaHoleDiameter
   //------------------------------------------------------------------------------------------------
 
-  final let netClassViaHoleDiameter_property = EBTransientProperty <Int> ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var netClassViaHoleDiameter : Int? {
+  final var netClassViaHoleDiameter : CanariLength? {
     return self.netClassViaHoleDiameter_property.optionalValue
   }
 
@@ -201,11 +201,11 @@ final class NetInProject : EBManagedObject
   //   Transient property: netClassViaPadDiameter
   //------------------------------------------------------------------------------------------------
 
-  final let netClassViaPadDiameter_property = EBTransientProperty <Int> ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var netClassViaPadDiameter : Int? {
+  final var netClassViaPadDiameter : CanariLength? {
     return self.netClassViaPadDiameter_property.optionalValue
   }
 

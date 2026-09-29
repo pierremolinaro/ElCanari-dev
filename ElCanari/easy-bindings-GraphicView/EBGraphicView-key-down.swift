@@ -18,8 +18,8 @@ extension EBGraphicView {
        !inEvent.modifierFlags.contains (.control),
        !inEvent.modifierFlags.contains (.command) {
       let amount : CanariLength = inEvent.modifierFlags.contains (.shift)
-        ? CanariLength.cu (self.mShiftArrowKeyMagnitude)
-        : CanariLength.cu (self.mArrowKeyMagnitude)
+        ? self.mShiftArrowKeyMagnitude
+        : self.mArrowKeyMagnitude
       for character in characters.unicodeScalars {
         switch (character) {
         case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape

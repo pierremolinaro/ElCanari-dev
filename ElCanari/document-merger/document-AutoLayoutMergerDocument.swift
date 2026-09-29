@@ -1423,13 +1423,13 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardManualWidth_property, self.rootObject.boardWidthUnit_property)
             .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property)
             .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
@@ -1444,13 +1444,13 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardManualHeight_property, self.rootObject.boardHeightUnit_property)
             .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardHeight_property, self.rootObject.boardHeightUnit_property)
             .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)

@@ -33,7 +33,7 @@ import CanariGeometry
   //   Selection observable property: mCenterY
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterY_property = EBComputedProperty_Int ()
+  final let mCenterY_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mYUnit
@@ -81,7 +81,7 @@ import CanariGeometry
   //   Selection observable property: mPixelSize
   //------------------------------------------------------------------------------------------------
 
-  final let mPixelSize_property = EBComputedProperty_Int ()
+  final let mPixelSize_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mPixelSizeUnit
@@ -129,7 +129,7 @@ import CanariGeometry
   //   Selection observable property: mCenterX
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterX_property = EBComputedProperty_Int ()
+  final let mCenterX_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: computedDataImage
@@ -177,13 +177,13 @@ import CanariGeometry
   //   Selection observable property: boardActualImageWidth
   //------------------------------------------------------------------------------------------------
 
-  final let boardActualImageWidth_property = EBTransientProperty <Int> ()
+  final let boardActualImageWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: boardActualImageHeight
   //------------------------------------------------------------------------------------------------
 
-  final let boardActualImageHeight_property = EBTransientProperty <Int> ()
+  final let boardActualImageHeight_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: objectDisplay
@@ -431,7 +431,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCenterY_property.selection {
@@ -457,7 +457,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCenterY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCenterY_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -839,7 +839,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mPixelSize_property.selection {
@@ -865,7 +865,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mPixelSize_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mPixelSize_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -1247,7 +1247,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCenterX_property.selection {
@@ -1273,7 +1273,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCenterX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCenterX_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -1583,7 +1583,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardActualImageWidth_property.selection {
@@ -1622,7 +1622,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardActualImageHeight_property.selection {

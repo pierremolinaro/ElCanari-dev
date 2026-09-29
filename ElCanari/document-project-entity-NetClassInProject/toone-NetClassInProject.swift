@@ -99,7 +99,7 @@ class ReadOnlyObject_NetClassInProject : EBReadOnlyAbstractObjectProperty <NetCl
   //   Observers of 'mTrackWidth' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mTrackWidth_property = EBTransientProperty <Int?> ()
+  final let mTrackWidth_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mTrackWidthUnit' stored property
@@ -111,7 +111,7 @@ class ReadOnlyObject_NetClassInProject : EBReadOnlyAbstractObjectProperty <NetCl
   //   Observers of 'mViaHoleDiameter' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mViaHoleDiameter_property = EBTransientProperty <Int?> ()
+  final let mViaHoleDiameter_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mViaHoleDiameterUnit' stored property
@@ -123,7 +123,7 @@ class ReadOnlyObject_NetClassInProject : EBReadOnlyAbstractObjectProperty <NetCl
   //   Observers of 'mViaPadDiameter' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mViaPadDiameter_property = EBTransientProperty <Int?> ()
+  final let mViaPadDiameter_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mViaPadDiameterUnit' stored property

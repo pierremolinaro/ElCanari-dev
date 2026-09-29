@@ -114,7 +114,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
       hStack {
         StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUpEx (size : .small) {
+        CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit
         }
       }
@@ -435,7 +435,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     hStack {
       StaticLabel (title: "Length", bold: no, size : .small, alignment: .right)
       gutter
-      CanariObservedDimensionAndPopUpEx (size : .small) {
+      CanariObservedDimensionAndPopUp (size : .small) {
         $dimensionAndUnit #mPackageSegmentSelectionController.lengthInCanariUnit, #mPackageSegmentSelectionController.lengthUnit
        }
     }
@@ -697,7 +697,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     hStack {
       StaticLabel (title: "Distance", bold: no, size : .small, alignment: .right)
       gutter
-      CanariObservedDimensionAndPopUpEx (size : .small) {
+      CanariObservedDimensionAndPopUp (size : .small) {
         $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
       }
     }
@@ -895,7 +895,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     hStack $hidden !#mPackagePadSelectionController.padIsTraversing {
       StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right)
       gutter
-      CanariObservedDimensionAndPopUpEx (size : .small) {
+      CanariObservedDimensionAndPopUp (size : .small) {
         $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
       }
     }
@@ -994,7 +994,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     hStack $hidden !#mPackageSlavePadSelectionController.padIsTraversing {
       StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right)
       gutter
-      CanariObservedDimensionAndPopUpEx (size : .small) {
+      CanariObservedDimensionAndPopUp (size : .small) {
         $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
       }
     }
@@ -1036,7 +1036,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \Documen
     hStack {
       StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.gridStep, root.gridStepUnit }
+      CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.gridStep, root.gridStepUnit }
     }
     hStack {
       StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right)

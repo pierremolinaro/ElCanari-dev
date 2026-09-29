@@ -16,7 +16,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardQRCode_mCenterY : AnyObject {
-//   var mCenterY : Int { get }
+//   var mCenterY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardQRCode_mModuleSize : AnyObject {
-//   var mModuleSize : Int { get }
+//   var mModuleSize : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardQRCode_mCenterX : AnyObject {
-//   var mCenterX : Int { get }
+//   var mCenterX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -107,7 +107,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardQRCode_actualImageSize : AnyObject {
-//   var actualImageSize : Int? { get }
+//   var actualImageSize : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -172,11 +172,11 @@ final class BoardQRCode : BoardObject
   //   Atomic property: mCenterY
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterY_property : EBStoredProperty_Int
+  final let mCenterY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterY : Int {
+  final var mCenterY : CanariLength {
     get { return self.mCenterY_property.propval }
     set { self.mCenterY_property.setProp (newValue) }
   }
@@ -209,11 +209,11 @@ final class BoardQRCode : BoardObject
   //   Atomic property: mModuleSize
   //------------------------------------------------------------------------------------------------
 
-  final let mModuleSize_property : EBStoredProperty_Int
+  final let mModuleSize_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mModuleSize : Int {
+  final var mModuleSize : CanariLength {
     get { return self.mModuleSize_property.propval }
   }
 
@@ -295,11 +295,11 @@ final class BoardQRCode : BoardObject
   //   Atomic property: mCenterX
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterX_property : EBStoredProperty_Int
+  final let mCenterX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCenterX : Int {
+  final var mCenterX : CanariLength {
     get { return self.mCenterX_property.propval }
     set { self.mCenterX_property.setProp (newValue) }
   }
@@ -332,11 +332,11 @@ final class BoardQRCode : BoardObject
   //   Transient property: actualImageSize
   //------------------------------------------------------------------------------------------------
 
-  final let actualImageSize_property = EBTransientProperty <Int> ()
+  final let actualImageSize_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var actualImageSize : Int? {
+  final var actualImageSize : CanariLength? {
     return self.actualImageSize_property.optionalValue
   }
 
@@ -346,17 +346,17 @@ final class BoardQRCode : BoardObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
+    self.mCenterY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterY")
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
     self.mDrawFrame_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDrawFrame")
-    self.mModuleSize_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mModuleSize")
+    self.mModuleSize_property = EBStoredProperty_CanariLength (defaultValue: .pt (1), undoManager: inUndoManager, key: "mModuleSize")
     self.mModuleSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mModuleSizeUnit")
     self.mActualSizeUnit_property = EBStoredProperty_Int (defaultValue: 31750, undoManager: inUndoManager, key: "mActualSizeUnit")
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
     self.mCorrectionLevel_property = EBStoredProperty_QRCodeCorrectionLevel (defaultValue: QRCodeCorrectionLevel.quality, undoManager: inUndoManager, key: "mCorrectionLevel")
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
+    self.mCenterX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterX")
     super.init (inUndoManager)
     self.accumulateProperty (self.mXUnit_property)
     self.accumulateProperty (self.mCenterY_property)

@@ -311,11 +311,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var mArrowKeyMagnitude : Int = 0
+  private(set) var mArrowKeyMagnitude : CanariLength = .zero
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func set (arrowKeyMagnitude : Int) {
+  func set (arrowKeyMagnitude : CanariLength) {
     self.mArrowKeyMagnitude = arrowKeyMagnitude
   }
 
@@ -327,11 +327,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var mShiftArrowKeyMagnitude : Int = 0
+  private(set) var mShiftArrowKeyMagnitude : CanariLength = .zero
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
-  func set (shiftArrowKeyMagnitude : Int) {
+  func set (shiftArrowKeyMagnitude : CanariLength) {
     self.mShiftArrowKeyMagnitude = shiftArrowKeyMagnitude
   }
 
@@ -412,11 +412,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate(set) var mMouseGridInCanariUnit : Int = 1 // No grid for mouse
+  fileprivate(set) var mMouseGridInCanariUnit : CanariLength = .cu (1) // No grid for mouse
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func set (mouseGridInCanariUnit : Int) {
+  func set (mouseGridInCanariUnit : CanariLength) {
     self.mMouseGridInCanariUnit = mouseGridInCanariUnit
   }
 
@@ -631,7 +631,7 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mGridStepInCanariUnit : Int = milsToCanariUnit (fromInt: 25) {
+  var mGridStepInCanariUnit : CanariLength = .mil (25) {
     didSet {
       if (self.mGridStepInCanariUnit != oldValue) && (self.mGridStyle != .noGrid)  {
         self.needsDisplay = true

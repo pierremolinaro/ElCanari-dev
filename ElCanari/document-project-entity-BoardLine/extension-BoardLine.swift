@@ -62,10 +62,10 @@ extension BoardLine {
 
   func translate_BoardLine (xBy inDx : CanariLength, yBy inDy : CanariLength,
                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX1 += inDx.cuValue
-    self.mY1 += inDy.cuValue
-    self.mX2 += inDx.cuValue
-    self.mY2 += inDy.cuValue
+    self.mX1 += inDx
+    self.mY1 += inDy
+    self.mX2 += inDx
+    self.mY2 += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -105,11 +105,11 @@ extension BoardLine {
                       alignedMouseLocationY _ : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == BOARD_LINE_P1 {
-      self.mX1 += inDx.cuValue
-      self.mY1 += inDy.cuValue
+      self.mX1 += inDx
+      self.mY1 += inDy
     }else if inKnobIndex == BOARD_LINE_P2 {
-      self.mX2 += inDx.cuValue
-      self.mY2 += inDy.cuValue
+      self.mX2 += inDx
+      self.mY2 += inDy
     }
   }
 
@@ -128,11 +128,11 @@ extension BoardLine {
   func rotate90Clockwise_BoardLine (from inRotationCenter : CanariPoint,
                                     userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.mX1, y: self.mY1)
-    self.mX1 = p1.x.cuValue
-    self.mY1 = p1.y.cuValue
+    self.mX1 = p1.x
+    self.mY1 = p1.y
     let p2 = inRotationCenter.rotated90Clockwise (x: self.mX2, y: self.mY2)
-    self.mX2 = p2.x.cuValue
-    self.mY2 = p2.y.cuValue
+    self.mX2 = p2.x
+    self.mY2 = p2.y
     ioSet.insert (self)
   }
 
@@ -141,11 +141,11 @@ extension BoardLine {
   func rotate90CounterClockwise_BoardLine (from inRotationCenter : CanariPoint,
                                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.mX1, y: self.mY1)
-    self.mX1 = p1.x.cuValue
-    self.mY1 = p1.y.cuValue
+    self.mX1 = p1.x
+    self.mY1 = p1.y
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.mX2, y: self.mY2)
-    self.mX2 = p2.x.cuValue
-    self.mY2 = p2.y.cuValue
+    self.mX2 = p2.x
+    self.mY2 = p2.y
     ioSet.insert (self)
   }
 
@@ -154,15 +154,15 @@ extension BoardLine {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_BoardLine (_ inGrid : Int) -> Bool {
-    var isAligned = self.mX1.isAlignedOnGrid (inGrid)
+    var isAligned = self.mX1.isAligned (on: inGrid)
     if isAligned {
-      isAligned = self.mY1.isAlignedOnGrid (inGrid)
+      isAligned = self.mY1.isAligned (on: inGrid)
     }
     if isAligned {
-      isAligned = self.mX2.isAlignedOnGrid (inGrid)
+      isAligned = self.mX2.isAligned (on: inGrid)
     }
     if isAligned {
-      isAligned = self.mY2.isAlignedOnGrid (inGrid)
+      isAligned = self.mY2.isAligned (on: inGrid)
     }
     return !isAligned
   }
@@ -170,10 +170,10 @@ extension BoardLine {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_BoardLine (_ inGrid : Int) {
-    self.mX1.align (onGrid: inGrid)
-    self.mY1.align (onGrid: inGrid)
-    self.mX2.align (onGrid: inGrid)
-    self.mY2.align (onGrid: inGrid)
+    self.mX1.align (on: inGrid)
+    self.mY1.align (on: inGrid)
+    self.mX2.align (on: inGrid)
+    self.mY2.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

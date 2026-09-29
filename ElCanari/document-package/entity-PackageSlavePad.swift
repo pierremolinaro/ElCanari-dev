@@ -128,7 +128,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_annularRing : AnyObject {
-//   var annularRing : Int? { get }
+//   var annularRing : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -442,11 +442,11 @@ final class PackageSlavePad : PackageObject
   //   Transient property: annularRing
   //------------------------------------------------------------------------------------------------
 
-  final let annularRing_property = EBTransientProperty <Int> ()
+  final let annularRing_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var annularRing : Int? {
+  final var annularRing : CanariLength? {
     return self.annularRing_property.optionalValue
   }
 

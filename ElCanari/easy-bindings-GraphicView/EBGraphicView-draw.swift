@@ -56,7 +56,7 @@ extension EBGraphicView {
   final fileprivate func drawGrid (_ inUnusedDirtyRect : NSRect) {
     let r = self.mWorkingArea?.rect ?? self.bounds
     let gridWidth = 1.0 / self.actualScale
-    let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
+    let gridDisplayStep = self.mGridStepInCanariUnit.ptValue * CGFloat (self.mGridDisplayFactor)
     let gridStartX = (r.origin.x / gridDisplayStep).rounded (.up) * gridDisplayStep
     let gridStartY = (r.origin.y / gridDisplayStep).rounded (.up) * gridDisplayStep
     switch self.mGridStyle {

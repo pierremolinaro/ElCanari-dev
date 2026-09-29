@@ -81,13 +81,13 @@ class ReadOnlyObject_PointInSchematic : EBReadOnlyAbstractObjectProperty <PointI
   //   Observers of 'mX' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mX_property = EBTransientProperty <Int?> ()
+  final let mX_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mY' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mY_property = EBTransientProperty <Int?> ()
+  final let mY_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'location' transient property

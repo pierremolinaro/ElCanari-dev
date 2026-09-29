@@ -19,12 +19,12 @@ import CanariGeometry
        _ self_y1 : CanariLength,                             
        _ self_x2 : CanariLength,                             
        _ self_y2 : CanariLength
-) -> Int {
+) -> CanariLength {
 //--- START OF USER ZONE 2
     let dx = Double ((self_x1 - self_x2).cuValue)
     let dy = Double ((self_y1 - self_y2).cuValue)
     let length = sqrt (dx * dx + dy * dy).rounded (.toNearestOrEven)
-    return Int (length)
+    return .cu (Int (length))
 //--- END OF USER ZONE 2
 }
 

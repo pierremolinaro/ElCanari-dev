@@ -15,15 +15,15 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_componentPadDictionary (
-       _ self_mX : Int,                                              
-       _ self_mY : Int,                                              
+       _ self_mX : CanariLength,                                     
+       _ self_mY : CanariLength,                                     
        _ self_mRotation : Int,                                       
        _ self_mSide : ComponentSide,                                 
        _ self_packagePadDictionary : PackageMasterPadDictionary
 ) -> ComponentPadDescriptorDictionary {
 //--- START OF USER ZONE 2
         var af = AffineTransform ()
-        af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+        af.translate (x: self_mX.ptValue, y: self_mY.ptValue)
         af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
         if self_mSide == .back {
           af.scale (x: -1.0, y: 1.0)

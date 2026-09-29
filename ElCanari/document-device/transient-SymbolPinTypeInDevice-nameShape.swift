@@ -15,8 +15,8 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolPinTypeInDevice_nameShape (
-       _ self_mXName : Int,                                
-       _ self_mYName : Int,                                
+       _ self_mXName : CanariLength,                       
+       _ self_mYName : CanariLength,                       
        _ self_mName : String,                              
        _ self_mNameHorizontalAlignment : HorizontalAlignment,
        _ self_mPinNameIsDisplayedInSchematics : Bool,      
@@ -28,7 +28,7 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : self_mPinNameIsDisplayedInSchematics ? NSColor.black : .lightGray
     ]
-    let labelOrigin = NSPoint (x: canariUnitToCocoa (self_mXName), y: canariUnitToCocoa (self_mYName))
+    let labelOrigin = NSPoint (x: self_mXName, y: self_mYName)
     shape.add (text: self_mName, labelOrigin, nameTextAttributes, self_mNameHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2

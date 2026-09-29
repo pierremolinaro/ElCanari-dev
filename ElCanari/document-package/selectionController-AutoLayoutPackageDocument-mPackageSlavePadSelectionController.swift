@@ -129,7 +129,7 @@ import CanariGeometry
   //   Selection observable property: annularRing
   //------------------------------------------------------------------------------------------------
 
-  final let annularRing_property = EBTransientProperty <Int> ()
+  final let annularRing_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: padNameWithZoneName
@@ -1159,7 +1159,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.annularRing_property.selection {

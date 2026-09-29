@@ -205,7 +205,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'gridStep' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let gridStep_property = EBTransientProperty <Int?> ()
+  final let gridStep_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'gridStepUnit' stored property
@@ -253,7 +253,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'mModelImagePageGridStep' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImagePageGridStep_property = EBTransientProperty <Int?> ()
+  final let mModelImagePageGridStep_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImagePageGridStepUnit' stored property
@@ -421,7 +421,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'gridStepMultipliedByDisplayFactor' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let gridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int?> ()
+  final let gridStepMultipliedByDisplayFactor_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'secondPointX' transient property

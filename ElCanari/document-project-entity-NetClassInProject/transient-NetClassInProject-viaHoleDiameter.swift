@@ -15,7 +15,7 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetClassInProject_viaHoleDiameter (
-       _ self_mViaHoleDiameter : Int,                        
+       _ self_mViaHoleDiameter : CanariLength,               
        _ self_mViaHoleDiameterUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2

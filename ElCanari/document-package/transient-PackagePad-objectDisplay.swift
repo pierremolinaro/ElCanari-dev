@@ -30,10 +30,10 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var bp = BezierPath.pad (
-      centerX: self_xCenter.cuValue,
-      centerY: self_yCenter.cuValue,
-      width: self_width.cuValue,
-      height: self_height.cuValue,
+      centerX: self_xCenter,
+      centerY: self_yCenter,
+      width: self_width,
+      height: self_height,
       shape: self_padShape
     )
     switch self_padStyle {

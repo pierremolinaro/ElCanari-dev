@@ -16,7 +16,7 @@ import CanariGeometry
 
 @MainActor func transient_BoardTrack_signatureForERCChecking (
        _ self_mSide : TrackSide,                              
-       _ self_actualTrackWidth : Int
+       _ self_actualTrackWidth : CanariLength
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0

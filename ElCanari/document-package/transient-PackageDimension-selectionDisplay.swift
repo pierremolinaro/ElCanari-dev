@@ -26,7 +26,7 @@ import CanariGeometry
        _ self_drawDimensionBackground : Bool,                
        _ self_xDimension : CanariLength,                     
        _ self_yDimension : CanariLength,                     
-       _ self_distanceInCanariUnit : Int,                    
+       _ self_distanceInCanariUnit : CanariLength,           
        _ self_distanceUnit : Int,                            
        _ prefs_dimensionFont : NSFont,                       
        _ self_PackageObject_knobSize : Double

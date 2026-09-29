@@ -19,12 +19,12 @@ graphic handlingOpposite entity BorderCurve {
   toOne @weak BorderCurve mNext inverse toOne mPrevious ;
   toOne @weak BorderCurve mPrevious inverse toOne mNext ;
 
-  property @generateDirectAccess Int mX default 0 ;
-  property @generateDirectAccess Int mY default 0 ;
-  property @generateDirectAccess Int mCPX1 default 0 ;
-  property @generateDirectAccess Int mCPY1 default 0 ;
-  property @generateDirectAccess Int mCPX2 default 0 ;
-  property @generateDirectAccess Int mCPY2 default 0 ;
+  property @generateDirectAccess CanariLength mX default ".zero" ;
+  property @generateDirectAccess CanariLength mY default ".zero" ;
+  property @generateDirectAccess CanariLength mCPX1 default ".zero" ;
+  property @generateDirectAccess CanariLength mCPY1 default ".zero" ;
+  property @generateDirectAccess CanariLength mCPX2 default ".zero" ;
+  property @generateDirectAccess CanariLength mCPY2 default ".zero" ;
 
   override transient BorderCurveDescriptor descriptor dependsFrom
     self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
@@ -35,7 +35,6 @@ graphic handlingOpposite entity BorderCurve {
     self.mX, self.mY, self.mNext.one.mX, self.mNext.one.mY,
     self.mCPX1, self.mCPY1, self.mCPX2, self.mCPY2,
     self.mShape,
-//    self.mRoot.one.mBoardLimitsWidth,
     self.mRoot.one.mBoardClearance,
     self.mRoot.one.mBoardShape
   ;
@@ -50,8 +49,8 @@ graphic handlingOpposite entity BorderCurve {
     self.mRoot.one.mBoardShape
   ;
   
-  property proxy Int mNextX : mNext.mX ;
-  property proxy Int mNextY : mNext.mY ;
+  property proxy CanariLength mNextX : mNext.mX ;
+  property proxy CanariLength mNextY : mNext.mY ;
   
   transient Double p2Xvalue dependsFrom self.mNext.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
   transient Double p2Yvalue dependsFrom self.mNext.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;

@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetInProject_netClassTrackWidth (
-       _ self_mNetClass_mTrackWidth : Int?
-) -> Int {
+       _ self_mNetClass_mTrackWidth : CanariLength?
+) -> CanariLength {
 //--- START OF USER ZONE 2
-        return self_mNetClass_mTrackWidth ?? 0
+        return self_mNetClass_mTrackWidth ?? .zero
 //--- END OF USER ZONE 2
 }
 

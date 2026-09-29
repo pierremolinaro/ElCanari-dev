@@ -144,9 +144,9 @@ extension AutoLayoutMergerDocument {
 
   private func generateProductRepresentation () -> ProductRepresentation {
     var product = ProductRepresentation (
-      boardWidth : CanariLength.cu (self.rootObject.boardWidth!),
+      boardWidth : self.rootObject.boardWidth!,
       boardWidthUnit : self.rootObject.boardWidthUnit, // Canari Unit
-      boardHeight : CanariLength.cu (self.rootObject.boardHeight!),
+      boardHeight : self.rootObject.boardHeight!,
       boardHeightUnit: self.rootObject.boardHeightUnit, // Canari Unit
       artworkName: self.rootObject.mArtworkName,
       layerConfiguration: self.rootObject.mArtwork!.layerConfiguration
@@ -154,7 +154,7 @@ extension AutoLayoutMergerDocument {
   //--- Add Board limits
     let boardRect = CanariRect (
       origin: .zero,
-      size: CanariSize (width: .cu (self.rootObject.boardWidth!), height: .cu (self.rootObject.boardHeight!))
+      size: CanariSize (width: self.rootObject.boardWidth!, height: self.rootObject.boardHeight!)
     )
     let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
     let p1 = ProductPoint (canariPoint: boardRect.bottomRight)

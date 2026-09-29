@@ -53,8 +53,8 @@ extension BoardQRCode {
   func translate_BoardQRCode (xBy inDx : CanariLength,
                               yBy inDy : CanariLength,
                               userSet ioUserSet : inout EBReferenceSet <EBManagedObject>) {
-    self.mCenterX += inDx.cuValue
-    self.mCenterY += inDy.cuValue
+    self.mCenterX += inDx
+    self.mCenterY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -103,10 +103,10 @@ extension BoardQRCode {
                          alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                          shift _ : Bool) {
     if inKnobIndex == BOARD_QRCODE_ORIGIN_KNOB {
-      self.mCenterX += inDx.cuValue
-      self.mCenterY += inDy.cuValue
+      self.mCenterX += inDx
+      self.mCenterY += inDy
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
-      let origin = CanariPoint (x: .cu (self.mCenterX), y: .cu (self.mCenterY)).ptValue
+      let origin = NSPoint (x: self.mCenterX, y: self.mCenterY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
@@ -118,9 +118,9 @@ extension BoardQRCode {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_BoardQRCode (_ inGrid : Int) -> Bool {
-    var isAligned = self.mCenterX.isAlignedOnGrid (inGrid)
+    var isAligned = self.mCenterX.isAligned (on: inGrid)
     if isAligned {
-      isAligned = self.mCenterY.isAlignedOnGrid (inGrid)
+      isAligned = self.mCenterY.isAligned (on: inGrid)
     }
     return !isAligned
   }
@@ -128,8 +128,8 @@ extension BoardQRCode {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_BoardQRCode (_ inGrid : Int) {
-    self.mCenterX.align (onGrid: inGrid)
-    self.mCenterY.align (onGrid: inGrid)
+    self.mCenterX.align (on: inGrid)
+    self.mCenterY.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -146,8 +146,8 @@ extension BoardQRCode {
   func rotate90Clockwise_BoardQRCode (from inRotationCenter : CanariPoint,
                                       userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x.cuValue
-    self.mCenterY = p.y.cuValue
+    self.mCenterX = p.x
+    self.mCenterY = p.y
     self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -157,8 +157,8 @@ extension BoardQRCode {
   func rotate90CounterClockwise_BoardQRCode (from inRotationCenter : CanariPoint,
                                              userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
-    self.mCenterX = p.x.cuValue
-    self.mCenterY = p.y.cuValue
+    self.mCenterX = p.x
+    self.mCenterY = p.y
     self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -220,20 +220,20 @@ struct QRCodeDisplayInfos {
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func boardQRCode_displayInfos (centerX inCenterX : Int,
-                                          centerY inCenterY : Int,
+@MainActor func boardQRCode_displayInfos (centerX inCenterX : CanariLength,
+                                          centerY inCenterY : CanariLength,
                                           _ inQRCodeDescriptor : QRCodeDescriptor,
                                           frontSide inFrontSide : Bool,
-                                          moduleSizeInCanariUnit inModuleSize : Int,
+                                          moduleSizeInCanariUnit inModuleSize : CanariLength,
                                           rotation inRotation : Int) -> QRCodeDisplayInfos {
-  let moduleSize = canariUnitToCocoa (inModuleSize)
+  let moduleSize = inModuleSize
   let width = CGFloat (inQRCodeDescriptor.imageWidth) * moduleSize
   let height = CGFloat (inQRCodeDescriptor.imageHeight) * moduleSize
   let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
 //--- Affine transform
   var af = AffineTransform ()
-  let centerX = canariUnitToCocoa (inCenterX)
-  let centerY = canariUnitToCocoa (inCenterY)
+  let centerX = inCenterX.ptValue
+  let centerY = inCenterY.ptValue
   af.translate (x: centerX, y: centerY)
   let rotationInDegrees = CGFloat (inRotation) / 1000.0
   af.rotate (byDegrees: rotationInDegrees)
@@ -261,8 +261,8 @@ struct QRCodeDisplayInfos {
 //    let size = NSSize (width: w, height: h)
   //---
     var rectAF = af
-    rectAF.translate (x: x + w / 2.0, y: y + h / 2.0)
-    rectAF.scale (x: w, y: h)
+    rectAF.translate (x: x.ptValue + w.ptValue / 2.0, y: y.ptValue + h.ptValue / 2.0)
+    rectAF.scale (x: w.ptValue, y: h.ptValue)
     transformedRectangles.append (rectAF)
   }
   let qrCodeBP = filledBP.transformed (by: af)

@@ -36,26 +36,26 @@ extension BoardTrack {
       let newP1y = center.y - dp.y
       let newP2x = center.x + dp.x
       let newP2y = center.y + dp.y
-      self.mConnectorP1?.mX = newP1x.cuValue
-      self.mConnectorP1?.mY = newP1y.cuValue
-      self.mConnectorP2?.mX = newP2x.cuValue
-      self.mConnectorP2?.mY = newP2y.cuValue
+      self.mConnectorP1?.mX = newP1x
+      self.mConnectorP1?.mY = newP1y
+      self.mConnectorP2?.mX = newP2x
+      self.mConnectorP2?.mY = newP2y
     }else if p1CanMove { // Rotation around p2
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
       let length = CanariPoint.distance (p1, p2)
       let newP1x = p2.x - .cu (Int ((Double (length.cuValue) * cos (angleInRadian)).rounded ()))
       let newP1y = p2.y - .cu (Int ((Double (length.cuValue) * sin (angleInRadian)).rounded ()))
-      self.mConnectorP1?.mX = newP1x.cuValue
-      self.mConnectorP1?.mY = newP1y.cuValue
+      self.mConnectorP1?.mX = newP1x
+      self.mConnectorP1?.mY = newP1y
     }else if p2CanMove {  // Rotation around p1
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
       let length = CanariPoint.distance (p1, p2)
       let newP2x = p1.x + .cu (Int ((Double (length.cuValue) * cos (angleInRadian)).rounded ()))
       let newP2y = p1.y + .cu (Int ((Double (length.cuValue) * sin (angleInRadian)).rounded ()))
-      self.mConnectorP2?.mX = newP2x.cuValue
-      self.mConnectorP2?.mY = newP2y.cuValue
+      self.mConnectorP2?.mX = newP2x
+      self.mConnectorP2?.mY = newP2y
     }
 //--- END OF USER ZONE 2
   }

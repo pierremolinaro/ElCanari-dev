@@ -16,9 +16,9 @@ import CanariGeometry
 
 @MainActor func transient_MergerRoot_boardHeight (
        _ self_boardRect : CanariRect
-) -> Int {
+) -> CanariLength {
 //--- START OF USER ZONE 2
-  return self_boardRect.height.cuValue
+  return self_boardRect.height
 //--- END OF USER ZONE 2
 }
 

@@ -12,15 +12,15 @@ handlingOpposite entity ProjectRoot {
   standalone property Bool mArtworkIsUpdatable default no ;
 
   property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
-  property proxy Int minPPTPTTTW : mArtwork.minPPTPTTTW ;
+  property proxy CanariLength minPPTPTTTW : mArtwork.minPPTPTTTW ;
   
   property proxy Int minValueForOARdisplayUnit : mArtwork.minValueForOARdisplayUnit ;
-  property proxy Int minValueForOARinEBUnit : mArtwork.minValueForOARinEBUnit ;
+  property proxy CanariLength minValueForOARinEBUnit : mArtwork.minValueForOARinEBUnit ;
   
   property proxy Int minValueForPHDdisplayUnit : mArtwork.minValueForPHDdisplayUnit ;
-  property proxy Int minValueForPHDinEBUnit : mArtwork.minValueForPHDinEBUnit ;
+  property proxy CanariLength minValueForPHDinEBUnit : mArtwork.minValueForPHDinEBUnit ;
  
-  property proxy Int minValueForBoardLimitWidth : mArtwork.minValueForBoardLimitWidth ;
+  property proxy CanariLength minValueForBoardLimitWidth : mArtwork.minValueForBoardLimitWidth ;
   property proxy Int minValueForBoardLimitWidthDisplayUnit : mArtwork.minValueForBoardLimitWidthDisplayUnit ;
  
   property proxy String drillDataFileExtension : mArtwork.drillDataFileExtension ;
@@ -124,7 +124,7 @@ handlingOpposite entity ProjectRoot {
   
   property Int mTrackLengthUnit default 90_000_000 ; // meter
   
-  property @generateDirectRead Int mLayoutClearance default 22_860 ; // 10 mil
+  property @generateDirectRead CanariLength mLayoutClearance default ".mil (10)" ;
   property Int mLayoutClearanceUnit default 2_286 ; // mil
 
   property  @generateDirectAccess Int mBoardSelectedInspector default 1 ;
@@ -133,10 +133,10 @@ handlingOpposite entity ProjectRoot {
   property GridStyle mBoardGridStyle default line ;
   property Int mBoardGridDisplayFactor default 4 ;
   property Int mBoardZoom default 0 ;
-  property @generateDirectRead Int mBoardGridStep default 57_150 ; // 25 mils
+  property @generateDirectRead CanariLength mBoardGridStep default ".mil (25)" ;
   property @generateDirectRead Int mBoardGridStepUnit default 2_286 ; // mil
 
-  transient Int boardGridStepMultipliedByDisplayFactor dependsFrom
+  transient CanariLength boardGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardGridStep, self.mBoardGridDisplayFactor
   ;
 
@@ -188,13 +188,10 @@ handlingOpposite entity ProjectRoot {
 //--- Board border
   toMany @generateDirectAccess BorderCurve mBorderCurves inverse toOne mRoot ;
 
-//  property @generateDirectRead Int mBoardLimitsWidth default 90_000 ; // 1 mm
-//  property @generateDirectRead Int mBoardLimitsWidthUnit default 90_000 ; // mm
-
-  property @generateDirectRead Int mBoardCornerRadius default 0 ; // 1 mm
+  property @generateDirectRead CanariLength mBoardCornerRadius default ".mm (1)" ;
   property Int mBoardCornerRadiusUnit default 90_000 ; // mm
 
-  property @generateDirectRead Int mBoardClearance default 90_000 ; // 1 mm
+  property @generateDirectRead CanariLength mBoardClearance default ".mm (1)" ; // 1 mm
   property Int mBoardClearanceUnit default 90_000 ; // mm
 
   property Int mBoardLimitsSelectedInspector default 0 ;
@@ -204,24 +201,24 @@ handlingOpposite entity ProjectRoot {
   property Int mBoardLimitsGridDisplayFactor default 5 ;
   property Int mBoardLimitsZoom default 0 ;
 
-  property @generateDirectRead Int mBoardLimitsGridStep default 90_000 ; // mm
+  property @generateDirectRead CanariLength mBoardLimitsGridStep default ".mm(1)" ; // mm
   property Int mBoardLimitsGridStepUnit default 90_000 ; // mm
   property Int mBoardLimitsBoundingBoxUnit default 90_000 ; // mm
   property Int mBoardPointsBoundingBoxUnit default 90_000 ; // mm
   property Int mBoardSelectedCurveDisplayUnit default 90_000 ; // mm
   property Int mBoardLimitControlPointsDisplayUnit default 90_000 ; // mm
 
-  transient Int boardLimitsGridStepMultipliedByDisplayFactor dependsFrom
+  transient CanariLength boardLimitsGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
   ;
 
   property @generateDirectRead BoardShape mBoardShape default rectangular ;
   property Double mContentOpacityInBoardOutline default 0.5 ;
   
-  property @generateDirectRead Int mRectangularBoardWidth default 90_000_00 ; // 100 mm
+  property @generateDirectRead CanariLength mRectangularBoardWidth default ".cm (10)" ;
   property Int mRectangularBoardWidthUnit default 90_000 ; // mm
 
-  property @generateDirectRead Int mRectangularBoardHeight default 90_000_00 ; // 100 mm
+  property @generateDirectRead CanariLength mRectangularBoardHeight default ".cm (10)" ;
   property Int mRectangularBoardHeightUnit default 90_000 ; // mm
 
   transient Bool boardShapeIsRectangular dependsFrom self.mBoardShape ;
@@ -253,7 +250,6 @@ handlingOpposite entity ProjectRoot {
     self.mBoardShape,
     self.mRectangularBoardWidth, self.mRectangularBoardHeight,
     self.mBoardCornerRadius,
-//    self.mBoardLimitsWidth,
     prefs.boardLimitsColorForBoard,
     self.mBoardClearance, prefs.boardClearanceColorForBoard
   ;
@@ -298,9 +294,9 @@ handlingOpposite entity ProjectRoot {
   property GridStyle mSchematicGridStyle default line ;
   property Int mSchematicGridDisplayFactor default 4 ;
 
-  property @generateDirectRead Int mSchematicCustomWidth default 27_000_000 ; // 300 mm
+  property @generateDirectRead CanariLength mSchematicCustomWidth default ".cm (30)" ; // 300 mm
   property Int mSchematicCustomWidthUnit default 90_000 ; // mm
-  property @generateDirectRead Int mSchematicCustomHeight default 27_000_000 ; // 300 mm
+  property @generateDirectRead CanariLength mSchematicCustomHeight default ".cm (30)" ; // 300 mm
   property Int mSchematicCustomHeightUnit default 90_000 ; // mm
   property @generateDirectRead SchematicSheetOrientation mSchematicSheetOrientation default a4Horizontal ;
 

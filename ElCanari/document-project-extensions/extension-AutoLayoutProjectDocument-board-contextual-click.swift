@@ -180,7 +180,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendDisconnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
-    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: .cu (self.rootObject.mBoardGridStep))
+    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
     let connectors = self.rootObject.connectors (at: alignedMouseDownPoint, trackSide: inSide)
     var connectedConnectors = [BoardConnector] ()
     for c in connectors {
@@ -220,8 +220,8 @@ extension AutoLayoutProjectDocument {
             track.mConnectorP1 = nil
             let newConnector = BoardConnector (self.undoManager)
             newConnector.mRoot = self.rootObject
-            newConnector.mX = location.x.cuValue
-            newConnector.mY = location.y.cuValue
+            newConnector.mX = location.x
+            newConnector.mY = location.y
             newConnector.mTracksP1 = EBReferenceArray (track)
           }
         }
@@ -230,8 +230,8 @@ extension AutoLayoutProjectDocument {
             track.mConnectorP2 = nil
             let newConnector = BoardConnector (self.undoManager)
             newConnector.mRoot = self.rootObject
-            newConnector.mX = location.x.cuValue
-            newConnector.mY = location.y.cuValue
+            newConnector.mX = location.x
+            newConnector.mY = location.y
             newConnector.mTracksP2 = EBReferenceArray (track)
           }
         }
@@ -347,23 +347,23 @@ extension AutoLayoutProjectDocument {
     let dY = inRightP.y - inLeftP.y // > 0
     let dX = inRightP.x - inLeftP.x  // > 0
     let leftToRightAngle = atan2 (Double (dY.cuValue), Double (dX.cuValue))
-    let leftToConnectorAngle = atan2 (Double (inConnector.mY - inLeftP.y.cuValue), Double (inConnector.mX - inLeftP.x.cuValue))
+    let leftToConnectorAngle = atan2 (Double (inConnector.mY.cuValue - inLeftP.y.cuValue), Double (inConnector.mX.cuValue - inLeftP.x.cuValue))
 //    Swift.print ("leftToRightAngle \(leftToRightAngle * 180.0 / .pi)°, leftToConnectorAngle \(leftToConnectorAngle * 180.0 / .pi)°")
     if dY > dX { // Pente > 45°
       if leftToConnectorAngle > leftToRightAngle { // Dessus
-        inConnector.mX = inLeftP.x.cuValue
-        inConnector.mY = (inLeftP.y + dY - dX).cuValue
+        inConnector.mX = inLeftP.x
+        inConnector.mY = (inLeftP.y + dY - dX)
       }else{ // Dessous
-        inConnector.mX = inRightP.x.cuValue
-        inConnector.mY = (inRightP.y - (dY - dX)).cuValue
+        inConnector.mX = inRightP.x
+        inConnector.mY = (inRightP.y - (dY - dX))
       }
     }else{  // Pente < 45°
       if leftToConnectorAngle > leftToRightAngle { // Dessus
-        inConnector.mX = (inRightP.x - (dX - dY)).cuValue
-        inConnector.mY = inRightP.y.cuValue
+        inConnector.mX = (inRightP.x - (dX - dY))
+        inConnector.mY = inRightP.y
       }else{ // Dessous
-        inConnector.mX = (inLeftP.x + (dX - dY)).cuValue
-        inConnector.mY = inLeftP.y.cuValue
+        inConnector.mX = (inLeftP.x + (dX - dY))
+        inConnector.mY = inLeftP.y
       }
     }
   }
@@ -396,23 +396,23 @@ extension AutoLayoutProjectDocument {
     let dY = inLeftP.y - inRightP.y // > 0
     let dX = inRightP.x - inLeftP.x  // > 0
     let leftToRightAngle = atan2 (Double (dY.cuValue), Double (dX.cuValue))
-    let leftToConnectorAngle = atan2 (Double (inLeftP.y.cuValue - inConnector.mY), Double (inConnector.mX - inLeftP.x.cuValue))
+    let leftToConnectorAngle = atan2 (Double (inLeftP.y.cuValue - inConnector.mY.cuValue), Double (inConnector.mX.cuValue - inLeftP.x.cuValue))
 //    Swift.print ("leftToRightAngle \(leftToRightAngle * 180.0 / .pi)°, leftToConnectorAngle \(leftToConnectorAngle * 180.0 / .pi)°")
     if dY > dX { // Pente > 45°
       if leftToConnectorAngle < leftToRightAngle { // Dessus
-        inConnector.mX = inRightP.x.cuValue
-        inConnector.mY = (inRightP.y + dY - dX).cuValue
+        inConnector.mX = inRightP.x
+        inConnector.mY = (inRightP.y + dY - dX)
       }else{ // Dessous
-        inConnector.mX = inLeftP.x.cuValue
-        inConnector.mY = (inLeftP.y - (dY - dX)).cuValue
+        inConnector.mX = inLeftP.x
+        inConnector.mY = (inLeftP.y - (dY - dX))
       }
     }else{  // Pente < 45°
       if leftToConnectorAngle < leftToRightAngle { // Dessus
-        inConnector.mX = (inLeftP.x + (dX - dY)).cuValue
-        inConnector.mY = inLeftP.y.cuValue
+        inConnector.mX = (inLeftP.x + (dX - dY))
+        inConnector.mY = inLeftP.y
       }else{ // Dessous
-        inConnector.mX = (inRightP.x - (dX - dY)).cuValue
-        inConnector.mY = inRightP.y.cuValue
+        inConnector.mX = (inRightP.x - (dX - dY))
+        inConnector.mY = inRightP.y
       }
     }
   }
@@ -428,11 +428,11 @@ extension AutoLayoutProjectDocument {
         let dTopLeft = CanariPoint.distanceSquare (topLeft, connector.location!)
         let dBottomRight = CanariPoint.distanceSquare (bottomRight, connector.location!)
         if dTopLeft < dBottomRight {
-          connector.mX = topLeft.x.cuValue
-          connector.mY = topLeft.y.cuValue
+          connector.mX = topLeft.x
+          connector.mY = topLeft.y
         }else{
-          connector.mX = bottomRight.x.cuValue
-          connector.mY = bottomRight.y.cuValue
+          connector.mX = bottomRight.x
+          connector.mY = bottomRight.y
         }
       }else{
         let topRight = CanariPoint (x: p1.x, y: p0.y)
@@ -440,11 +440,11 @@ extension AutoLayoutProjectDocument {
         let dTopRight = CanariPoint.distanceSquare (topRight, connector.location!)
         let dBottomLeft = CanariPoint.distanceSquare (bottomLeft, connector.location!)
         if dTopRight < dBottomLeft {
-          connector.mX = topRight.x.cuValue
-          connector.mY = topRight.y.cuValue
+          connector.mX = topRight.x
+          connector.mY = topRight.y
         }else{
-          connector.mX = bottomLeft.x.cuValue
-          connector.mY = bottomLeft.y.cuValue
+          connector.mX = bottomLeft.x
+          connector.mY = bottomLeft.y
         }
       }
     }
@@ -538,8 +538,8 @@ extension AutoLayoutProjectDocument {
       track.mRoot = nil
     //--- New connector
       let newConnector = BoardConnector (self.undoManager)
-      newConnector.mX = mouseLocation.x.cuValue
-      newConnector.mY = mouseLocation.y.cuValue
+      newConnector.mX = mouseLocation.x
+      newConnector.mY = mouseLocation.y
       self.rootObject.mBoardObjects.append (newConnector)
     //--- Add First frack
       let track1 = BoardTrack (self.undoManager)

@@ -78,7 +78,7 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: gridStep
   //------------------------------------------------------------------------------------------------
 
-  final let gridStep_property : EBStoredProperty_Int
+  final let gridStep_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: gridStepUnit
@@ -126,7 +126,7 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mModelImagePageGridStep
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImagePageGridStep_property : EBStoredProperty_Int
+  final let mModelImagePageGridStep_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mModelImagePageGridStepUnit
@@ -567,11 +567,11 @@ final class PackageRoot : EBManagedObject
   //   Transient property: gridStepMultipliedByDisplayFactor
   //------------------------------------------------------------------------------------------------
 
-  final let gridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int> ()
+  final let gridStepMultipliedByDisplayFactor_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var gridStepMultipliedByDisplayFactor : Int? {
+  final var gridStepMultipliedByDisplayFactor : CanariLength? {
     return self.gridStepMultipliedByDisplayFactor_property.optionalValue
   }
 
@@ -724,7 +724,7 @@ final class PackageRoot : EBManagedObject
     self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "horizontalFlip")
     self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "verticalFlip")
     self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "gridStyle")
-    self.gridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "gridStep")
+    self.gridStep_property = EBStoredProperty_CanariLength (defaultValue: .mil (25), undoManager: inUndoManager, key: "gridStep")
     self.gridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "gridStepUnit")
     self.gridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "gridDisplayFactor")
     self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: inUndoManager, key: "zoom")
@@ -732,7 +732,7 @@ final class PackageRoot : EBManagedObject
     self.mModelImagePageHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mModelImagePageHorizontalFlip")
     self.mModelImagePageVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mModelImagePageVerticalFlip")
     self.mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.noGrid, undoManager: inUndoManager, key: "mModelImagePageGridStyle")
-    self.mModelImagePageGridStep_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImagePageGridStep")
+    self.mModelImagePageGridStep_property = EBStoredProperty_CanariLength (defaultValue: .mil (1), undoManager: inUndoManager, key: "mModelImagePageGridStep")
     self.mModelImagePageGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImagePageGridStepUnit")
     self.mModelImagePageGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 100, undoManager: inUndoManager, key: "mModelImagePageGridDisplayFactor")
     self.mModelImagePageZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: inUndoManager, key: "mModelImagePageZoom")

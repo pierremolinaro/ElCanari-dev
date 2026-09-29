@@ -16,22 +16,22 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BorderCurve_descriptor (
-       _ self_mX : Int,                           
-       _ self_mY : Int,                           
-       _ self_mNext_mX : Int?,                    
-       _ self_mNext_mY : Int?,                    
-       _ self_mCPX1 : Int,                        
-       _ self_mCPY1 : Int,                        
-       _ self_mCPX2 : Int,                        
-       _ self_mCPY2 : Int,                        
+       _ self_mX : CanariLength,                  
+       _ self_mY : CanariLength,                  
+       _ self_mNext_mX : CanariLength?,           
+       _ self_mNext_mY : CanariLength?,           
+       _ self_mCPX1 : CanariLength,               
+       _ self_mCPY1 : CanariLength,               
+       _ self_mCPX2 : CanariLength,               
+       _ self_mCPY2 : CanariLength,               
        _ self_mShape : BorderCurveShape
 ) -> BorderCurveDescriptor {
 //--- START OF USER ZONE 2
     return BorderCurveDescriptor (
-      p1: CanariPoint (x: .cu (self_mX), y: .cu (self_mY)),
-      p2: CanariPoint (x: .cu (self_mNext_mX!), y: .cu (self_mNext_mY!)),
-      cp1: CanariPoint (x: .cu (self_mCPX1), y: .cu (self_mCPY1)),
-      cp2: CanariPoint (x: .cu (self_mCPX2), y: .cu (self_mCPY2)),
+      p1: CanariPoint (x: self_mX, y: self_mY),
+      p2: CanariPoint (x: self_mNext_mX!, y: self_mNext_mY!),
+      cp1: CanariPoint (x: self_mCPX1, y: self_mCPY1),
+      cp2: CanariPoint (x: self_mCPX2, y: self_mCPY2),
       shape: self_mShape
     )
 //--- END OF USER ZONE 2

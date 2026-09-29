@@ -18,10 +18,10 @@ extension AutoLayoutSymbolDocument {
   final func configure_symbolGraphicView (_ inOutlet : AutoLayoutGraphicView) {
 //--- START OF USER ZONE 2
           inOutlet.mScrollView?.register (document: self)
-          inOutlet.mGraphicView.set (arrowKeyMagnitude: SYMBOL_GRID_LENGTH.cuValue)
-          inOutlet.mGraphicView.set (shiftArrowKeyMagnitude: SYMBOL_GRID_LENGTH.cuValue * 4)
+          inOutlet.mGraphicView.set (arrowKeyMagnitude: SYMBOL_GRID_LENGTH)
+          inOutlet.mGraphicView.set (shiftArrowKeyMagnitude: SYMBOL_GRID_LENGTH * 4)
           inOutlet.mGraphicView.register (pasteboardType: symbolPasteboardType)
-          inOutlet.mGraphicView.set (mouseGridInCanariUnit: SYMBOL_GRID_LENGTH.cuValue)
+          inOutlet.mGraphicView.set (mouseGridInCanariUnit: SYMBOL_GRID_LENGTH)
 //--- END OF USER ZONE 2
   }
 }

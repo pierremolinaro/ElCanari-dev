@@ -15,8 +15,8 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ComponentInProject_objectDisplay (
-       _ self_mX : Int,                                     
-       _ self_mY : Int,                                     
+       _ self_mX : CanariLength,                            
+       _ self_mY : CanariLength,                            
        _ self_mRotation : Int,                              
        _ self_mSide : ComponentSide,                        
        _ self_packagePadDictionary : PackageMasterPadDictionary,
@@ -38,15 +38,15 @@ import CanariGeometry
        _ prefs_padNumberColorForBoard : NSColor,            
        _ self_BoardObject_displayPadNumbersForBoard : Bool, 
        _ self_mNameIsVisibleInBoard : Bool,                 
-       _ self_mXName : Int,                                 
-       _ self_mYName : Int,                                 
+       _ self_mXName : CanariLength,                        
+       _ self_mYName : CanariLength,                        
        _ self_mNameFont_descriptor : BoardFontDescriptor?,  
        _ self_mNameFontSize : Double,                       
        _ self_mNameRotation : Int,                          
        _ self_componentName : String,                       
        _ self_mValueIsVisibleInBoard : Bool,                
-       _ self_mXValue : Int,                                
-       _ self_mYValue : Int,                                
+       _ self_mXValue : CanariLength,                       
+       _ self_mYValue : CanariLength,                       
        _ self_mValueFont_descriptor : BoardFontDescriptor?, 
        _ self_mValueFontSize : Double,                      
        _ self_mValueRotation : Int,                         
@@ -157,7 +157,7 @@ import CanariGeometry
         }
       //---
         var af = AffineTransform ()
-        af.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+        af.translate (x: self_mX.ptValue, y: self_mY.ptValue)
         af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
         if self_mSide == .back {
           af.scale (x: -1.0, y: 1.0)

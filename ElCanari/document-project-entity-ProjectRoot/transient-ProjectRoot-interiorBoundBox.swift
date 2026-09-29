@@ -17,9 +17,9 @@ import CanariGeometry
 @MainActor func transient_ProjectRoot_interiorBoundBox (
        _ self_mBorderCurves_descriptor : [any BorderCurve_descriptor],
        _ self_mBoardShape : BoardShape,                 
-       _ self_mRectangularBoardWidth : Int,             
-       _ self_mRectangularBoardHeight : Int,            
-       _ self_mBoardClearance : Int
+       _ self_mRectangularBoardWidth : CanariLength,    
+       _ self_mRectangularBoardHeight : CanariLength,   
+       _ self_mBoardClearance : CanariLength
 ) -> CanariRect {
 //--- START OF USER ZONE 2
         switch self_mBoardShape {
@@ -58,12 +58,12 @@ import CanariGeometry
             return .zero
           }
         case .rectangular :
-          let d = CanariLength.cu (self_mBoardClearance) //  + self_mBoardLimitsWidth
+          let d = self_mBoardClearance
           return CanariRect (
             left: d,
             bottom: d,
-            width: .cu (self_mRectangularBoardWidth) - 2 * d,
-            height: .cu (self_mRectangularBoardHeight) - 2 * d
+            width: self_mRectangularBoardWidth - 2 * d,
+            height: self_mRectangularBoardHeight - 2 * d
           )
         }
 //--- END OF USER ZONE 2

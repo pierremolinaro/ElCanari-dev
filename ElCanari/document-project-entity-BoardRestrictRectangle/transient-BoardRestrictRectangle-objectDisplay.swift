@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardRestrictRectangle_objectDisplay (
-       _ self_mX : Int,                                         
-       _ self_mY : Int,                                         
-       _ self_mWidth : Int,                                     
-       _ self_mHeight : Int,                                    
+       _ self_mX : CanariLength,                                
+       _ self_mY : CanariLength,                                
+       _ self_mWidth : CanariLength,                            
+       _ self_mHeight : CanariLength,                           
        _ self_mIsInFrontLayer : Bool,                           
        _ self_mIsInBackLayer : Bool,                            
        _ self_mIsInInner1Layer : Bool,                          
@@ -61,7 +61,7 @@ import CanariGeometry
           }
           return bp
         }
-        let cocoaRect = CanariRect (left: .cu (self_mX), bottom: .cu (self_mY), width: .cu (self_mWidth), height: .cu (self_mHeight)).ptValue
+        let cocoaRect = NSRect (x: self_mX, y: self_mY, width: self_mWidth, height: self_mHeight)
         var shape = EBShape ()
         let display = (self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles)
           || (self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles)

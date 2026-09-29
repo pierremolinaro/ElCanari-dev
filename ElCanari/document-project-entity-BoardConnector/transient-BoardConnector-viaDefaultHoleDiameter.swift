@@ -17,9 +17,9 @@ import CanariGeometry
 @MainActor func transient_BoardConnector_viaDefaultHoleDiameter (
        _ self_mTracksP1_netClassViaHoleDiameter : [any BoardTrack_netClassViaHoleDiameter],
        _ self_mTracksP2_netClassViaHoleDiameter : [any BoardTrack_netClassViaHoleDiameter]
-) -> Int {
+) -> CanariLength {
 //--- START OF USER ZONE 2
-        var holes = Set <Int> ()
+        var holes = Set <CanariLength> ()
         for track in self_mTracksP1_netClassViaHoleDiameter {
           if let h = track.netClassViaHoleDiameter {
             holes.insert (h)
@@ -30,7 +30,7 @@ import CanariGeometry
             holes.insert (h)
           }
         }
-        return holes.first ?? 0 
+        return holes.first ?? .zero
 //--- END OF USER ZONE 2
 }
 

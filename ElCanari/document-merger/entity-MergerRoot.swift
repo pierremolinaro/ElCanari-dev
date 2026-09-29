@@ -90,13 +90,13 @@ final class MergerRoot : EBManagedObject
   //   Atomic property: boardManualWidth
   //------------------------------------------------------------------------------------------------
 
-  final let boardManualWidth_property : EBStoredProperty_Int
+  final let boardManualWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: boardManualHeight
   //------------------------------------------------------------------------------------------------
 
-  final let boardManualHeight_property : EBStoredProperty_Int
+  final let boardManualHeight_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: boardWidthUnit
@@ -511,11 +511,11 @@ final class MergerRoot : EBManagedObject
   //   Transient property: boardWidth
   //------------------------------------------------------------------------------------------------
 
-  final let boardWidth_property = EBTransientProperty <Int> ()
+  final let boardWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardWidth : Int? {
+  final var boardWidth : CanariLength? {
     return self.boardWidth_property.optionalValue
   }
 
@@ -523,11 +523,11 @@ final class MergerRoot : EBManagedObject
   //   Transient property: boardHeight
   //------------------------------------------------------------------------------------------------
 
-  final let boardHeight_property = EBTransientProperty <Int> ()
+  final let boardHeight_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardHeight : Int? {
+  final var boardHeight : CanariLength? {
     return self.boardHeight_property.optionalValue
   }
 
@@ -666,8 +666,8 @@ final class MergerRoot : EBManagedObject
     self.showDisplaySettingView_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "showDisplaySettingView")
     self.modelInsertionRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager, key: "modelInsertionRotation")
     self.automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "automaticBoardSize")
-    self.boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "boardManualWidth")
-    self.boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "boardManualHeight")
+    self.boardManualWidth_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "boardManualWidth")
+    self.boardManualHeight_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "boardManualHeight")
     self.boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardWidthUnit")
     self.boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardHeightUnit")
     self.selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "selectedBoardXUnit")

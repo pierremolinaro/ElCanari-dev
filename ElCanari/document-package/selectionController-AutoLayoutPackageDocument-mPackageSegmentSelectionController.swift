@@ -105,7 +105,7 @@ import CanariGeometry
   //   Selection observable property: lengthInCanariUnit
   //------------------------------------------------------------------------------------------------
 
-  final let lengthInCanariUnit_property = EBTransientProperty <Int> ()
+  final let lengthInCanariUnit_property = EBTransientProperty <CanariLength> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selected array (not observable)
@@ -825,7 +825,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.lengthInCanariUnit_property.selection {

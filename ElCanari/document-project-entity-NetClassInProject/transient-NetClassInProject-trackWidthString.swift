@@ -15,7 +15,7 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetClassInProject_trackWidthString (
-       _ self_mTrackWidth : Int,                              
+       _ self_mTrackWidth : CanariLength,                     
        _ self_mTrackWidthUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2

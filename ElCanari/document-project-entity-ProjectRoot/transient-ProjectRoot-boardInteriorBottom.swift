@@ -19,7 +19,7 @@ import CanariGeometry
        _ self_mBoardPointsBoundingBoxUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2
-        return valueAndUnitStringFrom (valueInCanariUnit: self_interiorBoundBox.bottom.cuValue, displayUnit: self_mBoardPointsBoundingBoxUnit)
+        return valueAndUnitStringFrom (valueInCanariUnit: self_interiorBoundBox.bottom, displayUnit: self_mBoardPointsBoundingBoxUnit)
 //--- END OF USER ZONE 2
 }
 

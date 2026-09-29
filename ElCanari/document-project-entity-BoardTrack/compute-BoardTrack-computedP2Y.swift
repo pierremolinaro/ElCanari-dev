@@ -18,7 +18,7 @@ extension BoardTrack {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func compute_computedP2Y_property (_ inValue : Int) {
+  func compute_computedP2Y_property (_ inValue : CanariLength) {
 //--- START OF USER ZONE 2
         self.mConnectorP2?.mY = inValue
 //--- END OF USER ZONE 2

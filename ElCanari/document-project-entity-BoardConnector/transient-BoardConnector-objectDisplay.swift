@@ -18,18 +18,18 @@ import CanariGeometry
 @MainActor func transient_BoardConnector_objectDisplay (
        _ self_isVia : Bool,                             
        _ self_location : CanariPoint,                   
-       _ self_actualHoleDiameter : Int,                 
-       _ self_actualPadDiameter : Int,                  
+       _ self_actualHoleDiameter : CanariLength,        
+       _ self_actualPadDiameter : CanariLength,         
        _ prefs_frontSidePadColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
         if self_isVia { // !self_connectedToComponent && (self_side == .both) {
-          let p = self_location.ptValue
-          let padDiameter = canariUnitToCocoa (self_actualPadDiameter)
+          let p = self_location
+          let padDiameter = self_actualPadDiameter
           let rPad = NSRect (x: p.x - padDiameter / 2.0, y: p.y - padDiameter / 2.0, width: padDiameter, height: padDiameter)
           var bp = BezierPath (ovalIn: rPad)
-          let holeDiameter = canariUnitToCocoa (self_actualHoleDiameter)
+          let holeDiameter = self_actualHoleDiameter
           let rHole = NSRect (x: p.x - holeDiameter / 2.0, y: p.y - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
           bp.appendOval (in: rHole)
           bp.windingRule = .evenOdd

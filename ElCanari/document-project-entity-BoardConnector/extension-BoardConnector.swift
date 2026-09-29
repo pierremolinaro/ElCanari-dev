@@ -100,8 +100,8 @@ extension BoardConnector {
                                  userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if !ioSet.contains (self) {
       ioSet.insert (self)
-      self.mX += inDx.cuValue
-      self.mY += inDy.cuValue
+      self.mX += inDx
+      self.mY += inDy
     }
   }
 
@@ -132,8 +132,8 @@ extension BoardConnector {
                             alignedMouseLocationY _ : CanariLength,
                             shift _ : Bool) {
     if inKnobIndex == BOARD_CONNECTOR_KNOB {
-      self.mX += inDx.cuValue
-      self.mY += inDy.cuValue
+      self.mX += inDx
+      self.mY += inDy
     }
   }
 
@@ -142,9 +142,9 @@ extension BoardConnector {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_BoardConnector (_ inGrid : Int) -> Bool {
-    var isAligned = self.mX.isAlignedOnGrid (inGrid)
+    var isAligned = self.mX.isAligned (on: inGrid)
     if isAligned {
-      isAligned = self.mY.isAlignedOnGrid (inGrid)
+      isAligned = self.mY.isAligned (on: inGrid)
     }
     return !isAligned
   }
@@ -152,8 +152,8 @@ extension BoardConnector {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_BoardConnector (_ inGrid : Int) {
-    self.mX.align (onGrid: inGrid)
-    self.mY.align (onGrid: inGrid)
+    self.mX.align (on: inGrid)
+    self.mY.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

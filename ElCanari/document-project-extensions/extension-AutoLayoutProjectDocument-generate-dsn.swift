@@ -72,7 +72,7 @@ extension AutoLayoutProjectDocument {
   func dsnContents (_ inExportTracks : Bool) -> String {
   //--- Selecting DSN Unit
     let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
-    let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance)
+    let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance.cuValue)
   //--- Border
     let boardLimitExtend = 0 // §-self.rootObject.mBoardLimitsWidth / 2
     let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
@@ -84,10 +84,10 @@ extension AutoLayoutProjectDocument {
     for object in self.rootObject.mBoardObjects.values {
       if let propertyRectangle = object as? BoardRestrictRectangle, !propertyRectangle.mAllowTracksInside {
         let r = CanariRect (
-          left: .cu (propertyRectangle.mX),
-          bottom: .cu (propertyRectangle.mY),
-          width: .cu (propertyRectangle.mWidth),
-          height: .cu (propertyRectangle.mHeight)
+          left: propertyRectangle.mX,
+          bottom: propertyRectangle.mY,
+          width: propertyRectangle.mWidth,
+          height: propertyRectangle.mHeight
         )
         let rr = RestrictRectangleForDSNExport (
           rect: r,
@@ -102,8 +102,8 @@ extension AutoLayoutProjectDocument {
         restrictRectangles.append (rr)
       }else if let nph = object as? NonPlatedHole {
         let r = CanariRect (
-          center: CanariPoint (x: .cu (nph.mX), y: .cu (nph.mY)),
-          size: CanariSize (width: .cu (nph.mWidth), height: .cu (nph.mHeight))
+          center: CanariPoint (x: nph.mX, y: nph.mY),
+          size: CanariSize (width: nph.mWidth, height: nph.mHeight)
         )
         let inner12 : Bool
         let inner34 : Bool
@@ -141,12 +141,12 @@ extension AutoLayoutProjectDocument {
           netNames.append (net.mNetName)
         }
       }
-      let trackWidth = converter.dsnUnitFromCanariUnit (netClass.mTrackWidth)
+      let trackWidth = converter.dsnUnitFromCanariUnit (netClass.mTrackWidth.cuValue)
       maxTrackWithInDSNUnit = max (maxTrackWithInDSNUnit, trackWidth)
       let nc = NetClassForDSNExport (
         name: netClass.mNetClassName,
         trackWidthInDSNUnit: trackWidth,
-        viaPadDiameterInDSNUnit: converter.dsnUnitFromCanariUnit (netClass.mViaPadDiameter),
+        viaPadDiameterInDSNUnit: converter.dsnUnitFromCanariUnit (netClass.mViaPadDiameter.cuValue),
         netNames: netNames,
         allowTracksOnFrontSide: netClass.mAllowTracksOnFrontSide,
         allowTracksOnBackSide: netClass.mAllowTracksOnBackSide,
@@ -273,21 +273,21 @@ extension AutoLayoutProjectDocument {
       }
       return clearanceBP.linePathesByFlattening (withFlatness: 0.025) [0]
     case .rectangular :
-      let d = CanariLength.cu (self.rootObject.mBoardClearance)
+      let d = self.rootObject.mBoardClearance
       let r = CanariRect (
         left: d,
         bottom: d,
-        width: .cu (self.rootObject.mRectangularBoardWidth) - 2 * d,
-        height: .cu (self.rootObject.mRectangularBoardHeight) - 2 * d
+        width: self.rootObject.mRectangularBoardWidth - 2 * d,
+        height: self.rootObject.mRectangularBoardHeight - 2 * d
       )
       let bp : BezierPath
-      if self.rootObject.mBoardCornerRadius <= d.cuValue {
+      if self.rootObject.mBoardCornerRadius <= d {
         bp = BezierPath (rect: inConverter.dsnRectFromCanariRect (r))
       }else{
         bp = BezierPath (
           roundedRect: inConverter.dsnRectFromCanariRect (r),
-          xRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d.cuValue),
-          yRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d.cuValue)
+          xRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius.cuValue - d.cuValue),
+          yRadius: inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius.cuValue - d.cuValue)
         )
       }
       return bp.linePathesByFlattening (withFlatness: 0.025) [0]
@@ -312,7 +312,7 @@ extension AutoLayoutProjectDocument {
         case .inner4 : side = INNER4_LAYOUT
         }
         let optionalNetName = track.mNet?.mNetName
-        let widthMM = inConverter.dsnUnitFromCanariUnit (track.actualTrackWidth!)
+        let widthMM = inConverter.dsnUnitFromCanariUnit (track.actualTrackWidth!.cuValue)
         let p1 = inConverter.dsnPointFromCanariPoint (track.mConnectorP1!.location!)
         let p2 = inConverter.dsnPointFromCanariPoint (track.mConnectorP2!.location!)
         ioString += "    (wire\n"
@@ -609,8 +609,8 @@ fileprivate struct ComponentForDSNExport {
   let packageIndex : Int
   let componentName : String
   let placed : Bool
-  let originX : Int
-  let originY : Int
+  let originX : CanariLength
+  let originY : CanariLength
   let rotationInDegrees : Double
   let side : ComponentSide
   let netList : [PadNetDescriptorForDSNExport]
@@ -992,11 +992,11 @@ fileprivate func addDefaultRule (_ ioString : inout String,
 fileprivate func componentComparison (_ inLeft : ComponentForDSNExport,
                                       _ inOrigin : CanariPoint,
                                       _ inRight : ComponentForDSNExport) -> Bool {
-  let leftDx = inOrigin.x - .cu (inLeft.originX)
-  let leftDy = inOrigin.y - .cu (inLeft.originY)
+  let leftDx = inOrigin.x - inLeft.originX
+  let leftDy = inOrigin.y - inLeft.originY
   let squareDistanceLeft = leftDx * leftDx + leftDy * leftDy
-  let rightDx = inOrigin.x - .cu (inRight.originX)
-  let rightDy = inOrigin.y - .cu (inRight.originY)
+  let rightDx = inOrigin.x - inRight.originX
+  let rightDy = inOrigin.y - inRight.originY
   let squareDistanceRight = rightDx * rightDx + rightDy * rightDy
   return squareDistanceLeft < squareDistanceRight
 }
@@ -1043,8 +1043,8 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
   ioString += "  (placement\n"
   for component in components {
     if component.placed {
-      let x = inConverter.dsnUnitFromCanariUnit (component.originX)
-      let y = inConverter.dsnUnitFromCanariUnit (component.originY)
+      let x = inConverter.dsnUnitFromCanariUnit (component.originX.cuValue)
+      let y = inConverter.dsnUnitFromCanariUnit (component.originY.cuValue)
       let side : String
       switch component.side {
       case .back : side = "back"

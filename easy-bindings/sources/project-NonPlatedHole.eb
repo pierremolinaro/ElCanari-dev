@@ -5,13 +5,13 @@
 graphic entity NonPlatedHole : BoardObject {
   graphic canCopyAndPaste ;
 
-  property @generateDirectAccess Int mX default 0 ;
+  property @generateDirectAccess CanariLength mX default ".zero" ;
   property Int mXUnit default 90_000 ; // mm
-  property @generateDirectAccess Int mY default 0 ;
+  property @generateDirectAccess CanariLength mY default ".zero" ;
   property Int mYUnit default 90_000 ; // mm
-  property Int mWidth default 360_000 ;
+  property CanariLength mWidth default ".mm (4)" ;
   property Int mWidthUnit default 90_000 ; // mm
-  property Int mHeight default 360_000 ;
+  property CanariLength mHeight default ".mm (4)" ;
   property Int mHeightUnit default 90_000 ; // mm
   property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
   property @generateDirectAccess Bool mShowTextRotationKnobInBoard default yes ;

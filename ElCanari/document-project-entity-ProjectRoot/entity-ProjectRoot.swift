@@ -396,11 +396,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mLayoutClearance
   //------------------------------------------------------------------------------------------------
 
-  final let mLayoutClearance_property : EBStoredProperty_Int
+  final let mLayoutClearance_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mLayoutClearance : Int {
+  final var mLayoutClearance : CanariLength {
     get { return self.mLayoutClearance_property.propval }
   }
 
@@ -457,11 +457,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardGridStep
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardGridStep_property : EBStoredProperty_Int
+  final let mBoardGridStep_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mBoardGridStep : Int {
+  final var mBoardGridStep : CanariLength {
     get { return self.mBoardGridStep_property.propval }
   }
 
@@ -512,11 +512,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardCornerRadius
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardCornerRadius_property : EBStoredProperty_Int
+  final let mBoardCornerRadius_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mBoardCornerRadius : Int {
+  final var mBoardCornerRadius : CanariLength {
     get { return self.mBoardCornerRadius_property.propval }
   }
 
@@ -530,11 +530,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardClearance
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardClearance_property : EBStoredProperty_Int
+  final let mBoardClearance_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mBoardClearance : Int {
+  final var mBoardClearance : CanariLength {
     get { return self.mBoardClearance_property.propval }
   }
 
@@ -584,11 +584,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardLimitsGridStep
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardLimitsGridStep_property : EBStoredProperty_Int
+  final let mBoardLimitsGridStep_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mBoardLimitsGridStep : Int {
+  final var mBoardLimitsGridStep : CanariLength {
     get { return self.mBoardLimitsGridStep_property.propval }
   }
 
@@ -644,11 +644,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mRectangularBoardWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mRectangularBoardWidth_property : EBStoredProperty_Int
+  final let mRectangularBoardWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mRectangularBoardWidth : Int {
+  final var mRectangularBoardWidth : CanariLength {
     get { return self.mRectangularBoardWidth_property.propval }
   }
 
@@ -662,11 +662,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mRectangularBoardHeight
   //------------------------------------------------------------------------------------------------
 
-  final let mRectangularBoardHeight_property : EBStoredProperty_Int
+  final let mRectangularBoardHeight_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mRectangularBoardHeight : Int {
+  final var mRectangularBoardHeight : CanariLength {
     get { return self.mRectangularBoardHeight_property.propval }
   }
 
@@ -819,11 +819,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mSchematicCustomWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mSchematicCustomWidth_property : EBStoredProperty_Int
+  final let mSchematicCustomWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mSchematicCustomWidth : Int {
+  final var mSchematicCustomWidth : CanariLength {
     get { return self.mSchematicCustomWidth_property.propval }
   }
 
@@ -837,11 +837,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mSchematicCustomHeight
   //------------------------------------------------------------------------------------------------
 
-  final let mSchematicCustomHeight_property : EBStoredProperty_Int
+  final let mSchematicCustomHeight_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mSchematicCustomHeight : Int {
+  final var mSchematicCustomHeight : CanariLength {
     get { return self.mSchematicCustomHeight_property.propval }
   }
 
@@ -1454,11 +1454,11 @@ final class ProjectRoot : EBManagedObject
   //   Transient property: boardGridStepMultipliedByDisplayFactor
   //------------------------------------------------------------------------------------------------
 
-  final let boardGridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int> ()
+  final let boardGridStepMultipliedByDisplayFactor_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardGridStepMultipliedByDisplayFactor : Int? {
+  final var boardGridStepMultipliedByDisplayFactor : CanariLength? {
     return self.boardGridStepMultipliedByDisplayFactor_property.optionalValue
   }
 
@@ -1466,11 +1466,11 @@ final class ProjectRoot : EBManagedObject
   //   Transient property: boardLimitsGridStepMultipliedByDisplayFactor
   //------------------------------------------------------------------------------------------------
 
-  final let boardLimitsGridStepMultipliedByDisplayFactor_property = EBTransientProperty <Int> ()
+  final let boardLimitsGridStepMultipliedByDisplayFactor_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardLimitsGridStepMultipliedByDisplayFactor : Int? {
+  final var boardLimitsGridStepMultipliedByDisplayFactor : CanariLength? {
     return self.boardLimitsGridStepMultipliedByDisplayFactor_property.optionalValue
   }
 
@@ -2266,7 +2266,7 @@ final class ProjectRoot : EBManagedObject
     self.mExportExistingTracksAndVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExportExistingTracksAndVias")
     self.mAllowViaAtSMD_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAllowViaAtSMD")
     self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: inUndoManager, key: "mTrackLengthUnit")
-    self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 22860, undoManager: inUndoManager, key: "mLayoutClearance")
+    self.mLayoutClearance_property = EBStoredProperty_CanariLength (defaultValue: .mil (10), undoManager: inUndoManager, key: "mLayoutClearance")
     self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mLayoutClearanceUnit")
     self.mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager, key: "mBoardSelectedInspector")
     self.mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBoardHorizontalFlip")
@@ -2274,14 +2274,14 @@ final class ProjectRoot : EBManagedObject
     self.mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "mBoardGridStyle")
     self.mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "mBoardGridDisplayFactor")
     self.mBoardZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardZoom")
-    self.mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mBoardGridStep")
+    self.mBoardGridStep_property = EBStoredProperty_CanariLength (defaultValue: .mil (25), undoManager: inUndoManager, key: "mBoardGridStep")
     self.mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mBoardGridStepUnit")
     self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: inUndoManager, key: "mErrorOrWarningIssueSize")
     self.mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100, undoManager: inUndoManager, key: "mControlKeyHiliteDiameter")
     self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: inUndoManager, key: "mDSNFileProposedName")
-    self.mBoardCornerRadius_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardCornerRadius")
+    self.mBoardCornerRadius_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "mBoardCornerRadius")
     self.mBoardCornerRadiusUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardCornerRadiusUnit")
-    self.mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardClearance")
+    self.mBoardClearance_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "mBoardClearance")
     self.mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardClearanceUnit")
     self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardLimitsSelectedInspector")
     self.mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBoardLimitsHorizontalFlip")
@@ -2289,7 +2289,7 @@ final class ProjectRoot : EBManagedObject
     self.mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "mBoardLimitsGridStyle")
     self.mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5, undoManager: inUndoManager, key: "mBoardLimitsGridDisplayFactor")
     self.mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardLimitsZoom")
-    self.mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsGridStep")
+    self.mBoardLimitsGridStep_property = EBStoredProperty_CanariLength (defaultValue: .mm(1), undoManager: inUndoManager, key: "mBoardLimitsGridStep")
     self.mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsGridStepUnit")
     self.mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsBoundingBoxUnit")
     self.mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardPointsBoundingBoxUnit")
@@ -2297,9 +2297,9 @@ final class ProjectRoot : EBManagedObject
     self.mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitControlPointsDisplayUnit")
     self.mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular, undoManager: inUndoManager, key: "mBoardShape")
     self.mContentOpacityInBoardOutline_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager, key: "mContentOpacityInBoardOutline")
-    self.mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "mRectangularBoardWidth")
+    self.mRectangularBoardWidth_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "mRectangularBoardWidth")
     self.mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mRectangularBoardWidthUnit")
-    self.mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager, key: "mRectangularBoardHeight")
+    self.mRectangularBoardHeight_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "mRectangularBoardHeight")
     self.mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mRectangularBoardHeightUnit")
     self.mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDefaultNetClassName")
     self.mSchematicHilitedColumnIndex_property = EBStoredProperty_Int (defaultValue: -1, undoManager: inUndoManager, key: "mSchematicHilitedColumnIndex")
@@ -2315,9 +2315,9 @@ final class ProjectRoot : EBManagedObject
     self.mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSchematicZoom")
     self.mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "mSchematicGridStyle")
     self.mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "mSchematicGridDisplayFactor")
-    self.mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: inUndoManager, key: "mSchematicCustomWidth")
+    self.mSchematicCustomWidth_property = EBStoredProperty_CanariLength (defaultValue: .cm (30), undoManager: inUndoManager, key: "mSchematicCustomWidth")
     self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mSchematicCustomWidthUnit")
-    self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: inUndoManager, key: "mSchematicCustomHeight")
+    self.mSchematicCustomHeight_property = EBStoredProperty_CanariLength (defaultValue: .cm (30), undoManager: inUndoManager, key: "mSchematicCustomHeight")
     self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mSchematicCustomHeightUnit")
     self.mWorkingAreaRectString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mWorkingAreaRectString")
     self.drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "drawErrorBackgroundForBoard")

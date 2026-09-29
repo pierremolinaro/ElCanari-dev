@@ -17,7 +17,7 @@ import CanariGeometry
 @MainActor func transient_BoardConnector_signatureForERCChecking (
        _ self_location : CanariPoint,                             
        _ self_isVia : Bool,                                       
-       _ self_actualPadDiameter : Int
+       _ self_actualPadDiameter : CanariLength
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0

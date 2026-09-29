@@ -22,7 +22,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_mCustomTrackWidth : AnyObject {
-//   var mCustomTrackWidth : Int { get }
+//   var mCustomTrackWidth : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -113,7 +113,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_actualTrackWidth : AnyObject {
-//   var actualTrackWidth : Int? { get }
+//   var actualTrackWidth : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -132,19 +132,19 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_netClassTrackWidth : AnyObject {
-//   var netClassTrackWidth : Int? { get }
+//   var netClassTrackWidth : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardTrack_netClassViaHoleDiameter : AnyObject {
-  var netClassViaHoleDiameter : Int? { get }
+  var netClassViaHoleDiameter : CanariLength? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardTrack_netClassViaPadDiameter : AnyObject {
-  var netClassViaPadDiameter : Int? { get }
+  var netClassViaPadDiameter : CanariLength? { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -292,11 +292,11 @@ final class BoardTrack : BoardObject
   //   Atomic property: mCustomTrackWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mCustomTrackWidth_property : EBStoredProperty_Int
+  final let mCustomTrackWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCustomTrackWidth : Int {
+  final var mCustomTrackWidth : CanariLength {
     get { return self.mCustomTrackWidth_property.propval }
     set { self.mCustomTrackWidth_property.setProp (newValue) }
   }
@@ -542,11 +542,11 @@ final class BoardTrack : BoardObject
   //   Transient property: actualTrackWidth
   //------------------------------------------------------------------------------------------------
 
-  final let actualTrackWidth_property = EBTransientProperty <Int> ()
+  final let actualTrackWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var actualTrackWidth : Int? {
+  final var actualTrackWidth : CanariLength? {
     return self.actualTrackWidth_property.optionalValue
   }
 
@@ -578,11 +578,11 @@ final class BoardTrack : BoardObject
   //   Transient property: netClassTrackWidth
   //------------------------------------------------------------------------------------------------
 
-  final let netClassTrackWidth_property = EBTransientProperty <Int> ()
+  final let netClassTrackWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var netClassTrackWidth : Int? {
+  final var netClassTrackWidth : CanariLength? {
     return self.netClassTrackWidth_property.optionalValue
   }
 
@@ -590,11 +590,11 @@ final class BoardTrack : BoardObject
   //   Transient property: netClassViaHoleDiameter
   //------------------------------------------------------------------------------------------------
 
-  final let netClassViaHoleDiameter_property = EBTransientProperty <Int> ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var netClassViaHoleDiameter : Int? {
+  final var netClassViaHoleDiameter : CanariLength? {
     return self.netClassViaHoleDiameter_property.optionalValue
   }
 
@@ -602,11 +602,11 @@ final class BoardTrack : BoardObject
   //   Transient property: netClassViaPadDiameter
   //------------------------------------------------------------------------------------------------
 
-  final let netClassViaPadDiameter_property = EBTransientProperty <Int> ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var netClassViaPadDiameter : Int? {
+  final var netClassViaPadDiameter : CanariLength? {
     return self.netClassViaPadDiameter_property.optionalValue
   }
 
@@ -656,25 +656,25 @@ final class BoardTrack : BoardObject
 //   Transient property: computedP1X
 //--------------------------------------------------------------------------------------------------
 
-  final let computedP1X_property = EBComputedProperty_Int ()
+  final let computedP1X_property = EBComputedProperty_CanariLength ()
 
 //--------------------------------------------------------------------------------------------------
 //   Transient property: computedP1Y
 //--------------------------------------------------------------------------------------------------
 
-  final let computedP1Y_property = EBComputedProperty_Int ()
+  final let computedP1Y_property = EBComputedProperty_CanariLength ()
 
 //--------------------------------------------------------------------------------------------------
 //   Transient property: computedP2X
 //--------------------------------------------------------------------------------------------------
 
-  final let computedP2X_property = EBComputedProperty_Int ()
+  final let computedP2X_property = EBComputedProperty_CanariLength ()
 
 //--------------------------------------------------------------------------------------------------
 //   Transient property: computedP2Y
 //--------------------------------------------------------------------------------------------------
 
-  final let computedP2Y_property = EBComputedProperty_Int ()
+  final let computedP2Y_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Transient property: p1CanMove
@@ -719,7 +719,7 @@ final class BoardTrack : BoardObject
   required init (_ inUndoManager : UndoManager?) {
     self.mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: inUndoManager, key: "mSide")
     self.mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDefaultTrackWidthUnit")
-    self.mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager, key: "mCustomTrackWidth")
+    self.mCustomTrackWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil (20), undoManager: inUndoManager, key: "mCustomTrackWidth")
     self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mCustomTrackWidthUnit")
     self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mUsesCustomTrackWidth")
     self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsPreservedByAutoRouter")

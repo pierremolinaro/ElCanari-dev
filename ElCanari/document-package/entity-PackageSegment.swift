@@ -100,7 +100,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageSegment_lengthInCanariUnit : AnyObject {
-//   var lengthInCanariUnit : Int? { get }
+//   var lengthInCanariUnit : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -257,11 +257,11 @@ final class PackageSegment : PackageObject
   //   Transient property: lengthInCanariUnit
   //------------------------------------------------------------------------------------------------
 
-  final let lengthInCanariUnit_property = EBTransientProperty <Int> ()
+  final let lengthInCanariUnit_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var lengthInCanariUnit : Int? {
+  final var lengthInCanariUnit : CanariLength? {
     return self.lengthInCanariUnit_property.optionalValue
   }
 

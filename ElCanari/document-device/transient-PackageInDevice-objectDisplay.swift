@@ -28,8 +28,8 @@ import CanariGeometry
        _ self_backSidePadFilledBezierPathArray : BezierPathArray,
        _ prefs_backSidePadColor : NSColor,               
        _ self_mName : String,                            
-       _ self_mX : Int,                                  
-       _ self_mY : Int
+       _ self_mX : CanariLength,                         
+       _ self_mY : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var shape = EBShape ()
@@ -85,7 +85,7 @@ import CanariGeometry
       shape.add (packageShape)
     //---
       var transform = AffineTransform ()
-      transform.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+      transform.translate (x: self_mX.ptValue, y: self_mY.ptValue)
       return shape.transformed (by: transform)
 //--- END OF USER ZONE 2
 }

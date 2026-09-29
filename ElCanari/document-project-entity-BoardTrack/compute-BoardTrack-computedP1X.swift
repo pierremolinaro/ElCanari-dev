@@ -18,7 +18,7 @@ extension BoardTrack {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func compute_computedP1X_property (_ inValue : Int) {
+  func compute_computedP1X_property (_ inValue : CanariLength) {
 //--- START OF USER ZONE 2
         self.mConnectorP1?.mX = inValue
 //--- END OF USER ZONE 2

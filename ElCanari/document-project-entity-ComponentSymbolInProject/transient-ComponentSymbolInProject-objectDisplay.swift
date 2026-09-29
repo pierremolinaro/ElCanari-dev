@@ -22,11 +22,11 @@ import CanariGeometry
        _ prefs_componentValueColorForSchematic : NSColor,         
        _ prefs_componentValueFontForSchematic : NSFont,           
        _ prefs_symbolColorForSchematic : NSColor,                 
-       _ self_mDisplayComponentNameOffsetX : Int,                 
-       _ self_mDisplayComponentNameOffsetY : Int,                 
+       _ self_mDisplayComponentNameOffsetX : CanariLength,        
+       _ self_mDisplayComponentNameOffsetY : CanariLength,        
        _ self_mDisplayComponentValue : Bool,                      
-       _ self_mDisplayComponentValueOffsetX : Int,                
-       _ self_mDisplayComponentValueOffsetY : Int,                
+       _ self_mDisplayComponentValueOffsetX : CanariLength,       
+       _ self_mDisplayComponentValueOffsetY : CanariLength,       
        _ self_symbolInfo : ComponentSymbolInfo,                   
        _ self_mSymbolInstanceName : String,                       
        _ self_mSymbolTypeName : String
@@ -51,7 +51,7 @@ import CanariGeometry
             NSAttributedString.Key.font : prefs_componentNameFontForSchematic,
             NSAttributedString.Key.foregroundColor : prefs_componentNameColorForSchematic
           ]
-          let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + .cu (self_mDisplayComponentNameOffsetX), y: self_symbolInfo.center.y + .cu (self_mDisplayComponentNameOffsetY))
+          let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
           let componentNameShape = EBShape (
             text: self_symbolInfo.componentName,
             componentNameCenter.ptValue,
@@ -69,8 +69,8 @@ import CanariGeometry
           ]
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
           let componentValueCenter = CanariPoint (
-            x: self_symbolInfo.center.x + .cu (self_mDisplayComponentValueOffsetX),
-            y: self_symbolInfo.center.y + .cu (self_mDisplayComponentValueOffsetY)
+            x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
+            y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
           )
           let componentValueShape = EBShape (
             text: value,

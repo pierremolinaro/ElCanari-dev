@@ -13,8 +13,8 @@ handlingOpposite entity PointInSchematic {
 
   toMany @generateDirectAccess LabelInSchematic mLabels inverse toOne mPoint ;
 
-  property @generateDirectAccess Int mX default 0 ; // Used only if mSymbol is nil
-  property @generateDirectAccess Int mY default 0 ; // Used only if mSymbol is nil 
+  property @generateDirectAccess CanariLength mX default ".zero" ; // Used only if mSymbol is nil
+  property @generateDirectAccess CanariLength mY default ".zero" ; // Used only if mSymbol is nil 
 
   toMany @generateDirectAccess WireInSchematic mWiresP1s inverse toOne mP1 ;
   toMany @generateDirectAccess WireInSchematic mWiresP2s inverse toOne mP2 ;

@@ -116,8 +116,8 @@ graphic handlingOpposite entity PackageInDevice {
 
   property @signature @generateDirectAccess NSBezierPath mStrokeBezierPath default empty ;
 
-  property @generateDirectAccess Int mX default 0 ;
-  property @generateDirectAccess Int mY default 0 ;
+  property @generateDirectAccess CanariLength mX default ".zero" ;
+  property @generateDirectAccess CanariLength mY default ".zero" ;
 
   transient String versionString dependsFrom self.mVersion ;
 
@@ -173,12 +173,12 @@ graphic handlingOpposite entity PackageInDevice {
 handlingOpposite entity MasterPadInDevice {
   toMany @signature @generateDirectRead SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
 
-  property @signature @generateDirectAccess Int mCenterX default 0 ;
-  property @signature @generateDirectAccess Int mCenterY default 0 ;
-  property @signature @generateDirectAccess Int mWidth default 114_300 ;
-  property @signature @generateDirectAccess Int mHeight default 228_600 ;
-  property @signature @generateDirectAccess Int mHoleWidth default 57_150 ;
-  property @signature @generateDirectAccess Int mHoleHeight default 57_150 ;
+  property @signature @generateDirectAccess CanariLength mCenterX default ".zero" ;
+  property @signature @generateDirectAccess CanariLength mCenterY default ".zero" ;
+  property @signature @generateDirectAccess CanariLength mWidth default ".mil (50)" ;
+  property @signature @generateDirectAccess CanariLength mHeight default ".mil (100)" ;
+  property @signature @generateDirectAccess CanariLength mHoleWidth default ".mil(25)" ;
+  property @signature @generateDirectAccess CanariLength mHoleHeight default ".mil(25)" ;
   property @signature @generateDirectAccess PadShape mShape default octo ;
   property @signature @generateDirectAccess PadStyle mStyle default traversing ;
   property @signature @generateDirectAccess String mName default "" ;
@@ -204,12 +204,12 @@ handlingOpposite entity MasterPadInDevice {
 handlingOpposite entity SlavePadInDevice {
   toOne @weak MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
 
-  property @signature @generateDirectAccess Int mCenterX default 0 ;
-  property @signature @generateDirectAccess Int mCenterY default 0 ;
-  property @signature @generateDirectAccess Int mWidth default 114_300 ;
-  property @signature @generateDirectAccess Int mHeight default 228_600 ;
-  property @signature @generateDirectAccess Int mHoleWidth default 57_150 ;
-  property @signature @generateDirectAccess Int mHoleHeight default 57_150 ;
+  property @signature @generateDirectAccess CanariLength mCenterX default ".zero" ;
+  property @signature @generateDirectAccess CanariLength mCenterY default ".zero" ;
+  property @signature @generateDirectAccess CanariLength mWidth default ".mil (50)" ;
+  property @signature @generateDirectAccess CanariLength mHeight default ".mil (100)" ;
+  property @signature @generateDirectAccess CanariLength mHoleWidth default ".mil(25)" ;
+  property @signature @generateDirectAccess CanariLength mHoleHeight default ".mil(25)" ;
   property @signature @generateDirectAccess PadShape mShape default octo ;
   property @signature @generateDirectAccess SlavePadStyle mStyle default traversing ;
 
@@ -263,11 +263,11 @@ handlingOpposite entity SymbolTypeInDevice {
 handlingOpposite entity SymbolPinTypeInDevice {
   toMany @generateDirectAccess SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
 
-  property @signature @generateDirectAccess Int mPinX default 0 ;
-  property @signature @generateDirectAccess Int mPinY default 0 ;
+  property @signature @generateDirectAccess CanariLength mPinX default ".zero" ;
+  property @signature @generateDirectAccess CanariLength mPinY default ".zero" ;
 
-  property @generateDirectAccess @signature Int mXName default 0 ;
-  property @generateDirectAccess @signature Int mYName default 0 ;
+  property @generateDirectAccess @signature CanariLength mXName default ".zero"  ;
+  property @generateDirectAccess @signature CanariLength mYName default ".zero"  ;
 
   property @generateDirectAccess @signature String mName default "" ;
   property @generateDirectAccess @signature HorizontalAlignment mNameHorizontalAlignment default center ;
@@ -293,8 +293,8 @@ graphic handlingOpposite entity SymbolInstanceInDevice {
   toMany @signature @generateDirectRead SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 
   property @signature String mInstanceName default "" ;
-  property @generateDirectAccess Int mX default 0 ;
-  property @generateDirectAccess Int mY default 0 ;
+  property @generateDirectAccess CanariLength mX default ".zero" ;
+  property @generateDirectAccess CanariLength mY default ".zero" ;
 
   transient EBShape objectDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,

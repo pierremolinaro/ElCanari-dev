@@ -9,42 +9,42 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mX : AnyObject {
-//   var mX : Int { get }
+//   var mX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mY : AnyObject {
-//   var mY : Int { get }
+//   var mY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mCPX1 : AnyObject {
-//   var mCPX1 : Int { get }
+//   var mCPX1 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mCPY1 : AnyObject {
-//   var mCPY1 : Int { get }
+//   var mCPY1 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mCPX2 : AnyObject {
-//   var mCPX2 : Int { get }
+//   var mCPX2 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mCPY2 : AnyObject {
-//   var mCPY2 : Int { get }
+//   var mCPY2 : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,13 +58,13 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mNextX : AnyObject {
-//  var mNextX : Int? { get }
+//  var mNextX : CanariLength? { get }
 // }
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BorderCurve_mNextY : AnyObject {
-//  var mNextY : Int? { get }
+//  var mNextY : CanariLength? { get }
 // }
 //--------------------------------------------------------------------------------------------------
 
@@ -133,11 +133,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic property: mX
   //------------------------------------------------------------------------------------------------
 
-  final let mX_property : EBStoredProperty_Int
+  final let mX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mX : Int {
+  final var mX : CanariLength {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
@@ -146,11 +146,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic property: mY
   //------------------------------------------------------------------------------------------------
 
-  final let mY_property : EBStoredProperty_Int
+  final let mY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mY : Int {
+  final var mY : CanariLength {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
@@ -159,11 +159,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic property: mCPX1
   //------------------------------------------------------------------------------------------------
 
-  final let mCPX1_property : EBStoredProperty_Int
+  final let mCPX1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCPX1 : Int {
+  final var mCPX1 : CanariLength {
     get { return self.mCPX1_property.propval }
     set { self.mCPX1_property.setProp (newValue) }
   }
@@ -172,11 +172,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic property: mCPY1
   //------------------------------------------------------------------------------------------------
 
-  final let mCPY1_property : EBStoredProperty_Int
+  final let mCPY1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCPY1 : Int {
+  final var mCPY1 : CanariLength {
     get { return self.mCPY1_property.propval }
     set { self.mCPY1_property.setProp (newValue) }
   }
@@ -185,11 +185,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic property: mCPX2
   //------------------------------------------------------------------------------------------------
 
-  final let mCPX2_property : EBStoredProperty_Int
+  final let mCPX2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCPX2 : Int {
+  final var mCPX2 : CanariLength {
     get { return self.mCPX2_property.propval }
     set { self.mCPX2_property.setProp (newValue) }
   }
@@ -198,11 +198,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic property: mCPY2
   //------------------------------------------------------------------------------------------------
 
-  final let mCPY2_property : EBStoredProperty_Int
+  final let mCPY2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCPY2 : Int {
+  final var mCPY2 : CanariLength {
     get { return self.mCPY2_property.propval }
     set { self.mCPY2_property.setProp (newValue) }
   }
@@ -224,11 +224,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic proxy property: mNextX
   //------------------------------------------------------------------------------------------------
 
-  final let mNextX_property = EBComputedProperty_Int ()
+  final let mNextX_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
 
-  var mNextX : Int? {
+  var mNextX : CanariLength? {
     get {
       return self.mNextX_property.optionalValue
     }
@@ -243,11 +243,11 @@ final class BorderCurve : EBGraphicManagedObject
   //   Atomic proxy property: mNextY
   //------------------------------------------------------------------------------------------------
 
-  final let mNextY_property = EBComputedProperty_Int ()
+  final let mNextY_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
 
-  var mNextY : Int? {
+  var mNextY : CanariLength? {
     get {
       return self.mNextY_property.optionalValue
     }
@@ -398,12 +398,12 @@ final class BorderCurve : EBGraphicManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
-    self.mCPX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPX1")
-    self.mCPY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPY1")
-    self.mCPX2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPX2")
-    self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPY2")
+    self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
+    self.mCPX1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCPX1")
+    self.mCPY1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCPY1")
+    self.mCPX2_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCPX2")
+    self.mCPY2_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCPY2")
     self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: inUndoManager, key: "mShape")
     super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
@@ -456,7 +456,7 @@ final class BorderCurve : EBGraphicManagedObject
         return .empty
       }
     }
-    self.mNextX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.mNextX_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLength) in
       self?.mNext?.mX_property.setProp (inValue)
     }
     self.mNext_property.mX_property.startsBeingObserved (by: self.mNextX_property)
@@ -479,7 +479,7 @@ final class BorderCurve : EBGraphicManagedObject
         return .empty
       }
     }
-    self.mNextY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.mNextY_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLength) in
       self?.mNext?.mY_property.setProp (inValue)
     }
     self.mNext_property.mY_property.startsBeingObserved (by: self.mNextY_property)

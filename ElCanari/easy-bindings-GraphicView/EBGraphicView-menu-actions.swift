@@ -35,7 +35,7 @@ extension EBGraphicView {
     }else if action == #selector (Self.sendBackward(_:)) {
       validate = self.mViewController?.canSendBackward ?? false
     }else if action == #selector (Self.snapToGrid(_:)) {
-      validate = self.mViewController?.canSnapToGrid (self.mArrowKeyMagnitude) ?? false
+      validate = self.mViewController?.canSnapToGrid (self.mArrowKeyMagnitude.cuValue) ?? false
     }else if action == #selector (Self.flipHorizontally(_:)) {
       validate = self.mViewController?.canFlipHorizontally ?? false
     }else if action == #selector (Self.flipVertically(_:)) {
@@ -53,14 +53,14 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func cut (_ : Any?) {
-    let translation = CanariPoint (x: .cu (self.mShiftArrowKeyMagnitude), y: .cu (self.mShiftArrowKeyMagnitude))
+    let translation = CanariPoint (x: self.mShiftArrowKeyMagnitude, y: self.mShiftArrowKeyMagnitude)
     self.mViewController?.cutSelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func copy (_ : Any?) {
-    let translation = CanariPoint (x: .cu (self.mShiftArrowKeyMagnitude), y: .cu (self.mShiftArrowKeyMagnitude))
+    let translation = CanariPoint (x: self.mShiftArrowKeyMagnitude, y: self.mShiftArrowKeyMagnitude)
     self.mViewController?.copySelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 
@@ -123,7 +123,7 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func snapToGrid (_ : Any?) {
-    self.mViewController?.snapToGrid (self.mArrowKeyMagnitude)
+    self.mViewController?.snapToGrid (self.mArrowKeyMagnitude.cuValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

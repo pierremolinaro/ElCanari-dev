@@ -51,8 +51,8 @@ extension LabelInSchematic {
   func translate_LabelInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let point = self.mPoint, point.mSymbol == nil, !ioSet.contains (point) {
       ioSet.insert (point)
-      point.mX += inDx.cuValue
-      point.mY += inDy.cuValue
+      point.mX += inDx
+      point.mY += inDy
     }
   }
 
@@ -123,11 +123,11 @@ extension LabelInSchematic {
                               shift _ : Bool) {
     if let point = self.mPoint, point.mSymbol == nil {
       if inKnobIndex == LABEL_IN_SCHEMATICS_TRANSLATION_KNOB {
-        point.mX += inDx.cuValue
-        point.mY += inDy.cuValue
+        point.mX += inDx
+        point.mY += inDy
       }else if inKnobIndex == LABEL_IN_SCHEMATICS_ROTATION_KNOB {
         let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
-        let p = CanariPoint (x: .cu (point.mX), y: .cu (point.mY))
+        let p = CanariPoint (x: point.mX, y: point.mY)
         let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
         if angleInDegrees <= 45.0 {
           self.mOrientation = .rotation0

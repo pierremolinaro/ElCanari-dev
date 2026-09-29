@@ -50,25 +50,25 @@ extension AutoLayoutProjectDocument {
         _ = gridView.append (left: left, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (wireColorWell))
       }
     //---  Width
-      let width_property = EBStandAloneProperty_Int (inNetClass.mTrackWidth) // 20 mils
+      let width_property = EBStandAloneProperty_CanariLength (inNetClass.mTrackWidth) // 20 mils
       let widthUnit_property = EBStandAloneProperty_Int (inNetClass.mTrackWidthUnit) // mils
-      let widthFields = AutoLayoutCanariDimensionAndPopUpEx (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
+      let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: widthFields)
       }
     //--- Hole Diameter
-      let viaHoleDiameter_property = EBStandAloneProperty_Int (inNetClass.mViaHoleDiameter)
+      let viaHoleDiameter_property = EBStandAloneProperty_CanariLength (inNetClass.mViaHoleDiameter)
       let viaHoleDiameterUnit_property = EBStandAloneProperty_Int (inNetClass.mViaHoleDiameterUnit)
-      let holeDiameterFields = AutoLayoutCanariDimensionAndPopUpEx (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
+      let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: holeDiameterFields)
       }
     //--- Pad Diameter
-      let viaPadDiameter_property = EBStandAloneProperty_Int (inNetClass.mViaPadDiameter)
+      let viaPadDiameter_property = EBStandAloneProperty_CanariLength (inNetClass.mViaPadDiameter)
       let viaPadDiameterUnit_property = EBStandAloneProperty_Int (inNetClass.mViaPadDiameterUnit)
-      let padDiameterFields = AutoLayoutCanariDimensionAndPopUpEx (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
+      let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: padDiameterFields)

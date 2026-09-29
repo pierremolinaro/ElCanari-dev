@@ -15,8 +15,8 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PointInSchematic_location (
-       _ self_mX : Int,                              
-       _ self_mY : Int,                              
+       _ self_mX : CanariLength,                     
+       _ self_mY : CanariLength,                     
        _ self_mSymbolPinName : String,               
        _ self_mSymbol_symbolInfo : ComponentSymbolInfo?,
        _ self_mSymbol_mSymbolInstanceName : String?
@@ -28,9 +28,9 @@ import CanariGeometry
               return pin.pinLocation
             }
           }
-          return CanariPoint (x: .cu (self_mX), y: .cu (self_mY))
+          return CanariPoint (x: self_mX, y: self_mY)
         }else{
-          return CanariPoint (x: .cu (self_mX), y: .cu (self_mY))
+          return CanariPoint (x: self_mX, y: self_mY)
         }
 //--- END OF USER ZONE 2
 }

@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardConnector_actualPadDiameter (
-       _ self_viaDefaultPadDiameter : Int,                  
+       _ self_viaDefaultPadDiameter : CanariLength,         
        _ self_mUsesCustomPadDiameter : Bool,                
-       _ self_mCustomPadDiameter : Int
-) -> Int {
+       _ self_mCustomPadDiameter : CanariLength
+) -> CanariLength {
 //--- START OF USER ZONE 2
         return self_mUsesCustomPadDiameter ? self_mCustomPadDiameter : self_viaDefaultPadDiameter
 //--- END OF USER ZONE 2

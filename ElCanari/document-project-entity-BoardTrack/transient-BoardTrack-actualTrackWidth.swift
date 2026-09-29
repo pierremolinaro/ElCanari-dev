@@ -15,18 +15,18 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardTrack_actualTrackWidth (
-       _ self_mNet_netClassTrackWidth : Int?,          
+       _ self_mNet_netClassTrackWidth : CanariLength?, 
        _ self_mUsesCustomTrackWidth : Bool,            
-       _ self_mCustomTrackWidth : Int
-) -> Int {
+       _ self_mCustomTrackWidth : CanariLength
+) -> CanariLength {
 //--- START OF USER ZONE 2
-        let width : Int
+        let width : CanariLength
         if self_mUsesCustomTrackWidth {
           width = self_mCustomTrackWidth
         }else if let w = self_mNet_netClassTrackWidth {
           width = w
         }else{
-          width = 0
+          width = .zero
         }
         return width
 //--- END OF USER ZONE 2

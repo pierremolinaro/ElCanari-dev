@@ -53,12 +53,12 @@ extension AutoLayoutProjectDocument {
     if let artwork = self.rootObject.mArtwork {
       var padNetDictionary = [SideAndNetName : [PadGeometryForERC]] ()
       var padID = 0
-      self.checkTracksLayer (&issues, artworkClearance: artwork.minPPTPTTTW.cuValue)
-      self.buildPadNetDictionary (&issues, &padID, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW.cuValue)
+      self.checkTracksLayer (&issues, artworkClearance: artwork.minPPTPTTTW)
+      self.buildPadNetDictionary (&issues, &padID, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
       var netConnectorsDictionary = [String : [(BoardConnector, BezierPath)]] ()
-      self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW.cuValue)
+      self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
       self.checkNetConnectivity (&issues, netConnectorsDictionary)
-      self.checkTrackInsulation (&issues, padNetDictionary, artworkClearance: artwork.minPPTPTTTW.cuValue)
+      self.checkTrackInsulation (&issues, padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
     }
   //--- Update status
     self.rootObject.mLastERCCheckingIsSuccess = issues.isEmpty
@@ -84,7 +84,7 @@ extension AutoLayoutProjectDocument {
         errorCount += 1
       }
     //--- Clearance
-      if artwork.minPPTPTTTW.cuValue > self.rootObject.mLayoutClearance {
+      if artwork.minPPTPTTTW > self.rootObject.mLayoutClearance {
         let issue = CanariIssue (kind: .error, message: "Router clearance should be greater or equal to Artwork clearance", pathes: [])
         ioIssues.append (issue)
         errorCount += 1
@@ -103,9 +103,9 @@ extension AutoLayoutProjectDocument {
         self.mERCLogTextViewArray.appendError ("\(errorCount) errors\n")
       }
     //--- Board OAR and PHD of vias
-      self.checkViasOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit.cuValue, PHD: artwork.minValueForPHDinEBUnit.cuValue, artworkClearance: artwork.minPPTPTTTW.cuValue)
+      self.checkViasOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
     //--- Board OAR and PHD of pads
-      self.checkPadsOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit.cuValue, PHD: artwork.minValueForPHDinEBUnit.cuValue, artworkClearance: artwork.minPPTPTTTW.cuValue)
+      self.checkPadsOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
     }else{
       self.mERCLogTextViewArray.appendWarning ("No checking: artwork is not set.\n")
       let issue = CanariIssue (kind: .warning, message: "No checking: artwork is not set.", pathes: [])
@@ -116,7 +116,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func checkTracksLayer (_ ioIssues : inout [CanariIssue],
-                                 artworkClearance inArtworkClearance : Int) {
+                                 artworkClearance inArtworkClearance : CanariLength) {
     self.mERCLogTextViewArray.appendMessage ("Check tracks layer… ")
     var errorCount = 0
     let layerConfiguration = self.rootObject.mLayerConfiguration
@@ -125,7 +125,7 @@ extension AutoLayoutProjectDocument {
       //--- Check width
         if let actualTrackWidth = track.actualTrackWidth,
                let minPPTPTTTW = self.rootObject.minPPTPTTTW,
-               actualTrackWidth < minPPTPTTTW.cuValue {
+               actualTrackWidth < minPPTPTTTW {
           let bp = track.bezierPath (extraWidth: inArtworkClearance)
           let issue = CanariIssue (kind: .error, message: "track width < minimum track Width", pathes: [bp])
           ioIssues.append (issue)
@@ -226,9 +226,9 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func checkViasOARAndPHD (_ ioIssues : inout [CanariIssue],
-                                       OAR inOAR : Int,
-                                       PHD inPHD : Int,
-                                       artworkClearance inArtworkClearance : Int) {
+                                       OAR inOAR : CanariLength,
+                                       PHD inPHD : CanariLength,
+                                       artworkClearance inArtworkClearance : CanariLength) {
     self.mERCLogTextViewArray.appendMessage ("Check vias OAR and PHD… ")
     var errorCount = 0
     for object in self.rootObject.mBoardObjects.values {
@@ -237,7 +237,7 @@ extension AutoLayoutProjectDocument {
         let viaOAR = (connector.actualPadDiameter! - viaHoleDiameter) / 2
         if viaHoleDiameter < inPHD {
           let center = connector.location!.ptValue
-          let w = canariUnitToCocoa (connector.actualPadDiameter! + inArtworkClearance)
+          let w = (connector.actualPadDiameter! + inArtworkClearance).ptValue
           let r = NSRect (center: center, size: NSSize (width: w, height: w))
           let bp = BezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Hole diameter should be greater or equal to artwork PHD", pathes: [bp])
@@ -246,7 +246,7 @@ extension AutoLayoutProjectDocument {
         }
         if viaOAR < inOAR {
           let center = connector.location!.ptValue
-          let w = canariUnitToCocoa (connector.actualPadDiameter! + inArtworkClearance)
+          let w = (connector.actualPadDiameter! + inArtworkClearance).ptValue
           let r = NSRect (center: center, size: NSSize (width: w, height: w))
           let bp = BezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Annular ring should be greater or equal to artwork OAR", pathes: [bp])
@@ -267,9 +267,9 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   fileprivate func checkPadsOARAndPHD (_ ioIssues : inout [CanariIssue],
-                                       OAR inOAR : Int,
-                                       PHD inPHD : Int,
-                                       artworkClearance inArtworkClearance : Int) {
+                                       OAR inOAR : CanariLength,
+                                       PHD inPHD : CanariLength,
+                                       artworkClearance inArtworkClearance : CanariLength) {
     self.mERCLogTextViewArray.appendMessage ("Check pads OAR and PHD… ")
     var errorCount = 0
     for object in self.rootObject.mBoardObjects.values {
@@ -281,12 +281,12 @@ extension AutoLayoutProjectDocument {
              ()
           case .traversing :
             let phd = min (padDescriptor.holeSize.width, padDescriptor.holeSize.height)
-            if phd.cuValue < inPHD {
+            if phd < inPHD {
               let bp = BezierPath.pad (
-                centerX: padDescriptor.center.x.cuValue,
-                centerY: padDescriptor.center.y.cuValue,
-                width: padDescriptor.padSize.width.cuValue + inArtworkClearance,
-                height: padDescriptor.padSize.height.cuValue + inArtworkClearance,
+                centerX: padDescriptor.center.x,
+                centerY: padDescriptor.center.y,
+                width: padDescriptor.padSize.width + inArtworkClearance,
+                height: padDescriptor.padSize.height + inArtworkClearance,
                 shape: padDescriptor.shape
               ).transformed (by: af)
               let issue = CanariIssue (kind: .error, message: "Pad hole diameter should be greater or equal to artwork PHD", pathes: [bp])
@@ -294,12 +294,12 @@ extension AutoLayoutProjectDocument {
               errorCount += 1
             }
             let oar = min (padDescriptor.padSize.width - padDescriptor.holeSize.width, padDescriptor.padSize.height - padDescriptor.holeSize.height) / 2
-            if oar.cuValue < inOAR {
+            if oar < inOAR {
               let bp = BezierPath.pad (
-                centerX: padDescriptor.center.x.cuValue,
-                centerY: padDescriptor.center.y.cuValue,
-                width: padDescriptor.padSize.width.cuValue + inArtworkClearance,
-                height: padDescriptor.padSize.height.cuValue + inArtworkClearance,
+                centerX: padDescriptor.center.x,
+                centerY: padDescriptor.center.y,
+                width: padDescriptor.padSize.width + inArtworkClearance,
+                height: padDescriptor.padSize.height + inArtworkClearance,
                 shape: padDescriptor.shape
               ).transformed (by: af)
               let issue = CanariIssue (kind: .error, message: "Pad OAR should be greater or equal to artwork OAR", pathes: [bp])
@@ -313,12 +313,12 @@ extension AutoLayoutProjectDocument {
               ()
             case .traversing :
               let phd = min (slavePad.holeSize.width, slavePad.holeSize.height)
-              if phd.cuValue < inPHD {
+              if phd < inPHD {
                 let bp = BezierPath.pad (
-                  centerX: slavePad.center.x.cuValue,
-                  centerY: slavePad.center.y.cuValue,
-                  width: slavePad.padSize.width.cuValue + inArtworkClearance,
-                  height: slavePad.padSize.height.cuValue + inArtworkClearance,
+                  centerX: slavePad.center.x,
+                  centerY: slavePad.center.y,
+                  width: slavePad.padSize.width + inArtworkClearance,
+                  height: slavePad.padSize.height + inArtworkClearance,
                   shape: slavePad.shape
                 ).transformed (by: af)
                 let issue = CanariIssue (kind: .error, message: "Pad hole diameter should be greater or equal to artwork PHD", pathes: [bp])
@@ -326,12 +326,12 @@ extension AutoLayoutProjectDocument {
                 errorCount += 1
               }
               let oar = min (slavePad.padSize.width - slavePad.holeSize.width, slavePad.padSize.height - slavePad.holeSize.height) / 2
-              if oar.cuValue < inOAR {
+              if oar < inOAR {
                 let bp = BezierPath.pad (
-                  centerX: slavePad.center.x.cuValue,
-                  centerY: slavePad.center.y.cuValue,
-                  width: slavePad.padSize.width.cuValue + inArtworkClearance,
-                  height: slavePad.padSize.height.cuValue + inArtworkClearance,
+                  centerX: slavePad.center.x,
+                  centerY: slavePad.center.y,
+                  width: slavePad.padSize.width + inArtworkClearance,
+                  height: slavePad.padSize.height + inArtworkClearance,
                   shape: slavePad.shape
                 ).transformed (by: af)
                 let issue = CanariIssue (kind: .error, message: "Pad OAR should be greater or equal to artwork OAR", pathes: [bp])
@@ -357,7 +357,7 @@ extension AutoLayoutProjectDocument {
   fileprivate func buildPadNetDictionary (_ ioIssues : inout [CanariIssue],
                                           _ ioPadID : inout Int,
                                           _ ioPadNetDictionary : inout [SideAndNetName : [PadGeometryForERC]],
-                                          artworkClearance inArtworkClearance : Int) {
+                                          artworkClearance inArtworkClearance : CanariLength) {
     for component in self.rootObject.mComponents.values {
       if component.mRoot != nil { // Is on board
         let padNetDictionary : PadNetDictionary = component.padNetDictionary!
@@ -365,10 +365,10 @@ extension AutoLayoutProjectDocument {
         for (_, padDescriptor) in component.packagePadDictionary! {
           let padGeometry = PadGeometryForERC (
             padId: ioPadID,
-            centerX: padDescriptor.center.x.cuValue,
-            centerY: padDescriptor.center.y.cuValue,
-            width: padDescriptor.padSize.width.cuValue,
-            height: padDescriptor.padSize.height.cuValue,
+            centerX: padDescriptor.center.x,
+            centerY: padDescriptor.center.y,
+            width: padDescriptor.padSize.width,
+            height: padDescriptor.padSize.height,
             clearance: inArtworkClearance,
             shape: padDescriptor.shape
           )
@@ -390,10 +390,10 @@ extension AutoLayoutProjectDocument {
           for slavePad in padDescriptor.slavePads {
             let slavePadGeometry = PadGeometryForERC (
               padId: ioPadID,
-              centerX: slavePad.center.x.cuValue,
-              centerY: slavePad.center.y.cuValue,
-              width: slavePad.padSize.width.cuValue,
-              height: slavePad.padSize.height.cuValue,
+              centerX: slavePad.center.x,
+              centerY: slavePad.center.y,
+              width: slavePad.padSize.width,
+              height: slavePad.padSize.height,
               clearance: inArtworkClearance,
               shape: slavePad.shape
             )
@@ -564,7 +564,7 @@ extension AutoLayoutProjectDocument {
 
   private func checkPadConnectivity (_ ioIssues : inout [CanariIssue],
                                      _ ioNetConnectorsDictionary : inout [String : [(BoardConnector, BezierPath)]],
-                                     artworkClearance inArtworkClearance : Int) {
+                                     artworkClearance inArtworkClearance : CanariLength) {
     self.mERCLogTextViewArray.appendMessage ("Pad connection… ")
     var connectionErrorCount = 0
     for component in self.rootObject.mComponents.values {
@@ -610,7 +610,7 @@ extension AutoLayoutProjectDocument {
                                                       _ inConnector : BoardConnector,
                                                       _ inAffineTransform : AffineTransform,
                                                       _ ioConnectionErrorCount : inout Int,
-                                                      artworkClearance inArtworkClearance : Int) {
+                                                      artworkClearance inArtworkClearance : CanariLength) {
     if let component = inConnector.mComponent {
       let masterPadName = inConnector.mComponentPadName
       let padDescriptor = component.packagePadDictionary! [masterPadName]!
@@ -766,8 +766,8 @@ extension AutoLayoutProjectDocument {
 
   private func checkTrackInsulation (_ ioIssues : inout [CanariIssue],
                                      _ inPadNetDictionary : [SideAndNetName : [PadGeometryForERC]],
-                                     artworkClearance inArtworkClearance : Int) {
-    let clearance = canariUnitToCocoa (inArtworkClearance)
+                                     artworkClearance inArtworkClearance : CanariLength) {
+    let clearance = inArtworkClearance.ptValue
   //--- Track inventory
     var trackSideNetDictionary = [SideAndNetName : [TrackForERC]] ()
     var restrictRectangles = [TrackSide : [PropertyRectForERC]] () // (rect, allow pads inside)
@@ -779,7 +779,7 @@ extension AutoLayoutProjectDocument {
         let netName = track.mNet?.mNetName ?? ""
         let p1 = track.mConnectorP1!.location!.ptValue
         let p2 = track.mConnectorP2!.location!.ptValue
-        let w = canariUnitToCocoa (track.actualTrackWidth!) + clearance
+        let w = track.actualTrackWidth!.ptValue + clearance
         let s = GeometricOblong (p1: p1, p2: p2, width: w, capStyle: track.mEndStyle_property.propval)
         let key = SideAndNetName (side: track.mSide, netName: netName)
         trackSideNetDictionary [key] = trackSideNetDictionary [key, default: []] + [TrackForERC (geometry: s, exposeCopper: track.mAddedToSolderMask)]
@@ -794,17 +794,17 @@ extension AutoLayoutProjectDocument {
         }
         if isVia {
           let p = via.location!.ptValue
-          let radius = (canariUnitToCocoa (via.actualPadDiameter!) + clearance) / 2.0
+          let radius = (via.actualPadDiameter!.ptValue + clearance) / 2.0
           let c = GeometricCircle (center: p, radius: radius)
           let netName = via.netNameFromTracks!
           viaDictionary [netName] = viaDictionary [netName, default: []] + [c]
         }
       }else if let propertyRectangle = object as? BoardRestrictRectangle {
         let canariRect = CanariRect (
-          left: .cu (propertyRectangle.mX),
-          bottom: .cu (propertyRectangle.mY),
-          width: .cu (propertyRectangle.mWidth),
-          height: .cu (propertyRectangle.mHeight)
+          left: propertyRectangle.mX,
+          bottom: propertyRectangle.mY,
+          width: propertyRectangle.mWidth,
+          height: propertyRectangle.mHeight
         )
         let r = GeometricRect (cocoaRect: canariRect.ptValue)
         let allowPadsInside = propertyRectangle.mAllowPadsInside
@@ -830,9 +830,9 @@ extension AutoLayoutProjectDocument {
         }
       }else if let nph = object as? NonPlatedHole {
         let r = GeometricOblong (
-          center: CanariPoint (x: .cu (nph.mX), y: .cu (nph.mY)).ptValue,
-          width: canariUnitToCocoa (nph.mWidth),
-          height: canariUnitToCocoa (nph.mHeight),
+          center: NSPoint (x: nph.mX, y: nph.mY),
+          width: nph.mWidth.ptValue,
+          height: nph.mHeight.ptValue,
           angleInDegrees: CGFloat (nph.mRotation) / 1000.0
         )
         nonPlatedHoles.append (r)

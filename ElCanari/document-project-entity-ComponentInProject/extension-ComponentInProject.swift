@@ -59,8 +59,8 @@ extension ComponentInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_ComponentInProject (xBy inDx : CanariLength, yBy inDy : CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx.cuValue
-    self.mY += inDy.cuValue
+    self.mX += inDx
+    self.mY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -139,19 +139,19 @@ extension ComponentInProject {
                                 alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                                 shift _ : Bool) {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
-      self.mX += inDx.cuValue
-      self.mY += inDy.cuValue
+      self.mX += inDx
+      self.mY += inDy
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
-      let absoluteCenter = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
+      let absoluteCenter = NSPoint (x: self.mX, y: self.mY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
     }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
-      self.mXName += inDx.cuValue
-      self.mYName += inDy.cuValue
+      self.mXName += inDx
+      self.mYName += inDy
     }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
-      self.mXValue += inDx.cuValue
-      self.mYValue += inDy.cuValue
+      self.mXValue += inDx
+      self.mYValue += inDy
     }
   }
 
@@ -160,21 +160,21 @@ extension ComponentInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_ComponentInProject (_ inGrid : Int) -> Bool {
-    var isAligned = self.mX.isAlignedOnGrid (inGrid)
+    var isAligned = self.mX.isAligned (on: inGrid)
     if isAligned {
-      isAligned = self.mY.isAlignedOnGrid (inGrid)
+      isAligned = self.mY.isAligned (on: inGrid)
     }
     if isAligned {
-      isAligned = self.mXName.isAlignedOnGrid (inGrid)
+      isAligned = self.mXName.isAligned (on: inGrid)
     }
     if isAligned {
-      isAligned = self.mYName.isAlignedOnGrid (inGrid)
+      isAligned = self.mYName.isAligned (on: inGrid)
     }
     if isAligned {
-      isAligned = self.mXValue.isAlignedOnGrid (inGrid)
+      isAligned = self.mXValue.isAligned (on: inGrid)
     }
     if isAligned {
-      isAligned = self.mYValue.isAlignedOnGrid (inGrid)
+      isAligned = self.mYValue.isAligned (on: inGrid)
     }
     return !isAligned
   }
@@ -182,12 +182,12 @@ extension ComponentInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_ComponentInProject (_ inGrid : Int) {
-    self.mX.align (onGrid: inGrid)
-    self.mY.align (onGrid: inGrid)
-    self.mXName.align (onGrid: inGrid)
-    self.mYName.align (onGrid: inGrid)
-    self.mXValue.align (onGrid: inGrid)
-    self.mYValue.align (onGrid: inGrid)
+    self.mX.align (on: inGrid)
+    self.mY.align (on: inGrid)
+    self.mXName.align (on: inGrid)
+    self.mYName.align (on: inGrid)
+    self.mXValue.align (on: inGrid)
+    self.mYValue.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -207,8 +207,8 @@ extension ComponentInProject {
 
   func rotate90Clockwise_ComponentInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + 270_000) % 360_000
     ioSet.insert (self)
   }
@@ -217,8 +217,8 @@ extension ComponentInProject {
 
   func rotate90CounterClockwise_ComponentInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + 90_000) % 360_000
     ioSet.insert (self)
   }
@@ -232,8 +232,8 @@ extension ComponentInProject {
     //--- Assign pad location to connector
       let descriptor : ComponentPadDescriptor = self.componentPadDictionary! [connector.mComponentPadName]!
       let pad = descriptor.pads [connector.mPadIndex]
-      connector.mX = CanariLength.pt (pad.location.x).cuValue
-      connector.mY = CanariLength.pt (pad.location.y).cuValue
+      connector.mX = CanariLength.pt (pad.location.x)
+      connector.mY = CanariLength.pt (pad.location.y)
     //--- Detach from component
       connector.mComponent = nil
       connector.mComponentPadName = ""
@@ -263,7 +263,7 @@ extension ComponentInProject {
     let padRect = packagePadDictionary.padsRect
     let center = padRect.center.ptValue
     var af = AffineTransform ()
-    af.translate (x: canariUnitToCocoa (self.mX), y: canariUnitToCocoa (self.mY))
+    af.translate (x: self.mX.ptValue, y: self.mY.ptValue)
     af.rotate (byDegrees: CGFloat (self.mRotation) / 1000.0)
     if self.mSide == .back {
       af.scale (x: -1.0, y: 1.0)
@@ -278,7 +278,7 @@ extension ComponentInProject {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
     let center = packagePadDictionary.padsRect.center.ptValue
     var af = AffineTransform ()
-    af.translate (x: canariUnitToCocoa (self.mX), y: canariUnitToCocoa (self.mY))
+    af.translate (x: self.mX.ptValue, y: self.mY.ptValue)
     let angleDegrees = Double (self.mRotation) / 1000.0
     af.rotate (byDegrees: angleDegrees)
     if self.mSide == .back {

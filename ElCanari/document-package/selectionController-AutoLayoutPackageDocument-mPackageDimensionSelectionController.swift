@@ -111,7 +111,7 @@ import CanariGeometry
   //   Selection observable property: distanceInCanariUnit
   //------------------------------------------------------------------------------------------------
 
-  final let distanceInCanariUnit_property = EBTransientProperty <Int> ()
+  final let distanceInCanariUnit_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: objectDisplay
@@ -969,7 +969,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.distanceInCanariUnit_property.selection {

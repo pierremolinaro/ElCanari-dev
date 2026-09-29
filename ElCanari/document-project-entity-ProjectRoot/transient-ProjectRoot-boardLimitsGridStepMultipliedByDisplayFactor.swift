@@ -15,9 +15,9 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor (
-       _ self_mBoardLimitsGridStep : Int,                                           
+       _ self_mBoardLimitsGridStep : CanariLength,                                  
        _ self_mBoardLimitsGridDisplayFactor : Int
-) -> Int {
+) -> CanariLength {
 //--- START OF USER ZONE 2
         return self_mBoardLimitsGridStep * self_mBoardLimitsGridDisplayFactor
 //--- END OF USER ZONE 2

@@ -107,6 +107,23 @@ extension NSPoint : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func canariPointAligned (onGrid inCanariGrid : CanariLength) -> CanariPoint {
+    let canariGrid = inCanariGrid.cuValue
+    let p = CanariPoint (
+     x: ((.pt (self.x) + inCanariGrid / 2) / canariGrid) * canariGrid,
+     y: ((.pt (self.y) + inCanariGrid / 2) / canariGrid) * canariGrid
+    )
+    return p
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var canariPoint : CanariPoint {
+    return CanariPoint (x: .pt (self.x), y: .pt (self.y))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

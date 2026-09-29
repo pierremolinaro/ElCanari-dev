@@ -15,12 +15,12 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardImage_objectDisplay (
-       _ self_mCenterX : Int,                       
-       _ self_mCenterY : Int,                       
+       _ self_mCenterX : CanariLength,              
+       _ self_mCenterY : CanariLength,              
        _ self_boardImageCodeDescriptor : BoardImageDescriptor,
        _ self_mLayer : BoardQRCodeLayer,            
        _ self_mRotation : Int,                      
-       _ self_mPixelSize : Int,                     
+       _ self_mPixelSize : CanariLength,            
        _ self_BoardObject_displayFrontLegendForBoard : Bool,
        _ self_BoardObject_displayBackLegendForBoard : Bool,
        _ prefs_frontSideLegendColorForBoard : NSColor,

@@ -20,7 +20,7 @@ extension AutoLayoutProjectDocument {
   //---
  //   let boardGridStep = self.rootObject.mBoardGridStep
     let p1 = inDraggingLocationInDestinationView.canariPoint // .point (alignedOnGrid: boardGridStep)
-    let p2 = CanariPoint (x: p1.x + .cu (TRACK_INITIAL_SIZE_IN_CANARI_UNIT), y: p1.y + .cu (TRACK_INITIAL_SIZE_IN_CANARI_UNIT))
+    let p2 = CanariPoint (x: p1.x + TRACK_INITIAL_SIZE, y: p1.y + TRACK_INITIAL_SIZE)
  //     .point (alignedOnGrid: boardGridStep)
     let connectorsAt1 = self.rootObject.connectors (at: p1, trackSide: side)
     let connectorsAt2 = self.rootObject.connectors (at: p2, trackSide: side)
@@ -30,8 +30,8 @@ extension AutoLayoutProjectDocument {
       connector1 = connectorsAt1 [0]
     }else{
       connector1 = BoardConnector (self.undoManager)
-      connector1.mX = p1.x.cuValue
-      connector1.mY = p1.y.cuValue
+      connector1.mX = p1.x
+      connector1.mY = p1.y
       self.rootObject.mBoardObjects.append (connector1)
     }
     let connector1Net = connector1.connectedTracksNet ()
@@ -43,14 +43,14 @@ extension AutoLayoutProjectDocument {
         connector2 = c2
       }else{
         connector2 = BoardConnector (self.undoManager)
-        connector2.mX = p2.x.cuValue
-        connector2.mY = p2.y.cuValue
+        connector2.mX = p2.x
+        connector2.mY = p2.y
         self.rootObject.mBoardObjects.append (connector2)
       }
     }else{
       connector2 = BoardConnector (self.undoManager)
-      connector2.mX = p2.x.cuValue
-      connector2.mY = p2.y.cuValue
+      connector2.mX = p2.x
+      connector2.mY = p2.y
       self.rootObject.mBoardObjects.append (connector2)
     }
   //--- Build Track
@@ -75,7 +75,7 @@ extension AutoLayoutProjectDocument {
     let side = self.rootObject.mBoardSideForNewTrack
     let shiftKeyDown = NSEvent.modifierFlags.contains (.shift)
     let p1 = shiftKeyDown
-      ? inUnalignedMousePoint.canariPoint.point (alignedOnGrid: .cu (self.rootObject.mBoardGridStep))
+      ? inUnalignedMousePoint.canariPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
       : inUnalignedMousePoint.canariPoint
     let connectorsAtP1 = self.rootObject.connectors (at: p1, trackSide: side)
   //--- Build connector at mouse click
@@ -84,14 +84,14 @@ extension AutoLayoutProjectDocument {
       connector1 = connectorsAtP1 [0]
     }else{
       connector1 = BoardConnector (self.undoManager)
-      connector1.mX = p1.x.cuValue
-      connector1.mY = p1.y.cuValue
+      connector1.mX = p1.x
+      connector1.mY = p1.y
       self.rootObject.mBoardObjects.append (connector1)
     }
   //--- Build second connector
     let connector2 = BoardConnector (self.undoManager)
-    connector2.mX = p1.x.cuValue
-    connector2.mY = p1.y.cuValue
+    connector2.mX = p1.x
+    connector2.mY = p1.y
     self.rootObject.mBoardObjects.append (connector2)
   //--- Build Track
     let track = BoardTrack (self.undoManager)
@@ -130,7 +130,7 @@ extension AutoLayoutProjectDocument {
     if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2, let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location {
       let shiftKeyDown = inModifierFlags.contains (.shift)
       var canariUnalignedMouseLocation = shiftKeyDown
-        ? inUnalignedMouseLocation.canariPoint.point (alignedOnGrid: .cu (self.rootObject.mBoardGridStep))
+        ? inUnalignedMouseLocation.canariPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
         : inUnalignedMouseLocation.canariPoint
       switch self.rootObject.mDirectionForNewTrack {
       case .anyAngle :
@@ -140,8 +140,8 @@ extension AutoLayoutProjectDocument {
       case .rectilinear :
         canariUnalignedMouseLocation.constraintToRectilinearDirection (from: p1)
       }
-      connector2.mX = canariUnalignedMouseLocation.x.cuValue
-      connector2.mY = canariUnalignedMouseLocation.y.cuValue
+      connector2.mX = canariUnalignedMouseLocation.x
+      connector2.mY = canariUnalignedMouseLocation.y
     //--- Update hilite
       self.updateHiliteDuringTrackCreation (inUnalignedMouseLocation)
     }

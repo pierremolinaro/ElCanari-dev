@@ -23,7 +23,7 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let p1 = (self_mP1_location ?? .zero).ptValue
-        let p2 = (self_mP2_location ?? CanariPoint (x: .cu (WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP), y: .cu (WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP))).ptValue
+        let p2 = self_mP2_location?.ptValue ?? NSPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
       //--- Hilite wire
         var bp = BezierPath ()
         bp.move (to: p1)

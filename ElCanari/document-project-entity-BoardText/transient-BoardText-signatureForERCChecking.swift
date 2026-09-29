@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_BoardText_signatureForERCChecking (
        _ self_mLayer : BoardTextLayer,                       
-       _ self_mX : Int,                                      
-       _ self_mY : Int,                                      
+       _ self_mX : CanariLength,                             
+       _ self_mY : CanariLength,                             
        _ self_mText : String,                                
        _ self_mFontSize : Double,                            
        _ self_mFont_descriptor : BoardFontDescriptor?,       

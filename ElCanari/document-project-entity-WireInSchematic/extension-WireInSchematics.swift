@@ -88,13 +88,13 @@ extension WireInSchematic {
   func translate_WireInSchematic (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let p1 = self.mP1, !ioSet.contains (p1) {
       ioSet.insert (p1)
-      p1.mX += inDx.cuValue
-      p1.mY += inDy.cuValue
+      p1.mX += inDx
+      p1.mY += inDy
     }
     if let p2 = self.mP2, !ioSet.contains (p2) {
       ioSet.insert (p2)
-      p2.mX += inDx.cuValue
-      p2.mY += inDy.cuValue
+      p2.mX += inDx
+      p2.mY += inDy
     }
   }
 
@@ -156,13 +156,13 @@ extension WireInSchematic {
     if inKnobIndex == WIRE_CENTER_KNOB, self.mP1?.mSymbol == nil, self.mP2?.mSymbol == nil {
       return CanariPoint (x: inProposedAlignedTranslation.x, y: inProposedAlignedTranslation.y)
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil, let other = self.mP2 {
-      if ((point.mX + inProposedAlignedTranslation.x.cuValue) == other.mX) && ((point.mY + inProposedAlignedTranslation.y.cuValue) == other.mY) {
+      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
         return .zero
       }else{
         return inProposedAlignedTranslation
       }
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil, let other = self.mP1 {
-      if ((point.mX + inProposedAlignedTranslation.x.cuValue) == other.mX) && ((point.mY + inProposedAlignedTranslation.y.cuValue) == other.mY) {
+      if ((point.mX + inProposedAlignedTranslation.x) == other.mX) && ((point.mY + inProposedAlignedTranslation.y) == other.mY) {
         return .zero
       }else{
         return inProposedAlignedTranslation
@@ -183,16 +183,16 @@ extension WireInSchematic {
                              alignedMouseLocationY _ : CanariLength,
                              shift _ : Bool) {
     if inKnobIndex == WIRE_CENTER_KNOB, let p1 = self.mP1, p1.mSymbol == nil, let p2 = self.mP2, p2.mSymbol == nil {
-      p1.mX += inDx.cuValue
-      p1.mY += inDy.cuValue
-      p2.mX += inDx.cuValue
-      p2.mY += inDy.cuValue
+      p1.mX += inDx
+      p1.mY += inDy
+      p2.mX += inDx
+      p2.mY += inDy
     }else if inKnobIndex == WIRE_P1_KNOB, let point = self.mP1, point.mSymbol == nil {
-      point.mX += inDx.cuValue
-      point.mY += inDy.cuValue
+      point.mX += inDx
+      point.mY += inDy
     }else if inKnobIndex == WIRE_P2_KNOB, let point = self.mP2, point.mSymbol == nil {
-      point.mX += inDx.cuValue
-      point.mY += inDy.cuValue
+      point.mX += inDx
+      point.mY += inDy
     }
   }
 

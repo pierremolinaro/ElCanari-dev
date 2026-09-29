@@ -17,14 +17,14 @@ import CanariGeometry
 
 @MainActor func transient_BorderCurve_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,          
-       _ self_mX : Int,                                 
-       _ self_mY : Int,                                 
-       _ self_mNext_mX : Int?,                          
-       _ self_mNext_mY : Int?,                          
-       _ self_mCPX1 : Int,                              
-       _ self_mCPY1 : Int,                              
-       _ self_mCPX2 : Int,                              
-       _ self_mCPY2 : Int,                              
+       _ self_mX : CanariLength,                        
+       _ self_mY : CanariLength,                        
+       _ self_mNext_mX : CanariLength?,                 
+       _ self_mNext_mY : CanariLength?,                 
+       _ self_mCPX1 : CanariLength,                     
+       _ self_mCPY1 : CanariLength,                     
+       _ self_mCPX2 : CanariLength,                     
+       _ self_mCPY2 : CanariLength,                     
        _ self_mShape : BorderCurveShape,                
        _ self_mRoot_mBoardShape : BoardShape?
 ) -> EBShape {
@@ -34,18 +34,18 @@ import CanariGeometry
         let y2 = self_mNext_mY,
         let boardShape = self_mRoot_mBoardShape,
         boardShape == .bezierPathes {
-          let p1 = CanariPoint (x: .cu (self_mX), y: .cu (self_mY)).ptValue
-          let p2 = CanariPoint (x: .cu (x2), y: .cu (y2)).ptValue
-          let cp1 = CanariPoint (x: .cu (self_mCPX1), y: .cu (self_mCPY1)).ptValue
-          let cp2 = CanariPoint (x: .cu (self_mCPX2), y: .cu (self_mCPY2)).ptValue
+          let p1 = NSPoint (x: self_mX, y: self_mY)
+          let p2 = NSPoint (x: x2, y: y2)
+          let cp1 = NSPoint (x: self_mCPX1, y: self_mCPY1)
+          let cp2 = NSPoint (x: self_mCPX2, y: self_mCPY2)
           var bp = BezierPath ()
           bp.move (to: p1)
           switch self_mShape {
           case .line :
             bp.line (to: p2)
           case .bezier :
-            let cp1 = CanariPoint (x: .cu (self_mCPX1), y: .cu (self_mCPY1)).ptValue
-            let cp2 = CanariPoint (x: .cu (self_mCPX2), y: .cu (self_mCPY2)).ptValue
+            let cp1 = NSPoint (x: self_mCPX1, y: self_mCPY1)
+            let cp2 = NSPoint (x: self_mCPX2, y: self_mCPY2)
             bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
           }
           bp.lineWidth = 1.0

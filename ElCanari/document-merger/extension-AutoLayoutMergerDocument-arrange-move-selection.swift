@@ -18,7 +18,7 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func moveDown (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
-    let boardHeight = CanariLength.cu (self.rootObject.boardHeight!)
+    let boardHeight = self.rootObject.boardHeight!
     let verticalSeparator = self.rootObject.verticalSeparator
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
@@ -68,14 +68,14 @@ extension AutoLayoutMergerDocument {
   //--- Sort objects
     let ySortedArray = inMoveObjectSet.values.sorted { $0.y > $1.y }
   //---
-    var deltaY = CanariLength.cu (boardHeight)
+    var deltaY = boardHeight
     for selectedInstance in ySortedArray {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
         bottom: instanceRect.bottom,
         width: instanceRect.width,
-        height: .cu (boardHeight) - instanceRect.bottom
+        height: boardHeight - instanceRect.bottom
       )
       for otherInstance in otherObjectSet.values {
         let intersection = acceptableNewRect.intersection (otherInstance.instanceRect!.insetBy (dy: -verticalSeparator))
@@ -111,13 +111,13 @@ extension AutoLayoutMergerDocument {
   //--- Sort objects
     let xSortedArray = inMoveObjectSet.values.sorted { $0.x > $1.x }
   //---
-    var deltaX = CanariLength.cu (boardWidth)
+    var deltaX = boardWidth
     for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
         bottom: instanceRect.bottom,
-        width: .cu (boardWidth) - instanceRect.left,
+        width: boardWidth - instanceRect.left,
         height: instanceRect.height
       )
       for otherInstance in otherObjectSet.values {
@@ -154,7 +154,7 @@ extension AutoLayoutMergerDocument {
   //--- Sort objects
     let xSortedArray = inMoveObjectSet.values.sorted { $0.x < $1.x }
   //---
-    var deltaX = CanariLength.cu (-boardWidth)
+    var deltaX = -boardWidth
     for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (

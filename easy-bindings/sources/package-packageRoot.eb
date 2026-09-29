@@ -60,8 +60,7 @@ handlingOpposite entity PackageRoot {
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
   property GridStyle gridStyle default line ;
-  property Int gridStep default 57_150 ; // 25 mils
-//  property CanariLength gridStep default ".mil (25)" ;
+  property CanariLength gridStep default ".mil (25)" ;
   property Int gridStepUnit default 2_286 ; // mil
   property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
@@ -72,7 +71,7 @@ handlingOpposite entity PackageRoot {
   property Bool mModelImagePageHorizontalFlip default no ;
   property Bool mModelImagePageVerticalFlip default no ;
   property GridStyle mModelImagePageGridStyle default noGrid ;
-  property Int mModelImagePageGridStep default 2_286 ; // 1 mil
+  property CanariLength mModelImagePageGridStep default ".mil (1)" ;
   property Int mModelImagePageGridStepUnit default 2_286 ; // mil
   property Int mModelImagePageGridDisplayFactor default 100 ;
   property @generateResetMethod @generateDirectAccess Int mModelImagePageZoom default 200 ;
@@ -125,7 +124,7 @@ handlingOpposite entity PackageRoot {
   ;
 
  //--- Mouse grid
-  transient Int gridStepMultipliedByDisplayFactor dependsFrom self.gridStep, self.gridDisplayFactor ;
+  transient CanariLength gridStepMultipliedByDisplayFactor dependsFrom self.gridStep, self.gridDisplayFactor ;
 
  //--- Pad number display
    transient EBShape padNumberDisplay dependsFrom
@@ -184,7 +183,7 @@ graphic entity PackageSegment : PackageObject {
 
   override transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  transient Int lengthInCanariUnit dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  transient CanariLength lengthInCanariUnit dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -355,7 +354,7 @@ graphic handlingOpposite entity PackagePad : PackageObject {
 
   transient Bool padIsTraversing dependsFrom self.padStyle ;
 
-  transient Int annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
+  transient CanariLength annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
 
   transient String padNameWithZoneName dependsFrom
      self.padNumber,
@@ -417,7 +416,7 @@ graphic handlingOpposite entity PackageSlavePad : PackageObject {
 
   transient Bool padIsTraversing dependsFrom self.padStyle ;
 
-  transient Int annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
+  transient CanariLength annularRing dependsFrom self.width, self.height, self.holeWidth, self.holeHeight ;
 
   transient String padNameWithZoneName dependsFrom self.master.one.padNameWithZoneName ;
 
@@ -480,7 +479,7 @@ graphic entity PackageDimension : PackageObject {
   property @signature @generateDirectAccess Bool drawDimensionBackground default yes ;
 
 
-  transient Int distanceInCanariUnit dependsFrom
+  transient CanariLength distanceInCanariUnit dependsFrom
      self.x1, self.y1, self.x2, self.y2
   ;
 

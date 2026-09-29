@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_BoardImage_signatureForERCChecking (
        _ self_mLayer : BoardQRCodeLayer,                      
-       _ self_mCenterX : Int,                                 
-       _ self_mCenterY : Int,                                 
+       _ self_mCenterX : CanariLength,                        
+       _ self_mCenterY : CanariLength,                        
        _ self_mImageData : Data,                              
        _ self_mRotation : Int
 ) -> UInt32 {

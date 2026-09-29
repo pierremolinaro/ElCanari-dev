@@ -5,9 +5,9 @@
 graphic handlingOpposite entity BoardImage : BoardObject {
   graphic canCopyAndPaste ;
 
-  property @generateDirectAccess Int mCenterX default 0 ;
+  property @generateDirectAccess CanariLength mCenterX default ".zero" ;
   property Int mXUnit default 2_286 ; // mil
-  property @generateDirectAccess Int mCenterY default 0 ;
+  property @generateDirectAccess CanariLength mCenterY default ".zero" ;
   property Int mYUnit default 2_286 ; // mil
   property Int mThreshold default 200 ;
   property @generateDirectAccess Data mImageData default empty ;
@@ -15,7 +15,7 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   property Bool mHorizontalFlip default no ;
   property Bool mVerticalFlip default no ;
   property Double mScale default 0.5 ;
-  property Int mPixelSize  default 31_750 ; // px
+  property CanariLength mPixelSize default ".pt (1)" ; // px
   property Int mPixelSizeUnit  default 31_750 ; // px
   property Int mActualWidthUnit  default 900_000 ; // cm
   property Int mActualHeightUnit  default 900_000 ; // cm
@@ -51,11 +51,11 @@ graphic handlingOpposite entity BoardImage : BoardObject {
     self.boardImageCodeDescriptor
   ;
     
-  transient Int boardActualImageWidth dependsFrom
+  transient CanariLength boardActualImageWidth dependsFrom
     self.boardImageCodeDescriptor, self.mPixelSize
   ;
   
-  transient Int boardActualImageHeight dependsFrom
+  transient CanariLength boardActualImageHeight dependsFrom
     self.boardImageCodeDescriptor, self.mPixelSize
   ;
     

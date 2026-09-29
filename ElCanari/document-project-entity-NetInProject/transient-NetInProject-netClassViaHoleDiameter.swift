@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_NetInProject_netClassViaHoleDiameter (
-       _ self_mNetClass_mViaHoleDiameter : Int?
-) -> Int {
+       _ self_mNetClass_mViaHoleDiameter : CanariLength?
+) -> CanariLength {
 //--- START OF USER ZONE 2
-        return self_mNetClass_mViaHoleDiameter ?? 0
+        return self_mNetClass_mViaHoleDiameter ?? .zero
 //--- END OF USER ZONE 2
 }
 

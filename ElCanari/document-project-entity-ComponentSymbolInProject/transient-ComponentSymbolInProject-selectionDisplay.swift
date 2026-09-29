@@ -19,11 +19,11 @@ import CanariGeometry
        _ prefs_selectionHiliteColor : NSColor,                       
        _ prefs_pinNameFont : NSFont,                                 
        _ prefs_schematicBackColor : NSColor,                         
-       _ self_mDisplayComponentNameOffsetX : Int,                    
-       _ self_mDisplayComponentNameOffsetY : Int,                    
+       _ self_mDisplayComponentNameOffsetX : CanariLength,           
+       _ self_mDisplayComponentNameOffsetY : CanariLength,           
        _ self_mDisplayComponentValue : Bool,                         
-       _ self_mDisplayComponentValueOffsetX : Int,                   
-       _ self_mDisplayComponentValueOffsetY : Int,                   
+       _ self_mDisplayComponentValueOffsetX : CanariLength,          
+       _ self_mDisplayComponentValueOffsetY : CanariLength,          
        _ self_symbolInfo : ComponentSymbolInfo,                      
        _ self_mRotation : QuadrantRotation
 ) -> EBShape {
@@ -37,8 +37,8 @@ import CanariGeometry
       //--- Line from center to component value
         let symbolCenter = self_symbolInfo.center.ptValue
         let componentValueCenter = CanariPoint (
-          x: self_symbolInfo.center.x + .cu (self_mDisplayComponentValueOffsetX),
-          y: self_symbolInfo.center.y + .cu (self_mDisplayComponentValueOffsetY)
+          x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
+          y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
         )
         if self_mDisplayComponentValue {
           var bp = BezierPath ()
@@ -51,8 +51,8 @@ import CanariGeometry
         }
       //--- line from center to name
         let componentNameCenter = CanariPoint (
-          x: self_symbolInfo.center.x + .cu (self_mDisplayComponentNameOffsetX),
-          y: self_symbolInfo.center.y + .cu (self_mDisplayComponentNameOffsetY)
+          x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX,
+          y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY
         )
         do{
           var bp = BezierPath ()

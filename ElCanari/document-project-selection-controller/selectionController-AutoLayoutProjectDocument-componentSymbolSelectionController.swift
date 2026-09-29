@@ -27,13 +27,13 @@ import CanariGeometry
   //   Selection observable property: mCenterX
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterX_property = EBComputedProperty_Int ()
+  final let mCenterX_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mCenterY
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterY_property = EBComputedProperty_Int ()
+  final let mCenterY_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mRotation
@@ -63,13 +63,13 @@ import CanariGeometry
   //   Selection observable property: mDisplayComponentNameOffsetX
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentNameOffsetX_property = EBComputedProperty_Int ()
+  final let mDisplayComponentNameOffsetX_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mDisplayComponentNameOffsetY
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentNameOffsetY_property = EBComputedProperty_Int ()
+  final let mDisplayComponentNameOffsetY_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mDisplayComponentValue
@@ -81,13 +81,13 @@ import CanariGeometry
   //   Selection observable property: mDisplayComponentValueOffsetX
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentValueOffsetX_property = EBComputedProperty_Int ()
+  final let mDisplayComponentValueOffsetX_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mDisplayComponentValueOffsetY
   //------------------------------------------------------------------------------------------------
 
-  final let mDisplayComponentValueOffsetY_property = EBComputedProperty_Int ()
+  final let mDisplayComponentValueOffsetY_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Atomic proxy property: componentValueProxy
@@ -259,7 +259,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCenterX_property.selection {
@@ -285,7 +285,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCenterX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCenterX_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -310,7 +310,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCenterY_property.selection {
@@ -336,7 +336,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCenterY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCenterY_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -565,7 +565,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mDisplayComponentNameOffsetX_property.selection {
@@ -591,7 +591,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mDisplayComponentNameOffsetX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mDisplayComponentNameOffsetX_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -616,7 +616,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mDisplayComponentNameOffsetY_property.selection {
@@ -642,7 +642,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mDisplayComponentNameOffsetY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mDisplayComponentNameOffsetY_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -718,7 +718,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mDisplayComponentValueOffsetX_property.selection {
@@ -744,7 +744,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mDisplayComponentValueOffsetX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mDisplayComponentValueOffsetX_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -769,7 +769,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mDisplayComponentValueOffsetY_property.selection {
@@ -795,7 +795,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mDisplayComponentValueOffsetY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mDisplayComponentValueOffsetY_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

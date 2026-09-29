@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -12,7 +13,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_mouseGrid (_ model : EBObservableProperty <Int>) {
+  final func bind_mouseGrid (_ model : EBObservableProperty <CanariLength>) {
     self.mMouseGridController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateMouseGrid (from: model) }
@@ -28,10 +29,10 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private func updateMouseGrid (from model : EBObservableProperty <Int>) {
+  final private func updateMouseGrid (from model : EBObservableProperty <CanariLength>) {
     switch model.selection {
     case .empty, .multiple :
-      self.set (mouseGridInCanariUnit: 1)
+      self.set (mouseGridInCanariUnit: .cu (1))
     case .single (let v) :
       self.set (mouseGridInCanariUnit: v)
     }

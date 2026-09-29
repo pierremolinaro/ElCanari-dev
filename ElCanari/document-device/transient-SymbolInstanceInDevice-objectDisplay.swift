@@ -20,8 +20,8 @@ import CanariGeometry
        _ self_mType_pinNameShape : EBShape?,                    
        _ self_mPinInstances_numberShape : [any SymbolPinInstanceInDevice_numberShape],
        _ self_symbolQualifiedName : String,                     
-       _ self_mX : Int,                                         
-       _ self_mY : Int,                                         
+       _ self_mX : CanariLength,                                
+       _ self_mY : CanariLength,                                
        _ prefs_symbolDrawingWidthMultipliedByTen : Int,         
        _ prefs_symbolColor : NSColor
 ) -> EBShape {
@@ -89,7 +89,7 @@ import CanariGeometry
        }
      //---
        var at = AffineTransform ()
-       at.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+       at.translate (x: self_mX.ptValue, y: self_mY.ptValue)
        return shape.transformed (by: at)
 //--- END OF USER ZONE 2
 }

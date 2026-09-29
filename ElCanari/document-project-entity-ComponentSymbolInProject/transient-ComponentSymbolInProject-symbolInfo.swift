@@ -27,8 +27,8 @@ import CanariGeometry
        _ self_mComponent_deviceSymbolDictionary : DeviceSymbolDictionary?,
        _ self_mSymbolInstanceName : String,                    
        _ self_mSymbolTypeName : String,                        
-       _ self_mCenterX : Int,                                  
-       _ self_mCenterY : Int,                                  
+       _ self_mCenterX : CanariLength,                         
+       _ self_mCenterY : CanariLength,                         
        _ self_mPoints_symbolNameNetName : [any PointInSchematic_symbolNameNetName]
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2
@@ -61,7 +61,7 @@ import CanariGeometry
             //--- Pin name
               if pin.pinNameIsDisplayedInSchematics {
                 var trText = AffineTransform ()
-                trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
+                trText.translate (x: self_mCenterX.ptValue, y: self_mCenterY.ptValue)
                 trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
                 trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
                 trText.translate (x: -deviceInfo.center.x.ptValue, y: -deviceInfo.center.y.ptValue)
@@ -82,7 +82,7 @@ import CanariGeometry
               }
             //--- Pin number
               var trText = AffineTransform ()
-              trText.translate (x: canariUnitToCocoa (self_mCenterX), y: canariUnitToCocoa (self_mCenterY))
+              trText.translate (x: self_mCenterX.ptValue, y: self_mCenterY.ptValue)
               trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
               trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
               trText.translate (x: -deviceInfo.center.x.ptValue, y: -deviceInfo.center.y.ptValue)
@@ -102,7 +102,7 @@ import CanariGeometry
               pinTextShape.add (pinNumberTextShape.transformed (by: trText))
             //--- Pin location
               let pinLocationTransform = NSAffineTransform ()
-              pinLocationTransform.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+              pinLocationTransform.translateX (by: self_mCenterX.ptValue, yBy: self_mCenterY.ptValue)
               pinLocationTransform.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
               pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
               pinLocationTransform.translateX (by: -deviceInfo.center.x.ptValue, yBy: -deviceInfo.center.y.ptValue)
@@ -129,13 +129,13 @@ import CanariGeometry
           }
         //--- Affine transformation for drawings
           let tr = NSAffineTransform ()
-          tr.translateX (by: canariUnitToCocoa (self_mCenterX), yBy: canariUnitToCocoa (self_mCenterY))
+          tr.translateX (by: self_mCenterX.ptValue, yBy: self_mCenterY.ptValue)
           tr.scaleX (by: self_mMirror ? -1.0 : 1.0, yBy: 1.0)
           tr.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
           tr.translateX (by: -deviceInfo.center.x.ptValue, yBy: -deviceInfo.center.y.ptValue)
           let transformedStrokeBezierPath = tr.transform (deviceInfo.strokeBezierPath)
           let transformedFilledBezierPath = tr.transform (deviceInfo.filledBezierPath)
-          let componentSymbolCenter = CanariPoint (x: .cu (self_mCenterX), y: .cu (self_mCenterY))
+          let componentSymbolCenter = CanariPoint (x: self_mCenterX, y: self_mCenterY)
           return ComponentSymbolInfo (
             filledBezierPath: transformedFilledBezierPath,
             strokeBezierPath: transformedStrokeBezierPath,

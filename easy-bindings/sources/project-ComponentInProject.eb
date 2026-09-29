@@ -131,9 +131,9 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   override transient String componentName dependsFrom self.mNamePrefix, self.mNameIndex ;
 
 //--- Component location in board  
-  property @generateDirectAccess Int mX default 0 ;
+  property @generateDirectAccess CanariLength mX default ".zero" ;
   property @generateDirectAccess Int mXUnit default 2_286 ; // mils
-  property @generateDirectAccess Int mY default 0 ;
+  property @generateDirectAccess CanariLength mY default ".zero" ;
   property @generateDirectAccess Int mYUnit default 2_286 ; // mils
   property @generateDirectAccess Int mRotation default 0 ; // 1000 -> 1°
   property @generateDirectAccess ComponentSide mSide default front ;
@@ -141,9 +141,9 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
 //--- Component name display
   toOne @weak FontInProject mNameFont inverse toMany mComponentNames ;
   property @generateDirectAccess Double mNameFontSize default 4.0 ;
-  property @generateDirectAccess Int mXName default 0 ;
+  property @generateDirectAccess CanariLength mXName default ".zero" ;
   property Int mXNameUnit default 2_286 ; // mils
-  property @generateDirectAccess Int mYName default 685_800 ; // 300 mils
+  property @generateDirectAccess CanariLength mYName default ".mil (300)" ; // 300 mils
   property Int mYNameUnit default 2_286 ; // mils
   property @generateDirectAccess Bool mNameIsVisibleInBoard default yes ;
   property @generateDirectAccess Int mNameRotation default 0 ; // 1000 -> 1°
@@ -154,9 +154,9 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   property @generateDirectAccess String mComponentValue default "" ;
   toOne @weak FontInProject mValueFont inverse toMany mComponentValues ;
   property @generateDirectAccess Double mValueFontSize default 4.0 ;
-  property @generateDirectAccess Int mXValue default 0 ;
+  property @generateDirectAccess CanariLength mXValue default ".zero" ;
   property Int mXValueUnit default 2_286 ; // mils
-  property @generateDirectAccess Int mYValue default -685_800 ; // 300 mils
+  property @generateDirectAccess CanariLength mYValue default "-.mil (300)" ; // 300 mils
   property Int mYValueUnit default 2_286 ; // mils
   property @generateDirectAccess Bool mValueIsVisibleInBoard default yes ;
   property @generateDirectAccess Int mValueRotation default 0 ; // 1000 -> 1°

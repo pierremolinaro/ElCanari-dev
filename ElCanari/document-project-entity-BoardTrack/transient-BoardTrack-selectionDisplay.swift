@@ -32,7 +32,7 @@ import CanariGeometry
        _ prefs_inner4LayoutColorForBoard : NSColor,    
        _ prefs_backSideLayoutColorForBoard : NSColor,  
        _ self_mSide : TrackSide,                       
-       _ self_actualTrackWidth : Int
+       _ self_actualTrackWidth : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var shape = EBShape ()
@@ -62,7 +62,7 @@ import CanariGeometry
           color = prefs_inner4LayoutColorForBoard
         }
         var bp = BezierPath ()
-        bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 1.0
+        bp.lineWidth = self_actualTrackWidth.ptValue + 1.0
         switch self_mEndStyle {
         case .round :
           bp.lineCapStyle = .round
@@ -73,7 +73,7 @@ import CanariGeometry
         bp.move (to: p1)
         bp.line (to: p2)
         shape.add (stroke: [bp], prefs_selectionHiliteColor)
-        bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth)
+        bp.lineWidth = self_actualTrackWidth.ptValue
         shape.add (stroke: [bp], color)
       //--- Knobs
         if self_p1CanMove {

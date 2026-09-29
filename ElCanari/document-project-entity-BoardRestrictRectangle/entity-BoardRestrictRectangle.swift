@@ -16,7 +16,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mY : AnyObject {
-//   var mY : Int { get }
+//   var mY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mWidth : AnyObject {
-//   var mWidth : Int { get }
+//   var mWidth : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mHeight : AnyObject {
-//   var mHeight : Int { get }
+//   var mHeight : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mX : AnyObject {
-//   var mX : Int { get }
+//   var mX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -204,11 +204,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mY
   //------------------------------------------------------------------------------------------------
 
-  final let mY_property : EBStoredProperty_Int
+  final let mY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mY : Int {
+  final var mY : CanariLength {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
@@ -229,11 +229,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mWidth_property : EBStoredProperty_Int
+  final let mWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mWidth : Int {
+  final var mWidth : CanariLength {
     get { return self.mWidth_property.propval }
     set { self.mWidth_property.setProp (newValue) }
   }
@@ -254,11 +254,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mHeight
   //------------------------------------------------------------------------------------------------
 
-  final let mHeight_property : EBStoredProperty_Int
+  final let mHeight_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mHeight : Int {
+  final var mHeight : CanariLength {
     get { return self.mHeight_property.propval }
     set { self.mHeight_property.setProp (newValue) }
   }
@@ -409,11 +409,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mX
   //------------------------------------------------------------------------------------------------
 
-  final let mX_property : EBStoredProperty_Int
+  final let mX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mX : Int {
+  final var mX : CanariLength {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
@@ -436,11 +436,11 @@ final class BoardRestrictRectangle : BoardObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager, key: "mWidth")
+    self.mWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "mWidth")
     self.mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mWidthUnit")
-    self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager, key: "mHeight")
+    self.mHeight_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "mHeight")
     self.mHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mHeightUnit")
     self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInFrontLayer")
     self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInBackLayer")
@@ -452,7 +452,7 @@ final class BoardRestrictRectangle : BoardObject
     self.mAllowTracksInside_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAllowTracksInside")
     self.mExposeTrackCopper_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExposeTrackCopper")
     self.mRectTrackEnd_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mRectTrackEnd")
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
     self.accumulateProperty (self.mXUnit_property)
     self.accumulateProperty (self.mY_property)

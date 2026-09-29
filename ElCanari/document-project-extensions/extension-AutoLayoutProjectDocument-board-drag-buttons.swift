@@ -16,11 +16,11 @@ extension AutoLayoutProjectDocument {
 
   func boardTrackImageFactory () -> EBShape? {
     let p1 = BoardConnector (nil)
-    p1.mX = 0
-    p1.mY = 0
+    p1.mX = .zero
+    p1.mY = .zero
     let p2 = BoardConnector (nil)
-    p2.mX = TRACK_INITIAL_SIZE_IN_CANARI_UNIT
-    p2.mY = TRACK_INITIAL_SIZE_IN_CANARI_UNIT
+    p2.mX = TRACK_INITIAL_SIZE
+    p2.mY = TRACK_INITIAL_SIZE
     let track = BoardTrack (nil)
     track.mConnectorP1 = p1
     track.mConnectorP2 = p2

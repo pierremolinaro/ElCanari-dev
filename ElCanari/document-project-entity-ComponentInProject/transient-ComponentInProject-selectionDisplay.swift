@@ -23,15 +23,15 @@ import CanariGeometry
        _ prefs_backSideLegendColorForBoard : NSColor,          
        _ self_BoardObject_displayFrontLegendForBoard : Bool,   
        _ self_BoardObject_displayBackLegendForBoard : Bool,    
-       _ self_mX : Int,                                        
-       _ self_mY : Int,                                        
+       _ self_mX : CanariLength,                               
+       _ self_mY : CanariLength,                               
        _ self_mRotation : Int,                                 
        _ self_mSide : ComponentSide,                           
        _ self_strokeBezierPath : BezierPath,                   
        _ self_mDisplayLegend : Bool,                           
        _ self_mNameIsVisibleInBoard : Bool,                    
-       _ self_mXName : Int,                                    
-       _ self_mYName : Int,                                    
+       _ self_mXName : CanariLength,                           
+       _ self_mYName : CanariLength,                           
        _ self_mNameFont_descriptor : BoardFontDescriptor?,     
        _ self_mNameFontSize : Double,                          
        _ self_mNameRotation : Int,                             
@@ -39,8 +39,8 @@ import CanariGeometry
        _ self_packagePadDictionary : PackageMasterPadDictionary,
        _ self_padNetDictionary : PadNetDictionary,             
        _ self_mValueIsVisibleInBoard : Bool,                   
-       _ self_mXValue : Int,                                   
-       _ self_mYValue : Int,                                   
+       _ self_mXValue : CanariLength,                          
+       _ self_mYValue : CanariLength,                          
        _ self_mValueFont_descriptor : BoardFontDescriptor?,    
        _ self_mValueFontSize : Double,                         
        _ self_mValueRotation : Int,                            
@@ -50,7 +50,7 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
       let lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
-      let absoluteCenter = CanariPoint (x: .cu (self_mX), y: .cu (self_mY)).ptValue
+      let absoluteCenter = NSPoint (x: self_mX, y: self_mY)
       let rPadsCenter = self_packagePadDictionary.padsRect.center.ptValue
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)

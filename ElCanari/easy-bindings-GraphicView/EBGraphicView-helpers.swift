@@ -97,7 +97,7 @@ extension EBGraphicView {
         let locationInWindow = self.convert (inLocationInView, to: nil)
         let rScreen = myWindow.convertToScreen (NSRect (origin: locationInWindow, size: NSSize ()))
         var frameOrigin = rScreen.origin
-        frameOrigin.x -= view.frame.size.width + canariUnitToCocoa (self.mGridStepInCanariUnit) * self.actualScale + 5.0
+        frameOrigin.x -= view.frame.size.width + self.mGridStepInCanariUnit.ptValue * self.actualScale + 5.0
         frameOrigin.y -= view.frame.size.height / 2.0
         xyWindow.setFrameOrigin (frameOrigin)
         xyWindow.setContentSize (s)
@@ -142,7 +142,7 @@ extension EBGraphicView {
       let rectInScreen = NSRect (origin: mouseLocationInScreen, size: NSSize ())
       let rectInWindow = myWindow.convertFromScreen (rectInScreen)
       let mouseLocationInView = self.convert (rectInWindow.origin, from: nil)
-      let locationOnGridInView = mouseLocationInView.aligned (onGrid: canariUnitToCocoa (self.mArrowKeyMagnitude))
+      let locationOnGridInView = mouseLocationInView.aligned (onGrid: self.mArrowKeyMagnitude.ptValue)
       self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     }
   }

@@ -51,8 +51,8 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_NonPlatedHole (xBy inDx : CanariLength, yBy inDy : CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx.cuValue
-    self.mY += inDy.cuValue
+    self.mX += inDx
+    self.mY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -101,10 +101,10 @@ extension NonPlatedHole {
                       alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == NON_PLATED_HOLE_ORIGIN_KNOB {
-      self.mX += inDx.cuValue
-      self.mY += inDy.cuValue
+      self.mX += inDx
+      self.mY += inDy
     }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
-      let origin = CanariPoint (x: .cu (self.mX), y: .cu (self.mY)).ptValue
+      let origin = NSPoint (x: self.mX, y: self.mY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
       let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
       self.mRotation = degreesToCanariRotation (newAngleInDegrees)
@@ -116,9 +116,9 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_NonPlatedHole (_ inGrid : Int) -> Bool {
-    var isAligned = self.mX.isAlignedOnGrid (inGrid)
+    var isAligned = self.mX.isAligned (on: inGrid)
     if isAligned {
-      isAligned = self.mY.isAlignedOnGrid (inGrid)
+      isAligned = self.mY.isAligned (on: inGrid)
     }
     return !isAligned
   }
@@ -126,8 +126,8 @@ extension NonPlatedHole {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_NonPlatedHole (_ inGrid : Int) {
-    self.mX.align (onGrid: inGrid)
-    self.mY.align (onGrid: inGrid)
+    self.mX.align (on: inGrid)
+    self.mY.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -143,8 +143,8 @@ extension NonPlatedHole {
 
   func rotate90Clockwise_NonPlatedHole (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -153,8 +153,8 @@ extension NonPlatedHole {
 
   func rotate90CounterClockwise_NonPlatedHole (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }

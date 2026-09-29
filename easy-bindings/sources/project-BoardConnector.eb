@@ -15,19 +15,19 @@ graphic handlingOpposite entity BoardConnector : BoardObject {
   property @generateDirectAccess String mComponentPadName default "" ; // Empty string if not connected to a pad
   property @generateDirectAccess Int mPadIndex default 0 ; // 0 -> master pad, > 0 : slave pad
 
-  property @generateDirectAccess Int mX default 0 ; // Used if not connected to a Pad
-  property @generateDirectAccess Int mY default 0 ; // Used if not connected to a Pad
+  property @generateDirectAccess CanariLength mX default ".zero" ; // Used if not connected to a Pad
+  property @generateDirectAccess CanariLength mY default ".zero" ; // Used if not connected to a Pad
 
   toMany @generateDirectAccess BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
   toMany @generateDirectAccess BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
 
   property Int mDefaultHoleDiameterUnit default 2_286 ; // mil
-  property @generateDirectAccess Int mCustomHoleDiameter default 45_720 ; // 20 mil
+  property @generateDirectAccess CanariLength mCustomHoleDiameter default ".mil (20)" ;
   property Int mCustomHoleDiameterUnit default 2_286 ; // mil
   property @generateDirectAccess Bool mUsesCustomHoleDiameter default no ;
 
   property Int mDefaultPadDiameterUnit default 2_286 ; // mil
-  property @generateDirectAccess Int mCustomPadDiameter default 91_440 ; // 40 mil
+  property @generateDirectAccess CanariLength mCustomPadDiameter default ".mil (40)" ; // 40 mil
   property Int mCustomPadDiameterUnit default 2_286 ; // mil
   property @generateDirectAccess Bool mUsesCustomPadDiameter default no ;
 
@@ -66,10 +66,10 @@ graphic handlingOpposite entity BoardConnector : BoardObject {
     self.mComponent.one.padNetDictionary
   ;
 
-  transient Int viaDefaultHoleDiameter dependsFrom
+  transient CanariLength viaDefaultHoleDiameter dependsFrom
      self.mTracksP1.all.netClassViaHoleDiameter, self.mTracksP2.all.netClassViaHoleDiameter ;
 
-  transient Int viaDefaultPadDiameter dependsFrom
+  transient CanariLength viaDefaultPadDiameter dependsFrom
      self.mTracksP1.all.netClassViaPadDiameter, self.mTracksP2.all.netClassViaPadDiameter ;
 
   transient String netNameFromTracks dependsFrom
@@ -80,12 +80,12 @@ graphic handlingOpposite entity BoardConnector : BoardObject {
   
   transient Bool connectedToComponent dependsFrom self.mComponent.none ;
 
-  transient Int actualHoleDiameter dependsFrom
+  transient CanariLength actualHoleDiameter dependsFrom
     self.viaDefaultHoleDiameter,
     self.mUsesCustomHoleDiameter, self.mCustomHoleDiameter
   ;
   
-  transient Int actualPadDiameter dependsFrom
+  transient CanariLength actualPadDiameter dependsFrom
     self.viaDefaultPadDiameter,
     self.mUsesCustomPadDiameter, self.mCustomPadDiameter
   ;

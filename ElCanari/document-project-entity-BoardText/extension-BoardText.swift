@@ -52,8 +52,8 @@ extension BoardText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_BoardText (xBy inDx : CanariLength, yBy inDy : CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx.cuValue
-    self.mY += inDy.cuValue
+    self.mX += inDx
+    self.mY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -119,8 +119,8 @@ extension BoardText {
                       alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
-      self.mX += inDx.cuValue
-      self.mY += inDy.cuValue
+      self.mX += inDx
+      self.mY += inDy
     }else if inKnobIndex == BOARD_TEXT_ROTATION_KNOB, let fontDescriptor = self.mFont?.descriptor {
       let (_, _, origin, _, _) = boardText_displayInfos (
         x: self.mX,
@@ -147,9 +147,9 @@ extension BoardText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_BoardText (_ inGrid : Int) -> Bool {
-    var isAligned = self.mX.isAlignedOnGrid (inGrid)
+    var isAligned = self.mX.isAligned (on: inGrid)
     if isAligned {
-      isAligned = self.mY.isAlignedOnGrid (inGrid)
+      isAligned = self.mY.isAligned (on: inGrid)
     }
     return !isAligned
   }
@@ -157,8 +157,8 @@ extension BoardText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_BoardText (_ inGrid : Int) {
-    self.mX.align (onGrid: inGrid)
-    self.mY.align (onGrid: inGrid)
+    self.mX.align (on: inGrid)
+    self.mY.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -174,8 +174,8 @@ extension BoardText {
 
   func rotate90Clockwise_BoardText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -184,8 +184,8 @@ extension BoardText {
 
   func rotate90CounterClockwise_BoardText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
     ioSet.insert (self)
   }
@@ -255,8 +255,8 @@ extension BoardText {
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func boardText_displayInfos (
-       x self_mX : Int,
-       y self_mY : Int,
+       x self_mX : CanariLength,
+       y self_mY : CanariLength,
        string self_mText : String,
        fontSize self_mFontSize : Double,
        _ self_mFont_descriptor : BoardFontDescriptor,
@@ -299,8 +299,8 @@ extension BoardText {
     frameBP.appendRect (bp.bounds.insetBy (dx: -1.0, dy: -1.0))
   }
   var tr = AffineTransform ()
-  let startX = canariUnitToCocoa (self_mX)
-  let startY = canariUnitToCocoa (self_mY)
+  let startX = self_mX.ptValue
+  let startY = self_mY.ptValue
   tr.translate (x: startX, y: startY)
   let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
   tr.rotate (byDegrees: rotationInDegrees)

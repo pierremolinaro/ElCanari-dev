@@ -37,14 +37,14 @@ extension BoardRestrictRectangle {
 
   func acceptedTranslation_BoardRestrictRectangle (xBy inDx : CanariLength, yBy inDy : CanariLength) -> CanariPoint {
     var acceptedX = inDx
-    let newX = .cu (self.mX) + acceptedX
+    let newX = self.mX + acceptedX
     if newX < .zero {
-      acceptedX = -.cu (self.mX)
+      acceptedX = -self.mX
     }
     var acceptedY = inDy
-    let newY = .cu (self.mY) + acceptedY
+    let newY = self.mY + acceptedY
     if newY < .zero {
-      acceptedY = -.cu (self.mY)
+      acceptedY = -self.mY
     }
     return CanariPoint (x: acceptedX, y: acceptedY)
   }
@@ -60,8 +60,8 @@ extension BoardRestrictRectangle {
   func translate_BoardRestrictRectangle (xBy inDx : CanariLength,
                                          yBy inDy : CanariLength,
                                          userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mX += inDx.cuValue
-    self.mY += inDy.cuValue
+    self.mX += inDx
+    self.mY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -90,32 +90,32 @@ extension BoardRestrictRectangle {
                                        proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                                        unalignedMouseDraggedLocation _ : CanariPoint,
                                        shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x.cuValue
-    var dy = inProposedAlignedTranslation.y.cuValue
+    var dx = inProposedAlignedTranslation.x
+    var dy = inProposedAlignedTranslation.y
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
-      if (self.mX + dx) < 0 {
+      if (self.mX + dx) < .zero {
         dx = -self.mX
       }
-      if (self.mWidth - dx) < SYMBOL_GRID_LENGTH.cuValue {
-        dx = SYMBOL_GRID_LENGTH.cuValue - self.mWidth
+      if (self.mWidth - dx) < SYMBOL_GRID_LENGTH {
+        dx = SYMBOL_GRID_LENGTH - self.mWidth
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_RIGHT {
-      if (self.mWidth + dx) < SYMBOL_GRID_LENGTH.cuValue {
-        dx = -(SYMBOL_GRID_LENGTH.cuValue - self.mWidth)
+      if (self.mWidth + dx) < SYMBOL_GRID_LENGTH {
+        dx = -(SYMBOL_GRID_LENGTH - self.mWidth)
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM {
-      if (self.mY + dy) < 0 {
+      if (self.mY + dy) < .zero {
         dy = -self.mY
       }
-      if (self.mHeight - dy) < SYMBOL_GRID_LENGTH.cuValue {
-        dy = SYMBOL_GRID_LENGTH.cuValue - self.mHeight
+      if (self.mHeight - dy) < SYMBOL_GRID_LENGTH {
+        dy = SYMBOL_GRID_LENGTH - self.mHeight
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_TOP {
-      if (self.mHeight + dy) < SYMBOL_GRID_LENGTH.cuValue {
-        dy = -(SYMBOL_GRID_LENGTH.cuValue - self.mHeight)
+      if (self.mHeight + dy) < SYMBOL_GRID_LENGTH {
+        dy = -(SYMBOL_GRID_LENGTH - self.mHeight)
       }
     }
-    return CanariPoint (x: .cu (dx), y: .cu (dy))
+    return CanariPoint (x: dx, y: dy)
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -129,15 +129,15 @@ extension BoardRestrictRectangle {
                       alignedMouseLocationY _ : CanariLength,
                       shift _ : Bool) {
     if inKnobIndex == BOARD_RESTRICT_RECT_RIGHT {
-      self.mWidth += inDx.cuValue
+      self.mWidth += inDx
     }else if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
-      self.mX += inDx.cuValue
-      self.mWidth -= inDx.cuValue
+      self.mX += inDx
+      self.mWidth -= inDx
     }else if inKnobIndex == BOARD_RESTRICT_RECT_TOP {
-      self.mHeight += inDy.cuValue
+      self.mHeight += inDy
     }else if inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM {
-      self.mY += inDy.cuValue
-      self.mHeight -= inDy.cuValue
+      self.mY += inDy
+      self.mHeight -= inDy
     }
   }
 
@@ -154,15 +154,15 @@ extension BoardRestrictRectangle {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_BoardRestrictRectangle (_ inGrid : Int) -> Bool {
-    var result = (self.mX % inGrid) != 0
+    var result = (self.mX.cuValue % inGrid) != 0
     if !result {
-      result = (self.mY % inGrid) != 0
+      result = (self.mY.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.mWidth % inGrid) != 0
+      result = (self.mWidth.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.mHeight % inGrid) != 0
+      result = (self.mHeight.cuValue % inGrid) != 0
     }
     return result
   }
@@ -170,10 +170,10 @@ extension BoardRestrictRectangle {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_BoardRestrictRectangle (_ inGrid : Int) {
-    self.mX = ((self.mX + inGrid / 2) / inGrid) * inGrid
-    self.mY = ((self.mY + inGrid / 2) / inGrid) * inGrid
-    self.mWidth = ((self.mWidth + inGrid / 2) / inGrid) * inGrid
-    self.mHeight = ((self.mHeight + inGrid / 2) / inGrid) * inGrid
+    self.mX.align (on: inGrid)
+    self.mY.align (on: inGrid)
+    self.mWidth.align (on: inGrid)
+    self.mHeight.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -198,8 +198,8 @@ extension BoardRestrictRectangle {
 
   func rotate90Clockwise_BoardRestrictRectangle (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     swap (&self.mWidth, &self.mHeight)
     ioSet.insert (self)
   }
@@ -208,8 +208,8 @@ extension BoardRestrictRectangle {
 
   func rotate90CounterClockwise_BoardRestrictRectangle (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
-    self.mX = p.x.cuValue
-    self.mY = p.y.cuValue
+    self.mX = p.x
+    self.mY = p.y
     swap (&self.mWidth, &self.mHeight)
     ioSet.insert (self)
   }

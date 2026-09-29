@@ -9,28 +9,28 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol SymbolPinTypeInDevice_mPinX : AnyObject {
-//   var mPinX : Int { get }
+//   var mPinX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPinTypeInDevice_mPinY : AnyObject {
-//   var mPinY : Int { get }
+//   var mPinY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPinTypeInDevice_mXName : AnyObject {
-//   var mXName : Int { get }
+//   var mXName : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPinTypeInDevice_mYName : AnyObject {
-//   var mYName : Int { get }
+//   var mYName : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -103,11 +103,11 @@ final class SymbolPinTypeInDevice : EBManagedObject
   //   Atomic property: mPinX
   //------------------------------------------------------------------------------------------------
 
-  final let mPinX_property : EBStoredProperty_Int
+  final let mPinX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mPinX : Int {
+  final var mPinX : CanariLength {
     get { return self.mPinX_property.propval }
     set { self.mPinX_property.setProp (newValue) }
   }
@@ -116,11 +116,11 @@ final class SymbolPinTypeInDevice : EBManagedObject
   //   Atomic property: mPinY
   //------------------------------------------------------------------------------------------------
 
-  final let mPinY_property : EBStoredProperty_Int
+  final let mPinY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mPinY : Int {
+  final var mPinY : CanariLength {
     get { return self.mPinY_property.propval }
     set { self.mPinY_property.setProp (newValue) }
   }
@@ -129,11 +129,11 @@ final class SymbolPinTypeInDevice : EBManagedObject
   //   Atomic property: mXName
   //------------------------------------------------------------------------------------------------
 
-  final let mXName_property : EBStoredProperty_Int
+  final let mXName_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXName : Int {
+  final var mXName : CanariLength {
     get { return self.mXName_property.propval }
     set { self.mXName_property.setProp (newValue) }
   }
@@ -142,11 +142,11 @@ final class SymbolPinTypeInDevice : EBManagedObject
   //   Atomic property: mYName
   //------------------------------------------------------------------------------------------------
 
-  final let mYName_property : EBStoredProperty_Int
+  final let mYName_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYName : Int {
+  final var mYName : CanariLength {
     get { return self.mYName_property.propval }
     set { self.mYName_property.setProp (newValue) }
   }
@@ -259,10 +259,10 @@ final class SymbolPinTypeInDevice : EBManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPinX")
-    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPinY")
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXName")
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYName")
+    self.mPinX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mPinX")
+    self.mPinY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mPinY")
+    self.mXName_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mXName")
+    self.mYName_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mYName")
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNameHorizontalAlignment")
     self.mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mPinNameIsDisplayedInSchematics")

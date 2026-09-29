@@ -532,7 +532,7 @@ import CanariGeometry
         }
         _ = hStackView_view_view.appendGutter ()
         do{
-          let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
+          let hStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
         }
@@ -1100,7 +1100,7 @@ import CanariGeometry
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.lengthInCanariUnit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -1592,7 +1592,7 @@ import CanariGeometry
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.distanceInCanariUnit_property, self.mPackageDimensionSelectionController.distanceUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -1975,7 +1975,7 @@ import CanariGeometry
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -2174,7 +2174,7 @@ import CanariGeometry
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+        let vStackView_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
@@ -2252,7 +2252,7 @@ import CanariGeometry
       }
       _ = vStackView_view.appendGutter ()
       do{
-        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
+        let vStackView_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property)
         _ = vStackView_view .appendView (vStackView_view_view)
       }

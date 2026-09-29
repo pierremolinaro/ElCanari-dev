@@ -107,7 +107,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageDimension_distanceInCanariUnit : AnyObject {
-//   var distanceInCanariUnit : Int? { get }
+//   var distanceInCanariUnit : CanariLength? { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -342,11 +342,11 @@ final class PackageDimension : PackageObject
   //   Transient property: distanceInCanariUnit
   //------------------------------------------------------------------------------------------------
 
-  final let distanceInCanariUnit_property = EBTransientProperty <Int> ()
+  final let distanceInCanariUnit_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var distanceInCanariUnit : Int? {
+  final var distanceInCanariUnit : CanariLength? {
     return self.distanceInCanariUnit_property.optionalValue
   }
 

@@ -16,14 +16,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mX : AnyObject {
-//   var mX : Int { get }
+//   var mX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mY : AnyObject {
-//   var mY : Int { get }
+//   var mY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,14 +58,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mXName : AnyObject {
-//   var mXName : Int { get }
+//   var mXName : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mYName : AnyObject {
-//   var mYName : Int { get }
+//   var mYName : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,14 +93,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mXValue : AnyObject {
-//   var mXValue : Int { get }
+//   var mXValue : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mYValue : AnyObject {
-//   var mYValue : Int { get }
+//   var mYValue : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -390,11 +390,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mX
   //------------------------------------------------------------------------------------------------
 
-  final let mX_property : EBStoredProperty_Int
+  final let mX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mX : Int {
+  final var mX : CanariLength {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
@@ -403,11 +403,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mY
   //------------------------------------------------------------------------------------------------
 
-  final let mY_property : EBStoredProperty_Int
+  final let mY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mY : Int {
+  final var mY : CanariLength {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
@@ -494,11 +494,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mXName
   //------------------------------------------------------------------------------------------------
 
-  final let mXName_property : EBStoredProperty_Int
+  final let mXName_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXName : Int {
+  final var mXName : CanariLength {
     get { return self.mXName_property.propval }
     set { self.mXName_property.setProp (newValue) }
   }
@@ -507,11 +507,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mYName
   //------------------------------------------------------------------------------------------------
 
-  final let mYName_property : EBStoredProperty_Int
+  final let mYName_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYName : Int {
+  final var mYName : CanariLength {
     get { return self.mYName_property.propval }
     set { self.mYName_property.setProp (newValue) }
   }
@@ -559,11 +559,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mXValue
   //------------------------------------------------------------------------------------------------
 
-  final let mXValue_property : EBStoredProperty_Int
+  final let mXValue_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXValue : Int {
+  final var mXValue : CanariLength {
     get { return self.mXValue_property.propval }
     set { self.mXValue_property.setProp (newValue) }
   }
@@ -572,11 +572,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mYValue
   //------------------------------------------------------------------------------------------------
 
-  final let mYValue_property : EBStoredProperty_Int
+  final let mYValue_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYValue : Int {
+  final var mYValue : CanariLength {
     get { return self.mYValue_property.propval }
     set { self.mYValue_property.setProp (newValue) }
   }
@@ -1063,19 +1063,19 @@ final class ComponentInProject : BoardObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mSlavePadsShouldBeRouted_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mSlavePadsShouldBeRouted")
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
     self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
     self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: inUndoManager, key: "mSide")
     self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDisplayLegend")
     self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mNameIsVisibleInBoard")
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXName")
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "mYName")
+    self.mXName_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mXName")
+    self.mYName_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "mYName")
     self.mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mNameFontSize")
     self.mNameRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNameRotation")
     self.mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mValueIsVisibleInBoard")
-    self.mXValue_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXValue")
-    self.mYValue_property = EBStoredProperty_Int (defaultValue: -685800, undoManager: inUndoManager, key: "mYValue")
+    self.mXValue_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mXValue")
+    self.mYValue_property = EBStoredProperty_CanariLength (defaultValue: -.mil (300), undoManager: inUndoManager, key: "mYValue")
     self.mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mValueFontSize")
     self.mValueRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mValueRotation")
     self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComponentValue")

@@ -17,11 +17,11 @@ import CanariGeometry
 @MainActor func transient_ProjectRoot_borderOutlineBackground (
        _ self_mBorderCurves_descriptor : [any BorderCurve_descriptor],
        _ self_mBoardShape : BoardShape,                        
-       _ self_mRectangularBoardWidth : Int,                    
-       _ self_mRectangularBoardHeight : Int,                   
-       _ self_mBoardCornerRadius : Int,                        
+       _ self_mRectangularBoardWidth : CanariLength,           
+       _ self_mRectangularBoardHeight : CanariLength,          
+       _ self_mBoardCornerRadius : CanariLength,               
        _ prefs_boardLimitsColorForBoard : NSColor,             
-       _ self_mBoardClearance : Int,                           
+       _ self_mBoardClearance : CanariLength,                  
        _ prefs_boardClearanceColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -33,30 +33,30 @@ import CanariGeometry
           let boardRect = CanariRect (
             left: .zero,
             bottom: .zero,
-            width: .cu (self_mRectangularBoardWidth),
-            height: .cu (self_mRectangularBoardHeight)
+            width: self_mRectangularBoardWidth,
+            height: self_mRectangularBoardHeight
           )
           let roundedRect = BezierPath (
             roundedRect: boardRect.ptValue,
-            xRadius: canariUnitToCocoa (self_mBoardCornerRadius),
-            yRadius: canariUnitToCocoa (self_mBoardCornerRadius)
+            xRadius: self_mBoardCornerRadius.ptValue,
+            yRadius: self_mBoardCornerRadius.ptValue
           )
           outlinePath.append (roundedRect)
         //--- Board clearance
-          let d = CanariLength.cu (self_mBoardClearance)
+          let d = self_mBoardClearance
           let r = CanariRect (
             left: d,
             bottom: d,
-            width: .cu (self_mRectangularBoardWidth) - 2 * d,
-            height: .cu (self_mRectangularBoardHeight) - 2 * d
+            width: self_mRectangularBoardWidth - 2 * d,
+            height: self_mRectangularBoardHeight - 2 * d
           )
-          if self_mBoardCornerRadius <= d.cuValue {
+          if self_mBoardCornerRadius <= d {
             bp.appendRect (r.ptValue)
           }else{
             let roundedRect = BezierPath (
               roundedRect: r.ptValue,
-              xRadius: (.cu (self_mBoardCornerRadius) - d).ptValue,
-              yRadius: (.cu (self_mBoardCornerRadius) - d).ptValue
+              xRadius: (self_mBoardCornerRadius - d).ptValue,
+              yRadius: (self_mBoardCornerRadius - d).ptValue
             )
             bp.append (roundedRect)
           }
@@ -88,7 +88,7 @@ import CanariGeometry
         var shape = EBShape ()
       //--- Board Clearance
         var clearanceFrame = bp
-        clearanceFrame.lineWidth = 2.0 * canariUnitToCocoa (self_mBoardClearance)
+        clearanceFrame.lineWidth = 2.0 * self_mBoardClearance.ptValue
         shape.add (filled: [clearanceFrame.pathToFillByStroking], prefs_boardClearanceColorForBoard, clip: .outside (bp))
       //--- Board outline
         outlinePath.lineWidth = BOARD_LIMIT_WIDTH.value (in: .pt)

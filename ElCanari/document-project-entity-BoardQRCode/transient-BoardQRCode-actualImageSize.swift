@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_BoardQRCode_actualImageSize (
        _ self_moduleCount : Int,                       
-       _ self_mModuleSize : Int
-) -> Int {
+       _ self_mModuleSize : CanariLength
+) -> CanariLength {
 //--- START OF USER ZONE 2
         return self_mModuleSize * self_moduleCount
 //--- END OF USER ZONE 2

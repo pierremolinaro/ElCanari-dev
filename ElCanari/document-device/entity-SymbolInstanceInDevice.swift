@@ -16,14 +16,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol SymbolInstanceInDevice_mX : AnyObject {
-//   var mX : Int { get }
+//   var mX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolInstanceInDevice_mY : AnyObject {
-//   var mY : Int { get }
+//   var mY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -109,11 +109,11 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject
   //   Atomic property: mX
   //------------------------------------------------------------------------------------------------
 
-  final let mX_property : EBStoredProperty_Int
+  final let mX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mX : Int {
+  final var mX : CanariLength {
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
@@ -122,11 +122,11 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject
   //   Atomic property: mY
   //------------------------------------------------------------------------------------------------
 
-  final let mY_property : EBStoredProperty_Int
+  final let mY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mY : Int {
+  final var mY : CanariLength {
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
@@ -243,8 +243,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mInstanceName")
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
     super.init (inUndoManager)
     self.mDeviceRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {

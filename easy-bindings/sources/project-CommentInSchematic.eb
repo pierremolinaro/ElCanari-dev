@@ -13,8 +13,8 @@ graphic entity CommentInSchematic : SchematicObject {
   property Int mRotation default 0 ; // 1000 -> 1°
   property Bool mBold default no ;
 
-  property @generateDirectAccess Int mX default 0 ;
-  property @generateDirectAccess Int mY default 0 ;
+  property @generateDirectAccess CanariLength mX default ".zero" ;
+  property @generateDirectAccess CanariLength mY default ".zero" ;
   
   override transient EBShape objectDisplay dependsFrom
     self.mComment,

@@ -12773,6 +12773,12 @@
       "path": "ElCanari/utilities",
       "children": [
         {
+          "path": "CanariLength+extension.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
           "path": "append-prepend-new-inspector-to-hstack.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
@@ -12810,7 +12816,7 @@
             "ElCanari-Release/compile-sources",
           ],
         }, {
-          "path": "CanariPoint.swift",
+          "path": "CanariPoint+extension.swift",
           "encoding": "utf8",
           "target-membership": [
             "ElCanari-Debug/compile-sources",

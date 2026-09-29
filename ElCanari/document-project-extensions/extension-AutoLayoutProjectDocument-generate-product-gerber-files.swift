@@ -81,7 +81,7 @@ extension AutoLayoutProjectDocument {
     let url = inURL.appendingPathExtension (inDescriptor.fileExtension)
     self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(url.lastPathComponent)…")
     let mirror : ProductHorizontalMirror = inDescriptor.horizontalMirror
-      ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width.cuValue)
+      ? .mirror (boardWidth: self.rootObject.boardBoundBox!.size.width)
       : .noMirror
     let gerber : GerberRepresentation = inProductRepresentation.gerber (
       items: inDescriptor.layerItems,

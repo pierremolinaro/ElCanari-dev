@@ -40,8 +40,8 @@ extension AutoLayoutProjectDocument {
         self.mWireCreatedByOptionClick = wire
         wire.mP1 = pointsAtP [0]
         let newPoint = PointInSchematic (self.undoManager)
-        newPoint.mX = p.x.cuValue // pointsAtP [0].mX
-        newPoint.mY = p.y.cuValue // pointsAtP [0].mY
+        newPoint.mX = p.x // pointsAtP [0].mX
+        newPoint.mY = p.y // pointsAtP [0].mY
         newPoint.mNet = wire.mP1?.mNet
         wire.mP2 = newPoint
         selectedSheet.mPoints.append (newPoint)
@@ -49,13 +49,13 @@ extension AutoLayoutProjectDocument {
         let wire = WireInSchematic (self.undoManager)
         self.mWireCreatedByOptionClick = wire
         let point1 = PointInSchematic (self.undoManager)
-        point1.mX = p.x.cuValue
-        point1.mY = p.y.cuValue
+        point1.mX = p.x
+        point1.mY = p.y
         wire.mP1 = point1
         selectedSheet.mPoints.append (point1)
         let point2 = PointInSchematic (self.undoManager)
-        point2.mX = p.x.cuValue
-        point2.mY = p.y.cuValue
+        point2.mX = p.x
+        point2.mY = p.y
         wire.mP2 = point2
         selectedSheet.mPoints.append (point2)
       }
@@ -74,10 +74,10 @@ extension AutoLayoutProjectDocument {
     if let p2 = self.mWireCreatedByOptionClick?.mP2 {
       var alignedMouseLocation = inUnalignedMousePoint.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
       if inModifierFlags.contains (.shift), let p1 = self.mWireCreatedByOptionClick?.mP1 {
-        alignedMouseLocation.constraintToOctolinearDirection (from: CanariPoint (x: .cu (p1.mX), y: .cu (p1.mY)))
+        alignedMouseLocation.constraintToOctolinearDirection (from: CanariPoint (x: p1.mX, y: p1.mY))
       }
-      p2.mX = alignedMouseLocation.x.cuValue
-      p2.mY = alignedMouseLocation.y.cuValue
+      p2.mX = alignedMouseLocation.x
+      p2.mY = alignedMouseLocation.y
     }
   }
 

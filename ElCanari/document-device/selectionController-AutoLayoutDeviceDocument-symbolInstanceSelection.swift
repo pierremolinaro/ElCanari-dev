@@ -45,13 +45,13 @@ import CanariGeometry
   //   Selection observable property: mX
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mX_property = EBComputedProperty_Int ()
+  var mX_property = EBComputedProperty_CanariLength ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: mY
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mY_property = EBComputedProperty_Int ()
+  var mY_property = EBComputedProperty_CanariLength ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: objectDisplay
@@ -213,7 +213,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mX_property.selection {
@@ -239,7 +239,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mX_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.mModel {
         switch model.selection {
         case .empty, .multiple :
@@ -265,7 +265,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mY_property.selection {
@@ -291,7 +291,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mY_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.mModel {
         switch model.selection {
         case .empty, .multiple :

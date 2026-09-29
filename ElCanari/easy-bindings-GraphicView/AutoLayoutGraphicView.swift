@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   AutoLayoutGraphicView
@@ -231,28 +232,28 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_mouseGrid (_ inObject : EBObservableProperty <Int>) -> Self {
+  final func bind_mouseGrid (_ inObject : EBObservableProperty <CanariLength>) -> Self {
     self.mGraphicView.bind_mouseGrid (inObject)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_gridStep (_ inObject : EBObservableProperty <Int>) -> Self {
+  final func bind_gridStep (_ inObject : EBObservableProperty <CanariLength>) -> Self {
     self.mGraphicView.bind_gridStep (inObject)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_arrowKeyMagnitude (_ inObject : EBObservableProperty <Int>) -> Self {
+  final func bind_arrowKeyMagnitude (_ inObject : EBObservableProperty <CanariLength>) -> Self {
     self.mGraphicView.bind_arrowKeyMagnitude (inObject)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_shiftArrowKeyMagnitude (_ inObject : EBObservableProperty <Int>) -> Self {
+  final func bind_shiftArrowKeyMagnitude (_ inObject : EBObservableProperty <CanariLength>) -> Self {
     self.mGraphicView.bind_shiftArrowKeyMagnitude (inObject)
     return self
   }
@@ -344,7 +345,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //  ACCESSORS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final var grid : Int {
+  final var grid : CanariLength {
     return self.mGraphicView.mGridStepInCanariUnit
   }
 

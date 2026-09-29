@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_ProjectRoot_sheetGeometry (
        _ self_mSchematicSheetOrientation : SchematicSheetOrientation,
-       _ self_mSchematicCustomWidth : Int,           
-       _ self_mSchematicCustomHeight : Int
+       _ self_mSchematicCustomWidth : CanariLength,  
+       _ self_mSchematicCustomHeight : CanariLength
 ) -> SchematicSheetGeometry {
 //--- START OF USER ZONE 2
   let A4MinSize = CanariLength.pt (PAPER_A4_MIN_SIZE_COCOA_UNIT)
@@ -48,9 +48,9 @@ import CanariGeometry
     let height = self_mSchematicCustomHeight
     let m = max (width, height)
     return SchematicSheetGeometry (
-      size: CanariSize (width: .cu (width), height: .cu (height)),
-      horizontalDivisions: (10 * width) / m,
-      verticalDivisions: (10 * height) / m
+      size: CanariSize (width: width, height: height),
+      horizontalDivisions: Int ((10 * width) / m),
+      verticalDivisions: Int ((10 * height) / m)
     )
   }
 //--- END OF USER ZONE 2

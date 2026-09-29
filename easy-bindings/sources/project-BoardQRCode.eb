@@ -5,12 +5,12 @@
 graphic handlingOpposite entity BoardQRCode : BoardObject {
   graphic canCopyAndPaste ;
 
-  property @generateDirectAccess Int mCenterX default 0 ;
+  property @generateDirectAccess CanariLength mCenterX default ".zero" ;
   property Int mXUnit default 2_286 ; // mil
-  property @generateDirectAccess Int mCenterY default 0 ;
+  property @generateDirectAccess CanariLength mCenterY default ".zero" ;
   property Int mYUnit default 2_286 ; // mil
   property Bool mDrawFrame default yes ;
-  property Int mModuleSize  default 31_750 ; // px
+  property CanariLength mModuleSize default ".pt (1)" ;
   property Int mModuleSizeUnit  default 31_750 ; // px
   property Int mActualSizeUnit  default 31_750 ; // px
 
@@ -26,7 +26,7 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
     
   transient Int moduleCount dependsFrom self.qrCodeDescriptor ;
     
-  transient Int actualImageSize dependsFrom self.moduleCount, self.mModuleSize ;
+  transient CanariLength actualImageSize dependsFrom self.moduleCount, self.mModuleSize ;
     
   override transient EBShape objectDisplay dependsFrom
     self.mCenterX, self.mCenterY, self.qrCodeDescriptor,

@@ -19,15 +19,15 @@ import CanariGeometry
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
        _ self_mComponentPadName : String,          
        _ self_mPadIndex : Int,                     
-       _ self_mX : Int,                            
-       _ self_mY : Int
+       _ self_mX : CanariLength,                   
+       _ self_mY : CanariLength
 ) -> CanariPoint {
 //--- START OF USER ZONE 2
         if let descriptor : ComponentPadDescriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
           let pad = descriptor.pads [self_mPadIndex]
           return pad.location.canariPoint
         }else{
-          return CanariPoint (x: .cu (self_mX), y: .cu (self_mY))
+          return CanariPoint (x: self_mX, y: self_mY)
         }
 //--- END OF USER ZONE 2
 }

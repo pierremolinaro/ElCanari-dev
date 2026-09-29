@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_MergerRoot_boardRect (
        _ self_automaticBoardSize : Bool,        
-       _ self_boardManualWidth : Int,           
-       _ self_boardManualHeight : Int,          
+       _ self_boardManualWidth : CanariLength,  
+       _ self_boardManualHeight : CanariLength, 
        _ self_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect]
 ) -> CanariRect {
 //--- START OF USER ZONE 2
@@ -40,8 +40,8 @@ import CanariGeometry
       return CanariRect (
         left: .zero,
         bottom: .zero,
-        width: .cu (self_boardManualWidth),
-        height: .cu (self_boardManualHeight)
+        width: self_boardManualWidth,
+        height: self_boardManualHeight
       )
     }
 //--- END OF USER ZONE 2

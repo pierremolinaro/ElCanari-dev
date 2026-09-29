@@ -17,9 +17,9 @@ import CanariGeometry
 
 @MainActor func computed_BoardTrack_computedP2X (
        _ self_mConnectorP2_location : CanariPoint?
-) -> Int {
+) -> CanariLength {
 //--- START OF USER ZONE 2
-        return self_mConnectorP2_location?.x.cuValue ?? 0
+        return self_mConnectorP2_location?.x ?? .zero
 //--- END OF USER ZONE 2
 }
 

@@ -15,20 +15,20 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SlavePadInDevice_frontSideFilledBezierPath (
-       _ self_mCenterX : Int,                                         
-       _ self_mCenterY : Int,                                         
-       _ self_mWidth : Int,                                           
-       _ self_mHeight : Int,                                          
-       _ self_mHoleWidth : Int,                                       
-       _ self_mHoleHeight : Int,                                      
+       _ self_mCenterX : CanariLength,                                
+       _ self_mCenterY : CanariLength,                                
+       _ self_mWidth : CanariLength,                                  
+       _ self_mHeight : CanariLength,                                 
+       _ self_mHoleWidth : CanariLength,                              
+       _ self_mHoleHeight : CanariLength,                             
        _ self_mShape : PadShape,                                      
        _ self_mStyle : SlavePadStyle
 ) -> BezierPath {
 //--- START OF USER ZONE 2
-    let xCenter = canariUnitToCocoa (self_mCenterX)
-    let yCenter = canariUnitToCocoa (self_mCenterY)
-    let width = canariUnitToCocoa (self_mWidth)
-    let height = canariUnitToCocoa (self_mHeight)
+    let xCenter = self_mCenterX
+    let yCenter = self_mCenterY
+    let width = self_mWidth
+    let height = self_mHeight
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     var bp : BezierPath
     switch self_mShape {
@@ -41,8 +41,8 @@ import CanariGeometry
     }
     switch self_mStyle {
     case .traversing :
-      let holeWidth = canariUnitToCocoa (self_mHoleWidth)
-      let holeHeight = canariUnitToCocoa (self_mHoleHeight)
+      let holeWidth = self_mHoleWidth
+      let holeHeight = self_mHoleHeight
       let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd

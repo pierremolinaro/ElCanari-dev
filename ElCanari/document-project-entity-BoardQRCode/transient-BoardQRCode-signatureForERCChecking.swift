@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_BoardQRCode_signatureForERCChecking (
        _ self_mLayer : BoardQRCodeLayer,                       
-       _ self_mCenterX : Int,                                  
-       _ self_mCenterY : Int,                                  
+       _ self_mCenterX : CanariLength,                         
+       _ self_mCenterY : CanariLength,                         
        _ self_mText : String,                                  
        _ self_mCorrectionLevel : QRCodeCorrectionLevel,        
        _ self_mRotation : Int,                                 

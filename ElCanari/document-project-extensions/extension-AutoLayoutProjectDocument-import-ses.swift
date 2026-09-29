@@ -68,7 +68,7 @@ extension AutoLayoutProjectDocument {
     for object in self.rootObject.mBoardObjects.values {
       if let pr = object as? BoardRestrictRectangle {
         let sesPR = PropertyRectForImportingSES (
-          rect: CanariRect (left: .cu (pr.mX), bottom: .cu (pr.mY), width: .cu (pr.mWidth), height: .cu (pr.mHeight)),
+          rect: CanariRect (left: pr.mX, bottom: pr.mY, width: pr.mWidth, height: pr.mHeight),
           layers: pr.layers,
           exposeTrackCopper: pr.mExposeTrackCopper && !pr.hasInnerLayer,
           requireRectTrackEnds: pr.mRectTrackEnd
@@ -212,8 +212,8 @@ extension AutoLayoutProjectDocument {
          let y = scanner.scanDouble () {
         if let netClass = inNet.mNetClass {
           let via = BoardConnector (self.undoManager)
-          via.mX = Int (x * Double (inResolution))
-          via.mY = Int (y * Double (inResolution))
+          via.mX = .cu (Int (x * Double (inResolution)))
+          via.mY = .cu (Int (y * Double (inResolution)))
           via.mUsesCustomHoleDiameter = true
           via.mCustomHoleDiameter = netClass.mViaHoleDiameter
           via.mUsesCustomPadDiameter = true
@@ -263,8 +263,8 @@ extension AutoLayoutProjectDocument {
       }
     }
     let newConnector = BoardConnector (self.undoManager)
-    newConnector.mX = inP.x.cuValue
-    newConnector.mY = inP.y.cuValue
+    newConnector.mX = inP.x
+    newConnector.mY = inP.y
     ioConnectorArray.append (newConnector)
     ioAddedObjectArray.append (newConnector)
     return newConnector
@@ -340,7 +340,7 @@ extension AutoLayoutProjectDocument {
         track.mNet = t.net
         track.mSide = t.side
         track.mUsesCustomTrackWidth = true
-        track.mCustomTrackWidth = t.width
+        track.mCustomTrackWidth = .cu (t.width)
         track.mIsPreservedByAutoRouter = t.preservedByRouter
         if track.mIsPreservedByAutoRouter {
           var found = false

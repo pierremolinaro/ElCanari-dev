@@ -16,7 +16,7 @@ import CanariGeometry
 
 @MainActor func transient_ProjectRoot_boardBoundBox (
        _ self_interiorBoundBox : CanariRect,         
-       _ self_mBoardClearance : Int
+       _ self_mBoardClearance : CanariLength
 ) -> CanariRect {
 //--- START OF USER ZONE 2
         let extend = -self_mBoardClearance // - self_mBoardLimitsWidth

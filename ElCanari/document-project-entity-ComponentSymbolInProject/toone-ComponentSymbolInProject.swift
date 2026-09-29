@@ -69,13 +69,13 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
   //   Observers of 'mCenterX' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mCenterX_property = EBTransientProperty <Int?> ()
+  final let mCenterX_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mCenterY' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mCenterY_property = EBTransientProperty <Int?> ()
+  final let mCenterY_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mRotation' stored property
@@ -105,13 +105,13 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
   //   Observers of 'mDisplayComponentNameOffsetX' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDisplayComponentNameOffsetX_property = EBTransientProperty <Int?> ()
+  final let mDisplayComponentNameOffsetX_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDisplayComponentNameOffsetY' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDisplayComponentNameOffsetY_property = EBTransientProperty <Int?> ()
+  final let mDisplayComponentNameOffsetY_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDisplayComponentValue' stored property
@@ -123,13 +123,13 @@ class ReadOnlyObject_ComponentSymbolInProject : EBReadOnlyAbstractObjectProperty
   //   Observers of 'mDisplayComponentValueOffsetX' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDisplayComponentValueOffsetX_property = EBTransientProperty <Int?> ()
+  final let mDisplayComponentValueOffsetX_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDisplayComponentValueOffsetY' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDisplayComponentValueOffsetY_property = EBTransientProperty <Int?> ()
+  final let mDisplayComponentValueOffsetY_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'componentName' transient property

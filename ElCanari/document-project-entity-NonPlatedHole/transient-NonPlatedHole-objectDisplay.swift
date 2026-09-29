@@ -16,23 +16,23 @@ import CanariGeometry
 
 @MainActor func transient_NonPlatedHole_objectDisplay (
        _ prefs_nonPlatedHoleColorForBoard : NSColor,   
-       _ self_mX : Int,                                
-       _ self_mY : Int,                                
-       _ self_mWidth : Int,                            
-       _ self_mHeight : Int,                           
+       _ self_mX : CanariLength,                       
+       _ self_mY : CanariLength,                       
+       _ self_mWidth : CanariLength,                   
+       _ self_mHeight : CanariLength,                  
        _ self_mRotation : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var af = AffineTransform ()
-        let startX = canariUnitToCocoa (self_mX)
-        let startY = canariUnitToCocoa (self_mY)
+        let startX = self_mX.ptValue
+        let startY = self_mY.ptValue
         af.translate (x: startX, y: startY)
         let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
         af.rotate (byDegrees: rotationInDegrees)
         var shape = EBShape ()
         let r = CanariRect (
           center: .zero,
-          size: CanariSize (width: .cu (self_mWidth), height: .cu (self_mHeight))
+          size: CanariSize (width: self_mWidth, height: self_mHeight)
         )
         let bp = BezierPath (oblongInRect: r.ptValue).transformed (by: af)
         shape.add (filled: [bp], prefs_nonPlatedHoleColorForBoard)

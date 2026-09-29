@@ -10,30 +10,6 @@ import Foundation
 import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
-
-typealias CanariPointArray = [CanariPoint]
-
-//--------------------------------------------------------------------------------------------------
-
-extension Set where Element == CanariPoint {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  mutating func insert (x inX : Int, y inY : Int) {
-    self.insert (CanariPoint (x: .cu (inX), y: .cu (inY)))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  mutating func insert (x inX : CanariLength, y inY : CanariLength) {
-    self.insert (CanariPoint (x: inX, y: inY))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Struct CanariPoint
 //--------------------------------------------------------------------------------------------------
 
@@ -249,23 +225,22 @@ extension CanariPoint {
 
 //--------------------------------------------------------------------------------------------------
 
-extension NSPoint {
+typealias CanariPointArray = [CanariPoint]
+
+//--------------------------------------------------------------------------------------------------
+
+extension Set where Element == CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canariPointAligned (onGrid inCanariGrid : CanariLength) -> CanariPoint {
-    let canariGrid = inCanariGrid.cuValue
-    let p = CanariPoint (
-     x: ((.pt (self.x) + inCanariGrid / 2) / canariGrid) * canariGrid,
-     y: ((.pt (self.y) + inCanariGrid / 2) / canariGrid) * canariGrid
-    )
-    return p
+  mutating func insert (x inX : Int, y inY : Int) {
+    self.insert (CanariPoint (x: .cu (inX), y: .cu (inY)))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var canariPoint : CanariPoint {
-    return CanariPoint (x: .pt (self.x), y: .pt (self.y))
+  mutating func insert (x inX : CanariLength, y inY : CanariLength) {
+    self.insert (CanariPoint (x: inX, y: inY))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

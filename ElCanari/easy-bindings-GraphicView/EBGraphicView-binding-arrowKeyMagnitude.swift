@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -12,7 +13,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_arrowKeyMagnitude (_ model : EBObservableProperty <Int>) {
+  final func bind_arrowKeyMagnitude (_ model : EBObservableProperty <CanariLength>) {
     self.mArrowKeyMagnitudeController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateArrowKeyMagnitude (from: model) }
@@ -28,7 +29,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private func updateArrowKeyMagnitude (from model : EBObservableProperty <Int>) {
+  final private func updateArrowKeyMagnitude (from model : EBObservableProperty <CanariLength>) {
     switch model.selection {
     case .empty :
       break

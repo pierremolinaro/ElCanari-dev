@@ -39,7 +39,7 @@ import CanariGeometry
   //   Selection observable property: mCustomTrackWidth
   //------------------------------------------------------------------------------------------------
 
-  final let mCustomTrackWidth_property = EBComputedProperty_Int ()
+  final let mCustomTrackWidth_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mCustomTrackWidthUnit
@@ -117,7 +117,7 @@ import CanariGeometry
   //   Selection observable property: actualTrackWidth
   //------------------------------------------------------------------------------------------------
 
-  final let actualTrackWidth_property = EBTransientProperty <Int> ()
+  final let actualTrackWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: netName
@@ -135,19 +135,19 @@ import CanariGeometry
   //   Selection observable property: netClassTrackWidth
   //------------------------------------------------------------------------------------------------
 
-  final let netClassTrackWidth_property = EBTransientProperty <Int> ()
+  final let netClassTrackWidth_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: netClassViaHoleDiameter
   //------------------------------------------------------------------------------------------------
 
-  final let netClassViaHoleDiameter_property = EBTransientProperty <Int> ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: netClassViaPadDiameter
   //------------------------------------------------------------------------------------------------
 
-  final let netClassViaPadDiameter_property = EBTransientProperty <Int> ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: trackLengthInCanariUnit
@@ -195,25 +195,25 @@ import CanariGeometry
   //   Selection observable property: computedP1X
   //------------------------------------------------------------------------------------------------
 
-  final let computedP1X_property = EBComputedProperty_Int ()
+  final let computedP1X_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: computedP1Y
   //------------------------------------------------------------------------------------------------
 
-  final let computedP1Y_property = EBComputedProperty_Int ()
+  final let computedP1Y_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: computedP2X
   //------------------------------------------------------------------------------------------------
 
-  final let computedP2X_property = EBComputedProperty_Int ()
+  final let computedP2X_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: computedP2Y
   //------------------------------------------------------------------------------------------------
 
-  final let computedP2Y_property = EBComputedProperty_Int ()
+  final let computedP2Y_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: objectDisplay
@@ -553,7 +553,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCustomTrackWidth_property.selection {
@@ -579,7 +579,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCustomTrackWidth_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCustomTrackWidth_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -1216,7 +1216,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.actualTrackWidth_property.selection {
@@ -1333,7 +1333,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.netClassTrackWidth_property.selection {
@@ -1372,7 +1372,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.netClassViaHoleDiameter_property.selection {
@@ -1411,7 +1411,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.netClassViaPadDiameter_property.selection {
@@ -1735,7 +1735,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.computedP1X_property.selection {
@@ -1761,7 +1761,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.computedP1X_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.computedP1X_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -1786,7 +1786,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.computedP1Y_property.selection {
@@ -1812,7 +1812,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.computedP1Y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.computedP1Y_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -1837,7 +1837,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.computedP2X_property.selection {
@@ -1863,7 +1863,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.computedP2X_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.computedP2X_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -1888,7 +1888,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.computedP2Y_property.selection {
@@ -1914,7 +1914,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.computedP2Y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.computedP2Y_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

@@ -19,10 +19,10 @@ import CanariGeometry
        _ self_height : CanariLength,              
        _ self_holeWidth : CanariLength,           
        _ self_holeHeight : CanariLength
-) -> Int {
+) -> CanariLength {
 //--- START OF USER ZONE 2
-    let h = (self_height - self_holeHeight).cuValue
-    let w = (self_width - self_holeWidth).cuValue
+    let h = (self_height - self_holeHeight)
+    let w = (self_width - self_holeWidth)
     return min (w, h) / 2
 //--- END OF USER ZONE 2
 }

@@ -494,11 +494,11 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUpEx (size: .small) {
+        CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
           $hidden root.automaticBoardSize
         }
-        CanariObservedDimensionAndPopUpEx (size: .small) {
+        CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.boardWidth, root.boardWidthUnit
           $hidden !root.automaticBoardSize
         }
@@ -506,11 +506,11 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Height", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUpEx (size: .small) {
+        CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
           $hidden root.automaticBoardSize
         }
-        CanariObservedDimensionAndPopUpEx (size: .small) {
+        CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.boardHeight, root.boardHeightUnit
           $hidden !root.automaticBoardSize
         }
@@ -1116,26 +1116,26 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
         hStack {
           StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         }
         hStack {
           StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUpEx (size : .small) {
+          CanariObservedDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUpEx (size : .small) {
+          CanariObservedDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUpEx (size : .small) {
+          CanariObservedDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
           }
         }

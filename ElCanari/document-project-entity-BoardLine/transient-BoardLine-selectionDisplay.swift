@@ -17,10 +17,10 @@ import CanariGeometry
 
 @MainActor func transient_BoardLine_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,        
-       _ self_mX1 : Int,                              
-       _ self_mY1 : Int,                              
-       _ self_mX2 : Int,                              
-       _ self_mY2 : Int,                              
+       _ self_mX1 : CanariLength,                     
+       _ self_mY1 : CanariLength,                     
+       _ self_mX2 : CanariLength,                     
+       _ self_mY2 : CanariLength,                     
        _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -28,8 +28,8 @@ import CanariGeometry
       bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
-      let p1 = CanariPoint (x: .cu (self_mX1), y: .cu (self_mY1)).ptValue
-      let p2 = CanariPoint (x: .cu (self_mX2), y: .cu (self_mY2)).ptValue
+      let p1 = NSPoint (x: self_mX1, y: self_mY1)
+      let p2 = NSPoint (x: self_mX2, y: self_mY2)
       bp.move (to: p1)
       bp.line (to: p2)
       var shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)

@@ -36,7 +36,7 @@ import CanariGeometry
        _ prefs_inner3LayoutColorForBoard : NSColor, 
        _ self_BoardObject_displayInner4LayoutForBoard : Bool,
        _ prefs_inner4LayoutColorForBoard : NSColor, 
-       _ self_actualTrackWidth : Int,               
+       _ self_actualTrackWidth : CanariLength,      
        _ self_mSide : TrackSide
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -75,9 +75,9 @@ import CanariGeometry
            color = prefs_inner4LayoutColorForBoard
          }
          if display {
-           let w = canariUnitToCocoa (max (self_actualTrackWidth, milsToCanariUnit (fromInt: 10)))
+           let w = max (self_actualTrackWidth, .mil (10))
            var bp = BezierPath ()
-           bp.lineWidth = w
+           bp.lineWidth = w.ptValue
            switch self_mEndStyle {
            case .round :
              bp.lineCapStyle = .round

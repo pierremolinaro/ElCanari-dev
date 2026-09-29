@@ -26,8 +26,8 @@ import CanariGeometry
        _ self_frontSidePadFilledBezierPathArray : BezierPathArray,
        _ self_backSidePadFilledBezierPathArray : BezierPathArray,
        _ self_mName : String,                               
-       _ self_mX : Int,                                     
-       _ self_mY : Int
+       _ self_mX : CanariLength,                            
+       _ self_mY : CanariLength
 ) -> EBShape {
 //--- START OF USER ZONE 2
     //--- Back side pad
@@ -76,7 +76,7 @@ import CanariGeometry
       bp.lineWidth = 0.5
       let shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)
       var transform = AffineTransform ()
-      transform.translate (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
+      transform.translate (x: self_mX.ptValue, y: self_mY.ptValue)
       return shape.transformed (by: transform)
 //--- END OF USER ZONE 2
 }

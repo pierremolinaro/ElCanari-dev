@@ -33,7 +33,7 @@ import CanariGeometry
   //   Selection observable property: mCenterY
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterY_property = EBComputedProperty_Int ()
+  final let mCenterY_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mYUnit
@@ -51,7 +51,7 @@ import CanariGeometry
   //   Selection observable property: mModuleSize
   //------------------------------------------------------------------------------------------------
 
-  final let mModuleSize_property = EBComputedProperty_Int ()
+  final let mModuleSize_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mModuleSizeUnit
@@ -93,7 +93,7 @@ import CanariGeometry
   //   Selection observable property: mCenterX
   //------------------------------------------------------------------------------------------------
 
-  final let mCenterX_property = EBComputedProperty_Int ()
+  final let mCenterX_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: qrCodeDescriptor
@@ -111,7 +111,7 @@ import CanariGeometry
   //   Selection observable property: actualImageSize
   //------------------------------------------------------------------------------------------------
 
-  final let actualImageSize_property = EBTransientProperty <Int> ()
+  final let actualImageSize_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: objectDisplay
@@ -304,7 +304,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCenterY_property.selection {
@@ -330,7 +330,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCenterY_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCenterY_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -457,7 +457,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mModuleSize_property.selection {
@@ -483,7 +483,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mModuleSize_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mModuleSize_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -814,7 +814,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCenterX_property.selection {
@@ -840,7 +840,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCenterX_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCenterX_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -943,7 +943,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.actualImageSize_property.selection {

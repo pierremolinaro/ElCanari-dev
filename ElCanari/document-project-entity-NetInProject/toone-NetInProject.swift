@@ -75,19 +75,19 @@ class ReadOnlyObject_NetInProject : EBReadOnlyAbstractObjectProperty <NetInProje
   //   Observers of 'netClassTrackWidth' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let netClassTrackWidth_property = EBTransientProperty <Int?> ()
+  final let netClassTrackWidth_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'netClassViaHoleDiameter' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let netClassViaHoleDiameter_property = EBTransientProperty <Int?> ()
+  final let netClassViaHoleDiameter_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'netClassViaPadDiameter' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let netClassViaPadDiameter_property = EBTransientProperty <Int?> ()
+  final let netClassViaPadDiameter_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'wireColor' transient property

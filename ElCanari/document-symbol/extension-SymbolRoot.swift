@@ -23,10 +23,10 @@ extension SymbolRoot {
       if let object = symbolObject as? SymbolPin, let bp = object.filledBezierPath {
         filledBezierPathes.append (bp)
         let newPin = SymbolPinTypeInDevice (inUndoManager)
-        newPin.mPinX = object.xPin.cuValue
-        newPin.mPinY = object.yPin.cuValue
-        newPin.mXName = object.xName.cuValue
-        newPin.mYName = object.yName.cuValue
+        newPin.mPinX = object.xPin
+        newPin.mPinY = object.yPin
+        newPin.mXName = object.xName
+        newPin.mYName = object.yName
         newPin.mName = object.name
         newPin.mNameHorizontalAlignment = object.nameHorizontalAlignment
         newPin.mPinNameIsDisplayedInSchematics = object.pinNameIsDisplayedInSchematics

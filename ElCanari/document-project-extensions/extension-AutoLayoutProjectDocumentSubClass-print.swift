@@ -62,9 +62,9 @@ extension AutoLayoutProjectDocumentSubClass {
         pageHeight = PAPER_A4_MAX_SIZE_COCOA_UNIT
         orientation = .portrait
       case .custom :
-         pageWidth = canariUnitToCocoa (self.rootObject.mSchematicCustomWidth) + PAPER_LEFT_MARGIN_COCOA_UNIT + PAPER_RIGHT_MARGIN_COCOA_UNIT + 2.0
-         pageHeight = canariUnitToCocoa (self.rootObject.mSchematicCustomHeight) + PAPER_TOP_MARGIN_COCOA_UNIT + PAPER_BOTTOM_MARGIN_COCOA_UNIT + 2.0
-         orientation = (pageWidth >= pageHeight) ? .landscape : .portrait
+        pageWidth = self.rootObject.mSchematicCustomWidth.ptValue + PAPER_LEFT_MARGIN_COCOA_UNIT + PAPER_RIGHT_MARGIN_COCOA_UNIT + 2.0
+        pageHeight = self.rootObject.mSchematicCustomHeight.ptValue + PAPER_TOP_MARGIN_COCOA_UNIT + PAPER_BOTTOM_MARGIN_COCOA_UNIT + 2.0
+        orientation = (pageWidth >= pageHeight) ? .landscape : .portrait
       }
     //--- Build print view
       let sheets = self.rootObject.mSheets

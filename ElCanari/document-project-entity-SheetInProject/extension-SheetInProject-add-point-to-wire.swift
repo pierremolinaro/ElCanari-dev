@@ -37,8 +37,8 @@ extension SheetInProject {
   //--- Create a new point
     let newPoint = PointInSchematic (self.undoManager)
     let alignedLocation = inUnalignedLocation.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
-    newPoint.mX = alignedLocation.x.cuValue
-    newPoint.mY = alignedLocation.y.cuValue
+    newPoint.mX = alignedLocation.x
+    newPoint.mY = alignedLocation.y
     newPoint.mNet = net
     self.mPoints.append (newPoint)
   //--- Create first wire
