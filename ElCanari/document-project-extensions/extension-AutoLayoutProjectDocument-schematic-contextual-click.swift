@@ -18,7 +18,7 @@ extension AutoLayoutProjectDocument {
   func populateContextualClickOnSchematics (_ inUnalignedMouseDownPoint : CanariPoint) -> NSMenu? {
     let menu = NSMenu ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariAlignedMouseDownLocation = inUnalignedMouseDownPoint.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
+      let canariAlignedMouseDownLocation = inUnalignedMouseDownPoint.aligning (on: SCHEMATIC_GRID_LENGTH)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
       let wires = selectedSheet.wiresStrictlyContaining (point: inUnalignedMouseDownPoint)
     //--- Add Connect symbol pins
@@ -747,7 +747,7 @@ extension AutoLayoutProjectDocument {
   func addLabelInSchematic (at inLocation : CanariPoint, orientation inOrientation : QuadrantRotation) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
     //--- Aligned mouse down location
-      let canariAlignedMouseDownLocation = inLocation.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
+      let canariAlignedMouseDownLocation = inLocation.aligning (on: SCHEMATIC_GRID_LENGTH)
     //--- Add label
       let possibleLabel = selectedSheet.addLabelInSchematics (
         at: canariAlignedMouseDownLocation,

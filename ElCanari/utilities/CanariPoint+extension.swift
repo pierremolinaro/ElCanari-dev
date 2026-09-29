@@ -37,18 +37,6 @@ extension CanariPoint {
     return .mm (sqrt ((dx * dx + dy * dy).mm2Value))
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Aligned Point
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func point (alignedOnGrid inGrid : CanariLength) -> CanariPoint {
-    let grid = inGrid.cuValue
-    return CanariPoint (
-      x: ((self.x + inGrid / 2) / grid) * grid,
-      y: ((self.y + inGrid / 2) / grid) * grid
-    )
-  }
-
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  static func segmentStrictlyContainsEBPoint (_ inP1 : CanariPoint,

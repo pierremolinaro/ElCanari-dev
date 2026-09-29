@@ -450,13 +450,13 @@ final class SymbolBezierCurve : SymbolObject
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func snapToGrid (_ inGrid : Int) {
+  override func snapToGrid (_ inGrid : CanariLength) {
     self.snapToGrid_SymbolBezierCurve (inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+  override func canSnapToGrid (_ inGrid : CanariLength) -> Bool {
     return self.canSnapToGrid_SymbolBezierCurve (inGrid)
   }
 

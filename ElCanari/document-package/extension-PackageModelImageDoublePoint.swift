@@ -156,12 +156,12 @@ extension PackageModelImageDoublePoint {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_PackageModelImageDoublePoint (_ _ : Int) {
+  func snapToGrid_PackageModelImageDoublePoint (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_PackageModelImageDoublePoint (_ _ : Int) -> Bool {
+  func canSnapToGrid_PackageModelImageDoublePoint (_ _ : CanariLength) -> Bool {
     return false
   }
 

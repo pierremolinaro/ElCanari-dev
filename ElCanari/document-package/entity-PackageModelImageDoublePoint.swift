@@ -379,13 +379,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func snapToGrid (_ inGrid : Int) {
+  override func snapToGrid (_ inGrid : CanariLength) {
     self.snapToGrid_PackageModelImageDoublePoint (inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+  override func canSnapToGrid (_ inGrid : CanariLength) -> Bool {
     return self.canSnapToGrid_PackageModelImageDoublePoint (inGrid)
   }
 

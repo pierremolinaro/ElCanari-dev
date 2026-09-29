@@ -259,7 +259,7 @@ extension BoardTrack {
   //   SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_BoardTrack (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_BoardTrack (_ inGrid : CanariLength) -> Bool {
     var isAligned = self.mConnectorP1?.mX.isAligned (on: inGrid) ?? true
     if isAligned, let connectorP1 = self.mConnectorP1 {
       isAligned = connectorP1.mY.isAligned (on: inGrid)
@@ -275,7 +275,7 @@ extension BoardTrack {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_BoardTrack (_ inGrid : Int) {
+  func snapToGrid_BoardTrack (_ inGrid : CanariLength) {
     self.mConnectorP1?.mX.align (on: inGrid)
     self.mConnectorP1?.mY.align (on: inGrid)
     self.mConnectorP2?.mX.align (on: inGrid)

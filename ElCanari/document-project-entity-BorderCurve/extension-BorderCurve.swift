@@ -224,9 +224,9 @@ extension BorderCurve {
   //   SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_BorderCurve (_ _ : Int) -> Bool {
+  func canSnapToGrid_BorderCurve (_ _ : CanariLength) -> Bool {
     if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
-      let grid = self.mRoot!.mBoardLimitsGridStep.cuValue
+      let grid = self.mRoot!.mBoardLimitsGridStep
       var isAligned = self.mCPX1.isAligned (on: grid)
       if isAligned {
         isAligned = self.mCPY1.isAligned (on: grid)
@@ -257,8 +257,8 @@ extension BorderCurve {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_BorderCurve (_ _ : Int) {
-    let grid = self.mRoot!.mBoardLimitsGridStep.cuValue
+  func snapToGrid_BorderCurve (_ _ : CanariLength) {
+    let grid = self.mRoot!.mBoardLimitsGridStep
     self.mCPX1.align (on: grid)
     self.mCPY1.align (on: grid)
     self.mCPX2.align (on: grid)
@@ -280,10 +280,10 @@ extension BorderCurve {
 
   func setControlPointsDefaultValuesForLine () {
     if self.mShape == .line, let x2 = self.mNext?.mX, let y2 = self.mNext?.mY {
-      self.mCPX1 = ((2 * self.mX + 1 * x2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep.cuValue)
-      self.mCPY1 = ((2 * self.mY + 1 * y2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep.cuValue)
-      self.mCPX2 = ((1 * self.mX + 2 * x2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep.cuValue)
-      self.mCPY2 = ((1 * self.mY + 2 * y2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep.cuValue)
+      self.mCPX1 = ((2 * self.mX + 1 * x2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep)
+      self.mCPY1 = ((2 * self.mY + 1 * y2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep)
+      self.mCPX2 = ((1 * self.mX + 2 * x2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep)
+      self.mCPY2 = ((1 * self.mY + 2 * y2) / 3).aligning (on: self.mRoot!.mBoardLimitsGridStep)
     }
   }
 

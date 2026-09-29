@@ -72,7 +72,7 @@ extension AutoLayoutProjectDocument {
   func continueWireCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
                                                  _ inModifierFlags : NSEvent.ModifierFlags) {
     if let p2 = self.mWireCreatedByOptionClick?.mP2 {
-      var alignedMouseLocation = inUnalignedMousePoint.canariPoint.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
+      var alignedMouseLocation = inUnalignedMousePoint.canariPoint.aligning (on: SCHEMATIC_GRID_LENGTH)
       if inModifierFlags.contains (.shift), let p1 = self.mWireCreatedByOptionClick?.mP1 {
         alignedMouseLocation.constraintToOctolinearDirection (from: CanariPoint (x: p1.mX, y: p1.mY))
       }

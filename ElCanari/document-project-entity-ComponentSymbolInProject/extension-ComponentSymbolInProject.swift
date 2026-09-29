@@ -202,7 +202,7 @@ extension ComponentSymbolInProject {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_ComponentSymbolInProject (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_ComponentSymbolInProject (_ inGrid : CanariLength) -> Bool {
     var result = self.mCenterX.isAligned (on: inGrid)
     if !result {
       result = self.mCenterY.isAligned (on: inGrid)
@@ -224,7 +224,7 @@ extension ComponentSymbolInProject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_ComponentSymbolInProject (_ inGrid : Int) {
+  func snapToGrid_ComponentSymbolInProject (_ inGrid : CanariLength) {
     self.mCenterX.align (on: inGrid)
     self.mCenterY.align (on: inGrid)
     self.mDisplayComponentNameOffsetX.align (on: inGrid)

@@ -148,12 +148,12 @@ extension NCInSchematic {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_NCInSchematic (_ _ : Int) {
+  func snapToGrid_NCInSchematic (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_NCInSchematic (_ _ : Int) -> Bool {
+  func canSnapToGrid_NCInSchematic (_ _ : CanariLength) -> Bool {
     return false
   }
 

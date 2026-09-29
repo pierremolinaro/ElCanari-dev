@@ -189,43 +189,43 @@ extension PackageBezier {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_PackageBezier (_ inGrid : Int) -> Bool {
-    var result = (self.x1.cuValue % inGrid) != 0
+  func canSnapToGrid_PackageBezier (_ inGrid : CanariLength) -> Bool {
+    var result = self.x1.isAligned (on: inGrid)
     if !result {
-      result = (self.y1.cuValue % inGrid) != 0
+      result = self.y1.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.x2.cuValue % inGrid) != 0
+      result = self.x2.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.y2.cuValue % inGrid) != 0
+      result = self.y2.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.cpx2.cuValue % inGrid) != 0
+      result = self.cpx2.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.cpy2.cuValue % inGrid) != 0
+      result = self.cpy2.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.cpx1.cuValue % inGrid) != 0
+      result = self.cpx1.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.cpy1.cuValue % inGrid) != 0
+      result = self.cpy1.isAligned (on: inGrid)
     }
     return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_PackageBezier (_ inGrid : Int) {
-    self.x1 = ((self.x1 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.y1 = ((self.y1 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.x2 = ((self.x2 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.y2 = ((self.y2 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.cpx1 = ((self.cpx1 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.cpy1 = ((self.cpy1 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.cpx2 = ((self.cpx2 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.cpy2 = ((self.cpy2 + .cu (inGrid) / 2) / inGrid) * inGrid
+  func snapToGrid_PackageBezier (_ inGrid : CanariLength) {
+    self.x1.align (on: inGrid)
+    self.y1.align (on: inGrid)
+    self.x2.align (on: inGrid)
+    self.y2.align (on: inGrid)
+    self.cpx1.align (on: inGrid)
+    self.cpy1.align (on: inGrid)
+    self.cpx2.align (on: inGrid)
+    self.cpy2.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -35,7 +35,7 @@ extension EBGraphicView {
     }else if action == #selector (Self.sendBackward(_:)) {
       validate = self.mViewController?.canSendBackward ?? false
     }else if action == #selector (Self.snapToGrid(_:)) {
-      validate = self.mViewController?.canSnapToGrid (self.mArrowKeyMagnitude.cuValue) ?? false
+      validate = self.mViewController?.canSnapToGrid (self.mArrowKeyMagnitude) ?? false
     }else if action == #selector (Self.flipHorizontally(_:)) {
       validate = self.mViewController?.canFlipHorizontally ?? false
     }else if action == #selector (Self.flipVertically(_:)) {
@@ -123,7 +123,7 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc final func snapToGrid (_ : Any?) {
-    self.mViewController?.snapToGrid (self.mArrowKeyMagnitude.cuValue)
+    self.mViewController?.snapToGrid (self.mArrowKeyMagnitude)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

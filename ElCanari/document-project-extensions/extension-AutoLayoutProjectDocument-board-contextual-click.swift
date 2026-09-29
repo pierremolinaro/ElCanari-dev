@@ -180,7 +180,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendDisconnectInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
-    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardGridStep)
+    let alignedMouseDownPoint = inUnalignedMouseDownPoint.aligning (on: self.rootObject.mBoardGridStep)
     let connectors = self.rootObject.connectors (at: alignedMouseDownPoint, trackSide: inSide)
     var connectedConnectors = [BoardConnector] ()
     for c in connectors {

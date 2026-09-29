@@ -153,23 +153,23 @@ extension BoardRestrictRectangle {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_BoardRestrictRectangle (_ inGrid : Int) -> Bool {
-    var result = (self.mX.cuValue % inGrid) != 0
+  func canSnapToGrid_BoardRestrictRectangle (_ inGrid : CanariLength) -> Bool {
+    var result = self.mX.isAligned (on: inGrid)
     if !result {
-      result = (self.mY.cuValue % inGrid) != 0
+      result = self.mY.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.mWidth.cuValue % inGrid) != 0
+      result = self.mWidth.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.mHeight.cuValue % inGrid) != 0
+      result = self.mHeight.isAligned (on: inGrid)
     }
     return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_BoardRestrictRectangle (_ inGrid : Int) {
+  func snapToGrid_BoardRestrictRectangle (_ inGrid : CanariLength) {
     self.mX.align (on: inGrid)
     self.mY.align (on: inGrid)
     self.mWidth.align (on: inGrid)

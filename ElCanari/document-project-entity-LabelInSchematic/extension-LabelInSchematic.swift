@@ -148,12 +148,12 @@ extension LabelInSchematic {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_LabelInSchematic (_ _ : Int) {
+  func snapToGrid_LabelInSchematic (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_LabelInSchematic (_ _ : Int) -> Bool {
+  func canSnapToGrid_LabelInSchematic (_ _ : CanariLength) -> Bool {
     return false
   }
 

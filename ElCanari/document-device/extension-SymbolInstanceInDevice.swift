@@ -131,7 +131,7 @@ extension SymbolInstanceInDevice {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_SymbolInstanceInDevice (_ _ : Int) {
+  func snapToGrid_SymbolInstanceInDevice (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -144,7 +144,7 @@ extension SymbolInstanceInDevice {
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_SymbolInstanceInDevice (_ _ : Int) -> Bool {
+  func canSnapToGrid_SymbolInstanceInDevice (_ _ : CanariLength) -> Bool {
     return false
   }
 

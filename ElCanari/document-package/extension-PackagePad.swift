@@ -151,19 +151,19 @@ extension PackagePad {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_PackagePad (_ inGrid : Int) -> Bool {
-    var result = (self.xCenter.cuValue % inGrid) != 0
+  func canSnapToGrid_PackagePad (_ inGrid : CanariLength) -> Bool {
+    var result = self.xCenter.isAligned (on: inGrid)
     if !result {
-      result = (self.yCenter.cuValue % inGrid) != 0
+      result = self.yCenter.isAligned (on: inGrid)
     }
     return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_PackagePad (_ inGrid : Int) {
-    self.xCenter = ((self.xCenter + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.yCenter = ((self.yCenter + .cu (inGrid) / 2) / inGrid) * inGrid
+  func snapToGrid_PackagePad (_ inGrid : CanariLength) {
+    self.xCenter.align (on: inGrid)
+    self.yCenter.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

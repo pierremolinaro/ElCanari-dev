@@ -58,8 +58,8 @@ import CanariGeometry
   var canSendToBack : Bool { get }
   func sendToBack ()
 
-  func canSnapToGrid (_ inGrid : Int) -> Bool
-  func snapToGrid (_ inGrid : Int)
+  func canSnapToGrid (_ inGrid : CanariLength) -> Bool
+  func snapToGrid (_ inGrid : CanariLength)
 
   var canFlipHorizontally : Bool { get }
   func flipHorizontally ()

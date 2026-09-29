@@ -876,7 +876,7 @@ final class Controller_AutoLayoutProjectDocument_boardObjectsController : EBRead
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid (_ inGrid : Int) {
+  func snapToGrid (_ inGrid : CanariLength) {
     for object in self.selectedArray_property.propset.values {
       object.snapToGrid (inGrid)
     }
@@ -884,7 +884,7 @@ final class Controller_AutoLayoutProjectDocument_boardObjectsController : EBRead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid (_ inGrid : Int) -> Bool {
+  func canSnapToGrid (_ inGrid : CanariLength) -> Bool {
     for object in self.selectedArray_property.propset.values {
       if object.canSnapToGrid (inGrid) {
         return true

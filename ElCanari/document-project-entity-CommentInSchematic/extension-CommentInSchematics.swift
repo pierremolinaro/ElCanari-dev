@@ -160,7 +160,7 @@ extension CommentInSchematic {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_CommentInSchematic (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_CommentInSchematic (_ inGrid : CanariLength) -> Bool {
     var result = self.mX.isAligned (on: inGrid)
     if !result {
       result = self.mY.isAligned (on: inGrid)
@@ -170,7 +170,7 @@ extension CommentInSchematic {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_CommentInSchematic (_ inGrid : Int) {
+  func snapToGrid_CommentInSchematic (_ inGrid : CanariLength) {
     self.mX.align (on: inGrid)
     self.mY.align (on: inGrid)
    }

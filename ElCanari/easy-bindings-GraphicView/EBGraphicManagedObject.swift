@@ -111,12 +111,12 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid (_ inGrid : Int) {
+  func snapToGrid (_ inGrid : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid (_ inGrid : Int) -> Bool {
+  func canSnapToGrid (_ inGrid : CanariLength) -> Bool {
     return false
   }
 

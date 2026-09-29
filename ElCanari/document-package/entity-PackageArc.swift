@@ -638,13 +638,13 @@ final class PackageArc : PackageObject
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func snapToGrid (_ inGrid : Int) {
+  override func snapToGrid (_ inGrid : CanariLength) {
     self.snapToGrid_PackageArc (inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+  override func canSnapToGrid (_ inGrid : CanariLength) -> Bool {
     return self.canSnapToGrid_PackageArc (inGrid)
   }
 

@@ -16,16 +16,16 @@ extension SheetInProject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func wiresStrictlyContaining (point inPoint : CanariPoint) -> [WireInSchematic] {
-    let canariAlignedPoint = inPoint.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
+    let canariAlignedPoint = inPoint.aligning (on: SCHEMATIC_GRID_LENGTH)
     let width = CanariLength.pt (CGFloat (preferences_symbolDrawingWidthMultipliedByTen_property.propval) / 2.5)
     var result = [WireInSchematic]  ()
     for object in self.mObjects.values {
       if let wire = object as? WireInSchematic {
         let p1 = wire.mP1!.location!
-        let alignedP1 = p1.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
+        let alignedP1 = p1.aligning (on: SCHEMATIC_GRID_LENGTH)
         if canariAlignedPoint != alignedP1 {
           let p2 = wire.mP2!.location!
-          let alignedP2 = p2.point (alignedOnGrid: SCHEMATIC_GRID_LENGTH)
+          let alignedP2 = p2.aligning (on: SCHEMATIC_GRID_LENGTH)
           if canariAlignedPoint != alignedP2 {
             let segment = CanariSegment (x1: p1.x.cuValue, y1: p1.y.cuValue, x2: p2.x.cuValue, y2: p2.y.cuValue, width: width.cuValue, endStyle: .round)
             if segment.strictlyContains (point: inPoint) {

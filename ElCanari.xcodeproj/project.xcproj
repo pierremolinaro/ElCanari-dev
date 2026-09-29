@@ -21,7 +21,7 @@
       "kind": "remote",
       "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
       "version": {
-        "revision": "2148ffd891aa8daae05dad23dcd48205f61d7e0c",
+        "revision": "1f09a73691e1bb32abb9eace3608be6602e4284e",
       },
     },
   ],
@@ -12752,12 +12752,6 @@
       "path": "ElCanari/utilities",
       "children": [
         {
-          "path": "CanariLength+extension.swift",
-          "target-membership": [
-            "ElCanari-Debug/compile-sources",
-            "ElCanari-Release/compile-sources",
-          ],
-        }, {
           "path": "append-prepend-new-inspector-to-hstack.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",

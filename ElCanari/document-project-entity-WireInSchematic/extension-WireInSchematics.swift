@@ -120,12 +120,12 @@ extension WireInSchematic {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_WireInSchematic (_ _ : Int) {
+  func snapToGrid_WireInSchematic (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_WireInSchematic (_ _ : Int) -> Bool {
+  func canSnapToGrid_WireInSchematic (_ _ : CanariLength) -> Bool {
     return false
   }
 

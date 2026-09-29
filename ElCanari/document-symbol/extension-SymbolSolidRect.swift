@@ -164,27 +164,27 @@ extension SymbolSolidRect {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_SymbolSolidRect (_ inGrid : Int) -> Bool {
-    var result = (self.x.cuValue % inGrid) != 0
+  func canSnapToGrid_SymbolSolidRect (_ inGrid : CanariLength) -> Bool {
+    var result = self.x.isAligned (on: inGrid)
     if !result {
-      result = (self.y.cuValue % inGrid) != 0
+      result = self.y.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.width.cuValue % inGrid) != 0
+      result = self.width.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.height.cuValue % inGrid) != 0
+      result = self.height.isAligned (on: inGrid)
     }
     return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_SymbolSolidRect (_ inGrid : Int) {
-    self.x = ((self.x + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.y = ((self.y + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.width = ((self.width + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.height = ((self.height + .cu (inGrid) / 2) / inGrid) * inGrid
+  func snapToGrid_SymbolSolidRect (_ inGrid : CanariLength) {
+    self.x.align (on: inGrid)
+    self.y.align (on: inGrid)
+    self.width.align (on: inGrid)
+    self.height.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

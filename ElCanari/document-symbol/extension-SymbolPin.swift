@@ -151,35 +151,35 @@ extension SymbolPin {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_SymbolPin (_ inGrid : Int) -> Bool {
-    var result = (self.xPin.cuValue % inGrid) != 0
+  func canSnapToGrid_SymbolPin (_ inGrid : CanariLength) -> Bool {
+    var result = self.xPin.isAligned (on: inGrid)
     if !result {
-      result = (self.yPin.cuValue % inGrid) != 0
+      result = self.yPin.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.xName.cuValue % inGrid) != 0
+      result = self.xName.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.yName.cuValue % inGrid) != 0
+      result = self.yName.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.xNumber.cuValue % inGrid) != 0
+      result = self.xNumber.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.yNumber.cuValue % inGrid) != 0
+      result = self.yNumber.isAligned (on: inGrid)
     }
     return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_SymbolPin (_ inGrid : Int) {
-    self.xPin = ((self.xPin + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.yPin = ((self.yPin + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.xName = ((self.xName + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.yName = ((self.yName + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.xNumber = ((self.xNumber + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.yNumber = ((self.yNumber + .cu (inGrid) / 2) / inGrid) * inGrid
+  func snapToGrid_SymbolPin (_ inGrid : CanariLength) {
+    self.xPin.align (on: inGrid)
+    self.yPin.align (on: inGrid)
+    self.xName.align (on: inGrid)
+    self.yName.align (on: inGrid)
+    self.xNumber.align (on: inGrid)
+    self.yNumber.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

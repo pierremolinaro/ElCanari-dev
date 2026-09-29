@@ -101,12 +101,12 @@ extension SegmentForFontCharacter {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_SegmentForFontCharacter (_ _ : Int) {
+  func snapToGrid_SegmentForFontCharacter (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_SegmentForFontCharacter (_ _ : Int) -> Bool {
+  func canSnapToGrid_SegmentForFontCharacter (_ _ : CanariLength) -> Bool {
     return false
   }
 

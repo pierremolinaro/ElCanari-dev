@@ -117,7 +117,7 @@ extension BoardQRCode {
   //   SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_BoardQRCode (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_BoardQRCode (_ inGrid : CanariLength) -> Bool {
     var isAligned = self.mCenterX.isAligned (on: inGrid)
     if isAligned {
       isAligned = self.mCenterY.isAligned (on: inGrid)
@@ -127,7 +127,7 @@ extension BoardQRCode {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_BoardQRCode (_ inGrid : Int) {
+  func snapToGrid_BoardQRCode (_ inGrid : CanariLength) {
     self.mCenterX.align (on: inGrid)
     self.mCenterY.align (on: inGrid)
   }

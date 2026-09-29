@@ -128,12 +128,12 @@ extension PackageInDevice {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_PackageInDevice (_ _ : Int) {
+  func snapToGrid_PackageInDevice (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_PackageInDevice (_ _ : Int) -> Bool {
+  func canSnapToGrid_PackageInDevice (_ _ : CanariLength) -> Bool {
     return false
   }
 

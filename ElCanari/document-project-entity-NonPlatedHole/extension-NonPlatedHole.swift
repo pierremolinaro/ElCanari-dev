@@ -115,7 +115,7 @@ extension NonPlatedHole {
   //   SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_NonPlatedHole (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_NonPlatedHole (_ inGrid : CanariLength) -> Bool {
     var isAligned = self.mX.isAligned (on: inGrid)
     if isAligned {
       isAligned = self.mY.isAligned (on: inGrid)
@@ -125,7 +125,7 @@ extension NonPlatedHole {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_NonPlatedHole (_ inGrid : Int) {
+  func snapToGrid_NonPlatedHole (_ inGrid : CanariLength) {
     self.mX.align (on: inGrid)
     self.mY.align (on: inGrid)
   }

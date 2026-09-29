@@ -173,35 +173,35 @@ extension PackageDimension {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_PackageDimension (_ inGrid : Int) -> Bool {
-    var result = (self.x1.cuValue % inGrid) != 0
+  func canSnapToGrid_PackageDimension (_ inGrid : CanariLength) -> Bool {
+    var result = self.x1.isAligned (on: inGrid)
     if !result {
-      result = (self.y1.cuValue % inGrid) != 0
+      result = self.y1.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.x2.cuValue % inGrid) != 0
+      result = self.x2.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.y2.cuValue % inGrid) != 0
+      result = self.y2.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.xDimension.cuValue % inGrid) != 0
+      result = self.xDimension.isAligned (on: inGrid)
     }
     if !result {
-      result = (self.yDimension.cuValue % inGrid) != 0
+      result = self.yDimension.isAligned (on: inGrid)
     }
     return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_PackageDimension (_ inGrid : Int) {
-    self.x1 = ((self.x1 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.y1 = ((self.y1 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.x2 = ((self.x2 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.y2 = ((self.y2 + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.xDimension = ((self.xDimension + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.yDimension = ((self.yDimension + .cu (inGrid) / 2) / inGrid) * inGrid
+  func snapToGrid_PackageDimension (_ inGrid : CanariLength) {
+    self.x1.align (on: inGrid)
+    self.y1.align (on: inGrid)
+    self.x2.align (on: inGrid)
+    self.y2.align (on: inGrid)
+    self.xDimension.align (on: inGrid)
+    self.yDimension.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

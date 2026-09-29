@@ -568,13 +568,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func snapToGrid (_ inGrid : Int) {
+  override func snapToGrid (_ inGrid : CanariLength) {
     self.snapToGrid_SymbolInstanceInDevice (inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+  override func canSnapToGrid (_ inGrid : CanariLength) -> Bool {
     return self.canSnapToGrid_SymbolInstanceInDevice (inGrid)
   }
 

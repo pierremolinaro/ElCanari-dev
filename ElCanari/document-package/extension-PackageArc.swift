@@ -168,13 +168,13 @@ extension PackageArc {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_PackageArc (_ _ : Int) -> Bool {
+  func canSnapToGrid_PackageArc (_ _ : CanariLength) -> Bool {
     return false
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_PackageArc (_ _ : Int) {
+  func snapToGrid_PackageArc (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

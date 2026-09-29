@@ -153,7 +153,7 @@ extension BoardLine {
   //   SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_BoardLine (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_BoardLine (_ inGrid : CanariLength) -> Bool {
     var isAligned = self.mX1.isAligned (on: inGrid)
     if isAligned {
       isAligned = self.mY1.isAligned (on: inGrid)
@@ -169,7 +169,7 @@ extension BoardLine {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_BoardLine (_ inGrid : Int) {
+  func snapToGrid_BoardLine (_ inGrid : CanariLength) {
     self.mX1.align (on: inGrid)
     self.mY1.align (on: inGrid)
     self.mX2.align (on: inGrid)

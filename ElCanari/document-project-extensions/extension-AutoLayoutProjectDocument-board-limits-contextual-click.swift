@@ -35,7 +35,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func curve (at inUnalignedMouseDownPoint : CanariPoint) -> BorderCurve? {
-    let alignedMouseDownPoint = inUnalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+    let alignedMouseDownPoint = inUnalignedMouseDownPoint.aligning (on: self.rootObject.mBoardLimitsGridStep)
     for borderCurve in self.rootObject.mBorderCurves.values {
       let p1  = CanariPoint (x: borderCurve.mX, y: borderCurve.mY)
       let p2  = CanariPoint (x: borderCurve.mNext!.mX, y: borderCurve.mNext!.mY)
@@ -147,7 +147,7 @@ extension AutoLayoutProjectDocument {
 
   @objc private func addPointToBoardLimitAction (_ inSender : NSMenuItem) {
     if let (curve, unalignedMouseDownPoint) = inSender.representedObject as? (BorderCurve, CanariPoint) {
-      let alignedMouseDownPoint = unalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+      let alignedMouseDownPoint = unalignedMouseDownPoint.aligning (on: self.rootObject.mBoardLimitsGridStep)
       let newCurve = BorderCurve (self.undoManager)
       newCurve.mX = alignedMouseDownPoint.x
       newCurve.mY = alignedMouseDownPoint.y
@@ -171,7 +171,7 @@ extension AutoLayoutProjectDocument {
           x: (curve.mX + curve.mNext!.mX) / 2,
           y: (curve.mY + curve.mNext!.mY) / 2
         )
-        let alignedMouseDownPoint = unalignedMouseDownPoint.point (alignedOnGrid: self.rootObject.mBoardLimitsGridStep)
+        let alignedMouseDownPoint = unalignedMouseDownPoint.aligning (on: self.rootObject.mBoardLimitsGridStep)
         let newCurve = BorderCurve (self.undoManager)
         newCurve.mX = alignedMouseDownPoint.x
         newCurve.mY = alignedMouseDownPoint.y

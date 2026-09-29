@@ -141,7 +141,7 @@ extension BoardConnector {
   //   SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_BoardConnector (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_BoardConnector (_ inGrid : CanariLength) -> Bool {
     var isAligned = self.mX.isAligned (on: inGrid)
     if isAligned {
       isAligned = self.mY.isAligned (on: inGrid)
@@ -151,7 +151,7 @@ extension BoardConnector {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_BoardConnector (_ inGrid : Int) {
+  func snapToGrid_BoardConnector (_ inGrid : CanariLength) {
     self.mX.align (on: inGrid)
     self.mY.align (on: inGrid)
   }

@@ -136,12 +136,12 @@ extension MergerBoardInstance {
   //  Snap to grid
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_MergerBoardInstance (_ _ : Int) {
+  func snapToGrid_MergerBoardInstance (_ _ : CanariLength) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_MergerBoardInstance (_ _ : Int) -> Bool {
+  func canSnapToGrid_MergerBoardInstance (_ _ : CanariLength) -> Bool {
     return false
   }
 

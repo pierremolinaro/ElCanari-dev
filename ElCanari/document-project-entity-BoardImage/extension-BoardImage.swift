@@ -156,17 +156,17 @@ extension BoardImage {
   //   SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_BoardImage (_ inGrid : Int) -> Bool {
-    var isAligned = self.mCenterX.cuValue.isAlignedOnGrid (inGrid)
+  func canSnapToGrid_BoardImage (_ inGrid : CanariLength) -> Bool {
+    var isAligned = self.mCenterX.isAligned (on: inGrid)
     if isAligned {
-      isAligned = self.mCenterY.cuValue.isAlignedOnGrid (inGrid)
+      isAligned = self.mCenterY.isAligned (on: inGrid)
     }
     return !isAligned
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_BoardImage (_ inGrid : Int) {
+  func snapToGrid_BoardImage (_ inGrid : CanariLength) {
     self.mCenterX.align (on: inGrid)
     self.mCenterY.align (on: inGrid)
   }

@@ -135,19 +135,19 @@ extension SymbolText {
   //  SNAP TO GRID
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func canSnapToGrid_SymbolText (_ inGrid : Int) -> Bool {
-    var result = (self.x.cuValue % inGrid) != 0
+  func canSnapToGrid_SymbolText (_ inGrid : CanariLength) -> Bool {
+    var result = self.x.isAligned (on: inGrid)
     if !result {
-      result = (self.y.cuValue % inGrid) != 0
+      result = self.y.isAligned (on: inGrid)
     }
     return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func snapToGrid_SymbolText (_ inGrid : Int) {
-    self.x = ((self.x + .cu (inGrid) / 2) / inGrid) * inGrid
-    self.y = ((self.y + .cu (inGrid) / 2) / inGrid) * inGrid
+  func snapToGrid_SymbolText (_ inGrid : CanariLength) {
+    self.x.align (on: inGrid)
+    self.y.align (on: inGrid)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
