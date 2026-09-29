@@ -121,20 +121,20 @@ extension AutoLayoutMergerDocument {
       var drillEntities = EBReferenceArray <SegmentEntity> ()
       for hole in inProduct.circles (forLayers: .hole) {
         let drill = SegmentEntity (self.undoManager)
-        drill.x1 = hole.x.cuValue
-        drill.y1 = hole.y.cuValue
-        drill.x2 = hole.x.cuValue
-        drill.y2 = hole.y.cuValue
-        drill.width = hole.d.cuValue
+        drill.x1 = hole.x
+        drill.y1 = hole.y
+        drill.x2 = hole.x
+        drill.y2 = hole.y
+        drill.width = hole.d
         drillEntities.append (drill)
       }
       for hole in inProduct.roundSegments (forLayers: .hole) {
         let drill = SegmentEntity (self.undoManager)
-        drill.x1 = hole.x1.cuValue
-        drill.y1 = hole.y1.cuValue
-        drill.x2 = hole.x2.cuValue
-        drill.y2 = hole.y2.cuValue
-        drill.width = hole.width.cuValue
+        drill.x1 = hole.x1
+        drill.y1 = hole.y1
+        drill.x2 = hole.x2
+        drill.y2 = hole.y2
+        drill.width = hole.width
         drillEntities.append (drill)
       }
       boardModel.drills = drillEntities

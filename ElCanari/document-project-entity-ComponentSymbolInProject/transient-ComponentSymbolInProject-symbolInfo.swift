@@ -107,7 +107,7 @@ import CanariGeometry
               pinLocationTransform.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
               pinLocationTransform.translateX (by: -deviceInfo.center.x.ptValue, yBy: -deviceInfo.center.y.ptValue)
               let cocoaPinLocation = pinLocationTransform.transform (pin.pinXY.ptValue)
-              let pinLocation = cocoaPinLocation.canariPointAligned (onGrid: SCHEMATIC_GRID_LENGTH)
+              let pinLocation = cocoaPinLocation.alignedCanariPoint (on: SCHEMATIC_GRID_LENGTH)
            //--- Tooltip
               let toolTipRect = NSRect (
                 x: .cu (cocoaPinLocation.x) - SCHEMATIC_GRID_LENGTH / 2.0,

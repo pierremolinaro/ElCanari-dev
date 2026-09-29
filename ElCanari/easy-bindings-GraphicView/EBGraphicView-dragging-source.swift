@@ -64,7 +64,7 @@ extension EBGraphicView : NSDraggingSource {
     }
   //--- Associated data
     let mouseDownCocoaLocation = self.convert (inEvent.locationInWindow, from:nil)
-    let mouseDownCanariLocation = mouseDownCocoaLocation.canariPointAligned (onGrid: SYMBOL_GRID_LENGTH)
+    let mouseDownCanariLocation = mouseDownCocoaLocation.alignedCanariPoint (on: SYMBOL_GRID_LENGTH)
     let dataDictionary : [String : Any] = [
       OBJECT_DICTIONARY_KEY : objectDictionaryArray,
       OBJECT_ADDITIONAL_DICTIONARY_KEY : objectAdditionalDictionaryArray,

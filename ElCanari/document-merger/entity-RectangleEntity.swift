@@ -8,49 +8,49 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p0y : AnyObject {
-  var p0y : Int { get }
+  var p0y : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p1x : AnyObject {
-  var p1x : Int { get }
+  var p1x : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p1y : AnyObject {
-  var p1y : Int { get }
+  var p1y : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p2x : AnyObject {
-  var p2x : Int { get }
+  var p2x : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p2y : AnyObject {
-  var p2y : Int { get }
+  var p2y : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p3x : AnyObject {
-  var p3x : Int { get }
+  var p3x : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p3y : AnyObject {
-  var p3y : Int { get }
+  var p3y : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol RectangleEntity_p0x : AnyObject {
-  var p0x : Int { get }
+  var p0x : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -72,11 +72,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p0y
   //------------------------------------------------------------------------------------------------
 
-  final let p0y_property : EBStoredProperty_Int
+  final let p0y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p0y : Int {
+  final var p0y : CanariLength {
     get { return self.p0y_property.propval }
     set { self.p0y_property.setProp (newValue) }
   }
@@ -85,11 +85,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p1x
   //------------------------------------------------------------------------------------------------
 
-  final let p1x_property : EBStoredProperty_Int
+  final let p1x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p1x : Int {
+  final var p1x : CanariLength {
     get { return self.p1x_property.propval }
     set { self.p1x_property.setProp (newValue) }
   }
@@ -98,11 +98,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p1y
   //------------------------------------------------------------------------------------------------
 
-  final let p1y_property : EBStoredProperty_Int
+  final let p1y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p1y : Int {
+  final var p1y : CanariLength {
     get { return self.p1y_property.propval }
     set { self.p1y_property.setProp (newValue) }
   }
@@ -111,11 +111,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p2x
   //------------------------------------------------------------------------------------------------
 
-  final let p2x_property : EBStoredProperty_Int
+  final let p2x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p2x : Int {
+  final var p2x : CanariLength {
     get { return self.p2x_property.propval }
     set { self.p2x_property.setProp (newValue) }
   }
@@ -124,11 +124,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p2y
   //------------------------------------------------------------------------------------------------
 
-  final let p2y_property : EBStoredProperty_Int
+  final let p2y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p2y : Int {
+  final var p2y : CanariLength {
     get { return self.p2y_property.propval }
     set { self.p2y_property.setProp (newValue) }
   }
@@ -137,11 +137,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p3x
   //------------------------------------------------------------------------------------------------
 
-  final let p3x_property : EBStoredProperty_Int
+  final let p3x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p3x : Int {
+  final var p3x : CanariLength {
     get { return self.p3x_property.propval }
     set { self.p3x_property.setProp (newValue) }
   }
@@ -150,11 +150,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p3y
   //------------------------------------------------------------------------------------------------
 
-  final let p3y_property : EBStoredProperty_Int
+  final let p3y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p3y : Int {
+  final var p3y : CanariLength {
     get { return self.p3y_property.propval }
     set { self.p3y_property.setProp (newValue) }
   }
@@ -163,11 +163,11 @@ final class RectangleEntity : EBManagedObject
   //   Atomic property: p0x
   //------------------------------------------------------------------------------------------------
 
-  final let p0x_property : EBStoredProperty_Int
+  final let p0x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var p0x : Int {
+  final var p0x : CanariLength {
     get { return self.p0x_property.propval }
     set { self.p0x_property.setProp (newValue) }
   }
@@ -177,14 +177,14 @@ final class RectangleEntity : EBManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.p0y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p0y")
-    self.p1x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p1x")
-    self.p1y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p1y")
-    self.p2x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p2x")
-    self.p2y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p2y")
-    self.p3x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p3x")
-    self.p3y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p3y")
-    self.p0x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "p0x")
+    self.p0y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p0y")
+    self.p1x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p1x")
+    self.p1y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p1y")
+    self.p2x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p2x")
+    self.p2y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p2y")
+    self.p3x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p3x")
+    self.p3y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p3y")
+    self.p0x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "p0x")
     super.init (inUndoManager)
     self.accumulateProperty (self.p0y_property)
     self.accumulateProperty (self.p1x_property)

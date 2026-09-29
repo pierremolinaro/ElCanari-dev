@@ -707,7 +707,6 @@ extension AutoLayoutProjectDocument {
     //---
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
- //     bp.lineWidth = canariUnitToCocoa (self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance * 2)
       bp.lineWidth = self.rootObject.mBoardClearance.ptValue * 2
       let strokeBP = bp.pathToFillByStroking
       var closedPathCount = 0

@@ -58,14 +58,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol SymbolPinTypeInDevice_mXNumber : AnyObject {
-//   var mXNumber : Int { get }
+//   var mXNumber : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol SymbolPinTypeInDevice_mYNumber : AnyObject {
-//   var mYNumber : Int { get }
+//   var mYNumber : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -194,11 +194,11 @@ final class SymbolPinTypeInDevice : EBManagedObject
   //   Atomic property: mXNumber
   //------------------------------------------------------------------------------------------------
 
-  final let mXNumber_property : EBStoredProperty_Int
+  final let mXNumber_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXNumber : Int {
+  final var mXNumber : CanariLength {
     get { return self.mXNumber_property.propval }
     set { self.mXNumber_property.setProp (newValue) }
   }
@@ -207,11 +207,11 @@ final class SymbolPinTypeInDevice : EBManagedObject
   //   Atomic property: mYNumber
   //------------------------------------------------------------------------------------------------
 
-  final let mYNumber_property : EBStoredProperty_Int
+  final let mYNumber_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYNumber : Int {
+  final var mYNumber : CanariLength {
     get { return self.mYNumber_property.propval }
     set { self.mYNumber_property.setProp (newValue) }
   }
@@ -266,8 +266,8 @@ final class SymbolPinTypeInDevice : EBManagedObject
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNameHorizontalAlignment")
     self.mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mPinNameIsDisplayedInSchematics")
-    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXNumber")
-    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYNumber")
+    self.mXNumber_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mXNumber")
+    self.mYNumber_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mYNumber")
     self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNumberHorizontalAlignment")
     super.init (inUndoManager)
     self.accumulateProperty (self.mPinX_property)

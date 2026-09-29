@@ -8,25 +8,25 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SegmentEntity_y1 : AnyObject {
-  var y1 : Int { get }
+  var y1 : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SegmentEntity_x2 : AnyObject {
-  var x2 : Int { get }
+  var x2 : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SegmentEntity_y2 : AnyObject {
-  var y2 : Int { get }
+  var y2 : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SegmentEntity_width : AnyObject {
-  var width : Int { get }
+  var width : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol SegmentEntity_x1 : AnyObject {
-  var x1 : Int { get }
+  var x1 : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,11 +58,11 @@ final class SegmentEntity : EBManagedObject
   //   Atomic property: y1
   //------------------------------------------------------------------------------------------------
 
-  final let y1_property : EBStoredProperty_Int
+  final let y1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y1 : Int {
+  final var y1 : CanariLength {
     get { return self.y1_property.propval }
     set { self.y1_property.setProp (newValue) }
   }
@@ -71,11 +71,11 @@ final class SegmentEntity : EBManagedObject
   //   Atomic property: x2
   //------------------------------------------------------------------------------------------------
 
-  final let x2_property : EBStoredProperty_Int
+  final let x2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x2 : Int {
+  final var x2 : CanariLength {
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
@@ -84,11 +84,11 @@ final class SegmentEntity : EBManagedObject
   //   Atomic property: y2
   //------------------------------------------------------------------------------------------------
 
-  final let y2_property : EBStoredProperty_Int
+  final let y2_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y2 : Int {
+  final var y2 : CanariLength {
     get { return self.y2_property.propval }
     set { self.y2_property.setProp (newValue) }
   }
@@ -97,11 +97,11 @@ final class SegmentEntity : EBManagedObject
   //   Atomic property: width
   //------------------------------------------------------------------------------------------------
 
-  final let width_property : EBStoredProperty_Int
+  final let width_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var width : Int {
+  final var width : CanariLength {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
@@ -123,11 +123,11 @@ final class SegmentEntity : EBManagedObject
   //   Atomic property: x1
   //------------------------------------------------------------------------------------------------
 
-  final let x1_property : EBStoredProperty_Int
+  final let x1_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x1 : Int {
+  final var x1 : CanariLength {
     get { return self.x1_property.propval }
     set { self.x1_property.setProp (newValue) }
   }
@@ -137,12 +137,12 @@ final class SegmentEntity : EBManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y1")
-    self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x2")
-    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y2")
-    self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "width")
+    self.y1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y1")
+    self.x2_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x2")
+    self.y2_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y2")
+    self.width_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "width")
     self.endStyle_property = EBStoredProperty_TrackEndStyle (defaultValue: TrackEndStyle.round, undoManager: inUndoManager, key: "endStyle")
-    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
+    self.x1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
     self.accumulateProperty (self.y1_property)
     self.accumulateProperty (self.x2_property)

@@ -116,14 +116,14 @@ extension AutoLayoutMergerDocument {
     for rect in inArray.values {
       let centerX = (rect.p0x + rect.p1x + rect.p2x + rect.p3x) / 4
       let centerY = (rect.p0y + rect.p1y + rect.p2y + rect.p3y) / 4
-      let p0 = CanariPoint (x: .cu (rect.p0x), y: .cu (rect.p0y)).ptValue
-      let p1 = CanariPoint (x: .cu (rect.p1x), y: .cu (rect.p1y)).ptValue
+      let p0 = NSPoint (x: rect.p0x, y: rect.p0y)
+      let p1 = NSPoint (x: rect.p1x, y: rect.p1y)
       let width = NSPoint.distance (p0, p1)
-      let p2 = CanariPoint (x: .cu (rect.p2x), y: .cu (rect.p2y)).ptValue
+      let p2 = NSPoint (x: rect.p2x, y: rect.p2y)
       let height = NSPoint.distance (p1, p2)
       let angleInDegrees = NSPoint.angleInDegrees (p0, p1)
       var af = AffineTransform ()
-      af.translate (x: canariUnitToCocoa (centerX), y: canariUnitToCocoa (centerY))
+      af.translate (x: centerX.ptValue, y: centerY.ptValue)
       af.rotate (byDegrees: angleInDegrees)
       af.scale (x: width, y: height)
       let s = LayeredProductRectangle (af: af, layers: inLayer)
@@ -137,12 +137,12 @@ extension AutoLayoutMergerDocument {
                                    layer inLayer : ProductLayerSet,
                                    to ioProduct : inout ProductRepresentation) {
     for segment in inArray.values {
-      let p1 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x1), y: .cu (segment.y1)))
-      let p2 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x2), y: .cu (segment.y2)))
+      let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
+      let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
       if p1 == p2 {
         let s = LayeredProductCircle (
           center: p1,
-          diameter: CanariLength.cu (segment.width),
+          diameter: segment.width,
           layers: inLayer
         )
         ioProduct.append (circle: s)
@@ -150,7 +150,7 @@ extension AutoLayoutMergerDocument {
         let s = LayeredProductSegment (
           p1: p1,
           p2: p2,
-          width: CanariLength.cu (segment.width),
+          width: segment.width,
           layers: inLayer
         )
         switch segment.endStyle {
@@ -168,9 +168,9 @@ extension AutoLayoutMergerDocument {
   fileprivate func appendHoles (from inArray : EBReferenceArray <SegmentEntity>,
                                 to ioProduct : inout ProductRepresentation) {
     for segment in inArray.values {
-      let p1 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x1), y: .cu (segment.y1)))
-      let p2 = ProductPoint (canariPoint: CanariPoint (x: .cu (segment.x2), y: .cu (segment.y2)))
-      let width = CanariLength.cu (segment.width)
+      let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
+      let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
+      let width = segment.width
       if p1 == p2 {
         let s = LayeredProductCircle (
           center: p1,

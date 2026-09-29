@@ -15,8 +15,8 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_SymbolPinInstanceInDevice_numberShape (
-       _ self_mType_mXNumber : Int?,                             
-       _ self_mType_mYNumber : Int?,                             
+       _ self_mType_mXNumber : CanariLength?,                    
+       _ self_mType_mYNumber : CanariLength?,                    
        _ self_mType_mNumberHorizontalAlignment : HorizontalAlignment?,
        _ self_mPadProxy_mPadName : String?,                      
        _ prefs_pinNameFont : NSFont
@@ -28,7 +28,7 @@ import CanariGeometry
         NSAttributedString.Key.font : prefs_pinNameFont,
         NSAttributedString.Key.foregroundColor : NSColor.black
       ]
-      let numberOrigin = NSPoint (x: canariUnitToCocoa (x), y: canariUnitToCocoa (y))
+      let numberOrigin = NSPoint (x: x, y: y)
       let padName = self_mPadProxy_mPadName ?? "##"
       shape.add (text: padName, numberOrigin, numberTextAttributes, alignment.ebTextShapeHorizontalAlignment, .center)
     }

@@ -30,8 +30,8 @@ extension SymbolRoot {
         newPin.mName = object.name
         newPin.mNameHorizontalAlignment = object.nameHorizontalAlignment
         newPin.mPinNameIsDisplayedInSchematics = object.pinNameIsDisplayedInSchematics
-        newPin.mXNumber = object.xNumber.cuValue
-        newPin.mYNumber = object.yNumber.cuValue
+        newPin.mXNumber = object.xNumber
+        newPin.mYNumber = object.yNumber
         newPin.mNumberHorizontalAlignment = object.numberHorizontalAlignment
         symbolPins.append (newPin)
       }else if let object = symbolObject as? SymbolSolidRect, let bp = object.filledBezierPath {

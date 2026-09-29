@@ -22,9 +22,6 @@ import CanariGeometry
 //--- START OF USER ZONE 2
     var shape = EBShape ()
     if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
- // §     let limitWidth = canariUnitToCocoa (self_boardLimitWidth)
-//      let r = self_boardRect.ptValue
-//   §    var bp = BezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
       var bp = BezierPath (rect: self_boardRect.ptValue)
       bp.lineWidth = BOARD_LIMIT_WIDTH.value (in: .pt)
       bp.lineCapStyle = .round

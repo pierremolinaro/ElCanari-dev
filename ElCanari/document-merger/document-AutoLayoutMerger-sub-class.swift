@@ -131,10 +131,8 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         let horizontalFlip : CGFloat = boardView.horizontalFlip ? -1.0 : 1.0
         let verticalFlip   : CGFloat = boardView.verticalFlip   ? -1.0 : 1.0
       //--- Image size
-     //   Swift.print ("Model size: \(canariUnitToCocoa (boardModel.modelWidth)), \(canariUnitToCocoa (boardModel.modelHeight))")
         var width  : CGFloat = scale * boardModel.modelWidth.ptValue
         var height : CGFloat = scale * boardModel.modelHeight.ptValue
-     //   Swift.print ("Image size: \(width), \(height)")
       //--- Orientation
         let rotation = self.rootObject.modelInsertionRotation
         if (rotation == .rotation90) || (rotation == .rotation270) {

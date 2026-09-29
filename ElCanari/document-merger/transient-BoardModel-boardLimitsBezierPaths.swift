@@ -19,20 +19,19 @@ import CanariGeometry
        _ self_modelHeight : CanariLength
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2
-  let modelWidth = self_modelWidth.ptValue
-  let modelHeight = self_modelHeight.ptValue
-  let limitWidth = 0.0 // §canariUnitToCocoa (self_modelLimitWidth)
-  let left    = limitWidth / 2.0
-  let right   = modelWidth - limitWidth / 2.0
-  let bottom  = limitWidth / 2.0
-  let top     = modelHeight - limitWidth / 2.0
+  let modelWidth = self_modelWidth
+  let modelHeight = self_modelHeight
+  let left    = CanariLength.zero
+  let right   = modelWidth
+  let bottom  = CanariLength.zero
+  let top     = modelHeight
   var bp = BezierPath ()
   bp.move (to : NSPoint (x: left,  y: bottom))
   bp.line (to : NSPoint (x: left,  y: top))
   bp.line (to : NSPoint (x: right, y: top))
   bp.line (to : NSPoint (x: right, y: bottom))
   bp.close ()
-  bp.lineWidth = limitWidth
+  bp.lineWidth = BOARD_LIMIT_WIDTH.ptValue
   bp.lineCapStyle = .round
   var array = BezierPathArray ()
   array.append (bp)

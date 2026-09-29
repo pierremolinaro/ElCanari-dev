@@ -258,11 +258,11 @@ struct ProductRepresentation : Codable {
     for circle in self.circles {
       if !circle.layers.intersection (inLayers).isEmpty {
         let s = SegmentEntity (inUndoManager)
-        s.x1 = circle.x.cuValue
-        s.y1 = circle.y.cuValue
-        s.x2 = circle.x.cuValue
-        s.y2 = circle.y.cuValue
-        s.width = circle.d.cuValue
+        s.x1 = circle.x
+        s.y1 = circle.y
+        s.x2 = circle.x
+        s.y2 = circle.y
+        s.width = circle.d
         s.endStyle = .round
         result.append (s)
       }
@@ -291,14 +291,14 @@ struct ProductRepresentation : Codable {
       if !rect.layers.intersection (inLayers).isEmpty {
         let (origin, points) = rect.polygon ()
         let r = RectangleEntity (inUndoManager)
-        r.p0x = origin.x.cuValue
-        r.p0y = origin.y.cuValue
-        r.p1x = points [0].x.cuValue
-        r.p1y = points [0].y.cuValue
-        r.p2x = points [1].x.cuValue
-        r.p2y = points [1].y.cuValue
-        r.p3x = points [2].x.cuValue
-        r.p3y = points [2].y.cuValue
+        r.p0x = origin.x
+        r.p0y = origin.y
+        r.p1x = points [0].x
+        r.p1y = points [0].y
+        r.p2x = points [1].x
+        r.p2y = points [1].y
+        r.p3x = points [2].x
+        r.p3y = points [2].y
         result.append (r)
       }
     }
@@ -355,11 +355,11 @@ fileprivate extension SegmentEntity {
                     _ inProductSegment : LayeredProductSegment,
                     endStyle inEndStyle : TrackEndStyle) {
     self.init (inUndoManager)
-    self.x1 = inProductSegment.p1.x.cuValue
-    self.y1 = inProductSegment.p1.y.cuValue
-    self.x2 = inProductSegment.p2.x.cuValue
-    self.y2 = inProductSegment.p2.y.cuValue
-    self.width = inProductSegment.width.cuValue
+    self.x1 = inProductSegment.p1.x
+    self.y1 = inProductSegment.p1.y
+    self.x2 = inProductSegment.p2.x
+    self.y2 = inProductSegment.p2.y
+    self.width = inProductSegment.width
     self.endStyle = inEndStyle
   }
 

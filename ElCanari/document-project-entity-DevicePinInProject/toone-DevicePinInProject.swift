@@ -109,13 +109,13 @@ class ReadOnlyObject_DevicePinInProject : EBReadOnlyAbstractObjectProperty <Devi
   //   Observers of 'mXNumber' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mXNumber_property = EBTransientProperty <Int?> ()
+  final let mXNumber_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mYNumber' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mYNumber_property = EBTransientProperty <Int?> ()
+  final let mYNumber_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mNumberHorizontalAlignment' stored property

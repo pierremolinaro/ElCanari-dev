@@ -127,11 +127,11 @@ extension AutoLayoutMergerDocument {
       for str in internalBoardsLimits {
         let segment = SegmentEntity (self.undoManager)
         let ints = array6int (fromString: str, #line, &errorArray)
-        segment.x1 = ints [0]
-        segment.y1 = ints [1]
-        segment.x2 = ints [2]
-        segment.y2 = ints [3]
-        segment.width = ints [4]
+        segment.x1 = .cu (ints [0])
+        segment.y1 = .cu (ints [1])
+        segment.x2 = .cu (ints [2])
+        segment.y2 = .cu (ints [3])
+        segment.width = .cu (ints [4])
         internalBoardsLimitsEntities.append (segment)
       }
       boardModel.internalBoardsLimits = internalBoardsLimitsEntities
@@ -143,11 +143,11 @@ extension AutoLayoutMergerDocument {
       for str in frontTracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array6int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
+        track.x1 = .cu (ints [0])
+        track.y1 = .cu (ints [1])
+        track.x2 = .cu (ints [2])
+        track.y2 = .cu (ints [3])
+        track.width = .cu (ints [4])
         let endStyle = ints [5]
         if endStyle == 0 {
           track.endStyle = .round
@@ -167,11 +167,11 @@ extension AutoLayoutMergerDocument {
       for str in backTracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array6int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
+        track.x1 = .cu (ints [0])
+        track.y1 = .cu (ints [1])
+        track.x2 = .cu (ints [2])
+        track.y2 = .cu (ints [3])
+        track.width = .cu (ints [4])
         let endStyle = ints [5]
         if endStyle == 0 {
           track.endStyle = .round
@@ -241,11 +241,11 @@ extension AutoLayoutMergerDocument {
       for str in frontLayoutTexts {
         let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, #line, &errorArray)
-        segment.x1 = ints [0]
-        segment.y1 = ints [1]
-        segment.x2 = ints [2]
-        segment.y2 = ints [3]
-        segment.width = ints [4]
+        segment.x1 = .cu (ints [0])
+        segment.y1 = .cu (ints [1])
+        segment.x2 = .cu (ints [2])
+        segment.y2 = .cu (ints [3])
+        segment.width = .cu (ints [4])
         frontLayoutTextEntities.append (segment)
       }
       boardModel.frontLayoutTexts = frontLayoutTextEntities
@@ -257,11 +257,11 @@ extension AutoLayoutMergerDocument {
       for str in backLayoutTexts {
         let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, #line, &errorArray)
-        segment.x1 = ints [0]
-        segment.y1 = ints [1]
-        segment.x2 = ints [2]
-        segment.y2 = ints [3]
-        segment.width = ints [4]
+        segment.x1 = .cu (ints [0])
+        segment.y1 = .cu (ints [1])
+        segment.x2 = .cu (ints [2])
+        segment.y2 = .cu (ints [3])
+        segment.width = .cu (ints [4])
         backLayoutTextEntities.append (segment)
       }
       boardModel.backLayoutTexts = backLayoutTextEntities
@@ -437,11 +437,11 @@ extension AutoLayoutMergerDocument {
       for str in drills {
         let segment = SegmentEntity (self.undoManager)
         let ints = array6int (fromString: str, #line, &errorArray)
-        segment.x1 = ints [0]
-        segment.y1 = ints [1]
-        segment.x2 = ints [2]
-        segment.y2 = ints [3]
-        segment.width = ints [4]
+        segment.x1 = .cu (ints [0])
+        segment.y1 = .cu (ints [1])
+        segment.x2 = .cu (ints [2])
+        segment.y2 = .cu (ints [3])
+        segment.width = .cu (ints [4])
         drillEntities.append (segment)
       }
       boardModel.drills = drillEntities
@@ -543,11 +543,11 @@ extension AutoLayoutMergerDocument {
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
+        track.x1 = .cu (ints [0])
+        track.y1 = .cu (ints [1])
+        track.x2 = .cu (ints [2])
+        track.y2 = .cu (ints [3])
+        track.width = .cu (ints [4])
         trackEntities.append (track)
       }
       boardModel.inner1Tracks = trackEntities
@@ -559,11 +559,11 @@ extension AutoLayoutMergerDocument {
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
+        track.x1 = .cu (ints [0])
+        track.y1 = .cu (ints [1])
+        track.x2 = .cu (ints [2])
+        track.y2 = .cu (ints [3])
+        track.width = .cu (ints [4])
         trackEntities.append (track)
       }
       boardModel.inner2Tracks = trackEntities
@@ -575,11 +575,11 @@ extension AutoLayoutMergerDocument {
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
+        track.x1 = .cu (ints [0])
+        track.y1 = .cu (ints [1])
+        track.x2 = .cu (ints [2])
+        track.y2 = .cu (ints [3])
+        track.width = .cu (ints [4])
         trackEntities.append (track)
       }
       boardModel.inner3Tracks = trackEntities
@@ -591,11 +591,11 @@ extension AutoLayoutMergerDocument {
       for str in tracks {
         let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, #line, &errorArray)
-        track.x1 = ints [0]
-        track.y1 = ints [1]
-        track.x2 = ints [2]
-        track.y2 = ints [3]
-        track.width = ints [4]
+        track.x1 = .cu (ints [0])
+        track.y1 = .cu (ints [1])
+        track.x2 = .cu (ints [2])
+        track.y2 = .cu (ints [3])
+        track.width = .cu (ints [4])
         trackEntities.append (track)
       }
       boardModel.inner4Tracks = trackEntities
@@ -809,14 +809,14 @@ fileprivate func array6int (fromString inString : String,
       errorArray.append ("The \"\(inKey)\" key value is not an array of 8 int string.")
     }else{
       let r = RectangleEntity (inUndoManager)
-      r.p0x = pts [0]
-      r.p0y = pts [1]
-      r.p1x = pts [2]
-      r.p1y = pts [3]
-      r.p2x = pts [4]
-      r.p2y = pts [5]
-      r.p3x = pts [6]
-      r.p3y = pts [7]
+      r.p0x = .cu (pts [0])
+      r.p0y = .cu (pts [1])
+      r.p1x = .cu (pts [2])
+      r.p1y = .cu (pts [3])
+      r.p2x = .cu (pts [4])
+      r.p2y = .cu (pts [5])
+      r.p3x = .cu (pts [6])
+      r.p3y = .cu (pts [7])
       rectangleArray.append (r)
     }
   }

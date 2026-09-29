@@ -27,7 +27,7 @@ extension SheetInProject {
           let p2 = wire.mP2!.location!
           let alignedP2 = p2.aligning (on: SCHEMATIC_GRID_LENGTH)
           if canariAlignedPoint != alignedP2 {
-            let segment = CanariSegment (x1: p1.x.cuValue, y1: p1.y.cuValue, x2: p2.x.cuValue, y2: p2.y.cuValue, width: width.cuValue, endStyle: .round)
+            let segment = CanariSegment (x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y, width: width, endStyle: .round)
             if segment.strictlyContains (point: inPoint) {
               result.append (wire)
             }

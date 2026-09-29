@@ -52,15 +52,15 @@ fileprivate struct TemporaryBoardModel {
 
 fileprivate struct KicadNetClass {
   let name : String
-  let padDiameter : Int
-  let drillDiameter : Int
+  let padDiameter : CanariLength
+  let drillDiameter : CanariLength
   let netNames : [String]
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (name inName : String,
-        padDiameter inPadDiameter : Int,
-        drillDiameter inDrillDiameter : Int,
+        padDiameter inPadDiameter :CanariLength,
+        drillDiameter inDrillDiameter : CanariLength,
         netNames inNetNames : [String]) {
     self.name = inName
     self.padDiameter = inPadDiameter
@@ -72,8 +72,8 @@ fileprivate struct KicadNetClass {
 
   init () {
     self.name = "???"
-    self.padDiameter = 0
-    self.drillDiameter = 0
+    self.padDiameter = .zero
+    self.drillDiameter = .zero
     self.netNames = []
   }
 
@@ -262,11 +262,11 @@ extension AutoLayoutMergerDocument {
        let width = inKicadItem.getFloat (["segment", "width"], 0, &ioErrorArray, #line),
        let layer = inKicadItem.getString (["segment", "layer"], 0, &ioErrorArray, #line) {
       let segment = SegmentEntity (self.undoManager)
-      segment.x1 = millimeterToCanariUnit (startX - ioTemporaryBoardModel.mLeftMM)
-      segment.y1 = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - startY)
-      segment.x2 = millimeterToCanariUnit (endX - ioTemporaryBoardModel.mLeftMM)
-      segment.y2 = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - endY)
-      segment.width = millimeterToCanariUnit (width)
+      segment.x1 = .mm (startX - ioTemporaryBoardModel.mLeftMM)
+      segment.y1 = .mm (ioTemporaryBoardModel.mBottomMM - startY)
+      segment.x2 = .mm (endX - ioTemporaryBoardModel.mLeftMM)
+      segment.y2 = .mm (ioTemporaryBoardModel.mBottomMM - endY)
+      segment.width = .mm (width)
       if layer == "F.Cu" {
         ioTemporaryBoardModel.mFrontTrackEntities.append (segment)
       }else if layer == "B.Cu" {
@@ -306,8 +306,8 @@ extension AutoLayoutMergerDocument {
           }
           let netClass = KicadNetClass (
             name: name,
-            padDiameter: millimeterToCanariUnit (padDiameter),
-            drillDiameter: millimeterToCanariUnit (holeDiameter),
+            padDiameter: .mm (padDiameter),
+            drillDiameter: .mm (holeDiameter),
             netNames: netNameArray
           )
           ioNetClassArray.append (netClass)
@@ -336,10 +336,10 @@ extension AutoLayoutMergerDocument {
       ioTemporaryBoardModel.mViaEntities.append (via)
     //--- Add drill
       let segment = SegmentEntity (self.undoManager)
-      segment.x1 = via.x.cuValue
-      segment.y1 = via.y.cuValue
-      segment.x2 = via.x.cuValue
-      segment.y2 = via.y.cuValue
+      segment.x1 = via.x
+      segment.y1 = via.y
+      segment.x2 = via.x
+      segment.y2 = via.y
       segment.width = netClass.drillDiameter
       ioTemporaryBoardModel.mDrillEntities.append (segment)
     }
@@ -533,12 +533,12 @@ extension AutoLayoutMergerDocument {
               currentPoint = pointArray [0]
             case .lineTo :
               let packageLine = SegmentEntity (self.undoManager)
-              packageLine.x1 = millimeterToCanariUnit (CGFloat (currentPoint.x))
-              packageLine.y1 = millimeterToCanariUnit (CGFloat (currentPoint.y))
-              packageLine.x2 = millimeterToCanariUnit (CGFloat (pointArray [0].x))
-              packageLine.y2 = millimeterToCanariUnit (CGFloat (pointArray [0].y))
+              packageLine.x1 = .mm (currentPoint.x)
+              packageLine.y1 = .mm (currentPoint.y)
+              packageLine.x2 = .mm (pointArray [0].x)
+              packageLine.y2 = .mm (pointArray [0].y)
               currentPoint = pointArray [0]
-              packageLine.width = millimeterToCanariUnit (widthMM)
+              packageLine.width = .mm (widthMM)
               if layer == "F.Cu" {
                 if lineLayer == "F.SilkS" {
                   ioTemporaryBoardModel.mFrontPackagesEntities.append (packageLine)
@@ -596,20 +596,20 @@ extension AutoLayoutMergerDocument {
             ioTemporaryBoardModel.mBackPadEntities.append (pad)
             if let holeSpecification = item.getString (["pad", "drill"], 0, &ioErrorArray, #line) {
               if let holeDiameter = Double (holeSpecification) {
-                let drillDiameter = millimeterToCanariUnit (CGFloat (holeDiameter))
+                let drillDiameter = CanariLength.mm (holeDiameter)
                 let x1 = pad.x
                 let y1 = pad.y
                 let drill = SegmentEntity (self.undoManager)
-                drill.x1 = x1.cuValue
-                drill.y1 = y1.cuValue
-                drill.x2 = x1.cuValue
-                drill.y2 = y1.cuValue
+                drill.x1 = x1
+                drill.y1 = y1
+                drill.x2 = x1
+                drill.y2 = y1
                 drill.width = drillDiameter
                 ioTemporaryBoardModel.mDrillEntities.append (drill)
               }else if holeSpecification == "oval" {
                 if let drillDiameterMM = item.getFloat (["pad", "drill"], 1, &ioErrorArray, #line),
                    let ovalMM = item.getFloat (["pad", "drill"], 2, &ioErrorArray, #line) {
-                  let drillDiameter = millimeterToCanariUnit (drillDiameterMM)
+                  let drillDiameter = CanariLength.mm (drillDiameterMM)
                   let padTransform = NSAffineTransform ()
                   padTransform.scaleX (by: 1.0, yBy: -1.0)
                   padTransform.rotate (byDegrees: CGFloat (-moduleRotationInDegrees))
@@ -617,10 +617,10 @@ extension AutoLayoutMergerDocument {
                   let dx = CanariLength.mm (p.x)
                   let dy = CanariLength.mm (p.y)
                   let drill = SegmentEntity (self.undoManager)
-                  drill.x1 = (pad.x - dx).cuValue
-                  drill.y1 = (pad.y - dy).cuValue
-                  drill.x2 = (pad.x + dx).cuValue
-                  drill.y2 = (pad.y + dy).cuValue
+                  drill.x1 = (pad.x - dx)
+                  drill.y1 = (pad.y - dy)
+                  drill.x2 = (pad.x + dx)
+                  drill.y2 = (pad.y + dy)
                   drill.width = drillDiameter
                   ioTemporaryBoardModel.mDrillEntities.append (drill)
                 }else{
@@ -660,7 +660,6 @@ extension AutoLayoutMergerDocument {
            let endX = item.getFloat (["gr_line", "end"], 0, &ioErrorArray, #line),
            let endY = item.getFloat (["gr_line", "end"], 1, &ioErrorArray, #line),
            let width = item.getFloat (["gr_line", "width"], 0, &ioErrorArray, #line),
-  //         let angle = item.getFloat (["gr_line", "angle"], 0, &ioErrorArray, #line),
            let layer = item.getString (["gr_line", "layer"], 0, &ioErrorArray, #line) {
           if layer == "Edge.Cuts" {
             let x1 = millimeterToCanariUnit (startX)

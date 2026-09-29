@@ -1,11 +1,11 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 entity SegmentEntity {
-  property @generateDirectAccess Int x1 default 0 ;
-  property @generateDirectAccess Int y1 default 0 ;
-  property @generateDirectAccess Int x2 default 0 ;
-  property @generateDirectAccess Int y2 default 0 ;
-  property @generateDirectAccess Int width default 0 ;
+  property @generateDirectAccess CanariLength x1 default ".zero" ;
+  property @generateDirectAccess CanariLength y1 default ".zero" ;
+  property @generateDirectAccess CanariLength x2 default ".zero" ;
+  property @generateDirectAccess CanariLength y2 default ".zero" ;
+  property @generateDirectAccess CanariLength width default ".zero" ;
   property @generateDirectAccess TrackEndStyle endStyle default round ;
 }
 

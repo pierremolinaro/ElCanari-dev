@@ -31,7 +31,7 @@ import CanariGeometry
     let y2 = self_backComponentNames_y2 [idx].y2
     let width = self_backComponentNames_width [idx].width
     // NSLog ("\(x1) \(y1) \(x2) \(y2) \(width)")
-    segmentArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width, endStyle: .round))
+    segmentArray.append (CanariSegment (x1: x1, y1:y1, x2:x2, y2:y2, width:width, endStyle: .round))
     idx += 1
   }
   return MergerSegmentArray (segmentArray)

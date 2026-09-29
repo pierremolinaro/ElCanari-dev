@@ -291,33 +291,6 @@ extension AutoLayoutProjectDocument {
     for (viaConnector, _) in inRoutedViaArray {
       addedObjectArray.append (viaConnector)
     }
-//  //----------------- If via at SMD is allowed, attach via to SMD pad
-//    if self.rootObject.mAllowViaAtSMD {
-//      for (viaConnector, _) in inRoutedViaArray {
-//         let viaLocation = viaConnector.location!
-//         for object in self.rootObject.mBoardObjects.values {
-//           if let connector = object as? BoardConnector,
-//              let connectorLocation = connector.location,
-//              let connectorSide = connector.side,
-//              (connectorSide == .front) || (connectorSide == .back) {
-//             let dx = Double (connectorLocation.x - viaLocation.x)
-//             let dy = Double (connectorLocation.y - viaLocation.y)
-//             let dSquare = dx * dx + dy * dy
-//             let found = dSquare <= SQUARE_OF_CAPTURE_DISTANCE
-//             if found {
-//               let track = BoardTrack (self.undoManager)
-//               track.mSide = (connectorSide == .front) ? .front : .back
-//               track.mConnectorP2 = viaConnector
-//               track.mConnectorP1 = connector
-//               track.mNet = connector.connectedTracksNet ()
-//               track.mUsesCustomTrackWidth = true
-//               track.mCustomTrackWidth = viaConnector.actualPadDiameter!
-//               track.mIsPreservedByAutoRouter = false
-//             }
-//           }
-//         }
-//      }
-//    }
   //--- Divide tracks for handling tees and crosses
     let routedTracksArray = handleTeesAndCrossesFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray)
   //--- Build connectors attached to pad
@@ -340,7 +313,7 @@ extension AutoLayoutProjectDocument {
         track.mNet = t.net
         track.mSide = t.side
         track.mUsesCustomTrackWidth = true
-        track.mCustomTrackWidth = .cu (t.width)
+        track.mCustomTrackWidth = t.width
         track.mIsPreservedByAutoRouter = t.preservedByRouter
         if track.mIsPreservedByAutoRouter {
           var found = false
@@ -365,7 +338,7 @@ extension AutoLayoutProjectDocument {
         let oblong = GeometricOblong (
           p1: t.p1.ptValue,
           p2: t.p2.ptValue,
-          width: canariUnitToCocoa (t.width),
+          width: t.width.ptValue,
           capStyle: .round
         )
         for pr in inPropertyRects {
@@ -436,7 +409,7 @@ fileprivate struct RoutedTrackForSESImporting {
   let p1 : CanariPoint
   let p2 : CanariPoint
   let side : TrackSide
-  let width : Int
+  let width : CanariLength
   let net : NetInProject
   let preservedByRouter : Bool
 }
@@ -486,7 +459,7 @@ fileprivate func enterSegments (_ inScanner : Scanner,
               p1: CanariPoint (x: .cu (Int (currentX * inResolution)), y: .cu (Int (currentY * inResolution))),
               p2: CanariPoint (x: .cu (Int (x * inResolution)), y: .cu (Int (y * inResolution))),
               side: inSide,
-              width: Int (wireWidth * inResolution),
+              width: .cu (Int (wireWidth * inResolution)),
               net: inNet,
               preservedByRouter: false
             )

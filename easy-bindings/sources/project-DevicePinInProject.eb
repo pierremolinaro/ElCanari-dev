@@ -14,8 +14,8 @@ entity DevicePinInProject {
   property @generateDirectAccess HorizontalAlignment mNameHorizontalAlignment default center ;
   property @generateDirectAccess Bool mPinNameIsDisplayedInSchematic default yes ;
 
-  property @generateDirectAccess Int mXNumber default 0 ;
-  property @generateDirectAccess Int mYNumber default 0 ;
+  property @generateDirectAccess CanariLength mXNumber default ".zero" ;
+  property @generateDirectAccess CanariLength mYNumber default ".zero" ;
   property @generateDirectAccess HorizontalAlignment mNumberHorizontalAlignment default center ;
 
   transient PinQualifiedNameStruct pinQualifiedName dependsFrom self.mSymbolInstanceName, self.mPinName ;

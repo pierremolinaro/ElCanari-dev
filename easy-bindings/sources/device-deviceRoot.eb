@@ -273,8 +273,8 @@ handlingOpposite entity SymbolPinTypeInDevice {
   property @generateDirectAccess @signature HorizontalAlignment mNameHorizontalAlignment default center ;
   property @generateDirectAccess @signature Bool mPinNameIsDisplayedInSchematics default yes ;
 
-  property @generateDirectAccess @signature Int mXNumber default 0 ;
-  property @generateDirectAccess @signature Int mYNumber default 0 ;
+  property @generateDirectAccess @signature CanariLength mXNumber default ".zero" ;
+  property @generateDirectAccess @signature CanariLength mYNumber default ".zero" ;
   property @generateDirectAccess @signature HorizontalAlignment mNumberHorizontalAlignment default center ;
 
   transient EBShape nameShape dependsFrom

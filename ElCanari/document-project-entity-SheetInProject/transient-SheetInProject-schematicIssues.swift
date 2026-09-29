@@ -56,11 +56,12 @@ import CanariGeometry
         for wire in self_mObjects_wires {
           for wireDescriptor : CanariWireDescription in wire.wires ?? [] {
             let segment = CanariSegment (
-              x1: wireDescriptor.p1.x.cuValue,
-              y1: wireDescriptor.p1.y.cuValue,
-              x2: wireDescriptor.p2.x.cuValue,
-              y2: wireDescriptor.p2.y.cuValue,
-              width: CANARI_UNITS_PER_POINT * prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10,
+              x1: wireDescriptor.p1.x,
+              y1: wireDescriptor.p1.y,
+              x2: wireDescriptor.p2.x,
+              y2: wireDescriptor.p2.y,
+//              width: CANARI_UNITS_PER_POINT * prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10,
+              width: .pt (prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10),
               endStyle: .round
             )
             for (point, _) in pointDictionary {

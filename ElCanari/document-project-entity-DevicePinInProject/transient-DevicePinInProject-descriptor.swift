@@ -25,8 +25,8 @@ import CanariGeometry
        _ self_mYName : CanariLength,                     
        _ self_mNameHorizontalAlignment : HorizontalAlignment,
        _ self_mPinNameIsDisplayedInSchematic : Bool,     
-       _ self_mXNumber : Int,                            
-       _ self_mYNumber : Int,                            
+       _ self_mXNumber : CanariLength,                   
+       _ self_mYNumber : CanariLength,                   
        _ self_mNumberHorizontalAlignment : HorizontalAlignment
 ) -> PinInProjectDescriptor {
 //--- START OF USER ZONE 2
@@ -37,7 +37,7 @@ import CanariGeometry
           nameXY: CanariPoint (x: self_mXName, y: self_mYName),
           nameHorizontalAlignment: self_mNameHorizontalAlignment,
           pinNameIsDisplayedInSchematics: self_mPinNameIsDisplayedInSchematic,
-          numberXY : CanariPoint (x: .cu (self_mXNumber), y: .cu (self_mYNumber)),
+          numberXY : CanariPoint (x: self_mXNumber, y: self_mYNumber),
           numberHorizontalAlignment: self_mNumberHorizontalAlignment
         )
 //--- END OF USER ZONE 2

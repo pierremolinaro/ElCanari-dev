@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15,10 +16,10 @@ import Foundation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addToArchiveArray (_ ioArchiveArray : inout [String],
-                          dx inDx : Int,
-                          dy inDy: Int,
-                          modelWidth inModelWidth : Int,
-                          modelHeight inModelHeight : Int,
+                          dx inDx : CanariLength,
+                          dy inDy: CanariLength,
+                          modelWidth inModelWidth : CanariLength,
+                          modelHeight inModelHeight : CanariLength,
                           instanceRotation inInstanceRotation : QuadrantRotation) {
     for segment in self {
       var x1 = inDx
@@ -113,12 +114,12 @@ import Foundation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addToStrokeBezierPaths (_ ioBezierPaths : inout [BezierPath],
-                               dx inDx : Int,
-                               dy inDy: Int,
+                               dx inDx : CanariLength,
+                               dy inDy: CanariLength,
                                horizontalMirror inHorizontalMirror : Bool,
-                               boardWidth inBoardWidth : Int,
-                               modelWidth inModelWidth : Int,
-                               modelHeight inModelHeight : Int,
+                               boardWidth inBoardWidth : CanariLength,
+                               modelWidth inModelWidth : CanariLength,
+                               modelHeight inModelHeight : CanariLength,
                                instanceRotation inInstanceRotation : QuadrantRotation) {
     for segment in self {
       var x1 = inDx
@@ -147,11 +148,11 @@ import Foundation
         x2 += segment.y2
         y2 += inModelWidth - segment.x2
       }
-      let x1f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x1) : x1)
-      let y1f = canariUnitToCocoa (y1)
-      let x2f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x2) : x2)
-      let y2f = canariUnitToCocoa (y2)
-      let width = canariUnitToCocoa (segment.width)
+      let x1f = (inHorizontalMirror ? (inBoardWidth - x1) : x1).ptValue
+      let y1f = y1.ptValue
+      let x2f = (inHorizontalMirror ? (inBoardWidth - x2) : x2).ptValue
+      let y2f = y2.ptValue
+      let width = segment.width.ptValue
       var bp = BezierPath ()
       bp.move (to: NSPoint (x: x1f, y: y1f))
       bp.line (to: NSPoint (x: x2f, y: y2f))

@@ -112,7 +112,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
         _ inGraphicView : EBGraphicView,
         _ inViewController : any EBGraphicViewControllerProtocol) {
     self.mLastMouseDraggedUnalignedLocation = inUnalignedLocation
-    self.mLastMouseDraggedAlignedLocation = inUnalignedLocation.canariPointAligned (onGrid: inGraphicView.mMouseGridInCanariUnit)
+    self.mLastMouseDraggedAlignedLocation = inUnalignedLocation.alignedCanariPoint (on: inGraphicView.mMouseGridInCanariUnit)
     self.mObjectIndex = inObjectIndex
     let objectWasSelected = inViewController.selectedIndexesSet.contains (inObjectIndex)
     if !objectWasSelected {
@@ -132,7 +132,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
       x: inMouseDraggedUnalignedLocation.x - self.mLastMouseDraggedUnalignedLocation.x,
       y: inMouseDraggedUnalignedLocation.y - self.mLastMouseDraggedUnalignedLocation.y
     )
-    let mouseDraggedCanariAlignedLocation = inMouseDraggedUnalignedLocation.canariPointAligned (onGrid: inGraphicView.mMouseGridInCanariUnit)
+    let mouseDraggedCanariAlignedLocation = inMouseDraggedUnalignedLocation.alignedCanariPoint (on: inGraphicView.mMouseGridInCanariUnit)
     let proposedAlignedTranslation = CanariPoint (
       x: mouseDraggedCanariAlignedLocation.x - self.mLastMouseDraggedAlignedLocation.x,
       y: mouseDraggedCanariAlignedLocation.y - self.mLastMouseDraggedAlignedLocation.y

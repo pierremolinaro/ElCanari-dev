@@ -18,23 +18,23 @@ struct CanariSegment : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let x1 : Int
-  let y1 : Int
-  let x2 : Int
-  let y2 : Int
-  let width : Int
+  let x1 : CanariLength
+  let y1 : CanariLength
+  let x2 : CanariLength
+  let y2 : CanariLength
+  let width : CanariLength
   let endStyle : TrackEndStyle
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func strictlyContains (point inPoint : CanariPoint) -> Bool {
-    let x1 = Double (self.x1)
-    let y1 = Double (self.y1)
-    let x2 = Double (self.x2)
-    let y2 = Double (self.y2)
+    let x1 = Double (self.x1.cuValue)
+    let y1 = Double (self.y1.cuValue)
+    let x2 = Double (self.x2.cuValue)
+    let y2 = Double (self.y2.cuValue)
     let x = Double (inPoint.x.cuValue)
     let y = Double (inPoint.y.cuValue)
-    let hw = Double (self.width / 2)
+    let hw = Double (self.width.cuValue / 2)
     var within : Bool
     if self.x1 == self.x2 { // vertical segment
       within = (y > min (y1, y2)) && (y < max (y1, y2)) && (x >= (x1 - hw)) && (x <= (x1 + hw))
@@ -51,7 +51,7 @@ struct CanariSegment : Hashable {
       let d_y2_y1 = y2 - y1
       let d2 = d_x2_x1 * d_x2_x1 + d_y2_y1 * d_y2_y1
       let s = 2.0 * p2 + 2.0 * q2 - d2 - (p2 - q2) * (p2 - q2) / d2
-      let w = Double (self.width)
+      let w = Double (self.width.cuValue)
       within = s <= (w * w)
       if within {
         within = p2 >= (hw * hw)

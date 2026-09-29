@@ -29,10 +29,10 @@ import CanariGeometry
         var result = MergerRectangleArray ()
         var idx = 0
         while idx < self_legendFrontQRCodes_p0x.count {
-          let p0 = CanariPoint (x: .cu (self_legendFrontQRCodes_p0x [idx].p0x), y: .cu (self_legendFrontQRCodes_p0y [idx].p0y)).ptValue
-          let p1 = CanariPoint (x: .cu (self_legendFrontQRCodes_p1x [idx].p1x), y: .cu (self_legendFrontQRCodes_p1y [idx].p1y)).ptValue
-          let p2 = CanariPoint (x: .cu (self_legendFrontQRCodes_p2x [idx].p2x), y: .cu (self_legendFrontQRCodes_p2y [idx].p2y)).ptValue
-          let p3 = CanariPoint (x: .cu (self_legendFrontQRCodes_p3x [idx].p3x), y: .cu (self_legendFrontQRCodes_p3y [idx].p3y)).ptValue
+          let p0 = NSPoint (x: self_legendFrontQRCodes_p0x [idx].p0x, y: self_legendFrontQRCodes_p0y [idx].p0y)
+          let p1 = NSPoint (x: self_legendFrontQRCodes_p1x [idx].p1x, y: self_legendFrontQRCodes_p1y [idx].p1y)
+          let p2 = NSPoint (x: self_legendFrontQRCodes_p2x [idx].p2x, y: self_legendFrontQRCodes_p2y [idx].p2y)
+          let p3 = NSPoint (x: self_legendFrontQRCodes_p3x [idx].p3x, y: self_legendFrontQRCodes_p3y [idx].p3y)
           result.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
           idx += 1
         }

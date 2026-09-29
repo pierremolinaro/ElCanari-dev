@@ -19,7 +19,7 @@ extension AutoLayoutProjectDocument {
     self.mWireCreatedByOptionClick = nil
     if let selectedSheet = self.rootObject.mSelectedSheet {
        _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint.canariPoint)
-       let p = inUnalignedMousePoint.canariPointAligned (onGrid: SCHEMATIC_GRID_LENGTH)
+       let p = inUnalignedMousePoint.alignedCanariPoint (on: SCHEMATIC_GRID_LENGTH)
     //--- Find points at p
       let pointsAtP = selectedSheet.pointsInSchematics (at: p)
     //--- Check all points are not "nc"
