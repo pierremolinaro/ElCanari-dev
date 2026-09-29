@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageGuide_issues (
-       _ self_x1 : Int,                        
-       _ self_y1 : Int,                        
-       _ self_x2 : Int,                        
-       _ self_y2 : Int
+       _ self_x1 : CanariLength,               
+       _ self_y1 : CanariLength,               
+       _ self_x2 : CanariLength,               
+       _ self_y2 : CanariLength
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
     return CanariIssueArray ()

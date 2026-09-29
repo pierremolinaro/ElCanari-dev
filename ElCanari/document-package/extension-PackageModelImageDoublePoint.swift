@@ -56,8 +56,8 @@ extension PackageModelImageDoublePoint {
   func translate_PackageModelImageDoublePoint (xBy inDx: CanariLength,
                                                yBy inDy: CanariLength,
                                                userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.mFirstX += inDx.cuValue
-    self.mFirstY += inDy.cuValue
+    self.mFirstX += inDx
+    self.mFirstY += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -83,11 +83,11 @@ extension PackageModelImageDoublePoint {
                                           alignedMouseLocationY _ : CanariLength,
                                           shift _ : Bool) {
     if inKnobIndex == MODEL_IMAGE_FIRST_POINT {
-      self.mFirstX += inDx.cuValue
-      self.mFirstY += inDy.cuValue
+      self.mFirstX += inDx
+      self.mFirstY += inDy
     }else if inKnobIndex == MODEL_IMAGE_SECOND_POINT {
-      self.mSecondDx += inDx.cuValue
-      self.mSecondDy += inDy.cuValue
+      self.mSecondDx += inDx
+      self.mSecondDy += inDy
     }
   }
 

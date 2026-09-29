@@ -15,12 +15,12 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageSlavePad_objectDisplay (
-       _ self_xCenter : Int,                             
-       _ self_yCenter : Int,                             
-       _ self_width : Int,                               
-       _ self_height : Int,                              
-       _ self_holeWidth : Int,                           
-       _ self_holeHeight : Int,                          
+       _ self_xCenter : CanariLength,                    
+       _ self_yCenter : CanariLength,                    
+       _ self_width : CanariLength,                      
+       _ self_height : CanariLength,                     
+       _ self_holeWidth : CanariLength,                  
+       _ self_holeHeight : CanariLength,                 
        _ self_padShape : PadShape,                       
        _ self_padStyle : SlavePadStyle,                  
        _ prefs_frontSidePadColor : NSColor,              
@@ -29,10 +29,10 @@ import CanariGeometry
        _ prefs_displayPackageBackSidePads : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let xCenter = canariUnitToCocoa (self_xCenter)
-    let yCenter = canariUnitToCocoa (self_yCenter)
-    let width = canariUnitToCocoa (self_width)
-    let height = canariUnitToCocoa (self_height)
+    let xCenter = self_xCenter.ptValue
+    let yCenter = self_yCenter.ptValue
+    let width = self_width.ptValue
+    let height = self_height.ptValue
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     var bp : BezierPath
     switch self_padShape {
@@ -45,8 +45,8 @@ import CanariGeometry
     }
     switch self_padStyle {
     case .traversing :
-      let holeWidth = canariUnitToCocoa (self_holeWidth)
-      let holeHeight = canariUnitToCocoa (self_holeHeight)
+      let holeWidth = self_holeWidth.ptValue
+      let holeHeight = self_holeHeight.ptValue
       let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd

@@ -7,23 +7,22 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
-import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   AutoLayoutCanariDimensionAndPopUp
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
+final class AutoLayoutCanariDimensionAndPopUpEx : AutoLayoutHorizontalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate let mDimensionField  : AutoLayoutCanariDimensionField
+  fileprivate let mDimensionField  : AutoLayoutCanariDimensionFieldEx
   fileprivate let mUnitPopUpButton : AutoLayoutCanariUnitPopUpButton
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
-    self.mDimensionField  = AutoLayoutCanariDimensionField (size: inSize)
+    self.mDimensionField  = AutoLayoutCanariDimensionFieldEx (size: inSize)
     self.mUnitPopUpButton = AutoLayoutCanariUnitPopUpButton (size: inSize)
     self.mUnitPopUpButton.setContentHuggingPriority (.defaultLow, for: .vertical)
     super.init ()
@@ -38,7 +37,7 @@ final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_dimensionAndUnit (_ inDimension : EBObservableMutableProperty <CanariLength>,
+  final func bind_dimensionAndUnit (_ inDimension : EBObservableMutableProperty <Int>,
                                     _ inUnit : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mDimensionField.bind_dimensionAndUnit (inDimension, inUnit)
     _ = self.mUnitPopUpButton.bind_unit (inUnit)

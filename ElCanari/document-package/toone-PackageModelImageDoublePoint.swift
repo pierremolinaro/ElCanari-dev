@@ -43,13 +43,13 @@ class ReadOnlyObject_PackageModelImageDoublePoint : EBReadOnlyAbstractObjectProp
   //   Observers of 'mFirstX' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mFirstX_property = EBTransientProperty <Int?> ()
+  final let mFirstX_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mFirstY' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mFirstY_property = EBTransientProperty <Int?> ()
+  final let mFirstY_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mFirstColor' stored property
@@ -61,13 +61,13 @@ class ReadOnlyObject_PackageModelImageDoublePoint : EBReadOnlyAbstractObjectProp
   //   Observers of 'mSecondDx' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mSecondDx_property = EBTransientProperty <Int?> ()
+  final let mSecondDx_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mSecondDy' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mSecondDy_property = EBTransientProperty <Int?> ()
+  final let mSecondDy_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mSecondColor' stored property

@@ -15,20 +15,20 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageZone_issues (
-       _ self_x : Int,                        
-       _ self_y : Int,                        
-       _ self_width : Int,                    
-       _ self_height : Int,                   
-       _ self_xName : Int,                    
-       _ self_yName : Int,                    
+       _ self_x : CanariLength,               
+       _ self_y : CanariLength,               
+       _ self_width : CanariLength,           
+       _ self_height : CanariLength,          
+       _ self_xName : CanariLength,           
+       _ self_yName : CanariLength,           
        _ self_zoneName : String
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  if self_width == 0 {
+  if self_width == .zero {
     issues.appendZoneZeroWidthIssueAt (x: self_x, y: self_y + self_height / 2)
   }
-  if self_height == 0 {
+  if self_height == .zero {
     issues.appendZoneZeroHeightIssueAt (x: self_x + self_width / 2, y: self_y)
   }
   if self_zoneName.isEmpty {

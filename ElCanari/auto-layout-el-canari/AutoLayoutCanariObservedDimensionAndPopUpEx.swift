@@ -1,5 +1,5 @@
 //
-//  AutoLayoutCanariDimensionAndPopUp.swift
+//  AutoLayoutCanariObservedDimensionAndPopUp.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/02/2021.
@@ -7,25 +7,25 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
-import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
-//   AutoLayoutCanariDimensionAndPopUp
+//   AutoLayoutCanariObservedDimensionAndPopUp
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
+final class AutoLayoutCanariObservedDimensionAndPopUpEx : AutoLayoutHorizontalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate let mDimensionField  : AutoLayoutCanariDimensionField
+  fileprivate let mDimensionField  : AutoLayoutCanariObservedDimensionFieldEx
   fileprivate let mUnitPopUpButton : AutoLayoutCanariUnitPopUpButton
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
-    self.mDimensionField  = AutoLayoutCanariDimensionField (size: inSize)
+    self.mDimensionField  = AutoLayoutCanariObservedDimensionFieldEx (size: inSize)
     self.mUnitPopUpButton = AutoLayoutCanariUnitPopUpButton (size: inSize)
     self.mUnitPopUpButton.setContentHuggingPriority (.defaultLow, for: .vertical)
+
     super.init ()
     _ = self.appendView (self.mDimensionField).appendView (self.mUnitPopUpButton)
   }
@@ -38,17 +38,10 @@ final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_dimensionAndUnit (_ inDimension : EBObservableMutableProperty <CanariLength>,
+  final func bind_dimensionAndUnit (_ inDimension : EBObservableProperty <Int>,
                                     _ inUnit : EBObservableMutableProperty <Int>) -> Self {
     _ = self.mDimensionField.bind_dimensionAndUnit (inDimension, inUnit)
     _ = self.mUnitPopUpButton.bind_unit (inUnit)
-    return self
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func bind_enabled (_ inExpression : MultipleBindingBooleanExpression) -> Self {
-    _ = self.mDimensionField.bind_enabled (inExpression)
     return self
   }
 

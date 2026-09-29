@@ -15,15 +15,15 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageSegment_strokeBezierPath (
-       _ self_x1 : Int,                                    
-       _ self_y1 : Int,                                    
-       _ self_x2 : Int,                                    
-       _ self_y2 : Int
+       _ self_x1 : CanariLength,                           
+       _ self_y1 : CanariLength,                           
+       _ self_x2 : CanariLength,                           
+       _ self_y2 : CanariLength
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
   let bp = NSBezierPath ()
-  bp.move (to: NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
-  bp.line (to: NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
+  bp.move (to: NSPoint (x: self_x1, y: self_y1))
+  bp.line (to: NSPoint (x: self_x2, y: self_y2))
   return bp
 //--- END OF USER ZONE 2
 }

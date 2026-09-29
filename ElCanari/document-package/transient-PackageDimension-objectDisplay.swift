@@ -16,12 +16,12 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageDimension_objectDisplay (
-       _ self_x1 : Int,                                   
-       _ self_y1 : Int,                                   
-       _ self_x2 : Int,                                   
-       _ self_y2 : Int,                                   
-       _ self_xDimension : Int,                           
-       _ self_yDimension : Int,                           
+       _ self_x1 : CanariLength,                          
+       _ self_y1 : CanariLength,                          
+       _ self_x2 : CanariLength,                          
+       _ self_y2 : CanariLength,                          
+       _ self_xDimension : CanariLength,                  
+       _ self_yDimension : CanariLength,                  
        _ self_distanceInCanariUnit : Int,                 
        _ self_distanceUnit : Int,                         
        _ prefs_dimensionFont : NSFont,                    
@@ -31,8 +31,8 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let arrowSize : CGFloat = 0.5
-  let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
-  let p2 = NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
+  let p1 = NSPoint (x: self_x1, y: self_y1)
+  let p2 = NSPoint (x: self_x2, y: self_y2)
   let length = NSPoint.distance (p1, p2)
   var shape = EBShape ()
  //--- Compute angle
@@ -86,7 +86,7 @@ import CanariGeometry
   shape.add (filled: [path1, path2], prefs_packageDimensionColor)
 //------- Add dimension text
   let dimensionText = valueAndUnitStringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
-  let p = CanariPoint (x: .cu (self_xDimension + (self_x1 + self_x2) / 2), y: .cu (self_yDimension + (self_y1 + self_y2) / 2)).ptValue
+  let p = NSPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2)
   var textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,
     NSAttributedString.Key.foregroundColor : prefs_packageDimensionColor

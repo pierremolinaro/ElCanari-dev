@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -18,12 +19,12 @@ extension Array where Element == CanariIssue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendOvalZeroWidthIssueAt (x: Int, y: Int) {
+  mutating func appendOvalZeroWidthIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      width: CANARI_ISSUE_HILITE_SIZE,
-      height: CANARI_ISSUE_HILITE_SIZE
+      x: x - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      y: y - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      width: .cu (CANARI_ISSUE_HILITE_SIZE),
+      height: .cu (CANARI_ISSUE_HILITE_SIZE)
     )
     var bp = BezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -32,12 +33,12 @@ extension Array where Element == CanariIssue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendOvalZeroHeightIssueAt (x: Int, y: Int) {
+  mutating func appendOvalZeroHeightIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      width: CANARI_ISSUE_HILITE_SIZE,
-      height: CANARI_ISSUE_HILITE_SIZE
+      x: x - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      y: y - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      width: .cu (CANARI_ISSUE_HILITE_SIZE),
+      height: .cu (CANARI_ISSUE_HILITE_SIZE)
     )
     var bp = BezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -46,12 +47,12 @@ extension Array where Element == CanariIssue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendZoneZeroWidthIssueAt (x: Int, y: Int) {
+  mutating func appendZoneZeroWidthIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      width: CANARI_ISSUE_HILITE_SIZE,
-      height: CANARI_ISSUE_HILITE_SIZE
+      x: x - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      y: y - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      width: .cu (CANARI_ISSUE_HILITE_SIZE),
+      height: .cu (CANARI_ISSUE_HILITE_SIZE)
     )
     var bp = BezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -60,12 +61,12 @@ extension Array where Element == CanariIssue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendZoneZeroHeightIssueAt (x: Int, y: Int) {
+  mutating func appendZoneZeroHeightIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      width: CANARI_ISSUE_HILITE_SIZE,
-      height: CANARI_ISSUE_HILITE_SIZE
+      x: x - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      y: y - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      width: .cu (CANARI_ISSUE_HILITE_SIZE),
+      height: .cu (CANARI_ISSUE_HILITE_SIZE)
     )
     var bp = BezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -74,12 +75,12 @@ extension Array where Element == CanariIssue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendZoneEmptyNameHeightIssueAt (x: Int, y: Int) {
+  mutating func appendZoneEmptyNameHeightIssueAt (x: CanariLength, y: CanariLength) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      width: CANARI_ISSUE_HILITE_SIZE,
-      height: CANARI_ISSUE_HILITE_SIZE
+      x: x - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      y: y - .cu (CANARI_ISSUE_HILITE_SIZE) / 2.0,
+      width: .cu (CANARI_ISSUE_HILITE_SIZE),
+      height: .cu (CANARI_ISSUE_HILITE_SIZE)
     )
     var bp = BezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH

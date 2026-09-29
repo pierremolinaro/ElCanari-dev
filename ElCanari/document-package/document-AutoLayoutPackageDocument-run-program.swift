@@ -315,17 +315,17 @@ extension AutoLayoutPackageDocument {
     let distanceUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageDimension (self.undoManager)
-    object.x1 = x1
+    object.x1 = .cu (x1)
     object.x1Unit = x1Unit
-    object.y1 = y1
+    object.y1 = .cu (y1)
     object.y1Unit = y1Unit
-    object.x2 = x2
+    object.x2 = .cu (x2)
     object.x2Unit = x2Unit
-    object.y2 = y2
+    object.y2 = .cu (y2)
     object.y2Unit = y2Unit
-    object.xDimension = xDimension
+    object.xDimension = .cu (xDimension)
     object.xDimensionUnit = xDimensionUnit
-    object.yDimension = yDimension
+    object.yDimension = .cu (yDimension)
     object.yDimensionUnit = yDimensionUnit
     object.distanceUnit = distanceUnit
     ioObjects.append (object)
@@ -363,17 +363,17 @@ extension AutoLayoutPackageDocument {
     }
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageZone (self.undoManager)
-    object.x = x
+    object.x = .cu (x)
     object.xUnit = xUnit
-    object.y = y
+    object.y = .cu (y)
     object.yUnit = yUnit
-    object.width = width
+    object.width = .cu (width)
     object.widthUnit = widthUnit
-    object.height = height
+    object.height = .cu (height)
     object.heightUnit = heightUnit
-    object.xName = xName
+    object.xName = .cu (xName)
     object.xNameUnit = xNameUnit
-    object.yName = yName
+    object.yName = .cu (yName)
     object.yNameUnit = yNameUnit
     object.zoneName = zoneName
     if ioOk, let zoneNumbering = possibleZoneNumbering {
@@ -422,19 +422,19 @@ extension AutoLayoutPackageDocument {
     let masterPadID = self.scanInteger (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageSlavePad (self.undoManager)
-    object.xCenter = xCenter
+    object.xCenter = .cu (xCenter)
     object.xCenterUnit = xCenterUnit
-    object.yCenter = yCenter
+    object.yCenter = .cu (yCenter)
     object.yCenterUnit = yCenterUnit
-    object.width = width
+    object.width = .cu (width)
     object.widthUnit = widthUnit
-    object.height = height
+    object.height = .cu (height)
     object.heightUnit = heightUnit
     object.padShape = padShape
     object.padStyle = padStyle
-    object.holeWidth = holeWidth
+    object.holeWidth = .cu (holeWidth)
     object.holeWidthUnit = holeWidthUnit
-    object.holeHeight = holeHeight
+    object.holeHeight = .cu (holeHeight)
     object.holeHeightUnit = holeHeightUnit
     ioObjects.append (object)
     ioSlavePadArray.append ((object, masterPadID, slavePadErrorLocation))
@@ -478,19 +478,19 @@ extension AutoLayoutPackageDocument {
       ioMasterPadDictionary [padID] = object
     }
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    object.xCenter = xCenter
+    object.xCenter = .cu (xCenter)
     object.xCenterUnit = xCenterUnit
-    object.yCenter = yCenter
+    object.yCenter = .cu (yCenter)
     object.yCenterUnit = yCenterUnit
-    object.width = width
+    object.width = .cu (width)
     object.widthUnit = widthUnit
-    object.height = height
+    object.height = .cu (height)
     object.heightUnit = heightUnit
     object.padShape = padShape
     object.padStyle = padStyle
-    object.holeWidth = holeWidth
+    object.holeWidth = .cu (holeWidth)
     object.holeWidthUnit = holeWidthUnit
-    object.holeHeight = holeHeight
+    object.holeHeight = .cu (holeHeight)
     object.holeHeightUnit = holeHeightUnit
     object.padNumber = padNumber
     ioObjects.append (object)
@@ -507,13 +507,13 @@ extension AutoLayoutPackageDocument {
     let ((x2, x2Unit), (y2, y2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageGuide (self.undoManager)
-    object.x1 = x1
+    object.x1 = .cu (x1)
     object.x1Unit = x1Unit
-    object.y1 = y1
+    object.y1 = .cu (y1)
     object.y1Unit = y1Unit
-    object.x2 = x2
+    object.x2 = .cu (x2)
     object.x2Unit = x2Unit
-    object.y2 = y2
+    object.y2 = .cu (y2)
     object.y2Unit = y2Unit
     ioObjects.append (object)
 }
@@ -533,21 +533,21 @@ extension AutoLayoutPackageDocument {
     let ((cpx2, cpx2Unit), (cpy2, cpy2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageBezier (self.undoManager)
-    object.x1 = x1
+    object.x1 = .cu (x1)
     object.x1Unit = x1Unit
-    object.y1 = y1
+    object.y1 = .cu (y1)
     object.y1Unit = y1Unit
-    object.x2 = x2
+    object.x2 = .cu (x2)
     object.x2Unit = x2Unit
-    object.y2 = y2
+    object.y2 = .cu (y2)
     object.y2Unit = y2Unit
-    object.cpx1 = cpx1
+    object.cpx1 = .cu (cpx1)
     object.cpx1Unit = cpx1Unit
-    object.cpy1 = cpy1
+    object.cpy1 = .cu (cpy1)
     object.cpy1Unit = cpy1Unit
-    object.cpx2 = cpx2
+    object.cpx2 = .cu (cpx2)
     object.cpx2Unit = cpx2Unit
-    object.cpy2 = cpy2
+    object.cpy2 = .cu (cpy2)
     object.cpy2Unit = cpy2Unit
     ioObjects.append (object)
 }
@@ -571,17 +571,17 @@ extension AutoLayoutPackageDocument {
     let (endTangentLength, endTangentLengthUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageArc (self.undoManager)
-    object.xCenter = xCenter
+    object.xCenter = .cu (xCenter)
     object.xCenterUnit = xCenterUnit
-    object.yCenter = yCenter
+    object.yCenter = .cu (yCenter)
     object.yCenterUnit = yCenterUnit
-    object.radius = radius
+    object.radius = .cu (radius)
     object.radiusUnit = radiusUnit
     object.startAngle = startAngle
     object.arcAngle = arcAngle
-    object.startTangent = startTangentLength
+    object.startTangent = .cu (startTangentLength)
     object.startTangentUnit = startTangentLengthUnit
-    object.endTangent = endTangentLength
+    object.endTangent = .cu (endTangentLength)
     object.endTangentUnit = endTangentLengthUnit
     ioObjects.append (object)
  }
@@ -597,13 +597,13 @@ extension AutoLayoutPackageDocument {
     let ((width, widthUnit), (height, heightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageOval (self.undoManager)
-    object.x = originX
+    object.x = .cu (originX)
     object.xUnit = originXUnit
-    object.y = originY
+    object.y = .cu (originY)
     object.yUnit = originYUnit
-    object.width = width
+    object.width = .cu (width)
     object.widthUnit = widthUnit
-    object.height = height
+    object.height = .cu (height)
     object.heightUnit = heightUnit
     ioObjects.append (object)
 }
@@ -619,13 +619,13 @@ extension AutoLayoutPackageDocument {
     let ((p2X, p2XUnit), (p2Y, p2YUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageSegment (self.undoManager)
-    object.x1 = p1X
+    object.x1 = .cu (p1X)
     object.x1Unit = p1XUnit
-    object.y1 = p1Y
+    object.y1 = .cu (p1Y)
     object.y1Unit = p1YUnit
-    object.x2 = p2X
+    object.x2 = .cu (p2X)
     object.x2Unit = p2XUnit
-    object.y2 = p2Y
+    object.y2 = .cu (p2Y)
     object.y2Unit = p2YUnit
     ioObjects.append (object)
  }

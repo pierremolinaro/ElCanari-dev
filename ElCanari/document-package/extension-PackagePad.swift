@@ -46,8 +46,8 @@ extension PackagePad {
   func translate_PackagePad (xBy inDx: CanariLength,
                              yBy inDy: CanariLength,
                              userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.xCenter += inDx.cuValue
-    self.yCenter += inDy.cuValue
+    self.xCenter += inDx
+    self.yCenter += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -114,8 +114,8 @@ extension PackagePad {
   func rotate90Clockwise_PackagePad (from inRotationCenter : CanariPoint,
                                      userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x.cuValue
-    self.yCenter = newCenter.y.cuValue
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
@@ -125,8 +125,8 @@ extension PackagePad {
   func rotate90CounterClockwise_PackagePad (from inRotationCenter : CanariPoint,
                                             userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x.cuValue
-    self.yCenter = newCenter.y.cuValue
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
@@ -152,9 +152,9 @@ extension PackagePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_PackagePad (_ inGrid : Int) -> Bool {
-    var result = (self.xCenter % inGrid) != 0
+    var result = (self.xCenter.cuValue % inGrid) != 0
     if !result {
-      result = (self.yCenter % inGrid) != 0
+      result = (self.yCenter.cuValue % inGrid) != 0
     }
     return result
   }
@@ -162,8 +162,8 @@ extension PackagePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_PackagePad (_ inGrid : Int) {
-    self.xCenter = ((self.xCenter + inGrid / 2) / inGrid) * inGrid
-    self.yCenter = ((self.yCenter + inGrid / 2) / inGrid) * inGrid
+    self.xCenter = ((self.xCenter + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.yCenter = ((self.yCenter + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -186,7 +186,7 @@ extension PackagePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func angleInRadian (from inCanariPoint : CanariPoint, from inStartAngleInRadian : CGFloat) -> CGFloat {
-    let a = CanariPoint.angleInRadian (inCanariPoint, CanariPoint (x: .cu (self.xCenter), y: .cu (self.yCenter)))
+    let a = CanariPoint.angleInRadian (inCanariPoint, CanariPoint (x: self.xCenter, y: self.yCenter))
     return (2.0 * CGFloat.pi + a - inStartAngleInRadian).truncatingRemainder (dividingBy: 2.0 * CGFloat.pi)
   }
 

@@ -9,14 +9,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageModelImageDoublePoint_mFirstX : AnyObject {
-//   var mFirstX : Int { get }
+//   var mFirstX : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageModelImageDoublePoint_mFirstY : AnyObject {
-//   var mFirstY : Int { get }
+//   var mFirstY : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -30,14 +30,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageModelImageDoublePoint_mSecondDx : AnyObject {
-//   var mSecondDx : Int { get }
+//   var mSecondDx : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageModelImageDoublePoint_mSecondDy : AnyObject {
-//   var mSecondDy : Int { get }
+//   var mSecondDy : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -80,11 +80,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject
   //   Atomic property: mFirstX
   //------------------------------------------------------------------------------------------------
 
-  final let mFirstX_property : EBStoredProperty_Int
+  final let mFirstX_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mFirstX : Int {
+  final var mFirstX : CanariLength {
     get { return self.mFirstX_property.propval }
     set { self.mFirstX_property.setProp (newValue) }
   }
@@ -93,11 +93,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject
   //   Atomic property: mFirstY
   //------------------------------------------------------------------------------------------------
 
-  final let mFirstY_property : EBStoredProperty_Int
+  final let mFirstY_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mFirstY : Int {
+  final var mFirstY : CanariLength {
     get { return self.mFirstY_property.propval }
     set { self.mFirstY_property.setProp (newValue) }
   }
@@ -118,11 +118,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject
   //   Atomic property: mSecondDx
   //------------------------------------------------------------------------------------------------
 
-  final let mSecondDx_property : EBStoredProperty_Int
+  final let mSecondDx_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mSecondDx : Int {
+  final var mSecondDx : CanariLength {
     get { return self.mSecondDx_property.propval }
     set { self.mSecondDx_property.setProp (newValue) }
   }
@@ -131,11 +131,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject
   //   Atomic property: mSecondDy
   //------------------------------------------------------------------------------------------------
 
-  final let mSecondDy_property : EBStoredProperty_Int
+  final let mSecondDy_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mSecondDy : Int {
+  final var mSecondDy : CanariLength {
     get { return self.mSecondDy_property.propval }
     set { self.mSecondDy_property.setProp (newValue) }
   }
@@ -186,11 +186,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFirstX_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mFirstX")
-    self.mFirstY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mFirstY")
+    self.mFirstX_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "mFirstX")
+    self.mFirstY_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "mFirstY")
     self.mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, undoManager: inUndoManager, key: "mFirstColor")
-    self.mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mSecondDx")
-    self.mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mSecondDy")
+    self.mSecondDx_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "mSecondDx")
+    self.mSecondDy_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "mSecondDy")
     self.mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown, undoManager: inUndoManager, key: "mSecondColor")
     super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in

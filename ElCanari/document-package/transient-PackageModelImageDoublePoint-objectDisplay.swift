@@ -16,11 +16,11 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageModelImageDoublePoint_objectDisplay (
-       _ self_mFirstX : Int,                                          
-       _ self_mFirstY : Int,                                          
+       _ self_mFirstX : CanariLength,                                 
+       _ self_mFirstY : CanariLength,                                 
        _ self_mFirstColor : NSColor,                                  
-       _ self_mSecondDx : Int,                                        
-       _ self_mSecondDy : Int,                                        
+       _ self_mSecondDx : CanariLength,                               
+       _ self_mSecondDy : CanariLength,                               
        _ self_mSecondColor : NSColor,                                 
        _ self_mRoot_mModelPointsCircleRadius : Int?,                  
        _ self_mRoot_mPointsAreLocked : Bool?
@@ -29,18 +29,18 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
   var shape = EBShape ()
   let firstPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
   let secondPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
-  let firstX = canariUnitToCocoa (self_mFirstX)
-  let firstY = canariUnitToCocoa (self_mFirstY)
+  let firstX = self_mFirstX
+  let firstY = self_mFirstY
   let firstR = NSRect (center: NSPoint (x: firstX, y: firstY), size: NSSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))
-  let secondX = canariUnitToCocoa (self_mFirstX + self_mSecondDx)
-  let secondY = canariUnitToCocoa (self_mFirstY + self_mSecondDy)
+  let secondX = self_mFirstX + self_mSecondDx
+  let secondY = self_mFirstY + self_mSecondDy
   let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
   if let locked = self_mRoot_mPointsAreLocked, locked {
     shape.add (filled: [BezierPath (ovalIn: firstR)], self_mFirstColor)
     shape.add (filled: [BezierPath (ovalIn: secondR)], self_mSecondColor)
   }else{
-    let firstPointDelta = firstPointRadiusInCocoaUnit / sqrt (2.0)
-    let secondPointDelta = secondPointRadiusInCocoaUnit / sqrt (2.0)
+    let firstPointDelta = CanariLength.pt (firstPointRadiusInCocoaUnit / sqrt (2.0))
+    let secondPointDelta = CanariLength.pt (secondPointRadiusInCocoaUnit / sqrt (2.0))
   //--- First Point
     var lines = BezierPath ()
     lines.lineCapStyle = .round

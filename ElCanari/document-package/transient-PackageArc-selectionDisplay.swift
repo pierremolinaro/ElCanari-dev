@@ -17,21 +17,21 @@ import CanariGeometry
 
 @MainActor func transient_PackageArc_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,         
-       _ self_xCenter : Int,                           
-       _ self_yCenter : Int,                           
-       _ self_radius : Int,                            
+       _ self_xCenter : CanariLength,                  
+       _ self_yCenter : CanariLength,                  
+       _ self_radius : CanariLength,                   
        _ self_startAngle : Int,                        
        _ self_arcAngle : Int,                          
-       _ self_startTangent : Int,                      
-       _ self_endTangent : Int,                        
+       _ self_startTangent : CanariLength,             
+       _ self_endTangent : CanariLength,               
        _ self_pathIsClosed : Bool,                     
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let center = CanariPoint (x: .cu (self_xCenter), y: .cu (self_yCenter)).ptValue
-    let radius = canariUnitToCocoa (self_radius)
-    let startTangentLength = canariUnitToCocoa (self_startTangent)
-    let endTangentLength = canariUnitToCocoa (self_endTangent)
+    let center = NSPoint (x: self_xCenter, y: self_yCenter)
+    let radius = self_radius.ptValue
+    let startTangentLength = self_startTangent.ptValue
+    let endTangentLength = self_endTangent.ptValue
     let startAngle = CGFloat (self_startAngle) / 1000.0
     let arcAngle = CGFloat (self_arcAngle) / 1000.0
     var bp = BezierPath (

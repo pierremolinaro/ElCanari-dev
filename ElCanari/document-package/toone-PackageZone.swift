@@ -77,25 +77,25 @@ class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone
   //   Observers of 'x' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let x_property = EBTransientProperty <Int?> ()
+  final let x_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'y' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let y_property = EBTransientProperty <Int?> ()
+  final let y_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'width' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let width_property = EBTransientProperty <Int?> ()
+  final let width_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'height' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let height_property = EBTransientProperty <Int?> ()
+  final let height_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'xUnit' stored property
@@ -143,13 +143,13 @@ class ReadOnlyObject_PackageZone : EBReadOnlyAbstractObjectProperty <PackageZone
   //   Observers of 'xName' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let xName_property = EBTransientProperty <Int?> ()
+  final let xName_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'yName' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let yName_property = EBTransientProperty <Int?> ()
+  final let yName_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'xNameUnit' stored property

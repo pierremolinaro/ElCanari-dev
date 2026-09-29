@@ -457,7 +457,7 @@ import CanariGeometry
         }
         _ = hStackView_view_view.appendGutter ()
         do{
-          let hStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          let hStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
         }
@@ -471,7 +471,7 @@ import CanariGeometry
         }
         _ = hStackView_view_view.appendGutter ()
         do{
-          let hStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          let hStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property)
           _ = hStackView_view_view .appendView (hStackView_view_view_view)
         }
@@ -1423,13 +1423,13 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardManualWidth_property, self.rootObject.boardWidthUnit_property)
             .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property)
             .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
@@ -1444,13 +1444,13 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardManualHeight_property, self.rootObject.boardHeightUnit_property)
             .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
         do{
-          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.rootObject.boardHeight_property, self.rootObject.boardHeightUnit_property)
             .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
@@ -1470,7 +1470,7 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.rootObject.horizontalSeparator_property, self.rootObject.horizontalSeparatorUnit_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -1484,7 +1484,7 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.rootObject.verticalSeparator_property, self.rootObject.verticalSeparatorUnit_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -1517,7 +1517,7 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.mBoardInstanceSelection.x_property, self.rootObject.selectedBoardXUnit_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -1531,7 +1531,7 @@ import CanariGeometry
         }
         _ = vStackView_view_view.appendGutter ()
         do{
-          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+          let vStackView_view_view_view = AutoLayoutCanariDimensionAndPopUpEx (size: .small)
             .bind_dimensionAndUnit (self.mBoardInstanceSelection.y_property, self.rootObject.selectedBoardYUnit_property)
           _ = vStackView_view_view .appendView (vStackView_view_view_view)
         }
@@ -2552,7 +2552,7 @@ import CanariGeometry
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
@@ -2566,7 +2566,7 @@ import CanariGeometry
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
@@ -2580,7 +2580,7 @@ import CanariGeometry
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
@@ -2594,7 +2594,7 @@ import CanariGeometry
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }

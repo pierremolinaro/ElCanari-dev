@@ -52,7 +52,7 @@ extension AutoLayoutProjectDocument {
     //---  Width
       let width_property = EBStandAloneProperty_Int (inNetClass.mTrackWidth) // 20 mils
       let widthUnit_property = EBStandAloneProperty_Int (inNetClass.mTrackWidthUnit) // mils
-      let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
+      let widthFields = AutoLayoutCanariDimensionAndPopUpEx (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: widthFields)
@@ -60,7 +60,7 @@ extension AutoLayoutProjectDocument {
     //--- Hole Diameter
       let viaHoleDiameter_property = EBStandAloneProperty_Int (inNetClass.mViaHoleDiameter)
       let viaHoleDiameterUnit_property = EBStandAloneProperty_Int (inNetClass.mViaHoleDiameterUnit)
-      let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
+      let holeDiameterFields = AutoLayoutCanariDimensionAndPopUpEx (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: holeDiameterFields)
@@ -68,7 +68,7 @@ extension AutoLayoutProjectDocument {
     //--- Pad Diameter
       let viaPadDiameter_property = EBStandAloneProperty_Int (inNetClass.mViaPadDiameter)
       let viaPadDiameterUnit_property = EBStandAloneProperty_Int (inNetClass.mViaPadDiameterUnit)
-      let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
+      let padDiameterFields = AutoLayoutCanariDimensionAndPopUpEx (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular, alignment: .right)
         _ = gridView.append (left: left, right: padDiameterFields)

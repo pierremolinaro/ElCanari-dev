@@ -16,17 +16,17 @@ import CanariGeometry
 
 @MainActor func transient_PackageSlavePad_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,              
-       _ self_xCenter : Int,                                
-       _ self_yCenter : Int,                                
-       _ self_width : Int,                                  
-       _ self_height : Int,                                 
+       _ self_xCenter : CanariLength,                       
+       _ self_yCenter : CanariLength,                       
+       _ self_width : CanariLength,                         
+       _ self_height : CanariLength,                        
        _ self_padShape : PadShape
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let xCenter = canariUnitToCocoa (self_xCenter)
-    let yCenter = canariUnitToCocoa (self_yCenter)
-    let width = canariUnitToCocoa (self_width)
-    let height = canariUnitToCocoa (self_height)
+    let xCenter = self_xCenter.ptValue
+    let yCenter = self_yCenter.ptValue
+    let width = self_width.ptValue
+    let height = self_height.ptValue
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     var bp : BezierPath
     switch self_padShape {

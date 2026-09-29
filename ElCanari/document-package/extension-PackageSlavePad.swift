@@ -46,8 +46,8 @@ extension PackageSlavePad {
   func translate_PackageSlavePad (xBy inDx: CanariLength,
                                   yBy inDy: CanariLength,
                                   userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.xCenter += inDx.cuValue
-    self.yCenter += inDy.cuValue
+    self.xCenter += inDx
+    self.yCenter += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,8 +64,8 @@ extension PackageSlavePad {
   func rotate90Clockwise_PackageSlavePad (from inRotationCenter : CanariPoint,
                                           userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x.cuValue
-    self.yCenter = newCenter.y.cuValue
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
@@ -75,8 +75,8 @@ extension PackageSlavePad {
   func rotate90CounterClockwise_PackageSlavePad (from inRotationCenter : CanariPoint,
                                                  userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
-    self.xCenter = newCenter.x.cuValue
-    self.yCenter = newCenter.y.cuValue
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
     (self.width, self.height) = (self.height, self.width)
     (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
   }
@@ -137,9 +137,9 @@ extension PackageSlavePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_PackageSlavePad (_ inGrid : Int) -> Bool {
-    var result = (self.xCenter % inGrid) != 0
+    var result = (self.xCenter.cuValue % inGrid) != 0
     if !result {
-      result = (self.yCenter % inGrid) != 0
+      result = (self.yCenter.cuValue % inGrid) != 0
     }
     return result
   }
@@ -147,8 +147,8 @@ extension PackageSlavePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_PackageSlavePad (_ inGrid : Int) {
-    self.xCenter = ((self.xCenter + inGrid / 2) / inGrid) * inGrid
-    self.yCenter = ((self.yCenter + inGrid / 2) / inGrid) * inGrid
+    self.xCenter = ((self.xCenter + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.yCenter = ((self.yCenter + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

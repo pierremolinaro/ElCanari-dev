@@ -17,24 +17,24 @@ import CanariGeometry
 
 @MainActor func transient_PackageDimension_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,               
-       _ self_x1 : Int,                                      
-       _ self_y1 : Int,                                      
-       _ self_x2 : Int,                                      
-       _ self_y2 : Int,                                      
+       _ self_x1 : CanariLength,                             
+       _ self_y1 : CanariLength,                             
+       _ self_x2 : CanariLength,                             
+       _ self_y2 : CanariLength,                             
        _ prefs_packageBackgroundColor : NSColor,             
        _ prefs_packageDimensionColor : NSColor,              
        _ self_drawDimensionBackground : Bool,                
-       _ self_xDimension : Int,                              
-       _ self_yDimension : Int,                              
+       _ self_xDimension : CanariLength,                     
+       _ self_yDimension : CanariLength,                     
        _ self_distanceInCanariUnit : Int,                    
        _ self_distanceUnit : Int,                            
        _ prefs_dimensionFont : NSFont,                       
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let p1 = NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
-  let p2 = NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
-  let pText = CanariPoint (x: .cu (self_xDimension + (self_x1 + self_x2) / 2), y: .cu (self_yDimension + (self_y1 + self_y2) / 2)).ptValue
+  let p1 = NSPoint (x: self_x1, y: self_y1)
+  let p2 = NSPoint (x: self_x2, y: self_y2)
+  let pText = NSPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2)
   var bp = BezierPath ()
   bp.lineWidth = 0.25
   bp.lineCapStyle = .round

@@ -27,19 +27,19 @@ import CanariGeometry
   //   Selection observable property: y1
   //------------------------------------------------------------------------------------------------
 
-  final let y1_property = EBComputedProperty_Int ()
+  final let y1_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: x2
   //------------------------------------------------------------------------------------------------
 
-  final let x2_property = EBComputedProperty_Int ()
+  final let x2_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: y2
   //------------------------------------------------------------------------------------------------
 
-  final let y2_property = EBComputedProperty_Int ()
+  final let y2_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: x1Unit
@@ -75,7 +75,7 @@ import CanariGeometry
   //   Selection observable property: x1
   //------------------------------------------------------------------------------------------------
 
-  final let x1_property = EBComputedProperty_Int ()
+  final let x1_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: strokeBezierPath
@@ -210,7 +210,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.y1_property.selection {
@@ -236,7 +236,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.y1_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -261,7 +261,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.x2_property.selection {
@@ -287,7 +287,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.x2_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -312,7 +312,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.y2_property.selection {
@@ -338,7 +338,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.y2_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -618,7 +618,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLength> ()
           var isMultipleSelection = false
           for object in v {
             switch object.x1_property.selection {
@@ -644,7 +644,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.x1_property.mWriteModelFunction = { [weak self] (inValue : CanariLength) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

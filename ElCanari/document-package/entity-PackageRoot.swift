@@ -206,17 +206,17 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mModelImageFirstPointXOnLock
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageFirstPointXOnLock_property : EBStoredProperty_Int
+  final let mModelImageFirstPointXOnLock_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
   final func reset_mModelImageFirstPointXOnLock_toDefaultValue () {
-    self.mModelImageFirstPointXOnLock_property.setProp (0)
+    self.mModelImageFirstPointXOnLock_property.setProp (.zero)
   }
 
   //------------------------------------------------------------------------------------------------
 
-  final var mModelImageFirstPointXOnLock : Int {
+  final var mModelImageFirstPointXOnLock : CanariLength {
     get { return self.mModelImageFirstPointXOnLock_property.propval }
     set { self.mModelImageFirstPointXOnLock_property.setProp (newValue) }
   }
@@ -225,17 +225,17 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mModelImageFirstPointYOnLock
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageFirstPointYOnLock_property : EBStoredProperty_Int
+  final let mModelImageFirstPointYOnLock_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
   final func reset_mModelImageFirstPointYOnLock_toDefaultValue () {
-    self.mModelImageFirstPointYOnLock_property.setProp (0)
+    self.mModelImageFirstPointYOnLock_property.setProp (.zero)
   }
 
   //------------------------------------------------------------------------------------------------
 
-  final var mModelImageFirstPointYOnLock : Int {
+  final var mModelImageFirstPointYOnLock : CanariLength {
     get { return self.mModelImageFirstPointYOnLock_property.propval }
     set { self.mModelImageFirstPointYOnLock_property.setProp (newValue) }
   }
@@ -244,11 +244,11 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mModelImagePointsDxOnLock
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImagePointsDxOnLock_property : EBStoredProperty_Int
+  final let mModelImagePointsDxOnLock_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mModelImagePointsDxOnLock : Int {
+  final var mModelImagePointsDxOnLock : CanariLength {
     get { return self.mModelImagePointsDxOnLock_property.propval }
     set { self.mModelImagePointsDxOnLock_property.setProp (newValue) }
   }
@@ -257,11 +257,11 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mModelImagePointsDyOnLock
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImagePointsDyOnLock_property : EBStoredProperty_Int
+  final let mModelImagePointsDyOnLock_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var mModelImagePointsDyOnLock : Int {
+  final var mModelImagePointsDyOnLock : CanariLength {
     get { return self.mModelImagePointsDyOnLock_property.propval }
     set { self.mModelImagePointsDyOnLock_property.setProp (newValue) }
   }
@@ -467,11 +467,11 @@ final class PackageRoot : EBManagedObject
   //   Atomic proxy property: mModelImageFirstPointX
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageFirstPointX_property = EBComputedProperty_Int ()
+  final let mModelImageFirstPointX_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
 
-  var mModelImageFirstPointX : Int? {
+  var mModelImageFirstPointX : CanariLength? {
     get {
       return self.mModelImageFirstPointX_property.optionalValue
     }
@@ -486,11 +486,11 @@ final class PackageRoot : EBManagedObject
   //   Atomic proxy property: mModelImageFirstPointY
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageFirstPointY_property = EBComputedProperty_Int ()
+  final let mModelImageFirstPointY_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
 
-  var mModelImageFirstPointY : Int? {
+  var mModelImageFirstPointY : CanariLength? {
     get {
       return self.mModelImageFirstPointY_property.optionalValue
     }
@@ -505,11 +505,11 @@ final class PackageRoot : EBManagedObject
   //   Atomic proxy property: mModelImageSecondPointDx
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageSecondPointDx_property = EBComputedProperty_Int ()
+  final let mModelImageSecondPointDx_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
 
-  var mModelImageSecondPointDx : Int? {
+  var mModelImageSecondPointDx : CanariLength? {
     get {
       return self.mModelImageSecondPointDx_property.optionalValue
     }
@@ -524,11 +524,11 @@ final class PackageRoot : EBManagedObject
   //   Atomic proxy property: mModelImageSecondPointDy
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageSecondPointDy_property = EBComputedProperty_Int ()
+  final let mModelImageSecondPointDy_property = EBComputedProperty_CanariLength ()
 
   //------------------------------------------------------------------------------------------------
 
-  var mModelImageSecondPointDy : Int? {
+  var mModelImageSecondPointDy : CanariLength? {
     get {
       return self.mModelImageSecondPointDy_property.optionalValue
     }
@@ -579,11 +579,11 @@ final class PackageRoot : EBManagedObject
   //   Transient property: secondPointX
   //------------------------------------------------------------------------------------------------
 
-  final let secondPointX_property = EBTransientProperty <Int> ()
+  final let secondPointX_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var secondPointX : Int? {
+  final var secondPointX : CanariLength? {
     return self.secondPointX_property.optionalValue
   }
 
@@ -591,11 +591,11 @@ final class PackageRoot : EBManagedObject
   //   Transient property: secondPointY
   //------------------------------------------------------------------------------------------------
 
-  final let secondPointY_property = EBTransientProperty <Int> ()
+  final let secondPointY_property = EBTransientProperty <CanariLength> ()
 
   //------------------------------------------------------------------------------------------------
 
-  final var secondPointY : Int? {
+  final var secondPointY : CanariLength? {
     return self.secondPointY_property.optionalValue
   }
 
@@ -741,10 +741,10 @@ final class PackageRoot : EBManagedObject
     self.mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImageSecondPointXUnit")
     self.mModelImageSecondPointYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImageSecondPointYUnit")
     self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mModelImageData")
-    self.mModelImageFirstPointXOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImageFirstPointXOnLock")
-    self.mModelImageFirstPointYOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImageFirstPointYOnLock")
-    self.mModelImagePointsDxOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImagePointsDxOnLock")
-    self.mModelImagePointsDyOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mModelImagePointsDyOnLock")
+    self.mModelImageFirstPointXOnLock_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mModelImageFirstPointXOnLock")
+    self.mModelImageFirstPointYOnLock_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mModelImageFirstPointYOnLock")
+    self.mModelImagePointsDxOnLock_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mModelImagePointsDxOnLock")
+    self.mModelImagePointsDyOnLock_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mModelImagePointsDyOnLock")
     self.mModelImageScale_property = EBStoredProperty_Double (defaultValue: 1, undoManager: inUndoManager, key: "mModelImageScale")
     self.mModelImageRotationInRadians_property = EBStoredProperty_Double (defaultValue: 0, undoManager: inUndoManager, key: "mModelImageRotationInRadians")
     self.mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10, undoManager: inUndoManager, key: "mModelPointsCircleRadius")
@@ -844,7 +844,7 @@ final class PackageRoot : EBManagedObject
         return .empty
       }
     }
-    self.mModelImageFirstPointX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.mModelImageFirstPointX_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLength) in
       self?.mModelImageDoublePoint?.mFirstX_property.setProp (inValue)
     }
     self.mModelImageDoublePoint_property.mFirstX_property.startsBeingObserved (by: self.mModelImageFirstPointX_property)
@@ -867,7 +867,7 @@ final class PackageRoot : EBManagedObject
         return .empty
       }
     }
-    self.mModelImageFirstPointY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.mModelImageFirstPointY_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLength) in
       self?.mModelImageDoublePoint?.mFirstY_property.setProp (inValue)
     }
     self.mModelImageDoublePoint_property.mFirstY_property.startsBeingObserved (by: self.mModelImageFirstPointY_property)
@@ -890,7 +890,7 @@ final class PackageRoot : EBManagedObject
         return .empty
       }
     }
-    self.mModelImageSecondPointDx_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.mModelImageSecondPointDx_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLength) in
       self?.mModelImageDoublePoint?.mSecondDx_property.setProp (inValue)
     }
     self.mModelImageDoublePoint_property.mSecondDx_property.startsBeingObserved (by: self.mModelImageSecondPointDx_property)
@@ -913,7 +913,7 @@ final class PackageRoot : EBManagedObject
         return .empty
       }
     }
-    self.mModelImageSecondPointDy_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.mModelImageSecondPointDy_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLength) in
       self?.mModelImageDoublePoint?.mSecondDy_property.setProp (inValue)
     }
     self.mModelImageDoublePoint_property.mSecondDy_property.startsBeingObserved (by: self.mModelImageSecondPointDy_property)

@@ -974,12 +974,6 @@
       "name": "Auto Layout — El Canari",
       "children": [
         {
-          "path": "AutoLayoutCanariProjectDeviceDescriptionView.swift",
-          "target-membership": [
-            "ElCanari-Debug/compile-sources",
-            "ElCanari-Release/compile-sources",
-          ],
-        }, {
           "path": "AutoLayoutCanariAddSymbolInstancePullDownButton.swift",
           "encoding": "utf8",
           "target-membership": [
@@ -1033,6 +1027,12 @@
           ],
         }, {
           "path": "AutoLayoutCanariDimensionAndPopUp.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
+          "path": "AutoLayoutCanariDimensionAndPopUpEx.swift",
           "encoding": "utf8",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
@@ -1040,6 +1040,12 @@
           ],
         }, {
           "path": "AutoLayoutCanariDimensionField.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
+          "path": "AutoLayoutCanariDimensionFieldEx.swift",
           "encoding": "utf8",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
@@ -1106,6 +1112,12 @@
           ],
         }, {
           "path": "AutoLayoutCanariObservedDimensionAndPopUp.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
+          "path": "AutoLayoutCanariObservedDimensionAndPopUpEx.swift",
           "encoding": "utf8",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
@@ -1114,6 +1126,12 @@
         }, {
           "path": "AutoLayoutCanariObservedDimensionField.swift",
           "encoding": "utf8",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
+          "path": "AutoLayoutCanariObservedDimensionFieldEx.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
             "ElCanari-Release/compile-sources",
@@ -1133,6 +1151,12 @@
           ],
         }, {
           "path": "AutoLayoutCanariPreferredDirectionSegmentedControl.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
+          "path": "AutoLayoutCanariProjectDeviceDescriptionView.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
             "ElCanari-Release/compile-sources",

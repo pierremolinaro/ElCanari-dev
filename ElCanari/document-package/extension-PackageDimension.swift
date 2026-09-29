@@ -58,10 +58,10 @@ extension PackageDimension {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_PackageDimension (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x1 += inDx.cuValue
-    self.y1 += inDy.cuValue
-    self.x2 += inDx.cuValue
-    self.y2 += inDy.cuValue
+    self.x1 += inDx
+    self.y1 += inDy
+    self.x2 += inDx
+    self.y2 += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,19 +87,19 @@ extension PackageDimension {
                               alignedMouseLocationY _ : CanariLength,
                               shift _ : Bool) {
     if inKnobIndex == PACKAGE_DIMENSION_CENTER {
-      self.x1 += inDx.cuValue
-      self.y1 += inDy.cuValue
-      self.x2 += inDx.cuValue
-      self.y2 += inDy.cuValue
+      self.x1 += inDx
+      self.y1 += inDy
+      self.x2 += inDx
+      self.y2 += inDy
     }else if inKnobIndex == PACKAGE_DIMENSION_ENDPOINT_1 {
-        self.x1 += inDx.cuValue
-        self.y1 += inDy.cuValue
+        self.x1 += inDx
+        self.y1 += inDy
     }else if inKnobIndex == PACKAGE_DIMENSION_ENDPOINT_2 {
-      self.x2 += inDx.cuValue
-      self.y2 += inDy.cuValue
+      self.x2 += inDx
+      self.y2 += inDy
     }else if inKnobIndex == PACKAGE_DIMENSION_TEXT {
-      self.xDimension += inDx.cuValue
-      self.yDimension += inDy.cuValue
+      self.xDimension += inDx
+      self.yDimension += inDy
     }
   }
 
@@ -145,28 +145,28 @@ extension PackageDimension {
 
   func rotate90Clockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
-    self.x1 = p1.x.cuValue
-    self.y1 = p1.y.cuValue
+    self.x1 = p1.x
+    self.y1 = p1.y
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
-    self.x2 = p2.x.cuValue
-    self.y2 = p2.y.cuValue
+    self.x2 = p2.x
+    self.y2 = p2.y
     let p = inRotationCenter.rotated90Clockwise (x: self.xDimension, y: self.yDimension)
-    self.xDimension = p.x.cuValue
-    self.yDimension = p.y.cuValue
+    self.xDimension = p.x
+    self.yDimension = p.y
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise_PackageDimension (from inRotationCenter : CanariPoint, userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
-    self.x1 = p1.x.cuValue
-    self.y1 = p1.y.cuValue
+    self.x1 = p1.x
+    self.y1 = p1.y
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
-    self.x2 = p2.x.cuValue
-    self.y2 = p2.y.cuValue
+    self.x2 = p2.x
+    self.y2 = p2.y
     let p = inRotationCenter.rotated90CounterClockwise (x: self.xDimension, y: self.yDimension)
-    self.xDimension = p.x.cuValue
-    self.yDimension = p.y.cuValue
+    self.xDimension = p.x
+    self.yDimension = p.y
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -174,21 +174,21 @@ extension PackageDimension {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_PackageDimension (_ inGrid : Int) -> Bool {
-    var result = (self.x1 % inGrid) != 0
+    var result = (self.x1.cuValue % inGrid) != 0
     if !result {
-      result = (self.y1 % inGrid) != 0
+      result = (self.y1.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.x2 % inGrid) != 0
+      result = (self.x2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.y2 % inGrid) != 0
+      result = (self.y2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.xDimension % inGrid) != 0
+      result = (self.xDimension.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.yDimension % inGrid) != 0
+      result = (self.yDimension.cuValue % inGrid) != 0
     }
     return result
   }
@@ -196,12 +196,12 @@ extension PackageDimension {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_PackageDimension (_ inGrid : Int) {
-    self.x1 = ((self.x1 + inGrid / 2) / inGrid) * inGrid
-    self.y1 = ((self.y1 + inGrid / 2) / inGrid) * inGrid
-    self.x2 = ((self.x2 + inGrid / 2) / inGrid) * inGrid
-    self.y2 = ((self.y2 + inGrid / 2) / inGrid) * inGrid
-    self.xDimension = ((self.xDimension + inGrid / 2) / inGrid) * inGrid
-    self.yDimension = ((self.yDimension + inGrid / 2) / inGrid) * inGrid
+    self.x1 = ((self.x1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y1 = ((self.y1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.x2 = ((self.x2 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y2 = ((self.y2 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.xDimension = ((self.xDimension + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.yDimension = ((self.yDimension + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

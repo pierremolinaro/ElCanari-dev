@@ -50,7 +50,7 @@ import CanariGeometry
      while idx < self_packageZones_zoneName.count {
        let zoneName = self_packageZones_zoneName [idx].zoneName
        if let c = nameDictionary [zoneName], c > 1 {
-         let p = CanariPoint (x: .cu (self_packageZones_xName [idx].xName), y: .cu (self_packageZones_yName [idx].yName)).ptValue
+         let p = NSPoint (x: self_packageZones_xName [idx].xName, y: self_packageZones_yName [idx].yName)
            let textAttributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : prefs_padZoneFont
          ]

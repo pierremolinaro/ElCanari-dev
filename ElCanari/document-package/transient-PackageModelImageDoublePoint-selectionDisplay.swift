@@ -16,21 +16,21 @@ import CanariGeometry
 
 @MainActor func transient_PackageModelImageDoublePoint_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,                           
-       _ self_mFirstX : Int,                                             
-       _ self_mFirstY : Int,                                             
-       _ self_mSecondDx : Int,                                           
-       _ self_mSecondDy : Int,                                           
+       _ self_mFirstX : CanariLength,                                    
+       _ self_mFirstY : CanariLength,                                    
+       _ self_mSecondDx : CanariLength,                                  
+       _ self_mSecondDy : CanariLength,                                  
        _ self_mRoot_mModelPointsCircleRadius : Int?
 ) -> EBShape {
 //--- START OF USER ZONE 2
   var shape = EBShape ()
   let firstPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
   let secondPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
-  let firstX = canariUnitToCocoa (self_mFirstX)
-  let firstY = canariUnitToCocoa (self_mFirstY)
+  let firstX = self_mFirstX.ptValue
+  let firstY = self_mFirstY.ptValue
   let firstR = NSRect (center: NSPoint (x: firstX, y: firstY), size: NSSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))
-  let secondX = canariUnitToCocoa (self_mFirstX + self_mSecondDx)
-  let secondY = canariUnitToCocoa (self_mFirstY + self_mSecondDy)
+  let secondX = self_mFirstX + self_mSecondDx
+  let secondY = self_mFirstY + self_mSecondDy
   let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
   var bp1 = BezierPath (ovalIn: firstR)
   bp1.lineWidth = 1.0

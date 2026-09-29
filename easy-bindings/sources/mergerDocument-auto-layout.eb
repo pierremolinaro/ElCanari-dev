@@ -143,24 +143,17 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Model Width", bold: no, size : .small, alignment: .right)
         gutter
-        CanariObservedDimensionAndPopUp (size: .small) {
+        CanariObservedDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #mBoardModelSelection.modelWidth, #mBoardModelSelection.modelWidthUnit
         }
       }
       hStack {
         StaticLabel (title: "Model Height", bold: no, size : .small, alignment: .right)
         gutter
-        CanariObservedDimensionAndPopUp (size: .small) {
+        CanariObservedDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #mBoardModelSelection.modelHeight, #mBoardModelSelection.modelHeightUnit
         }
       }
-//      hStack {
-//        StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .right)
-//        gutter
-//        CanariObservedDimensionAndPopUp (size: .small) {
-//          $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
-//        }
-//      }
       separator
       hStack {
         StaticLabel (title: "Archive Version", bold: no, size : .small, alignment: .right)
@@ -501,11 +494,11 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Width", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
           $hidden root.automaticBoardSize
         }
-        CanariObservedDimensionAndPopUp (size: .small) {
+        CanariObservedDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit root.boardWidth, root.boardWidthUnit
           $hidden !root.automaticBoardSize
         }
@@ -513,11 +506,11 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Height", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
           $hidden root.automaticBoardSize
         }
-        CanariObservedDimensionAndPopUp (size: .small) {
+        CanariObservedDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit root.boardHeight, root.boardHeightUnit
           $hidden !root.automaticBoardSize
         }
@@ -527,14 +520,14 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Horizontal", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit root.horizontalSeparator, root.horizontalSeparatorUnit
         }
       }
       hStack {
         StaticLabel (title: "Vertical", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit root.verticalSeparator, root.verticalSeparatorUnit
         }
       }
@@ -548,14 +541,14 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Right", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
         }
       }
       hStack {
         StaticLabel (title: "Bottom", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
         }
       }
@@ -1123,26 +1116,26 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
         hStack {
           StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+          CanariObservedDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         }
         hStack {
           StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) {
+          CanariObservedDimensionAndPopUpEx (size : .small) {
             $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) {
+          CanariObservedDimensionAndPopUpEx (size : .small) {
             $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) {
+          CanariObservedDimensionAndPopUpEx (size : .small) {
             $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
           }
         }

@@ -1,5 +1,5 @@
 //
-//  AutoLayoutCanariObservedDimensionField.swift
+//  AutoLayoutCanariObservedDimensionFieldEx.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/02/2021.
@@ -10,10 +10,10 @@ import AppKit
 import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
-//   AutoLayoutCanariObservedDimensionField
+//   AutoLayoutCanariObservedDimensionFieldEx
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
+final class AutoLayoutCanariObservedDimensionFieldEx : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -44,7 +44,7 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
   //  value binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func updateOutlet (dimension : EBObservableProperty <CanariLength>, unit : EBObservableProperty <Int>) {
+  fileprivate func updateOutlet (dimension : EBObservableProperty <Int>, unit : EBObservableProperty <Int>) {
     switch combine (dimension.selection, unit: unit.selection) {
     case .empty :
       self.placeholderString = "No Selection"
@@ -67,7 +67,7 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_dimensionAndUnit (_ object : EBObservableProperty <CanariLength>,
+  final func bind_dimensionAndUnit (_ object : EBObservableProperty <Int>,
                                     _ unit : EBObservableProperty <Int>) -> Self {
     self.mController = Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self
@@ -83,14 +83,14 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
 
 private final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
-  private var mDimension : EBObservableProperty <CanariLength>
+  private var mDimension : EBObservableProperty <Int>
   private var mUnit : EBObservableProperty <Int>
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (dimension : EBObservableProperty <CanariLength>,
+  init (dimension : EBObservableProperty <Int>,
         unit : EBObservableProperty <Int>,
-        outlet inOutlet : AutoLayoutCanariObservedDimensionField) {
+        outlet inOutlet : AutoLayoutCanariObservedDimensionFieldEx) {
     self.mDimension = dimension
     self.mUnit = unit
     super.init (
@@ -114,7 +114,7 @@ private final class Controller_AutoLayoutCanariObservedDimensionField_dimensionA
 
 //--------------------------------------------------------------------------------------------------
 
-private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelection <Int>) -> EBSelection <Double> {
+private func combine (_ dimension : EBSelection <Int>, unit : EBSelection <Int>) -> EBSelection <Double> {
   switch dimension {
   case .empty :
     return .empty
@@ -132,7 +132,7 @@ private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelecti
     case .multiple :
       return .multiple
     case .single (let unitValue):
-      return .single (Double (dimensionValue.cuValue) / Double (unitValue))
+      return .single (Double (dimensionValue) / Double (unitValue))
     }
   }
 }

@@ -16,8 +16,8 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageSlavePad_padNumberDisplay (
-       _ self_xCenter : Int,                                
-       _ self_yCenter : Int,                                
+       _ self_xCenter : CanariLength,                       
+       _ self_yCenter : CanariLength,                       
        _ prefs_padNumberFont : NSFont,                      
        _ prefs_padNumberColor : NSColor,                    
        _ self_padNameForDisplay : String
@@ -29,7 +29,7 @@ import CanariGeometry
       ]
       return EBShape (
         text: self_padNameForDisplay,
-        CanariPoint (x: .cu (self_xCenter), y: .cu (self_yCenter)).ptValue,
+        NSPoint (x: self_xCenter, y: self_yCenter),
         textAttributes,
         .center,
         .center

@@ -307,25 +307,25 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'mModelImageFirstPointXOnLock' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImageFirstPointXOnLock_property = EBTransientProperty <Int?> ()
+  final let mModelImageFirstPointXOnLock_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImageFirstPointYOnLock' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImageFirstPointYOnLock_property = EBTransientProperty <Int?> ()
+  final let mModelImageFirstPointYOnLock_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImagePointsDxOnLock' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImagePointsDxOnLock_property = EBTransientProperty <Int?> ()
+  final let mModelImagePointsDxOnLock_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImagePointsDyOnLock' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImagePointsDyOnLock_property = EBTransientProperty <Int?> ()
+  final let mModelImagePointsDyOnLock_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImageScale' stored property
@@ -427,13 +427,13 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'secondPointX' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let secondPointX_property = EBTransientProperty <Int?> ()
+  final let secondPointX_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'secondPointY' transient property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let secondPointY_property = EBTransientProperty <Int?> ()
+  final let secondPointY_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'modelImageSizeString' transient property

@@ -16,18 +16,18 @@ import CanariGeometry
 
 @MainActor func transient_PackagePad_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,         
-       _ self_xCenter : Int,                           
-       _ self_yCenter : Int,                           
-       _ self_width : Int,                             
-       _ self_height : Int,                            
+       _ self_xCenter : CanariLength,                  
+       _ self_yCenter : CanariLength,                  
+       _ self_width : CanariLength,                    
+       _ self_height : CanariLength,                   
        _ self_padShape : PadShape
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var bp = BezierPath.pad (
-      centerX: self_xCenter,
-      centerY: self_yCenter,
-      width: self_width,
-      height: self_height,
+      centerX: self_xCenter.cuValue,
+      centerY: self_yCenter.cuValue,
+      width: self_width.cuValue,
+      height: self_height.cuValue,
       shape: self_padShape
     )
     bp.lineWidth = 0.25

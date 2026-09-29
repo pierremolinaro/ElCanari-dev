@@ -9,14 +9,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageArc_yCenter : AnyObject {
-//   var yCenter : Int { get }
+//   var yCenter : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageArc_radius : AnyObject {
-//   var radius : Int { get }
+//   var radius : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -37,14 +37,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageArc_startTangent : AnyObject {
-//   var startTangent : Int { get }
+//   var startTangent : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageArc_endTangent : AnyObject {
-//   var endTangent : Int { get }
+//   var endTangent : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageArc_xCenter : AnyObject {
-//   var xCenter : Int { get }
+//   var xCenter : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -152,11 +152,11 @@ final class PackageArc : PackageObject
   //   Atomic property: yCenter
   //------------------------------------------------------------------------------------------------
 
-  final let yCenter_property : EBStoredProperty_Int
+  final let yCenter_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var yCenter : Int {
+  final var yCenter : CanariLength {
     get { return self.yCenter_property.propval }
     set { self.yCenter_property.setProp (newValue) }
   }
@@ -165,11 +165,11 @@ final class PackageArc : PackageObject
   //   Atomic property: radius
   //------------------------------------------------------------------------------------------------
 
-  final let radius_property : EBStoredProperty_Int
+  final let radius_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var radius : Int {
+  final var radius : CanariLength {
     get { return self.radius_property.propval }
     set { self.radius_property.setProp (newValue) }
   }
@@ -204,11 +204,11 @@ final class PackageArc : PackageObject
   //   Atomic property: startTangent
   //------------------------------------------------------------------------------------------------
 
-  final let startTangent_property : EBStoredProperty_Int
+  final let startTangent_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var startTangent : Int {
+  final var startTangent : CanariLength {
     get { return self.startTangent_property.propval }
     set { self.startTangent_property.setProp (newValue) }
   }
@@ -217,11 +217,11 @@ final class PackageArc : PackageObject
   //   Atomic property: endTangent
   //------------------------------------------------------------------------------------------------
 
-  final let endTangent_property : EBStoredProperty_Int
+  final let endTangent_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var endTangent : Int {
+  final var endTangent : CanariLength {
     get { return self.endTangent_property.propval }
     set { self.endTangent_property.setProp (newValue) }
   }
@@ -307,11 +307,11 @@ final class PackageArc : PackageObject
   //   Atomic property: xCenter
   //------------------------------------------------------------------------------------------------
 
-  final let xCenter_property : EBStoredProperty_Int
+  final let xCenter_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var xCenter : Int {
+  final var xCenter : CanariLength {
     get { return self.xCenter_property.propval }
     set { self.xCenter_property.setProp (newValue) }
   }
@@ -333,19 +333,19 @@ final class PackageArc : PackageObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.yCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager, key: "yCenter")
-    self.radius_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager, key: "radius")
+    self.yCenter_property = EBStoredProperty_CanariLength (defaultValue: .mil (150), undoManager: inUndoManager, key: "yCenter")
+    self.radius_property = EBStoredProperty_CanariLength (defaultValue: .mil (150), undoManager: inUndoManager, key: "radius")
     self.startAngle_property = EBStoredProperty_Int (defaultValue: 45000, undoManager: inUndoManager, key: "startAngle")
     self.arcAngle_property = EBStoredProperty_Int (defaultValue: 270000, undoManager: inUndoManager, key: "arcAngle")
-    self.startTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "startTangent")
-    self.endTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "endTangent")
+    self.startTangent_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "startTangent")
+    self.endTangent_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "endTangent")
     self.pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "pathIsClosed")
     self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xCenterUnit")
     self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yCenterUnit")
     self.radiusUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "radiusUnit")
     self.startTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "startTangentUnit")
     self.endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "endTangentUnit")
-    self.xCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager, key: "xCenter")
+    self.xCenter_property = EBStoredProperty_CanariLength (defaultValue: .mil (150), undoManager: inUndoManager, key: "xCenter")
     super.init (inUndoManager)
     self.accumulateProperty (self.yCenter_property)
     self.accumulateProperty (self.radius_property)

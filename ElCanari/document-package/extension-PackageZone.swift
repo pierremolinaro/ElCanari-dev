@@ -65,10 +65,10 @@ extension PackageZone {
   func translate_PackageZone (xBy inDx: CanariLength,
                               yBy inDy: CanariLength,
                               userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x += inDx.cuValue
-    self.y += inDy.cuValue
-    self.xName += inDx.cuValue
-    self.yName += inDy.cuValue
+    self.x += inDx
+    self.y += inDy
+    self.xName += inDx
+    self.yName += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -80,33 +80,33 @@ extension PackageZone {
                             proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                             unalignedMouseDraggedLocation _ : CanariPoint,
                             shift _ : Bool) -> CanariPoint {
-    var dx = inProposedAlignedTranslation.x.cuValue
-    var dy = inProposedAlignedTranslation.y.cuValue
+    var dx = inProposedAlignedTranslation.x
+    var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_ZONE_LEFT {
-      if (self.width - dx) < 0 {
+      if (self.width - dx) < .zero {
         dx = self.width
       }
     }else if inKnobIndex == PACKAGE_ZONE_RIGHT {
-      if (self.width + dx) < 0 {
+      if (self.width + dx) < .zero {
         dx = -self.width
       }
     }else if inKnobIndex == PACKAGE_ZONE_BOTTOM {
-      if (self.height - dy) < 0 {
+      if (self.height - dy) < .zero {
         dy = self.height
       }
     }else if inKnobIndex == PACKAGE_ZONE_TOP {
-      if (self.height + dy) < 0 {
+      if (self.height + dy) < .zero {
         dy = -self.height
       }
     }else if inKnobIndex == PACKAGE_ZONE_NAME {
-      if (self.xName + dx) < 0 {
+      if (self.xName + dx) < .zero {
         dx = -self.xName
       }
-      if (self.yName + dy) < 0 {
+      if (self.yName + dy) < .zero {
         dy = -self.yName
       }
     }
-    return CanariPoint (x: .cu (dx), y: .cu (dy))
+    return CanariPoint (x: dx, y: dy)
  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -120,18 +120,18 @@ extension PackageZone {
                          alignedMouseLocationY _ : CanariLength,
                          shift _ : Bool) {
     if inKnobIndex == PACKAGE_ZONE_RIGHT {
-      self.width += inDx.cuValue
+      self.width += inDx
     }else if inKnobIndex == PACKAGE_ZONE_LEFT {
-      self.x += inDx.cuValue
-      self.width -= inDx.cuValue
+      self.x += inDx
+      self.width -= inDx
     }else if inKnobIndex == PACKAGE_ZONE_TOP {
-      self.height += inDy.cuValue
+      self.height += inDy
     }else if inKnobIndex == PACKAGE_ZONE_BOTTOM {
-      self.y += inDy.cuValue
-      self.height -= inDy.cuValue
+      self.y += inDy
+      self.height -= inDy
     }else if inKnobIndex == PACKAGE_ZONE_NAME {
-      self.xName += inDx.cuValue
-      self.yName += inDy.cuValue
+      self.xName += inDx
+      self.yName += inDy
     }
   }
 
@@ -140,21 +140,21 @@ extension PackageZone {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_PackageZone (_ inGrid : Int) -> Bool {
-    var result = (self.x % inGrid) != 0
+    var result = (self.x.cuValue % inGrid) != 0
     if !result {
-      result = (self.y % inGrid) != 0
+      result = (self.y.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.width % inGrid) != 0
+      result = (self.width.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.height % inGrid) != 0
+      result = (self.height.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.xName % inGrid) != 0
+      result = (self.xName.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.yName % inGrid) != 0
+      result = (self.yName.cuValue % inGrid) != 0
     }
     return result
   }
@@ -162,12 +162,12 @@ extension PackageZone {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_PackageZone (_ inGrid : Int) {
-    self.x = ((self.x + inGrid / 2) / inGrid) * inGrid
-    self.y = ((self.y + inGrid / 2) / inGrid) * inGrid
-    self.width = ((self.width + inGrid / 2) / inGrid) * inGrid
-    self.height = ((self.height + inGrid / 2) / inGrid) * inGrid
-    self.xName = ((self.xName + inGrid / 2) / inGrid) * inGrid
-    self.yName = ((self.yName + inGrid / 2) / inGrid) * inGrid
+    self.x = ((self.x + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y = ((self.y + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.width = ((self.width + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.height = ((self.height + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.xName = ((self.xName + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.yName = ((self.yName + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

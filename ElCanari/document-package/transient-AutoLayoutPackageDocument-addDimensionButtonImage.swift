@@ -27,8 +27,8 @@ import CanariGeometry
 //        let r = shape.boundingBox
 //        return buildPDFimage (frame: r.insetBy(dx: -2.0, dy: -2.0), shape: shape)
         let temporaryObject = PackageDimension (nil)
-        temporaryObject.x2 = 2286 * 100
-        temporaryObject.y2 = 2286 * 100
+        temporaryObject.x2 = .mil (100)
+        temporaryObject.y2 = .mil (100)
         temporaryObject.drawDimensionBackground = false
         if let displayShape = temporaryObject.objectDisplay {
           let r = displayShape.boundingBox

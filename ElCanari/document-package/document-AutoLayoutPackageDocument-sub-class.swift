@@ -138,16 +138,16 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //   MODEL IMAGE POINTS OBSERVERS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mModelImageFirstPointLastX = 0
+  private var mModelImageFirstPointLastX = CanariLength.zero
   private var mModelImageFirstPointXObserver : EBOutletEvent? = nil
 
-  private var mModelImageFirstPointLastY = 0
+  private var mModelImageFirstPointLastY = CanariLength.zero
   private var mModelImageFirstPointYObserver : EBOutletEvent? = nil
 
-  private var mModelImagePointsLastDx = 0
+  private var mModelImagePointsLastDx = CanariLength.zero
   private var mModelImagePointsDxObserver : EBOutletEvent? = nil
 
-  private var mModelImagePointsLastDy = 0
+  private var mModelImagePointsLastDy = CanariLength.zero
   private var mModelImagePointsDyObserver : EBOutletEvent? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -250,12 +250,12 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   fileprivate func modelImageSecondPointDidChange () {
     if self.rootObject.mPointsAreLocked {
-      let lockDx = CGFloat (self.rootObject.mModelImagePointsDxOnLock)
-      let lockDy = CGFloat (self.rootObject.mModelImagePointsDyOnLock)
+      let lockDx = CGFloat (self.rootObject.mModelImagePointsDxOnLock.cuValue)
+      let lockDy = CGFloat (self.rootObject.mModelImagePointsDyOnLock.cuValue)
       let distanceReference = sqrt (lockDx * lockDx + lockDy * lockDy)
       let angleReference = atan2 (lockDy, lockDx) // Result in radian
-      let dx = CGFloat (self.rootObject.mModelImageSecondPointDx!)
-      let dy = CGFloat (self.rootObject.mModelImageSecondPointDy!)
+      let dx = CGFloat (self.rootObject.mModelImageSecondPointDx!.cuValue)
+      let dy = CGFloat (self.rootObject.mModelImageSecondPointDy!.cuValue)
       let newDistance = sqrt (dx * dx + dy * dy)
       self.rootObject.mModelImageScale = Double (newDistance / distanceReference)
       let angle = atan2 (dy, dx) - angleReference // Result in radian
@@ -271,14 +271,14 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
       let af = NSAffineTransform ()
       let scale = CGFloat (self.rootObject.mModelImageScale)
       af.translateX (
-        by: canariUnitToCocoa (self.rootObject.mModelImageFirstPointX!),
-        yBy: canariUnitToCocoa (self.rootObject.mModelImageFirstPointY!)
+        by: self.rootObject.mModelImageFirstPointX!.ptValue,
+        yBy: self.rootObject.mModelImageFirstPointY!.ptValue
       )
       af.rotate (byRadians: CGFloat (self.rootObject.mModelImageRotationInRadians))
       af.scaleX (by: scale, yBy: scale)
       af.translateX (
-        by: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointXOnLock),
-        yBy: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
+        by: -self.rootObject.mModelImageFirstPointXOnLock.ptValue,
+        yBy: -self.rootObject.mModelImageFirstPointYOnLock.ptValue
       )
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (af)
       self.mPackageObjectsController.setForegroundImageAffineTransform (af)
@@ -374,10 +374,10 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
       allPads.sort { $0.padNumber < $1.padNumber }
     case .counterClock :
       if allPads.count > 0 {
-        var xMin = Int.max
-        var yMin = Int.max
-        var xMax = Int.min
-        var yMax = Int.min
+        var xMin = CanariLength.max
+        var yMin = CanariLength.max
+        var xMax = CanariLength.min
+        var yMax = CanariLength.min
         for pad in allPads {
           if xMin > pad.xCenter {
             xMin = pad.xCenter
@@ -392,7 +392,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
             yMax = pad.yCenter
           }
         }
-        let center = CanariPoint (x: .cu (xMin + xMax) / 2, y: .cu (yMin + yMax) / 2)
+        let center = CanariPoint (x: (xMin + xMax) / 2, y: (yMin + yMax) / 2)
         let startAngle = CGFloat (self.rootObject.counterClockNumberingStartAngle) * .pi / 180.0
         allPads.sort { $0.angleInRadian (from: center, from: startAngle) < $1.angleInRadian (from: center, from: startAngle) }
       }

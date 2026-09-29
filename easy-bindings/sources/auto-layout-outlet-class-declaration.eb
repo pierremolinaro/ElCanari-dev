@@ -142,15 +142,27 @@ extern autolayout class CanariUnitPopUpButton (size: EBControlSize) $hidden {
   $unit property Int
 }
 
+extern autolayout class CanariDimensionFieldEx (size: EBControlSize) $hidden {
+  $dimensionAndUnit property Int, property Int
+}
+
 extern autolayout class CanariDimensionField (size: EBControlSize) $hidden {
+  $dimensionAndUnit property CanariLength, property Int
+}
+
+extern autolayout class CanariDimensionAndPopUpEx (size: EBControlSize) $enabled $hidden {
   $dimensionAndUnit property Int, property Int
 }
 
 extern autolayout class CanariDimensionAndPopUp (size: EBControlSize) $enabled $hidden {
-  $dimensionAndUnit property Int, property Int
+  $dimensionAndUnit property CanariLength, property Int
 }
 
 extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $hidden {
+  $dimensionAndUnit transient CanariLength, property Int
+}
+
+extern autolayout class CanariObservedDimensionAndPopUpEx (size: EBControlSize) $hidden {
   $dimensionAndUnit transient Int, property Int
 }
 

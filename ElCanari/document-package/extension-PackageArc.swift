@@ -53,8 +53,8 @@ extension PackageArc {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func translate_PackageArc (xBy inDx: CanariLength, yBy inDy: CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.xCenter += inDx.cuValue
-    self.yCenter += inDy.cuValue
+    self.xCenter += inDx
+    self.yCenter += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -96,13 +96,13 @@ extension PackageArc {
                       alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
                       alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                       shift _ : Bool) {
-    let center = CanariPoint (x: .cu (self.xCenter), y: .cu (self.yCenter)).ptValue
-    let radius = canariUnitToCocoa (self.radius)
+    let center = NSPoint (x: self.xCenter, y: self.yCenter)
+    let radius = self.radius.ptValue
     let startAngle = CGFloat (self.startAngle) / 1000.0
     let arcAngle = CGFloat (self.arcAngle) / 1000.0
     if inKnobIndex == PACKAGE_ARC_CENTER {
-      self.xCenter += inDx.cuValue
-      self.yCenter += inDy.cuValue
+      self.xCenter += inDx
+      self.yCenter += inDy
     }else if inKnobIndex == PACKAGE_ARC_RADIUS {
       let t = NSAffineTransform ()
       t.translateX (by: center.x, yBy: center.y)
@@ -115,7 +115,7 @@ extension PackageArc {
       let deltaX = center.x - newRadiusKnob.x
       let deltaY = center.y - newRadiusKnob.y
       let newRadius = sqrt (deltaX * deltaX + deltaY * deltaY)
-      self.radius = CanariLength.pt (newRadius).cuValue
+      self.radius = CanariLength.pt (newRadius)
     }else if inKnobIndex == PACKAGE_ARC_START_ANGLE {
       let newStartAngleKnob = NSPoint (
         x: inAlignedMouseLocationX.ptValue,

@@ -220,6 +220,12 @@ struct CanariRect : Equatable, Hashable {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func contains (x inX : CanariLength, y inY : CanariLength) -> Bool {
+    (inX >= self.left) && (inX <= self.right) && (inY >= self.bottom) && (inY <= self.top)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   CohenSutherlandOutcode
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

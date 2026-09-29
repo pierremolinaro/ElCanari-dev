@@ -16,7 +16,7 @@ extension AutoLayoutPackageDocument {
 //--- START OF USER ZONE 2
     for object in self.mPackageObjectsController.selectedGraphicObjectSet.values {
       if let dim = object as? PackageDimension {
-        dim.xDimension = 0
+        dim.xDimension = .zero
       }
     }
 //--- END OF USER ZONE 2

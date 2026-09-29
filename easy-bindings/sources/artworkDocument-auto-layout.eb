@@ -143,26 +143,26 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         hStack {
           StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+          CanariDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         }
         hStack {
           StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUp(size : .small) {
+          CanariDimensionAndPopUpEx (size : .small) {
             $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUp(size : .small) {
+          CanariDimensionAndPopUpEx (size : .small) {
             $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUp(size : .small) {
+          CanariDimensionAndPopUpEx (size : .small) {
             $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
           }
         }

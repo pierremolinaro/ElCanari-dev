@@ -15,14 +15,14 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageDimension_distanceInCanariUnit (
-       _ self_x1 : Int,                                          
-       _ self_y1 : Int,                                          
-       _ self_x2 : Int,                                          
-       _ self_y2 : Int
+       _ self_x1 : CanariLength,                                 
+       _ self_y1 : CanariLength,                                 
+       _ self_x2 : CanariLength,                                 
+       _ self_y2 : CanariLength
 ) -> Int {
 //--- START OF USER ZONE 2
-  let dx = CGFloat (self_x1 - self_x2)
-  let dy = CGFloat (self_y1 - self_y2)
+  let dx = Double ((self_x1 - self_x2).cuValue)
+  let dy = Double ((self_y1 - self_y2).cuValue)
   return Int (sqrt (dx * dx + dy * dy))
 //--- END OF USER ZONE 2
 }

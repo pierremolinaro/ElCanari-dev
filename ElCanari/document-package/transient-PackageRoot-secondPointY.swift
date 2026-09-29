@@ -15,9 +15,9 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageRoot_secondPointY (
-       _ self_mModelImageFirstPointY : Int,         
-       _ self_mModelImageSecondPointDy : Int
-) -> Int {
+       _ self_mModelImageFirstPointY : CanariLength,
+       _ self_mModelImageSecondPointDy : CanariLength
+) -> CanariLength {
 //--- START OF USER ZONE 2
         return self_mModelImageFirstPointY + self_mModelImageSecondPointDy
 //--- END OF USER ZONE 2

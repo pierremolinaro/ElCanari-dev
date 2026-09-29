@@ -16,28 +16,28 @@ import CanariGeometry
 
 @MainActor func transient_PackageOval_selectionDisplay (
        _ prefs_selectionHiliteColor : NSColor,          
-       _ self_x : Int,                                  
-       _ self_y : Int,                                  
-       _ self_width : Int,                              
-       _ self_height : Int,                             
+       _ self_x : CanariLength,                         
+       _ self_y : CanariLength,                         
+       _ self_width : CanariLength,                     
+       _ self_height : CanariLength,                    
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
   var shape = EBShape ()
-  let x = canariUnitToCocoa (self_x)
-  let y = canariUnitToCocoa (self_y)
-  let width = canariUnitToCocoa (self_width)
-  let height = canariUnitToCocoa (self_height)
+  let x = self_x.ptValue
+  let y = self_y.ptValue
+  let width = self_width.ptValue
+  let height = self_height.ptValue
   var bp : BezierPath
-  if (self_width <= 0) && (self_height <= 0) { // Oval is a point
+  if (self_width <= .zero) && (self_height <= .zero) { // Oval is a point
     bp = BezierPath ()
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x, y: y))
-  }else if self_width <= 0 { // Vertical line
+  }else if self_width <= .zero { // Vertical line
     bp = BezierPath ()
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x, y: y + height))
-  }else if self_height <= 0 { // Horizontal line
+  }else if self_height <= .zero { // Horizontal line
     bp = BezierPath ()
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x + width, y: y))

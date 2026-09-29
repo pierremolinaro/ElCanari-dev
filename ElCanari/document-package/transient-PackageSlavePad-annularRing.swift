@@ -15,14 +15,14 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageSlavePad_annularRing (
-       _ self_width : Int,                             
-       _ self_height : Int,                            
-       _ self_holeWidth : Int,                         
-       _ self_holeHeight : Int
+       _ self_width : CanariLength,                    
+       _ self_height : CanariLength,                   
+       _ self_holeWidth : CanariLength,                
+       _ self_holeHeight : CanariLength
 ) -> Int {
 //--- START OF USER ZONE 2
-    let h = self_height - self_holeHeight
-    let w = self_width - self_holeWidth
+    let h = (self_height - self_holeHeight).cuValue
+    let w = (self_width - self_holeWidth).cuValue
     return min (w, h) / 2
 //--- END OF USER ZONE 2
 }

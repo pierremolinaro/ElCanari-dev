@@ -15,9 +15,9 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageArc_issues (
-       _ self_xCenter : Int,                 
-       _ self_yCenter : Int,                 
-       _ self_radius : Int,                  
+       _ self_xCenter : CanariLength,        
+       _ self_yCenter : CanariLength,        
+       _ self_radius : CanariLength,         
        _ self_startAngle : Int,              
        _ self_arcAngle : Int,                
        _ self_pathIsClosed : Bool

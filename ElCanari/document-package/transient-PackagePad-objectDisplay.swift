@@ -15,12 +15,12 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackagePad_objectDisplay (
-       _ self_xCenter : Int,                        
-       _ self_yCenter : Int,                        
-       _ self_width : Int,                          
-       _ self_height : Int,                         
-       _ self_holeWidth : Int,                      
-       _ self_holeHeight : Int,                     
+       _ self_xCenter : CanariLength,               
+       _ self_yCenter : CanariLength,               
+       _ self_width : CanariLength,                 
+       _ self_height : CanariLength,                
+       _ self_holeWidth : CanariLength,             
+       _ self_holeHeight : CanariLength,            
        _ self_padShape : PadShape,                  
        _ self_padStyle : PadStyle,                  
        _ prefs_frontSidePadColor : NSColor,         
@@ -30,19 +30,19 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var bp = BezierPath.pad (
-      centerX: self_xCenter,
-      centerY: self_yCenter,
-      width: self_width,
-      height: self_height,
+      centerX: self_xCenter.cuValue,
+      centerY: self_yCenter.cuValue,
+      width: self_width.cuValue,
+      height: self_height.cuValue,
       shape: self_padShape
     )
     switch self_padStyle {
     case .traversing :
       var shape = EBShape (filled: [bp], .clear)
-      let xCenter = canariUnitToCocoa (self_xCenter)
-      let yCenter = canariUnitToCocoa (self_yCenter)
-      let holeWidth = canariUnitToCocoa (self_holeWidth)
-      let holeHeight = canariUnitToCocoa (self_holeHeight)
+      let xCenter = self_xCenter.ptValue
+      let yCenter = self_yCenter.ptValue
+      let holeWidth = self_holeWidth.ptValue
+      let holeHeight = self_holeHeight.ptValue
       let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd

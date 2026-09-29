@@ -198,3 +198,10 @@ func intValueAndUnitStringFrom (valueInCanariUnit inValue : Int, displayUnit inU
 }
 
 //--------------------------------------------------------------------------------------------------
+
+func intValueAndUnitStringFrom (valueInCanariUnit inValue : CanariLength, displayUnit inUnit : Int) -> String {
+    let v = displayComponentsFrom (valueInCanariUnit: inValue.cuValue, unit: inUnit)
+    return v.value + " " + v.unit
+}
+
+//--------------------------------------------------------------------------------------------------

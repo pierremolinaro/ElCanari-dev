@@ -54,10 +54,10 @@ extension PackageSegment {
   func translate_PackageSegment (xBy inDx: CanariLength,
                                  yBy inDy: CanariLength,
                                  userSet _ : inout EBReferenceSet <EBManagedObject>) {
-    self.x1 += inDx.cuValue
-    self.y1 += inDy.cuValue
-    self.x2 += inDx.cuValue
-    self.y2 += inDy.cuValue
+    self.x1 += inDx
+    self.y1 += inDy
+    self.x2 += inDx
+    self.y2 += inDy
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -83,11 +83,11 @@ extension PackageSegment {
                             alignedMouseLocationY _ : CanariLength,
                             shift _ : Bool) {
     if inKnobIndex == PACKAGE_SEGMENT_ENDPOINT_1 {
-      self.x1 += inDx.cuValue
-      self.y1 += inDy.cuValue
+      self.x1 += inDx
+      self.y1 += inDy
     }else if inKnobIndex == PACKAGE_SEGMENT_ENDPOINT_2 {
-      self.x2 += inDx.cuValue
-      self.y2 += inDy.cuValue
+      self.x2 += inDx
+      self.y2 += inDy
     }
   }
 
@@ -135,10 +135,10 @@ extension PackageSegment {
                                          userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
-    self.x1 = p1.x.cuValue
-    self.y1 = p1.y.cuValue
-    self.x2 = p2.x.cuValue
-    self.y2 = p2.y.cuValue
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -147,10 +147,10 @@ extension PackageSegment {
                                                 userSet _ : inout EBReferenceSet <EBManagedObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
-    self.x1 = p1.x.cuValue
-    self.y1 = p1.y.cuValue
-    self.x2 = p2.x.cuValue
-    self.y2 = p2.y.cuValue
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -158,15 +158,15 @@ extension PackageSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func canSnapToGrid_PackageSegment (_ inGrid : Int) -> Bool {
-    var result = (self.x1 % inGrid) != 0
+    var result = (self.x1.cuValue % inGrid) != 0
     if !result {
-      result = (self.y1 % inGrid) != 0
+      result = (self.y1.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.x2 % inGrid) != 0
+      result = (self.x2.cuValue % inGrid) != 0
     }
     if !result {
-      result = (self.y2 % inGrid) != 0
+      result = (self.y2.cuValue % inGrid) != 0
     }
     return result
   }
@@ -174,10 +174,10 @@ extension PackageSegment {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func snapToGrid_PackageSegment (_ inGrid : Int) {
-    self.x1 = ((self.x1 + inGrid / 2) / inGrid) * inGrid
-    self.y1 = ((self.y1 + inGrid / 2) / inGrid) * inGrid
-    self.x2 = ((self.x2 + inGrid / 2) / inGrid) * inGrid
-    self.y2 = ((self.y2 + inGrid / 2) / inGrid) * inGrid
+    self.x1 = ((self.x1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y1 = ((self.y1 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.x2 = ((self.x2 + .cu (inGrid) / 2) / inGrid) * inGrid
+    self.y2 = ((self.y2 + .cu (inGrid) / 2) / inGrid) * inGrid
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

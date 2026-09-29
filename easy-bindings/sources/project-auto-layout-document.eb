@@ -800,14 +800,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack $hidden !self.schematicSheetOrientationIsCustom {
       StaticLabel (title: "Width", bold: no, size: .small, alignment: .center)
       gutter
-      CanariDimensionAndPopUp (size : .small) {
+      CanariDimensionAndPopUpEx (size : .small) {
         $dimensionAndUnit root.mSchematicCustomWidth, root.mSchematicCustomWidthUnit
       }
     }
     hStack $hidden !self.schematicSheetOrientationIsCustom {
       StaticLabel (title: "Height", bold: no, size: .small, alignment: .center)
       gutter
-      CanariDimensionAndPopUp (size : .small) {
+      CanariDimensionAndPopUpEx (size : .small) {
         $dimensionAndUnit root.mSchematicCustomHeight, root.mSchematicCustomHeightUnit
       }
     }
@@ -1073,17 +1073,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       view boardShapeBaseView
       separator
       StaticLabel (title: "Outline", bold: yes, size : .small, alignment: .center)
-//      hStack {
-//        StaticLabel (title: "Board Limit Width", bold: no, size : .small, alignment: .right)
-//        gutter
-//        CanariDimensionAndPopUp (size : .small) {
-//          $dimensionAndUnit root.mBoardLimitsWidth, root.mBoardLimitsWidthUnit
-//        }
-//      }
       hStack {
         StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size : .small) {
+        CanariDimensionAndPopUpEx (size : .small) {
           $dimensionAndUnit root.mBoardClearance, root.mBoardClearanceUnit
         }
       }
@@ -1110,7 +1103,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size : .small) {
+        CanariDimensionAndPopUpEx (size : .small) {
           $dimensionAndUnit root.mBoardLimitsGridStep, root.mBoardLimitsGridStepUnit
         }
       }
@@ -1185,21 +1178,21 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Board Width", bold: no, size : .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size : .small) {
+      CanariDimensionAndPopUpEx (size : .small) {
         $dimensionAndUnit root.mRectangularBoardWidth, root.mRectangularBoardWidthUnit
       }
     }
     hStack {
       StaticLabel (title: "Board Height", bold: no, size : .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size : .small) {
+      CanariDimensionAndPopUpEx (size : .small) {
         $dimensionAndUnit root.mRectangularBoardHeight, root.mRectangularBoardHeightUnit
       }
     }
     hStack {
       StaticLabel (title: "Corner Radius", bold: no, size : .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size : .small) {
+      CanariDimensionAndPopUpEx (size : .small) {
         $dimensionAndUnit root.mBoardCornerRadius, root.mBoardCornerRadiusUnit
       }
     }
@@ -1232,12 +1225,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | !#boardCurveSelectionController.isLine {
       StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
-      CanariDimensionField (size: .small) {
+      CanariDimensionFieldEx (size: .small) {
         $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
       }
       gutter
       StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
-      CanariDimensionField (size: .small) {
+      CanariDimensionFieldEx (size: .small) {
         $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
       }
     }
@@ -1262,26 +1255,26 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | #boardCurveSelectionController.isLine {
       space
       StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
-      CanariDimensionField (size: .small) {
+      CanariDimensionFieldEx (size: .small) {
         $dimensionAndUnit #boardCurveSelectionController.mCPX1, root.mBoardLimitControlPointsDisplayUnit
       }
       gutter
       space
       StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
-      CanariDimensionField (size: .small) {
+      CanariDimensionFieldEx (size: .small) {
         $dimensionAndUnit #boardCurveSelectionController.mCPY1, root.mBoardLimitControlPointsDisplayUnit
       }
     }
     hStack $hidden (#boardCurveObjectsController.selectedArray.count == 0) | #boardCurveSelectionController.isLine {
       space
       StaticLabel (title: "X", bold: no, size : .small, alignment: .right)
-      CanariDimensionField (size: .small) {
+      CanariDimensionFieldEx (size: .small) {
         $dimensionAndUnit #boardCurveSelectionController.mCPX2, root.mBoardLimitControlPointsDisplayUnit
       }
       gutter
       space
       StaticLabel (title: "Y", bold: no, size : .small, alignment: .right)
-      CanariDimensionField (size: .small) {
+      CanariDimensionFieldEx (size: .small) {
         $dimensionAndUnit #boardCurveSelectionController.mCPY2, root.mBoardLimitControlPointsDisplayUnit
       }
     }
@@ -1415,7 +1408,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size : .small)  {
+        CanariDimensionAndPopUpEx (size : .small)  {
           $dimensionAndUnit root.mBoardGridStep, root.mBoardGridStepUnit
         }
       }
@@ -1755,7 +1748,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right)
         space
-        CanariDimensionAndPopUp (size : .small) {
+        CanariDimensionAndPopUpEx (size : .small) {
           $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
         }
       }
@@ -2005,14 +1998,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack $hidden #boardTrackSelectionController.mUsesCustomTrackWidth {
       StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .left)
       gutter
-      CanariObservedDimensionAndPopUp (size: .small) {
+      CanariObservedDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTrackSelectionController.netClassTrackWidth, #boardTrackSelectionController.mDefaultTrackWidthUnit
       }
     }
     hStack $hidden !#boardTrackSelectionController.mUsesCustomTrackWidth {
       StaticLabel (title: "Custom Width", bold: no, size: .small, alignment: .left)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTrackSelectionController.mCustomTrackWidth, #boardTrackSelectionController.mCustomTrackWidthUnit
       }
     }
@@ -2027,7 +2020,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabels (left: "P1", right: "X", bold: no, size: .small)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
         $enabled #boardTrackSelectionController.p1CanMove
       }
@@ -2035,7 +2028,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
         $enabled #boardTrackSelectionController.p1CanMove
       }
@@ -2043,7 +2036,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabels (left: "P2", right: "X", bold: no, size: .small)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
         $enabled #boardTrackSelectionController.p2CanMove
       }
@@ -2051,7 +2044,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
         $enabled #boardTrackSelectionController.p2CanMove
       }
@@ -2116,14 +2109,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack $hidden #boardConnectorSelectionController.mUsesCustomHoleDiameter {
       StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center)
       gutter
-      CanariObservedDimensionAndPopUp (size: .small) {
+      CanariObservedDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardConnectorSelectionController.viaDefaultHoleDiameter, #boardConnectorSelectionController.mDefaultHoleDiameterUnit
       }
     }
     hStack $hidden !#boardConnectorSelectionController.mUsesCustomHoleDiameter {
       StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardConnectorSelectionController.mCustomHoleDiameter, #boardConnectorSelectionController.mCustomHoleDiameterUnit
       }
     }
@@ -2136,14 +2129,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack $hidden #boardConnectorSelectionController.mUsesCustomPadDiameter {
       StaticLabel (title: "From Net Class", bold: no, size: .small, alignment: .center)
       gutter
-      CanariObservedDimensionAndPopUp (size: .small) {
+      CanariObservedDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardConnectorSelectionController.viaDefaultPadDiameter, #boardConnectorSelectionController.mDefaultPadDiameterUnit
       }
     }
     hStack $hidden !#boardConnectorSelectionController.mUsesCustomPadDiameter {
       StaticLabel (title: "Custom", bold: no, size: .small, alignment: .center)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardConnectorSelectionController.mCustomPadDiameter, #boardConnectorSelectionController.mCustomPadDiameterUnit
       }
     }
@@ -2161,7 +2154,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
       StaticLabel (title: "Width", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardLineSelectionController.mWidth, #boardLineSelectionController.mWidthUnit
       }
     }
@@ -2177,28 +2170,28 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabels (left: "P1", right: "X", bold: no, size: .small)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardLineSelectionController.mX1, #boardLineSelectionController.mX1Unit
       }
     }
     hStack {
       StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardLineSelectionController.mY1, #boardLineSelectionController.mY1Unit
       }
     }
     hStack {
       StaticLabels (left: "P2", right: "X", bold: no, size: .small)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardLineSelectionController.mX2, #boardLineSelectionController.mX2Unit
       }
     }
     hStack {
       StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardLineSelectionController.mY2, #boardLineSelectionController.mY2Unit
       }
     }
@@ -2265,28 +2258,28 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Left", bold: no, size: .small, alignment: .left)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #restrictRectSelController.mX, #restrictRectSelController.mXUnit
       }
     }
     hStack {
       StaticLabel (title: "Bottom", bold: no, size: .small, alignment: .left)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #restrictRectSelController.mY, #restrictRectSelController.mYUnit
       }
     }
     hStack {
       StaticLabel (title: "Width", bold: no, size: .small, alignment: .left)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #restrictRectSelController.mWidth, #restrictRectSelController.mWidthUnit
       }
     }
     hStack {
       StaticLabel (title: "Height", bold: no, size: .small, alignment: .left)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #restrictRectSelController.mHeight, #restrictRectSelController.mHeightUnit
       }
     }
@@ -2390,21 +2383,21 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Pixel Size", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardImageSelectionController.mPixelSize, #boardImageSelectionController.mPixelSizeUnit
       }
     }
     hStack {
       StaticLabel (title: "Actual Image Width", bold: no, size: .small, alignment: .right)
       gutter
-      CanariObservedDimensionAndPopUp (size: .small) {
+      CanariObservedDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardImageSelectionController.boardActualImageWidth, #boardImageSelectionController.mActualWidthUnit
       }
     }
     hStack {
       StaticLabel (title: "Actual Image Height", bold: no, size: .small, alignment: .right)
       gutter
-      CanariObservedDimensionAndPopUp (size: .small) {
+      CanariObservedDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardImageSelectionController.boardActualImageHeight, #boardImageSelectionController.mActualHeightUnit
       }
     }
@@ -2426,14 +2419,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardImageSelectionController.mCenterX, #boardImageSelectionController.mXUnit
       }
     }
     hStack {
       StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardImageSelectionController.mCenterY, #boardImageSelectionController.mYUnit
       }
     }
@@ -2475,14 +2468,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Module Size", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardQRCodeSelectionController.mModuleSize, #boardQRCodeSelectionController.mModuleSizeUnit
       }
     }
     hStack {
       StaticLabel (title: "Actual Image Size", bold: no, size: .small, alignment: .right)
       gutter
-      CanariObservedDimensionAndPopUp (size: .small) {
+      CanariObservedDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardQRCodeSelectionController.actualImageSize, #boardQRCodeSelectionController.mActualSizeUnit
       }
     }
@@ -2505,14 +2498,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabel (title: "Center X", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardQRCodeSelectionController.mCenterX, #boardQRCodeSelectionController.mXUnit
       }
     }
     hStack {
       StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardQRCodeSelectionController.mCenterY, #boardQRCodeSelectionController.mYUnit
       }
     }
@@ -2529,28 +2522,28 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabels (left: "Center", right:"X", bold: no, size: .small)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardNonPlatedHoleSelectionController.mX, #boardNonPlatedHoleSelectionController.mXUnit
       }
     }
     hStack {
       StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardNonPlatedHoleSelectionController.mY, #boardNonPlatedHoleSelectionController.mYUnit
       }
     }
     hStack {
       StaticLabels (left: "Size", right:"Width", bold: no, size: .small)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardNonPlatedHoleSelectionController.mWidth, #boardNonPlatedHoleSelectionController.mWidthUnit
       }
     }
     hStack {
       StaticLabel (title: "Height", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardNonPlatedHoleSelectionController.mHeight, #boardNonPlatedHoleSelectionController.mHeightUnit
       }
     }
@@ -2582,14 +2575,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     hStack {
       StaticLabels (left: "Origin", right:"X", bold: no, size: .small)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTextSelectionController.mX, #boardTextSelectionController.mXUnit
       }
     }
     hStack {
       StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
       gutter
-      CanariDimensionAndPopUp (size: .small) {
+      CanariDimensionAndPopUpEx (size: .small) {
         $dimensionAndUnit #boardTextSelectionController.mY, #boardTextSelectionController.mYUnit
       }
     }
@@ -2698,14 +2691,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         StaticLabels (left: "Center", right:"X", bold: no, size: .small)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
         }
       }
       hStack {
         StaticLabel (title: "Y", bold: no, size: .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
         }
       }
@@ -2731,14 +2724,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mXName, #componentInBoardSelectionController.mXNameUnit
         }
       }
       hStack {
         StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mYName, #componentInBoardSelectionController.mYNameUnit
         }
       }
@@ -2784,14 +2777,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       hStack {
         StaticLabels (left: "Center", right:"∆X", bold: no, size: .small)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mXValue, #componentInBoardSelectionController.mXValueUnit
         }
       }
       hStack {
         StaticLabel (title: "∆Y", bold: no, size: .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUp (size: .small) {
+        CanariDimensionAndPopUpEx (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mYValue, #componentInBoardSelectionController.mYValueUnit
         }
       }
@@ -3247,22 +3240,22 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         hStack {
           StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+          CanariObservedDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         }
         hStack {
           StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
+          CanariObservedDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
         }
         hStack {
           StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
+          CanariObservedDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
         }
         hStack {
           StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariObservedDimensionAndPopUp (size : .small) {
+          CanariObservedDimensionAndPopUpEx (size : .small) {
             $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
           }
         }

@@ -15,13 +15,13 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageZone_rect (
-       _ self_x : Int,                      
-       _ self_y : Int,                      
-       _ self_width : Int,                  
-       _ self_height : Int
+       _ self_x : CanariLength,             
+       _ self_y : CanariLength,             
+       _ self_width : CanariLength,         
+       _ self_height : CanariLength
 ) -> CanariRect {
 //--- START OF USER ZONE 2
-    return CanariRect (left: .cu (self_x), bottom: .cu (self_y), width: .cu (self_width), height: .cu (self_height))
+    return CanariRect (left: self_x, bottom: self_y, width: self_width, height: self_height)
 //--- END OF USER ZONE 2
 }
 

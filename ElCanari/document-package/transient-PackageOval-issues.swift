@@ -15,17 +15,17 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_PackageOval_issues (
-       _ self_x : Int,                        
-       _ self_y : Int,                        
-       _ self_width : Int,                    
-       _ self_height : Int
+       _ self_x : CanariLength,               
+       _ self_y : CanariLength,               
+       _ self_width : CanariLength,           
+       _ self_height : CanariLength
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  if self_width == 0 {
+  if self_width == .zero {
     issues.appendOvalZeroWidthIssueAt (x: self_x, y: self_y + self_height / 2)
   }
-  if self_height == 0 {
+  if self_height == .zero {
     issues.appendOvalZeroHeightIssueAt (x: self_x + self_width / 2, y: self_y)
   }
   return issues
