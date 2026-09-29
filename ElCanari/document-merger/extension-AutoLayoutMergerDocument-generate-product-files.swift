@@ -172,9 +172,7 @@ extension AutoLayoutMergerDocument {
         fromJSONCompressedData: compressedJSONData,
         using: COMPRESSION_LZMA
       )!
-      let x = CanariLength.cu (element.x)
-      let y = CanariLength.cu (element.y)
-      product.add (modelProduct, x: x, y: y, quadrantRotation: element.instanceRotation)
+      product.add (modelProduct, x: element.x, y: element.y, quadrantRotation: element.instanceRotation)
     }
     return product
   }

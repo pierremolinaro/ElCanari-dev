@@ -8,19 +8,19 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardModelPad_y : AnyObject {
-  var y : Int { get }
+  var y : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardModelPad_width : AnyObject {
-  var width : Int { get }
+  var width : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardModelPad_height : AnyObject {
-  var height : Int { get }
+  var height : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardModelPad_x : AnyObject {
-  var x : Int { get }
+  var x : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,11 +58,11 @@ final class BoardModelPad : EBManagedObject
   //   Atomic property: y
   //------------------------------------------------------------------------------------------------
 
-  final let y_property : EBStoredProperty_Int
+  final let y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y : Int {
+  final var y : CanariLength {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
@@ -71,11 +71,11 @@ final class BoardModelPad : EBManagedObject
   //   Atomic property: width
   //------------------------------------------------------------------------------------------------
 
-  final let width_property : EBStoredProperty_Int
+  final let width_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var width : Int {
+  final var width : CanariLength {
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
@@ -84,11 +84,11 @@ final class BoardModelPad : EBManagedObject
   //   Atomic property: height
   //------------------------------------------------------------------------------------------------
 
-  final let height_property : EBStoredProperty_Int
+  final let height_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var height : Int {
+  final var height : CanariLength {
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
@@ -123,11 +123,11 @@ final class BoardModelPad : EBManagedObject
   //   Atomic property: x
   //------------------------------------------------------------------------------------------------
 
-  final let x_property : EBStoredProperty_Int
+  final let x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x : Int {
+  final var x : CanariLength {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
@@ -137,12 +137,12 @@ final class BoardModelPad : EBManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
-    self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "width")
-    self.height_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "height")
+    self.y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y")
+    self.width_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "width")
+    self.height_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "height")
     self.shape_property = EBStoredProperty_PadShape (defaultValue: PadShape.rect, undoManager: inUndoManager, key: "shape")
     self.rotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "rotation")
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
+    self.x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
     self.accumulateProperty (self.y_property)
     self.accumulateProperty (self.width_property)

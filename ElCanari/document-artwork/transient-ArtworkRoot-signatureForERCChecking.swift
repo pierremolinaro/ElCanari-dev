@@ -15,10 +15,10 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_ArtworkRoot_signatureForERCChecking (
-       _ self_minPPTPTTTW : Int,                               
-       _ self_minValueForOARinEBUnit : Int,                    
-       _ self_minValueForBoardLimitWidth : Int,                
-       _ self_minValueForPHDinEBUnit : Int
+       _ self_minPPTPTTTW : CanariLength,                      
+       _ self_minValueForOARinEBUnit : CanariLength,           
+       _ self_minValueForBoardLimitWidth : CanariLength,       
+       _ self_minValueForPHDinEBUnit : CanariLength
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0

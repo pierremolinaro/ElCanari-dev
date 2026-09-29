@@ -16,8 +16,8 @@ import CanariGeometry
 
 @MainActor func transient_AutoLayoutMergerDocument_issues (
        _ root_boardRect : CanariRect,                      
-       _ root_horizontalSeparator : Int,                   
-       _ root_verticalSeparator : Int,                     
+       _ root_horizontalSeparator : CanariLength,          
+       _ root_verticalSeparator : CanariLength,            
        _ root_boardInstances_instanceRect : [any MergerBoardInstance_instanceRect]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

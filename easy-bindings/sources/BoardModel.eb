@@ -3,9 +3,9 @@
 handlingOpposite entity BoardModel {
   property @generateDirectAccess String artworkName default "" ;
   property @generateDirectAccess String name default "" ;
-  property @generateDirectAccess Int modelWidth default 0 ;
+  property @generateDirectAccess CanariLength modelWidth default ".zero" ;
   property @generateDirectAccess Int modelWidthUnit default 0 ;
-  property @generateDirectAccess Int modelHeight default 0 ;
+  property @generateDirectAccess CanariLength modelHeight default ".zero" ;
   property @generateDirectAccess Int modelHeightUnit default 0 ;
   property @generateDirectAccess Data modelData default empty ;
 
@@ -190,14 +190,9 @@ handlingOpposite entity BoardModel {
 
   transient BezierPathArray traversingPadsBezierPaths dependsFrom self.traversingPadArray ;
 
-//--- Board limits
-//  property @generateDirectAccess Int modelLimitWidth default 0 ;
-//  property @generateDirectAccess Int modelLimitWidthUnit default 0 ;
-
   transient BezierPathArray boardLimitsBezierPaths dependsFrom
     self.modelWidth,
     self.modelHeight
-//    self.modelLimitWidth 
   ;
 
 //--- Back component names

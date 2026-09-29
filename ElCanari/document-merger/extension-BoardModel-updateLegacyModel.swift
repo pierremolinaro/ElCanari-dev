@@ -51,9 +51,9 @@ extension AutoLayoutMergerDocument {
 
   fileprivate func internalUpdateLegacyModel (legacyBoardModel inLegacyBoardModel : BoardModel) {
     var product = ProductRepresentation (
-      boardWidth : CanariLength.cu (inLegacyBoardModel.modelWidth),
+      boardWidth : inLegacyBoardModel.modelWidth,
       boardWidthUnit: inLegacyBoardModel.modelWidthUnit, // Canari Unit
-      boardHeight: CanariLength.cu (inLegacyBoardModel.modelHeight),
+      boardHeight: inLegacyBoardModel.modelHeight,
       boardHeightUnit: inLegacyBoardModel.modelHeightUnit, // Canari Unit
       artworkName: inLegacyBoardModel.artworkName,
       layerConfiguration: inLegacyBoardModel.layerConfiguration
@@ -195,11 +195,10 @@ extension AutoLayoutMergerDocument {
   fileprivate func appendVias (from inArray : EBReferenceArray <BoardModelVia>,
                                to ioProduct : inout ProductRepresentation) {
     for via in inArray.values {
-      let center = ProductPoint (canariPoint: CanariPoint (x: .cu (via.x), y: .cu (via.y)))
-      let padDiameter = CanariLength.cu (via.padDiameter)
+      let center = ProductPoint (canariPoint: CanariPoint (x: via.x, y: via.y))
       let s = LayeredProductCircle (
         center: center,
-        diameter: padDiameter,
+        diameter: via.padDiameter,
         layers: .viaPad
       )
       ioProduct.append (circle: s)
@@ -212,11 +211,11 @@ extension AutoLayoutMergerDocument {
                                layer inLayer : ProductLayerSet,
                                to ioProduct : inout ProductRepresentation) {
     for pad in inArray.values {
-      let width = CanariLength.cu (pad.width)
-      let height = CanariLength.cu (pad.height)
+      let width = pad.width
+      let height = pad.height
       let angleDegrees = Double (pad.rotation) / 1000.0
       var af = AffineTransform ()
-      af.translate (x: canariUnitToCocoa (pad.x), y: canariUnitToCocoa (pad.y))
+      af.translate (x: pad.x.ptValue, y: pad.y.ptValue)
       af.rotate (byDegrees: angleDegrees)
       let s = LayeredProductComponentPad (
         width: width,

@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   MergerPad
@@ -16,23 +17,12 @@ struct MergerPad : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let x : Int
-  let y : Int
-  let width : Int
-  let height : Int
+  let x : CanariLength
+  let y : CanariLength
+  let width : CanariLength
+  let height : CanariLength
   let shape : PadShape
   let rotation : Int
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func translatedBy (x inX : Int, y inY : Int) -> MergerPad {
-//    return MergerPad (x: self.x + inX,
-//                      y: self.y + inY,
-//                      width: self.width,
-//                      height: self.height,
-//                      shape: self.shape,
-//                      rotation: self.rotation)
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -53,8 +43,8 @@ struct MergerPadArray : Hashable {
   func buildBezierPaths () -> BezierPathArray {
     var result = BezierPathArray ()
     for pad in self.padArray {
-      let width = canariUnitToCocoa (pad.width)
-      let height = canariUnitToCocoa (pad.height)
+      let width = pad.width
+      let height = pad.height
       let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
       var bp : BezierPath
       switch pad.shape {
@@ -62,16 +52,16 @@ struct MergerPadArray : Hashable {
         bp = BezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = BezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+          bp = BezierPath (roundedRect:r, xRadius:width.ptValue / 2.0, yRadius:width.ptValue / 2.0)
         }else if pad.width > pad.height {
-          bp = BezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+          bp = BezierPath (roundedRect:r, xRadius:height.ptValue / 2.0, yRadius:height.ptValue / 2.0)
         }else{
           bp = BezierPath (ovalIn:r)
         }
       case .octo :
         bp = BezierPath (octogonInRect: r)
       }
-      var transform = AffineTransform (translationByX: canariUnitToCocoa (pad.x), byY: canariUnitToCocoa (pad.y))
+      var transform = AffineTransform (translationByX: pad.x.ptValue, byY: pad.y.ptValue)
       transform.rotate (byRadians: canariRotationToRadians (pad.rotation))
       bp.transform (using: transform)
       result.append (bp)
@@ -82,12 +72,12 @@ struct MergerPadArray : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func addPads (toFilledBezierPaths ioBezierPaths : inout [BezierPath],
-                dx inDx : Int,
-                dy inDy: Int,
+                dx inDx : CanariLength,
+                dy inDy: CanariLength,
                 horizontalMirror inHorizontalMirror : Bool,
-                boardWidth inBoardWidth : Int,
-                modelWidth inModelWidth : Int,
-                modelHeight inModelHeight : Int,
+                boardWidth inBoardWidth : CanariLength,
+                modelWidth inModelWidth : CanariLength,
+                modelHeight inModelHeight : CanariLength,
                 instanceRotation inInstanceRotation : QuadrantRotation) {
    //  Swift.print ("PDF : \(self.padArray.count)")
     for pad in self.padArray {
@@ -107,17 +97,17 @@ struct MergerPadArray : Hashable {
         x += pad.y
         y += inModelWidth - pad.x
       }
-      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
-      let yf = canariUnitToCocoa (y)
-      let width = canariUnitToCocoa (pad.width)
-      let height = canariUnitToCocoa (pad.height)
+      let xf = (inHorizontalMirror ? (inBoardWidth - x) : x).ptValue
+      let yf = y.ptValue
+      let width = pad.width.ptValue
+      let height = pad.height.ptValue
       let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
       var transform = AffineTransform ()
       transform.translate (x: xf, y:yf)
       if inHorizontalMirror {
         transform.scale (x: -1.0, y: 1.0)
       }
-      transform.rotate (byRadians:canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
+      transform.rotate (byRadians: canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
       var bp : BezierPath
       switch pad.shape {
       case .rect :

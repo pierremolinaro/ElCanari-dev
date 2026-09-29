@@ -49,18 +49,6 @@ final class ArtworkRoot : EBManagedObject
   final let minPPTPTTTWdisplayUnit_property : EBStoredProperty_Int
 
   //------------------------------------------------------------------------------------------------
-  //   Atomic property: minPPTPTTTW
-  //------------------------------------------------------------------------------------------------
-
-  final let minPPTPTTTW_property : EBStoredProperty_Int
-
-  //------------------------------------------------------------------------------------------------
-
-  final var minPPTPTTTW : Int {
-    get { return self.minPPTPTTTW_property.propval }
-  }
-
-  //------------------------------------------------------------------------------------------------
   //   Atomic property: minValueForOARdisplayUnit
   //------------------------------------------------------------------------------------------------
 
@@ -70,11 +58,11 @@ final class ArtworkRoot : EBManagedObject
   //   Atomic property: minValueForOARinEBUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForOARinEBUnit_property : EBStoredProperty_Int
+  final let minValueForOARinEBUnit_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var minValueForOARinEBUnit : Int {
+  final var minValueForOARinEBUnit : CanariLength {
     get { return self.minValueForOARinEBUnit_property.propval }
   }
 
@@ -88,11 +76,11 @@ final class ArtworkRoot : EBManagedObject
   //   Atomic property: minValueForPHDinEBUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForPHDinEBUnit_property : EBStoredProperty_Int
+  final let minValueForPHDinEBUnit_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var minValueForPHDinEBUnit : Int {
+  final var minValueForPHDinEBUnit : CanariLength {
     get { return self.minValueForPHDinEBUnit_property.propval }
   }
 
@@ -112,11 +100,11 @@ final class ArtworkRoot : EBManagedObject
   //   Atomic property: minValueForBoardLimitWidth
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForBoardLimitWidth_property : EBStoredProperty_Int
+  final let minValueForBoardLimitWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var minValueForBoardLimitWidth : Int {
+  final var minValueForBoardLimitWidth : CanariLength {
     get { return self.minValueForBoardLimitWidth_property.propval }
   }
 
@@ -154,6 +142,18 @@ final class ArtworkRoot : EBManagedObject
 
   final var fileGenerationParameterArray : EBReferenceArray <ArtworkFileGenerationParameters> {
     get { return self.fileGenerationParameterArray_property.propval }
+  }
+
+  //------------------------------------------------------------------------------------------------
+  //   Atomic property: minPPTPTTTW
+  //------------------------------------------------------------------------------------------------
+
+  final let minPPTPTTTW_property : EBStoredProperty_CanariLength
+
+  //------------------------------------------------------------------------------------------------
+
+  final var minPPTPTTTW : CanariLength {
+    get { return self.minPPTPTTTW_property.propval }
   }
 
   //------------------------------------------------------------------------------------------------
@@ -225,21 +225,20 @@ final class ArtworkRoot : EBManagedObject
     self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedTab")
     self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "comments")
     self.minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "minPPTPTTTWdisplayUnit")
-    self.minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager, key: "minPPTPTTTW")
     self.minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "minValueForOARdisplayUnit")
-    self.minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager, key: "minValueForOARinEBUnit")
+    self.minValueForOARinEBUnit_property = EBStoredProperty_CanariLength (defaultValue: .µm (200), undoManager: inUndoManager, key: "minValueForOARinEBUnit")
     self.minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "minValueForPHDdisplayUnit")
-    self.minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager, key: "minValueForPHDinEBUnit")
+    self.minValueForPHDinEBUnit_property = EBStoredProperty_CanariLength (defaultValue: .µm (200), undoManager: inUndoManager, key: "minValueForPHDinEBUnit")
     self.minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "minValueForBoardLimitWidthDisplayUnit")
-    self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "minValueForBoardLimitWidth")
+    self.minValueForBoardLimitWidth_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "minValueForBoardLimitWidth")
     self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "title")
     self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: inUndoManager, key: "drillDataFileExtension")
+    self.minPPTPTTTW_property = EBStoredProperty_CanariLength (defaultValue: .µm (200), undoManager: inUndoManager, key: "minPPTPTTTW")
     super.init (inUndoManager)
     self.accumulateProperty (self.layerConfiguration_property)
     self.accumulateProperty (self.selectedTab_property)
     self.accumulateProperty (self.comments_property)
     self.accumulateProperty (self.minPPTPTTTWdisplayUnit_property)
-    self.accumulateProperty (self.minPPTPTTTW_property)
     self.accumulateProperty (self.minValueForOARdisplayUnit_property)
     self.accumulateProperty (self.minValueForOARinEBUnit_property)
     self.accumulateProperty (self.minValueForPHDdisplayUnit_property)
@@ -255,6 +254,7 @@ final class ArtworkRoot : EBManagedObject
       resetter: { inObject in inObject.mArtwork_property.setProp (nil) }
     )
     self.accumulateProperty (self.fileGenerationParameterArray_property)
+    self.accumulateProperty (self.minPPTPTTTW_property)
   //--- Atomic property: hasInnerElements
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

@@ -5,11 +5,11 @@ entity DevicePinInProject {
   property @generateDirectAccess String mSymbolInstanceName default "" ;
   property @generateDirectAccess String mSymbolTypeName default "" ;
 
-  property @generateDirectAccess Int mPinX default 0 ;
-  property @generateDirectAccess Int mPinY default 0 ;
+  property @generateDirectAccess CanariLength mPinX default ".zero" ;
+  property @generateDirectAccess CanariLength mPinY default ".zero" ;
 
-  property @generateDirectAccess Int mXName default 0 ;
-  property @generateDirectAccess Int mYName default 0 ;
+  property @generateDirectAccess CanariLength mXName default ".zero" ;
+  property @generateDirectAccess CanariLength mYName default ".zero" ;
 
   property @generateDirectAccess HorizontalAlignment mNameHorizontalAlignment default center ;
   property @generateDirectAccess Bool mPinNameIsDisplayedInSchematic default yes ;

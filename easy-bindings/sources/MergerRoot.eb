@@ -22,15 +22,11 @@ handlingOpposite entity MergerRoot {
   property Int selectedBoardYUnit default 90_000 ;
 
 //--- Model separators
-  property @generateDirectRead Int horizontalSeparator default 90_000 ; // 1mm
+  property @generateDirectRead CanariLength horizontalSeparator default ".mm (1)" ;
   property @generateDirectRead Int horizontalSeparatorUnit default 90_000 ; // 1mm
 
-  property @generateDirectRead Int verticalSeparator default 90_000 ; // 1mm
+  property @generateDirectRead CanariLength verticalSeparator default ".mm (1)" ;
   property @generateDirectRead Int verticalSeparatorUnit default 90_000 ; // 1mm
-
-//--- Board line width
-//  property @generateDirectRead Int boardLimitWidth default 90_000 ; // 1mm
-//  property @generateDirectRead Int boardLimitWidthUnit default 90_000 ; // 1mm
 
 //--- Board model name array
   transient StringTagArray modelNames dependsFrom self.boardModels.all.name, self.boardModels ;

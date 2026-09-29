@@ -8,19 +8,19 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardModelVia_y : AnyObject {
-  var y : Int { get }
+  var y : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardModelVia_padDiameter : AnyObject {
-  var padDiameter : Int { get }
+  var padDiameter : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 @MainActor protocol BoardModelVia_x : AnyObject {
-  var x : Int { get }
+  var x : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -37,11 +37,11 @@ final class BoardModelVia : EBManagedObject
   //   Atomic property: y
   //------------------------------------------------------------------------------------------------
 
-  final let y_property : EBStoredProperty_Int
+  final let y_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var y : Int {
+  final var y : CanariLength {
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
@@ -50,11 +50,11 @@ final class BoardModelVia : EBManagedObject
   //   Atomic property: padDiameter
   //------------------------------------------------------------------------------------------------
 
-  final let padDiameter_property : EBStoredProperty_Int
+  final let padDiameter_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var padDiameter : Int {
+  final var padDiameter : CanariLength {
     get { return self.padDiameter_property.propval }
     set { self.padDiameter_property.setProp (newValue) }
   }
@@ -63,11 +63,11 @@ final class BoardModelVia : EBManagedObject
   //   Atomic property: x
   //------------------------------------------------------------------------------------------------
 
-  final let x_property : EBStoredProperty_Int
+  final let x_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var x : Int {
+  final var x : CanariLength {
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
@@ -77,9 +77,9 @@ final class BoardModelVia : EBManagedObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
-    self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "padDiameter")
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
+    self.y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y")
+    self.padDiameter_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "padDiameter")
+    self.x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
     self.accumulateProperty (self.y_property)
     self.accumulateProperty (self.padDiameter_property)

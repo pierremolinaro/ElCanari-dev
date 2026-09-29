@@ -16,12 +16,12 @@ import CanariGeometry
 
 @MainActor func transient_DeviceMasterPadInProject_descriptor (
        _ self_mName : String,                                  
-       _ self_mCenterX : Int,                                  
-       _ self_mCenterY : Int,                                  
-       _ self_mWidth : Int,                                    
-       _ self_mHeight : Int,                                   
-       _ self_mHoleWidth : Int,                                
-       _ self_mHoleHeight : Int,                               
+       _ self_mCenterX : CanariLength,                         
+       _ self_mCenterY : CanariLength,                         
+       _ self_mWidth : CanariLength,                           
+       _ self_mHeight : CanariLength,                          
+       _ self_mHoleWidth : CanariLength,                       
+       _ self_mHoleHeight : CanariLength,                      
        _ self_mShape : PadShape,                               
        _ self_mStyle : PadStyle,                               
        _ self_mSlavePads_descriptor : [any DeviceSlavePadInProject_descriptor]
@@ -33,9 +33,9 @@ import CanariGeometry
         }
         return MasterPadDescriptor (
           name: self_mName,
-          center: CanariPoint (x: .cu (self_mCenterX), y: .cu (self_mCenterY)),
-          padSize: CanariSize (width: .cu (self_mWidth), height: .cu (self_mHeight)),
-          holeSize: CanariSize (width: .cu (self_mHoleWidth), height: .cu (self_mHoleHeight)),
+          center: CanariPoint (x: self_mCenterX, y: self_mCenterY),
+          padSize: CanariSize (width: self_mWidth, height: self_mHeight),
+          holeSize: CanariSize (width: self_mHoleWidth, height: self_mHoleHeight),
           shape: self_mShape,
           style: self_mStyle,
           slavePads: slavePads

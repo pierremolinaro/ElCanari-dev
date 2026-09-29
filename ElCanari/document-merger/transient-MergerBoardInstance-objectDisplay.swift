@@ -15,19 +15,19 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_MergerBoardInstance_objectDisplay (
-       _ self_x : Int,                                       
-       _ self_y : Int,                                       
-       _ self_myModel_modelWidth : Int?,                     
-       _ self_myModel_modelHeight : Int?,                    
+       _ self_x : CanariLength,                              
+       _ self_y : CanariLength,                              
+       _ self_myModel_modelWidth : CanariLength?,            
+       _ self_myModel_modelHeight : CanariLength?,           
        _ self_instanceRotation : QuadrantRotation,           
        _ self_myModel_imageForInstances : EBShape?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let modeImage = self_myModel_imageForInstances!
-        let width  = canariUnitToCocoa (self_myModel_modelWidth!)
-        let height = canariUnitToCocoa (self_myModel_modelHeight!)
+        let width  = self_myModel_modelWidth!.ptValue
+        let height = self_myModel_modelHeight!.ptValue
         var transform = AffineTransform ()
-        transform.translate (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
+        transform.translate (x: self_x.ptValue, y: self_y.ptValue)
         switch self_instanceRotation {
         case .rotation0 :
           break

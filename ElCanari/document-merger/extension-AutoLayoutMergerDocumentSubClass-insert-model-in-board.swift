@@ -40,8 +40,8 @@ extension AutoLayoutMergerDocumentSubClass {
       let rotation = self.rootObject.modelInsertionRotation
       let newBoard = MergerBoardInstance (self.undoManager)
       newBoard.myModel_property.setProp (boardModel)
-      newBoard.x = mouseDownLocationInView.x.cuValue
-      newBoard.y = mouseDownLocationInView.y.cuValue
+      newBoard.x = mouseDownLocationInView.x
+      newBoard.y = mouseDownLocationInView.y
       newBoard.instanceRotation = rotation
       self.rootObject.boardInstances_property.add (newBoard)
       self.mBoardInstanceController.setSelection ([newBoard])
@@ -122,7 +122,7 @@ extension AutoLayoutMergerDocumentSubClass {
             let xCount = self.mInsertArrayOfBoardsXCount.propval
             let yCount = self.mInsertArrayOfBoardsYCount.propval
             // Swift.print ("xCount \(xCount), yCount \(yCount)")
-            let boardModelWidth : Int = boardModel.modelWidth
+            let boardModelWidth = boardModel.modelWidth
             let boardModelHeight = boardModel.modelHeight
           //  let overlapAmount = 0 // § self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
             let rotation = self.mInsertArrayOfBoardsOrientation.propval
@@ -134,22 +134,22 @@ extension AutoLayoutMergerDocumentSubClass {
                 let newBoard = MergerBoardInstance (self.undoManager)
                 newBoard.myModel_property.setProp (boardModel)
                 newBoard.instanceRotation = rotation
-                newBoard.x = x.cuValue
-                newBoard.y = y.cuValue
+                newBoard.x = x
+                newBoard.y = y
                 self.rootObject.boardInstances_property.add (newBoard)
                 newBoardArray.append (newBoard)
                 switch rotation {
                 case .rotation0, .rotation180 :
-                  x += .cu (boardModelWidth)
+                  x += boardModelWidth
                 case .rotation90, .rotation270 :
-                  x += .cu (boardModelHeight)
+                  x += boardModelHeight
                 }
               }
               switch rotation {
               case .rotation0, .rotation180 :
-                y += .cu (boardModelHeight)
+                y += boardModelHeight
               case .rotation90, .rotation270 :
-                y += .cu (boardModelWidth)
+                y += boardModelWidth
               }
             }
             self.mBoardInstanceController.setSelection (newBoardArray)

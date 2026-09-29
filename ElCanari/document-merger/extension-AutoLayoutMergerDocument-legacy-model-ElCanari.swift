@@ -110,17 +110,15 @@ extension AutoLayoutMergerDocument {
     boardModel.ignoreModelVersionError = inIgnoreVersionError
     boardModel.name = inName
     boardModel.artworkName = string (fromDict: inBoardArchiveDict, key: ARCHIVE_ARTWORK_KEY, &errorArray)
-    boardModel.modelWidth = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_KEY, &errorArray)
+    boardModel.modelWidth = .cu (int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_KEY, &errorArray))
     boardModel.modelWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_UNIT_KEY, &errorArray)
-    boardModel.modelHeight = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_KEY, &errorArray)
+    boardModel.modelHeight = .cu (int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_KEY, &errorArray))
     boardModel.modelHeightUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_UNIT_KEY, &errorArray)
-// §   boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_KEY, &errorArray)
-//    boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_LINE_WIDTH_UNIT_KEY, &errorArray)
     let boardRect_mm = NSRect (
       x: 0.0,
       y: 0.0,
-      width: canariUnitToMillimeter (boardModel.modelWidth),
-      height: canariUnitToMillimeter (boardModel.modelHeight)
+      width: boardModel.modelWidth.mmValue,
+      height: boardModel.modelHeight.mmValue
     )
   //--- Internal boards limits
     do{
@@ -193,9 +191,9 @@ extension AutoLayoutMergerDocument {
       for str in vias {
         let via = BoardModelVia (self.undoManager)
         let ints = array3int (fromString: str, #line, &errorArray)
-        via.x = ints [0]
-        via.y = ints [1]
-        via.padDiameter = ints [2]
+        via.x = .cu (ints [0])
+        via.y = .cu (ints [1])
+        via.padDiameter = .cu (ints [2])
         viaEntities.append (via)
       }
       boardModel.vias = viaEntities
@@ -454,10 +452,10 @@ extension AutoLayoutMergerDocument {
       let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_BACK_KEY, &errorArray)
       for padDict in backPadDictArray {
         let pad = BoardModelPad (self.undoManager)
-        pad.x = int (fromDict: padDict, key: "X", &errorArray)
-        pad.y = int (fromDict: padDict, key: "Y", &errorArray)
-        pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
-        pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
+        pad.x = .cu (int (fromDict: padDict, key: "X", &errorArray))
+        pad.y = .cu (int (fromDict: padDict, key: "Y", &errorArray))
+        pad.width = .cu (int (fromDict: padDict, key: "WIDTH", &errorArray))
+        pad.height = .cu (int (fromDict: padDict, key: "HEIGHT", &errorArray))
         pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
         let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
         if shapeString == "RECT" {
@@ -479,10 +477,10 @@ extension AutoLayoutMergerDocument {
       let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_FRONT_KEY, &errorArray)
       for padDict in frontPadDictArray {
         let pad = BoardModelPad (self.undoManager)
-        pad.x = int (fromDict: padDict, key: "X", &errorArray)
-        pad.y = int (fromDict: padDict, key: "Y", &errorArray)
-        pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
-        pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
+        pad.x = .cu (int (fromDict: padDict, key: "X", &errorArray))
+        pad.y = .cu (int (fromDict: padDict, key: "Y", &errorArray))
+        pad.width = .cu (int (fromDict: padDict, key: "WIDTH", &errorArray))
+        pad.height = .cu (int (fromDict: padDict, key: "HEIGHT", &errorArray))
         pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
         let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
         if shapeString == "RECT" {
@@ -519,10 +517,10 @@ extension AutoLayoutMergerDocument {
       let traversingPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: ARCHIVE_PADS_TRAVERSING_KEY, &errorArray)
       for padDict in traversingPadDictArray {
         let pad = BoardModelPad (self.undoManager)
-        pad.x = int (fromDict: padDict, key: "X", &errorArray)
-        pad.y = int (fromDict: padDict, key: "Y", &errorArray)
-        pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
-        pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
+        pad.x = .cu (int (fromDict: padDict, key: "X", &errorArray))
+        pad.y = .cu (int (fromDict: padDict, key: "Y", &errorArray))
+        pad.width = .cu (int (fromDict: padDict, key: "WIDTH", &errorArray))
+        pad.height = .cu (int (fromDict: padDict, key: "HEIGHT", &errorArray))
         pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
         let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
         if shapeString == "RECT" {

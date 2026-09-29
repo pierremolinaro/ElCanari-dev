@@ -143,26 +143,26 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView \Documen
         hStack {
           StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUpEx (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+          CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         }
         hStack {
           StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUpEx (size : .small) {
+          CanariDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUpEx (size : .small) {
+          CanariDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
           }
         }
         hStack {
           StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center)
           gutter
-          CanariDimensionAndPopUpEx (size : .small) {
+          CanariDimensionAndPopUp (size : .small) {
             $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
           }
         }
@@ -440,16 +440,16 @@ handlingOpposite entity ArtworkRoot {
   property @generateDirectRead @signature String comments default "" ;
 
   property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
-  property @generateDirectRead @signature Int minPPTPTTTW default 18_000 ; // 200µm
+  property @generateDirectRead @signature CanariLength minPPTPTTTW default ".µm (200)" ; // 200µm
 
   property Int minValueForOARdisplayUnit default 90 ; // 1µm
-  property @generateDirectRead @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
+  property @generateDirectRead @signature CanariLength minValueForOARinEBUnit default ".µm (200)" ; // 200µm
 
   property Int minValueForPHDdisplayUnit default 90 ; // 1µm
-  property @generateDirectRead @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
+  property @generateDirectRead @signature CanariLength minValueForPHDinEBUnit default ".µm (200)" ; // 200µm
 
   property @generateDirectRead Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
-  property @generateDirectRead @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
+  property @generateDirectRead @signature CanariLength minValueForBoardLimitWidth default ".mm (1)" ; // 1mm
 
   property @generateDirectRead @signature String title default "" ;
 

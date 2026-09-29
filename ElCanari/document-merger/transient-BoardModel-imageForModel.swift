@@ -17,8 +17,8 @@ import CanariGeometry
 @MainActor func transient_BoardModel_imageForModel (
        _ prefs_mergerColorBackground : NSColor,     
        _ prefs_mergerShowModelBackground : Bool,    
-       _ self_modelWidth : Int,                     
-       _ self_modelHeight : Int,                    
+       _ self_modelWidth : CanariLength,            
+       _ self_modelHeight : CanariLength,           
        _ self_boardLimitsBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayModelBoardLimits : Bool,
        _ prefs_mergerColorInternalBoardsLimits : NSColor,
@@ -101,7 +101,7 @@ import CanariGeometry
   var shapes = EBShape ()
 //--- Background
   if prefs_mergerShowModelBackground {
-    let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
+    let backRect = NSRect (x: .zero, y: .zero, width: self_modelWidth, height: self_modelHeight)
     shapes.add (filled: [BezierPath (rect: backRect)], prefs_mergerColorBackground)
   }
 //--- Back Legend Lines, images and QR Codes

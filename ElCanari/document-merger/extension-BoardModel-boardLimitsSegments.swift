@@ -1,5 +1,6 @@
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8,10 +9,10 @@ extension BoardModel {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func boardLimitsSegments () -> MergerSegmentArray {
-    let left = 0 // §self.modelLimitWidth / 2
-    let bottom = 0 // §self.modelLimitWidth / 2
-    let right = self.modelWidth // § - self.modelLimitWidth / 2
-    let top = self.modelHeight // § - self.modelLimitWidth / 2
+    let left = 0 // CanariLength.zero
+    let bottom = 0 // CanariLength.zero
+    let right = self.modelWidth.cuValue
+    let top = self.modelHeight.cuValue
 
     var segments = [CanariSegment] ()
     segments.append (CanariSegment (x1:left,  y1:bottom, x2:left,  y2:top,    width: BOARD_LIMIT_WIDTH.cuValue, endStyle: .round))

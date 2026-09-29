@@ -90,8 +90,8 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         let rotation = self.rootObject.modelInsertionRotation
         let newBoard = MergerBoardInstance (self.undoManager)
         newBoard.myModel = boardModel
-        newBoard.x = CanariLength.pt (draggingLocationInDestinationView.x).cuValue
-        newBoard.y = CanariLength.pt (draggingLocationInDestinationView.y).cuValue
+        newBoard.x = CanariLength.pt (draggingLocationInDestinationView.x)
+        newBoard.y = CanariLength.pt (draggingLocationInDestinationView.y)
         newBoard.instanceRotation = rotation
         self.rootObject.boardInstances_property.add (newBoard)
         self.mBoardInstanceController.setSelection ([newBoard])
@@ -132,8 +132,8 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         let verticalFlip   : CGFloat = boardView.verticalFlip   ? -1.0 : 1.0
       //--- Image size
      //   Swift.print ("Model size: \(canariUnitToCocoa (boardModel.modelWidth)), \(canariUnitToCocoa (boardModel.modelHeight))")
-        var width  : CGFloat = scale * canariUnitToCocoa (boardModel.modelWidth)
-        var height : CGFloat = scale * canariUnitToCocoa (boardModel.modelHeight)
+        var width  : CGFloat = scale * boardModel.modelWidth.ptValue
+        var height : CGFloat = scale * boardModel.modelHeight.ptValue
      //   Swift.print ("Image size: \(width), \(height)")
       //--- Orientation
         let rotation = self.rootObject.modelInsertionRotation

@@ -15,7 +15,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardModel_modelWidth : AnyObject {
-//   var modelWidth : Int { get }
+//   var modelWidth : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardModel_modelHeight : AnyObject {
-//   var modelHeight : Int { get }
+//   var modelHeight : CanariLength { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -593,11 +593,11 @@ final class BoardModel : EBManagedObject
   //   Atomic property: modelWidth
   //------------------------------------------------------------------------------------------------
 
-  final let modelWidth_property : EBStoredProperty_Int
+  final let modelWidth_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var modelWidth : Int {
+  final var modelWidth : CanariLength {
     get { return self.modelWidth_property.propval }
     set { self.modelWidth_property.setProp (newValue) }
   }
@@ -619,11 +619,11 @@ final class BoardModel : EBManagedObject
   //   Atomic property: modelHeight
   //------------------------------------------------------------------------------------------------
 
-  final let modelHeight_property : EBStoredProperty_Int
+  final let modelHeight_property : EBStoredProperty_CanariLength
 
   //------------------------------------------------------------------------------------------------
 
-  final var modelHeight : Int {
+  final var modelHeight : CanariLength {
     get { return self.modelHeight_property.propval }
     set { self.modelHeight_property.setProp (newValue) }
   }
@@ -1814,9 +1814,9 @@ final class BoardModel : EBManagedObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "name")
-    self.modelWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelWidth")
+    self.modelWidth_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "modelWidth")
     self.modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelWidthUnit")
-    self.modelHeight_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelHeight")
+    self.modelHeight_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "modelHeight")
     self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelHeightUnit")
     self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "zoom")
     self.modelVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelVersion")

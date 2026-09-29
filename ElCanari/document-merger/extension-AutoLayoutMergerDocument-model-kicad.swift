@@ -6,6 +6,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -174,9 +175,9 @@ extension AutoLayoutMergerDocument {
       let modelHeightMM = bottomMM - topMM // in Kicad, the Y-axis is pointing down
       let boardRect_mm = NSRect (x: 0.0, y: 0.0, width: canariUnitToMillimeter (right - left), height: canariUnitToMillimeter (bottom - top))
       // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
-      boardModel.modelWidth  = millimeterToCanariUnit (modelWidthMM)
+      boardModel.modelWidth  = .mm (modelWidthMM)
       boardModel.modelWidthUnit = CANARI_UNITS_PER_MM
-      boardModel.modelHeight = millimeterToCanariUnit (modelHeightMM)
+      boardModel.modelHeight = .mm (modelHeightMM)
       boardModel.modelHeightUnit = CANARI_UNITS_PER_MM
 //      boardModel.modelLimitWidth = boardModelWidth
 //      boardModel.modelLimitWidthUnit = CANARI_UNITS_PER_MM
@@ -328,17 +329,17 @@ extension AutoLayoutMergerDocument {
        netIndex >= 0, netIndex < inNetArray.count {
     //--- Add via
       let via = BoardModelVia (self.undoManager)
-      via.x = millimeterToCanariUnit (x - ioTemporaryBoardModel.mLeftMM)
-      via.y = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - y)
-      via.padDiameter = millimeterToCanariUnit (diameter)
+      via.x = .mm (x - ioTemporaryBoardModel.mLeftMM)
+      via.y = .mm (ioTemporaryBoardModel.mBottomMM - y)
+      via.padDiameter = .mm (diameter)
       let netClass = inNetArray [netIndex]
       ioTemporaryBoardModel.mViaEntities.append (via)
     //--- Add drill
       let segment = SegmentEntity (self.undoManager)
-      segment.x1 = via.x
-      segment.y1 = via.y
-      segment.x2 = via.x
-      segment.y2 = via.y
+      segment.x1 = via.x.cuValue
+      segment.y1 = via.y.cuValue
+      segment.x2 = via.x.cuValue
+      segment.y2 = via.y.cuValue
       segment.width = netClass.drillDiameter
       ioTemporaryBoardModel.mDrillEntities.append (segment)
     }
@@ -570,10 +571,10 @@ extension AutoLayoutMergerDocument {
               let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
           let pad = BoardModelPad (self.undoManager)
           let padXY = moduleTransform.transform (NSPoint (x: atX, y: atY))
-          pad.x = millimeterToCanariUnit (CGFloat (padXY.x))
-          pad.y = millimeterToCanariUnit (CGFloat (padXY.y))
-          pad.width = millimeterToCanariUnit (widthMM)
-          pad.height = millimeterToCanariUnit (heightMM)
+          pad.x = .mm (padXY.x)
+          pad.y = .mm (padXY.y)
+          pad.width = .mm (widthMM)
+          pad.height = .mm (heightMM)
           let padRotationInDegrees = item.getOptionalFloat (["pad", "at"], 2, &ioErrorArray, #line) ?? 0.0
           pad.rotation = degreesToCanariRotation (padRotationInDegrees)
           if padShapeString == "rect" {
@@ -599,10 +600,10 @@ extension AutoLayoutMergerDocument {
                 let x1 = pad.x
                 let y1 = pad.y
                 let drill = SegmentEntity (self.undoManager)
-                drill.x1 = x1
-                drill.y1 = y1
-                drill.x2 = x1
-                drill.y2 = y1
+                drill.x1 = x1.cuValue
+                drill.y1 = y1.cuValue
+                drill.x2 = x1.cuValue
+                drill.y2 = y1.cuValue
                 drill.width = drillDiameter
                 ioTemporaryBoardModel.mDrillEntities.append (drill)
               }else if holeSpecification == "oval" {
@@ -613,13 +614,13 @@ extension AutoLayoutMergerDocument {
                   padTransform.scaleX (by: 1.0, yBy: -1.0)
                   padTransform.rotate (byDegrees: CGFloat (-moduleRotationInDegrees))
                   let p = padTransform.transform (NSPoint (x: (ovalMM - drillDiameterMM) / 2.0, y:0))
-                  let dx = millimeterToCanariUnit (CGFloat (p.x))
-                  let dy = millimeterToCanariUnit (CGFloat (p.y))
+                  let dx = CanariLength.mm (p.x)
+                  let dy = CanariLength.mm (p.y)
                   let drill = SegmentEntity (self.undoManager)
-                  drill.x1 = pad.x - dx
-                  drill.y1 = pad.y - dy
-                  drill.x2 = pad.x + dx
-                  drill.y2 = pad.y + dy
+                  drill.x1 = (pad.x - dx).cuValue
+                  drill.y1 = (pad.y - dy).cuValue
+                  drill.x2 = (pad.x + dx).cuValue
+                  drill.y2 = (pad.y + dy).cuValue
                   drill.width = drillDiameter
                   ioTemporaryBoardModel.mDrillEntities.append (drill)
                 }else{

@@ -2,9 +2,9 @@
 
 entity BoardModelVia {
 
-  property @generateDirectAccess Int x default 0 ;
-  property @generateDirectAccess Int y default 0 ;
-  property @generateDirectAccess Int padDiameter default 0 ;
+  property @generateDirectAccess CanariLength x default ".zero" ;
+  property @generateDirectAccess CanariLength y default ".zero" ;
+  property @generateDirectAccess CanariLength padDiameter default ".zero" ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

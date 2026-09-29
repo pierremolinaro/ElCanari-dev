@@ -143,14 +143,14 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Model Width", bold: no, size : .small, alignment: .right)
         gutter
-        CanariObservedDimensionAndPopUpEx (size: .small) {
+        CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #mBoardModelSelection.modelWidth, #mBoardModelSelection.modelWidthUnit
         }
       }
       hStack {
         StaticLabel (title: "Model Height", bold: no, size : .small, alignment: .right)
         gutter
-        CanariObservedDimensionAndPopUpEx (size: .small) {
+        CanariObservedDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #mBoardModelSelection.modelHeight, #mBoardModelSelection.modelHeightUnit
         }
       }
@@ -520,14 +520,14 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Horizontal", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUpEx (size: .small) {
+        CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.horizontalSeparator, root.horizontalSeparatorUnit
         }
       }
       hStack {
         StaticLabel (title: "Vertical", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUpEx (size: .small) {
+        CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.verticalSeparator, root.verticalSeparatorUnit
         }
       }
@@ -541,14 +541,14 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
       hStack {
         StaticLabel (title: "Right", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUpEx (size: .small) {
+        CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
         }
       }
       hStack {
         StaticLabel (title: "Bottom", bold: no, size : .small, alignment: .right)
         gutter
-        CanariDimensionAndPopUpEx (size: .small) {
+        CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
         }
       }

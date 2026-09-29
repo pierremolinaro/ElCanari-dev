@@ -32,7 +32,7 @@ import CanariGeometry
     let height = self_backPads_height [idx].height
     let shape = self_backPads_shape [idx].shape
     let rotation = self_backPads_rotation [idx].rotation
-    padArray.append (MergerPad (x:x, y:y, width:width, height:height, shape:shape, rotation:rotation))
+    padArray.append (MergerPad (x: x, y:y, width:width, height:height, shape:shape, rotation:rotation))
     idx += 1
   }
   return MergerPadArray (padArray: padArray)

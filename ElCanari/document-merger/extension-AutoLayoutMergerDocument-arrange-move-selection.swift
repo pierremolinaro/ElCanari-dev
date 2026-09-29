@@ -18,7 +18,7 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func moveDown (objectSet inMoveObjectSet : EBReferenceSet <MergerBoardInstance>) {
-    let boardHeight = self.rootObject.boardHeight!
+    let boardHeight = CanariLength.cu (self.rootObject.boardHeight!)
     let verticalSeparator = self.rootObject.verticalSeparator
   //--- Non selected set
     let otherObjectSet = EBReferenceSet (self.rootObject.boardInstances_property.propval.values).subtracting (inMoveObjectSet)
@@ -46,12 +46,12 @@ extension AutoLayoutMergerDocument {
         }
       }
       if acceptableNewRect.isEmpty {
-        deltaY = 0
+        deltaY = .zero
       }else{
-        deltaY = max (deltaY, acceptableNewRect.bottom.cuValue - instanceRect.bottom.cuValue)
+        deltaY = max (deltaY, acceptableNewRect.bottom - instanceRect.bottom)
       }
     }
-    if deltaY < 0 {
+    if deltaY < .zero {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.y += deltaY
       }
@@ -68,7 +68,7 @@ extension AutoLayoutMergerDocument {
   //--- Sort objects
     let ySortedArray = inMoveObjectSet.values.sorted { $0.y > $1.y }
   //---
-    var deltaY = boardHeight
+    var deltaY = CanariLength.cu (boardHeight)
     for selectedInstance in ySortedArray {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (
@@ -89,12 +89,12 @@ extension AutoLayoutMergerDocument {
         }
       }
       if acceptableNewRect.isEmpty {
-        deltaY = 0
+        deltaY = .zero
       }else{
-        deltaY = min (deltaY, acceptableNewRect.top.cuValue - instanceRect.top.cuValue)
+        deltaY = min (deltaY, acceptableNewRect.top - instanceRect.top)
       }
     }
-    if deltaY > 0 {
+    if deltaY > .zero {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.y += deltaY
       }
@@ -111,7 +111,7 @@ extension AutoLayoutMergerDocument {
   //--- Sort objects
     let xSortedArray = inMoveObjectSet.values.sorted { $0.x > $1.x }
   //---
-    var deltaX = boardWidth
+    var deltaX = CanariLength.cu (boardWidth)
     for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (
@@ -132,12 +132,12 @@ extension AutoLayoutMergerDocument {
         }
       }
       if acceptableNewRect.isEmpty {
-        deltaX = 0
+        deltaX = .zero
       }else{
-        deltaX = min (deltaX, acceptableNewRect.right.cuValue - instanceRect.right.cuValue)
+        deltaX = min (deltaX, acceptableNewRect.right - instanceRect.right)
       }
     }
-    if deltaX > 0 {
+    if deltaX > .zero {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.x += deltaX
       }
@@ -154,7 +154,7 @@ extension AutoLayoutMergerDocument {
   //--- Sort objects
     let xSortedArray = inMoveObjectSet.values.sorted { $0.x < $1.x }
   //---
-    var deltaX = -boardWidth
+    var deltaX = CanariLength.cu (-boardWidth)
     for selectedInstance in xSortedArray {
       let instanceRect = selectedInstance.instanceRect!
       var acceptableNewRect = CanariRect (
@@ -175,12 +175,12 @@ extension AutoLayoutMergerDocument {
         }
       }
       if acceptableNewRect.isEmpty {
-        deltaX = 0
+        deltaX = .zero
       }else{
-        deltaX = max (deltaX, acceptableNewRect.left.cuValue - instanceRect.left.cuValue)
+        deltaX = max (deltaX, acceptableNewRect.left - instanceRect.left)
       }
     }
-    if deltaX < 0 {
+    if deltaX < .zero {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.x += deltaX
       }
@@ -226,8 +226,8 @@ extension AutoLayoutMergerDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func explodeSelection (objectArray inObjectArray : EBReferenceArray <MergerBoardInstance>) {
-    let hTranslation = self.rootObject.horizontalSeparator + millimeterToCanariUnit (1.0)
-    let vTranslation = self.rootObject.verticalSeparator + millimeterToCanariUnit (1.0)
+    let hTranslation = self.rootObject.horizontalSeparator + .mm (1.0)
+    let vTranslation = self.rootObject.verticalSeparator + .mm (1.0)
     let xSortedArray = inObjectArray.values.sorted {
       ($0.x < $1.x) || (($0.x == $1.x) && ($0.y < $1.y))
     }

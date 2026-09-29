@@ -84,10 +84,10 @@ struct LayeredProductSegment : Codable {
     let angleInDegrees = NSPoint.angleInDegrees (p1, p2)
 
     let pad = BoardModelPad (inUndoManager)
-    pad.x = center.x.cuValue
-    pad.y = center.y.cuValue
-    pad.width = CanariLength.pt (d).cuValue + self.width.cuValue
-    pad.height = self.width.cuValue
+    pad.x = center.x
+    pad.y = center.y
+    pad.width = CanariLength.pt (d) + self.width
+    pad.height = self.width
     pad.rotation = Int (angleInDegrees * 1000.0)
     switch inEndStyle {
     case .round :

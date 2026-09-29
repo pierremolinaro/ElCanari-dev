@@ -6652,7 +6652,7 @@ do{
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
@@ -6666,7 +6666,7 @@ do{
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
@@ -6680,7 +6680,7 @@ do{
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }
@@ -6694,7 +6694,7 @@ do{
           }
           _ = vStackView_view_view_view.appendGutter ()
           do{
-            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUpEx (size: .small)
+            let vStackView_view_view_view_view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
               .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
             _ = vStackView_view_view_view .appendView (vStackView_view_view_view_view)
           }

@@ -1,12 +1,12 @@
 //--------------------------------------------------------------------------------------------------
 
 entity DeviceSlavePadInProject {
-  property @generateDirectAccess Int mCenterX default 0 ;
-  property @generateDirectAccess Int mCenterY default 0 ;
-  property @generateDirectAccess Int mWidth default 114_300 ;
-  property @generateDirectAccess Int mHeight default 228_600 ;
-  property @generateDirectAccess Int mHoleWidth default 57_150 ;
-  property @generateDirectAccess Int mHoleHeight default 57_150 ;
+  property @generateDirectAccess CanariLength mCenterX default ".zero" ;
+  property @generateDirectAccess CanariLength mCenterY default ".zero" ;
+  property @generateDirectAccess CanariLength mWidth default ".mil (50)" ;
+  property @generateDirectAccess CanariLength mHeight default ".mil (100)" ;
+  property @generateDirectAccess CanariLength mHoleWidth default ".mil (25)" ;
+  property @generateDirectAccess CanariLength mHoleHeight default ".mil (25)" ;
   property @generateDirectAccess PadShape mShape default octo ;
   property @generateDirectAccess SlavePadStyle mStyle default traversing ;
   

@@ -316,10 +316,10 @@ struct ProductRepresentation : Codable {
         let pad = BoardModelPad (inUndoManager)
         let relativeCenter = NSPoint ()
         let absoluteCenter = ProductPoint (ptValue: componentPad.af.transform (relativeCenter))
-        pad.x = absoluteCenter.x.cuValue
-        pad.y = absoluteCenter.y.cuValue
-        pad.width = componentPad.width.cuValue
-        pad.height = componentPad.height.cuValue
+        pad.x = absoluteCenter.x
+        pad.y = absoluteCenter.y
+        pad.width = componentPad.width
+        pad.height = componentPad.height
         pad.rotation = Int (componentPad.af.angleInDegrees * 1000.0)
         pad.shape = componentPad.shape
         padEntities.append (pad)

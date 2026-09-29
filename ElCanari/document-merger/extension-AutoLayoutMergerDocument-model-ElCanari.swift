@@ -57,10 +57,8 @@ extension AutoLayoutMergerDocument {
     boardModel.name = inName
     boardModel.modelData = inProduct.encodedJSONCompressedData (prettyPrinted: true, using: COMPRESSION_LZMA)
     boardModel.artworkName = inProduct.artworkName
-    boardModel.modelWidth = inProduct.boardWidth.cuValue
-    boardModel.modelHeight = inProduct.boardHeight.cuValue
-//    boardModel.modelLimitWidth = 0 // § inProduct.boardLimitWidth.cuValue
-//    boardModel.modelLimitWidthUnit = 2286 // § inProduct.boardLimitWidthUnit
+    boardModel.modelWidth = inProduct.boardWidth
+    boardModel.modelHeight = inProduct.boardHeight
     boardModel.modelWidthUnit = inProduct.boardWidthUnit
     boardModel.modelHeightUnit = inProduct.boardHeightUnit
     boardModel.layerConfiguration = inProduct.layerConfiguration
@@ -79,9 +77,9 @@ extension AutoLayoutMergerDocument {
       var viaEntities = EBReferenceArray <BoardModelVia> ()
       for circle in inProduct.circles (forLayers: .viaPad) {
         let via = BoardModelVia (self.undoManager)
-        via.x = circle.x.cuValue
-        via.y = circle.y.cuValue
-        via.padDiameter = circle.d.cuValue
+        via.x = circle.x
+        via.y = circle.y
+        via.padDiameter = circle.d
         viaEntities.append (via)
       }
       boardModel.vias = viaEntities

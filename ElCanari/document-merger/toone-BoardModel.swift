@@ -349,7 +349,7 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   //   Observers of 'modelWidth' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let modelWidth_property = EBTransientProperty <Int?> ()
+  final let modelWidth_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'modelWidthUnit' stored property
@@ -361,7 +361,7 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   //   Observers of 'modelHeight' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let modelHeight_property = EBTransientProperty <Int?> ()
+  final let modelHeight_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'modelHeightUnit' stored property

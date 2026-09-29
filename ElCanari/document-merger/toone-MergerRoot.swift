@@ -179,7 +179,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //   Observers of 'horizontalSeparator' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let horizontalSeparator_property = EBTransientProperty <Int?> ()
+  final let horizontalSeparator_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'horizontalSeparatorUnit' stored property
@@ -191,7 +191,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //   Observers of 'verticalSeparator' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let verticalSeparator_property = EBTransientProperty <Int?> ()
+  final let verticalSeparator_property = EBTransientProperty <CanariLength?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'verticalSeparatorUnit' stored property

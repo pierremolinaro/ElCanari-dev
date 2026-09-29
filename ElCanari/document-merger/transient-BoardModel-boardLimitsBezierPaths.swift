@@ -15,12 +15,12 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func transient_BoardModel_boardLimitsBezierPaths (
-       _ self_modelWidth : Int,                              
-       _ self_modelHeight : Int
+       _ self_modelWidth : CanariLength,                     
+       _ self_modelHeight : CanariLength
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2
-  let modelWidth = canariUnitToCocoa (self_modelWidth)
-  let modelHeight = canariUnitToCocoa (self_modelHeight)
+  let modelWidth = self_modelWidth.ptValue
+  let modelHeight = self_modelHeight.ptValue
   let limitWidth = 0.0 // §canariUnitToCocoa (self_modelLimitWidth)
   let left    = limitWidth / 2.0
   let right   = modelWidth - limitWidth / 2.0

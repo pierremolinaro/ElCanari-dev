@@ -53,12 +53,12 @@ extension AutoLayoutProjectDocument {
     if let artwork = self.rootObject.mArtwork {
       var padNetDictionary = [SideAndNetName : [PadGeometryForERC]] ()
       var padID = 0
-      self.checkTracksLayer (&issues, artworkClearance: artwork.minPPTPTTTW)
-      self.buildPadNetDictionary (&issues, &padID, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+      self.checkTracksLayer (&issues, artworkClearance: artwork.minPPTPTTTW.cuValue)
+      self.buildPadNetDictionary (&issues, &padID, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW.cuValue)
       var netConnectorsDictionary = [String : [(BoardConnector, BezierPath)]] ()
-      self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
+      self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW.cuValue)
       self.checkNetConnectivity (&issues, netConnectorsDictionary)
-      self.checkTrackInsulation (&issues, padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
+      self.checkTrackInsulation (&issues, padNetDictionary, artworkClearance: artwork.minPPTPTTTW.cuValue)
     }
   //--- Update status
     self.rootObject.mLastERCCheckingIsSuccess = issues.isEmpty
@@ -84,7 +84,7 @@ extension AutoLayoutProjectDocument {
         errorCount += 1
       }
     //--- Clearance
-      if artwork.minPPTPTTTW > self.rootObject.mLayoutClearance {
+      if artwork.minPPTPTTTW.cuValue > self.rootObject.mLayoutClearance {
         let issue = CanariIssue (kind: .error, message: "Router clearance should be greater or equal to Artwork clearance", pathes: [])
         ioIssues.append (issue)
         errorCount += 1
@@ -103,9 +103,9 @@ extension AutoLayoutProjectDocument {
         self.mERCLogTextViewArray.appendError ("\(errorCount) errors\n")
       }
     //--- Board OAR and PHD of vias
-      self.checkViasOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
+      self.checkViasOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit.cuValue, PHD: artwork.minValueForPHDinEBUnit.cuValue, artworkClearance: artwork.minPPTPTTTW.cuValue)
     //--- Board OAR and PHD of pads
-      self.checkPadsOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)
+      self.checkPadsOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit.cuValue, PHD: artwork.minValueForPHDinEBUnit.cuValue, artworkClearance: artwork.minPPTPTTTW.cuValue)
     }else{
       self.mERCLogTextViewArray.appendWarning ("No checking: artwork is not set.\n")
       let issue = CanariIssue (kind: .warning, message: "No checking: artwork is not set.", pathes: [])
@@ -125,7 +125,7 @@ extension AutoLayoutProjectDocument {
       //--- Check width
         if let actualTrackWidth = track.actualTrackWidth,
                let minPPTPTTTW = self.rootObject.minPPTPTTTW,
-               actualTrackWidth < minPPTPTTTW {
+               actualTrackWidth < minPPTPTTTW.cuValue {
           let bp = track.bezierPath (extraWidth: inArtworkClearance)
           let issue = CanariIssue (kind: .error, message: "track width < minimum track Width", pathes: [bp])
           ioIssues.append (issue)

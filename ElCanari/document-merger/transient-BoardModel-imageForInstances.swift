@@ -17,8 +17,8 @@ import CanariGeometry
 @MainActor func transient_BoardModel_imageForInstances (
        _ prefs_mergerColorBackground : NSColor,         
        _ prefs_mergerShowInstanceBackground : Bool,     
-       _ self_modelWidth : Int,                         
-       _ self_modelHeight : Int,                        
+       _ self_modelWidth : CanariLength,                
+       _ self_modelHeight : CanariLength,               
        _ self_frontTracksBezierPaths : BezierPathArray, 
        _ prefs_mergerBoardViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,        
@@ -101,7 +101,7 @@ import CanariGeometry
   var shapes = EBShape ()
 //--- Background
   if prefs_mergerShowInstanceBackground {
-    let backRect = NSRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa (self_modelHeight))
+    let backRect = NSRect (x: .zero, y: .zero, width: self_modelWidth, height: self_modelHeight)
     shapes.add (filled: [BezierPath (rect: backRect)], prefs_mergerColorBackground)
   }
 //--- Back Legend Lines, images and QR Codes
@@ -201,7 +201,7 @@ import CanariGeometry
 //--- Board limits tracks
   do{
     let color = prefs_mergerBoardViewDisplayModelBoardsLimits ? prefs_mergerColorInternalBoardsLimits : .clear
-    let boardRect = CanariRect (left: .zero, bottom: .zero, width: .cu (self_modelWidth), height: .cu (self_modelHeight))
+    let boardRect = CanariRect (left: .zero, bottom: .zero, width: self_modelWidth, height: self_modelHeight)
     let boardRectBP = BezierPath (rect: boardRect.ptValue)
     shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
     shapes.add (stroke: self_boardLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
