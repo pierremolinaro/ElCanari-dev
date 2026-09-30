@@ -72,10 +72,10 @@ struct GeometricOblong {
     switch self.capStyle {
     case .round :
     //--- p inside P1 circle
-      var inside = NSPoint.distance (self.p1, p) <= (self.width / 2.0)
+      var inside = self.p1.distance (to: p) <= (self.width / 2.0)
     //--- p inside P2 circle
       if !inside {
-        inside = NSPoint.distance (self.p2, p) <= (self.width / 2.0)
+        inside = self.p2.distance (to: p) <= (self.width / 2.0)
       }
     //--- p inside rectangle
       if !inside {
@@ -140,9 +140,9 @@ struct GeometricOblong {
     case .round :
       return GeometricRect (self.p1, self.p2, self.width)
     case .square :
-      let center = NSPoint.center (self.p1, self.p2)
+      let center = self.p1.mid (with: self.p2)
       let angle = NSPoint.angleInRadian (self.p1, self.p2)
-      let segmentHalfLength = (NSPoint.distance (self.p1, self.p2) + self.width) / 2.0
+      let segmentHalfLength = (self.p1.distance (to: self.p2) + self.width) / 2.0
       let p1 = NSPoint (x: center.x + segmentHalfLength * cos (angle), y: center.y + segmentHalfLength * sin (angle))
       let p2 = NSPoint (x: center.x - segmentHalfLength * cos (angle), y: center.y - segmentHalfLength * sin (angle))
       return GeometricRect (p1, p2, self.width)

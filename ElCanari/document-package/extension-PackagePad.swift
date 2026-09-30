@@ -186,7 +186,7 @@ extension PackagePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func angleInRadian (from inCanariPoint : CanariPoint, from inStartAngleInRadian : CGFloat) -> CGFloat {
-    let a = CanariPoint.angleInRadian (inCanariPoint, CanariPoint (x: self.xCenter, y: self.yCenter))
+    let a = inCanariPoint.angle (to: CanariPoint (x: self.xCenter, y: self.yCenter)).radianValue
     return (2.0 * CGFloat.pi + a - inStartAngleInRadian).truncatingRemainder (dividingBy: 2.0 * CGFloat.pi)
   }
 
@@ -407,7 +407,7 @@ final class PadGeometryForERC {
     //--- Check circle - circle insulation
       for c1 in self.circles {
         for c2 in inOther.circles {
-          if NSPoint.distance (c1.center, c2.center) < (c1.radius + c2.radius) {
+          if c1.center.distance (to: c2.center) < (c1.radius + c2.radius) {
             return true
           }
         }

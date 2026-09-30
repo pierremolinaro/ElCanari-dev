@@ -33,7 +33,7 @@ import CanariGeometry
   let arrowSize : CGFloat = 0.5
   let p1 = NSPoint (x: self_x1, y: self_y1)
   let p2 = NSPoint (x: self_x2, y: self_y2)
-  let length = NSPoint.distance (p1, p2)
+  let length = p1.distance (to: p2)
   var shape = EBShape ()
  //--- Compute angle
   let angle = NSPoint.angleInRadian (p1, p2)
@@ -45,7 +45,7 @@ import CanariGeometry
     bp.lineCapStyle = .butt
   }else{
   //--- Segment
-    let center = NSPoint.center (p1, p2)
+    let center = p1.mid (with: p2)
     var tr = AffineTransform ()
     tr.translate (x: center.x, y: center.y)
     tr.rotate (byRadians: angle)

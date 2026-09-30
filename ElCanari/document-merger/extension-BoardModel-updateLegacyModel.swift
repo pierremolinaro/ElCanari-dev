@@ -118,9 +118,9 @@ extension AutoLayoutMergerDocument {
       let centerY = (rect.p0y + rect.p1y + rect.p2y + rect.p3y) / 4
       let p0 = NSPoint (x: rect.p0x, y: rect.p0y)
       let p1 = NSPoint (x: rect.p1x, y: rect.p1y)
-      let width = NSPoint.distance (p0, p1)
+      let width = p0.distance (to: p1)
       let p2 = NSPoint (x: rect.p2x, y: rect.p2y)
-      let height = NSPoint.distance (p1, p2)
+      let height = p1.distance (to: p2)
       let angleInDegrees = NSPoint.angleInDegrees (p0, p1)
       var af = AffineTransform ()
       af.translate (x: centerX.ptValue, y: centerY.ptValue)

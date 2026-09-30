@@ -132,7 +132,7 @@ extension BoardTrack {
       case .locked :
         let p1 = self.mConnectorP1!.location!
         let p2 = self.mConnectorP2!.location!
-        let angle = Double (CanariPoint.angleInRadian (p1, p2))
+        let angle = p1.angle (to: p2).radianValue
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p2.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p2.y.cuValue) * sin (angle)
         let newP1X = p2.x + .cu (Int ((newLength * cos (angle)).rounded ()))
         let newP1Y = p2.y + .cu (Int ((newLength * sin (angle)).rounded ()))
@@ -165,7 +165,7 @@ extension BoardTrack {
       case .locked :
         let p1 = self.mConnectorP1!.location!
         let p2 = self.mConnectorP2!.location!
-        let angle = CanariPoint.angleInRadian (p1, p2)
+        let angle = p1.angle (to: p2).radianValue
         let newLength : Double = Double (mouseCanariLocationX.cuValue - p1.x.cuValue) * cos (angle) + Double (mouseCanariLocationY.cuValue - p1.y.cuValue) * sin (angle)
         let newP2X = p1.x + .cu (Int ((newLength * cos (angle)).rounded ()))
         let newP2Y = p1.y + .cu (Int ((newLength * sin (angle)).rounded ()))

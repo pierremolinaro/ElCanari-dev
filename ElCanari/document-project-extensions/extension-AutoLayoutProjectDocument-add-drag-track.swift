@@ -218,7 +218,7 @@ extension AutoLayoutProjectDocument {
      //--- Retain track only if distance between P1 and P2 is greater than mControlKeyHiliteDiameterSlider
        let p1 = track.mConnectorP1!.location!.ptValue
        let p2 = track.mConnectorP2!.location!.ptValue
-       accepts = NSPoint.distance (p1, p2) > (CanariLength.mil (self.rootObject.mControlKeyHiliteDiameter) / 2.0).ptValue
+       accepts = p1.distance (to: p2) > (CanariLength.mil (self.rootObject.mControlKeyHiliteDiameter) / 2.0).ptValue
        if accepts { // Try to connect at mouse up location
          let connectorsAt2 = self.rootObject.connectors (at: p2.canariPoint, trackSide: track.mSide)
          self.tryToConnect (connectorsAt2)

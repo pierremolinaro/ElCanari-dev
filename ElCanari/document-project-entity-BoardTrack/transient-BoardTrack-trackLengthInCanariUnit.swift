@@ -21,7 +21,7 @@ import CanariGeometry
 ) -> Double {
 //--- START OF USER ZONE 2
        if let p1 = self_mConnectorP1_location, let p2 = self_mConnectorP2_location {
-         return Double (CanariPoint.distance (p1, p2).cuValue)
+         return Double (p1.distance (to: p2).cuValue)
        }else{
          return 0.0
        }

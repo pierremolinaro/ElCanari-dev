@@ -425,8 +425,8 @@ extension AutoLayoutProjectDocument {
       if p0.y < p1.y {
         let topLeft = CanariPoint (x: p0.x, y: p1.y)
         let bottomRight = CanariPoint (x: p1.x, y: p0.y)
-        let dTopLeft = CanariPoint.distanceSquare (topLeft, connector.location!)
-        let dBottomRight = CanariPoint.distanceSquare (bottomRight, connector.location!)
+        let dTopLeft = topLeft.squareOfDistance (to: connector.location!)
+        let dBottomRight = bottomRight.squareOfDistance (to: connector.location!)
         if dTopLeft < dBottomRight {
           connector.mX = topLeft.x
           connector.mY = topLeft.y
@@ -437,8 +437,8 @@ extension AutoLayoutProjectDocument {
       }else{
         let topRight = CanariPoint (x: p1.x, y: p0.y)
         let bottomLeft = CanariPoint (x: p0.x, y: p1.y)
-        let dTopRight = CanariPoint.distanceSquare (topRight, connector.location!)
-        let dBottomLeft = CanariPoint.distanceSquare (bottomLeft, connector.location!)
+        let dTopRight = topRight.squareOfDistance (to: connector.location!)
+        let dBottomLeft = bottomLeft.squareOfDistance (to: connector.location!)
         if dTopRight < dBottomLeft {
           connector.mX = topRight.x
           connector.mY = topRight.y

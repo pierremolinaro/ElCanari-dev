@@ -21,7 +21,7 @@ extension ProjectRoot {
     var result = [BoardConnector] ()
     for object in self.mBoardObjects.values {
       if let connector = object as? BoardConnector {
-        var ok = CanariPoint.distanceSquare (connector.location!, inLocation) < squareOfDistance
+        var ok = inLocation.squareOfDistance (to: connector.location!) < squareOfDistance
         if ok {
           switch connector.side! {
           case .front :

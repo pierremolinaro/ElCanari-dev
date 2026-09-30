@@ -251,8 +251,8 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
   //--- Get end points coordinates
     let (p1, p2) = self.getPoints ()
   //--- Test points
-    self.mMouseInP1 = NSPoint.distance (p1, mouseLocation) <= KNOB_DIAMETER
-    self.mMouseInP2 = NSPoint.distance (p2, mouseLocation) <= KNOB_DIAMETER
+    self.mMouseInP1 = p1.distance (to: mouseLocation) <= KNOB_DIAMETER
+    self.mMouseInP2 = p2.distance (to: mouseLocation) <= KNOB_DIAMETER
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -277,8 +277,8 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
   //--- Get end points coordinates
     let (p1, p2) = self.getPoints ()
   //--- Test points
-    self.mMouseInP1 = NSPoint.distance (p1, mouseLocation) <= KNOB_DIAMETER
-    self.mMouseInP2 = NSPoint.distance (p2, mouseLocation) <= KNOB_DIAMETER
+    self.mMouseInP1 = p1.distance (to: mouseLocation) <= KNOB_DIAMETER
+    self.mMouseInP2 = p2.distance (to: mouseLocation) <= KNOB_DIAMETER
     super.mouseMoved (with: inEvent)
   }
 

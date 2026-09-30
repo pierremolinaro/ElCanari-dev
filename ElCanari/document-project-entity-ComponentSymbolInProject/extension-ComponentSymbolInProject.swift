@@ -110,7 +110,7 @@ extension ComponentSymbolInProject {
     }else if inKnobIndex == SYMBOL_IN_SCHEMATICS_ROTATION_KNOB {
       let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
       let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
-      let angleInDegrees = CanariPoint.angleInRadian (p, newKnobLocation) * 180.0 / .pi
+      let angleInDegrees = p.angle (to: newKnobLocation).degreeValue
       if angleInDegrees <= 45.0 {
         self.mRotation = .rotation0
       }else if angleInDegrees <= 135.0 {

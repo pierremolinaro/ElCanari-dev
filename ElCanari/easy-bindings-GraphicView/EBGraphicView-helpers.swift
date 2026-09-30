@@ -143,7 +143,7 @@ extension EBGraphicView {
       let rectInScreen = NSRect (origin: mouseLocationInScreen, size: NSSize ())
       let rectInWindow = myWindow.convertFromScreen (rectInScreen)
       let mouseLocationInView = self.convert (rectInWindow.origin, from: nil)
-      let locationOnGridInView = mouseLocationInView.aligned (onGrid: self.mArrowKeyMagnitude.ptValue)
+      let locationOnGridInView = mouseLocationInView.aligned (on: self.mArrowKeyMagnitude.ptValue)
       self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     }
   }

@@ -41,7 +41,7 @@ final class GeometricRect {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var center : NSPoint {
-    return NSPoint.center (self.p1, self.p2)
+    return self.p1.mid (with: self.p2)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,7 +53,7 @@ final class GeometricRect {
     if let r = self.mCircumRadius {
       return r
     }else{
-      let d = NSPoint.distance (self.p1, self.p2)
+      let d = self.p1.distance (to: self.p2)
       let r = (d * d + self.width * self.width).squareRoot () / 2.0
       self.mCircumRadius = r
       return r
@@ -98,7 +98,7 @@ final class GeometricRect {
     if !self.bounds.intersects (inCircle.bounds) {
       return false
     }else{
-      let centerDistance = NSPoint.distance (self.center, inCircle.center)
+      let centerDistance = self.center.distance (to: inCircle.center)
       if centerDistance > (self.circumRadius + inCircle.radius) {
         return false
       }else if self.bezierPath.contains (inCircle.center) {

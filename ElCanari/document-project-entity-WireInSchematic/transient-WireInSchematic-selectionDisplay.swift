@@ -35,7 +35,7 @@ import CanariGeometry
         shape.add (stroke: [bp], prefs_selectionHiliteColor)
       //--- Knob at center ?
         if (self_mP1_canMove ?? false) && (self_mP2_canMove ?? false) {
-          shape.add (knobAt: NSPoint.center (p1, p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+          shape.add (knobAt: p1.mid (with: p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         }
       //--- Knob at P1 ?
           if self_mP1_canMove ?? false {

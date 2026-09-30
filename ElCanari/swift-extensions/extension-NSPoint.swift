@@ -30,9 +30,7 @@ extension NSPoint : @retroactive Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (x inX : CanariLength, y inY : CanariLength) {
-    self.init ()
-    self.x = inX.ptValue
-    self.y = inY.ptValue
+    self.init (x: inX.ptValue, y: inY.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,21 +47,21 @@ extension NSPoint : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func center (_ p1 : NSPoint, _ p2 : NSPoint) -> NSPoint {
-    return NSPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
+  func mid (with p : NSPoint) -> NSPoint {
+    return NSPoint (x: (self.x + p.x) / 2.0, y: (self.y + p.y) / 2.0)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func distance (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
-    let dx = p1.x - p2.x
-    let dy = p1.y - p2.y
+  func distance (to p : NSPoint) -> CGFloat {
+    let dx = self.x - p.x
+    let dy = self.y - p.y
     return sqrt (dx * dx + dy * dy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func aligned (onGrid inGrid : CGFloat) -> NSPoint {
+  func aligned (on inGrid : CGFloat) -> NSPoint {
     var p = self
     p.x = (p.x / inGrid).rounded (.toNearestOrAwayFromZero) * inGrid
     p.y = (p.y / inGrid).rounded (.toNearestOrAwayFromZero) * inGrid

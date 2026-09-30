@@ -22,7 +22,7 @@ struct GeometricCircle {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func intersects (circle : GeometricCircle) -> Bool {
-    let d = NSPoint.distance (self.center, circle.center)
+    let d = self.center.distance (to: circle.center)
     return d <= (self.radius + circle.radius)
   }
 
@@ -43,9 +43,9 @@ struct GeometricCircle {
   //--- Then we compute the relative abscisse µ of P, the projection of C on P1P2
     let µ = (p2x * Cx + p2y * Cy) / (p2x * p2x + p2y * p2y)
     if µ < 0.0 { // Outside
-      return NSPoint.distance (self.center, inP1) <= self.radius
+      return self.center.distance (to: inP1) <= self.radius
     }else if µ > 1.0 { // Outside
-      return NSPoint.distance (self.center, inP2) <= self.radius
+      return self.center.distance (to: inP2) <= self.radius
     }else{ // Inside: we compute the distance between P and C
       let dx = µ * p2x - Cx
       let dy = µ * p2y - Cy

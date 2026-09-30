@@ -99,7 +99,7 @@ extension AutoLayoutProjectDocument {
     if let (removedBorderCurve, unalignedMouseDownPoint) = inSender.representedObject as? (BorderCurve, CanariPoint) {
       let p1  = CanariPoint (x: removedBorderCurve.mX, y: removedBorderCurve.mY)
       let p2  = CanariPoint (x: removedBorderCurve.mNext!.mX, y: removedBorderCurve.mNext!.mY)
-      if CanariPoint.distanceSquare (p1, unalignedMouseDownPoint) < CanariPoint.distanceSquare (p2, unalignedMouseDownPoint) {
+      if p1.squareOfDistance (to: unalignedMouseDownPoint) < p2.squareOfDistance (to: unalignedMouseDownPoint) {
         let nextBorderCurve = removedBorderCurve.mNext!
         let previousBorderCurve = removedBorderCurve.mPrevious!
         removedBorderCurve.mNext = nil
@@ -187,12 +187,12 @@ extension AutoLayoutProjectDocument {
         let p2 = CanariPoint (x: curve.mNext!.mX, y: curve.mNext!.mY)
         let cp1 = CanariPoint (x: curve.mCPX1, y: curve.mCPY1)
         let cp2 = CanariPoint (x: curve.mCPX2, y: curve.mCPY2)
-        let mid_P1_CP1 = CanariPoint.center (p1, cp1)
-        let mid_P2_CP2 = CanariPoint.center (p2, cp2)
-        let mid_CP1_CP2 = CanariPoint.center (cp1, cp2)
-        let newCP1 = CanariPoint.center (mid_P1_CP1, mid_CP1_CP2)
-        let newCP2 = CanariPoint.center (mid_P2_CP2, mid_CP1_CP2)
-        let newP = CanariPoint.center (newCP1, newCP2)
+        let mid_P1_CP1 = p1.mid (with: cp1)
+        let mid_P2_CP2 = p2.mid (with: cp2)
+        let mid_CP1_CP2 = cp1.mid (with: cp2)
+        let newCP1 = mid_P1_CP1.mid (with: mid_CP1_CP2)
+        let newCP2 = mid_P2_CP2.mid (with: mid_CP1_CP2)
+        let newP = newCP1.mid (with: newCP2)
       //---
         let newCurve = BorderCurve (self.undoManager)
         newCurve.mShape = .bezier

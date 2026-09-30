@@ -21,7 +21,7 @@
       "kind": "remote",
       "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
       "version": {
-        "revision": "059efb621963cbf016134fbc8bc06452a2f8a8e1",
+        "revision": "e7ac6a2e64d367d0a83fe1e02cb6db781d6a066e",
       },
     },
   ],
@@ -12699,12 +12699,6 @@
           ],
         }, {
           "path": "extension-Int.swift",
-          "target-membership": [
-            "ElCanari-Debug/compile-sources",
-            "ElCanari-Release/compile-sources",
-          ],
-        }, {
-          "path": "extension-Int-alignment-on-grid.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
             "ElCanari-Release/compile-sources",

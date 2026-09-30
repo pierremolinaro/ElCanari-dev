@@ -40,13 +40,13 @@ import CanariGeometry
   bp.lineCapStyle = .round
   bp.move (to: p1)
   bp.line (to: p2)
-  bp.move (to: NSPoint.center (p1, p2))
+  bp.move (to: p1.mid (with: p2))
   bp.line (to: pText)
 //--- Text
   let dimensionText = self_distanceInCanariUnit.string (in: self_distanceUnit, fractionDigits: 2)
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
-  let center = NSPoint.center (p1, p2)
+  let center = p1.mid (with: p2)
   shape.add (knobAt: center, knobIndex: PACKAGE_DIMENSION_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt: p1, knobIndex: PACKAGE_DIMENSION_ENDPOINT_1, .diamond, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt: p2, knobIndex: PACKAGE_DIMENSION_ENDPOINT_2, .diamond, CGFloat (self_PackageObject_knobSize))

@@ -32,7 +32,7 @@ import CanariGeometry
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
-  let center = NSPoint.center (p1, p2)
+  let center = p1.mid (with: p2)
   shape.add (knobAt: center, knobIndex: PACKAGE_GUIDE_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt: p1, knobIndex: PACKAGE_GUIDE_ENDPOINT_1, .diamond, CGFloat (self_PackageObject_knobSize))
   shape.add (knobAt: p2, knobIndex: PACKAGE_GUIDE_ENDPOINT_2, .diamond, CGFloat (self_PackageObject_knobSize))

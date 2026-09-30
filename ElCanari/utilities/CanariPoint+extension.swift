@@ -17,25 +17,9 @@ extension CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func center (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariPoint {
-    return CanariPoint (x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  static func distanceSquare (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariArea { // §
-    let dx = p1.x - p2.x
-    let dy = p1.y - p2.y
-    return dx * dx + dy * dy
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  static func distance (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariLength { // §
-    let dx = p1.x - p2.x
-    let dy = p1.y - p2.y
-    return .mm (sqrt ((dx * dx + dy * dy).mm2Value))
-  }
+//  static func center (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariPoint {
+//    return CanariPoint (x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
+//  }
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
@@ -79,28 +63,10 @@ extension CanariPoint {
     return CanariPoint (x: self.x - dy, y: self.y + dx)
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  static func angleInRadian (_ p1 : CanariPoint, _ p2 : CanariPoint) -> Double {
-    let width  = (p2.x - p1.x).ptValue
-    let height = (p2.y - p1.y).ptValue
-    var angle = atan2 (height, width) // Result in radian
-    if angle < 0.0 {
-      angle += 2.0 * Double.pi
-    }
-    return angle
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  static func angleInDegrees (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CGFloat {
-    return CanariPoint.angleInRadian (p1, p2) * 180.0 / .pi
-  }
-
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  mutating func constraintToOctolinearDirection (from inOriginPoint : CanariPoint) {
-   let angle = NSPoint.angleInDegrees (self.ptValue, inOriginPoint.ptValue)
+   let angle = self.angle (to: inOriginPoint).degreeValue
    let dx = self.x - inOriginPoint.x
    let dy = self.y - inOriginPoint.y
    if angle < (0.0 + 22.5) {
@@ -135,7 +101,7 @@ extension CanariPoint {
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  static func octolinearNearestAngleInDegrees (_ inP1 : CanariPoint, _ inP2 : CanariPoint) -> CGFloat {
-   let angle = CanariPoint.angleInDegrees (inP1, inP2)
+   let angle = inP1.angle (to: inP2).degreeValue
    if angle < (0.0 + 22.5) {
      return 0.0
    }else if angle < (0.0 + 67.5) {
@@ -160,7 +126,7 @@ extension CanariPoint {
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  mutating func constraintToRectilinearDirection (from inOriginPoint : CanariPoint) {
-   let angle = NSPoint.angleInDegrees (self.ptValue, inOriginPoint.ptValue)
+   let angle = self.angle (to: inOriginPoint).degreeValue
    if angle < (0.0 + 45.0) {
      self.y = inOriginPoint.y
    }else if angle < (90.0 + 45.0) {
@@ -177,7 +143,7 @@ extension CanariPoint {
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  static func rectilinearNearestAngleInDegrees (_ inP1 : CanariPoint, _ inP2 : CanariPoint) -> CGFloat {
-   let angle = CanariPoint.angleInDegrees (inP1, inP2)
+   let angle = inP1.angle (to: inP2).degreeValue
    if angle < (0.0 + 45.0) {
      return 0.0
    }else if angle < (90.0 + 45.0) {
