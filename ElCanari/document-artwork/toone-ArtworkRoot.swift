@@ -20,7 +20,6 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
       oldValue.layerConfiguration_property.stopsBeingObserved (by: self.layerConfiguration_property) // Stored property
       oldValue.selectedTab_property.stopsBeingObserved (by: self.selectedTab_property) // Stored property
       oldValue.comments_property.stopsBeingObserved (by: self.comments_property) // Stored property
-      oldValue.minPPTPTTTWdisplayUnit_property.stopsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property) // Stored property
       oldValue.minValueForOARdisplayUnit_property.stopsBeingObserved (by: self.minValueForOARdisplayUnit_property) // Stored property
       oldValue.minValueForOARinEBUnit_property.stopsBeingObserved (by: self.minValueForOARinEBUnit_property) // Stored property
       oldValue.minValueForPHDdisplayUnit_property.stopsBeingObserved (by: self.minValueForPHDdisplayUnit_property) // Stored property
@@ -29,6 +28,7 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
       oldValue.minValueForBoardLimitWidth_property.stopsBeingObserved (by: self.minValueForBoardLimitWidth_property) // Stored property
       oldValue.title_property.stopsBeingObserved (by: self.title_property) // Stored property
       oldValue.drillDataFileExtension_property.stopsBeingObserved (by: self.drillDataFileExtension_property) // Stored property
+      oldValue.minPPTPTTTWdisplayUnit_property.stopsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property) // Stored property
       oldValue.minPPTPTTTW_property.stopsBeingObserved (by: self.minPPTPTTTW_property) // Stored property
       oldValue.hasInnerElements_property.stopsBeingObserved (by: self.hasInnerElements_property) // Transient property
       oldValue.hasSixLayers_property.stopsBeingObserved (by: self.hasSixLayers_property) // Transient property
@@ -44,7 +44,6 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
       newValue.layerConfiguration_property.startsBeingObserved (by: self.layerConfiguration_property) // Stored property
       newValue.selectedTab_property.startsBeingObserved (by: self.selectedTab_property) // Stored property
       newValue.comments_property.startsBeingObserved (by: self.comments_property) // Stored property
-      newValue.minPPTPTTTWdisplayUnit_property.startsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property) // Stored property
       newValue.minValueForOARdisplayUnit_property.startsBeingObserved (by: self.minValueForOARdisplayUnit_property) // Stored property
       newValue.minValueForOARinEBUnit_property.startsBeingObserved (by: self.minValueForOARinEBUnit_property) // Stored property
       newValue.minValueForPHDdisplayUnit_property.startsBeingObserved (by: self.minValueForPHDdisplayUnit_property) // Stored property
@@ -53,6 +52,7 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
       newValue.minValueForBoardLimitWidth_property.startsBeingObserved (by: self.minValueForBoardLimitWidth_property) // Stored property
       newValue.title_property.startsBeingObserved (by: self.title_property) // Stored property
       newValue.drillDataFileExtension_property.startsBeingObserved (by: self.drillDataFileExtension_property) // Stored property
+      newValue.minPPTPTTTWdisplayUnit_property.startsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property) // Stored property
       newValue.minPPTPTTTW_property.startsBeingObserved (by: self.minPPTPTTTW_property) // Stored property
       newValue.hasInnerElements_property.startsBeingObserved (by: self.hasInnerElements_property) // Transient property
       newValue.hasSixLayers_property.startsBeingObserved (by: self.hasSixLayers_property) // Transient property
@@ -84,16 +84,10 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
   final let comments_property = EBTransientProperty <String?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'minPPTPTTTWdisplayUnit' stored property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final let minPPTPTTTWdisplayUnit_property = EBTransientProperty <Int?> ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'minValueForOARdisplayUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let minValueForOARdisplayUnit_property = EBTransientProperty <Int?> ()
+  final let minValueForOARdisplayUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'minValueForOARinEBUnit' stored property
@@ -105,7 +99,7 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
   //   Observers of 'minValueForPHDdisplayUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let minValueForPHDdisplayUnit_property = EBTransientProperty <Int?> ()
+  final let minValueForPHDdisplayUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'minValueForPHDinEBUnit' stored property
@@ -117,7 +111,7 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let minValueForBoardLimitWidthDisplayUnit_property = EBTransientProperty <Int?> ()
+  final let minValueForBoardLimitWidthDisplayUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'minValueForBoardLimitWidth' stored property
@@ -136,6 +130,12 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let drillDataFileExtension_property = EBTransientProperty <String?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'minPPTPTTTWdisplayUnit' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let minPPTPTTTWdisplayUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'minPPTPTTTW' stored property
@@ -217,10 +217,6 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
     self.comments_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.comments_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure minPPTPTTTWdisplayUnit simple stored property
-    self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.minPPTPTTTWdisplayUnit_property.optionalSelection ?? .single (nil)
-    }
   //--- Configure minValueForOARdisplayUnit simple stored property
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.minValueForOARdisplayUnit_property.optionalSelection ?? .single (nil)
@@ -252,6 +248,10 @@ class ReadOnlyObject_ArtworkRoot : EBReadOnlyAbstractObjectProperty <ArtworkRoot
   //--- Configure drillDataFileExtension simple stored property
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.drillDataFileExtension_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure minPPTPTTTWdisplayUnit simple stored property
+    self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.minPPTPTTTWdisplayUnit_property.optionalSelection ?? .single (nil)
     }
   //--- Configure minPPTPTTTW simple stored property
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in

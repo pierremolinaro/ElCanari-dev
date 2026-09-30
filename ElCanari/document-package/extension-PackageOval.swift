@@ -223,13 +223,13 @@ extension PackageOval {
 
   override func program () -> String {
     var s = "oval "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x, displayUnit : self.xUnit)
+    s += self.x.string (in: self.xUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y, displayUnit : self.yUnit)
+    s += self.y.string (in: self.yUnit, fractionDigits: 2)
     s += " size "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += self.width.string (in: self.widthUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += self.height.string (in: self.heightUnit, fractionDigits: 2)
     s += ";\n"
     return s
   }

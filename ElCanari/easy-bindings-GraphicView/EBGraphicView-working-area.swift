@@ -17,10 +17,10 @@ import CanariGeometry
   //   Private properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mArea = CanariRect (left: .cu (-CANARI_UNITS_PER_INCH / 2),
-                                  bottom: .cu (-CANARI_UNITS_PER_INCH / 2),
-                                  width: .cu (CANARI_UNITS_PER_INCH * 5),
-                                  height: .cu (CANARI_UNITS_PER_INCH * 5))
+  private var mArea = CanariRect (left: .mil (-500),
+                                  bottom: .mil (-500),
+                                  width: .inch (5),
+                                  height: .inch (5))
 
   private var mAreaCursorZone = WorkingAreaCursorZone.none
 

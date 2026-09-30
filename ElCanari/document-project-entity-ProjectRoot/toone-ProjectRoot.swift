@@ -651,7 +651,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mTrackLengthUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mTrackLengthUnit_property = EBTransientProperty <Int?> ()
+  final let mTrackLengthUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mLayoutClearance' stored property
@@ -663,7 +663,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mLayoutClearanceUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mLayoutClearanceUnit_property = EBTransientProperty <Int?> ()
+  final let mLayoutClearanceUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardSelectedInspector' stored property
@@ -711,7 +711,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mBoardGridStepUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardGridStepUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardGridStepUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mErrorOrWarningIssueSize' stored property
@@ -741,7 +741,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mBoardCornerRadiusUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardCornerRadiusUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardCornerRadiusUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardClearance' stored property
@@ -753,7 +753,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mBoardClearanceUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardClearanceUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardClearanceUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardLimitsSelectedInspector' stored property
@@ -801,31 +801,31 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mBoardLimitsGridStepUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardLimitsGridStepUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardLimitsGridStepUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardLimitsBoundingBoxUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardLimitsBoundingBoxUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardLimitsBoundingBoxUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardPointsBoundingBoxUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardPointsBoundingBoxUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardPointsBoundingBoxUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardSelectedCurveDisplayUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardSelectedCurveDisplayUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardSelectedCurveDisplayUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardLimitControlPointsDisplayUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mBoardLimitControlPointsDisplayUnit_property = EBTransientProperty <Int?> ()
+  final let mBoardLimitControlPointsDisplayUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mBoardShape' stored property
@@ -849,7 +849,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mRectangularBoardWidthUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mRectangularBoardWidthUnit_property = EBTransientProperty <Int?> ()
+  final let mRectangularBoardWidthUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mRectangularBoardHeight' stored property
@@ -861,7 +861,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mRectangularBoardHeightUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mRectangularBoardHeightUnit_property = EBTransientProperty <Int?> ()
+  final let mRectangularBoardHeightUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDefaultNetClassName' stored property
@@ -957,7 +957,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mSchematicCustomWidthUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mSchematicCustomWidthUnit_property = EBTransientProperty <Int?> ()
+  final let mSchematicCustomWidthUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mSchematicCustomHeight' stored property
@@ -969,7 +969,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //   Observers of 'mSchematicCustomHeightUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mSchematicCustomHeightUnit_property = EBTransientProperty <Int?> ()
+  final let mSchematicCustomHeightUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mWorkingAreaRectString' stored property

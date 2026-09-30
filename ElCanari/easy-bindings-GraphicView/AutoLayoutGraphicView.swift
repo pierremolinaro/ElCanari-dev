@@ -316,14 +316,14 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_xPlacardUnit (_ inObject : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_xPlacardUnit (_ inObject : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     self.mGraphicView.bind_xPlacardUnit (inObject)
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_yPlacardUnit (_ inObject : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_yPlacardUnit (_ inObject : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     self.mGraphicView.bind_yPlacardUnit (inObject)
     return self
   }

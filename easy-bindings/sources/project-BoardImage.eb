@@ -6,9 +6,9 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   graphic canCopyAndPaste ;
 
   property @generateDirectAccess CanariLength mCenterX default ".zero" ;
-  property Int mXUnit default 2_286 ; // mil
+  property CanariLengthUnit mXUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mCenterY default ".zero" ;
-  property Int mYUnit default 2_286 ; // mil
+  property CanariLengthUnit mYUnit default ".mil" ; // mil
   property Int mThreshold default 200 ;
   property @generateDirectAccess Data mImageData default empty ;
   property Bool mInvert default no ;
@@ -16,9 +16,9 @@ graphic handlingOpposite entity BoardImage : BoardObject {
   property Bool mVerticalFlip default no ;
   property Double mScale default 0.5 ;
   property CanariLength mPixelSize default ".pt (1)" ; // px
-  property Int mPixelSizeUnit  default 31_750 ; // px
-  property Int mActualWidthUnit  default 900_000 ; // cm
-  property Int mActualHeightUnit  default 900_000 ; // cm
+  property CanariLengthUnit mPixelSizeUnit  default ".pt" ; // px
+  property CanariLengthUnit mActualWidthUnit  default ".cm" ; // cm
+  property CanariLengthUnit mActualHeightUnit  default ".cm" ; // cm
   property BoardImageDisplay mImageDisplay default original ;
   property @generateDirectAccess BoardQRCodeLayer mLayer default legendFront ;
  

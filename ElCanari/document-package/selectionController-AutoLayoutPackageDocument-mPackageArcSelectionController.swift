@@ -69,31 +69,31 @@ import CanariGeometry
   //   Selection observable property: xCenterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let xCenterUnit_property = EBComputedProperty_Int ()
+  final let xCenterUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: yCenterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let yCenterUnit_property = EBComputedProperty_Int ()
+  final let yCenterUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: radiusUnit
   //------------------------------------------------------------------------------------------------
 
-  final let radiusUnit_property = EBComputedProperty_Int ()
+  final let radiusUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: startTangentUnit
   //------------------------------------------------------------------------------------------------
 
-  final let startTangentUnit_property = EBComputedProperty_Int ()
+  final let startTangentUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: endTangentUnit
   //------------------------------------------------------------------------------------------------
 
-  final let endTangentUnit_property = EBComputedProperty_Int ()
+  final let endTangentUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: xCenter
@@ -601,7 +601,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.xCenterUnit_property.selection {
@@ -627,7 +627,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.xCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.xCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -652,7 +652,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.yCenterUnit_property.selection {
@@ -678,7 +678,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.yCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.yCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -703,7 +703,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.radiusUnit_property.selection {
@@ -729,7 +729,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.radiusUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.radiusUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -754,7 +754,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.startTangentUnit_property.selection {
@@ -780,7 +780,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.startTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.startTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -805,7 +805,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.endTangentUnit_property.selection {
@@ -831,7 +831,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.endTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.endTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

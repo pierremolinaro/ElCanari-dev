@@ -211,7 +211,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'gridStepUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let gridStepUnit_property = EBTransientProperty <Int?> ()
+  final let gridStepUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'gridDisplayFactor' stored property
@@ -259,7 +259,7 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'mModelImagePageGridStepUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImagePageGridStepUnit_property = EBTransientProperty <Int?> ()
+  final let mModelImagePageGridStepUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImagePageGridDisplayFactor' stored property
@@ -277,25 +277,25 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'mModelImagePageXPlacardUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImagePageXPlacardUnit_property = EBTransientProperty <Int?> ()
+  final let mModelImagePageXPlacardUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImagePageYPlacardUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImagePageYPlacardUnit_property = EBTransientProperty <Int?> ()
+  final let mModelImagePageYPlacardUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImageSecondPointXUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImageSecondPointXUnit_property = EBTransientProperty <Int?> ()
+  final let mModelImageSecondPointXUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImageSecondPointYUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mModelImageSecondPointYUnit_property = EBTransientProperty <Int?> ()
+  final let mModelImageSecondPointYUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mModelImageData' stored property
@@ -355,25 +355,25 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'mDimensionUnitFirstModelPointX' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDimensionUnitFirstModelPointX_property = EBTransientProperty <Int?> ()
+  final let mDimensionUnitFirstModelPointX_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDimensionUnitFirstModelPointY' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDimensionUnitFirstModelPointY_property = EBTransientProperty <Int?> ()
+  final let mDimensionUnitFirstModelPointY_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDimensionUnitSecondModelPointDx' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDimensionUnitSecondModelPointDx_property = EBTransientProperty <Int?> ()
+  final let mDimensionUnitSecondModelPointDx_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDimensionUnitSecondModelPointDy' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDimensionUnitSecondModelPointDy_property = EBTransientProperty <Int?> ()
+  final let mDimensionUnitSecondModelPointDy_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'knobSizeMultpliedByTen' stored property
@@ -397,13 +397,13 @@ class ReadOnlyObject_PackageRoot : EBReadOnlyAbstractObjectProperty <PackageRoot
   //   Observers of 'xPlacardUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let xPlacardUnit_property = EBTransientProperty <Int?> ()
+  final let xPlacardUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'yPlacardUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let yPlacardUnit_property = EBTransientProperty <Int?> ()
+  final let yPlacardUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'freePadNumbering' transient property

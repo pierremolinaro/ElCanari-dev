@@ -65,49 +65,49 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_xCenterUnit : AnyObject {
-//   var xCenterUnit : Int { get }
+//   var xCenterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_yCenterUnit : AnyObject {
-//   var yCenterUnit : Int { get }
+//   var yCenterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_widthUnit : AnyObject {
-//   var widthUnit : Int { get }
+//   var widthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_heightUnit : AnyObject {
-//   var heightUnit : Int { get }
+//   var heightUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_holeWidthUnit : AnyObject {
-//   var holeWidthUnit : Int { get }
+//   var holeWidthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_holeHeightUnit : AnyObject {
-//   var holeHeightUnit : Int { get }
+//   var holeHeightUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageSlavePad_annularRingUnit : AnyObject {
-//   var annularRingUnit : Int { get }
+//   var annularRingUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -311,11 +311,11 @@ final class PackageSlavePad : PackageObject
   //   Atomic property: xCenterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let xCenterUnit_property : EBStoredProperty_Int
+  final let xCenterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var xCenterUnit : Int {
+  final var xCenterUnit : CanariLengthUnit {
     get { return self.xCenterUnit_property.propval }
     set { self.xCenterUnit_property.setProp (newValue) }
   }
@@ -324,11 +324,11 @@ final class PackageSlavePad : PackageObject
   //   Atomic property: yCenterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let yCenterUnit_property : EBStoredProperty_Int
+  final let yCenterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var yCenterUnit : Int {
+  final var yCenterUnit : CanariLengthUnit {
     get { return self.yCenterUnit_property.propval }
     set { self.yCenterUnit_property.setProp (newValue) }
   }
@@ -337,11 +337,11 @@ final class PackageSlavePad : PackageObject
   //   Atomic property: widthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let widthUnit_property : EBStoredProperty_Int
+  final let widthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var widthUnit : Int {
+  final var widthUnit : CanariLengthUnit {
     get { return self.widthUnit_property.propval }
     set { self.widthUnit_property.setProp (newValue) }
   }
@@ -350,11 +350,11 @@ final class PackageSlavePad : PackageObject
   //   Atomic property: heightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let heightUnit_property : EBStoredProperty_Int
+  final let heightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var heightUnit : Int {
+  final var heightUnit : CanariLengthUnit {
     get { return self.heightUnit_property.propval }
     set { self.heightUnit_property.setProp (newValue) }
   }
@@ -363,11 +363,11 @@ final class PackageSlavePad : PackageObject
   //   Atomic property: holeWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let holeWidthUnit_property : EBStoredProperty_Int
+  final let holeWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var holeWidthUnit : Int {
+  final var holeWidthUnit : CanariLengthUnit {
     get { return self.holeWidthUnit_property.propval }
     set { self.holeWidthUnit_property.setProp (newValue) }
   }
@@ -376,11 +376,11 @@ final class PackageSlavePad : PackageObject
   //   Atomic property: holeHeightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let holeHeightUnit_property : EBStoredProperty_Int
+  final let holeHeightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var holeHeightUnit : Int {
+  final var holeHeightUnit : CanariLengthUnit {
     get { return self.holeHeightUnit_property.propval }
     set { self.holeHeightUnit_property.setProp (newValue) }
   }
@@ -389,11 +389,11 @@ final class PackageSlavePad : PackageObject
   //   Atomic property: annularRingUnit
   //------------------------------------------------------------------------------------------------
 
-  final let annularRingUnit_property : EBStoredProperty_Int
+  final let annularRingUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var annularRingUnit : Int {
+  final var annularRingUnit : CanariLengthUnit {
     get { return self.annularRingUnit_property.propval }
   }
 
@@ -511,13 +511,13 @@ final class PackageSlavePad : PackageObject
     self.holeHeight_property = EBStoredProperty_CanariLength (defaultValue: .mil (25), undoManager: inUndoManager, key: "holeHeight")
     self.padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager, key: "padShape")
     self.padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager, key: "padStyle")
-    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xCenterUnit")
-    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yCenterUnit")
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "widthUnit")
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "heightUnit")
-    self.holeWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "holeWidthUnit")
-    self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "holeHeightUnit")
-    self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "annularRingUnit")
+    self.xCenterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "xCenterUnit")
+    self.yCenterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "yCenterUnit")
+    self.widthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "widthUnit")
+    self.heightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "heightUnit")
+    self.holeWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "holeWidthUnit")
+    self.holeHeightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "holeHeightUnit")
+    self.annularRingUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "annularRingUnit")
     super.init (inUndoManager)
     self.master_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {

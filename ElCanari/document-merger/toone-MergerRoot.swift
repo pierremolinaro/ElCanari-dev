@@ -155,25 +155,25 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //   Observers of 'boardWidthUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let boardWidthUnit_property = EBTransientProperty <Int?> ()
+  final let boardWidthUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'boardHeightUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let boardHeightUnit_property = EBTransientProperty <Int?> ()
+  final let boardHeightUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'selectedBoardXUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let selectedBoardXUnit_property = EBTransientProperty <Int?> ()
+  final let selectedBoardXUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'selectedBoardYUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let selectedBoardYUnit_property = EBTransientProperty <Int?> ()
+  final let selectedBoardYUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'horizontalSeparator' stored property
@@ -185,7 +185,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //   Observers of 'horizontalSeparatorUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let horizontalSeparatorUnit_property = EBTransientProperty <Int?> ()
+  final let horizontalSeparatorUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'verticalSeparator' stored property
@@ -197,7 +197,7 @@ class ReadOnlyObject_MergerRoot : EBReadOnlyAbstractObjectProperty <MergerRoot> 
   //   Observers of 'verticalSeparatorUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let verticalSeparatorUnit_property = EBTransientProperty <Int?> ()
+  final let verticalSeparatorUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mPDFBoardBackgroundColor' stored property

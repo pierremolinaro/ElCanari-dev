@@ -16,11 +16,11 @@ import CanariGeometry
 
 @MainActor func transient_BorderCurve_p2Xvalue (
        _ self_mNext_mX : CanariLength?,         
-       _ self_mRoot_mBoardSelectedCurveDisplayUnit : Int?
+       _ self_mRoot_mBoardSelectedCurveDisplayUnit : CanariLengthUnit?
 ) -> Double {
 //--- START OF USER ZONE 2
        if let x = self_mNext_mX, let unit = self_mRoot_mBoardSelectedCurveDisplayUnit {
-         return Double (x.cuValue) / Double (unit)
+         return Double (x.cuValue) / Double (unit.cuValue)
        }else{
         return 0.0
        }

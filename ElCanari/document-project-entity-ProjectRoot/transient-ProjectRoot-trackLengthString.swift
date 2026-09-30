@@ -16,7 +16,7 @@ import CanariGeometry
 
 @MainActor func transient_ProjectRoot_trackLengthString (
        _ self_mBoardObjects_trackLengthInCanariUnit : [any BoardObject_trackLengthInCanariUnit],
-       _ self_mTrackLengthUnit : Int
+       _ self_mTrackLengthUnit : CanariLengthUnit
 ) -> String {
 //--- START OF USER ZONE 2
         var trackLengthInCanariUnit = 0.0
@@ -25,7 +25,7 @@ import CanariGeometry
             trackLengthInCanariUnit += length
           }
         }
-        let trackLength = trackLengthInCanariUnit / Double (self_mTrackLengthUnit)
+        let trackLength = trackLengthInCanariUnit / Double (self_mTrackLengthUnit.cuValue)
   return unsafe String (format: "%.3f", trackLength)
 //--- END OF USER ZONE 2
 }

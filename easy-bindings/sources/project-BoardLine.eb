@@ -17,19 +17,19 @@ graphic entity BoardLine : BoardObject {
   graphic canCopyAndPaste ;
 
   property CanariLength mWidth default ".mil (25)" ;
-  property Int mWidthUnit default 2_286 ; // mil
+  property CanariLengthUnit mWidthUnit default ".mil" ; // mil
 
   property @generateDirectAccess CanariLength mX1 default ".zero" ;
-  property @generateDirectAccess Int mX1Unit default 2_286 ; // mil
+  property @generateDirectAccess CanariLengthUnit mX1Unit default ".mil" ; // mil
 
   property @generateDirectAccess CanariLength mY1 default ".zero" ;
-  property @generateDirectAccess Int mY1Unit default 2_286 ; // mil
+  property @generateDirectAccess CanariLengthUnit mY1Unit default ".mil" ; // mil
 
   property @generateDirectAccess CanariLength mX2 default ".mil (200)" ; // 200 mils
-  property @generateDirectAccess Int mX2Unit default 2_286 ; // mil
+  property @generateDirectAccess CanariLengthUnit mX2Unit default ".mil" ; // mil
 
   property @generateDirectAccess CanariLength mY2 default ".mil (200)" ; // 200 mils
-  property @generateDirectAccess Int mY2Unit default 2_286 ; // mil
+  property @generateDirectAccess CanariLengthUnit mY2Unit default ".mil" ; // mil
 
   property @generateDirectAccess BoardLineLayer mLayer default legendFront ;
 

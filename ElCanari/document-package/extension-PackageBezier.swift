@@ -250,21 +250,21 @@ extension PackageBezier {
 
   override func program () -> String {
     var s = "bezier "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x1, displayUnit : self.x1Unit)
+    s += self.x1.string (in: self.x1Unit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y1, displayUnit : self.y1Unit)
+    s += self.y1.string (in: self.y1Unit, fractionDigits: 2)
     s += " to "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x2, displayUnit : self.x2Unit)
+    s += self.x2.string (in: self.x2Unit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y2, displayUnit : self.y2Unit)
+    s += self.y2.string (in: self.y2Unit, fractionDigits: 2)
     s += " cp "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpx1, displayUnit : self.cpx1Unit)
+    s += self.cpx1.string (in: self.cpx1Unit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpy1, displayUnit : self.cpy1Unit)
+    s += self.cpy1.string (in: self.cpy1Unit, fractionDigits: 2)
     s += " cp "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpx2, displayUnit : self.cpx2Unit)
+    s += self.cpx2.string (in: self.cpx2Unit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.cpy2, displayUnit : self.cpy2Unit)
+    s += self.cpy2.string (in: self.cpy2Unit, fractionDigits: 2)
     s += ";\n"
     return s
   }

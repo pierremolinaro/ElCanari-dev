@@ -390,11 +390,11 @@ struct CanariUnitToDSNUnitConverter {
   func dsnUnitFromCanariUnit (_ inValue : Int ) -> Double {
     switch unit {
     case .millimeter :
-      return Double (inValue) / Double (CANARI_UNITS_PER_MM)
+      return Double (inValue) / Double (CanariLengthUnit.mm.cuValue)
     case .mil :
-      return Double (inValue) / Double (CANARI_UNITS_PER_MIL)
+      return Double (inValue) / Double (CanariLengthUnit.mm.cuValue)
     case .micrometer :
-      return 1000.0 * Double (inValue) / Double (CANARI_UNITS_PER_MM)
+      return 1000.0 * Double (inValue) / Double (CanariLengthUnit.mm.cuValue)
     }
   }
 

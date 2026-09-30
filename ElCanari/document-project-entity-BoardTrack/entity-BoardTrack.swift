@@ -15,7 +15,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_mDefaultTrackWidthUnit : AnyObject {
-//   var mDefaultTrackWidthUnit : Int { get }
+//   var mDefaultTrackWidthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_mCustomTrackWidthUnit : AnyObject {
-//   var mCustomTrackWidthUnit : Int { get }
+//   var mCustomTrackWidthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -50,28 +50,28 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_mP1XUnit : AnyObject {
-//   var mP1XUnit : Int { get }
+//   var mP1XUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_mP1YUnit : AnyObject {
-//   var mP1YUnit : Int { get }
+//   var mP1YUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_mP2XUnit : AnyObject {
-//   var mP2XUnit : Int { get }
+//   var mP2XUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol BoardTrack_mP2YUnit : AnyObject {
-//   var mP2YUnit : Int { get }
+//   var mP2YUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -280,11 +280,11 @@ final class BoardTrack : BoardObject
   //   Atomic property: mDefaultTrackWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mDefaultTrackWidthUnit_property : EBStoredProperty_Int
+  final let mDefaultTrackWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mDefaultTrackWidthUnit : Int {
+  final var mDefaultTrackWidthUnit : CanariLengthUnit {
     get { return self.mDefaultTrackWidthUnit_property.propval }
   }
 
@@ -305,11 +305,11 @@ final class BoardTrack : BoardObject
   //   Atomic property: mCustomTrackWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mCustomTrackWidthUnit_property : EBStoredProperty_Int
+  final let mCustomTrackWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCustomTrackWidthUnit : Int {
+  final var mCustomTrackWidthUnit : CanariLengthUnit {
     get { return self.mCustomTrackWidthUnit_property.propval }
   }
 
@@ -343,11 +343,11 @@ final class BoardTrack : BoardObject
   //   Atomic property: mP1XUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mP1XUnit_property : EBStoredProperty_Int
+  final let mP1XUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mP1XUnit : Int {
+  final var mP1XUnit : CanariLengthUnit {
     get { return self.mP1XUnit_property.propval }
     set { self.mP1XUnit_property.setProp (newValue) }
   }
@@ -356,11 +356,11 @@ final class BoardTrack : BoardObject
   //   Atomic property: mP1YUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mP1YUnit_property : EBStoredProperty_Int
+  final let mP1YUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mP1YUnit : Int {
+  final var mP1YUnit : CanariLengthUnit {
     get { return self.mP1YUnit_property.propval }
     set { self.mP1YUnit_property.setProp (newValue) }
   }
@@ -369,11 +369,11 @@ final class BoardTrack : BoardObject
   //   Atomic property: mP2XUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mP2XUnit_property : EBStoredProperty_Int
+  final let mP2XUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mP2XUnit : Int {
+  final var mP2XUnit : CanariLengthUnit {
     get { return self.mP2XUnit_property.propval }
     set { self.mP2XUnit_property.setProp (newValue) }
   }
@@ -382,11 +382,11 @@ final class BoardTrack : BoardObject
   //   Atomic property: mP2YUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mP2YUnit_property : EBStoredProperty_Int
+  final let mP2YUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mP2YUnit : Int {
+  final var mP2YUnit : CanariLengthUnit {
     get { return self.mP2YUnit_property.propval }
     set { self.mP2YUnit_property.setProp (newValue) }
   }
@@ -718,15 +718,15 @@ final class BoardTrack : BoardObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: inUndoManager, key: "mSide")
-    self.mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDefaultTrackWidthUnit")
+    self.mDefaultTrackWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mDefaultTrackWidthUnit")
     self.mCustomTrackWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil (20), undoManager: inUndoManager, key: "mCustomTrackWidth")
-    self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mCustomTrackWidthUnit")
+    self.mCustomTrackWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mCustomTrackWidthUnit")
     self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mUsesCustomTrackWidth")
     self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsPreservedByAutoRouter")
-    self.mP1XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP1XUnit")
-    self.mP1YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP1YUnit")
-    self.mP2XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP2XUnit")
-    self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP2YUnit")
+    self.mP1XUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mP1XUnit")
+    self.mP1YUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mP1YUnit")
+    self.mP2XUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mP2XUnit")
+    self.mP2YUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mP2YUnit")
     self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP1")
     self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP2")
     self.mAddedToSolderMask_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAddedToSolderMask")

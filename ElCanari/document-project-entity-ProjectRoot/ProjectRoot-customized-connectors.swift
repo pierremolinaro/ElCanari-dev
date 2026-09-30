@@ -16,7 +16,6 @@ extension ProjectRoot {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func connectors (at inLocation : CanariPoint, trackSide inSide : TrackSide) -> [BoardConnector] {
- //   let distance = Double (milsToCanariUnit (fromDouble: self.mControlKeyHiliteDiameter)) / 2.0
     let distance = CanariLength.mil (self.mControlKeyHiliteDiameter) / 2.0
     let squareOfDistance = distance * distance
     var result = [BoardConnector] ()
@@ -48,23 +47,6 @@ extension ProjectRoot {
     }
     return result
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func connectors (at inLocation : CanariPoint, connectorSide inSide : ConnectorSide) -> [BoardConnector] {
-//    let distance = Double (milsToCanariUnit (fromDouble: self.mControlKeyHiliteDiameter)) / 2.0
-//    let squareOfDistance = distance * distance
-//    var result = [BoardConnector] ()
-//    for object in self.mBoardObjects.values {
-//      if let connector = object as? BoardConnector {
-//        let ok = (connector.side! == inSide) && CanariPoint.distanceSquare (connector.location!, inLocation) < squareOfDistance
-//        if ok {
-//          result.append (connector)
-//        }
-//      }
-//    }
-//    return result
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

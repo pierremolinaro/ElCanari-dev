@@ -8,9 +8,9 @@ graphic handlingOpposite entity BoardText : BoardObject {
   toOne @weak FontInProject mFont inverse toMany mTexts ;
 
   property @generateDirectAccess CanariLength mX default ".zero" ;
-  property Int mXUnit default 2_286 ; // mil
+  property CanariLengthUnit mXUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mY default ".zero" ;
-  property Int mYUnit default 2_286 ; // mil
+  property CanariLengthUnit mYUnit default ".mil" ; // mil
   property Double mFontSize default 4.0 ;
   property @generateDirectAccess BoardTextLayer mLayer default legendFront ;
   property String mText default "" ;

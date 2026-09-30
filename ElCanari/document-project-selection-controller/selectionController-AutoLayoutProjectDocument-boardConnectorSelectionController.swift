@@ -51,7 +51,7 @@ import CanariGeometry
   //   Selection observable property: mDefaultHoleDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mDefaultHoleDiameterUnit_property = EBComputedProperty_Int ()
+  final let mDefaultHoleDiameterUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mCustomHoleDiameter
@@ -63,7 +63,7 @@ import CanariGeometry
   //   Selection observable property: mCustomHoleDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mCustomHoleDiameterUnit_property = EBComputedProperty_Int ()
+  final let mCustomHoleDiameterUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mUsesCustomHoleDiameter
@@ -75,7 +75,7 @@ import CanariGeometry
   //   Selection observable property: mDefaultPadDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mDefaultPadDiameterUnit_property = EBComputedProperty_Int ()
+  final let mDefaultPadDiameterUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mCustomPadDiameter
@@ -87,7 +87,7 @@ import CanariGeometry
   //   Selection observable property: mCustomPadDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mCustomPadDiameterUnit_property = EBComputedProperty_Int ()
+  final let mCustomPadDiameterUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mUsesCustomPadDiameter
@@ -567,7 +567,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mDefaultHoleDiameterUnit_property.selection {
@@ -593,7 +593,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mDefaultHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mDefaultHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -669,7 +669,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCustomHoleDiameterUnit_property.selection {
@@ -695,7 +695,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCustomHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCustomHoleDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -771,7 +771,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mDefaultPadDiameterUnit_property.selection {
@@ -797,7 +797,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mDefaultPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mDefaultPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -873,7 +873,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mCustomPadDiameterUnit_property.selection {
@@ -899,7 +899,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mCustomPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mCustomPadDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

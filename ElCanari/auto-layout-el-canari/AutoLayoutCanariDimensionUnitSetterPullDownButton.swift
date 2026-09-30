@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -55,8 +56,8 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : ALB_NSPopUpButto
 
   @objc func menuItemAction (_ inSender : NSMenuItem) {
     let newUnit = inSender.tag
-    for object in mObjects {
-      object.setProp (newUnit)
+    for object in self.mObjects {
+      object.setProp (CanariLengthUnit (fromNearestLength: newUnit))
     }
   }
 
@@ -64,64 +65,64 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : ALB_NSPopUpButto
   //  $setterN bindings
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mObjects = [EBObservableMutableProperty <Int>] ()
+  private var mObjects = [EBObservableMutableProperty <CanariLengthUnit>] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_setter4 (_ inObject1 : EBObservableMutableProperty <Int>,
-                           _ inObject2 : EBObservableMutableProperty <Int>,
-                           _ inObject3 : EBObservableMutableProperty <Int>,
-                           _ inObject4 : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_setter4 (_ inObject1 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject2 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject3 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject4 : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4]
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_setter5 (_ inObject1 : EBObservableMutableProperty <Int>,
-                           _ inObject2 : EBObservableMutableProperty <Int>,
-                           _ inObject3 : EBObservableMutableProperty <Int>,
-                           _ inObject4 : EBObservableMutableProperty <Int>,
-                           _ inObject5 : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_setter5 (_ inObject1 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject2 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject3 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject4 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject5 : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5]
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_setter6 (_ inObject1 : EBObservableMutableProperty <Int>,
-                           _ inObject2 : EBObservableMutableProperty <Int>,
-                           _ inObject3 : EBObservableMutableProperty <Int>,
-                           _ inObject4 : EBObservableMutableProperty <Int>,
-                           _ inObject5 : EBObservableMutableProperty <Int>,
-                           _ inObject6 : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_setter6 (_ inObject1 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject2 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject3 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject4 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject5 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject6 : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5, inObject6]
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_setter7 (_ inObject1 : EBObservableMutableProperty <Int>,
-                           _ inObject2 : EBObservableMutableProperty <Int>,
-                           _ inObject3 : EBObservableMutableProperty <Int>,
-                           _ inObject4 : EBObservableMutableProperty <Int>,
-                           _ inObject5 : EBObservableMutableProperty <Int>,
-                           _ inObject6 : EBObservableMutableProperty <Int>,
-                           _ inObject7 : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_setter7 (_ inObject1 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject2 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject3 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject4 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject5 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject6 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject7 : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5, inObject6, inObject7]
     return self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_setter8 (_ inObject1 : EBObservableMutableProperty <Int>,
-                           _ inObject2 : EBObservableMutableProperty <Int>,
-                           _ inObject3 : EBObservableMutableProperty <Int>,
-                           _ inObject4 : EBObservableMutableProperty <Int>,
-                           _ inObject5 : EBObservableMutableProperty <Int>,
-                           _ inObject6 : EBObservableMutableProperty <Int>,
-                           _ inObject7 : EBObservableMutableProperty <Int>,
-                           _ inObject8 : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_setter8 (_ inObject1 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject2 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject3 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject4 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject5 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject6 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject7 : EBObservableMutableProperty <CanariLengthUnit>,
+                           _ inObject8 : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5, inObject6, inObject7, inObject8]
     return self
   }

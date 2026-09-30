@@ -16,10 +16,10 @@ import CanariGeometry
 
 @MainActor func transient_ProjectRoot_boardLimitBorderBottom (
        _ self_boardBoundBox : CanariRect,                     
-       _ self_mBoardLimitsBoundingBoxUnit : Int
+       _ self_mBoardLimitsBoundingBoxUnit : CanariLengthUnit
 ) -> String {
 //--- START OF USER ZONE 2
-        return valueAndUnitStringFrom (valueInCanariUnit: self_boardBoundBox.bottom, displayUnit: self_mBoardLimitsBoundingBoxUnit)
+        return self_boardBoundBox.bottom.string (in: self_mBoardLimitsBoundingBoxUnit, fractionDigits: 3)
 //--- END OF USER ZONE 2
 }
 

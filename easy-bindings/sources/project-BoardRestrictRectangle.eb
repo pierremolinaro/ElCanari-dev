@@ -6,13 +6,13 @@ graphic entity BoardRestrictRectangle : BoardObject {
   graphic canCopyAndPaste ;
 
   property @generateDirectAccess CanariLength mX default ".zero" ;
-  property Int mXUnit default 2_286 ; // mil
+  property CanariLengthUnit mXUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mY default ".zero" ;
-  property Int mYUnit default 2_286 ; // mil
+  property CanariLengthUnit mYUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mWidth default ".mil (100)" ;
-  property Int mWidthUnit default 2_286 ; // mil
+  property CanariLengthUnit mWidthUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mHeight default ".mil (100)" ;
-  property Int mHeightUnit default 2_286 ; // mil
+  property CanariLengthUnit mHeightUnit default ".mil" ; // mil
 
   property @generateDirectAccess Bool mIsInFrontLayer default yes ;
   property @generateDirectAccess Bool mIsInBackLayer default yes ;

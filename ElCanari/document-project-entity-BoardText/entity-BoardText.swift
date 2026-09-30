@@ -16,7 +16,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardText_mXUnit : AnyObject {
-//   var mXUnit : Int { get }
+//   var mXUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardText_mYUnit : AnyObject {
-//   var mYUnit : Int { get }
+//   var mYUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -157,11 +157,11 @@ final class BoardText : BoardObject
   //   Atomic property: mXUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mXUnit_property : EBStoredProperty_Int
+  final let mXUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXUnit : Int {
+  final var mXUnit : CanariLengthUnit {
     get { return self.mXUnit_property.propval }
   }
 
@@ -182,11 +182,11 @@ final class BoardText : BoardObject
   //   Atomic property: mYUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mYUnit_property : EBStoredProperty_Int
+  final let mYUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYUnit : Int {
+  final var mYUnit : CanariLengthUnit {
     get { return self.mYUnit_property.propval }
   }
 
@@ -335,9 +335,9 @@ final class BoardText : BoardObject
 
   required init (_ inUndoManager : UndoManager?) {
     self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
-    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
+    self.mXUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mXUnit")
     self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
-    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
+    self.mYUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mYUnit")
     self.mFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mFontSize")
     self.mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")

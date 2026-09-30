@@ -23,7 +23,7 @@ import CanariGeometry
        _ self_xDimension : CanariLength,                  
        _ self_yDimension : CanariLength,                  
        _ self_distanceInCanariUnit : CanariLength,        
-       _ self_distanceUnit : Int,                         
+       _ self_distanceUnit : CanariLengthUnit,            
        _ prefs_dimensionFont : NSFont,                    
        _ self_drawDimensionBackground : Bool,             
        _ prefs_packageBackgroundColor : NSColor,          
@@ -85,7 +85,7 @@ import CanariGeometry
   path2.transform (using: tr)
   shape.add (filled: [path1, path2], prefs_packageDimensionColor)
 //------- Add dimension text
-  let dimensionText = valueAndUnitStringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
+  let dimensionText = self_distanceInCanariUnit.string (in: self_distanceUnit, fractionDigits: 2)
   let p = NSPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2)
   var textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,

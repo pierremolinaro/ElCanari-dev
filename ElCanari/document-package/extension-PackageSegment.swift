@@ -200,13 +200,13 @@ extension PackageSegment {
 
   override func program () -> String {
     var s = "segment "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x1, displayUnit : self.x1Unit)
+    s += self.x1.string (in: self.x1Unit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y1, displayUnit : self.y1Unit)
+    s += self.y1.string (in: self.y1Unit, fractionDigits: 2)
     s += " to "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x2, displayUnit : self.x2Unit)
+    s += self.x2.string (in: self.x2Unit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y2, displayUnit : self.y2Unit)
+    s += self.y2.string (in: self.y2Unit, fractionDigits: 2)
     s += ";\n"
     return s
   }

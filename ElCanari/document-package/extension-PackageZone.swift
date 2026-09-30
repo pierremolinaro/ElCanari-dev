@@ -217,17 +217,17 @@ extension PackageZone {
 
   override func program () -> String {
     var s = "zone "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.x, displayUnit : self.xUnit)
+    s += self.x.string (in: self.xUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.y, displayUnit : self.yUnit)
+    s += self.y.string (in: self.yUnit, fractionDigits: 2)
     s += " size "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += self.width.string (in: self.widthUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += self.height.string (in: self.heightUnit, fractionDigits: 2)
     s += " label "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.xName, displayUnit : self.xNameUnit)
+    s += self.xName.string (in: self.xNameUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.yName, displayUnit : self.yNameUnit)
+    s += self.yName.string (in: self.yNameUnit, fractionDigits: 2)
     s += " name "
     s += "\"" + self.zoneName + "\""
     s += " numbering "

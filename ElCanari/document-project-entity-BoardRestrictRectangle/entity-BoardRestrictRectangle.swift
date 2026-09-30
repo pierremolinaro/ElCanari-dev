@@ -9,7 +9,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mXUnit : AnyObject {
-//   var mXUnit : Int { get }
+//   var mXUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mYUnit : AnyObject {
-//   var mYUnit : Int { get }
+//   var mYUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mWidthUnit : AnyObject {
-//   var mWidthUnit : Int { get }
+//   var mWidthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardRestrictRectangle_mHeightUnit : AnyObject {
-//   var mHeightUnit : Int { get }
+//   var mHeightUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -192,11 +192,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mXUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mXUnit_property : EBStoredProperty_Int
+  final let mXUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXUnit : Int {
+  final var mXUnit : CanariLengthUnit {
     get { return self.mXUnit_property.propval }
   }
 
@@ -217,11 +217,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mYUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mYUnit_property : EBStoredProperty_Int
+  final let mYUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYUnit : Int {
+  final var mYUnit : CanariLengthUnit {
     get { return self.mYUnit_property.propval }
   }
 
@@ -242,11 +242,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mWidthUnit_property : EBStoredProperty_Int
+  final let mWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mWidthUnit : Int {
+  final var mWidthUnit : CanariLengthUnit {
     get { return self.mWidthUnit_property.propval }
   }
 
@@ -267,11 +267,11 @@ final class BoardRestrictRectangle : BoardObject
   //   Atomic property: mHeightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mHeightUnit_property : EBStoredProperty_Int
+  final let mHeightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mHeightUnit : Int {
+  final var mHeightUnit : CanariLengthUnit {
     get { return self.mHeightUnit_property.propval }
   }
 
@@ -435,13 +435,13 @@ final class BoardRestrictRectangle : BoardObject
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
+    self.mXUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mXUnit")
     self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
-    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
+    self.mYUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mYUnit")
     self.mWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "mWidth")
-    self.mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mWidthUnit")
+    self.mWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mWidthUnit")
     self.mHeight_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "mHeight")
-    self.mHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mHeightUnit")
+    self.mHeightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mHeightUnit")
     self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInFrontLayer")
     self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInBackLayer")
     self.mIsInInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner1Layer")

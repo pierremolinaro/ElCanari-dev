@@ -439,16 +439,16 @@ handlingOpposite entity ArtworkRoot {
   property Int selectedTab default 0 ;
   property @generateDirectRead @signature String comments default "" ;
 
-  property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
+  property CanariLengthUnit minPPTPTTTWdisplayUnit default ".µm" ; // 1µm
   property @generateDirectRead @signature CanariLength minPPTPTTTW default ".µm (200)" ; // 200µm
 
-  property Int minValueForOARdisplayUnit default 90 ; // 1µm
+  property CanariLengthUnit minValueForOARdisplayUnit default ".µm" ; // 1µm
   property @generateDirectRead @signature CanariLength minValueForOARinEBUnit default ".µm (200)" ; // 200µm
 
-  property Int minValueForPHDdisplayUnit default 90 ; // 1µm
+  property CanariLengthUnit minValueForPHDdisplayUnit default ".µm" ; // 1µm
   property @generateDirectRead @signature CanariLength minValueForPHDinEBUnit default ".µm (200)" ; // 200µm
 
-  property @generateDirectRead Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
+  property @generateDirectRead CanariLengthUnit minValueForBoardLimitWidthDisplayUnit default ".mm" ; // 1mm
   property @generateDirectRead @signature CanariLength minValueForBoardLimitWidth default ".mm (1)" ; // 1mm
 
   property @generateDirectRead @signature String title default "" ;

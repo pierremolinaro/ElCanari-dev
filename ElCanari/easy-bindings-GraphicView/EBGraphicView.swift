@@ -514,11 +514,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var mXPlacardUnit = 2286 // mils
+  private(set) var mXPlacardUnit = CanariLengthUnit.mil // mils
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func set (XPlacardUnit inUnit : Int) {
+  func set (XPlacardUnit inUnit : CanariLengthUnit) {
      self.mXPlacardUnit = inUnit
   }
 
@@ -530,11 +530,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var mYPlacardUnit = 2286 // mils
+  private(set) var mYPlacardUnit = CanariLengthUnit.mil // mils
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func set (YPlacardUnit inUnit : Int) {
+  func set (YPlacardUnit inUnit : CanariLengthUnit) {
      self.mYPlacardUnit = inUnit
   }
 

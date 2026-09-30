@@ -197,19 +197,19 @@ extension PackageArc {
 
   override func program () -> String {
     var s = "arc "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += self.xCenter.string (in: self.xCenterUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += self.yCenter.string (in: self.yCenterUnit, fractionDigits: 2)
     s += " radius "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.radius, displayUnit : self.radiusUnit)
+    s += self.radius.string (in: self.radiusUnit, fractionDigits: 2)
     s += " start "
     s += "\(self.startAngle)"
     s += " angle "
     s += "\(self.arcAngle)"
     s += " leading "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.startTangent, displayUnit : self.startTangentUnit)
+    s += self.startTangent.string (in: self.startTangentUnit, fractionDigits: 2)
     s += " training "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.endTangent, displayUnit : self.endTangentUnit)
+    s += self.endTangent.string (in: self.endTangentUnit, fractionDigits: 2)
     if self.pathIsClosed {
       s += " closed"
     }

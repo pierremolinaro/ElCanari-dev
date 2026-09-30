@@ -29,7 +29,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol NetClassInProject_mTrackWidthUnit : AnyObject {
-//   var mTrackWidthUnit : Int { get }
+//   var mTrackWidthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol NetClassInProject_mViaHoleDiameterUnit : AnyObject {
-//   var mViaHoleDiameterUnit : Int { get }
+//   var mViaHoleDiameterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol NetClassInProject_mViaPadDiameterUnit : AnyObject {
-//   var mViaPadDiameterUnit : Int { get }
+//   var mViaPadDiameterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -267,11 +267,11 @@ final class NetClassInProject : EBManagedObject
   //   Atomic property: mTrackWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mTrackWidthUnit_property : EBStoredProperty_Int
+  final let mTrackWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mTrackWidthUnit : Int {
+  final var mTrackWidthUnit : CanariLengthUnit {
     get { return self.mTrackWidthUnit_property.propval }
     set { self.mTrackWidthUnit_property.setProp (newValue) }
   }
@@ -293,11 +293,11 @@ final class NetClassInProject : EBManagedObject
   //   Atomic property: mViaHoleDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mViaHoleDiameterUnit_property : EBStoredProperty_Int
+  final let mViaHoleDiameterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mViaHoleDiameterUnit : Int {
+  final var mViaHoleDiameterUnit : CanariLengthUnit {
     get { return self.mViaHoleDiameterUnit_property.propval }
     set { self.mViaHoleDiameterUnit_property.setProp (newValue) }
   }
@@ -319,11 +319,11 @@ final class NetClassInProject : EBManagedObject
   //   Atomic property: mViaPadDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mViaPadDiameterUnit_property : EBStoredProperty_Int
+  final let mViaPadDiameterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mViaPadDiameterUnit : Int {
+  final var mViaPadDiameterUnit : CanariLengthUnit {
     get { return self.mViaPadDiameterUnit_property.propval }
     set { self.mViaPadDiameterUnit_property.setProp (newValue) }
   }
@@ -582,11 +582,11 @@ final class NetClassInProject : EBManagedObject
     self.mNetClassName_property = EBStoredProperty_String (defaultValue: "Default", undoManager: inUndoManager, key: "mNetClassName")
     self.mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, undoManager: inUndoManager, key: "mNetClassColor")
     self.mTrackWidth_property = EBStoredProperty_CanariLength (defaultValue: .mil (20), undoManager: inUndoManager, key: "mTrackWidth")
-    self.mTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mTrackWidthUnit")
+    self.mTrackWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mTrackWidthUnit")
     self.mViaHoleDiameter_property = EBStoredProperty_CanariLength (defaultValue: .mil (20), undoManager: inUndoManager, key: "mViaHoleDiameter")
-    self.mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mViaHoleDiameterUnit")
+    self.mViaHoleDiameterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mViaHoleDiameterUnit")
     self.mViaPadDiameter_property = EBStoredProperty_CanariLength (defaultValue: .mil (40), undoManager: inUndoManager, key: "mViaPadDiameter")
-    self.mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mViaPadDiameterUnit")
+    self.mViaPadDiameterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mViaPadDiameterUnit")
     self.mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnFrontSide")
     self.mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnBackSide")
     self.mAllowTracksOnInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnInner1Layer")

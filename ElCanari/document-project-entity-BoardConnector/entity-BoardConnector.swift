@@ -37,7 +37,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardConnector_mDefaultHoleDiameterUnit : AnyObject {
-//   var mDefaultHoleDiameterUnit : Int { get }
+//   var mDefaultHoleDiameterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardConnector_mCustomHoleDiameterUnit : AnyObject {
-//   var mCustomHoleDiameterUnit : Int { get }
+//   var mCustomHoleDiameterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardConnector_mDefaultPadDiameterUnit : AnyObject {
-//   var mDefaultPadDiameterUnit : Int { get }
+//   var mDefaultPadDiameterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardConnector_mCustomPadDiameterUnit : AnyObject {
-//   var mCustomPadDiameterUnit : Int { get }
+//   var mCustomPadDiameterUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -312,11 +312,11 @@ final class BoardConnector : BoardObject
   //   Atomic property: mDefaultHoleDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mDefaultHoleDiameterUnit_property : EBStoredProperty_Int
+  final let mDefaultHoleDiameterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mDefaultHoleDiameterUnit : Int {
+  final var mDefaultHoleDiameterUnit : CanariLengthUnit {
     get { return self.mDefaultHoleDiameterUnit_property.propval }
   }
 
@@ -337,11 +337,11 @@ final class BoardConnector : BoardObject
   //   Atomic property: mCustomHoleDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mCustomHoleDiameterUnit_property : EBStoredProperty_Int
+  final let mCustomHoleDiameterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCustomHoleDiameterUnit : Int {
+  final var mCustomHoleDiameterUnit : CanariLengthUnit {
     get { return self.mCustomHoleDiameterUnit_property.propval }
   }
 
@@ -362,11 +362,11 @@ final class BoardConnector : BoardObject
   //   Atomic property: mDefaultPadDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mDefaultPadDiameterUnit_property : EBStoredProperty_Int
+  final let mDefaultPadDiameterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mDefaultPadDiameterUnit : Int {
+  final var mDefaultPadDiameterUnit : CanariLengthUnit {
     get { return self.mDefaultPadDiameterUnit_property.propval }
   }
 
@@ -387,11 +387,11 @@ final class BoardConnector : BoardObject
   //   Atomic property: mCustomPadDiameterUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mCustomPadDiameterUnit_property : EBStoredProperty_Int
+  final let mCustomPadDiameterUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mCustomPadDiameterUnit : Int {
+  final var mCustomPadDiameterUnit : CanariLengthUnit {
     get { return self.mCustomPadDiameterUnit_property.propval }
   }
 
@@ -591,13 +591,13 @@ final class BoardConnector : BoardObject
     self.mPadIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPadIndex")
     self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
     self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
-    self.mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDefaultHoleDiameterUnit")
+    self.mDefaultHoleDiameterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mDefaultHoleDiameterUnit")
     self.mCustomHoleDiameter_property = EBStoredProperty_CanariLength (defaultValue: .mil (20), undoManager: inUndoManager, key: "mCustomHoleDiameter")
-    self.mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mCustomHoleDiameterUnit")
+    self.mCustomHoleDiameterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mCustomHoleDiameterUnit")
     self.mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mUsesCustomHoleDiameter")
-    self.mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDefaultPadDiameterUnit")
+    self.mDefaultPadDiameterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mDefaultPadDiameterUnit")
     self.mCustomPadDiameter_property = EBStoredProperty_CanariLength (defaultValue: .mil (40), undoManager: inUndoManager, key: "mCustomPadDiameter")
-    self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mCustomPadDiameterUnit")
+    self.mCustomPadDiameterUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mCustomPadDiameterUnit")
     self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mUsesCustomPadDiameter")
     super.init (inUndoManager)
     self.mComponent_none.mReadModelFunction = { [weak self] in

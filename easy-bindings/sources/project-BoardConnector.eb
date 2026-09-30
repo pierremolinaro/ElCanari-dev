@@ -21,14 +21,14 @@ graphic handlingOpposite entity BoardConnector : BoardObject {
   toMany @generateDirectAccess BoardTrack mTracksP1 inverse toOne mConnectorP1 ;
   toMany @generateDirectAccess BoardTrack mTracksP2 inverse toOne mConnectorP2 ;
 
-  property Int mDefaultHoleDiameterUnit default 2_286 ; // mil
+  property CanariLengthUnit mDefaultHoleDiameterUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mCustomHoleDiameter default ".mil (20)" ;
-  property Int mCustomHoleDiameterUnit default 2_286 ; // mil
+  property CanariLengthUnit mCustomHoleDiameterUnit default ".mil" ; // mil
   property @generateDirectAccess Bool mUsesCustomHoleDiameter default no ;
 
-  property Int mDefaultPadDiameterUnit default 2_286 ; // mil
+  property CanariLengthUnit mDefaultPadDiameterUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mCustomPadDiameter default ".mil (40)" ; // 40 mil
-  property Int mCustomPadDiameterUnit default 2_286 ; // mil
+  property CanariLengthUnit mCustomPadDiameterUnit default ".mil" ; // mil
   property @generateDirectAccess Bool mUsesCustomPadDiameter default no ;
 
   transient CanariPoint location dependsFrom

@@ -16,10 +16,10 @@ import CanariGeometry
 
 @MainActor func transient_NetClassInProject_viaPadDiameter (
        _ self_mViaPadDiameter : CanariLength,               
-       _ self_mViaPadDiameterUnit : Int
+       _ self_mViaPadDiameterUnit : CanariLengthUnit
 ) -> String {
 //--- START OF USER ZONE 2
-       return valueAndUnitStringFrom (valueInCanariUnit: self_mViaPadDiameter, displayUnit: self_mViaPadDiameterUnit)
+       return self_mViaPadDiameter.string (in: self_mViaPadDiameterUnit, fractionDigits: 3)
 //--- END OF USER ZONE 2
 }
 

@@ -8,13 +8,13 @@ handlingOpposite entity NetClassInProject {
   property @generateDirectAccess NSColor mNetClassColor default blue ;
 
   property @generateDirectAccess CanariLength mTrackWidth default ".mil (20)" ; // 20 mils
-  property @generateDirectAccess Int mTrackWidthUnit default 2_286 ; // mil
+  property @generateDirectAccess CanariLengthUnit mTrackWidthUnit default ".mil" ; // mil
 
   property @generateDirectAccess CanariLength mViaHoleDiameter default ".mil (20)" ; // 20 mils
-  property @generateDirectAccess Int mViaHoleDiameterUnit default 2_286 ; // mil
+  property @generateDirectAccess CanariLengthUnit mViaHoleDiameterUnit default ".mil" ; // mil
 
   property @generateDirectAccess CanariLength mViaPadDiameter default ".mil (40)" ; // 40 mils
-  property @generateDirectAccess Int mViaPadDiameterUnit default 2_286 ; // mil
+  property @generateDirectAccess CanariLengthUnit mViaPadDiameterUnit default ".mil" ; // mil
 
   property @generateDirectAccess Bool mAllowTracksOnFrontSide default yes ;
   property @generateDirectAccess Bool mAllowTracksOnBackSide default yes ;

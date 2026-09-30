@@ -16,10 +16,10 @@ import CanariGeometry
 
 @MainActor func transient_NetClassInProject_trackWidthString (
        _ self_mTrackWidth : CanariLength,                     
-       _ self_mTrackWidthUnit : Int
+       _ self_mTrackWidthUnit : CanariLengthUnit
 ) -> String {
 //--- START OF USER ZONE 2
-       return valueAndUnitStringFrom (valueInCanariUnit: self_mTrackWidth, displayUnit: self_mTrackWidthUnit)
+       return self_mTrackWidth.string (in: self_mTrackWidthUnit, fractionDigits: 3)
 //--- END OF USER ZONE 2
 }
 

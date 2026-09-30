@@ -229,8 +229,8 @@ entity SymbolRoot {
   property Int zoom default 600 ;
 
 //--- XY placard unit
-  property @signature Int xPlacardUnit default 2_286 ; // mils
-  property @signature Int yPlacardUnit default 2_286 ; // mils
+  property @signature CanariLengthUnit xPlacardUnit default ".mil" ; // mils
+  property @signature CanariLengthUnit yPlacardUnit default ".mil" ; // mils
 
 //--- Symbol definition
   toMany @signature @generateDirectRead SymbolObject symbolObjects ;

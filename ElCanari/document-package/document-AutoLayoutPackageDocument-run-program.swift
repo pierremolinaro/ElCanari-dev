@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -316,18 +317,18 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageDimension (self.undoManager)
     object.x1 = .cu (x1)
-    object.x1Unit = x1Unit
+    object.x1Unit = CanariLengthUnit (fromNearestLength: x1Unit)
     object.y1 = .cu (y1)
-    object.y1Unit = y1Unit
+    object.y1Unit = CanariLengthUnit (fromNearestLength: y1Unit)
     object.x2 = .cu (x2)
-    object.x2Unit = x2Unit
+    object.x2Unit = CanariLengthUnit (fromNearestLength: x2Unit)
     object.y2 = .cu (y2)
-    object.y2Unit = y2Unit
+    object.y2Unit = CanariLengthUnit (fromNearestLength: y2Unit)
     object.xDimension = .cu (xDimension)
-    object.xDimensionUnit = xDimensionUnit
+    object.xDimensionUnit = CanariLengthUnit (fromNearestLength: xDimensionUnit)
     object.yDimension = .cu (yDimension)
-    object.yDimensionUnit = yDimensionUnit
-    object.distanceUnit = distanceUnit
+    object.yDimensionUnit = CanariLengthUnit (fromNearestLength: yDimensionUnit)
+    object.distanceUnit = CanariLengthUnit (fromNearestLength: distanceUnit)
     ioObjects.append (object)
  }
 
@@ -364,17 +365,17 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageZone (self.undoManager)
     object.x = .cu (x)
-    object.xUnit = xUnit
+    object.xUnit = CanariLengthUnit (fromNearestLength: xUnit)
     object.y = .cu (y)
-    object.yUnit = yUnit
+    object.yUnit = CanariLengthUnit (fromNearestLength: yUnit)
     object.width = .cu (width)
-    object.widthUnit = widthUnit
+    object.widthUnit = CanariLengthUnit (fromNearestLength: widthUnit)
     object.height = .cu (height)
-    object.heightUnit = heightUnit
+    object.heightUnit = CanariLengthUnit (fromNearestLength: heightUnit)
     object.xName = .cu (xName)
-    object.xNameUnit = xNameUnit
+    object.xNameUnit = CanariLengthUnit (fromNearestLength: xNameUnit)
     object.yName = .cu (yName)
-    object.yNameUnit = yNameUnit
+    object.yNameUnit = CanariLengthUnit (fromNearestLength: yNameUnit)
     object.zoneName = zoneName
     if ioOk, let zoneNumbering = possibleZoneNumbering {
       object.zoneNumbering = zoneNumbering
@@ -423,19 +424,19 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageSlavePad (self.undoManager)
     object.xCenter = .cu (xCenter)
-    object.xCenterUnit = xCenterUnit
+    object.xCenterUnit = CanariLengthUnit (fromNearestLength: xCenterUnit)
     object.yCenter = .cu (yCenter)
-    object.yCenterUnit = yCenterUnit
+    object.yCenterUnit = CanariLengthUnit (fromNearestLength: yCenterUnit)
     object.width = .cu (width)
-    object.widthUnit = widthUnit
+    object.widthUnit = CanariLengthUnit (fromNearestLength: widthUnit)
     object.height = .cu (height)
-    object.heightUnit = heightUnit
+    object.heightUnit = CanariLengthUnit (fromNearestLength: heightUnit)
     object.padShape = padShape
     object.padStyle = padStyle
     object.holeWidth = .cu (holeWidth)
-    object.holeWidthUnit = holeWidthUnit
+    object.holeWidthUnit = CanariLengthUnit (fromNearestLength: holeWidthUnit)
     object.holeHeight = .cu (holeHeight)
-    object.holeHeightUnit = holeHeightUnit
+    object.holeHeightUnit = CanariLengthUnit (fromNearestLength: holeHeightUnit)
     ioObjects.append (object)
     ioSlavePadArray.append ((object, masterPadID, slavePadErrorLocation))
  }
@@ -479,19 +480,19 @@ extension AutoLayoutPackageDocument {
     }
     self.checkChar (";", inString, &ioIndex, &ioOk)
     object.xCenter = .cu (xCenter)
-    object.xCenterUnit = xCenterUnit
+    object.xCenterUnit = CanariLengthUnit (fromNearestLength: xCenterUnit)
     object.yCenter = .cu (yCenter)
-    object.yCenterUnit = yCenterUnit
+    object.yCenterUnit = CanariLengthUnit (fromNearestLength: yCenterUnit)
     object.width = .cu (width)
-    object.widthUnit = widthUnit
+    object.widthUnit = CanariLengthUnit (fromNearestLength: widthUnit)
     object.height = .cu (height)
-    object.heightUnit = heightUnit
+    object.heightUnit = CanariLengthUnit (fromNearestLength: heightUnit)
     object.padShape = padShape
     object.padStyle = padStyle
     object.holeWidth = .cu (holeWidth)
-    object.holeWidthUnit = holeWidthUnit
+    object.holeWidthUnit = CanariLengthUnit (fromNearestLength: holeWidthUnit)
     object.holeHeight = .cu (holeHeight)
-    object.holeHeightUnit = holeHeightUnit
+    object.holeHeightUnit = CanariLengthUnit (fromNearestLength: holeHeightUnit)
     object.padNumber = padNumber
     ioObjects.append (object)
  }
@@ -508,13 +509,13 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageGuide (self.undoManager)
     object.x1 = .cu (x1)
-    object.x1Unit = x1Unit
+    object.x1Unit = CanariLengthUnit (fromNearestLength: x1Unit)
     object.y1 = .cu (y1)
-    object.y1Unit = y1Unit
+    object.y1Unit = CanariLengthUnit (fromNearestLength: y1Unit)
     object.x2 = .cu (x2)
-    object.x2Unit = x2Unit
+    object.x2Unit = CanariLengthUnit (fromNearestLength: x2Unit)
     object.y2 = .cu (y2)
-    object.y2Unit = y2Unit
+    object.y2Unit = CanariLengthUnit (fromNearestLength: y2Unit)
     ioObjects.append (object)
 }
 
@@ -534,21 +535,21 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageBezier (self.undoManager)
     object.x1 = .cu (x1)
-    object.x1Unit = x1Unit
+    object.x1Unit = CanariLengthUnit (fromNearestLength: x1Unit)
     object.y1 = .cu (y1)
-    object.y1Unit = y1Unit
+    object.y1Unit = CanariLengthUnit (fromNearestLength: y1Unit)
     object.x2 = .cu (x2)
-    object.x2Unit = x2Unit
+    object.x2Unit = CanariLengthUnit (fromNearestLength: x2Unit)
     object.y2 = .cu (y2)
-    object.y2Unit = y2Unit
+    object.y2Unit = CanariLengthUnit (fromNearestLength: y2Unit)
     object.cpx1 = .cu (cpx1)
-    object.cpx1Unit = cpx1Unit
+    object.cpx1Unit = CanariLengthUnit (fromNearestLength: cpx1Unit)
     object.cpy1 = .cu (cpy1)
-    object.cpy1Unit = cpy1Unit
+    object.cpy1Unit = CanariLengthUnit (fromNearestLength: cpy1Unit)
     object.cpx2 = .cu (cpx2)
-    object.cpx2Unit = cpx2Unit
+    object.cpx2Unit = CanariLengthUnit (fromNearestLength: cpx2Unit)
     object.cpy2 = .cu (cpy2)
-    object.cpy2Unit = cpy2Unit
+    object.cpy2Unit = CanariLengthUnit (fromNearestLength: cpy2Unit)
     ioObjects.append (object)
 }
 
@@ -572,17 +573,17 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageArc (self.undoManager)
     object.xCenter = .cu (xCenter)
-    object.xCenterUnit = xCenterUnit
+    object.xCenterUnit = CanariLengthUnit (fromNearestLength: xCenterUnit)
     object.yCenter = .cu (yCenter)
-    object.yCenterUnit = yCenterUnit
+    object.yCenterUnit = CanariLengthUnit (fromNearestLength: yCenterUnit)
     object.radius = .cu (radius)
-    object.radiusUnit = radiusUnit
+    object.radiusUnit = CanariLengthUnit (fromNearestLength: radiusUnit)
     object.startAngle = startAngle
     object.arcAngle = arcAngle
     object.startTangent = .cu (startTangentLength)
-    object.startTangentUnit = startTangentLengthUnit
+    object.startTangentUnit = CanariLengthUnit (fromNearestLength: startTangentLengthUnit)
     object.endTangent = .cu (endTangentLength)
-    object.endTangentUnit = endTangentLengthUnit
+    object.endTangentUnit = CanariLengthUnit (fromNearestLength: endTangentLengthUnit)
     ioObjects.append (object)
  }
 
@@ -598,13 +599,13 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageOval (self.undoManager)
     object.x = .cu (originX)
-    object.xUnit = originXUnit
+    object.xUnit = CanariLengthUnit (fromNearestLength: originXUnit)
     object.y = .cu (originY)
-    object.yUnit = originYUnit
+    object.yUnit = CanariLengthUnit (fromNearestLength: originYUnit)
     object.width = .cu (width)
-    object.widthUnit = widthUnit
+    object.widthUnit = CanariLengthUnit (fromNearestLength: widthUnit)
     object.height = .cu (height)
-    object.heightUnit = heightUnit
+    object.heightUnit = CanariLengthUnit (fromNearestLength: heightUnit)
     ioObjects.append (object)
 }
 
@@ -620,13 +621,13 @@ extension AutoLayoutPackageDocument {
     self.checkChar (";", inString, &ioIndex, &ioOk)
     let object = PackageSegment (self.undoManager)
     object.x1 = .cu (p1X)
-    object.x1Unit = p1XUnit
+    object.x1Unit = CanariLengthUnit (fromNearestLength: p1XUnit)
     object.y1 = .cu (p1Y)
-    object.y1Unit = p1YUnit
+    object.y1Unit = CanariLengthUnit (fromNearestLength: p1YUnit)
     object.x2 = .cu (p2X)
-    object.x2Unit = p2XUnit
+    object.x2Unit = CanariLengthUnit (fromNearestLength: p2XUnit)
     object.y2 = .cu (p2Y)
-    object.y2Unit = p2YUnit
+    object.y2Unit = CanariLengthUnit (fromNearestLength: p2YUnit)
     ioObjects.append (object)
  }
 

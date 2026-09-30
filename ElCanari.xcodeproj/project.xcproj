@@ -21,7 +21,7 @@
       "kind": "remote",
       "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
       "version": {
-        "revision": "1f09a73691e1bb32abb9eace3608be6602e4284e",
+        "revision": "fd782b75d1207a8af834014584ec70d18b379bd4",
       },
     },
   ],
@@ -6820,6 +6820,12 @@
             "ElCanari-Release/compile-sources",
           ],
         }, {
+          "path": "extension-CanariLengthUnit-EBPropertyProtocol.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
           "path": "extension-Data-base62.swift",
           "encoding": "utf8",
           "target-membership": [
@@ -12060,6 +12066,12 @@
             "ElCanari-Release/compile-sources",
           ],
         }, {
+          "path": "property-CanariLengthUnit.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
           "path": "property-CanariPoint.swift",
           "encoding": "utf8",
           "target-membership": [
@@ -12771,13 +12783,6 @@
           ],
         }, {
           "path": "BoardImageDescriptor.swift",
-          "target-membership": [
-            "ElCanari-Debug/compile-sources",
-            "ElCanari-Release/compile-sources",
-          ],
-        }, {
-          "path": "canari-conversions.swift",
-          "encoding": "utf8",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
             "ElCanari-Release/compile-sources",

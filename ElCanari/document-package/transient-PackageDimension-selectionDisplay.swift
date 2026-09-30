@@ -27,7 +27,7 @@ import CanariGeometry
        _ self_xDimension : CanariLength,                     
        _ self_yDimension : CanariLength,                     
        _ self_distanceInCanariUnit : CanariLength,           
-       _ self_distanceUnit : Int,                            
+       _ self_distanceUnit : CanariLengthUnit,               
        _ prefs_dimensionFont : NSFont,                       
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
@@ -43,7 +43,7 @@ import CanariGeometry
   bp.move (to: NSPoint.center (p1, p2))
   bp.line (to: pText)
 //--- Text
-  let dimensionText = intValueAndUnitStringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
+  let dimensionText = self_distanceInCanariUnit.string (in: self_distanceUnit, fractionDigits: 2)
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
   let center = NSPoint.center (p1, p2)

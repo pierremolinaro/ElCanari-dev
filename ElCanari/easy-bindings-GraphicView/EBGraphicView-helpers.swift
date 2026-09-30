@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -81,8 +82,8 @@ extension EBGraphicView {
          view.subviews.count == 2,
          let placardX = view.subviews [0] as? NSTextField,
          let placardY = view.subviews [1] as? NSTextField {
-        placardX.stringValue = "X = " + valueAndUnitStringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
-        placardY.stringValue = "Y = " + valueAndUnitStringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
+        placardX.stringValue = "X = " + CanariLength.pt (inLocationInView.x).string (in: self.mXPlacardUnit, fractionDigits: 3)
+        placardY.stringValue = "Y = " + CanariLength.pt (inLocationInView.y).string (in: self.mYPlacardUnit, fractionDigits: 3)
         placardX.sizeToFit ()
         placardY.sizeToFit ()
         let w = max (placardX.frame.size.width, placardY.frame.size.width)

@@ -4,9 +4,9 @@ handlingOpposite entity BoardModel {
   property @generateDirectAccess String artworkName default "" ;
   property @generateDirectAccess String name default "" ;
   property @generateDirectAccess CanariLength modelWidth default ".zero" ;
-  property @generateDirectAccess Int modelWidthUnit default 0 ;
+  property @generateDirectAccess CanariLengthUnit modelWidthUnit default ".mm" ;
   property @generateDirectAccess CanariLength modelHeight default ".zero" ;
-  property @generateDirectAccess Int modelHeightUnit default 0 ;
+  property @generateDirectAccess CanariLengthUnit modelHeightUnit default ".mm" ;
   property @generateDirectAccess Data modelData default empty ;
 
   property Int zoom default 0 ; // 0 means "fit to window"

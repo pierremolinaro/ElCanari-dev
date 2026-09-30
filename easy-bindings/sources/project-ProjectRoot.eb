@@ -11,17 +11,17 @@ handlingOpposite entity ProjectRoot {
   standalone property Bool mArtworkFileSystemLibraryRequiresAttention default no ;
   standalone property Bool mArtworkIsUpdatable default no ;
 
-  property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
+  property proxy CanariLengthUnit minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
   property proxy CanariLength minPPTPTTTW : mArtwork.minPPTPTTTW ;
   
-  property proxy Int minValueForOARdisplayUnit : mArtwork.minValueForOARdisplayUnit ;
+  property proxy CanariLengthUnit minValueForOARdisplayUnit : mArtwork.minValueForOARdisplayUnit ;
   property proxy CanariLength minValueForOARinEBUnit : mArtwork.minValueForOARinEBUnit ;
   
-  property proxy Int minValueForPHDdisplayUnit : mArtwork.minValueForPHDdisplayUnit ;
+  property proxy CanariLengthUnit minValueForPHDdisplayUnit : mArtwork.minValueForPHDdisplayUnit ;
   property proxy CanariLength minValueForPHDinEBUnit : mArtwork.minValueForPHDinEBUnit ;
  
   property proxy CanariLength minValueForBoardLimitWidth : mArtwork.minValueForBoardLimitWidth ;
-  property proxy Int minValueForBoardLimitWidthDisplayUnit : mArtwork.minValueForBoardLimitWidthDisplayUnit ;
+  property proxy CanariLengthUnit minValueForBoardLimitWidthDisplayUnit : mArtwork.minValueForBoardLimitWidthDisplayUnit ;
  
   property proxy String drillDataFileExtension : mArtwork.drillDataFileExtension ;
 
@@ -122,10 +122,10 @@ handlingOpposite entity ProjectRoot {
   property @generateDirectRead Bool mExportExistingTracksAndVias default no ;
   property @generateDirectRead Bool mAllowViaAtSMD default no ;
   
-  property Int mTrackLengthUnit default 90_000_000 ; // meter
+  property CanariLengthUnit mTrackLengthUnit default ".m" ; // meter
   
   property @generateDirectRead CanariLength mLayoutClearance default ".mil (10)" ;
-  property Int mLayoutClearanceUnit default 2_286 ; // mil
+  property CanariLengthUnit mLayoutClearanceUnit default ".mil" ; // mil
 
   property  @generateDirectAccess Int mBoardSelectedInspector default 1 ;
   property Bool mBoardHorizontalFlip default no ;
@@ -134,7 +134,7 @@ handlingOpposite entity ProjectRoot {
   property Int mBoardGridDisplayFactor default 4 ;
   property Int mBoardZoom default 0 ;
   property @generateDirectRead CanariLength mBoardGridStep default ".mil (25)" ;
-  property @generateDirectRead Int mBoardGridStepUnit default 2_286 ; // mil
+  property @generateDirectRead CanariLengthUnit mBoardGridStepUnit default ".mil" ; // mil
 
   transient CanariLength boardGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardGridStep, self.mBoardGridDisplayFactor
@@ -189,10 +189,10 @@ handlingOpposite entity ProjectRoot {
   toMany @generateDirectAccess BorderCurve mBorderCurves inverse toOne mRoot ;
 
   property @generateDirectRead CanariLength mBoardCornerRadius default ".mm (1)" ;
-  property Int mBoardCornerRadiusUnit default 90_000 ; // mm
+  property CanariLengthUnit mBoardCornerRadiusUnit default ".mm" ; // mm
 
   property @generateDirectRead CanariLength mBoardClearance default ".mm (1)" ; // 1 mm
-  property Int mBoardClearanceUnit default 90_000 ; // mm
+  property CanariLengthUnit mBoardClearanceUnit default ".mm" ; // mm
 
   property Int mBoardLimitsSelectedInspector default 0 ;
   property Bool mBoardLimitsHorizontalFlip default no ;
@@ -202,11 +202,11 @@ handlingOpposite entity ProjectRoot {
   property Int mBoardLimitsZoom default 0 ;
 
   property @generateDirectRead CanariLength mBoardLimitsGridStep default ".mm(1)" ; // mm
-  property Int mBoardLimitsGridStepUnit default 90_000 ; // mm
-  property Int mBoardLimitsBoundingBoxUnit default 90_000 ; // mm
-  property Int mBoardPointsBoundingBoxUnit default 90_000 ; // mm
-  property Int mBoardSelectedCurveDisplayUnit default 90_000 ; // mm
-  property Int mBoardLimitControlPointsDisplayUnit default 90_000 ; // mm
+  property CanariLengthUnit mBoardLimitsGridStepUnit default ".mm" ; // mm
+  property CanariLengthUnit mBoardLimitsBoundingBoxUnit default ".mm" ; // mm
+  property CanariLengthUnit mBoardPointsBoundingBoxUnit default ".mm" ; // mm
+  property CanariLengthUnit mBoardSelectedCurveDisplayUnit default ".mm" ; // mm
+  property CanariLengthUnit mBoardLimitControlPointsDisplayUnit default ".mm" ; // mm
 
   transient CanariLength boardLimitsGridStepMultipliedByDisplayFactor dependsFrom
     self.mBoardLimitsGridStep, self.mBoardLimitsGridDisplayFactor
@@ -216,10 +216,10 @@ handlingOpposite entity ProjectRoot {
   property Double mContentOpacityInBoardOutline default 0.5 ;
   
   property @generateDirectRead CanariLength mRectangularBoardWidth default ".cm (10)" ;
-  property Int mRectangularBoardWidthUnit default 90_000 ; // mm
+  property CanariLengthUnit mRectangularBoardWidthUnit default ".mm" ; // mm
 
   property @generateDirectRead CanariLength mRectangularBoardHeight default ".cm (10)" ;
-  property Int mRectangularBoardHeightUnit default 90_000 ; // mm
+  property CanariLengthUnit mRectangularBoardHeightUnit default ".mm" ; // mm
 
   transient Bool boardShapeIsRectangular dependsFrom self.mBoardShape ;
   
@@ -295,9 +295,9 @@ handlingOpposite entity ProjectRoot {
   property Int mSchematicGridDisplayFactor default 4 ;
 
   property @generateDirectRead CanariLength mSchematicCustomWidth default ".cm (30)" ; // 300 mm
-  property Int mSchematicCustomWidthUnit default 90_000 ; // mm
+  property CanariLengthUnit mSchematicCustomWidthUnit default ".mm" ; // mm
   property @generateDirectRead CanariLength mSchematicCustomHeight default ".cm (30)" ; // 300 mm
-  property Int mSchematicCustomHeightUnit default 90_000 ; // mm
+  property CanariLengthUnit mSchematicCustomHeightUnit default ".mm" ; // mm
   property @generateDirectRead SchematicSheetOrientation mSchematicSheetOrientation default a4Horizontal ;
 
   property String mWorkingAreaRectString default "" ;

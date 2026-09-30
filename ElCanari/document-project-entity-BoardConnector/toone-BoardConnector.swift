@@ -121,7 +121,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
   //   Observers of 'mDefaultHoleDiameterUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDefaultHoleDiameterUnit_property = EBTransientProperty <Int?> ()
+  final let mDefaultHoleDiameterUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mCustomHoleDiameter' stored property
@@ -133,7 +133,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
   //   Observers of 'mCustomHoleDiameterUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mCustomHoleDiameterUnit_property = EBTransientProperty <Int?> ()
+  final let mCustomHoleDiameterUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mUsesCustomHoleDiameter' stored property
@@ -145,7 +145,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
   //   Observers of 'mDefaultPadDiameterUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mDefaultPadDiameterUnit_property = EBTransientProperty <Int?> ()
+  final let mDefaultPadDiameterUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mCustomPadDiameter' stored property
@@ -157,7 +157,7 @@ class ReadOnlyObject_BoardConnector : EBReadOnlyAbstractObjectProperty <BoardCon
   //   Observers of 'mCustomPadDiameterUnit' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mCustomPadDiameterUnit_property = EBTransientProperty <Int?> ()
+  final let mCustomPadDiameterUnit_property = EBTransientProperty <CanariLengthUnit?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mUsesCustomPadDiameter' stored property

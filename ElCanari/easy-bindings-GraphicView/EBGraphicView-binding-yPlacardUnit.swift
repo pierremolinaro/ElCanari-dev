@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -12,7 +13,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_yPlacardUnit (_ model : EBObservableProperty <Int>) {
+  final func bind_yPlacardUnit (_ model : EBObservableProperty <CanariLengthUnit>) {
     self.mYPlacardUnitController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateYPlacardUnit (from: model) }
@@ -28,10 +29,10 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final private func updateYPlacardUnit (from model : EBObservableProperty <Int>) {
+  final private func updateYPlacardUnit (from model : EBObservableProperty <CanariLengthUnit>) {
     switch model.selection {
     case .empty, .multiple :
-      self.set (YPlacardUnit: 2286) // mils
+      self.set (YPlacardUnit: .mil) // mils
     case .single (let v) :
       self.set (YPlacardUnit: v)
     }

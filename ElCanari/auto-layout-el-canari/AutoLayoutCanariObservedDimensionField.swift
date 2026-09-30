@@ -44,7 +44,7 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
   //  value binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func updateOutlet (dimension : EBObservableProperty <CanariLength>, unit : EBObservableProperty <Int>) {
+  fileprivate func updateOutlet (dimension : EBObservableProperty <CanariLength>, unit : EBObservableProperty <CanariLengthUnit>) {
     switch combine (dimension.selection, unit: unit.selection) {
     case .empty :
       self.placeholderString = "No Selection"
@@ -68,7 +68,7 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_dimensionAndUnit (_ object : EBObservableProperty <CanariLength>,
-                                    _ unit : EBObservableProperty <Int>) -> Self {
+                                    _ unit : EBObservableProperty <CanariLengthUnit>) -> Self {
     self.mController = Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self
   }
@@ -84,12 +84,12 @@ final class AutoLayoutCanariObservedDimensionField : ALB_NSTextField {
 private final class Controller_AutoLayoutCanariObservedDimensionField_dimensionAndUnit : EBObservablePropertyController {
 
   private var mDimension : EBObservableProperty <CanariLength>
-  private var mUnit : EBObservableProperty <Int>
+  private var mUnit : EBObservableProperty <CanariLengthUnit>
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (dimension : EBObservableProperty <CanariLength>,
-        unit : EBObservableProperty <Int>,
+        unit : EBObservableProperty <CanariLengthUnit>,
         outlet inOutlet : AutoLayoutCanariObservedDimensionField) {
     self.mDimension = dimension
     self.mUnit = unit
@@ -114,7 +114,7 @@ private final class Controller_AutoLayoutCanariObservedDimensionField_dimensionA
 
 //--------------------------------------------------------------------------------------------------
 
-private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelection <Int>) -> EBSelection <Double> {
+private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelection <CanariLengthUnit>) -> EBSelection <Double> {
   switch dimension {
   case .empty :
     return .empty
@@ -132,7 +132,7 @@ private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelecti
     case .multiple :
       return .multiple
     case .single (let unitValue):
-      return .single (Double (dimensionValue.cuValue) / Double (unitValue))
+      return .single (Double (dimensionValue.cuValue) / Double (unitValue.cuValue))
     }
   }
 }

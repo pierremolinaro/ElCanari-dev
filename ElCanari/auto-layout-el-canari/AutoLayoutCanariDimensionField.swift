@@ -85,7 +85,7 @@ final class AutoLayoutCanariDimensionField : ALB_NSTextField {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_dimensionAndUnit (_ object : EBObservableMutableProperty <CanariLength>,
-                                    _ unit : EBObservableProperty <Int>) -> Self {
+                                    _ unit : EBObservableProperty <CanariLengthUnit>) -> Self {
     self.mValueController = Controller_AutoLayoutCanariDimensionField_dimensionAndUnit (dimension: object, unit: unit, outlet: self)
     return self
   }
@@ -102,12 +102,12 @@ private final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit :
 
   private weak var mOutlet : AutoLayoutCanariDimensionField? = nil
   private var mDimension : EBObservableMutableProperty <CanariLength>
-  private var mUnit : EBObservableProperty <Int>
+  private var mUnit : EBObservableProperty <CanariLengthUnit>
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (dimension : EBObservableMutableProperty <CanariLength>,
-        unit : EBObservableProperty <Int>,
+        unit : EBObservableProperty <CanariLengthUnit>,
         outlet inOutlet : AutoLayoutCanariDimensionField) {
     self.mDimension = dimension
     self.mUnit = unit
@@ -167,7 +167,7 @@ private final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit :
       if let formatter = self.mOutlet?.formatter as? NumberFormatter,
          let inInputString = inOptionalInputString,
          let outletValueNumber = formatter.number (from: inInputString) {
-        let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
+        let value = Int ((outletValueNumber.doubleValue * Double (unit.cuValue)).rounded ())
         self.mDimension.setProp (.cu (value))
         return true
       }else{
@@ -182,7 +182,7 @@ private final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit :
 
 //--------------------------------------------------------------------------------------------------
 
-private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelection <Int>) -> EBSelection <Double> {
+private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelection <CanariLengthUnit>) -> EBSelection <Double> {
   switch dimension {
   case .empty :
     return .empty
@@ -200,7 +200,7 @@ private func combine (_ dimension : EBSelection <CanariLength>, unit : EBSelecti
     case .multiple :
       return .multiple
     case .single (let unitValue):
-      return .single (Double (dimensionValue.cuValue) / Double (unitValue))
+      return .single (Double (dimensionValue.cuValue) / Double (unitValue.cuValue))
     }
   }
 }

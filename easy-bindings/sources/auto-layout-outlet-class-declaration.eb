@@ -139,19 +139,19 @@ extern autolayout class PopUpButton (size: EBControlSize) $enabled {
 }
 
 extern autolayout class CanariUnitPopUpButton (size: EBControlSize) $hidden {
-  $unit property Int
+  $unit property CanariLengthUnit
 }
 
 extern autolayout class CanariDimensionField (size: EBControlSize) $hidden {
-  $dimensionAndUnit property CanariLength, property Int
+  $dimensionAndUnit property CanariLength, property CanariLengthUnit
 }
 
 extern autolayout class CanariDimensionAndPopUp (size: EBControlSize) $enabled $hidden {
-  $dimensionAndUnit property CanariLength, property Int
+  $dimensionAndUnit property CanariLength, property CanariLengthUnit
 }
 
 extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $hidden {
-  $dimensionAndUnit transient CanariLength, property Int
+  $dimensionAndUnit transient CanariLength, property CanariLengthUnit
 }
 
 extern autolayout class Checkbox (title: String, size: EBControlSize) $enabled $hidden {
@@ -223,8 +223,8 @@ extern autolayout class GraphicView (minZoom : Int, maxZoom : Int) $graphicContr
   $zoom property Int
   $horizontalFlip transient Bool
   $verticalFlip transient Bool
-  $xPlacardUnit transient Int
-  $yPlacardUnit transient Int
+  $xPlacardUnit transient CanariLengthUnit
+  $yPlacardUnit transient CanariLengthUnit
   $backgroundImageData transient Data
   $backgroundImageOpacity transient Double
   $foregroundImageData transient Data
@@ -324,11 +324,11 @@ extern autolayout class OneStringArrayTableView {
 
 extern autolayout class CanariDimensionUnitSetterPullDownButton (size: EBControlSize) $hidden {
   func expandableWidth ()
-  $setter4 property Int, property Int, property Int, property Int
-  $setter5 property Int, property Int, property Int, property Int, property Int
-  $setter6 property Int, property Int, property Int, property Int, property Int, property Int
-  $setter7 property Int, property Int, property Int, property Int, property Int, property Int, property Int
-  $setter8 property Int, property Int, property Int, property Int, property Int, property Int, property Int, property Int
+  $setter4 property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit
+  $setter5 property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit
+  $setter6 property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit
+  $setter7 property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit
+  $setter8 property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit, property CanariLengthUnit
 }
 
 extern autolayout class CanariHorizontalAlignmentSegmentedControl (size: EBControlSize) {
@@ -464,7 +464,7 @@ extern autolayout class CanariBoardRectangleView {
   $right transient String
   $bottom transient String
   $top transient String
-  $unit transient Int
+  $unit transient CanariLengthUnit
 }
 
 extern autolayout class CanariBoardOperationPullDownButton (size: EBControlSize) {

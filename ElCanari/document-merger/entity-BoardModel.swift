@@ -22,7 +22,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardModel_modelWidthUnit : AnyObject {
-//   var modelWidthUnit : Int { get }
+//   var modelWidthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardModel_modelHeightUnit : AnyObject {
-//   var modelHeightUnit : Int { get }
+//   var modelHeightUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -606,11 +606,11 @@ final class BoardModel : EBManagedObject
   //   Atomic property: modelWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let modelWidthUnit_property : EBStoredProperty_Int
+  final let modelWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var modelWidthUnit : Int {
+  final var modelWidthUnit : CanariLengthUnit {
     get { return self.modelWidthUnit_property.propval }
     set { self.modelWidthUnit_property.setProp (newValue) }
   }
@@ -632,11 +632,11 @@ final class BoardModel : EBManagedObject
   //   Atomic property: modelHeightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let modelHeightUnit_property : EBStoredProperty_Int
+  final let modelHeightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var modelHeightUnit : Int {
+  final var modelHeightUnit : CanariLengthUnit {
     get { return self.modelHeightUnit_property.propval }
     set { self.modelHeightUnit_property.setProp (newValue) }
   }
@@ -1815,9 +1815,9 @@ final class BoardModel : EBManagedObject
   required init (_ inUndoManager : UndoManager?) {
     self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "name")
     self.modelWidth_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "modelWidth")
-    self.modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelWidthUnit")
+    self.modelWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "modelWidthUnit")
     self.modelHeight_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "modelHeight")
-    self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelHeightUnit")
+    self.modelHeightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "modelHeightUnit")
     self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "zoom")
     self.modelVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelVersion")
     self.ignoreModelVersionError_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "ignoreModelVersionError")

@@ -37,28 +37,28 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageZone_xUnit : AnyObject {
-//   var xUnit : Int { get }
+//   var xUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageZone_yUnit : AnyObject {
-//   var yUnit : Int { get }
+//   var yUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageZone_widthUnit : AnyObject {
-//   var widthUnit : Int { get }
+//   var widthUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageZone_heightUnit : AnyObject {
-//   var heightUnit : Int { get }
+//   var heightUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -97,14 +97,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageZone_xNameUnit : AnyObject {
-//   var xNameUnit : Int { get }
+//   var xNameUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageZone_yNameUnit : AnyObject {
-//   var yNameUnit : Int { get }
+//   var yNameUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -240,11 +240,11 @@ final class PackageZone : PackageObject
   //   Atomic property: xUnit
   //------------------------------------------------------------------------------------------------
 
-  final let xUnit_property : EBStoredProperty_Int
+  final let xUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var xUnit : Int {
+  final var xUnit : CanariLengthUnit {
     get { return self.xUnit_property.propval }
     set { self.xUnit_property.setProp (newValue) }
   }
@@ -253,11 +253,11 @@ final class PackageZone : PackageObject
   //   Atomic property: yUnit
   //------------------------------------------------------------------------------------------------
 
-  final let yUnit_property : EBStoredProperty_Int
+  final let yUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var yUnit : Int {
+  final var yUnit : CanariLengthUnit {
     get { return self.yUnit_property.propval }
     set { self.yUnit_property.setProp (newValue) }
   }
@@ -266,11 +266,11 @@ final class PackageZone : PackageObject
   //   Atomic property: widthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let widthUnit_property : EBStoredProperty_Int
+  final let widthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var widthUnit : Int {
+  final var widthUnit : CanariLengthUnit {
     get { return self.widthUnit_property.propval }
     set { self.widthUnit_property.setProp (newValue) }
   }
@@ -279,11 +279,11 @@ final class PackageZone : PackageObject
   //   Atomic property: heightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let heightUnit_property : EBStoredProperty_Int
+  final let heightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var heightUnit : Int {
+  final var heightUnit : CanariLengthUnit {
     get { return self.heightUnit_property.propval }
     set { self.heightUnit_property.setProp (newValue) }
   }
@@ -355,11 +355,11 @@ final class PackageZone : PackageObject
   //   Atomic property: xNameUnit
   //------------------------------------------------------------------------------------------------
 
-  final let xNameUnit_property : EBStoredProperty_Int
+  final let xNameUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var xNameUnit : Int {
+  final var xNameUnit : CanariLengthUnit {
     get { return self.xNameUnit_property.propval }
     set { self.xNameUnit_property.setProp (newValue) }
   }
@@ -368,11 +368,11 @@ final class PackageZone : PackageObject
   //   Atomic property: yNameUnit
   //------------------------------------------------------------------------------------------------
 
-  final let yNameUnit_property : EBStoredProperty_Int
+  final let yNameUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var yNameUnit : Int {
+  final var yNameUnit : CanariLengthUnit {
     get { return self.yNameUnit_property.propval }
     set { self.yNameUnit_property.setProp (newValue) }
   }
@@ -448,17 +448,17 @@ final class PackageZone : PackageObject
     self.y_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "y")
     self.width_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "width")
     self.height_property = EBStoredProperty_CanariLength (defaultValue: .mil (200), undoManager: inUndoManager, key: "height")
-    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xUnit")
-    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yUnit")
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "widthUnit")
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "heightUnit")
+    self.xUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "xUnit")
+    self.yUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "yUnit")
+    self.widthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "widthUnit")
+    self.heightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "heightUnit")
     self.zoneName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "zoneName")
     self.displayZoneName_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "displayZoneName")
     self.displayZoneNameWithPadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "displayZoneNameWithPadNumbers")
     self.xName_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "xName")
     self.yName_property = EBStoredProperty_CanariLength (defaultValue: .mil (100), undoManager: inUndoManager, key: "yName")
-    self.xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xNameUnit")
-    self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yNameUnit")
+    self.xNameUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "xNameUnit")
+    self.yNameUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "yNameUnit")
     self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager, key: "zoneNumbering")
     super.init (inUndoManager)
     self.accumulateProperty (self.x_property)

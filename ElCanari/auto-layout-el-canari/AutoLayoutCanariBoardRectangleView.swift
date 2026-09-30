@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -208,7 +209,7 @@ import AppKit
   //  $unit binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_unit (_ inModel : EBObservableMutableProperty <Int>) -> Self {
+  final func bind_unit (_ inModel : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     _ = self.mUnitPopUpButton.bind_unit (inModel)
     return self
   }

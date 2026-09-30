@@ -390,7 +390,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mTrackLengthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mTrackLengthUnit_property : EBStoredProperty_Int
+  final let mTrackLengthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mLayoutClearance
@@ -408,7 +408,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mLayoutClearanceUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mLayoutClearanceUnit_property : EBStoredProperty_Int
+  final let mLayoutClearanceUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardSelectedInspector
@@ -469,11 +469,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardGridStepUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardGridStepUnit_property : EBStoredProperty_Int
+  final let mBoardGridStepUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mBoardGridStepUnit : Int {
+  final var mBoardGridStepUnit : CanariLengthUnit {
     get { return self.mBoardGridStepUnit_property.propval }
   }
 
@@ -524,7 +524,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardCornerRadiusUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardCornerRadiusUnit_property : EBStoredProperty_Int
+  final let mBoardCornerRadiusUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardClearance
@@ -542,7 +542,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardClearanceUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardClearanceUnit_property : EBStoredProperty_Int
+  final let mBoardClearanceUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardLimitsSelectedInspector
@@ -596,31 +596,31 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mBoardLimitsGridStepUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardLimitsGridStepUnit_property : EBStoredProperty_Int
+  final let mBoardLimitsGridStepUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardLimitsBoundingBoxUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardLimitsBoundingBoxUnit_property : EBStoredProperty_Int
+  final let mBoardLimitsBoundingBoxUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardPointsBoundingBoxUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardPointsBoundingBoxUnit_property : EBStoredProperty_Int
+  final let mBoardPointsBoundingBoxUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardSelectedCurveDisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardSelectedCurveDisplayUnit_property : EBStoredProperty_Int
+  final let mBoardSelectedCurveDisplayUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardLimitControlPointsDisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mBoardLimitControlPointsDisplayUnit_property : EBStoredProperty_Int
+  final let mBoardLimitControlPointsDisplayUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mBoardShape
@@ -656,7 +656,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mRectangularBoardWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mRectangularBoardWidthUnit_property : EBStoredProperty_Int
+  final let mRectangularBoardWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mRectangularBoardHeight
@@ -674,7 +674,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mRectangularBoardHeightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mRectangularBoardHeightUnit_property : EBStoredProperty_Int
+  final let mRectangularBoardHeightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mSheets
@@ -831,7 +831,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mSchematicCustomWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mSchematicCustomWidthUnit_property : EBStoredProperty_Int
+  final let mSchematicCustomWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mSchematicCustomHeight
@@ -849,7 +849,7 @@ final class ProjectRoot : EBManagedObject
   //   Atomic property: mSchematicCustomHeightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mSchematicCustomHeightUnit_property : EBStoredProperty_Int
+  final let mSchematicCustomHeightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mWorkingAreaRectString
@@ -1096,11 +1096,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic proxy property: minPPTPTTTWdisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minPPTPTTTWdisplayUnit_property = EBComputedProperty_Int ()
+  final let minPPTPTTTWdisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minPPTPTTTWdisplayUnit : Int? {
+  var minPPTPTTTWdisplayUnit : CanariLengthUnit? {
     get {
       return self.minPPTPTTTWdisplayUnit_property.optionalValue
     }
@@ -1134,11 +1134,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic proxy property: minValueForOARdisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForOARdisplayUnit_property = EBComputedProperty_Int ()
+  final let minValueForOARdisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minValueForOARdisplayUnit : Int? {
+  var minValueForOARdisplayUnit : CanariLengthUnit? {
     get {
       return self.minValueForOARdisplayUnit_property.optionalValue
     }
@@ -1172,11 +1172,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic proxy property: minValueForPHDdisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForPHDdisplayUnit_property = EBComputedProperty_Int ()
+  final let minValueForPHDdisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minValueForPHDdisplayUnit : Int? {
+  var minValueForPHDdisplayUnit : CanariLengthUnit? {
     get {
       return self.minValueForPHDdisplayUnit_property.optionalValue
     }
@@ -1229,11 +1229,11 @@ final class ProjectRoot : EBManagedObject
   //   Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForBoardLimitWidthDisplayUnit_property = EBComputedProperty_Int ()
+  final let minValueForBoardLimitWidthDisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minValueForBoardLimitWidthDisplayUnit : Int? {
+  var minValueForBoardLimitWidthDisplayUnit : CanariLengthUnit? {
     get {
       return self.minValueForBoardLimitWidthDisplayUnit_property.optionalValue
     }
@@ -2265,9 +2265,9 @@ final class ProjectRoot : EBManagedObject
     self.mAutorouterInterfaceMode_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mAutorouterInterfaceMode")
     self.mExportExistingTracksAndVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mExportExistingTracksAndVias")
     self.mAllowViaAtSMD_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mAllowViaAtSMD")
-    self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: inUndoManager, key: "mTrackLengthUnit")
+    self.mTrackLengthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .m, undoManager: inUndoManager, key: "mTrackLengthUnit")
     self.mLayoutClearance_property = EBStoredProperty_CanariLength (defaultValue: .mil (10), undoManager: inUndoManager, key: "mLayoutClearance")
-    self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mLayoutClearanceUnit")
+    self.mLayoutClearanceUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mLayoutClearanceUnit")
     self.mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager, key: "mBoardSelectedInspector")
     self.mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBoardHorizontalFlip")
     self.mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBoardVerticalFlip")
@@ -2275,14 +2275,14 @@ final class ProjectRoot : EBManagedObject
     self.mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "mBoardGridDisplayFactor")
     self.mBoardZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardZoom")
     self.mBoardGridStep_property = EBStoredProperty_CanariLength (defaultValue: .mil (25), undoManager: inUndoManager, key: "mBoardGridStep")
-    self.mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mBoardGridStepUnit")
+    self.mBoardGridStepUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mBoardGridStepUnit")
     self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: inUndoManager, key: "mErrorOrWarningIssueSize")
     self.mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100, undoManager: inUndoManager, key: "mControlKeyHiliteDiameter")
     self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: inUndoManager, key: "mDSNFileProposedName")
     self.mBoardCornerRadius_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "mBoardCornerRadius")
-    self.mBoardCornerRadiusUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardCornerRadiusUnit")
+    self.mBoardCornerRadiusUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardCornerRadiusUnit")
     self.mBoardClearance_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "mBoardClearance")
-    self.mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardClearanceUnit")
+    self.mBoardClearanceUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardClearanceUnit")
     self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardLimitsSelectedInspector")
     self.mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBoardLimitsHorizontalFlip")
     self.mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBoardLimitsVerticalFlip")
@@ -2290,17 +2290,17 @@ final class ProjectRoot : EBManagedObject
     self.mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5, undoManager: inUndoManager, key: "mBoardLimitsGridDisplayFactor")
     self.mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mBoardLimitsZoom")
     self.mBoardLimitsGridStep_property = EBStoredProperty_CanariLength (defaultValue: .mm(1), undoManager: inUndoManager, key: "mBoardLimitsGridStep")
-    self.mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsGridStepUnit")
-    self.mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitsBoundingBoxUnit")
-    self.mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardPointsBoundingBoxUnit")
-    self.mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardSelectedCurveDisplayUnit")
-    self.mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mBoardLimitControlPointsDisplayUnit")
+    self.mBoardLimitsGridStepUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardLimitsGridStepUnit")
+    self.mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardLimitsBoundingBoxUnit")
+    self.mBoardPointsBoundingBoxUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardPointsBoundingBoxUnit")
+    self.mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardSelectedCurveDisplayUnit")
+    self.mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardLimitControlPointsDisplayUnit")
     self.mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular, undoManager: inUndoManager, key: "mBoardShape")
     self.mContentOpacityInBoardOutline_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager, key: "mContentOpacityInBoardOutline")
     self.mRectangularBoardWidth_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "mRectangularBoardWidth")
-    self.mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mRectangularBoardWidthUnit")
+    self.mRectangularBoardWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mRectangularBoardWidthUnit")
     self.mRectangularBoardHeight_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "mRectangularBoardHeight")
-    self.mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mRectangularBoardHeightUnit")
+    self.mRectangularBoardHeightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mRectangularBoardHeightUnit")
     self.mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDefaultNetClassName")
     self.mSchematicHilitedColumnIndex_property = EBStoredProperty_Int (defaultValue: -1, undoManager: inUndoManager, key: "mSchematicHilitedColumnIndex")
     self.mSchematicHilitedRowIndex_property = EBStoredProperty_Int (defaultValue: -1, undoManager: inUndoManager, key: "mSchematicHilitedRowIndex")
@@ -2316,9 +2316,9 @@ final class ProjectRoot : EBManagedObject
     self.mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "mSchematicGridStyle")
     self.mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "mSchematicGridDisplayFactor")
     self.mSchematicCustomWidth_property = EBStoredProperty_CanariLength (defaultValue: .cm (30), undoManager: inUndoManager, key: "mSchematicCustomWidth")
-    self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mSchematicCustomWidthUnit")
+    self.mSchematicCustomWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mSchematicCustomWidthUnit")
     self.mSchematicCustomHeight_property = EBStoredProperty_CanariLength (defaultValue: .cm (30), undoManager: inUndoManager, key: "mSchematicCustomHeight")
-    self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "mSchematicCustomHeightUnit")
+    self.mSchematicCustomHeightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mSchematicCustomHeightUnit")
     self.mWorkingAreaRectString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mWorkingAreaRectString")
     self.drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "drawErrorBackgroundForBoard")
     self.displayFrontRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "displayFrontRestrictRectangles")
@@ -2524,7 +2524,7 @@ final class ProjectRoot : EBManagedObject
         return .empty
       }
     }
-    self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minPPTPTTTWdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.startsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property)
@@ -2570,7 +2570,7 @@ final class ProjectRoot : EBManagedObject
         return .empty
       }
     }
-    self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minValueForOARdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForOARdisplayUnit_property.startsBeingObserved (by: self.minValueForOARdisplayUnit_property)
@@ -2616,7 +2616,7 @@ final class ProjectRoot : EBManagedObject
         return .empty
       }
     }
-    self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minValueForPHDdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForPHDdisplayUnit_property.startsBeingObserved (by: self.minValueForPHDdisplayUnit_property)
@@ -2685,7 +2685,7 @@ final class ProjectRoot : EBManagedObject
         return .empty
       }
     }
-    self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.startsBeingObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property)

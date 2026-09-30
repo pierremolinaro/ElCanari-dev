@@ -176,11 +176,9 @@ extension AutoLayoutMergerDocument {
       let boardRect_mm = NSRect (x: 0.0, y: 0.0, width: (right - left).mmValue, height: (bottom - top).mmValue)
       // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
       boardModel.modelWidth  = .mm (modelWidthMM)
-      boardModel.modelWidthUnit = CANARI_UNITS_PER_MM
+      boardModel.modelWidthUnit = CanariLengthUnit.mm
       boardModel.modelHeight = .mm (modelHeightMM)
-      boardModel.modelHeightUnit = CANARI_UNITS_PER_MM
-//      boardModel.modelLimitWidth = boardModelWidth
-//      boardModel.modelLimitWidthUnit = CANARI_UNITS_PER_MM
+      boardModel.modelHeightUnit = CanariLengthUnit.mm
     //--- Collect datas
       var temporaryBoardModel = TemporaryBoardModel (
         boardRectMM: boardRect_mm,

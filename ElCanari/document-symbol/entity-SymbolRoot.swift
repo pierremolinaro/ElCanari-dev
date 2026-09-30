@@ -64,13 +64,13 @@ final class SymbolRoot : EBManagedObject
   //   Atomic property: xPlacardUnit
   //------------------------------------------------------------------------------------------------
 
-  final let xPlacardUnit_property : EBStoredProperty_Int
+  final let xPlacardUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: yPlacardUnit
   //------------------------------------------------------------------------------------------------
 
-  final let yPlacardUnit_property : EBStoredProperty_Int
+  final let yPlacardUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   To many property: symbolObjects
@@ -126,8 +126,8 @@ final class SymbolRoot : EBManagedObject
     self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "gridStyle")
     self.gridDisplay_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "gridDisplay")
     self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: inUndoManager, key: "zoom")
-    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xPlacardUnit")
-    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yPlacardUnit")
+    self.xPlacardUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "xPlacardUnit")
+    self.yPlacardUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "yPlacardUnit")
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedPageIndex")
     super.init (inUndoManager)
     self.accumulateProperty (self.selectedInspector_property)

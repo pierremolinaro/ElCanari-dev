@@ -61,7 +61,7 @@ handlingOpposite entity PackageRoot {
   property Bool verticalFlip default no ;
   property GridStyle gridStyle default line ;
   property CanariLength gridStep default ".mil (25)" ;
-  property Int gridStepUnit default 2_286 ; // mil
+  property CanariLengthUnit gridStepUnit default ".mil" ; // mil
   property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
 
@@ -72,13 +72,13 @@ handlingOpposite entity PackageRoot {
   property Bool mModelImagePageVerticalFlip default no ;
   property GridStyle mModelImagePageGridStyle default noGrid ;
   property CanariLength mModelImagePageGridStep default ".mil (1)" ;
-  property Int mModelImagePageGridStepUnit default 2_286 ; // mil
+  property CanariLengthUnit mModelImagePageGridStepUnit default ".mil" ; // mil
   property Int mModelImagePageGridDisplayFactor default 100 ;
   property @generateResetMethod @generateDirectAccess Int mModelImagePageZoom default 200 ;
-  property Int mModelImagePageXPlacardUnit default 2_286 ; // mils
-  property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
-  property Int mModelImageSecondPointXUnit default 2_286 ; // mils
-  property Int mModelImageSecondPointYUnit default 2_286 ; // mils
+  property CanariLengthUnit mModelImagePageXPlacardUnit default ".mil" ; // mils
+  property CanariLengthUnit mModelImagePageYPlacardUnit default ".mil" ; // mils
+  property CanariLengthUnit mModelImageSecondPointXUnit default ".mil" ; // mils
+  property CanariLengthUnit mModelImageSecondPointYUnit default ".mil" ; // mils
 
   property @generateResetMethod @generateDirectAccess Data mModelImageData default empty ;
   property @generateResetMethod @generateDirectAccess CanariLength mModelImageFirstPointXOnLock default ".zero" ;
@@ -90,10 +90,10 @@ handlingOpposite entity PackageRoot {
   property @generateResetMethod Int mModelPointsCircleRadius default 10 ;
   property @generateResetMethod @generateDirectAccess Bool mPointsAreLocked default no ;
 
-  property Int mDimensionUnitFirstModelPointX default 2_286 ;
-  property Int mDimensionUnitFirstModelPointY default 2_286 ;
-  property Int mDimensionUnitSecondModelPointDx default 2_286 ;
-  property Int mDimensionUnitSecondModelPointDy default 2_286 ;
+  property CanariLengthUnit mDimensionUnitFirstModelPointX default ".mil" ;
+  property CanariLengthUnit mDimensionUnitFirstModelPointY default ".mil" ;
+  property CanariLengthUnit mDimensionUnitSecondModelPointDx default ".mil" ;
+  property CanariLengthUnit mDimensionUnitSecondModelPointDy default ".mil" ;
  
   toOne PackageModelImageDoublePoint mModelImageDoublePoint ;
   property proxy CanariLength mModelImageFirstPointX : mModelImageDoublePoint.mFirstX ;
@@ -114,8 +114,8 @@ handlingOpposite entity PackageRoot {
   property @generateDirectRead @signature Int counterClockNumberingStartAngle default 90 ;
 
 //--- XY placard unit
-  property @signature Int xPlacardUnit default 2_286 ; // mils
-  property @signature Int yPlacardUnit default 2_286 ; // mils
+  property @signature CanariLengthUnit xPlacardUnit default ".mil" ; // mils
+  property @signature CanariLengthUnit yPlacardUnit default ".mil" ; // mils
 
 //--- Issues
   transient CanariIssueArray issues dependsFrom
@@ -165,11 +165,11 @@ graphic entity PackageSegment : PackageObject {
   property @signature @generateDirectAccess CanariLength x2 default ".mil (300)" ;
   property @signature @generateDirectAccess CanariLength y2 default ".mil (300)" ;
 
-  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int lengthUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit x1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit x2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit lengthUnit default ".mil" ;
 
   transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
@@ -200,14 +200,14 @@ graphic entity PackageBezier : PackageObject {
   property @signature @generateDirectAccess CanariLength cpx2 default ".mil (300)" ;
   property @signature @generateDirectAccess CanariLength cpy2 default ".zero" ;
 
-  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int cpx1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int cpy1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int cpx2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int cpy2Unit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit x1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit x2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit cpx1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit cpy1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit cpx2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit cpy2Unit default ".mil" ;
 
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x1, self.y1, self.x2, self.y2,
@@ -242,10 +242,10 @@ graphic entity PackageOval : PackageObject {
   property @signature @generateDirectAccess CanariLength width default ".mil (300)" ;
   property @signature @generateDirectAccess CanariLength height default ".mil (300)" ;
 
-  property @signature @generateDirectAccess Int xUnit default 2_286 ;
-  property @signature @generateDirectAccess Int yUnit default 2_286 ;
-  property @signature @generateDirectAccess Int widthUnit default 2_286 ;
-  property @signature @generateDirectAccess Int heightUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit xUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit yUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit widthUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit heightUnit default ".mil" ;
 
   transient NSBezierPath strokeBezierPath dependsFrom
      self.x, self.y, self.width, self.height
@@ -278,11 +278,11 @@ graphic entity PackageArc : PackageObject {
   property @signature @generateDirectAccess CanariLength endTangent default ".zero" ;
   property @signature Bool pathIsClosed default no ;
 
-  property @signature @generateDirectAccess Int xCenterUnit default 2_286 ;
-  property @signature @generateDirectAccess Int yCenterUnit default 2_286 ;
-  property @signature @generateDirectAccess Int radiusUnit  default 2_286 ;
-  property @signature @generateDirectAccess Int startTangentUnit default 2_286 ;
-  property @signature @generateDirectAccess Int endTangentUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit xCenterUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit yCenterUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit radiusUnit  default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit startTangentUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit endTangentUnit default ".mil" ;
 
   transient BezierPath strokeBezierPath dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
@@ -321,13 +321,13 @@ graphic handlingOpposite entity PackagePad : PackageObject {
   property @signature @generateDirectAccess PadStyle padStyle default traversing ;
   property @signature @generateDirectAccess Int padNumber default 0 ;
 
-  property @signature @generateDirectAccess Int xCenterUnit default 2_286 ;
-  property @signature @generateDirectAccess Int yCenterUnit default 2_286 ;
-  property @signature @generateDirectAccess Int widthUnit  default 2_286 ;
-  property @signature @generateDirectAccess Int heightUnit  default 2_286 ;
-  property @signature @generateDirectAccess Int holeWidthUnit default 2_286 ;
-  property @signature @generateDirectAccess Int holeHeightUnit default 2_286 ;
-  property @signature Int annularRingUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit xCenterUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit yCenterUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit widthUnit  default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit heightUnit  default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit holeWidthUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit holeHeightUnit default ".mil" ;
+  property @signature CanariLengthUnit annularRingUnit default ".mil" ;
 
   toOne PackageZone zone ;
   toMany @signature @generateDirectRead PackageSlavePad slaves inverse toOne master ;
@@ -389,13 +389,13 @@ graphic handlingOpposite entity PackageSlavePad : PackageObject {
   property @signature @generateDirectAccess PadShape padShape default octo ;
   property @signature @generateDirectAccess SlavePadStyle padStyle default traversing ;
 
-  property @signature @generateDirectAccess Int xCenterUnit default 2_286 ;
-  property @signature @generateDirectAccess Int yCenterUnit default 2_286 ;
-  property @signature @generateDirectAccess Int widthUnit  default 2_286 ;
-  property @signature @generateDirectAccess Int heightUnit  default 2_286 ;
-  property @signature @generateDirectAccess Int holeWidthUnit default 2_286 ;
-  property @signature @generateDirectAccess Int holeHeightUnit default 2_286 ;
-  property @signature Int annularRingUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit xCenterUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit yCenterUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit widthUnit  default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit heightUnit  default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit holeWidthUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit holeHeightUnit default ".mil" ;
+  property @signature CanariLengthUnit annularRingUnit default ".mil" ;
 
   toOne @weak PackagePad master inverse toMany slaves ;
 
@@ -440,10 +440,10 @@ graphic entity PackageGuide : PackageObject {
   property @signature @generateDirectAccess CanariLength x2 default ".mil (300)" ;
   property @signature @generateDirectAccess CanariLength y2 default ".mil (300)" ;
 
-  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit x1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit x2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y2Unit default ".mil" ;
 
   override transient EBShape objectDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
@@ -468,14 +468,14 @@ graphic entity PackageDimension : PackageObject {
   property @signature @generateDirectAccess CanariLength xDimension default ".zero" ;
   property @signature @generateDirectAccess CanariLength yDimension default ".zero" ;
 
-  property @signature @generateDirectAccess Int x1Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y1Unit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit x1Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y1Unit default ".mil" ;
 
-  property @signature @generateDirectAccess Int x2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int y2Unit default 2_286 ;
-  property @signature @generateDirectAccess Int xDimensionUnit default 2_286 ;
-  property @signature @generateDirectAccess Int yDimensionUnit default 2_286 ;
-  property @signature @generateDirectAccess Int distanceUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit x2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit y2Unit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit xDimensionUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit yDimensionUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit distanceUnit default ".mil" ;
   property @signature @generateDirectAccess Bool drawDimensionBackground default yes ;
 
 
@@ -514,10 +514,10 @@ graphic entity PackageZone : PackageObject {
   property @signature @generateDirectAccess CanariLength width default ".mil (200)" ;
   property @signature @generateDirectAccess CanariLength height default ".mil (200)" ;
 
-  property @signature @generateDirectAccess Int xUnit default 2_286 ;
-  property @signature @generateDirectAccess Int yUnit default 2_286 ;
-  property @signature @generateDirectAccess Int widthUnit default 2_286 ;
-  property @signature @generateDirectAccess Int heightUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit xUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit yUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit widthUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit heightUnit default ".mil" ;
 
   property @signature @generateDirectAccess String zoneName default "" ;
   property Bool displayZoneName default yes ;
@@ -525,8 +525,8 @@ graphic entity PackageZone : PackageObject {
   toMany @signature @generateDirectAccess ForbiddenPadNumber forbiddenPadNumbers ;
   property @signature @generateDirectAccess CanariLength xName default ".mil (100)" ;
   property @signature @generateDirectAccess CanariLength yName default ".mil (100)" ;
-  property @signature @generateDirectAccess Int xNameUnit default 2_286 ;
-  property @signature @generateDirectAccess Int yNameUnit default 2_286 ;
+  property @signature @generateDirectAccess CanariLengthUnit xNameUnit default ".mil" ;
+  property @signature @generateDirectAccess CanariLengthUnit yNameUnit default ".mil" ;
 
 //--- Pad numbering
   property @signature @generateDirectAccess PadNumbering zoneNumbering default noNumbering ;

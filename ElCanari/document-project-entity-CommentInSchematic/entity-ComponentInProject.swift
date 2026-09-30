@@ -139,42 +139,42 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mXUnit : AnyObject {
-//   var mXUnit : Int { get }
+//   var mXUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mYUnit : AnyObject {
-//   var mYUnit : Int { get }
+//   var mYUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mXNameUnit : AnyObject {
-//   var mXNameUnit : Int { get }
+//   var mXNameUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mYNameUnit : AnyObject {
-//   var mYNameUnit : Int { get }
+//   var mYNameUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mXValueUnit : AnyObject {
-//   var mXValueUnit : Int { get }
+//   var mXValueUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mYValueUnit : AnyObject {
-//   var mYValueUnit : Int { get }
+//   var mYValueUnit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -650,11 +650,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mXUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mXUnit_property : EBStoredProperty_Int
+  final let mXUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXUnit : Int {
+  final var mXUnit : CanariLengthUnit {
     get { return self.mXUnit_property.propval }
     set { self.mXUnit_property.setProp (newValue) }
   }
@@ -663,11 +663,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mYUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mYUnit_property : EBStoredProperty_Int
+  final let mYUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYUnit : Int {
+  final var mYUnit : CanariLengthUnit {
     get { return self.mYUnit_property.propval }
     set { self.mYUnit_property.setProp (newValue) }
   }
@@ -676,11 +676,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mXNameUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mXNameUnit_property : EBStoredProperty_Int
+  final let mXNameUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXNameUnit : Int {
+  final var mXNameUnit : CanariLengthUnit {
     get { return self.mXNameUnit_property.propval }
   }
 
@@ -688,11 +688,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mYNameUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mYNameUnit_property : EBStoredProperty_Int
+  final let mYNameUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYNameUnit : Int {
+  final var mYNameUnit : CanariLengthUnit {
     get { return self.mYNameUnit_property.propval }
   }
 
@@ -700,11 +700,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mXValueUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mXValueUnit_property : EBStoredProperty_Int
+  final let mXValueUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mXValueUnit : Int {
+  final var mXValueUnit : CanariLengthUnit {
     get { return self.mXValueUnit_property.propval }
   }
 
@@ -712,11 +712,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mYValueUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mYValueUnit_property : EBStoredProperty_Int
+  final let mYValueUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var mYValueUnit : Int {
+  final var mYValueUnit : CanariLengthUnit {
     get { return self.mYValueUnit_property.propval }
   }
 
@@ -1081,12 +1081,12 @@ final class ComponentInProject : BoardObject
     self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComponentValue")
     self.mNamePrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mNamePrefix")
     self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNameIndex")
-    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
-    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
-    self.mXNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXNameUnit")
-    self.mYNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYNameUnit")
-    self.mXValueUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXValueUnit")
-    self.mYValueUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYValueUnit")
+    self.mXUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mXUnit")
+    self.mYUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mYUnit")
+    self.mXNameUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mXNameUnit")
+    self.mYNameUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mYNameUnit")
+    self.mXValueUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mXValueUnit")
+    self.mYValueUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mYValueUnit")
     super.init (inUndoManager)
     self.mDevice_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {

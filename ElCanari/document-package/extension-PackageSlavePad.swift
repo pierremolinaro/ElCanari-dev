@@ -203,21 +203,21 @@ extension PackageSlavePad {
 
   override func program () -> String {
     var s = "slave "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += self.xCenter.string (in: self.xCenterUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += self.yCenter.string (in: self.yCenterUnit, fractionDigits: 2)
     s += " size "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += self.width.string (in: self.widthUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += self.height.string (in: self.heightUnit, fractionDigits: 2)
     s += " shape "
     s += self.padShape.string
     s += " style "
     s += self.padStyle.string
     s += " hole "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
+    s += self.holeWidth.string (in: self.holeWidthUnit, fractionDigits: 2)
     s += " : "
-    s += intValueAndUnitStringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
+    s += self.holeHeight.string (in: self.holeHeightUnit, fractionDigits: 2)
     s += " id "
     s += "\(self.master_property.propval!.objectIndex)"
     s += ";\n"

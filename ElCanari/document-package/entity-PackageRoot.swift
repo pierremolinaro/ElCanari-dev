@@ -84,7 +84,7 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: gridStepUnit
   //------------------------------------------------------------------------------------------------
 
-  final let gridStepUnit_property : EBStoredProperty_Int
+  final let gridStepUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: gridDisplayFactor
@@ -132,7 +132,7 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mModelImagePageGridStepUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImagePageGridStepUnit_property : EBStoredProperty_Int
+  final let mModelImagePageGridStepUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mModelImagePageGridDisplayFactor
@@ -163,25 +163,25 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mModelImagePageXPlacardUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImagePageXPlacardUnit_property : EBStoredProperty_Int
+  final let mModelImagePageXPlacardUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mModelImagePageYPlacardUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImagePageYPlacardUnit_property : EBStoredProperty_Int
+  final let mModelImagePageYPlacardUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mModelImageSecondPointXUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageSecondPointXUnit_property : EBStoredProperty_Int
+  final let mModelImageSecondPointXUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mModelImageSecondPointYUnit
   //------------------------------------------------------------------------------------------------
 
-  final let mModelImageSecondPointYUnit_property : EBStoredProperty_Int
+  final let mModelImageSecondPointYUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mModelImageData
@@ -339,25 +339,25 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: mDimensionUnitFirstModelPointX
   //------------------------------------------------------------------------------------------------
 
-  final let mDimensionUnitFirstModelPointX_property : EBStoredProperty_Int
+  final let mDimensionUnitFirstModelPointX_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mDimensionUnitFirstModelPointY
   //------------------------------------------------------------------------------------------------
 
-  final let mDimensionUnitFirstModelPointY_property : EBStoredProperty_Int
+  final let mDimensionUnitFirstModelPointY_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mDimensionUnitSecondModelPointDx
   //------------------------------------------------------------------------------------------------
 
-  final let mDimensionUnitSecondModelPointDx_property : EBStoredProperty_Int
+  final let mDimensionUnitSecondModelPointDx_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: mDimensionUnitSecondModelPointDy
   //------------------------------------------------------------------------------------------------
 
-  final let mDimensionUnitSecondModelPointDy_property : EBStoredProperty_Int
+  final let mDimensionUnitSecondModelPointDy_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: knobSizeMultpliedByTen
@@ -393,13 +393,13 @@ final class PackageRoot : EBManagedObject
   //   Atomic property: xPlacardUnit
   //------------------------------------------------------------------------------------------------
 
-  final let xPlacardUnit_property : EBStoredProperty_Int
+  final let xPlacardUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: yPlacardUnit
   //------------------------------------------------------------------------------------------------
 
-  final let yPlacardUnit_property : EBStoredProperty_Int
+  final let yPlacardUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   To many property: mModelImageObjects
@@ -725,7 +725,7 @@ final class PackageRoot : EBManagedObject
     self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "verticalFlip")
     self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "gridStyle")
     self.gridStep_property = EBStoredProperty_CanariLength (defaultValue: .mil (25), undoManager: inUndoManager, key: "gridStep")
-    self.gridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "gridStepUnit")
+    self.gridStepUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "gridStepUnit")
     self.gridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "gridDisplayFactor")
     self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: inUndoManager, key: "zoom")
     self.mModelImageOpacity_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager, key: "mModelImageOpacity")
@@ -733,13 +733,13 @@ final class PackageRoot : EBManagedObject
     self.mModelImagePageVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mModelImagePageVerticalFlip")
     self.mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.noGrid, undoManager: inUndoManager, key: "mModelImagePageGridStyle")
     self.mModelImagePageGridStep_property = EBStoredProperty_CanariLength (defaultValue: .mil (1), undoManager: inUndoManager, key: "mModelImagePageGridStep")
-    self.mModelImagePageGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImagePageGridStepUnit")
+    self.mModelImagePageGridStepUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mModelImagePageGridStepUnit")
     self.mModelImagePageGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 100, undoManager: inUndoManager, key: "mModelImagePageGridDisplayFactor")
     self.mModelImagePageZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: inUndoManager, key: "mModelImagePageZoom")
-    self.mModelImagePageXPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImagePageXPlacardUnit")
-    self.mModelImagePageYPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImagePageYPlacardUnit")
-    self.mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImageSecondPointXUnit")
-    self.mModelImageSecondPointYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mModelImageSecondPointYUnit")
+    self.mModelImagePageXPlacardUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mModelImagePageXPlacardUnit")
+    self.mModelImagePageYPlacardUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mModelImagePageYPlacardUnit")
+    self.mModelImageSecondPointXUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mModelImageSecondPointXUnit")
+    self.mModelImageSecondPointYUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mModelImageSecondPointYUnit")
     self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mModelImageData")
     self.mModelImageFirstPointXOnLock_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mModelImageFirstPointXOnLock")
     self.mModelImageFirstPointYOnLock_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mModelImageFirstPointYOnLock")
@@ -749,15 +749,15 @@ final class PackageRoot : EBManagedObject
     self.mModelImageRotationInRadians_property = EBStoredProperty_Double (defaultValue: 0, undoManager: inUndoManager, key: "mModelImageRotationInRadians")
     self.mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10, undoManager: inUndoManager, key: "mModelPointsCircleRadius")
     self.mPointsAreLocked_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mPointsAreLocked")
-    self.mDimensionUnitFirstModelPointX_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitFirstModelPointX")
-    self.mDimensionUnitFirstModelPointY_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitFirstModelPointY")
-    self.mDimensionUnitSecondModelPointDx_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitSecondModelPointDx")
-    self.mDimensionUnitSecondModelPointDy_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDimensionUnitSecondModelPointDy")
+    self.mDimensionUnitFirstModelPointX_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mDimensionUnitFirstModelPointX")
+    self.mDimensionUnitFirstModelPointY_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mDimensionUnitFirstModelPointY")
+    self.mDimensionUnitSecondModelPointDx_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mDimensionUnitSecondModelPointDx")
+    self.mDimensionUnitSecondModelPointDy_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mDimensionUnitSecondModelPointDy")
     self.knobSizeMultpliedByTen_property = EBStoredProperty_Int (defaultValue: 20, undoManager: inUndoManager, key: "knobSizeMultpliedByTen")
     self.padNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager, key: "padNumbering")
     self.counterClockNumberingStartAngle_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "counterClockNumberingStartAngle")
-    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xPlacardUnit")
-    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yPlacardUnit")
+    self.xPlacardUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "xPlacardUnit")
+    self.yPlacardUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "yPlacardUnit")
     super.init (inUndoManager)
     self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {

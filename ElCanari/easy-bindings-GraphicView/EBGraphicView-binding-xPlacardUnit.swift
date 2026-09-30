@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -12,7 +13,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_xPlacardUnit (_ model : EBObservableProperty <Int>) {
+  final func bind_xPlacardUnit (_ model : EBObservableProperty <CanariLengthUnit>) {
     self.mXPlacardUnitController = EBObservablePropertyController (
       observedObjects: [model],
       callBack: { [weak self] in self?.updateXPlacardUnit (from: model) }
@@ -21,17 +22,10 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  final func unbind_xPlacardUnit () {
-//    self.mXPlacardUnitController?.unregister ()
-//    self.mXPlacardUnitController = nil
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final private func updateXPlacardUnit (from model : EBObservableProperty <Int>) {
+  final private func updateXPlacardUnit (from model : EBObservableProperty <CanariLengthUnit>) {
     switch model.selection {
     case .empty, .multiple :
-      self.set (XPlacardUnit: 2286) // mils
+      self.set (XPlacardUnit: .mil)
     case .single (let v) :
       self.set (XPlacardUnit: v)
     }

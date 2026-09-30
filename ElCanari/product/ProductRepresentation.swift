@@ -23,9 +23,9 @@ struct ProductRepresentation : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private(set) var boardWidth : CanariLength
-  private(set) var boardWidthUnit : Int // Canari Unit
+  private(set) var boardWidthUnit : CanariLengthUnit // Canari Unit
   private(set) var boardHeight : CanariLength
-  private(set) var boardHeightUnit : Int // Canari Unit
+  private(set) var boardHeightUnit : CanariLengthUnit // Canari Unit
   private(set) var artworkName = ""
   private(set) var roundSegments = [LayeredProductSegment] ()
   private(set) var squareSegments = [LayeredProductSegment] ()
@@ -39,9 +39,9 @@ struct ProductRepresentation : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (boardWidth inBoardWidth : CanariLength,
-        boardWidthUnit inBoardWidthUnit : Int, // Canari Unit
+        boardWidthUnit inBoardWidthUnit : CanariLengthUnit, // Canari Unit
         boardHeight inBoardHeight : CanariLength,
-        boardHeightUnit inBoardHeightUnit : Int, // Canari Unit
+        boardHeightUnit inBoardHeightUnit : CanariLengthUnit, // Canari Unit
 //        boardLimitWidth inBoardLimitWidth : CanariLength,
 //        boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
         artworkName inArtworkName : String,

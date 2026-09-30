@@ -58,56 +58,56 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_x1Unit : AnyObject {
-//   var x1Unit : Int { get }
+//   var x1Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_y1Unit : AnyObject {
-//   var y1Unit : Int { get }
+//   var y1Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_x2Unit : AnyObject {
-//   var x2Unit : Int { get }
+//   var x2Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_y2Unit : AnyObject {
-//   var y2Unit : Int { get }
+//   var y2Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_cpx1Unit : AnyObject {
-//   var cpx1Unit : Int { get }
+//   var cpx1Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_cpy1Unit : AnyObject {
-//   var cpy1Unit : Int { get }
+//   var cpy1Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_cpx2Unit : AnyObject {
-//   var cpx2Unit : Int { get }
+//   var cpx2Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageBezier_cpy2Unit : AnyObject {
-//   var cpy2Unit : Int { get }
+//   var cpy2Unit : CanariLengthUnit { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -267,11 +267,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: x1Unit
   //------------------------------------------------------------------------------------------------
 
-  final let x1Unit_property : EBStoredProperty_Int
+  final let x1Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var x1Unit : Int {
+  final var x1Unit : CanariLengthUnit {
     get { return self.x1Unit_property.propval }
     set { self.x1Unit_property.setProp (newValue) }
   }
@@ -280,11 +280,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: y1Unit
   //------------------------------------------------------------------------------------------------
 
-  final let y1Unit_property : EBStoredProperty_Int
+  final let y1Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var y1Unit : Int {
+  final var y1Unit : CanariLengthUnit {
     get { return self.y1Unit_property.propval }
     set { self.y1Unit_property.setProp (newValue) }
   }
@@ -293,11 +293,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: x2Unit
   //------------------------------------------------------------------------------------------------
 
-  final let x2Unit_property : EBStoredProperty_Int
+  final let x2Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var x2Unit : Int {
+  final var x2Unit : CanariLengthUnit {
     get { return self.x2Unit_property.propval }
     set { self.x2Unit_property.setProp (newValue) }
   }
@@ -306,11 +306,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: y2Unit
   //------------------------------------------------------------------------------------------------
 
-  final let y2Unit_property : EBStoredProperty_Int
+  final let y2Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var y2Unit : Int {
+  final var y2Unit : CanariLengthUnit {
     get { return self.y2Unit_property.propval }
     set { self.y2Unit_property.setProp (newValue) }
   }
@@ -319,11 +319,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: cpx1Unit
   //------------------------------------------------------------------------------------------------
 
-  final let cpx1Unit_property : EBStoredProperty_Int
+  final let cpx1Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var cpx1Unit : Int {
+  final var cpx1Unit : CanariLengthUnit {
     get { return self.cpx1Unit_property.propval }
     set { self.cpx1Unit_property.setProp (newValue) }
   }
@@ -332,11 +332,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: cpy1Unit
   //------------------------------------------------------------------------------------------------
 
-  final let cpy1Unit_property : EBStoredProperty_Int
+  final let cpy1Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var cpy1Unit : Int {
+  final var cpy1Unit : CanariLengthUnit {
     get { return self.cpy1Unit_property.propval }
     set { self.cpy1Unit_property.setProp (newValue) }
   }
@@ -345,11 +345,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: cpx2Unit
   //------------------------------------------------------------------------------------------------
 
-  final let cpx2Unit_property : EBStoredProperty_Int
+  final let cpx2Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var cpx2Unit : Int {
+  final var cpx2Unit : CanariLengthUnit {
     get { return self.cpx2Unit_property.propval }
     set { self.cpx2Unit_property.setProp (newValue) }
   }
@@ -358,11 +358,11 @@ final class PackageBezier : PackageObject
   //   Atomic property: cpy2Unit
   //------------------------------------------------------------------------------------------------
 
-  final let cpy2Unit_property : EBStoredProperty_Int
+  final let cpy2Unit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var cpy2Unit : Int {
+  final var cpy2Unit : CanariLengthUnit {
     get { return self.cpy2Unit_property.propval }
     set { self.cpy2Unit_property.setProp (newValue) }
   }
@@ -404,14 +404,14 @@ final class PackageBezier : PackageObject
     self.cpy1_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "cpy1")
     self.cpx2_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "cpx2")
     self.cpy2_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "cpy2")
-    self.x1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "x1Unit")
-    self.y1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "y1Unit")
-    self.x2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "x2Unit")
-    self.y2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "y2Unit")
-    self.cpx1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpx1Unit")
-    self.cpy1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpy1Unit")
-    self.cpx2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpx2Unit")
-    self.cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpy2Unit")
+    self.x1Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "x1Unit")
+    self.y1Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "y1Unit")
+    self.x2Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "x2Unit")
+    self.y2Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "y2Unit")
+    self.cpx1Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "cpx1Unit")
+    self.cpy1Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "cpy1Unit")
+    self.cpx2Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "cpx2Unit")
+    self.cpy2Unit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "cpy2Unit")
     self.x1_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
     self.accumulateProperty (self.y1_property)

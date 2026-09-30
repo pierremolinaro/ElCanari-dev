@@ -102,11 +102,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic property: boardWidthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let boardWidthUnit_property : EBStoredProperty_Int
+  final let boardWidthUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardWidthUnit : Int {
+  final var boardWidthUnit : CanariLengthUnit {
     get { return self.boardWidthUnit_property.propval }
   }
 
@@ -114,11 +114,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic property: boardHeightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let boardHeightUnit_property : EBStoredProperty_Int
+  final let boardHeightUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var boardHeightUnit : Int {
+  final var boardHeightUnit : CanariLengthUnit {
     get { return self.boardHeightUnit_property.propval }
   }
 
@@ -126,13 +126,13 @@ final class MergerRoot : EBManagedObject
   //   Atomic property: selectedBoardXUnit
   //------------------------------------------------------------------------------------------------
 
-  final let selectedBoardXUnit_property : EBStoredProperty_Int
+  final let selectedBoardXUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: selectedBoardYUnit
   //------------------------------------------------------------------------------------------------
 
-  final let selectedBoardYUnit_property : EBStoredProperty_Int
+  final let selectedBoardYUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
   //   Atomic property: horizontalSeparator
@@ -150,11 +150,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic property: horizontalSeparatorUnit
   //------------------------------------------------------------------------------------------------
 
-  final let horizontalSeparatorUnit_property : EBStoredProperty_Int
+  final let horizontalSeparatorUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var horizontalSeparatorUnit : Int {
+  final var horizontalSeparatorUnit : CanariLengthUnit {
     get { return self.horizontalSeparatorUnit_property.propval }
   }
 
@@ -174,11 +174,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic property: verticalSeparatorUnit
   //------------------------------------------------------------------------------------------------
 
-  final let verticalSeparatorUnit_property : EBStoredProperty_Int
+  final let verticalSeparatorUnit_property : EBStoredProperty_CanariLengthUnit
 
   //------------------------------------------------------------------------------------------------
 
-  final var verticalSeparatorUnit : Int {
+  final var verticalSeparatorUnit : CanariLengthUnit {
     get { return self.verticalSeparatorUnit_property.propval }
   }
 
@@ -293,11 +293,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic proxy property: minPPTPTTTWdisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minPPTPTTTWdisplayUnit_property = EBComputedProperty_Int ()
+  final let minPPTPTTTWdisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minPPTPTTTWdisplayUnit : Int? {
+  var minPPTPTTTWdisplayUnit : CanariLengthUnit? {
     get {
       return self.minPPTPTTTWdisplayUnit_property.optionalValue
     }
@@ -331,11 +331,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic proxy property: minValueForOARdisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForOARdisplayUnit_property = EBComputedProperty_Int ()
+  final let minValueForOARdisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minValueForOARdisplayUnit : Int? {
+  var minValueForOARdisplayUnit : CanariLengthUnit? {
     get {
       return self.minValueForOARdisplayUnit_property.optionalValue
     }
@@ -369,11 +369,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic proxy property: minValueForPHDdisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForPHDdisplayUnit_property = EBComputedProperty_Int ()
+  final let minValueForPHDdisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minValueForPHDdisplayUnit : Int? {
+  var minValueForPHDdisplayUnit : CanariLengthUnit? {
     get {
       return self.minValueForPHDdisplayUnit_property.optionalValue
     }
@@ -426,11 +426,11 @@ final class MergerRoot : EBManagedObject
   //   Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
   //------------------------------------------------------------------------------------------------
 
-  final let minValueForBoardLimitWidthDisplayUnit_property = EBComputedProperty_Int ()
+  final let minValueForBoardLimitWidthDisplayUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
 
-  var minValueForBoardLimitWidthDisplayUnit : Int? {
+  var minValueForBoardLimitWidthDisplayUnit : CanariLengthUnit? {
     get {
       return self.minValueForBoardLimitWidthDisplayUnit_property.optionalValue
     }
@@ -668,14 +668,14 @@ final class MergerRoot : EBManagedObject
     self.automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "automaticBoardSize")
     self.boardManualWidth_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "boardManualWidth")
     self.boardManualHeight_property = EBStoredProperty_CanariLength (defaultValue: .cm (10), undoManager: inUndoManager, key: "boardManualHeight")
-    self.boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardWidthUnit")
-    self.boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "boardHeightUnit")
-    self.selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "selectedBoardXUnit")
-    self.selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "selectedBoardYUnit")
+    self.boardWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "boardWidthUnit")
+    self.boardHeightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "boardHeightUnit")
+    self.selectedBoardXUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "selectedBoardXUnit")
+    self.selectedBoardYUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "selectedBoardYUnit")
     self.horizontalSeparator_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "horizontalSeparator")
-    self.horizontalSeparatorUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "horizontalSeparatorUnit")
+    self.horizontalSeparatorUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "horizontalSeparatorUnit")
     self.verticalSeparator_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "verticalSeparator")
-    self.verticalSeparatorUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "verticalSeparatorUnit")
+    self.verticalSeparatorUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "verticalSeparatorUnit")
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
     self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
     self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
@@ -746,7 +746,7 @@ final class MergerRoot : EBManagedObject
         return .empty
       }
     }
-    self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minPPTPTTTWdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.startsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property)
@@ -792,7 +792,7 @@ final class MergerRoot : EBManagedObject
         return .empty
       }
     }
-    self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minValueForOARdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForOARdisplayUnit_property.startsBeingObserved (by: self.minValueForOARdisplayUnit_property)
@@ -838,7 +838,7 @@ final class MergerRoot : EBManagedObject
         return .empty
       }
     }
-    self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minValueForPHDdisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForPHDdisplayUnit_property.startsBeingObserved (by: self.minValueForPHDdisplayUnit_property)
@@ -907,7 +907,7 @@ final class MergerRoot : EBManagedObject
         return .empty
       }
     }
-    self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
+    self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] (_ inValue : CanariLengthUnit) in
       self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.setProp (inValue)
     }
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.startsBeingObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property)

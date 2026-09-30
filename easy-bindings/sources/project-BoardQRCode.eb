@@ -6,13 +6,13 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
   graphic canCopyAndPaste ;
 
   property @generateDirectAccess CanariLength mCenterX default ".zero" ;
-  property Int mXUnit default 2_286 ; // mil
+  property CanariLengthUnit mXUnit default ".mil" ; // mil
   property @generateDirectAccess CanariLength mCenterY default ".zero" ;
-  property Int mYUnit default 2_286 ; // mil
+  property CanariLengthUnit mYUnit default ".mil" ; // mil
   property Bool mDrawFrame default yes ;
   property CanariLength mModuleSize default ".pt (1)" ;
-  property Int mModuleSizeUnit  default 31_750 ; // px
-  property Int mActualSizeUnit  default 31_750 ; // px
+  property CanariLengthUnit mModuleSizeUnit  default ".pt" ; // px
+  property CanariLengthUnit mActualSizeUnit  default ".pt" ; // px
 
   property @generateDirectAccess BoardQRCodeLayer mLayer default legendFront ;
   property String mText default "" ;

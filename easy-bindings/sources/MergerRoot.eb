@@ -14,19 +14,18 @@ handlingOpposite entity MergerRoot {
   property Bool automaticBoardSize default yes ;
   property CanariLength boardManualWidth default ".cm (10)" ;
   property CanariLength boardManualHeight default ".cm (10)"  ;
-  property @generateDirectRead Int boardWidthUnit default 90_000 ;
-  property @generateDirectRead Int boardHeightUnit default 90_000 ;
+  property @generateDirectRead CanariLengthUnit boardWidthUnit default ".mm" ;
+  property @generateDirectRead CanariLengthUnit boardHeightUnit default ".mm" ;
 
-//  property @generateDirectRead Bool overlapingArrangment default no ;
-  property Int selectedBoardXUnit default 90_000 ;
-  property Int selectedBoardYUnit default 90_000 ;
+  property CanariLengthUnit selectedBoardXUnit default ".mm" ;
+  property CanariLengthUnit selectedBoardYUnit default ".mm" ;
 
 //--- Model separators
   property @generateDirectRead CanariLength horizontalSeparator default ".mm (1)" ;
-  property @generateDirectRead Int horizontalSeparatorUnit default 90_000 ; // 1mm
+  property @generateDirectRead CanariLengthUnit horizontalSeparatorUnit default ".mm" ; // 1mm
 
   property @generateDirectRead CanariLength verticalSeparator default ".mm (1)" ;
-  property @generateDirectRead Int verticalSeparatorUnit default 90_000 ; // 1mm
+  property @generateDirectRead CanariLengthUnit verticalSeparatorUnit default ".mm" ; // 1mm
 
 //--- Board model name array
   transient StringTagArray modelNames dependsFrom self.boardModels.all.name, self.boardModels ;
@@ -71,17 +70,17 @@ handlingOpposite entity MergerRoot {
     self.mArtworkFileSystemLibraryRequiresAttention
   ;
 
-  property proxy Int minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
+  property proxy CanariLengthUnit minPPTPTTTWdisplayUnit : mArtwork.minPPTPTTTWdisplayUnit ;
   property proxy CanariLength minPPTPTTTW : mArtwork.minPPTPTTTW ;
   
-  property proxy Int minValueForOARdisplayUnit : mArtwork.minValueForOARdisplayUnit ;
+  property proxy CanariLengthUnit minValueForOARdisplayUnit : mArtwork.minValueForOARdisplayUnit ;
   property proxy CanariLength minValueForOARinEBUnit : mArtwork.minValueForOARinEBUnit ;
   
-  property proxy Int minValueForPHDdisplayUnit : mArtwork.minValueForPHDdisplayUnit ;
+  property proxy CanariLengthUnit minValueForPHDdisplayUnit : mArtwork.minValueForPHDdisplayUnit ;
   property proxy CanariLength minValueForPHDinEBUnit : mArtwork.minValueForPHDinEBUnit ;
  
   property proxy CanariLength minValueForBoardLimitWidth : mArtwork.minValueForBoardLimitWidth ;
-  property proxy Int minValueForBoardLimitWidthDisplayUnit : mArtwork.minValueForBoardLimitWidthDisplayUnit ;
+  property proxy CanariLengthUnit minValueForBoardLimitWidthDisplayUnit : mArtwork.minValueForBoardLimitWidthDisplayUnit ;
  
   property proxy String drillDataFileExtension : mArtwork.drillDataFileExtension ;
 

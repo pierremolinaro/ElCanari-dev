@@ -40,7 +40,7 @@ final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStac
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final func bind_dimensionAndUnit (_ inDimension : EBObservableProperty <CanariLength>,
-                                    _ inUnit : EBObservableMutableProperty <Int>) -> Self {
+                                    _ inUnit : EBObservableMutableProperty <CanariLengthUnit>) -> Self {
     _ = self.mDimensionField.bind_dimensionAndUnit (inDimension, inUnit)
     _ = self.mUnitPopUpButton.bind_unit (inUnit)
     return self

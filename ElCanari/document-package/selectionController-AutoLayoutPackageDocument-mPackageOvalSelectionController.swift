@@ -45,25 +45,25 @@ import CanariGeometry
   //   Selection observable property: xUnit
   //------------------------------------------------------------------------------------------------
 
-  final let xUnit_property = EBComputedProperty_Int ()
+  final let xUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: yUnit
   //------------------------------------------------------------------------------------------------
 
-  final let yUnit_property = EBComputedProperty_Int ()
+  final let yUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: widthUnit
   //------------------------------------------------------------------------------------------------
 
-  final let widthUnit_property = EBComputedProperty_Int ()
+  final let widthUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: heightUnit
   //------------------------------------------------------------------------------------------------
 
-  final let heightUnit_property = EBComputedProperty_Int ()
+  final let heightUnit_property = EBComputedProperty_CanariLengthUnit ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: x
@@ -342,7 +342,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.xUnit_property.selection {
@@ -368,7 +368,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.xUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.xUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -393,7 +393,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.yUnit_property.selection {
@@ -419,7 +419,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.yUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.yUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -444,7 +444,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.widthUnit_property.selection {
@@ -470,7 +470,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.widthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.widthUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -495,7 +495,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariLengthUnit> ()
           var isMultipleSelection = false
           for object in v {
             switch object.heightUnit_property.selection {
@@ -521,7 +521,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.heightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.heightUnit_property.mWriteModelFunction = { [weak self] (inValue : CanariLengthUnit) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
