@@ -39,13 +39,13 @@ import CanariGeometry
   //   Selection observable property: startAngle
   //------------------------------------------------------------------------------------------------
 
-  final let startAngle_property = EBComputedProperty_Int ()
+  final let startAngle_property = EBComputedProperty_CanariAngle ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: arcAngle
   //------------------------------------------------------------------------------------------------
 
-  final let arcAngle_property = EBComputedProperty_Int ()
+  final let arcAngle_property = EBComputedProperty_CanariAngle ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: startTangent
@@ -346,7 +346,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariAngle> ()
           var isMultipleSelection = false
           for object in v {
             switch object.startAngle_property.selection {
@@ -372,7 +372,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.startAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.startAngle_property.mWriteModelFunction = { [weak self] (inValue : CanariAngle) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :
@@ -397,7 +397,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariAngle> ()
           var isMultipleSelection = false
           for object in v {
             switch object.arcAngle_property.selection {
@@ -423,7 +423,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.arcAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.arcAngle_property.mWriteModelFunction = { [weak self] (inValue : CanariAngle) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

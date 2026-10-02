@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -32,18 +33,18 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func updateTag (from inObject : EBObservableMutableProperty <Int>) {
+  func updateTag (from inObject : EBObservableMutableProperty <CanariAngle>) {
     switch inObject.selection {
     case .single (let v) :
       self.enable (fromValueBinding: true, self.enabledBindingController ())
       switch v {
-      case 0 :
+      case .zero :
         self.selectedSegment = 0
-      case 90_000 :
+      case .degrees90 :
         self.selectedSegment = 1
-      case 180_000 :
+      case .degrees180 :
         self.selectedSegment = 2
-      case 270_000 :
+      case .degrees270 :
         self.selectedSegment = 3
       default:
         self.selectedSegment = -1
@@ -57,7 +58,7 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     if self.selectedSegment >= 0 {
-      let orientation = self.selectedSegment * 90_000
+      let orientation = CanariAngle.degree (Double (self.selectedSegment * 90))
       self.mAngleController?.updateModel (withValue: orientation)
     }
     return super.sendAction (action, to: to)
@@ -67,12 +68,12 @@ final class AutoLayoutCanariPreferredDirectionSegmentedControl : ALB_NSSegmented
   //  $angle binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mAngleController : EBGenericReadWritePropertyController <CanariAngle>? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_angle (_ inObject : EBObservableMutableProperty <Int>) -> Self {
-    self.mAngleController = EBGenericReadWritePropertyController <Int> (
+  final func bind_angle (_ inObject : EBObservableMutableProperty <CanariAngle>) -> Self {
+    self.mAngleController = EBGenericReadWritePropertyController <CanariAngle> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
     )

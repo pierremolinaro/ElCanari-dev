@@ -58,7 +58,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol NonPlatedHole_mRotation : AnyObject {
-//   var mRotation : Int { get }
+//   var mRotation : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -205,11 +205,11 @@ final class NonPlatedHole : BoardObject
   //   Atomic property: mRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mRotation_property : EBStoredProperty_Int
+  final let mRotation_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var mRotation : Int {
+  final var mRotation : CanariAngle {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
@@ -252,7 +252,7 @@ final class NonPlatedHole : BoardObject
     self.mWidthUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mWidthUnit")
     self.mHeight_property = EBStoredProperty_CanariLength (defaultValue: .mm (4), undoManager: inUndoManager, key: "mHeight")
     self.mHeightUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mHeightUnit")
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mRotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "mRotation")
     self.mShowTextRotationKnobInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mShowTextRotationKnobInBoard")
     self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)

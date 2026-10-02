@@ -23,7 +23,7 @@ import CanariGeometry
        _ self_mFont_descriptor : BoardFontDescriptor?,       
        _ self_mHorizontalAlignment : HorizontalAlignment,    
        _ self_mVerticalAlignment : BoardTextVerticalAlignment,
-       _ self_mRotation : Int,                               
+       _ self_mRotation : CanariAngle,                       
        _ self_mWeight : Double,                              
        _ self_mOblique : Bool
 ) -> UInt32 {

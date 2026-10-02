@@ -6,7 +6,7 @@ entity BoardModelPad {
   property @generateDirectAccess CanariLength width default ".zero" ;
   property @generateDirectAccess CanariLength height default ".zero" ;
   property @generateDirectAccess PadShape shape default rect ;
-  property @generateDirectAccess Int rotation default 0 ;
+  property @generateDirectAccess CanariAngle rotation default 0 ;
 }
 
 //--------------------------------------------------------------------------------------------------

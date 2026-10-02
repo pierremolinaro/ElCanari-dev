@@ -135,7 +135,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   property @generateDirectAccess CanariLengthUnit mXUnit default ".mil" ; // mils
   property @generateDirectAccess CanariLength mY default ".zero" ;
   property @generateDirectAccess CanariLengthUnit mYUnit default ".mil" ; // mils
-  property @generateDirectAccess Int mRotation default 0 ; // 1000 -> 1°
+  property @generateDirectAccess CanariAngle mRotation default 0 ; // 1000 -> 1°
   property @generateDirectAccess ComponentSide mSide default front ;
 
 //--- Component name display
@@ -146,7 +146,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   property @generateDirectAccess CanariLength mYName default ".mil (300)" ; // 300 mils
   property CanariLengthUnit mYNameUnit default ".mil" ; // mils
   property @generateDirectAccess Bool mNameIsVisibleInBoard default yes ;
-  property @generateDirectAccess Int mNameRotation default 0 ; // 1000 -> 1°
+  property @generateDirectAccess CanariAngle mNameRotation default 0 ; // 1000 -> 1°
 
   transient String componentNameFontName dependsFrom self.mNameFont.one.mFontName ;
 
@@ -159,7 +159,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   property @generateDirectAccess CanariLength mYValue default "-.mil (300)" ; // 300 mils
   property CanariLengthUnit mYValueUnit default ".mil" ; // mils
   property @generateDirectAccess Bool mValueIsVisibleInBoard default yes ;
-  property @generateDirectAccess Int mValueRotation default 0 ; // 1000 -> 1°
+  property @generateDirectAccess CanariAngle mValueRotation default 0 ; // 1000 -> 1°
 
   transient String componentValueFontName dependsFrom self.mValueFont.one.mFontName ;
 }

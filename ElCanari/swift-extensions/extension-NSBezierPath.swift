@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //  Extension NSBezierPath
@@ -17,7 +18,7 @@ extension NSBezierPath {
                         arrowSize inArrowSize : CGFloat) {
     if inEndPoint != self.currentPoint {
    //--- Compute angle
-      let angle = NSPoint.angleInRadian (self.currentPoint, inEndPoint)
+      let angle = self.currentPoint.angle (to: inEndPoint).signedRadianValue
     //--- Affine transform
       let tr = NSAffineTransform ()
       tr.translateX (by: inEndPoint.x, yBy: inEndPoint.y)

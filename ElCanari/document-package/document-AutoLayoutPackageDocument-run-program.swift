@@ -556,9 +556,9 @@ extension AutoLayoutPackageDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func scanArc (_ inString : [UnicodeScalar],
-                           _ ioIndex : inout Int,
-                           _ ioOk : inout Bool,
-                           _ ioObjects : inout EBReferenceArray <PackageObject>) {
+                        _ ioIndex : inout Int,
+                        _ ioOk : inout Bool,
+                        _ ioObjects : inout EBReferenceArray <PackageObject>) {
     let ((xCenter, xCenterUnit), (yCenter, yCenterUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("radius", inString, &ioIndex, &ioOk)
     let (radius, radiusUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
@@ -578,8 +578,8 @@ extension AutoLayoutPackageDocument {
     object.yCenterUnit = CanariLengthUnit (fromNearestLength: yCenterUnit)
     object.radius = .cu (radius)
     object.radiusUnit = CanariLengthUnit (fromNearestLength: radiusUnit)
-    object.startAngle = startAngle
-    object.arcAngle = arcAngle
+    object.startAngle = .degree (Double (startAngle) / 1000.0)
+    object.arcAngle = .degree (Double (arcAngle) / 1000.0)
     object.startTangent = .cu (startTangentLength)
     object.startTangentUnit = CanariLengthUnit (fromNearestLength: startTangentLengthUnit)
     object.endTangent = .cu (endTangentLength)

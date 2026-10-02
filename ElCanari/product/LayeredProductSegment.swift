@@ -51,7 +51,7 @@ struct LayeredProductSegment : Codable {
     let p2 = ProductPoint (x: self.x2, y: self.y2).ptValue
     let w = self.width.value (in: .pt)
     let d = p1.distance (to: p2)
-    let angleRadian = NSPoint.angleInRadian (p1, p2)
+    let angleRadian = p1.angle (to: p2).signedRadianValue
     var t = Turtle (p: p1, angleInRadian: angleRadian)
     t.rotate270 ()
     t.forward (w / 2.0)
@@ -81,14 +81,14 @@ struct LayeredProductSegment : Codable {
     let p1 = ProductPoint (x: self.x1, y: self.y1).ptValue
     let p2 = ProductPoint (x: self.x2, y: self.y2).ptValue
     let d = p1.distance (to: p2)
-    let angleInDegrees = NSPoint.angleInDegrees (p1, p2)
+    let angle = p1.angle (to: p2)
 
     let pad = BoardModelPad (inUndoManager)
     pad.x = center.x
     pad.y = center.y
     pad.width = CanariLength.pt (d) + self.width
     pad.height = self.width
-    pad.rotation = Int (angleInDegrees * 1000.0)
+    pad.rotation = angle
     switch inEndStyle {
     case .round :
       pad.shape = .round

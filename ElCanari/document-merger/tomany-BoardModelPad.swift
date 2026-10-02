@@ -30,11 +30,11 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
       if let relay = self.mObserversOf_shape { // Stored property
         managedObject.shape_property.stopsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_rotation { // Stored property
-        managedObject.rotation_property.stopsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_x { // Stored property
         managedObject.x_property.stopsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_rotation { // Stored property
+        managedObject.rotation_property.stopsBeingObserved (by: relay)
       }
     }
   //--- Add observers to added objects
@@ -51,11 +51,11 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
       if let relay = self.mObserversOf_shape { // Stored property
         managedObject.shape_property.startsBeingObserved (by: relay)
       }
-      if let relay = self.mObserversOf_rotation { // Stored property
-        managedObject.rotation_property.startsBeingObserved (by: relay)
-      }
       if let relay = self.mObserversOf_x { // Stored property
         managedObject.x_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_rotation { // Stored property
+        managedObject.rotation_property.startsBeingObserved (by: relay)
       }
     }
   }
@@ -177,35 +177,6 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'rotation' stored property
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private final var mObserversOf_rotation : EBObservedObserver? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_rotation_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
-    let relay : EBObservedObserver
-    if let r = self.mObserversOf_rotation {
-      relay = r
-    }else{
-      relay = EBObservedObserver ()
-      self.startsBeingObserved (by: relay)
-      for managedObject in self.propval.values {
-        managedObject.rotation_property.startsBeingObserved (by: relay)
-      }
-      self.mObserversOf_rotation = relay
-    }
-    relay.startsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final func toMany_rotation_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
-    self.mObserversOf_rotation?.stopsBeingObserved (by: inObserver)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'x' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -232,6 +203,35 @@ class ReadOnlyArrayOf_BoardModelPad : EBReadOnlyAbstractArrayProperty <BoardMode
 
   final func toMany_x_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_x?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'rotation' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_rotation : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_rotation_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_rotation {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.rotation_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_rotation = relay
+    }
+    relay.startsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_rotation_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
+    self.mObserversOf_rotation?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

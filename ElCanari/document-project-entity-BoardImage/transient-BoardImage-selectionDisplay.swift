@@ -20,7 +20,7 @@ import CanariGeometry
        _ self_mCenterY : CanariLength,                 
        _ self_boardImageCodeDescriptor : BoardImageDescriptor,
        _ self_mLayer : BoardQRCodeLayer,               
-       _ self_mRotation : Int,                         
+       _ self_mRotation : CanariAngle,                 
        _ self_mPixelSize : CanariLength,               
        _ prefs_frontSideLegendColorForBoard : NSColor, 
        _ prefs_backSideLegendColorForBoard : NSColor,  

@@ -20,7 +20,7 @@ import CanariGeometry
        _ self_mCenterY : CanariLength,                         
        _ self_mText : String,                                  
        _ self_mCorrectionLevel : QRCodeCorrectionLevel,        
-       _ self_mRotation : Int,                                 
+       _ self_mRotation : CanariAngle,                         
        _ self_mDrawFrame : Bool
 ) -> UInt32 {
 //--- START OF USER ZONE 2

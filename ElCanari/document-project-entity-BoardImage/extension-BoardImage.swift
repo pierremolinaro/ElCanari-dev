@@ -118,8 +118,9 @@ extension BoardImage {
     }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
       let origin = NSPoint (x: self.mCenterX, y: self.mCenterY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
-      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+//      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
+//      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+      self.mRotation = origin.angle (to: newRotationKnobLocation)
     }
   }
 
@@ -225,7 +226,7 @@ struct BoardImageDisplayInfos {
                                          _ inBoardImageDescriptor : BoardImageDescriptor,
                                          frontSide inFrontSide : Bool,
                                          pixelSizeInCanariUnit inPixelSize : CanariLength,
-                                         rotation inRotation : Int) -> BoardImageDisplayInfos {
+                                         rotation inRotation : CanariAngle) -> BoardImageDisplayInfos {
   let pixelSize = inPixelSize
   let width = CGFloat (inBoardImageDescriptor.scaledImageWidth) * pixelSize
   let height = CGFloat (inBoardImageDescriptor.scaledImageHeight) * pixelSize
@@ -235,8 +236,8 @@ struct BoardImageDisplayInfos {
   let centerX = inCenterX.ptValue
   let centerY = inCenterY.ptValue
   af.translate (x: centerX, y: centerY)
-  let rotationInDegrees = CGFloat (inRotation) / 1000.0
-  af.rotate (byDegrees: rotationInDegrees)
+//  let rotationInDegrees = inRotation.unsignedDegreeValue
+  af.rotate (by: inRotation)
   if !inFrontSide {
     af.scale (x: -1.0, y: 1.0)
   }
@@ -268,7 +269,7 @@ struct BoardImageDisplayInfos {
 //--- Rotation knob
   var rotationKnobTransform = AffineTransform ()
   rotationKnobTransform.translate (x: centerX, y: centerY)
-  rotationKnobTransform.rotate (byDegrees: rotationInDegrees)
+  rotationKnobTransform.rotate (by: inRotation)
   let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_IMAGE_ROTATION_KNOB_DISTANCE, y: 0.0))
 //---
   return BoardImageDisplayInfos (

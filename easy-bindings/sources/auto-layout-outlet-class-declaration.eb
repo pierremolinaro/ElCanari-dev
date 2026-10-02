@@ -301,11 +301,11 @@ extern autolayout class ObjectInspectorView $graphicController {
 }
 
 extern autolayout class CanariAngleField (minWidth: Int, size: EBControlSize) {
-  $angle property Int
+  $angle property CanariAngle
 }
 
 extern autolayout class CanariAngleFieldAndSlider (fieldMinWidth: Int, size: EBControlSize) $enabled {
-  $angle property Int
+  $angle property CanariAngle
 }
 
 extern autolayout class CanariPadRenumberPullDownButton $enabled {
@@ -418,31 +418,6 @@ extern autolayout class CanariDragSourceTableView {
   $models transient StringTagArray
 }
 
-//extern autolayout class CanariProjectPinPadAssignmentTableView (size: EBControlSize) {
-//  func set (minWidth: Int)
-//  func expandableWidth ()
-//  $array transient ThreeStringArray
-//}
-
-//extern autolayout class CanariProjectDeviceSymbolTypeAndNameTableView (size: EBControlSize) {
-//  func set (minWidth: Int)
-//  func set (minHeight: Int)
-//  func expandableWidth ()
-//  $array transient TwoStringArray
-//}
-
-//extern autolayout class CanariProjectDevicePackageTableView (size: EBControlSize) {
-//  func expandableWidth ()
-//  func set (minHeight: Int)
-//  $array transient StringArray
-//}
-
-//extern autolayout class CanariProjectDeviceTableView (size: EBControlSize) {
-//  func set (minWidth: Int)
-//  func expandableWidth ()
-//  $array transient StringArray
-//}
-
 extern autolayout class CanariProjectDeviceDescriptionView {
   func set (minWidth: Int)
   $symbolTypeNameArray transient StringArray
@@ -478,7 +453,7 @@ extern autolayout class ImageButton (imageName: String, tooltip: String, width: 
 }
 
 extern autolayout class CanariTrackLockView {
-  $angle property Int
+  $angle property CanariAngle
   $manualLockP1 property Bool
   $manualLockP2 property Bool
   $p1ConnectedToSomePad transient Bool
@@ -501,7 +476,7 @@ extern autolayout class CanariBoardComponentPackagePopUpButton {
 }
 
 extern autolayout class CanariPreferredDirectionSegmentedControl $enabled {
-  $angle property Int
+  $angle property CanariAngle
 }
 
 extern autolayout class EnumSegmentedControl (titles: StringArray, equalWidth: Bool, size: EBControlSize) {

@@ -121,7 +121,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardImage_mRotation : AnyObject {
-//   var mRotation : Int { get }
+//   var mRotation : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -443,11 +443,11 @@ final class BoardImage : BoardObject
   //   Atomic property: mRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mRotation_property : EBStoredProperty_Int
+  final let mRotation_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var mRotation : Int {
+  final var mRotation : CanariAngle {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
@@ -588,7 +588,7 @@ final class BoardImage : BoardObject
     self.mImageDisplay_property = EBStoredProperty_BoardImageDisplay (defaultValue: BoardImageDisplay.original, undoManager: inUndoManager, key: "mImageDisplay")
     self.mLayer_property = EBStoredProperty_BoardQRCodeLayer (defaultValue: BoardQRCodeLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mRotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "mRotation")
     self.mCenterX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mCenterX")
     super.init (inUndoManager)
     self.accumulateProperty (self.mXUnit_property)

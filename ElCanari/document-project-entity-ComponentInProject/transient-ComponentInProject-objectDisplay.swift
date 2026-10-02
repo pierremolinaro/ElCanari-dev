@@ -17,7 +17,7 @@ import CanariGeometry
 @MainActor func transient_ComponentInProject_objectDisplay (
        _ self_mX : CanariLength,                            
        _ self_mY : CanariLength,                            
-       _ self_mRotation : Int,                              
+       _ self_mRotation : CanariAngle,                      
        _ self_mSide : ComponentSide,                        
        _ self_packagePadDictionary : PackageMasterPadDictionary,
        _ self_padNetDictionary : PadNetDictionary,          
@@ -42,14 +42,14 @@ import CanariGeometry
        _ self_mYName : CanariLength,                        
        _ self_mNameFont_descriptor : BoardFontDescriptor?,  
        _ self_mNameFontSize : Double,                       
-       _ self_mNameRotation : Int,                          
+       _ self_mNameRotation : CanariAngle,                  
        _ self_componentName : String,                       
        _ self_mValueIsVisibleInBoard : Bool,                
        _ self_mXValue : CanariLength,                       
        _ self_mYValue : CanariLength,                       
        _ self_mValueFont_descriptor : BoardFontDescriptor?, 
        _ self_mValueFontSize : Double,                      
-       _ self_mValueRotation : Int,                         
+       _ self_mValueRotation : CanariAngle,                 
        _ self_mComponentValue : String,                     
        _ self_mDevice_pinPadAssignments : ThreeStringArray?
 ) -> EBShape {
@@ -94,7 +94,7 @@ import CanariGeometry
         if self_mSide == .back {
           padNumberAffineTransform.scale (x: -1.0, y: 1.0)
         }
-        padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
+        padNumberAffineTransform.rotate (byDegrees: -self_mRotation.unsignedDegreeValue)
         var frontPadColor : NSColor? = nil
         if self_BoardObject_displayFrontPadsForBoard {
           frontPadColor = prefs_frontSidePadColorForBoard
@@ -129,7 +129,7 @@ import CanariGeometry
             rotation: self_mNameRotation,
             weight: 1.0,
             oblique: false,
-            extraWidth: 0.0
+            extraWidth: .zero
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
           nonRotatedShape.add (filled: [BezierPath (rect: textBP.bounds)], nil)
@@ -149,7 +149,7 @@ import CanariGeometry
             rotation: self_mValueRotation,
             weight: 1.0,
             oblique: false,
-            extraWidth: 0.0
+            extraWidth: .zero
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
           nonRotatedShape.add (filled: [BezierPath (rect: textBP.bounds)], nil)
@@ -158,7 +158,7 @@ import CanariGeometry
       //---
         var af = AffineTransform ()
         af.translate (x: self_mX.ptValue, y: self_mY.ptValue)
-        af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
         if self_mSide == .back {
           af.scale (x: -1.0, y: 1.0)
         }

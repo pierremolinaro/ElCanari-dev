@@ -320,7 +320,7 @@ struct ProductRepresentation : Codable {
         pad.y = absoluteCenter.y
         pad.width = componentPad.width
         pad.height = componentPad.height
-        pad.rotation = Int (componentPad.af.angleInDegrees * 1000.0)
+        pad.rotation = componentPad.af.angle
         pad.shape = componentPad.shape
         padEntities.append (pad)
       }

@@ -90,6 +90,7 @@ struct CanariRect : Equatable, Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var left    : CanariLength { return self.origin.x }
+  var minX    : CanariLength { return self.origin.x }
   var midX    : CanariLength { return self.origin.x + self.size.width / 2 }
   var maxX    : CanariLength { return self.origin.x + self.size.width }
   var right   : CanariLength { return self.origin.x + self.size.width }

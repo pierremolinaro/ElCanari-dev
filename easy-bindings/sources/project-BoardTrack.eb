@@ -130,7 +130,7 @@ graphic handlingOpposite entity BoardTrack : BoardObject {
     self.p1CanMove, self.p2CanMove
   ;
 
-  computed Int trackDirectionInDegrees dependsFrom
+  computed CanariAngle trackDirectionInDegrees dependsFrom
     self.mConnectorP1.one.location,
     self.mConnectorP2.one.location
   ;

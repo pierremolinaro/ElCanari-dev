@@ -10,7 +10,7 @@ graphic entity CommentInSchematic : SchematicObject {
   property Double mSize default 11.0 ;
   property HorizontalAlignment mHorizontalAlignment default center ;
   property VerticalAlignment mVerticalAlignment default center ;
-  property Int mRotation default 0 ; // 1000 -> 1°
+  property CanariAngle mRotation default 0 ; // 1000 -> 1°
   property Bool mBold default no ;
 
   property @generateDirectAccess CanariLength mX default ".zero" ;

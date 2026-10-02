@@ -28,7 +28,7 @@ import CanariGeometry
     self.rootObject.mSheets.append (sheet)
     self.rootObject.mSelectedSheet = sheet
   //--- Add board limits
-    let boardCumulatedWidth = self.rootObject.mBoardClearance // § + self.rootObject.mBoardLimitsWidth
+    let boardCumulatedWidth = self.rootObject.mBoardClearance
     // Swift.print (boardCumulatedWidth)
     let boardRight = .mm (100.0) - boardCumulatedWidth
     let boardTop = .mm (100.0) - boardCumulatedWidth

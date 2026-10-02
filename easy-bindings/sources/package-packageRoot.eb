@@ -272,8 +272,8 @@ graphic entity PackageArc : PackageObject {
   property @signature @generateDirectAccess CanariLength xCenter default ".mil (150)" ;
   property @signature @generateDirectAccess CanariLength yCenter default ".mil (150)" ;
   property @signature @generateDirectAccess CanariLength radius default ".mil (150)" ;
-  property @signature @generateDirectAccess Int startAngle default 45_000 ; // In degrees * 1000
-  property @signature @generateDirectAccess Int arcAngle default 270_000 ; // In degrees * 1000
+  property @signature @generateDirectAccess CanariAngle  startAngle default 45_000 ; // In degrees * 1000
+  property @signature @generateDirectAccess CanariAngle  arcAngle default 270_000 ; // In degrees * 1000
   property @signature @generateDirectAccess CanariLength startTangent default ".zero" ;
   property @signature @generateDirectAccess CanariLength endTangent default ".zero" ;
   property @signature Bool pathIsClosed default no ;

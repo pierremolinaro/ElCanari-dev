@@ -19,7 +19,7 @@ import CanariGeometry
        _ self_mY : CanariLength,                          
        _ self_mWidth : CanariLength,                      
        _ self_mHeight : CanariLength,                     
-       _ self_mRotation : Int,                            
+       _ self_mRotation : CanariAngle,                    
        _ prefs_selectionHiliteColor : NSColor,            
        _ prefs_hiliteWidthMultipliedByTen : Int,          
        _ self_mShowTextRotationKnobInBoard : Bool
@@ -29,8 +29,7 @@ import CanariGeometry
         let startX = self_mX.ptValue
         let startY = self_mY.ptValue
         af.translate (x: startX, y: startY)
-        let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
-        af.rotate (byDegrees: rotationInDegrees)
+        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
         var shape = EBShape ()
         let r = CanariRect (
           center: .zero,
@@ -45,7 +44,7 @@ import CanariGeometry
         if self_mShowTextRotationKnobInBoard {
           var knobLine = BezierPath ()
           knobLine.move (to : center)
-          let rotationKnobLocation = center + NSPoint (length: NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE, angleInDegrees: rotationInDegrees)
+          let rotationKnobLocation = center + CanariPoint (length: NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE, angle: self_mRotation).ptValue
           knobLine.line (to : rotationKnobLocation)
           knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round

@@ -21,7 +21,7 @@ import CanariGeometry
        _ self_mSize : Double,                               
        _ self_mHorizontalAlignment : HorizontalAlignment,   
        _ self_mVerticalAlignment : VerticalAlignment,       
-       _ self_mRotation : Int,                              
+       _ self_mRotation : CanariAngle,                      
        _ self_mBold : Bool,                                 
        _ self_mX : CanariLength,                            
        _ self_mY : CanariLength
@@ -32,7 +32,7 @@ import CanariGeometry
         let p = NSPoint (x: self_mX, y: self_mY)
         var af = AffineTransform ()
         af.translate (x: p.x, y: p.y)
-        af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : font,
           NSAttributedString.Key.foregroundColor : self_mColor

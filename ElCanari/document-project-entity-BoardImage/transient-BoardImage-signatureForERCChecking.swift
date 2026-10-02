@@ -19,7 +19,7 @@ import CanariGeometry
        _ self_mCenterX : CanariLength,                        
        _ self_mCenterY : CanariLength,                        
        _ self_mImageData : Data,                              
-       _ self_mRotation : Int
+       _ self_mRotation : CanariAngle
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0

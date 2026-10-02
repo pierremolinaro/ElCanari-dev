@@ -149,7 +149,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
   //   Observers of 'mRotation' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mRotation_property = EBTransientProperty <Int?> ()
+  final let mRotation_property = EBTransientProperty <CanariAngle?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mSide' stored property
@@ -191,7 +191,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
   //   Observers of 'mNameRotation' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mNameRotation_property = EBTransientProperty <Int?> ()
+  final let mNameRotation_property = EBTransientProperty <CanariAngle?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mValueIsVisibleInBoard' stored property
@@ -221,7 +221,7 @@ class ReadOnlyObject_ComponentInProject : EBReadOnlyAbstractObjectProperty <Comp
   //   Observers of 'mValueRotation' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mValueRotation_property = EBTransientProperty <Int?> ()
+  final let mValueRotation_property = EBTransientProperty <CanariAngle?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mComponentValue' stored property

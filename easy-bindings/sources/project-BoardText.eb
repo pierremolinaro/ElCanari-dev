@@ -16,7 +16,7 @@ graphic handlingOpposite entity BoardText : BoardObject {
   property String mText default "" ;
   property HorizontalAlignment mHorizontalAlignment default center ;
   property BoardTextVerticalAlignment mVerticalAlignment default base ;
-  property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
+  property @generateDirectAccess CanariAngle mRotation default 0 ; // 1000 --> 1°
   property Double mWeight default 1.0 ;
   property Bool mOblique default no ;
 

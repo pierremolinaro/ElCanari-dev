@@ -144,8 +144,8 @@ extension ComponentInProject {
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
       let absoluteCenter = NSPoint (x: self.mX, y: self.mY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-      let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
-      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+//      let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
+      self.mRotation = absoluteCenter.angle (to: newRotationKnobLocation)
     }else if inKnobIndex == COMPONENT_PACKAGE_NAME_KNOB {
       self.mXName += inDx
       self.mYName += inDy
@@ -209,7 +209,8 @@ extension ComponentInProject {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
-    self.mRotation = (self.mRotation + 270_000) % 360_000
+//    self.mRotation = (self.mRotation + 270_000) % 360_000
+    self.mRotation += .degrees270
     ioSet.insert (self)
   }
 
@@ -219,7 +220,8 @@ extension ComponentInProject {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
-    self.mRotation = (self.mRotation + 90_000) % 360_000
+//    self.mRotation = (self.mRotation + 90_000) % 360_000
+    self.mRotation += .degrees90
     ioSet.insert (self)
   }
 
@@ -264,7 +266,7 @@ extension ComponentInProject {
     let center = padRect.center.ptValue
     var af = AffineTransform ()
     af.translate (x: self.mX.ptValue, y: self.mY.ptValue)
-    af.rotate (byDegrees: CGFloat (self.mRotation) / 1000.0)
+    af.rotate (byDegrees: self.mRotation.unsignedDegreeValue)
     if self.mSide == .back {
       af.scale (x: -1.0, y: 1.0)
     }
@@ -279,8 +281,8 @@ extension ComponentInProject {
     let center = packagePadDictionary.padsRect.center.ptValue
     var af = AffineTransform ()
     af.translate (x: self.mX.ptValue, y: self.mY.ptValue)
-    let angleDegrees = Double (self.mRotation) / 1000.0
-    af.rotate (byDegrees: angleDegrees)
+//    let angleDegrees = Double (self.mRotation) / 1000.0
+    af.rotate (byDegrees: self.mRotation.unsignedDegreeValue)
     if self.mSide == .back {
       af.scale (x: -1.0, y: 1.0)
     }

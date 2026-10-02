@@ -23,7 +23,7 @@ import CanariGeometry
        _ self_mHorizontalAlignment : HorizontalAlignment,      
        _ self_mVerticalAlignment : VerticalAlignment,          
        _ prefs_schematicBackColor : NSColor,                   
-       _ self_mRotation : Int,                                 
+       _ self_mRotation : CanariAngle,                         
        _ self_mBold : Bool,                                    
        _ self_mX : CanariLength,                               
        _ self_mY : CanariLength
@@ -34,7 +34,7 @@ import CanariGeometry
         let p = NSPoint (x: self_mX, y: self_mY)
         var af = AffineTransform ()
         af.translate (x: p.x, y: p.y)
-        af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
         var shape = EBShape ()
         shape.add (
           textKnob: (self_mComment.isEmpty) ? "Empty comment" : self_mComment,
@@ -47,8 +47,8 @@ import CanariGeometry
           .rect,
           knobIndex: 0
         )
-        shape.add (knobAt: NSPoint (), knobIndex: COMMENT_IN_SCHEMATIC_DRAG_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
-        shape.add (knobAt: NSPoint (x: shape.boundingBox.width / 2.0, y: 0.0), knobIndex: COMMENT_IN_SCHEMATIC_ROTATION_KNOB, .circ, SCHEMATIC_KNOB_SIZE)
+        shape.add (knobAt: NSPoint (), knobIndex: COMMENT_IN_SCHEMATIC_DRAG_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
+        shape.add (knobAt: NSPoint (x: shape.boundingBox.width / 2.0, y: 0.0), knobIndex: COMMENT_IN_SCHEMATIC_ROTATION_KNOB, .circ, SCHEMATIC_KNOB_SIZE.ptValue)
         let rotatedShape = shape.transformed (by: af)
         return rotatedShape
 //--- END OF USER ZONE 2

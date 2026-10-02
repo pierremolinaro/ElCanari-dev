@@ -186,7 +186,7 @@ extension PackagePad {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func angleInRadian (from inCanariPoint : CanariPoint, from inStartAngleInRadian : CGFloat) -> CGFloat {
-    let a = inCanariPoint.angle (to: CanariPoint (x: self.xCenter, y: self.yCenter)).radianValue
+    let a = inCanariPoint.angle (to: CanariPoint (x: self.xCenter, y: self.yCenter)).signedRadianValue
     return (2.0 * CGFloat.pi + a - inStartAngleInRadian).truncatingRemainder (dividingBy: 2.0 * CGFloat.pi)
   }
 
@@ -269,76 +269,76 @@ final class PadGeometryForERC {
         clearance inClearance : CanariLength,
         shape inShape : PadShape) {
     self.id = inID
-    let center = NSPoint (x: inCenterX, y: inCenterY)
-    let size = NSSize (width: inWidth, height: inHeight)
-    let clearance = inClearance.ptValue
+    let center = CanariPoint (x: inCenterX, y: inCenterY)
+    let size = CanariSize (width: inWidth, height: inHeight)
+//    let clearance = inClearance
     var c = [GeometricCircle] ()
     var rects = [GeometricRect] ()
     switch inShape {
     case .rect :
-      let pTop = NSPoint (x: center.x, y: center.y + (clearance + size.height) / 2.0)
-      let pBottom = NSPoint (x: center.x, y: center.y - (clearance + size.height) / 2.0)
+      let pTop = CanariPoint (x: center.x, y: center.y + (inClearance + size.height) / 2.0)
+      let pBottom = CanariPoint (x: center.x, y: center.y - (inClearance + size.height) / 2.0)
       rects.append (GeometricRect (pTop, pBottom, size.width))
-      let pLeft  = NSPoint (x: center.x - (clearance + size.width) / 2.0, y: center.y)
-      let pRight = NSPoint (x: center.x + (clearance + size.width) / 2.0, y: center.y)
+      let pLeft  = CanariPoint (x: center.x - (inClearance + size.width) / 2.0, y: center.y)
+      let pRight = CanariPoint (x: center.x + (inClearance + size.width) / 2.0, y: center.y)
       rects.append (GeometricRect (pLeft, pRight, size.height))
-      let pTopLeft = NSPoint (x: center.x - size.width / 2.0, y: center.y + size.height / 2.0)
-      c.append (GeometricCircle (center: pTopLeft, radius: clearance / 2.0))
-      let pTopRight = NSPoint (x: center.x + size.width / 2.0, y: center.y + size.height / 2.0)
-      c.append (GeometricCircle (center: pTopRight, radius: clearance / 2.0))
-      let pBottomLeft = NSPoint (x: center.x - size.width / 2.0, y: center.y - size.height / 2.0)
-      c.append (GeometricCircle (center: pBottomLeft, radius: clearance / 2.0))
-      let pBottomRight = NSPoint (x: center.x + size.width / 2.0, y: center.y - size.height / 2.0)
-      c.append (GeometricCircle (center: pBottomRight, radius: clearance / 2.0))
+      let pTopLeft = CanariPoint (x: center.x - size.width / 2.0, y: center.y + size.height / 2.0)
+      c.append (GeometricCircle (center: pTopLeft, radius: inClearance / 2.0))
+      let pTopRight = CanariPoint (x: center.x + size.width / 2.0, y: center.y + size.height / 2.0)
+      c.append (GeometricCircle (center: pTopRight, radius: inClearance / 2.0))
+      let pBottomLeft = CanariPoint (x: center.x - size.width / 2.0, y: center.y - size.height / 2.0)
+      c.append (GeometricCircle (center: pBottomLeft, radius: inClearance / 2.0))
+      let pBottomRight = CanariPoint (x: center.x + size.width / 2.0, y: center.y - size.height / 2.0)
+      c.append (GeometricCircle (center: pBottomRight, radius: inClearance / 2.0))
     case .round :
       if size.width > size.height {
         let v = (size.width - size.height) / 2.0
-        let p1 = NSPoint (x: center.x + v, y: center.y)
-        let p2 = NSPoint (x: center.x - v, y: center.y)
-        rects.append (GeometricRect (p1, p2, clearance + size.height))
-        c.append (GeometricCircle (center: p1, radius: (clearance + size.height) / 2.0))
-        c.append (GeometricCircle (center: p2, radius: (clearance + size.height) / 2.0))
+        let p1 = CanariPoint (x: center.x + v, y: center.y)
+        let p2 = CanariPoint (x: center.x - v, y: center.y)
+        rects.append (GeometricRect (p1, p2, inClearance + size.height))
+        c.append (GeometricCircle (center: p1, radius: (inClearance + size.height) / 2.0))
+        c.append (GeometricCircle (center: p2, radius: (inClearance + size.height) / 2.0))
       }else if size.width < size.height {
         let h = (size.height - size.width) / 2.0
-        let p1 = NSPoint (x: center.x, y: center.y + h)
-        let p2 = NSPoint (x: center.x, y: center.y - h)
-        rects.append (GeometricRect (p1, p2, clearance + size.width))
-        c.append (GeometricCircle (center: p1, radius: (clearance + size.width) / 2.0))
-        c.append (GeometricCircle (center: p2, radius: (clearance + size.width) / 2.0))
+        let p1 = CanariPoint (x: center.x, y: center.y + h)
+        let p2 = CanariPoint (x: center.x, y: center.y - h)
+        rects.append (GeometricRect (p1, p2, inClearance + size.width))
+        c.append (GeometricCircle (center: p1, radius: (inClearance + size.width) / 2.0))
+        c.append (GeometricCircle (center: p2, radius: (inClearance + size.width) / 2.0))
       }else{
-        c.append (GeometricCircle (center: center, radius: (clearance + size.width) / 2.0))
+        c.append (GeometricCircle (center: center, radius: (inClearance + size.width) / 2.0))
       }
     case .octo :
       let s2 : CGFloat = sqrt (2.0)
-      let lg = min (size.width + clearance, size.height + clearance) / (1.0 + s2)
-      let pLeft  = NSPoint (x: center.x - size.width / 2.0, y: center.y)
-      let pRight = NSPoint (x: center.x + size.width / 2.0, y: center.y)
+      let lg = min (size.width + inClearance, size.height + inClearance) / (1.0 + s2)
+      let pLeft  = CanariPoint (x: center.x - size.width / 2.0, y: center.y)
+      let pRight = CanariPoint (x: center.x + size.width / 2.0, y: center.y)
       rects.append (GeometricRect (pLeft, pRight, size.height - lg * s2))
-      let pTop    = NSPoint (x: center.x, y: center.y - size.height / 2.0)
-      let pBottom = NSPoint (x: center.x, y: center.y + size.height / 2.0)
+      let pTop    = CanariPoint (x: center.x, y: center.y - size.height / 2.0)
+      let pBottom = CanariPoint (x: center.x, y: center.y + size.height / 2.0)
       rects.append (GeometricRect (pTop, pBottom, size.width - lg * s2))
     //--- Top right corner
       do{
-        let p1 = NSPoint (x: center.x - size.width / 2.0 + lg / (2.0 * s2), y: center.y + size.height / 2.0 - lg / (2.0 * s2))
-        let p2 = NSPoint (x: p1.x + lg / s2, y: p1.y - lg / s2)
+        let p1 = CanariPoint (x: center.x - size.width / 2.0 + lg / (2.0 * s2), y: center.y + size.height / 2.0 - lg / (2.0 * s2))
+        let p2 = CanariPoint (x: p1.x + lg / s2, y: p1.y - lg / s2)
         rects.append (GeometricRect (p1, p2, lg))
       }
     //--- Top left corner
       do{
-        let p1 = NSPoint (x: center.x + size.width / 2.0 - lg / (2.0 * s2), y: center.y + size.height / 2.0 - lg / (2.0 * s2))
-        let p2 = NSPoint (x: p1.x - lg / s2, y: p1.y - lg / s2)
+        let p1 = CanariPoint (x: center.x + size.width / 2.0 - lg / (2.0 * s2), y: center.y + size.height / 2.0 - lg / (2.0 * s2))
+        let p2 = CanariPoint (x: p1.x - lg / s2, y: p1.y - lg / s2)
         rects.append (GeometricRect (p1, p2, lg))
       }
     //--- Bottom left corner
       do{
-        let p1 = NSPoint (x: center.x + size.width / 2.0 - lg / (2.0 * s2), y: center.y - size.height / 2.0 + lg / (2.0 * s2))
-        let p2 = NSPoint (x: p1.x - lg / s2, y: p1.y + lg / s2)
+        let p1 = CanariPoint (x: center.x + size.width / 2.0 - lg / (2.0 * s2), y: center.y - size.height / 2.0 + lg / (2.0 * s2))
+        let p2 = CanariPoint (x: p1.x - lg / s2, y: p1.y + lg / s2)
         rects.append (GeometricRect (p1, p2, lg))
       }
     //--- Bottom right corner
       do{
-        let p1 = NSPoint (x: center.x - size.width / 2.0 + lg / (2.0 * s2), y: center.y - size.height / 2.0 + lg / (2.0 * s2))
-        let p2 = NSPoint (x: p1.x + lg / s2, y: p1.y + lg / s2)
+        let p1 = CanariPoint (x: center.x - size.width / 2.0 + lg / (2.0 * s2), y: center.y - size.height / 2.0 + lg / (2.0 * s2))
+        let p2 = CanariPoint (x: p1.x + lg / s2, y: p1.y + lg / s2)
         rects.append (GeometricRect (p1, p2, lg))
       }
     }
@@ -371,10 +371,10 @@ final class PadGeometryForERC {
     var c = [GeometricCircle] ()
     var rects = [GeometricRect] ()
     for circle in self.circles {
-      c.append (GeometricCircle (center: inAffineTransform.transform (circle.center), radius: circle.radius))
+      c.append (GeometricCircle (center: inAffineTransform.transform (circle.center.ptValue).canariPoint, radius: circle.radius))
     }
     for r in self.rectangles {
-      rects.append (GeometricRect (inAffineTransform.transform (r.p1), inAffineTransform.transform (r.p2), r.width))
+      rects.append (GeometricRect (inAffineTransform.transforming (r.p1), inAffineTransform.transforming (r.p2), r.width))
     }
     return PadGeometryForERC (self.id, c, rects, self.bezierPath.transformed (by: inAffineTransform))
   }
@@ -454,6 +454,8 @@ final class PadGeometryForERC {
       }
       for rectangle in self.rectangles {
         if inOblong.intersects (rect: rectangle) {
+          print (inOblong)
+          print (rectangle)
           return true
         }
       }
@@ -504,23 +506,5 @@ final class PadGeometryForERC {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//extension Array where Element == PadGeometryForERC {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  func bezierPathes () -> [BezierPath] {
-//    var result = [BezierPath] ()
-//    for entry in self {
-//      result.append (entry.bezierPath)
-//    }
-//    return result
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
 
 //--------------------------------------------------------------------------------------------------

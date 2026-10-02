@@ -23,14 +23,14 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol PackageArc_startAngle : AnyObject {
-//   var startAngle : Int { get }
+//   var startAngle : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
 // @MainActor protocol PackageArc_arcAngle : AnyObject {
-//   var arcAngle : Int { get }
+//   var arcAngle : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -178,11 +178,11 @@ final class PackageArc : PackageObject
   //   Atomic property: startAngle
   //------------------------------------------------------------------------------------------------
 
-  final let startAngle_property : EBStoredProperty_Int
+  final let startAngle_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var startAngle : Int {
+  final var startAngle : CanariAngle {
     get { return self.startAngle_property.propval }
     set { self.startAngle_property.setProp (newValue) }
   }
@@ -191,11 +191,11 @@ final class PackageArc : PackageObject
   //   Atomic property: arcAngle
   //------------------------------------------------------------------------------------------------
 
-  final let arcAngle_property : EBStoredProperty_Int
+  final let arcAngle_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var arcAngle : Int {
+  final var arcAngle : CanariAngle {
     get { return self.arcAngle_property.propval }
     set { self.arcAngle_property.setProp (newValue) }
   }
@@ -335,8 +335,8 @@ final class PackageArc : PackageObject
   required init (_ inUndoManager : UndoManager?) {
     self.yCenter_property = EBStoredProperty_CanariLength (defaultValue: .mil (150), undoManager: inUndoManager, key: "yCenter")
     self.radius_property = EBStoredProperty_CanariLength (defaultValue: .mil (150), undoManager: inUndoManager, key: "radius")
-    self.startAngle_property = EBStoredProperty_Int (defaultValue: 45000, undoManager: inUndoManager, key: "startAngle")
-    self.arcAngle_property = EBStoredProperty_Int (defaultValue: 270000, undoManager: inUndoManager, key: "arcAngle")
+    self.startAngle_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (45000) / 1000.0), undoManager: inUndoManager, key: "startAngle")
+    self.arcAngle_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (270000) / 1000.0), undoManager: inUndoManager, key: "arcAngle")
     self.startTangent_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "startTangent")
     self.endTangent_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "endTangent")
     self.pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "pathIsClosed")

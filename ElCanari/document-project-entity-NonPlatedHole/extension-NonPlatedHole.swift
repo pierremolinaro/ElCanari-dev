@@ -14,7 +14,7 @@ import CanariGeometry
 let NON_PLATED_HOLE_ORIGIN_KNOB  = 0
 let NON_PLATED_HOLE_ROTATION_KNOB  = 1
 
-let NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+let NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE = CanariLength.pt (30.0)
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION NonPlatedHole
@@ -106,8 +106,9 @@ extension NonPlatedHole {
     }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
       let origin = NSPoint (x: self.mX, y: self.mY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
-      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+//      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
+//      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+      self.mRotation_property.setProp (origin.angle (to: newRotationKnobLocation))
     }
   }
 
@@ -145,7 +146,8 @@ extension NonPlatedHole {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
+//    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
+    self.mRotation += .degrees270
     ioSet.insert (self)
   }
 
@@ -155,7 +157,8 @@ extension NonPlatedHole {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
+//    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
+    self.mRotation += .degrees90
     ioSet.insert (self)
   }
 

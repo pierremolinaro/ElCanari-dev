@@ -189,7 +189,7 @@ import CanariGeometry
   //   Selection observable property: trackDirectionInDegrees
   //------------------------------------------------------------------------------------------------
 
-  final let trackDirectionInDegrees_property = EBComputedProperty_Int ()
+  final let trackDirectionInDegrees_property = EBComputedProperty_CanariAngle ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: computedP1X
@@ -1684,7 +1684,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariAngle> ()
           var isMultipleSelection = false
           for object in v {
             switch object.trackDirectionInDegrees_property.selection {
@@ -1710,7 +1710,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.trackDirectionInDegrees_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.trackDirectionInDegrees_property.mWriteModelFunction = { [weak self] (inValue : CanariAngle) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

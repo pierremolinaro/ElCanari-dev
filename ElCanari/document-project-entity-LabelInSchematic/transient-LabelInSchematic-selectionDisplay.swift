@@ -35,14 +35,14 @@ import CanariGeometry
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = SCHEMATIC_HILITE_WIDTH
+          bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
         //---
           var af = AffineTransform ()
           af.translate (x: p.x, y: p.y)
           af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
         //---
           shape.add (stroke: [bp.transformed (by: af)], prefs_selectionHiliteColor)
-          shape.add (knobAt:  p, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+          shape.add (knobAt:  p, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
         //--- Net name
           let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
           let horizontalAlignment : BezierPath.TextHorizontalAlignment
@@ -77,7 +77,7 @@ import CanariGeometry
             knobAt: af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: 0.0)),
             knobIndex: LABEL_IN_SCHEMATICS_ROTATION_KNOB,
             .circ,
-            SCHEMATIC_KNOB_SIZE
+            SCHEMATIC_KNOB_SIZE.ptValue
           )
         }
         return shape

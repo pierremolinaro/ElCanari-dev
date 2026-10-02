@@ -7,12 +7,14 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   Placement
 //--------------------------------------------------------------------------------------------------
 
-private let PLACEMENT_GRID : CGFloat = 11.0
+private let PLACEMENT_GRID = CanariLength.pt (11)
+
 private let GERBER_FLOW_ARROW_SIZE : CGFloat = 6.0
 private let SELECTION_KNOB_SIZE : CGFloat = 8.0
 private let MAX_X : Int = 32
@@ -22,13 +24,13 @@ private let MAX_Y : Int = 26
 //--------------------------------------------------------------------------------------------------
 
 private func xForX (_ inX : Int) -> CGFloat {
-  return CGFloat (inX + 2) * PLACEMENT_GRID
+  return CGFloat (inX + 2) * PLACEMENT_GRID.ptValue
 }
 
 //--------------------------------------------------------------------------------------------------
 
 private func yForY (_ inY : Int) -> CGFloat {
-  return CGFloat (inY + 9) * PLACEMENT_GRID
+  return CGFloat (inY + 9) * PLACEMENT_GRID.ptValue
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -181,13 +183,13 @@ final class AutoLayoutCanariFontCharacterView : NSView {
       bp.move (to: NSPoint (x: xForX (segment.x1), y: yForY (segment.y1)))
       bp.line (to: NSPoint (x: xForX (segment.x2), y: yForY (segment.y2)))
     }
-    bp.lineWidth = PLACEMENT_GRID * 2.0
+    bp.lineWidth = PLACEMENT_GRID.ptValue * 2.0
     bp.lineCapStyle = .round
     NSColor.black.withAlphaComponent (self.mSegmentTransparency).setStroke ()
     bp.stroke ()
   //--- Character advancement
     let advanceRect = NSRect (
-      origin: NSPoint (x:xForX (self.mAdvancement) - PLACEMENT_GRID / 2.0, y: yForY (0) - PLACEMENT_GRID / 2.0),
+      origin: NSPoint (x:xForX (self.mAdvancement) - PLACEMENT_GRID.ptValue / 2.0, y: yForY (0) - PLACEMENT_GRID.ptValue / 2.0),
       size: NSSize (width: PLACEMENT_GRID, height: PLACEMENT_GRID)
     )
     bp = NSBezierPath (ovalIn: advanceRect)
@@ -450,13 +452,6 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     )
     return self
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  final func unbind_displayDrawingIndexes () {
-//    self.mDisplayDrawingIndexesController?.unregister ()
-//    self.mDisplayDrawingIndexesController = nil
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -914,12 +909,12 @@ final class AutoLayoutCanariFontCharacterView : NSView {
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from: nil)
-        let dx = Int ((mouseDraggedLocation.x - mouseLocation.x) / PLACEMENT_GRID)
-        let dy = Int ((mouseDraggedLocation.y - mouseLocation.y) / PLACEMENT_GRID)
+        let dx = Int ((mouseDraggedLocation.x - mouseLocation.x) / PLACEMENT_GRID.ptValue)
+        let dy = Int ((mouseDraggedLocation.y - mouseLocation.y) / PLACEMENT_GRID.ptValue)
 //        Swift.print ("dx \(dx), dy \(dy)")
         if (dx != 0) || (dy != 0), self.canMoveSelection (byX : dx, byY : dy) {
-          mouseLocation.x += CGFloat (dx) * PLACEMENT_GRID
-          mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID
+          mouseLocation.x += CGFloat (dx) * PLACEMENT_GRID.ptValue
+          mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID.ptValue
           self.moveSelection (byX : dx, byY : dy)
         }
         self.mMouseLocation = mouseLocation
@@ -938,11 +933,11 @@ final class AutoLayoutCanariFontCharacterView : NSView {
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
-        let dx = Int ((mouseDraggedLocation.x - mouseLocation.x) / PLACEMENT_GRID)
-        let dy = Int ((mouseDraggedLocation.y - mouseLocation.y) / PLACEMENT_GRID)
+        let dx = Int ((mouseDraggedLocation.x - mouseLocation.x) / PLACEMENT_GRID.ptValue)
+        let dy = Int ((mouseDraggedLocation.y - mouseLocation.y) / PLACEMENT_GRID.ptValue)
         if (dx != 0) || (dy != 0), self.canMoveSelectionFrom (knob: knob, byX: dx, byY: dy) {
-          mouseLocation.x += CGFloat (dx) * PLACEMENT_GRID
-          mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID
+          mouseLocation.x += CGFloat (dx) * PLACEMENT_GRID.ptValue
+          mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID.ptValue
           moveSelectionFrom (knob: knob, byX : dx, byY : dy)
         }
         self.mMouseLocation = mouseLocation
@@ -964,7 +959,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
         self.mSelection.removeAll ()
         let r = NSRect (point: mouseDownLocation, point: mouseDraggedLocation)
         self.mSelectionRectangle = r
-        let cr = GeometricRect (cocoaRect: r)
+        let cr = GeometricRect (r.canariRect)
         for segment in self.mSegmentList {
           if segment.intersects (rect: cr) {
             self.mSelection.insert (segment)
@@ -988,7 +983,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
         let r = NSRect (point: mouseDownLocation, point: mouseDraggedLocation)
         self.mSelectionRectangle = r
-        let cr = GeometricRect (cocoaRect: r)
+        let cr = GeometricRect (r.canariRect)
         var selection = Set <FontCharacterSegment> ()
         for segment in self.mSegmentList {
           if segment.intersects (rect: cr) {
@@ -1033,8 +1028,8 @@ extension FontCharacterSegment {
 
   func contains (ptValue p : NSPoint) -> Bool {
     let oblong = GeometricOblong (
-      p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
-      p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
+      p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)).canariPoint,
+      p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)).canariPoint,
       width: PLACEMENT_GRID * 2.0,
       capStyle: .round
     )
@@ -1045,8 +1040,8 @@ extension FontCharacterSegment {
 
   func intersects (rect r : GeometricRect) -> Bool {
     let oblong = GeometricOblong (
-      p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
-      p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
+      p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)).canariPoint,
+      p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)).canariPoint,
       width: PLACEMENT_GRID * 2.0,
       capStyle: .round
     )

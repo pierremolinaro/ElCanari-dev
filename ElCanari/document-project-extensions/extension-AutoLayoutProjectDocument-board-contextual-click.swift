@@ -255,13 +255,16 @@ extension AutoLayoutProjectDocument {
       if connectionCount == 2,
            let track0Direction = tracks [0].trackDirectionInDegrees_property.optionalValue,
            let track1Direction = tracks [1].trackDirectionInDegrees_property.optionalValue {
-//        let track0Direction = tracks [0].trackDirectionInDegrees!
-//        let track1Direction = tracks [1].trackDirectionInDegrees!
-        let canRectiLinearAlign = ((track0Direction % 90_000) != 0) || ((track1Direction % 90_000) != 0)
+//        let canRectiLinearAlign = ((track0Direction % 90_000) != 0) || ((track1Direction % 90_000) != 0)
+        let canRectiLinearAlign = (track0Direction != .degrees90) || (track1Direction != .degrees90)
+//        let canOctoLinearAlign =
+//          ((track0Direction % 45_000) != 0) || // La piste 0 n'est pas rectilinéaire
+//          ((track1Direction % 45_000) != 0) || // La piste 1 n'est pas rectilinéaire
+//          (((track0Direction % 90_000) == 0) && ((track1Direction % 90_000) == 0)) // Les deux sont rectilinéaires
         let canOctoLinearAlign =
-          ((track0Direction % 45_000) != 0) || // La piste 0 n'est pas rectilinéaire
-          ((track1Direction % 45_000) != 0) || // La piste 1 n'est pas rectilinéaire
-          (((track0Direction % 90_000) == 0) && ((track1Direction % 90_000) == 0)) // Les deux sont rectilinéaires
+          (track0Direction != .degrees45) || // La piste 0 n'est pas rectilinéaire
+          (track1Direction != .degrees45) || // La piste 1 n'est pas rectilinéaire
+          (track0Direction == .degrees90) && (track1Direction == .degrees90) // Les deux sont rectilinéaires
       //---
         var otherPoints = [CanariPoint] ()
         for track in connector.mTracksP1.values {
@@ -346,8 +349,11 @@ extension AutoLayoutProjectDocument {
                                          _ inConnector : BoardConnector) {
     let dY = inRightP.y - inLeftP.y // > 0
     let dX = inRightP.x - inLeftP.x  // > 0
-    let leftToRightAngle = atan2 (Double (dY.cuValue), Double (dX.cuValue))
-    let leftToConnectorAngle = atan2 (Double (inConnector.mY.cuValue - inLeftP.y.cuValue), Double (inConnector.mX.cuValue - inLeftP.x.cuValue))
+    let leftToRightAngle = CanariPoint (x: dX, y: dY).angle.signedRadianValue
+    let leftToConnectorAngle = CanariPoint (x : inConnector.mX - inLeftP.x, y: inConnector.mY - inLeftP.y).angle.signedRadianValue
+
+//    let leftToRightAngle = atan2 (Double (dY.cuValue), Double (dX.cuValue))
+//    let leftToConnectorAngle = atan2 (Double (inConnector.mY.cuValue - inLeftP.y.cuValue), Double (inConnector.mX.cuValue - inLeftP.x.cuValue))
 //    Swift.print ("leftToRightAngle \(leftToRightAngle * 180.0 / .pi)°, leftToConnectorAngle \(leftToConnectorAngle * 180.0 / .pi)°")
     if dY > dX { // Pente > 45°
       if leftToConnectorAngle > leftToRightAngle { // Dessus
@@ -395,8 +401,10 @@ extension AutoLayoutProjectDocument {
                                          _ inConnector : BoardConnector) {
     let dY = inLeftP.y - inRightP.y // > 0
     let dX = inRightP.x - inLeftP.x  // > 0
-    let leftToRightAngle = atan2 (Double (dY.cuValue), Double (dX.cuValue))
-    let leftToConnectorAngle = atan2 (Double (inLeftP.y.cuValue - inConnector.mY.cuValue), Double (inConnector.mX.cuValue - inLeftP.x.cuValue))
+    let leftToRightAngle = CanariPoint (x: dX, y: dY).angle.signedRadianValue
+    let leftToConnectorAngle = CanariPoint (x : inConnector.mX - inLeftP.x, y: inConnector.mY - inLeftP.y).angle.signedRadianValue
+//    let leftToRightAngle = atan2 (Double (dY.cuValue), Double (dX.cuValue))
+//    let leftToConnectorAngle = atan2 (Double (inLeftP.y.cuValue - inConnector.mY.cuValue), Double (inConnector.mX.cuValue - inLeftP.x.cuValue))
 //    Swift.print ("leftToRightAngle \(leftToRightAngle * 180.0 / .pi)°, leftToConnectorAngle \(leftToConnectorAngle * 180.0 / .pi)°")
     if dY > dX { // Pente > 45°
       if leftToConnectorAngle < leftToRightAngle { // Dessus

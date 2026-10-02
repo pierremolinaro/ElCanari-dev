@@ -28,22 +28,22 @@ import CanariGeometry
         var bp = BezierPath ()
         bp.move (to: p1)
         bp.line (to: p2)
-        bp.lineWidth = SCHEMATIC_HILITE_WIDTH
+        bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()
         shape.add (stroke: [bp], prefs_selectionHiliteColor)
       //--- Knob at center ?
         if (self_mP1_canMove ?? false) && (self_mP2_canMove ?? false) {
-          shape.add (knobAt: p1.mid (with: p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+          shape.add (knobAt: p1.mid (with: p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
         }
       //--- Knob at P1 ?
           if self_mP1_canMove ?? false {
-            shape.add (knobAt:  p1, knobIndex: WIRE_P1_KNOB, .diamond, SCHEMATIC_KNOB_SIZE)
+            shape.add (knobAt:  p1, knobIndex: WIRE_P1_KNOB, .diamond, SCHEMATIC_KNOB_SIZE.ptValue)
           }
       //--- Knob at P2 ?
         if self_mP2_canMove ?? false {
-          shape.add (knobAt:  p2, knobIndex: WIRE_P2_KNOB, .diamond, SCHEMATIC_KNOB_SIZE)
+          shape.add (knobAt:  p2, knobIndex: WIRE_P2_KNOB, .diamond, SCHEMATIC_KNOB_SIZE.ptValue)
         }
       //---
         return shape

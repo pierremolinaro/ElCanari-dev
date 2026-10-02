@@ -18,7 +18,7 @@ graphic handlingOpposite entity BoardQRCode : BoardObject {
   property String mText default "" ;
   property QRCodeCorrectionLevel mCorrectionLevel default quality ;
 
-  property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
+  property @generateDirectAccess CanariAngle mRotation default 0 ; // 1000 --> 1°
 
   transient QRCodeDescriptor qrCodeDescriptor dependsFrom
     self.mText, self.mCorrectionLevel, self.mDrawFrame

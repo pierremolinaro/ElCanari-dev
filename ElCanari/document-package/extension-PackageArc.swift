@@ -98,15 +98,15 @@ extension PackageArc {
                       shift _ : Bool) {
     let center = NSPoint (x: self.xCenter, y: self.yCenter)
     let radius = self.radius.ptValue
-    let startAngle = CGFloat (self.startAngle) / 1000.0
-    let arcAngle = CGFloat (self.arcAngle) / 1000.0
+    let startAngle = self.startAngle
+    let arcAngle = self.arcAngle
     if inKnobIndex == PACKAGE_ARC_CENTER {
       self.xCenter += inDx
       self.yCenter += inDy
     }else if inKnobIndex == PACKAGE_ARC_RADIUS {
       let t = NSAffineTransform ()
       t.translateX (by: center.x, yBy: center.y)
-      t.rotate (byDegrees: startAngle - arcAngle / 2.0)
+      t.rotate (byDegrees: (startAngle - arcAngle / 2.0).unsignedDegreeValue)
       let currentRadiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
       let newRadiusKnob = NSPoint (
         x: currentRadiusKnob.x + inDx.ptValue,
@@ -121,20 +121,24 @@ extension PackageArc {
         x: inAlignedMouseLocationX.ptValue,
         y: inAlignedMouseLocationY.ptValue
       )
-      let newStartAngle = NSPoint.angleInDegrees (center, newStartAngleKnob)
-      let newCanariStartAngle = Int ((newStartAngle * 1000.0).rounded (.toNearestOrEven))
-      self.startAngle = newCanariStartAngle
+//      let newStartAngle = NSPoint.angleInDegrees (center, newStartAngleKnob)
+      let newStartAngle = center.angle (to: newStartAngleKnob)
+//      let newCanariStartAngle = Int ((newStartAngle * 1000.0).rounded (.toNearestOrEven))
+      self.startAngle = newStartAngle
+//      self.startAngle = newCanariStartAngle
     }else if inKnobIndex == PACKAGE_ARC_END_ANGLE {
       let newEndAngleKnob = NSPoint (
         x: inAlignedMouseLocationX.ptValue,
         y: inAlignedMouseLocationY.ptValue
       )
-      var newArcAngle = NSPoint.angleInDegrees (center, newEndAngleKnob) - startAngle
-      if newArcAngle < 0.0 {
-        newArcAngle += 360.0
-      }
-      // Swift.print ("\(arcAngle)° -> \(newArcAngle)°")
-      self.arcAngle = Int ((newArcAngle * 1000.0).rounded (.toNearestOrEven))
+//      var newArcAngle = NSPoint.angleInDegrees (center, newEndAngleKnob) - startAngle
+//      if newArcAngle < 0.0 {
+//        newArcAngle += 360.0
+//      }
+//      // Swift.print ("\(arcAngle)° -> \(newArcAngle)°")
+//      self.arcAngle = Int ((newArcAngle * 1000.0).rounded (.toNearestOrEven))
+      let newArcAngle = center.angle (to: newEndAngleKnob) - startAngle
+      self.arcAngle = newArcAngle
     }
   }
 

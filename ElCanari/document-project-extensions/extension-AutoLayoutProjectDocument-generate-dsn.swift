@@ -74,7 +74,7 @@ extension AutoLayoutProjectDocument {
     let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
     let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance.cuValue)
   //--- Border
-    let boardLimitExtend = 0 // §-self.rootObject.mBoardLimitsWidth / 2
+    let boardLimitExtend = 0
     let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
     let boardBoundaryPolygonVertices = self.buildBoardBoundaryPolygon (converter)
   //--- Layer configuration
@@ -91,7 +91,7 @@ extension AutoLayoutProjectDocument {
         )
         let rr = RestrictRectangleForDSNExport (
           rect: r,
-          rotationInDegrees: 0.0,
+          rotation: .zero,
           frontSide: propertyRectangle.mIsInFrontLayer,
           backSide: propertyRectangle.mIsInBackLayer,
           inner1Side: propertyRectangle.mIsInInner1Layer,
@@ -120,7 +120,7 @@ extension AutoLayoutProjectDocument {
         }
         let rr = RestrictRectangleForDSNExport (
           rect: r,
-          rotationInDegrees: Double (nph.mRotation) / 1000.0,
+          rotation: nph.mRotation,
           frontSide: true,
           backSide: true,
           inner1Side: inner12,
@@ -190,7 +190,7 @@ extension AutoLayoutProjectDocument {
           placed: component.mRoot != nil,
           originX: component.mX,
           originY: component.mY,
-          rotationInDegrees: Double (component.mRotation) / 1000.0,
+          rotationInDegrees: component.mRotation.unsignedDegreeValue,
           side: component.mSide,
           netList: padNetArray.sorted { $0.padString < $1.padString }
         )
@@ -575,7 +575,7 @@ fileprivate struct NetClassForDSNExport {
 
 fileprivate struct RestrictRectangleForDSNExport {
   let rect : CanariRect
-  let rotationInDegrees : Double
+  let rotation : CanariAngle
   let frontSide : Bool
   let backSide  : Bool
   let inner1Side  : Bool
@@ -588,7 +588,7 @@ fileprivate struct RestrictRectangleForDSNExport {
     let centerX = self.rect.center.x.ptValue
     let centerY = self.rect.center.y.ptValue
     af.translate (x: centerX, y: centerY)
-    af.rotate (byDegrees: self.rotationInDegrees)
+    af.rotate (byDegrees: self.rotation.unsignedDegreeValue)
     let halfWidth  = self.rect.width.ptValue / 2.0
     let halfHeight = self.rect.height.ptValue / 2.0
     let bottomLeft  = af.transform (NSPoint (x: -halfWidth, y: -halfHeight)).canariPoint

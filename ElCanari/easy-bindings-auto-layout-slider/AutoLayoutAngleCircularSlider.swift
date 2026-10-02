@@ -8,14 +8,15 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //  AutoLayoutAngleCircularSlider
-//  Min Value : 0, max Value : 3600
-//  Current value :    0 -> knob at top
-//                   900 -> knob at right
-//                  1800 -> knob at bottom
-//                  2700 -> knob at left
+//  Min Value : 0, max Value : 360
+//  Current value :   0 -> knob at top
+//                   90 -> knob at right
+//                  180 -> knob at bottom
+//                  270 -> knob at left
 //--------------------------------------------------------------------------------------------------
 
 final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
@@ -23,7 +24,7 @@ final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (size inSize : EBControlSize) {
-    super.init (min: 0, max: 3600, ticks: 360)
+    super.init (min: 0, max: 360, ticks: 36)
 
     self.controlSize = inSize.cocoaControlSize
     self.sliderType = .circular
@@ -38,7 +39,8 @@ final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    let value = (450_000 - Int ((self.doubleValue * 100.0).rounded ())) % 360_000
+//    let value = (450_000 - Int ((self.doubleValue * 100.0).rounded ())) % 360_000
+    let value = CanariAngle.degree (90.0 - self.doubleValue)
     self.mAngleController?.updateModel (withValue: value)
     let r = super.sendAction (action, to: to)
     flushOutletEvents ()
@@ -49,25 +51,30 @@ final class AutoLayoutAngleCircularSlider : ALB_NSSlider {
   //  $angle binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func updateAngleValue (_ object : EBObservableProperty <Int>) {
+  fileprivate func updateAngleValue (_ object : EBObservableProperty <CanariAngle>) {
     switch object.selection {
     case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.doubleValue = 0.0
     case .single (let propertyValue) :
-      self.doubleValue = Double ((90_000 + 360_000 - propertyValue) % 360_000) / 100.0
+//      self.doubleValue = Double ((90_000 + 360_000 - propertyValue) % 360_000) / 100.0
+//      var degrees = Int ((CanariAngle.degrees90 - propertyValue).unsignedDegreeValue)
+//      degrees += 720
+//      degrees %= 360
+      let degrees = (CanariAngle.degrees90 - propertyValue).unsignedDegreeValue
+      self.doubleValue = Double (degrees)
       self.enable (fromValueBinding: true, self.enabledBindingController ())
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mAngleController : EBGenericReadWritePropertyController <CanariAngle>? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_angle (_ inObject : EBObservableMutableProperty <Int>, sendContinously : Bool) -> Self {
-    self.mAngleController = EBGenericReadWritePropertyController <Int> (
+  final func bind_angle (_ inObject : EBObservableMutableProperty <CanariAngle>, sendContinously : Bool) -> Self {
+    self.mAngleController = EBGenericReadWritePropertyController <CanariAngle> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateAngleValue (inObject) }
     )

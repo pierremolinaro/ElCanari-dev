@@ -144,8 +144,9 @@ extension CommentInSchematic {
     }else if inKnobIndex == COMMENT_IN_SCHEMATIC_ROTATION_KNOB {
       let absoluteCenter = NSPoint (x: self.mX, y: self.mY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-      let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
-      self.mRotation_property.setProp (degreesToCanariRotation (newAngleInDegrees))
+//      let newAngleInDegrees = NSPoint.angleInDegrees (absoluteCenter, newRotationKnobLocation)
+//      self.mRotation_property.setProp (degreesToCanariRotation (newAngleInDegrees))
+      self.mRotation_property.setProp (absoluteCenter.angle (to: newRotationKnobLocation))
     }
   }
 

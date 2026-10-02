@@ -6,6 +6,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -198,7 +199,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
       NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize),
     ]
     let sizeP1 = "P1".size (withAttributes: textAttributes)
-    let angleInDegrees = NSPoint.angleInDegrees (p1, p2)
+    let angleInDegrees = p1.angle (to: p2).unsignedDegreeValue
     if (angleInDegrees < 90.0) || (angleInDegrees > 270.0) {
       let p = NSPoint (x: p1.x - KNOB_DIAMETER / 2.0 - sizeP1.width - TEXT_OFFSET, y: p1.y - sizeP1.height / 2.0)
       "P1".draw (at: p, withAttributes: textAttributes)
@@ -298,7 +299,7 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_angle (_ inObject : EBObservableProperty <Int>) -> Self {
+  final func bind_angle (_ inObject : EBObservableProperty <CanariAngle>) -> Self {
     self.mAngleController = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateAngle (inObject) }
@@ -308,12 +309,12 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func updateAngle (_ inObject : EBObservableProperty <Int>) {
+  fileprivate func updateAngle (_ inObject : EBObservableProperty <CanariAngle>) {
     switch inObject.selection {
     case .empty, .multiple :
       self.mDirectionInDegrees = 0.0
     case .single (let v) :
-      self.mDirectionInDegrees = CGFloat (v) / 1000.0
+      self.mDirectionInDegrees = v.unsignedDegreeValue
     }
   }
 

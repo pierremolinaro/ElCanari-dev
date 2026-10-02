@@ -457,7 +457,7 @@ extension AutoLayoutMergerDocument {
         pad.y = .cu (int (fromDict: padDict, key: "Y", &errorArray))
         pad.width = .cu (int (fromDict: padDict, key: "WIDTH", &errorArray))
         pad.height = .cu (int (fromDict: padDict, key: "HEIGHT", &errorArray))
-        pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
+        pad.rotation = .degree (Double (int (fromDict: padDict, key: "ROTATION", &errorArray)) / 1000.0)
         let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
         if shapeString == "RECT" {
           pad.shape = .rect
@@ -482,7 +482,7 @@ extension AutoLayoutMergerDocument {
         pad.y = .cu (int (fromDict: padDict, key: "Y", &errorArray))
         pad.width = .cu (int (fromDict: padDict, key: "WIDTH", &errorArray))
         pad.height = .cu (int (fromDict: padDict, key: "HEIGHT", &errorArray))
-        pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
+        pad.rotation = .degree (Double (int (fromDict: padDict, key: "ROTATION", &errorArray)) / 1000.0)
         let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
         if shapeString == "RECT" {
           pad.shape = .rect
@@ -522,7 +522,7 @@ extension AutoLayoutMergerDocument {
         pad.y = .cu (int (fromDict: padDict, key: "Y", &errorArray))
         pad.width = .cu (int (fromDict: padDict, key: "WIDTH", &errorArray))
         pad.height = .cu (int (fromDict: padDict, key: "HEIGHT", &errorArray))
-        pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
+        pad.rotation = .degree (Double (int (fromDict: padDict, key: "ROTATION", &errorArray)) / 1000.0)
         let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
         if shapeString == "RECT" {
           pad.shape = .rect

@@ -45,16 +45,16 @@ let NC_TITLE = "nc"
 
 //--------------------------------------------------------------------------------------------------
 
-let SCHEMATIC_CONNECTION_POINT_DIAMETER = CanariLength.pt (50.0)
+let SCHEMATIC_CONNECTION_POINT_DIAMETER = CanariLength.mil (50)
 
 //--------------------------------------------------------------------------------------------------
 
-let SCHEMATIC_KNOB_SIZE : CGFloat = 4.0
-let SCHEMATIC_HILITE_WIDTH : CGFloat = 0.5
+let SCHEMATIC_KNOB_SIZE = CanariLength.pt (4.0)
+let SCHEMATIC_HILITE_WIDTH = CanariLength.pt (0.5)
 
 //--------------------------------------------------------------------------------------------------
 
-let BOARD_KNOB_SIZE : CGFloat = 4.0
+let BOARD_KNOB_SIZE = CanariLength.pt (4.0)
 
 //--------------------------------------------------------------------------------------------------
 

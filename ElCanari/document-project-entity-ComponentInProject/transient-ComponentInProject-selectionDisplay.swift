@@ -25,7 +25,7 @@ import CanariGeometry
        _ self_BoardObject_displayBackLegendForBoard : Bool,    
        _ self_mX : CanariLength,                               
        _ self_mY : CanariLength,                               
-       _ self_mRotation : Int,                                 
+       _ self_mRotation : CanariAngle,                         
        _ self_mSide : ComponentSide,                           
        _ self_strokeBezierPath : BezierPath,                   
        _ self_mDisplayLegend : Bool,                           
@@ -34,7 +34,7 @@ import CanariGeometry
        _ self_mYName : CanariLength,                           
        _ self_mNameFont_descriptor : BoardFontDescriptor?,     
        _ self_mNameFontSize : Double,                          
-       _ self_mNameRotation : Int,                             
+       _ self_mNameRotation : CanariAngle,                     
        _ self_componentName : String,                          
        _ self_packagePadDictionary : PackageMasterPadDictionary,
        _ self_padNetDictionary : PadNetDictionary,             
@@ -43,7 +43,7 @@ import CanariGeometry
        _ self_mYValue : CanariLength,                          
        _ self_mValueFont_descriptor : BoardFontDescriptor?,    
        _ self_mValueFontSize : Double,                         
-       _ self_mValueRotation : Int,                            
+       _ self_mValueRotation : CanariAngle,                    
        _ self_mComponentValue : String,                        
        _ prefs_hiliteWidthMultipliedByTen : Int,               
        _ prefs_mShowComponentRotationKnobInBoard : Bool
@@ -71,7 +71,7 @@ import CanariGeometry
         if self_mSide == .back {
           padNumberAffineTransform.scale (x: -1.0, y: 1.0)
         }
-        padNumberAffineTransform.rotate (byDegrees: -CGFloat (self_mRotation) / 1000.0)
+        padNumberAffineTransform.rotate (by: -self_mRotation)
         for (_, padDescriptor) in self_packagePadDictionary {
           padDescriptor.accumulatePadBezierPathes (
             into: &rotatedShape,
@@ -113,7 +113,7 @@ import CanariGeometry
           rotation: self_mNameRotation,
           weight: 1.0,
           oblique: false,
-          extraWidth: 0.0
+          extraWidth: .zero
         )
         var bp = BezierPath ()
         bp.move (to: absoluteCenter)
@@ -147,7 +147,7 @@ import CanariGeometry
           rotation: self_mValueRotation,
           weight: 1.0,
           oblique: false,
-          extraWidth: 0.0
+          extraWidth: .zero
         )
         var bp = BezierPath ()
         bp.move (to: absoluteCenter)
@@ -170,7 +170,7 @@ import CanariGeometry
     //---
       var af = AffineTransform ()
       af.translate (x: absoluteCenter.x, y: absoluteCenter.y)
-      af.rotate (byDegrees: CGFloat (self_mRotation) / 1000.0)
+      af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
       if self_mSide == .back {
         af.scale (x: -1.0, y: 1.0)
       }

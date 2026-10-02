@@ -268,7 +268,7 @@ extension AutoLayoutProjectDocument {
             rotation: component.mNameRotation,
             weight: 1.0,
             oblique: false,
-            extraWidth: 0.0
+            extraWidth: .zero
           )
           let width = CanariLength.pt (textBP.lineWidth)
           let layer : ProductLayerSet
@@ -309,7 +309,7 @@ extension AutoLayoutProjectDocument {
             rotation: component.mValueRotation,
             weight: 1.0,
             oblique: false,
-            extraWidth: 0.0
+            extraWidth: .zero
           )
           let width = CanariLength.pt (textBP.lineWidth)
           let layer : ProductLayerSet
@@ -349,7 +349,7 @@ extension AutoLayoutProjectDocument {
           rotation: text.mRotation,
           weight: text.mWeight,
           oblique: text.mOblique,
-          extraWidth: 0.0
+          extraWidth: .zero
         )
         let width = CanariLength.pt (textBP.lineWidth)
         let layer : ProductLayerSet
@@ -436,8 +436,8 @@ extension AutoLayoutProjectDocument {
         let centerX = nph.mX.ptValue
         let centerY = nph.mY.ptValue
         af.translate (x: centerX, y: centerY)
-        let rotationInDegrees = CGFloat (nph.mRotation) / 1000.0
-        af.rotate (byDegrees: rotationInDegrees)
+//        let rotationInDegrees = CGFloat (nph.mRotation) / 1000.0
+        af.rotate (byDegrees: nph.mRotation.unsignedDegreeValue)
         if nph.mWidth < nph.mHeight { // Vertical oblong
           let h = (nph.mHeight - nph.mWidth).ptValue / 2.0
           let p1 = af.transform (NSPoint (x: 0.0, y: -h)).canariPoint

@@ -87,7 +87,7 @@ import CanariGeometry
   //   Selection observable property: mRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mRotation_property = EBComputedProperty_Int ()
+  final let mRotation_property = EBComputedProperty_CanariAngle ()
 
   //------------------------------------------------------------------------------------------------
   //   Selection observable property: mCenterX
@@ -763,7 +763,7 @@ import CanariGeometry
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <Int> ()
+          var s = Set <CanariAngle> ()
           var isMultipleSelection = false
           for object in v {
             switch object.mRotation_property.selection {
@@ -789,7 +789,7 @@ import CanariGeometry
         return .empty
       }
     }
-    self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+    self.mRotation_property.mWriteModelFunction = { [weak self] (inValue : CanariAngle) in
       if let model = self?.selectedArray_property {
         switch model.selection {
         case .empty, .multiple :

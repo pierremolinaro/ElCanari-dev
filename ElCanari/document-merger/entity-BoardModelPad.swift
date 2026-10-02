@@ -31,14 +31,14 @@ import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModelPad_rotation : AnyObject {
-  var rotation : Int { get }
+@MainActor protocol BoardModelPad_x : AnyObject {
+  var x : CanariLength { get }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor protocol BoardModelPad_x : AnyObject {
-  var x : CanariLength { get }
+@MainActor protocol BoardModelPad_rotation : AnyObject {
+  var rotation : CanariAngle { get }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -50,8 +50,8 @@ final class BoardModelPad : EBManagedObject
     , BoardModelPad_width
     , BoardModelPad_height
     , BoardModelPad_shape
-    , BoardModelPad_rotation
     , BoardModelPad_x
+    , BoardModelPad_rotation
     {
 
   //------------------------------------------------------------------------------------------------
@@ -107,19 +107,6 @@ final class BoardModelPad : EBManagedObject
   }
 
   //------------------------------------------------------------------------------------------------
-  //   Atomic property: rotation
-  //------------------------------------------------------------------------------------------------
-
-  final let rotation_property : EBStoredProperty_Int
-
-  //------------------------------------------------------------------------------------------------
-
-  final var rotation : Int {
-    get { return self.rotation_property.propval }
-    set { self.rotation_property.setProp (newValue) }
-  }
-
-  //------------------------------------------------------------------------------------------------
   //   Atomic property: x
   //------------------------------------------------------------------------------------------------
 
@@ -132,6 +119,19 @@ final class BoardModelPad : EBManagedObject
     set { self.x_property.setProp (newValue) }
   }
 
+  //------------------------------------------------------------------------------------------------
+  //   Atomic property: rotation
+  //------------------------------------------------------------------------------------------------
+
+  final let rotation_property : EBStoredProperty_CanariAngle
+
+  //------------------------------------------------------------------------------------------------
+
+  final var rotation : CanariAngle {
+    get { return self.rotation_property.propval }
+    set { self.rotation_property.setProp (newValue) }
+  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    init
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -141,15 +141,15 @@ final class BoardModelPad : EBManagedObject
     self.width_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "width")
     self.height_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "height")
     self.shape_property = EBStoredProperty_PadShape (defaultValue: PadShape.rect, undoManager: inUndoManager, key: "shape")
-    self.rotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "rotation")
     self.x_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "x")
+    self.rotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "rotation")
     super.init (inUndoManager)
     self.accumulateProperty (self.y_property)
     self.accumulateProperty (self.width_property)
     self.accumulateProperty (self.height_property)
     self.accumulateProperty (self.shape_property)
-    self.accumulateProperty (self.rotation_property)
     self.accumulateProperty (self.x_property)
+    self.accumulateProperty (self.rotation_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

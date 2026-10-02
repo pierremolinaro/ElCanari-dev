@@ -30,7 +30,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mRotation : AnyObject {
-//   var mRotation : Int { get }
+//   var mRotation : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mNameRotation : AnyObject {
-//   var mNameRotation : Int { get }
+//   var mNameRotation : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol ComponentInProject_mValueRotation : AnyObject {
-//   var mValueRotation : Int { get }
+//   var mValueRotation : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -416,11 +416,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mRotation_property : EBStoredProperty_Int
+  final let mRotation_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var mRotation : Int {
+  final var mRotation : CanariAngle {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
@@ -533,11 +533,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mNameRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mNameRotation_property : EBStoredProperty_Int
+  final let mNameRotation_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var mNameRotation : Int {
+  final var mNameRotation : CanariAngle {
     get { return self.mNameRotation_property.propval }
     set { self.mNameRotation_property.setProp (newValue) }
   }
@@ -598,11 +598,11 @@ final class ComponentInProject : BoardObject
   //   Atomic property: mValueRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mValueRotation_property : EBStoredProperty_Int
+  final let mValueRotation_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var mValueRotation : Int {
+  final var mValueRotation : CanariAngle {
     get { return self.mValueRotation_property.propval }
     set { self.mValueRotation_property.setProp (newValue) }
   }
@@ -1065,19 +1065,19 @@ final class ComponentInProject : BoardObject
     self.mSlavePadsShouldBeRouted_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mSlavePadsShouldBeRouted")
     self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
     self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mRotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "mRotation")
     self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: inUndoManager, key: "mSide")
     self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDisplayLegend")
     self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mNameIsVisibleInBoard")
     self.mXName_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mXName")
     self.mYName_property = EBStoredProperty_CanariLength (defaultValue: .mil (300), undoManager: inUndoManager, key: "mYName")
     self.mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mNameFontSize")
-    self.mNameRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNameRotation")
+    self.mNameRotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "mNameRotation")
     self.mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mValueIsVisibleInBoard")
     self.mXValue_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mXValue")
     self.mYValue_property = EBStoredProperty_CanariLength (defaultValue: -.mil (300), undoManager: inUndoManager, key: "mYValue")
     self.mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mValueFontSize")
-    self.mValueRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mValueRotation")
+    self.mValueRotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "mValueRotation")
     self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComponentValue")
     self.mNamePrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mNamePrefix")
     self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNameIndex")

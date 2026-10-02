@@ -250,17 +250,29 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   fileprivate func modelImageSecondPointDidChange () {
     if self.rootObject.mPointsAreLocked {
-      let lockDx = CGFloat (self.rootObject.mModelImagePointsDxOnLock.cuValue)
-      let lockDy = CGFloat (self.rootObject.mModelImagePointsDyOnLock.cuValue)
-      let distanceReference = sqrt (lockDx * lockDx + lockDy * lockDy)
-      let angleReference = atan2 (lockDy, lockDx) // Result in radian
-      let dx = CGFloat (self.rootObject.mModelImageSecondPointDx!.cuValue)
-      let dy = CGFloat (self.rootObject.mModelImageSecondPointDy!.cuValue)
-      let newDistance = sqrt (dx * dx + dy * dy)
-      self.rootObject.mModelImageScale = Double (newDistance / distanceReference)
-      let angle = atan2 (dy, dx) - angleReference // Result in radian
-      self.rootObject.mModelImageRotationInRadians = Double (angle)
+      let lockDx = self.rootObject.mModelImagePointsDxOnLock
+      let lockDy = self.rootObject.mModelImagePointsDyOnLock
+      let angleReference = CanariPoint (x: lockDx, y: lockDy).angle
+      let distanceReferenceSquare = lockDx * lockDx + lockDy * lockDy
+      let dx = self.rootObject.mModelImageSecondPointDx!
+      let dy = self.rootObject.mModelImageSecondPointDy!
+      let newDistanceSquare = dx * dx + dy * dy
+      self.rootObject.mModelImageScale = sqrt (newDistanceSquare / distanceReferenceSquare)
+      let angle = CanariPoint (x: dx, y: dy).angle - angleReference // Result in radian
+      self.rootObject.mModelImageRotationInRadians = angle.signedRadianValue
       self.applyAffineTransformToModelImage ()
+
+//      let lockDx = CGFloat (self.rootObject.mModelImagePointsDxOnLock.cuValue)
+//      let lockDy = CGFloat (self.rootObject.mModelImagePointsDyOnLock.cuValue)
+//      let distanceReference = sqrt (lockDx * lockDx + lockDy * lockDy)
+//      let angleReference = atan2 (lockDy, lockDx) // Result in radian
+//      let dx = CGFloat (self.rootObject.mModelImageSecondPointDx!.cuValue)
+//      let dy = CGFloat (self.rootObject.mModelImageSecondPointDy!.cuValue)
+//      let newDistance = sqrt (dx * dx + dy * dy)
+//      self.rootObject.mModelImageScale = Double (newDistance / distanceReference)
+//      let angle = atan2 (dy, dx) - angleReference // Result in radian
+//      self.rootObject.mModelImageRotationInRadians = Double (angle)
+//      self.applyAffineTransformToModelImage ()
     }
   }
 

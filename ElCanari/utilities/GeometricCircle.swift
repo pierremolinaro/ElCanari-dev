@@ -8,14 +8,15 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //  Struct GeometricCircle
 //--------------------------------------------------------------------------------------------------
 
 struct GeometricCircle {
-  let center : NSPoint
-  let radius : CGFloat
+  let center : CanariPoint
+  let radius : CanariLength
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Intersection
@@ -34,7 +35,7 @@ struct GeometricCircle {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func intersects (segmentFrom inP1 : NSPoint, to inP2 : NSPoint) -> Bool {
+  func intersects (segmentFrom inP1 : CanariPoint, to inP2 : CanariPoint) -> Bool {
   //--- We translate P1, P2, C (center of circle) so that P1 is at (0, 0)
     let p2x = inP2.x - inP1.x
     let p2y = inP2.y - inP1.y
@@ -49,7 +50,7 @@ struct GeometricCircle {
     }else{ // Inside: we compute the distance between P and C
       let dx = µ * p2x - Cx
       let dy = µ * p2y - Cy
-      let d = (dx * dx + dy * dy).squareRoot ()
+      let d = sqrt (dx * dx + dy * dy)
       return d <= self.radius
     }
   }
@@ -64,7 +65,7 @@ struct GeometricCircle {
 
   var bounds : NSRect {
     let s = NSSize (width: self.radius * 2.0, height: self.radius * 2.0)
-    return NSRect (center: self.center, size: s)
+    return NSRect (center: self.center.ptValue, size: s)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -15,12 +15,6 @@ import CanariGeometry
 
 extension CanariPoint {
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  static func center (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CanariPoint {
-//    return CanariPoint (x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
-//  }
-
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  static func segmentStrictlyContainsEBPoint (_ inP1 : CanariPoint,
@@ -66,7 +60,7 @@ extension CanariPoint {
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  mutating func constraintToOctolinearDirection (from inOriginPoint : CanariPoint) {
-   let angle = self.angle (to: inOriginPoint).degreeValue
+   let angle = self.angle (to: inOriginPoint).unsignedDegreeValue
    let dx = self.x - inOriginPoint.x
    let dy = self.y - inOriginPoint.y
    if angle < (0.0 + 22.5) {
@@ -101,7 +95,7 @@ extension CanariPoint {
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  static func octolinearNearestAngleInDegrees (_ inP1 : CanariPoint, _ inP2 : CanariPoint) -> CGFloat {
-   let angle = inP1.angle (to: inP2).degreeValue
+   let angle = inP1.angle (to: inP2).unsignedDegreeValue
    if angle < (0.0 + 22.5) {
      return 0.0
    }else if angle < (0.0 + 67.5) {
@@ -126,7 +120,7 @@ extension CanariPoint {
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  mutating func constraintToRectilinearDirection (from inOriginPoint : CanariPoint) {
-   let angle = self.angle (to: inOriginPoint).degreeValue
+   let angle = self.angle (to: inOriginPoint).unsignedDegreeValue
    if angle < (0.0 + 45.0) {
      self.y = inOriginPoint.y
    }else if angle < (90.0 + 45.0) {
@@ -143,7 +137,7 @@ extension CanariPoint {
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················
 
  static func rectilinearNearestAngleInDegrees (_ inP1 : CanariPoint, _ inP2 : CanariPoint) -> CGFloat {
-   let angle = inP1.angle (to: inP2).degreeValue
+   let angle = inP1.angle (to: inP2).unsignedDegreeValue
    if angle < (0.0 + 45.0) {
      return 0.0
    }else if angle < (90.0 + 45.0) {

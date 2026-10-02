@@ -72,7 +72,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol BoardText_mRotation : AnyObject {
-//   var mRotation : Int { get }
+//   var mRotation : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -255,11 +255,11 @@ final class BoardText : BoardObject
   //   Atomic property: mRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mRotation_property : EBStoredProperty_Int
+  final let mRotation_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var mRotation : Int {
+  final var mRotation : CanariAngle {
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
@@ -343,7 +343,7 @@ final class BoardText : BoardObject
     self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
     self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mHorizontalAlignment")
     self.mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base, undoManager: inUndoManager, key: "mVerticalAlignment")
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mRotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "mRotation")
     self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: inUndoManager, key: "mWeight")
     self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mOblique")
     super.init (inUndoManager)

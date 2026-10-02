@@ -128,7 +128,7 @@ extension LabelInSchematic {
       }else if inKnobIndex == LABEL_IN_SCHEMATICS_ROTATION_KNOB {
         let newKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
         let p = CanariPoint (x: point.mX, y: point.mY)
-        let angleInDegrees = p.angle (to: newKnobLocation).degreeValue
+        let angleInDegrees = p.angle (to: newKnobLocation).unsignedDegreeValue
         if angleInDegrees <= 45.0 {
           self.mOrientation = .rotation0
         }else if angleInDegrees <= 135.0 {

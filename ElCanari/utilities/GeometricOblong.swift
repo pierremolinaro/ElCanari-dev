@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //  Struct GeometricOblong
@@ -15,18 +16,18 @@ import AppKit
 
 struct GeometricOblong {
 
-  let p1 : NSPoint
-  let p2 : NSPoint
-  let width : CGFloat
+  let p1 : CanariPoint
+  let p2 : CanariPoint
+  let width : CanariLength
   let capStyle : TrackEndStyle
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Initializers
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (p1 inP1 : NSPoint,
-        p2 inP2 : NSPoint,
-        width inWidth : CGFloat,
+  init (p1 inP1 : CanariPoint,
+        p2 inP2 : CanariPoint,
+        width inWidth : CanariLength,
         capStyle inCapStyle : TrackEndStyle) {
     self.p1 = inP1
     self.p2 = inP2
@@ -36,25 +37,25 @@ struct GeometricOblong {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (center inCenter : NSPoint,
-        width inWidth : CGFloat,
-        height inHeight : CGFloat,
-        angleInDegrees inAngleInDegrees : Double) {
+  init (center inCenter : CanariPoint,
+        width inWidth : CanariLength,
+        height inHeight : CanariLength,
+        angle inAngle : CanariAngle) {
     if inWidth < inHeight {
       var af = AffineTransform ()
-      af.translate (x: inCenter.x, y: inCenter.y)
-      af.rotate (byDegrees: inAngleInDegrees)
+      af.translate (x: inCenter.x.ptValue, y: inCenter.y.ptValue)
+      af.rotate (by: inAngle)
       let dh = (inHeight - inWidth) / 2.0
-      self.p1 = af.transform (NSPoint (x: 0.0, y: -dh))
-      self.p2 = af.transform (NSPoint (x: 0.0, y: +dh))
+      self.p1 = af.transform (NSPoint (x: .zero, y: -dh)).canariPoint
+      self.p2 = af.transform (NSPoint (x: .zero, y: +dh)).canariPoint
       self.width = inWidth
     }else if inWidth > inHeight {
       var af = AffineTransform ()
-      af.translate (x: inCenter.x, y: inCenter.y)
-      af.rotate (byDegrees: inAngleInDegrees)
+      af.translate (x: inCenter.x.ptValue, y: inCenter.y.ptValue)
+      af.rotate (by: inAngle)
       let dw = (inWidth - inHeight) / 2.0
-      self.p1 = af.transform (NSPoint (x: -dw, y: 0.0))
-      self.p2 = af.transform (NSPoint (x: +dw, y: 0.0))
+      self.p1 = af.transform (NSPoint (x: -dw, y: .zero)).canariPoint
+      self.p2 = af.transform (NSPoint (x: +dw, y: .zero)).canariPoint
       self.width = inHeight
     }else{
       self.p1 = inCenter
@@ -72,10 +73,10 @@ struct GeometricOblong {
     switch self.capStyle {
     case .round :
     //--- p inside P1 circle
-      var inside = self.p1.distance (to: p) <= (self.width / 2.0)
+      var inside = self.p1.distance (to: p.canariPoint) <= (self.width / 2.0)
     //--- p inside P2 circle
       if !inside {
-        inside = self.p2.distance (to: p) <= (self.width / 2.0)
+        inside = self.p2.distance (to: p.canariPoint) <= (self.width / 2.0)
       }
     //--- p inside rectangle
       if !inside {
@@ -92,9 +93,9 @@ struct GeometricOblong {
 
   var bezierPath : BezierPath {
     var bp = BezierPath ()
-    bp.lineWidth = self.width
-    bp.move (to: self.p1)
-    bp.line (to: self.p2)
+    bp.lineWidth = self.width.ptValue
+    bp.move (to: self.p1.ptValue)
+    bp.line (to: self.p2.ptValue)
     switch self.capStyle {
     case .round :
       bp.lineCapStyle = .round
@@ -141,10 +142,10 @@ struct GeometricOblong {
       return GeometricRect (self.p1, self.p2, self.width)
     case .square :
       let center = self.p1.mid (with: self.p2)
-      let angle = NSPoint.angleInRadian (self.p1, self.p2)
+      let angle = self.p1.angle (to: self.p2)
       let segmentHalfLength = (self.p1.distance (to: self.p2) + self.width) / 2.0
-      let p1 = NSPoint (x: center.x + segmentHalfLength * cos (angle), y: center.y + segmentHalfLength * sin (angle))
-      let p2 = NSPoint (x: center.x - segmentHalfLength * cos (angle), y: center.y - segmentHalfLength * sin (angle))
+      let p1 = CanariPoint (x: center.x + segmentHalfLength * cos (angle), y: center.y + segmentHalfLength * sin (angle))
+      let p2 = CanariPoint (x: center.x - segmentHalfLength * cos (angle), y: center.y - segmentHalfLength * sin (angle))
       return GeometricRect (p1, p2, self.width)
     }
   }
@@ -212,7 +213,7 @@ struct GeometricOblong {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransfrom : AffineTransform) -> GeometricOblong {
-    return GeometricOblong (p1: inAffineTransfrom.transform (self.p1), p2: inAffineTransfrom.transform (self.p2), width: self.width, capStyle: self.capStyle)
+    return GeometricOblong (p1: inAffineTransfrom.transform (self.p1.ptValue).canariPoint, p2: inAffineTransfrom.transform (self.p2.ptValue).canariPoint, width: self.width, capStyle: self.capStyle)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

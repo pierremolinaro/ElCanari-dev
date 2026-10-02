@@ -19,7 +19,7 @@ import CanariGeometry
        _ self_mY : CanariLength,                                 
        _ self_mWidth : CanariLength,                             
        _ self_mHeight : CanariLength,                            
-       _ self_mRotation : Int,                                   
+       _ self_mRotation : CanariAngle,                           
        _ self_mShowTextRotationKnobInBoard : Bool
 ) -> UInt32 {
 //--- START OF USER ZONE 2

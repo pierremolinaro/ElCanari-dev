@@ -23,7 +23,7 @@ import CanariGeometry
        _ self_mHorizontalAlignment : HorizontalAlignment,
        _ self_mVerticalAlignment : BoardTextVerticalAlignment,
        _ self_mLayer : BoardTextLayer,             
-       _ self_mRotation : Int,                     
+       _ self_mRotation : CanariAngle,             
        _ self_mWeight : Double,                    
        _ self_mOblique : Bool,                     
        _ self_BoardObject_displayFrontLegendForBoard : Bool,
@@ -48,7 +48,7 @@ import CanariGeometry
           rotation: self_mRotation,
           weight: self_mWeight,
           oblique: self_mOblique,
-          extraWidth: 0.0
+          extraWidth: .zero
         )
         let textColor : NSColor
         let display : Bool

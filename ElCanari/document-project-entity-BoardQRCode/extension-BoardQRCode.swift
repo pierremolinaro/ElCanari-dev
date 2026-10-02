@@ -108,8 +108,8 @@ extension BoardQRCode {
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
       let origin = NSPoint (x: self.mCenterX, y: self.mCenterY)
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
-      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+//      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
+      self.mRotation = origin.angle (to: newRotationKnobLocation)
     }
   }
 
@@ -148,7 +148,8 @@ extension BoardQRCode {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
+//    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
+    self.mRotation += .degrees270
     ioSet.insert (self)
   }
 
@@ -159,7 +160,8 @@ extension BoardQRCode {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
+//    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
+    self.mRotation += .degrees90
     ioSet.insert (self)
   }
 
@@ -225,7 +227,7 @@ struct QRCodeDisplayInfos {
                                           _ inQRCodeDescriptor : QRCodeDescriptor,
                                           frontSide inFrontSide : Bool,
                                           moduleSizeInCanariUnit inModuleSize : CanariLength,
-                                          rotation inRotation : Int) -> QRCodeDisplayInfos {
+                                          rotation inRotation : CanariAngle) -> QRCodeDisplayInfos {
   let moduleSize = inModuleSize
   let width = CGFloat (inQRCodeDescriptor.imageWidth) * moduleSize
   let height = CGFloat (inQRCodeDescriptor.imageHeight) * moduleSize
@@ -235,8 +237,8 @@ struct QRCodeDisplayInfos {
   let centerX = inCenterX.ptValue
   let centerY = inCenterY.ptValue
   af.translate (x: centerX, y: centerY)
-  let rotationInDegrees = CGFloat (inRotation) / 1000.0
-  af.rotate (byDegrees: rotationInDegrees)
+//  let rotationInDegrees = CGFloat (inRotation) / 1000.0
+  af.rotate (byDegrees: inRotation.unsignedDegreeValue)
   if !inFrontSide {
     af.scale (x: -1.0, y: 1.0)
   }
@@ -269,7 +271,7 @@ struct QRCodeDisplayInfos {
 //--- Rotation knob
   var rotationKnobTransform = AffineTransform ()
   rotationKnobTransform.translate (x: centerX, y: centerY)
-  rotationKnobTransform.rotate (byDegrees: rotationInDegrees)
+  rotationKnobTransform.rotate (byDegrees: inRotation.unsignedDegreeValue)
   let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_QRCODE_ROTATION_KNOB_DISTANCE, y: 0.0))
 //---
   return QRCodeDisplayInfos (

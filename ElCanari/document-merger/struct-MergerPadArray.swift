@@ -22,7 +22,7 @@ struct MergerPad : Hashable {
   let width : CanariLength
   let height : CanariLength
   let shape : PadShape
-  let rotation : Int
+  let rotation : CanariAngle
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -62,7 +62,7 @@ struct MergerPadArray : Hashable {
         bp = BezierPath (octogonInRect: r)
       }
       var transform = AffineTransform (translationByX: pad.x.ptValue, byY: pad.y.ptValue)
-      transform.rotate (byRadians: canariRotationToRadians (pad.rotation))
+      transform.rotate (byRadians: pad.rotation.signedRadianValue)
       bp.transform (using: transform)
       result.append (bp)
     }
@@ -107,7 +107,7 @@ struct MergerPadArray : Hashable {
       if inHorizontalMirror {
         transform.scale (x: -1.0, y: 1.0)
       }
-      transform.rotate (byRadians: canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
+      transform.rotate (byDegrees: pad.rotation.unsignedDegreeValue + Double (inInstanceRotation.rawValue) * 90.0)
       var bp : BezierPath
       switch pad.shape {
       case .rect :

@@ -650,7 +650,7 @@ final class BoardTrack : BoardObject
 //   Transient property: trackDirectionInDegrees
 //--------------------------------------------------------------------------------------------------
 
-  final let trackDirectionInDegrees_property = EBComputedProperty_Int ()
+  final let trackDirectionInDegrees_property = EBComputedProperty_CanariAngle ()
 
 //--------------------------------------------------------------------------------------------------
 //   Transient property: computedP1X

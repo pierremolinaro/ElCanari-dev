@@ -19,17 +19,17 @@ extension BoardTrack {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func compute_trackDirectionInDegrees_property (_ inValue : Int) {
+  func compute_trackDirectionInDegrees_property (_ inAngle : CanariAngle) {
 //--- START OF USER ZONE 2
     let p1CanMove = self.p1CanMove ?? false
     let p2CanMove = self.p2CanMove ?? false
-    let angleInRadian = Double (inValue) * .pi / 180_000.0
+//    let angleInRadian = Double (inValue) * .pi / 180_000.0
     if p1CanMove && p2CanMove { // Rotation around center
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
       let halfLength = p1.distance (to: p2) / 2.0
       let center = p1.mid (with: p2)
-      let dp = CanariPoint (length: halfLength, angle: .radian (angleInRadian))
+      let dp = CanariPoint (length: halfLength, angle: inAngle)
 //      let dx = Int ((halfLength.cuValue * cos (angleInRadian)).rounded ())
 //      let dy = Int ((halfLength.cuValue * sin (angleInRadian)).rounded ())
       let newP1x = center.x - dp.x
@@ -44,16 +44,16 @@ extension BoardTrack {
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
       let length = p1.distance (to: p2)
-      let newP1x = p2.x - .cu (Int ((Double (length.cuValue) * cos (angleInRadian)).rounded ()))
-      let newP1y = p2.y - .cu (Int ((Double (length.cuValue) * sin (angleInRadian)).rounded ()))
+      let newP1x = p2.x - .cu (Int ((Double (length.cuValue) * cos (inAngle)).rounded ()))
+      let newP1y = p2.y - .cu (Int ((Double (length.cuValue) * sin (inAngle)).rounded ()))
       self.mConnectorP1?.mX = newP1x
       self.mConnectorP1?.mY = newP1y
     }else if p2CanMove {  // Rotation around p1
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
       let length = p1.distance (to: p2)
-      let newP2x = p1.x + .cu (Int ((Double (length.cuValue) * cos (angleInRadian)).rounded ()))
-      let newP2y = p1.y + .cu (Int ((Double (length.cuValue) * sin (angleInRadian)).rounded ()))
+      let newP2x = p1.x + .cu (Int ((Double (length.cuValue) * cos (inAngle)).rounded ()))
+      let newP2y = p1.y + .cu (Int ((Double (length.cuValue) * sin (inAngle)).rounded ()))
       self.mConnectorP2?.mX = newP2x
       self.mConnectorP2?.mY = newP2y
     }

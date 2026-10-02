@@ -20,15 +20,14 @@ import CanariGeometry
        _ self_mY : CanariLength,                       
        _ self_mWidth : CanariLength,                   
        _ self_mHeight : CanariLength,                  
-       _ self_mRotation : Int
+       _ self_mRotation : CanariAngle
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var af = AffineTransform ()
         let startX = self_mX.ptValue
         let startY = self_mY.ptValue
         af.translate (x: startX, y: startY)
-        let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
-        af.rotate (byDegrees: rotationInDegrees)
+        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
         var shape = EBShape ()
         let r = CanariRect (
           center: .zero,

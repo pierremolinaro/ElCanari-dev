@@ -21,14 +21,6 @@ extension NSPoint : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (length inLength : Double, angleInDegrees inAngle : Double) {
-    self.init ()
-    self.x = inLength * cos (inAngle * .pi / 180.0)
-    self.y = inLength * sin (inAngle * .pi / 180.0)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   init (x inX : CanariLength, y inY : CanariLength) {
     self.init (x: inX.ptValue, y: inY.ptValue)
   }
@@ -80,20 +72,11 @@ extension NSPoint : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func angleInRadian (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
-    let width = p2.x - p1.x
-    let height = p2.y - p1.y
-    var angle = atan2 (height, width) // Result in radian
-    if angle < 0.0 {
-      angle += 2.0 * CGFloat.pi
-    }
-    return angle
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  static func angleInDegrees (_ p1 : NSPoint, _ p2 : NSPoint) -> CGFloat {
-    return self.angleInRadian (p1, p2) * 180.0 / CGFloat.pi
+  func angle (to p : NSPoint) -> CanariAngle {
+    let width = p.x - self.x
+    let height = p.y - p.y
+    let angleRadian = atan2 (height, width) // Result in radian
+    return .radian (angleRadian)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -336,15 +336,15 @@ extension AutoLayoutProjectDocument {
         }
       //--- Explore property rects
         let oblong = GeometricOblong (
-          p1: t.p1.ptValue,
-          p2: t.p2.ptValue,
-          width: t.width.ptValue,
+          p1: t.p1,
+          p2: t.p2,
+          width: t.width,
           capStyle: .round
         )
         for pr in inPropertyRects {
           var found = pr.layers.contains (track.mSide)
           if found {
-            found = oblong.intersects (rect: GeometricRect (cocoaRect: pr.rect.ptValue))
+            found = oblong.intersects (rect: GeometricRect (pr.rect))
           }
           if found {
             if pr.requireRectTrackEnds {

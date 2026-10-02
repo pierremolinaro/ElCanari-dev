@@ -13,7 +13,7 @@ graphic entity NonPlatedHole : BoardObject {
   property CanariLengthUnit mWidthUnit default ".mm" ; // mm
   property CanariLength mHeight default ".mm (4)" ;
   property CanariLengthUnit mHeightUnit default ".mm" ; // mm
-  property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
+  property @generateDirectAccess CanariAngle mRotation default 0 ; // 1000 --> 1°
   property @generateDirectAccess Bool mShowTextRotationKnobInBoard default yes ;
 
   override transient EBShape objectDisplay dependsFrom

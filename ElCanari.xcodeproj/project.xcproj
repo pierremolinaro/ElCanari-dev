@@ -21,7 +21,7 @@
       "kind": "remote",
       "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
       "version": {
-        "revision": "e7ac6a2e64d367d0a83fe1e02cb6db781d6a066e",
+        "revision": "7da6783ad26d043653b67844490109511d9f17e3",
       },
     },
   ],
@@ -6820,6 +6820,12 @@
             "ElCanari-Release/compile-sources",
           ],
         }, {
+          "path": "extension-CanariAngle-EBPropertyProtocol.swift",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
           "path": "extension-CanariLengthUnit-EBPropertyProtocol.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
@@ -12048,6 +12054,12 @@
         }, {
           "path": "property-BorderCurveDescriptor.swift",
           "encoding": "utf8",
+          "target-membership": [
+            "ElCanari-Debug/compile-sources",
+            "ElCanari-Release/compile-sources",
+          ],
+        }, {
+          "path": "property-CanariAngle.swift",
           "target-membership": [
             "ElCanari-Debug/compile-sources",
             "ElCanari-Release/compile-sources",

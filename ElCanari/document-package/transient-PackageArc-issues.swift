@@ -18,8 +18,8 @@ import CanariGeometry
        _ self_xCenter : CanariLength,        
        _ self_yCenter : CanariLength,        
        _ self_radius : CanariLength,         
-       _ self_startAngle : Int,              
-       _ self_arcAngle : Int,                
+       _ self_startAngle : CanariAngle,      
+       _ self_arcAngle : CanariAngle,        
        _ self_pathIsClosed : Bool
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

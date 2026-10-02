@@ -24,7 +24,7 @@ graphic handlingOpposite entity BoardImage : BoardObject {
  
   property String mText default "" ;
 
-  property @generateDirectAccess Int mRotation default 0 ; // 1000 --> 1°
+  property @generateDirectAccess CanariAngle mRotation default 0 ; // 1000 --> 1°
 
   computed Data computedDataImage dependsFrom self.mImageData, self.mScale, self.mImageDisplay ;
   

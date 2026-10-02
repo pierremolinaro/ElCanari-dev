@@ -8,29 +8,32 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   GeometricRect
 //--------------------------------------------------------------------------------------------------
 
 final class GeometricRect {
-  let p1 : NSPoint
-  let p2 : NSPoint
-  let width : CGFloat
+  let p1 : CanariPoint
+  let p2 : CanariPoint
+  let width : CanariLength
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   init
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (cocoaRect inRect : NSRect) {
-    self.p1 = NSPoint (x: NSMinX (inRect), y: NSMidY (inRect))
-    self.p2 = NSPoint (x: NSMaxX (inRect), y: NSMidY (inRect))
+  init (_ inRect : CanariRect) {
+    self.p1 = CanariPoint (x: inRect.minX, y: inRect.midY)
+    self.p2 = CanariPoint (x: inRect.maxX, y: inRect.midY)
+//    self.p1 = CanariPoint (x: NSMinX (inRect), y: NSMidY (inRect))
+//    self.p2 = CanariPoint (x: NSMaxX (inRect), y: NSMidY (inRect))
     self.width = inRect.size.height
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (_ inP1 : NSPoint, _ inP2 : NSPoint, _ inWidth : CGFloat) {
+  init (_ inP1 : CanariPoint, _ inP2 : CanariPoint, _ inWidth : CanariLength) {
     self.p1 = inP1
     self.p2 = inP2
     self.width = inWidth
@@ -40,7 +43,7 @@ final class GeometricRect {
   //   Center
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var center : NSPoint {
+  var center : CanariPoint {
     return self.p1.mid (with: self.p2)
   }
 
@@ -48,13 +51,13 @@ final class GeometricRect {
   //   CircumCircle
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mCircumRadius : CGFloat? = nil
-    var circumRadius : CGFloat {
+  private var mCircumRadius : CanariLength? = nil
+    var circumRadius : CanariLength {
     if let r = self.mCircumRadius {
       return r
     }else{
       let d = self.p1.distance (to: self.p2)
-      let r = (d * d + self.width * self.width).squareRoot () / 2.0
+      let r = sqrt (d * d + self.width * self.width) / 2.0
       self.mCircumRadius = r
       return r
     }
@@ -77,7 +80,7 @@ final class GeometricRect {
     if let v = self.mVerticesCache {
       return v
     }else{
-      let angle = NSPoint.angleInRadian (self.p1, self.p2)
+      let angle = self.p1.angle (to: self.p2)
       let dx = self.width * 0.5 * sin (angle)
       let dy = self.width * 0.5 * cos (angle)
       var v = [NSPoint] ()
@@ -101,14 +104,14 @@ final class GeometricRect {
       let centerDistance = self.center.distance (to: inCircle.center)
       if centerDistance > (self.circumRadius + inCircle.radius) {
         return false
-      }else if self.bezierPath.contains (inCircle.center) {
+      }else if self.bezierPath.contains (inCircle.center.ptValue) {
         return true
       }else{
       //--- Test intersection between circle and rectangle edge
         let v = self.vertices
         for i in 0 ..< v.count {
           let j = (i+1) % v.count
-          let intersects = inCircle.intersects (segmentFrom: v [i], to: v [j])
+          let intersects = inCircle.intersects (segmentFrom: v [i].canariPoint, to: v [j].canariPoint)
           if intersects {
             return true
           }

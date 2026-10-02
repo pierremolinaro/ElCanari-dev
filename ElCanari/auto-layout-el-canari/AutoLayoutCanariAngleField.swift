@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -67,7 +68,8 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField {
     if let inputString = currentEditor()?.string, let numberFormatter = self.formatter as? NumberFormatter {
       let optionalNumber = numberFormatter.number (from: inputString)
       if let number = optionalNumber, self.isContinuous {
-        let value = Int ((number.doubleValue * 1000.0).rounded ())
+//        let value = Int ((number.doubleValue * 1000.0).rounded ())
+        let value = CanariAngle.degree (number.doubleValue)
         self.mAngleController?.updateModel (withValue: value)
       }
       self.mInputIsValid = optionalNumber != nil
@@ -78,11 +80,13 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField {
 
   @objc func valueDidChangeAction (_ sender : Any?) {
     if let outletValueNumber = self.mNumberFormatter.number (from: self.stringValue) {
-      let value = Int ((outletValueNumber.doubleValue * 1000.0).rounded ())
+//      let value = Int ((outletValueNumber.doubleValue * 1000.0).rounded ())
+      let value = CanariAngle.degree (outletValueNumber.doubleValue)
       self.mAngleController?.updateModel (withValue: value)
     }else if let v = self.mAngleController?.value {
       self.mInputIsValid = true
-      self.doubleValue = Double (v) / 1000.0
+//      self.doubleValue = Double (v) / 1000.0
+      self.doubleValue = v.unsignedDegreeValue
     }
   }
 
@@ -90,12 +94,12 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField {
   //  $angle binding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mAngleController : EBGenericReadWritePropertyController <CanariAngle>? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func bind_angle (_ model : EBObservableMutableProperty <Int>) -> Self {
-    self.mAngleController = EBGenericReadWritePropertyController <Int> (
+  final func bind_angle (_ model : EBObservableMutableProperty <CanariAngle>) -> Self {
+    self.mAngleController = EBGenericReadWritePropertyController <CanariAngle> (
       observedObject: model,
       callBack: { [weak self] in self?.update (from: model) }
     )
@@ -104,7 +108,7 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func update (from model : EBObservableMutableProperty <Int>) {
+  private func update (from model : EBObservableMutableProperty <CanariAngle>) {
     self.mInputIsValid = true
     switch model.selection {
     case .empty :
@@ -114,7 +118,7 @@ final class AutoLayoutCanariAngleField : ALB_NSTextField {
     case .single (let v) :
       self.enable (fromValueBinding: true, self.enabledBindingController ())
       self.placeholderString = nil
-      self.doubleValue = Double (v) / 1000.0
+      self.doubleValue = v.unsignedDegreeValue
     case .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController ())
       self.placeholderString = "Multiple Selection"

@@ -19,8 +19,8 @@ import CanariGeometry
        _ self_xCenter : CanariLength,                  
        _ self_yCenter : CanariLength,                  
        _ self_radius : CanariLength,                   
-       _ self_startAngle : Int,                        
-       _ self_arcAngle : Int,                          
+       _ self_startAngle : CanariAngle,                
+       _ self_arcAngle : CanariAngle,                  
        _ self_pathIsClosed : Bool,                     
        _ self_startTangent : CanariLength,             
        _ self_endTangent : CanariLength
@@ -30,8 +30,8 @@ import CanariGeometry
   let radius = self_radius.ptValue
   let startTangentLength = self_startTangent.ptValue
   let endTangentLength = self_endTangent.ptValue
-  let startAngle = CGFloat (self_startAngle) / 1000.0
-  let arcAngle = CGFloat (self_arcAngle) / 1000.0
+  let startAngle = self_startAngle.unsignedDegreeValue
+  let arcAngle = self_arcAngle.unsignedDegreeValue
   let bp = BezierPath (
     arcWithTangentFromCenter: center,
     radius: radius,

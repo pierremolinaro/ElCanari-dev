@@ -511,7 +511,7 @@ extension AutoLayoutMergerDocument {
           let dx = start.x - center.x
           let dy = start.y - center.y
           let radius = sqrt (dx * dx + dy * dy)
-          let startAngle = NSPoint.angleInDegrees (center, start)
+          let startAngle = center.angle (to: start).signedDegreeValue
           bp.appendArc (
             withCenter: center,
             radius: radius,
@@ -574,7 +574,7 @@ extension AutoLayoutMergerDocument {
           pad.width = .mm (widthMM)
           pad.height = .mm (heightMM)
           let padRotationInDegrees = item.getOptionalFloat (["pad", "at"], 2, &ioErrorArray, #line) ?? 0.0
-          pad.rotation = degreesToCanariRotation (padRotationInDegrees)
+          pad.rotation = CanariAngle.degree (padRotationInDegrees)
           if padShapeString == "rect" {
             pad.shape = .rect
           }else if padShapeString == "oval" {

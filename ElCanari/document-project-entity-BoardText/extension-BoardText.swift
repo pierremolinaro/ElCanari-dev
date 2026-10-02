@@ -134,11 +134,12 @@ extension BoardText {
         rotation: self.mRotation,
         weight: self.mWeight,
         oblique: self.mOblique,
-        extraWidth: 0.0
+        extraWidth: .zero
       )
       let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
-      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+//      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
+//      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+      self.mRotation = origin.angle (to: newRotationKnobLocation)
     }
   }
 
@@ -176,7 +177,8 @@ extension BoardText {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
+  //  self.mRotation = (self.mRotation + degreesToCanariRotation (270.0)) % degreesToCanariRotation (360.0)
+    self.mRotation += .degrees270
     ioSet.insert (self)
   }
 
@@ -186,7 +188,8 @@ extension BoardText {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
-    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
+//    self.mRotation = (self.mRotation + degreesToCanariRotation (90.0)) % degreesToCanariRotation (360.0)
+    self.mRotation += .degrees90
     ioSet.insert (self)
   }
 
@@ -234,7 +237,7 @@ extension BoardText {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func displayInfos (extraWidth inExtraWidth : CGFloat) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+  func displayInfos (extraWidth inExtraWidth : CanariLength) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
     return boardText_displayInfos (
       x: self.mX,
       y: self.mY,
@@ -263,16 +266,16 @@ extension BoardText {
        horizontalAlignment self_mHorizontalAlignment : HorizontalAlignment,
        verticalAlignment self_mVerticalAlignment : BoardTextVerticalAlignment,
        frontSide inFrontSide : Bool,
-       rotation self_mRotation : Int,
+       rotation self_mRotation : CanariAngle,
        weight self_mWeight : Double,
        oblique self_mOblique : Bool,
-       extraWidth inExtraWidth : CGFloat // Used for ERC checking
+       extraWidth inExtraWidth : CanariLength // Used for ERC checking
 ) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText.isEmpty) ? "Empty" : self_mText
   var stringWidth : CGFloat = 0.0
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
-  let lineThickness = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth
+  let lineThickness = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth.ptValue
   var bp = BezierPath ()
   bp.lineWidth = lineThickness
   bp.lineCapStyle = .round
@@ -289,7 +292,7 @@ extension BoardText {
         let p2 = NSPoint (x: stringWidth + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
-        oblongs.append (GeometricOblong (p1: p1, p2: p2, width: lineThickness, capStyle: .round))
+        oblongs.append (GeometricOblong (p1: p1.canariPoint, p2: p2.canariPoint, width: .pt (lineThickness), capStyle: .round))
       }
       stringWidth += CGFloat (characterDescriptor.advancement) * fontFactor
     }
@@ -302,8 +305,8 @@ extension BoardText {
   let startX = self_mX.ptValue
   let startY = self_mY.ptValue
   tr.translate (x: startX, y: startY)
-  let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
-  tr.rotate (byDegrees: rotationInDegrees)
+//  let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
+  tr.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
   if !inFrontSide {
     tr.scale (x: -1.0, y: 1.0)
   }
@@ -340,7 +343,7 @@ extension BoardText {
 //--- Rotation knob
   var rotationKnobTransform = AffineTransform ()
   rotationKnobTransform.translate (x: startX, y: startY)
-  rotationKnobTransform.rotate (byDegrees: rotationInDegrees)
+  rotationKnobTransform.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
   let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_TEXT_ROTATION_KNOB_DISTANCE, y: 0.0))
 //---
   return (bp, frameBP, NSPoint (x: startX, y: startY), rotationKnobLocation, transformedOblongs)

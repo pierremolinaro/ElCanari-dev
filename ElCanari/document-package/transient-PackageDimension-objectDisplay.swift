@@ -36,7 +36,7 @@ import CanariGeometry
   let length = p1.distance (to: p2)
   var shape = EBShape ()
  //--- Compute angle
-  let angle = NSPoint.angleInRadian (p1, p2)
+  let angle = p1.angle (to: p2).signedRadianValue
  //--- Draw line
   var bp = BezierPath ()
   if length <= (4.0 * arrowSize) {

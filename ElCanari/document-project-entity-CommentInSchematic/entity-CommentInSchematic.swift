@@ -37,7 +37,7 @@ import CanariGeometry
 
 // Commented out, not used
 // @MainActor protocol CommentInSchematic_mRotation : AnyObject {
-//   var mRotation : Int { get }
+//   var mRotation : CanariAngle { get }
 // }
 
 //--------------------------------------------------------------------------------------------------
@@ -152,11 +152,11 @@ final class CommentInSchematic : SchematicObject
   //   Atomic property: mRotation
   //------------------------------------------------------------------------------------------------
 
-  final let mRotation_property : EBStoredProperty_Int
+  final let mRotation_property : EBStoredProperty_CanariAngle
 
   //------------------------------------------------------------------------------------------------
 
-  final var mRotation : Int {
+  final var mRotation : CanariAngle {
     get { return self.mRotation_property.propval }
   }
 
@@ -219,7 +219,7 @@ final class CommentInSchematic : SchematicObject
     self.mSize_property = EBStoredProperty_Double (defaultValue: 11, undoManager: inUndoManager, key: "mSize")
     self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mHorizontalAlignment")
     self.mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center, undoManager: inUndoManager, key: "mVerticalAlignment")
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mRotation_property = EBStoredProperty_CanariAngle (defaultValue: .degree (Double (0) / 1000.0), undoManager: inUndoManager, key: "mRotation")
     self.mBold_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mBold")
     self.mX_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mX")
     self.mY_property = EBStoredProperty_CanariLength (defaultValue: .zero, undoManager: inUndoManager, key: "mY")

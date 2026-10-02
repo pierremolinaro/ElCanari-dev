@@ -767,7 +767,7 @@ extension AutoLayoutProjectDocument {
   private func checkTrackInsulation (_ ioIssues : inout [CanariIssue],
                                      _ inPadNetDictionary : [SideAndNetName : [PadGeometryForERC]],
                                      artworkClearance inArtworkClearance : CanariLength) {
-    let clearance = inArtworkClearance.ptValue
+  //  let clearance = inArtworkClearance
   //--- Track inventory
     var trackSideNetDictionary = [SideAndNetName : [TrackForERC]] ()
     var restrictRectangles = [TrackSide : [PropertyRectForERC]] () // (rect, allow pads inside)
@@ -777,9 +777,9 @@ extension AutoLayoutProjectDocument {
     for object in self.rootObject.mBoardObjects.values {
       if let track = object as? BoardTrack {
         let netName = track.mNet?.mNetName ?? ""
-        let p1 = track.mConnectorP1!.location!.ptValue
-        let p2 = track.mConnectorP2!.location!.ptValue
-        let w = track.actualTrackWidth!.ptValue + clearance
+        let p1 = track.mConnectorP1!.location!
+        let p2 = track.mConnectorP2!.location!
+        let w = track.actualTrackWidth! + inArtworkClearance
         let s = GeometricOblong (p1: p1, p2: p2, width: w, capStyle: track.mEndStyle_property.propval)
         let key = SideAndNetName (side: track.mSide, netName: netName)
         trackSideNetDictionary [key] = trackSideNetDictionary [key, default: []] + [TrackForERC (geometry: s, exposeCopper: track.mAddedToSolderMask)]
@@ -793,8 +793,8 @@ extension AutoLayoutProjectDocument {
           isVia = layerSet.count > 1
         }
         if isVia {
-          let p = via.location!.ptValue
-          let radius = (via.actualPadDiameter!.ptValue + clearance) / 2.0
+          let p = via.location!
+          let radius = (via.actualPadDiameter! + inArtworkClearance) / 2.0
           let c = GeometricCircle (center: p, radius: radius)
           let netName = via.netNameFromTracks!
           viaDictionary [netName] = viaDictionary [netName, default: []] + [c]
@@ -806,7 +806,7 @@ extension AutoLayoutProjectDocument {
           width: propertyRectangle.mWidth,
           height: propertyRectangle.mHeight
         )
-        let r = GeometricRect (cocoaRect: canariRect.ptValue)
+        let r = GeometricRect (canariRect)
         let allowPadsInside = propertyRectangle.mAllowPadsInside
         if propertyRectangle.mIsInFrontLayer {
           let pr = PropertyRectForERC (
@@ -830,10 +830,10 @@ extension AutoLayoutProjectDocument {
         }
       }else if let nph = object as? NonPlatedHole {
         let r = GeometricOblong (
-          center: NSPoint (x: nph.mX, y: nph.mY),
-          width: nph.mWidth.ptValue,
-          height: nph.mHeight.ptValue,
-          angleInDegrees: CGFloat (nph.mRotation) / 1000.0
+          center: CanariPoint (x: nph.mX, y: nph.mY),
+          width: nph.mWidth,
+          height: nph.mHeight,
+          angle: nph.mRotation
         )
         nonPlatedHoles.append (r)
       }else if let text = object as? BoardText {
@@ -841,7 +841,7 @@ extension AutoLayoutProjectDocument {
         case .legendBack, .legendFront :
           ()
         case .layoutFront :
-          let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
+          let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: inArtworkClearance)
           let key = SideAndNetName (side: .front, netName: "")
           var tracks = [TrackForERC] ()
           for oblong in oblongs {
@@ -849,7 +849,7 @@ extension AutoLayoutProjectDocument {
           }
           trackSideNetDictionary [key] = trackSideNetDictionary [key, default: []] + tracks
         case .layoutBack :
-          let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: clearance)
+          let (_, _, _, _, oblongs) = text.displayInfos (extraWidth: inArtworkClearance)
           let key = SideAndNetName (side: .back, netName: "")
           var tracks = [TrackForERC] ()
           for oblong in oblongs {
