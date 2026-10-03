@@ -385,8 +385,6 @@ extension AutoLayoutMergerDocument {
         fontSize: fontSize,
         thickness: thickness,
         font: ioTemporaryBoardModel.mKicadFont,
-//        leftMM: ioTemporaryBoardModel.mLeftMM,
-//        bottomMM: ioTemporaryBoardModel.mBottomMM,
         boardRect: ioTemporaryBoardModel.mBoardRect_mm,
         self.undoManager
       )

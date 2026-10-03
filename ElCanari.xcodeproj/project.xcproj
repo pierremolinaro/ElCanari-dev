@@ -21,7 +21,7 @@
       "kind": "remote",
       "repository": "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git",
       "version": {
-        "revision": "7da6783ad26d043653b67844490109511d9f17e3",
+        "revision": "b3778e62ea11c47bc9a2aab36ec3de63d5ff980c",
       },
     },
   ],
@@ -12801,13 +12801,6 @@
           ],
         }, {
           "path": "CanariPoint+extension.swift",
-          "encoding": "utf8",
-          "target-membership": [
-            "ElCanari-Debug/compile-sources",
-            "ElCanari-Release/compile-sources",
-          ],
-        }, {
-          "path": "CanariRect.swift",
           "encoding": "utf8",
           "target-membership": [
             "ElCanari-Debug/compile-sources",

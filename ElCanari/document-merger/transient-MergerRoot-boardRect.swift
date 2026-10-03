@@ -26,7 +26,7 @@ import CanariGeometry
       var idx = 0
       while idx < self_boardInstances_instanceRect.count {
         if let rect = self_boardInstances_instanceRect [idx].instanceRect {
-          r = r.union (rect)
+          r = r.unioning (rect)
         }
         idx += 1
       }

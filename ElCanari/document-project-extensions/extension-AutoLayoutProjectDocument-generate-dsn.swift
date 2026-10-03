@@ -74,8 +74,8 @@ extension AutoLayoutProjectDocument {
     let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
     let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance.cuValue)
   //--- Border
-    let boardLimitExtend = 0
-    let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
+//    let boardLimitExtend = 0
+    let boardBoundBox = self.rootObject.interiorBoundBox! // § .insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
     let boardBoundaryPolygonVertices = self.buildBoardBoundaryPolygon (converter)
   //--- Layer configuration
     let layerConfiguration = self.rootObject.mLayerConfiguration
@@ -1018,7 +1018,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
   case .bottomLeft:
     origin = inBoardRect.bottomLeft
   case .middleBottom:
-    origin = inBoardRect.bottomCenter
+    origin = inBoardRect.bottomMiddle
   case .bottomRight:
     origin = inBoardRect.bottomRight
   case .middleRight:
@@ -1026,7 +1026,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
   case .topRight:
     origin = inBoardRect.topRight
   case .middleTop:
-    origin = inBoardRect.topCenter
+    origin = inBoardRect.topMiddle
   case .topLeft:
     origin = inBoardRect.topLeft
   case .middleLeft:

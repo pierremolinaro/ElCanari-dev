@@ -26,8 +26,6 @@ final class GeometricRect {
   init (_ inRect : CanariRect) {
     self.p1 = CanariPoint (x: inRect.minX, y: inRect.midY)
     self.p2 = CanariPoint (x: inRect.maxX, y: inRect.midY)
-//    self.p1 = CanariPoint (x: NSMinX (inRect), y: NSMidY (inRect))
-//    self.p2 = CanariPoint (x: NSMaxX (inRect), y: NSMidY (inRect))
     self.width = inRect.size.height
   }
 

@@ -437,7 +437,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
         points.append (slavePadDescriptor.center)
       }
     }
-    return CanariRect (points: points)
+    return CanariRect (points)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -973,7 +973,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : EBRea
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90Clockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet))
+    let r = CanariRect (Array (self.mRotate90PointSet))
     var userSet = EBReferenceSet <EBManagedObject> ()
     for object in self.selectedArray.values {
       object.rotate90Clockwise (from: r.center, userSet: &userSet)
@@ -983,7 +983,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : EBRea
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func rotate90CounterClockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet))
+    let r = CanariRect (Array (self.mRotate90PointSet))
     var userSet = EBReferenceSet <EBManagedObject> ()
     for object in self.selectedArray.values {
       object.rotate90CounterClockwise (from: r.center, userSet: &userSet)

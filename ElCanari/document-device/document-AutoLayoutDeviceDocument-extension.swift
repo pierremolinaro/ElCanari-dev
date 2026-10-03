@@ -42,7 +42,7 @@ extension AutoLayoutDeviceDocument {
         for pinType in symbolPinTypes.values {
           pinLocations.append (CanariPoint (x: pinType.mPinX, y: pinType.mPinY))
         }
-        let pinsCenter = CanariRect (points: pinLocations).center
+        let pinsCenter = CanariRect (pinLocations).center
         self.rootObject.mSymbolTypes_property.add (symbolType)
         let symbolInstance = SymbolInstanceInDevice (self.undoManager)
         self.rootObject.mSymbolInstances_property.add (symbolInstance)
@@ -179,7 +179,7 @@ extension AutoLayoutDeviceDocument {
         for masterPad in masterPads.values {
           masterPadsLocations.append (CanariPoint (x: masterPad.mCenterX, y: masterPad.mCenterY))
         }
-        let masterPadsCenter = CanariRect (points: masterPadsLocations).center
+        let masterPadsCenter = CanariRect (masterPadsLocations).center
 
         let package = PackageInDevice (self.undoManager)
         package.mX = -masterPadsCenter.x

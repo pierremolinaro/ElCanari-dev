@@ -96,30 +96,43 @@ extension PackageArc {
                       alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
                       alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                       shift _ : Bool) {
-    let center = NSPoint (x: self.xCenter, y: self.yCenter)
-    let radius = self.radius.ptValue
+//    let center = NSPoint (x: self.xCenter, y: self.yCenter)
+    let center = CanariPoint (x: self.xCenter, y: self.yCenter)
+//    let radius = self.radius.ptValue
     let startAngle = self.startAngle
     let arcAngle = self.arcAngle
     if inKnobIndex == PACKAGE_ARC_CENTER {
       self.xCenter += inDx
       self.yCenter += inDy
     }else if inKnobIndex == PACKAGE_ARC_RADIUS {
-      let t = NSAffineTransform ()
-      t.translateX (by: center.x, yBy: center.y)
-      t.rotate (byDegrees: (startAngle - arcAngle / 2.0).unsignedDegreeValue)
-      let currentRadiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
-      let newRadiusKnob = NSPoint (
-        x: currentRadiusKnob.x + inDx.ptValue,
-        y: currentRadiusKnob.y + inDy.ptValue
+      let tr = CanariAffinity
+        .translating (x: self.xCenter, y: self.yCenter)
+        .rotating (startAngle - arcAngle / 2.0)
+      let currentRadiusKnob = tr.transforming (CanariPoint (x: self.radius))
+      let newRadiusKnob = CanariPoint (
+        x: currentRadiusKnob.x + inDx,
+        y: currentRadiusKnob.y + inDy
       )
-      let deltaX = center.x - newRadiusKnob.x
-      let deltaY = center.y - newRadiusKnob.y
-      let newRadius = sqrt (deltaX * deltaX + deltaY * deltaY)
-      self.radius = CanariLength.pt (newRadius)
+      let deltaX = self.xCenter - newRadiusKnob.x
+      let deltaY = self.yCenter - newRadiusKnob.y
+      self.radius = sqrt (deltaX * deltaX + deltaY * deltaY)
+
+//      let t = NSAffineTransform ()
+//      t.translateX (by: center.x, yBy: center.y)
+//      t.rotate (byDegrees: (startAngle - arcAngle / 2.0).unsignedDegreeValue)
+//      let currentRadiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
+//      let newRadiusKnob = NSPoint (
+//        x: currentRadiusKnob.x + inDx.ptValue,
+//        y: currentRadiusKnob.y + inDy.ptValue
+//      )
+//      let deltaX = center.x - newRadiusKnob.x
+//      let deltaY = center.y - newRadiusKnob.y
+//      let newRadius = sqrt (deltaX * deltaX + deltaY * deltaY)
+//      self.radius = CanariLength.pt (newRadius)
     }else if inKnobIndex == PACKAGE_ARC_START_ANGLE {
-      let newStartAngleKnob = NSPoint (
-        x: inAlignedMouseLocationX.ptValue,
-        y: inAlignedMouseLocationY.ptValue
+      let newStartAngleKnob = CanariPoint (
+        x: inAlignedMouseLocationX,
+        y: inAlignedMouseLocationY
       )
 //      let newStartAngle = NSPoint.angleInDegrees (center, newStartAngleKnob)
       let newStartAngle = center.angle (to: newStartAngleKnob)
@@ -127,9 +140,9 @@ extension PackageArc {
       self.startAngle = newStartAngle
 //      self.startAngle = newCanariStartAngle
     }else if inKnobIndex == PACKAGE_ARC_END_ANGLE {
-      let newEndAngleKnob = NSPoint (
-        x: inAlignedMouseLocationX.ptValue,
-        y: inAlignedMouseLocationY.ptValue
+      let newEndAngleKnob = CanariPoint (
+        x: inAlignedMouseLocationX,
+        y: inAlignedMouseLocationY
       )
 //      var newArcAngle = NSPoint.angleInDegrees (center, newEndAngleKnob) - startAngle
 //      if newArcAngle < 0.0 {

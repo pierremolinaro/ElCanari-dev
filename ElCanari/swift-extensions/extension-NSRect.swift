@@ -78,6 +78,18 @@ extension NSRect : @retroactive Hashable {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Canari Rect
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var canariRect : CanariRect {
+    return CanariRect (
+      left: .cu (self.origin.x),
+      bottom: .cu  (self.origin.y),
+      width: .cu  (self.size.width),
+      height: .cu  (self.size.height)
+    )
+  }
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   CohenSutherlandCodeForPoint
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
