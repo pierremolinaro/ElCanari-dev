@@ -165,12 +165,6 @@ extension Set where Element == CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func insert (x inX : Int, y inY : Int) {
-    self.insert (CanariPoint (x: .cu (inX), y: .cu (inY)))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   mutating func insert (x inX : CanariLength, y inY : CanariLength) {
     self.insert (CanariPoint (x: inX, y: inY))
   }

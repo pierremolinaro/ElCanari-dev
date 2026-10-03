@@ -156,10 +156,10 @@ extension AutoLayoutMergerDocument {
       origin: .zero,
       size: CanariSize (width: self.rootObject.boardWidth!, height: self.rootObject.boardHeight!)
     )
-    let p0 = ProductPoint (canariPoint: boardRect.bottomLeft)
-    let p1 = ProductPoint (canariPoint: boardRect.bottomRight)
-    let p2 = ProductPoint (canariPoint: boardRect.topRight)
-    let p3 = ProductPoint (canariPoint: boardRect.topLeft)
+    let p0 = boardRect.bottomLeft
+    let p1 = boardRect.bottomRight
+    let p2 = boardRect.topRight
+    let p3 = boardRect.topLeft
     product.append (roundSegment: LayeredProductSegment (p1: p0, p2: p1, width: BOARD_LIMIT_WIDTH, layers: .boardLimits))
     product.append (roundSegment: LayeredProductSegment (p1: p1, p2: p2, width: BOARD_LIMIT_WIDTH, layers: .boardLimits))
     product.append (roundSegment: LayeredProductSegment (p1: p2, p2: p3, width: BOARD_LIMIT_WIDTH, layers: .boardLimits))

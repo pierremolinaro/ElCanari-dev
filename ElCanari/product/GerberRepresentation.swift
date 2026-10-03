@@ -30,8 +30,8 @@ struct GerberRepresentation {
   //  Populate
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func addRoundSegment (p1 inP1 : ProductPoint,
-                                 p2 inP2 : ProductPoint,
+  mutating func addRoundSegment (p1 inP1 : CanariPoint,
+                                 p2 inP2 : CanariPoint,
                                  width inWidth : CanariLength) {
     if inP1 == inP2 {
       let circle = Self.Circle (center: inP1, diameter: inWidth)
@@ -44,7 +44,7 @@ struct GerberRepresentation {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func addCircle (center inCenter : ProductPoint,
+  mutating func addCircle (center inCenter : CanariPoint,
                            diameter inDiameter : CanariLength) {
     let circle = Self.Circle (center: inCenter, diameter: inDiameter)
     self.mFilledCircles.append (circle)
@@ -52,8 +52,8 @@ struct GerberRepresentation {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func addPolygon (origin inOrigin : ProductPoint,
-                            points inPoints : [ProductPoint]) {
+  mutating func addPolygon (origin inOrigin : CanariPoint,
+                            points inPoints : [CanariPoint]) {
     let polygon = Self.Polygon (origin: inOrigin, points: inPoints)
     self.mFilledPolygons.append (polygon)
   }
@@ -96,7 +96,7 @@ struct GerberRepresentation {
       s += "D\(idx)*\n"
    //--- Oblongs
       s += "G01*\n" // Linear interpolation
-      var currentPoint : ProductPoint? = nil
+      var currentPoint : CanariPoint? = nil
       for oblong in self.mRoundSegments {
         if oblong.width == aperture {
           if let p = currentPoint, p == oblong.p1 {
@@ -140,23 +140,23 @@ struct GerberRepresentation {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct Oblong {
-    let p1 : ProductPoint
-    let p2 : ProductPoint
+    let p1 : CanariPoint
+    let p2 : CanariPoint
     let width : CanariLength
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct Circle {
-    let center : ProductPoint
+    let center : CanariPoint
     let diameter : CanariLength
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   struct Polygon {
-    let origin : ProductPoint
-    let points : [ProductPoint]
+    let origin : CanariPoint
+    let points : [CanariPoint]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -195,7 +195,7 @@ fileprivate extension CanariLength {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate extension ProductPoint {
+fileprivate extension CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -26,8 +26,8 @@ struct LayeredProductSegment : Codable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (p1 inP1 : ProductPoint,
-        p2 inP2 : ProductPoint,
+  init (p1 inP1 : CanariPoint,
+        p2 inP2 : CanariPoint,
         width inWidth : CanariLength,
         layers inLayers : ProductLayerSet) {
     self.x1 = inP1.x
@@ -40,15 +40,15 @@ struct LayeredProductSegment : Codable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var p1 : ProductPoint { ProductPoint (x: self.x1, y: self.y1) }
+  var p1 : CanariPoint { CanariPoint (x: self.x1, y: self.y1) }
 
-  var p2 : ProductPoint { ProductPoint (x: self.x2, y: self.y2) }
+  var p2 : CanariPoint { CanariPoint (x: self.x2, y: self.y2) }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func gerberPolygon () -> (ProductPoint, [ProductPoint]) {
-    let p1 = ProductPoint (x: self.x1, y: self.y1).ptValue
-    let p2 = ProductPoint (x: self.x2, y: self.y2).ptValue
+  func gerberPolygon () -> (CanariPoint, [CanariPoint]) {
+    let p1 = CanariPoint (x: self.x1, y: self.y1).ptValue
+    let p2 = CanariPoint (x: self.x2, y: self.y2).ptValue
     let w = self.width.value (in: .pt)
     let d = p1.distance (to: p2)
     let angleRadian = p1.angle (to: p2).signedRadianValue
@@ -57,16 +57,16 @@ struct LayeredProductSegment : Codable {
     t.forward (w / 2.0)
     t.rotate270 ()
     t.forward (w / 2.0)
-    let bottomLeft = ProductPoint (ptValue: t.location)
+    let bottomLeft = t.location.canariPoint
     t.rotate180 ()
     t.forward (d + w)
-    let bottomRight = ProductPoint (ptValue: t.location)
+    let bottomRight = t.location.canariPoint
     t.rotate90 ()
     t.forward (w)
-    let topRight = ProductPoint (ptValue: t.location)
+    let topRight = t.location.canariPoint
     t.rotate90 ()
     t.forward (d + w)
-    let topLeft = ProductPoint (ptValue: t.location)
+    let topLeft = t.location.canariPoint
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 
@@ -74,12 +74,12 @@ struct LayeredProductSegment : Codable {
 
   @MainActor func boardModelPad (_ inUndoManager : UndoManager?,
                                  endStyle inEndStyle : TrackEndStyle) -> BoardModelPad {
-    let center = ProductPoint (
+    let center = CanariPoint (
       x: (self.x1 + self.x2) / 2,
       y: (self.y1 + self.y2) / 2
     )
-    let p1 = ProductPoint (x: self.x1, y: self.y1).ptValue
-    let p2 = ProductPoint (x: self.x2, y: self.y2).ptValue
+    let p1 = CanariPoint (x: self.x1, y: self.y1).ptValue
+    let p2 = CanariPoint (x: self.x2, y: self.y2).ptValue
     let d = p1.distance (to: p2)
     let angle = p1.angle (to: p2)
 

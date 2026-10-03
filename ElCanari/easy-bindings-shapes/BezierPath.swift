@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 // BezierPath
@@ -594,10 +595,10 @@ struct BezierPath : Hashable {
     }
     var result = [ProductSegment] ()
     for linePath in transformedLinePathArray {
-      let firstPoint = ProductPoint (ptValue: linePath.origin)
+      let firstPoint = linePath.origin.canariPoint
       var currentPoint = firstPoint
       for p in linePath.lines {
-        let pp = ProductPoint (ptValue: p)
+        let pp = p.canariPoint
         result.append (ProductSegment (p1: currentPoint, p2: pp))
         currentPoint = pp
       }

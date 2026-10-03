@@ -24,15 +24,15 @@ struct CountedSet <Element : Hashable> {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func remove (_ inElement : Element) {
-    if let count = self.mDictionary [inElement] {
-      if count == 1 {
-        self.mDictionary [inElement] = nil
-      }else{
-        self.mDictionary [inElement] = count - 1
-      }
-    }
-  }
+//  mutating func remove (_ inElement : Element) {
+//    if let count = self.mDictionary [inElement] {
+//      if count == 1 {
+//        self.mDictionary [inElement] = nil
+//      }else{
+//        self.mDictionary [inElement] = count - 1
+//      }
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

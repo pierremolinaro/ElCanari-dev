@@ -24,7 +24,7 @@ struct LayeredProductCircle : Codable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (center inCenter : ProductPoint,
+  init (center inCenter : CanariPoint,
         diameter inDiameter : CanariLength,
         layers inLayers : ProductLayerSet) {
     self.x = inCenter.x
@@ -35,7 +35,7 @@ struct LayeredProductCircle : Codable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var center : ProductPoint { ProductPoint (x: self.x, y: self.y) }
+  var center : CanariPoint { CanariPoint (x: self.x, y: self.y) }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

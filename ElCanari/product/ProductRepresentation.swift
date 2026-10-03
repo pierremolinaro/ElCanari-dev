@@ -132,7 +132,7 @@ struct ProductRepresentation : Codable {
     modelAffineTransform.rotate (byDegrees: angleInDegrees)
     modelAffineTransform.translate (x: -width / 2.0, y: -height / 2.0)
     for circle in inProduct.circles {
-      let center = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: circle.x, y: circle.y).ptValue))
+      let center = modelAffineTransform.transform (NSPoint (x: circle.x, y: circle.y)).canariPoint
       let newCircle = LayeredProductCircle (
         center: center,
         diameter: circle.d,
@@ -146,8 +146,8 @@ struct ProductRepresentation : Codable {
         layers.remove (.boardLimits)
         layers.insert (.internalBoardLimits)
       }
-      let p1 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).ptValue))
-      let p2 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).ptValue))
+      let p1 = modelAffineTransform.transform (NSPoint (x: segment.x1, y: segment.y1)).canariPoint
+      let p2 = modelAffineTransform.transform (NSPoint (x: segment.x2, y: segment.y2)).canariPoint
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -157,8 +157,8 @@ struct ProductRepresentation : Codable {
       self.roundSegments.append (s)
     }
     for segment in inProduct.squareSegments {
-      let p1 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x1, y: segment.y1).ptValue))
-      let p2 = ProductPoint (ptValue: modelAffineTransform.transform (ProductPoint (x: segment.x2, y: segment.y2).ptValue))
+      let p1 = modelAffineTransform.transform (NSPoint (x: segment.x1, y: segment.y1)).canariPoint
+      let p2 = modelAffineTransform.transform (NSPoint (x: segment.x2, y: segment.y2)).canariPoint
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -315,7 +315,7 @@ struct ProductRepresentation : Codable {
       if !componentPad.layers.intersection (inLayers).isEmpty {
         let pad = BoardModelPad (inUndoManager)
         let relativeCenter = NSPoint ()
-        let absoluteCenter = ProductPoint (ptValue: componentPad.af.transform (relativeCenter))
+        let absoluteCenter = componentPad.af.transform (relativeCenter).canariPoint
         pad.x = absoluteCenter.x
         pad.y = absoluteCenter.y
         pad.width = componentPad.width

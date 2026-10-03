@@ -49,8 +49,8 @@ let options = [
   "EBObservablePropertyController,HiddenBindingController,EBOutletEvent,Any?",
   "--relative-results",
   "--project", "ElCanari.xcodeproj",
-  "--schemes", "ElCanari-Debug",
-  "--targets", "ElCanari-Debug"
+  "--schemes", "ElCanari-Release",
+//  "--targets", "ElCanari-Debug"
 ]
 runCommand ("/opt/homebrew/bin/periphery", options)
 

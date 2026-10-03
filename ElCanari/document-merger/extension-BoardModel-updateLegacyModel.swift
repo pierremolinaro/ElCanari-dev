@@ -137,8 +137,8 @@ extension AutoLayoutMergerDocument {
                                    layer inLayer : ProductLayerSet,
                                    to ioProduct : inout ProductRepresentation) {
     for segment in inArray.values {
-      let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
-      let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
+      let p1 = CanariPoint (x: segment.x1, y: segment.y1)
+      let p2 = CanariPoint (x: segment.x2, y: segment.y2)
       if p1 == p2 {
         let s = LayeredProductCircle (
           center: p1,
@@ -168,8 +168,8 @@ extension AutoLayoutMergerDocument {
   fileprivate func appendHoles (from inArray : EBReferenceArray <SegmentEntity>,
                                 to ioProduct : inout ProductRepresentation) {
     for segment in inArray.values {
-      let p1 = ProductPoint (canariPoint: CanariPoint (x: segment.x1, y: segment.y1))
-      let p2 = ProductPoint (canariPoint: CanariPoint (x: segment.x2, y: segment.y2))
+      let p1 = CanariPoint (x: segment.x1, y: segment.y1)
+      let p2 = CanariPoint (x: segment.x2, y: segment.y2)
       let width = segment.width
       if p1 == p2 {
         let s = LayeredProductCircle (
@@ -195,7 +195,7 @@ extension AutoLayoutMergerDocument {
   fileprivate func appendVias (from inArray : EBReferenceArray <BoardModelVia>,
                                to ioProduct : inout ProductRepresentation) {
     for via in inArray.values {
-      let center = ProductPoint (canariPoint: CanariPoint (x: via.x, y: via.y))
+      let center = CanariPoint (x: via.x, y: via.y)
       let s = LayeredProductCircle (
         center: center,
         diameter: via.padDiameter,

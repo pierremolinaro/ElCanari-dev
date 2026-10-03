@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -56,7 +57,7 @@ extension ProductRepresentation {
       }
     }
   //--- Add square segments
-    var polygons = [(ProductPoint, [ProductPoint])] ()
+    var polygons = [(CanariPoint, [CanariPoint])] ()
     for segment in self.squareSegments {
       if !inItemSet.intersection (segment.layers).isEmpty {
         polygons.append (segment.gerberPolygon ())

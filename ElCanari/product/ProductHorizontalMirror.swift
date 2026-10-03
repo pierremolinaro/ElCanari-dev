@@ -20,12 +20,12 @@ enum ProductHorizontalMirror {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func mirrored (_ inPoint : ProductPoint) -> ProductPoint {
+  func mirrored (_ inPoint : CanariPoint) -> CanariPoint {
     switch self {
     case .noMirror :
       return inPoint
     case .mirror (let boardWidth) :
-      return ProductPoint (
+      return CanariPoint (
         x: boardWidth - inPoint.x,
         y: inPoint.y
       )
@@ -34,12 +34,12 @@ enum ProductHorizontalMirror {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func mirrored (_ inPoints : [ProductPoint]) -> [ProductPoint] {
+  func mirrored (_ inPoints : [CanariPoint]) -> [CanariPoint] {
     switch self {
     case .noMirror :
       return inPoints
     case .mirror (_) :
-      var points = [ProductPoint] ()
+      var points = [CanariPoint] ()
       for p in inPoints {
         points.append (self.mirrored (p))
       }

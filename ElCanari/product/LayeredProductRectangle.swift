@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 // Un rectangle est défini par une transformation affine ; celle-ci représente la transformation du
@@ -24,13 +25,13 @@ struct LayeredProductRectangle : Codable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func polygon () -> (ProductPoint, [ProductPoint]) {
+  func polygon () -> (CanariPoint, [CanariPoint]) {
     let w = 0.5 // Moitié de la largeur
     let h = 0.5 // Moitié de la hauteur
-    let bottomLeft  = ProductPoint (ptValue: self.af.transform (NSPoint (x: -w, y: -h)))
-    let bottomRight = ProductPoint (ptValue: self.af.transform (NSPoint (x: +w, y: -h)))
-    let topRight    = ProductPoint (ptValue: self.af.transform (NSPoint (x: +w, y: +h)))
-    let topLeft     = ProductPoint (ptValue: self.af.transform (NSPoint (x: -w, y: +h)))
+    let bottomLeft  = self.af.transform (NSPoint (x: -w, y: -h)).canariPoint
+    let bottomRight = self.af.transform (NSPoint (x: +w, y: -h)).canariPoint
+    let topRight    = self.af.transform (NSPoint (x: +w, y: +h)).canariPoint
+    let topLeft     = self.af.transform (NSPoint (x: -w, y: +h)).canariPoint
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 

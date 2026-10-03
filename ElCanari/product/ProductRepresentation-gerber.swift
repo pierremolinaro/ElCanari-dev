@@ -151,7 +151,7 @@ fileprivate extension CanariLength {
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate extension ProductPoint {
+fileprivate extension CanariPoint {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
