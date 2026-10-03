@@ -58,14 +58,14 @@ struct GeometricCircle {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var bezierPath : BezierPath {
-    return BezierPath (ovalIn: self.bounds)
+    return BezierPath (ovalIn: self.bounds.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bounds : NSRect {
-    let s = NSSize (width: self.radius * 2.0, height: self.radius * 2.0)
-    return NSRect (center: self.center.ptValue, size: s)
+  var bounds : CanariRect {
+    let s = CanariSize (width: self.radius * 2.0, height: self.radius * 2.0)
+    return CanariRect (center: self.center, size: s)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

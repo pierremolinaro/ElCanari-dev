@@ -107,7 +107,7 @@ struct GeometricOblong {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bounds : NSRect {
+  var bounds : CanariRect {
     switch self.capStyle {
     case .round :
       let w = self.width / 2.0
@@ -115,7 +115,7 @@ struct GeometricOblong {
       let right  = max (self.p1.x, self.p2.x) + w
       let bottom = min (self.p1.y, self.p2.y) - w
       let top    = max (self.p1.y, self.p2.y) + w
-      return NSRect (x: left, y: bottom, width: right - left, height: top - bottom)
+      return CanariRect (left: left, bottom: bottom, width: right - left, height: top - bottom)
     case .square :
       let r = self.geometricRect
       return r.bounds

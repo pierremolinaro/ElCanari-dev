@@ -381,17 +381,17 @@ final class PadGeometryForERC {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mCachedBounds : NSRect? = nil
-  var bounds : NSRect {
+  private var mCachedBounds : CanariRect? = nil
+  var bounds : CanariRect {
     if let b = self.mCachedBounds {
       return b
     }else{
-      var b = NSRect.null
+      var b = CanariRect.zero
       for c in self.circles {
-        b = b.union (c.bounds)
+        b = b.unioning (c.bounds)
       }
       for r in self.rectangles {
-        b = b.union (r.bounds)
+        b = b.unioning (r.bounds)
       }
       self.mCachedBounds = b
       return b

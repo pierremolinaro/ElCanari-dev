@@ -73,19 +73,19 @@ final class GeometricRect {
   //   vertices
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mVerticesCache : [NSPoint]? = nil
-  var vertices : [NSPoint] {
+  private var mVerticesCache : [CanariPoint]? = nil
+  var vertices : [CanariPoint] {
     if let v = self.mVerticesCache {
       return v
     }else{
       let angle = self.p1.angle (to: self.p2)
       let dx = self.width * 0.5 * sin (angle)
       let dy = self.width * 0.5 * cos (angle)
-      var v = [NSPoint] ()
-      v.append (NSPoint (x: self.p1.x - dx, y: self.p1.y + dy))
-      v.append (NSPoint (x: self.p1.x + dx, y: self.p1.y - dy))
-      v.append (NSPoint (x: self.p2.x + dx, y: self.p2.y - dy))
-      v.append (NSPoint (x: self.p2.x - dx, y: self.p2.y + dy))
+      var v = [CanariPoint] ()
+      v.append (CanariPoint (x: self.p1.x - dx, y: self.p1.y + dy))
+      v.append (CanariPoint (x: self.p1.x + dx, y: self.p1.y - dy))
+      v.append (CanariPoint (x: self.p2.x + dx, y: self.p2.y - dy))
+      v.append (CanariPoint (x: self.p2.x - dx, y: self.p2.y + dy))
       self.mVerticesCache = v
       return v
     }
@@ -109,7 +109,7 @@ final class GeometricRect {
         let v = self.vertices
         for i in 0 ..< v.count {
           let j = (i+1) % v.count
-          let intersects = inCircle.intersects (segmentFrom: v [i].canariPoint, to: v [j].canariPoint)
+          let intersects = inCircle.intersects (segmentFrom: v [i], to: v [j])
           if intersects {
             return true
           }
@@ -132,12 +132,13 @@ final class GeometricRect {
       do{
         var i = 0
         while intersects && (i < vertices1.count) {
-          let ref = NSPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices1 [(i+2) % vertices1.count])
+          let ref = CanariPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices1 [(i+2) % vertices1.count])
           var outside = true
           var j = 0
           while outside && (j < vertices2.count) {
-            let test = NSPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices2 [j])
-            outside = (ref * test) < 0.0
+            let test = CanariPoint.product (vertices1 [i], vertices1 [(i+1) % vertices1.count], vertices2 [j])
+            outside = ref.isNegative != test.isNegative
+//            outside = (ref * test) < 0.0
             j += 1
           }
           intersects = !outside
@@ -148,12 +149,13 @@ final class GeometricRect {
       if intersects {
         var i = 0
         while intersects && (i < vertices2.count) {
-          let ref = NSPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices2 [(i+2) % vertices2.count])
+          let ref = CanariPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices2 [(i+2) % vertices2.count])
           var outside = true
           var j = 0
           while outside && (j < vertices1.count) {
-            let test = NSPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices1 [j])
-            outside = (ref * test) < 0.0
+            let test = CanariPoint.product (vertices2 [i], vertices2 [(i+1) % vertices2.count], vertices1 [j])
+            outside = ref.isNegative != test.isNegative
+//            outside = (ref * test) < 0.0
             j += 1
           }
           intersects = !outside
@@ -167,8 +169,8 @@ final class GeometricRect {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bounds : NSRect {
-    return NSRect (points: self.vertices)
+  var bounds : CanariRect {
+    return CanariRect (self.vertices)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -176,9 +178,9 @@ final class GeometricRect {
   var bezierPath : BezierPath {
     var bp = BezierPath ()
     let v = self.vertices
-    bp.move (to: v [0])
+    bp.move (to: v [0].ptValue)
     for idx in 1 ..< v.count {
-      bp.line (to: v [idx])
+      bp.line (to: v [idx].ptValue)
     }
     bp.close ()
     return bp
