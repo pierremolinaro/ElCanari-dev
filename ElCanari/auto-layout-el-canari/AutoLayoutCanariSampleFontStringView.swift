@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -68,9 +69,11 @@ final class AutoLayoutCanariSampleFontStringView : ALB_NSView {
     bp.stroke ()
     if !self.mSampleStringBezierPath.isEmpty {
       let size = self.mSampleStringBezierPath.bounds.size
-      let tr = NSAffineTransform ()
-      tr.translateX (by: (self.bounds.size.width - size.width) * 0.5, yBy: (self.bounds.size.height - size.height) * 0.5)
-      bp = tr.transform (self.mSampleStringBezierPath)
+      let af = CanariAffinity.translating (
+        x: .pt (self.bounds.size.width - size.width) * 0.5,
+        y: .pt (self.bounds.size.height - size.height) * 0.5
+      )
+      bp = self.mSampleStringBezierPath.transformed (by: af)
       NSColor.black.setStroke ()
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round

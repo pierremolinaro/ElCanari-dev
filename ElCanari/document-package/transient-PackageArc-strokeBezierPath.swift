@@ -26,19 +26,13 @@ import CanariGeometry
        _ self_endTangent : CanariLength
 ) -> BezierPath {
 //--- START OF USER ZONE 2
-  let center = NSPoint (x: self_xCenter, y: self_yCenter)
-  let radius = self_radius.ptValue
-  let startTangentLength = self_startTangent.ptValue
-  let endTangentLength = self_endTangent.ptValue
-  let startAngle = self_startAngle.unsignedDegreeValue
-  let arcAngle = self_arcAngle.unsignedDegreeValue
   let bp = BezierPath (
-    arcWithTangentFromCenter: center,
-    radius: radius,
-    startAngleInDegrees: startAngle,
-    arcAngleInDegrees: arcAngle,
-    startTangentLength: startTangentLength,
-    endTangentLength: endTangentLength,
+    arcWithTangentFromCenter: CanariPoint (x: self_xCenter, y: self_yCenter),
+    radius: self_radius,
+    startAngle: self_startAngle,
+    arcAngle: self_arcAngle,
+    startTangentLength: self_startTangent,
+    endTangentLength: self_endTangent,
     pathIsClosed: self_pathIsClosed
   )
   return bp

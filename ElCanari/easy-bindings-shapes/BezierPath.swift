@@ -296,20 +296,10 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func transformed (by inTransform : AffineTransform) -> BezierPath {
-//    var result = self
-//    result.transform (using: inTransform)
-//    return result
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func transformed (by inTransform : CanariAffinity) -> BezierPath {
     var result = self
     result.internalInsulatePath ()
     result.mPath.transform (using: AffineTransform (inTransform.cgAffineTransform))
-//    self.mPath.transform (using: transform)
-//    result.transform (using: AffineTransform (inTransform.cgAffineTransform))
     return result
   }
 
@@ -451,58 +441,52 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (arcWithTangentFromCenter inCenter : NSPoint,
-        radius inRadius : CGFloat,
-        startAngleInDegrees inStartAngleInDegrees : CGFloat,
-        arcAngleInDegrees inArcAngleInDegrees : CGFloat,
-        startTangentLength inStartTangentLength : CGFloat,
-        endTangentLength inEndTangentLength : CGFloat,
+  init (arcWithTangentFromCenter inCenter : CanariPoint,
+        radius inRadius : CanariLength,
+        startAngle inStartAngle : CanariAngle,
+        arcAngle inArcAngle : CanariAngle,
+        startTangentLength inStartTangentLength : CanariLength,
+        endTangentLength inEndTangentLength : CanariLength,
         pathIsClosed inPathIsClosed : Bool) {
     self.init ()
-    var endAngle = inStartAngleInDegrees + inArcAngleInDegrees
-    if endAngle >= 360.0 {
-      endAngle -= 360.0
-    }else if endAngle < 0.0 {
-      endAngle += 360.0
-    }
+    let endAngle = inStartAngle + inArcAngle
+//    if endAngle >= 360.0 {
+//      endAngle -= 360.0
+//    }else if endAngle < 0.0 {
+//      endAngle += 360.0
+//    }
     self.mPath.appendArc (
-      withCenter: inCenter,
-      radius: inRadius,
-      startAngle: inStartAngleInDegrees,
-      endAngle: endAngle
+      withCenter: inCenter.ptValue,
+      radius: inRadius.ptValue,
+      startAngle: inStartAngle.unsignedDegreeValue,
+      endAngle: endAngle.unsignedDegreeValue
     )
   //--- First point
-    var t = NSAffineTransform ()
-    t.translateX (by: inCenter.x, yBy: inCenter.y)
-    t.rotate (byDegrees: inStartAngleInDegrees)
-    var firstPoint = t.transform (NSPoint (x: inRadius, y: 0.0))
-    if inStartTangentLength > 0.0 {
-      self.move (to: firstPoint)
-      t = NSAffineTransform ()
-      t.rotate (byDegrees: inStartAngleInDegrees - 90.0)
-      let p = t.transform (NSPoint (x: inStartTangentLength, y: 0.0))
-      self.relativeLine (to: p)
+    let t0 = CanariAffinity.translating (inCenter).rotating (by: inStartAngle)
+    var firstPoint = t0.transforming (x: inRadius)
+    if inStartTangentLength > .zero {
+      self.move (to: firstPoint.ptValue)
+      let t = CanariAffinity.rotating (by: inStartAngle - .degrees90)
+      let p = t.transforming (x: inStartTangentLength)
+      self.relativeLine (to: p.ptValue)
       firstPoint.x += p.x
       firstPoint.y += p.y
     }
   //--- Last Point
-    t = NSAffineTransform ()
-    t.translateX (by: inCenter.x, yBy: inCenter.y)
-    t.rotate (byDegrees: inStartAngleInDegrees + inArcAngleInDegrees)
-    var lastPoint = t.transform (NSPoint (x: inRadius, y: 0.0))
-    if inEndTangentLength > 0.0 {
-      self.move (to: lastPoint)
-      t = NSAffineTransform ()
-      t.rotate (byDegrees: inStartAngleInDegrees + inArcAngleInDegrees + 90.0)
-      let p = t.transform (NSPoint (x: inEndTangentLength, y: 0.0))
-      self.relativeLine (to: p)
+    let t1 = CanariAffinity.translating (inCenter).rotating (by: inStartAngle + inArcAngle)
+    var lastPoint = t1.transforming (x: inRadius)
+    if inEndTangentLength > .zero {
+      self.move (to: lastPoint.ptValue)
+      let t = CanariAffinity.rotating (by: inStartAngle + inArcAngle + .degrees90)
+      let p = t.transforming (x: inEndTangentLength)
+      self.relativeLine (to: p.ptValue)
       lastPoint.x += p.x
       lastPoint.y += p.y
     }
   //--- Closed ?
     if inPathIsClosed {
-      self.move (to: firstPoint)
-      self.line (to: lastPoint)
+      self.move (to: firstPoint.ptValue)
+      self.line (to: lastPoint.ptValue)
     }
   }
 

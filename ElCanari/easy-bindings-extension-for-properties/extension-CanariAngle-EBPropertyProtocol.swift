@@ -19,7 +19,7 @@ extension CanariAngle : EBStoredPropertyProtocol {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func convertToNSObject () -> NSObject {
-    let value = Int ((self.unsignedDegreeValue * 1000.0).rounded ()).bigEndian
+    let value = Int ((self.unsignedDegreeValue * 1000.0).rounded ())
     return NSNumber (value: value)
   }
 

@@ -48,6 +48,13 @@ extension NSBezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func transformed (by inTransform : CanariAffinity) -> NSBezierPath {
+    let af = NSAffineTransform (transform: inTransform.affineTransform)
+    return af.transform (self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

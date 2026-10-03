@@ -28,17 +28,17 @@ import CanariGeometry
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let center = NSPoint (x: self_xCenter, y: self_yCenter)
-    let radius = self_radius.ptValue
-    let startTangentLength = self_startTangent.ptValue
-    let endTangentLength = self_endTangent.ptValue
-    let startAngle = self_startAngle.unsignedDegreeValue
-    let arcAngle = self_arcAngle.unsignedDegreeValue
+    let center = CanariPoint (x: self_xCenter, y: self_yCenter)
+    let radius = self_radius
+    let startTangentLength = self_startTangent
+    let endTangentLength = self_endTangent
+    let startAngle = self_startAngle
+    let arcAngle = self_arcAngle
     var bp = BezierPath (
       arcWithTangentFromCenter: center,
       radius: radius,
-      startAngleInDegrees: startAngle,
-      arcAngleInDegrees: arcAngle,
+      startAngle: startAngle,
+      arcAngle: arcAngle,
       startTangentLength: startTangentLength,
       endTangentLength: endTangentLength,
       pathIsClosed: self_pathIsClosed
@@ -48,25 +48,19 @@ import CanariGeometry
     var shape = EBShape ()
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
   //--- Add center knob
-    shape.add (knobAt:  center, knobIndex: PACKAGE_ARC_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt: center.ptValue, knobIndex: PACKAGE_ARC_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
   //--- Add radius knob
-    var t = NSAffineTransform ()
-    t.translateX (by: center.x, yBy: center.y)
-    t.rotate (byDegrees: startAngle + arcAngle / 2.0)
-    let radiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .diamond, CGFloat (self_PackageObject_knobSize))
+    var t = CanariAffinity.translating (center).rotating (by: startAngle + arcAngle / 2.0)
+    let radiusKnob = t.transforming (x: radius)
+    shape.add (knobAt: radiusKnob.ptValue, knobIndex: PACKAGE_ARC_RADIUS, .diamond, CGFloat (self_PackageObject_knobSize))
   //--- Add start point knob
-    t = NSAffineTransform ()
-    t.translateX (by: center.x, yBy: center.y)
-    t.rotate (byDegrees: startAngle)
-    let startPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
+    t = CanariAffinity.translating (center).rotating (by: startAngle)
+    let startPointKnob = t.transforming (x: radius)
+    shape.add (knobAt: startPointKnob.ptValue, knobIndex: PACKAGE_ARC_START_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
   //--- Add end point knob
-    t = NSAffineTransform ()
-    t.translateX (by: center.x, yBy: center.y)
-    t.rotate (byDegrees: startAngle + arcAngle)
-    let endPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
-    shape.add (knobAt:  endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
+    t = CanariAffinity.translating (center).rotating (by: startAngle + arcAngle)
+    let endPointKnob = t.transforming (x: radius)
+    shape.add (knobAt: endPointKnob.ptValue, knobIndex: PACKAGE_ARC_END_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
   //---
     return shape
 //--- END OF USER ZONE 2

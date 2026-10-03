@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -68,8 +69,6 @@ enum KicadStringJustification {
                                  fontSize inFontSize : CGFloat,
                                  thickness inThickness : CGFloat,
                                  font inKicadFont : [UInt32 : BoardFontCharacter],
-//                                 leftMM inModelLeftMM  : CGFloat,
-//                                 bottomMM inModelBottomMM : CGFloat,
                                  boardRect inBoardRect : NSRect,
                                  _ inUndoManager : UndoManager?) -> [SegmentEntity] {
   let mirror : CGFloat = inMirror ? -1.0 : 1.0
@@ -86,12 +85,6 @@ enum KicadStringJustification {
     heightArray.append (stringHeight)
     widthArray.append (stringWidth)
   }
-//--- Add interlines
-//  totalHeight += CGFloat (components.count - 1) * (fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness)
-//  if components.count > 1 {
-//    Swift.print ("heightArray \(heightArray)")
-//    Swift.print ("pitch \(fontFactor * KICAD_INTERLINE_PITCH_RATIO), inThickness \(inThickness)")
-//  }
 //--- Display string
   var textY : CGFloat = (components.count > 1) ? 0.0 : (totalHeight * 0.5)
   var segments = [SegmentEntity] ()

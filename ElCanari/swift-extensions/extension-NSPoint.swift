@@ -62,13 +62,13 @@ extension NSPoint : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func product (_ p1 : NSPoint, _ p2 : NSPoint, _ p3 : NSPoint) -> CGFloat {
-    let dx2 = p2.x - p1.x
-    let dy2 = p2.y - p1.y
-    let dx3 = p3.x - p1.x
-    let dy3 = p3.y - p1.y
-    return dx2 * dy3 - dx3 * dy2
-  }
+//  static func product (_ p1 : NSPoint, _ p2 : NSPoint, _ p3 : NSPoint) -> CGFloat {
+//    let dx2 = p2.x - p1.x
+//    let dy2 = p2.y - p1.y
+//    let dx3 = p3.x - p1.x
+//    let dy3 = p3.y - p1.y
+//    return dx2 * dy3 - dx3 * dy2
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -15,8 +15,8 @@ func writeZipArchiveFile (at inTargetZipURL : URL,
   let coord = NSFileCoordinator ()
   var myError1 : NSError? = nil
   var myError2 : NSError? = nil
-// coordinateReadingItemAtURL is invoked synchronously, but the passed in zippedURL is only valid
-// for the duration of the block, so it needs to be copied out
+// coordinateReadingItemAtURL is invoked synchronously, but only the argument passed in zippedURL
+// is valid for the duration of the block, so it needs to be copied out
   unsafe coord.coordinate (
     readingItemAt: inSourceDirectoryURL,
     options: NSFileCoordinator.ReadingOptions.forUploading,
