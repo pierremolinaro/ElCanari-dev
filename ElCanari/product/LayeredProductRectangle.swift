@@ -28,10 +28,10 @@ struct LayeredProductRectangle : Codable {
   func polygon () -> (CanariPoint, [CanariPoint]) {
     let w = CanariLength.pt (0.5) // Moitié de la largeur
     let h = CanariLength.pt (0.5) // Moitié de la hauteur
-    let bottomLeft  = self.af.transforming (CanariPoint (x: -w, y: -h))
-    let bottomRight = self.af.transforming (CanariPoint (x: +w, y: -h))
-    let topRight    = self.af.transforming (CanariPoint (x: +w, y: +h))
-    let topLeft     = self.af.transforming (CanariPoint (x: -w, y: +h))
+    let bottomLeft  = self.af.transforming (x: -w, y: -h)
+    let bottomRight = self.af.transforming (x: +w, y: -h)
+    let topRight    = self.af.transforming (x: +w, y: +h)
+    let topLeft     = self.af.transforming (x: -w, y: +h)
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 

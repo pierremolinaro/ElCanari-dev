@@ -441,8 +441,8 @@ extension AutoLayoutProjectDocument {
 //        af.rotate (byDegrees: nph.mRotation.unsignedDegreeValue)
         if nph.mWidth < nph.mHeight { // Vertical oblong
           let h = (nph.mHeight - nph.mWidth) / 2.0
-          let p1 = af.transforming (CanariPoint (y: -h))
-          let p2 = af.transforming (CanariPoint (y: +h))
+          let p1 = af.transforming (y: -h)
+          let p2 = af.transforming (y: +h)
           let oblong = LayeredProductSegment (
             p1: p1,
             p2: p2,
@@ -452,8 +452,8 @@ extension AutoLayoutProjectDocument {
           ioProduct.append (roundSegment: oblong)
         }else if nph.mWidth > nph.mHeight { // Horizontal oblong
           let h = (nph.mWidth - nph.mHeight) / 2.0
-          let p1 = af.transforming (CanariPoint (x: -h))
-          let p2 = af.transforming (CanariPoint (x: +h))
+          let p1 = af.transforming (x: -h)
+          let p2 = af.transforming (x: +h)
           let oblong = LayeredProductSegment (
             p1: p1,
             p2: p2,
@@ -541,8 +541,8 @@ extension AutoLayoutProjectDocument {
     let p = inCenter
     let holeSize = inHoleSize
     if inHoleSize.width < inHoleSize.height { // Vertical oblong
-      let p1 = inAT.transforming (CanariPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
-      let p2 = inAT.transforming (CanariPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
+      let p1 = inAT.transforming (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0)
+      let p2 = inAT.transforming (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0)
       let oblong = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -551,8 +551,8 @@ extension AutoLayoutProjectDocument {
       )
       ioProduct.append (roundSegment: oblong)
     }else if inHoleSize.width > inHoleSize.height { // Horizontal oblong
-      let p1 = inAT.transforming (CanariPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
-      let p2 = inAT.transforming (CanariPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
+      let p1 = inAT.transforming (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y)
+      let p2 = inAT.transforming (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y)
       let oblong = LayeredProductSegment (
         p1: p1,
         p2: p2,

@@ -108,7 +108,7 @@ extension PackageArc {
       let tr = CanariAffinity
         .translating (x: self.xCenter, y: self.yCenter)
         .rotating (by: startAngle - arcAngle / 2.0)
-      let currentRadiusKnob = tr.transforming (CanariPoint (x: self.radius))
+      let currentRadiusKnob = tr.transforming (x: self.radius)
       let newRadiusKnob = CanariPoint (
         x: currentRadiusKnob.x + inDx,
         y: currentRadiusKnob.y + inDy

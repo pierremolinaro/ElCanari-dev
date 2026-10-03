@@ -132,7 +132,7 @@ struct ProductRepresentation : Codable {
     modelAffineTransform.rotate (by: .degree (angleInDegrees))
     modelAffineTransform.translate (x: -width / 2.0, y: -height / 2.0)
     for circle in inProduct.circles {
-      let center = modelAffineTransform.transforming (CanariPoint (x: circle.x, y: circle.y))
+      let center = modelAffineTransform.transforming (x: circle.x, y: circle.y)
       let newCircle = LayeredProductCircle (
         center: center,
         diameter: circle.d,
@@ -146,8 +146,8 @@ struct ProductRepresentation : Codable {
         layers.remove (.boardLimits)
         layers.insert (.internalBoardLimits)
       }
-      let p1 = modelAffineTransform.transforming (CanariPoint (x: segment.x1, y: segment.y1))
-      let p2 = modelAffineTransform.transforming (CanariPoint (x: segment.x2, y: segment.y2))
+      let p1 = modelAffineTransform.transforming (x: segment.x1, y: segment.y1)
+      let p2 = modelAffineTransform.transforming (x: segment.x2, y: segment.y2)
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -157,8 +157,8 @@ struct ProductRepresentation : Codable {
       self.roundSegments.append (s)
     }
     for segment in inProduct.squareSegments {
-      let p1 = modelAffineTransform.transforming (CanariPoint (x: segment.x1, y: segment.y1))
-      let p2 = modelAffineTransform.transforming (CanariPoint (x: segment.x2, y: segment.y2))
+      let p1 = modelAffineTransform.transforming (x: segment.x1, y: segment.y1)
+      let p2 = modelAffineTransform.transforming (x: segment.x2, y: segment.y2)
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,

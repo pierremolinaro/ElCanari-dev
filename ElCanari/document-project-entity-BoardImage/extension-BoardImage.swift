@@ -251,10 +251,10 @@ struct BoardImageDisplayInfos {
     let h = CGFloat (rect.height) * pixelSize
     let r = NSRect (x: x, y: y, width: w, height: h)
     filledBP.appendRect (r)
-    let p0 = af.transforming (CanariPoint (x: x,     y: y))
-    let p1 = af.transforming (CanariPoint (x: x + w, y: y))
-    let p2 = af.transforming (CanariPoint (x: x + w, y: y + h))
-    let p3 = af.transforming (CanariPoint (x: x,     y: y + h))
+    let p0 = af.transforming (x: x,     y: y)
+    let p1 = af.transforming (x: x + w, y: y)
+    let p2 = af.transforming (x: x + w, y: y + h)
+    let p3 = af.transforming (x: x,     y: y + h)
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
   //---
     var rectAF = af
@@ -267,7 +267,7 @@ struct BoardImageDisplayInfos {
   let rotationKnobTransform = CanariAffinity
     .translating (x: inCenterX, y: inCenterY)
     .rotating (by: inRotation)
-  let rotationKnobLocation = rotationKnobTransform.transforming (CanariPoint (x: BOARD_IMAGE_ROTATION_KNOB_DISTANCE))
+  let rotationKnobLocation = rotationKnobTransform.transforming (x: BOARD_IMAGE_ROTATION_KNOB_DISTANCE)
 //---
   return BoardImageDisplayInfos (
     rotationKnobLocation: rotationKnobLocation,
