@@ -397,12 +397,12 @@ final class EBGraphicView : NSView {
     r = r.union (self.selectionShapeBoundingBox)
     if let ciImage = self.mBackgroundImage {
       let rImage = ciImage.extent
-      let bp = self.mBackgroundImageAffineTransform.transform (NSBezierPath (rect: rImage))
+      let bp = NSBezierPath (rect: rImage).transformed (by: self.mBackgroundImageAffineTransform)
       r = r.union (bp.bounds)
     }
     if let ciImage = self.mForegroundImage {
       let rImage = ciImage.extent
-      let bp = self.mForegroundImageAffineTransform.transform (NSBezierPath (rect: rImage))
+      let bp = NSBezierPath (rect: rImage).transformed (by: self.mForegroundImageAffineTransform)
       r = r.union (bp.bounds)
     }
     return r
@@ -742,7 +742,7 @@ final class EBGraphicView : NSView {
   var mBackgroundImageOpacity : CGFloat = 1.0
 //  var mBackgroundImageOpacityController : EBObservablePropertyController? = nil
 
-  var mBackgroundImageAffineTransform = NSAffineTransform () {
+  var mBackgroundImageAffineTransform = CanariAffinity () {
     didSet {
       self.setNeedsDisplayAndUpdateViewBounds ()
     }
@@ -763,7 +763,7 @@ final class EBGraphicView : NSView {
   var mForegroundImageOpacity : CGFloat = 1.0
   var mForegroundImageOpacityController : EBObservablePropertyController? = nil
 
-  var mForegroundImageAffineTransform = NSAffineTransform () {
+  var mForegroundImageAffineTransform = CanariAffinity () {
     didSet {
       self.setNeedsDisplayAndUpdateViewBounds ()
     }

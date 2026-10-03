@@ -20,7 +20,9 @@ extension EBGraphicView {
     if let ciImage = self.mBackgroundImage {
       let graphicContext = NSGraphicsContext.current
       graphicContext?.saveGraphicsState ()
-      self.mBackgroundImageAffineTransform.concat ()
+      let af = NSAffineTransform (transform: self.mBackgroundImageAffineTransform.affineTransform)
+      af.concat ()
+//      self.mBackgroundImageAffineTransform.concat ()
       let rImage = ciImage.extent
       ciImage.draw (at: rImage.origin, from: rImage, operation: .sourceOver, fraction: self.mBackgroundImageOpacity)
       graphicContext?.restoreGraphicsState ()
@@ -39,7 +41,9 @@ extension EBGraphicView {
     if let ciImage = self.mForegroundImage {
       let graphicContext = NSGraphicsContext.current
       graphicContext?.saveGraphicsState ()
-      self.mForegroundImageAffineTransform.concat ()
+      let af = NSAffineTransform (transform: self.mForegroundImageAffineTransform.affineTransform)
+      af.concat ()
+//      self.mForegroundImageAffineTransform.concat ()
       let rImage = ciImage.extent
       ciImage.draw (at: rImage.origin, from: rImage, operation: .sourceOver, fraction: self.mForegroundImageOpacity)
       graphicContext?.restoreGraphicsState ()

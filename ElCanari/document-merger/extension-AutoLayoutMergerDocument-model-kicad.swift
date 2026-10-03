@@ -32,19 +32,19 @@ fileprivate struct TemporaryBoardModel {
   var mFrontLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
   var mBackLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
 
-  let mBoardRect_mm : NSRect
+  let mBoardRect : CanariRect
   let mKicadFont : [UInt32 : BoardFontCharacter]
-  let mLeftMM  : CGFloat
-  let mBottomMM : CGFloat
+  let mLeft  : CanariLength
+  let mBottom : CanariLength
 
-  init (boardRectMM inBoardRect_mm : NSRect,
+  init (boardRect inBoardRect : CanariRect,
         kicadFont inKicadFont : [UInt32 : BoardFontCharacter],
-        leftMM inLeftMM: CGFloat,
-        bottomMM inBottomMM : CGFloat) {
-    self.mBoardRect_mm = inBoardRect_mm
+        left inLeft : CanariLength,
+        bottom inBottom : CanariLength) {
+    self.mBoardRect = inBoardRect
     self.mKicadFont = inKicadFont
-    self.mLeftMM = inLeftMM
-    self.mBottomMM = inBottomMM
+    self.mLeft = inLeft
+    self.mBottom = inBottom
   }
 }
 
@@ -173,7 +173,7 @@ extension AutoLayoutMergerDocument {
       let bottomMM = bottom.mmValue
       let modelWidthMM = rightMM - leftMM
       let modelHeightMM = bottomMM - topMM // in Kicad, the Y-axis is pointing down
-      let boardRect_mm = NSRect (x: 0.0, y: 0.0, width: (right - left).mmValue, height: (bottom - top).mmValue)
+      let boardRect = CanariRect (left: .zero, bottom: .zero, width: right - left, height: bottom - top)
       // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
       boardModel.modelWidth  = .mm (modelWidthMM)
       boardModel.modelWidthUnit = CanariLengthUnit.mm
@@ -181,10 +181,10 @@ extension AutoLayoutMergerDocument {
       boardModel.modelHeightUnit = CanariLengthUnit.mm
     //--- Collect datas
       var temporaryBoardModel = TemporaryBoardModel (
-        boardRectMM: boardRect_mm,
+        boardRect: boardRect,
         kicadFont: inKicadFont,
-        leftMM: leftMM,
-        bottomMM: bottomMM
+        left: left,
+        bottom: bottom
       )
       self.collectDatas (inContentArray, &temporaryBoardModel, &ioErrorArray)
     //--- Enter collected datas
@@ -253,18 +253,18 @@ extension AutoLayoutMergerDocument {
   fileprivate func collectTracks (_ inKicadItem : KicadItem,
                                   _ ioTemporaryBoardModel : inout TemporaryBoardModel,
                                   _ ioErrorArray : inout [(String, Int)]) {
-    if let startX = inKicadItem.getFloat (["segment", "start"], 0, &ioErrorArray, #line),
-       let startY = inKicadItem.getFloat (["segment", "start"], 1, &ioErrorArray, #line),
-       let endX = inKicadItem.getFloat (["segment", "end"], 0, &ioErrorArray, #line),
-       let endY = inKicadItem.getFloat (["segment", "end"], 1, &ioErrorArray, #line),
-       let width = inKicadItem.getFloat (["segment", "width"], 0, &ioErrorArray, #line),
+    if let startXmm = inKicadItem.getFloat (["segment", "start"], 0, &ioErrorArray, #line),
+       let startYmm = inKicadItem.getFloat (["segment", "start"], 1, &ioErrorArray, #line),
+       let endXmm = inKicadItem.getFloat (["segment", "end"], 0, &ioErrorArray, #line),
+       let endYmm = inKicadItem.getFloat (["segment", "end"], 1, &ioErrorArray, #line),
+       let width_mm = inKicadItem.getFloat (["segment", "width"], 0, &ioErrorArray, #line),
        let layer = inKicadItem.getString (["segment", "layer"], 0, &ioErrorArray, #line) {
       let segment = SegmentEntity (self.undoManager)
-      segment.x1 = .mm (startX - ioTemporaryBoardModel.mLeftMM)
-      segment.y1 = .mm (ioTemporaryBoardModel.mBottomMM - startY)
-      segment.x2 = .mm (endX - ioTemporaryBoardModel.mLeftMM)
-      segment.y2 = .mm (ioTemporaryBoardModel.mBottomMM - endY)
-      segment.width = .mm (width)
+      segment.x1 = .mm (startXmm) - ioTemporaryBoardModel.mLeft
+      segment.y1 = ioTemporaryBoardModel.mBottom - .mm (startYmm)
+      segment.x2 = .mm (endXmm) - ioTemporaryBoardModel.mLeft
+      segment.y2 = ioTemporaryBoardModel.mBottom - .mm (endYmm)
+      segment.width = .mm (width_mm)
       if layer == "F.Cu" {
         ioTemporaryBoardModel.mFrontTrackEntities.append (segment)
       }else if layer == "B.Cu" {
@@ -320,15 +320,15 @@ extension AutoLayoutMergerDocument {
                                _ ioTemporaryBoardModel : inout TemporaryBoardModel,
                                _ inNetArray : [KicadNetClass],
                                _ ioErrorArray : inout [(String, Int)]) {
-    if let x = inKicadItem.getFloat (["via", "at"], 0, &ioErrorArray, #line),
-       let y = inKicadItem.getFloat (["via", "at"], 1, &ioErrorArray, #line),
+    if let x_mm = inKicadItem.getFloat (["via", "at"], 0, &ioErrorArray, #line),
+       let y_mm = inKicadItem.getFloat (["via", "at"], 1, &ioErrorArray, #line),
        let diameter = inKicadItem.getFloat (["via", "size"], 0, &ioErrorArray, #line),
        let netIndex = inKicadItem.getInt (["via", "net"], 0, &ioErrorArray, #line),
        netIndex >= 0, netIndex < inNetArray.count {
     //--- Add via
       let via = BoardModelVia (self.undoManager)
-      via.x = .mm (x - ioTemporaryBoardModel.mLeftMM)
-      via.y = .mm (ioTemporaryBoardModel.mBottomMM - y)
+      via.x = .mm (x_mm) - ioTemporaryBoardModel.mLeft
+      via.y = ioTemporaryBoardModel.mBottom - .mm (y_mm)
       via.padDiameter = .mm (diameter)
       let netClass = inNetArray [netIndex]
       ioTemporaryBoardModel.mViaEntities.append (via)
@@ -350,16 +350,16 @@ extension AutoLayoutMergerDocument {
                                 _ ioErrorArray : inout [(String, Int)]) {
     if let stringValue = inKicadItem.getString (["gr_text"], 0, &ioErrorArray, #line),
             let textLayer = inKicadItem.getString (["gr_text", "layer"], 0, &ioErrorArray, #line),
-            let startX = inKicadItem.getFloat (["gr_text", "at"], 0, &ioErrorArray, #line),
-            let startY = inKicadItem.getFloat (["gr_text", "at"], 1, &ioErrorArray, #line),
-            let thickness = inKicadItem.getOptionalFloat (["gr_text", "effects", "font", "thickness"], 0, &ioErrorArray, #line),
+            let startXmm = inKicadItem.getFloat (["gr_text", "at"], 0, &ioErrorArray, #line),
+            let startYmm = inKicadItem.getFloat (["gr_text", "at"], 1, &ioErrorArray, #line),
+            let thickness_mm = inKicadItem.getOptionalFloat (["gr_text", "effects", "font", "thickness"], 0, &ioErrorArray, #line),
             let fontSize = inKicadItem.getOptionalFloat (["gr_text", "effects", "font", "size"], 0, &ioErrorArray, #line) {
-      let textTransform = NSAffineTransform ()
-      textTransform.scaleX (by: 1.0, yBy: -1.0)
-      textTransform.translateX (
-        by: CGFloat (startX - ioTemporaryBoardModel.mLeftMM),
-        yBy: CGFloat (startY - ioTemporaryBoardModel.mBottomMM)
-      )
+      let textTransform = CanariAffinity
+        .scaling (x: 1.0, y: -1.0)
+        .translating (
+          x: .mm (startXmm) - ioTemporaryBoardModel.mLeft,
+          y: .mm (startYmm) - ioTemporaryBoardModel.mBottom
+        )
     //--- Justify
       let effectItem = inKicadItem.getItem ("effects", &ioErrorArray, #line)
       let justifyArray = effectItem.getOptionalItemContents ("justify")
@@ -383,9 +383,9 @@ extension AutoLayoutMergerDocument {
         mirror: mirror,
         justification: justification,
         fontSize: fontSize,
-        thickness: thickness,
+        thickness: .mm (thickness_mm),
         font: ioTemporaryBoardModel.mKicadFont,
-        boardRect: ioTemporaryBoardModel.mBoardRect_mm,
+        boardRect: ioTemporaryBoardModel.mBoardRect,
         self.undoManager
       )
       if textLayer == "F.Cu" {
@@ -401,25 +401,25 @@ extension AutoLayoutMergerDocument {
   fileprivate func collectModule (_ inKicadItem : KicadItem,
                                   _ ioTemporaryBoardModel : inout TemporaryBoardModel,
                                   _ ioErrorArray : inout [(String, Int)]) {
-    if let moduleX = inKicadItem.getFloat (["module", "at"], 0, &ioErrorArray, #line),
-       let moduleY = inKicadItem.getFloat (["module", "at"], 1, &ioErrorArray, #line),
+    if let moduleXmm = inKicadItem.getFloat (["module", "at"], 0, &ioErrorArray, #line),
+       let moduleYmm = inKicadItem.getFloat (["module", "at"], 1, &ioErrorArray, #line),
        let layer = inKicadItem.getString (["module", "layer"], 0, &ioErrorArray, #line) { // F.Cu, B.Cu
       let moduleRotationInDegrees = inKicadItem.getOptionalFloat (["module", "at"], 2, &ioErrorArray, #line) ?? 0.0
-      let moduleTransform = NSAffineTransform ()
-      moduleTransform.scaleX (by: 1.0, yBy: -1.0)
-      moduleTransform.translateX (
-        by: CGFloat (moduleX - ioTemporaryBoardModel.mLeftMM),
-        yBy: CGFloat (moduleY - ioTemporaryBoardModel.mBottomMM)
-      )
-      moduleTransform.rotate (byDegrees: -moduleRotationInDegrees)
+      let moduleTransform = CanariAffinity
+        .scaling (x: 1.0, y: -1.0)
+        .translating (
+          x: .mm (moduleXmm) - ioTemporaryBoardModel.mLeft,
+          y: .mm (moduleYmm) - ioTemporaryBoardModel.mBottom
+        )
+        .rotating (by: .degree (-moduleRotationInDegrees))
       for item in inKicadItem.items {
         if item.key == "fp_text",
               let kind = item.getString (["fp_text"], 0, &ioErrorArray, #line), // reference, value, user
               let stringValue = item.getString (["fp_text"], 1, &ioErrorArray, #line),
               let textLayer = item.getString (["fp_text", "layer"], 0, &ioErrorArray, #line),
-              let startX = item.getFloat (["fp_text", "at"], 0, &ioErrorArray, #line),
-              let startY = item.getFloat (["fp_text", "at"], 1, &ioErrorArray, #line),
-              let thickness = item.getOptionalFloat (["fp_text", "effects", "font", "thickness"], 0, &ioErrorArray, #line),
+              let startXmm = item.getFloat (["fp_text", "at"], 0, &ioErrorArray, #line),
+              let startYmm = item.getFloat (["fp_text", "at"], 1, &ioErrorArray, #line),
+              let thickness_mm = item.getOptionalFloat (["fp_text", "effects", "font", "thickness"], 0, &ioErrorArray, #line),
               let fontSize = item.getOptionalFloat (["fp_text", "effects", "font", "size"], 0, &ioErrorArray, #line) {
         //--- Justify
           let effectItem = inKicadItem.getOptionalItem ("effects")
@@ -437,25 +437,23 @@ extension AutoLayoutMergerDocument {
               ioErrorArray.append (("Invalid justification: \(option.key)", #line))
             }
           }
-          let textTransform = NSAffineTransform ()
-          textTransform.scaleX (by: 1.0, yBy: -1.0)
-          textTransform.translateX (
-            by: CGFloat (moduleX - ioTemporaryBoardModel.mLeftMM),
-            yBy: CGFloat (moduleY - ioTemporaryBoardModel.mBottomMM)
-          )
-          textTransform.rotate (byDegrees: -moduleRotationInDegrees)
-          textTransform.translateX (by: startX, yBy: startY)
+          let textTransform = CanariAffinity
+            .scaling (x: 1.0, y: -1.0)
+            .translating (
+              x: .mm (moduleXmm) - ioTemporaryBoardModel.mLeft,
+              y: .mm (moduleYmm) - ioTemporaryBoardModel.mBottom
+            )
+            .rotating (by: .degree (-moduleRotationInDegrees))
+            .translating (x: .mm (startXmm), y: .mm (startYmm))
           let segments = drawKicadString (
             str: stringValue,
             transform: textTransform,
             mirror: mirror,
             justification: justification,
             fontSize: fontSize,
-            thickness: thickness,
+            thickness: .mm (thickness_mm),
             font: ioTemporaryBoardModel.mKicadFont,
-//            leftMM: ioTemporaryBoardModel.mLeftMM,
-//            bottomMM: ioTemporaryBoardModel.mBottomMM,
-            boardRect: ioTemporaryBoardModel.mBoardRect_mm,
+            boardRect: ioTemporaryBoardModel.mBoardRect,
             self.undoManager
           )
           if (kind == "reference") && (textLayer == "F.SilkS") {
@@ -468,19 +466,19 @@ extension AutoLayoutMergerDocument {
             ioTemporaryBoardModel.mBackComponentValuesEntities.append (objects: segments)
           }
         }else if item.key == "fp_line",
-              let startX = item.getFloat (["fp_line", "start"], 0, &ioErrorArray, #line),
-              let startY = item.getFloat (["fp_line", "start"], 1, &ioErrorArray, #line),
-              let endX = item.getFloat (["fp_line", "end"], 0, &ioErrorArray, #line),
-              let endY = item.getFloat (["fp_line", "end"], 1, &ioErrorArray, #line),
+              let startXmm = item.getFloat (["fp_line", "start"], 0, &ioErrorArray, #line),
+              let startYmm = item.getFloat (["fp_line", "start"], 1, &ioErrorArray, #line),
+              let endXmm = item.getFloat (["fp_line", "end"], 0, &ioErrorArray, #line),
+              let endYmm = item.getFloat (["fp_line", "end"], 1, &ioErrorArray, #line),
               let widthMM = item.getFloat (["fp_line", "width"], 0, &ioErrorArray, #line),
               let lineLayer = item.getString (["fp_line", "layer"], 0, &ioErrorArray, #line) {
-          let start = moduleTransform.transform (NSPoint (x: startX, y: startY))
-          let end = moduleTransform.transform (NSPoint (x: endX, y: endY))
+          let start = moduleTransform.transforming (x: .mm (startXmm), y: .mm (startYmm))
+          let end = moduleTransform.transforming (x: .mm (endXmm), y: .mm (endYmm))
           if let packageLine = clippedSegmentEntity (
-            p1_mm: NSPoint (x: start.x, y: start.y),
-            p2_mm: NSPoint (x: end.x, y: end.y),
-            width_mm: widthMM,
-            clipRect_mm: ioTemporaryBoardModel.mBoardRect_mm,
+            p1: start,
+            p2: end,
+            width: .mm (widthMM),
+            clipRect: ioTemporaryBoardModel.mBoardRect,
             self.undoManager
           ) {
             if layer == "F.Cu" {
@@ -496,23 +494,23 @@ extension AutoLayoutMergerDocument {
             }
           }
         }else if item.key == "fp_arc",
-              let centerX = item.getFloat (["fp_arc", "start"], 0, &ioErrorArray, #line),
-              let centerY = item.getFloat (["fp_arc", "start"], 1, &ioErrorArray, #line),
-              let startX = item.getFloat (["fp_arc", "end"], 0, &ioErrorArray, #line),
-              let startY = item.getFloat (["fp_arc", "end"], 1, &ioErrorArray, #line),
+              let centerXmm = item.getFloat (["fp_arc", "start"], 0, &ioErrorArray, #line),
+              let centerYmm = item.getFloat (["fp_arc", "start"], 1, &ioErrorArray, #line),
+              let startXmm = item.getFloat (["fp_arc", "end"], 0, &ioErrorArray, #line),
+              let startYmm = item.getFloat (["fp_arc", "end"], 1, &ioErrorArray, #line),
               let angle = item.getFloat (["fp_arc", "angle"], 0, &ioErrorArray, #line),
               let widthMM = item.getFloat (["fp_arc", "width"], 0, &ioErrorArray, #line),
               let lineLayer = item.getString (["fp_arc", "layer"], 0, &ioErrorArray, #line) {
-          let start = moduleTransform.transform (NSPoint (x: startX, y: startY))
-          let center = moduleTransform.transform (NSPoint (x: centerX, y: centerY))
+          let start = moduleTransform.transforming (x: .mm (startXmm), y: .mm (startYmm))
+          let center = moduleTransform.transforming (x: .mm (centerXmm), y: .mm (centerYmm))
           let bp = NSBezierPath ()
           let dx = start.x - center.x
           let dy = start.y - center.y
           let radius = sqrt (dx * dx + dy * dy)
           let startAngle = center.angle (to: start).signedDegreeValue
           bp.appendArc (
-            withCenter: center,
-            radius: radius,
+            withCenter: center.ptValue,
+            radius: radius.ptValue,
             startAngle: startAngle,
             endAngle: startAngle + CGFloat(angle),
             clockwise: angle > 0.0
@@ -561,14 +559,14 @@ extension AutoLayoutMergerDocument {
         }else if item.key == "pad",
               let padSideString = item.getString (["pad"], 1, &ioErrorArray, #line), // thru_hole, smd, np_thru_hole
               let padShapeString = item.getString (["pad"], 2, &ioErrorArray, #line), // oval, rect, circle
-              let atX = item.getFloat (["pad", "at"], 0, &ioErrorArray, #line),
-              let atY = item.getFloat (["pad", "at"], 1, &ioErrorArray, #line),
+              let atXmm = item.getFloat (["pad", "at"], 0, &ioErrorArray, #line),
+              let atYmm = item.getFloat (["pad", "at"], 1, &ioErrorArray, #line),
               let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray, #line),
               let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
           let pad = BoardModelPad (self.undoManager)
-          let padXY = moduleTransform.transform (NSPoint (x: atX, y: atY))
-          pad.x = .mm (padXY.x)
-          pad.y = .mm (padXY.y)
+          let padXY = moduleTransform.transforming (x: .mm (atXmm), y: .mm (atYmm))
+          pad.x = padXY.x
+          pad.y = padXY.y
           pad.width = .mm (widthMM)
           pad.height = .mm (heightMM)
           let padRotationInDegrees = item.getOptionalFloat (["pad", "at"], 2, &ioErrorArray, #line) ?? 0.0
@@ -606,12 +604,12 @@ extension AutoLayoutMergerDocument {
                 if let drillDiameterMM = item.getFloat (["pad", "drill"], 1, &ioErrorArray, #line),
                    let ovalMM = item.getFloat (["pad", "drill"], 2, &ioErrorArray, #line) {
                   let drillDiameter = CanariLength.mm (drillDiameterMM)
-                  let padTransform = NSAffineTransform ()
-                  padTransform.scaleX (by: 1.0, yBy: -1.0)
-                  padTransform.rotate (byDegrees: CGFloat (-moduleRotationInDegrees))
-                  let p = padTransform.transform (NSPoint (x: (ovalMM - drillDiameterMM) / 2.0, y:0))
-                  let dx = CanariLength.mm (p.x)
-                  let dy = CanariLength.mm (p.y)
+                  let padTransform = CanariAffinity
+                    .scaling (x: 1.0, y: -1.0)
+                    .rotating (by: .degree (-moduleRotationInDegrees))
+                  let p = padTransform.transforming (x: .mm (ovalMM - drillDiameterMM) / 2.0)
+                  let dx = p.x
+                  let dy = p.y
                   let drill = SegmentEntity (self.undoManager)
                   drill.x1 = (pad.x - dx)
                   drill.y1 = (pad.y - dy)

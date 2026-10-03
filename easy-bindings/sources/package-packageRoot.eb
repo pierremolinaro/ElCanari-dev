@@ -88,6 +88,7 @@ handlingOpposite entity PackageRoot {
   property @generateResetMethod @generateDirectAccess Double mModelImageScale default 1.0 ;
   property @generateResetMethod @generateDirectAccess Double mModelImageRotationInRadians default 0.0 ;
   property @generateResetMethod Int mModelPointsCircleRadius default 10 ;
+//  property @generateResetMethod CanariLength mModelPointsCircleRadius default ".pt (10)" ;
   property @generateResetMethod @generateDirectAccess Bool mPointsAreLocked default no ;
 
   property CanariLengthUnit mDimensionUnitFirstModelPointX default ".mil" ;

@@ -63,13 +63,13 @@ enum KicadStringJustification {
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func drawKicadString (str inString : String,
-                                 transform inAffineTransform: NSAffineTransform,
+                                 transform inAffineTransform: CanariAffinity,
                                  mirror inMirror : Bool,
                                  justification inJustification : KicadStringJustification,
                                  fontSize inFontSize : CGFloat,
-                                 thickness inThickness : CGFloat,
+                                 thickness inThickness : CanariLength,
                                  font inKicadFont : [UInt32 : BoardFontCharacter],
-                                 boardRect inBoardRect : NSRect,
+                                 boardRect inBoardRect : CanariRect,
                                  _ inUndoManager : UndoManager?) -> [SegmentEntity] {
   let mirror : CGFloat = inMirror ? -1.0 : 1.0
   let fontFactor = inFontSize * KICAD_STROKE_FONT_SCALE
@@ -81,7 +81,7 @@ enum KicadStringJustification {
   for str in components {
     let (stringWidth, stringHeight) = stringMetrics (str: str, fontSize: inFontSize, font: inKicadFont)
     totalHeight += stringHeight
-    totalHeight += fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness
+    totalHeight += fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness.ptValue
     heightArray.append (stringHeight)
     widthArray.append (stringWidth)
   }
@@ -101,17 +101,17 @@ enum KicadStringJustification {
     for unicodeChar in components [idx].unicodeArray {
       if let charDefinition = inKicadFont [unicodeChar.value] {
         for charSegment in charDefinition.segments {
-          let x1 = advancement + mirror * CGFloat (charSegment.x1) * fontFactor
-          let y1 = textY + CGFloat (charSegment.y1) * fontFactor
-          let x2 = advancement + mirror * CGFloat (charSegment.x2) * fontFactor
-          let y2 = textY + CGFloat (charSegment.y2) * fontFactor
-          let p1 = inAffineTransform.transform (NSPoint (x:x1, y:y1))
-          let p2 = inAffineTransform.transform (NSPoint (x:x2, y:y2))
+          let x1 = CanariLength.mm (advancement + mirror * CGFloat (charSegment.x1) * fontFactor)
+          let y1 = CanariLength.mm (textY + CGFloat (charSegment.y1) * fontFactor)
+          let x2 = CanariLength.mm (advancement + mirror * CGFloat (charSegment.x2) * fontFactor)
+          let y2 = CanariLength.mm (textY + CGFloat (charSegment.y2) * fontFactor)
+          let p1 = inAffineTransform.transforming (x: x1, y: y1)
+          let p2 = inAffineTransform.transforming (x: x2, y: y2)
           if let segment = clippedSegmentEntity (
-            p1_mm: p1,
-            p2_mm: p2,
-            width_mm: inThickness,
-            clipRect_mm: inBoardRect,
+            p1: p1,
+            p2: p2,
+            width: inThickness,
+            clipRect: inBoardRect,
             inUndoManager
           ) {
             segments.append (segment)
@@ -120,7 +120,7 @@ enum KicadStringJustification {
         advancement += mirror * CGFloat (charDefinition.advancement) * fontFactor
       }
     }
-    textY += heightArray [idx] + (fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness)
+    textY += heightArray [idx] + (fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness.ptValue)
   }
   return segments
 }

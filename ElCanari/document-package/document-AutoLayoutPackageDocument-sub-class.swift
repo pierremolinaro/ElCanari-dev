@@ -280,18 +280,12 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   fileprivate func applyAffineTransformToModelImage () {
     if self.rootObject.mPointsAreLocked {
-      let af = NSAffineTransform ()
       let scale = CGFloat (self.rootObject.mModelImageScale)
-      af.translateX (
-        by: self.rootObject.mModelImageFirstPointX!.ptValue,
-        yBy: self.rootObject.mModelImageFirstPointY!.ptValue
-      )
-      af.rotate (byRadians: CGFloat (self.rootObject.mModelImageRotationInRadians))
-      af.scaleX (by: scale, yBy: scale)
-      af.translateX (
-        by: -self.rootObject.mModelImageFirstPointXOnLock.ptValue,
-        yBy: -self.rootObject.mModelImageFirstPointYOnLock.ptValue
-      )
+      let af = CanariAffinity
+        .translating (x: self.rootObject.mModelImageFirstPointX!, y: self.rootObject.mModelImageFirstPointY!)
+        .rotating (by: .radian (CGFloat (self.rootObject.mModelImageRotationInRadians)))
+        .scaling (scale)
+        .translating (x: -self.rootObject.mModelImageFirstPointXOnLock, y: -self.rootObject.mModelImageFirstPointYOnLock)
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (af)
       self.mPackageObjectsController.setForegroundImageAffineTransform (af)
     }

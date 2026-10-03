@@ -15,8 +15,8 @@ extension AutoLayoutPackageDocument {
   @objc func loadModelImageFromPasteboardAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     func buildFrom (data inData : Data) {
-      self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
-      self.mPackageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
+      self.mModelImageObjectsController.setBackgroundImageAffineTransform (CanariAffinity ())
+      self.mPackageObjectsController.setBackgroundImageAffineTransform (CanariAffinity ())
       self.rootObject.mModelImageData = inData
       self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()
       self.rootObject.reset_mModelImageFirstPointYOnLock_toDefaultValue ()

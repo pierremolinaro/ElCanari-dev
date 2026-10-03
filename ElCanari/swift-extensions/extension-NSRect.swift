@@ -89,6 +89,7 @@ extension NSRect : @retroactive Hashable {
       height: .cu  (self.size.height)
     )
   }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   CohenSutherlandCodeForPoint
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

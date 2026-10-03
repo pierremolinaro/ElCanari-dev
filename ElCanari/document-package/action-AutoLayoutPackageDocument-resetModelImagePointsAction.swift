@@ -22,8 +22,8 @@ extension AutoLayoutPackageDocument {
       self.rootObject.reset_mModelImageRotationInRadians_toDefaultValue ()
       self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
       self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
-      self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
-      self.mPackageObjectsController.setForegroundImageAffineTransform (NSAffineTransform ())
+      self.mModelImageObjectsController.setBackgroundImageAffineTransform (CanariAffinity ())
+      self.mPackageObjectsController.setForegroundImageAffineTransform (CanariAffinity ())
     //---
       self.buildModelPoints ()
 //--- END OF USER ZONE 2

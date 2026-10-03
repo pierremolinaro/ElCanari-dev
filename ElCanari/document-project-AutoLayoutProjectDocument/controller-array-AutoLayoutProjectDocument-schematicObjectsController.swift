@@ -366,7 +366,7 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : EB
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setBackgroundImageAffineTransform (_ inAffineTransform : NSAffineTransform) {
+  final func setBackgroundImageAffineTransform (_ inAffineTransform : CanariAffinity) {
      for ebView in self.mEBGraphicViews {
        ebView.mBackgroundImageAffineTransform = inAffineTransform
      }
@@ -374,7 +374,7 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : EB
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setForegroundImageAffineTransform (_ inAffineTransform : NSAffineTransform) {
+  final func setForegroundImageAffineTransform (_ inAffineTransform : CanariAffinity) {
      for ebView in self.mEBGraphicViews {
        ebView.mForegroundImageAffineTransform = inAffineTransform
      }

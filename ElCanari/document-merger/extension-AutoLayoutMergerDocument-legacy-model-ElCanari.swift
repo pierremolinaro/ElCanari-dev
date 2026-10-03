@@ -115,11 +115,11 @@ extension AutoLayoutMergerDocument {
     boardModel.modelWidthUnit = CanariLengthUnit (fromNearestLength: int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_WIDTH_UNIT_KEY, &errorArray))
     boardModel.modelHeight = .cu (int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_KEY, &errorArray))
     boardModel.modelHeightUnit = CanariLengthUnit (fromNearestLength: int (fromDict: inBoardArchiveDict, key: ARCHIVE_BOARD_HEIGHT_UNIT_KEY, &errorArray))
-    let boardRect_mm = NSRect (
-      x: 0.0,
-      y: 0.0,
-      width: boardModel.modelWidth.mmValue,
-      height: boardModel.modelHeight.mmValue
+    let boardRect = CanariRect (
+      left: .zero,
+      bottom: .zero,
+      width: boardModel.modelWidth,
+      height: boardModel.modelHeight
     )
   //--- Internal boards limits
     do{
@@ -206,10 +206,10 @@ extension AutoLayoutMergerDocument {
       for str in backLegendLines {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           backLegendLinesEntities.append (segment)
@@ -224,10 +224,10 @@ extension AutoLayoutMergerDocument {
       for str in frontLegendLines {
         let ints = array6int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           frontLegendLinesEntities.append (segment)
@@ -274,10 +274,10 @@ extension AutoLayoutMergerDocument {
       for str in backLegendTexts {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           backLegendTextEntities.append (segment)
@@ -292,10 +292,10 @@ extension AutoLayoutMergerDocument {
       for str in frontTexts {
         let ints = array6int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           frontLegendTextEntities.append (segment)
@@ -330,10 +330,10 @@ extension AutoLayoutMergerDocument {
       for str in backPackages {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           backPackagesEntities.append (segment)
@@ -348,10 +348,10 @@ extension AutoLayoutMergerDocument {
       for str in frontPackages {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           frontPackagesEntities.append (segment)
@@ -366,10 +366,10 @@ extension AutoLayoutMergerDocument {
       for str in backComponentNames {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           backComponentNamesEntities.append (segment)
@@ -384,10 +384,10 @@ extension AutoLayoutMergerDocument {
       for str in frontComponentNames {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           frontComponentNamesEntities.append (segment)
@@ -402,10 +402,10 @@ extension AutoLayoutMergerDocument {
       for str in frontComponentValues {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           frontComponentValuesEntities.append (segment)
@@ -420,10 +420,10 @@ extension AutoLayoutMergerDocument {
       for str in backComponentValues {
         let ints = array5int (fromString: str, #line, &errorArray)
         if let segment = clippedSegmentEntity (
-          p1_mm: NSPoint (x: CanariLength.cu (ints [0]).mmValue, y: CanariLength.cu (ints [1]).mmValue),
-          p2_mm: NSPoint (x: CanariLength.cu (ints [2]).mmValue, y: CanariLength.cu (ints [3]).mmValue),
-          width_mm: CanariLength.cu (ints [4]).mmValue,
-          clipRect_mm: boardRect_mm,
+          p1: CanariPoint (x: CanariLength.cu (ints [0]), y: CanariLength.cu (ints [1])),
+          p2: CanariPoint (x: CanariLength.cu (ints [2]), y: CanariLength.cu (ints [3])),
+          width: CanariLength.cu (ints [4]),
+          clipRect: boardRect,
           self.undoManager
         ) {
           backComponentValuesEntities.append (segment)
