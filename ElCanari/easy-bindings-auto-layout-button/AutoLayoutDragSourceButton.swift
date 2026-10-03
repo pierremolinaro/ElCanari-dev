@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
@@ -162,7 +163,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged object
       if let draggedObject = self.mDraggedObjectFactory? () {
-        var transform = AffineTransform ()
+        var transform = CanariAffinity ()
         if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
           let view = scaleProvider.boundViews() [0]
           let scale = view.actualScale
@@ -201,7 +202,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
         }
     //--- Get dragged image
       }else if let shape = self.mDraggedObjectImage? () {
-        var transform = AffineTransform ()
+        var transform = CanariAffinity ()
         if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
           let view = scaleProvider.boundViews() [0]
           let scale = view.actualScale

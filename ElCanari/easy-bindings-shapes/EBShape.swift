@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //    EBShape
@@ -221,10 +222,10 @@ struct EBShape : Hashable {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Transformed shape using NSAffineTransform object
+  //  Transformed shape using CanariAffinity object
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by inAffineTransform : AffineTransform) -> EBShape {
+  func transformed (by inAffineTransform : CanariAffinity) -> EBShape {
     var result = EBShape ()
     if let sharedObject = self.mSharedObject {
       result.mSharedObject = sharedObject.transformed (by: inAffineTransform)
@@ -653,10 +654,10 @@ fileprivate final class EBShapeObject {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  Transformed shape using NSAffineTransform object
+  //  Transformed shape using CanariAffinity object
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by inAffineTransform : AffineTransform) -> EBShapeObject {
+  func transformed (by inAffineTransform : CanariAffinity) -> EBShapeObject {
     let result = EBShapeObject ()
     for element in self.mElements {
       let newElement = element.transformed (by: inAffineTransform)
@@ -904,10 +905,10 @@ fileprivate final class EBShapeElement {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  transformedBy
+  //  transformedBy CanariAffinity
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by inAffineTransform : AffineTransform) -> EBShapeElement {
+  func transformed (by inAffineTransform : CanariAffinity) -> EBShapeElement {
     var paths = [BezierPath] ()
     for path in self.mPathes {
       paths.append (path.transformed (by: inAffineTransform))

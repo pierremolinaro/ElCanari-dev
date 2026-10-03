@@ -335,7 +335,6 @@
 		16C3823833A99848D997FC21 /* toone-PackageRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AE85EB9A352B306C7E6405 /* toone-PackageRoot.swift */; };
 		16CCC56877407345F9D0030B /* toone-PackageArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373F097E3707810ED9071F1D /* toone-PackageArc.swift */; };
 		16D8E996469DA34EE4CCDD02 /* EBGraphicView-binding-xPlacardUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15212FA22EB1F5215E7A8273 /* EBGraphicView-binding-xPlacardUnit.swift */; };
-		1706B0A59B9692AE64D985CF /* extension-AffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C7662F147E3FA70D5CB19 /* extension-AffineTransform.swift */; };
 		1725C4F81BDFCF0357D7CEE8 /* extension-UInt32-EBPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BABAC5C34982092C33379E /* extension-UInt32-EBPropertyProtocol.swift */; };
 		172ABC41F894E9A567E68216 /* EBGraphicView-binding-horizontalFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97744A2590293718EE9F20D8 /* EBGraphicView-binding-horizontalFlip.swift */; };
 		173374A7D4EAFB535FA27D65 /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D64467565A4EB7D07D67F3 /* transient-AutoLayoutPackageDocument-addDimensionButtonImage.swift */; };
@@ -377,7 +376,6 @@
 		19E5932F7F178CABB091166B /* enum-GerberUnit-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4283D33164FDF53173DD5BCE /* enum-GerberUnit-ebExtension.swift */; };
 		19E840CEF7330BE243D9F9E6 /* AutoLayoutCanariNewCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD33755FE0C43C52FC83B2 /* AutoLayoutCanariNewCharacterView.swift */; };
 		19FDFA5D2E30E2B45357B03E /* transient-BoardModel-frontLayoutTextsBezierPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5577368AD5B67C3BB731363 /* transient-BoardModel-frontLayoutTextsBezierPaths.swift */; };
-		1A0844499CF2356F01DA910F /* extension-AffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C7662F147E3FA70D5CB19 /* extension-AffineTransform.swift */; };
 		1A0B0EB97AFB0B420CC4F65C /* toone-PadProxyInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E51C196A08CDDEF01619D /* toone-PadProxyInDevice.swift */; };
 		1A0FD296BE79FCF0B42DC683 /* transient-DeviceSymbolInstanceInProject-symbolAndTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003C3609C230CE49A6A23419 /* transient-DeviceSymbolInstanceInProject-symbolAndTypeName.swift */; };
 		1A1420C0F6E918F9F871000F /* toone-SymbolBezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97658A6A9F7E1842964D970D /* toone-SymbolBezierCurve.swift */; };
@@ -4142,7 +4140,6 @@
 		495CAC89FEC6CF9CA7F0F706 /* action-AutoLayoutFontDocument-newCharacterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutFontDocument-newCharacterAction.swift"; sourceTree = "<group>"; };
 		49F035D4F82470FC39C091A3 /* transient-SymbolPin-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-objectDisplay.swift"; sourceTree = "<group>"; };
 		49FE8E33D7808CBD02087842 /* controller-popup-net-class-from-selected-wires.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-popup-net-class-from-selected-wires.swift"; sourceTree = "<group>"; };
-		4A0C7662F147E3FA70D5CB19 /* extension-AffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-AffineTransform.swift"; sourceTree = "<group>"; };
 		4A4C2C9B68E45F838434A119 /* enum-VerticalAlignment-extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-VerticalAlignment-extension.swift"; sourceTree = "<group>"; };
 		4A705D8D4A623BD44E6259F6 /* action-AutoLayoutMergerDocument-updateBoardModelAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutMergerDocument-updateBoardModelAction.swift"; sourceTree = "<group>"; };
 		4ABE0E9E8F40B3AF2B2DC268 /* transient-AutoLayoutProjectDocument-unplacedSymbolsCountString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-unplacedSymbolsCountString.swift"; sourceTree = "<group>"; };
@@ -6891,7 +6888,6 @@
 		8655A87A8B2D6E317E08B88F /* Swift Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4A0C7662F147E3FA70D5CB19 /* extension-AffineTransform.swift */,
 				AC1EF015FA6EE4FAF0D4B6A7 /* extension-Int.swift */,
 				B810FAC49A13EC4EE9AE8BF3 /* extension-NSBezierPath.swift */,
 				0869C9BC87AFBFB257F6EABC /* extension-NSImage.swift */,
@@ -8981,7 +8977,6 @@
 				D601C0D27530B820F106C87A /* enum-VerticalAlignment-ebExtension.swift in Sources */,
 				E057A8A0866BBE547DB9663A /* enum-VerticalAlignment-extension.swift in Sources */,
 				603578B51CD92C6A7D6ABA5D /* enum-VerticalAlignment.swift in Sources */,
-				1706B0A59B9692AE64D985CF /* extension-AffineTransform.swift in Sources */,
 				93B5EC07DB44D52D52F6590C /* extension-ArtworkFileGenerationParameters.swift in Sources */,
 				96BCE0AF577F5B31AAA65265 /* extension-AutoLayoutMergerDocument-add-model.swift in Sources */,
 				87CC7024C785C7E67151FB03 /* extension-AutoLayoutMergerDocument-arrange-move-selection.swift in Sources */,
@@ -10759,7 +10754,6 @@
 				7D0110EB09C946C74A9BC238 /* enum-VerticalAlignment-ebExtension.swift in Sources */,
 				01EB13251A0E9ED983E760D1 /* enum-VerticalAlignment-extension.swift in Sources */,
 				AB1DA7940EFFAA795A468980 /* enum-VerticalAlignment.swift in Sources */,
-				1A0844499CF2356F01DA910F /* extension-AffineTransform.swift in Sources */,
 				AB27692D47A9D523A4C81D33 /* extension-ArtworkFileGenerationParameters.swift in Sources */,
 				5B733ED9D47FFAF3345FE795 /* extension-AutoLayoutMergerDocument-add-model.swift in Sources */,
 				10736B7FDCC78F0384DDF5C6 /* extension-AutoLayoutMergerDocument-arrange-move-selection.swift in Sources */,
@@ -12213,7 +12207,7 @@
 			repositoryURL = "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git";
 			requirement = {
 				kind = revision;
-				revision = 449ff4a266b1b759631197f7ae23f34984ff921d;
+				revision = ce2f0788a56428147edef29a9941a37f3c7895bc;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

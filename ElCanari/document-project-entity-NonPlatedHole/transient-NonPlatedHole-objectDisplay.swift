@@ -23,11 +23,7 @@ import CanariGeometry
        _ self_mRotation : CanariAngle
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var af = AffineTransform ()
-        let startX = self_mX.ptValue
-        let startY = self_mY.ptValue
-        af.translate (x: startX, y: startY)
-        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
+        let af = CanariAffinity.translating (x: self_mX, y: self_mY).rotating (by: self_mRotation)
         var shape = EBShape ()
         let r = CanariRect (
           center: .zero,

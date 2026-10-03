@@ -25,11 +25,7 @@ import CanariGeometry
        _ self_mShowTextRotationKnobInBoard : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        var af = AffineTransform ()
-        let startX = self_mX.ptValue
-        let startY = self_mY.ptValue
-        af.translate (x: startX, y: startY)
-        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
+        let af = CanariAffinity.translating (x: self_mX, y: self_mY).rotating (by: self_mRotation)
         var shape = EBShape ()
         let r = CanariRect (
           center: .zero,
@@ -40,7 +36,7 @@ import CanariGeometry
         bp.windingRule = .evenOdd
         shape.add (filled: [bp.transformed (by: af)], prefs_selectionHiliteColor)
       //--- Rotation knob
-        let center = NSPoint (x: startX, y: startY)
+        let center = NSPoint (x: self_mX, y: self_mY)
         if self_mShowTextRotationKnobInBoard {
           var knobLine = BezierPath ()
           knobLine.move (to : center)

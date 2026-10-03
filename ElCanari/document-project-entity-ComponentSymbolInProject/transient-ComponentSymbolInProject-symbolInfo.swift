@@ -60,15 +60,15 @@ import CanariGeometry
               var pinTextShape = EBShape ()
             //--- Pin name
               if pin.pinNameIsDisplayedInSchematics {
-                var trText = AffineTransform ()
-                trText.translate (x: self_mCenterX.ptValue, y: self_mCenterY.ptValue)
-                trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
-                trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-                trText.translate (x: -deviceInfo.center.x.ptValue, y: -deviceInfo.center.y.ptValue)
-                trText.translate (x: pin.nameXY.x.ptValue, y: pin.nameXY.y.ptValue)
-                trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
+                var trText = CanariAffinity
+                  .translating (x: self_mCenterX, y: self_mCenterY)
+                  .scaling (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
+                  .rotating (by: .degree (CGFloat (self_mRotation.rawValue) * 90.0))
+                  .translating (-deviceInfo.center)
+                  .translating (pin.nameXY)
+                  .rotating (by: .degree (-CGFloat (self_mRotation.rawValue & 2) * 90.0))
                 if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
-                  trText.rotate (byDegrees: 180.0)
+                  trText.rotate (by: .degrees180)
                 }
                 trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
                 let pinNameTextShape = EBShape (
@@ -81,15 +81,15 @@ import CanariGeometry
                 pinTextShape.add (pinNameTextShape.transformed (by: trText))
               }
             //--- Pin number
-              var trText = AffineTransform ()
-              trText.translate (x: self_mCenterX.ptValue, y: self_mCenterY.ptValue)
-              trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
-              trText.rotate (byDegrees: CGFloat (self_mRotation.rawValue) * 90.0)
-              trText.translate (x: -deviceInfo.center.x.ptValue, y: -deviceInfo.center.y.ptValue)
-              trText.translate (x: pin.numberXY.x.ptValue, y: pin.numberXY.y.ptValue)
-              trText.rotate (byDegrees: -CGFloat (self_mRotation.rawValue & 2) * 90.0)
+              var trText = CanariAffinity
+                .translating (x: self_mCenterX, y: self_mCenterY)
+                .scaling (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
+                .rotating (by: .degree (CGFloat (self_mRotation.rawValue) * 90.0))
+                .translating (x: -deviceInfo.center.x, y: -deviceInfo.center.y)
+                .translating (x: pin.numberXY.x, y: pin.numberXY.y)
+                .rotating (by: .degree (-CGFloat (self_mRotation.rawValue & 2) * 90.0))
               if self_mMirror && ((self_mRotation.rawValue & 1) != 0) {
-                trText.rotate (byDegrees: 180.0)
+                trText.rotate (by: .degrees180)
               }
               trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
               let pinNumberTextShape = EBShape (

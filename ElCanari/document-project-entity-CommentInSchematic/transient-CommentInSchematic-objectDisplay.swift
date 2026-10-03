@@ -29,10 +29,9 @@ import CanariGeometry
 //--- START OF USER ZONE 2
         let s = CGFloat (self_mSize)
         let font = self_mBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
-        let p = NSPoint (x: self_mX, y: self_mY)
-        var af = AffineTransform ()
-        af.translate (x: p.x, y: p.y)
-        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
+        let af = CanariAffinity
+          .translating (x: self_mX, y: self_mY)
+          .rotating (by: self_mRotation)
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : font,
           NSAttributedString.Key.foregroundColor : self_mColor

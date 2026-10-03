@@ -42,20 +42,16 @@ struct GeometricOblong {
         height inHeight : CanariLength,
         angle inAngle : CanariAngle) {
     if inWidth < inHeight {
-      var af = AffineTransform ()
-      af.translate (x: inCenter.x.ptValue, y: inCenter.y.ptValue)
-      af.rotate (by: inAngle)
+      let af = CanariAffinity.translating (inCenter).rotating (by: inAngle)
       let dh = (inHeight - inWidth) / 2.0
-      self.p1 = af.transform (NSPoint (x: .zero, y: -dh)).canariPoint
-      self.p2 = af.transform (NSPoint (x: .zero, y: +dh)).canariPoint
+      self.p1 = af.transforming (y: -dh)
+      self.p2 = af.transforming (y: +dh)
       self.width = inWidth
     }else if inWidth > inHeight {
-      var af = AffineTransform ()
-      af.translate (x: inCenter.x.ptValue, y: inCenter.y.ptValue)
-      af.rotate (by: inAngle)
+      let af = CanariAffinity.translating (inCenter).rotating (by: inAngle)
       let dw = (inWidth - inHeight) / 2.0
-      self.p1 = af.transform (NSPoint (x: -dw, y: .zero)).canariPoint
-      self.p2 = af.transform (NSPoint (x: +dw, y: .zero)).canariPoint
+      self.p1 = af.transforming (x: -dw)
+      self.p2 = af.transforming (x: +dw)
       self.width = inHeight
     }else{
       self.p1 = inCenter
@@ -212,8 +208,13 @@ struct GeometricOblong {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by inAffineTransfrom : AffineTransform) -> GeometricOblong {
-    return GeometricOblong (p1: inAffineTransfrom.transform (self.p1.ptValue).canariPoint, p2: inAffineTransfrom.transform (self.p2.ptValue).canariPoint, width: self.width, capStyle: self.capStyle)
+  func transformed (by inAffineTransfrom : CanariAffinity) -> GeometricOblong {
+    return GeometricOblong (
+      p1: inAffineTransfrom.transforming (self.p1),
+      p2: inAffineTransfrom.transforming (self.p2),
+      width: self.width,
+      capStyle: self.capStyle
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

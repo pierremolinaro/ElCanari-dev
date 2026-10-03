@@ -62,7 +62,7 @@ let BOARD_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
 //--------------------------------------------------------------------------------------------------
 
-let SCHEMATIC_LABEL_SIZE : CGFloat = 3.6
+let SCHEMATIC_LABEL_SIZE = CanariLength.pt (3.6)
 
 let WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP = CanariLength.mil (400)
 
@@ -486,7 +486,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
   func accumulatePadBezierPathes (into ioShape : inout EBShape,
                                   side : ComponentSide,
                                   padDisplayAttributes : [NSAttributedString.Key : Any]?,
-                                  padNumberAF : AffineTransform,
+                                  padNumberAF : CanariAffinity,
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?,
                                   padNetDictionary inPadNetDictionary : [String : String]) {
@@ -528,8 +528,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     }
   //--- Pad names
     if let textAttributes = padDisplayAttributes {
-      var af = AffineTransform ()
-      af.translate (x: center.x, y: center.y)
+      var af = CanariAffinity.translating (self.center)
       af.prepend (padNumberAF)
       ioShape.add (EBShape (text: self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
@@ -571,7 +570,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
                                   side : ComponentSide,
                                   name : String,
                                   padDisplayAttributes : [NSAttributedString.Key : Any]?,
-                                  padNumberAF : AffineTransform,
+                                  padNumberAF : CanariAffinity,
                                   frontPadColor : NSColor?,
                                   backPadColor : NSColor?) {
     let center = self.center.ptValue
@@ -622,8 +621,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     }
   //--- Pad name
     if let textAttributes = padDisplayAttributes {
-      var af = AffineTransform ()
-      af.translate (x: center.x, y: center.y)
+      var af = CanariAffinity.translating (self.center)
       af.prepend (padNumberAF)
       ioShape.add (EBShape (text: name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
     }
@@ -636,7 +634,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 //--------------------------------------------------------------------------------------------------
 
 struct PadLocationAndSide : Hashable {
-  let location : NSPoint
+  let location : CanariPoint
   let side : ConnectorSide
 }
 

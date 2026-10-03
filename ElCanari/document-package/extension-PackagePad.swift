@@ -367,11 +367,11 @@ final class PadGeometryForERC {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by inAffineTransform : AffineTransform) -> PadGeometryForERC {
+  func transformed (by inAffineTransform : CanariAffinity) -> PadGeometryForERC {
     var c = [GeometricCircle] ()
     var rects = [GeometricRect] ()
     for circle in self.circles {
-      c.append (GeometricCircle (center: inAffineTransform.transform (circle.center.ptValue).canariPoint, radius: circle.radius))
+      c.append (GeometricCircle (center: inAffineTransform.transforming (circle.center), radius: circle.radius))
     }
     for r in self.rectangles {
       rects.append (GeometricRect (inAffineTransform.transforming (r.p1), inAffineTransform.transforming (r.p2), r.width))

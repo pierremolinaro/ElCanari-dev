@@ -24,27 +24,27 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
-        if let p = self_mPoint_location?.ptValue {
+        if let p = self_mPoint_location {
           var bp = BezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: SCHEMATIC_LABEL_SIZE))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: -SCHEMATIC_LABEL_SIZE))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: -SCHEMATIC_LABEL_SIZE))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
         //---
-          var af = AffineTransform ()
-          af.translate (x: p.x, y: p.y)
-          af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
+          let af = CanariAffinity
+            .translating (p)
+            .rotating (by: .degree (CGFloat (self_mOrientation.rawValue) * 90.0))
         //---
           shape.add (stroke: [bp.transformed (by: af)], prefs_selectionHiliteColor)
-          shape.add (knobAt:  p, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
+          shape.add (knobAt:  p.ptValue, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
         //--- Net name
-          let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
+          let labelOrigin = af.transforming (x: SCHEMATIC_LABEL_SIZE * 8.0)
           let horizontalAlignment : BezierPath.TextHorizontalAlignment
           let verticalAlignment : BezierPath.TextVerticalAlignment
           switch self_mOrientation {
@@ -63,7 +63,7 @@ import CanariGeometry
           }
           shape.add (
             textKnob: self_netName,
-            labelOrigin,
+            labelOrigin.ptValue,
             prefs_pinNameFont,
             foreColor: .black,
             backColor: .white,
@@ -74,7 +74,7 @@ import CanariGeometry
           )
 
           shape.add (
-            knobAt: af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: 0.0)),
+            knobAt: af.transforming (x: SCHEMATIC_LABEL_SIZE * 7.0).ptValue,
             knobIndex: LABEL_IN_SCHEMATICS_ROTATION_KNOB,
             .circ,
             SCHEMATIC_KNOB_SIZE.ptValue

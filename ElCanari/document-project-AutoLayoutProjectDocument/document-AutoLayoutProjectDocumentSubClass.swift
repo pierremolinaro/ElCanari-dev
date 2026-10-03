@@ -139,7 +139,7 @@ import CanariGeometry
       Swift.print (self.className + "." + #function)
     }
     var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
-    var resultOffset = NSPoint ()
+    var resultOffset = CanariPoint ()
     if self.mUnplacedSymbolsTableViewArray.contains (inSourceTableView),
       let schematicsView = self.mSchematicsView?.mGraphicView {
     //--- Find symbol to insert in schematics
@@ -156,20 +156,19 @@ import CanariGeometry
         let scale : CGFloat = schematicsView.actualScale
         let horizontalFlip : CGFloat = schematicsView.horizontalFlip ? -scale : scale
         let verticalFlip   : CGFloat = schematicsView.verticalFlip   ? -scale : scale
-        var af = AffineTransform ()
-        af.scale (x: horizontalFlip, y: verticalFlip)
+        let af = CanariAffinity.scaling (x: horizontalFlip, y: verticalFlip)
         var symbolShape = EBShape ()
         symbolShape.add (filled: [BezierPath (symbolInfo.filledBezierPath)], preferences_symbolColorForSchematic_property.propval)
         symbolShape.add (stroke: [BezierPath (symbolInfo.strokeBezierPath)], preferences_symbolColorForSchematic_property.propval)
         let scaledSymbolShape = symbolShape.transformed (by: af)
         resultImage = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       //--- Move image rect origin to mouse click location
-        var minX = CGFloat.greatestFiniteMagnitude
-        var maxX = CGFloat.leastNormalMagnitude
-        var minY = CGFloat.greatestFiniteMagnitude
-        var maxY = CGFloat.leastNormalMagnitude
+        var minX = CanariLength.max
+        var maxX = CanariLength.min
+        var minY = CanariLength.max
+        var maxY = CanariLength.min
         for pin in symbolInfo.pins {
-          let p = pin.pinLocation.ptValue
+          let p = pin.pinLocation
           minX = min (minX, p.x)
           maxX = max (maxX, p.x)
           minY = min (minY, p.y)
@@ -177,9 +176,9 @@ import CanariGeometry
         }
         let pinCenterX = (minX + maxX) / 2.0
         let pinCenterY = (minY + maxY) / 2.0
-        resultOffset.x = symbolShape.boundingBox.midX - pinCenterX
-        resultOffset.y = symbolShape.boundingBox.midY - pinCenterY
-        resultOffset = af.transform (resultOffset)
+        resultOffset.x = .pt (symbolShape.boundingBox.midX) - pinCenterX
+        resultOffset.y = .pt (symbolShape.boundingBox.midY) - pinCenterY
+        resultOffset = af.transforming (resultOffset)
       }
     }else if self.mUnplacedPackageTableViewArray.contains (inSourceTableView),
            let boardView = self.mBoardView?.mGraphicView {
@@ -194,15 +193,14 @@ import CanariGeometry
         let scale : CGFloat = boardView.actualScale
         let horizontalFlip : CGFloat = boardView.horizontalFlip ? -scale : scale
         let verticalFlip   : CGFloat = boardView.verticalFlip   ? -scale : scale
-        var af = AffineTransform ()
-        af.scale (x: horizontalFlip, y: verticalFlip)
+        let af = CanariAffinity.scaling (x: horizontalFlip, y: verticalFlip)
         let scaledPackageShape = packageShape.transformed (by: af)
         resultImage = buildPDFimage (frame: scaledPackageShape.boundingBox, shape: scaledPackageShape)
       //--- Move image rect origin to mouse click location
-        var minX = CGFloat.greatestFiniteMagnitude
-        var maxX = CGFloat.leastNormalMagnitude
-        var minY = CGFloat.greatestFiniteMagnitude
-        var maxY = CGFloat.leastNormalMagnitude
+        var minX = CanariLength.max
+        var maxX = CanariLength.min
+        var minY = CanariLength.max
+        var maxY = CanariLength.min
         for padDescriptor in component.componentPadDictionary!.values {
           for pad in padDescriptor.pads {
             let padCenter = pad.location
@@ -214,12 +212,12 @@ import CanariGeometry
         }
         let centerX = (minX + maxX) / 2.0
         let centerY = (minY + maxY) / 2.0
-        resultOffset.x = packageShape.boundingBox.midX - centerX
-        resultOffset.y = packageShape.boundingBox.midY - centerY
-        resultOffset = af.transform (resultOffset)
+        resultOffset.x = .pt (packageShape.boundingBox.midX) - centerX
+        resultOffset.y = .pt (packageShape.boundingBox.midY) - centerY
+        resultOffset = af.transforming (resultOffset)
       }
     }
-    return (resultImage, resultOffset)
+    return (resultImage, resultOffset.ptValue)
   }
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················

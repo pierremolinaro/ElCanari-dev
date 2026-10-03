@@ -584,17 +584,13 @@ fileprivate struct RestrictRectangleForDSNExport {
   let inner4Side  : Bool
 
   func vertexString (_ inConverter : CanariUnitToDSNUnitConverter) -> String {
-    var af = AffineTransform ()
-    let centerX = self.rect.center.x.ptValue
-    let centerY = self.rect.center.y.ptValue
-    af.translate (x: centerX, y: centerY)
-    af.rotate (byDegrees: self.rotation.unsignedDegreeValue)
-    let halfWidth  = self.rect.width.ptValue / 2.0
-    let halfHeight = self.rect.height.ptValue / 2.0
-    let bottomLeft  = af.transform (NSPoint (x: -halfWidth, y: -halfHeight)).canariPoint
-    let bottomRight = af.transform (NSPoint (x: +halfWidth, y: -halfHeight)).canariPoint
-    let topRight    = af.transform (NSPoint (x: +halfWidth, y: +halfHeight)).canariPoint
-    let topLeft     = af.transform (NSPoint (x: -halfWidth, y: +halfHeight)).canariPoint
+    let af = CanariAffinity.translating (self.rect.center).rotating (by: self.rotation)
+    let halfWidth  = self.rect.width / 2.0
+    let halfHeight = self.rect.height / 2.0
+    let bottomLeft  = af.transforming (x: -halfWidth, y: -halfHeight)
+    let bottomRight = af.transforming (x: +halfWidth, y: -halfHeight)
+    let topRight    = af.transforming (x: +halfWidth, y: +halfHeight)
+    let topLeft     = af.transforming (x: -halfWidth, y: +halfHeight)
     let bottomLeftStr  = "\(inConverter.dsnUnitFromCanariUnit (bottomLeft.x.cuValue)) \(inConverter.dsnUnitFromCanariUnit (bottomLeft.y.cuValue))"
     let bottomRightStr = "\(inConverter.dsnUnitFromCanariUnit (bottomRight.x.cuValue)) \(inConverter.dsnUnitFromCanariUnit (bottomRight.y.cuValue))"
     let topRightStr    = "\(inConverter.dsnUnitFromCanariUnit (topRight.x.cuValue)) \(inConverter.dsnUnitFromCanariUnit (topRight.y.cuValue))"

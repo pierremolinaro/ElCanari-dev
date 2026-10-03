@@ -84,8 +84,7 @@ import CanariGeometry
       shape.add (text: self_mName, nameOrigin, nameTextAttributes, .center, .above)
       shape.add (packageShape)
     //---
-      var transform = AffineTransform ()
-      transform.translate (x: self_mX.ptValue, y: self_mY.ptValue)
+      let transform = CanariAffinity.translating (x: self_mX, y: self_mY)
       return shape.transformed (by: transform)
 //--- END OF USER ZONE 2
 }

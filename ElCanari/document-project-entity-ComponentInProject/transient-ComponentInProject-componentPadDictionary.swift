@@ -22,13 +22,11 @@ import CanariGeometry
        _ self_packagePadDictionary : PackageMasterPadDictionary
 ) -> ComponentPadDescriptorDictionary {
 //--- START OF USER ZONE 2
-        var af = AffineTransform ()
-        af.translate (x: self_mX.ptValue, y: self_mY.ptValue)
-        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
+        var af = CanariAffinity.translating (x: self_mX, y: self_mY).rotating (by: self_mRotation)
         if self_mSide == .back {
           af.scale (x: -1.0, y: 1.0)
         }
-        let center = self_packagePadDictionary.padsRect.center.ptValue
+        let center = self_packagePadDictionary.padsRect.center
         af.translate (x: -center.x, y: -center.y)
         var result = ComponentPadDescriptorDictionary ()
         for (padName, descriptor) in self_packagePadDictionary {
@@ -45,7 +43,7 @@ import CanariGeometry
             }
           }
           let p = PadLocationAndSide (
-            location: af.transform (descriptor.center.ptValue),
+            location: af.transforming (descriptor.center),
             side: padSide
           )
           var pads = [p]
@@ -70,7 +68,7 @@ import CanariGeometry
               }
             }
             let p = PadLocationAndSide (
-              location: af.transform (slavePad.center.ptValue),
+              location: af.transforming (slavePad.center),
               side: padSide
             )
             pads.append (p)

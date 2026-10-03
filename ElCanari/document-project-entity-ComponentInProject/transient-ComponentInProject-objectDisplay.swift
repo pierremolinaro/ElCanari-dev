@@ -89,12 +89,12 @@ import CanariGeometry
         }
       //---
         let padRect = self_packagePadDictionary.padsRect
-        let center = padRect.center.ptValue
-        var padNumberAffineTransform = AffineTransform ()
+        let center = padRect.center
+        var padNumberAffineTransform = CanariAffinity ()
         if self_mSide == .back {
           padNumberAffineTransform.scale (x: -1.0, y: 1.0)
         }
-        padNumberAffineTransform.rotate (byDegrees: -self_mRotation.unsignedDegreeValue)
+        padNumberAffineTransform.rotate (by: -self_mRotation)
         var frontPadColor : NSColor? = nil
         if self_BoardObject_displayFrontPadsForBoard {
           frontPadColor = prefs_frontSidePadColorForBoard
@@ -156,9 +156,9 @@ import CanariGeometry
           nonRotatedShape.add (stroke: [textBP], color)
         }
       //---
-        var af = AffineTransform ()
-        af.translate (x: self_mX.ptValue, y: self_mY.ptValue)
-        af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
+        var af = CanariAffinity
+          .translating (x: self_mX, y: self_mY)
+          .rotating (by: self_mRotation)
         if self_mSide == .back {
           af.scale (x: -1.0, y: 1.0)
         }

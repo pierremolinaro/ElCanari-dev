@@ -29,14 +29,34 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  init (rect inRect : CanariRect) {
+    self.mPath = NSBezierPath (rect: inRect.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   init (ovalIn inRect : NSRect) {
     self.mPath = NSBezierPath (ovalIn: inRect)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  init (ovalIn inRect : CanariRect) {
+    self.mPath = NSBezierPath (ovalIn: inRect.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   init (roundedRect rect : NSRect, xRadius inXRadius : CGFloat, yRadius inYRadius : CGFloat) {
     self.mPath = NSBezierPath (roundedRect: rect, xRadius: inXRadius, yRadius: inYRadius)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (roundedRect rect : CanariRect,
+        xRadius inXRadius : CanariLength,
+        yRadius inYRadius : CanariLength) {
+    self.mPath = NSBezierPath (roundedRect: rect.ptValue, xRadius: inXRadius.ptValue, yRadius: inYRadius.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,9 +120,8 @@ struct BezierPath : Hashable {
       case .below :
         deltaY -= height
       }
-      var af = AffineTransform ()
-      af.translate (x: deltaX, y: deltaY)
-      self.mPath.transform (using: af)
+      let af = CanariAffinity.translating (x: .pt (deltaX), y: .pt (deltaY))
+      self.mPath.transform (using: af.affineTransform)
     }
   }
 
@@ -270,24 +289,27 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func transform (using transform: AffineTransform) {
+  mutating func transform (using inTransform : CanariAffinity) {
     self.internalInsulatePath ()
-    self.mPath.transform (using: transform)
+    self.mPath.transform (using: AffineTransform (inTransform.cgAffineTransform))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by inTransform : AffineTransform) -> BezierPath {
-    var result = self
-    result.transform (using: inTransform)
-    return result
-  }
+//  func transformed (by inTransform : AffineTransform) -> BezierPath {
+//    var result = self
+//    result.transform (using: inTransform)
+//    return result
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inTransform : CanariAffinity) -> BezierPath {
     var result = self
-    result.transform (using: AffineTransform (inTransform.cgAffineTransform))
+    result.internalInsulatePath ()
+    result.mPath.transform (using: AffineTransform (inTransform.cgAffineTransform))
+//    self.mPath.transform (using: transform)
+//    result.transform (using: AffineTransform (inTransform.cgAffineTransform))
     return result
   }
 
@@ -537,6 +559,27 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  init (octogonInRect inRect : CanariRect) {
+    self.init ()
+    let s2 : CGFloat = sqrt (2.0)
+    let w = inRect.size.width
+    let h = inRect.size.height
+    let x = inRect.origin.x
+    let y = inRect.origin.y
+    let lg = min (w, h) / (1.0 + s2)
+    self.mPath.move (to: NSPoint (x: x + lg / s2,     y: y + h))
+    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
+    self.mPath.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
+    self.mPath.line (to: NSPoint (x: x + w,           y: y + lg / s2))
+    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y))
+    self.mPath.line (to: NSPoint (x: x + lg / s2,     y: y))
+    self.mPath.line (to: NSPoint (x: x,               y: y + lg / s2))
+    self.mPath.line (to: NSPoint (x: x,               y: y + h - lg / s2))
+    self.mPath.close ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   var reversed : BezierPath {
     var result = BezierPath ()
     result.mPath = self.mPath.reversed
@@ -724,6 +767,24 @@ extension Array where Element == BezierPath {
      }
    }
    return r
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+fileprivate extension AffineTransform {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (_ t : CGAffineTransform) {
+    self.init (
+      m11: t.a,  m12: t.b,
+      m21: t.c,  m22: t.d,
+      tX: t.tx,  tY: t.ty
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

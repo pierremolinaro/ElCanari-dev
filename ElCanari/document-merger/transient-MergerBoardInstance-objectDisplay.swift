@@ -24,24 +24,23 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
         let modeImage = self_myModel_imageForInstances!
-        let width  = self_myModel_modelWidth!.ptValue
-        let height = self_myModel_modelHeight!.ptValue
-        var transform = AffineTransform ()
-        transform.translate (x: self_x.ptValue, y: self_y.ptValue)
+        let width  = self_myModel_modelWidth!
+        let height = self_myModel_modelHeight!
+        var transform = CanariAffinity.translating (x: self_x, y: self_y)
         switch self_instanceRotation {
         case .rotation0 :
           break
         case .rotation90 :
           transform.translate (x: height / 2.0, y: width / 2.0)
-          transform.rotate (byDegrees: 90.0)
+          transform.rotate (by: .degrees90)
           transform.translate (x: -width / 2.0, y: -height / 2.0)
         case .rotation180 :
           transform.translate (x: width / 2.0, y: height / 2.0)
-          transform.rotate (byDegrees: 180.0)
+          transform.rotate (by: .degrees180)
           transform.translate (x: -width / 2.0, y: -height / 2.0)
         case .rotation270 :
           transform.translate (x: height / 2.0, y: width / 2.0)
-          transform.rotate (byDegrees: 270.0)
+          transform.rotate (by: .degrees270)
           transform.translate (x: -width / 2.0, y: -height / 2.0)
         }
         return modeImage.transformed (by: transform)

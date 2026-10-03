@@ -20,17 +20,6 @@ struct EBLinePath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by inAffineTransform : AffineTransform) -> EBLinePath {
-    let transformedOrigin = inAffineTransform.transform (self.origin.ptValue).canariPoint
-    var transformedLines = [CanariPoint] ()
-    for p in self.lines {
-      transformedLines.append (inAffineTransform.transform (p.ptValue).canariPoint)
-    }
-    return EBLinePath (origin: transformedOrigin, lines: transformedLines, closed: self.closed)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   func transformed (by inAffineTransform : CanariAffinity) -> EBLinePath {
     let transformedOrigin = inAffineTransform.transforming (self.origin)
     var transformedLines = [CanariPoint] ()

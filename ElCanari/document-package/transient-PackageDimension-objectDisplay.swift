@@ -30,57 +30,53 @@ import CanariGeometry
        _ prefs_packageDimensionColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let arrowSize : CGFloat = 0.5
-  let p1 = NSPoint (x: self_x1, y: self_y1)
-  let p2 = NSPoint (x: self_x2, y: self_y2)
+  let arrowSize = CanariLength.pt (0.5)
+  let p1 = CanariPoint (x: self_x1, y: self_y1)
+  let p2 = CanariPoint (x: self_x2, y: self_y2)
   let length = p1.distance (to: p2)
   var shape = EBShape ()
  //--- Compute angle
-  let angle = p1.angle (to: p2).signedRadianValue
+  let angle = p1.angle (to: p2)
  //--- Draw line
   var bp = BezierPath ()
   if length <= (4.0 * arrowSize) {
-    bp.move (to: p1)
-    bp.line (to: p2)
+    bp.move (to: p1.ptValue)
+    bp.line (to: p2.ptValue)
     bp.lineCapStyle = .butt
   }else{
   //--- Segment
     let center = p1.mid (with: p2)
-    var tr = AffineTransform ()
-    tr.translate (x: center.x, y: center.y)
-    tr.rotate (byRadians: angle)
+    let tr = CanariAffinity
+      .translating (x: center.x, y: center.y)
+      .rotating (by: angle)
     let lg = length / 2.0 - arrowSize
-    bp.move (to: NSPoint (x: -lg, y: 0.0))
-    bp.line (to: NSPoint (x:  lg, y: 0.0))
-    bp.transform(using: tr)
+    bp.move (to: NSPoint (x: -lg, y: .zero))
+    bp.line (to: NSPoint (x:  lg, y: .zero))
+    bp.transform (using: tr)
     bp.lineCapStyle = .butt
   }
   bp.lineCapStyle = .round
   bp.lineWidth = 0.25
   shape.add (stroke: [bp], NSColor.orange)
-  let rotationIfSmall : CGFloat = (length <= (4.0 * arrowSize)) ? .pi : 0.0 ;
+  let rotationIfSmall : CanariAngle = (length <= (4.0 * arrowSize)) ? .degrees180 : .zero ;
 //------- Arrow at first point
-  var tr = AffineTransform ()
-  tr.translate (x: p1.x, y: p1.y)
-  tr.rotate (byRadians: angle + rotationIfSmall)
+  var tr = CanariAffinity.translating (p1).rotating (by: angle + rotationIfSmall)
   var path1 = BezierPath ()
   path1.move (to: NSPoint (x: 0.0, y: 0.0))
   path1.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
   path1.curve (to: NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
-               controlPoint1: NSPoint (x: arrowSize, y: 0.0),
-               controlPoint2: NSPoint (x: arrowSize, y: 0.0))
+               controlPoint1: NSPoint (x: arrowSize, y: .zero),
+               controlPoint2: NSPoint (x: arrowSize, y: .zero))
   path1.close ()
   path1.transform (using: tr)
 //------- Arrow at second point
-  tr = AffineTransform ()
-  tr.translate (x: p2.x, y: p2.y)
-  tr.rotate (byRadians: angle + .pi + rotationIfSmall)
+  tr = CanariAffinity.translating (p2).rotating (by: angle + .degrees180 + rotationIfSmall)
   var path2 = BezierPath ()
   path2.move (to: NSPoint (x: 0.0, y: 0.0))
-  path2.line (to:NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
+  path2.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
   path2.curve (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
-               controlPoint1: NSPoint (x: arrowSize, y: 0.0),
-               controlPoint2: NSPoint (x: arrowSize, y: 0.0))
+               controlPoint1: NSPoint (x: arrowSize, y: .zero),
+               controlPoint2: NSPoint (x: arrowSize, y: .zero))
   path2.close ()
   path2.transform (using: tr)
   shape.add (filled: [path1, path2], prefs_packageDimensionColor)

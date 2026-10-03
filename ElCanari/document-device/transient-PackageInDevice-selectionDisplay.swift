@@ -75,8 +75,7 @@ import CanariGeometry
       bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
       bp.lineWidth = 0.5
       let shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)
-      var transform = AffineTransform ()
-      transform.translate (x: self_mX.ptValue, y: self_mY.ptValue)
+      let transform = CanariAffinity.translating (x: self_mX, y: self_mY)
       return shape.transformed (by: transform)
 //--- END OF USER ZONE 2
 }

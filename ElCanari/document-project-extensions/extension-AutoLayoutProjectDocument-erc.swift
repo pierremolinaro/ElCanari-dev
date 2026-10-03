@@ -608,7 +608,7 @@ extension AutoLayoutProjectDocument {
 
   private func checkPadSizeVersusConnectedTracksSide (_ ioIssues : inout [CanariIssue],
                                                       _ inConnector : BoardConnector,
-                                                      _ inAffineTransform : AffineTransform,
+                                                      _ inAffineTransform : CanariAffinity,
                                                       _ ioConnectionErrorCount : inout Int,
                                                       artworkClearance inArtworkClearance : CanariLength) {
     if let component = inConnector.mComponent {

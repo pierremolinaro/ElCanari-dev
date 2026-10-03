@@ -239,15 +239,6 @@ struct QRCodeDisplayInfos {
   if !inFrontSide {
     af.scale (x: -1.0, y: 1.0)
   }
-//  var af = AffineTransform ()
-//  let centerX = inCenterX.ptValue
-//  let centerY = inCenterY.ptValue
-//  af.translate (x: centerX, y: centerY)
-////  let rotationInDegrees = CGFloat (inRotation) / 1000.0
-//  af.rotate (byDegrees: inRotation.unsignedDegreeValue)
-//  if !inFrontSide {
-//    af.scale (x: -1.0, y: 1.0)
-//  }
 //--- Background
   let backgroundBP = BezierPath (rect: qrRect).transformed (by: af)
 //--- QR code

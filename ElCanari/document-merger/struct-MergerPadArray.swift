@@ -61,8 +61,7 @@ struct MergerPadArray : Hashable {
       case .octo :
         bp = BezierPath (octogonInRect: r)
       }
-      var transform = AffineTransform (translationByX: pad.x.ptValue, byY: pad.y.ptValue)
-      transform.rotate (byRadians: pad.rotation.signedRadianValue)
+      let transform = CanariAffinity.translating (x: pad.x, y: pad.y).rotating (by: pad.rotation)
       bp.transform (using: transform)
       result.append (bp)
     }
@@ -97,28 +96,27 @@ struct MergerPadArray : Hashable {
         x += pad.y
         y += inModelWidth - pad.x
       }
-      let xf = (inHorizontalMirror ? (inBoardWidth - x) : x).ptValue
-      let yf = y.ptValue
-      let width = pad.width.ptValue
-      let height = pad.height.ptValue
-      let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
-      var transform = AffineTransform ()
-      transform.translate (x: xf, y:yf)
+      let xf = (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let yf = y
+      let width = pad.width
+      let height = pad.height
+      let r = CanariRect (left: -width / 2.0, bottom: -height / 2.0, width:width, height:height)
+      var transform = CanariAffinity.translating (x: xf, y:yf)
       if inHorizontalMirror {
         transform.scale (x: -1.0, y: 1.0)
       }
-      transform.rotate (byDegrees: pad.rotation.unsignedDegreeValue + Double (inInstanceRotation.rawValue) * 90.0)
+      transform.rotate (by: pad.rotation + .degree (Double (inInstanceRotation.rawValue) * 90.0))
       var bp : BezierPath
       switch pad.shape {
       case .rect :
-        bp = BezierPath (rect:r)
+        bp = BezierPath (rect: r)
       case .round :
         if pad.width < pad.height {
           bp = BezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
           bp = BezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
-          bp = BezierPath (ovalIn:r)
+          bp = BezierPath (ovalIn: r)
         }
       case .octo :
         bp = BezierPath (octogonInRect: r)

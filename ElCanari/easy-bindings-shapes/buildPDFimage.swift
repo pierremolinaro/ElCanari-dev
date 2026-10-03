@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   Build PDF image data
@@ -13,8 +14,7 @@ import AppKit
                                    grid inGrid : PDFProductGrid = .noGrid,
                                    backgroundColor inBackColor : NSColor? = nil) -> Data {
   let origin = inFrame.origin
-  var tr = AffineTransform ()
-  tr.translate (x: -origin.x, y: -origin.y)
+  let tr = CanariAffinity.translating (x: .pt (-origin.x), y: .pt (-origin.y))
   let view = OffscreenView (
     frame: NSRect (origin: NSPoint (), size: inFrame.size),
     strokeBezierPathes: [],

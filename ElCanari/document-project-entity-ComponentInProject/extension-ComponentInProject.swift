@@ -18,7 +18,7 @@ let COMPONENT_PACKAGE_VALUE_KNOB = 3
 
 //--------------------------------------------------------------------------------------------------
 
-let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : CGFloat = 10.0
+let COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE = CanariLength.pt (10)
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION ComponentInProject
@@ -234,8 +234,8 @@ extension ComponentInProject {
     //--- Assign pad location to connector
       let descriptor : ComponentPadDescriptor = self.componentPadDictionary! [connector.mComponentPadName]!
       let pad = descriptor.pads [connector.mPadIndex]
-      connector.mX = CanariLength.pt (pad.location.x)
-      connector.mY = CanariLength.pt (pad.location.y)
+      connector.mX = pad.location.x
+      connector.mY = pad.location.y
     //--- Detach from component
       connector.mComponent = nil
       connector.mComponentPadName = ""
@@ -260,13 +260,11 @@ extension ComponentInProject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func affineTransformFromPackage () -> AffineTransform {
+  func affineTransformFromPackage () -> CanariAffinity {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
     let padRect = packagePadDictionary.padsRect
-    let center = padRect.center.ptValue
-    var af = AffineTransform ()
-    af.translate (x: self.mX.ptValue, y: self.mY.ptValue)
-    af.rotate (byDegrees: self.mRotation.unsignedDegreeValue)
+    let center = padRect.center
+    var af = CanariAffinity.translating (x: self.mX, y: self.mY).rotating (by: self.mRotation)
     if self.mSide == .back {
       af.scale (x: -1.0, y: 1.0)
     }

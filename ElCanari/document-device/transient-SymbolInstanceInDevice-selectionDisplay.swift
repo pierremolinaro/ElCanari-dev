@@ -69,8 +69,7 @@ import CanariGeometry
         shape.add (stroke: [bp], prefs_selectionHiliteColor)
        }
      //---
-       var at = AffineTransform ()
-       at.translate (x: self_mX.ptValue, y: self_mY.ptValue)
+       let at = CanariAffinity.translating (x: self_mX, y: self_mY)
        return shape.transformed (by: at)
 //--- END OF USER ZONE 2
 }

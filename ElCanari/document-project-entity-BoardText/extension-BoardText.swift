@@ -14,7 +14,7 @@ import CanariGeometry
 let BOARD_TEXT_ORIGIN_KNOB  = 0
 let BOARD_TEXT_ROTATION_KNOB  = 1
 
-fileprivate let BOARD_TEXT_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+fileprivate let BOARD_TEXT_ROTATION_KNOB_DISTANCE = CanariLength.pt (30)
 fileprivate let FONT_NAME_IN_DICTIONARY = "*FONT-NAME*"
 
 //--------------------------------------------------------------------------------------------------
@@ -272,7 +272,7 @@ extension BoardText {
        extraWidth inExtraWidth : CanariLength // Used for ERC checking
 ) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText.isEmpty) ? "Empty" : self_mText
-  var stringWidth : CGFloat = 0.0
+  var stringWidth = CanariLength.zero
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
   let lineThickness = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth.ptValue
@@ -288,47 +288,47 @@ extension BoardText {
         let y1 = fontFactor * CGFloat (segment.y1)
         let x2 = fontFactor * (CGFloat (segment.x2) + oblique * CGFloat (segment.y2))
         let y2 = fontFactor * CGFloat (segment.y2)
-        let p1 = NSPoint (x: stringWidth + x1, y: y1)
-        let p2 = NSPoint (x: stringWidth + x2, y: y2)
+        let p1 = NSPoint (x: stringWidth.ptValue + x1, y: y1)
+        let p2 = NSPoint (x: stringWidth.ptValue + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
         oblongs.append (GeometricOblong (p1: p1.canariPoint, p2: p2.canariPoint, width: .pt (lineThickness), capStyle: .round))
       }
-      stringWidth += CGFloat (characterDescriptor.advancement) * fontFactor
+      stringWidth += .pt (CGFloat (characterDescriptor.advancement) * fontFactor)
     }
   }
+  let bounds = bp.bounds.canariRect
   var frameBP = BezierPath ()
   if !bp.isEmpty {
     frameBP.appendRect (bp.bounds.insetBy (dx: -1.0, dy: -1.0))
   }
-  var tr = AffineTransform ()
-  let startX = self_mX.ptValue
-  let startY = self_mY.ptValue
-  tr.translate (x: startX, y: startY)
-//  let rotationInDegrees = CGFloat (self_mRotation) / 1000.0
-  tr.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
+//  let startX = self_mX.ptValue
+//  let startY = self_mY.ptValue
+  var tr = CanariAffinity
+    .translating (x: self_mX, y: self_mY)
+    .rotating (by: self_mRotation)
   if !inFrontSide {
     tr.scale (x: -1.0, y: 1.0)
   }
 
   switch self_mHorizontalAlignment {
   case .onTheLeft :
-    tr.translate (x: -stringWidth, y: 0.0)
+    tr.translate (x: -stringWidth, y: .zero)
   case .center :
-    tr.translate (x: -stringWidth / 2.0, y: 0.0)
+    tr.translate (x: -stringWidth / 2.0, y: .zero)
   case .onTheRight :
     ()
   }
 
   switch self_mVerticalAlignment {
   case .above :
-    tr.translate (x: 0.0, y: -bp.bounds.minY)
+    tr.translate (x: .zero, y: -bounds.minY)
   case .base :
     ()
   case .center :
-    tr.translate (x: 0.0, y: -(bp.bounds.maxY + bp.bounds.minY) / 2.0)
+    tr.translate (x: .zero, y: -(bounds.maxY + bounds.minY) / 2.0)
   case .below :
-    tr.translate (x: 0.0, y: -bp.bounds.maxY)
+    tr.translate (x: .zero, y: -bounds.maxY)
   }
   bp.transform (using: tr)
 
@@ -341,12 +341,12 @@ extension BoardText {
   frameBP.lineCapStyle = .round
   frameBP.lineJoinStyle = .round
 //--- Rotation knob
-  var rotationKnobTransform = AffineTransform ()
-  rotationKnobTransform.translate (x: startX, y: startY)
-  rotationKnobTransform.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
-  let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_TEXT_ROTATION_KNOB_DISTANCE, y: 0.0))
+  let rotationKnobTransform = CanariAffinity
+    .translating (x: self_mX, y: self_mY)
+    .rotating (by: self_mRotation)
+  let rotationKnobLocation = rotationKnobTransform.transforming (x: BOARD_TEXT_ROTATION_KNOB_DISTANCE)
 //---
-  return (bp, frameBP, NSPoint (x: startX, y: startY), rotationKnobLocation, transformedOblongs)
+  return (bp, frameBP, NSPoint (x: self_mX, y: self_mY), rotationKnobLocation.ptValue, transformedOblongs)
 }
 
 //--------------------------------------------------------------------------------------------------

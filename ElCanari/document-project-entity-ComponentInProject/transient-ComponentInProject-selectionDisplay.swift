@@ -51,15 +51,15 @@ import CanariGeometry
 //--- START OF USER ZONE 2
       let lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
       let absoluteCenter = NSPoint (x: self_mX, y: self_mY)
-      let rPadsCenter = self_packagePadDictionary.padsRect.center.ptValue
+      let rPadsCenter = self_packagePadDictionary.padsRect.center
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
-      let rotationKnobLocation = NSPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
+      let rotationKnobLocation = CanariPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
       var rotatedShape = EBShape ()
       if self_mDisplayLegend {
         var strokeBezierPath = self_strokeBezierPath
         if prefs_mShowComponentRotationKnobInBoard {
-          strokeBezierPath.move (to: rPadsCenter)
-          strokeBezierPath.line (to: rotationKnobLocation)
+          strokeBezierPath.move (to: rPadsCenter.ptValue)
+          strokeBezierPath.line (to: rotationKnobLocation.ptValue)
         }
         strokeBezierPath.lineWidth = lineWidth
         strokeBezierPath.lineCapStyle = .round
@@ -67,7 +67,7 @@ import CanariGeometry
         rotatedShape.add (stroke: [strokeBezierPath], prefs_selectionHiliteColor)
       }
       do{
-        var padNumberAffineTransform = AffineTransform ()
+        var padNumberAffineTransform = CanariAffinity ()
         if self_mSide == .back {
           padNumberAffineTransform.scale (x: -1.0, y: 1.0)
         }
@@ -86,9 +86,9 @@ import CanariGeometry
       }
     //--- Knobs
       var rotatedKnobs = EBShape ()
-      rotatedKnobs.add (knobAt: rPadsCenter, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
+      rotatedKnobs.add (knobAt: rPadsCenter.ptValue, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
       if prefs_mShowComponentRotationKnobInBoard {
-        rotatedKnobs.add (knobAt: rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
+        rotatedKnobs.add (knobAt: rotationKnobLocation.ptValue, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
       }
     //--- Display Legend, component name, component value
       let displayLegendNameValue : Bool
@@ -168,9 +168,9 @@ import CanariGeometry
         }
       }
     //---
-      var af = AffineTransform ()
-      af.translate (x: absoluteCenter.x, y: absoluteCenter.y)
-      af.rotate (byDegrees: self_mRotation.unsignedDegreeValue)
+      var af = CanariAffinity ()
+        .translating (x: self_mX, y: self_mY)
+        .rotating (by: self_mRotation)
       if self_mSide == .back {
         af.scale (x: -1.0, y: 1.0)
       }

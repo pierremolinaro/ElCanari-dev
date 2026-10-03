@@ -26,28 +26,28 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
-        if let p = self_mPoint_location?.ptValue {
+        if let p = self_mPoint_location {
           var bp = BezierPath ()
           bp.move (to: NSPoint (x: 0.0, y: 0.0))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: SCHEMATIC_LABEL_SIZE))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: -SCHEMATIC_LABEL_SIZE))
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: -SCHEMATIC_LABEL_SIZE))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: 0.0))
+          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
         //---
-          var af = AffineTransform ()
-          af.translate (x: p.x, y: p.y)
-          af.rotate (byDegrees: CGFloat (self_mOrientation.rawValue) * 90.0)
+          let af = CanariAffinity
+            .translating (p)
+            .rotating (by: .degree (CGFloat (self_mOrientation.rawValue) * 90.0))
           let transformedBP = bp.transformed (by: af)
         //---
           shape.add (filled: [transformedBP], nil)
           shape.add (stroke: [transformedBP], prefs_symbolColorForSchematic)
         //--- Net name
-          let labelOrigin = af.transform (NSPoint (x: SCHEMATIC_LABEL_SIZE * 8.0, y: 0.0))
+          let labelOrigin = af.transforming (x: SCHEMATIC_LABEL_SIZE * 8.0)
           let textAttributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : prefs_pinNameFont,
             NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
@@ -68,7 +68,7 @@ import CanariGeometry
             horizontalAlignment = .center
             verticalAlignment = .below
           }
-          shape.add (text: self_netName, labelOrigin, textAttributes, horizontalAlignment, verticalAlignment)
+          shape.add (text: self_netName, labelOrigin.ptValue, textAttributes, horizontalAlignment, verticalAlignment)
         }
         return shape
 //--- END OF USER ZONE 2

@@ -521,7 +521,7 @@ extension AutoLayoutProjectDocument {
                           transformedBy inAT : CanariAffinity,
                           layers inLayers : ProductLayerSet,
                           to ioProduct : inout ProductRepresentation) {
-    let af = inAT.translating (x: inCenter.x, y: inCenter.y)
+    let af = inAT.translating (inCenter)
     let p = LayeredProductComponentPad (
       width: inPadSize.width,
       height: inPadSize.height,
