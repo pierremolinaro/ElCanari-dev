@@ -277,9 +277,17 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func transformed (by transform: AffineTransform) -> BezierPath {
+  func transformed (by inTransform : AffineTransform) -> BezierPath {
     var result = self
-    result.transform (using: transform)
+    result.transform (using: inTransform)
+    return result
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func transformed (by inTransform : CanariAffinity) -> BezierPath {
+    var result = self
+    result.transform (using: AffineTransform (inTransform.cgAffineTransform))
     return result
   }
 
@@ -544,8 +552,8 @@ struct BezierPath : Hashable {
     NSBezierPath.defaultFlatness = savedDefaultFlatness
     var result = [EBLinePath] ()
     var curvePoints = [NSPoint] (repeating: .zero, count: 3)
-    var optionalStartPoint : NSPoint? = nil
-    var linePoints = [NSPoint] ()
+    var optionalStartPoint : CanariPoint? = nil
+    var linePoints = [CanariPoint] ()
     for idx in 0 ..< flattenedBP.elementCount {
       let type = unsafe flattenedBP.element (at: idx, associatedPoints: &curvePoints)
       switch type {
@@ -554,10 +562,10 @@ struct BezierPath : Hashable {
           let path = EBLinePath (origin: startPoint, lines: linePoints, closed: false)
           result.append (path)
         }
-        optionalStartPoint = curvePoints[0]
+        optionalStartPoint = curvePoints [0].canariPoint
         linePoints.removeAll ()
       case .lineTo:
-        linePoints.append (curvePoints[0])
+        linePoints.append (curvePoints [0].canariPoint)
       case .curveTo: // No curve, Bezier path is flattened
         ()
       case .closePath:
@@ -585,7 +593,7 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func productSegments (withFlatness inFlatness : CGFloat,
-                        transformedBy inAffineTransform : AffineTransform,
+                        transformedBy inAffineTransform : CanariAffinity,
                         clippedBy inClipRect : NSRect) -> [ProductSegment] {
     let pathArray = self.linePathesByFlattening (withFlatness: inFlatness)
     var transformedLinePathArray = [EBLinePath] ()
@@ -595,10 +603,10 @@ struct BezierPath : Hashable {
     }
     var result = [ProductSegment] ()
     for linePath in transformedLinePathArray {
-      let firstPoint = linePath.origin.canariPoint
+      let firstPoint = linePath.origin
       var currentPoint = firstPoint
       for p in linePath.lines {
-        let pp = p.canariPoint
+        let pp = p
         result.append (ProductSegment (p1: currentPoint, p2: pp))
         currentPoint = pp
       }

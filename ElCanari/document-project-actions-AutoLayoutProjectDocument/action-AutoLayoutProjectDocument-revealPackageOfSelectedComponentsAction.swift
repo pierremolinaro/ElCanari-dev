@@ -15,11 +15,11 @@ extension AutoLayoutProjectDocument {
   @objc func revealPackageOfSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     var componentToSelect = [BoardObject] ()
-    var r = NSRect.null
+    var r = CanariRect.zero
     for component in self.componentController.selectedArray.values {
       if let padRect = component.selectedPackagePadsRect () {
         componentToSelect.append (component)
-        r = r.union (padRect)
+        r = r.unioning (padRect)
       }
     }
     self.boardObjectsController.addToSelection (objects: componentToSelect)

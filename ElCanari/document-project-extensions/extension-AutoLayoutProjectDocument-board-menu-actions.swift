@@ -355,7 +355,7 @@ extension AutoLayoutProjectDocument {
     var componentLocationArray = [CenterAndComponent] ()
     for component in self.rootObject.mComponents.values {
       if let padRect = component.selectedPackagePadsRect () {
-        componentLocationArray.append (CenterAndComponent (center: padRect.center, component: component))
+        componentLocationArray.append (CenterAndComponent (center: padRect.center.ptValue, component: component))
       }else{
         componentLocationArray.append (CenterAndComponent (center: NSPoint (), component: component))
       }

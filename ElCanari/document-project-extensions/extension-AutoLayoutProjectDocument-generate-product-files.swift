@@ -280,7 +280,7 @@ extension AutoLayoutProjectDocument {
           }
           ioProduct.append (
             flattenedStrokeBezierPath: textBP,
-            transformedBy: AffineTransform (),
+            transformedBy: CanariAffinity (),
             clippedBy: cocoaBoardRect,
             width: width,
             layers: layer
@@ -321,7 +321,7 @@ extension AutoLayoutProjectDocument {
           }
           ioProduct.append (
             flattenedStrokeBezierPath: textBP,
-            transformedBy: AffineTransform (),
+            transformedBy: CanariAffinity (),
             clippedBy: cocoaBoardRect,
             width: width,
             layers: layer
@@ -365,7 +365,7 @@ extension AutoLayoutProjectDocument {
         }
         ioProduct.append (
           flattenedStrokeBezierPath: textBP,
-          transformedBy: AffineTransform (),
+          transformedBy: CanariAffinity (),
           clippedBy: cocoaBoardRect,
           width: width,
           layers: layer
@@ -432,16 +432,17 @@ extension AutoLayoutProjectDocument {
   private func appendNonPlatedHoles (to ioProduct : inout ProductRepresentation) {
     for object in self.rootObject.mBoardObjects.values {
       if let nph = object as? NonPlatedHole {
-        var af = AffineTransform ()
-        let centerX = nph.mX.ptValue
-        let centerY = nph.mY.ptValue
-        af.translate (x: centerX, y: centerY)
-//        let rotationInDegrees = CGFloat (nph.mRotation) / 1000.0
-        af.rotate (byDegrees: nph.mRotation.unsignedDegreeValue)
+        let af = CanariAffinity
+          .translating (x: nph.mX, y: nph.mY)
+          .rotating (by: nph.mRotation)
+//       let centerX = nph.mX.ptValue
+//        let centerY = nph.mY.ptValue
+////        let rotationInDegrees = CGFloat (nph.mRotation) / 1000.0
+//        af.rotate (byDegrees: nph.mRotation.unsignedDegreeValue)
         if nph.mWidth < nph.mHeight { // Vertical oblong
-          let h = (nph.mHeight - nph.mWidth).ptValue / 2.0
-          let p1 = af.transform (NSPoint (x: 0.0, y: -h)).canariPoint
-          let p2 = af.transform (NSPoint (x: 0.0, y: +h)).canariPoint
+          let h = (nph.mHeight - nph.mWidth) / 2.0
+          let p1 = af.transforming (CanariPoint (y: -h))
+          let p2 = af.transforming (CanariPoint (y: +h))
           let oblong = LayeredProductSegment (
             p1: p1,
             p2: p2,
@@ -450,9 +451,9 @@ extension AutoLayoutProjectDocument {
           )
           ioProduct.append (roundSegment: oblong)
         }else if nph.mWidth > nph.mHeight { // Horizontal oblong
-          let h = (nph.mWidth - nph.mHeight).ptValue / 2.0
-          let p1 = af.transform (NSPoint (x: -h, y: 0.0)).canariPoint
-          let p2 = af.transform (NSPoint (x: +h, y: 0.0)).canariPoint
+          let h = (nph.mWidth - nph.mHeight) / 2.0
+          let p1 = af.transforming (CanariPoint (x: -h))
+          let p2 = af.transforming (CanariPoint (x: +h))
           let oblong = LayeredProductSegment (
             p1: p1,
             p2: p2,
@@ -517,12 +518,10 @@ extension AutoLayoutProjectDocument {
   private func appendPad (center inCenter : CanariPoint,
                           padSize inPadSize : CanariSize,
                           shape inShape : PadShape,
-                          transformedBy inAT : AffineTransform,
+                          transformedBy inAT : CanariAffinity,
                           layers inLayers : ProductLayerSet,
                           to ioProduct : inout ProductRepresentation) {
-    let center = inCenter.ptValue
-    var af = inAT
-    af.translate (x: center.x, y: center.y)
+    let af = inAT.translating (x: inCenter.x, y: inCenter.y)
     let p = LayeredProductComponentPad (
       width: inPadSize.width,
       height: inPadSize.height,
@@ -537,32 +536,32 @@ extension AutoLayoutProjectDocument {
 
   private func appendPadHole (center inCenter : CanariPoint,
                               holeSize inHoleSize : CanariSize,
-                              transformedBy inAT : AffineTransform,
+                              transformedBy inAT : CanariAffinity,
                               to ioProduct : inout ProductRepresentation) {
-    let p = inCenter.ptValue
-    let holeSize = inHoleSize.ptValue
+    let p = inCenter
+    let holeSize = inHoleSize
     if inHoleSize.width < inHoleSize.height { // Vertical oblong
-      let p1 = inAT.transform (NSPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
-      let p2 = inAT.transform (NSPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
+      let p1 = inAT.transforming (CanariPoint (x: p.x, y: p.y - (holeSize.height - holeSize.width) / 2.0))
+      let p2 = inAT.transforming (CanariPoint (x: p.x, y: p.y + (holeSize.height - holeSize.width) / 2.0))
       let oblong = LayeredProductSegment (
-        p1: p1.canariPoint,
-        p2: p2.canariPoint,
+        p1: p1,
+        p2: p2,
         width: inHoleSize.width,
         layers: .hole
       )
       ioProduct.append (roundSegment: oblong)
     }else if inHoleSize.width > inHoleSize.height { // Horizontal oblong
-      let p1 = inAT.transform (NSPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
-      let p2 = inAT.transform (NSPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
+      let p1 = inAT.transforming (CanariPoint (x: p.x - (holeSize.width - holeSize.height) / 2.0, y: p.y))
+      let p2 = inAT.transforming (CanariPoint (x: p.x + (holeSize.width - holeSize.height) / 2.0, y: p.y))
       let oblong = LayeredProductSegment (
-        p1: p1.canariPoint,
-        p2: p2.canariPoint,
+        p1: p1,
+        p2: p2,
         width: inHoleSize.height,
         layers: .hole
       )
       ioProduct.append (roundSegment: oblong)
     }else{ // Circular
-      let center = inAT.transform (inCenter.ptValue).canariPoint
+      let center = inAT.transforming (inCenter)
       let padDiameter = inHoleSize.width
       let pad = LayeredProductCircle (
         center: center,
@@ -742,9 +741,9 @@ extension AutoLayoutProjectDocument {
         }
       }
       let linePath = retainedBP.linePathesByFlattening (withFlatness: 0.025) [0]
-      result.append (linePath.origin.canariPoint)
+      result.append (linePath.origin)
       for p in linePath.lines {
-        result.append (p.canariPoint)
+        result.append (p)
       }
     case .rectangular :
       let boardWidth = self.rootObject.mRectangularBoardWidth
@@ -767,9 +766,9 @@ extension AutoLayoutProjectDocument {
           yRadius: self.rootObject.mBoardCornerRadius.ptValue
         )
         let linePath = roundedRect.linePathesByFlattening (withFlatness: 0.025) [0]
-        result.append (linePath.origin.canariPoint)
+        result.append (linePath.origin)
         for p in linePath.lines {
-          result.append (p.canariPoint)
+          result.append (p)
         }
       }
     }

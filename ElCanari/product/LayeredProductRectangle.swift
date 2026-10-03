@@ -20,18 +20,18 @@ struct LayeredProductRectangle : Codable {
   //  Properties
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  let af : AffineTransform
+  let af : CanariAffinity
   let layers : ProductLayerSet
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func polygon () -> (CanariPoint, [CanariPoint]) {
-    let w = 0.5 // Moitié de la largeur
-    let h = 0.5 // Moitié de la hauteur
-    let bottomLeft  = self.af.transform (NSPoint (x: -w, y: -h)).canariPoint
-    let bottomRight = self.af.transform (NSPoint (x: +w, y: -h)).canariPoint
-    let topRight    = self.af.transform (NSPoint (x: +w, y: +h)).canariPoint
-    let topLeft     = self.af.transform (NSPoint (x: -w, y: +h)).canariPoint
+    let w = CanariLength.pt (0.5) // Moitié de la largeur
+    let h = CanariLength.pt (0.5) // Moitié de la hauteur
+    let bottomLeft  = self.af.transforming (CanariPoint (x: -w, y: -h))
+    let bottomRight = self.af.transforming (CanariPoint (x: +w, y: -h))
+    let topRight    = self.af.transforming (CanariPoint (x: +w, y: +h))
+    let topLeft     = self.af.transforming (CanariPoint (x: -w, y: +h))
     return (bottomLeft, [bottomRight, topRight, topLeft])
   }
 

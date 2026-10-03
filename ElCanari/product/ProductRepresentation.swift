@@ -95,7 +95,7 @@ struct ProductRepresentation : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func append (flattenedStrokeBezierPath inBezierPath : BezierPath,
-                        transformedBy inAT : AffineTransform,
+                        transformedBy inAT : CanariAffinity,
                         clippedBy inClipRect : NSRect,
                         width inWidth : CanariLength,
                         layers inLayerSet : ProductLayerSet) {
@@ -118,21 +118,21 @@ struct ProductRepresentation : Codable {
                      x inX : CanariLength,
                      y inY : CanariLength,
                      quadrantRotation inRotation : QuadrantRotation) {
-    var modelAffineTransform = AffineTransform ()
-    let width = inProduct.boardWidth.value (in: .pt)
-    let height = inProduct.boardHeight.value (in: .pt)
+    var modelAffineTransform = CanariAffinity ()
+    let width = inProduct.boardWidth
+    let height = inProduct.boardHeight
     switch inRotation {
     case .rotation0, .rotation180 :
       modelAffineTransform.translate (x: width / 2.0, y: height / 2.0)
     case .rotation90, .rotation270 :
       modelAffineTransform.translate (x: height / 2.0, y: width / 2.0)
     }
-    modelAffineTransform.translate (x: inX.value (in: .pt), y: inY.value (in: .pt))
+    modelAffineTransform.translate (x: inX, y: inY)
     let angleInDegrees = Double (inRotation.rawValue * 90)
-    modelAffineTransform.rotate (byDegrees: angleInDegrees)
+    modelAffineTransform.rotate (by: .degree (angleInDegrees))
     modelAffineTransform.translate (x: -width / 2.0, y: -height / 2.0)
     for circle in inProduct.circles {
-      let center = modelAffineTransform.transform (NSPoint (x: circle.x, y: circle.y)).canariPoint
+      let center = modelAffineTransform.transforming (CanariPoint (x: circle.x, y: circle.y))
       let newCircle = LayeredProductCircle (
         center: center,
         diameter: circle.d,
@@ -146,8 +146,8 @@ struct ProductRepresentation : Codable {
         layers.remove (.boardLimits)
         layers.insert (.internalBoardLimits)
       }
-      let p1 = modelAffineTransform.transform (NSPoint (x: segment.x1, y: segment.y1)).canariPoint
-      let p2 = modelAffineTransform.transform (NSPoint (x: segment.x2, y: segment.y2)).canariPoint
+      let p1 = modelAffineTransform.transforming (CanariPoint (x: segment.x1, y: segment.y1))
+      let p2 = modelAffineTransform.transforming (CanariPoint (x: segment.x2, y: segment.y2))
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -157,8 +157,8 @@ struct ProductRepresentation : Codable {
       self.roundSegments.append (s)
     }
     for segment in inProduct.squareSegments {
-      let p1 = modelAffineTransform.transform (NSPoint (x: segment.x1, y: segment.y1)).canariPoint
-      let p2 = modelAffineTransform.transform (NSPoint (x: segment.x2, y: segment.y2)).canariPoint
+      let p1 = modelAffineTransform.transforming (CanariPoint (x: segment.x1, y: segment.y1))
+      let p2 = modelAffineTransform.transforming (CanariPoint (x: segment.x2, y: segment.y2))
       let s = LayeredProductSegment (
         p1: p1,
         p2: p2,
@@ -314,8 +314,8 @@ struct ProductRepresentation : Codable {
     for componentPad in self.componentPads {
       if !componentPad.layers.intersection (inLayers).isEmpty {
         let pad = BoardModelPad (inUndoManager)
-        let relativeCenter = NSPoint ()
-        let absoluteCenter = componentPad.af.transform (relativeCenter).canariPoint
+        let relativeCenter = CanariPoint ()
+        let absoluteCenter = componentPad.af.transforming (relativeCenter)
         pad.x = absoluteCenter.x
         pad.y = absoluteCenter.y
         pad.width = componentPad.width

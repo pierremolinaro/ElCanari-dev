@@ -15,6 +15,16 @@ extension AffineTransform {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  init (_ t : CGAffineTransform) {
+    self.init (
+      m11: t.a,  m12: t.b,
+      m21: t.c,  m22: t.d,
+      tX: t.tx,  tY: t.ty
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   var angle : CanariAngle {
     let p1 = self.transform (NSPoint ())
     let p2 = self.transform (NSPoint (x: 1, y: 0))

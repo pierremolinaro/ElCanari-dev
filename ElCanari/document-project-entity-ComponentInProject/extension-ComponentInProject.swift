@@ -196,7 +196,7 @@ extension ComponentInProject {
 
   func canRotate90_ComponentInProject (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     if let padRect = self.selectedPackagePadsRect () {
-      accumulatedPoints.insert (padRect.center.canariPoint)
+      accumulatedPoints.insert (padRect.center)
       return true
     }else{
       return false
@@ -276,13 +276,12 @@ extension ComponentInProject {
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func packageToComponentAffineTransform () -> AffineTransform {
+  func packageToComponentAffineTransform () -> CanariAffinity {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
-    let center = packagePadDictionary.padsRect.center.ptValue
-    var af = AffineTransform ()
-    af.translate (x: self.mX.ptValue, y: self.mY.ptValue)
-//    let angleDegrees = Double (self.mRotation) / 1000.0
-    af.rotate (byDegrees: self.mRotation.unsignedDegreeValue)
+    let center = packagePadDictionary.padsRect.center
+    var af = CanariAffinity
+      .translating (x: self.mX, y: self.mY)
+      .rotating (by: self.mRotation)
     if self.mSide == .back {
       af.scale (x: -1.0, y: 1.0)
     }
@@ -292,17 +291,17 @@ extension ComponentInProject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func selectedPackagePadsRect () -> NSRect? {
+  func selectedPackagePadsRect () -> CanariRect? {
     if let inBoard = self.isPlacedInBoard, inBoard, let padDictionary = self.packagePadDictionary {
       let af = self.packageToComponentAffineTransform ()
-      var padCenters = [NSPoint] ()
+      var padCenters = [CanariPoint] ()
       for (_, masterPad) in padDictionary {
-        padCenters.append (af.transform (masterPad.center.ptValue))
+        padCenters.append (af.transforming (masterPad.center))
         for slavePad in masterPad.slavePads {
-          padCenters.append (af.transform (slavePad.center.ptValue))
+          padCenters.append (af.transforming (slavePad.center))
         }
       }
-      return NSRect (points: padCenters)
+      return CanariRect (padCenters)
     }else{
       return nil
     }

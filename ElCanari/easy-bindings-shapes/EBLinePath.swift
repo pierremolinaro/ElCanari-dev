@@ -7,23 +7,35 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 // EBLinePath
 //--------------------------------------------------------------------------------------------------
 
 struct EBLinePath {
-  let origin : NSPoint
-  let lines : [NSPoint]
+  let origin : CanariPoint
+  let lines : [CanariPoint]
   let closed : Bool
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inAffineTransform : AffineTransform) -> EBLinePath {
-    let transformedOrigin = inAffineTransform.transform (self.origin)
-    var transformedLines = [NSPoint] ()
+    let transformedOrigin = inAffineTransform.transform (self.origin.ptValue).canariPoint
+    var transformedLines = [CanariPoint] ()
     for p in self.lines {
-      transformedLines.append (inAffineTransform.transform (p))
+      transformedLines.append (inAffineTransform.transform (p.ptValue).canariPoint)
+    }
+    return EBLinePath (origin: transformedOrigin, lines: transformedLines, closed: self.closed)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func transformed (by inAffineTransform : CanariAffinity) -> EBLinePath {
+    let transformedOrigin = inAffineTransform.transforming (self.origin)
+    var transformedLines = [CanariPoint] ()
+    for p in self.lines {
+      transformedLines.append (inAffineTransform.transforming (p))
     }
     return EBLinePath (origin: transformedOrigin, lines: transformedLines, closed: self.closed)
   }
@@ -34,30 +46,30 @@ struct EBLinePath {
     var segments = [(NSPoint, NSPoint)] ()
     var p1 = self.origin
     for p2 in self.lines {
-      if let (p1Clipped, p2Clipped) = inRect.clippedSegment (p1: p1, p2: p2) {
+      if let (p1Clipped, p2Clipped) = inRect.clippedSegment (p1: p1.ptValue, p2: p2.ptValue) {
         segments.append ((p1Clipped, p2Clipped))
       }
       p1 = p2
     }
-    if self.closed, let (p1Clipped, p2Clipped) = inRect.clippedSegment (p1: p1, p2: self.origin) {
+    if self.closed, let (p1Clipped, p2Clipped) = inRect.clippedSegment (p1: p1.ptValue, p2: self.origin.ptValue) {
       segments.append ((p1Clipped, p2Clipped))
     }
   //--- Build result
     var result = [EBLinePath] ()
-    var possibleOrigin : NSPoint? = nil
-    var points = [NSPoint] ()
+    var possibleOrigin : CanariPoint? = nil
+    var points = [CanariPoint] ()
     for (p1, p2) in segments {
       if let origin = possibleOrigin {
-        if p1 == points.last! {
-          points.append (p2)
+        if p1.canariPoint == points.last! {
+          points.append (p2.canariPoint)
         }else{
           result.append (EBLinePath (origin: origin, lines: points, closed: false))
-          possibleOrigin = p1
-          points = [p2]
+          possibleOrigin = p1.canariPoint
+          points = [p2.canariPoint]
         }
       }else{
-        possibleOrigin = p1
-        points = [p2]
+        possibleOrigin = p1.canariPoint
+        points = [p2.canariPoint]
       }
     }
     if let origin = possibleOrigin {

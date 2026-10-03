@@ -122,10 +122,10 @@ extension AutoLayoutMergerDocument {
       let p2 = NSPoint (x: rect.p2x, y: rect.p2y)
       let height = p1.distance (to: p2)
 //      let angleInDegrees = p0.angle (to: p1).unsignedDegreeValue
-      var af = AffineTransform ()
-      af.translate (x: centerX.ptValue, y: centerY.ptValue)
-      af.rotate (by: p0.angle (to: p1))
-      af.scale (x: width, y: height)
+      let af = CanariAffinity
+        .translating (x: centerX, y: centerY)
+        .rotating (by: p0.angle (to: p1))
+        .scaling (x: width, y: height)
       let s = LayeredProductRectangle (af: af, layers: inLayer)
       ioProduct.append (rectangle: s)
     }
@@ -214,9 +214,9 @@ extension AutoLayoutMergerDocument {
       let width = pad.width
       let height = pad.height
 //      let angleDegrees = pad.rotation.unsignedDegreeValue
-      var af = AffineTransform ()
-      af.translate (x: pad.x.ptValue, y: pad.y.ptValue)
-      af.rotate (by: pad.rotation)
+      let af = CanariAffinity
+        .translating (x: pad.x, y: pad.y)
+        .rotating (by: pad.rotation)
       let s = LayeredProductComponentPad (
         width: width,
         height: height,

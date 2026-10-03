@@ -15,7 +15,7 @@ import CanariGeometry
 let BOARD_IMAGE_CENTER  = 0
 let BOARD_IMAGE_ROTATION_KNOB = 1
 
-fileprivate let BOARD_IMAGE_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+fileprivate let BOARD_IMAGE_ROTATION_KNOB_DISTANCE = CanariLength.pt (30.0)
 
 let DEFAULT_BOARD_IMAGE = "board-image-default"
 
@@ -212,11 +212,11 @@ extension BoardImage {
 //--------------------------------------------------------------------------------------------------
 
 struct BoardImageDisplayInfos {
-  let rotationKnobLocation : NSPoint
+  let rotationKnobLocation : CanariPoint
   let backgroundBP : BezierPath
   let imageBP : BezierPath
   let productRectangles : [ProductRectangle]
-  let transformedRectangles : [AffineTransform]
+  let transformedRectangles : [CanariAffinity]
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -232,12 +232,9 @@ struct BoardImageDisplayInfos {
   let height = CGFloat (inBoardImageDescriptor.scaledImageHeight) * pixelSize
   let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
 //--- Affine transform
-  var af = AffineTransform ()
-  let centerX = inCenterX.ptValue
-  let centerY = inCenterY.ptValue
-  af.translate (x: centerX, y: centerY)
-//  let rotationInDegrees = inRotation.unsignedDegreeValue
-  af.rotate (by: inRotation)
+  var af = CanariAffinity
+    .translating (x: inCenterX, y: inCenterY)
+    .rotating (by: inRotation)
   if !inFrontSide {
     af.scale (x: -1.0, y: 1.0)
   }
@@ -246,7 +243,7 @@ struct BoardImageDisplayInfos {
 //--- Board image
   var filledBP = BezierPath ()
   var productRectangles = [ProductRectangle] ()
-  var transformedRectangles = [AffineTransform] ()
+  var transformedRectangles = [CanariAffinity] ()
   for rect in inBoardImageDescriptor.blackRectangles {
     let x = CGFloat (rect.x) * pixelSize - width / 2.0
     let y = CGFloat (rect.y) * pixelSize - height / 2.0
@@ -254,23 +251,23 @@ struct BoardImageDisplayInfos {
     let h = CGFloat (rect.height) * pixelSize
     let r = NSRect (x: x, y: y, width: w, height: h)
     filledBP.appendRect (r)
-    let p0 = af.transform (NSPoint (x: x,     y: y))
-    let p1 = af.transform (NSPoint (x: x + w, y: y))
-    let p2 = af.transform (NSPoint (x: x + w, y: y + h))
-    let p3 = af.transform (NSPoint (x: x,     y: y + h))
+    let p0 = af.transforming (CanariPoint (x: x,     y: y))
+    let p1 = af.transforming (CanariPoint (x: x + w, y: y))
+    let p2 = af.transforming (CanariPoint (x: x + w, y: y + h))
+    let p3 = af.transforming (CanariPoint (x: x,     y: y + h))
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
   //---
     var rectAF = af
-    rectAF.translate (x: x.ptValue + w.ptValue / 2.0, y: y.ptValue + h.ptValue / 2.0)
+    rectAF.translate (x: x + w / 2.0, y: y + h / 2.0)
     rectAF.scale (x: w.ptValue, y: h.ptValue)
     transformedRectangles.append (rectAF)
   }
   let imageBP = filledBP.transformed (by: af)
 //--- Rotation knob
-  var rotationKnobTransform = AffineTransform ()
-  rotationKnobTransform.translate (x: centerX, y: centerY)
-  rotationKnobTransform.rotate (by: inRotation)
-  let rotationKnobLocation = rotationKnobTransform.transform (NSPoint (x: BOARD_IMAGE_ROTATION_KNOB_DISTANCE, y: 0.0))
+  let rotationKnobTransform = CanariAffinity
+    .translating (x: inCenterX, y: inCenterY)
+    .rotating (by: inRotation)
+  let rotationKnobLocation = rotationKnobTransform.transforming (CanariPoint (x: BOARD_IMAGE_ROTATION_KNOB_DISTANCE))
 //---
   return BoardImageDisplayInfos (
     rotationKnobLocation: rotationKnobLocation,
