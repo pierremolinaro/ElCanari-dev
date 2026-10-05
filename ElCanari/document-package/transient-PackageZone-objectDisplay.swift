@@ -28,10 +28,10 @@ import CanariGeometry
        _ self_displayZoneName : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let x = self_x.ptValue
-    let y = self_y.ptValue
-    let width = self_width.ptValue
-    let height = self_height.ptValue
+    let x = self_x
+    let y = self_y
+    let width = self_width
+    let height = self_height
     var bp = BezierPath ()
     if (self_width <= .zero) && (self_height <= .zero) { // Oval is a point
       bp.move (to: NSPoint (x: x, y: y))
@@ -43,7 +43,7 @@ import CanariGeometry
       bp.move (to: NSPoint (x: x, y: y))
       bp.line (to: NSPoint (x: x + width, y: y))
     }else{
-      let r = NSRect (x: x, y: y, width: width, height: height)
+      let r = CanariRect (left: x, bottom: y, width: width, height: height)
       bp.appendRect (r)
     }
     bp.lineWidth = CanariLength.pt (0.5)

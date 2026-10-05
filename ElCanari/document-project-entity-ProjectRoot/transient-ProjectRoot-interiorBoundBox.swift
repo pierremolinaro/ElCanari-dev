@@ -44,7 +44,7 @@ import CanariGeometry
                 let cp2 = descriptor.cp2.ptValue
                 var bp = BezierPath ()
                 bp.move (to: p1)
-                bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+                bp.cubic (to: p2, controlPoint1: cp1, controlPoint2: cp2)
                 let r = bp.bounds
                 minX = min (minX, r.minX)
                 maxX = max (maxX, r.maxX)

@@ -24,9 +24,9 @@ import CanariGeometry
           if let a = object.connectedPoints {
             for point in a {
               let p = point
-              let r = NSRect (
-                x: p.x - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,
-                y: p.y - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,
+              let r = CanariRect (
+                left: p.x - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,
+                bottom: p.y - SCHEMATIC_CONNECTION_POINT_DIAMETER / 2.0,
                 width: SCHEMATIC_CONNECTION_POINT_DIAMETER,
                 height: SCHEMATIC_CONNECTION_POINT_DIAMETER
               )

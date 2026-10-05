@@ -64,7 +64,7 @@ import CanariGeometry
   var path1 = BezierPath ()
   path1.move (to: NSPoint (x: 0.0, y: 0.0))
   path1.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
-  path1.curve (to: NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
+  path1.cubic (to: NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
                controlPoint1: NSPoint (x: arrowSize, y: .zero),
                controlPoint2: NSPoint (x: arrowSize, y: .zero))
   path1.close ()
@@ -74,7 +74,7 @@ import CanariGeometry
   var path2 = BezierPath ()
   path2.move (to: NSPoint (x: 0.0, y: 0.0))
   path2.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
-  path2.curve (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
+  path2.cubic (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
                controlPoint1: NSPoint (x: arrowSize, y: .zero),
                controlPoint2: NSPoint (x: arrowSize, y: .zero))
   path2.close ()
@@ -86,7 +86,6 @@ import CanariGeometry
   var textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,
     NSAttributedString.Key.foregroundColor : prefs_packageDimensionColor
-//    NSAttributedString.Key.backgroundColor : self_drawDimensionBackground ? prefs_packageBackgroundColor
   ]
   if self_drawDimensionBackground {
     textAttributes [NSAttributedString.Key.backgroundColor] = prefs_packageBackgroundColor

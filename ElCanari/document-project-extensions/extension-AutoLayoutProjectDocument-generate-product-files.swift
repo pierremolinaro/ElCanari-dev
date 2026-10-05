@@ -697,7 +697,7 @@ extension AutoLayoutProjectDocument {
         case .bezier :
           let cp1 = descriptor.cp1.ptValue
           let cp2 = descriptor.cp2.ptValue
-          bp.curve (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
+          bp.cubic (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
         }
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
@@ -726,7 +726,7 @@ extension AutoLayoutProjectDocument {
           }
         case .curveTo:
           if closedPathCount == retainedClosedPath {
-            retainedBP.curve (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
+            retainedBP.cubic (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
           }
         case .closePath:
           if closedPathCount == retainedClosedPath {

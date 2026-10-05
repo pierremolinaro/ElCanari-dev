@@ -101,7 +101,7 @@ import CanariGeometry
   var shapes = EBShape ()
 //--- Background
   if prefs_mergerShowInstanceBackground {
-    let backRect = NSRect (x: .zero, y: .zero, width: self_modelWidth, height: self_modelHeight)
+    let backRect = CanariRect (left: .zero, bottom: .zero, width: self_modelWidth, height: self_modelHeight)
     shapes.add (filled: [BezierPath (rect: backRect)], prefs_mergerColorBackground)
   }
 //--- Back Legend Lines, images and QR Codes
@@ -202,7 +202,7 @@ import CanariGeometry
   do{
     let color = prefs_mergerBoardViewDisplayModelBoardsLimits ? prefs_mergerColorInternalBoardsLimits : .clear
     let boardRect = CanariRect (left: .zero, bottom: .zero, width: self_modelWidth, height: self_modelHeight)
-    let boardRectBP = BezierPath (rect: boardRect.ptValue)
+    let boardRectBP = BezierPath (rect: boardRect)
     shapes.add (stroke: self_internalBoardsLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
     shapes.add (stroke: self_boardLimitsBezierPaths.array, color, clip: .inside (boardRectBP))
   }

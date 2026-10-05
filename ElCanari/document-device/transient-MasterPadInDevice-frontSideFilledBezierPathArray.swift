@@ -30,7 +30,7 @@ import CanariGeometry
     let yCenter = self_mCenterY
     let width = self_mWidth
     let height = self_mHeight
-    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
+    let rPad = CanariRect (left: xCenter - width / 2.0, bottom: yCenter - height / 2.0, width: width, height: height)
     var bp : BezierPath
     switch self_mShape {
     case .rect :

@@ -30,7 +30,7 @@ import CanariGeometry
     ]
     let text = self_text.isEmpty ? "?" : self_text
     let textShape = EBShape (text: text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
-    var bp = BezierPath (rect: textShape.boundingBox)
+    var bp = BezierPath (rect: textShape.boundingBox.canariRect)
     bp.lineWidth = CanariLength.pt (0.25)
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
     shape.add (knobAt:  origin, knobIndex: 0, .rect, .pt (2.0))

@@ -31,7 +31,7 @@ import CanariGeometry
           let otherInstanceRect = root_boardInstances_instanceRect [idy].instanceRect!
           let intersection = instanceRect.intersection (otherInstanceRect.insetBy (dx: -root_horizontalSeparator, dy: -root_verticalSeparator))
           if !intersection.isEmpty {
-            let intersectionEnlarged : NSRect = intersection.ptValue.insetBy (dx: -3.0, dy: -3.0)
+            let intersectionEnlarged : CanariRect = intersection.insetBy (dx: .pt (-3.0), dy: .pt (-3.0))
             var bp = BezierPath (rect: intersectionEnlarged)
             bp.lineWidth = CanariLength.pt (3.0)
             let issue = CanariIssue (kind: .error, message: "Intersection", pathes: [bp])

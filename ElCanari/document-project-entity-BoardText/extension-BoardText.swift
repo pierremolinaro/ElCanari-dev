@@ -300,7 +300,7 @@ extension BoardText {
   let bounds = bp.bounds.canariRect
   var frameBP = BezierPath ()
   if !bp.isEmpty {
-    frameBP.appendRect (bp.bounds.insetBy (dx: -1.0, dy: -1.0))
+    frameBP.appendRect (bp.bounds.canariRect.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
   }
 //  let startX = self_mX.ptValue
 //  let startY = self_mY.ptValue

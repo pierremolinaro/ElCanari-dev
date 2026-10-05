@@ -50,7 +50,7 @@ import CanariGeometry
       bp.move (to: NSPoint (x: x, y: y))
       bp.line (to: NSPoint (x: x + width, y: y))
     }else{
-      let r = NSRect (x: x, y: y, width: width, height: height)
+      let r = CanariRect (left: x, bottom: y, width: width, height: height)
       bp = BezierPath (rect: r)
     }
     bp.lineWidth = CanariLength.pt (0.25)

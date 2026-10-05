@@ -228,9 +228,9 @@ struct BoardImageDisplayInfos {
                                          pixelSizeInCanariUnit inPixelSize : CanariLength,
                                          rotation inRotation : CanariAngle) -> BoardImageDisplayInfos {
   let pixelSize = inPixelSize
-  let width = CGFloat (inBoardImageDescriptor.scaledImageWidth) * pixelSize
-  let height = CGFloat (inBoardImageDescriptor.scaledImageHeight) * pixelSize
-  let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
+  let width = inBoardImageDescriptor.scaledImageWidth * pixelSize
+  let height = inBoardImageDescriptor.scaledImageHeight * pixelSize
+  let qrRect = CanariRect (center: .zero, size: CanariSize (width: width, height: height))
 //--- Affine transform
   var af = CanariAffinity
     .translating (x: inCenterX, y: inCenterY)
@@ -245,11 +245,11 @@ struct BoardImageDisplayInfos {
   var productRectangles = [ProductRectangle] ()
   var transformedRectangles = [CanariAffinity] ()
   for rect in inBoardImageDescriptor.blackRectangles {
-    let x = CGFloat (rect.x) * pixelSize - width / 2.0
-    let y = CGFloat (rect.y) * pixelSize - height / 2.0
-    let w = CGFloat (rect.width) * pixelSize
-    let h = CGFloat (rect.height) * pixelSize
-    let r = NSRect (x: x, y: y, width: w, height: h)
+    let x = rect.x * pixelSize - width / 2.0
+    let y = rect.y * pixelSize - height / 2.0
+    let w = rect.width * pixelSize
+    let h = rect.height * pixelSize
+    let r = CanariRect (left: x, bottom: y, width: w, height: h)
     filledBP.appendRect (r)
     let p0 = af.transforming (x: x,     y: y)
     let p1 = af.transforming (x: x + w, y: y)

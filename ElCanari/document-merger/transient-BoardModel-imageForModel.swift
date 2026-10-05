@@ -101,7 +101,7 @@ import CanariGeometry
   var shapes = EBShape ()
 //--- Background
   if prefs_mergerShowModelBackground {
-    let backRect = NSRect (x: .zero, y: .zero, width: self_modelWidth, height: self_modelHeight)
+    let backRect = CanariRect (left: .zero, bottom: .zero, width: self_modelWidth, height: self_modelHeight)
     shapes.add (filled: [BezierPath (rect: backRect)], prefs_mergerColorBackground)
   }
 //--- Back Legend Lines, images and QR Codes

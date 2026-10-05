@@ -46,7 +46,7 @@ import CanariGeometry
           case .bezier :
             let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1)
             let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2)
-            bp.curve (to: p2.ptValue, controlPoint1: cp1.ptValue, controlPoint2: cp2.ptValue)
+            bp.cubic (to: p2.ptValue, controlPoint1: cp1.ptValue, controlPoint2: cp2.ptValue)
           }
           bp.lineWidth = CanariLength.pt (1.0)
           bp.lineCapStyle = .round

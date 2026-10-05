@@ -22,7 +22,7 @@ import CanariGeometry
 //--- START OF USER ZONE 2
     var shape = EBShape ()
     if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
-      var bp = BezierPath (rect: self_boardRect.ptValue)
+      var bp = BezierPath (rect: self_boardRect)
       bp.lineWidth = BOARD_LIMIT_WIDTH
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round

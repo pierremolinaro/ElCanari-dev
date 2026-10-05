@@ -23,9 +23,9 @@ import CanariGeometry
        _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r = NSRect (
-    x: self_x,
-    y: self_y,
+  let r = CanariRect (
+    left: self_x,
+    bottom: self_y,
     width: self_width,
     height: self_height
   )

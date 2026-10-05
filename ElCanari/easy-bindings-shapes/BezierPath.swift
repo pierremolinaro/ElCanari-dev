@@ -23,12 +23,6 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (rect inRect : NSRect) {
-    self.mPath = NSBezierPath (rect: inRect)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   init (rect inRect : CanariRect) {
     self.mPath = NSBezierPath (rect: inRect.ptValue)
   }
@@ -221,13 +215,6 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendRect (_ inRect : NSRect) {
-    self.internalInsulatePath ()
-    self.mPath.appendRect (inRect)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   mutating func appendRect (_ inRect : CanariRect) {
     self.internalInsulatePath ()
     self.mPath.appendRect (inRect.ptValue)
@@ -235,9 +222,9 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendOval (in inRect : NSRect) {
+  mutating func appendOval (in inRect : CanariRect) {
     self.internalInsulatePath ()
-    self.mPath.appendOval (in: inRect)
+    self.mPath.appendOval (in: inRect.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -270,7 +257,9 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func curve (to inPoint : NSPoint, controlPoint1 inCP1 : NSPoint, controlPoint2 inCP2 : NSPoint) {
+  mutating func cubic (to inPoint : NSPoint,
+                       controlPoint1 inCP1 : NSPoint,
+                       controlPoint2 inCP2 : NSPoint) {
     self.internalInsulatePath ()
     self.mPath.curve (to: inPoint, controlPoint1: inCP1, controlPoint2: inCP2)
   }
@@ -502,6 +491,22 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  init (oblongInRect inRect : CanariRect) {
+    self.init ()
+    let r = inRect.ptValue
+    let width = inRect.size.width.ptValue
+    let height = inRect.size.height.ptValue
+    if width < height {
+      self.mPath.appendRoundedRect (r, xRadius: width / 2.0, yRadius: width / 2.0)
+    }else if width > height {
+      self.mPath.appendRoundedRect (r, xRadius: height / 2.0, yRadius: height / 2.0)
+    }else{
+      self.mPath.appendOval (in: r)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   mutating func appendOblong (in inRect : NSRect) {
     self.internalInsulatePath ()
     let width = inRect.size.width
@@ -512,6 +517,22 @@ struct BezierPath : Hashable {
       self.mPath.appendRoundedRect (inRect, xRadius: height / 2.0, yRadius: height / 2.0)
     }else{
       self.mPath.appendOval (in: inRect)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func appendOblong (in inRect : CanariRect) {
+    self.internalInsulatePath ()
+    let r = inRect.ptValue
+    let width = inRect.size.width.ptValue
+    let height = inRect.size.height.ptValue
+    if width < height {
+      self.mPath.appendRoundedRect (r, xRadius: width / 2.0, yRadius: width / 2.0)
+    }else if width > height {
+      self.mPath.appendRoundedRect (r, xRadius: height / 2.0, yRadius: height / 2.0)
+    }else{
+      self.mPath.appendOval (in: r)
     }
   }
 

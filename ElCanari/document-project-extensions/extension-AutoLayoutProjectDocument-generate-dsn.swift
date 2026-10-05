@@ -266,7 +266,7 @@ extension AutoLayoutProjectDocument {
         case .bezier :
           let cp1 = inConverter.dsnPointFromCanariPoint (descriptor.cp1)
           let cp2 = inConverter.dsnPointFromCanariPoint (descriptor.cp2)
-          clearanceBP.curve (to: inConverter.dsnPointFromCanariPoint (descriptor.p2), controlPoint1: cp1, controlPoint2: cp2)
+          clearanceBP.cubic (to: inConverter.dsnPointFromCanariPoint (descriptor.p2), controlPoint1: cp1, controlPoint2: cp2)
         }
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
@@ -282,7 +282,7 @@ extension AutoLayoutProjectDocument {
       )
       let bp : BezierPath
       if self.rootObject.mBoardCornerRadius <= d {
-        bp = BezierPath (rect: inConverter.dsnRectFromCanariRect (r))
+        bp = BezierPath (rect: inConverter.dsnRectFromCanariRect (r).canariRect)
       }else{
         bp = BezierPath (
           roundedRect: inConverter.dsnRectFromCanariRect (r).canariRect,

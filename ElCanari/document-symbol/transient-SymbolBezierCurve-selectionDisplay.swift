@@ -32,7 +32,7 @@ import CanariGeometry
   let cp2 = CanariPoint (x: self_cpx2, y: self_cpy2)
   var bp = BezierPath ()
   bp.move (to: p1.ptValue)
-  bp.curve (to: p2.ptValue, controlPoint1: cp1.ptValue, controlPoint2: cp2.ptValue)
+  bp.cubic (to: p2.ptValue, controlPoint1: cp1.ptValue, controlPoint2: cp2.ptValue)
   bp.move (to: p1.ptValue)
   bp.line (to: cp1.ptValue)
   bp.move (to: p2.ptValue)

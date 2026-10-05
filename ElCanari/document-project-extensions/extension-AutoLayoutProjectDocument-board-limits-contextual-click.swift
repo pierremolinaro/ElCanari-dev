@@ -58,7 +58,7 @@ extension AutoLayoutProjectDocument {
           let cp2 = NSPoint (x: borderCurve.mCPX2, y: borderCurve.mCPY2)
           var bp = BezierPath ()
           bp.move (to: p1.ptValue)
-          bp.curve (to: p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
+          bp.cubic (to: p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
           bp.lineWidth = 2.0 * self.rootObject.mBoardClearance
           bp = bp.pathToFillByStroking
           if bp.contains (inUnalignedMouseDownPoint.ptValue) {

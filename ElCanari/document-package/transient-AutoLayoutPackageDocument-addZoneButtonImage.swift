@@ -18,7 +18,7 @@ import CanariGeometry
        _ prefs_padZoneColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2
-        var bp = BezierPath (rect: NSRect (x: 0, y: 0, width: 16, height: 16))
+        var bp = BezierPath (rect: CanariRect (left: .zero, bottom: .zero, width: .pt (16), height: .pt (16)))
         bp.lineWidth = CanariLength.pt (1.0)
         bp.lineJoinStyle = .round
         let shape = EBShape (stroke: [bp], prefs_padZoneColor)

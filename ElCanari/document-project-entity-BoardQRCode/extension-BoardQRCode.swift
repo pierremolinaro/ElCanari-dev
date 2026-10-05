@@ -229,9 +229,9 @@ struct QRCodeDisplayInfos {
                                           moduleSizeInCanariUnit inModuleSize : CanariLength,
                                           rotation inRotation : CanariAngle) -> QRCodeDisplayInfos {
   let moduleSize = inModuleSize
-  let width = CGFloat (inQRCodeDescriptor.imageWidth) * moduleSize
-  let height = CGFloat (inQRCodeDescriptor.imageHeight) * moduleSize
-  let qrRect = NSRect (center: .zero, size: NSSize (width: width, height: height))
+  let width = inQRCodeDescriptor.imageWidth * moduleSize
+  let height = inQRCodeDescriptor.imageHeight * moduleSize
+  let qrRect = CanariRect (center: .zero, size: CanariSize (width: width, height: height))
 //--- Affine transform
   var af = CanariAffinity
     .translating (x: inCenterX, y: inCenterY)
@@ -250,7 +250,7 @@ struct QRCodeDisplayInfos {
     let y = CGFloat (rect.y) * moduleSize - height / 2.0
     let w = CGFloat (rect.width) * moduleSize
     let h = CGFloat (rect.height) * moduleSize
-    let r = NSRect (x: x, y: y, width: w, height: h)
+    let r = CanariRect (left: x, bottom: y, width: w, height: h)
     filledBP.appendRect (r)
     let p0 = af.transforming (x: x,     y: y)
     let p1 = af.transforming (x: x + w, y: y)

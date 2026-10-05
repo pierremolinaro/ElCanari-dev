@@ -234,9 +234,9 @@ extension BezierPath {
                    width inWidth : CanariLength,
                    height inHeight : CanariLength,
                    shape inShape : PadShape) -> BezierPath {
-    let center = NSPoint (x: inCenterX, y: inCenterY)
-    let size = NSSize (width: inWidth, height: inHeight)
-    let r = NSRect (center: center, size: size)
+    let center = CanariPoint (x: inCenterX, y: inCenterY)
+    let size = CanariSize (width: inWidth, height: inHeight)
+    let r = CanariRect (center: center, size: size)
     switch inShape {
     case .rect :
       return BezierPath (rect: r)

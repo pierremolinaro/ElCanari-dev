@@ -46,7 +46,7 @@ import CanariGeometry
           case .bezier :
             let cp1 = NSPoint (x: self_mCPX1, y: self_mCPY1)
             let cp2 = NSPoint (x: self_mCPX2, y: self_mCPY2)
-            bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+            bp.cubic (to: p2, controlPoint1: cp1, controlPoint2: cp2)
           }
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round

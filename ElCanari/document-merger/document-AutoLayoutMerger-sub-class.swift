@@ -131,8 +131,8 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         let horizontalFlip : CGFloat = boardView.horizontalFlip ? -1.0 : 1.0
         let verticalFlip   : CGFloat = boardView.verticalFlip   ? -1.0 : 1.0
       //--- Image size
-        var width  : CGFloat = scale * boardModel.modelWidth.ptValue
-        var height : CGFloat = scale * boardModel.modelHeight.ptValue
+        var width  = scale * boardModel.modelWidth
+        var height = scale * boardModel.modelHeight
       //--- Orientation
         let rotation = self.rootObject.modelInsertionRotation
         if (rotation == .rotation90) || (rotation == .rotation270) {
@@ -141,12 +141,12 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
       //--- By default, image is centered
         resultOffset = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
       //--- Build image
-        let r = NSRect (x: 0.0, y: 0.0, width: width, height: height)
-        var bp = BezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
+        let r = CanariRect (left: .zero, bottom: .zero, width: width, height: height)
+        var bp = BezierPath (rect: r.insetBy (dx: .pt (0.5), dy: .pt (0.5)))
         bp.lineWidth = CanariLength.pt (1.0)
         var shape = EBShape ()
         shape.add (stroke: [bp], NSColor.gray)
-        resultImage = buildPDFimage (frame: r, shape: shape, backgroundColor: .gray.withAlphaComponent (0.25))
+        resultImage = buildPDFimage (frame: r.ptValue, shape: shape, backgroundColor: .gray.withAlphaComponent (0.25))
       }
     }
     return (resultImage, resultOffset)

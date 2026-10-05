@@ -62,7 +62,7 @@ private let LINE_WIDTH = CanariLength.pt (0.75)
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolDuplicatedPinNameIssueAt (rect: NSRect) {
-    var bp = BezierPath (rect: rect)
+    var bp = BezierPath (rect: rect.canariRect)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Duplicated Pin Name", pathes: [bp]))
   }

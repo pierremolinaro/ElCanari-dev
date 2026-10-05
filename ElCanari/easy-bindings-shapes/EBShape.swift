@@ -482,12 +482,12 @@ fileprivate final class EBShapeObject {
       )
     //--- Append background ?
       if let backColor = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
-        let bp = BezierPath (rect: filledBezierPath.bounds)
+        let bp = BezierPath (rect: filledBezierPath.bounds.canariRect)
         let e = EBShapeElement ([bp], .fill, backColor, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
       }else{
-        let bp = BezierPath (rect: filledBezierPath.bounds)
+        let bp = BezierPath (rect: filledBezierPath.bounds.canariRect)
         let e = EBShapeElement ([bp], .fill, nil, nil, .none)
         self.mElements.append (e)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
@@ -548,7 +548,7 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .rect :
-        var bp = BezierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
+        var bp = BezierPath (rect: filledBezierPath.bounds.canariRect.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
         bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -558,7 +558,7 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e2)
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .transparentCircle :
-        var bp = BezierPath (rect: filledBezierPath.bounds)
+        var bp = BezierPath (rect: filledBezierPath.bounds.canariRect)
         bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -578,7 +578,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendToolTip (_ inRect : NSRect, _ inText : String) {
-    self.mToolTips.append (EBToolTip (path: BezierPath (rect: inRect), string: inText))
+    self.mToolTips.append (EBToolTip (path: BezierPath (rect: inRect.canariRect), string: inText))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -51,7 +51,7 @@ import CanariGeometry
             height: self_mRectangularBoardHeight - 2 * d
           )
           if self_mBoardCornerRadius <= d {
-            bp.appendRect (r.ptValue)
+            bp.appendRect (r)
           }else{
             let roundedRect = BezierPath (
               roundedRect: r,
@@ -77,7 +77,7 @@ import CanariGeometry
             case .bezier :
               let cp1 = descriptor.cp1.ptValue
               let cp2 = descriptor.cp2.ptValue
-              bp.curve (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
+              bp.cubic (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
             }
             descriptor = curveDictionary [descriptor.p2]!
             loop = p != descriptor.p1

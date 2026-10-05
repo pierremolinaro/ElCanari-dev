@@ -30,7 +30,7 @@ import CanariGeometry
           let rPad = CanariRect (left: p.x - padDiameter / 2.0, bottom: p.y - padDiameter / 2.0, width: padDiameter, height: padDiameter)
           var bp = BezierPath (ovalIn: rPad)
           let holeDiameter = self_actualHoleDiameter
-          let rHole = NSRect (x: p.x - holeDiameter / 2.0, y: p.y - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
+          let rHole = CanariRect (left: p.x - holeDiameter / 2.0, bottom: p.y - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
           bp.appendOval (in: rHole)
           bp.windingRule = .evenOdd
           shape.add (filled: [bp], prefs_frontSidePadColorForBoard)
