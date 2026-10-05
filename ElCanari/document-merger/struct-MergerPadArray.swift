@@ -45,7 +45,7 @@ struct MergerPadArray : Hashable {
     for pad in self.padArray {
       let width = pad.width
       let height = pad.height
-      let r = CanariRect (left: -width / 2.0, bottom: -height / 2.0, width:width, height:height)
+      let r = CanariRect (center: .zero, width:width, height:height)
       var bp : BezierPath
       switch pad.shape {
       case .rect :
@@ -100,7 +100,7 @@ struct MergerPadArray : Hashable {
       let yf = y
       let width = pad.width
       let height = pad.height
-      let r = CanariRect (left: -width / 2.0, bottom: -height / 2.0, width:width, height:height)
+      let r = CanariRect (center: .zero, width:width, height:height)
       var transform = CanariAffinity.translating (x: xf, y:yf)
       if inHorizontalMirror {
         transform.scale (x: -1.0, y: 1.0)

@@ -492,7 +492,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
                                   padNetDictionary inPadNetDictionary : [String : String]) {
     let center = self.center
     let padSize = self.padSize
-    let rPad = CanariRect (left: center.x - padSize.width / 2.0, bottom: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
+    let rPad = CanariRect (center: center, width: padSize.width, height: padSize.height)
     var bp : BezierPath
     switch self.shape {
     case .rect :
@@ -506,7 +506,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     case .traversing :
       ioShape.add (filled: [bp], nil) // Append a transparent layer, but that intercepts clicks
       let holeSize = self.holeSize
-      let rHole = CanariRect (left: center.x - holeSize.width / 2.0, bottom: center.y - holeSize.height / 2.0, width: holeSize.width, height: holeSize.height)
+      let rHole = CanariRect (center: center, width: holeSize.width, height: holeSize.height)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
@@ -575,7 +575,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
                                   backPadColor : NSColor?) {
     let center = self.center
     let padSize = self.padSize
-    let rPad = CanariRect (left: center.x - padSize.width / 2.0, bottom: center.y - padSize.height / 2.0, width: padSize.width, height: padSize.height)
+    let rPad = CanariRect (center: center, width: padSize.width, height: padSize.height)
     var bp : BezierPath
     switch self.shape {
     case .rect :
@@ -588,7 +588,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     switch self.style {
     case .traversing :
       let holeSize = self.holeSize
-      let rHole = CanariRect (left: center.x - holeSize.width / 2.0, bottom: center.y - holeSize.height / 2.0, width: holeSize.width, height: holeSize.height)
+      let rHole = CanariRect (center: center, width: holeSize.width, height: holeSize.height)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if let color = frontPadColor {
