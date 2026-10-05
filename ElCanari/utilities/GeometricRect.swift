@@ -65,8 +65,8 @@ final class GeometricRect {
   //   Contains point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (point p : NSPoint) -> Bool {
-    return self.bezierPath.contains (p)
+  func contains (point p : CanariPoint) -> Bool {
+    return self.bezierPath.contains (p.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

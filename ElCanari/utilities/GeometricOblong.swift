@@ -65,14 +65,14 @@ struct GeometricOblong {
   //   Contains point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (point p : NSPoint) -> Bool {
+  func contains (point p : CanariPoint) -> Bool {
     switch self.capStyle {
     case .round :
     //--- p inside P1 circle
-      var inside = self.p1.distance (to: p.canariPoint) <= (self.width / 2.0)
+      var inside = self.p1.distance (to: p) <= (self.width / 2.0)
     //--- p inside P2 circle
       if !inside {
-        inside = self.p2.distance (to: p.canariPoint) <= (self.width / 2.0)
+        inside = self.p2.distance (to: p) <= (self.width / 2.0)
       }
     //--- p inside rectangle
       if !inside {

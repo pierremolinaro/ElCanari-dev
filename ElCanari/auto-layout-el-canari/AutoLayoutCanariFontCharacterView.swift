@@ -859,7 +859,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     var mouseDownInsideSegment = false
     if possibleKnobIndex == nil {
       for segment in self.mSegmentList.reversed () {
-        if segment.contains (ptValue: mouseDownLocation) {
+        if segment.contains (mouseDownLocation.canariPoint) {
           if shiftKeyOn {
             self.mSelection.insert (segment)
           }else if commandKeyOn {
@@ -1026,7 +1026,7 @@ extension FontCharacterSegment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (ptValue p : NSPoint) -> Bool {
+  func contains (_ p : CanariPoint) -> Bool {
     let oblong = GeometricOblong (
       p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)).canariPoint,
       p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)).canariPoint,
