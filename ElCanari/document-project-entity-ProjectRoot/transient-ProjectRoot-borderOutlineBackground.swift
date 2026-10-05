@@ -37,9 +37,9 @@ import CanariGeometry
             height: self_mRectangularBoardHeight
           )
           let roundedRect = BezierPath (
-            roundedRect: boardRect.ptValue,
-            xRadius: self_mBoardCornerRadius.ptValue,
-            yRadius: self_mBoardCornerRadius.ptValue
+            roundedRect: boardRect,
+            xRadius: self_mBoardCornerRadius,
+            yRadius: self_mBoardCornerRadius
           )
           outlinePath.append (roundedRect)
         //--- Board clearance
@@ -54,9 +54,9 @@ import CanariGeometry
             bp.appendRect (r.ptValue)
           }else{
             let roundedRect = BezierPath (
-              roundedRect: r.ptValue,
-              xRadius: (self_mBoardCornerRadius - d).ptValue,
-              yRadius: (self_mBoardCornerRadius - d).ptValue
+              roundedRect: r,
+              xRadius: (self_mBoardCornerRadius - d),
+              yRadius: (self_mBoardCornerRadius - d)
             )
             bp.append (roundedRect)
           }
@@ -88,10 +88,10 @@ import CanariGeometry
         var shape = EBShape ()
       //--- Board Clearance
         var clearanceFrame = bp
-        clearanceFrame.lineWidth = 2.0 * self_mBoardClearance.ptValue
+        clearanceFrame.lineWidth = 2.0 * self_mBoardClearance
         shape.add (filled: [clearanceFrame.pathToFillByStroking], prefs_boardClearanceColorForBoard, clip: .outside (bp))
       //--- Board outline
-        outlinePath.lineWidth = BOARD_LIMIT_WIDTH.value (in: .pt)
+        outlinePath.lineWidth = BOARD_LIMIT_WIDTH
         shape.add (filled: [outlinePath.pathToFillByStroking], prefs_boardLimitsColorForBoard, clip: .outside (bp))
       //---
         return shape

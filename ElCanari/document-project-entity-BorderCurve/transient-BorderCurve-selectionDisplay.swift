@@ -48,7 +48,7 @@ import CanariGeometry
             let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2)
             bp.curve (to: p2.ptValue, controlPoint1: cp1.ptValue, controlPoint2: cp2.ptValue)
           }
-          bp.lineWidth = 1.0
+          bp.lineWidth = CanariLength.pt (1.0)
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           if self_mShape == .bezier {

@@ -42,7 +42,7 @@ import CanariGeometry
           knobLine.move (to : center.ptValue)
           let rotationKnobLocation = center + CanariPoint (length: NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE, angle: self_mRotation)
           knobLine.line (to : rotationKnobLocation.ptValue)
-          knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
+          knobLine.lineWidth = CanariLength.pt (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round
           shape.add (stroke: [knobLine], prefs_selectionHiliteColor)

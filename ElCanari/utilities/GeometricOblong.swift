@@ -89,7 +89,7 @@ struct GeometricOblong {
 
   var bezierPath : BezierPath {
     var bp = BezierPath ()
-    bp.lineWidth = self.width.ptValue
+    bp.lineWidth = self.width
     bp.move (to: self.p1.ptValue)
     bp.line (to: self.p2.ptValue)
     switch self.capStyle {

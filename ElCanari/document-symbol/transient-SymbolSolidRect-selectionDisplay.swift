@@ -28,7 +28,7 @@ import CanariGeometry
   let height = self_height
   var shape = EBShape ()
   var bp = BezierPath (rect: NSRect (x: x, y:y, width: width, height: height))
-  bp.lineWidth = 0.25
+  bp.lineWidth = CanariLength.pt (0.25)
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
   shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y), knobIndex: SYMBOL_SOLID_RECT_BOTTOM, .diamond, .pt (2.0))
   shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y + height), knobIndex: SYMBOL_SOLID_RECT_TOP, .diamond, .pt (2.0))

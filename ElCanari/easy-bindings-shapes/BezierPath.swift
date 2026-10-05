@@ -35,20 +35,8 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (ovalIn inRect : NSRect) {
-    self.mPath = NSBezierPath (ovalIn: inRect)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   init (ovalIn inRect : CanariRect) {
     self.mPath = NSBezierPath (ovalIn: inRect.ptValue)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  init (roundedRect rect : NSRect, xRadius inXRadius : CGFloat, yRadius inYRadius : CGFloat) {
-    self.mPath = NSBezierPath (roundedRect: rect, xRadius: inXRadius, yRadius: inYRadius)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,7 +56,7 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (withString inString : String,
-        at inOrigin : NSPoint,
+        at inOrigin : CanariPoint,
         _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
         _ inVerticalAlignment : BezierPath.TextVerticalAlignment,
         withAttributes inTextAttributes : [NSAttributedString.Key : Any]) {
@@ -95,12 +83,12 @@ struct BezierPath : Hashable {
       var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
       _ = unsafe myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
     //--- Enter in Bezier path
-      self.mPath.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))
+      self.mPath.move (to: NSPoint (x: inOrigin.x.ptValue, y: inOrigin.y.ptValue - 2.0 * font.descender))
       unsafe self.mPath.append (withCGGlyphs: &cgGlyphArray, count: glyphRange.length, in: font)
     //--- Alignment
       let width = self.mPath.bounds.width
       let height = self.mPath.bounds.height
-      var deltaX : CGFloat = inOrigin.x - self.mPath.bounds.origin.x
+      var deltaX : CGFloat = inOrigin.x.ptValue - self.mPath.bounds.origin.x
       switch inHorizontalAlignment {
       case .onTheRight :
         ()
@@ -109,7 +97,7 @@ struct BezierPath : Hashable {
       case .onTheLeft :
         deltaX -= width
       }
-      var deltaY : CGFloat = inOrigin.y - self.mPath.bounds.origin.y
+      var deltaY : CGFloat = inOrigin.y.ptValue - self.mPath.bounds.origin.y
       switch inVerticalAlignment {
       case .above :
         ()
@@ -185,13 +173,13 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var lineWidth : CGFloat {
+  var lineWidth : CanariLength {
     get {
-      return self.mPath.lineWidth
+      return .pt (self.mPath.lineWidth)
     }
     set {
       self.internalInsulatePath ()
-      self.mPath.lineWidth = newValue
+      self.mPath.lineWidth = newValue.ptValue
     }
   }
 
@@ -236,6 +224,13 @@ struct BezierPath : Hashable {
   mutating func appendRect (_ inRect : NSRect) {
     self.internalInsulatePath ()
     self.mPath.appendRect (inRect)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating func appendRect (_ inRect : CanariRect) {
+    self.internalInsulatePath ()
+    self.mPath.appendRect (inRect.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -423,7 +418,7 @@ struct BezierPath : Hashable {
       lineJoin = .round
     }
     let cgPath = self.mPath.cgPath.copy (
-      strokingWithWidth: self.lineWidth,
+      strokingWithWidth: self.lineWidth.ptValue,
       lineCap: lineCap,
       lineJoin: lineJoin,
       miterLimit: self.mPath.miterLimit
@@ -621,7 +616,7 @@ struct BezierPath : Hashable {
 
   func productSegments (withFlatness inFlatness : CGFloat,
                         transformedBy inAffineTransform : CanariAffinity,
-                        clippedBy inClipRect : NSRect) -> [ProductSegment] {
+                        clippedBy inClipRect : CanariRect) -> [ProductSegment] {
     let pathArray = self.linePathesByFlattening (withFlatness: inFlatness)
     var transformedLinePathArray = [EBLinePath] ()
     for linePath in pathArray {

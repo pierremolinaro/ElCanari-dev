@@ -23,7 +23,7 @@ import CanariGeometry
     var shape = EBShape ()
     if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
       var bp = BezierPath (rect: self_boardRect.ptValue)
-      bp.lineWidth = BOARD_LIMIT_WIDTH.value (in: .pt)
+      bp.lineWidth = BOARD_LIMIT_WIDTH
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
       shape.add (stroke: [bp], prefs_mergerColorBoardLimits)

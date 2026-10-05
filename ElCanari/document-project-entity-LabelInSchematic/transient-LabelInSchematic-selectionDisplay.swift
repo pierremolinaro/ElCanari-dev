@@ -35,7 +35,7 @@ import CanariGeometry
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
+          bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         //---
           let af = CanariAffinity
             .translating (p)
@@ -63,7 +63,7 @@ import CanariGeometry
           }
           shape.add (
             textKnob: self_netName,
-            labelOrigin.ptValue,
+            labelOrigin,
             prefs_pinNameFont,
             foreColor: .black,
             backColor: .white,

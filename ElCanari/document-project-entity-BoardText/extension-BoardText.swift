@@ -275,7 +275,7 @@ extension BoardText {
   var stringWidth = CanariLength.zero
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
   let fontFactor = CGFloat (self_mFontSize) / CGFloat (self_mFont_descriptor.nominalSize)
-  let lineThickness = fontFactor * 2.0 * CGFloat (self_mWeight) + inExtraWidth.ptValue
+  let lineThickness = fontFactor * 2.0 * CanariLength.pt (self_mWeight) + inExtraWidth
   var bp = BezierPath ()
   bp.lineWidth = lineThickness
   bp.lineCapStyle = .round
@@ -292,7 +292,7 @@ extension BoardText {
         let p2 = NSPoint (x: stringWidth.ptValue + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
-        oblongs.append (GeometricOblong (p1: p1.canariPoint, p2: p2.canariPoint, width: .pt (lineThickness), capStyle: .round))
+        oblongs.append (GeometricOblong (p1: p1.canariPoint, p2: p2.canariPoint, width: lineThickness, capStyle: .round))
       }
       stringWidth += .pt (CGFloat (characterDescriptor.advancement) * fontFactor)
     }
@@ -337,7 +337,7 @@ extension BoardText {
     transformedOblongs.append (ob.transformed (by: tr))
   }
   frameBP.transform (using: tr)
-  frameBP.lineWidth = 0.5
+  frameBP.lineWidth = CanariLength.pt (0.5)
   frameBP.lineCapStyle = .round
   frameBP.lineJoinStyle = .round
 //--- Rotation knob

@@ -62,7 +62,7 @@ import CanariGeometry
           color = prefs_inner4LayoutColorForBoard
         }
         var bp = BezierPath ()
-        bp.lineWidth = self_actualTrackWidth.ptValue + 1.0
+        bp.lineWidth = self_actualTrackWidth + .pt (1.0)
         switch self_mEndStyle {
         case .round :
           bp.lineCapStyle = .round
@@ -73,7 +73,7 @@ import CanariGeometry
         bp.move (to: p1)
         bp.line (to: p2)
         shape.add (stroke: [bp], prefs_selectionHiliteColor)
-        bp.lineWidth = self_actualTrackWidth.ptValue
+        bp.lineWidth = self_actualTrackWidth
         shape.add (stroke: [bp], color)
       //--- Knobs
         if self_p1CanMove {

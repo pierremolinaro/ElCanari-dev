@@ -223,7 +223,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendPackageLegends (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
+    let boardRect = self.rootObject.boardBoundBox!
     let width = CanariLength.pt (Double (self.rootObject.packageDrawingWidthMultpliedByTenForBoard) / 10.0)
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject, component.mDisplayLegend {
@@ -240,7 +240,7 @@ extension AutoLayoutProjectDocument {
           ioProduct.append (
             flattenedStrokeBezierPath: strokeBezierPath,
             transformedBy: af,
-            clippedBy: cocoaBoardRect,
+            clippedBy: boardRect,
             width: width,
             layers: layer
           )
@@ -252,7 +252,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendComponentNamePathes (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
+    let boardRect = self.rootObject.boardBoundBox!
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         if component.mNameIsVisibleInBoard, let fontDescriptor = component.mNameFont?.descriptor {
@@ -270,7 +270,7 @@ extension AutoLayoutProjectDocument {
             oblique: false,
             extraWidth: .zero
           )
-          let width = CanariLength.pt (textBP.lineWidth)
+          let width = textBP.lineWidth
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
@@ -281,7 +281,7 @@ extension AutoLayoutProjectDocument {
           ioProduct.append (
             flattenedStrokeBezierPath: textBP,
             transformedBy: CanariAffinity (),
-            clippedBy: cocoaBoardRect,
+            clippedBy: boardRect,
             width: width,
             layers: layer
           )
@@ -293,7 +293,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendComponentValuePathes (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
+    let boardRect = self.rootObject.boardBoundBox!
     for object in self.rootObject.mBoardObjects.values {
       if let component = object as? ComponentInProject {
         if component.mValueIsVisibleInBoard, let fontDescriptor = component.mValueFont?.descriptor {
@@ -311,7 +311,7 @@ extension AutoLayoutProjectDocument {
             oblique: false,
             extraWidth: .zero
           )
-          let width = CanariLength.pt (textBP.lineWidth)
+          let width = textBP.lineWidth
           let layer : ProductLayerSet
           switch component.mSide {
           case .back :
@@ -322,7 +322,7 @@ extension AutoLayoutProjectDocument {
           ioProduct.append (
             flattenedStrokeBezierPath: textBP,
             transformedBy: CanariAffinity (),
-            clippedBy: cocoaBoardRect,
+            clippedBy: boardRect,
             width: width,
             layers: layer
           )
@@ -334,7 +334,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendTextPathes (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
+    let boardRect = self.rootObject.boardBoundBox!
     for object in self.rootObject.mBoardObjects.values {
       if let text = object as? BoardText {
         let (textBP, _, _, _, _) = boardText_displayInfos (
@@ -351,7 +351,7 @@ extension AutoLayoutProjectDocument {
           oblique: text.mOblique,
           extraWidth: .zero
         )
-        let width = CanariLength.pt (textBP.lineWidth)
+        let width = textBP.lineWidth
         let layer : ProductLayerSet
         switch text.mLayer {
         case .legendFront :
@@ -366,7 +366,7 @@ extension AutoLayoutProjectDocument {
         ioProduct.append (
           flattenedStrokeBezierPath: textBP,
           transformedBy: CanariAffinity (),
-          clippedBy: cocoaBoardRect,
+          clippedBy: boardRect,
           width: width,
           layers: layer
         )
@@ -377,12 +377,12 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendLegendLines (to ioProduct : inout ProductRepresentation) {
-    let cocoaBoardRect = self.rootObject.boardBoundBox!.ptValue
+    let boardRect = self.rootObject.boardBoundBox!
     for object in self.rootObject.mBoardObjects.values {
       if let line = object as? BoardLine {
-        let p1 = NSPoint (x: line.mX1, y: line.mY1)
-        let p2 = NSPoint (x: line.mX2, y: line.mY2)
-        if let (clippedP1, clippedP2) = cocoaBoardRect.clippedSegment (p1: p1, p2: p2) {
+        let p1 = CanariPoint (x: line.mX1, y: line.mY1)
+        let p2 = CanariPoint (x: line.mX2, y: line.mY2)
+        if let (clippedP1, clippedP2) = boardRect.clippedSegment (p1: p1, p2: p2) {
           let width = line.mWidth
           let layer : ProductLayerSet
           switch line.mLayer {
@@ -392,8 +392,8 @@ extension AutoLayoutProjectDocument {
             layer = .backSideLegendLine
           }
           let oblong = LayeredProductSegment (
-            p1: clippedP1.canariPoint,
-            p2: clippedP2.canariPoint,
+            p1: clippedP1,
+            p2: clippedP2,
             width: width,
             layers: layer
           )
@@ -706,7 +706,7 @@ extension AutoLayoutProjectDocument {
     //---
       bp.lineJoinStyle = .round
       bp.lineCapStyle = .round
-      bp.lineWidth = self.rootObject.mBoardClearance.ptValue * 2
+      bp.lineWidth = self.rootObject.mBoardClearance * 2
       let strokeBP = bp.pathToFillByStroking
       var closedPathCount = 0
       let retainedClosedPath = 2
@@ -761,9 +761,9 @@ extension AutoLayoutProjectDocument {
           height: self.rootObject.mRectangularBoardHeight
         )
         let roundedRect = BezierPath (
-          roundedRect: r.ptValue,
-          xRadius: self.rootObject.mBoardCornerRadius.ptValue,
-          yRadius: self.rootObject.mBoardCornerRadius.ptValue
+          roundedRect: r,
+          xRadius: self.rootObject.mBoardCornerRadius,
+          yRadius: self.rootObject.mBoardCornerRadius
         )
         let linePath = roundedRect.linePathesByFlattening (withFlatness: 0.025) [0]
         result.append (linePath.origin)

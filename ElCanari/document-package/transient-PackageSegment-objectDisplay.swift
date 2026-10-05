@@ -22,7 +22,7 @@ import CanariGeometry
 //--- START OF USER ZONE 2
   var bp = BezierPath ()
   bp.append (self_strokeBezierPath)
-  bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
+  bp.lineWidth = CanariLength.pt (prefs_packageDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_packageColor)

@@ -32,7 +32,7 @@ import CanariGeometry
       //--- Frame symbol
         var strokeBezierPath = BezierPath ()
         strokeBezierPath.append (self_symbolInfo.strokeBezierPath)
-        strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
+        strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH
         shape.add (stroke: [strokeBezierPath], prefs_selectionHiliteColor)
       //--- Line from center to component value
         let symbolCenter = self_symbolInfo.center
@@ -44,7 +44,7 @@ import CanariGeometry
           var bp = BezierPath ()
           bp.move (to: symbolCenter.ptValue)
           bp.line (to: componentValueCenter.ptValue)
-          bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
+          bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           shape.add (stroke: [bp], prefs_selectionHiliteColor)
@@ -58,7 +58,7 @@ import CanariGeometry
           var bp = BezierPath ()
           bp.move (to: symbolCenter.ptValue)
           bp.line (to: componentNameCenter.ptValue)
-          bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
+          bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           shape.add (stroke: [bp], prefs_selectionHiliteColor)
@@ -68,7 +68,7 @@ import CanariGeometry
           let value = (self_symbolInfo.componentValue != "") ? self_symbolInfo.componentValue : "No value"
           let componentValueShape = EBShape (
             textKnob: value,
-            componentValueCenter.ptValue,
+            componentValueCenter,
             prefs_pinNameFont,
             foreColor: .black,
             backColor: prefs_schematicBackColor,
@@ -83,7 +83,7 @@ import CanariGeometry
         do{
           shape.add (textKnob: 
             self_symbolInfo.componentName,
-            componentNameCenter.ptValue,
+            componentNameCenter,
             prefs_pinNameFont,
             foreColor: .black,
             backColor: prefs_schematicBackColor,
@@ -106,7 +106,7 @@ import CanariGeometry
         var bp = BezierPath ()
         bp.move (to: symbolCenter.ptValue)
         bp.line (to: rotationKnobCenter.ptValue)
-        bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
+        bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         shape.add (stroke: [bp], prefs_selectionHiliteColor)

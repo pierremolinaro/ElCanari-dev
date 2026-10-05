@@ -50,13 +50,13 @@ import CanariGeometry
      while idx < self_packageZones_zoneName.count {
        let zoneName = self_packageZones_zoneName [idx].zoneName
        if let c = nameDictionary [zoneName], c > 1 {
-         let p = NSPoint (x: self_packageZones_xName [idx].xName, y: self_packageZones_yName [idx].yName)
-           let textAttributes : [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font : prefs_padZoneFont
+         let p = CanariPoint (x: self_packageZones_xName [idx].xName, y: self_packageZones_yName [idx].yName)
+         let textAttributes : [NSAttributedString.Key : Any] = [
+           NSAttributedString.Key.font : prefs_padZoneFont
          ]
          var shape = EBShape ()
          shape.add (text: zoneName, p, textAttributes, .center, .center)
-         issues.appendDuplicatedZoneNameIssueIn (rect: shape.boundingBox)
+         issues.appendDuplicatedZoneNameIssueIn (rect: shape.boundingBox.canariRect)
        }
        idx += 1
      }

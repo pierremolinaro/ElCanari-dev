@@ -9,7 +9,7 @@ import CanariGeometry
 
 //--- START OF USER ZONE 1
 
-let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
+let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CanariLength.pt (2.0)
 
 //--- END OF USER ZONE 1
 
@@ -27,20 +27,20 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
 ) -> EBShape {
 //--- START OF USER ZONE 2
   var shape = EBShape ()
-  let firstPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
-  let secondPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
+  let firstPointRadiusInCocoaUnit = CanariLength.pt (self_mRoot_mModelPointsCircleRadius ?? 10)
+  let secondPointRadiusInCocoaUnit = CanariLength.pt (self_mRoot_mModelPointsCircleRadius ?? 10)
   let firstX = self_mFirstX
   let firstY = self_mFirstY
-  let firstR = NSRect (center: NSPoint (x: firstX, y: firstY), size: NSSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))
+  let firstR = CanariRect (center: CanariPoint (x: firstX, y: firstY), size: CanariSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))
   let secondX = self_mFirstX + self_mSecondDx
   let secondY = self_mFirstY + self_mSecondDy
-  let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
+  let secondR = CanariRect (center: CanariPoint (x: secondX, y: secondY), size: CanariSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
   if let locked = self_mRoot_mPointsAreLocked, locked {
     shape.add (filled: [BezierPath (ovalIn: firstR)], self_mFirstColor)
     shape.add (filled: [BezierPath (ovalIn: secondR)], self_mSecondColor)
   }else{
-    let firstPointDelta = CanariLength.pt (firstPointRadiusInCocoaUnit / sqrt (2.0))
-    let secondPointDelta = CanariLength.pt (secondPointRadiusInCocoaUnit / sqrt (2.0))
+    let firstPointDelta = firstPointRadiusInCocoaUnit / sqrt (2.0)
+    let secondPointDelta = secondPointRadiusInCocoaUnit / sqrt (2.0)
   //--- First Point
     var lines = BezierPath ()
     lines.lineCapStyle = .round
@@ -48,7 +48,7 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
     lines.relativeLine (to: NSPoint (x: firstPointDelta * 2.0, y: firstPointDelta * 2.0))
     lines.move (to: NSPoint (x: firstX + firstPointDelta, y: firstY - firstPointDelta))
     lines.relativeLine (to: NSPoint (x: -firstPointDelta * 2.0, y: firstPointDelta * 2.0))
-    lines.lineWidth = 0.0
+    lines.lineWidth = CanariLength.zero
     var circle = BezierPath (ovalIn: firstR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH
     shape.add (filled: [circle], .clear)
@@ -60,7 +60,7 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
     lines.relativeLine (to: NSPoint (x: secondPointDelta * 2.0, y: secondPointDelta * 2.0))
     lines.move (to: NSPoint (x: secondX + secondPointDelta, y: secondY - secondPointDelta))
     lines.relativeLine (to: NSPoint (x: -secondPointDelta * 2.0, y: secondPointDelta * 2.0))
-    lines.lineWidth = 0.0
+    lines.lineWidth = CanariLength.zero
     circle = BezierPath (ovalIn: secondR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH
     shape.add (filled: [circle], .clear)

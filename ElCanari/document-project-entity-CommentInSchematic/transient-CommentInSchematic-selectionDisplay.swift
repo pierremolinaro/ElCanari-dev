@@ -36,7 +36,7 @@ import CanariGeometry
         var shape = EBShape ()
         shape.add (
           textKnob: (self_mComment.isEmpty) ? "Empty comment" : self_mComment,
-          NSPoint (),
+          CanariPoint (),
           font,
           foreColor: self_mColor,
           backColor: prefs_schematicBackColor,

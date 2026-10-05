@@ -24,13 +24,13 @@ import CanariGeometry
 //--- START OF USER ZONE 2
         var shape = EBShape ()
         if let p1 = self_mP1_location, let p2 = self_mP2_location {
-          let lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
+          let lineWidth = CanariLength.pt (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
           var bp = BezierPath ()
           bp.move (to: p1.ptValue)
           bp.line (to: p2.ptValue)
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = lineWidth + 2.0
+          bp.lineWidth = lineWidth + CanariLength.pt (2.0)
           shape.add (stroke: [bp], prefs_schematicBackColor)
           bp.lineWidth = lineWidth
           shape.add (stroke: [bp], self_mP1_wireColor ?? .black)

@@ -96,7 +96,7 @@ struct ProductRepresentation : Codable {
 
   mutating func append (flattenedStrokeBezierPath inBezierPath : BezierPath,
                         transformedBy inAT : CanariAffinity,
-                        clippedBy inClipRect : NSRect,
+                        clippedBy inClipRect : CanariRect,
                         width inWidth : CanariLength,
                         layers inLayerSet : ProductLayerSet) {
     let segmentArray = inBezierPath.productSegments (

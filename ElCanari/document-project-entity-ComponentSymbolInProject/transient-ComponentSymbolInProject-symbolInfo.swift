@@ -73,7 +73,7 @@ import CanariGeometry
                 trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
                 let pinNameTextShape = EBShape (
                   text: pin.pinName,
-                  NSPoint (),
+                  CanariPoint (),
                   pinNameAttributes,
                   self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror),
                   self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)
@@ -94,7 +94,7 @@ import CanariGeometry
               trText.scale (x: self_mMirror ? -1.0 : 1.0, y: 1.0)
               let pinNumberTextShape = EBShape (
                 text: pinPadAssignment.padName,
-                NSPoint (),
+                CanariPoint (),
                 pinNumberAttributes,
                 self_mRotation.ebSymbolTextShapeHorizontalAlignment (alignment: pin.numberHorizontalAlignment, mirror: self_mMirror),
                 self_mRotation.ebSymbolTextShapeVerticalAlignment (alignment: pin.nameHorizontalAlignment, mirror: self_mMirror)

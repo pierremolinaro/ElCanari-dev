@@ -56,7 +56,7 @@ import CanariGeometry
     bp.lineCapStyle = .butt
   }
   bp.lineCapStyle = .round
-  bp.lineWidth = 0.25
+  bp.lineWidth = CanariLength.pt (0.25)
   shape.add (stroke: [bp], NSColor.orange)
   let rotationIfSmall : CanariAngle = (length <= (4.0 * arrowSize)) ? .degrees180 : .zero ;
 //------- Arrow at first point
@@ -82,7 +82,7 @@ import CanariGeometry
   shape.add (filled: [path1, path2], prefs_packageDimensionColor)
 //------- Add dimension text
   let dimensionText = self_distanceInCanariUnit.string (in: self_distanceUnit, fractionDigits: 2)
-  let p = NSPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2)
+  let p = CanariPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2)
   var textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,
     NSAttributedString.Key.foregroundColor : prefs_packageDimensionColor

@@ -27,7 +27,7 @@ import CanariGeometry
         if self_isVia { // !self_connectedToComponent && (self_side == .both) {
           let p = self_location
           let padDiameter = self_actualPadDiameter
-          let rPad = NSRect (x: p.x - padDiameter / 2.0, y: p.y - padDiameter / 2.0, width: padDiameter, height: padDiameter)
+          let rPad = CanariRect (left: p.x - padDiameter / 2.0, bottom: p.y - padDiameter / 2.0, width: padDiameter, height: padDiameter)
           var bp = BezierPath (ovalIn: rPad)
           let holeDiameter = self_actualHoleDiameter
           let rHole = NSRect (x: p.x - holeDiameter / 2.0, y: p.y - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)

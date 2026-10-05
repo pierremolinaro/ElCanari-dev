@@ -45,16 +45,16 @@ struct MergerPadArray : Hashable {
     for pad in self.padArray {
       let width = pad.width
       let height = pad.height
-      let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
+      let r = CanariRect (left: -width / 2.0, bottom: -height / 2.0, width:width, height:height)
       var bp : BezierPath
       switch pad.shape {
       case .rect :
         bp = BezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
-          bp = BezierPath (roundedRect:r, xRadius:width.ptValue / 2.0, yRadius:width.ptValue / 2.0)
+          bp = BezierPath (roundedRect: r, xRadius:width / 2.0, yRadius:width / 2.0)
         }else if pad.width > pad.height {
-          bp = BezierPath (roundedRect:r, xRadius:height.ptValue / 2.0, yRadius:height.ptValue / 2.0)
+          bp = BezierPath (roundedRect: r, xRadius:height / 2.0, yRadius:height / 2.0)
         }else{
           bp = BezierPath (ovalIn:r)
         }

@@ -7,17 +7,18 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
-let PAPER_A4_MAX_SIZE_COCOA_UNIT   : CGFloat = 842.0
-let PAPER_A4_MIN_SIZE_COCOA_UNIT   : CGFloat = 595.0
-let PAPER_LEFT_MARGIN_COCOA_UNIT   : CGFloat =  72.0
-let PAPER_RIGHT_MARGIN_COCOA_UNIT  : CGFloat =  72.0
-let PAPER_TOP_MARGIN_COCOA_UNIT    : CGFloat =  72.0
-let PAPER_BOTTOM_MARGIN_COCOA_UNIT : CGFloat =  72.0
-let PAPER_GUTTER_WIDTH_COCOA_UNIT  : CGFloat =  13.0
-let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
+let PAPER_A4_MAX_SIZE   = CanariLength.pt (842.0)
+let PAPER_A4_MIN_SIZE   = CanariLength.pt (595.0)
+let PAPER_LEFT_MARGIN   = CanariLength.pt ( 72.0)
+let PAPER_RIGHT_MARGIN  = CanariLength.pt ( 72.0)
+let PAPER_TOP_MARGIN    = CanariLength.pt ( 72.0)
+let PAPER_BOTTOM_MARGIN = CanariLength.pt ( 72.0)
+let PAPER_GUTTER_WIDTH  = CanariLength.pt ( 13.0)
+let PAPER_GUTTER_HEIGHT = CanariLength.pt ( 13.0)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -50,41 +51,41 @@ extension AutoLayoutProjectDocumentSubClass {
   private func printSchematics () {
     if let schematicsView = self.mSchematicsView?.mGraphicView {
       let orientation : NSPrintInfo.PaperOrientation
-      let pageWidth  : CGFloat
-      let pageHeight : CGFloat
+      let pageWidth  : CanariLength
+      let pageHeight : CanariLength
       switch self.rootObject.mSchematicSheetOrientation {
       case .a4Horizontal :
-        pageWidth = PAPER_A4_MAX_SIZE_COCOA_UNIT
-        pageHeight = PAPER_A4_MIN_SIZE_COCOA_UNIT
+        pageWidth = PAPER_A4_MAX_SIZE
+        pageHeight = PAPER_A4_MIN_SIZE
         orientation = .landscape
       case .a4Vertical :
-        pageWidth = PAPER_A4_MIN_SIZE_COCOA_UNIT
-        pageHeight = PAPER_A4_MAX_SIZE_COCOA_UNIT
+        pageWidth = PAPER_A4_MIN_SIZE
+        pageHeight = PAPER_A4_MAX_SIZE
         orientation = .portrait
       case .custom :
-        pageWidth = self.rootObject.mSchematicCustomWidth.ptValue + PAPER_LEFT_MARGIN_COCOA_UNIT + PAPER_RIGHT_MARGIN_COCOA_UNIT + 2.0
-        pageHeight = self.rootObject.mSchematicCustomHeight.ptValue + PAPER_TOP_MARGIN_COCOA_UNIT + PAPER_BOTTOM_MARGIN_COCOA_UNIT + 2.0
+        pageWidth = self.rootObject.mSchematicCustomWidth + PAPER_LEFT_MARGIN + PAPER_RIGHT_MARGIN + .pt (2.0)
+        pageHeight = self.rootObject.mSchematicCustomHeight + PAPER_TOP_MARGIN + PAPER_BOTTOM_MARGIN + .pt (2.0)
         orientation = (pageWidth >= pageHeight) ? .landscape : .portrait
       }
     //--- Build print view
       let sheets = self.rootObject.mSheets
-      let printWidth = pageWidth - PAPER_LEFT_MARGIN_COCOA_UNIT - PAPER_RIGHT_MARGIN_COCOA_UNIT - 2.0
-      let printHeight = pageHeight - PAPER_TOP_MARGIN_COCOA_UNIT - PAPER_BOTTOM_MARGIN_COCOA_UNIT - 2.0
+      let printWidth = pageWidth - PAPER_LEFT_MARGIN - PAPER_RIGHT_MARGIN - .pt (2.0)
+      let printHeight = pageHeight - PAPER_TOP_MARGIN - PAPER_BOTTOM_MARGIN - .pt (2.0)
       let printViewFrame = NSRect (
         x: 0.0,
         y: 0.0,
-        width:  printWidth,
-        height: printHeight * CGFloat (sheets.count)
+        width:  printWidth.ptValue,
+        height: printHeight.ptValue * CGFloat (sheets.count)
       )
       let printView = NSView (frame: printViewFrame)
       let r = NSRect (
-        x: 0.0,
-        y: 0.0,
+        x: .zero,
+        y: .zero,
         width: printWidth,
         height: printHeight
       )
     //--- Draw sheets
-      var yOffset : CGFloat = printHeight * CGFloat (sheets.count - 1)
+      var yOffset : CGFloat = printHeight.ptValue * CGFloat (sheets.count - 1)
       self.undoManager?.disableUndoRegistration ()
       let currentSelectedSheet = self.rootObject.mSelectedSheet
       for sheet in sheets.values {
@@ -95,7 +96,7 @@ extension AutoLayoutProjectDocumentSubClass {
         imageView.image = NSImage (data: data)
         imageView.frame.origin.y += yOffset
         printView.addSubview (imageView)
-        yOffset -= printHeight
+        yOffset -= printHeight.ptValue
       }
       self.rootObject.mSelectedSheet = currentSelectedSheet
       self.undoManager?.enableUndoRegistration ()
@@ -110,10 +111,10 @@ extension AutoLayoutProjectDocumentSubClass {
       printInfo.scalingFactor = 1.0
       printInfo.isHorizontallyCentered = true
       printInfo.isVerticallyCentered = true
-      printInfo.leftMargin = PAPER_LEFT_MARGIN_COCOA_UNIT
-      printInfo.topMargin = PAPER_TOP_MARGIN_COCOA_UNIT
-      printInfo.rightMargin = PAPER_RIGHT_MARGIN_COCOA_UNIT
-      printInfo.bottomMargin = PAPER_BOTTOM_MARGIN_COCOA_UNIT
+      printInfo.leftMargin = PAPER_LEFT_MARGIN.ptValue
+      printInfo.topMargin = PAPER_TOP_MARGIN.ptValue
+      printInfo.rightMargin = PAPER_RIGHT_MARGIN.ptValue
+      printInfo.bottomMargin = PAPER_BOTTOM_MARGIN.ptValue
       let printOperation = NSPrintOperation (view: printView)
       let title = self.windowForSheet!.title.deletingPathExtension + ".schematics"
       printOperation.jobTitle = title
@@ -136,17 +137,17 @@ extension AutoLayoutProjectDocumentSubClass {
   private func printBoard () {
     if let boardView = self.mBoardView?.mGraphicView {
       let orientation : NSPrintInfo.PaperOrientation
-      let pageWidth  : CGFloat
-      let pageHeight : CGFloat
+      let pageWidth  : CanariLength
+      let pageHeight : CanariLength
   //--- Board Bound box
       let printViewFrame : NSRect = boardView.contentsBoundingBox
       if printViewFrame.size.width > printViewFrame.size.height {
-        pageWidth = PAPER_A4_MAX_SIZE_COCOA_UNIT
-        pageHeight = PAPER_A4_MIN_SIZE_COCOA_UNIT
+        pageWidth = PAPER_A4_MAX_SIZE
+        pageHeight = PAPER_A4_MIN_SIZE
         orientation = .landscape
       }else{
-        pageWidth = PAPER_A4_MIN_SIZE_COCOA_UNIT
-        pageHeight = PAPER_A4_MAX_SIZE_COCOA_UNIT
+        pageWidth = PAPER_A4_MIN_SIZE
+        pageHeight = PAPER_A4_MAX_SIZE
         orientation = .portrait
       }
     //--- Draw Board
@@ -154,9 +155,9 @@ extension AutoLayoutProjectDocumentSubClass {
       let imageView = NSImageView (frame: printViewFrame)
       imageView.image = NSImage (data: data)
     //--- Scaling factor
-      let printableWidth = pageWidth - PAPER_LEFT_MARGIN_COCOA_UNIT - PAPER_RIGHT_MARGIN_COCOA_UNIT - 2.0
-      let printableHeight = pageHeight - PAPER_BOTTOM_MARGIN_COCOA_UNIT - PAPER_TOP_MARGIN_COCOA_UNIT - 2.0
-      let scalingFactor = min (1.0, printableWidth / printViewFrame.size.width, printableHeight / printViewFrame.size.height)
+      let printableWidth = pageWidth - PAPER_LEFT_MARGIN - PAPER_RIGHT_MARGIN - .pt (2.0)
+      let printableHeight = pageHeight - PAPER_BOTTOM_MARGIN - PAPER_TOP_MARGIN - .pt (2.0)
+      let scalingFactor = min (1.0, printableWidth / .pt (printViewFrame.size.width), printableHeight / .pt (printViewFrame.size.height))
     //---
       let printInfo = NSPrintInfo.shared
 //     Swift.print ("\(printInfo.imageablePageBounds)")
@@ -168,10 +169,10 @@ extension AutoLayoutProjectDocumentSubClass {
       printInfo.scalingFactor = scalingFactor
       printInfo.isHorizontallyCentered = true
       printInfo.isVerticallyCentered = true
-      printInfo.leftMargin = PAPER_LEFT_MARGIN_COCOA_UNIT
-      printInfo.topMargin = PAPER_TOP_MARGIN_COCOA_UNIT
-      printInfo.rightMargin = PAPER_RIGHT_MARGIN_COCOA_UNIT
-      printInfo.bottomMargin = PAPER_BOTTOM_MARGIN_COCOA_UNIT
+      printInfo.leftMargin = PAPER_LEFT_MARGIN.ptValue
+      printInfo.topMargin = PAPER_TOP_MARGIN.ptValue
+      printInfo.rightMargin = PAPER_RIGHT_MARGIN.ptValue
+      printInfo.bottomMargin = PAPER_BOTTOM_MARGIN.ptValue
       let printOperation = NSPrintOperation (view: imageView)
       let title = self.windowForSheet!.title.deletingPathExtension + ".board"
       printOperation.jobTitle = title

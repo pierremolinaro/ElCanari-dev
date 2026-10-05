@@ -27,7 +27,7 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
-    let origin = NSPoint (x: self_x, y: self_y)
+    let origin = CanariPoint (x: self_x, y: self_y)
     var shape = EBShape ()
     let text = self_text.isEmpty ? "?" : self_text
     shape.add (text: text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)

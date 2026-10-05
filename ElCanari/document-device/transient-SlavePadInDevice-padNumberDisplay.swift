@@ -29,7 +29,7 @@ import CanariGeometry
       var shape = EBShape ()
       shape.add (text: 
         "(\(self_mMasterPad_mName ?? ""))",
-        NSPoint (x: self_mCenterX, y: self_mCenterY),
+        CanariPoint (x: self_mCenterX, y: self_mCenterY),
         textAttributes,
         .center,
         .center

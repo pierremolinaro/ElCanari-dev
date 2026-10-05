@@ -143,7 +143,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
       //--- Build image
         let r = NSRect (x: 0.0, y: 0.0, width: width, height: height)
         var bp = BezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
-        bp.lineWidth = 1.0
+        bp.lineWidth = CanariLength.pt (1.0)
         var shape = EBShape ()
         shape.add (stroke: [bp], NSColor.gray)
         resultImage = buildPDFimage (frame: r, shape: shape, backgroundColor: .gray.withAlphaComponent (0.25))

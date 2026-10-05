@@ -37,7 +37,7 @@ import CanariGeometry
           bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
+          bp.lineWidth = CanariLength.pt (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
         //---
           let af = CanariAffinity
             .translating (p)
@@ -68,7 +68,7 @@ import CanariGeometry
             horizontalAlignment = .center
             verticalAlignment = .below
           }
-          shape.add (text: self_netName, labelOrigin.ptValue, textAttributes, horizontalAlignment, verticalAlignment)
+          shape.add (text: self_netName, labelOrigin, textAttributes, horizontalAlignment, verticalAlignment)
         }
         return shape
 //--- END OF USER ZONE 2

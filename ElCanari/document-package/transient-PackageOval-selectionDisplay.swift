@@ -42,10 +42,10 @@ import CanariGeometry
     bp.move (to: NSPoint (x: x, y: y))
     bp.line (to: NSPoint (x: x + width, y: y))
   }else{
-    let r = NSRect (x: x, y: y, width: width, height: height)
+    let r = CanariRect (left: x, bottom: y, width: width, height: height)
     bp = BezierPath (ovalIn: r)
   }
-  bp.lineWidth = 0.25
+  bp.lineWidth = CanariLength.pt (0.25)
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
   shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .diamond, .pt (self_PackageObject_knobSize))
   shape.add (knobAt:  CanariPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .diamond, .pt (self_PackageObject_knobSize))

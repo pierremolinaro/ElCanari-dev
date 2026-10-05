@@ -29,7 +29,7 @@ import CanariGeometry
       ]
       return EBShape (
         text: self_mName, // padString,
-        NSPoint (x: self_mCenterX, y: self_mCenterY),
+        CanariPoint (x: self_mCenterX, y: self_mCenterY),
         textAttributes,
         .center,
         .center

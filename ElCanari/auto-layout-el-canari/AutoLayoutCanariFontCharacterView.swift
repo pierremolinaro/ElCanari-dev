@@ -834,18 +834,18 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   //  Mouse down
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mMouseLocation : NSPoint?
+  private var mMouseLocation : CanariPoint?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func mouseDown (with mouseDownEvent: NSEvent) {
-    let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from: nil)
+  final override func mouseDown (with mouseDownEvent : NSEvent) {
+    let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from: nil).canariPoint
     self.mMouseLocation = mouseDownLocation
     var possibleKnobIndex : Int? = nil
   //--- First check if mouse down occurs on a knob of a selected object
     for segment in self.mSegmentList.reversed () {
       if self.mSelection.contains (segment) {
-        possibleKnobIndex = segment.knobIndexFor (ptValue: mouseDownLocation)
+        possibleKnobIndex = segment.knobIndexFor (mouseDownLocation)
         if possibleKnobIndex != nil {
           self.mSelection.removeAll ()
           self.mSelection.insert (segment)
@@ -859,7 +859,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     var mouseDownInsideSegment = false
     if possibleKnobIndex == nil {
       for segment in self.mSegmentList.reversed () {
-        if segment.contains (mouseDownLocation.canariPoint) {
+        if segment.contains (mouseDownLocation) {
           if shiftKeyOn {
             self.mSelection.insert (segment)
           }else if commandKeyOn {
@@ -883,13 +883,13 @@ final class AutoLayoutCanariFontCharacterView : NSView {
     }
   //--- Handle mouse dragged and mouse up
     if let knobIndex = possibleKnobIndex {
-      self.waitUntilMouseUpOnMouseDownAt (mouseDownLocation: mouseDownLocation, for: knobIndex)
+      self.waitUntilMouseUpOnMouseDownAt (mouseDownLocation: mouseDownLocation.ptValue, for: knobIndex)
     }else if mouseDownInsideSegment {
-      self.waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation: mouseDownLocation)
+      self.waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation: mouseDownLocation.ptValue)
     }else if shiftKeyOn {
-      self.waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation: mouseDownLocation)
+      self.waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation: mouseDownLocation.ptValue)
     }else{
-      self.waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation: mouseDownLocation)
+      self.waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation: mouseDownLocation.ptValue)
     }
   //--- Mouse up
     self.mMouseLocation = nil
@@ -917,7 +917,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
           mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID.ptValue
           self.moveSelection (byX : dx, byY : dy)
         }
-        self.mMouseLocation = mouseLocation
+        self.mMouseLocation = mouseLocation.canariPoint
       }
     }
   }
@@ -940,7 +940,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
           mouseLocation.y += CGFloat (dy) * PLACEMENT_GRID.ptValue
           moveSelectionFrom (knob: knob, byX : dx, byY : dy)
         }
-        self.mMouseLocation = mouseLocation
+        self.mMouseLocation = mouseLocation.canariPoint
       }
     }
   }
@@ -1007,17 +1007,17 @@ extension FontCharacterSegment {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func knobIndexFor (ptValue p : NSPoint) -> Int? { // Return nil if point is outside a knob
+  func knobIndexFor (_ p : CanariPoint) -> Int? { // Return nil if point is outside a knob
     var result : Int? = nil
     do{
       let r = knobRect (self.x1, self.y1)
-      if r.contains (p) {
+      if r.contains (p.ptValue) {
         result = 0
       }
     }
     if result == nil {
       let r = knobRect (self.x2, self.y2)
-      if r.contains (p) {
+      if r.contains (p.ptValue) {
         result = 1
       }
     }

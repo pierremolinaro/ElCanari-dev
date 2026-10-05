@@ -28,7 +28,7 @@ import CanariGeometry
         var bp = BezierPath ()
         bp.move (to: p1.ptValue)
         bp.line (to: p2.ptValue)
-        bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
+        bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()

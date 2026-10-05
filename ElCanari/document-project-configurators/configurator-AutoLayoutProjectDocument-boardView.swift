@@ -45,7 +45,7 @@ extension AutoLayoutProjectDocument {
      inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in return self?.populateContextualClickOnBoard ($0) }
   //----
     inOutlet.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
-      self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
+      self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation.canariPoint)
     }
   //--- Pasteboard
     inOutlet.mGraphicView.register (pasteboardType: BOARD_PASTEBOARD_TYPE)

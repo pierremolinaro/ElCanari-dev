@@ -386,7 +386,7 @@ final class PadGeometryForERC {
     if let b = self.mCachedBounds {
       return b
     }else{
-      var b = CanariRect.zero
+      var b = CanariRect.empty
       for c in self.circles {
         b = b.unioning (c.bounds)
       }

@@ -54,7 +54,7 @@ import CanariGeometry
           let componentNameCenter = CanariPoint (x: self_symbolInfo.center.x + self_mDisplayComponentNameOffsetX, y: self_symbolInfo.center.y + self_mDisplayComponentNameOffsetY)
           let componentNameShape = EBShape (
             text: self_symbolInfo.componentName,
-            componentNameCenter.ptValue,
+            componentNameCenter,
             componentNameTextAttributes,
             .center,
             .center
@@ -74,7 +74,7 @@ import CanariGeometry
           )
           let componentValueShape = EBShape (
             text: value,
-            componentValueCenter.ptValue,
+            componentValueCenter,
             componentValueTextAttributes,
             .center,
             .center

@@ -37,7 +37,7 @@ import CanariGeometry
   bp.line (to: cp1.ptValue)
   bp.move (to: p2.ptValue)
   bp.line (to: cp2.ptValue)
-  bp.lineWidth = 0.25
+  bp.lineWidth = CanariLength.pt (0.25)
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)

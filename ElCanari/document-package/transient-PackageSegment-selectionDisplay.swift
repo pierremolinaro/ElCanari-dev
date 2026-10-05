@@ -28,7 +28,7 @@ import CanariGeometry
   var bp = BezierPath ()
   bp.move (to: p1.ptValue)
   bp.line (to: p2.ptValue)
-  bp.lineWidth = 0.25
+  bp.lineWidth = CanariLength.pt (0.25)
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)

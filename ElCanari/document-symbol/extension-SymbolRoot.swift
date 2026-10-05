@@ -51,7 +51,7 @@ extension SymbolRoot {
         let origin = NSPoint (x: object.x, y: object.y)
         let bp = BezierPath (
           withString: object.text,
-          at: origin,
+          at: origin.canariPoint,
           object.horizontalAlignment.ebTextShapeHorizontalAlignment,
           .center,
           withAttributes: textAttributes

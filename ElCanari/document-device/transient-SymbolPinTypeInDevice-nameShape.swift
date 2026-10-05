@@ -28,7 +28,7 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : self_mPinNameIsDisplayedInSchematics ? NSColor.black : .lightGray
     ]
-    let labelOrigin = NSPoint (x: self_mXName, y: self_mYName)
+    let labelOrigin = CanariPoint (x: self_mXName, y: self_mYName)
     shape.add (text: self_mName, labelOrigin, nameTextAttributes, self_mNameHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2

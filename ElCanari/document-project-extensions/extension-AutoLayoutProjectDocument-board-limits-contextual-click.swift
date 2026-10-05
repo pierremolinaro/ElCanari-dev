@@ -59,7 +59,7 @@ extension AutoLayoutProjectDocument {
           var bp = BezierPath ()
           bp.move (to: p1.ptValue)
           bp.curve (to: p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
-          bp.lineWidth = 2.0 * self.rootObject.mBoardClearance.ptValue
+          bp.lineWidth = 2.0 * self.rootObject.mBoardClearance
           bp = bp.pathToFillByStroking
           if bp.contains (inUnalignedMouseDownPoint.ptValue) {
             return borderCurve

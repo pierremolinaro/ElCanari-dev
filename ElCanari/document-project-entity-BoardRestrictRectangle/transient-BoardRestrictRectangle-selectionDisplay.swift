@@ -29,7 +29,7 @@ import CanariGeometry
         let height = self_mHeight
         let r = NSRect (x: x, y: y, width: width, height: height)
         var bp = BezierPath (rect: r)
-        bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
+        bp.lineWidth = CanariLength.pt (prefs_hiliteWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()

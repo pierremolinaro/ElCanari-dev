@@ -33,7 +33,7 @@ import CanariGeometry
           if !intersection.isEmpty {
             let intersectionEnlarged : NSRect = intersection.ptValue.insetBy (dx: -3.0, dy: -3.0)
             var bp = BezierPath (rect: intersectionEnlarged)
-            bp.lineWidth = 3.0
+            bp.lineWidth = CanariLength.pt (3.0)
             let issue = CanariIssue (kind: .error, message: "Intersection", pathes: [bp])
             array.append (issue)
           }
@@ -56,8 +56,8 @@ import CanariGeometry
           inside = instanceRect.top <= root_boardRect.top
         }
         if !inside {
-          var bp = BezierPath (roundedRect: instanceRect.ptValue.insetBy (dx: -3.0, dy: -3.0), xRadius: 3.0, yRadius: 3.0)
-          bp.lineWidth = 1.0
+          var bp = BezierPath (roundedRect: instanceRect.insetBy (dx: .pt (-3.0), dy: .pt (-3.0)), xRadius: .pt (3.0), yRadius: .pt (3.0))
+          bp.lineWidth = CanariLength.pt (1.0)
           bp.lineCapStyle = .round
           let issue = CanariIssue (kind: .error, message: "Outside board", pathes: [bp])
           array.append (issue)

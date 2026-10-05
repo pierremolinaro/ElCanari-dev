@@ -31,7 +31,7 @@ import CanariGeometry
   bp.line (to : NSPoint (x: right, y: top))
   bp.line (to : NSPoint (x: right, y: bottom))
   bp.close ()
-  bp.lineWidth = BOARD_LIMIT_WIDTH.ptValue
+  bp.lineWidth = BOARD_LIMIT_WIDTH
   bp.lineCapStyle = .round
   var array = BezierPathArray ()
   array.append (bp)

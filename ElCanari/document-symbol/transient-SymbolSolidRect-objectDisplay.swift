@@ -30,7 +30,7 @@ import CanariGeometry
     height: self_height
   )
   var bp = BezierPath (rect: r)
-  bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+  bp.lineWidth = CanariLength.pt (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (filled: [bp], prefs_symbolColor)

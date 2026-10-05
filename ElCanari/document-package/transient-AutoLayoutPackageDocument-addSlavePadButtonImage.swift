@@ -25,7 +25,7 @@ import CanariGeometry
               NSAttributedString.Key.foregroundColor : prefs_frontSidePadColor
             ]
             let s = "( )"
-            var shape = EBShape (text: s, NSPoint (x: 0.5, y: 0.0), textAttributes, .center, .center)
+            var shape = EBShape (text: s, CanariPoint (x: .pt (0.5)), textAttributes, .center, .center)
             shape.add (displayShape)
             let r = shape.boundingBox
             if !r.isEmpty {

@@ -31,9 +31,9 @@ import CanariGeometry
 //--- START OF USER ZONE 2
     var shape = EBShape ()
   //--- Pin
-    let pinRect = NSRect (
-      x: self_xPin - SYMBOL_GRID_LENGTH,
-      y: self_yPin - SYMBOL_GRID_LENGTH,
+    let pinRect = CanariRect (
+      left: self_xPin - SYMBOL_GRID_LENGTH,
+      bottom: self_yPin - SYMBOL_GRID_LENGTH,
       width: SYMBOL_GRID_LENGTH * 2.0,
       height: SYMBOL_GRID_LENGTH * 2.0
     )
@@ -44,7 +44,7 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : self_pinNameIsDisplayedInSchematics ? NSColor.black : NSColor.lightGray
     ]
-    let labelOrigin = NSPoint (x: self_xName.ptValue, y: self_yName.ptValue)
+    let labelOrigin = CanariPoint (x: self_xName, y: self_yName)
     let label = (self_name.isEmpty) ? "?" : self_name
     shape.add (text: label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
   //--- Number
@@ -52,7 +52,7 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : NSColor.black
     ]
-    let numberOrigin = NSPoint (x: self_xNumber.ptValue, y: self_yNumber.ptValue)
+    let numberOrigin = CanariPoint (x: self_xNumber, y: self_yNumber)
     shape.add (text: "##", numberOrigin, numberTextAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     return shape
 //--- END OF USER ZONE 2

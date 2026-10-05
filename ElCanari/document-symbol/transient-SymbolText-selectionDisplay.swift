@@ -29,9 +29,9 @@ import CanariGeometry
       NSAttributedString.Key.font : prefs_pinNameFont
     ]
     let text = self_text.isEmpty ? "?" : self_text
-    let textShape = EBShape (text: text, origin.ptValue, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
+    let textShape = EBShape (text: text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     var bp = BezierPath (rect: textShape.boundingBox)
-    bp.lineWidth = 0.25
+    bp.lineWidth = CanariLength.pt (0.25)
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
     shape.add (knobAt:  origin, knobIndex: 0, .rect, .pt (2.0))
     return shape

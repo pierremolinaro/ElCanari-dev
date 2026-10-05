@@ -11,7 +11,7 @@ import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
-private let LINE_WIDTH : CGFloat = 0.75
+private let LINE_WIDTH = CanariLength.pt (0.75)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -20,9 +20,9 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolEmptyPinNameIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -34,9 +34,9 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolEmptyTextIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -48,9 +48,9 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolSeveralPinAtSameLocationIssue (pinLocation inPoint: CanariPoint) {
-    let r = NSRect (
-      x: inPoint.x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: inPoint.y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: inPoint.x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: inPoint.y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -76,9 +76,9 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolPinHorizontalIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -90,9 +90,9 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolPinVerticalIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -104,9 +104,9 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolHorizontalIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -118,9 +118,9 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolVerticalIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -132,13 +132,13 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolWidthIssueAt (x: CanariLength, y: CanariLength, width : CanariLength, height : CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: (y + height / 2) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: (y + height / 2) - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: width + CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = BezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE.ptValue / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE.ptValue / 2.0)
+    var bp = BezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Width Alignment", pathes: [bp]))
   }
@@ -146,13 +146,13 @@ private let LINE_WIDTH : CGFloat = 0.75
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendSymbolHeightIssueAt (x: CanariLength, y: CanariLength, width : CanariLength, height : CanariLength) {
-    let r = NSRect (
-      x: (x + width / 2) - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: (x + width / 2) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: height + CANARI_ISSUE_HILITE_SIZE
     )
-    var bp = BezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE.ptValue / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE.ptValue / 2.0)
+    var bp = BezierPath (roundedRect: r, xRadius: CANARI_ISSUE_HILITE_SIZE / 2.0, yRadius: CANARI_ISSUE_HILITE_SIZE / 2.0)
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Height Alignment", pathes: [bp]))
   }

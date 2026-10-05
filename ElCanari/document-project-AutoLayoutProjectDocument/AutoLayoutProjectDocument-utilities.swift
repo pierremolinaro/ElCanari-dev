@@ -212,8 +212,8 @@ struct SchematicSheetGeometry : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func locationInfo (forPointInSheet inPoint : CanariPoint) -> PointLocationInfo {
-    let gutterWidth = CanariLength.pt (PAPER_GUTTER_WIDTH_COCOA_UNIT)
-    let gutterHeight = CanariLength.pt (PAPER_GUTTER_HEIGHT_COCOA_UNIT)
+    let gutterWidth = PAPER_GUTTER_WIDTH
+    let gutterHeight = PAPER_GUTTER_HEIGHT
     var column = 0
     if inPoint.x >= gutterWidth {
       column = Int ((inPoint.x - gutterWidth) * self.horizontalDivisions / (self.size.width - 2 * gutterWidth))
@@ -245,27 +245,27 @@ struct SchematicSheetGeometry : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func pointInRowOrColumnHeader (_ inPoint : NSPoint) -> PointInRowOrColumnHeader {
-    let cocoaSize = self.size.ptValue
+  func pointInRowOrColumnHeader (_ inPoint : CanariPoint) -> PointInRowOrColumnHeader {
+    let cocoaSize = self.size
     var result = PointInRowOrColumnHeader.outsideRowOrColumnHeader
-    var pointInVerticalGutter = inPoint.y <= PAPER_GUTTER_HEIGHT_COCOA_UNIT // in bottom gutter
+    var pointInVerticalGutter = inPoint.y <= PAPER_GUTTER_HEIGHT // in bottom gutter
     if !pointInVerticalGutter {
-      pointInVerticalGutter = (inPoint.y >= (cocoaSize.height - PAPER_GUTTER_HEIGHT_COCOA_UNIT)) && (inPoint.y < cocoaSize.height)
+      pointInVerticalGutter = (inPoint.y >= (cocoaSize.height - PAPER_GUTTER_HEIGHT)) && (inPoint.y < cocoaSize.height)
     }
     if pointInVerticalGutter {
-      let column = (inPoint.x - PAPER_GUTTER_WIDTH_COCOA_UNIT) * CGFloat (self.horizontalDivisions) / (cocoaSize.width - 2.0 * PAPER_GUTTER_WIDTH_COCOA_UNIT)
+      let column = (inPoint.x - PAPER_GUTTER_WIDTH) * CGFloat (self.horizontalDivisions) / (cocoaSize.width - 2.0 * PAPER_GUTTER_WIDTH)
       if column >= 0.0, column < CGFloat (self.horizontalDivisions) {
         result = .inColumHeader (Int (column))
       }else{
         result = .inCorner
       }
     }else{
-      var pointInHorizontalGutter = inPoint.x <= PAPER_GUTTER_WIDTH_COCOA_UNIT // in left gutter
+      var pointInHorizontalGutter = inPoint.x <= PAPER_GUTTER_WIDTH // in left gutter
       if !pointInHorizontalGutter {
-        pointInHorizontalGutter = (inPoint.x >= (cocoaSize.width - PAPER_GUTTER_WIDTH_COCOA_UNIT)) && (inPoint.x < cocoaSize.width)
+        pointInHorizontalGutter = (inPoint.x >= (cocoaSize.width - PAPER_GUTTER_WIDTH)) && (inPoint.x < cocoaSize.width)
       }
       if pointInHorizontalGutter {
-        let row = (inPoint.y - PAPER_GUTTER_HEIGHT_COCOA_UNIT) * CGFloat (self.verticalDivisions) / (cocoaSize.height - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT)
+        let row = (inPoint.y - PAPER_GUTTER_HEIGHT) * CGFloat (self.verticalDivisions) / (cocoaSize.height - 2.0 * PAPER_GUTTER_HEIGHT)
         if row >= 0.0, row < CGFloat (self.verticalDivisions) {
           result = .inRowHeader (Int (row))
         }
@@ -530,7 +530,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     if let textAttributes = padDisplayAttributes {
       var af = CanariAffinity.translating (self.center)
       af.prepend (padNumberAF)
-      ioShape.add (EBShape (text: self.name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
+      ioShape.add (EBShape (text: self.name, CanariPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   //--- Tool tip
     ioShape.appendToolTip (rPad, inPadNetDictionary [self.name] ?? "No net")
@@ -623,7 +623,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
     if let textAttributes = padDisplayAttributes {
       var af = CanariAffinity.translating (self.center)
       af.prepend (padNumberAF)
-      ioShape.add (EBShape (text: name, NSPoint (), textAttributes, .center, .center).transformed (by: af))
+      ioShape.add (EBShape (text: name, CanariPoint (), textAttributes, .center, .center).transformed (by: af))
     }
   }
 

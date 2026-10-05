@@ -39,9 +39,9 @@ import CanariGeometry
        _ prefs_backSideRestrictRectangleColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let GRID_INTERVAL : CGFloat = 2.0
-        let GRID_LINE_WIDTH : CGFloat = 0.5
-        func buildLines (_ inRect : NSRect, _ inOffset : CGFloat)  -> BezierPath {
+        let GRID_INTERVAL = CanariLength.pt (2.0)
+        let GRID_LINE_WIDTH = CanariLength.pt (0.5)
+        func buildLines (_ inRect : CanariRect, _ inOffset : CGFloat)  -> BezierPath {
           let lg = max (inRect.size.width, inRect.size.height)
           var bp = BezierPath ()
           bp.lineWidth = GRID_LINE_WIDTH
@@ -61,7 +61,7 @@ import CanariGeometry
           }
           return bp
         }
-        let cocoaRect = NSRect (x: self_mX, y: self_mY, width: self_mWidth, height: self_mHeight)
+        let rect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight)
         var shape = EBShape ()
         let display = (self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles)
           || (self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles)
@@ -70,44 +70,44 @@ import CanariGeometry
           || (self_mIsInInner3Layer && self_BoardObject_displayInner3RestrictRectangles)
           || (self_mIsInInner4Layer && self_BoardObject_displayInner4RestrictRectangles)
         if display {
-          let rectBP = BezierPath (rect: cocoaRect)
+          let rectBP = BezierPath (rect: rect)
         //--- Transparent background (for selection)
           shape.add (filled: [rectBP], nil)
         //--- Front layer
           if self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles {
-            let bp = buildLines (cocoaRect, 0.0)
+            let bp = buildLines (rect, 0.0)
             shape.add (stroke: [bp], prefs_frontSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Back layer
           if self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles {
-            let bp = buildLines (cocoaRect, 1.0)
+            let bp = buildLines (rect, 1.0)
             shape.add (stroke: [bp], prefs_backSideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner1 layer
           if self_mIsInInner1Layer && self_BoardObject_displayInner1RestrictRectangles {
-            let bp = buildLines (cocoaRect, 2.0)
+            let bp = buildLines (rect, 2.0)
             shape.add (stroke: [bp], prefs_inner1SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner2 layer
           if self_mIsInInner2Layer && self_BoardObject_displayInner2RestrictRectangles {
-            let bp = buildLines (cocoaRect, 3.0)
+            let bp = buildLines (rect, 3.0)
             shape.add (stroke: [bp], prefs_inner2SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner3 layer
           if self_mIsInInner3Layer && self_BoardObject_displayInner3RestrictRectangles {
-            let bp = buildLines (cocoaRect, 4.0)
+            let bp = buildLines (rect, 4.0)
             shape.add (stroke: [bp], prefs_inner3SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         //--- Inner4 layer
           if self_mIsInInner4Layer && self_BoardObject_displayInner4RestrictRectangles {
-            let bp = buildLines (cocoaRect, 5.0)
+            let bp = buildLines (rect, 5.0)
             shape.add (stroke: [bp], prefs_inner4SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
         }
       //--- Append rect frame
         do{
-          var bp = BezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
-          bp.lineWidth = 0.5
+          var bp = BezierPath (rect: rect.insetBy (dx: .pt (0.25), dy: .pt (0.25)))
+          bp.lineWidth = CanariLength.pt (0.5)
           bp.lineJoinStyle = .round
           bp.lineCapStyle = .round
           let frameColor : NSColor

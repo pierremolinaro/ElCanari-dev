@@ -23,14 +23,14 @@ import CanariGeometry
        _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r = NSRect (
-    x: self_x,
-    y: self_y,
+  let r = CanariRect (
+    left: self_x,
+    bottom: self_y,
     width: self_width,
     height: self_height
   )
   var bp = BezierPath (ovalIn: r)
-  bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+  bp.lineWidth = CanariLength.pt (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_symbolColor)

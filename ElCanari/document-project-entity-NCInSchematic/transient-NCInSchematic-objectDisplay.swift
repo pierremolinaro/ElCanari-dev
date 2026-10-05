@@ -47,7 +47,7 @@ import CanariGeometry
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : prefs_pinNameFont,
         ]
-        return EBShape (text: NC_TITLE, point.ptValue, textAttributes, horizontalAlignment, verticalAlignment)
+        return EBShape (text: NC_TITLE, point, textAttributes, horizontalAlignment, verticalAlignment)
 //--- END OF USER ZONE 2
 }
 

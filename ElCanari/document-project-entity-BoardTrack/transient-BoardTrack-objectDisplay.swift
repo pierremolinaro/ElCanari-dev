@@ -77,7 +77,7 @@ import CanariGeometry
          if display {
            let w = max (self_actualTrackWidth, .mil (10))
            var bp = BezierPath ()
-           bp.lineWidth = w.ptValue
+           bp.lineWidth = w
            switch self_mEndStyle {
            case .round :
              bp.lineCapStyle = .round

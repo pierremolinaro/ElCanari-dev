@@ -31,43 +31,43 @@ import CanariGeometry
           let filledBezierPath = self_mType_mFilledBezierPath,
           let pinNameShape = self_mType_pinNameShape {
       //--- Compute display rect
-        var r = NSRect.null
+        var r = CanariRect.empty
         if !strokeBezierPath.isEmpty {
-          r = r.union (strokeBezierPath.bounds)
+          r = r.unioning (strokeBezierPath.bounds.canariRect)
         }
         if !filledBezierPath.isEmpty {
-          r = r.union (filledBezierPath.bounds)
+          r = r.unioning (filledBezierPath.bounds.canariRect)
         }
       //--- Pin names
-        r = r.union (pinNameShape.boundingBox)
+        r = r.unioning (pinNameShape.boundingBox.canariRect)
       //--- Pin numbers
         for p in self_mPinInstances_numberShape {
           if let s = p.numberShape {
-            r = r.union (s.boundingBox)
+            r = r.unioning (s.boundingBox.canariRect)
           }
         }
-        if !r.isNull {
-          let MARGIN : CGFloat = 1.0
+        if !r.isEmpty {
+          let MARGIN = CanariLength.pt (1.0)
        //--- Name shape
           let nameTextAttributes : [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
           ]
-          let nameShapeSize = EBShape (text: self_symbolQualifiedName, NSPoint (), nameTextAttributes, .center, .above).boundingBox.size
+          let nameShapeSize = CanariSize (pt: EBShape (text: self_symbolQualifiedName, CanariPoint (), nameTextAttributes, .center, .above).boundingBox.size)
           r = r.insetBy (dx: -MARGIN, dy: -MARGIN)
           if nameShapeSize.width > r.size.width {
-            r = r.insetBy (dx: (r.size.width - nameShapeSize.width) / 2.0, dy: 0.0)
+            r = r.insetBy (dx: (r.size.width - nameShapeSize.width) / 2.0)
           }
         //--- Frame
           let horizontalSeparatorY = r.maxY
           r.size.height += nameShapeSize.height + 2.0 * MARGIN
-          let frameRadius : CGFloat = 3.0
-          r = r.insetBy (dx: -frameRadius - CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0, dy: -CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 20.0)
-          let nameOrigin = NSPoint (x: r.midX, y: horizontalSeparatorY + MARGIN)
+          let frameRadius = CanariLength.pt (3.0)
+          r = r.insetBy (dx: -frameRadius - .pt (prefs_symbolDrawingWidthMultipliedByTen) / 20.0, dy: -.pt (prefs_symbolDrawingWidthMultipliedByTen) / 20.0)
+          let nameOrigin = CanariPoint (x: r.midX, y: horizontalSeparatorY + MARGIN)
           var bp = BezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
           shape.add (filled: [bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
           bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
           bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
-          bp.lineWidth = 0.5
+          bp.lineWidth = CanariLength.pt (0.5)
           shape.add (stroke: [bp], .lightGray)
         //--- Name
           shape.add (text: self_symbolQualifiedName, nameOrigin, nameTextAttributes, .center, .above)

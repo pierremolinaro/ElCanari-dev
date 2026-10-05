@@ -70,7 +70,7 @@ import CanariGeometry
           var knobLine = BezierPath ()
           knobLine.move (to : origin)
           knobLine.line (to : rotationKnob)
-          knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
+          knobLine.lineWidth = CanariLength.pt (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round
           shape.add (stroke: [knobLine], prefs_selectionHiliteColor)

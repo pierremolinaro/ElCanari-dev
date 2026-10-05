@@ -24,21 +24,21 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
   var shape = EBShape ()
-  let firstPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
-  let secondPointRadiusInCocoaUnit = CGFloat (self_mRoot_mModelPointsCircleRadius ?? 10)
+  let firstPointRadiusInCocoaUnit = CanariLength.pt (self_mRoot_mModelPointsCircleRadius ?? 10)
+  let secondPointRadiusInCocoaUnit = CanariLength.pt (self_mRoot_mModelPointsCircleRadius ?? 10)
   let firstX = self_mFirstX
   let firstY = self_mFirstY
-  let firstR = NSRect (center: NSPoint (x: firstX, y: firstY), size: NSSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))
+  let firstR = CanariRect (center: CanariPoint (x: firstX, y: firstY), size: CanariSize (width: firstPointRadiusInCocoaUnit * 2.0, height: firstPointRadiusInCocoaUnit * 2.0))
   let secondX = self_mFirstX + self_mSecondDx
   let secondY = self_mFirstY + self_mSecondDy
-  let secondR = NSRect (center: NSPoint (x: secondX, y: secondY), size: NSSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
+  let secondR = CanariRect (center: CanariPoint (x: secondX, y: secondY), size: CanariSize (width: secondPointRadiusInCocoaUnit * 2.0, height: secondPointRadiusInCocoaUnit * 2.0))
   var bp1 = BezierPath (ovalIn: firstR)
-  bp1.lineWidth = 1.0
+  bp1.lineWidth = CanariLength.pt (1.0)
   var bp2 = BezierPath (ovalIn: secondR)
-  bp2.lineWidth = 1.0
+  bp2.lineWidth = CanariLength.pt (1.0)
   shape.add (stroke: [bp1, bp2], prefs_selectionHiliteColor)
-  shape.add (knobAt: CanariPoint (x: firstX, y: firstY), knobIndex: MODEL_IMAGE_FIRST_POINT, .transparentCircle, .pt (firstPointRadiusInCocoaUnit * 2.0 + IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH))
-  shape.add (knobAt: CanariPoint (x: secondX, y: secondY), knobIndex: MODEL_IMAGE_SECOND_POINT, .transparentCircle, .pt (secondPointRadiusInCocoaUnit * 2.0 + IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH))
+  shape.add (knobAt: CanariPoint (x: firstX, y: firstY), knobIndex: MODEL_IMAGE_FIRST_POINT, .transparentCircle, firstPointRadiusInCocoaUnit * 2.0 + IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH)
+  shape.add (knobAt: CanariPoint (x: secondX, y: secondY), knobIndex: MODEL_IMAGE_SECOND_POINT, .transparentCircle, secondPointRadiusInCocoaUnit * 2.0 + IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH)
   return shape
 //--- END OF USER ZONE 2
 }

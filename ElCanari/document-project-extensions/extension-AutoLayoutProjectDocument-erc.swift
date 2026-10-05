@@ -236,18 +236,18 @@ extension AutoLayoutProjectDocument {
         let viaHoleDiameter = connector.actualHoleDiameter!
         let viaOAR = (connector.actualPadDiameter! - viaHoleDiameter) / 2
         if viaHoleDiameter < inPHD {
-          let center = connector.location!.ptValue
-          let w = (connector.actualPadDiameter! + inArtworkClearance).ptValue
-          let r = NSRect (center: center, size: NSSize (width: w, height: w))
+          let center = connector.location!
+          let w = (connector.actualPadDiameter! + inArtworkClearance)
+          let r = CanariRect (center: center, size: CanariSize (width: w, height: w))
           let bp = BezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Hole diameter should be greater or equal to artwork PHD", pathes: [bp])
           ioIssues.append (issue)
           errorCount += 1
         }
         if viaOAR < inOAR {
-          let center = connector.location!.ptValue
-          let w = (connector.actualPadDiameter! + inArtworkClearance).ptValue
-          let r = NSRect (center: center, size: NSSize (width: w, height: w))
+          let center = connector.location!
+          let w = (connector.actualPadDiameter! + inArtworkClearance)
+          let r = CanariRect (center: center, size: CanariSize (width: w, height: w))
           let bp = BezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .error, message: "Annular ring should be greater or equal to artwork OAR", pathes: [bp])
           ioIssues.append (issue)

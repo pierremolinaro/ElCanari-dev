@@ -11,7 +11,7 @@ import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
-private let LINE_WIDTH  : CGFloat = 0.75
+private let LINE_WIDTH = CanariLength.pt (0.75)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -20,9 +20,9 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendOvalZeroWidthIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -34,9 +34,9 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendOvalZeroHeightIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -48,9 +48,9 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendZoneZeroWidthIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -62,9 +62,9 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendZoneZeroHeightIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -76,9 +76,9 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendZoneEmptyNameHeightIssueAt (x: CanariLength, y: CanariLength) {
-    let r = NSRect (
-      x: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
-      y: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
+    let r = CanariRect (
+      left: x - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      bottom: y - CANARI_ISSUE_HILITE_SIZE / 2.0,
       width: CANARI_ISSUE_HILITE_SIZE,
       height: CANARI_ISSUE_HILITE_SIZE
     )
@@ -90,14 +90,14 @@ extension Array where Element == CanariIssue {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func appendZoneIntersectionIssueIn (rect: CanariRect) {
-    var bp = BezierPath (rect: rect.ptValue.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
+    var bp = BezierPath (rect: rect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Zone Intersection", pathes: [bp]))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendDuplicatedZoneNameIssueIn (rect: NSRect) {
+  mutating func appendDuplicatedZoneNameIssueIn (rect: CanariRect) {
     var bp = BezierPath (rect: rect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
     bp.lineWidth = LINE_WIDTH
     self.append (CanariIssue (kind: .error, message: "Duplicated Zone Name", pathes: [bp]))

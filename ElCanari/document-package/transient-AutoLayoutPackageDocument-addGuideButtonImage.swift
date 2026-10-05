@@ -19,7 +19,7 @@ import CanariGeometry
 ) -> NSImage {
 //--- START OF USER ZONE 2
         var bp = BezierPath ()
-        bp.lineWidth = 2.0
+        bp.lineWidth = CanariLength.pt (2.0)
         bp.move (to: NSPoint (x: 0, y: 0))
         bp.line (to: NSPoint (x: 10, y: 10))
         bp.lineCapStyle = .round

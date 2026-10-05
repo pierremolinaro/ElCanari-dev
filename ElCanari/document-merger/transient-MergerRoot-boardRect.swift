@@ -22,7 +22,7 @@ import CanariGeometry
 ) -> CanariRect {
 //--- START OF USER ZONE 2
     if self_automaticBoardSize {
-      var r = CanariRect.zero // Empty rect
+      var r = CanariRect.empty // Empty rect
       var idx = 0
       while idx < self_boardInstances_instanceRect.count {
         if let rect = self_boardInstances_instanceRect [idx].instanceRect {

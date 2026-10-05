@@ -25,7 +25,7 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var bp = BezierPath ()
-      bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
+      bp.lineWidth = CanariLength.pt (prefs_hiliteWidthMultipliedByTen) / 10.0
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
       let p1 = CanariPoint (x: self_mX1, y: self_mY1)

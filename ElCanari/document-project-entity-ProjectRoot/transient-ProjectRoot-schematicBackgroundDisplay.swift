@@ -31,25 +31,25 @@ import CanariGeometry
 //--- START OF USER ZONE 2
         let vMarks = self_sheetGeometry.verticalDivisions
         let hMarks = self_sheetGeometry.horizontalDivisions
-        let sheetWidth = self_sheetGeometry.size.width.ptValue - 2.0
-        let sheetHeight = self_sheetGeometry.size.height.ptValue - 2.0
-        let hIncrement = (sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0) / CGFloat (hMarks)
-        let vIncrement = (sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0) / CGFloat (vMarks)
-        let OFFSET : CGFloat =  0.5
+        let sheetWidth = self_sheetGeometry.size.width - .pt (2.0)
+        let sheetHeight = self_sheetGeometry.size.height - .pt (2.0)
+        let hIncrement = (sheetWidth - PAPER_GUTTER_WIDTH * 2.0) / CGFloat (hMarks)
+        let vIncrement = (sheetHeight - PAPER_GUTTER_HEIGHT * 2.0) / CGFloat (vMarks)
+        let OFFSET = CanariLength.pt (0.5)
         let hiliteColor = NSColor.lightGray.withAlphaComponent (0.25)
         var shape = EBShape ()
       //--- Hilite column ?
         if self_mSchematicEnableHiliteColumnAndRow, self_mSchematicHilitedColumnIndex >= 0 {
-          let bottomLeft = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + CGFloat (self_mSchematicHilitedColumnIndex) * hIncrement + OFFSET, y: 0.0)
-          let size = NSSize (width: hIncrement, height: sheetHeight)
-          let bp = BezierPath (rect: NSRect (origin: bottomLeft, size: size))
+          let bottomLeft = CanariPoint (x: PAPER_GUTTER_WIDTH + self_mSchematicHilitedColumnIndex * hIncrement + OFFSET)
+          let size = CanariSize (width: hIncrement, height: sheetHeight)
+          let bp = BezierPath (rect: CanariRect (origin: bottomLeft, size: size))
           shape.add (filled: [bp], hiliteColor)
         }
       //--- Hilite row ?
         if self_mSchematicEnableHiliteColumnAndRow, self_mSchematicHilitedRowIndex >= 0 {
-          let bottomLeft = NSPoint (x: 0.0, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + CGFloat (self_mSchematicHilitedRowIndex) * vIncrement + OFFSET)
-          let size = NSSize (width: sheetWidth, height: vIncrement)
-          let bp = BezierPath (rect: NSRect (origin: bottomLeft, size: size))
+          let bottomLeft = CanariPoint (y: PAPER_GUTTER_HEIGHT + self_mSchematicHilitedRowIndex * vIncrement + OFFSET)
+          let size = CanariSize (width: sheetWidth, height: vIncrement)
+          let bp = BezierPath (rect: CanariRect (origin: bottomLeft, size: size))
           shape.add (filled: [bp], hiliteColor)
         }
       //---
@@ -61,104 +61,104 @@ import CanariGeometry
           NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize * 0.75),
           NSAttributedString.Key.foregroundColor : prefs_schematicFrameColor
         ]
-        let LEFT_COLUMN  : CGFloat = 196.0
-        let RIGHT_COLUMN : CGFloat =  32.0
-        let LINE_HEIGHT  : CGFloat =  18.0
+        let LEFT_COLUMN  = CanariLength.pt (196.0)
+        let RIGHT_COLUMN = CanariLength.pt (32.0)
+        let LINE_HEIGHT  = CanariLength.pt (18.0)
       //---
-        var filledBP = BezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
-        filledBP.appendRect (NSRect (x: OFFSET, y: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
-        filledBP.appendRect (NSRect (x: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: OFFSET, width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight))
-        filledBP.appendRect (NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
-        filledBP.appendRect (NSRect (x: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT - LEFT_COLUMN - RIGHT_COLUMN + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
+        var filledBP = BezierPath (rect: CanariRect (left: OFFSET, bottom: OFFSET, width: PAPER_GUTTER_WIDTH, height: sheetHeight))
+        filledBP.appendRect (CanariRect (left: OFFSET, bottom: sheetHeight - PAPER_GUTTER_HEIGHT + OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT))
+        filledBP.appendRect (CanariRect (left: sheetWidth - PAPER_GUTTER_WIDTH + OFFSET, bottom: OFFSET, width: PAPER_GUTTER_WIDTH, height: sheetHeight))
+        filledBP.appendRect (CanariRect (left: OFFSET, bottom: OFFSET, width: sheetWidth, height: PAPER_GUTTER_HEIGHT))
+        filledBP.appendRect (CanariRect (left: sheetWidth - PAPER_GUTTER_WIDTH - LEFT_COLUMN - RIGHT_COLUMN + OFFSET, bottom: PAPER_GUTTER_HEIGHT + OFFSET, width: LEFT_COLUMN + RIGHT_COLUMN, height: LINE_HEIGHT * 3.0))
         shape.add (filled: [filledBP], prefs_schematicBackColor)
       //---
         if self_mSchematicEnableHiliteColumnAndRow {
-          var p = NSPoint (x: OFFSET, y: OFFSET + PAPER_GUTTER_HEIGHT_COCOA_UNIT)
-          var s = NSSize (width: PAPER_GUTTER_WIDTH_COCOA_UNIT, height: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT)
-          var filledBP = BezierPath (rect: NSRect (origin: p, size: s))
-          p.x += sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT
-          filledBP.appendRect (NSRect (origin: p, size: s))
-          p = NSPoint (x: OFFSET + PAPER_GUTTER_WIDTH_COCOA_UNIT, y: OFFSET)
-          s = NSSize (width: sheetWidth - 2.0 * PAPER_GUTTER_WIDTH_COCOA_UNIT, height: PAPER_GUTTER_HEIGHT_COCOA_UNIT)
-          filledBP.appendRect (NSRect (origin: p, size: s))
-          p.y += sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT
-          filledBP.appendRect (NSRect (origin: p, size: s))
+          var p = CanariPoint (x: OFFSET, y: OFFSET + PAPER_GUTTER_HEIGHT)
+          var s = CanariSize (width: PAPER_GUTTER_WIDTH, height: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT)
+          var filledBP = BezierPath (rect: CanariRect (origin: p, size: s))
+          p.x += sheetWidth - PAPER_GUTTER_WIDTH
+          filledBP.appendRect (CanariRect (origin: p, size: s))
+          p = CanariPoint (x: OFFSET + PAPER_GUTTER_WIDTH, y: OFFSET)
+          s = CanariSize (width: sheetWidth - 2.0 * PAPER_GUTTER_WIDTH, height: PAPER_GUTTER_HEIGHT)
+          filledBP.appendRect (CanariRect (origin: p, size: s))
+          p.y += sheetHeight - PAPER_GUTTER_HEIGHT
+          filledBP.appendRect (CanariRect (origin: p, size: s))
           shape.add (filled: [filledBP], hiliteColor)
         }
       //---
-        var bp = BezierPath (rect: NSRect (x: OFFSET, y: OFFSET, width: sheetWidth, height: sheetHeight))
-        bp.appendRect (NSRect (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET, width: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 2.0, height: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 2.0))
-        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 3.0))
-        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.0 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: 0.0))
-        bp.move (to: NSPoint (x: sheetWidth - RIGHT_COLUMN - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: 0.0, y: LINE_HEIGHT * 2.0))
+        var bp = BezierPath (rect: CanariRect (left: OFFSET, bottom: OFFSET, width: sheetWidth, height: sheetHeight))
+        bp.appendRect (CanariRect (left: PAPER_GUTTER_WIDTH + OFFSET, bottom: PAPER_GUTTER_HEIGHT + OFFSET, width: sheetWidth - PAPER_GUTTER_WIDTH * 2.0, height: sheetHeight - PAPER_GUTTER_HEIGHT * 2.0))
+        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: NSPoint (x: .zero, y: LINE_HEIGHT * 3.0))
+        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
+        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
+        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 2.0 + PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
+        bp.move (to: NSPoint (x: sheetWidth - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: NSPoint (x: .zero, y: LINE_HEIGHT * 2.0))
      //--- Draw vertical marks
-       var p = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT * 0.5 + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + vIncrement * 0.5 + OFFSET)
+       var p = CanariPoint (x: PAPER_GUTTER_WIDTH * 0.5 + OFFSET, y: PAPER_GUTTER_HEIGHT + vIncrement * 0.5 + OFFSET)
        for mark in 0 ..< vMarks {
          shape.add (text: "\(mark)", p, lineAttributes, .center, .center)
          p.y += vIncrement
        }
-       p = NSPoint (x: sheetWidth - PAPER_GUTTER_WIDTH_COCOA_UNIT * 0.5 + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + vIncrement * 0.5 + OFFSET)
+       p = CanariPoint (x: sheetWidth - PAPER_GUTTER_WIDTH * 0.5 + OFFSET, y: PAPER_GUTTER_HEIGHT + vIncrement * 0.5 + OFFSET)
        for mark in 0 ..< vMarks {
          shape.add (text: "\(mark)", p, lineAttributes, .center, .center)
          p.y += vIncrement
        }
      //--- Draw horizontal marks
-       p = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + hIncrement / 2.0 + OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT * 0.5 + OFFSET)
+       p = CanariPoint (x: PAPER_GUTTER_WIDTH + hIncrement / 2.0 + OFFSET, y: PAPER_GUTTER_HEIGHT * 0.5 + OFFSET)
        for mark in 0 ..< hMarks {
          let pointCode = UnicodeScalar (mark + 0x41)! // "A", "B", …
          shape.add (text: "\(pointCode)", p, lineAttributes, .center, .center)
          p.x += hIncrement
        }
-       p = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + hIncrement / 2.0 + OFFSET, y: sheetHeight - PAPER_GUTTER_HEIGHT_COCOA_UNIT * 0.5 + OFFSET)
+       p = CanariPoint (x: PAPER_GUTTER_WIDTH + hIncrement / 2.0 + OFFSET, y: sheetHeight - PAPER_GUTTER_HEIGHT * 0.5 + OFFSET)
        for mark in 0 ..< hMarks {
          let pointCode = UnicodeScalar (mark + 0x41)! // "A", "B", …
          shape.add (text: "\(pointCode)", p, lineAttributes, .center, .center)
          p.x += hIncrement
        }
     //--- Draw vertical separators
-      p = NSPoint (x: OFFSET, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+      p = CanariPoint (x: OFFSET, y: PAPER_GUTTER_HEIGHT + OFFSET)
       for _ in 0 ... vMarks {
-        bp.move (to: p)
-        bp.relativeLine (to: NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT, y: 0.0))
-        bp.relativeMove (to: NSPoint (x: sheetWidth - 2.0 * PAPER_GUTTER_WIDTH_COCOA_UNIT, y: 0.0))
-        bp.relativeLine (to: NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT, y: 0.0))
+        bp.move (to: p.ptValue)
+        bp.relativeLine (to: NSPoint (x: PAPER_GUTTER_WIDTH, y: .zero))
+        bp.relativeMove (to: NSPoint (x: sheetWidth - 2.0 * PAPER_GUTTER_WIDTH, y: .zero))
+        bp.relativeLine (to: NSPoint (x: PAPER_GUTTER_WIDTH, y: .zero))
         p.y += vIncrement
       }
     //--- Draw horizontal separators
-      p = NSPoint (x: PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: OFFSET)
+      p = CanariPoint (x: PAPER_GUTTER_WIDTH + OFFSET, y: OFFSET)
       for _ in 0 ... hMarks {
-        bp.move (to: p)
-        bp.relativeLine (to: NSPoint (x: 0.0, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
-        bp.relativeMove (to: NSPoint (x: 0.0, y: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT_COCOA_UNIT))
-        bp.relativeLine (to: NSPoint (x: 0.0, y: PAPER_GUTTER_HEIGHT_COCOA_UNIT))
+        bp.move (to: p.ptValue)
+        bp.relativeLine (to: NSPoint (x: .zero, y: PAPER_GUTTER_HEIGHT))
+        bp.relativeMove (to: NSPoint (x: .zero, y: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT))
+        bp.relativeLine (to: NSPoint (x: .zero, y: PAPER_GUTTER_HEIGHT))
         p.x += hIncrement
       }
     //---
-      bp.lineWidth = 1.0
+      bp.lineWidth = CanariLength.pt (1.0)
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
       shape.add (stroke: [bp], prefs_schematicFrameColor)
      //--- Schematics Title
-        p = NSPoint (x: sheetWidth - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.5 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = CanariPoint (x: sheetWidth - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 2.5 + PAPER_GUTTER_HEIGHT + OFFSET)
         shape.add (text: self_mSchematicTitle, p, textAttributes, .center, .center)
      //--- Version
-        p = NSPoint (x: sheetWidth - RIGHT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 2.5 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = CanariPoint (x: sheetWidth - RIGHT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 2.5 + PAPER_GUTTER_HEIGHT + OFFSET)
         shape.add (text: self_mSchematicVersion, p, textAttributes, .center, .center)
      //--- Sheet Title
-        p = NSPoint (x: sheetWidth - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 1.5 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = CanariPoint (x: sheetWidth - RIGHT_COLUMN - LEFT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 1.5 + PAPER_GUTTER_HEIGHT + OFFSET)
         shape.add (text: self_mSelectedSheet_mSheetTitle ?? "—", p, textAttributes, .center, .center)
      //--- Date
         let dateFormatter = DateFormatter ()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
         dateFormatter.locale = .current
-        p = NSPoint (x: sheetWidth - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0 - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 0.5 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = CanariPoint (x: sheetWidth - (LEFT_COLUMN + RIGHT_COLUMN) / 2.0 - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 0.5 + PAPER_GUTTER_HEIGHT + OFFSET)
         shape.add (text: dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center)
      //--- Sheet index
         var s = "?"
@@ -172,7 +172,7 @@ import CanariGeometry
             idx += 1
           }
         }
-        p = NSPoint (x: sheetWidth - RIGHT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH_COCOA_UNIT + OFFSET, y: LINE_HEIGHT * 1.5 + PAPER_GUTTER_HEIGHT_COCOA_UNIT + OFFSET)
+        p = CanariPoint (x: sheetWidth - RIGHT_COLUMN / 2.0 - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 1.5 + PAPER_GUTTER_HEIGHT + OFFSET)
         shape.add (text: s + "/\(self_mSheets.count)", p, textAttributes, .center, .center)
     //----
         return shape

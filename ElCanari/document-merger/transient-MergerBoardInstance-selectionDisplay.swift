@@ -19,8 +19,8 @@ import CanariGeometry
        _ self_instanceRect : CanariRect
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      let frameWidth : CGFloat = 0.5
-      let r : NSRect = self_instanceRect.ptValue
+      let frameWidth = CanariLength.pt (0.5)
+      let r : CanariRect = self_instanceRect
 //      Swift.print ("R \(self_instanceRect.origin.x) \(self_instanceRect.origin.y) \(self_instanceRect.size.width) \(self_instanceRect.size.height)")
       var shapes = EBShape ()
       shapes.add (filled: [BezierPath (rect: r)], prefs_selectionHiliteColor.withAlphaComponent (0.15))

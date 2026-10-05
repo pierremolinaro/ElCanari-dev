@@ -170,7 +170,7 @@ extension AutoLayoutProjectDocument {
               connector.netNameFromComponentPad == netName {
           connector.buildBezierPathArrayForHilitingOnOptionFlag (
             trackSide: newTrackSide,
-            controlKeyHiliteDiameter: d.ptValue,
+            controlKeyHiliteDiameter: d,
             bezierPathArray: &bpArray
           )
         }
@@ -185,14 +185,14 @@ extension AutoLayoutProjectDocument {
   //--- Control key ?
     if NSEvent.modifierFlags.contains (.control), d > .zero, let boardView = self.mBoardView?.mGraphicView {
       if boardView.frame.contains (inUnalignedMouseLocation) {
-        let r = NSRect (
-          x: .pt (inUnalignedMouseLocation.x) - d / 2.0,
-          y: .pt (inUnalignedMouseLocation.y) - d / 2.0,
+        let r = CanariRect (
+          left: .pt (inUnalignedMouseLocation.x) - d / 2.0,
+          bottom: .pt (inUnalignedMouseLocation.y) - d / 2.0,
           width: d,
           height: d
         )
         var bp = BezierPath (ovalIn: r)
-        bp.lineWidth = 1.0 / boardView.actualScale
+        bp.lineWidth = CanariLength.pt (1.0) / boardView.actualScale
         if shape == nil {
           shape = EBShape ()
         }

@@ -49,7 +49,7 @@ import CanariGeometry
        _ prefs_mShowComponentRotationKnobInBoard : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      let lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
+      let lineWidth = CanariLength.pt (prefs_hiliteWidthMultipliedByTen) / 10.0
       let absoluteCenter = NSPoint (x: self_mX, y: self_mY)
       let rPadsCenter = self_packagePadDictionary.padsRect.center
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
@@ -123,7 +123,7 @@ import CanariGeometry
         bp.lineJoinStyle = .round
         nonRotatedShape.add (stroke: [bp], prefs_selectionHiliteColor)
         bp = frameBP
-        bp.lineWidth = 0.5
+        bp.lineWidth = CanariLength.pt (0.5)
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_NAME_KNOB)
@@ -157,7 +157,7 @@ import CanariGeometry
         bp.lineJoinStyle = .round
         nonRotatedShape.add (stroke: [bp], prefs_selectionHiliteColor)
         bp = frameBP
-        bp.lineWidth = 0.5
+        bp.lineWidth = CanariLength.pt (0.5)
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         nonRotatedShape.add (filled: [bp], .white, knobIndex: COMPONENT_PACKAGE_VALUE_KNOB)

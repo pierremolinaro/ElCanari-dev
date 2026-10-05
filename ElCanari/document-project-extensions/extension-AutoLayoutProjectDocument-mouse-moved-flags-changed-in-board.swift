@@ -15,13 +15,13 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : NSPoint) {
+  func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : CanariPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
     let d = CanariLength.pt (self.rootObject.mControlKeyHiliteDiameter)
   //--- Option key ?
     if NSEvent.modifierFlags.contains (.option) {
-      let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
+      let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation, trackSide: newTrackSide)
       if connectorsUnderMouse.count == 1 {
         let connectorUnderMouse = connectorsUnderMouse [0]
         if let netName = connectorUnderMouse.netName () {
@@ -33,7 +33,7 @@ extension AutoLayoutProjectDocument {
                   connector.netNameFromComponentPad == netName {
               connector.buildBezierPathArrayForHilitingOnOptionFlag (
                 trackSide: newTrackSide,
-                controlKeyHiliteDiameter: d.ptValue,
+                controlKeyHiliteDiameter: d,
                 bezierPathArray: &bpArray
               )
             }
@@ -51,15 +51,15 @@ extension AutoLayoutProjectDocument {
     if NSEvent.modifierFlags.contains (.control),
           !NSEvent.modifierFlags.contains (.shift), d > .zero,
           let boardView = self.mBoardView?.mGraphicView {
-      if boardView.frame.contains (inUnalignedMouseLocation) {
-        let r = NSRect (
-          x: .pt (inUnalignedMouseLocation.x) - d / 2.0,
-          y: .pt (inUnalignedMouseLocation.y) - d / 2.0,
+      if boardView.frame.contains (inUnalignedMouseLocation.ptValue) {
+        let r = CanariRect (
+          left: inUnalignedMouseLocation.x - d / 2.0,
+          bottom: inUnalignedMouseLocation.y - d / 2.0,
           width: d,
           height: d
         )
         var bp = BezierPath (ovalIn: r)
-        bp.lineWidth = 1.0 / boardView.actualScale
+        bp.lineWidth = CanariLength.pt (1.0) / boardView.actualScale
         if shape == nil {
           shape = EBShape ()
         }
@@ -116,7 +116,7 @@ extension BoardConnector {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func buildBezierPathArrayForHilitingOnOptionFlag (trackSide inTrackSide : TrackSide,
-                                                    controlKeyHiliteDiameter inDiameter : CGFloat,
+                                                    controlKeyHiliteDiameter inDiameter : CanariLength,
                                                     bezierPathArray ioArray : inout [BezierPath]) {
     if let padCenter = self.location, let connectorSide = self.side {
       let accepts : Bool
@@ -137,9 +137,9 @@ extension BoardConnector {
         accepts = true
       }
       if accepts {
-        let r = NSRect (
-          x: padCenter.x.ptValue - inDiameter / 2.0,
-          y: padCenter.y.ptValue - inDiameter / 2.0,
+        let r = CanariRect (
+          left: padCenter.x - inDiameter / 2.0,
+          bottom: padCenter.y - inDiameter / 2.0,
           width: inDiameter,
           height: inDiameter
         )

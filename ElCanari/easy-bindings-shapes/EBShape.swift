@@ -67,7 +67,7 @@ struct EBShape : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (text inString: String,
-        _ inOrigin : NSPoint,
+        _ inOrigin : CanariPoint,
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
         _ inVerticalAlignment : BezierPath.TextVerticalAlignment) {
@@ -78,7 +78,7 @@ struct EBShape : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (textKnob inString : String,
-        _ inOrigin : NSPoint,
+        _ inOrigin : CanariPoint,
         _ inFont : NSFont,
         foreColor inForeColor : NSColor,
         backColor inBackColor : NSColor,
@@ -147,7 +147,7 @@ struct EBShape : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (text inString : String,
-                     _ inOrigin : NSPoint,
+                     _ inOrigin : CanariPoint,
                      _ inTextAttributes : [NSAttributedString.Key : Any],
                      _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
                      _ inVerticalAlignment : BezierPath.TextVerticalAlignment) {
@@ -162,7 +162,7 @@ struct EBShape : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating func add (textKnob inString : String,
-                     _ inOrigin : NSPoint,
+                     _ inOrigin : CanariPoint,
                      _ inFont : NSFont,
                      foreColor inForeColor : NSColor,
                      backColor inBackColor : NSColor,
@@ -397,7 +397,7 @@ fileprivate final class EBShapeObject {
     var strokeBezierPathes = [BezierPath] ()
     for path in inStrokePathes {
       if !path.isEmpty {
-        if path.lineWidth > 0.0 {
+        if path.lineWidth > .zero {
           filledBezierPathes.append (path.pathToFillByStroking)
         }else{
           strokeBezierPathes.append (path)
@@ -419,7 +419,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (knobAt inPoint: CanariPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CanariLength) {
-    let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
+    let r = CanariRect (left: inPoint.x - inKnobSize / 2.0, bottom: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
     var bp : BezierPath
     let backColor : NSColor
     let frameColor : NSColor
@@ -451,7 +451,7 @@ fileprivate final class EBShapeObject {
     self.mElements.append (e)
     self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
   //--- Line
-    bp.lineWidth = 0.0 // Thinnest line
+    bp.lineWidth = CanariLength.zero // Thinnest line
     bp.lineCapStyle = .round
     bp.lineJoinStyle = .round
     self.add (stroke: [bp], frameColor, knobIndex: inKnobIndex, clip: .none)
@@ -460,7 +460,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (text inString: String,
-            _ inOrigin : NSPoint,
+            _ inOrigin : CanariPoint,
             _ inTextAttributes : [NSAttributedString.Key : Any],
             _ inHorizontalAlignment : BezierPath.TextHorizontalAlignment,
             _ inVerticalAlignment : BezierPath.TextVerticalAlignment) {
@@ -504,7 +504,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func add (textKnob inString : String,
-            _ inOrigin : NSPoint,
+            _ inOrigin : CanariPoint,
             _ inFont : NSFont,
             foreColor inForeColor : NSColor,
             backColor inBackColor : NSColor,
@@ -528,8 +528,8 @@ fileprivate final class EBShapeObject {
     do{
       switch inKnobKind {
       case .circ :
-        var bp = BezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0), xRadius: 2.0, yRadius: 2.0)
-        bp.lineWidth = 0.1
+        var bp = BezierPath (roundedRect: filledBezierPath.bounds.canariRect.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)), xRadius: .pt (2.0), yRadius: .pt (2.0))
+        bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
@@ -539,7 +539,7 @@ fileprivate final class EBShapeObject {
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .diamond :
         var bp = BezierPath (octogonInRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
-        bp.lineWidth = 0.1
+        bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
@@ -549,7 +549,7 @@ fileprivate final class EBShapeObject {
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .rect :
         var bp = BezierPath (rect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
-        bp.lineWidth = 0.1
+        bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, inBackColor, inKnobIndex, .none)
@@ -559,7 +559,7 @@ fileprivate final class EBShapeObject {
         self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
       case .transparentCircle :
         var bp = BezierPath (rect: filledBezierPath.bounds)
-        bp.lineWidth = 0.1
+        bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, .clear, inKnobIndex, .none)

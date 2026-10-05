@@ -38,7 +38,7 @@ import CanariGeometry
         ]
         let nonRotatedShape = EBShape (
           text: (self_mComment.isEmpty) ? "Empty comment" : self_mComment,
-          NSPoint (),
+          CanariPoint (),
           textAttributes,
           self_mHorizontalAlignment.ebTextShapeHorizontalAlignment,
           self_mVerticalAlignment.ebTextShapeVerticalAlignment

@@ -20,12 +20,12 @@ import CanariGeometry
        _ self_mSchematicCustomHeight : CanariLength
 ) -> SchematicSheetGeometry {
 //--- START OF USER ZONE 2
-  let A4MinSize = CanariLength.pt (PAPER_A4_MIN_SIZE_COCOA_UNIT)
-  let A4MaxSize = CanariLength.pt (PAPER_A4_MAX_SIZE_COCOA_UNIT)
-  let leftMargin = CanariLength.pt (PAPER_LEFT_MARGIN_COCOA_UNIT)
-  let rightMargin = CanariLength.pt (PAPER_RIGHT_MARGIN_COCOA_UNIT)
-  let topMargin = CanariLength.pt (PAPER_TOP_MARGIN_COCOA_UNIT)
-  let bottomMargin = CanariLength.pt (PAPER_BOTTOM_MARGIN_COCOA_UNIT)
+  let A4MinSize = PAPER_A4_MIN_SIZE
+  let A4MaxSize = PAPER_A4_MAX_SIZE
+  let leftMargin = PAPER_LEFT_MARGIN
+  let rightMargin = PAPER_RIGHT_MARGIN
+  let topMargin = PAPER_TOP_MARGIN
+  let bottomMargin = PAPER_BOTTOM_MARGIN
   switch self_mSchematicSheetOrientation {
   case .a4Horizontal :
     let width = A4MaxSize - leftMargin - rightMargin - CanariLength.pt (2.0)

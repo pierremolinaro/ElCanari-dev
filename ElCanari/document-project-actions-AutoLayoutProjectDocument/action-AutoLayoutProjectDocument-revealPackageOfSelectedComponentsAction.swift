@@ -15,7 +15,7 @@ extension AutoLayoutProjectDocument {
   @objc func revealPackageOfSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     var componentToSelect = [BoardObject] ()
-    var r = CanariRect.zero
+    var r = CanariRect.empty
     for component in self.componentController.selectedArray.values {
       if let padRect = component.selectedPackagePadsRect () {
         componentToSelect.append (component)
@@ -23,7 +23,6 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.addToSelection (objects: componentToSelect)
-//    NSSound.beep ()
     self.rootObject.mSelectedPageIndex = 6
 //--- END OF USER ZONE 2
   }

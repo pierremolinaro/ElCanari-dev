@@ -46,14 +46,14 @@ import CanariGeometry
       let r = NSRect (x: x, y: y, width: width, height: height)
       bp.appendRect (r)
     }
-    bp.lineWidth = 0.5
+    bp.lineWidth = CanariLength.pt (0.5)
     bp.lineCapStyle = .round
     var shape = EBShape ()
     shape.add (stroke: [bp], prefs_padZoneColor)
   //--- Name
     if self_displayZoneName {
       let text = (self_zoneName.isEmpty) ? "?" : self_zoneName
-      let p = NSPoint (x: self_xName, y: self_yName)
+      let p = CanariPoint (x: self_xName, y: self_yName)
       let textAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : prefs_padZoneFont,
         NSAttributedString.Key.foregroundColor : prefs_padZoneColor

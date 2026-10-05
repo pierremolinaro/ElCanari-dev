@@ -27,7 +27,7 @@ struct MergerViaShapeArray : Hashable {
       let x = via.x
       let y = via.y
       let diameter = via.padDiameter
-      let r = NSRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
+      let r = CanariRect (left: x - diameter / 2.0 , bottom: y - diameter / 2.0, width: diameter, height: diameter)
       let bp = BezierPath (ovalIn: r)
       result.append (bp)
     }

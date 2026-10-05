@@ -53,7 +53,7 @@ import CanariGeometry
       let r = NSRect (x: x, y: y, width: width, height: height)
       bp = BezierPath (rect: r)
     }
-    bp.lineWidth = 0.25
+    bp.lineWidth = CanariLength.pt (0.25)
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
     shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_ZONE_BOTTOM, .diamond, .pt (self_PackageObject_knobSize))
     shape.add (knobAt:  CanariPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_LEFT, .diamond, .pt (self_PackageObject_knobSize))
@@ -62,7 +62,7 @@ import CanariGeometry
   //--- Zone Name
     if self_displayZoneName {
       let text = (self_zoneName.isEmpty) ? "?" : self_zoneName
-      let pText = NSPoint (x: self_xName, y: self_yName)
+      let pText = CanariPoint (x: self_xName, y: self_yName)
       shape.add (
         textKnob: text,
         pText,

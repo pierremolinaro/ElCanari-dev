@@ -82,7 +82,7 @@ import CanariGeometry
             color = prefs_backSideLegendColorForBoard
           }
           var strokeBezierPath = self_strokeBezierPath
-          strokeBezierPath.lineWidth = CGFloat (self_BoardObject_packageDrawingWidthMultpliedByTenForBoard) / 10.0
+          strokeBezierPath.lineWidth = CanariLength.pt (self_BoardObject_packageDrawingWidthMultpliedByTenForBoard) / 10.0
           strokeBezierPath.lineCapStyle = .round
           strokeBezierPath.lineJoinStyle = .round
           rotatedShape.add (stroke: [strokeBezierPath], color)

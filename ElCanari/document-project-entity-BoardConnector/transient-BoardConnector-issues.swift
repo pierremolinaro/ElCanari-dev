@@ -40,9 +40,9 @@ import CanariGeometry
           noConnectionWarning = false
         }
         if noConnectionWarning {
-          let location = self_location.ptValue
-          let issueSize = CGFloat (self_BoardObject_errorOrWarningIssueSize)
-          let r = NSRect (x: location.x - issueSize / 2.0, y: location.y - issueSize / 2.0, width: issueSize, height: issueSize)
+          let location = self_location
+          let issueSize = CanariLength.pt (self_BoardObject_errorOrWarningIssueSize)
+          let r = CanariRect (left: location.x - issueSize / 2.0, bottom: location.y - issueSize / 2.0, width: issueSize, height: issueSize)
           let bp = BezierPath (ovalIn: r)
           let issue = CanariIssue (kind: .warning, message: "No Connection", pathes: [bp])
           issues.append (issue)

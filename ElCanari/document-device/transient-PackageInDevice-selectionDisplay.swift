@@ -51,29 +51,29 @@ import CanariGeometry
       if self_mRoot_mShowPackages ?? false {
         var bp = BezierPath ()
         bp.append (self_mStrokeBezierPath)
-        bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
+        bp.lineWidth = CanariLength.pt (prefs_packageDrawingWidthMultipliedByTen) / 10.0
         bp.lineCapStyle = .round
         packageShape.add (stroke: [bp], .black) // Any color
       }
-      let MARGIN : CGFloat = 1.0
-      var r = packageShape.boundingBox.insetBy (dx: -MARGIN, dy: -MARGIN)
+      let MARGIN = CanariLength.pt (1.0)
+      var r = packageShape.boundingBox.canariRect.insetBy (dx: -MARGIN, dy: -MARGIN)
     //--- Package Name
       let nameTextAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
       ]
-      let nameShapeSize = EBShape (text: self_mName, NSPoint (), nameTextAttributes, .center, .above).boundingBox.size
+      let nameShapeSize = EBShape (text: self_mName, CanariPoint (), nameTextAttributes, .center, .above).boundingBox.size.canariSize
       if nameShapeSize.width > r.width {
-        r = r.insetBy (dx: (r.width - nameShapeSize.width) / 2.0, dy: 0.0)
+        r = r.insetBy (dx: (r.width - nameShapeSize.width) / 2.0)
       }
     //---
       let horizontalSeparatorY = r.maxY
       r.size.height += nameShapeSize.height + 2.0 * MARGIN
-      let frameRadius : CGFloat = 3.0
-      r = r.insetBy (dx: -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0, dy: -CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0)
+      let frameRadius = CanariLength.pt (3.0)
+      r = r.insetBy (dx: -frameRadius - .pt (prefs_packageDrawingWidthMultipliedByTen) / 20.0, dy: -.pt (prefs_packageDrawingWidthMultipliedByTen) / 20.0)
       var bp = BezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
       bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
       bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
-      bp.lineWidth = 0.5
+      bp.lineWidth = CanariLength.pt (0.5)
       let shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)
       let transform = CanariAffinity.translating (x: self_mX, y: self_mY)
       return shape.transformed (by: transform)

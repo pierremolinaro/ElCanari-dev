@@ -34,7 +34,7 @@ import CanariGeometry
     controlPoint1: NSPoint (x: self_cpx1, y: self_cpy1),
     controlPoint2: NSPoint (x: self_cpx2, y: self_cpy2)
   )
-  bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+  bp.lineWidth = CanariLength.pt (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_symbolColor)

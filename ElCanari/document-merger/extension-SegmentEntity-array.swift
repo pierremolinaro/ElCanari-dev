@@ -152,7 +152,7 @@ import CanariGeometry
       let y1f = y1.ptValue
       let x2f = (inHorizontalMirror ? (inBoardWidth - x2) : x2).ptValue
       let y2f = y2.ptValue
-      let width = segment.width.ptValue
+      let width = segment.width
       var bp = BezierPath ()
       bp.move (to: NSPoint (x: x1f, y: y1f))
       bp.line (to: NSPoint (x: x2f, y: y2f))

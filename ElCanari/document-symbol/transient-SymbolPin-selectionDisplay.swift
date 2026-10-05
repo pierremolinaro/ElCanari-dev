@@ -32,7 +32,7 @@ import CanariGeometry
     bp.move (to: numberPoint.ptValue)
     bp.line (to: pinPoint.ptValue)
     bp.line (to: namePoint.ptValue)
-    bp.lineWidth = 0.25
+    bp.lineWidth = CanariLength.pt (0.25)
     bp.lineCapStyle = .round
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
   //--- Pin

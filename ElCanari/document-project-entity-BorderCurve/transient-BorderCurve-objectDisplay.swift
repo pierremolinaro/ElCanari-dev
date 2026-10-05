@@ -50,7 +50,7 @@ import CanariGeometry
           }
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = 2.0 * boardClearance.ptValue
+          bp.lineWidth = 2.0 * boardClearance
           result.add (stroke: [bp], nil)
         }
         return result

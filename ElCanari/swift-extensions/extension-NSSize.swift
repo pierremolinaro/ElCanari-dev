@@ -20,9 +20,9 @@ extension NSSize : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  var canariSize : CanariSize {
-//    return CanariSize (width: .pt (self.width), height: .pt (self.height))
-//  }
+  var canariSize : CanariSize {
+    return CanariSize (width: .pt (self.width), height: .pt (self.height))
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   /// The hash value.

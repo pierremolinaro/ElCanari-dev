@@ -89,7 +89,7 @@ import CanariGeometry
           }
         }
         var bp = BezierPath ()
-        bp.lineWidth = 0.5
+        bp.lineWidth = CanariLength.pt (0.5)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         for (_, locationArray) in dictionary {
@@ -108,7 +108,7 @@ import CanariGeometry
           }
         }
         var bp = BezierPath ()
-        bp.lineWidth = 0.5
+        bp.lineWidth = CanariLength.pt (0.5)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         computeRasnet (locationArray, &bp)
@@ -146,7 +146,7 @@ import CanariGeometry
           }
         }
         var bp = BezierPath ()
-        bp.lineWidth = 0.5
+        bp.lineWidth = CanariLength.pt (0.5)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         for (_, locationArray) in dictionary {
@@ -179,7 +179,7 @@ import CanariGeometry
           }
         }
         var bp = BezierPath ()
-        bp.lineWidth = 0.5
+        bp.lineWidth = CanariLength.pt (0.5)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         for (_, locationArray) in dictionary {

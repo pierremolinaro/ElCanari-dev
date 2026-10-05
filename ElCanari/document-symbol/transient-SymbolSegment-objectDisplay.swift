@@ -26,7 +26,7 @@ import CanariGeometry
     var bp = BezierPath ()
     bp.move (to: NSPoint (x: self_x1, y: self_y1))
     bp.line (to: NSPoint (x: self_x2, y: self_y2))
-    bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+    bp.lineWidth = CanariLength.pt (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
     bp.lineCapStyle = .round
     var shape = EBShape ()
     shape.add (stroke: [bp], prefs_symbolColor)

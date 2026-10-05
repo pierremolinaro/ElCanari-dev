@@ -66,7 +66,7 @@ import CanariGeometry
       self?.updateBoardConnectors ()
     }
     self.mSchematicsView?.mGraphicView.mMouseDownInterceptor = { [weak self] in
-      return self?.schematicMouseDownInterception ($0) ?? false
+      return self?.schematicMouseDownInterception ($0.canariPoint) ?? false
     }
   //--- Remove unused devices
     self.rootObject.removeUnusedDevices ()
@@ -77,7 +77,7 @@ import CanariGeometry
   //  Schematic mouse down interception
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private final func schematicMouseDownInterception (_ inUnalignedPoint : NSPoint) -> Bool {
+  private final func schematicMouseDownInterception (_ inUnalignedPoint : CanariPoint) -> Bool {
     var result = false
     if self.rootObject.mSchematicEnableHiliteColumnAndRow {
       let sheetGeometrySelection : EBSelection <SchematicSheetGeometry> = self.rootObject.sheetGeometry_property.selection

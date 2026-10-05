@@ -23,11 +23,11 @@ import CanariGeometry
        _ self_padShape : PadShape
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let xCenter = self_xCenter.ptValue
-    let yCenter = self_yCenter.ptValue
-    let width = self_width.ptValue
-    let height = self_height.ptValue
-    let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
+    let xCenter = self_xCenter
+    let yCenter = self_yCenter
+    let width = self_width
+    let height = self_height
+    let rPad = CanariRect (left: xCenter - width / 2.0, bottom: yCenter - height / 2.0, width: width, height: height)
     var bp : BezierPath
     switch self_padShape {
     case .rect :
@@ -43,7 +43,7 @@ import CanariGeometry
     case .octo :
       bp = BezierPath (octogonInRect: rPad)
     }
-    bp.lineWidth = 0.25
+    bp.lineWidth = CanariLength.pt (0.25)
     bp.lineCapStyle = .round
     return EBShape (stroke: [bp], prefs_selectionHiliteColor)
 //--- END OF USER ZONE 2

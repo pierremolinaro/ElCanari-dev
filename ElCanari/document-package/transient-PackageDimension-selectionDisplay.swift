@@ -34,14 +34,14 @@ import CanariGeometry
 //--- START OF USER ZONE 2
   let p1 = NSPoint (x: self_x1, y: self_y1)
   let p2 = NSPoint (x: self_x2, y: self_y2)
-  let pText = NSPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2)
+  let pText = CanariPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2)
   var bp = BezierPath ()
-  bp.lineWidth = 0.25
+  bp.lineWidth = CanariLength.pt (0.25)
   bp.lineCapStyle = .round
   bp.move (to: p1)
   bp.line (to: p2)
   bp.move (to: p1.mid (with: p2))
-  bp.line (to: pText)
+  bp.line (to: pText.ptValue)
 //--- Text
   let dimensionText = self_distanceInCanariUnit.string (in: self_distanceUnit, fractionDigits: 2)
   var shape = EBShape ()

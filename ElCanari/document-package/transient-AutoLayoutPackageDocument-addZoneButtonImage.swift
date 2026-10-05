@@ -19,7 +19,7 @@ import CanariGeometry
 ) -> NSImage {
 //--- START OF USER ZONE 2
         var bp = BezierPath (rect: NSRect (x: 0, y: 0, width: 16, height: 16))
-        bp.lineWidth = 1.0
+        bp.lineWidth = CanariLength.pt (1.0)
         bp.lineJoinStyle = .round
         let shape = EBShape (stroke: [bp], prefs_padZoneColor)
         let r = shape.boundingBox

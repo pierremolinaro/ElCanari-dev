@@ -28,7 +28,7 @@ import CanariGeometry
         NSAttributedString.Key.font : prefs_pinNameFont,
         NSAttributedString.Key.foregroundColor : NSColor.black
       ]
-      let numberOrigin = NSPoint (x: x, y: y)
+      let numberOrigin = CanariPoint (x: x, y: y)
       let padName = self_mPadProxy_mPadName ?? "##"
       shape.add (text: padName, numberOrigin, numberTextAttributes, alignment.ebTextShapeHorizontalAlignment, .center)
     }
