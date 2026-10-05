@@ -80,9 +80,9 @@ struct BezierPath : Hashable {
       self.mPath.move (to: NSPoint (x: inOrigin.x.ptValue, y: inOrigin.y.ptValue - 2.0 * font.descender))
       unsafe self.mPath.append (withCGGlyphs: &cgGlyphArray, count: glyphRange.length, in: font)
     //--- Alignment
-      let width = self.mPath.bounds.width
-      let height = self.mPath.bounds.height
-      var deltaX : CGFloat = inOrigin.x.ptValue - self.mPath.bounds.origin.x
+      let width = CanariLength.pt (self.mPath.bounds.width)
+      let height = CanariLength.pt (self.mPath.bounds.height)
+      var deltaX = inOrigin.x - .pt (self.mPath.bounds.origin.x)
       switch inHorizontalAlignment {
       case .onTheRight :
         ()
@@ -91,18 +91,18 @@ struct BezierPath : Hashable {
       case .onTheLeft :
         deltaX -= width
       }
-      var deltaY : CGFloat = inOrigin.y.ptValue - self.mPath.bounds.origin.y
+      var deltaY = inOrigin.y - .pt (self.mPath.bounds.origin.y)
       switch inVerticalAlignment {
       case .above :
         ()
       case .center :
         deltaY -= height / 2.0
       case .baseline :
-        deltaY = 2.0 * font.descender
+        deltaY = .pt (2.0 * font.descender)
       case .below :
         deltaY -= height
       }
-      let af = CanariAffinity.translating (x: .pt (deltaX), y: .pt (deltaY))
+      let af = CanariAffinity.translating (x: deltaX, y: deltaY)
       self.mPath.transform (using: af.affineTransform)
     }
   }
@@ -143,7 +143,6 @@ struct BezierPath : Hashable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private static func cloning (nsBezierPath inBezierPath : NSBezierPath) -> NSBezierPath {
-//    return inBezierPath.copy () as! NSBezierPath
     let bp = NSBezierPath ()
     bp.lineWidth = inBezierPath.lineWidth
     bp.lineCapStyle = inBezierPath.lineCapStyle
