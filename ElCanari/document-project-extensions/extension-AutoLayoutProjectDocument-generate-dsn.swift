@@ -71,12 +71,12 @@ extension AutoLayoutProjectDocument {
 
   func dsnContents (_ inExportTracks : Bool) -> String {
   //--- Selecting DSN Unit
-    let converter = CanariUnitToDSNUnitConverter (unit: .millimeter)
-    let clearanceInDSNUnit = converter.dsnUnitFromCanariUnit (self.rootObject.mLayoutClearance)
+    let converter = CanariLengthToDSNConverter (unit: .millimeter)
+    let clearance = self.rootObject.mLayoutClearance
   //--- Border
 //    let boardLimitExtend = 0
-    let boardBoundBox = self.rootObject.interiorBoundBox! // § .insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
-    let boardBoundaryPolygonVertices = self.buildBoardBoundaryPolygon (converter)
+    let boardBoundBox = self.rootObject.interiorBoundBox!
+    let boardBoundaryPolygonVertices = self.buildBoardBoundaryPolygon ()
   //--- Layer configuration
     let layerConfiguration = self.rootObject.mLayerConfiguration
   //--- Restrict rectangles
@@ -132,7 +132,7 @@ extension AutoLayoutProjectDocument {
       }
     }
   //--- Net classes
-    var maxTrackWithInDSNUnit : Double = 0.0
+    var maxTrackWith = CanariLength.zero
     var netClasses = [NetClassForDSNExport] ()
     for netClass in self.rootObject.mNetClasses.values {
       var netNames = [String] ()
@@ -141,12 +141,12 @@ extension AutoLayoutProjectDocument {
           netNames.append (net.mNetName)
         }
       }
-      let trackWidth = converter.dsnUnitFromCanariUnit (netClass.mTrackWidth)
-      maxTrackWithInDSNUnit = max (maxTrackWithInDSNUnit, trackWidth)
+   //   let trackWidth = converter.dsnValue (from: netClass.mTrackWidth)
+      maxTrackWith = max (maxTrackWith, netClass.mTrackWidth) // trackWidth)
       let nc = NetClassForDSNExport (
         name: netClass.mNetClassName,
-        trackWidthInDSNUnit: trackWidth,
-        viaPadDiameterInDSNUnit: converter.dsnUnitFromCanariUnit (netClass.mViaPadDiameter),
+        trackWidth: netClass.mTrackWidth, // trackWidth,
+        viaPadDiameter: netClass.mViaPadDiameter, //converter.dsnValue (from: netClass.mViaPadDiameter),
         netNames: netNames,
         allowTracksOnFrontSide: netClass.mAllowTracksOnFrontSide,
         allowTracksOnBackSide: netClass.mAllowTracksOnBackSide,
@@ -209,13 +209,13 @@ extension AutoLayoutProjectDocument {
     s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
     s += "  (unit \(converter.unitString))\n"
     s += "  (structure\n"
-    addBoardBoundary (&s, boardBoundaryPolygonVertices)
+    addBoardBoundary (&s, converter, boardBoundaryPolygonVertices)
     autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections, layerConfiguration)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
     let via_at_smd = self.rootObject.mAllowViaAtSMD
     s += "    (control (via_at_smd \(via_at_smd ? "on" : "off")))\n"
-    addDefaultRule (&s, maxWidthInDSNUnit: maxTrackWithInDSNUnit, clearanceInDSNUnit: clearanceInDSNUnit)
+    addDefaultRule (&s, converter, maxWidth: maxTrackWith, clearance: clearance)
     addRestrictRectangles (&s, restrictRectangles, converter)
     s += "  )\n"
     addComponentsPlacement (
@@ -229,13 +229,13 @@ extension AutoLayoutProjectDocument {
     )
     s += "  (library\n"
     addDeviceLibrary (&s, packageArrayForRouting)
-    addViaPadStackLibrary (&s, netClasses, layerConfiguration)
+    addViaPadStackLibrary (&s, converter, netClasses, layerConfiguration)
     addComponentPadStackLibrary (&s, padTypeArrayForRouting, converter, layerConfiguration)
     s += "  )\n"
     s += "  (network\n"
     addNetwork (&s, componentArrayForRouting)
     addViaRules (&s, netClasses)
-    addNetClasses (&s, netClasses, layerConfiguration)
+    addNetClasses (&s, converter, netClasses, layerConfiguration)
     s += "  )\n"
     if inExportTracks {
       self.exportTracksAndVias (&s, converter)
@@ -246,7 +246,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func buildBoardBoundaryPolygon (_ inConverter : CanariUnitToDSNUnitConverter) -> EBLinePath { // Points in DSN Unit
+  private func buildBoardBoundaryPolygon () -> EBLinePath {
     switch self.rootObject.mBoardShape {
     case .bezierPathes :
       var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
@@ -257,16 +257,16 @@ extension AutoLayoutProjectDocument {
       var clearanceBP = BezierPath ()
       var descriptor = self.rootObject.mBorderCurves [0].descriptor!
       let p = descriptor.p1
-      clearanceBP.move (to: inConverter.dsnPointFromCanariPoint (p))
+      clearanceBP.move (to: p.ptValue)
       var loop = true
       while loop {
         switch descriptor.shape {
         case .line :
-          clearanceBP.line (to: inConverter.dsnPointFromCanariPoint (descriptor.p2))
+          clearanceBP.line (to: descriptor.p2.ptValue)
         case .bezier :
-          let cp1 = inConverter.dsnPointFromCanariPoint (descriptor.cp1)
-          let cp2 = inConverter.dsnPointFromCanariPoint (descriptor.cp2)
-          clearanceBP.cubic (to: inConverter.dsnPointFromCanariPoint (descriptor.p2), controlPoint1: cp1, controlPoint2: cp2)
+          let cp1 = descriptor.cp1.ptValue
+          let cp2 = descriptor.cp2.ptValue
+          clearanceBP.cubic (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
         }
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
@@ -282,12 +282,12 @@ extension AutoLayoutProjectDocument {
       )
       let bp : BezierPath
       if self.rootObject.mBoardCornerRadius <= d {
-        bp = BezierPath (rect: inConverter.dsnRectFromCanariRect (r).canariRect)
+        bp = BezierPath (rect: r)
       }else{
         bp = BezierPath (
-          roundedRect: inConverter.dsnRectFromCanariRect (r).canariRect,
-          xRadius: .pt (inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d)),
-          yRadius: .pt (inConverter.dsnUnitFromCanariUnit (self.rootObject.mBoardCornerRadius - d))
+          roundedRect: r,
+          xRadius: self.rootObject.mBoardCornerRadius - d,
+          yRadius: self.rootObject.mBoardCornerRadius - d
         )
       }
       return bp.linePathesByFlattening (withFlatness: 0.025) [0]
@@ -297,7 +297,7 @@ extension AutoLayoutProjectDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func exportTracksAndVias (_ ioString : inout String,
-                                    _ inConverter : CanariUnitToDSNUnitConverter) {
+                                    _ inConverter : CanariLengthToDSNConverter) {
     ioString += "  (wiring\n"
   //--- Export tracks
     for object in self.rootObject.mBoardObjects.values {
@@ -312,14 +312,14 @@ extension AutoLayoutProjectDocument {
         case .inner4 : side = INNER4_LAYOUT
         }
         let optionalNetName = track.mNet?.mNetName
-        let widthMM = inConverter.dsnUnitFromCanariUnit (track.actualTrackWidth!)
-        let p1 = inConverter.dsnPointFromCanariPoint (track.mConnectorP1!.location!)
-        let p2 = inConverter.dsnPointFromCanariPoint (track.mConnectorP2!.location!)
+        let widthMM = inConverter.dsnValue (from: track.actualTrackWidth!)
+        let p1 = track.mConnectorP1!.location!
+        let p2 = track.mConnectorP2!.location!
         ioString += "    (wire\n"
         if let netName = optionalNetName {
           ioString += "      (net \"\(netName)\")\n"
         }
-        ioString += "      (path \(side) \(widthMM) \(p1.x) \(p1.y) \(p2.x) \(p2.y))\n"
+        ioString += "      (path \(side) \(widthMM) \(inConverter.dsnString (for: p1)) \(inConverter.dsnString (for: p2)))\n"
         if track.mIsPreservedByAutoRouter {
           ioString += "      (type protect)\n"
         }
@@ -330,10 +330,10 @@ extension AutoLayoutProjectDocument {
   //--- Export via
     for object in self.rootObject.mBoardObjects.values {
       if let via = object as? BoardConnector, let isVia = via.isVia, isVia {
-        let p = inConverter.dsnPointFromCanariPoint (via.location!)
+        let p = via.location!
         let netName = via.netNameFromTracks!
         let netClassName = via.netClassName!
-        ioString += "    (via \"viaForClass\(netClassName)\" \(p.x) \(p.y)\n"
+        ioString += "    (via \"viaForClass\(netClassName)\" \(inConverter.dsnString (for: p))\n"
         ioString += "      (net \"\(netName)\")\n"
         ioString += "      (clearance_class default)\n"
         ioString += "    )\n"
@@ -353,7 +353,7 @@ enum DSNUnit { case millimeter, micrometer, mil}
 
 //--------------------------------------------------------------------------------------------------
 
-struct CanariUnitToDSNUnitConverter {
+struct CanariLengthToDSNConverter {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -387,7 +387,7 @@ struct CanariUnitToDSNUnitConverter {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func dsnUnitFromCanariUnit (_ inValue : CanariLength) -> Double {
+  func dsnValue (from inValue : CanariLength) -> Double {
     switch unit {
     case .millimeter :
       return inValue.mmValue
@@ -400,19 +400,8 @@ struct CanariUnitToDSNUnitConverter {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func dsnPointFromCanariPoint (_ inP : CanariPoint) -> NSPoint {
-    return NSPoint (x: self.dsnUnitFromCanariUnit (inP.x), y: self.dsnUnitFromCanariUnit (inP.y))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func dsnRectFromCanariRect (_ inP : CanariRect) -> NSRect {
-    return NSRect (
-      x: self.dsnUnitFromCanariUnit (inP.origin.x),
-      y: self.dsnUnitFromCanariUnit (inP.origin.y),
-      width: self.dsnUnitFromCanariUnit (inP.size.width),
-      height: self.dsnUnitFromCanariUnit (inP.size.height)
-    )
+  func dsnString (for inP : CanariPoint) -> String {
+    "\(self.dsnValue (from: inP.x)) \(self.dsnValue (from: inP.y))"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -427,7 +416,7 @@ struct CanariUnitToDSNUnitConverter {
                                              _ ioPackageDictionary : inout [PackageDictionaryKeyForDSNExport : Int],
                                              _ ioPackageArrayForRouting : inout [PackageTypeForDSNExport],
                                              _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport],
-                                             _ inConverter : CanariUnitToDSNUnitConverter) -> Int {
+                                             _ inConverter : CanariLengthToDSNConverter) -> Int {
   let key = PackageDictionaryKeyForDSNExport (device: inDevice, routeSlavePads: inRouteSlavePads, package: inSelectedPackage)
   if let idx = ioPackageDictionary [key] {
     return idx
@@ -452,8 +441,8 @@ struct CanariUnitToDSNUnitConverter {
       let psr = PadInstanceForDSNExport (
         name: masterPad.name,
         pad: masterPadForRouting,
-        centerX: inConverter.dsnUnitFromCanariUnit (masterPad.center.x - deviceCenter.x),
-        centerY: inConverter.dsnUnitFromCanariUnit (masterPad.center.y - deviceCenter.y)
+        centerX: inConverter.dsnValue (from: masterPad.center.x - deviceCenter.x),
+        centerY: inConverter.dsnValue (from: masterPad.center.y - deviceCenter.y)
       )
       padArrayForRouting.append (psr)
     //--- Enter slave pads
@@ -476,8 +465,8 @@ struct CanariUnitToDSNUnitConverter {
         let pir = PadInstanceForDSNExport (
           name: inRouteSlavePads ? masterPad.name : "nc::\(masterPad.name)",
           pad: slavePadForRouting,
-          centerX: inConverter.dsnUnitFromCanariUnit (slavePad.center.x - deviceCenter.x),
-          centerY: inConverter.dsnUnitFromCanariUnit (slavePad.center.y - deviceCenter.y)
+          centerX: inConverter.dsnValue (from: slavePad.center.x - deviceCenter.x),
+          centerY: inConverter.dsnValue (from: slavePad.center.y - deviceCenter.y)
         )
         padArrayForRouting.append (pir)
       }
@@ -560,8 +549,8 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
 
 fileprivate struct NetClassForDSNExport {
   let name : String
-  let trackWidthInDSNUnit : Double
-  let viaPadDiameterInDSNUnit : Double
+  let trackWidth : CanariLength
+  let viaPadDiameter : CanariLength
   let netNames : [String]
   let allowTracksOnFrontSide : Bool
   let allowTracksOnBackSide : Bool
@@ -583,7 +572,7 @@ fileprivate struct RestrictRectangleForDSNExport {
   let inner3Side  : Bool
   let inner4Side  : Bool
 
-  func vertexString (_ inConverter : CanariUnitToDSNUnitConverter) -> String {
+  func vertexString (_ inConverter : CanariLengthToDSNConverter) -> String {
     let af = CanariAffinity.translating (self.rect.center).rotating (by: self.rotation)
     let halfWidth  = self.rect.width / 2.0
     let halfHeight = self.rect.height / 2.0
@@ -591,10 +580,10 @@ fileprivate struct RestrictRectangleForDSNExport {
     let bottomRight = af.transforming (x: +halfWidth, y: -halfHeight)
     let topRight    = af.transforming (x: +halfWidth, y: +halfHeight)
     let topLeft     = af.transforming (x: -halfWidth, y: +halfHeight)
-    let bottomLeftStr  = "\(inConverter.dsnUnitFromCanariUnit (bottomLeft.x)) \(inConverter.dsnUnitFromCanariUnit (bottomLeft.y))"
-    let bottomRightStr = "\(inConverter.dsnUnitFromCanariUnit (bottomRight.x)) \(inConverter.dsnUnitFromCanariUnit (bottomRight.y))"
-    let topRightStr    = "\(inConverter.dsnUnitFromCanariUnit (topRight.x)) \(inConverter.dsnUnitFromCanariUnit (topRight.y))"
-    let topLeftStr     = "\(inConverter.dsnUnitFromCanariUnit (topLeft.x)) \(inConverter.dsnUnitFromCanariUnit (topLeft.y))"
+    let bottomLeftStr  = "\(inConverter.dsnString (for: bottomLeft))"
+    let bottomRightStr = "\(inConverter.dsnString (for: bottomRight))"
+    let topRightStr    = "\(inConverter.dsnString (for: topRight))"
+    let topLeftStr     = "\(inConverter.dsnString (for: topLeft))"
     return " \(bottomLeftStr) \(bottomRightStr) \(topRightStr) \(topLeftStr) \(bottomLeftStr)"
   }
 }
@@ -641,9 +630,9 @@ fileprivate struct PadTypeForDSNExport {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func padStringFor (side inSide : String,
-                     _ inConverter : CanariUnitToDSNUnitConverter) -> String {
-    let halfWidth = inConverter.dsnUnitFromCanariUnit (self.canariWidth) / 2.0
-    let halfHeight = inConverter.dsnUnitFromCanariUnit (self.canariHeight) / 2.0
+                     _ inConverter : CanariLengthToDSNConverter) -> String {
+    let halfWidth = inConverter.dsnValue (from: self.canariWidth) / 2.0
+    let halfHeight = inConverter.dsnValue (from: self.canariHeight) / 2.0
     let shapeString : String
     switch self.shape {
     case .rect :
@@ -734,26 +723,27 @@ fileprivate func addNetwork (_ ioString : inout String,
 //--------------------------------------------------------------------------------------------------
 
 fileprivate func addViaPadStackLibrary (_ ioString : inout String,
+                                        _ inConverter : CanariLengthToDSNConverter,
                                         _ inNetClasses : [NetClassForDSNExport],
                                         _ inLayerConfiguration : LayerConfiguration) {
   for netClass in inNetClasses {
     ioString += "    (padstack \"viaForClass\(netClass.name)\"\n"
     switch inLayerConfiguration {
     case .twoLayers :
-      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
     case .fourLayers :
-      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(INNER1_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(INNER2_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER1_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER2_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
     case .sixLayers :
-      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(INNER1_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(INNER2_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(INNER3_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(INNER4_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
-      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter)))\n"
+      ioString += "      (shape (circle \(INNER1_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER2_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER3_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER4_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
     }
     ioString += "    )\n"
   }
@@ -763,7 +753,7 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
 
 fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
                                               _ inPadTypeArrayForRouting : [PadTypeForDSNExport],
-                                              _ inConverter : CanariUnitToDSNUnitConverter,
+                                              _ inConverter : CanariLengthToDSNConverter,
                                               _ inLayerConfiguration : LayerConfiguration) {
   for pad in inPadTypeArrayForRouting {
     ioString += "    (padstack \"\(pad.name)\"\n"
@@ -803,16 +793,17 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
 //--------------------------------------------------------------------------------------------------
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
+                                   _ inConverter : CanariLengthToDSNConverter,
                                    _ inSignalPolygonVertices : EBLinePath) { // In DSN Unit
 
   ioString += "    (boundary\n"
   ioString += "      (path pcb 0\n"
-  ioString += "        \(inSignalPolygonVertices.origin.x) \(inSignalPolygonVertices.origin.y)\n"
+  ioString += "        \(inConverter.dsnString (for: inSignalPolygonVertices.origin))\n"
   for p in inSignalPolygonVertices.lines {
-    ioString += "        \(p.x) \(p.y)\n"
+    ioString += "        \(inConverter.dsnString (for: p))\n"
   }
   if inSignalPolygonVertices.closed {
-    ioString += "        \(inSignalPolygonVertices.origin.x) \(inSignalPolygonVertices.origin.y)\n"
+    ioString += "        \(inConverter.dsnString (for: inSignalPolygonVertices.origin))\n"
   }
   ioString += "      )\n"
   ioString += "    )\n"
@@ -934,6 +925,7 @@ fileprivate func addViaRules (_ ioString : inout String, _ inNetClasses : [NetCl
 //--------------------------------------------------------------------------------------------------
 
 fileprivate func addNetClasses (_ ioString : inout String,
+                                _ inConverter : CanariLengthToDSNConverter,
                                 _ inNetClasses : [NetClassForDSNExport],
                                 _ inLayerConfiguration : LayerConfiguration) {
   for netClass in inNetClasses {
@@ -944,7 +936,7 @@ fileprivate func addNetClasses (_ ioString : inout String,
     ioString += "      (clearance_class default)\n"
     ioString += "      (via_rule \"viaRuleForClass\(netClass.name)\")\n"
     ioString += "      (rule\n"
-    ioString += "        (width \(netClass.trackWidthInDSNUnit))\n"
+    ioString += "        (width \(inConverter.dsnValue (from: netClass.trackWidth)))\n"
     ioString += "      )\n"
     ioString += "      (circuit\n"
     ioString += "        (use_layer"
@@ -975,11 +967,12 @@ fileprivate func addNetClasses (_ ioString : inout String,
 //--------------------------------------------------------------------------------------------------
 
 fileprivate func addDefaultRule (_ ioString : inout String,
-                                 maxWidthInDSNUnit inTrackMaxWidth : Double,
-                                 clearanceInDSNUnit inClearance : Double) {
+                                 _ inConverter : CanariLengthToDSNConverter,
+                                 maxWidth inTrackMaxWidth : CanariLength,
+                                 clearance inClearance : CanariLength) {
   ioString += "    (rule\n"
-  ioString += "      (width \(inTrackMaxWidth))\n" // Required !!!!
-  ioString += "      (clearance \(inClearance))\n"
+  ioString += "      (width \(inConverter.dsnValue (from: inTrackMaxWidth))\n" // Required !!!!
+  ioString += "      (clearance \(inConverter.dsnValue (from: inClearance)))\n"
   ioString += "    )\n"
 }
 
@@ -1005,7 +998,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
                                          _ inRouteDirection : RouteDirection,
                                          _ inRouteOrigin : RouteOrigin,
                                          _ inBoardRect : CanariRect,
-                                         _ inConverter : CanariUnitToDSNUnitConverter) {
+                                         _ inConverter : CanariLengthToDSNConverter) {
 //--- Sort components
   let origin : CanariPoint
   switch inRouteOrigin {
@@ -1039,8 +1032,8 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
   ioString += "  (placement\n"
   for component in components {
     if component.placed {
-      let x = inConverter.dsnUnitFromCanariUnit (component.originX)
-      let y = inConverter.dsnUnitFromCanariUnit (component.originY)
+      let x = inConverter.dsnValue (from: component.originX)
+      let y = inConverter.dsnValue (from: component.originY)
       let side : String
       switch component.side {
       case .back : side = "back"
@@ -1062,7 +1055,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
 
 fileprivate func addRestrictRectangles (_ ioString : inout String,
                                         _ inRestrictRectangles : [RestrictRectangleForDSNExport],
-                                        _ inConverter : CanariUnitToDSNUnitConverter) {
+                                        _ inConverter : CanariLengthToDSNConverter) {
   for rr in inRestrictRectangles {
     if rr.frontSide {
       ioString += "    (keepout\n"
