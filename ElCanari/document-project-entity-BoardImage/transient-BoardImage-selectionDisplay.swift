@@ -50,19 +50,19 @@ import CanariGeometry
       //--- Image
         shape.add (filled: [displayInfos.imageBP], foreColor)
       //--- Rotation knob
-        let center = NSPoint (x: self_mCenterX, y: self_mCenterY)
+        let center = CanariPoint (x: self_mCenterX, y: self_mCenterY)
         if prefs_mShowTextRotationKnobInBoard {
           var knobLine = BezierPath ()
-          knobLine.move (to : center)
+          knobLine.move (to : center.ptValue)
           knobLine.line (to : displayInfos.rotationKnobLocation.ptValue)
           knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round
           shape.add (stroke: [knobLine], prefs_selectionHiliteColor)
-          shape.add (knobAt:  displayInfos.rotationKnobLocation.ptValue, knobIndex: BOARD_IMAGE_ROTATION_KNOB, .circ, 2.0)
+          shape.add (knobAt: displayInfos.rotationKnobLocation, knobIndex: BOARD_IMAGE_ROTATION_KNOB, .circ, .pt (2.0))
         }
       //--- Knob
-         shape.add (knobAt: center, knobIndex: BOARD_QRCODE_ORIGIN_KNOB, .rect, 2.0)
+         shape.add (knobAt: center, knobIndex: BOARD_QRCODE_ORIGIN_KNOB, .rect, .pt (2.0))
       //---
         return shape
 //--- END OF USER ZONE 2

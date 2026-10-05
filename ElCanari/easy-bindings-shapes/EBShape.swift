@@ -132,7 +132,10 @@ struct EBShape : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func add (knobAt inPoint: NSPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
+  mutating func add (knobAt inPoint: CanariPoint,
+                     knobIndex inKnobIndex : Int,
+                     _ inKind : EBKnobKind,
+                     _ inKnobSize : CanariLength) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
     }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
@@ -415,7 +418,7 @@ fileprivate final class EBShapeObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func add (knobAt inPoint: NSPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CGFloat) {
+  func add (knobAt inPoint: CanariPoint, knobIndex inKnobIndex : Int, _ inKind : EBKnobKind, _ inKnobSize : CanariLength) {
     let r = NSRect (x: inPoint.x - inKnobSize / 2.0, y: inPoint.y - inKnobSize / 2.0, width: inKnobSize, height: inKnobSize)
     var bp : BezierPath
     let backColor : NSColor

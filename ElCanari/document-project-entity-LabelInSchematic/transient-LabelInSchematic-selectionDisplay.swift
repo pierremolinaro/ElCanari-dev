@@ -42,7 +42,7 @@ import CanariGeometry
             .rotating (by: .degree (CGFloat (self_mOrientation.rawValue) * 90.0))
         //---
           shape.add (stroke: [bp.transformed (by: af)], prefs_selectionHiliteColor)
-          shape.add (knobAt:  p.ptValue, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
+          shape.add (knobAt:  p, knobIndex: LABEL_IN_SCHEMATICS_TRANSLATION_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         //--- Net name
           let labelOrigin = af.transforming (x: SCHEMATIC_LABEL_SIZE * 8.0)
           let horizontalAlignment : BezierPath.TextHorizontalAlignment
@@ -74,10 +74,10 @@ import CanariGeometry
           )
 
           shape.add (
-            knobAt: af.transforming (x: SCHEMATIC_LABEL_SIZE * 7.0).ptValue,
+            knobAt: af.transforming (x: SCHEMATIC_LABEL_SIZE * 7.0),
             knobIndex: LABEL_IN_SCHEMATICS_ROTATION_KNOB,
             .circ,
-            SCHEMATIC_KNOB_SIZE.ptValue
+            SCHEMATIC_KNOB_SIZE
           )
         }
         return shape

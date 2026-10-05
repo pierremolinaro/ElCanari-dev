@@ -35,14 +35,14 @@ import CanariGeometry
         strokeBezierPath.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
         shape.add (stroke: [strokeBezierPath], prefs_selectionHiliteColor)
       //--- Line from center to component value
-        let symbolCenter = self_symbolInfo.center.ptValue
+        let symbolCenter = self_symbolInfo.center
         let componentValueCenter = CanariPoint (
           x: self_symbolInfo.center.x + self_mDisplayComponentValueOffsetX,
           y: self_symbolInfo.center.y + self_mDisplayComponentValueOffsetY
         )
         if self_mDisplayComponentValue {
           var bp = BezierPath ()
-          bp.move (to: symbolCenter)
+          bp.move (to: symbolCenter.ptValue)
           bp.line (to: componentValueCenter.ptValue)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
           bp.lineCapStyle = .round
@@ -56,7 +56,7 @@ import CanariGeometry
         )
         do{
           var bp = BezierPath ()
-          bp.move (to: symbolCenter)
+          bp.move (to: symbolCenter.ptValue)
           bp.line (to: componentNameCenter.ptValue)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
           bp.lineCapStyle = .round
@@ -96,16 +96,16 @@ import CanariGeometry
       //--- symbol rotation knob
         let symbolRotationInRadians = CGFloat (self_mRotation.rawValue) * .pi / 2.0
       //--- Center knob
-        shape.add (knobAt:  symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
+        shape.add (knobAt: symbolCenter, knobIndex: SYMBOL_IN_SCHEMATICS_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
       //--- Line from center to rotation knob
         let d = CanariLength.mil (200.0)
-        let rotationKnobCenter = NSPoint (
+        let rotationKnobCenter = CanariPoint (
           x: self_symbolInfo.center.x + d * cos (symbolRotationInRadians),
           y: self_symbolInfo.center.y + d * sin (symbolRotationInRadians)
         )
         var bp = BezierPath ()
-        bp.move (to: symbolCenter)
-        bp.line (to: rotationKnobCenter)
+        bp.move (to: symbolCenter.ptValue)
+        bp.line (to: rotationKnobCenter.ptValue)
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
@@ -114,7 +114,7 @@ import CanariGeometry
           knobAt: rotationKnobCenter,
           knobIndex: SYMBOL_IN_SCHEMATICS_ROTATION_KNOB,
           .circ,
-          SCHEMATIC_KNOB_SIZE.ptValue
+          SCHEMATIC_KNOB_SIZE
         )
       //---
         return shape

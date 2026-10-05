@@ -36,20 +36,20 @@ import CanariGeometry
         bp.windingRule = .evenOdd
         shape.add (filled: [bp.transformed (by: af)], prefs_selectionHiliteColor)
       //--- Rotation knob
-        let center = NSPoint (x: self_mX, y: self_mY)
+        let center = CanariPoint (x: self_mX, y: self_mY)
         if self_mShowTextRotationKnobInBoard {
           var knobLine = BezierPath ()
-          knobLine.move (to : center)
-          let rotationKnobLocation = center + CanariPoint (length: NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE, angle: self_mRotation).ptValue
-          knobLine.line (to : rotationKnobLocation)
+          knobLine.move (to : center.ptValue)
+          let rotationKnobLocation = center + CanariPoint (length: NON_PLATED_HOLE_ROTATION_KNOB_DISTANCE, angle: self_mRotation)
+          knobLine.line (to : rotationKnobLocation.ptValue)
           knobLine.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round
           shape.add (stroke: [knobLine], prefs_selectionHiliteColor)
-          shape.add (knobAt: rotationKnobLocation, knobIndex: NON_PLATED_HOLE_ROTATION_KNOB, .circ, 2.0)
+          shape.add (knobAt: rotationKnobLocation, knobIndex: NON_PLATED_HOLE_ROTATION_KNOB, .circ, .pt (2.0))
         }
       //--- Knob
-         shape.add (knobAt: center, knobIndex: NON_PLATED_HOLE_ORIGIN_KNOB, .rect, 2.0)
+         shape.add (knobAt: center, knobIndex: NON_PLATED_HOLE_ORIGIN_KNOB, .rect, .pt (2.0))
         return shape
 //--- END OF USER ZONE 2
 }

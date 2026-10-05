@@ -30,10 +30,10 @@ import CanariGeometry
   var bp = BezierPath (ovalIn: NSRect (x: x, y:y, width: width, height: height))
   bp.lineWidth = 0.25
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
-  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: SYMBOL_OVAL_BOTTOM, .diamond, 2.0)
-  shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: SYMBOL_OVAL_LEFT, .diamond, 2.0)
-  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: SYMBOL_OVAL_TOP, .diamond, 2.0)
-  shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: SYMBOL_OVAL_RIGHT, .diamond, 2.0)
+  shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y), knobIndex: SYMBOL_OVAL_BOTTOM, .diamond, .pt (2.0))
+  shape.add (knobAt:  CanariPoint (x: x, y: y + height / 2.0), knobIndex: SYMBOL_OVAL_LEFT, .diamond, .pt (2.0))
+  shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y + height), knobIndex: SYMBOL_OVAL_TOP, .diamond, .pt (2.0))
+  shape.add (knobAt:  CanariPoint (x: x + width, y: y + height / 2.0), knobIndex: SYMBOL_OVAL_RIGHT, .diamond, .pt (2.0))
   return shape
 //--- END OF USER ZONE 2
 }

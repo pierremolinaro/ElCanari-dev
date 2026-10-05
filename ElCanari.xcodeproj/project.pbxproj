@@ -12207,7 +12207,7 @@
 			repositoryURL = "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git";
 			requirement = {
 				kind = revision;
-				revision = 59e0ed672a89d1c9ad993ee1c9ba241cf1b4e211;
+				revision = 101db9cc2b49fa44bbd405153594daaf4bc01621;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -45,8 +45,8 @@ import CanariGeometry
           .rect,
           knobIndex: 0
         )
-        shape.add (knobAt: NSPoint (), knobIndex: COMMENT_IN_SCHEMATIC_DRAG_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
-        shape.add (knobAt: NSPoint (x: shape.boundingBox.width / 2.0, y: 0.0), knobIndex: COMMENT_IN_SCHEMATIC_ROTATION_KNOB, .circ, SCHEMATIC_KNOB_SIZE.ptValue)
+        shape.add (knobAt: CanariPoint (), knobIndex: COMMENT_IN_SCHEMATIC_DRAG_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
+        shape.add (knobAt: CanariPoint (x: .pt (shape.boundingBox.width) / 2.0), knobIndex: COMMENT_IN_SCHEMATIC_ROTATION_KNOB, .circ, SCHEMATIC_KNOB_SIZE)
         let rotatedShape = shape.transformed (by: af)
         return rotatedShape
 //--- END OF USER ZONE 2

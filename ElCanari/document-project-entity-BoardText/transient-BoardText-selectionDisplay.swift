@@ -74,10 +74,10 @@ import CanariGeometry
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round
           shape.add (stroke: [knobLine], prefs_selectionHiliteColor)
-          shape.add (knobAt:  rotationKnob, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, 2.0)
+          shape.add (knobAt: rotationKnob.canariPoint, knobIndex: BOARD_TEXT_ROTATION_KNOB, .circ, .pt (2.0))
         }
       //--- Knob
-        shape.add (knobAt:  origin, knobIndex: BOARD_TEXT_ORIGIN_KNOB, .rect, 2.0)
+        shape.add (knobAt: origin.canariPoint, knobIndex: BOARD_TEXT_ORIGIN_KNOB, .rect, .pt (2.0))
       //---
         return shape
 //--- END OF USER ZONE 2

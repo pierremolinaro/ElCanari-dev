@@ -24,10 +24,10 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
   var shape = EBShape ()
-  let x = self_x.ptValue
-  let y = self_y.ptValue
-  let width = self_width.ptValue
-  let height = self_height.ptValue
+  let x = self_x
+  let y = self_y
+  let width = self_width
+  let height = self_height
   var bp : BezierPath
   if (self_width <= .zero) && (self_height <= .zero) { // Oval is a point
     bp = BezierPath ()
@@ -47,10 +47,10 @@ import CanariGeometry
   }
   bp.lineWidth = 0.25
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
-  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .diamond, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .diamond, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_OVAL_TOP, .diamond, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_RIGHT, .diamond, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y), knobIndex: PACKAGE_OVAL_BOTTOM, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  CanariPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_LEFT, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  CanariPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_OVAL_TOP, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  CanariPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_OVAL_RIGHT, .diamond, .pt (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

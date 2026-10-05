@@ -25,22 +25,22 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var shape = EBShape ()
-    let pinPoint = NSPoint (x: self_xPin, y: self_yPin)
-    let namePoint = NSPoint (x: self_xName, y: self_yName)
-    let numberPoint = NSPoint (x: self_xNumber, y: self_yNumber)
+    let pinPoint = CanariPoint (x: self_xPin, y: self_yPin)
+    let namePoint = CanariPoint (x: self_xName, y: self_yName)
+    let numberPoint = CanariPoint (x: self_xNumber, y: self_yNumber)
     var bp = BezierPath ()
-    bp.move (to: numberPoint)
-    bp.line (to: pinPoint)
-    bp.line (to: namePoint)
+    bp.move (to: numberPoint.ptValue)
+    bp.line (to: pinPoint.ptValue)
+    bp.line (to: namePoint.ptValue)
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
   //--- Pin
-    shape.add (knobAt:  pinPoint, knobIndex: SYMBOL_PIN_ENDPOINT, .rect, 2.0)
+    shape.add (knobAt: pinPoint, knobIndex: SYMBOL_PIN_ENDPOINT, .rect, .pt (2.0))
   //--- Name
-    shape.add (knobAt:  namePoint, knobIndex: SYMBOL_PIN_LABEL, .diamond, 2.0)
+    shape.add (knobAt: namePoint, knobIndex: SYMBOL_PIN_LABEL, .diamond, .pt (2.0))
   //--- Number
-    shape.add (knobAt:  numberPoint, knobIndex: SYMBOL_PIN_NUMBER, .diamond, 2.0)
+    shape.add (knobAt: numberPoint, knobIndex: SYMBOL_PIN_NUMBER, .diamond, .pt (2.0))
   //---
     return shape
 //--- END OF USER ZONE 2

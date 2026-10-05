@@ -24,16 +24,16 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var shape = EBShape ()
-    let origin = NSPoint (x: self_x, y: self_y)
+    let origin = CanariPoint (x: self_x, y: self_y)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont
     ]
     let text = self_text.isEmpty ? "?" : self_text
-    let textShape = EBShape (text: text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
+    let textShape = EBShape (text: text, origin.ptValue, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment, .center)
     var bp = BezierPath (rect: textShape.boundingBox)
     bp.lineWidth = 0.25
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
-    shape.add (knobAt:  origin, knobIndex: 0, .rect, 2.0)
+    shape.add (knobAt:  origin, knobIndex: 0, .rect, .pt (2.0))
     return shape
 //--- END OF USER ZONE 2
 }

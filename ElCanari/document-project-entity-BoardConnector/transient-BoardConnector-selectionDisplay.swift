@@ -23,7 +23,7 @@ import CanariGeometry
 //--- START OF USER ZONE 2
         var shape = EBShape ()
         if self_isVia {
-          shape.add (knobAt: self_location.ptValue, knobIndex: BOARD_CONNECTOR_KNOB, .rect, 2.0)
+          shape.add (knobAt: self_location, knobIndex: BOARD_CONNECTOR_KNOB, .rect, .pt (2.0))
         }
         return shape
 //--- END OF USER ZONE 2

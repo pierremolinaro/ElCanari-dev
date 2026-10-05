@@ -77,10 +77,10 @@ import CanariGeometry
         shape.add (stroke: [bp], color)
       //--- Knobs
         if self_p1CanMove {
-          shape.add (knobAt: p1, knobIndex: BOARD_TRACK_P1, .diamond, 2.0)
+          shape.add (knobAt: p1.canariPoint, knobIndex: BOARD_TRACK_P1, .diamond, .pt (2.0))
         }
         if self_p2CanMove {
-          shape.add (knobAt: p2, knobIndex: BOARD_TRACK_P2, .diamond, 2.0)
+          shape.add (knobAt: p2.canariPoint, knobIndex: BOARD_TRACK_P2, .diamond, .pt (2.0))
         }
       }
       return shape

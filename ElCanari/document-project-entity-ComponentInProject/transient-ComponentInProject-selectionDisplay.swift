@@ -86,9 +86,9 @@ import CanariGeometry
       }
     //--- Knobs
       var rotatedKnobs = EBShape ()
-      rotatedKnobs.add (knobAt: rPadsCenter.ptValue, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, 2.0)
+      rotatedKnobs.add (knobAt: rPadsCenter, knobIndex: COMPONENT_PACKAGE_CENTER_KNOB, .rect, .pt (2.0))
       if prefs_mShowComponentRotationKnobInBoard {
-        rotatedKnobs.add (knobAt: rotationKnobLocation.ptValue, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, 2.0)
+        rotatedKnobs.add (knobAt: rotationKnobLocation, knobIndex: COMPONENT_PACKAGE_ROTATION_KNOB, .circ, .pt (2.0))
       }
     //--- Display Legend, component name, component value
       let displayLegendNameValue : Bool

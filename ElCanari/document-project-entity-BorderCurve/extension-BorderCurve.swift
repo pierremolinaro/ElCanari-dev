@@ -16,7 +16,7 @@ let BOARD_LIMIT_P2_KNOB  = 1
 let BOARD_LIMIT_CP1_KNOB = 2
 let BOARD_LIMIT_CP2_KNOB = 3
 
-let BOARD_LIMITS_KNOB_SIZE = CGFloat (8.0)
+let BOARD_LIMITS_KNOB_SIZE = CanariLength.pt (8.0)
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION BorderCurve

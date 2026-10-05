@@ -34,35 +34,35 @@ import CanariGeometry
         let y2 = self_mNext_mY,
         let boardShape = self_mRoot_mBoardShape,
         boardShape == .bezierPathes {
-          let p1 = NSPoint (x: self_mX, y: self_mY)
-          let p2 = NSPoint (x: x2, y: y2)
-          let cp1 = NSPoint (x: self_mCPX1, y: self_mCPY1)
-          let cp2 = NSPoint (x: self_mCPX2, y: self_mCPY2)
+          let p1 = CanariPoint (x: self_mX, y: self_mY)
+          let p2 = CanariPoint (x: x2, y: y2)
+          let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1)
+          let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2)
           var bp = BezierPath ()
-          bp.move (to: p1)
+          bp.move (to: p1.ptValue)
           switch self_mShape {
           case .line :
-            bp.line (to: p2)
+            bp.line (to: p2.ptValue)
           case .bezier :
-            let cp1 = NSPoint (x: self_mCPX1, y: self_mCPY1)
-            let cp2 = NSPoint (x: self_mCPX2, y: self_mCPY2)
-            bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+            let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1)
+            let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2)
+            bp.curve (to: p2.ptValue, controlPoint1: cp1.ptValue, controlPoint2: cp2.ptValue)
           }
           bp.lineWidth = 1.0
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           if self_mShape == .bezier {
-            bp.move (to: p1)
-            bp.line (to: cp1)
-            bp.move (to: p2)
-            bp.line (to: cp2)
+            bp.move (to: p1.ptValue)
+            bp.line (to: cp1.ptValue)
+            bp.move (to: p2.ptValue)
+            bp.line (to: cp2.ptValue)
           }
           shape.add (stroke: [bp], prefs_selectionHiliteColor)
-          shape.add (knobAt:  p1, knobIndex: BOARD_LIMIT_P1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
-          shape.add (knobAt:  p2, knobIndex: BOARD_LIMIT_P2_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
+          shape.add (knobAt: p1, knobIndex: BOARD_LIMIT_P1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
+          shape.add (knobAt: p2, knobIndex: BOARD_LIMIT_P2_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
           if self_mShape == .bezier {
-            shape.add (knobAt:  cp1, knobIndex: BOARD_LIMIT_CP1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
-            shape.add (knobAt:  cp2, knobIndex: BOARD_LIMIT_CP2_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
+            shape.add (knobAt: cp1, knobIndex: BOARD_LIMIT_CP1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
+            shape.add (knobAt: cp2, knobIndex: BOARD_LIMIT_CP2_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)
           }
         }
         return shape

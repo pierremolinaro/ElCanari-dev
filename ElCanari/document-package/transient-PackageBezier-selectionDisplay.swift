@@ -42,10 +42,10 @@ import CanariGeometry
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
-  shape.add (knobAt:  p1, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_1, .diamond, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  p2, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_2, .diamond, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  cp1, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_1, .diamond, CGFloat (self_PackageObject_knobSize))
-  shape.add (knobAt:  cp2, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_2, .diamond, CGFloat (self_PackageObject_knobSize))
+  shape.add (knobAt:  p1.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_1, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  p2.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_2, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  cp1.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_1, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  cp2.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_2, .diamond, .pt (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

@@ -48,19 +48,19 @@ import CanariGeometry
     var shape = EBShape ()
     shape.add (stroke: [bp], prefs_selectionHiliteColor)
   //--- Add center knob
-    shape.add (knobAt: center.ptValue, knobIndex: PACKAGE_ARC_CENTER, .rect, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt: center, knobIndex: PACKAGE_ARC_CENTER, .rect, .pt (self_PackageObject_knobSize))
   //--- Add radius knob
     var t = CanariAffinity.translating (center).rotating (by: startAngle + arcAngle / 2.0)
     let radiusKnob = t.transforming (x: radius)
-    shape.add (knobAt: radiusKnob.ptValue, knobIndex: PACKAGE_ARC_RADIUS, .diamond, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt: radiusKnob, knobIndex: PACKAGE_ARC_RADIUS, .diamond, .pt (self_PackageObject_knobSize))
   //--- Add start point knob
     t = CanariAffinity.translating (center).rotating (by: startAngle)
     let startPointKnob = t.transforming (x: radius)
-    shape.add (knobAt: startPointKnob.ptValue, knobIndex: PACKAGE_ARC_START_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt: startPointKnob, knobIndex: PACKAGE_ARC_START_ANGLE, .diamond, .pt (self_PackageObject_knobSize))
   //--- Add end point knob
     t = CanariAffinity.translating (center).rotating (by: startAngle + arcAngle)
     let endPointKnob = t.transforming (x: radius)
-    shape.add (knobAt: endPointKnob.ptValue, knobIndex: PACKAGE_ARC_END_ANGLE, .diamond, CGFloat (self_PackageObject_knobSize))
+    shape.add (knobAt: endPointKnob, knobIndex: PACKAGE_ARC_END_ANGLE, .diamond, .pt (self_PackageObject_knobSize))
   //---
     return shape
 //--- END OF USER ZONE 2

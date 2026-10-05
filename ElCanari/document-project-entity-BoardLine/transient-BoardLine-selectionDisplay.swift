@@ -28,14 +28,14 @@ import CanariGeometry
       bp.lineWidth = CGFloat (prefs_hiliteWidthMultipliedByTen) / 10.0
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
-      let p1 = NSPoint (x: self_mX1, y: self_mY1)
-      let p2 = NSPoint (x: self_mX2, y: self_mY2)
-      bp.move (to: p1)
-      bp.line (to: p2)
+      let p1 = CanariPoint (x: self_mX1, y: self_mY1)
+      let p2 = CanariPoint (x: self_mX2, y: self_mY2)
+      bp.move (to: p1.ptValue)
+      bp.line (to: p2.ptValue)
       var shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)
     //--- Knobs
-      shape.add (knobAt: p1, knobIndex: BOARD_LINE_P1, .diamond, 2.0)
-      shape.add (knobAt: p2, knobIndex: BOARD_LINE_P2, .diamond, 2.0)
+      shape.add (knobAt: p1, knobIndex: BOARD_LINE_P1, .diamond, .pt (2.0))
+      shape.add (knobAt: p2, knobIndex: BOARD_LINE_P2, .diamond, .pt (2.0))
     //---
       return shape
 //--- END OF USER ZONE 2

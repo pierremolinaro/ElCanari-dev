@@ -22,28 +22,28 @@ import CanariGeometry
        _ self_mP2_canMove : Bool?
 ) -> EBShape {
 //--- START OF USER ZONE 2
-        let p1 = (self_mP1_location ?? .zero).ptValue
-        let p2 = self_mP2_location?.ptValue ?? NSPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
+        let p1 = (self_mP1_location ?? .zero)
+        let p2 = self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
       //--- Hilite wire
         var bp = BezierPath ()
-        bp.move (to: p1)
-        bp.line (to: p2)
+        bp.move (to: p1.ptValue)
+        bp.line (to: p2.ptValue)
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH.ptValue
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
         var shape = EBShape ()
         shape.add (stroke: [bp], prefs_selectionHiliteColor)
       //--- Knob at center ?
-        if (self_mP1_canMove ?? false) && (self_mP2_canMove ?? false) {
-          shape.add (knobAt: p1.mid (with: p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE.ptValue)
+        if self_mP1_canMove ?? false, self_mP2_canMove ?? false {
+          shape.add (knobAt: p1.mid (with: p2), knobIndex: WIRE_CENTER_KNOB, .rect, SCHEMATIC_KNOB_SIZE)
         }
       //--- Knob at P1 ?
           if self_mP1_canMove ?? false {
-            shape.add (knobAt:  p1, knobIndex: WIRE_P1_KNOB, .diamond, SCHEMATIC_KNOB_SIZE.ptValue)
+            shape.add (knobAt: p1, knobIndex: WIRE_P1_KNOB, .diamond, SCHEMATIC_KNOB_SIZE)
           }
       //--- Knob at P2 ?
         if self_mP2_canMove ?? false {
-          shape.add (knobAt:  p2, knobIndex: WIRE_P2_KNOB, .diamond, SCHEMATIC_KNOB_SIZE.ptValue)
+          shape.add (knobAt: p2, knobIndex: WIRE_P2_KNOB, .diamond, SCHEMATIC_KNOB_SIZE)
         }
       //---
         return shape
