@@ -55,7 +55,7 @@ import CanariGeometry
             let boundBox = NSRect (x: minX, y: minY, width: maxX - minX, height: maxY - minY)
             return boundBox.canariRect
           }else{
-            return .zero
+            return .empty
           }
         case .rectangular :
           let d = self_mBoardClearance
