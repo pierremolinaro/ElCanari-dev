@@ -61,7 +61,7 @@ extension AutoLayoutProjectDocument {
           bp.cubic (to: p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
           bp.lineWidth = 2.0 * self.rootObject.mBoardClearance
           bp = bp.pathToFillByStroking
-          if bp.contains (inUnalignedMouseDownPoint.ptValue) {
+          if bp.contains (inUnalignedMouseDownPoint) {
             return borderCurve
           }
         }

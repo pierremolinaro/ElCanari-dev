@@ -31,12 +31,12 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func mouseMoved (with inEvent : NSEvent) {
-    let locationInView = self.convert (inEvent.locationInWindow, from: nil)
-    if self.visibleRect.contains (locationInView) {
+    let locationInView = self.convert (inEvent.locationInWindow, from: nil).canariPoint
+    if self.visibleRect.canariRect.contains (locationInView) {
       self.setHelperTextField (self.defaultHelperString (with: locationInView, inEvent.modifierFlags))
-      let locationOnGridInView = locationInView.aligned (on: self.mMouseGridInCanariUnit.ptValue)
+      let locationOnGridInView = locationInView.aligning (on: self.mMouseGridInCanariUnit)
       self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
-      if unsafe self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
+      if unsafe self.window?.firstResponder == self, self.visibleRect.canariRect.contains (locationInView) {
         self.mMouseMovedOrFlagsChangedCallback? (locationInView)
       }else{
         self.mMouseExitCallback? ()

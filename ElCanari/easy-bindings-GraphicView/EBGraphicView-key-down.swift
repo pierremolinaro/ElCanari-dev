@@ -24,7 +24,7 @@ extension EBGraphicView {
         switch (character) {
         case NSEvent.SpecialKey (rawValue: 27).unicodeScalar : // Escape
           self.mMouseDownBehaviour.abortMouseOperation (self)
-          let mouseLocationInView = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
+          let mouseLocationInView = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil).canariPoint
           self.setHelperTextField (self.mMouseDownBehaviour.helperString (mouseLocationInView, inEvent.modifierFlags, self))
         case NSEvent.SpecialKey (rawValue: 9).unicodeScalar : // Htab
           super.keyDown (with: inEvent)
@@ -40,7 +40,7 @@ extension EBGraphicView {
           self.deleteSelection ()
         default :  // Note: inEvent.locationInWindow undefined on non-mouse event
           let mouseLocationInView = self.convert (myWindow.mouseLocationOutsideOfEventStream, from: nil)
-          self.mKeyDownCallback? (mouseLocationInView, character)
+          self.mKeyDownCallback? (mouseLocationInView.canariPoint, character)
           break
         }
       }

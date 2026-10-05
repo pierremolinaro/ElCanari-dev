@@ -367,7 +367,7 @@ extension AutoLayoutProjectDocument {
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for object in selectedSheet.mObjects.values {
         if let symbol = object as? ComponentSymbolInProject, let shape = symbol.objectDisplay {
-          if shape.contains (point: inUnalignedMouseDownPoint.ptValue) {
+          if shape.contains (point: inUnalignedMouseDownPoint) {
             result.append (symbol)
           }
         }

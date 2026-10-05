@@ -66,7 +66,7 @@ import CanariGeometry
       self?.updateBoardConnectors ()
     }
     self.mSchematicsView?.mGraphicView.mMouseDownInterceptor = { [weak self] in
-      return self?.schematicMouseDownInterception ($0.canariPoint) ?? false
+      return self?.schematicMouseDownInterception ($0) ?? false
     }
   //--- Remove unused devices
     self.rootObject.removeUnusedDevices ()

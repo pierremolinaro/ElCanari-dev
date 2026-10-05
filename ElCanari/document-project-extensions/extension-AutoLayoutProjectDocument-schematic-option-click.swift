@@ -15,11 +15,11 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) -> Bool {
+  func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : CanariPoint) -> Bool {
     self.mWireCreatedByOptionClick = nil
     if let selectedSheet = self.rootObject.mSelectedSheet {
-       _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint.canariPoint)
-       let p = inUnalignedMousePoint.alignedCanariPoint (on: SCHEMATIC_GRID_LENGTH)
+       _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint)
+       let p = inUnalignedMousePoint.aligning (on: SCHEMATIC_GRID_LENGTH)
     //--- Find points at p
       let pointsAtP = selectedSheet.pointsInSchematics (at: p)
     //--- Check all points are not "nc"
@@ -69,10 +69,10 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func continueWireCreationOnOptionMouseDragged (at inUnalignedMousePoint : NSPoint,
+  func continueWireCreationOnOptionMouseDragged (at inUnalignedMousePoint : CanariPoint,
                                                  _ inModifierFlags : NSEvent.ModifierFlags) {
     if let p2 = self.mWireCreatedByOptionClick?.mP2 {
-      var alignedMouseLocation = inUnalignedMousePoint.canariPoint.aligning (on: SCHEMATIC_GRID_LENGTH)
+      var alignedMouseLocation = inUnalignedMousePoint.aligning (on: SCHEMATIC_GRID_LENGTH)
       if inModifierFlags.contains (.shift), let p1 = self.mWireCreatedByOptionClick?.mP1 {
         alignedMouseLocation.constraintToOctolinearDirection (from: CanariPoint (x: p1.mX, y: p1.mY))
       }
@@ -95,7 +95,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func stopWireCreationOnOptionMouseUp (at _ : NSPoint) -> Bool {
+  func stopWireCreationOnOptionMouseUp (at _ : CanariPoint) -> Bool {
      if let wire = self.mWireCreatedByOptionClick, let selectedSheet = self.rootObject.mSelectedSheet {
        let p1 = wire.mP1!.location!
        let p2 = wire.mP2!.location!

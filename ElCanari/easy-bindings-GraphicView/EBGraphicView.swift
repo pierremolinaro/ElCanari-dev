@@ -142,7 +142,7 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mMouseDownInterceptor : Optional < (_ inMouseDownLocationInView : NSPoint) -> Bool > = nil
+  var mMouseDownInterceptor : Optional < (_ inMouseDownLocationInView : CanariPoint) -> Bool > = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // MARK: -
@@ -154,19 +154,19 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
-  var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void > = nil
+  var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : CanariPoint) -> Bool > = nil
+  var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : CanariPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void > = nil
   var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
   var mHelperStringOptionMouseOperationCallback : Optional < (_ inModifierFlags : NSEvent.ModifierFlags) -> String? > = nil
-  var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
+  var mStopOptionMouseUpCallback : Optional < (_ inUnalignedMouseLocation : CanariPoint) -> Bool > = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Bool,
-                                continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void,
+  func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : CanariPoint) -> Bool,
+                                continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : CanariPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void,
                                 abort inAbortCallback : @escaping () -> Void,
                                 helper inHelperCallback : @escaping (_ inModifierFlags : NSEvent.ModifierFlags) -> String?,
-                                stop inStopCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Bool) {
+                                stop inStopCallback : @escaping (_ inUnalignedMouseLocation : CanariPoint) -> Bool) {
     self.mStartOptionMouseDownCallback = inStartCallback
     self.mContinueOptionMouseDraggedCallback = inContinueCallback
     self.mAbortOptionMouseOperationCallback = inAbortCallback
@@ -178,11 +178,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   private(set) var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : NSPoint) -> Void> = nil
+   private(set) var mMouseMovedOrFlagsChangedCallback : Optional < (_ inMouseUnalignedLocation : CanariPoint) -> Void> = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setMouseMovedOrFlagsChangedCallback (_ inCallback : @escaping (_ inMouseUnalignedLocation : NSPoint) -> Void) {
+  func setMouseMovedOrFlagsChangedCallback (_ inCallback : @escaping (_ inMouseUnalignedLocation : CanariPoint) -> Void) {
     self.mMouseMovedOrFlagsChangedCallback = inCallback
   }
 
@@ -219,11 +219,11 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private(set) var mKeyDownCallback : Optional < (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void> = nil
+  private(set) var mKeyDownCallback : Optional < (_ inMouseLocation : CanariPoint, _ inKey : UnicodeScalar) -> Void> = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setKeyDownCallback (_ inCallback : @escaping (_ inMouseLocation : NSPoint, _ inKey : UnicodeScalar) -> Void) {
+  func setKeyDownCallback (_ inCallback : @escaping (_ inMouseLocation : CanariPoint, _ inKey : UnicodeScalar) -> Void) {
     self.mKeyDownCallback = inCallback
   }
 

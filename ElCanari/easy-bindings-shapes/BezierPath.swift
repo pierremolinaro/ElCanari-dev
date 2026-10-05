@@ -306,8 +306,8 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (_ point: NSPoint) -> Bool {
-    return self.mPath.contains (point)
+  func contains (_ point : CanariPoint) -> Bool {
+    return self.mPath.contains (point.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

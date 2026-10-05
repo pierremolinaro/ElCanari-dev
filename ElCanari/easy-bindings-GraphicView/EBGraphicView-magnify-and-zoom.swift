@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -28,25 +29,25 @@ extension EBGraphicView {
 
   final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
-      var box = self.contentsBoundingBox
+      var box = self.contentsBoundingBox.canariRect
       self.mWorkingArea?.union (withRect: &box)
       if self.mZoomPropertyCache == 0 {
         if !box.isEmpty {
-          scrollView.magnify (toFit: box)
+          scrollView.magnify (toFit: box.ptValue)
         }
       }else{
         scrollView.magnification = CGFloat (self.mZoomPropertyCache) / 100.0
       }
       var newBounds = box
-      let visibleRect = scrollView.documentVisibleRect
+      let visibleRect = scrollView.documentVisibleRect.canariRect
       if visibleRect.maxX > newBounds.maxX {
         newBounds.size.width = visibleRect.maxX - newBounds.origin.x
       }
       if visibleRect.maxY > newBounds.maxY {
         newBounds.size.height = visibleRect.maxY - newBounds.origin.y
       }
-      self.frame.size = newBounds.size
-      self.bounds = newBounds
+      self.frame.size = newBounds.size.ptValue
+      self.bounds = newBounds.ptValue
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
       self.mZoomDidChangeCallback? (newZoom)
     }

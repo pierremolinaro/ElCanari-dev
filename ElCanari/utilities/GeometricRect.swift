@@ -66,7 +66,7 @@ final class GeometricRect {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (point p : CanariPoint) -> Bool {
-    return self.bezierPath.contains (p.ptValue)
+    return self.bezierPath.contains (p)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -102,7 +102,7 @@ final class GeometricRect {
       let centerDistance = self.center.distance (to: inCircle.center)
       if centerDistance > (self.circumRadius + inCircle.radius) {
         return false
-      }else if self.bezierPath.contains (inCircle.center.ptValue) {
+      }else if self.bezierPath.contains (inCircle.center) {
         return true
       }else{
       //--- Test intersection between circle and rectangle edge

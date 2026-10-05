@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -20,9 +21,9 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func keyDownInSchematic (_ inUnalignedMouseLocation : NSPoint, _ inKey : UnicodeScalar) {
+  func keyDownInSchematic (_ inUnalignedMouseLocation : CanariPoint, _ inKey : UnicodeScalar) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
+      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation
       let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.aligning (on: SCHEMATIC_GRID_LENGTH)
       switch inKey {
       case UnicodeScalar ("A"), UnicodeScalar ("a") :
@@ -110,9 +111,9 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
+  func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : CanariPoint) {
     if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
+      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation
       let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.aligning (on: SCHEMATIC_GRID_LENGTH)
       let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
       let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)

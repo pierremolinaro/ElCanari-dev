@@ -71,12 +71,12 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) -> Bool {
+  func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : CanariPoint) -> Bool {
     let side = self.rootObject.mBoardSideForNewTrack
     let shiftKeyDown = NSEvent.modifierFlags.contains (.shift)
     let p1 = shiftKeyDown
-      ? inUnalignedMousePoint.canariPoint.aligning (on: self.rootObject.mBoardGridStep)
-      : inUnalignedMousePoint.canariPoint
+      ? inUnalignedMousePoint.aligning (on: self.rootObject.mBoardGridStep)
+      : inUnalignedMousePoint
     let connectorsAtP1 = self.rootObject.connectors (at: p1, trackSide: side)
   //--- Build connector at mouse click
     let connector1 : BoardConnector
@@ -125,13 +125,13 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : NSPoint,
+  func continueTrackCreationOnOptionMouseDragged (at inUnalignedMouseLocation : CanariPoint,
                                                   _ inModifierFlags : NSEvent.ModifierFlags) {
     if let connector2 = self.mTrackCreatedByOptionClick?.mConnectorP2, let p1 = self.mTrackCreatedByOptionClick?.mConnectorP1?.location {
       let shiftKeyDown = inModifierFlags.contains (.shift)
       var canariUnalignedMouseLocation = shiftKeyDown
-        ? inUnalignedMouseLocation.canariPoint.aligning (on: self.rootObject.mBoardGridStep)
-        : inUnalignedMouseLocation.canariPoint
+        ? inUnalignedMouseLocation.aligning (on: self.rootObject.mBoardGridStep)
+        : inUnalignedMouseLocation
       switch self.rootObject.mDirectionForNewTrack {
       case .anyAngle :
         ()
@@ -149,7 +149,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : NSPoint) {
+  fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : CanariPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
     let d = CanariLength.pt (self.rootObject.mControlKeyHiliteDiameter)
@@ -158,7 +158,7 @@ extension AutoLayoutProjectDocument {
     //--- Exclude connectors connected to connector 1
       var excludedConnectors = self.findAllConnectorsConnectedTo (connector1)
     //--- Exclude connectors at mouse location
-      let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation.canariPoint, trackSide: newTrackSide)
+      let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation, trackSide: newTrackSide)
       for c in connectorsUnderMouse {
         excludedConnectors.append (objects: self.findAllConnectorsConnectedTo (c))
       }
@@ -184,10 +184,10 @@ extension AutoLayoutProjectDocument {
     }
   //--- Control key ?
     if NSEvent.modifierFlags.contains (.control), d > .zero, let boardView = self.mBoardView?.mGraphicView {
-      if boardView.frame.contains (inUnalignedMouseLocation) {
+      if boardView.frame.contains (inUnalignedMouseLocation.ptValue) {
         let r = CanariRect (
-          left: .pt (inUnalignedMouseLocation.x) - d / 2.0,
-          bottom: .pt (inUnalignedMouseLocation.y) - d / 2.0,
+          left: inUnalignedMouseLocation.x - d / 2.0,
+          bottom: inUnalignedMouseLocation.y - d / 2.0,
           width: d,
           height: d
         )
@@ -212,7 +212,7 @@ extension AutoLayoutProjectDocument {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func stopTrackCreationOnOptionMouseUp (at _ : NSPoint) -> Bool {
+  func stopTrackCreationOnOptionMouseUp (at _ : CanariPoint) -> Bool {
      var accepts = true
      if let track = self.mTrackCreatedByOptionClick {
      //--- Retain track only if distance between P1 and P2 is greater than mControlKeyHiliteDiameterSlider

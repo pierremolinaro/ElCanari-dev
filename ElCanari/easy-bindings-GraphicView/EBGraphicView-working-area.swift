@@ -24,20 +24,20 @@ import CanariGeometry
 
   private var mAreaCursorZone = WorkingAreaCursorZone.none
 
-  private var mCurrentMouseLocation = NSPoint ()
+  private var mCurrentMouseLocation = CanariPoint ()
 
   private var mColor = NSColor.black
 
-  private let mHiliteSize = 1.0
+  private let mHiliteSize = CanariLength.pt (1.0)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var rect : NSRect { return self.mArea.ptValue }
+  var rect : CanariRect { return self.mArea }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func union (withRect ioRect : inout NSRect) {
-    ioRect = ioRect.union (self.mArea.ptValue.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize))
+  func union (withRect ioRect : inout CanariRect) {
+    ioRect = ioRect.unioning (self.mArea.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,7 +70,7 @@ import CanariGeometry
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func set (unalignedMouseDownLocation inUnalignedMouseDownLocation : NSPoint) {
+  mutating func set (unalignedMouseDownLocation inUnalignedMouseDownLocation : CanariPoint) {
     self.mCurrentMouseLocation = inUnalignedMouseDownLocation
   }
 
@@ -78,25 +78,25 @@ import CanariGeometry
 
   mutating func resetCurrentZone (withView inView : NSView) {
     if self.mAreaCursorZone != .none {
-      inView.setNeedsDisplay (self.rect (forZone: self.mAreaCursorZone))
+      inView.setNeedsDisplay (self.rect (forZone: self.mAreaCursorZone).ptValue)
       self.mAreaCursorZone = .none
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func drawWorkingArea (lineWidth inLineWidth : CGFloat) {
+  func drawWorkingArea (lineWidth inLineWidth : CanariLength) {
     if !self.mArea.isEmpty {
       var bp = NSBezierPath (rect: self.mArea.ptValue)
-      bp.lineWidth = inLineWidth * 2.0
+      bp.lineWidth = inLineWidth.ptValue * 2.0
       bp.lineCapStyle = .round
       bp.stroke ()
       let r = self.rect (forZone: self.mAreaCursorZone).insetBy (dx: inLineWidth, dy: inLineWidth)
-      bp = NSBezierPath (roundedRect: r, xRadius: self.mHiliteSize * 0.5, yRadius: self.mHiliteSize * 0.5)
+      bp = NSBezierPath (roundedRect: r.ptValue, xRadius: self.mHiliteSize.ptValue * 0.5, yRadius: self.mHiliteSize.ptValue * 0.5)
       let color = preferences_selectionHiliteColor_property.propval.withAlphaComponent (0.25)
       color.setFill ()
       bp.fill ()
-      bp.lineWidth = inLineWidth * 2.0
+      bp.lineWidth = inLineWidth.ptValue * 2.0
       self.mColor.setStroke ()
       bp.stroke ()
     }
@@ -114,12 +114,13 @@ import CanariGeometry
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func setZone (forLocationInView inLocation : NSPoint, withView inView : NSView) {
+  mutating func setZone (forLocationInView inLocation : CanariPoint, withView inView : NSView) {
     var zone = WorkingAreaCursorZone.none
     if !self.mArea.isEmpty {
-      let r = self.mArea.ptValue
-      let outerR = r.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
-      let innerR = r.insetBy (dx:  self.mHiliteSize, dy:  self.mHiliteSize)
+      let r = self.mArea
+      let hiliteSize = self.mHiliteSize
+      let outerR = r.insetBy (dx: -hiliteSize, dy: -hiliteSize)
+      let innerR = r.insetBy (dx:  hiliteSize, dy:  hiliteSize)
       if outerR.contains (inLocation) && !innerR.contains (inLocation) {
         if inLocation.x < innerR.minX {
           if (inLocation.y > innerR.minY) && (inLocation.y < innerR.maxY) {
@@ -138,40 +139,40 @@ import CanariGeometry
     }
   //--- Zone did change ?
     if self.mAreaCursorZone != zone {
-      inView.setNeedsDisplay (self.rect (forZone: self.mAreaCursorZone))
-      inView.setNeedsDisplay (self.rect (forZone: zone))
+      inView.setNeedsDisplay (self.rect (forZone: self.mAreaCursorZone).ptValue)
+      inView.setNeedsDisplay (self.rect (forZone: zone).ptValue)
       self.mAreaCursorZone = zone
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func rect (forZone inZone : WorkingAreaCursorZone) -> NSRect {
+  private func rect (forZone inZone : WorkingAreaCursorZone) -> CanariRect {
     if self.mArea.isEmpty {
-      return NSRect ()
+      return CanariRect ()
     }else{
-      let r = self.mArea.ptValue
+      let r = self.mArea
       let outerR = r.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
       let innerR = r.insetBy (dx:  self.mHiliteSize, dy:  self.mHiliteSize)
       switch inZone {
-      case .none   : return NSRect ()
-      case .top    : return NSRect (x: innerR.minX, y: innerR.maxY, width: innerR.width, height: 2.0 * self.mHiliteSize)
-      case .bottom : return NSRect (x: innerR.minX, y: outerR.minY, width: innerR.width, height: 2.0 * self.mHiliteSize)
-      case .left   : return NSRect (x: outerR.minX, y: innerR.minY, width: 2.0 * self.mHiliteSize, height: innerR.height)
-      case .right  : return NSRect (x: innerR.maxX, y: innerR.minY, width: 2.0 * self.mHiliteSize, height: innerR.height)
+      case .none   : return CanariRect ()
+      case .top    : return CanariRect (left: innerR.minX, bottom: innerR.maxY, width: innerR.width, height: 2.0 * self.mHiliteSize)
+      case .bottom : return CanariRect (left: innerR.minX, bottom: outerR.minY, width: innerR.width, height: 2.0 * self.mHiliteSize)
+      case .left   : return CanariRect (left: outerR.minX, bottom: innerR.minY, width: 2.0 * self.mHiliteSize, height: innerR.height)
+      case .right  : return CanariRect (left: innerR.maxX, bottom: innerR.minY, width: 2.0 * self.mHiliteSize, height: innerR.height)
       }
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func mouseDragged (mouseDraggedUnalignedLocation inUnalignedLocationInView : NSPoint,
+  mutating func mouseDragged (mouseDraggedUnalignedLocation inUnalignedLocationInView : CanariPoint,
                               handled ioHandled : inout Bool,
                               _ inView : EBGraphicView) {
-    let dx = CanariLength.pt (inUnalignedLocationInView.x - self.mCurrentMouseLocation.x)
-    let dy = CanariLength.pt (inUnalignedLocationInView.y - self.mCurrentMouseLocation.y)
-    let oldRect = self.mArea.ptValue.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
-    let minimumSize = 2 * CanariLength.pt (self.mHiliteSize)
+    let dx = inUnalignedLocationInView.x - self.mCurrentMouseLocation.x
+    let dy = inUnalignedLocationInView.y - self.mCurrentMouseLocation.y
+    let oldRect = self.mArea.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
+    let minimumSize = 2.0 * self.mHiliteSize
     switch self.mAreaCursorZone {
     case .none :
       ioHandled = false
@@ -200,8 +201,8 @@ import CanariGeometry
     }
     if ioHandled {
       self.mCurrentMouseLocation = inUnalignedLocationInView
-      let newRect = self.mArea.ptValue.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
-      inView.setNeedsDisplay (newRect.union (oldRect))
+      let newRect = self.mArea.insetBy (dx: -self.mHiliteSize, dy: -self.mHiliteSize)
+      inView.setNeedsDisplay (newRect.unioning (oldRect).ptValue)
       inView.mWorkingAreaRectStringController?.updateModel (withValue: self.rectString ())
     }
   }

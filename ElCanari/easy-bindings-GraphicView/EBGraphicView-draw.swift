@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   EBGraphicView
@@ -28,7 +29,7 @@ extension EBGraphicView {
       graphicContext?.restoreGraphicsState ()
     }
     self.drawGrid (inDirtyRect)
-    self.mWorkingArea?.drawWorkingArea (lineWidth: 1.0 / self.actualScale)
+    self.mWorkingArea?.drawWorkingArea (lineWidth: .pt (1.0) / self.actualScale)
     self.mUnderObjectsDisplay.draw (inDirtyRect)
     for object in self.mObjectDisplayArray {
       object.draw (inDirtyRect)
@@ -58,9 +59,9 @@ extension EBGraphicView {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final fileprivate func drawGrid (_ inUnusedDirtyRect : NSRect) {
-    let r = self.mWorkingArea?.rect ?? self.bounds
+    let r = self.mWorkingArea?.rect ?? self.bounds.canariRect
     let gridWidth = 1.0 / self.actualScale
-    let gridDisplayStep = self.mGridStepInCanariUnit.ptValue * CGFloat (self.mGridDisplayFactor)
+    let gridDisplayStep = self.mGridStepInCanariUnit * CGFloat (self.mGridDisplayFactor)
     let gridStartX = (r.origin.x / gridDisplayStep).rounded (.up) * gridDisplayStep
     let gridStartY = (r.origin.y / gridDisplayStep).rounded (.up) * gridDisplayStep
     switch self.mGridStyle {
@@ -74,10 +75,10 @@ extension EBGraphicView {
       while x <= r.maxX {
         var y = gridStartY
         while y <= r.maxY {
-          bp.move (to: NSPoint (x: x - 0.5, y: y))
-          bp.line (to: NSPoint (x: x + 0.5, y: y))
-          bp.move (to: NSPoint (x: x,       y: y + 0.5))
-          bp.line (to: NSPoint (x: x,       y: y - 0.5))
+          bp.move (to: NSPoint (x: x - .pt (0.5), y: y))
+          bp.line (to: NSPoint (x: x + .pt (0.5), y: y))
+          bp.move (to: NSPoint (x: x,             y: y + .pt (0.5)))
+          bp.line (to: NSPoint (x: x,             y: y - .pt (0.5)))
           y += gridDisplayStep
         }
         x += gridDisplayStep
@@ -91,15 +92,15 @@ extension EBGraphicView {
     //--- Vertical lines
       var x = gridStartX
       while x <= r.maxX {
-        bp.move (to: NSPoint (x: x, y: NSMinY (r)))
-        bp.line (to: NSPoint (x: x, y: NSMaxY (r)))
+        bp.move (to: CanariPoint (x: x, y: r.bottom).ptValue)
+        bp.line (to: CanariPoint (x: x, y: r.top).ptValue)
         x += gridDisplayStep
       }
     //--- Horizontal lines
       var y = gridStartY
       while y < r.maxY {
-        bp.move (to: NSPoint (x: NSMinX (r), y: y))
-        bp.line (to: NSPoint (x: NSMaxX (r), y: y))
+        bp.move (to: CanariPoint (x: r.left, y: y).ptValue)
+        bp.line (to: CanariPoint (x: r.right, y: y).ptValue)
         y += gridDisplayStep
       }
       self.mGridLineColor.setStroke ()

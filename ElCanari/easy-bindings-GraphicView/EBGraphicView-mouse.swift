@@ -14,7 +14,7 @@ extension EBGraphicView {
   final override func mouseDown (with inEvent : NSEvent) {
     if let controller = self.mViewController {
       NSCursor.arrow.set ()
-      let unalignedMouseDownLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+      let unalignedMouseDownLocationInView = self.convert (inEvent.locationInWindow, from: nil).canariPoint
       self.mWorkingArea?.set (unalignedMouseDownLocation: unalignedMouseDownLocationInView)
       if let mouseDownInterceptor = self.mMouseDownInterceptor, mouseDownInterceptor (unalignedMouseDownLocationInView) {
       }else{
@@ -27,7 +27,7 @@ extension EBGraphicView {
         case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
           self.mMouseDownBehaviour = ZoomRegionBehaviour (unalignedMouseDownLocationInView, controller)
         case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
-          if let theMenu = self.mContextualMenuBuilder? (unalignedMouseDownLocationInView.canariPoint) {
+          if let theMenu = self.mContextualMenuBuilder? (unalignedMouseDownLocationInView) {
             NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
           }
         case (false, true, false) : // Shift Key
@@ -63,8 +63,8 @@ extension EBGraphicView {
 
   final override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
-    let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
-    let locationOnGridInView : NSPoint = unalignedLocationInView.aligned (on: self.mMouseGridInCanariUnit.ptValue)
+    let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil).canariPoint
+    let locationOnGridInView = unalignedLocationInView.aligning (on: self.mMouseGridInCanariUnit)
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     var handled = false
     self.mWorkingArea?.mouseDragged (mouseDraggedUnalignedLocation: unalignedLocationInView, handled: &handled, self)
@@ -78,7 +78,7 @@ extension EBGraphicView {
 
     final override func mouseUp (with inEvent : NSEvent) {
       super.mouseUp (with: inEvent)
-      let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil)
+      let unalignedLocationInView = self.convert (inEvent.locationInWindow, from: nil).canariPoint
       self.mMouseDownBehaviour.onMouseUp (unalignedLocationInView, self)
       self.mMouseDownBehaviour = DefaultBehaviourOnMouseDown ()
       self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
@@ -151,7 +151,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func indexOfFrontObject (at inLocation : NSPoint) -> (Int?, Int?) {
+  final func indexOfFrontObject (at inLocation : CanariPoint) -> (Int?, Int?) {
     var possibleObjectIndex : Int? = nil
     var possibleKnobIndex : Int? = nil
     let selectedObjects = self.selectionShapes
@@ -183,7 +183,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func knobIndex (ofSelectedObjectIndex inObjectIndex : Int, at inLocation : NSPoint) -> Int? {
+  final func knobIndex (ofSelectedObjectIndex inObjectIndex : Int, at inLocation : CanariPoint) -> Int? {
     let selectedObjects = self.selectionShapes
     if inObjectIndex < selectedObjects.count {
       return selectedObjects [inObjectIndex].knobIndex (at: inLocation)
@@ -216,7 +216,7 @@ extension EBGraphicView {
   // de la souris et les traduire en coordonnées de la vue.
     let mouseLocationInScreenCoordinates = NSEvent.mouseLocation
     let mouseLocationInWindowCoordinates = unsafe self.window!.convertPoint (fromScreen: mouseLocationInScreenCoordinates)
-    let unalignedLocationInView = self.convert (mouseLocationInWindowCoordinates, from: nil)
+    let unalignedLocationInView = self.convert (mouseLocationInWindowCoordinates, from: nil).canariPoint
   //---
     self.mMouseMovedOrFlagsChangedCallback? (unalignedLocationInView)
     self.mMouseDownBehaviour.onMouseDraggedOrModifierFlagsChanged (
@@ -225,7 +225,7 @@ extension EBGraphicView {
       self
     )
   //--- XY
-    let locationOnGridInView = unalignedLocationInView.aligned (on: self.mMouseGridInCanariUnit.ptValue)
+    let locationOnGridInView = unalignedLocationInView.aligning (on: self.mMouseGridInCanariUnit)
     self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
   //--- Helper string
     self.setHelperTextField (self.mMouseDownBehaviour.helperString (unalignedLocationInView, inEvent.modifierFlags, self))
@@ -235,7 +235,7 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func setCursorOnMouseMovedOrMouseUp (forLocationInView inLocation : NSPoint) {
+  final func setCursorOnMouseMovedOrMouseUp (forLocationInView inLocation : CanariPoint) {
     let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontObject (at: inLocation)
     if let objectIndex = possibleObjectIndex,
        let knobIndex = possibleKnobIndex,

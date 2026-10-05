@@ -276,7 +276,7 @@ struct EBShape : Hashable {
   //   Contains point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (point inPoint : NSPoint) -> Bool {
+  func contains (point inPoint : CanariPoint) -> Bool {
     if let sharedObject = self.mSharedObject {
       return sharedObject.contains (point: inPoint)
     }else{
@@ -288,7 +288,7 @@ struct EBShape : Hashable {
   //   Knob Index
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func knobIndex (at inPoint : NSPoint) -> Int? {
+  func knobIndex (at inPoint : CanariPoint) -> Int? {
     if let sharedObject = self.mSharedObject {
       return sharedObject.knobIndex (at: inPoint)
     }else{
@@ -630,8 +630,8 @@ fileprivate final class EBShapeObject {
   //   Contains point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (point inPoint : NSPoint) -> Bool {
-    if self.mCachedBoundingBox.contains (inPoint) {
+  func contains (point inPoint : CanariPoint) -> Bool {
+    if self.mCachedBoundingBox.canariRect.contains (inPoint) {
       for element in self.mElements {
         if element.contains (point: inPoint) {
           return true
@@ -645,8 +645,8 @@ fileprivate final class EBShapeObject {
   //   Knob Index
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func knobIndex (at inPoint : NSPoint) -> Int? {
-    if self.mCachedBoundingBox.contains (inPoint) {
+  func knobIndex (at inPoint : CanariPoint) -> Int? {
+    if self.mCachedBoundingBox.canariRect.contains (inPoint) {
       for element in self.mElements.reversed () {
         if let idx = element.knobIndex (at: inPoint) {
           return idx
@@ -848,7 +848,7 @@ fileprivate final class EBShapeElement {
   //   Contains point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func contains (point inPoint : NSPoint) -> Bool {
+  func contains (point inPoint : CanariPoint) -> Bool {
     let ok : Bool
     switch self.mClipRule {
     case .none :
@@ -872,7 +872,7 @@ fileprivate final class EBShapeElement {
   //   Knob Index
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func knobIndex (at inPoint : NSPoint) -> Int? {
+  func knobIndex (at inPoint : CanariPoint) -> Int? {
     if let idx = self.mKnobIndex {
       for path in self.mPathes.reversed () {
         if path.contains (inPoint) {

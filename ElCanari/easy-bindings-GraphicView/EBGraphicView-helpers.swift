@@ -68,9 +68,9 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func updateXYHelperWindow (mouseLocationInView inLocationInView : NSPoint) {
+  final func updateXYHelperWindow (mouseLocationInView inLocationInView : CanariPoint) {
     let commandKey = NSEvent.modifierFlags.contains (.command)
-    if commandKey, let myWindow = unsafe self.window, self.visibleRect.contains (inLocationInView) {
+    if commandKey, let myWindow = unsafe self.window, self.visibleRect.contains (inLocationInView.ptValue) {
       let xyWindow : NSWindow
       if let window = self.mXYwindow {
         xyWindow = window
@@ -82,8 +82,8 @@ extension EBGraphicView {
          view.subviews.count == 2,
          let placardX = view.subviews [0] as? NSTextField,
          let placardY = view.subviews [1] as? NSTextField {
-        placardX.stringValue = "X = " + CanariLength.pt (inLocationInView.x).string (in: self.mXPlacardUnit, fractionDigits: 3)
-        placardY.stringValue = "Y = " + CanariLength.pt (inLocationInView.y).string (in: self.mYPlacardUnit, fractionDigits: 3)
+        placardX.stringValue = "X = " + inLocationInView.x.string (in: self.mXPlacardUnit, fractionDigits: 3)
+        placardY.stringValue = "Y = " + inLocationInView.y.string (in: self.mYPlacardUnit, fractionDigits: 3)
         placardX.sizeToFit ()
         placardY.sizeToFit ()
         let w = max (placardX.frame.size.width, placardY.frame.size.width)
@@ -95,7 +95,7 @@ extension EBGraphicView {
         placardX.frame.origin.y = placardY.frame.maxY
         let s = NSSize (width: w + XY_WINDOW_MARGIN * 2.0, height: placardX.frame.maxY + XY_WINDOW_MARGIN)
         view.frame.size = s
-        let locationInWindow = self.convert (inLocationInView, to: nil)
+        let locationInWindow = self.convert (inLocationInView.ptValue, to: nil)
         let rScreen = myWindow.convertToScreen (NSRect (origin: locationInWindow, size: NSSize ()))
         var frameOrigin = rScreen.origin
         frameOrigin.x -= view.frame.size.width + self.mGridStepInCanariUnit.ptValue * self.actualScale + 5.0
@@ -142,15 +142,15 @@ extension EBGraphicView {
     //   So we use NSWindow.convertFromScreen for NSRect (available from 10.7)
       let rectInScreen = NSRect (origin: mouseLocationInScreen, size: NSSize ())
       let rectInWindow = myWindow.convertFromScreen (rectInScreen)
-      let mouseLocationInView = self.convert (rectInWindow.origin, from: nil)
-      let locationOnGridInView = mouseLocationInView.aligned (on: self.mArrowKeyMagnitude.ptValue)
+      let mouseLocationInView = self.convert (rectInWindow.origin, from: nil).canariPoint
+      let locationOnGridInView = mouseLocationInView.aligning (on: self.mArrowKeyMagnitude)
       self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func defaultHelperString (with inUnalignedMouseLocationInView : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> String {
+  final func defaultHelperString (with inUnalignedMouseLocationInView : CanariPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> String {
     let modifierFlagsContainsControl = inModifierFlags.contains (.control)
     let modifierFlagsContainsShift = inModifierFlags.contains (.shift)
     let modifierFlagsContainsOption = inModifierFlags.contains (.option)
@@ -160,7 +160,7 @@ extension EBGraphicView {
     case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
       helperString = "CONTROL + SHIFT: mouse down starts a zoom region"
     case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
-      if let _ = self.mContextualMenuBuilder? (inUnalignedMouseLocationInView.canariPoint) {
+      if let _ = self.mContextualMenuBuilder? (inUnalignedMouseLocationInView) {
         helperString = "CONTROL: mouse down shows a contextual menu"
       }
     case (false, true, false) : // Shift Key
