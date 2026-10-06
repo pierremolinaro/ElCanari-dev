@@ -27,10 +27,10 @@ import CanariGeometry
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let p1  = NSPoint (x: self_x1,   y: self_y1)
-  let p2  = NSPoint (x: self_x2,   y: self_y2)
-  let cp1 = NSPoint (x: self_cpx1, y: self_cpy1)
-  let cp2 = NSPoint (x: self_cpx2, y: self_cpy2)
+  let p1  = CanariPoint (x: self_x1,   y: self_y1)
+  let p2  = CanariPoint (x: self_x2,   y: self_y2)
+  let cp1 = CanariPoint (x: self_cpx1, y: self_cpy1)
+  let cp2 = CanariPoint (x: self_cpx2, y: self_cpy2)
   var bp = BezierPath ()
   bp.move (to: p1)
   bp.cubic (to: p2, controlPoint1: cp1, controlPoint2: cp2)
@@ -42,10 +42,10 @@ import CanariGeometry
   bp.lineCapStyle = .round
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
-  shape.add (knobAt:  p1.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_1, .diamond, .pt (self_PackageObject_knobSize))
-  shape.add (knobAt:  p2.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_2, .diamond, .pt (self_PackageObject_knobSize))
-  shape.add (knobAt:  cp1.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_1, .diamond, .pt (self_PackageObject_knobSize))
-  shape.add (knobAt:  cp2.canariPoint, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_2, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  p1, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_1, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  p2, knobIndex: PACKAGE_BEZIER_CURVE_ENDPOINT_2, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  cp1, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_1, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt:  cp2, knobIndex: PACKAGE_BEZIER_CURVE_CONTROL_2, .diamond, .pt (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

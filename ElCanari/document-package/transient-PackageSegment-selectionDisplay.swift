@@ -26,8 +26,8 @@ import CanariGeometry
   let p1 = CanariPoint (x: self_x1, y: self_y1)
   let p2 = CanariPoint (x: self_x2, y: self_y2)
   var bp = BezierPath ()
-  bp.move (to: p1.ptValue)
-  bp.line (to: p2.ptValue)
+  bp.move (to: p1)
+  bp.line (to: p2)
   bp.lineWidth = CanariLength.pt (0.25)
   bp.lineCapStyle = .round
   var shape = EBShape ()

@@ -178,9 +178,9 @@ final class GeometricRect {
   var bezierPath : BezierPath {
     var bp = BezierPath ()
     let v = self.vertices
-    bp.move (to: v [0].ptValue)
+    bp.move (to: v [0])
     for idx in 1 ..< v.count {
-      bp.line (to: v [idx].ptValue)
+      bp.line (to: v [idx])
     }
     bp.close ()
     return bp

@@ -36,16 +36,16 @@ import CanariGeometry
            let y2 = self_mNext_mY,
 //           let boardWidth = self_mRoot_mBoardLimitsWidth,
            let boardClearance = self_mRoot_mBoardClearance {
-          let p1 = NSPoint (x: self_mX, y: self_mY)
-          let p2 = NSPoint (x: x2, y: y2)
+          let p1 = CanariPoint (x: self_mX, y: self_mY)
+          let p2 = CanariPoint (x: x2, y: y2)
           var bp = BezierPath ()
           bp.move (to: p1)
           switch self_mShape {
           case .line :
             bp.line (to: p2)
           case .bezier :
-            let cp1 = NSPoint (x: self_mCPX1, y: self_mCPY1)
-            let cp2 = NSPoint (x: self_mCPX2, y: self_mCPY2)
+            let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1)
+            let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2)
             bp.cubic (to: p2, controlPoint1: cp1, controlPoint2: cp2)
           }
           bp.lineCapStyle = .round

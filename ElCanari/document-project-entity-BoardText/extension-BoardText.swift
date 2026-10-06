@@ -284,15 +284,15 @@ extension BoardText {
   for character in s.unicodeScalars {
     if let characterDescriptor = self_mFont_descriptor.dictionary [character.value] {
       for segment in characterDescriptor.segments {
-        let x1 = fontFactor * (CGFloat (segment.x1) + oblique * CGFloat (segment.y1))
-        let y1 = fontFactor * CGFloat (segment.y1)
-        let x2 = fontFactor * (CGFloat (segment.x2) + oblique * CGFloat (segment.y2))
-        let y2 = fontFactor * CGFloat (segment.y2)
-        let p1 = NSPoint (x: stringWidth.ptValue + x1, y: y1)
-        let p2 = NSPoint (x: stringWidth.ptValue + x2, y: y2)
+        let x1 = fontFactor * (CanariLength.pt (CGFloat (segment.x1)) + oblique * CanariLength.pt (CGFloat (segment.y1)))
+        let y1 = fontFactor * CanariLength.pt (CGFloat (segment.y1))
+        let x2 = fontFactor * (CanariLength.pt (CGFloat (segment.x2)) + oblique * CanariLength.pt (CGFloat (segment.y2)))
+        let y2 = fontFactor * CanariLength.pt (CGFloat (segment.y2))
+        let p1 = CanariPoint (x: stringWidth + x1, y: y1)
+        let p2 = CanariPoint (x: stringWidth + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
-        oblongs.append (GeometricOblong (p1: p1.canariPoint, p2: p2.canariPoint, width: lineThickness, capStyle: .round))
+        oblongs.append (GeometricOblong (p1: p1, p2: p2, width: lineThickness, capStyle: .round))
       }
       stringWidth += .pt (CGFloat (characterDescriptor.advancement) * fontFactor)
     }

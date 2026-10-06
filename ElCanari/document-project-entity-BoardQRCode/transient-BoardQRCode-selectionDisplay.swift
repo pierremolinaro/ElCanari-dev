@@ -53,8 +53,8 @@ import CanariGeometry
         let center = CanariPoint (x: self_mCenterX, y: self_mCenterY)
         if prefs_mShowTextRotationKnobInBoard {
           var knobLine = BezierPath ()
-          knobLine.move (to : center.ptValue)
-          knobLine.line (to : displayInfos.rotationKnobLocation.ptValue)
+          knobLine.move (to : center)
+          knobLine.line (to : displayInfos.rotationKnobLocation)
           knobLine.lineWidth = CanariLength.pt (prefs_hiliteWidthMultipliedByTen) / 10.0
           knobLine.lineCapStyle = .round
           knobLine.lineJoinStyle = .round

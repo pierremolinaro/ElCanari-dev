@@ -115,7 +115,7 @@ import CanariGeometry
                 width: SCHEMATIC_GRID_LENGTH,
                 height: SCHEMATIC_GRID_LENGTH
               )
-              pinTextShape.appendToolTip (toolTipRect.ptValue, pinNetNameDictionary [pin.pinName] ?? "—")
+              pinTextShape.appendToolTip (toolTipRect, pinNetNameDictionary [pin.pinName] ?? "—")
            //---
               let d = ComponentPinDescriptor (
                 pinIdentifier: PinSymbolInProjectIdentifier (symbol: pin.symbol, pinName: pin.pinName),

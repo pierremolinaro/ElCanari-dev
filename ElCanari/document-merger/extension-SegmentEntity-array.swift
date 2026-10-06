@@ -148,14 +148,14 @@ import CanariGeometry
         x2 += segment.y2
         y2 += inModelWidth - segment.x2
       }
-      let x1f = (inHorizontalMirror ? (inBoardWidth - x1) : x1).ptValue
-      let y1f = y1.ptValue
-      let x2f = (inHorizontalMirror ? (inBoardWidth - x2) : x2).ptValue
-      let y2f = y2.ptValue
+      let x1f = (inHorizontalMirror ? (inBoardWidth - x1) : x1)
+      let y1f = y1
+      let x2f = (inHorizontalMirror ? (inBoardWidth - x2) : x2)
+      let y2f = y2
       let width = segment.width
       var bp = BezierPath ()
-      bp.move (to: NSPoint (x: x1f, y: y1f))
-      bp.line (to: NSPoint (x: x2f, y: y2f))
+      bp.move (to: CanariPoint (x: x1f, y: y1f))
+      bp.line (to: CanariPoint (x: x2f, y: y2f))
       bp.lineWidth = width
       switch segment.endStyle {
       case .round :

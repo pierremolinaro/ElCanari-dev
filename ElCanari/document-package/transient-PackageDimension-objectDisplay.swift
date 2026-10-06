@@ -40,8 +40,8 @@ import CanariGeometry
  //--- Draw line
   var bp = BezierPath ()
   if length <= (4.0 * arrowSize) {
-    bp.move (to: p1.ptValue)
-    bp.line (to: p2.ptValue)
+    bp.move (to: p1)
+    bp.line (to: p2)
     bp.lineCapStyle = .butt
   }else{
   //--- Segment
@@ -50,8 +50,8 @@ import CanariGeometry
       .translating (x: center.x, y: center.y)
       .rotating (by: angle)
     let lg = length / 2.0 - arrowSize
-    bp.move (to: NSPoint (x: -lg, y: .zero))
-    bp.line (to: NSPoint (x:  lg, y: .zero))
+    bp.move (to: CanariPoint (x: -lg, y: .zero))
+    bp.line (to: CanariPoint (x:  lg, y: .zero))
     bp.transform (using: tr)
     bp.lineCapStyle = .butt
   }
@@ -62,21 +62,21 @@ import CanariGeometry
 //------- Arrow at first point
   var tr = CanariAffinity.translating (p1).rotating (by: angle + rotationIfSmall)
   var path1 = BezierPath ()
-  path1.move (to: NSPoint (x: 0.0, y: 0.0))
-  path1.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
-  path1.cubic (to: NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
-               controlPoint1: NSPoint (x: arrowSize, y: .zero),
-               controlPoint2: NSPoint (x: arrowSize, y: .zero))
+  path1.move (to: .zero)
+  path1.line (to: CanariPoint (x: 2.0 * arrowSize, y:  arrowSize))
+  path1.cubic (to: CanariPoint (x: 2.0 * arrowSize, y: -arrowSize),
+               controlPoint1: CanariPoint (x: arrowSize, y: .zero),
+               controlPoint2: CanariPoint (x: arrowSize, y: .zero))
   path1.close ()
   path1.transform (using: tr)
 //------- Arrow at second point
   tr = CanariAffinity.translating (p2).rotating (by: angle + .degrees180 + rotationIfSmall)
   var path2 = BezierPath ()
-  path2.move (to: NSPoint (x: 0.0, y: 0.0))
-  path2.line (to: NSPoint (x: 2.0 * arrowSize, y:  arrowSize))
-  path2.cubic (to:NSPoint (x: 2.0 * arrowSize, y: -arrowSize),
-               controlPoint1: NSPoint (x: arrowSize, y: .zero),
-               controlPoint2: NSPoint (x: arrowSize, y: .zero))
+  path2.move (to: .zero)
+  path2.line (to: CanariPoint (x: 2.0 * arrowSize, y:  arrowSize))
+  path2.cubic (to:CanariPoint (x: 2.0 * arrowSize, y: -arrowSize),
+               controlPoint1: CanariPoint (x: arrowSize, y: .zero),
+               controlPoint2: CanariPoint (x: arrowSize, y: .zero))
   path2.close ()
   path2.transform (using: tr)
   shape.add (filled: [path1, path2], prefs_packageDimensionColor)

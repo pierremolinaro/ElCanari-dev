@@ -50,7 +50,7 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
       let lineWidth = CanariLength.pt (prefs_hiliteWidthMultipliedByTen) / 10.0
-      let absoluteCenter = NSPoint (x: self_mX, y: self_mY)
+      let absoluteCenter = CanariPoint (x: self_mX, y: self_mY)
       let rPadsCenter = self_packagePadDictionary.padsRect.center
       let knobDx = (self_mSide == .back) ? -COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE : COMPONENT_PACKAGE_ROTATION_KNOB_DISTANCE ;
       let rotationKnobLocation = CanariPoint (x: rPadsCenter.x + knobDx, y: rPadsCenter.y)
@@ -58,8 +58,8 @@ import CanariGeometry
       if self_mDisplayLegend {
         var strokeBezierPath = self_strokeBezierPath
         if prefs_mShowComponentRotationKnobInBoard {
-          strokeBezierPath.move (to: rPadsCenter.ptValue)
-          strokeBezierPath.line (to: rotationKnobLocation.ptValue)
+          strokeBezierPath.move (to: rPadsCenter)
+          strokeBezierPath.line (to: rotationKnobLocation)
         }
         strokeBezierPath.lineWidth = lineWidth
         strokeBezierPath.lineCapStyle = .round
@@ -117,7 +117,7 @@ import CanariGeometry
         )
         var bp = BezierPath ()
         bp.move (to: absoluteCenter)
-        bp.line (to: origin)
+        bp.line (to: origin.canariPoint)
         bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
@@ -151,7 +151,7 @@ import CanariGeometry
         )
         var bp = BezierPath ()
         bp.move (to: absoluteCenter)
-        bp.line (to: origin)
+        bp.line (to: origin.canariPoint)
         bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round

@@ -42,8 +42,8 @@ import CanariGeometry
         )
         if self_mDisplayComponentValue {
           var bp = BezierPath ()
-          bp.move (to: symbolCenter.ptValue)
-          bp.line (to: componentValueCenter.ptValue)
+          bp.move (to: symbolCenter)
+          bp.line (to: componentValueCenter)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
@@ -56,8 +56,8 @@ import CanariGeometry
         )
         do{
           var bp = BezierPath ()
-          bp.move (to: symbolCenter.ptValue)
-          bp.line (to: componentNameCenter.ptValue)
+          bp.move (to: symbolCenter)
+          bp.line (to: componentNameCenter)
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
@@ -104,8 +104,8 @@ import CanariGeometry
           y: self_symbolInfo.center.y + d * sin (symbolRotationInRadians)
         )
         var bp = BezierPath ()
-        bp.move (to: symbolCenter.ptValue)
-        bp.line (to: rotationKnobCenter.ptValue)
+        bp.move (to: symbolCenter)
+        bp.line (to: rotationKnobCenter)
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round

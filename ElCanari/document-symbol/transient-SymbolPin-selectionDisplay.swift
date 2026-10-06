@@ -29,9 +29,9 @@ import CanariGeometry
     let namePoint = CanariPoint (x: self_xName, y: self_yName)
     let numberPoint = CanariPoint (x: self_xNumber, y: self_yNumber)
     var bp = BezierPath ()
-    bp.move (to: numberPoint.ptValue)
-    bp.line (to: pinPoint.ptValue)
-    bp.line (to: namePoint.ptValue)
+    bp.move (to: numberPoint)
+    bp.line (to: pinPoint)
+    bp.line (to: namePoint)
     bp.lineWidth = CanariLength.pt (0.25)
     bp.lineCapStyle = .round
     shape.add (stroke: [bp], prefs_selectionHiliteColor)

@@ -41,7 +41,7 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
        var shape = EBShape ()
-       if let p1 = self_mConnectorP1_location?.ptValue, let p2 = self_mConnectorP2_location?.ptValue {
+       if let p1 = self_mConnectorP1_location, let p2 = self_mConnectorP2_location {
          let color : NSColor
          let display : Bool
          switch self_mSide {

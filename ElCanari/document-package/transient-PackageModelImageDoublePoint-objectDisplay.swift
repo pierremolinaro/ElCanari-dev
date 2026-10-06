@@ -44,10 +44,10 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CanariLength.pt (2.0)
   //--- First Point
     var lines = BezierPath ()
     lines.lineCapStyle = .round
-    lines.move (to: NSPoint (x: firstX - firstPointDelta, y: firstY - firstPointDelta))
-    lines.relativeLine (to: NSPoint (x: firstPointDelta * 2.0, y: firstPointDelta * 2.0))
-    lines.move (to: NSPoint (x: firstX + firstPointDelta, y: firstY - firstPointDelta))
-    lines.relativeLine (to: NSPoint (x: -firstPointDelta * 2.0, y: firstPointDelta * 2.0))
+    lines.move (to: CanariPoint (x: firstX - firstPointDelta, y: firstY - firstPointDelta))
+    lines.relativeLine (to: CanariPoint (x: firstPointDelta * 2.0, y: firstPointDelta * 2.0))
+    lines.move (to: CanariPoint (x: firstX + firstPointDelta, y: firstY - firstPointDelta))
+    lines.relativeLine (to: CanariPoint (x: -firstPointDelta * 2.0, y: firstPointDelta * 2.0))
     lines.lineWidth = CanariLength.zero
     var circle = BezierPath (ovalIn: firstR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH
@@ -56,10 +56,10 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CanariLength.pt (2.0)
   //--- Second Point
     lines = BezierPath ()
     lines.lineCapStyle = .round
-    lines.move (to: NSPoint (x: secondX - secondPointDelta, y: secondY - secondPointDelta))
-    lines.relativeLine (to: NSPoint (x: secondPointDelta * 2.0, y: secondPointDelta * 2.0))
-    lines.move (to: NSPoint (x: secondX + secondPointDelta, y: secondY - secondPointDelta))
-    lines.relativeLine (to: NSPoint (x: -secondPointDelta * 2.0, y: secondPointDelta * 2.0))
+    lines.move (to: CanariPoint (x: secondX - secondPointDelta, y: secondY - secondPointDelta))
+    lines.relativeLine (to: CanariPoint (x: secondPointDelta * 2.0, y: secondPointDelta * 2.0))
+    lines.move (to: CanariPoint (x: secondX + secondPointDelta, y: secondY - secondPointDelta))
+    lines.relativeLine (to: CanariPoint (x: -secondPointDelta * 2.0, y: secondPointDelta * 2.0))
     lines.lineWidth = CanariLength.zero
     circle = BezierPath (ovalIn: secondR)
     circle.lineWidth = IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH

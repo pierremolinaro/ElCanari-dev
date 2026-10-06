@@ -26,13 +26,13 @@ import CanariGeometry
         var shape = EBShape ()
         if let p = self_mPoint_location {
           var bp = BezierPath ()
-          bp.move (to: NSPoint (x: 0.0, y: 0.0))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: SCHEMATIC_LABEL_SIZE))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: -SCHEMATIC_LABEL_SIZE))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: -SCHEMATIC_LABEL_SIZE))
-          bp.line (to: NSPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
+          bp.move (to: .zero)
+          bp.line (to: CanariPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
+          bp.line (to: CanariPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: SCHEMATIC_LABEL_SIZE))
+          bp.line (to: CanariPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: SCHEMATIC_LABEL_SIZE))
+          bp.line (to: CanariPoint (x: SCHEMATIC_LABEL_SIZE * 7.0, y: -SCHEMATIC_LABEL_SIZE))
+          bp.line (to: CanariPoint (x: SCHEMATIC_LABEL_SIZE * 3.0, y: -SCHEMATIC_LABEL_SIZE))
+          bp.line (to: CanariPoint (x: SCHEMATIC_LABEL_SIZE * 2.0, y: .zero))
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           bp.lineWidth = SCHEMATIC_HILITE_WIDTH

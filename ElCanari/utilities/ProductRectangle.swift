@@ -36,10 +36,10 @@ extension Array where Element == ProductRectangle {
     var result = [BezierPath] ()
     for rect in self {
       var bp = BezierPath ()
-      bp.move (to: rect.p0.ptValue)
-      bp.line (to: rect.p1.ptValue)
-      bp.line (to: rect.p2.ptValue)
-      bp.line (to: rect.p3.ptValue)
+      bp.move (to: rect.p0)
+      bp.line (to: rect.p1)
+      bp.line (to: rect.p2)
+      bp.line (to: rect.p3)
       bp.close ()
       result.append (bp)
     }

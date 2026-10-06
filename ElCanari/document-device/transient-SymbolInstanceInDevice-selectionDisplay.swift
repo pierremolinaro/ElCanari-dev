@@ -63,8 +63,8 @@ import CanariGeometry
         let frameRadius = CanariLength.pt (3.0)
         r = r.insetBy (dx: -frameRadius - .pt (prefs_symbolDrawingWidthMultipliedByTen) / 20.0, dy: -.pt (prefs_symbolDrawingWidthMultipliedByTen) / 20.0)
         var bp = BezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
-        bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
-        bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
+        bp.move (to: CanariPoint (x: r.minX, y: horizontalSeparatorY))
+        bp.line (to: CanariPoint (x: r.maxX, y: horizontalSeparatorY))
         bp.lineWidth = CanariLength.pt (0.5)
         shape.add (stroke: [bp], prefs_selectionHiliteColor)
        }

@@ -26,8 +26,8 @@ import CanariGeometry
         if let p1 = self_mP1_location, let p2 = self_mP2_location {
           let lineWidth = CanariLength.pt (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
           var bp = BezierPath ()
-          bp.move (to: p1.ptValue)
-          bp.line (to: p2.ptValue)
+          bp.move (to: p1)
+          bp.line (to: p2)
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           bp.lineWidth = lineWidth + CanariLength.pt (2.0)

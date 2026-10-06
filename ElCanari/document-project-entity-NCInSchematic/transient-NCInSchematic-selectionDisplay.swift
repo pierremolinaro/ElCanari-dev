@@ -52,8 +52,8 @@ import CanariGeometry
       //--- Add line
         var frameBP = BezierPath (rect: textShape.boundingBox.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
         var line = BezierPath ()
-        line.move (to: self_mPoint_location!.ptValue)
-        line.line (to: textShape.boundingBox.center.ptValue)
+        line.move (to: self_mPoint_location!)
+        line.line (to: textShape.boundingBox.center)
         line.lineWidth = CanariLength.pt (0.5)
         line.lineCapStyle = .round
         var shape = EBShape ()

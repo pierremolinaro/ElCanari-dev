@@ -30,8 +30,8 @@ import CanariGeometry
       bp.lineJoinStyle = .round
       let p1 = CanariPoint (x: self_mX1, y: self_mY1)
       let p2 = CanariPoint (x: self_mX2, y: self_mY2)
-      bp.move (to: p1.ptValue)
-      bp.line (to: p2.ptValue)
+      bp.move (to: p1)
+      bp.line (to: p2)
       var shape = EBShape (stroke: [bp], prefs_selectionHiliteColor)
     //--- Knobs
       shape.add (knobAt: p1, knobIndex: BOARD_LINE_P1, .diamond, .pt (2.0))

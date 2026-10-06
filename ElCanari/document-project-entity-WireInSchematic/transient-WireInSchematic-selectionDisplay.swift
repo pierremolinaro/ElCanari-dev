@@ -26,8 +26,8 @@ import CanariGeometry
         let p2 = self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
       //--- Hilite wire
         var bp = BezierPath ()
-        bp.move (to: p1.ptValue)
-        bp.line (to: p2.ptValue)
+        bp.move (to: p1)
+        bp.line (to: p2)
         bp.lineWidth = SCHEMATIC_HILITE_WIDTH
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round

@@ -54,11 +54,11 @@ extension AutoLayoutProjectDocument {
             return borderCurve
           }
         case .bezier :
-          let cp1 = NSPoint (x: borderCurve.mCPX1, y: borderCurve.mCPY1)
-          let cp2 = NSPoint (x: borderCurve.mCPX2, y: borderCurve.mCPY2)
+          let cp1 = CanariPoint (x: borderCurve.mCPX1, y: borderCurve.mCPY1)
+          let cp2 = CanariPoint (x: borderCurve.mCPX2, y: borderCurve.mCPY2)
           var bp = BezierPath ()
-          bp.move (to: p1.ptValue)
-          bp.cubic (to: p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
+          bp.move (to: p1)
+          bp.cubic (to: p2, controlPoint1: cp1, controlPoint2: cp2)
           bp.lineWidth = 2.0 * self.rootObject.mBoardClearance
           bp = bp.pathToFillByStroking
           if bp.contains (inUnalignedMouseDownPoint) {

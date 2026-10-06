@@ -257,16 +257,16 @@ extension AutoLayoutProjectDocument {
       var clearanceBP = BezierPath ()
       var descriptor = self.rootObject.mBorderCurves [0].descriptor!
       let p = descriptor.p1
-      clearanceBP.move (to: p.ptValue)
+      clearanceBP.move (to: p)
       var loop = true
       while loop {
         switch descriptor.shape {
         case .line :
-          clearanceBP.line (to: descriptor.p2.ptValue)
+          clearanceBP.line (to: descriptor.p2)
         case .bezier :
-          let cp1 = descriptor.cp1.ptValue
-          let cp2 = descriptor.cp2.ptValue
-          clearanceBP.cubic (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
+          let cp1 = descriptor.cp1
+          let cp2 = descriptor.cp2
+          clearanceBP.cubic (to: descriptor.p2, controlPoint1: cp1, controlPoint2: cp2)
         }
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1

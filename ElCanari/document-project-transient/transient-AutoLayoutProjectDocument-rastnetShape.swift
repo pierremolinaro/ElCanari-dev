@@ -27,8 +27,8 @@ import CanariGeometry
       }
     }
   //------------------------------- Enter first segment
-    ioBezierPath.move (to: points [firstPointIndex].ptValue)
-    ioBezierPath.line (to: points [secondPointIndex].ptValue)
+    ioBezierPath.move (to: points [firstPointIndex])
+    ioBezierPath.line (to: points [secondPointIndex])
   //------------------------------- Transfer handled points in dedicaced array
     var handledPoints = [points [firstPointIndex], points [secondPointIndex]]
     points.remove (at: secondPointIndex) // SecondPoint first, its index is > than first point index
@@ -51,8 +51,8 @@ import CanariGeometry
         }
       }
     //--- Enter segment
-      ioBezierPath.move (to: handledPoints [firstPointIndex].ptValue)
-      ioBezierPath.line (to: points [secondPointIndex].ptValue)
+      ioBezierPath.move (to: handledPoints [firstPointIndex])
+      ioBezierPath.line (to: points [secondPointIndex])
     //--- Transfer found point in handled point array
       handledPoints.append (points [secondPointIndex])
       points.remove (at: secondPointIndex)

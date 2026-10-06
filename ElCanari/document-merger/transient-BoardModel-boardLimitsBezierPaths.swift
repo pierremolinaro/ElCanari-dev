@@ -26,10 +26,10 @@ import CanariGeometry
   let bottom  = CanariLength.zero
   let top     = modelHeight
   var bp = BezierPath ()
-  bp.move (to : NSPoint (x: left,  y: bottom))
-  bp.line (to : NSPoint (x: left,  y: top))
-  bp.line (to : NSPoint (x: right, y: top))
-  bp.line (to : NSPoint (x: right, y: bottom))
+  bp.move (to : CanariPoint (x: left,  y: bottom))
+  bp.line (to : CanariPoint (x: left,  y: top))
+  bp.line (to : CanariPoint (x: right, y: top))
+  bp.line (to : CanariPoint (x: right, y: bottom))
   bp.close ()
   bp.lineWidth = BOARD_LIMIT_WIDTH
   bp.lineCapStyle = .round

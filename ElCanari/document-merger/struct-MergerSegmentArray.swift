@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   MergerSegmentArray
@@ -36,8 +37,8 @@ struct MergerSegmentArray : Hashable {
     var result = BezierPathArray ()
     for segment in self.segmentArray {
       var bp = BezierPath ()
-      bp.move (to: NSPoint (x: segment.x1, y: segment.y1))
-      bp.line (to: NSPoint (x: segment.x2, y: segment.y2))
+      bp.move (to: CanariPoint (x: segment.x1, y: segment.y1))
+      bp.line (to: CanariPoint (x: segment.x2, y: segment.y2))
       bp.lineWidth = segment.width
       switch segment.endStyle {
       case .round:

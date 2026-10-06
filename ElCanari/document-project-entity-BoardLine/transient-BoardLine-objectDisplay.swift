@@ -30,8 +30,8 @@ import CanariGeometry
       bp.lineWidth = self_mWidth
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
-      let p1 = NSPoint (x: self_mX1, y: self_mY1)
-      let p2 = NSPoint (x: self_mX2, y: self_mY2)
+      let p1 = CanariPoint (x: self_mX1, y: self_mY1)
+      let p2 = CanariPoint (x: self_mX2, y: self_mY2)
       bp.move (to: p1)
       bp.line (to: p2)
       let color : NSColor

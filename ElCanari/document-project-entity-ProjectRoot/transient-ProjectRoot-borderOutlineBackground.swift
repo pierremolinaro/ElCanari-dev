@@ -68,16 +68,16 @@ import CanariGeometry
           }
           var descriptor = self_mBorderCurves_descriptor [0].descriptor!
           let p = descriptor.p1
-          bp.move (to: p.ptValue)
+          bp.move (to: p)
           var loop = true
           while loop {
             switch descriptor.shape {
             case .line :
-              bp.line (to: descriptor.p2.ptValue)
+              bp.line (to: descriptor.p2)
             case .bezier :
-              let cp1 = descriptor.cp1.ptValue
-              let cp2 = descriptor.cp2.ptValue
-              bp.cubic (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
+              let cp1 = descriptor.cp1
+              let cp2 = descriptor.cp2
+              bp.cubic (to: descriptor.p2, controlPoint1: cp1, controlPoint2: cp2)
             }
             descriptor = curveDictionary [descriptor.p2]!
             loop = p != descriptor.p1

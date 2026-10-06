@@ -39,23 +39,23 @@ import CanariGeometry
           let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1)
           let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2)
           var bp = BezierPath ()
-          bp.move (to: p1.ptValue)
+          bp.move (to: p1)
           switch self_mShape {
           case .line :
-            bp.line (to: p2.ptValue)
+            bp.line (to: p2)
           case .bezier :
             let cp1 = CanariPoint (x: self_mCPX1, y: self_mCPY1)
             let cp2 = CanariPoint (x: self_mCPX2, y: self_mCPY2)
-            bp.cubic (to: p2.ptValue, controlPoint1: cp1.ptValue, controlPoint2: cp2.ptValue)
+            bp.cubic (to: p2, controlPoint1: cp1, controlPoint2: cp2)
           }
           bp.lineWidth = CanariLength.pt (1.0)
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
           if self_mShape == .bezier {
-            bp.move (to: p1.ptValue)
-            bp.line (to: cp1.ptValue)
-            bp.move (to: p2.ptValue)
-            bp.line (to: cp2.ptValue)
+            bp.move (to: p1)
+            bp.line (to: cp1)
+            bp.move (to: p2)
+            bp.line (to: cp2)
           }
           shape.add (stroke: [bp], prefs_selectionHiliteColor)
           shape.add (knobAt: p1, knobIndex: BOARD_LIMIT_P1_KNOB, .diamond, BOARD_LIMITS_KNOB_SIZE)

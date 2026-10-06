@@ -36,7 +36,7 @@ import CanariGeometry
 ) -> EBShape {
 //--- START OF USER ZONE 2
       var shape = EBShape ()
-      if let p1 = self_mConnectorP1_location?.ptValue, let p2 = self_mConnectorP2_location?.ptValue {
+      if let p1 = self_mConnectorP1_location, let p2 = self_mConnectorP2_location {
       //--- Hilite
         let color : NSColor
         switch self_mSide {
@@ -77,10 +77,10 @@ import CanariGeometry
         shape.add (stroke: [bp], color)
       //--- Knobs
         if self_p1CanMove {
-          shape.add (knobAt: p1.canariPoint, knobIndex: BOARD_TRACK_P1, .diamond, .pt (2.0))
+          shape.add (knobAt: p1, knobIndex: BOARD_TRACK_P1, .diamond, .pt (2.0))
         }
         if self_p2CanMove {
-          shape.add (knobAt: p2.canariPoint, knobIndex: BOARD_TRACK_P2, .diamond, .pt (2.0))
+          shape.add (knobAt: p2, knobIndex: BOARD_TRACK_P2, .diamond, .pt (2.0))
         }
       }
       return shape

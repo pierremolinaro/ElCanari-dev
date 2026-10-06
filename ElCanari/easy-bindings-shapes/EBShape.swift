@@ -207,7 +207,7 @@ struct EBShape : Hashable {
   //  Tool tips
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendToolTip (_ inRect : NSRect, _ inText : String) {
+  mutating func appendToolTip (_ inRect : CanariRect, _ inText : String) {
     if self.mSharedObject == nil {
       self.mSharedObject = EBShapeObject ()
     }else if !isKnownUniquelyReferenced (&self.mSharedObject) {
@@ -430,10 +430,10 @@ fileprivate final class EBShapeObject {
       frameColor = .black
     case .diamond :
       bp = BezierPath ()
-      bp.move (to: NSPoint (x: r.minX, y: r.midY))
-      bp.line (to: NSPoint (x: r.midX, y: r.minY))
-      bp.line (to: NSPoint (x: r.maxX, y: r.midY))
-      bp.line (to: NSPoint (x: r.midX, y: r.maxY))
+      bp.move (to: CanariPoint (x: r.minX, y: r.midY))
+      bp.line (to: CanariPoint (x: r.midX, y: r.minY))
+      bp.line (to: CanariPoint (x: r.maxX, y: r.midY))
+      bp.line (to: CanariPoint (x: r.midX, y: r.maxY))
       bp.close ()
       backColor = .white
       frameColor = .black
@@ -577,8 +577,8 @@ fileprivate final class EBShapeObject {
   //  Tool tips
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func appendToolTip (_ inRect : NSRect, _ inText : String) {
-    self.mToolTips.append (EBToolTip (path: BezierPath (rect: inRect.canariRect), string: inText))
+  func appendToolTip (_ inRect : CanariRect, _ inText : String) {
+    self.mToolTips.append (EBToolTip (path: BezierPath (rect: inRect), string: inText))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

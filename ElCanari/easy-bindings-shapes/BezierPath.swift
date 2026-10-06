@@ -228,39 +228,39 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func move (to inPoint : NSPoint) {
+  mutating func move (to inPoint : CanariPoint) {
     self.internalInsulatePath ()
-    self.mPath.move (to: inPoint)
+    self.mPath.move (to: inPoint.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func relativeMove (to inPoint : NSPoint) {
+  mutating func relativeMove (to inPoint : CanariPoint) {
     self.internalInsulatePath ()
-    self.mPath.relativeMove (to: inPoint)
+    self.mPath.relativeMove (to: inPoint.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func line (to inPoint : NSPoint) {
+  mutating func line (to inPoint : CanariPoint) {
     self.internalInsulatePath ()
-    self.mPath.line (to: inPoint)
+    self.mPath.line (to: inPoint.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func relativeLine (to inPoint : NSPoint) {
+  mutating func relativeLine (to inPoint : CanariPoint) {
     self.internalInsulatePath ()
-    self.mPath.relativeLine (to: inPoint)
+    self.mPath.relativeLine (to: inPoint.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func cubic (to inPoint : NSPoint,
-                       controlPoint1 inCP1 : NSPoint,
-                       controlPoint2 inCP2 : NSPoint) {
+  mutating func cubic (to inPoint : CanariPoint,
+                       controlPoint1 inCP1 : CanariPoint,
+                       controlPoint2 inCP2 : CanariPoint) {
     self.internalInsulatePath ()
-    self.mPath.curve (to: inPoint, controlPoint1: inCP1, controlPoint2: inCP2)
+    self.mPath.curve (to: inPoint.ptValue, controlPoint1: inCP1.ptValue, controlPoint2: inCP2.ptValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -448,10 +448,10 @@ struct BezierPath : Hashable {
     let t0 = CanariAffinity.translating (inCenter).rotating (by: inStartAngle)
     var firstPoint = t0.transforming (x: inRadius)
     if inStartTangentLength > .zero {
-      self.move (to: firstPoint.ptValue)
+      self.move (to: firstPoint)
       let t = CanariAffinity.rotating (by: inStartAngle - .degrees90)
       let p = t.transforming (x: inStartTangentLength)
-      self.relativeLine (to: p.ptValue)
+      self.relativeLine (to: p)
       firstPoint.x += p.x
       firstPoint.y += p.y
     }
@@ -459,17 +459,17 @@ struct BezierPath : Hashable {
     let t1 = CanariAffinity.translating (inCenter).rotating (by: inStartAngle + inArcAngle)
     var lastPoint = t1.transforming (x: inRadius)
     if inEndTangentLength > .zero {
-      self.move (to: lastPoint.ptValue)
+      self.move (to: lastPoint)
       let t = CanariAffinity.rotating (by: inStartAngle + inArcAngle + .degrees90)
       let p = t.transforming (x: inEndTangentLength)
-      self.relativeLine (to: p.ptValue)
+      self.relativeLine (to: p)
       lastPoint.x += p.x
       lastPoint.y += p.y
     }
   //--- Closed ?
     if inPathIsClosed {
-      self.move (to: firstPoint.ptValue)
-      self.line (to: lastPoint.ptValue)
+      self.move (to: firstPoint)
+      self.line (to: lastPoint)
     }
   }
 
@@ -503,43 +503,6 @@ struct BezierPath : Hashable {
       self.mPath.appendOval (in: inRect.ptValue)
     }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  mutating func appendOblong (in inRect : CanariRect) {
-//    self.internalInsulatePath ()
-//    let r = inRect.ptValue
-//    let width = inRect.size.width.ptValue
-//    let height = inRect.size.height.ptValue
-//    if width < height {
-//      self.mPath.appendRoundedRect (r, xRadius: width / 2.0, yRadius: width / 2.0)
-//    }else if width > height {
-//      self.mPath.appendRoundedRect (r, xRadius: height / 2.0, yRadius: height / 2.0)
-//    }else{
-//      self.mPath.appendOval (in: r)
-//    }
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  init (octogonInRect inRect : NSRect) {
-//    self.init ()
-//    let s2 : CGFloat = sqrt (2.0)
-//    let w = inRect.size.width
-//    let h = inRect.size.height
-//    let x = inRect.origin.x
-//    let y = inRect.origin.y
-//    let lg = min (w, h) / (1.0 + s2)
-//    self.mPath.move (to: NSPoint (x: x + lg / s2,     y: y + h))
-//    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
-//    self.mPath.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
-//    self.mPath.line (to: NSPoint (x: x + w,           y: y + lg / s2))
-//    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y))
-//    self.mPath.line (to: NSPoint (x: x + lg / s2,     y: y))
-//    self.mPath.line (to: NSPoint (x: x,               y: y + lg / s2))
-//    self.mPath.line (to: NSPoint (x: x,               y: y + h - lg / s2))
-//    self.mPath.close ()
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

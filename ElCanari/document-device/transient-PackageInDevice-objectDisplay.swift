@@ -76,8 +76,8 @@ import CanariGeometry
       let nameOrigin = CanariPoint (x: r.midX, y: horizontalSeparatorY + MARGIN)
       var bp = BezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
       shape.add (filled: [bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!)
-      bp.move (to: NSPoint (x: r.minX, y: horizontalSeparatorY))
-      bp.line (to: NSPoint (x: r.maxX, y: horizontalSeparatorY))
+      bp.move (to: CanariPoint (x: r.minX, y: horizontalSeparatorY))
+      bp.line (to: CanariPoint (x: r.maxX, y: horizontalSeparatorY))
       bp.lineWidth = CanariLength.pt (0.5)
       shape.add (stroke: [bp], .lightGray)
     //--- Name

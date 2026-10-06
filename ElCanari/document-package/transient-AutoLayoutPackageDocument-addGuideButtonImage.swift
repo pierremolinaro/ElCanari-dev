@@ -20,8 +20,8 @@ import CanariGeometry
 //--- START OF USER ZONE 2
         var bp = BezierPath ()
         bp.lineWidth = CanariLength.pt (2.0)
-        bp.move (to: NSPoint (x: 0, y: 0))
-        bp.line (to: NSPoint (x: 10, y: 10))
+        bp.move (to: CanariPoint ())
+        bp.line (to: CanariPoint (y: .pt (10)))
         bp.lineCapStyle = .round
         let shape = EBShape (stroke: [bp], prefs_packageGuideColor)
         let r = shape.boundingBox

@@ -23,8 +23,8 @@ import CanariGeometry
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let p1 = NSPoint (x: self_x1, y: self_y1)
-  let p2 = NSPoint (x: self_x2, y: self_y2)
+  let p1 = CanariPoint (x: self_x1, y: self_y1)
+  let p2 = CanariPoint (x: self_x2, y: self_y2)
   var bp = BezierPath ()
   bp.move (to: p1)
   bp.line (to: p2)
@@ -33,9 +33,9 @@ import CanariGeometry
   var shape = EBShape ()
   shape.add (stroke: [bp], prefs_selectionHiliteColor)
   let center = p1.mid (with: p2)
-  shape.add (knobAt: center.canariPoint, knobIndex: PACKAGE_GUIDE_CENTER, .rect, .pt (self_PackageObject_knobSize))
-  shape.add (knobAt: p1.canariPoint, knobIndex: PACKAGE_GUIDE_ENDPOINT_1, .diamond, .pt (self_PackageObject_knobSize))
-  shape.add (knobAt: p2.canariPoint, knobIndex: PACKAGE_GUIDE_ENDPOINT_2, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt: center, knobIndex: PACKAGE_GUIDE_CENTER, .rect, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt: p1, knobIndex: PACKAGE_GUIDE_ENDPOINT_1, .diamond, .pt (self_PackageObject_knobSize))
+  shape.add (knobAt: p2, knobIndex: PACKAGE_GUIDE_ENDPOINT_2, .diamond, .pt (self_PackageObject_knobSize))
   return shape
 //--- END OF USER ZONE 2
 }

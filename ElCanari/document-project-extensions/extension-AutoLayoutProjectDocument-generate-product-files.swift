@@ -688,16 +688,16 @@ extension AutoLayoutProjectDocument {
       var descriptor = self.rootObject.mBorderCurves [0].descriptor!
       let p = descriptor.p1
       var bp = BezierPath ()
-      bp.move (to: p.ptValue)
+      bp.move (to: p)
       var loop = true
       while loop {
         switch descriptor.shape {
         case .line :
-          bp.line (to: descriptor.p2.ptValue)
+          bp.line (to: descriptor.p2)
         case .bezier :
-          let cp1 = descriptor.cp1.ptValue
-          let cp2 = descriptor.cp2.ptValue
-          bp.cubic (to: descriptor.p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
+          let cp1 = descriptor.cp1
+          let cp2 = descriptor.cp2
+          bp.cubic (to: descriptor.p2, controlPoint1: cp1, controlPoint2: cp2)
         }
         descriptor = curveDictionary [descriptor.p2]!
         loop = p != descriptor.p1
@@ -718,15 +718,15 @@ extension AutoLayoutProjectDocument {
         case .moveTo:
           closedPathCount += 1
           if closedPathCount == retainedClosedPath {
-            retainedBP.move (to: points[0])
+            retainedBP.move (to: points[0].canariPoint)
           }
         case .lineTo:
           if closedPathCount == retainedClosedPath {
-            retainedBP.line (to: points[0])
+            retainedBP.line (to: points[0].canariPoint)
           }
         case .curveTo:
           if closedPathCount == retainedClosedPath {
-            retainedBP.cubic (to: points[2], controlPoint1: points[0], controlPoint2: points[1])
+            retainedBP.cubic (to: points[2].canariPoint, controlPoint1: points[0].canariPoint, controlPoint2: points[1].canariPoint)
           }
         case .closePath:
           if closedPathCount == retainedClosedPath {

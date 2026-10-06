@@ -34,14 +34,14 @@ import CanariGeometry
     let height = self_height
     var bp = BezierPath ()
     if (self_width <= .zero) && (self_height <= .zero) { // Oval is a point
-      bp.move (to: NSPoint (x: x, y: y))
-      bp.line (to: NSPoint (x: x, y: y))
+      bp.move (to: CanariPoint (x: x, y: y))
+      bp.line (to: CanariPoint (x: x, y: y))
     }else if self_width <= .zero { // Vertical line
-      bp.move (to: NSPoint (x: x, y: y))
-      bp.line (to: NSPoint (x: x, y: y + height))
+      bp.move (to: CanariPoint (x: x, y: y))
+      bp.line (to: CanariPoint (x: x, y: y + height))
     }else if self_height <= .zero { // Horizontal line
-      bp.move (to: NSPoint (x: x, y: y))
-      bp.line (to: NSPoint (x: x + width, y: y))
+      bp.move (to: CanariPoint (x: x, y: y))
+      bp.line (to: CanariPoint (x: x + width, y: y))
     }else{
       let r = CanariRect (left: x, bottom: y, width: width, height: height)
       bp.appendRect (r)

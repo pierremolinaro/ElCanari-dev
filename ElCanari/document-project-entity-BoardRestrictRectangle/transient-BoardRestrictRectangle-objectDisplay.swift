@@ -49,14 +49,14 @@ import CanariGeometry
           bp.lineCapStyle = .round
           var x = inRect.minX + inOffset * GRID_INTERVAL
           while x < inRect.maxX {
-            bp.move (to: NSPoint (x: x, y: inRect.minY))
-            bp.relativeLine (to: NSPoint (x: lg, y: lg))
+            bp.move (to: CanariPoint (x: x, y: inRect.minY))
+            bp.relativeLine (to: CanariPoint (x: lg, y: lg))
             x += GRID_INTERVAL * 6.0
           }
           var y = inRect.minY + GRID_INTERVAL * 6.0 - inOffset * GRID_INTERVAL
           while y < inRect.maxY {
-            bp.move (to: NSPoint (x: inRect.minX, y: y))
-            bp.relativeLine (to: NSPoint (x: lg, y: lg))
+            bp.move (to: CanariPoint (x: inRect.minX, y: y))
+            bp.relativeLine (to: CanariPoint (x: lg, y: lg))
             y += GRID_INTERVAL * 6.0
           }
           return bp

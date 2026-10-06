@@ -310,8 +310,8 @@ extension BoardTrack {
       bp.lineCapStyle = .square
     }
     bp.lineJoinStyle = .round
-    bp.move (to: self.mConnectorP1!.location!.ptValue)
-    bp.line (to: self.mConnectorP2!.location!.ptValue)
+    bp.move (to: self.mConnectorP1!.location!)
+    bp.line (to: self.mConnectorP2!.location!)
     return bp.pathToFillByStroking
   }
 

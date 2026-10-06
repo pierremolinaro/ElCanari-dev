@@ -88,15 +88,15 @@ import CanariGeometry
       //---
         var bp = BezierPath (rect: CanariRect (left: OFFSET, bottom: OFFSET, width: sheetWidth, height: sheetHeight))
         bp.appendRect (CanariRect (left: PAPER_GUTTER_WIDTH + OFFSET, bottom: PAPER_GUTTER_HEIGHT + OFFSET, width: sheetWidth - PAPER_GUTTER_WIDTH * 2.0, height: sheetHeight - PAPER_GUTTER_HEIGHT * 2.0))
-        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: PAPER_GUTTER_HEIGHT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: .zero, y: LINE_HEIGHT * 3.0))
-        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
-        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
-        bp.move (to: NSPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 2.0 + PAPER_GUTTER_HEIGHT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
-        bp.move (to: NSPoint (x: sheetWidth - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT + OFFSET))
-        bp.relativeLine (to: NSPoint (x: .zero, y: LINE_HEIGHT * 2.0))
+        bp.move (to: CanariPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: CanariPoint (x: .zero, y: LINE_HEIGHT * 3.0))
+        bp.relativeLine (to: CanariPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
+        bp.move (to: CanariPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: CanariPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
+        bp.move (to: CanariPoint (x: sheetWidth - LEFT_COLUMN - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT * 2.0 + PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: CanariPoint (x: LEFT_COLUMN + RIGHT_COLUMN, y: .zero))
+        bp.move (to: CanariPoint (x: sheetWidth - RIGHT_COLUMN - PAPER_GUTTER_WIDTH + OFFSET, y: LINE_HEIGHT + PAPER_GUTTER_HEIGHT + OFFSET))
+        bp.relativeLine (to: CanariPoint (x: .zero, y: LINE_HEIGHT * 2.0))
      //--- Draw vertical marks
        var p = CanariPoint (x: PAPER_GUTTER_WIDTH * 0.5 + OFFSET, y: PAPER_GUTTER_HEIGHT + vIncrement * 0.5 + OFFSET)
        for mark in 0 ..< vMarks {
@@ -124,19 +124,19 @@ import CanariGeometry
     //--- Draw vertical separators
       p = CanariPoint (x: OFFSET, y: PAPER_GUTTER_HEIGHT + OFFSET)
       for _ in 0 ... vMarks {
-        bp.move (to: p.ptValue)
-        bp.relativeLine (to: NSPoint (x: PAPER_GUTTER_WIDTH, y: .zero))
-        bp.relativeMove (to: NSPoint (x: sheetWidth - 2.0 * PAPER_GUTTER_WIDTH, y: .zero))
-        bp.relativeLine (to: NSPoint (x: PAPER_GUTTER_WIDTH, y: .zero))
+        bp.move (to: p)
+        bp.relativeLine (to: CanariPoint (x: PAPER_GUTTER_WIDTH, y: .zero))
+        bp.relativeMove (to: CanariPoint (x: sheetWidth - 2.0 * PAPER_GUTTER_WIDTH, y: .zero))
+        bp.relativeLine (to: CanariPoint (x: PAPER_GUTTER_WIDTH, y: .zero))
         p.y += vIncrement
       }
     //--- Draw horizontal separators
       p = CanariPoint (x: PAPER_GUTTER_WIDTH + OFFSET, y: OFFSET)
       for _ in 0 ... hMarks {
-        bp.move (to: p.ptValue)
-        bp.relativeLine (to: NSPoint (x: .zero, y: PAPER_GUTTER_HEIGHT))
-        bp.relativeMove (to: NSPoint (x: .zero, y: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT))
-        bp.relativeLine (to: NSPoint (x: .zero, y: PAPER_GUTTER_HEIGHT))
+        bp.move (to: p)
+        bp.relativeLine (to: CanariPoint (x: .zero, y: PAPER_GUTTER_HEIGHT))
+        bp.relativeMove (to: CanariPoint (x: .zero, y: sheetHeight - 2.0 * PAPER_GUTTER_HEIGHT))
+        bp.relativeLine (to: CanariPoint (x: .zero, y: PAPER_GUTTER_HEIGHT))
         p.x += hIncrement
       }
     //---
