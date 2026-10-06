@@ -39,11 +39,11 @@ import CanariGeometry
     switch self_padStyle {
     case .traversing :
       var shape = EBShape (filled: [bp], .clear)
-      let xCenter = self_xCenter.ptValue
-      let yCenter = self_yCenter.ptValue
-      let holeWidth = self_holeWidth.ptValue
-      let holeHeight = self_holeHeight.ptValue
-      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      let xCenter = self_xCenter
+      let yCenter = self_yCenter
+      let holeWidth = self_holeWidth
+      let holeHeight = self_holeHeight
+      let rHole = CanariRect (left: xCenter - holeWidth / 2.0, bottom: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
       if prefs_displayPackageFrontSidePads {

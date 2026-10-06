@@ -176,8 +176,8 @@ import CanariGeometry
         }
         let pinCenterX = (minX + maxX) / 2.0
         let pinCenterY = (minY + maxY) / 2.0
-        resultOffset.x = .pt (symbolShape.boundingBox.midX) - pinCenterX
-        resultOffset.y = .pt (symbolShape.boundingBox.midY) - pinCenterY
+        resultOffset.x = symbolShape.boundingBox.midX - pinCenterX
+        resultOffset.y = symbolShape.boundingBox.midY - pinCenterY
         resultOffset = af.transforming (resultOffset)
       }
     }else if self.mUnplacedPackageTableViewArray.contains (inSourceTableView),
@@ -212,8 +212,8 @@ import CanariGeometry
         }
         let centerX = (minX + maxX) / 2.0
         let centerY = (minY + maxY) / 2.0
-        resultOffset.x = .pt (packageShape.boundingBox.midX) - centerX
-        resultOffset.y = .pt (packageShape.boundingBox.midY) - centerY
+        resultOffset.x = packageShape.boundingBox.midX - centerX
+        resultOffset.y = packageShape.boundingBox.midY - centerY
         resultOffset = af.transforming (resultOffset)
       }
     }

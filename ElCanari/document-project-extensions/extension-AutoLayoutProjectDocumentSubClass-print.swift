@@ -140,7 +140,7 @@ extension AutoLayoutProjectDocumentSubClass {
       let pageWidth  : CanariLength
       let pageHeight : CanariLength
   //--- Board Bound box
-      let printViewFrame : NSRect = boardView.contentsBoundingBox
+      let printViewFrame = boardView.contentsBoundingBox
       if printViewFrame.size.width > printViewFrame.size.height {
         pageWidth = PAPER_A4_MAX_SIZE
         pageHeight = PAPER_A4_MIN_SIZE
@@ -151,13 +151,13 @@ extension AutoLayoutProjectDocumentSubClass {
         orientation = .portrait
       }
     //--- Draw Board
-      let data = boardView.dataWithPDF (inside: printViewFrame)
-      let imageView = NSImageView (frame: printViewFrame)
+      let data = boardView.dataWithPDF (inside: printViewFrame.ptValue)
+      let imageView = NSImageView (frame: printViewFrame.ptValue)
       imageView.image = NSImage (data: data)
     //--- Scaling factor
       let printableWidth = pageWidth - PAPER_LEFT_MARGIN - PAPER_RIGHT_MARGIN - .pt (2.0)
       let printableHeight = pageHeight - PAPER_BOTTOM_MARGIN - PAPER_TOP_MARGIN - .pt (2.0)
-      let scalingFactor = min (1.0, printableWidth / .pt (printViewFrame.size.width), printableHeight / .pt (printViewFrame.size.height))
+      let scalingFactor = min (1.0, printableWidth / printViewFrame.size.width, printableHeight / printViewFrame.size.height)
     //---
       let printInfo = NSPrintInfo.shared
 //     Swift.print ("\(printInfo.imageablePageBounds)")

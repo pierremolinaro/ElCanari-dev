@@ -312,11 +312,11 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var bounds : NSRect {
+  var bounds : CanariRect {
     if self.mPath.isEmpty {
-      return .null
+      return .empty
     }else{
-      return self.mPath.bounds
+      return self.mPath.bounds.canariRect
     }
   }
 
@@ -342,10 +342,10 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func intersects (rect inRect : NSRect) -> Bool {
+  func intersects (rect inRect : CanariRect) -> Bool {
     var intersect = self.bounds.intersects (inRect)
     if intersect {
-      intersect = self.mPath.contains (inRect.origin) // Bottom left
+      intersect = self.mPath.contains (inRect.origin.ptValue) // Bottom left
       if !intersect {
         intersect = self.mPath.contains (NSPoint (x: inRect.minX, y: inRect.maxY)) // Top left
       }
@@ -357,17 +357,17 @@ struct BezierPath : Hashable {
       }
       if !intersect {
         var points = [NSPoint] (repeating: .zero, count: 3)
-        var currentPoint = NSPoint ()
+        var currentPoint = CanariPoint ()
         let flattenedPath = self.mPath.flattened
         var idx = 0
-        while (idx < flattenedPath.elementCount) && !intersect {
+        while idx < flattenedPath.elementCount, !intersect {
           let type = unsafe flattenedPath.element (at: idx, associatedPoints: &points)
           idx += 1
           switch type {
           case .moveTo:
-            currentPoint = points [0]
+            currentPoint = points [0].canariPoint
           case .lineTo:
-            let p = points [0]
+            let p = points [0].canariPoint
             let possibleResultSegment = inRect.clippedSegment (p1: currentPoint, p2: p)
             intersect = possibleResultSegment != nil
             currentPoint = p
@@ -475,21 +475,6 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (oblongInRect inRect : NSRect) {
-    self.init ()
-    let width = inRect.size.width
-    let height = inRect.size.height
-    if width < height {
-      self.mPath.appendRoundedRect (inRect, xRadius: width / 2.0, yRadius: width / 2.0)
-    }else if width > height {
-      self.mPath.appendRoundedRect (inRect, xRadius: height / 2.0, yRadius: height / 2.0)
-    }else{
-      self.mPath.appendOval (in: inRect)
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   init (oblongInRect inRect : CanariRect) {
     self.init ()
     let r = inRect.ptValue
@@ -506,55 +491,55 @@ struct BezierPath : Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendOblong (in inRect : NSRect) {
+  mutating func appendOblong (in inRect : CanariRect) {
     self.internalInsulatePath ()
     let width = inRect.size.width
     let height = inRect.size.height
     if width < height {
-      self.mPath.appendRoundedRect (inRect, xRadius: width / 2.0, yRadius: width / 2.0)
+      self.mPath.appendRoundedRect (inRect.ptValue, xRadius: width.ptValue / 2.0, yRadius: width.ptValue / 2.0)
     }else if width > height {
-      self.mPath.appendRoundedRect (inRect, xRadius: height / 2.0, yRadius: height / 2.0)
+      self.mPath.appendRoundedRect (inRect.ptValue, xRadius: height.ptValue / 2.0, yRadius: height.ptValue / 2.0)
     }else{
-      self.mPath.appendOval (in: inRect)
+      self.mPath.appendOval (in: inRect.ptValue)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating func appendOblong (in inRect : CanariRect) {
-    self.internalInsulatePath ()
-    let r = inRect.ptValue
-    let width = inRect.size.width.ptValue
-    let height = inRect.size.height.ptValue
-    if width < height {
-      self.mPath.appendRoundedRect (r, xRadius: width / 2.0, yRadius: width / 2.0)
-    }else if width > height {
-      self.mPath.appendRoundedRect (r, xRadius: height / 2.0, yRadius: height / 2.0)
-    }else{
-      self.mPath.appendOval (in: r)
-    }
-  }
+//  mutating func appendOblong (in inRect : CanariRect) {
+//    self.internalInsulatePath ()
+//    let r = inRect.ptValue
+//    let width = inRect.size.width.ptValue
+//    let height = inRect.size.height.ptValue
+//    if width < height {
+//      self.mPath.appendRoundedRect (r, xRadius: width / 2.0, yRadius: width / 2.0)
+//    }else if width > height {
+//      self.mPath.appendRoundedRect (r, xRadius: height / 2.0, yRadius: height / 2.0)
+//    }else{
+//      self.mPath.appendOval (in: r)
+//    }
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (octogonInRect inRect : NSRect) {
-    self.init ()
-    let s2 : CGFloat = sqrt (2.0)
-    let w = inRect.size.width
-    let h = inRect.size.height
-    let x = inRect.origin.x
-    let y = inRect.origin.y
-    let lg = min (w, h) / (1.0 + s2)
-    self.mPath.move (to: NSPoint (x: x + lg / s2,     y: y + h))
-    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
-    self.mPath.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
-    self.mPath.line (to: NSPoint (x: x + w,           y: y + lg / s2))
-    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y))
-    self.mPath.line (to: NSPoint (x: x + lg / s2,     y: y))
-    self.mPath.line (to: NSPoint (x: x,               y: y + lg / s2))
-    self.mPath.line (to: NSPoint (x: x,               y: y + h - lg / s2))
-    self.mPath.close ()
-  }
+//  init (octogonInRect inRect : NSRect) {
+//    self.init ()
+//    let s2 : CGFloat = sqrt (2.0)
+//    let w = inRect.size.width
+//    let h = inRect.size.height
+//    let x = inRect.origin.x
+//    let y = inRect.origin.y
+//    let lg = min (w, h) / (1.0 + s2)
+//    self.mPath.move (to: NSPoint (x: x + lg / s2,     y: y + h))
+//    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
+//    self.mPath.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
+//    self.mPath.line (to: NSPoint (x: x + w,           y: y + lg / s2))
+//    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y))
+//    self.mPath.line (to: NSPoint (x: x + lg / s2,     y: y))
+//    self.mPath.line (to: NSPoint (x: x,               y: y + lg / s2))
+//    self.mPath.line (to: NSPoint (x: x,               y: y + h - lg / s2))
+//    self.mPath.close ()
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -758,11 +743,11 @@ extension Array where Element == BezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var boundingBox : NSRect {
-   var r = NSRect.null
+  var boundingBox : CanariRect {
+   var r = CanariRect.empty
    for path in self {
      if !path.isEmpty {
-       r = r.union (path.bounds)
+       r = r.unioning (path.bounds)
      }
    }
    return r

@@ -39,11 +39,11 @@ import CanariGeometry
           r = r.unioning (filledBezierPath.bounds.canariRect)
         }
       //--- Pin names
-        r = r.unioning (pinNameShape.boundingBox.canariRect)
+        r = r.unioning (pinNameShape.boundingBox)
       //--- Pin numbers
         for p in self_mPinInstances_numberShape {
           if let s = p.numberShape {
-            r = r.unioning (s.boundingBox.canariRect)
+            r = r.unioning (s.boundingBox)
           }
         }
       //--- Frame
@@ -52,7 +52,7 @@ import CanariGeometry
         let nameTextAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
         ]
-        let nameShapeSize = CanariSize (pt: EBShape (text: self_symbolQualifiedName, CanariPoint (), nameTextAttributes, .center, .above).boundingBox.size)
+        let nameShapeSize = EBShape (text: self_symbolQualifiedName, CanariPoint (), nameTextAttributes, .center, .above).boundingBox.size
         r = r.insetBy (dx: -VERTICAL_MARGIN, dy: -VERTICAL_MARGIN)
         if nameShapeSize.width > r.size.width {
           r = r.insetBy (dx: (r.size.width - nameShapeSize.width) / 2.0)

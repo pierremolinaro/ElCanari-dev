@@ -172,7 +172,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
           transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
         }
         let displayShape = draggedObject.graphicObject.objectDisplay!.transformed (by: transform)
-        let rect : NSRect = displayShape.boundingBox
+        let rect = displayShape.boundingBox
         if rect.isEmpty {
           let alert = NSAlert ()
           alert.messageText = "Internal error"
@@ -181,7 +181,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
         }else{
           let image = buildPDFimage (frame: rect, shape: displayShape)
         //--- Move image rect origin to mouse click location
-          let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+          let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil).canariPoint
           var r = rect
           r.origin.x += mouseDownLocation.x
           r.origin.y += mouseDownLocation.y
@@ -196,7 +196,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
           ]
           pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
         //--- Set dragged image
-          draggingItem.setDraggingFrame (r, contents: image)
+          draggingItem.setDraggingFrame (r.ptValue, contents: image)
         //--- Begin
           _ = self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
         }
@@ -211,7 +211,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
           transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
         }
         let displayShape = shape.transformed (by: transform)
-        let rect : NSRect = displayShape.boundingBox
+        let rect = displayShape.boundingBox
         if rect.isEmpty {
           let alert = NSAlert ()
           alert.messageText = "Internal error"
@@ -220,7 +220,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
         }else{
           let image = buildPDFimage (frame: rect, shape: displayShape)
         //--- Move image rect origin to mouse click location
-          let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+          let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil).canariPoint
           var r = rect
           r.origin.x += mouseDownLocation.x
           r.origin.y += mouseDownLocation.y
@@ -233,7 +233,7 @@ final class AutoLayoutDragSourceButton : ALB_NSButton, NSDraggingSource {
           ]
           pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
         //--- Set dragged image
-          draggingItem.setDraggingFrame (r, contents: image)
+          draggingItem.setDraggingFrame (r.ptValue, contents: image)
         //--- Begin
           _ = self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
         }

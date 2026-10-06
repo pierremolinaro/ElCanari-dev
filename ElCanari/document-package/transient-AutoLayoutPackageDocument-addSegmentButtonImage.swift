@@ -22,7 +22,7 @@ import CanariGeometry
         if let displayShape = temporaryObject.objectDisplay {
           let r = displayShape.boundingBox
           if !r.isEmpty {
-            return buildPDFimage (frame: r.insetBy(dx: -2.0, dy: -2.0), shape: displayShape)
+            return buildPDFimage (frame: r.insetBy(dx: .pt (-2.0), dy: .pt (-2.0)), shape: displayShape)
           }else{
             return NSImage (named: NSImage.statusPartiallyAvailableName)!
           }

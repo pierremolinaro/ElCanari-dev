@@ -78,7 +78,7 @@ extension EBGraphicView : NSDraggingSource {
     let hasVerticalFlip   : CGFloat = self.verticalFlip   ? -1.0 : 1.0
     let transform = CanariAffinity
       .scaling (x: self.actualScale * hasHorizontalFlip, y: self.actualScale * hasVerticalFlip)
-      .translating (x: .pt (-displayShape.boundingBox.minX), y: .pt (-displayShape.boundingBox.minY))
+      .translating (x: -displayShape.boundingBox.minX, y: -displayShape.boundingBox.minY)
     let finalShape = displayShape.transformed (by: transform)
   //--- Build image
     let rect = finalShape.boundingBox

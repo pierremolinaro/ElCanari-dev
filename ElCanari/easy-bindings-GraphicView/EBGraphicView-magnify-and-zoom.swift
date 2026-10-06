@@ -29,7 +29,7 @@ extension EBGraphicView {
 
   final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
-      var box = self.contentsBoundingBox.canariRect
+      var box = self.contentsBoundingBox
       self.mWorkingArea?.union (withRect: &box)
       if self.mZoomPropertyCache == 0 {
         if !box.isEmpty {

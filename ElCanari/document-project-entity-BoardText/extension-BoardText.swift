@@ -297,10 +297,10 @@ extension BoardText {
       stringWidth += .pt (CGFloat (characterDescriptor.advancement) * fontFactor)
     }
   }
-  let bounds = bp.bounds.canariRect
+  let bounds = bp.bounds
   var frameBP = BezierPath ()
   if !bp.isEmpty {
-    frameBP.appendRect (bp.bounds.canariRect.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
+    frameBP.appendRect (bp.bounds.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
   }
   var tr = CanariAffinity
     .translating (x: self_mX, y: self_mY)

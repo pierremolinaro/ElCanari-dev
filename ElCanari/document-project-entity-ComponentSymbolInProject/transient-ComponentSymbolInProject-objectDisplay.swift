@@ -35,8 +35,8 @@ import CanariGeometry
         var shape = EBShape ()
         let strokeShape = EBShape (stroke: [BezierPath (self_symbolInfo.strokeBezierPath)], prefs_symbolColorForSchematic)
         let filledPath = EBShape (filled: [BezierPath (self_symbolInfo.filledBezierPath)], prefs_symbolColorForSchematic)
-        let box = filledPath.boundingBox.union (strokeShape.boundingBox)
-        shape.add (filled: [BezierPath (rect: box.canariRect)], nil)
+        let box = filledPath.boundingBox.unioning (strokeShape.boundingBox)
+        shape.add (filled: [BezierPath (rect: box)], nil)
         shape.add (strokeShape)
         shape.add (filledPath)
      

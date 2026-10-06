@@ -25,14 +25,14 @@ import CanariGeometry
         switch self_mBoardShape {
         case .bezierPathes :
           if self_mBorderCurves_descriptor.count == 4 {
-            var minX = CGFloat.greatestFiniteMagnitude
-            var maxX = CGFloat.leastNormalMagnitude
-            var minY = CGFloat.greatestFiniteMagnitude
-            var maxY = CGFloat.leastNormalMagnitude
+            var minX = CanariLength.max
+            var maxX = CanariLength.min
+            var minY = CanariLength.max
+            var maxY = CanariLength.min
             for limit in self_mBorderCurves_descriptor {
               let descriptor = limit.descriptor!
-              let p1 = descriptor.p1.ptValue
-              let p2 = descriptor.p2.ptValue
+              let p1 = descriptor.p1
+              let p2 = descriptor.p2
               switch descriptor.shape {
               case .line :
                 minX = min (minX, p1.x, p2.x)
@@ -43,8 +43,8 @@ import CanariGeometry
                 let cp1 = descriptor.cp1.ptValue
                 let cp2 = descriptor.cp2.ptValue
                 var bp = BezierPath ()
-                bp.move (to: p1)
-                bp.cubic (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+                bp.move (to: p1.ptValue)
+                bp.cubic (to: p2.ptValue, controlPoint1: cp1, controlPoint2: cp2)
                 let r = bp.bounds
                 minX = min (minX, r.minX)
                 maxX = max (maxX, r.maxX)

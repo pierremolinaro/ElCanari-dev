@@ -56,12 +56,12 @@ import CanariGeometry
         packageShape.add (stroke: [bp], .black) // Any color
       }
       let MARGIN = CanariLength.pt (1.0)
-      var r = packageShape.boundingBox.canariRect.insetBy (dx: -MARGIN, dy: -MARGIN)
+      var r = packageShape.boundingBox.insetBy (dx: -MARGIN, dy: -MARGIN)
     //--- Package Name
       let nameTextAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
       ]
-      let nameShapeSize = EBShape (text: self_mName, CanariPoint (), nameTextAttributes, .center, .above).boundingBox.size.canariSize
+      let nameShapeSize = EBShape (text: self_mName, CanariPoint (), nameTextAttributes, .center, .above).boundingBox.size
       if nameShapeSize.width > r.width {
         r = r.insetBy (dx: (r.width - nameShapeSize.width) / 2.0)
       }

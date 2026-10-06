@@ -23,7 +23,7 @@ import CanariGeometry
         bp.lineJoinStyle = .round
         let shape = EBShape (stroke: [bp], prefs_padZoneColor)
         let r = shape.boundingBox
-        return buildPDFimage (frame: r.insetBy (dx: -2.0, dy: -2.0), shape: shape)
+        return buildPDFimage (frame: r.insetBy (dx: .pt (-2.0), dy: .pt (-2.0)), shape: shape)
 //--- END OF USER ZONE 2
 }
 

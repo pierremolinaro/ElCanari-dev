@@ -198,7 +198,7 @@ extension EBGraphicView {
     var result = Set <Int> ()
     var idx = 0
     for object in self.mObjectDisplayArray {
-      if object.intersects (rect: inRect) {
+      if object.intersects (rect: inRect.canariRect) {
         result.insert (idx)
       }
       idx += 1

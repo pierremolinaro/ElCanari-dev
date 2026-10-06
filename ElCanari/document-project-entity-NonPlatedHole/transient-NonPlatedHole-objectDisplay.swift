@@ -29,7 +29,7 @@ import CanariGeometry
           center: .zero,
           size: CanariSize (width: self_mWidth, height: self_mHeight)
         )
-        let bp = BezierPath (oblongInRect: r.ptValue).transformed (by: af)
+        let bp = BezierPath (oblongInRect: r).transformed (by: af)
         shape.add (filled: [bp], prefs_nonPlatedHoleColorForBoard)
         return shape
 //--- END OF USER ZONE 2

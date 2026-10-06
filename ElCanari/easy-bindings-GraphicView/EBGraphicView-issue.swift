@@ -17,8 +17,8 @@ extension EBGraphicView {
       self.mIssueKind = issueKind
       self.setNeedsDisplayAndUpdateViewBounds ()
       if !box.isEmpty {
-        self.setNeedsDisplay (box.insetBy (dx: -1.0, dy: -1.0))
-        _ = self.scrollToVisible (box)
+        self.setNeedsDisplay (box.ptValue.insetBy (dx: -1.0, dy: -1.0))
+        _ = self.scrollToVisible (box.ptValue)
       }
     }
   }

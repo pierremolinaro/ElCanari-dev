@@ -69,7 +69,7 @@ import CanariGeometry
         var shape = EBShape ()
         if display {
           let textShape = EBShape (stroke: [textBP], textColor)
-          let backgroundBP = BezierPath (rect: textShape.boundingBox.canariRect)
+          let backgroundBP = BezierPath (rect: textShape.boundingBox)
         //--- Transparent background
           shape.add (filled: [backgroundBP], nil)
           shape.add (textShape)

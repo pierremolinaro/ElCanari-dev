@@ -56,7 +56,7 @@ import CanariGeometry
          ]
          var shape = EBShape ()
          shape.add (text: zoneName, p, textAttributes, .center, .center)
-         issues.appendDuplicatedZoneNameIssueIn (rect: shape.boundingBox.canariRect)
+         issues.appendDuplicatedZoneNameIssueIn (rect: shape.boundingBox)
        }
        idx += 1
      }

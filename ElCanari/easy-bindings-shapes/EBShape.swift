@@ -264,11 +264,11 @@ struct EBShape : Hashable {
   //  Accessors
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var boundingBox : NSRect {
+  var boundingBox : CanariRect {
     if let sharedObject = self.mSharedObject {
       return sharedObject.boundingBox
     }else{
-      return .null
+      return .empty
     }
   }
 
@@ -300,7 +300,7 @@ struct EBShape : Hashable {
   //   intersects
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func intersects (rect inRect : NSRect) -> Bool {
+  func intersects (rect inRect : CanariRect) -> Bool {
     if let sharedObject = self.mSharedObject {
       return sharedObject.intersects (rect: inRect)
     }else{
@@ -330,7 +330,7 @@ fileprivate final class EBShapeObject {
 
   private var mElements : [EBShapeElement]
   private var mToolTips : [EBToolTip]
-  private var mCachedBoundingBox : NSRect
+  private var mCachedBoundingBox : CanariRect
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  init
@@ -339,7 +339,7 @@ fileprivate final class EBShapeObject {
   init () {
     self.mElements = [EBShapeElement] ()
     self.mToolTips = [EBToolTip] ()
-    self.mCachedBoundingBox = NSRect.null
+    self.mCachedBoundingBox = CanariRect.empty
     noteObjectAllocation (self)
   }
 
@@ -365,7 +365,7 @@ fileprivate final class EBShapeObject {
   func add (_ inShape : EBShapeObject) {
     self.mElements += inShape.mElements
     self.mToolTips += inShape.mToolTips
-    self.mCachedBoundingBox = self.mCachedBoundingBox.union (inShape.mCachedBoundingBox)
+    self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (inShape.mCachedBoundingBox)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -383,7 +383,7 @@ fileprivate final class EBShapeObject {
     if nonEmptyBezierPathes.count > 0 {
       let e = EBShapeElement (nonEmptyBezierPathes, .fill, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
     }
   }
 
@@ -407,12 +407,12 @@ fileprivate final class EBShapeObject {
     if filledBezierPathes.count > 0 {
       let e = EBShapeElement (filledBezierPathes, .fill, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
     }
     if strokeBezierPathes.count > 0 {
       let e = EBShapeElement (strokeBezierPathes, .strokeThinnestLine, inColor, inKnobIndex, inClipRule)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
     }
   }
 
@@ -449,7 +449,7 @@ fileprivate final class EBShapeObject {
   //--- Background
     let e = EBShapeElement ([bp], .fill, backColor, inKnobIndex, .none)
     self.mElements.append (e)
-    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+    self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
   //--- Line
     bp.lineWidth = CanariLength.zero // Thinnest line
     bp.lineCapStyle = .round
@@ -482,20 +482,20 @@ fileprivate final class EBShapeObject {
       )
     //--- Append background ?
       if let backColor = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
-        let bp = BezierPath (rect: filledBezierPath.bounds.canariRect)
+        let bp = BezierPath (rect: filledBezierPath.bounds)
         let e = EBShapeElement ([bp], .fill, backColor, nil, .none)
         self.mElements.append (e)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
       }else{
-        let bp = BezierPath (rect: filledBezierPath.bounds.canariRect)
+        let bp = BezierPath (rect: filledBezierPath.bounds)
         let e = EBShapeElement ([bp], .fill, nil, nil, .none)
         self.mElements.append (e)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
      }
     //--- Append text
       let e = EBShapeElement ([filledBezierPath], .fill, textColor, nil, .none)
       self.mElements.append (e)
-      self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+      self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
     }
   }
 
@@ -528,7 +528,7 @@ fileprivate final class EBShapeObject {
     do{
       switch inKnobKind {
       case .circ :
-        var bp = BezierPath (roundedRect: filledBezierPath.bounds.canariRect.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)), xRadius: .pt (2.0), yRadius: .pt (2.0))
+        var bp = BezierPath (roundedRect: filledBezierPath.bounds.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)), xRadius: .pt (2.0), yRadius: .pt (2.0))
         bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -536,9 +536,9 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e1)
         let e2 = EBShapeElement ([bp.pathToFillByStroking], .fill, .cyan, inKnobIndex, .none)
         self.mElements.append (e2)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e2.boundingBox)
       case .diamond :
-        var bp = BezierPath (octogonInRect: filledBezierPath.bounds.insetBy (dx: -1.0, dy: -1.0))
+        var bp = BezierPath (octogonInRect: filledBezierPath.bounds.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
         bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -546,9 +546,9 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e1)
         let e2 = EBShapeElement ([bp.pathToFillByStroking], .fill, .cyan, inKnobIndex, .none)
         self.mElements.append (e2)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e2.boundingBox)
       case .rect :
-        var bp = BezierPath (rect: filledBezierPath.bounds.canariRect.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
+        var bp = BezierPath (rect: filledBezierPath.bounds.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
         bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
@@ -556,21 +556,21 @@ fileprivate final class EBShapeObject {
         self.mElements.append (e1)
         let e2 = EBShapeElement ([bp.pathToFillByStroking], .fill, .cyan, inKnobIndex, .none)
         self.mElements.append (e2)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e2.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e2.boundingBox)
       case .transparentCircle :
-        var bp = BezierPath (rect: filledBezierPath.bounds.canariRect)
+        var bp = BezierPath (rect: filledBezierPath.bounds)
         bp.lineWidth = CanariLength.pt (0.1)
         bp.lineJoinStyle = .round
         bp.lineCapStyle = .round
         let e1 = EBShapeElement ([bp], .fill, .clear, inKnobIndex, .none)
         self.mElements.append (e1)
-        self.mCachedBoundingBox = self.mCachedBoundingBox.union (e1.boundingBox)
+        self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e1.boundingBox)
       }
     }
   //--- Append text
     let e = EBShapeElement ([filledBezierPath], .fill, inForeColor, inKnobIndex, .none)
     self.mElements.append (e)
-    self.mCachedBoundingBox = self.mCachedBoundingBox.union (e.boundingBox)
+    self.mCachedBoundingBox = self.mCachedBoundingBox.unioning (e.boundingBox)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -585,7 +585,7 @@ fileprivate final class EBShapeObject {
 
   @MainActor func installToolTips (toView inView : EBGraphicView) {
     for tooltip in self.mToolTips {
-      _ = unsafe inView.addToolTip (tooltip.path.bounds, owner: tooltip.string, userData: nil)
+      _ = unsafe inView.addToolTip (tooltip.path.bounds.ptValue, owner: tooltip.string, userData: nil)
     }
   }
 
@@ -594,9 +594,10 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func draw (_ inDirtyRect : NSRect) {
-    if self.mCachedBoundingBox.intersects (inDirtyRect) {
+    let dirtyRect = inDirtyRect.canariRect
+    if self.mCachedBoundingBox.intersects (dirtyRect) {
       for element in self.mElements {
-        if element.boundingBox.intersects (inDirtyRect) {
+        if element.boundingBox.intersects (dirtyRect) {
           element.draw (inDirtyRect)
         }
       }
@@ -607,7 +608,7 @@ fileprivate final class EBShapeObject {
   // boundingBox
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var boundingBox : NSRect {
+  var boundingBox : CanariRect {
     return self.mCachedBoundingBox
   }
 
@@ -615,7 +616,7 @@ fileprivate final class EBShapeObject {
   //   intersects
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func intersects (rect inRect : NSRect) -> Bool {
+  func intersects (rect inRect : CanariRect) -> Bool {
     if self.mCachedBoundingBox.intersects (inRect) {
       for element in self.mElements {
         if element.intersects (rect: inRect) {
@@ -631,7 +632,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func contains (point inPoint : CanariPoint) -> Bool {
-    if self.mCachedBoundingBox.canariRect.contains (inPoint) {
+    if self.mCachedBoundingBox.contains (inPoint) {
       for element in self.mElements {
         if element.contains (point: inPoint) {
           return true
@@ -646,7 +647,7 @@ fileprivate final class EBShapeObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func knobIndex (at inPoint : CanariPoint) -> Int? {
-    if self.mCachedBoundingBox.canariRect.contains (inPoint) {
+    if self.mCachedBoundingBox.contains (inPoint) {
       for element in self.mElements.reversed () {
         if let idx = element.knobIndex (at: inPoint) {
           return idx
@@ -665,7 +666,7 @@ fileprivate final class EBShapeObject {
     for element in self.mElements {
       let newElement = element.transformed (by: inAffineTransform)
       result.mElements.append (newElement)
-      result.mCachedBoundingBox = result.mCachedBoundingBox.union (newElement.boundingBox)
+      result.mCachedBoundingBox = result.mCachedBoundingBox.unioning (newElement.boundingBox)
     }
     for tooltip in self.mToolTips {
       result.mToolTips.append (EBToolTip (path: tooltip.path.transformed (by: inAffineTransform), string: tooltip.string))
@@ -792,7 +793,7 @@ fileprivate final class EBShapeElement {
         clipBezierPath.addClip ()
       case .outside (let clipBezierPath) :
         NSGraphicsContext.saveGraphicsState ()
-        let clip = NSBezierPath (rect: self.boundingBox)
+        let clip = NSBezierPath (rect: self.boundingBox.ptValue)
         clip.append (clipBezierPath.reversed.nsBezierPath)
         clip.setClip ()
       }
@@ -823,14 +824,14 @@ fileprivate final class EBShapeElement {
   // boundingBox
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var boundingBox : NSRect {
-    var r = NSRect.null
+  var boundingBox : CanariRect {
+    var r = CanariRect.empty
     for bp in self.mPathes {
       switch self.mKind {
       case .fill :
-        r = r.union (bp.bounds)
+        r = r.unioning (bp.bounds)
       case .strokeThinnestLine :
-        r = r.union (bp.bounds.insetBy (dx: -1.0, dy: -1.0))
+        r = r.unioning (bp.bounds.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
       }
     }
     switch self.mClipRule {
@@ -887,7 +888,7 @@ fileprivate final class EBShapeElement {
   //   intersects
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func intersects (rect inRect : NSRect) -> Bool {
+  func intersects (rect inRect : CanariRect) -> Bool {
     let ok : Bool
     switch self.mClipRule {
     case .none :

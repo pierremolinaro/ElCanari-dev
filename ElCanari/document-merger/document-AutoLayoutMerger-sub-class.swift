@@ -146,7 +146,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         bp.lineWidth = CanariLength.pt (1.0)
         var shape = EBShape ()
         shape.add (stroke: [bp], NSColor.gray)
-        resultImage = buildPDFimage (frame: r.ptValue, shape: shape, backgroundColor: .gray.withAlphaComponent (0.25))
+        resultImage = buildPDFimage (frame: r, shape: shape, backgroundColor: .gray.withAlphaComponent (0.25))
       }
     }
     return (resultImage, resultOffset)

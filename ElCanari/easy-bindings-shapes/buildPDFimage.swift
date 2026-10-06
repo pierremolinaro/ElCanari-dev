@@ -9,14 +9,14 @@ import CanariGeometry
 //   Build PDF image data
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func buildPDFimageData (frame inFrame : NSRect,
+@MainActor func buildPDFimageData (frame inFrame : CanariRect,
                                    shape inShape : EBShape,
                                    grid inGrid : PDFProductGrid = .noGrid,
                                    backgroundColor inBackColor : NSColor? = nil) -> Data {
   let origin = inFrame.origin
-  let tr = CanariAffinity.translating (x: .pt (-origin.x), y: .pt (-origin.y))
+  let tr = CanariAffinity.translating (x: -origin.x, y: -origin.y)
   let view = OffscreenView (
-    frame: NSRect (origin: NSPoint (), size: inFrame.size),
+    frame: NSRect (origin: NSPoint (), size: inFrame.size.ptValue),
     strokeBezierPathes: [],
     filledBezierPathes: [],
     shape: inShape.transformed (by: tr),
@@ -34,7 +34,7 @@ import CanariGeometry
 //   Build PDF image
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func buildPDFimage (frame inFrame : NSRect,
+@MainActor func buildPDFimage (frame inFrame : CanariRect,
                                shape inShape : EBShape,
                                backgroundColor inBackColor : NSColor? = nil) -> NSImage {
   let pdfData = buildPDFimageData (frame: inFrame, shape: inShape, backgroundColor: inBackColor)

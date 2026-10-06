@@ -44,7 +44,7 @@ import CanariGeometry
     case .traversing :
       let holeWidth = self_mHoleWidth
       let holeHeight = self_mHoleHeight
-      let rHole = NSRect (x: xCenter - holeWidth / 2.0, y: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
+      let rHole = CanariRect (left: xCenter - holeWidth / 2.0, bottom: yCenter - holeHeight / 2.0, width: holeWidth, height: holeHeight)
       bp.appendOblong (in: rHole)
       bp.windingRule = .evenOdd
     case .surface :

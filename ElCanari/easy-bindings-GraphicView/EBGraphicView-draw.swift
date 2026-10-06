@@ -125,7 +125,7 @@ extension EBGraphicView {
       }
       let box = self.mIssueBezierPathes.boundingBox
       if !box.isEmpty {
-        let bp = NSBezierPath (roundedRect: box.insetBy(dx: -4.0, dy: -4.0), xRadius: 4.0, yRadius: 4.0)
+        let bp = NSBezierPath (roundedRect: box.ptValue.insetBy(dx: -4.0, dy: -4.0), xRadius: 4.0, yRadius: 4.0)
         bp.lineWidth = 2.0
         bp.lineJoinStyle = .round
         bp.stroke ()
@@ -163,8 +163,8 @@ extension EBGraphicView {
 
   final func noteInvalidRectangles (old inOldShape : EBShape, new inNewShape : EBShape) {
     if inOldShape != inNewShape {
-      self.setNeedsDisplay (inNewShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
-      self.setNeedsDisplay (inOldShape.boundingBox.insetBy (dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inNewShape.boundingBox.ptValue.insetBy (dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inOldShape.boundingBox.ptValue.insetBy (dx: -1.0, dy: -1.0))
     }
   }
 
@@ -175,17 +175,17 @@ extension EBGraphicView {
     var idx = 0
     while idx < minCount {
       if inNewShapes [idx] != inOldShapes [idx] {
-        self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
-        self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (inNewShapes [idx].boundingBox.ptValue.insetBy (dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (inOldShapes [idx].boundingBox.ptValue.insetBy (dx: -1.0, dy: -1.0))
       }
       idx += 1
     }
     while idx < inOldShapes.count {
-      self.setNeedsDisplay (inOldShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inOldShapes [idx].boundingBox.ptValue.insetBy (dx: -1.0, dy: -1.0))
       idx += 1
     }
     while idx < inNewShapes.count {
-      self.setNeedsDisplay (inNewShapes [idx].boundingBox.insetBy (dx: -1.0, dy: -1.0))
+      self.setNeedsDisplay (inNewShapes [idx].boundingBox.ptValue.insetBy (dx: -1.0, dy: -1.0))
       idx += 1
     }
   }

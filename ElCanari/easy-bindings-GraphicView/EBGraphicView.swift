@@ -194,10 +194,10 @@ final class EBGraphicView : NSView {
     didSet {
       if self.mOptionalFrontShape != oldValue {
         if let oldBox = oldValue?.boundingBox {
-          self.setNeedsDisplay (oldBox)
+          self.setNeedsDisplay (oldBox.ptValue)
         }
         if let newBox = self.mOptionalFrontShape?.boundingBox {
-          self.setNeedsDisplay (newBox)
+          self.setNeedsDisplay (newBox.ptValue)
         }
       }
     }
@@ -372,10 +372,10 @@ final class EBGraphicView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var objectDisplayBounds : NSRect {
-    var r = NSZeroRect
+  var objectDisplayBounds : CanariRect {
+    var r = CanariRect.empty
     for shape in self.mObjectDisplayArray {
-      r = r.union (shape.boundingBox)
+      r = r.unioning (shape.boundingBox)
     }
     return r
   }
@@ -388,22 +388,22 @@ final class EBGraphicView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var contentsBoundingBox : NSRect {
-    var r = NSRect () // For including (0, 0)
-    r = r.union (self.objectDisplayBounds)
-    r = r.union (self.mIssueBezierPathes.boundingBox)
-    r = r.union (self.mUnderObjectsDisplay.boundingBox)
-    r = r.union (self.mOverObjectsDisplay.boundingBox)
-    r = r.union (self.selectionShapeBoundingBox)
+  var contentsBoundingBox : CanariRect {
+    var r = CanariRect () // For including (0, 0)
+    r = r.unioning (self.objectDisplayBounds)
+    r = r.unioning (self.mIssueBezierPathes.boundingBox)
+    r = r.unioning (self.mUnderObjectsDisplay.boundingBox)
+    r = r.unioning (self.mOverObjectsDisplay.boundingBox)
+    r = r.unioning (self.selectionShapeBoundingBox)
     if let ciImage = self.mBackgroundImage {
       let rImage = ciImage.extent
       let bp = NSBezierPath (rect: rImage).transformed (by: self.mBackgroundImageAffineTransform)
-      r = r.union (bp.bounds)
+      r = r.unioning (bp.bounds.canariRect)
     }
     if let ciImage = self.mForegroundImage {
       let rImage = ciImage.extent
       let bp = NSBezierPath (rect: rImage).transformed (by: self.mForegroundImageAffineTransform)
-      r = r.union (bp.bounds)
+      r = r.unioning (bp.bounds.canariRect)
     }
     return r
   }
@@ -452,10 +452,10 @@ final class EBGraphicView : NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var selectionShapeBoundingBox : NSRect {
-    var r = NSRect.null
+  var selectionShapeBoundingBox : CanariRect {
+    var r = CanariRect.empty
     for shape in self.mSelectionShapes {
-      r = r.union (shape.boundingBox)
+      r = r.unioning (shape.boundingBox)
     }
     return r
   }
@@ -468,14 +468,14 @@ final class EBGraphicView : NSView {
       for shape in self.mSelectionShapes {
         if !shape.boundingBox.isEmpty {
           // Swift.print ("  old \(shape.boundingBox)")
-          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+          self.setNeedsDisplay (shape.boundingBox.ptValue.insetBy(dx: -1.0, dy: -1.0))
         }
       }
       self.mSelectionShapes = inShapes
       for shape in self.mSelectionShapes {
         if !shape.boundingBox.isEmpty {
            //Swift.print ("  new \(shape.boundingBox)")
-          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+          self.setNeedsDisplay (shape.boundingBox.ptValue.insetBy(dx: -1.0, dy: -1.0))
         }
       }
       self.setNeedsDisplayAndUpdateViewBounds ()

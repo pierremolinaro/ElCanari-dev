@@ -56,15 +56,15 @@ struct CanariIssue : Hashable {
   // Bezier path center point
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var center : NSPoint {
+  var center : CanariPoint {
     if self.pathes.isEmpty {
-      return NSPoint ()
+      return CanariPoint ()
     }else{
-      var r = NSRect.null
+      var r = CanariRect.empty
       for path in self.pathes {
-        r = r.union (path.bounds)
+        r = r.unioning (path.bounds)
       }
-      return NSPoint (x: r.midX, y: r.midY)
+      return CanariPoint (x: r.midX, y: r.midY)
     }
   }
 

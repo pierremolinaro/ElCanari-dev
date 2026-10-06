@@ -132,7 +132,7 @@ import CanariGeometry
             extraWidth: .zero
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-          nonRotatedShape.add (filled: [BezierPath (rect: textBP.bounds.canariRect)], nil)
+          nonRotatedShape.add (filled: [BezierPath (rect: textBP.bounds)], nil)
           nonRotatedShape.add (stroke: [textBP], color)
         }
       //--- Value
@@ -152,7 +152,7 @@ import CanariGeometry
             extraWidth: .zero
           )
           let color = (self_mSide == .front) ? prefs_frontSideLegendColorForBoard : prefs_backSideLegendColorForBoard
-          nonRotatedShape.add (filled: [BezierPath (rect: textBP.bounds.canariRect)], nil)
+          nonRotatedShape.add (filled: [BezierPath (rect: textBP.bounds)], nil)
           nonRotatedShape.add (stroke: [textBP], color)
         }
       //---
