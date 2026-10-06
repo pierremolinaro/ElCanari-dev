@@ -454,8 +454,6 @@ final class PadGeometryForERC {
       }
       for rectangle in self.rectangles {
         if inOblong.intersects (rect: rectangle) {
-          print (inOblong)
-          print (rectangle)
           return true
         }
       }

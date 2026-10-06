@@ -83,10 +83,10 @@ extension NSRect : @retroactive Hashable {
 
   var canariRect : CanariRect {
     return CanariRect (
-      left: .cu (self.origin.x),
-      bottom: .cu  (self.origin.y),
-      width: .cu  (self.size.width),
-      height: .cu  (self.size.height)
+      left: .pt (self.origin.x),
+      bottom: .pt (self.origin.y),
+      width: .pt (self.size.width),
+      height: .pt (self.size.height)
     )
   }
 

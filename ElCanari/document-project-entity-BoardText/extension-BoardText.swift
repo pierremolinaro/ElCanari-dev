@@ -302,8 +302,6 @@ extension BoardText {
   if !bp.isEmpty {
     frameBP.appendRect (bp.bounds.canariRect.insetBy (dx: .pt (-1.0), dy: .pt (-1.0)))
   }
-//  let startX = self_mX.ptValue
-//  let startY = self_mY.ptValue
   var tr = CanariAffinity
     .translating (x: self_mX, y: self_mY)
     .rotating (by: self_mRotation)
