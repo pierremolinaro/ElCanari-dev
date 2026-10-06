@@ -116,16 +116,15 @@ extension AutoLayoutMergerDocument {
     for rect in inArray.values {
       let centerX = (rect.p0x + rect.p1x + rect.p2x + rect.p3x) / 4
       let centerY = (rect.p0y + rect.p1y + rect.p2y + rect.p3y) / 4
-      let p0 = NSPoint (x: rect.p0x, y: rect.p0y)
-      let p1 = NSPoint (x: rect.p1x, y: rect.p1y)
+      let p0 = CanariPoint (x: rect.p0x, y: rect.p0y)
+      let p1 = CanariPoint (x: rect.p1x, y: rect.p1y)
       let width = p0.distance (to: p1)
-      let p2 = NSPoint (x: rect.p2x, y: rect.p2y)
+      let p2 = CanariPoint (x: rect.p2x, y: rect.p2y)
       let height = p1.distance (to: p2)
-//      let angleInDegrees = p0.angle (to: p1).unsignedDegreeValue
       let af = CanariAffinity
         .translating (x: centerX, y: centerY)
         .rotating (by: p0.angle (to: p1))
-        .scaling (x: width, y: height)
+        .scaling (x: width.ptValue, y: height.ptValue)
       let s = LayeredProductRectangle (af: af, layers: inLayer)
       ioProduct.append (rectangle: s)
     }

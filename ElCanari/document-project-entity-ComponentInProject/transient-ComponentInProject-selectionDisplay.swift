@@ -117,7 +117,7 @@ import CanariGeometry
         )
         var bp = BezierPath ()
         bp.move (to: absoluteCenter)
-        bp.line (to: origin.canariPoint)
+        bp.line (to: origin)
         bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round
@@ -151,7 +151,7 @@ import CanariGeometry
         )
         var bp = BezierPath ()
         bp.move (to: absoluteCenter)
-        bp.line (to: origin.canariPoint)
+        bp.line (to: origin)
         bp.lineWidth = lineWidth
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round

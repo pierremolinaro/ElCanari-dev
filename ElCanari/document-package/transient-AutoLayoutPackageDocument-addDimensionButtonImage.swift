@@ -18,14 +18,6 @@ import CanariGeometry
        _ prefs_packageDimensionColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2
-//        var bp = BezierPath ()
-//        bp.lineWidth = 2.0
-//        bp.move (to: NSPoint (x: 0, y: 0))
-//        bp.line (to: NSPoint (x: 10, y: 10))
-//        bp.lineCapStyle = .round
-//        let shape = EBShape (stroke: [bp], prefs_packageDimensionColor)
-//        let r = shape.boundingBox
-//        return buildPDFimage (frame: r.insetBy(dx: -2.0, dy: -2.0), shape: shape)
         let temporaryObject = PackageDimension (nil)
         temporaryObject.x2 = .mil (100)
         temporaryObject.y2 = .mil (100)

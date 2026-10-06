@@ -96,9 +96,7 @@ extension PackageArc {
                       alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
                       alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
                       shift _ : Bool) {
-//    let center = NSPoint (x: self.xCenter, y: self.yCenter)
     let center = CanariPoint (x: self.xCenter, y: self.yCenter)
-//    let radius = self.radius.ptValue
     let startAngle = self.startAngle
     let arcAngle = self.arcAngle
     if inKnobIndex == PACKAGE_ARC_CENTER {

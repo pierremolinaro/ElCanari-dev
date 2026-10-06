@@ -136,7 +136,7 @@ extension BoardText {
         oblique: self.mOblique,
         extraWidth: .zero
       )
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
 //      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
 //      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
       self.mRotation = origin.angle (to: newRotationKnobLocation)
@@ -237,7 +237,7 @@ extension BoardText {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func displayInfos (extraWidth inExtraWidth : CanariLength) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+  func displayInfos (extraWidth inExtraWidth : CanariLength) -> (BezierPath, BezierPath, CanariPoint, CanariPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
     return boardText_displayInfos (
       x: self.mX,
       y: self.mY,
@@ -270,7 +270,7 @@ extension BoardText {
        weight self_mWeight : Double,
        oblique self_mOblique : Bool,
        extraWidth inExtraWidth : CanariLength // Used for ERC checking
-) -> (BezierPath, BezierPath, NSPoint, NSPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
+) -> (BezierPath, BezierPath, CanariPoint, CanariPoint, [GeometricOblong]) { // (textDisplay, frame, origin, rotation knob)
   let s = (self_mText.isEmpty) ? "Empty" : self_mText
   var stringWidth = CanariLength.zero
   let oblique = self_mOblique ? CGFloat (0.25) : CGFloat (0.0)
@@ -344,7 +344,7 @@ extension BoardText {
     .rotating (by: self_mRotation)
   let rotationKnobLocation = rotationKnobTransform.transforming (x: BOARD_TEXT_ROTATION_KNOB_DISTANCE)
 //---
-  return (bp, frameBP, NSPoint (x: self_mX, y: self_mY), rotationKnobLocation.ptValue, transformedOblongs)
+  return (bp, frameBP, CanariPoint (x: self_mX, y: self_mY), rotationKnobLocation, transformedOblongs)
 }
 
 //--------------------------------------------------------------------------------------------------

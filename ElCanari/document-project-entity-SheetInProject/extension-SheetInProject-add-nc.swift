@@ -52,14 +52,14 @@ extension SheetInProject {
     let symbol = inPoint.mSymbol!
     let symbolInfo = symbol.symbolInfo!
   //---
-    var cocoaRect = NSRect.null
+    var rect = CanariRect.empty
     if !symbolInfo.strokeBezierPath.isEmpty {
-      cocoaRect = cocoaRect.union (symbolInfo.strokeBezierPath.bounds)
+      rect = rect.unioning (symbolInfo.strokeBezierPath.bounds.canariRect)
     }
     if !symbolInfo.filledBezierPath.isEmpty {
-      cocoaRect = cocoaRect.union (symbolInfo.filledBezierPath.bounds)
+      rect = rect.unioning (symbolInfo.filledBezierPath.bounds.canariRect)
     }
-    let relativeLocation = cocoaRect.relativeLocation (of: inPoint.location!.ptValue)
+    let relativeLocation = rect.relativeLocation (of: inPoint.location!)
     switch relativeLocation {
     case .above :
       return .rotation90
