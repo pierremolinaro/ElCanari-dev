@@ -2966,11 +2966,13 @@
 		CF061FF84C56140498C8A63B /* controller-table-view-AutoLayoutProjectDocument-projectFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78875631A833210133F4709A /* controller-table-view-AutoLayoutProjectDocument-projectFontController.swift */; };
 		CF19930DD9429D86F8C31268 /* action-AutoLayoutProjectDocument-selectNetClassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543F3549D4A5FE192E52001 /* action-AutoLayoutProjectDocument-selectNetClassAction.swift */; };
 		CF1FB2CAC02ED4464274C0C0 /* extension-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31ADEC524FAA12BDD2BC566 /* extension-NonPlatedHole.swift */; };
+		CF2D72B73075847700BCBA24 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF2D72B63075847700BCBA24 /* CanariGeometry */; };
 		CF3705BDDEE669019FD72B2E /* action-AutoLayoutPackageDocument-removeZoneForbiddenPadNumberAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003DD75F21902B9F1F120 /* action-AutoLayoutPackageDocument-removeZoneForbiddenPadNumberAction.swift */; };
 		CF3EF3C2DC916F20B48B941A /* entity-DeviceSymbolInstanceInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3E1F7D8BA56D48571A342 /* entity-DeviceSymbolInstanceInProject.swift */; };
 		CF41D9C81894B69CC2295B3A /* AutoLayoutCanariUnitPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A38CCF4DF4648736AE41CF9 /* AutoLayoutCanariUnitPopUpButton.swift */; };
 		CF5CFECA292B140D275164A3 /* transient-ProjectRoot-boardStatusWarningCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F6055094858EEF937A21F0 /* transient-ProjectRoot-boardStatusWarningCount.swift */; };
 		CF6F8A6A196603CE59CBF83C /* transient-PackageDimension-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E419DCE7975B1456CBD4EAA /* transient-PackageDimension-selectionDisplay.swift */; };
+		CF82D4FB3075924300D16779 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF82D4FA3075924300D16779 /* CanariGeometry */; };
 		CFB224C47447A060CBC1CC79 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA85C9F0164FACC5FF9CBF9 /* entity-BoardText.swift */; };
 		CFB8DE1AEA88CFD63701D489 /* tomany-SymbolPinInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCA64DC8116619CE36F3F7 /* tomany-SymbolPinInstanceInDevice.swift */; };
 		CFD14EDD93B380ED6CED7B8F /* tomany-ComponentInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34264FEF01FF1D6D5F21143A /* tomany-ComponentInProject.swift */; };
@@ -3242,7 +3244,6 @@
 		E4ADD0E243E7042F6D3EB69E /* transient-PackageZone-forbiddenPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B65590F196B5A357761C7E /* transient-PackageZone-forbiddenPadArray.swift */; };
 		E4B3592F6E89A11AA37D3328 /* tomany-ArtworkFileGenerationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1E523C643DD665C6CB533 /* tomany-ArtworkFileGenerationParameters.swift */; };
 		E4CE5F27D2025D861A19C2AF /* EBEnumReadWriteProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF725077E0230E4ADC52E477 /* EBEnumReadWriteProperty.swift */; };
-		E4D8E5A256C7E3B8AE10C2AE /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = D1F6CDAD081DC5D79AC9376C /* CanariGeometry */; };
 		E4E0026A5AC542A1C6E4B72A /* alignmentCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D437EF7AABDDE2BAA4DE531 /* alignmentCenter.png */; };
 		E4E9C383406A3C2719AE46B9 /* transient-ComponentInProject-componentPadDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423747DE554FBD3D905E138 /* transient-ComponentInProject-componentPadDictionary.swift */; };
 		E4EE8E544183B3294164E247 /* file-metadata-binary-format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4E4961DC7020EAB2B1B0F /* file-metadata-binary-format.swift */; };
@@ -3540,7 +3541,6 @@
 		F96890AA97A02498BEF0040D /* enum-TrackEndStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BB3294CEC8BBF95E24E6A /* enum-TrackEndStyle.swift */; };
 		F996CF3841D474D4C83AD8EA /* transient-BoardQRCode-moduleCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6793D967E021EBE0A0DE8 /* transient-BoardQRCode-moduleCount.swift */; };
 		F9C0471A8A2109BC5FE4411F /* EBTransientProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16088776747D6B0093B13EC /* EBTransientProperty.swift */; };
-		F9C9F7EEBA735C67945C9D54 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2F5ED1512F5D0AFF2E2AF9 /* CanariGeometry */; };
 		F9EC43F1974F872374B59803 /* transient-PackageArc-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EC04427DBA32A6F6800DE8 /* transient-PackageArc-objectDisplay.swift */; };
 		F9F295A12465BE3721B5FFEF /* check-el-canari-file-path.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288B3823111A595A58B4BD7 /* check-el-canari-file-path.swift */; };
 		FA100633D8A0156796FC9719 /* transient-ProjectRoot-boardShapeIsRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461028F68D8219D3DB54A8C /* transient-ProjectRoot-boardShapeIsRectangular.swift */; };
@@ -5464,14 +5464,14 @@
 		86499DDF06EFC32689D9B958 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				F9C9F7EEBA735C67945C9D54 /* CanariGeometry in Frameworks */,
+				CF82D4FB3075924300D16779 /* CanariGeometry in Frameworks */,
 				9663C846128EE573A4EE5594 /* Sparkle in Frameworks */,
 			);
 		};
 		96F87AF9FCDB4F9E5120E017 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				E4D8E5A256C7E3B8AE10C2AE /* CanariGeometry in Frameworks */,
+				CF2D72B73075847700BCBA24 /* CanariGeometry in Frameworks */,
 				466504F00A253D6AD6BD4586 /* Sparkle in Frameworks */,
 			);
 		};
@@ -8077,7 +8077,7 @@
 			name = "ElCanari-Debug";
 			packageProductDependencies = (
 				8068B55A0A41898FC6B401E5 /* Sparkle */,
-				D1F6CDAD081DC5D79AC9376C /* CanariGeometry */,
+				CF2D72B63075847700BCBA24 /* CanariGeometry */,
 			);
 			productName = "ElCanari-Debug";
 			productReference = CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */;
@@ -8096,7 +8096,7 @@
 			name = "ElCanari-Release";
 			packageProductDependencies = (
 				A7857855C77FD9B7D6A18CB4 /* Sparkle */,
-				1A2F5ED1512F5D0AFF2E2AF9 /* CanariGeometry */,
+				CF82D4FA3075924300D16779 /* CanariGeometry */,
 			);
 			productName = "ElCanari-Release";
 			productReference = CF5C4DB4219F04D600EAC52A /* ElCanari.app */;
@@ -8128,7 +8128,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */,
-				CFEFD73330710281009CBFB2 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */,
+				CF82D4F93075924300D16779 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */,
 			);
 			preferredProjectObjectVersion = 110;
 			productRefGroup = CF949CBD5D79D3BB5579E176 /* Products */;
@@ -12194,6 +12194,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF82D4F93075924300D16779 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git";
+			requirement = {
+				kind = revision;
+				revision = fdee1525fad8667ea65c92ac1ee43cc7fdc3fa48;
+			};
+		};
 		CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
@@ -12202,22 +12210,9 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		CFEFD73330710281009CBFB2 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git";
-			requirement = {
-				kind = revision;
-				revision = a336e8bf7526dde0b8da49beaa5d9a48e4712e12;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1A2F5ED1512F5D0AFF2E2AF9 /* CanariGeometry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFEFD73330710281009CBFB2 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */;
-			productName = CanariGeometry;
-		};
 		8068B55A0A41898FC6B401E5 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */;
@@ -12228,9 +12223,13 @@
 			package = CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
 		};
-		D1F6CDAD081DC5D79AC9376C /* CanariGeometry */ = {
+		CF2D72B63075847700BCBA24 /* CanariGeometry */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CFEFD73330710281009CBFB2 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */;
+			productName = CanariGeometry;
+		};
+		CF82D4FA3075924300D16779 /* CanariGeometry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF82D4F93075924300D16779 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */;
 			productName = CanariGeometry;
 		};
 /* End XCSwiftPackageProductDependency section */
