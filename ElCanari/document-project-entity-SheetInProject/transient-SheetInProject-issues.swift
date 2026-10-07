@@ -20,7 +20,7 @@ import CanariGeometry
 //--- START OF USER ZONE 2
         var issueArray = CanariIssueArray ()
         for schematicIssue in self_schematicIssues {
-          let path = BezierPath (ovalIn: schematicIssue.rect.canariRect)
+          let path = BezierPath (ovalIn: schematicIssue.rect)
           let issue = CanariIssue (kind: schematicIssue.kind, message: schematicIssue.message, pathes: [path])
           issueArray.append (issue)
         }

@@ -347,13 +347,13 @@ struct BezierPath : Hashable {
     if intersect {
       intersect = self.mPath.contains (inRect.origin.ptValue) // Bottom left
       if !intersect {
-        intersect = self.mPath.contains (NSPoint (x: inRect.minX, y: inRect.maxY)) // Top left
+        intersect = self.mPath.contains (CanariPoint (x: inRect.minX, y: inRect.maxY)) // Top left
       }
       if !intersect {
-        intersect = self.mPath.contains (NSPoint (x: inRect.maxX, y: inRect.maxY)) // Top right
+        intersect = self.mPath.contains (CanariPoint (x: inRect.maxX, y: inRect.maxY)) // Top right
       }
       if !intersect {
-        intersect = self.mPath.contains (NSPoint (x: inRect.maxX, y: inRect.minY)) // Bottom right
+        intersect = self.mPath.contains (CanariPoint (x: inRect.maxX, y: inRect.minY)) // Bottom right
       }
       if !intersect {
         var points = [NSPoint] (repeating: .zero, count: 3)
@@ -514,14 +514,14 @@ struct BezierPath : Hashable {
     let x = inRect.origin.x
     let y = inRect.origin.y
     let lg = min (w, h) / (1.0 + s2)
-    self.mPath.move (to: NSPoint (x: x + lg / s2,     y: y + h))
-    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
-    self.mPath.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
-    self.mPath.line (to: NSPoint (x: x + w,           y: y + lg / s2))
-    self.mPath.line (to: NSPoint (x: x + w - lg / s2, y: y))
-    self.mPath.line (to: NSPoint (x: x + lg / s2,     y: y))
-    self.mPath.line (to: NSPoint (x: x,               y: y + lg / s2))
-    self.mPath.line (to: NSPoint (x: x,               y: y + h - lg / s2))
+    self.mPath.move (to: CanariPoint (x: x + lg / s2,     y: y + h))
+    self.mPath.line (to: CanariPoint (x: x + w - lg / s2, y: y + h))
+    self.mPath.line (to: CanariPoint (x: x + w,           y: y + h - lg / s2))
+    self.mPath.line (to: CanariPoint (x: x + w,           y: y + lg / s2))
+    self.mPath.line (to: CanariPoint (x: x + w - lg / s2, y: y))
+    self.mPath.line (to: CanariPoint (x: x + lg / s2,     y: y))
+    self.mPath.line (to: CanariPoint (x: x,               y: y + lg / s2))
+    self.mPath.line (to: CanariPoint (x: x,               y: y + h - lg / s2))
     self.mPath.close ()
   }
 

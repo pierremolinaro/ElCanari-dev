@@ -35,17 +35,17 @@ import CanariGeometry
         var issues = GraphicViewTooltipArray ()
         for (location, pointArray) in pointDictionary {
           if pointArray.count > 1 {
-            let r = NSRect (
-              x: location.x - SCHEMATIC_GRID_LENGTH,
-              y: location.y - SCHEMATIC_GRID_LENGTH,
+            let r = CanariRect (
+              left: location.x - SCHEMATIC_GRID_LENGTH,
+              bottom: location.y - SCHEMATIC_GRID_LENGTH,
               width: SCHEMATIC_GRID_LENGTH * 2.0,
               height: SCHEMATIC_GRID_LENGTH * 2.0
             )
             issues.append (GraphicViewTooltip (kind: .error, message: "\(pointArray.count) points at the same location", rect: r))
           }else if !pointArray [0].connected {
-            let r = NSRect (
-              x: location.x - SCHEMATIC_GRID_LENGTH,
-              y: location.y - SCHEMATIC_GRID_LENGTH,
+            let r = CanariRect (
+              left: location.x - SCHEMATIC_GRID_LENGTH,
+              bottom: location.y - SCHEMATIC_GRID_LENGTH,
               width: SCHEMATIC_GRID_LENGTH * 2.0,
               height: SCHEMATIC_GRID_LENGTH * 2.0
             )
@@ -60,15 +60,14 @@ import CanariGeometry
               y1: wireDescriptor.p1.y,
               x2: wireDescriptor.p2.x,
               y2: wireDescriptor.p2.y,
-//              width: CANARI_UNITS_PER_POINT * prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10,
               width: .pt (prefs_symbolDrawingWidthMultipliedByTenForSchematic / 10),
               endStyle: .round
             )
             for (point, _) in pointDictionary {
               if segment.strictlyContains (point: point) {
-                let r = NSRect (
-                  x: point.x - SCHEMATIC_GRID_LENGTH,
-                  y: point.y - SCHEMATIC_GRID_LENGTH,
+                let r = CanariRect (
+                  left: point.x - SCHEMATIC_GRID_LENGTH,
+                  bottom: point.y - SCHEMATIC_GRID_LENGTH,
                   width: SCHEMATIC_GRID_LENGTH * 2.0,
                   height: SCHEMATIC_GRID_LENGTH * 2.0
                 )

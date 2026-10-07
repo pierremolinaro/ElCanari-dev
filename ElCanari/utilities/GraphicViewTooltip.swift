@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -24,11 +25,11 @@ final class GraphicViewTooltip : NSObject, NSViewToolTipOwner {
 
   let kind : CanariIssue.Kind
   let message : String
-  let rect : NSRect
+  let rect : CanariRect
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (kind inKind : CanariIssue.Kind, message inMessage : String, rect inRect : NSRect) {
+  init (kind inKind : CanariIssue.Kind, message inMessage : String, rect inRect : CanariRect) {
     self.kind = inKind
     self.message = inMessage
     self.rect = inRect

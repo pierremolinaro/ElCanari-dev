@@ -26,11 +26,11 @@ import CanariGeometry
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
   let bp = NSBezierPath ()
-  bp.move (to: NSPoint (x: self_x1, y: self_y1))
-  bp.curve (
-    to: NSPoint (x: self_x2, y: self_y2),
-    controlPoint1: NSPoint (x: self_cpx1, y: self_cpy1),
-    controlPoint2: NSPoint (x: self_cpx2, y: self_cpy2)
+  bp.move (to: CanariPoint (x: self_x1, y: self_y1))
+  bp.cubic (
+    to: CanariPoint (x: self_x2, y: self_y2),
+    controlPoint1: CanariPoint (x: self_cpx1, y: self_cpy1),
+    controlPoint2: CanariPoint (x: self_cpx2, y: self_cpy2)
   )
   return bp
 //--- END OF USER ZONE 2

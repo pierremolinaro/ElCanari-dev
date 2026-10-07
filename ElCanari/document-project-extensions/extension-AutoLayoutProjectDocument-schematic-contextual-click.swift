@@ -198,7 +198,7 @@ extension AutoLayoutProjectDocument {
     if let component = inSender.representedObject as? ComponentInProject {
       self.rootObject.mSelectedPageIndex_property.setProp (6) // Page « Board »
       self.boardObjectsController.select (object: component)
-      self.mBoardView?.mScrollView?.contentView.scroll (to: NSPoint (x: component.mX, y: component.mY))
+      self.mBoardView?.mScrollView?.contentView.scroll (to: CanariPoint (x: component.mX, y: component.mY).ptValue)
     }
   }
 

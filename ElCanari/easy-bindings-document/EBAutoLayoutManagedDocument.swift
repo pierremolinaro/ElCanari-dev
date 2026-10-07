@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 
@@ -66,8 +67,8 @@ fileprivate let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
-              forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
-    return (NSImage (named: NSImage.Name ("exclamation"))!, NSPoint ())
+              forDragRowIndex inDragRow : Int) -> (NSImage, CanariPoint) {
+    return (NSImage (named: NSImage.Name ("exclamation"))!, CanariPoint ())
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

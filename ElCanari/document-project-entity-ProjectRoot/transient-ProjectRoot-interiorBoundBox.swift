@@ -52,8 +52,8 @@ import CanariGeometry
                 maxY = max (maxY, r.maxY)
               }
             }
-            let boundBox = NSRect (x: minX, y: minY, width: maxX - minX, height: maxY - minY)
-            return boundBox.canariRect
+            let boundBox = CanariRect (left: minX, bottom: minY, width: maxX - minX, height: maxY - minY)
+            return boundBox
           }else{
             return .empty
           }

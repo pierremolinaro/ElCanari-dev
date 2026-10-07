@@ -48,10 +48,10 @@ extension SymbolRoot {
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : preferences_pinNameFont_property.propval
         ]
-        let origin = NSPoint (x: object.x, y: object.y)
+        let origin = CanariPoint (x: object.x, y: object.y)
         let bp = BezierPath (
           withString: object.text,
-          at: origin.canariPoint,
+          at: origin,
           object.horizontalAlignment.ebTextShapeHorizontalAlignment,
           .center,
           withAttributes: textAttributes

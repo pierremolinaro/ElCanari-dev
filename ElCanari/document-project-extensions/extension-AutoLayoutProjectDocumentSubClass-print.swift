@@ -78,25 +78,25 @@ extension AutoLayoutProjectDocumentSubClass {
         height: printHeight.ptValue * CGFloat (sheets.count)
       )
       let printView = NSView (frame: printViewFrame)
-      let r = NSRect (
-        x: .zero,
-        y: .zero,
+      let r = CanariRect (
+        left: .zero,
+        bottom: .zero,
         width: printWidth,
         height: printHeight
       )
     //--- Draw sheets
-      var yOffset : CGFloat = printHeight.ptValue * CGFloat (sheets.count - 1)
+      var yOffset = printHeight * CGFloat (sheets.count - 1)
       self.undoManager?.disableUndoRegistration ()
       let currentSelectedSheet = self.rootObject.mSelectedSheet
       for sheet in sheets.values {
         self.rootObject.mSelectedSheet = sheet
         flushOutletEvents ()
-        let data = schematicsView.dataWithPDF (inside: r)
-        let imageView = NSImageView (frame: r)
+        let data = schematicsView.dataWithPDF (inside: r.ptValue)
+        let imageView = NSImageView (frame: r.ptValue)
         imageView.image = NSImage (data: data)
-        imageView.frame.origin.y += yOffset
+        imageView.frame.origin.y += yOffset.ptValue
         printView.addSubview (imageView)
-        yOffset -= printHeight.ptValue
+        yOffset -= printHeight
       }
       self.rootObject.mSelectedSheet = currentSelectedSheet
       self.undoManager?.enableUndoRegistration ()
@@ -105,7 +105,7 @@ extension AutoLayoutProjectDocumentSubClass {
 //     Swift.print ("\(printInfo.imageablePageBounds)")
 //     Swift.print ("\(printInfo.leftMargin) \(printInfo.topMargin) \(printInfo.rightMargin) \(printInfo.bottomMargin)")
       printInfo.orientation = orientation
-      printInfo.paperSize = NSSize (width: pageWidth, height: pageHeight)
+      printInfo.paperSize = CanariSize (width: pageWidth, height: pageHeight).ptValue
       printInfo.horizontalPagination = .automatic
       printInfo.verticalPagination = .automatic
       printInfo.scalingFactor = 1.0
@@ -160,10 +160,8 @@ extension AutoLayoutProjectDocumentSubClass {
       let scalingFactor = min (1.0, printableWidth / printViewFrame.size.width, printableHeight / printViewFrame.size.height)
     //---
       let printInfo = NSPrintInfo.shared
-//     Swift.print ("\(printInfo.imageablePageBounds)")
-//     Swift.print ("\(printInfo.leftMargin) \(printInfo.topMargin) \(printInfo.rightMargin) \(printInfo.bottomMargin)")
       printInfo.orientation = orientation
-      printInfo.paperSize = NSSize (width: pageWidth, height: pageHeight)
+      printInfo.paperSize = CanariSize (width: pageWidth, height: pageHeight).ptValue
       printInfo.horizontalPagination = .automatic
       printInfo.verticalPagination = .automatic
       printInfo.scalingFactor = scalingFactor

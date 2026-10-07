@@ -19,9 +19,9 @@ import CanariGeometry
        _ self_yPin : CanariLength
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
-    let pinRect = NSRect (
-      x: self_xPin - SYMBOL_GRID_LENGTH,
-      y: self_yPin - SYMBOL_GRID_LENGTH,
+    let pinRect = CanariRect (
+      left: self_xPin - SYMBOL_GRID_LENGTH,
+      bottom: self_yPin - SYMBOL_GRID_LENGTH,
       width: SYMBOL_GRID_LENGTH * 2.0,
       height: SYMBOL_GRID_LENGTH * 2.0
     )

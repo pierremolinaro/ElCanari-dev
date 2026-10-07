@@ -134,7 +134,7 @@ import CanariGeometry
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
-                       forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
+                       forDragRowIndex inDragRow : Int) -> (NSImage, CanariPoint) {
     if DEBUG_DRAG_AND_DROP {
       Swift.print (self.className + "." + #function)
     }
@@ -217,7 +217,7 @@ import CanariGeometry
         resultOffset = af.transforming (resultOffset)
       }
     }
-    return (resultImage, resultOffset.ptValue)
+    return (resultImage, resultOffset)
   }
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -····················

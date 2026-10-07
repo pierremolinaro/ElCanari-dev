@@ -106,9 +106,8 @@ extension BoardQRCode {
       self.mCenterX += inDx
       self.mCenterY += inDy
     }else if inKnobIndex == BOARD_QRCODE_ROTATION_KNOB {
-      let origin = NSPoint (x: self.mCenterX, y: self.mCenterY)
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-//      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
+      let origin = CanariPoint (x: self.mCenterX, y: self.mCenterY)
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
       self.mRotation = origin.angle (to: newRotationKnobLocation)
     }
   }

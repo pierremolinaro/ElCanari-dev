@@ -84,14 +84,14 @@ extension EBGraphicView : NSDraggingSource {
     let rect = finalShape.boundingBox
     let image = buildPDFimage (frame: rect, shape: finalShape)
   //--- Move image rect origin to mouse click location
-    let draggingFrame = NSRect (
-      x: displayShape.boundingBox.minX,
-      y: displayShape.boundingBox.minY,
+    let draggingFrame = CanariRect (
+      left: displayShape.boundingBox.minX,
+      bottom: displayShape.boundingBox.minY,
       width: rect.size.width,
       height: rect.size.height
     )
   //--- Set dragged image
-    draggingItem.setDraggingFrame (draggingFrame, contents: image)
+    draggingItem.setDraggingFrame (draggingFrame.ptValue, contents: image)
   //--- Begin dragging
     self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
   }

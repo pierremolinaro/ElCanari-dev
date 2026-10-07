@@ -50,22 +50,22 @@ struct LayeredProductComponentPad : Codable {
     let height = self.height
     if width > height { // Oblong
       let bp = NSBezierPath ()
-      bp.move (to: self.af.transforming (x: -(width - height) / 2.0).ptValue)
-      bp.line (to: self.af.transforming (x: +(width - height) / 2.0).ptValue)
+      bp.move (to: self.af.transforming (x: -(width - height) / 2.0))
+      bp.line (to: self.af.transforming (x: +(width - height) / 2.0))
       bp.lineWidth = height.ptValue
       bp.lineCapStyle = .round
       strokeBezierPath = bp
     }else if width < height { // Oblong
       let bp = NSBezierPath ()
-      bp.move (to: self.af.transforming (y: -(height - width) / 2.0).ptValue)
-      bp.line (to: self.af.transforming (y: +(height - width) / 2.0).ptValue)
+      bp.move (to: self.af.transforming (y: -(height - width) / 2.0))
+      bp.line (to: self.af.transforming (y: +(height - width) / 2.0))
       bp.lineWidth = width.ptValue
       bp.lineCapStyle = .round
       strokeBezierPath = bp
     }else{ // circular
-      let r = NSRect (
-        center: self.af.transforming (.zero).ptValue,
-        size: NSSize (width: width, height: height)
+      let r = CanariRect (
+        center: self.af.transforming (.zero),
+        size: CanariSize (width: width, height: height)
       )
       filledBezierPath = NSBezierPath (ovalIn: r)
     }

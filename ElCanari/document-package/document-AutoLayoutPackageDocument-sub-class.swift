@@ -84,7 +84,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
     var ok = false
     if let documentView = destinationScrollView.documentView {
       let pointInWindow = sender.draggingLocation
-      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (on: SYMBOL_GRID_LENGTH.ptValue)
+      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).canariPoint.aligning (on: SYMBOL_GRID_LENGTH)
       let pasteboard = sender.draggingPasteboard
       if pasteboard.availableType (from: [packagePasteboardType]) != nil,
          let dataDictionary = pasteboard.propertyList (forType: packagePasteboardType) as? [String : Any],
@@ -106,8 +106,8 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
             idx += 1
             if errorMessage.isEmpty {
               newObject.translate (
-                xBy: CanariLength.pt (pointInDestinationView.x) - .cu (X),
-                yBy: CanariLength.pt (pointInDestinationView.y) - .cu (Y),
+                xBy: pointInDestinationView.x - .cu (X),
+                yBy: pointInDestinationView.y - .cu (Y),
                 userSet: &userSet
               )
               newObjectArray.append (newObject)

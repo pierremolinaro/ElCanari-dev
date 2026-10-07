@@ -55,6 +55,48 @@ extension NSBezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  convenience init (rect inRect : CanariRect) {
+    self.init (rect: inRect.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  convenience init (ovalIn inRect : CanariRect) {
+    self.init (ovalIn: inRect.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func contains (_ inPoint : CanariPoint) -> Bool {
+    self.contains (inPoint.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func move (to inPoint : CanariPoint) {
+    self.move (to: inPoint.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func line (to inPoint : CanariPoint) {
+    self.line (to: inPoint.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  func relativeLine (to inPoint : CanariPoint) {
+//    self.relativeLine (to: inPoint.ptValue)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func cubic (to endPoint: CanariPoint, controlPoint1: CanariPoint, controlPoint2: CanariPoint) {
+    self.curve (to: endPoint.ptValue, controlPoint1: controlPoint1.ptValue, controlPoint2: controlPoint2.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

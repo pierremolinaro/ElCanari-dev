@@ -108,12 +108,12 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
-                       forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
+                       forDragRowIndex inDragRow : Int) -> (NSImage, CanariPoint) {
     if DEBUG_DRAG_AND_DROP {
       Swift.print (self.className + "." + #function)
     }
     var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
-    var resultOffset = NSPoint ()
+    var resultOffset = CanariPoint ()
     if let boardView = super.mComposedBoardGraphicView?.mGraphicView,
        let boardModelTag = super.mModelDragSourceTableView?.tag (atIndex: inDragRow) {
     //--- Find board model
@@ -139,7 +139,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
           (width, height) = (height, width)
         }
       //--- By default, image is centered
-        resultOffset = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
+        resultOffset = CanariPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
       //--- Build image
         let r = CanariRect (left: .zero, bottom: .zero, width: width, height: height)
         var bp = BezierPath (rect: r.insetBy (dx: .pt (0.5), dy: .pt (0.5)))

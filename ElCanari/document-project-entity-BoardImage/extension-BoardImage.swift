@@ -116,8 +116,8 @@ extension BoardImage {
       self.mCenterX += inDx
       self.mCenterY += inDy
     }else if inKnobIndex == BOARD_IMAGE_ROTATION_KNOB {
-      let origin = NSPoint (x: self.mCenterX, y: self.mCenterY)
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
+      let origin = CanariPoint (x: self.mCenterX, y: self.mCenterY)
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
 //      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
 //      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
       self.mRotation = origin.angle (to: newRotationKnobLocation)

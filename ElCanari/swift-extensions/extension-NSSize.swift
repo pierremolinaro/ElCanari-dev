@@ -14,9 +14,9 @@ extension NSSize : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (width inWidth : CanariLength, height inHeight : CanariLength) {
-    self.init (width: inWidth.ptValue, height: inHeight.ptValue)
-  }
+//  init (width inWidth : CanariLength, height inHeight : CanariLength) {
+//    self.init (width: inWidth.ptValue, height: inHeight.ptValue)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

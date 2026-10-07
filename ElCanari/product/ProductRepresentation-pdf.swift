@@ -26,8 +26,8 @@ extension ProductRepresentation {
     for oblong in self.roundSegments {
       if !inItemSet.intersection (oblong.layers).isEmpty {
         let bp = NSBezierPath ()
-        bp.move (to: inMirror.mirrored (oblong.p1).ptValue)
-        bp.line (to: inMirror.mirrored (oblong.p2).ptValue)
+        bp.move (to: inMirror.mirrored (oblong.p1))
+        bp.line (to: inMirror.mirrored (oblong.p2))
         bp.lineWidth = oblong.width.value (in: .pt)
         bp.lineCapStyle = .round
         strokeBezierPathes.append (bp)
@@ -37,10 +37,10 @@ extension ProductRepresentation {
     var filledBezierPathes = [NSBezierPath] ()
     for circle in self.circles {
       if !inItemSet.intersection (circle.layers).isEmpty {
-        let center = inMirror.mirrored (circle.center).ptValue
-        let diameter = circle.d.value (in: .pt)
-        let r = NSRect (center: center, size: NSSize (width: diameter, height: diameter))
-        let bp = NSBezierPath (ovalIn: r)
+        let center = inMirror.mirrored (circle.center)
+        let diameter = circle.d
+        let r = CanariRect (center: center, width: diameter, height: diameter)
+        let bp = NSBezierPath (ovalIn: r.ptValue)
         filledBezierPathes.append (bp)
       }
     }

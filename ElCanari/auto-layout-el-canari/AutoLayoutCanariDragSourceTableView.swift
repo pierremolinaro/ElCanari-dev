@@ -7,6 +7,7 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
+import CanariGeometry
 
 //--------------------------------------------------------------------------------------------------
 //   AutoLayoutCanariDragSourceTableView
@@ -248,8 +249,8 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
         searchOptions: [:],
         using: { (draggingItem : NSDraggingItem, index, stop) in
           let r = NSRect (
-            x: inSession.draggingLocation.x + imageOffset.x - image.size.width / 2.0,
-            y: inSession.draggingLocation.y + imageOffset.y - image.size.height / 2.0,
+            x: inSession.draggingLocation.x + imageOffset.x.ptValue - image.size.width / 2.0,
+            y: inSession.draggingLocation.y + imageOffset.y.ptValue - image.size.height / 2.0,
             width: image.size.width,
             height: image.size.height
           )

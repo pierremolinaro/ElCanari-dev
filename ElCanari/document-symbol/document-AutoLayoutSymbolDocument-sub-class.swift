@@ -93,7 +93,7 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
     var ok = false
     if let documentView = destinationScrollView.documentView {
       let pointInWindow = sender.draggingLocation
-      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (on: SYMBOL_GRID_LENGTH.ptValue)
+      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).canariPoint.aligning (on: SYMBOL_GRID_LENGTH)
       let pasteboard = sender.draggingPasteboard
       if pasteboard.availableType (from: [symbolPasteboardType]) != nil {
         if let dataDictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? [String : Any],
@@ -104,8 +104,8 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? SymbolObject {
               newObject.translate (
-                xBy: CanariLength.pt (pointInDestinationView.x) - .cu (X),
-                yBy: CanariLength.pt (pointInDestinationView.y) - .cu (Y),
+                xBy: pointInDestinationView.x - .cu (X),
+                yBy: pointInDestinationView.y - .cu (Y),
                 userSet: &userSet
               )
               self.rootObject.symbolObjects_property.add (newObject)

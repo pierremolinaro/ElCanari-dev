@@ -104,10 +104,8 @@ extension NonPlatedHole {
       self.mX += inDx
       self.mY += inDy
     }else if inKnobIndex == NON_PLATED_HOLE_ROTATION_KNOB {
-      let origin = NSPoint (x: self.mX, y: self.mY)
-      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY).ptValue
-//      let newAngleInDegrees = NSPoint.angleInDegrees (origin, newRotationKnobLocation)
-//      self.mRotation = degreesToCanariRotation (newAngleInDegrees)
+      let origin = CanariPoint (x: self.mX, y: self.mY)
+      let newRotationKnobLocation = CanariPoint (x: inAlignedMouseLocationX, y: inAlignedMouseLocationY)
       self.mRotation_property.setProp (origin.angle (to: newRotationKnobLocation))
     }
   }

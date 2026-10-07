@@ -190,7 +190,7 @@ final class AutoLayoutCanariFontCharacterView : NSView {
   //--- Character advancement
     let advanceRect = NSRect (
       origin: NSPoint (x:xForX (self.mAdvancement) - PLACEMENT_GRID.ptValue / 2.0, y: yForY (0) - PLACEMENT_GRID.ptValue / 2.0),
-      size: NSSize (width: PLACEMENT_GRID, height: PLACEMENT_GRID)
+      size: CanariSize (width: PLACEMENT_GRID, height: PLACEMENT_GRID).ptValue
     )
     bp = NSBezierPath (ovalIn: advanceRect)
     NSColor.brown.setFill ()

@@ -75,10 +75,10 @@ extension EBGraphicView {
       while x <= r.maxX {
         var y = gridStartY
         while y <= r.maxY {
-          bp.move (to: NSPoint (x: x - .pt (0.5), y: y))
-          bp.line (to: NSPoint (x: x + .pt (0.5), y: y))
-          bp.move (to: NSPoint (x: x,             y: y + .pt (0.5)))
-          bp.line (to: NSPoint (x: x,             y: y - .pt (0.5)))
+          bp.move (to: CanariPoint (x: x - .pt (0.5), y: y))
+          bp.line (to: CanariPoint (x: x + .pt (0.5), y: y))
+          bp.move (to: CanariPoint (x: x,             y: y + .pt (0.5)))
+          bp.line (to: CanariPoint (x: x,             y: y - .pt (0.5)))
           y += gridDisplayStep
         }
         x += gridDisplayStep

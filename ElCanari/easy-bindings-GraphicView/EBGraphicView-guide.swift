@@ -49,12 +49,12 @@ extension EBGraphicView {
           idx += 1
         }
         if minX < maxX {
-          bp.move (to: CanariPoint (x: minX, y: alignmentPoint.y).ptValue)
-          bp.line (to: CanariPoint (x: maxX, y: alignmentPoint.y).ptValue)
+          bp.move (to: CanariPoint (x: minX, y: alignmentPoint.y))
+          bp.line (to: CanariPoint (x: maxX, y: alignmentPoint.y))
         }
         if minY < maxY {
-          bp.move (to: CanariPoint (x: alignmentPoint.x, y: minY).ptValue)
-          bp.line (to: CanariPoint (x: alignmentPoint.x, y: maxY).ptValue)
+          bp.move (to: CanariPoint (x: alignmentPoint.x, y: minY))
+          bp.line (to: CanariPoint (x: alignmentPoint.x, y: maxY))
         }
       }
     }
