@@ -61,7 +61,7 @@ final class MouseDownOutsideAnyObjectBehaviour : DefaultBehaviourOnMouseDown { /
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress {
-      let r = NSRect (point: self.mMouseDownUnalignedLocation.ptValue, point: inMouseDraggedUnalignedLocation.ptValue)
+      let r = CanariRect (p1: self.mMouseDownUnalignedLocation, p2: inMouseDraggedUnalignedLocation)
       inGraphicView.mSelectionRectangle = r
       let indexSet : Set <Int> = inGraphicView.indexesOfObjects (intersecting: r)
       inGraphicView.mViewController?.setSelection (objectsWithIndexes: Array (indexSet))
@@ -200,7 +200,7 @@ final class ShiftMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse dow
   override func onMouseDraggedOrModifierFlagsChanged (mouseDraggedUnalignedLocation inMouseDraggedUnalignedLocation : CanariPoint,
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
-    let r = NSRect (point: self.mMouseDownUnalignedLocation.ptValue, point: inMouseDraggedUnalignedLocation.ptValue)
+    let r = CanariRect (p1: self.mMouseDownUnalignedLocation, p2: inMouseDraggedUnalignedLocation)
     inGraphicView.mSelectionRectangle = r
     let indexSet : Set <Int> = inGraphicView.indexesOfObjects (intersecting: r)
     inGraphicView.mViewController?.setSelection (objectsWithIndexes: Array (indexSet.symmetricDifference (self.mSelectedObjectIndexSet)))
@@ -314,7 +314,7 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
                                                       _ inModifierFlags : NSEvent.ModifierFlags,
                                                       _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress {
-      let r = NSRect (point: self.mMouseDownUnalignedLocation.ptValue, point: inMouseDraggedUnalignedLocation.ptValue)
+      let r = CanariRect (p1: self.mMouseDownUnalignedLocation, p2: inMouseDraggedUnalignedLocation)
       inGraphicView.mSelectionRectangle = r
     }
   }

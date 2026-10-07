@@ -21,9 +21,9 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate var mDirectionInDegrees : CGFloat = 0.0 {
+  fileprivate var mDirection : CanariAngle = .zero {
     didSet {
-      if self.mDirectionInDegrees != oldValue {
+      if self.mDirection != oldValue {
         self.needsDisplay = true
       }
     }
@@ -111,9 +111,20 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
     let r = self.bounds
     let center = r.center
     let halfLength = fmin (r.size.width, r.size.height) / 3.0
-    let p1 = NSPoint.point (fromCenter: center, atDistance: halfLength, angleInDegrees: self.mDirectionInDegrees + 180.0)
-    let p2 = NSPoint.point (fromCenter: center, atDistance: halfLength, angleInDegrees: self.mDirectionInDegrees)
+    let p1 = Self.point (fromCenter: center, atDistance: halfLength, angle: self.mDirection + .degrees180)
+    let p2 = Self.point (fromCenter: center, atDistance: halfLength, angle: self.mDirection)
     return (p1, p2)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  static private func point (fromCenter inCenter : NSPoint,
+                             atDistance inDistance : CGFloat,
+                             angle inRotation : CanariAngle) -> NSPoint {
+    NSPoint (
+      x: inCenter.x + inDistance * cos (inRotation),
+      y: inCenter.y + inDistance * sin (inRotation)
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -312,9 +323,9 @@ final class AutoLayoutCanariTrackLockView : ALB_NSView {
   fileprivate func updateAngle (_ inObject : EBObservableProperty <CanariAngle>) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.mDirectionInDegrees = 0.0
+      self.mDirection = .zero
     case .single (let v) :
-      self.mDirectionInDegrees = v.unsignedDegreeValue
+      self.mDirection = v
     }
   }
 

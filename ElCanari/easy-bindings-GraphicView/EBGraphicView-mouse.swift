@@ -194,11 +194,11 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
+  final func indexesOfObjects (intersecting inRect : CanariRect) -> Set <Int> {
     var result = Set <Int> ()
     var idx = 0
     for object in self.mObjectDisplayArray {
-      if object.intersects (rect: inRect.canariRect) {
+      if object.intersects (rect: inRect) {
         result.insert (idx)
       }
       idx += 1

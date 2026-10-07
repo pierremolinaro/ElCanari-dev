@@ -13,18 +13,6 @@ import CanariGeometry
 extension NSSize : @retroactive Hashable {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  init (width inWidth : CanariLength, height inHeight : CanariLength) {
-//    self.init (width: inWidth.ptValue, height: inHeight.ptValue)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var canariSize : CanariSize {
-    return CanariSize (width: .pt (self.width), height: .pt (self.height))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   /// The hash value.
   ///
   /// Hash values are not guaranteed to be equal across different executions of

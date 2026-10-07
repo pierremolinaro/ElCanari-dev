@@ -11,17 +11,17 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-   final func applyZoomToFit (rect inRect : NSRect) {
+   final func applyZoomToFit (rect inRect : CanariRect) {
      if let scrollView = self.enclosingScrollView, !inRect.isEmpty {
      //--- Compute new scale
-       let horizontalScale = scrollView.documentVisibleRect.size.width / inRect.size.width
-       let verticalScale = scrollView.documentVisibleRect.size.height / inRect.size.height
+       let horizontalScale = scrollView.documentVisibleRect.size.width / inRect.size.width.ptValue
+       let verticalScale = scrollView.documentVisibleRect.size.height / inRect.size.height.ptValue
        let newScale = min (horizontalScale, verticalScale) * self.actualScale
      //--- Set New Zoom
        let newZoom = Int ((newScale * 100.0).rounded (.toNearestOrEven))
        self.mZoomController?.updateModel (withValue: newZoom)
      //---
-       DispatchQueue.main.async { self.scrollToVisible (inRect) }
+       DispatchQueue.main.async { self.scrollToVisible (inRect.ptValue) }
     }
   }
 

@@ -249,13 +249,13 @@ final class EBGraphicView : NSView {
   // MARK: -
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mSelectionRectangle : NSRect? = nil {
+  var mSelectionRectangle : CanariRect? = nil {
     didSet {
       if let oldSelectionRectangle = oldValue {
-        self.setNeedsDisplay (oldSelectionRectangle.insetBy (dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (oldSelectionRectangle.ptValue.insetBy (dx: -1.0, dy: -1.0))
       }
       if let newSelectionRectangle = self.mSelectionRectangle {
-        self.setNeedsDisplay (newSelectionRectangle.insetBy (dx: -1.0, dy: -1.0))
+        self.setNeedsDisplay (newSelectionRectangle.ptValue.insetBy (dx: -1.0, dy: -1.0))
       }
     }
   }

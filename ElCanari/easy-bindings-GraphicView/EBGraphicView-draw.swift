@@ -50,7 +50,7 @@ extension EBGraphicView {
       graphicContext?.restoreGraphicsState ()
     }
     self.drawGuideBezierPath ()
-    self.drawSelectionRectangle (inDirtyRect)
+    self.drawSelectionRectangle (inDirtyRect.canariRect)
     if let shape = self.mOptionalFrontShape {
       shape.draw (inDirtyRect)
     }
@@ -144,12 +144,12 @@ extension EBGraphicView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final fileprivate func drawSelectionRectangle (_ inDirtyRect : NSRect) {
+  final fileprivate func drawSelectionRectangle (_ inDirtyRect : CanariRect) {
     if let r = self.mSelectionRectangle, !r.isEmpty, r.intersects (inDirtyRect) {
       NSColor.lightGray.withAlphaComponent (0.2).setFill ()
       NSBezierPath.fill (r)
       NSBezierPath.defaultLineWidth = 1.0 / self.actualScale
-      let rStroke = r.insetBy (dx: 0.5 / self.actualScale, dy: 0.5 / self.actualScale)
+      let rStroke = r.insetBy (dx: .pt (0.5) / self.actualScale, dy: .pt (0.5) / self.actualScale)
       if !rStroke.isEmpty {
         NSColor.darkGray.setStroke ()
         NSBezierPath.stroke (rStroke)
