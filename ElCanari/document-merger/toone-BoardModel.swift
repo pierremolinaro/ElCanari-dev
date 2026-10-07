@@ -84,6 +84,7 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       oldValue.frontPackagesBezierPaths_property.stopsBeingObserved (by: self.frontPackagesBezierPaths_property) // Transient property
       oldValue.backPackagesSegments_property.stopsBeingObserved (by: self.backPackagesSegments_property) // Transient property
       oldValue.backPackagesBezierPaths_property.stopsBeingObserved (by: self.backPackagesBezierPaths_property) // Transient property
+      oldValue.modelDataLengthString_property.stopsBeingObserved (by: self.modelDataLengthString_property) // Transient property
       oldValue.instanceCount_property.stopsBeingObserved (by: self.instanceCount_property) // Transient property
       oldValue.frontLegendLinesBezierPaths_property.stopsBeingObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
       oldValue.imageForModel_property.stopsBeingObserved (by: self.imageForModel_property) // Transient property
@@ -245,6 +246,7 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
       newValue.frontPackagesBezierPaths_property.startsBeingObserved (by: self.frontPackagesBezierPaths_property) // Transient property
       newValue.backPackagesSegments_property.startsBeingObserved (by: self.backPackagesSegments_property) // Transient property
       newValue.backPackagesBezierPaths_property.startsBeingObserved (by: self.backPackagesBezierPaths_property) // Transient property
+      newValue.modelDataLengthString_property.startsBeingObserved (by: self.modelDataLengthString_property) // Transient property
       newValue.instanceCount_property.startsBeingObserved (by: self.instanceCount_property) // Transient property
       newValue.frontLegendLinesBezierPaths_property.startsBeingObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
       newValue.imageForModel_property.startsBeingObserved (by: self.imageForModel_property) // Transient property
@@ -740,6 +742,12 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let backPackagesBezierPaths_property = EBTransientProperty <BezierPathArray?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'modelDataLengthString' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let modelDataLengthString_property = EBTransientProperty <String?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'instanceCount' transient property
@@ -1792,6 +1800,10 @@ class ReadOnlyObject_BoardModel : EBReadOnlyAbstractObjectProperty <BoardModel> 
   //--- Configure backPackagesBezierPaths transient property
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.backPackagesBezierPaths_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure modelDataLengthString transient property
+    self.modelDataLengthString_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.modelDataLengthString_property.optionalSelection ?? .single (nil)
     }
   //--- Configure instanceCount transient property
     self.instanceCount_property.mReadModelFunction = { [weak self] in

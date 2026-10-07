@@ -144,10 +144,11 @@ extension AutoLayoutProjectDocument {
     if self.rootObject.mGenerateMergerArchive_property.propval {
       let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
       self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(boardArchiveFilePath.lastPathComponent)…")
-      let jsonData : Data = productRepresentation.encodedJSONCompressedData (
-        prettyPrinted: true,
-        using: COMPRESSION_LZMA
-      )
+//      let jsonData : Data = productRepresentation.encodedJSONCompressedData (
+//        prettyPrinted: true,
+//        using: COMPRESSION_LZMA
+//      )
+      let jsonData = try! productRepresentation.encodedJSONData (prettyPrinted: true)
       try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
       self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
     }
@@ -192,7 +193,7 @@ extension AutoLayoutProjectDocument {
         let oblong = LayeredProductSegment (
           p1: currentPoint,
           p2: p,
-          width: BOARD_LIMIT_WIDTH, // ioProduct.boardLimitWidth,
+          width: BOARD_LIMIT_WIDTH,
           layers: .boardLimits
         )
         ioProduct.append (roundSegment: oblong)
@@ -201,7 +202,7 @@ extension AutoLayoutProjectDocument {
       let oblong = LayeredProductSegment (
         p1: currentPoint,
         p2: firstPoint,
-        width: BOARD_LIMIT_WIDTH, // ioProduct.boardLimitWidth,
+        width: BOARD_LIMIT_WIDTH,
         layers: .boardLimits
       )
       ioProduct.append (roundSegment: oblong)
@@ -435,10 +436,6 @@ extension AutoLayoutProjectDocument {
         let af = CanariAffinity
           .translating (x: nph.mX, y: nph.mY)
           .rotating (by: nph.mRotation)
-//       let centerX = nph.mX.ptValue
-//        let centerY = nph.mY.ptValue
-////        let rotationInDegrees = CGFloat (nph.mRotation) / 1000.0
-//        af.rotate (byDegrees: nph.mRotation.unsignedDegreeValue)
         if nph.mWidth < nph.mHeight { // Vertical oblong
           let h = (nph.mHeight - nph.mWidth) / 2.0
           let p1 = af.transforming (y: -h)

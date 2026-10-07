@@ -11,6 +11,8 @@ handlingOpposite entity BoardModel {
 
   property Int zoom default 0 ; // 0 means "fit to window"
 
+  transient String modelDataLengthString dependsFrom self.modelData ;
+
 //--- Model version
   property @generateDirectAccess Int modelVersion default 0 ;
   property @generateDirectAccess Bool ignoreModelVersionError default no ;

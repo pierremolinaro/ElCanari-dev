@@ -42,16 +42,12 @@ struct ProductRepresentation : Codable {
         boardWidthUnit inBoardWidthUnit : CanariLengthUnit, // Canari Unit
         boardHeight inBoardHeight : CanariLength,
         boardHeightUnit inBoardHeightUnit : CanariLengthUnit, // Canari Unit
-//        boardLimitWidth inBoardLimitWidth : CanariLength,
-//        boardLimitWidthUnit inBoardLimitWidthUnit : Int, // Canari Unit
         artworkName inArtworkName : String,
         layerConfiguration inLayerConfiguration : LayerConfiguration) {
     self.boardWidth = inBoardWidth
     self.boardWidthUnit = inBoardWidthUnit
     self.boardHeight = inBoardHeight
     self.boardHeightUnit = inBoardHeightUnit
-//    self.boardLimitWidth = inBoardLimitWidth
-//    self.boardLimitWidthUnit = inBoardLimitWidthUnit
     self.artworkName = inArtworkName
     self.layerConfiguration = inLayerConfiguration
   }
@@ -135,7 +131,7 @@ struct ProductRepresentation : Codable {
       let center = modelAffineTransform.transforming (x: circle.x, y: circle.y)
       let newCircle = LayeredProductCircle (
         center: center,
-        diameter: circle.d,
+        diameter: circle.diameter,
         layers: circle.layers
       )
       self.circles.append (newCircle)
@@ -203,6 +199,17 @@ struct ProductRepresentation : Codable {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init? (fromJSONData inData : Data) {
+    let decoder = JSONDecoder ()
+    if let product = try? decoder.decode (Self.self, from: inData) {
+      self = product
+    }else{
+      return nil
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  Encoding
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -262,7 +269,7 @@ struct ProductRepresentation : Codable {
         s.y1 = circle.y
         s.x2 = circle.x
         s.y2 = circle.y
-        s.width = circle.d
+        s.width = circle.diameter
         s.endStyle = .round
         result.append (s)
       }

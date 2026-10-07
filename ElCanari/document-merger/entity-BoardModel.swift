@@ -473,6 +473,13 @@ import CanariGeometry
 //--------------------------------------------------------------------------------------------------
 
 // Commented out, not used
+// @MainActor protocol BoardModel_modelDataLengthString : AnyObject {
+//   var modelDataLengthString : String? { get }
+// }
+
+//--------------------------------------------------------------------------------------------------
+
+// Commented out, not used
 // @MainActor protocol BoardModel_instanceCount : AnyObject {
 //   var instanceCount : Int? { get }
 // }
@@ -570,6 +577,7 @@ final class BoardModel : EBManagedObject
     // BoardModel_frontPackagesBezierPaths // Commented out, not used
     // BoardModel_backPackagesSegments // Commented out, not used
     // BoardModel_backPackagesBezierPaths // Commented out, not used
+    // BoardModel_modelDataLengthString // Commented out, not used
     // BoardModel_instanceCount // Commented out, not used
     // BoardModel_frontLegendLinesBezierPaths // Commented out, not used
     // BoardModel_imageForModel // Commented out, not used
@@ -1758,6 +1766,18 @@ final class BoardModel : EBManagedObject
 
   final var backPackagesBezierPaths : BezierPathArray? {
     return self.backPackagesBezierPaths_property.optionalValue
+  }
+
+  //------------------------------------------------------------------------------------------------
+  //   Transient property: modelDataLengthString
+  //------------------------------------------------------------------------------------------------
+
+  final let modelDataLengthString_property = EBTransientProperty <String> ()
+
+  //------------------------------------------------------------------------------------------------
+
+  final var modelDataLengthString : String? {
+    return self.modelDataLengthString_property.optionalValue
   }
 
   //------------------------------------------------------------------------------------------------
@@ -3407,6 +3427,23 @@ final class BoardModel : EBManagedObject
       }
     }
     self.backPackagesSegments_property.startsBeingObserved (by: self.backPackagesBezierPaths_property)
+  //--- Atomic property: modelDataLengthString
+    self.modelDataLengthString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.modelData_property.selection
+        switch (s0) {
+        case (.single (let v0)) :
+          return .single (transient_BoardModel_modelDataLengthString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelData_property.startsBeingObserved (by: self.modelDataLengthString_property)
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

@@ -1033,7 +1033,6 @@
 		46018CDE36996DA1546832AF /* toone-SymbolPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324C27EF68501B432D8ACF1 /* toone-SymbolPin.swift */; };
 		460C68367409FCF6E0F199E4 /* transient-AutoLayoutSymbolDocument-symbolIssues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2298CC9F5DC10D753816FDE /* transient-AutoLayoutSymbolDocument-symbolIssues.swift */; };
 		46625A1F40742E72A1D085C6 /* enum-SlavePadStyle-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4355295233E28DE259C0AA15 /* enum-SlavePadStyle-extension.swift */; };
-		466504F00A253D6AD6BD4586 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = 8068B55A0A41898FC6B401E5 /* Sparkle */; };
 		466646A297AD7F4A521FEE12 /* transient-SymbolSolidOval-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382DF5B22ACDA161DDF4945 /* transient-SymbolSolidOval-objectDisplay.swift */; };
 		467002836A4E62F9A1CE4F91 /* enum-PadNumbering-ebExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78497296AF83555D1C7671F2 /* enum-PadNumbering-ebExtension.swift */; };
 		4670140955AAB0C7FBCA410F /* transient-BoardObject-displayBackRestrictRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E472A89B082A251E981128F /* transient-BoardObject-displayBackRestrictRectangles.swift */; };
@@ -2136,7 +2135,6 @@
 		9629CEEFDC28CD4CCC22C512 /* property-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C531E721CC30F6ED49B7D /* property-Data.swift */; };
 		9656EA8D027F27DDE0C12D76 /* action-AutoLayoutProjectDocument-importArtworkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC92C67583C6F37EAED85ECE /* action-AutoLayoutProjectDocument-importArtworkAction.swift */; };
 		9660EFE7B4FB886D5AFECCB3 /* EBReadOnlyAbstractGenericRelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22DFB0F5AA53DA79E97243 /* EBReadOnlyAbstractGenericRelationshipProperty.swift */; };
-		9663C846128EE573A4EE5594 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = A7857855C77FD9B7D6A18CB4 /* Sparkle */; };
 		968E3C9B528B5A2200C7CAD8 /* transient-BoardObject-displayBackLegendForBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5571C5AA8D4DBC7611F82185 /* transient-BoardObject-displayBackLegendForBoard.swift */; };
 		9692D3E405B064277186AF7A /* transient-AutoLayoutPackageDocument-statusErrorCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0910D9A81E9E6351BC0E02E /* transient-AutoLayoutPackageDocument-statusErrorCount.swift */; };
 		96975C6B8124DB5CEEAD6F06 /* transient-MergerBoardInstance-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4DB103FEEF70C7DEE1CA94 /* transient-MergerBoardInstance-selectionDisplay.swift */; };
@@ -2966,15 +2964,19 @@
 		CF061FF84C56140498C8A63B /* controller-table-view-AutoLayoutProjectDocument-projectFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78875631A833210133F4709A /* controller-table-view-AutoLayoutProjectDocument-projectFontController.swift */; };
 		CF19930DD9429D86F8C31268 /* action-AutoLayoutProjectDocument-selectNetClassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543F3549D4A5FE192E52001 /* action-AutoLayoutProjectDocument-selectNetClassAction.swift */; };
 		CF1FB2CAC02ED4464274C0C0 /* extension-NonPlatedHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31ADEC524FAA12BDD2BC566 /* extension-NonPlatedHole.swift */; };
-		CF2D72B73075847700BCBA24 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF2D72B63075847700BCBA24 /* CanariGeometry */; };
 		CF3705BDDEE669019FD72B2E /* action-AutoLayoutPackageDocument-removeZoneForbiddenPadNumberAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003DD75F21902B9F1F120 /* action-AutoLayoutPackageDocument-removeZoneForbiddenPadNumberAction.swift */; };
 		CF3EF3C2DC916F20B48B941A /* entity-DeviceSymbolInstanceInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3E1F7D8BA56D48571A342 /* entity-DeviceSymbolInstanceInProject.swift */; };
 		CF41D9C81894B69CC2295B3A /* AutoLayoutCanariUnitPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A38CCF4DF4648736AE41CF9 /* AutoLayoutCanariUnitPopUpButton.swift */; };
+		CF5180A83076D1020011C79D /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CF5180A73076D1020011C79D /* Sparkle */; };
 		CF5CFECA292B140D275164A3 /* transient-ProjectRoot-boardStatusWarningCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F6055094858EEF937A21F0 /* transient-ProjectRoot-boardStatusWarningCount.swift */; };
 		CF6F8A6A196603CE59CBF83C /* transient-PackageDimension-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E419DCE7975B1456CBD4EAA /* transient-PackageDimension-selectionDisplay.swift */; };
-		CF82D4FB3075924300D16779 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF82D4FA3075924300D16779 /* CanariGeometry */; };
+		CFB17F9D3076EA9600ECD8E0 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF2D72B63075847700BCBA24 /* CanariGeometry */; };
+		CFB17FA23076EAD300ECD8E0 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = CFB17FA13076EAD300ECD8E0 /* Sparkle */; };
+		CFB17FA43076EAD300ECD8E0 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CFB17FA33076EAD300ECD8E0 /* CanariGeometry */; };
 		CFB224C47447A060CBC1CC79 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA85C9F0164FACC5FF9CBF9 /* entity-BoardText.swift */; };
 		CFB8DE1AEA88CFD63701D489 /* tomany-SymbolPinInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCA64DC8116619CE36F3F7 /* tomany-SymbolPinInstanceInDevice.swift */; };
+		CFCA954E3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */; };
+		CFCA954F3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */; };
 		CFD14EDD93B380ED6CED7B8F /* tomany-ComponentInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34264FEF01FF1D6D5F21143A /* tomany-ComponentInProject.swift */; };
 		CFD2FA45CE80DE2325D531B8 /* transient-PackageRoot-freePadNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07075BACD61CAA4D2E711D90 /* transient-PackageRoot-freePadNumbering.swift */; };
 		CFF325C03E2EB0BA52A13FC2 /* configurator-AutoLayoutProjectDocument-addLineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD805B273551BE7DBD4315F /* configurator-AutoLayoutProjectDocument-addLineButton.swift */; };
@@ -5111,6 +5113,7 @@
 		CF70F4504EB4BA80833F0C6F /* StringTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTag.swift; sourceTree = "<group>"; };
 		CF725077E0230E4ADC52E477 /* EBEnumReadWriteProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEnumReadWriteProperty.swift; sourceTree = "<group>"; };
 		CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-modelDataLengthString.swift"; sourceTree = "<group>"; };
 		CFCADB861E1D2DB313A52ED0 /* struct-MergerSegmentArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "struct-MergerSegmentArray.swift"; sourceTree = "<group>"; };
 		CFD3BFE7BAE144C6BCF0C682 /* ALB_WKWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALB_WKWebView.swift; sourceTree = "<group>"; };
 		CFE45784E9E66C1C176535CB /* AutoLayoutCanariSampleFontStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariSampleFontStringView.swift; sourceTree = "<group>"; };
@@ -5464,15 +5467,15 @@
 		86499DDF06EFC32689D9B958 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				CF82D4FB3075924300D16779 /* CanariGeometry in Frameworks */,
-				9663C846128EE573A4EE5594 /* Sparkle in Frameworks */,
+				CFB17FA43076EAD300ECD8E0 /* CanariGeometry in Frameworks */,
+				CFB17FA23076EAD300ECD8E0 /* Sparkle in Frameworks */,
 			);
 		};
 		96F87AF9FCDB4F9E5120E017 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				CF2D72B73075847700BCBA24 /* CanariGeometry in Frameworks */,
-				466504F00A253D6AD6BD4586 /* Sparkle in Frameworks */,
+				CFB17F9D3076EA9600ECD8E0 /* CanariGeometry in Frameworks */,
+				CF5180A83076D1020011C79D /* Sparkle in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -5886,6 +5889,7 @@
 				880B431EBCD722F6A4D0AB77 /* transient-BoardModel-internalBoardsLimitsBezierPaths.swift */,
 				FA0B7779D2BC0BE04ABDDE92 /* transient-BoardModel-internalBoardsLimitsSegments.swift */,
 				22769C52941CB7DC4D6BD1F1 /* transient-BoardModel-layerConfigurationString.swift */,
+				CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */,
 				62BA09C0F8C0FEE55911D6DC /* transient-BoardModel-traversingPadArray.swift */,
 				26BE760127A03803BAF2E4E3 /* transient-BoardModel-traversingPadsBezierPaths.swift */,
 				E06B5B834590D6F41CE47E1E /* transient-BoardModel-viasBezierPaths.swift */,
@@ -8076,8 +8080,9 @@
 			);
 			name = "ElCanari-Debug";
 			packageProductDependencies = (
-				8068B55A0A41898FC6B401E5 /* Sparkle */,
 				CF2D72B63075847700BCBA24 /* CanariGeometry */,
+				CF5180A43076D0F50011C79D /* CanariGeometry */,
+				CF5180A73076D1020011C79D /* Sparkle */,
 			);
 			productName = "ElCanari-Debug";
 			productReference = CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */;
@@ -8095,8 +8100,8 @@
 			);
 			name = "ElCanari-Release";
 			packageProductDependencies = (
-				A7857855C77FD9B7D6A18CB4 /* Sparkle */,
-				CF82D4FA3075924300D16779 /* CanariGeometry */,
+				CFB17FA13076EAD300ECD8E0 /* Sparkle */,
+				CFB17FA33076EAD300ECD8E0 /* CanariGeometry */,
 			);
 			productName = "ElCanari-Release";
 			productReference = CF5C4DB4219F04D600EAC52A /* ElCanari.app */;
@@ -8127,8 +8132,8 @@
 			mainGroup = 1EF3051DB8FBA9C4422E6BFC;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */,
-				CF82D4F93075924300D16779 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */,
+				CF5180A63076D1020011C79D /* XCRemoteSwiftPackageReference "Sparkle" */,
+				CFB17F9E3076EABB00ECD8E0 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */,
 			);
 			preferredProjectObjectVersion = 110;
 			productRefGroup = CF949CBD5D79D3BB5579E176 /* Products */;
@@ -9538,6 +9543,7 @@
 				1E016B0E6027D5A2F939F379 /* transient-BoardModel-backLegendLinesSegments.swift in Sources */,
 				F076C2056F93B40FEDB99C62 /* transient-BoardModel-backLegendQRCodeRectangles.swift in Sources */,
 				8E9120B7460FFDD104BD5138 /* transient-BoardModel-backLegendTextsBezierPaths.swift in Sources */,
+				CFCA954F3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */,
 				D0D3715082B42BF8D75D0A29 /* transient-BoardModel-backLegendTextsSegments.swift in Sources */,
 				F1E962BDE6551C72F6F143E3 /* transient-BoardModel-backPackagesBezierPaths.swift in Sources */,
 				A951C2F9951C79AE5956EE11 /* transient-BoardModel-backPackagesSegments.swift in Sources */,
@@ -11481,6 +11487,7 @@
 				2E51E94DB0E8D457AFE5AECB /* transient-DeviceRoot-symbolTypeNames.swift in Sources */,
 				61D38E9FBF36C26C7DAA80F5 /* transient-DeviceRoot-unconnectedPads.swift in Sources */,
 				747A7FF8C2EC0540C202F3F4 /* transient-DeviceRoot-unconnectedPins.swift in Sources */,
+				CFCA954E3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */,
 				DC29453EC776DB9A1E47B12C /* transient-DeviceSlavePadInProject-descriptor.swift in Sources */,
 				B380B05FD76E44132160A61E /* transient-DeviceSymbolInstanceInProject-filledBezierPath.swift in Sources */,
 				7F3D31379E6FCC9058A3B6F9 /* transient-DeviceSymbolInstanceInProject-strokeBezierPath.swift in Sources */,
@@ -11812,19 +11819,8 @@
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SWIFT_ENABLE_BARE_SLASH_REGEX = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_MEMORY_SAFETY = YES;
-				SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = YES;
-				SWIFT_UPCOMING_FEATURE_DISABLE_OUTWARD_ACTOR_ISOLATION = YES;
-				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
-				SWIFT_UPCOMING_FEATURE_FORWARD_TRAILING_CLOSURES = YES;
-				SWIFT_UPCOMING_FEATURE_GLOBAL_CONCURRENCY = YES;
-				SWIFT_UPCOMING_FEATURE_IMPLICIT_OPEN_EXISTENTIALS = YES;
-				SWIFT_UPCOMING_FEATURE_IMPORT_OBJC_FORWARD_DECLS = YES;
-				SWIFT_UPCOMING_FEATURE_INFER_SENDABLE_FROM_CAPTURES = YES;
-				SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = YES;
-				SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = YES;
 			};
 			name = Debug;
 		};
@@ -11851,18 +11847,7 @@
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SWIFT_ENABLE_BARE_SLASH_REGEX = YES;
 				SWIFT_STRICT_MEMORY_SAFETY = YES;
-				SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = YES;
-				SWIFT_UPCOMING_FEATURE_DISABLE_OUTWARD_ACTOR_ISOLATION = YES;
-				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
-				SWIFT_UPCOMING_FEATURE_FORWARD_TRAILING_CLOSURES = YES;
-				SWIFT_UPCOMING_FEATURE_GLOBAL_CONCURRENCY = YES;
-				SWIFT_UPCOMING_FEATURE_IMPLICIT_OPEN_EXISTENTIALS = YES;
-				SWIFT_UPCOMING_FEATURE_IMPORT_OBJC_FORWARD_DECLS = YES;
-				SWIFT_UPCOMING_FEATURE_INFER_SENDABLE_FROM_CAPTURES = YES;
-				SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = YES;
-				SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = YES;
 			};
 			name = Release;
 		};
@@ -11876,9 +11861,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DRELEASE";
@@ -11888,7 +11871,7 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Release;
 		};
@@ -11941,6 +11924,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -12065,6 +12049,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -12152,8 +12137,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GCC_ENABLE_ASM_KEYWORD = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
@@ -12161,6 +12144,7 @@
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 			};
 			name = Debug;
 		};
@@ -12194,42 +12178,46 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CF82D4F93075924300D16779 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git";
-			requirement = {
-				kind = revision;
-				revision = b3f5af50aab4350e1d5acd4e374e962b2ccb2014;
-			};
-		};
-		CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+		CF5180A63076D1020011C79D /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.10.0;
+			};
+		};
+		CFB17F9E3076EABB00ECD8E0 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git";
+			requirement = {
+				kind = revision;
+				revision = c99ccccfa48f84160a55e300138d13f1a1ce3f5f;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8068B55A0A41898FC6B401E5 /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
-		};
-		A7857855C77FD9B7D6A18CB4 /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFEFD73230710281009CBFB2 /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
-		};
 		CF2D72B63075847700BCBA24 /* CanariGeometry */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CanariGeometry;
 		};
-		CF82D4FA3075924300D16779 /* CanariGeometry */ = {
+		CF5180A43076D0F50011C79D /* CanariGeometry */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CF82D4F93075924300D16779 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */;
+			productName = CanariGeometry;
+		};
+		CF5180A73076D1020011C79D /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF5180A63076D1020011C79D /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		CFB17FA13076EAD300ECD8E0 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF5180A63076D1020011C79D /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		CFB17FA33076EAD300ECD8E0 /* CanariGeometry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFB17F9E3076EABB00ECD8E0 /* XCRemoteSwiftPackageReference "Swift-Package-CanariGeometry" */;
 			productName = CanariGeometry;
 		};
 /* End XCSwiftPackageProductDependency section */

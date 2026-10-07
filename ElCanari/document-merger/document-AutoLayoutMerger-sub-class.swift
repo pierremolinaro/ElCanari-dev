@@ -13,7 +13,7 @@ import CanariGeometry
 
 let EL_CANARI_LEGACY_MERGER_ARCHIVE = "ElCanariMergerArchive"
 
-let EL_CANARI_MERGER_ARCHIVE = "ElCanariBoardArchive"
+let EL_CANARI_MERGER_ARCHIVE = "ElCanariBoardArchive2"
 
 let KICAD_PCB = "kicad_pcb"
 

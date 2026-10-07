@@ -228,7 +228,7 @@ extension AutoLayoutProjectDocument {
       converter
     )
     s += "  (library\n"
-    addDeviceLibrary (&s, packageArrayForRouting)
+    addDeviceLibrary (&s, converter, packageArrayForRouting)
     addViaPadStackLibrary (&s, converter, netClasses, layerConfiguration)
     addComponentPadStackLibrary (&s, padTypeArrayForRouting, converter, layerConfiguration)
     s += "  )\n"
@@ -441,8 +441,10 @@ struct CanariLengthToDSNConverter {
       let psr = PadInstanceForDSNExport (
         name: masterPad.name,
         pad: masterPadForRouting,
-        centerX: inConverter.dsnValue (from: masterPad.center.x - deviceCenter.x),
-        centerY: inConverter.dsnValue (from: masterPad.center.y - deviceCenter.y)
+//        centerX: inConverter.dsnValue (from: masterPad.center.x - deviceCenter.x),
+//        centerY: inConverter.dsnValue (from: masterPad.center.y - deviceCenter.y)
+        centerX: masterPad.center.x - deviceCenter.x,
+        centerY: masterPad.center.y - deviceCenter.y
       )
       padArrayForRouting.append (psr)
     //--- Enter slave pads
@@ -465,8 +467,10 @@ struct CanariLengthToDSNConverter {
         let pir = PadInstanceForDSNExport (
           name: inRouteSlavePads ? masterPad.name : "nc::\(masterPad.name)",
           pad: slavePadForRouting,
-          centerX: inConverter.dsnValue (from: slavePad.center.x - deviceCenter.x),
-          centerY: inConverter.dsnValue (from: slavePad.center.y - deviceCenter.y)
+//          centerX: inConverter.dsnValue (from: slavePad.center.x - deviceCenter.x),
+//          centerY: inConverter.dsnValue (from: slavePad.center.y - deviceCenter.y)
+          centerX: slavePad.center.x - deviceCenter.x,
+          centerY: slavePad.center.y - deviceCenter.y
         )
         padArrayForRouting.append (pir)
       }
@@ -613,8 +617,8 @@ fileprivate struct PackageTypeForDSNExport {
 fileprivate struct PadInstanceForDSNExport {
   let name : String
   let pad : PadTypeForDSNExport
-  let centerX : Double // In DSN Unit
-  let centerY : Double // In DSN Unit
+  let centerX : CanariLength
+  let centerY : CanariLength
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -780,11 +784,14 @@ fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
 //--------------------------------------------------------------------------------------------------
 
 fileprivate func addDeviceLibrary (_ ioString : inout String,
+                                   _ inConverter : CanariLengthToDSNConverter,
                                    _ inPackageArrayForRouting : [PackageTypeForDSNExport]) {
   for package in inPackageArrayForRouting {
     ioString += "    (image \"\(package.typeName)\"\n"
     for padType in package.padArray {
-      ioString += "      (pin \"\(padType.pad.name)\" \"\(padType.name)\" \(padType.centerX) \(padType.centerY))\n"
+      let xStr = inConverter.dsnValue (from: padType.centerX)
+      let yStr = inConverter.dsnValue (from: padType.centerY)
+      ioString += "      (pin \"\(padType.pad.name)\" \"\(xStr)\" \(yStr))\n"
     }
     ioString += "    )\n"
   }

@@ -219,6 +219,9 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       if let relay = self.mObserversOf_backPackagesBezierPaths { // Transient property
         managedObject.backPackagesBezierPaths_property.stopsBeingObserved (by: relay)
       }
+      if let relay = self.mObserversOf_modelDataLengthString { // Transient property
+        managedObject.modelDataLengthString_property.stopsBeingObserved (by: relay)
+      }
       if let relay = self.mObserversOf_instanceCount { // Transient property
         managedObject.instanceCount_property.stopsBeingObserved (by: relay)
       }
@@ -434,6 +437,9 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
       }
       if let relay = self.mObserversOf_backPackagesBezierPaths { // Transient property
         managedObject.backPackagesBezierPaths_property.startsBeingObserved (by: relay)
+      }
+      if let relay = self.mObserversOf_modelDataLengthString { // Transient property
+        managedObject.modelDataLengthString_property.startsBeingObserved (by: relay)
       }
       if let relay = self.mObserversOf_instanceCount { // Transient property
         managedObject.instanceCount_property.startsBeingObserved (by: relay)
@@ -2391,6 +2397,35 @@ class ReadOnlyArrayOf_BoardModel : EBReadOnlyAbstractArrayProperty <BoardModel> 
 
   final func toMany_backPackagesBezierPaths_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
     self.mObserversOf_backPackagesBezierPaths?.stopsBeingObserved (by: inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'modelDataLengthString' transient property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final var mObserversOf_modelDataLengthString : EBObservedObserver? = nil
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_modelDataLengthString_StartsBeingObserved (by inObserver : some EBObserverProtocol) {
+    let relay : EBObservedObserver
+    if let r = self.mObserversOf_modelDataLengthString {
+      relay = r
+    }else{
+      relay = EBObservedObserver ()
+      self.startsBeingObserved (by: relay)
+      for managedObject in self.propval.values {
+        managedObject.modelDataLengthString_property.startsBeingObserved (by: relay)
+      }
+      self.mObserversOf_modelDataLengthString = relay
+    }
+    relay.startsBeingObserved (by:  inObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final func toMany_modelDataLengthString_StopsBeingObserved (by inObserver : some EBObserverProtocol) {
+    self.mObserversOf_modelDataLengthString?.stopsBeingObserved (by: inObserver)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

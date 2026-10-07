@@ -79,10 +79,10 @@ struct GerberRepresentation {
       s = "%FSLAX4\(IMPERIAL_DIGIT_COUNT)Y4\(IMPERIAL_DIGIT_COUNT)*%\n"
       s += "%MOIN*%\n" // Unit is inch
     case .metric :
-      s = "%FSLAX4\(METRIC_DIGIT_COUNT)Y4\(METRIC_DIGIT_COUNT)*%\n"
+      s = "%FSLAX2\(METRIC_DIGIT_COUNT)Y2\(METRIC_DIGIT_COUNT)*%\n"
       s += "%MOMM*%\n" // Unit is mm
     }
-    s += "%LPD*%\n" // §
+//    s += "%LPD*%\n" // §
   //--- Write aperture declarations
     var idx = 10
     for aperture in apertureArray {
@@ -172,9 +172,9 @@ fileprivate extension CanariLength {
   func gerberLengthString (_ inUnit : GerberUnit) -> String {
     switch inUnit {
     case .imperial :
-      return String (Int (self.value (in: .inch) * pow (10.0, Double (IMPERIAL_DIGIT_COUNT))))
+      return String (Int (self.inchValue * pow (10.0, Double (IMPERIAL_DIGIT_COUNT))))
     case .metric :
-      return String (Int (self.value (in: .mm) * pow (10.0, Double (METRIC_DIGIT_COUNT))))
+      return String (Int (self.mmValue * pow (10.0, Double (METRIC_DIGIT_COUNT))))
     }
   }
 
@@ -183,9 +183,11 @@ fileprivate extension CanariLength {
   func apertureLengthString (_ inUnit : GerberUnit) -> String {
     switch inUnit {
     case .imperial :
-      return unsafe String (format: "%.4f", self.value (in: .inch))
+      return self.inchValue.strf (IMPERIAL_DIGIT_COUNT)
+//      return unsafe String (format: "%.4f", self.value (in: .inch))
     case .metric :
-      return unsafe String (format: "%.6f", self.value (in: .mm))
+      return self.mmValue.strf (METRIC_DIGIT_COUNT)
+//      return unsafe String (format: "%.6f", self.value (in: .mm))
     }
   }
 

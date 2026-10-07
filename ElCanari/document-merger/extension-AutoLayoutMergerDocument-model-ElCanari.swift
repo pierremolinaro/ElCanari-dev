@@ -38,6 +38,8 @@ extension AutoLayoutMergerDocument {
                                             callBack inCallBack : @escaping (BoardModel) -> Void) {
     if let product = ProductRepresentation (fromJSONCompressedData: inData, using: COMPRESSION_LZMA) {
       self.internalLoadELCanariBoardArchive (product, named: inName, callBack: inCallBack)
+    }else if let product = ProductRepresentation (fromJSONData: inData) {
+      self.internalLoadELCanariBoardArchive (product, named: inName, callBack: inCallBack)
     }else{
       let alert = NSAlert ()
       alert.messageText = "Cannot Analyse JSON contents"
@@ -79,7 +81,7 @@ extension AutoLayoutMergerDocument {
         let via = BoardModelVia (self.undoManager)
         via.x = circle.x
         via.y = circle.y
-        via.padDiameter = circle.d
+        via.padDiameter = circle.diameter
         viaEntities.append (via)
       }
       boardModel.vias = viaEntities
@@ -125,7 +127,7 @@ extension AutoLayoutMergerDocument {
         drill.y1 = hole.y
         drill.x2 = hole.x
         drill.y2 = hole.y
-        drill.width = hole.d
+        drill.width = hole.diameter
         drillEntities.append (drill)
       }
       for hole in inProduct.roundSegments (forLayers: .hole) {

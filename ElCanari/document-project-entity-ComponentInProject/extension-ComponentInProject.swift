@@ -263,7 +263,9 @@ extension ComponentInProject {
     let packagePadDictionary : PackageMasterPadDictionary = self.packagePadDictionary!
     let padRect = packagePadDictionary.padsRect
     let center = padRect.center
-    var af = CanariAffinity.translating (x: self.mX, y: self.mY).rotating (by: self.mRotation)
+    var af = CanariAffinity
+      .translating (x: self.mX, y: self.mY)
+      .rotating (by: self.mRotation)
     if self.mSide == .back {
       af.scale (x: -1.0, y: 1.0)
     }

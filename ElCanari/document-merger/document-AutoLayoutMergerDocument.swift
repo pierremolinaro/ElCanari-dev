@@ -477,6 +477,21 @@ import CanariGeometry
         }
         _ = hStackView_view .appendView (hStackView_view_view)
       }
+      do{
+        let hStackView_view_view = AutoLayoutHorizontalStackView ()
+        do{
+          let hStackView_view_view_view = AutoLayoutStaticLabel (title: "Model Data", bold: false, size: .small, alignment: .right)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+        }
+        _ = hStackView_view_view.appendGutter ()
+        do{
+          let hStackView_view_view_view = AutoLayoutLabel (bold: true, size: .small)
+            .set (alignment: .left)
+            .bind_title (self.mBoardModelSelection.modelDataLengthString_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+        }
+        _ = hStackView_view .appendView (hStackView_view_view)
+      }
       _ = hStackView_view.appendSeparator ()
       do{
         let hStackView_view_view = AutoLayoutHorizontalStackView ()

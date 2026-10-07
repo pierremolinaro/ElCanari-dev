@@ -38,7 +38,7 @@ extension ProductRepresentation {
     for circle in self.circles {
       if !inItemSet.intersection (circle.layers).isEmpty {
         let center = inMirror.mirrored (circle.center)
-        let diameter = circle.d
+        let diameter = circle.diameter
         let r = CanariRect (center: center, width: diameter, height: diameter)
         let bp = NSBezierPath (ovalIn: r.ptValue)
         filledBezierPathes.append (bp)

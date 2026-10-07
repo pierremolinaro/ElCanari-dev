@@ -75,13 +75,13 @@ struct LayeredProductComponentPad : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendRectPad () -> NSBezierPath {
-    let w = self.width
-    let h = self.height
+    let w = self.width / 2.0
+    let h = self.height / 2.0
     let bp = NSBezierPath ()
-    bp.move (to: self.af.transforming (x: -w, y: -h).ptValue)
-    bp.line (to: self.af.transforming (x: +w, y: -h).ptValue)
-    bp.line (to: self.af.transforming (x: +w, y: +h).ptValue)
-    bp.line (to: self.af.transforming (x: -w, y: +h).ptValue)
+    bp.move (to: self.af.transforming (x: -w, y: -h))
+    bp.line (to: self.af.transforming (x: +w, y: -h))
+    bp.line (to: self.af.transforming (x: +w, y: +h))
+    bp.line (to: self.af.transforming (x: -w, y: +h))
     bp.close ()
     return bp
   }
@@ -89,18 +89,18 @@ struct LayeredProductComponentPad : Codable {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func appendOctoPad () -> NSBezierPath {
-    let w = self.width
-    let h = self.height
+    let w = self.width / 2.0
+    let h = self.height / 2.0
     let lg = min (w, h) / (1.0 + 1.0 / sqrt (2.0))
     let bp = NSBezierPath ()
-    bp.move (to: self.af.transforming (x: +w - lg, y: +h).ptValue)
-    bp.line (to: self.af.transforming (x: +w,      y: +h - lg).ptValue)
-    bp.line (to: self.af.transforming (x: +w,      y: -h + lg).ptValue)
-    bp.line (to: self.af.transforming (x: +w - lg, y: -h).ptValue)
-    bp.line (to: self.af.transforming (x: -w + lg, y: -h).ptValue)
-    bp.line (to: self.af.transforming (x: -w,      y: -h + lg).ptValue)
-    bp.line (to: self.af.transforming (x: -w,      y: +h - lg).ptValue)
-    bp.line (to: self.af.transforming (x: -w + lg, y: +h).ptValue)
+    bp.move (to: self.af.transforming (x: +w - lg, y: +h))
+    bp.line (to: self.af.transforming (x: +w,      y: +h - lg))
+    bp.line (to: self.af.transforming (x: +w,      y: -h + lg))
+    bp.line (to: self.af.transforming (x: +w - lg, y: -h))
+    bp.line (to: self.af.transforming (x: -w + lg, y: -h))
+    bp.line (to: self.af.transforming (x: -w,      y: -h + lg))
+    bp.line (to: self.af.transforming (x: -w,      y: +h - lg))
+    bp.line (to: self.af.transforming (x: -w + lg, y: +h))
     bp.close ()
     return bp
   }
@@ -147,8 +147,8 @@ struct LayeredProductComponentPad : Codable {
 
   private func appendRectPadToGerber (_ ioGerber : inout GerberRepresentation,
                                       mirror inMirror : ProductHorizontalMirror) {
-    let w = self.width
-    let h = self.height
+    let w = self.width / 2.0
+    let h = self.height / 2.0
     let p0 = inMirror.mirrored (self.af.transforming (x: -w, y: -h))
     let p1 = inMirror.mirrored (self.af.transforming (x: +w, y: -h))
     let p2 = inMirror.mirrored (self.af.transforming (x: +w, y: +h))

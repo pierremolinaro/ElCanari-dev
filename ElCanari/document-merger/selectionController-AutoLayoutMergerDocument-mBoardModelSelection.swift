@@ -488,6 +488,12 @@ import CanariGeometry
   var modelData_property = EBComputedProperty_Data ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Selection observable property: modelDataLengthString
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var modelDataLengthString_property = EBTransientProperty <String> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Selection observable property: modelHeight
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -635,6 +641,7 @@ import CanariGeometry
     self.bind_property_layerConfiguration (model: model)
     self.bind_property_layerConfigurationString (model: model)
     self.bind_property_modelData (model: model)
+    self.bind_property_modelDataLengthString (model: model)
     self.bind_property_modelHeight (model: model)
     self.bind_property_modelHeightUnit (model: model)
     self.bind_property_modelVersion (model: model)
@@ -837,6 +844,9 @@ import CanariGeometry
     self.modelData_property.mReadModelFunction = nil 
     self.modelData_property.mWriteModelFunction = nil 
     self.mModel?.toMany_modelData_StopsBeingObserved (by: self.modelData_property)
+  //--- modelDataLengthString
+    self.modelDataLengthString_property.mReadModelFunction = nil 
+    self.mModel?.toMany_modelDataLengthString_StopsBeingObserved (by: self.modelDataLengthString_property)
   //--- modelHeight
     self.modelHeight_property.mReadModelFunction = nil 
     self.modelHeight_property.mWriteModelFunction = nil 
@@ -3325,6 +3335,46 @@ import CanariGeometry
             object.modelData_property.setProp (inValue)
           }
         }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private final func bind_property_modelDataLengthString (model : ReadOnlyArrayOf_BoardModel) {
+    model.toMany_modelDataLengthString_StartsBeingObserved (by: self.modelDataLengthString_property)
+    self.modelDataLengthString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelDataLengthString_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }

@@ -55,7 +55,7 @@ extension ProductRepresentation {
   //--- Add circles
     for circle in self.circles {
       if !inItemSet.intersection (circle.layers).isEmpty {
-        gerber.addCircle (center: inMirror.mirrored (circle.center), diameter: circle.d)
+        gerber.addCircle (center: inMirror.mirrored (circle.center), diameter: circle.diameter)
       }
     }
   //---
@@ -79,7 +79,7 @@ extension ProductRepresentation {
     var apertureSet = Set <CanariLength> ()
     for circle in self.circles {
       if circle.layers.contains (.hole) {
-        apertureSet.insert (circle.d)
+        apertureSet.insert (circle.diameter)
       }
     }
     for segment in self.roundSegments {
@@ -108,7 +108,7 @@ extension ProductRepresentation {
       idx += 1
       s += "T\(idx)\n" // Tool selection
       for circle in self.circles {
-        if circle.layers.contains (.hole) && (circle.d == aperture) {
+        if circle.layers.contains (.hole) && (circle.diameter == aperture) {
           s += circle.center.excellonPointString (inUnit) + "\n"
         }
       }

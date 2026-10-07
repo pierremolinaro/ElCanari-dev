@@ -167,12 +167,16 @@ extension AutoLayoutMergerDocument {
   //--- board instances
     for element in self.rootObject.boardInstances.values {
       let boardModel : BoardModel = element.myModel!
-      let compressedJSONData = boardModel.modelData
-      let modelProduct = ProductRepresentation (
-        fromJSONCompressedData: compressedJSONData,
-        using: COMPRESSION_LZMA
-      )!
-      product.add (modelProduct, x: element.x, y: element.y, quadrantRotation: element.instanceRotation)
+      let data = boardModel.modelData
+      if let m = ProductRepresentation (fromJSONData: data) {
+        product.add (m, x: element.x, y: element.y, quadrantRotation: element.instanceRotation)
+      }else if let m = ProductRepresentation (fromJSONCompressedData: data, using: COMPRESSION_LZMA) {
+        product.add (m, x: element.x, y: element.y, quadrantRotation: element.instanceRotation)
+      }else{
+        let alert = NSAlert ()
+        alert.messageText = "Cannot Analyse JSON contents"
+        alert.beginSheetModal (for: self.windowForSheet!)
+      }
     }
     return product
   }

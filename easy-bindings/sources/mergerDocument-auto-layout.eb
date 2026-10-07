@@ -154,6 +154,14 @@ autoLayoutDocument AutoLayoutMergerDocument : AutoLayoutMergerDocumentSuperClass
           $dimensionAndUnit #mBoardModelSelection.modelHeight, #mBoardModelSelection.modelHeightUnit
         }
       }
+      hStack {
+        StaticLabel (title: "Model Data", bold: no, size : .small, alignment: .right)
+        gutter
+        Label (bold: yes, size: .small) {
+          set (alignment: .left)
+          $title #mBoardModelSelection.modelDataLengthString
+        }
+      }
       separator
       hStack {
         StaticLabel (title: "Archive Version", bold: no, size : .small, alignment: .right)

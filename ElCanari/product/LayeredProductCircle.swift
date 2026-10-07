@@ -19,7 +19,7 @@ struct LayeredProductCircle : Codable {
 
   let x : CanariLength // Center X
   let y : CanariLength // Center Y
-  let d : CanariLength // Diameter
+  let diameter : CanariLength // Diameter
   let layers : ProductLayerSet
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -29,7 +29,7 @@ struct LayeredProductCircle : Codable {
         layers inLayers : ProductLayerSet) {
     self.x = inCenter.x
     self.y = inCenter.y
-    self.d = inDiameter
+    self.diameter = inDiameter
     self.layers = inLayers
   }
 
