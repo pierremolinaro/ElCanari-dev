@@ -447,7 +447,7 @@ struct BezierPath : Hashable {
   //--- First point
     let t0 = CanariAffinity.translating (inCenter).rotating (by: inStartAngle)
     var firstPoint = t0.transforming (x: inRadius)
-    if inStartTangentLength > .zero {
+    if inStartTangentLength.isPositive {
       self.move (to: firstPoint)
       let t = CanariAffinity.rotating (by: inStartAngle - .degrees90)
       let p = t.transforming (x: inStartTangentLength)
@@ -458,7 +458,7 @@ struct BezierPath : Hashable {
   //--- Last Point
     let t1 = CanariAffinity.translating (inCenter).rotating (by: inStartAngle + inArcAngle)
     var lastPoint = t1.transforming (x: inRadius)
-    if inEndTangentLength > .zero {
+    if inEndTangentLength.isPositive {
       self.move (to: lastPoint)
       let t = CanariAffinity.rotating (by: inStartAngle + inArcAngle + .degrees90)
       let p = t.transforming (x: inEndTangentLength)

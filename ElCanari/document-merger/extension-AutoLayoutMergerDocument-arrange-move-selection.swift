@@ -94,7 +94,7 @@ extension AutoLayoutMergerDocument {
         deltaY = min (deltaY, acceptableNewRect.top - instanceRect.top)
       }
     }
-    if deltaY > .zero {
+    if deltaY.isPositive {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.y += deltaY
       }
@@ -137,7 +137,7 @@ extension AutoLayoutMergerDocument {
         deltaX = min (deltaX, acceptableNewRect.right - instanceRect.right)
       }
     }
-    if deltaX > .zero {
+    if deltaX.isPositive {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.x += deltaX
       }

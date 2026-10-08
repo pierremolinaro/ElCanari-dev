@@ -745,11 +745,11 @@ extension AutoLayoutProjectDocument {
     case .rectangular :
       let boardWidth = self.rootObject.mRectangularBoardWidth
       let boardHeight = self.rootObject.mRectangularBoardHeight
-      if self.rootObject.mBoardCornerRadius == .zero { // Rectangle
-        result.append (CanariPoint (x: .zero, y: .zero)) // Bottom left
-        result.append (CanariPoint (x: .zero, y: boardHeight)) // Top left
+      if self.rootObject.mBoardCornerRadius.isZero { // Rectangle
+        result.append (CanariPoint ()) // Bottom left
+        result.append (CanariPoint (y: boardHeight)) // Top left
         result.append (CanariPoint (x: boardWidth, y: boardHeight)) // Top right
-        result.append (CanariPoint (x: boardWidth, y: .zero)) // Bottom right
+        result.append (CanariPoint (x: boardWidth)) // Bottom right
       }else{ // Round rectangle
         let r = CanariRect (
           left: .zero,

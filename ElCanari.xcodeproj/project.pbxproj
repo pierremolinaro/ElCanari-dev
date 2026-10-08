@@ -2975,6 +2975,7 @@
 		CFB17FA43076EAD300ECD8E0 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CFB17FA33076EAD300ECD8E0 /* CanariGeometry */; };
 		CFB224C47447A060CBC1CC79 /* entity-BoardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA85C9F0164FACC5FF9CBF9 /* entity-BoardText.swift */; };
 		CFB8DE1AEA88CFD63701D489 /* tomany-SymbolPinInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCA64DC8116619CE36F3F7 /* tomany-SymbolPinInstanceInDevice.swift */; };
+		CFC8120E30778B4E00F39983 /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF5180A43076D0F50011C79D /* CanariGeometry */; };
 		CFCA954E3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */; };
 		CFCA954F3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */; };
 		CFD14EDD93B380ED6CED7B8F /* tomany-ComponentInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34264FEF01FF1D6D5F21143A /* tomany-ComponentInProject.swift */; };
@@ -5474,6 +5475,7 @@
 		96F87AF9FCDB4F9E5120E017 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				CFC8120E30778B4E00F39983 /* CanariGeometry in Frameworks */,
 				CFB17F9D3076EA9600ECD8E0 /* CanariGeometry in Frameworks */,
 				CF5180A83076D1020011C79D /* Sparkle in Frameworks */,
 			);
@@ -12191,7 +12193,7 @@
 			repositoryURL = "https://github.com/pierremolinaro/Swift-Package-CanariGeometry.git";
 			requirement = {
 				kind = revision;
-				revision = c99ccccfa48f84160a55e300138d13f1a1ce3f5f;
+				revision = 9b51aace3612c8e8a0658860fdd6be39066751f2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

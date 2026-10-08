@@ -80,12 +80,12 @@ extension ProductRepresentation {
       filledBezierPathes.append (bp)
     }
   //---
-    let size = NSSize (
-      width: self.boardWidth.value (in: .pt),
-      height: self.boardHeight.value (in: .pt)
+    let size = CanariSize (
+      width: self.boardWidth,
+      height: self.boardHeight
     )
     let view = OffscreenView (
-      frame: NSRect (origin: .zero, size: size),
+      frame: CanariRect (origin: .zero, size: size).ptValue,
       strokeBezierPathes: strokeBezierPathes,
       filledBezierPathes: filledBezierPathes,
       shape: nil,

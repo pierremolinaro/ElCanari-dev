@@ -51,7 +51,7 @@ extension EBGraphicView {
 
   final private func wantsToTranslateSelection (byX inDx : CanariLength, byY inDy : CanariLength) -> Bool {
     var accepted = false
-    if inDx == .zero, inDy == .zero {
+    if inDx.isZero, inDy.isZero {
       NSSound.beep ()
     }else{
       accepted = true

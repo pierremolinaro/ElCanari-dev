@@ -397,7 +397,7 @@ fileprivate final class EBShapeObject {
     var strokeBezierPathes = [BezierPath] ()
     for path in inStrokePathes {
       if !path.isEmpty {
-        if path.lineWidth > .zero {
+        if path.lineWidth.isPositive {
           filledBezierPathes.append (path.pathToFillByStroking)
         }else{
           strokeBezierPathes.append (path)

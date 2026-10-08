@@ -256,7 +256,6 @@ struct QRCodeDisplayInfos {
     let p2 = af.transforming (x: x + w, y: y + h)
     let p3 = af.transforming (x: x,     y: y + h)
     productRectangles.append (ProductRectangle (p0: p0, p1: p1, p2: p2, p3: p3))
-//    let size = NSSize (width: w, height: h)
   //---
     var rectAF = af
     rectAF.translate (x: x + w / 2.0, y: y + h / 2.0)

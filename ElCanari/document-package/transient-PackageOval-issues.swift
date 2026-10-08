@@ -22,10 +22,10 @@ import CanariGeometry
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  if self_width == .zero {
+  if self_width.isZero {
     issues.appendOvalZeroWidthIssueAt (x: self_x, y: self_y + self_height / 2)
   }
-  if self_height == .zero {
+  if self_height.isZero {
     issues.appendOvalZeroHeightIssueAt (x: self_x + self_width / 2, y: self_y)
   }
   return issues

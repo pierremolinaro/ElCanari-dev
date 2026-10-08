@@ -67,6 +67,12 @@ extension NSBezierPath {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func appendOval (in rect : CanariRect) {
+    self.appendOval (in: rect.ptValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func contains (_ inPoint : CanariPoint) -> Bool {
     self.contains (inPoint.ptValue)
   }

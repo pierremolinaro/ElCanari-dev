@@ -183,7 +183,7 @@ extension AutoLayoutProjectDocument {
       }
     }
   //--- Control key ?
-    if NSEvent.modifierFlags.contains (.control), d > .zero, let boardView = self.mBoardView?.mGraphicView {
+    if NSEvent.modifierFlags.contains (.control), d.isPositive, let boardView = self.mBoardView?.mGraphicView {
       if boardView.frame.contains (inUnalignedMouseLocation.ptValue) {
         let r = CanariRect (
           left: inUnalignedMouseLocation.x - d / 2.0,
