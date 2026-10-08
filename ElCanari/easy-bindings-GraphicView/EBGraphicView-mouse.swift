@@ -108,7 +108,7 @@ extension EBGraphicView {
         unalignedMouseDraggedLocation: inUnalignedLastMouseDraggedLocation,
         shift: shift
       )
-      if (translation.x != .zero) || (translation.y != .zero) {
+      if !translation.x.isZero || !translation.y.isZero {
         let mouseDraggedLocation = CanariPoint (
           x: translation.x + inAlignedLastMouseDraggedLocation.x,
           y: translation.y + inAlignedLastMouseDraggedLocation.y
@@ -140,7 +140,7 @@ extension EBGraphicView {
         dx = p.x
         dy = p.y
       }
-      if (dx != .zero) || (dy != .zero) {
+      if !dx.isZero || !dy.isZero {
         var userSet = EBReferenceSet <EBManagedObject> ()
         for object in controller.selectedGraphicObjectSet.values {
           object.translate (xBy: dx, yBy: dy, userSet: &userSet)

@@ -38,12 +38,12 @@ extension BoardRestrictRectangle {
   func acceptedTranslation_BoardRestrictRectangle (xBy inDx : CanariLength, yBy inDy : CanariLength) -> CanariPoint {
     var acceptedX = inDx
     let newX = self.mX + acceptedX
-    if newX < .zero {
+    if newX.isNegative {
       acceptedX = -self.mX
     }
     var acceptedY = inDy
     let newY = self.mY + acceptedY
-    if newY < .zero {
+    if newY .isNegative {
       acceptedY = -self.mY
     }
     return CanariPoint (x: acceptedX, y: acceptedY)
@@ -93,7 +93,7 @@ extension BoardRestrictRectangle {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
-      if (self.mX + dx) < .zero {
+      if (self.mX + dx).isNegative {
         dx = -self.mX
       }
       if (self.mWidth - dx) < SYMBOL_GRID_LENGTH {
@@ -104,7 +104,7 @@ extension BoardRestrictRectangle {
         dx = -(SYMBOL_GRID_LENGTH - self.mWidth)
       }
     }else if inKnobIndex == BOARD_RESTRICT_RECT_BOTTOM {
-      if (self.mY + dy) < .zero {
+      if (self.mY + dy).isNegative {
         dy = -self.mY
       }
       if (self.mHeight - dy) < SYMBOL_GRID_LENGTH {

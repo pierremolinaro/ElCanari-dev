@@ -51,7 +51,7 @@ extension AutoLayoutMergerDocument {
         deltaY = max (deltaY, acceptableNewRect.bottom - instanceRect.bottom)
       }
     }
-    if deltaY < .zero {
+    if deltaY.isNegative {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.y += deltaY
       }
@@ -180,7 +180,7 @@ extension AutoLayoutMergerDocument {
         deltaX = max (deltaX, acceptableNewRect.left - instanceRect.left)
       }
     }
-    if deltaX < .zero {
+    if deltaX.isNegative {
       for selectedInstance in inMoveObjectSet.values {
         selectedInstance.x += deltaX
       }

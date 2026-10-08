@@ -83,26 +83,26 @@ extension PackageZone {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_ZONE_LEFT {
-      if (self.width - dx) < .zero {
+      if (self.width - dx).isNegative {
         dx = self.width
       }
     }else if inKnobIndex == PACKAGE_ZONE_RIGHT {
-      if (self.width + dx) < .zero {
+      if (self.width + dx).isNegative {
         dx = -self.width
       }
     }else if inKnobIndex == PACKAGE_ZONE_BOTTOM {
-      if (self.height - dy) < .zero {
+      if (self.height - dy).isNegative {
         dy = self.height
       }
     }else if inKnobIndex == PACKAGE_ZONE_TOP {
-      if (self.height + dy) < .zero {
+      if (self.height + dy).isNegative {
         dy = -self.height
       }
     }else if inKnobIndex == PACKAGE_ZONE_NAME {
-      if (self.xName + dx) < .zero {
+      if (self.xName + dx).isNegative {
         dx = -self.xName
       }
-      if (self.yName + dy) < .zero {
+      if (self.yName + dy).isNegative {
         dy = -self.yName
       }
     }

@@ -44,14 +44,14 @@ extension BorderCurve {
     var accept = false
     if let next = self.mNext, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       accept = true
-      if (self.mX + inDx) < .zero {
+      if (self.mX + inDx).isNegative {
         accept = false
-      }else if (self.mY + inDy) < .zero {
+      }else if (self.mY + inDy).isNegative {
         accept = false
       }
-      if (next.mX + inDx) < .zero {
+      if (next.mX + inDx).isNegative {
         accept = false
-      }else if (next.mY + inDy) < .zero {
+      }else if (next.mY + inDy).isNegative {
         accept = false
       }
     }

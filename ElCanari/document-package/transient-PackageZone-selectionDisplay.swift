@@ -37,15 +37,15 @@ import CanariGeometry
     let width = self_width
     let height = self_height
     var bp : BezierPath
-    if (self_width <= .zero) && (self_height <= .zero) { // Oval is a point
+    if self_width.isNegativeOrZero, self_height.isNegativeOrZero { // Oval is a point
       bp = BezierPath ()
       bp.move (to: CanariPoint (x: x, y: y))
       bp.line (to: CanariPoint (x: x, y: y))
-    }else if self_width <= .zero { // Vertical line
+    }else if self_width.isNegativeOrZero { // Vertical line
       bp = BezierPath ()
       bp.move (to: CanariPoint (x: x, y: y))
       bp.line (to: CanariPoint (x: x, y: y + height))
-    }else if self_height <= .zero { // Horizontal line
+    }else if self_height.isNegativeOrZero { // Horizontal line
       bp = BezierPath ()
       bp.move (to: CanariPoint (x: x, y: y))
       bp.line (to: CanariPoint (x: x + width, y: y))

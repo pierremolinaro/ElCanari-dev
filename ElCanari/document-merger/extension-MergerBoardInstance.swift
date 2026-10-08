@@ -46,12 +46,12 @@ extension MergerBoardInstance {
   func acceptedTranslation_MergerBoardInstance (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
     var acceptedX = inDx
     let newX = self.x + acceptedX
-    if newX < .zero {
+    if newX.isNegative {
       acceptedX = -self.x
     }
     var acceptedY = inDy
     let newY = self.y + acceptedY
-    if newY < .zero {
+    if newY.isNegative {
       acceptedY = -self.y
     }
     return CanariPoint (x: acceptedX, y: acceptedY)
@@ -62,7 +62,7 @@ extension MergerBoardInstance {
   func acceptToTranslate_MergerBoardInstance (xBy inDx: CanariLength, yBy inDy: CanariLength) -> Bool {
     let newX = self.x + inDx
     let newY = self.y + inDy
-    return (newX >= .zero) && (newY >= .zero)
+    return newX.isPositiveOrZero && newY.isPositiveOrZero
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

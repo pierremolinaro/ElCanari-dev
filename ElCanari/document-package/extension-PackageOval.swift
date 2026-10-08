@@ -104,19 +104,19 @@ extension PackageOval {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == PACKAGE_OVAL_LEFT {
-      if (self.width - dx) < .zero {
+      if (self.width - dx).isNegative {
         dx = self.width
       }
     }else if inKnobIndex == PACKAGE_OVAL_RIGHT {
-      if (self.width + dx) < .zero {
+      if (self.width + dx).isNegative {
         dx = -self.width
       }
     }else if inKnobIndex == PACKAGE_OVAL_BOTTOM {
-      if (self.height - dy) < .zero {
+      if (self.height - dy).isNegative {
         dy = self.height
       }
     }else if inKnobIndex == PACKAGE_OVAL_TOP {
-      if (self.height + dy) < .zero {
+      if (self.height + dy).isNegative {
         dy = -self.height
       }
     }

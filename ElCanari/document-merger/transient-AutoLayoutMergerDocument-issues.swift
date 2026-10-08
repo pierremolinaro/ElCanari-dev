@@ -45,9 +45,9 @@ import CanariGeometry
       idx = 0
       while idx < root_boardInstances_instanceRect.count {
         let instanceRect = root_boardInstances_instanceRect [idx].instanceRect!
-        var inside = instanceRect.left >= .zero
+        var inside = instanceRect.left.isPositiveOrZero
         if inside {
-          inside = instanceRect.bottom >= .zero
+          inside = instanceRect.bottom.isPositiveOrZero
         }
         if inside {
           inside = instanceRect.right <= root_boardRect.right

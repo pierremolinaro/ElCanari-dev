@@ -51,7 +51,7 @@ extension PackageInDevice {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func acceptToTranslate_PackageInDevice (xBy inDx: CanariLength, yBy inDy: CanariLength) -> Bool {
-    return ((self.mX + inDx) >= .zero) && ((self.mY + inDy) >= .zero)
+    return (self.mX + inDx).isPositiveOrZero && (self.mY + inDy).isPositiveOrZero
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
