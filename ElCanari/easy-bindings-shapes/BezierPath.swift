@@ -142,7 +142,7 @@ struct BezierPath : Hashable {
   // On contourne le pb avec la fonction suivante
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private static func cloning (nsBezierPath inBezierPath : NSBezierPath) -> NSBezierPath {
+  static func cloning (nsBezierPath inBezierPath : NSBezierPath) -> NSBezierPath {
     let bp = NSBezierPath ()
     bp.lineWidth = inBezierPath.lineWidth
     bp.lineCapStyle = inBezierPath.lineCapStyle
@@ -274,7 +274,8 @@ struct BezierPath : Hashable {
 
   mutating func transform (using inTransform : CanariAffinity) {
     self.internalInsulatePath ()
-    self.mPath.transform (using: AffineTransform (inTransform.cgAffineTransform))
+ //   self.mPath.transform (using: AffineTransform (inTransform.cgAffineTransform))
+    self.mPath.transform (using: inTransform.affineTransform)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -282,7 +283,8 @@ struct BezierPath : Hashable {
   func transformed (by inTransform : CanariAffinity) -> BezierPath {
     var result = self
     result.internalInsulatePath ()
-    result.mPath.transform (using: AffineTransform (inTransform.cgAffineTransform))
+ //   result.mPath.transform (using: AffineTransform (inTransform.cgAffineTransform))
+    result.mPath.transform (using: inTransform.affineTransform)
     return result
   }
 

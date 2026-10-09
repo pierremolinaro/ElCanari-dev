@@ -18,11 +18,14 @@ extension NSBezierPath {
                         arrowSize inArrowSize : CGFloat) {
     if inEndPoint != self.currentPoint {
    //--- Compute angle
-      let angle = self.currentPoint.angle (to: inEndPoint).signedRadianValue
+//      let angle = self.currentPoint.angle (to: inEndPoint).signedRadianValue
     //--- Affine transform
-      let tr = NSAffineTransform ()
-      tr.translateX (by: inEndPoint.x, yBy: inEndPoint.y)
-      tr.rotate (byRadians: angle)
+      let af = CanariAffinity
+        .translating (x: .pt (inEndPoint.x), y: .pt (inEndPoint.y))
+        .rotating (by: self.currentPoint.angle (to: inEndPoint))
+//      let tr = NSAffineTransform ()
+//      tr.translateX (by: inEndPoint.x, yBy: inEndPoint.y)
+//      tr.rotate (byRadians: angle)
     //--- Draw path
       let path = NSBezierPath ()
       path.move (to: NSPoint (x: 0.0, y: 0.0))
@@ -34,7 +37,8 @@ extension NSBezierPath {
       )
       path.close ()
     //--- Add path
-      fillPath.append (tr.transform (path))
+//      fillPath.append (tr.transform (path))
+      fillPath.append (path.transformed (by: af))
     //--- Draw line
       self.line (to: inEndPoint)
     }
@@ -49,8 +53,11 @@ extension NSBezierPath {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func transformed (by inTransform : CanariAffinity) -> NSBezierPath {
-    let af = NSAffineTransform (transform: inTransform.affineTransform)
-    return af.transform (self)
+    let result = BezierPath.cloning (nsBezierPath: self)
+    result.transform (using: inTransform.affineTransform)
+    return result
+//    let af = NSAffineTransform (transform: inTransform.affineTransform)
+//    return af.transform (self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
