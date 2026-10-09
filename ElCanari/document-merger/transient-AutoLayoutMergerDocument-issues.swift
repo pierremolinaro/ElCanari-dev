@@ -30,6 +30,7 @@ import CanariGeometry
         while idy < root_boardInstances_instanceRect.count {
           let otherInstanceRect = root_boardInstances_instanceRect [idy].instanceRect!
           let intersection = instanceRect.intersection (otherInstanceRect.insetBy (dx: -root_horizontalSeparator, dy: -root_verticalSeparator))
+          // print (intersection.width, intersection.height)
           if intersection.width.isPositive, intersection.height.isPositive {
             let intersectionEnlarged : CanariRect = intersection.insetBy (dx: .pt (-3.0), dy: .pt (-3.0))
             var bp = BezierPath (rect: intersectionEnlarged)

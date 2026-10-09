@@ -289,7 +289,7 @@ extension AutoLayoutProjectDocument {
     let candidateSymbolTypeSet = Set (candidateSymbolTypeDictionary.keys)
     let missingSymbols = currentSymbolTypeSet.subtracting (candidateSymbolTypeSet)
     let unusedSymbols = candidateSymbolTypeSet.subtracting (currentSymbolTypeSet)
-    Swift.print (currentSymbolTypeSet, candidateSymbolTypeSet)
+    // Swift.print (currentSymbolTypeSet, candidateSymbolTypeSet)
     for p in missingSymbols {
       errorMessage += "\n  - the candidate device has no '\(p)' symbol type"
     }
