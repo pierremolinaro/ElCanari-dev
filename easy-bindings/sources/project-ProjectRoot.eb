@@ -40,6 +40,7 @@ handlingOpposite entity ProjectRoot {
 //--- Generation
   property @generateDirectRead NSColor mPDFBoardBackgroundColor default lightGray ;
   property Bool mGenerateMergerArchive default yes ;
+  property Bool mCompressedMergerArchive default yes ;
   property Bool mGenerateBOM default yes ;
   property Bool mGenerateGerberAndPDF default yes ;
   property PDFProductGrid mPDFProductGrid default noGrid ;

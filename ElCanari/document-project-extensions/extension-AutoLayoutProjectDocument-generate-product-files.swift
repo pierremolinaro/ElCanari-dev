@@ -144,11 +144,15 @@ extension AutoLayoutProjectDocument {
     if self.rootObject.mGenerateMergerArchive_property.propval {
       let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
       self.mProductFileGenerationLogTextView?.appendMessage ("Generating \(boardArchiveFilePath.lastPathComponent)…")
-//      let jsonData : Data = productRepresentation.encodedJSONCompressedData (
-//        prettyPrinted: true,
-//        using: COMPRESSION_LZMA
-//      )
-      let jsonData = try! productRepresentation.encodedJSONData (prettyPrinted: true)
+      let jsonData : Data
+      if self.rootObject.mCompressedMergerArchive_property.propval {
+        jsonData = productRepresentation.encodedJSONCompressedData (
+          prettyPrinted: true,
+          using: COMPRESSION_LZMA
+        )
+      }else{
+        jsonData = try! productRepresentation.encodedJSONData (prettyPrinted: true)
+      }
       try jsonData.write (to: URL (fileURLWithPath: boardArchiveFilePath))
       self.mProductFileGenerationLogTextView?.appendSuccess (" Ok\n")
     }

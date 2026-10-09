@@ -2977,6 +2977,9 @@
 		CFB8DE1AEA88CFD63701D489 /* tomany-SymbolPinInstanceInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DCA64DC8116619CE36F3F7 /* tomany-SymbolPinInstanceInDevice.swift */; };
 		CFCA954E3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */; };
 		CFCA954F3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA954D3076AAD200CA1A6E /* transient-BoardModel-modelDataLengthString.swift */; };
+		CFD0C0B730792BEF000A2D2F /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF2D72B63075847700BCBA24 /* CanariGeometry */; };
+		CFD0C0B830792BEF000A2D2F /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF5180A43076D0F50011C79D /* CanariGeometry */; };
+		CFD0C0B930792BEF000A2D2F /* CanariGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = CF8B62653078EAB000B3A192 /* CanariGeometry */; };
 		CFD14EDD93B380ED6CED7B8F /* tomany-ComponentInProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34264FEF01FF1D6D5F21143A /* tomany-ComponentInProject.swift */; };
 		CFD2FA45CE80DE2325D531B8 /* transient-PackageRoot-freePadNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07075BACD61CAA4D2E711D90 /* transient-PackageRoot-freePadNumbering.swift */; };
 		CFF325C03E2EB0BA52A13FC2 /* configurator-AutoLayoutProjectDocument-addLineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD805B273551BE7DBD4315F /* configurator-AutoLayoutProjectDocument-addLineButton.swift */; };
@@ -5474,6 +5477,9 @@
 		96F87AF9FCDB4F9E5120E017 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				CFD0C0B930792BEF000A2D2F /* CanariGeometry in Frameworks */,
+				CFD0C0B830792BEF000A2D2F /* CanariGeometry in Frameworks */,
+				CFD0C0B730792BEF000A2D2F /* CanariGeometry in Frameworks */,
 				CF8B626B3078EEA100B3A192 /* CanariGeometry in Frameworks */,
 				CF5180A83076D1020011C79D /* Sparkle in Frameworks */,
 			);

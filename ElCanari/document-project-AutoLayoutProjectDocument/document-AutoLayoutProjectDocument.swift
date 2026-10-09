@@ -6055,7 +6055,7 @@ do{
         .bind_hidden (.prop (self.rootObject.mArtwork_none))
       do{
         let vStackView_view_view = AutoLayoutTabView (size: .regular)
-          .addTab (title: "Gerber and PDF Settings", tooltip: "", contentView: pdfSettingsPage)
+          .addTab (title: "Settings", tooltip: "", contentView: pdfSettingsPage)
           .addTab (title: "Artwork Description", tooltip: "", contentView: artworkDescriptionPage)
           .addTab (title: "Artwork Minima", tooltip: "", contentView: artworkMinimaPage)
           .addTab (title: "Artwork Data", tooltip: "", contentView: artworkDataPage)
@@ -6718,6 +6718,20 @@ do{
       .set (margins: .large)
     do{
       let hStackView_view = AutoLayoutVerticalStackView ()
+      do{
+        let hStackView_view_view = AutoLayoutStaticLabel (title: "Merger Archive", bold: true, size: .regular, alignment: .left)
+        _ = hStackView_view .appendView (hStackView_view_view)
+      }
+      do{
+        let hStackView_view_view = AutoLayoutVerticalStackView ()
+          .set (leftMargin: .large)
+        do{
+          let hStackView_view_view_view = AutoLayoutCheckbox (title: "JSON Compressed Data", size: .regular)
+            .bind_value (self.rootObject.mCompressedMergerArchive_property)
+          _ = hStackView_view_view .appendView (hStackView_view_view_view)
+        }
+        _ = hStackView_view.appendView (hStackView_view_view)
+      }
       do{
         let hStackView_view_view = AutoLayoutStaticLabel (title: "Gerber Settings", bold: true, size: .regular, alignment: .left)
         _ = hStackView_view .appendView (hStackView_view_view)

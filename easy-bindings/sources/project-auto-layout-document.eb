@@ -2898,8 +2898,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         TextObserverView (size: .small) {
           expandableWidth ()
           setNoBackground ()
-//          setNoVerticalScroller ()
-//          setNoHorizontalScroller ()
           $observedValue self.incorrectDocumentFileDetailedErrorMessage
         }
         space
@@ -2917,7 +2915,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     vStack $hidden root.mArtwork.none {
       TabView (size : .regular) [outlet mProductPageSegmentedControl] { 
-        addTab (title: "Gerber and PDF Settings", tooltip: "", contentView: view pdfSettingsPage)
+        addTab (title: "Settings", tooltip: "", contentView: view pdfSettingsPage)
         addTab (title: "Artwork Description", tooltip: "", contentView: view artworkDescriptionPage)
         addTab (title: "Artwork Minima", tooltip: "", contentView: view artworkMinimaPage)
         addTab (title: "Artwork Data", tooltip: "", contentView: view artworkDataPage)
@@ -3269,6 +3267,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \PDFSettingsPage hStack set (margins: .large) {
     vStack {
+      StaticLabel (title: "Merger Archive", bold: yes, size: .regular, alignment: .left)
+      vStack set (leftMargin: .large) {
+        Checkbox (title: "JSON Compressed Data", size : .regular) {
+          $value root.mCompressedMergerArchive
+        }
+      }
       StaticLabel (title: "Gerber Settings", bold: yes, size: .regular, alignment: .left)
       vStack set (leftMargin: .large) {
         EnumPopUpButton (titles: enum GerberUnit.popupTitles, size: .regular) {

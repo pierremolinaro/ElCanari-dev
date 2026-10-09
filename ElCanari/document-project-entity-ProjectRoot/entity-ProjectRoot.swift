@@ -96,6 +96,12 @@ final class ProjectRoot : EBManagedObject
   final let mGenerateMergerArchive_property : EBStoredProperty_Bool
 
   //------------------------------------------------------------------------------------------------
+  //   Atomic property: mCompressedMergerArchive
+  //------------------------------------------------------------------------------------------------
+
+  final let mCompressedMergerArchive_property : EBStoredProperty_Bool
+
+  //------------------------------------------------------------------------------------------------
   //   Atomic property: mGenerateBOM
   //------------------------------------------------------------------------------------------------
 
@@ -2235,6 +2241,7 @@ final class ProjectRoot : EBManagedObject
     self.mArtworkIsUpdatable_property = EBStandAloneProperty_Bool (false)
     self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager, key: "mPDFBoardBackgroundColor")
     self.mGenerateMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateMergerArchive")
+    self.mCompressedMergerArchive_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mCompressedMergerArchive")
     self.mGenerateBOM_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateBOM")
     self.mGenerateGerberAndPDF_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mGenerateGerberAndPDF")
     self.mPDFProductGrid_property = EBStoredProperty_PDFProductGrid (defaultValue: PDFProductGrid.noGrid, undoManager: inUndoManager, key: "mPDFProductGrid")
@@ -2364,6 +2371,7 @@ final class ProjectRoot : EBManagedObject
     self.accumulateProperty (self.mArtworkVersion_property)
     self.accumulateProperty (self.mPDFBoardBackgroundColor_property)
     self.accumulateProperty (self.mGenerateMergerArchive_property)
+    self.accumulateProperty (self.mCompressedMergerArchive_property)
     self.accumulateProperty (self.mGenerateBOM_property)
     self.accumulateProperty (self.mGenerateGerberAndPDF_property)
     self.accumulateProperty (self.mPDFProductGrid_property)

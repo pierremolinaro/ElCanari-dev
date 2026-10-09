@@ -24,6 +24,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mArtworkIsUpdatable_property.stopsBeingObserved (by: self.mArtworkIsUpdatable_property) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.stopsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       oldValue.mGenerateMergerArchive_property.stopsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
+      oldValue.mCompressedMergerArchive_property.stopsBeingObserved (by: self.mCompressedMergerArchive_property) // Stored property
       oldValue.mGenerateBOM_property.stopsBeingObserved (by: self.mGenerateBOM_property) // Stored property
       oldValue.mGenerateGerberAndPDF_property.stopsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       oldValue.mPDFProductGrid_property.stopsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
@@ -228,6 +229,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mArtworkIsUpdatable_property.startsBeingObserved (by: self.mArtworkIsUpdatable_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.startsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
       newValue.mGenerateMergerArchive_property.startsBeingObserved (by: self.mGenerateMergerArchive_property) // Stored property
+      newValue.mCompressedMergerArchive_property.startsBeingObserved (by: self.mCompressedMergerArchive_property) // Stored property
       newValue.mGenerateBOM_property.startsBeingObserved (by: self.mGenerateBOM_property) // Stored property
       newValue.mGenerateGerberAndPDF_property.startsBeingObserved (by: self.mGenerateGerberAndPDF_property) // Stored property
       newValue.mPDFProductGrid_property.startsBeingObserved (by: self.mPDFProductGrid_property) // Stored property
@@ -466,6 +468,12 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final let mGenerateMergerArchive_property = EBTransientProperty <Bool?> ()
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Observers of 'mCompressedMergerArchive' stored property
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  final let mCompressedMergerArchive_property = EBTransientProperty <Bool?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mGenerateBOM' stored property
@@ -1720,6 +1728,10 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   //--- Configure mGenerateMergerArchive simple stored property
     self.mGenerateMergerArchive_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mGenerateMergerArchive_property.optionalSelection ?? .single (nil)
+    }
+  //--- Configure mCompressedMergerArchive simple stored property
+    self.mCompressedMergerArchive_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mCompressedMergerArchive_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mGenerateBOM simple stored property
     self.mGenerateBOM_property.mReadModelFunction = { [weak self] in
