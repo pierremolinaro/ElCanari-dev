@@ -15,7 +15,7 @@
       "kind": "remote",
       "repository": "https://github.com/sparkle-project/Sparkle",
       "version": {
-        "up-to-next-major-version": "2.10.0",
+        "version": "2.10.0",
       },
     }, {
       "kind": "remote",
