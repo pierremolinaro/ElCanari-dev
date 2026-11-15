@@ -23,7 +23,8 @@ import CanariGeometry
        _ self_mY : CanariLength
 ) -> CanariPoint {
 //--- START OF USER ZONE 2
-        if let descriptor : ComponentPadDescriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName]  {
+        if let descriptor : ComponentPadDescriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName],
+               self_mPadIndex < descriptor.pads.count {
           let pad = descriptor.pads [self_mPadIndex]
           return pad.location
         }else{
