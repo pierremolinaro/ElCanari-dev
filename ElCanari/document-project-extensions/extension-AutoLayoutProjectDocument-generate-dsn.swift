@@ -141,12 +141,11 @@ extension AutoLayoutProjectDocument {
           netNames.append (net.mNetName)
         }
       }
-   //   let trackWidth = converter.dsnValue (from: netClass.mTrackWidth)
       maxTrackWith = max (maxTrackWith, netClass.mTrackWidth) // trackWidth)
       let nc = NetClassForDSNExport (
         name: netClass.mNetClassName,
         trackWidth: netClass.mTrackWidth, // trackWidth,
-        viaPadDiameter: netClass.mViaPadDiameter, //converter.dsnValue (from: netClass.mViaPadDiameter),
+        viaPadDiameter: netClass.mViaPadDiameter,
         netNames: netNames,
         allowTracksOnFrontSide: netClass.mAllowTracksOnFrontSide,
         allowTracksOnBackSide: netClass.mAllowTracksOnBackSide,
@@ -312,7 +311,7 @@ extension AutoLayoutProjectDocument {
         case .inner4 : side = INNER4_LAYOUT
         }
         let optionalNetName = track.mNet?.mNetName
-        let widthMM = inConverter.dsnValue (from: track.actualTrackWidth!)
+        let widthMM = inConverter.dsnString (from: track.actualTrackWidth!)
         let p1 = track.mConnectorP1!.location!
         let p2 = track.mConnectorP2!.location!
         ioString += "    (wire\n"
@@ -400,8 +399,14 @@ struct CanariLengthToDSNConverter {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func dsnString (from inValue : CanariLength) -> String {
+    self.dsnValue (from: inValue).str3g
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func dsnString (for inP : CanariPoint) -> String {
-    "\(self.dsnValue (from: inP.x)) \(self.dsnValue (from: inP.y))"
+    "\(self.dsnString (from: inP.x)) \(self.dsnString (from: inP.y))"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -441,8 +446,6 @@ struct CanariLengthToDSNConverter {
       let psr = PadInstanceForDSNExport (
         name: masterPad.name,
         pad: masterPadForRouting,
-//        centerX: inConverter.dsnValue (from: masterPad.center.x - deviceCenter.x),
-//        centerY: inConverter.dsnValue (from: masterPad.center.y - deviceCenter.y)
         centerX: masterPad.center.x - deviceCenter.x,
         centerY: masterPad.center.y - deviceCenter.y
       )
@@ -467,8 +470,6 @@ struct CanariLengthToDSNConverter {
         let pir = PadInstanceForDSNExport (
           name: inRouteSlavePads ? masterPad.name : "nc::\(masterPad.name)",
           pad: slavePadForRouting,
-//          centerX: inConverter.dsnValue (from: slavePad.center.x - deviceCenter.x),
-//          centerY: inConverter.dsnValue (from: slavePad.center.y - deviceCenter.y)
           centerX: slavePad.center.x - deviceCenter.x,
           centerY: slavePad.center.y - deviceCenter.y
         )
@@ -645,7 +646,6 @@ fileprivate struct PadTypeForDSNExport {
       if halfWidth == halfHeight { // Circular pad
         shapeString = "(circle \(inSide) \(halfWidth * 2.0))"
       }else{ // Oblong: generate an octogon
-        //shapeString = "(rect \(inSide) \(-halfWidth) \(-halfHeight) \(halfWidth) \(halfHeight))"
         let s2 : Double = sqrt (2.0)
         let w = halfWidth * 2.0
         let h = halfHeight * 2.0
@@ -734,20 +734,20 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
     ioString += "    (padstack \"viaForClass\(netClass.name)\"\n"
     switch inLayerConfiguration {
     case .twoLayers :
-      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
     case .fourLayers :
-      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(INNER1_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(INNER2_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER1_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER2_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
     case .sixLayers :
-      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter)))\n"
-      ioString += "      (shape (circle \(INNER1_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(INNER2_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(INNER3_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(INNER4_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
-      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnValue (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(FRONT_SIDE_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter)))\n"
+      ioString += "      (shape (circle \(INNER1_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER2_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER3_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(INNER4_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
+      ioString += "      (shape (circle \(BACK_SIDE_LAYOUT) \(inConverter.dsnString (from: netClass.viaPadDiameter))))\n"
     }
     ioString += "    )\n"
   }
@@ -789,9 +789,9 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
   for package in inPackageArrayForRouting {
     ioString += "    (image \"\(package.typeName)\"\n"
     for padType in package.padArray {
-      let xStr = inConverter.dsnValue (from: padType.centerX)
-      let yStr = inConverter.dsnValue (from: padType.centerY)
-      ioString += "      (pin \"\(padType.pad.name)\" \"\(xStr)\" \(yStr))\n"
+      let xStr = inConverter.dsnString (from: padType.centerX)
+      let yStr = inConverter.dsnString (from: padType.centerY)
+      ioString += "      (pin \"\(padType.pad.name)\" \"\(padType.name)\" \(xStr) \(yStr))\n"
     }
     ioString += "    )\n"
   }
@@ -943,7 +943,7 @@ fileprivate func addNetClasses (_ ioString : inout String,
     ioString += "      (clearance_class default)\n"
     ioString += "      (via_rule \"viaRuleForClass\(netClass.name)\")\n"
     ioString += "      (rule\n"
-    ioString += "        (width \(inConverter.dsnValue (from: netClass.trackWidth)))\n"
+    ioString += "        (width \(inConverter.dsnString (from: netClass.trackWidth)))\n"
     ioString += "      )\n"
     ioString += "      (circuit\n"
     ioString += "        (use_layer"
@@ -978,8 +978,8 @@ fileprivate func addDefaultRule (_ ioString : inout String,
                                  maxWidth inTrackMaxWidth : CanariLength,
                                  clearance inClearance : CanariLength) {
   ioString += "    (rule\n"
-  ioString += "      (width \(inConverter.dsnValue (from: inTrackMaxWidth))\n" // Required !!!!
-  ioString += "      (clearance \(inConverter.dsnValue (from: inClearance)))\n"
+  ioString += "      (width \(inConverter.dsnString (from: inTrackMaxWidth)))\n" // Required !!!!
+  ioString += "      (clearance \(inConverter.dsnString (from: inClearance)))\n"
   ioString += "    )\n"
 }
 
@@ -1039,8 +1039,8 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
   ioString += "  (placement\n"
   for component in components {
     if component.placed {
-      let x = inConverter.dsnValue (from: component.originX)
-      let y = inConverter.dsnValue (from: component.originY)
+      let x = inConverter.dsnString (from: component.originX)
+      let y = inConverter.dsnString (from: component.originY)
       let side : String
       switch component.side {
       case .back : side = "back"
