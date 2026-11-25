@@ -28,20 +28,22 @@ let CONFIGURATION = Configuration.release
 //------------------------------------------------------------------------------
 
 let VERSION_CANARI = "1.12.1"
+
 let MAC_OS_MINIMUM_VERSION = "12"
+
 let NOTES : [String] = [
-  "Construit avec Xcode 27.2 beta, Sparkle 2.10.0"
+  "Construit avec Xcode 27.3 beta, Sparkle 2.10.1"
 ]
+
 let BUGFIXES : [String] = [
-  "Correction dimension des fichiers Gerber produits"
+  "Correction du copier / coller d'un texte dans le board",
+  "Correction de la taille du « Contextual Click Diameter »"
 ]
+
 let CHANGES : [String] = [
-  "Projet, onglet « Board Outline » : suppression du réglage « Board Limit Width »",
-  "Merger, onglet « Board » : suppression du réglage « Board Limit Width »"
 ]
+
 let NEWS : [String] = [
-  "Projet, onglet « Board Outline » : ajout « Corner Radius » dans l'édition du contour",
-  "Merger, onglet « Board » : ajout des réglages de séparation"
 ]
 
 //------------------------------------------------------------------------------

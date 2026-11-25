@@ -152,7 +152,7 @@ extension AutoLayoutProjectDocument {
   fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : CanariPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
-    let d = CanariLength.pt (self.rootObject.mControlKeyHiliteDiameter)
+    let d = CanariLength.mil (self.rootObject.mControlKeyHiliteDiameter)
   //--- Hilite connectors
     if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1, let netName = connector1.netName () {
     //--- Exclude connectors connected to connector 1

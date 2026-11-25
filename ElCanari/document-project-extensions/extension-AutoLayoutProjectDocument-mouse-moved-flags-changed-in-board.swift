@@ -18,7 +18,7 @@ extension AutoLayoutProjectDocument {
   func mouseMovedOrFlagsChangedInBoard (_ inUnalignedMouseLocation : CanariPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
-    let d = CanariLength.pt (self.rootObject.mControlKeyHiliteDiameter)
+    let d = CanariLength.mil (self.rootObject.mControlKeyHiliteDiameter)
   //--- Option key ?
     if NSEvent.modifierFlags.contains (.option) {
       let connectorsUnderMouse = self.rootObject.connectors (at: inUnalignedMouseLocation, trackSide: newTrackSide)

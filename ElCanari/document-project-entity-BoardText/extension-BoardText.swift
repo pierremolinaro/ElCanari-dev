@@ -14,8 +14,8 @@ import CanariGeometry
 let BOARD_TEXT_ORIGIN_KNOB  = 0
 let BOARD_TEXT_ROTATION_KNOB  = 1
 
-fileprivate let BOARD_TEXT_ROTATION_KNOB_DISTANCE = CanariLength.pt (30)
-fileprivate let FONT_NAME_IN_DICTIONARY = "*FONT-NAME*"
+private let BOARD_TEXT_ROTATION_KNOB_DISTANCE = CanariLength.pt (30)
+private let FONT_NAME_IN_DICTIONARY = "*FONT-NAME*"
 
 //--------------------------------------------------------------------------------------------------
 //   EXTENSION BoardText
@@ -39,19 +39,23 @@ extension BoardText {
   //  Translation
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptedTranslation_BoardText (xBy inDx: CanariLength, yBy inDy: CanariLength) -> CanariPoint {
+  func acceptedTranslation_BoardText (xBy inDx : CanariLength,
+                                      yBy inDy : CanariLength) -> CanariPoint {
     return CanariPoint (x: inDx, y: inDy)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func acceptToTranslate_BoardText (xBy _ : CanariLength, yBy _ : CanariLength) -> Bool {
+  func acceptToTranslate_BoardText (xBy _ : CanariLength,
+                                    yBy _ : CanariLength) -> Bool {
     return true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func translate_BoardText (xBy inDx : CanariLength, yBy inDy : CanariLength, userSet _ : inout EBReferenceSet <EBManagedObject>) {
+  func translate_BoardText (xBy inDx : CanariLength,
+                            yBy inDy : CanariLength,
+                            userSet _ : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -111,13 +115,13 @@ extension BoardText {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func move_BoardText (knob inKnobIndex: Int,
-                      proposedDx inDx: CanariLength,
-                      proposedDy inDy: CanariLength,
-                      unalignedMouseLocationX _ : CanariLength,
-                      unalignedMouseLocationY _ : CanariLength,
-                      alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
-                      alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
-                      shift _ : Bool) {
+                       proposedDx inDx: CanariLength,
+                       proposedDy inDy: CanariLength,
+                       unalignedMouseLocationX _ : CanariLength,
+                       unalignedMouseLocationY _ : CanariLength,
+                       alignedMouseLocationX inAlignedMouseLocationX : CanariLength,
+                       alignedMouseLocationY inAlignedMouseLocationY : CanariLength,
+                       shift _ : Bool) {
     if inKnobIndex == BOARD_TEXT_ORIGIN_KNOB {
       self.mX += inDx
       self.mY += inDy
@@ -173,7 +177,8 @@ extension BoardText {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func rotate90Clockwise_BoardText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_BoardText (from inRotationCenter : CanariPoint,
+                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
@@ -184,7 +189,8 @@ extension BoardText {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func rotate90CounterClockwise_BoardText (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_BoardText (from inRotationCenter : CanariPoint,
+                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y

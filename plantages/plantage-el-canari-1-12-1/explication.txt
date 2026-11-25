@@ -1,0 +1,12 @@
+Bonjour Pierre,
+
+	J'ai trouvé une source de plantage dans ElCanari
+
+	La séquence est la suivante :
+
+1 - On crée un package pack1 avec un pad et un pad secondaire :
+2 - On crée un device dev1 avec comme sympole une pin et comme package pack1
+3 - On ajoute le device à un projet des1
+4 - On édite pack1 pour supprimer le pad secondaire et on sauve
+5 - On édite dev1 pour mettre à jour pack1 et on sauve
+6 - On édite des1 pour mettre à jour dev1
