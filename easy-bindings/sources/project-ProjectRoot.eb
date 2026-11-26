@@ -178,7 +178,7 @@ handlingOpposite entity ProjectRoot {
   
   property Double mErrorOrWarningIssueSize default 6.0 ;
   
-  property @generateDirectRead Double mControlKeyHiliteDiameter default 100.0 ;
+  property @generateDirectRead Double mControlKeyHiliteDiameterInMil default 100.0 ;
   
   property RastnetDisplay mRastnetDisplay default allNets ;
   property @generateDirectAccess String mRastnetDisplayedNetName default "" ;

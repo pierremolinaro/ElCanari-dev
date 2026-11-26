@@ -1474,7 +1474,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       StaticLabel (title: "Contextual Click Diameter", bold: yes, size: .small, alignment: .left)
       LinearSlider (min: 10, max: 200, ticks: 10) {
-        $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes)
+        $doubleValue root.mControlKeyHiliteDiameterInMil (sendContinously : yes)
       }
       StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left)
       FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard }

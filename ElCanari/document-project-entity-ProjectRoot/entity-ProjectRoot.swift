@@ -490,15 +490,15 @@ final class ProjectRoot : EBManagedObject
   final let mErrorOrWarningIssueSize_property : EBStoredProperty_Double
 
   //------------------------------------------------------------------------------------------------
-  //   Atomic property: mControlKeyHiliteDiameter
+  //   Atomic property: mControlKeyHiliteDiameterInMil
   //------------------------------------------------------------------------------------------------
 
-  final let mControlKeyHiliteDiameter_property : EBStoredProperty_Double
+  final let mControlKeyHiliteDiameterInMil_property : EBStoredProperty_Double
 
   //------------------------------------------------------------------------------------------------
 
-  final var mControlKeyHiliteDiameter : Double {
-    get { return self.mControlKeyHiliteDiameter_property.propval }
+  final var mControlKeyHiliteDiameterInMil : Double {
+    get { return self.mControlKeyHiliteDiameterInMil_property.propval }
   }
 
   //------------------------------------------------------------------------------------------------
@@ -2284,7 +2284,7 @@ final class ProjectRoot : EBManagedObject
     self.mBoardGridStep_property = EBStoredProperty_CanariLength (defaultValue: .mil (25), undoManager: inUndoManager, key: "mBoardGridStep")
     self.mBoardGridStepUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mil, undoManager: inUndoManager, key: "mBoardGridStepUnit")
     self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: inUndoManager, key: "mErrorOrWarningIssueSize")
-    self.mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100, undoManager: inUndoManager, key: "mControlKeyHiliteDiameter")
+    self.mControlKeyHiliteDiameterInMil_property = EBStoredProperty_Double (defaultValue: 100, undoManager: inUndoManager, key: "mControlKeyHiliteDiameterInMil")
     self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: inUndoManager, key: "mDSNFileProposedName")
     self.mBoardCornerRadius_property = EBStoredProperty_CanariLength (defaultValue: .mm (1), undoManager: inUndoManager, key: "mBoardCornerRadius")
     self.mBoardCornerRadiusUnit_property = EBStoredProperty_CanariLengthUnit (defaultValue: .mm, undoManager: inUndoManager, key: "mBoardCornerRadiusUnit")
@@ -2414,7 +2414,7 @@ final class ProjectRoot : EBManagedObject
     self.accumulateProperty (self.mBoardGridStep_property)
     self.accumulateProperty (self.mBoardGridStepUnit_property)
     self.accumulateProperty (self.mErrorOrWarningIssueSize_property)
-    self.accumulateProperty (self.mControlKeyHiliteDiameter_property)
+    self.accumulateProperty (self.mControlKeyHiliteDiameterInMil_property)
     self.accumulateProperty (self.mDSNFileProposedName_property)
     self.accumulateProperty (self.mBoardCornerRadius_property)
     self.accumulateProperty (self.mBoardCornerRadiusUnit_property)

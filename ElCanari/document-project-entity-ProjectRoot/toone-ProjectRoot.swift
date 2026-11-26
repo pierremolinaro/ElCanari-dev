@@ -67,7 +67,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       oldValue.mBoardGridStep_property.stopsBeingObserved (by: self.mBoardGridStep_property) // Stored property
       oldValue.mBoardGridStepUnit_property.stopsBeingObserved (by: self.mBoardGridStepUnit_property) // Stored property
       oldValue.mErrorOrWarningIssueSize_property.stopsBeingObserved (by: self.mErrorOrWarningIssueSize_property) // Stored property
-      oldValue.mControlKeyHiliteDiameter_property.stopsBeingObserved (by: self.mControlKeyHiliteDiameter_property) // Stored property
+      oldValue.mControlKeyHiliteDiameterInMil_property.stopsBeingObserved (by: self.mControlKeyHiliteDiameterInMil_property) // Stored property
       oldValue.mDSNFileProposedName_property.stopsBeingObserved (by: self.mDSNFileProposedName_property) // Stored property
       oldValue.mBoardCornerRadius_property.stopsBeingObserved (by: self.mBoardCornerRadius_property) // Stored property
       oldValue.mBoardCornerRadiusUnit_property.stopsBeingObserved (by: self.mBoardCornerRadiusUnit_property) // Stored property
@@ -272,7 +272,7 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
       newValue.mBoardGridStep_property.startsBeingObserved (by: self.mBoardGridStep_property) // Stored property
       newValue.mBoardGridStepUnit_property.startsBeingObserved (by: self.mBoardGridStepUnit_property) // Stored property
       newValue.mErrorOrWarningIssueSize_property.startsBeingObserved (by: self.mErrorOrWarningIssueSize_property) // Stored property
-      newValue.mControlKeyHiliteDiameter_property.startsBeingObserved (by: self.mControlKeyHiliteDiameter_property) // Stored property
+      newValue.mControlKeyHiliteDiameterInMil_property.startsBeingObserved (by: self.mControlKeyHiliteDiameterInMil_property) // Stored property
       newValue.mDSNFileProposedName_property.startsBeingObserved (by: self.mDSNFileProposedName_property) // Stored property
       newValue.mBoardCornerRadius_property.startsBeingObserved (by: self.mBoardCornerRadius_property) // Stored property
       newValue.mBoardCornerRadiusUnit_property.startsBeingObserved (by: self.mBoardCornerRadiusUnit_property) // Stored property
@@ -728,10 +728,10 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
   final let mErrorOrWarningIssueSize_property = EBTransientProperty <Double?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   Observers of 'mControlKeyHiliteDiameter' stored property
+  //   Observers of 'mControlKeyHiliteDiameterInMil' stored property
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final let mControlKeyHiliteDiameter_property = EBTransientProperty <Double?> ()
+  final let mControlKeyHiliteDiameterInMil_property = EBTransientProperty <Double?> ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Observers of 'mDSNFileProposedName' stored property
@@ -1901,9 +1901,9 @@ class ReadOnlyObject_ProjectRoot : EBReadOnlyAbstractObjectProperty <ProjectRoot
     self.mErrorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       return self?.mWeakInternalValue?.mErrorOrWarningIssueSize_property.optionalSelection ?? .single (nil)
     }
-  //--- Configure mControlKeyHiliteDiameter simple stored property
-    self.mControlKeyHiliteDiameter_property.mReadModelFunction = { [weak self] in
-      return self?.mWeakInternalValue?.mControlKeyHiliteDiameter_property.optionalSelection ?? .single (nil)
+  //--- Configure mControlKeyHiliteDiameterInMil simple stored property
+    self.mControlKeyHiliteDiameterInMil_property.mReadModelFunction = { [weak self] in
+      return self?.mWeakInternalValue?.mControlKeyHiliteDiameterInMil_property.optionalSelection ?? .single (nil)
     }
   //--- Configure mDSNFileProposedName simple stored property
     self.mDSNFileProposedName_property.mReadModelFunction = { [weak self] in

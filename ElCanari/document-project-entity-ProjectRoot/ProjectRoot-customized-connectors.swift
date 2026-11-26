@@ -16,7 +16,7 @@ extension ProjectRoot {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func connectors (at inLocation : CanariPoint, trackSide inSide : TrackSide) -> [BoardConnector] {
-    let distance = CanariLength.mil (self.mControlKeyHiliteDiameter) / 2.0
+    let distance = CanariLength.mil (self.mControlKeyHiliteDiameterInMil) / 2.0
     let squareOfDistance = distance * distance
     var result = [BoardConnector] ()
     for object in self.mBoardObjects.values {

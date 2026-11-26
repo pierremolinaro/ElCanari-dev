@@ -37,7 +37,7 @@ extension EBGraphicView {
     case .empty :
       break
     case .single (let v) :
-      if let ciImage = CIImage (data: v) {
+      if !v.isEmpty, let ciImage = CIImage (data: v) {
         self.mBackgroundImage = ciImage
         self.setNeedsDisplayAndUpdateViewBounds ()
       }

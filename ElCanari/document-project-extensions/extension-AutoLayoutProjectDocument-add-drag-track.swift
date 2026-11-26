@@ -152,7 +152,7 @@ extension AutoLayoutProjectDocument {
   fileprivate func updateHiliteDuringTrackCreation (_ inUnalignedMouseLocation : CanariPoint) {
     var shape : EBShape? = nil
     let newTrackSide : TrackSide = self.rootObject.mBoardSideForNewTrack
-    let d = CanariLength.mil (self.rootObject.mControlKeyHiliteDiameter)
+    let d = CanariLength.mil (self.rootObject.mControlKeyHiliteDiameterInMil)
   //--- Hilite connectors
     if let connector1 = self.mTrackCreatedByOptionClick?.mConnectorP1, let netName = connector1.netName () {
     //--- Exclude connectors connected to connector 1
@@ -218,7 +218,7 @@ extension AutoLayoutProjectDocument {
      //--- Retain track only if distance between P1 and P2 is greater than mControlKeyHiliteDiameterSlider
        let p1 = track.mConnectorP1!.location!.ptValue
        let p2 = track.mConnectorP2!.location!.ptValue
-       accepts = p1.distance (to: p2) > (CanariLength.mil (self.rootObject.mControlKeyHiliteDiameter) / 2.0).ptValue
+       accepts = p1.distance (to: p2) > (CanariLength.mil (self.rootObject.mControlKeyHiliteDiameterInMil) / 2.0).ptValue
        if accepts { // Try to connect at mouse up location
          let connectorsAt2 = self.rootObject.connectors (at: p2.canariPoint, trackSide: track.mSide)
          self.tryToConnect (connectorsAt2)

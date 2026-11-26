@@ -27,7 +27,7 @@ let CONFIGURATION = Configuration.release
 // Version ElCanari
 //------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.12.1"
+let VERSION_CANARI = "1.12.3"
 
 let MAC_OS_MINIMUM_VERSION = "12"
 
@@ -36,7 +36,7 @@ let NOTES : [String] = [
 ]
 
 let BUGFIXES : [String] = [
-  "Correction du copier / coller d'un texte dans le board",
+  "Correction des copier / coller",
   "Correction de la taille du « Contextual Click Diameter »"
 ]
 

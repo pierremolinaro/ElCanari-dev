@@ -3210,7 +3210,7 @@ self.configure_boardOperationPullDownButtonConfigurator (toTopHStack) // Configu
       }
       do{
         let vStackView_view_view = AutoLayoutLinearSlider (min: 10, max: 200, ticks: 10)
-          .bind_doubleValue (self.rootObject.mControlKeyHiliteDiameter_property, sendContinously:true)
+          .bind_doubleValue (self.rootObject.mControlKeyHiliteDiameterInMil_property, sendContinously:true)
         _ = vStackView_view .appendView (vStackView_view_view)
       }
       do{

@@ -619,8 +619,8 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : EBRea
       let dataDictionary : [String : Any] = [
         OBJECT_DICTIONARY_KEY : objectDictionaryArray,
         OBJECT_ADDITIONAL_DICTIONARY_KEY : objectAdditionalDictionaryArray,
-        X_KEY : pasteOffset.x,
-        Y_KEY : pasteOffset.y
+        X_KEY : pasteOffset.x.cuValue,
+        Y_KEY : pasteOffset.y.cuValue
       ]
       pb.setPropertyList (dataDictionary, forType: pasteboardType)
     }
